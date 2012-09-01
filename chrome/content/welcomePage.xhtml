@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd"
+[<!ENTITY % easygesturesDTD SYSTEM "chrome://easygestures/locale/easygestures.dtd" >
+%easygesturesDTD;
+]>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title> &welcome.completed;</title>
+<link rel="shortcut icon" href="chrome://easygestures/content/logo.png"></link>
+<style type="text/css">
+    a:link{color: #0057D9;text-decoration: underline;}
+    a:hover{color: #0057D9;text-decoration: underline;}
+    a:visited{color: #666666;text-decoration: underline;}
+    a:active{color: #ff0000;text-decoration: underline;}
+    a img{border-width: 0;}
+    body{color: #000;}
+
+    .installed{font-weight: bold;font-size: 22px;font-family: Trebuchet MS, Arial;text-decoration: none;margin-bottom: 0.5px;}
+    .onoff{font-weight: normal;font-size: 14px;font-family: Trebuchet MS, Arial;text-decoration: none;margin-bottom: 0.5px;}
+    .options{color: #000;font-weight: normal;font-size: 11px;font-family: Trebuchet MS, Arial;text-decoration: none;margin-bottom: 0.5px;}
+</style>
+
+<script type='text/javascript'>
+    function focusTipsWindow(){
+        var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
+        while (wenum.hasMoreElements()) {
+            var win = wenum.getNext();
+            if (win.location == "chrome://easygestures/content/tips.xul") {win.focus();break;}
+        }
+    }
+
+    function arrangeWindows(){
+        var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
+        while (wenum.hasMoreElements()) {
+            var win = wenum.getNext();
+            if (win.location == "chrome://mozapps/content/extensions/extensions.xul") {win.focus();}
+            if (win.location == "chrome://easygestures/content/tips.xul") {win.minimize();}
+        }
+    }
+    
+    function setTableHeight(){
+        var logoSize = 60;
+        document.getElementById("mainDiv").style.height = window.innerHeight - logoSize + "px";
+    }
+    
+</script>
+
+</head>
+
+<body onload="setTableHeight();arrangeWindows();" onresize="setTableHeight();" onunload="focusTipsWindow();">
+    
+    <div id="mainDiv" style="display:table;width:100%;">
+        <div style="display:table-cell;text-align:center;vertical-align:middle;">
+            <img src="easyGestures.png"/><br/>
+            <span class="installed">&welcome.click;<br/></span>
+            <span class="onoff">&welcome.onoff;<br/></span>
+            <span class="options"><a href='http://easygestures.mozdev.org/'>http://easygestures.mozdev.org</a></span>            
+        </div>
+    </div>
+    
+    <img src="arrow.png" style="position:absolute;bottom:0;right:0"/>
+</body>
+</html>

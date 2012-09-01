@@ -1,0 +1,338 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "zh-CN">
+
+<!ENTITY welcome.click "页面点击中键打开菜单。">
+<!ENTITY welcome.onoff "你可以在状态栏点击蓝色箭头开/关圆饼菜单。">
+<!ENTITY welcome.completed "easyGestures - 安装完成">
+
+<!ENTITY options "选项">
+<!ENTITY about "关于">
+
+<!ENTITY ok "确定">
+<!ENTITY apply "应用">
+<!ENTITY cancel "取消">
+<!ENTITY help "帮助">
+<!ENTITY close "关闭">
+
+<!ENTITY profile "描述">
+<!ENTITY behavior "情况">
+<!ENTITY actions "动作">
+<!ENTITY customizations "自定义">
+<!ENTITY skins "皮肤">
+
+<!ENTITY actions.main "主菜单">
+<!ENTITY actions.extra "延伸菜单">
+<!ENTITY actions.info "额外的菜单显示了使用的相应手势。">
+<!ENTITY actions.alt "禁用">
+<!ENTITY actions.primary "基本的">
+<!ENTITY actions.alternative "另类的">
+<!ENTITY actions.regular "常用手势">
+<!ENTITY actions.contextual "上下文手势">
+
+<!ENTITY customizations.loadURLScript "载入网址/脚本">
+<!ENTITY customizations.runProgramFile "运行程序文件">
+<!ENTITY customizations.queries "询问">
+<!ENTITY customizations.misc "其他">
+
+<!ENTITY about.version "版本">
+<!ENTITY about.languageInfo "语言">
+<!ENTITY about.stats "统计">
+<!ENTITY about.statsDisplay "显示统计">
+<!ENTITY about.statsReset "重置统计">
+<!ENTITY about.manage "管理设置">
+<!ENTITY about.import "导入设置...">
+<!ENTITY about.export "导出设置...">
+<!ENTITY about.reset "恢复默认设置">
+<!ENTITY about.startupTips "启动时显示提示">
+<!ENTITY about.statusbarShowIcon "在状态栏显示图标">
+<!ENTITY about.feedback "您的建议">
+<!ENTITY about.history "最新消息">
+<!ENTITY about.createdBy "创建者">
+
+<!ENTITY stats.use "使用弹出菜单">
+<!ENTITY stats.novice "初学者">
+<!ENTITY stats.coolUser "略懂">
+<!ENTITY stats.addicted "痴迷者">
+<!ENTITY stats.master "精通者">
+<!ENTITY stats.lastReset "最后重启">
+<!ENTITY stats.actions "点击手势">
+<!ENTITY stats.directions "点击方向">
+<!ENTITY stats.main "主菜单">
+<!ENTITY stats.extra "延伸菜单">
+<!ENTITY stats.total "全部">
+<!ENTITY stats.all "全部手势">
+
+<!ENTITY use "打开菜单">
+<!ENTITY use.button.left "鼠标左键">
+<!ENTITY use.button.middle "鼠标中键">
+<!ENTITY use.button.right "鼠标右键">
+<!ENTITY use.button.custom "自定义鼠标按钮">
+<!ENTITY use.buttoncode "按钮代码">
+
+<!ENTITY use.and "和">
+<!ENTITY use.shift "Shift">
+<!ENTITY use.ctrl "Ctrl">
+<!ENTITY use.dragOnly "只有打开拖动">
+<!ENTITY use.upleft "只有上/下">
+<!ENTITY use.afterDelay "在打开延迟">
+<!ENTITY use.alternative "显示替代菜单">
+<!ENTITY use.also "(您也可以使用 右 Alt 键)">
+
+<!ENTITY suppress "禁止圆饼菜单优先鼠标按钮">
+<!ENTITY suppress.ins "Insert">
+<!ENTITY suppress.alt "Alt">
+<!ENTITY suppress.ctrl "Ctrl">
+<!ENTITY suppress.custom "自定义键">
+<!ENTITY suppress.keycode "按键代码">
+
+<!ENTITY link "自定义“打开链接”手势">
+<!ENTITY link.through "启用自动点击链接通过圆饼菜单中心">
+<!ENTITY link.delay "最大点击延迟(ms)">
+<!ENTITY link.throughAsAction "使用“打开链接”行动手势">
+<!ENTITY link.throughAsBrowser "使用浏览器动作">
+<!ENTITY link.curTab "在当前标签页打开链接">
+<!ENTITY link.newTab "在新标签页打开链接">
+<!ENTITY link.newWindow "在新窗口打开链接">
+<!ENTITY link.xlink "标志链接">
+
+<!ENTITY autoscrolling "自动卷轴通过圆饼菜单中心">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "延迟时间(ms)">
+
+<!ENTITY extras.menuType "菜单类型">
+<!ENTITY extras.menu "标准(8 动作)">
+<!ENTITY extras.largeMenu "大量(10 动作)">
+<!ENTITY extras.display "显示">
+<!ENTITY extras.noIcons "基本显示(不显示图标)">
+<!ENTITY extras.smallIcons "使用小图标">
+<!ENTITY extras.linearMenu "转化为线性菜单">
+<!ENTITY extras.menuOpacity "圆饼菜单不透明">
+<!ENTITY extras.ttip "启用悬停提示">
+<!ENTITY extras.ttipDelayLabel "提示延时(ms)">
+<!ENTITY extras.ttipDelayOmit "禁用悬停提示延时">
+
+<!ENTITY contextmenu "激活上下文敏感">
+<!ENTITY contextmenu.showAuto "始终激活。使用相同的密钥抑制敏感度。">
+<!ENTITY contextmenu.link "链接">
+<!ENTITY contextmenu.image "图像">
+<!ENTITY contextmenu.selection "选择">
+<!ENTITY contextmenu.textbox "文本框">
+<!ENTITY contextmenu.order "菜单命令">
+<!ENTITY contextmenu.imageFirst "首先作用显示图片">
+<!ENTITY contextmenu.textboxFirst "首先作用显示文本框">
+
+<!ENTITY move "移动圆饼菜单">
+<!ENTITY move.key "按 Shift 键">
+<!ENTITY move.edge "延伸菜单边缘">
+
+<!ENTITY func.empty "空">
+<!ENTITY func.more "延伸菜单">
+<!ENTITY func.firstPage "首页">
+<!ENTITY func.lastPage "尾页">
+<!ENTITY func.backSite "上一个网站">
+<!ENTITY func.forwardSite "下一个网站">
+<!ENTITY func.back "后退">
+<!ENTITY func.forward "前进">
+<!ENTITY func.reload "重新载入-停止">
+<!ENTITY func.up "上">
+<!ENTITY func.root "根">
+<!ENTITY func.pageTop "页首">
+<!ENTITY func.pageBottom "页尾">
+<!ENTITY func.autoscrolling "自动卷轴">
+
+<!ENTITY func.newTab "新建空白标签页">
+<!ENTITY func.duplicateTab "复制标签页">
+<!ENTITY func.prevTab "预览标签页">
+<!ENTITY func.nextTab "下一个标签页">
+<!ENTITY func.closeTab "关闭标签页">
+<!ENTITY func.closeOtherTabs "关闭其他标签页">
+<!ENTITY func.undoCloseTab "撤销关闭的标签页">
+
+<!ENTITY func.newWindow "新建窗口">
+<!ENTITY func.duplicateWindow "复制窗口">
+<!ENTITY func.closeOtherWindows "关闭其他窗口">
+<!ENTITY func.closeBrowser "关闭浏览器">
+<!ENTITY func.minimizeWindow "最小化窗口">
+<!ENTITY func.fullscreen "切换为全屏">
+
+<!ENTITY func.openLink "打开链接">
+<!ENTITY func.openLinkNewWindow "在新窗口打开链接">
+<!ENTITY func.copyLink "复制链接地址">
+<!ENTITY func.sendLink "发送链接...">
+<!ENTITY func.copyImageLocation "复制图片地址">
+<!ENTITY func.saveLinkAs "保存链接到...">
+<!ENTITY func.saveImageAs "保存图片到...">
+<!ENTITY func.savePageAs "保存页面到...">
+<!ENTITY func.hideImages "隐藏图片">
+<!ENTITY func.copyImage "复制图片">
+
+<!ENTITY func.homepage "首页">
+<!ENTITY func.dailyReadings "每天读">
+<!ENTITY func.searchWeb "搜索网络">
+<!ENTITY func.translate "翻译/说明">
+<!ENTITY func.runProgramFile1 "运行程序文件 1">
+<!ENTITY func.runProgramFile2 "运行程序文件 2">
+<!ENTITY func.runProgramFile3 "运行程序文件 3">
+<!ENTITY func.runProgramFile4 "运行程序文件 4">
+<!ENTITY func.runProgramFile5 "运行程序文件 5">
+<!ENTITY func.runProgramFile6 "运行程序文件 6">
+<!ENTITY func.runProgramFile7 "运行程序文件 7">
+<!ENTITY func.runProgramFile8 "运行程序文件 8">
+<!ENTITY func.runProgramFile9 "运行程序文件 9">
+<!ENTITY func.runProgramFile10 "运行程序文件 10">
+
+<!ENTITY func.loadURLScript1 "载入网址/脚本 1">
+<!ENTITY func.loadURLScript2 "载入网址/脚本 2">
+<!ENTITY func.loadURLScript3 "载入网址/脚本 3">
+<!ENTITY func.loadURLScript4 "载入网址/脚本 4">
+<!ENTITY func.loadURLScript5 "载入网址/脚本 5">
+<!ENTITY func.loadURLScript6 "载入网址/脚本 6">
+<!ENTITY func.loadURLScript7 "载入网址/脚本 7">
+<!ENTITY func.loadURLScript8 "载入网址/脚本 8">
+<!ENTITY func.loadURLScript9 "载入网址/脚本 9">
+<!ENTITY func.loadURLScript10 "载入网址/脚本 10">
+<!ENTITY func.loadURLScript11 "载入网址/脚本 11">
+<!ENTITY func.loadURLScript12 "载入网址/脚本 12">
+<!ENTITY func.loadURLScript13 "载入网址/脚本 13">
+<!ENTITY func.loadURLScript14 "载入网址/脚本 14">
+<!ENTITY func.loadURLScript15 "载入网址/脚本 15">
+<!ENTITY func.loadURLScript16 "载入网址/脚本 16">
+<!ENTITY func.loadURLScript17 "载入网址/脚本 17">
+<!ENTITY func.loadURLScript18 "载入网址/脚本 18">
+<!ENTITY func.loadURLScript19 "载入网址/脚本 19">
+<!ENTITY func.loadURLScript20 "载入网址/脚本 20">
+
+<!ENTITY func.markVisitedLinks "标记访问过的链接">
+<!ENTITY func.bookmarkThisLink "将链接加入书签...">
+<!ENTITY func.bookmarkPage "书签页">
+<!ENTITY func.bookmarkOpenTabs "标签页打开书签">
+<!ENTITY func.bookmarks "切换书签">
+<!ENTITY func.bookmarksToolbar "切换书签工具栏">
+<!ENTITY func.history "切换历史">
+<!ENTITY func.viewPageSource "查看页面源代码">
+<!ENTITY func.viewPageInfo "查看页面信息">
+<!ENTITY func.showOnlyThisFrame "仅显示此框架">
+<!ENTITY func.properties "属性">
+<!ENTITY func.printPage "打印页面">
+<!ENTITY func.mail "主要">
+<!ENTITY func.privateBrowsing "切换为隐私模式">
+
+<!ENTITY func.cut "剪切">
+<!ENTITY func.copy "复制">
+<!ENTITY func.paste "粘贴">
+<!ENTITY func.undo "撤销">
+<!ENTITY func.selectAll "全选">
+<!ENTITY func.highlight "高亮/清除">
+<!ENTITY func.zoomIn "放大">
+<!ENTITY func.zoomOut "缩小">
+<!ENTITY func.zoomReset "重置缩放值">
+
+<!ENTITY input.infoSel "你可以选择在标签手势的一个手势。">
+<!ENTITY input.page1 "页面 1">
+<!ENTITY input.page2 "页面 2">
+<!ENTITY input.page3 "页面 3">
+<!ENTITY input.page4 "页面 4">
+<!ENTITY input.infoPlaceHolder "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
+
+<!ENTITY highlight "自定义“高亮/清除”手势">
+<!ENTITY highlight.count "显示数字记数">
+<!ENTITY highlight.color "颜色">
+<!ENTITY highlight.code "代码">
+<!ENTITY highlight.restoreColors "复位颜色">
+
+<!ENTITY closeTab "自定义“关闭标签页”手势">
+<!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
+
+<!ENTITY search "自定义“搜索网站”手势">
+<!ENTITY search.query "查询网址">
+<!ENTITY translate "自定义“翻译/解释”手势">
+
+<!ENTITY queries "查询结果">
+<!ENTITY queries.newTab "在新标签页显示">
+<!ENTITY queries.curTab "开始在当前标签页显示">
+<!ENTITY queries.newWindow "在新窗口显示">
+
+<!ENTITY extern "自定义“运行程序文件”手势">
+<!ENTITY extern.tab "程序文件">
+<!ENTITY extern.name "工具提示">
+<!ENTITY extern.path "路径">
+<!ENTITY extern.arguments "参数">
+<!ENTITY extern.browse "浏览...">
+<!ENTITY extern.icon "使用应用程序图标">
+
+<!ENTITY urlscript "自定义“载入网址/脚本”手势">
+<!ENTITY urlscript.url "网址">
+<!ENTITY urlscript.script "脚本">
+<!ENTITY urlscript.name "提示">
+<!ENTITY urlscript.host "主机">
+<!ENTITY urlscript.code "代码">
+<!ENTITY urlscript.load "载入网址">
+<!ENTITY urlscript.curTab "在当前标签页">
+<!ENTITY urlscript.newTab "在新标签页">
+<!ENTITY urlscript.newWindow "在新窗口">
+<!ENTITY urlscript.icon "使用网站图标">
+<!ENTITY urlscript.faviconNotFound "没有找到图标。继续搜索？">
+
+<!ENTITY changeIcon "更改图标">
+<!ENTITY labelNewIcon "创建图标">
+
+<!ENTITY duplicatekey.warning "这热键已在使用中！请选择其他热键。">
+
+<!ENTITY skins.change "更改皮肤">
+<!ENTITY skins.default "经典皮肤(默认)">
+<!ENTITY skins.more "获取更多皮肤">
+<!ENTITY skins.nopreview "无预览">
+<!ENTITY skins.inUse "使用中">
+<!ENTITY skins.use "使用皮肤">
+<!ENTITY skins.uninstall "卸载皮肤">
+
+<!ENTITY tips "提示">
+<!ENTITY previousTip "上一个">
+<!ENTITY nextTip "下一个">
+<!ENTITY closeTip "关闭">
+<!ENTITY intro "你知道么...">
+<!ENTITY showTips "在启动时显示提示">
+<!ENTITY copyText "复制文本到剪贴板">
+
+<!ENTITY tip1 "默认情况下，你必须按一下鼠标中键来显示圆饼菜单（除非你是 Mac 用户）。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
+<!ENTITY tip2 "最快捷的使用圆饼菜单的方式是按住鼠标按钮，拖拽来执行，并松开按钮。你可以把它作为一个鼠标手势。">
+<!ENTITY tip3 "如果在圆饼菜单显示的情况下按下“Enter”，您可以在圆饼菜单内输入一个网址。按“Enter”在当前标签页打开这个网址。按“Shift+Enter”在新标签页打开这个网址。">
+<!ENTITY tip4 "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
+<!ENTITY tip5 "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。|自定义在 选项/自定义/载入网址/脚本">
+<!ENTITY tip6 "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。|添加或删除动作在 选项/动作">
+<!ENTITY tip7 "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。|自定义在 选项/自定义/运行程序文件">
+<!ENTITY tip8 "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
+<!ENTITY tip9 "你可以在圆饼菜单打开时点击“Ctrl”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
+<!ENTITY tip10 "你可以用“搜索网络”动作来查询页面上的文字或自己输入的文字，如果输入框为空，会显示搜索引擎的首页。同样的情况在“翻译/说明”动作。|添加或删除搜索引擎在 选项/自定义/询问">
+<!ENTITY tip11 "你可以按住“Insert”键来临时禁止圆饼菜单，使用标准的页面右键菜单。">
+<!ENTITY tip12 "您可以拖动圆饼菜单，按住“Shift”拖动。">
+<!ENTITY tip13 "如果你不需要显示工具提示，你可以关掉它。还可以重命名每个动作提示。|选择关掉提示在 选项/动作">
+<!ENTITY tip14 "你可以使用默认的圆形图标显示，或者使用小型图标取代，如果你喜欢简单的文字模式，也可以改用没有图标的基本显示。">
+<!ENTITY tip15 "重度使用者可以设置更多的动作在你的圆饼菜单上：在3个主要圆饼菜单上都用10个动作替代默认的8个动作。">
+<!ENTITY tip16 "Firefox选项“使用自动滚动”未选中时，使用鼠标中键是用来显示圆饼菜单的。在圆饼菜单中间停顿短暂时间后可以转换显示“自动滚动”。|激活自动滚动在 选项/动作">
+<!ENTITY tip17 "你可以用“标记/清除”动作，在全部的页面用高亮标记选取或输入的一个或多个文字。再做一次同样动作，把输入框留白，就可以清除高亮标记。">
+<!ENTITY tip18 "如果只有一个标签打开，关闭标签后将关闭浏览器。">
+<!ENTITY tip19 "你可以采用拖拽鼠标或按着鼠标作短暂的停顿这些方法来显示圆饼菜单。|更改设置在 选项/自定义">
+<!ENTITY tip20 "放大/缩小这些动作只能在图片上使用。">
+<!ENTITY tip21 "除了可以在页面间进行 上一页/下一页 的移动外，你也可以用“上一个网站”和“下一个网站”进行网站和网站间的移动。">
+<!ENTITY tip22 "“打开链接”动作会在新标签页打开链接。如果没有指出链接，将打开剪贴板里的链接（如果是链接的话）。">
+<!ENTITY tip23 "你可以Firefox语言切换 easyGestures 语言(不影响Firefox)。">
+<!ENTITY tip24 "你可以打开圆饼菜单成为一个完全自定义的下拉菜单。">
+<!ENTITY tip25 "你可以通过在圆饼菜单输入“/”或直接双击在状态栏显示的easyGestures图标来显示easyGestures的选项窗口。">
+<!ENTITY tip26 "当第一次执行“每日阅读”这个动作时，将会自动产生一个“easyGestures”的书签文件夹在书签工具栏中，里面的所有书签会被同时打开。">
+<!ENTITY tip27 "你可以点击Firefox窗口的状态栏中的easyGestures图标，简单的启用/停用easyGestures菜单。|隐藏这个图标在 选项/描述">

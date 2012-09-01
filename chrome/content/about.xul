@@ -1,0 +1,97 @@
+<?xml version="1.0"?> 
+
+<!-- ***** BEGIN LICENSE BLOCK *****
+   - Version: MPL 1.1/GPL 2.0/LGPL 2.1
+   -
+   - The contents of this file are subject to the Mozilla Public License Version
+   - 1.1 (the "License"); you may not use this file except in compliance with
+   - the License. You may obtain a copy of the License at
+   - http://www.mozilla.org/MPL/
+   -
+   - Software distributed under the License is distributed on an "AS IS" basis,
+   - WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+   - for the specific language governing rights and limitations under the
+   - License.
+   -
+   - The Original Code is easyGestures.
+   -
+   - The Initial Developer of the Original Code is Ons Besbes.
+   -
+   - Contributor(s):
+   -
+   - Alternatively, the contents of this file may be used under the terms of
+   - either the GNU General Public License Version 2 or later (the "GPL"), or
+   - the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+   - in which case the provisions of the GPL or the LGPL are applicable instead
+   - of those above. If you wish to allow use of your version of this file only
+   - under the terms of either the GPL or the LGPL, and not to allow others to
+   - use your version of this file under the terms of the MPL, indicate your
+   - decision by deleting the provisions above and replace them with the notice
+   - and other provisions required by the LGPL or the GPL. If you do not delete
+   - the provisions above, a recipient may use your version of this file under
+   - the terms of any one of the MPL, the GPL or the LGPL.
+   -
+   - ***** END LICENSE BLOCK ***** -->
+   
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<?xml-stylesheet href="chrome://easygestures/locale/righttoleft.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
+
+<window 
+	id="eG_aboutWindow"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	xmlns:html="http://www.w3.org/1999/xhtml"
+	title="&about; - easyGestures"
+	onload="document.getElementById('eGVersion').value='&about.version; ' + eG_getVersion();"
+>
+
+	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
+	<script type="application/x-javascript" src="chrome://global/content/menu.js"/>		
+
+
+	<groupbox align="start" orient="horizontal" style="background-color:white;padding:14px;">
+		<vbox>
+			<label id="eGVersion" value="" style="font-weight:bold;font-size:large;"/>
+			<hbox pack="center">
+				<label  value="&about.history;" style="color: #3A69A6;" onmouseover="this.style.textDecoration='underline';this.style.cursor='pointer';" onmouseout="this.style.textDecoration='none';this.style.cursor='auto';" onclick="window.open('chrome://easygestures/content/readme.html','eG_readme','centerscreen,resizable,scrollbars=yes,width=670,height=700');"/>
+			</hbox>		
+			<separator class="thin"/>
+			<label value="&func.homepage;" style="font-weight:bold;"/>
+			<label class="text-link" style="color: #3A69A6;padding-left:6px;" href="http://easygestures.mozdev.org" value="http://easygestures.mozdev.org" />
+			<hbox> 
+				<label class="text-link" style="color: #3A69A6;padding-left:6px;" href="http://easygestures.mozdev.org/notes.html?en" value="&about.feedback;" />		
+				<vbox pack="center">	
+					<image src="chrome://easygestures/content/link.gif" />
+				</vbox>
+			</hbox>	
+			<separator/>		
+			<hbox pack="center">
+				<image src="chrome://easygestures/content/logoLarge.png" flex="0"/>
+			</hbox>
+			<separator class="thin"/>
+			<hbox pack="center">
+				<label value="&about.createdBy;" style="font-weight:bold;"/>
+				<label value="Ons Besbes" style="color: #3A69A6;margin-left:0;"/>					
+			</hbox>
+		</vbox>
+	</groupbox>
+	
+	<hbox>
+		<spacer flex="1"/>
+		<button label="&close;" oncommand="close();"/>
+	</hbox>	
+
+	<script type="application/x-javascript">
+
+		//<![CDATA[  
+	
+		function eG_getVersion()	{		
+			var gExtensionManager = Components.classes["@mozilla.org/extensions/manager;1"].getService(Components.interfaces.nsIExtensionManager);
+			var item=gExtensionManager.getItemForID("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
+			return item.version;
+		}		
+
+		//]]>
+	</script>
+	
+</window>	

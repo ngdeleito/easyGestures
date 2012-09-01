@@ -1,0 +1,338 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "tr-TR">
+
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+
+<!ENTITY options "Seçenekler">
+<!ENTITY about "Hakkında">
+
+<!ENTITY ok "TAMAM">
+<!ENTITY apply "Uygula">
+<!ENTITY cancel "İptal">
+<!ENTITY help "Yardım">
+<!ENTITY close "Kapat">
+
+<!ENTITY profile "Profil">
+<!ENTITY behavior "Tepki">
+<!ENTITY actions "Eylemler">
+<!ENTITY customizations "Kişiselleştirme">
+<!ENTITY skins "Dış Görünüş">
+
+<!ENTITY actions.main "Ana Menü">
+<!ENTITY actions.extra "Ekstra Menü">
+<!ENTITY actions.info "Ekstra menü, ilgili eylemi kullanarak görüntülenir.">
+<!ENTITY actions.alt "Engelle">
+<!ENTITY actions.primary "Öncelikli">
+<!ENTITY actions.alternative "Alternatif">
+<!ENTITY actions.regular "Olağan Eylemler">
+<!ENTITY actions.contextual "Duruma Bağlı Eylemler">
+
+<!ENTITY customizations.loadURLScript "URL/Script Yükle">
+<!ENTITY customizations.runProgramFile "Program Dosyasını Çalıştır">
+<!ENTITY customizations.queries "Sorgulamalar">
+<!ENTITY customizations.misc "Çeşitli">
+
+<!ENTITY about.version "Sürüm">
+<!ENTITY about.languageInfo "Dil">
+<!ENTITY about.stats "İstatistikler">
+<!ENTITY about.statsDisplay "İstatistikleri Göster">
+<!ENTITY about.statsReset "İstatistikleri Sıfırla">
+<!ENTITY about.manage "Tercühleri Yönet">
+<!ENTITY about.import "Tercihleri Al...">
+<!ENTITY about.export "Tercihleri Aktar...">
+<!ENTITY about.reset "Tercihleri Sıfırla">
+<!ENTITY about.startupTips "Başlangıçta ipuçlarını göster">
+<!ENTITY about.statusbarShowIcon "Durum çubuğunda Simgeyi göster">
+<!ENTITY about.feedback "Görüşleriniz">
+<!ENTITY about.history "Yenilikler">
+<!ENTITY about.createdBy "Yazan">
+
+<!ENTITY stats.use "Kolay Menü Kullanımı">
+<!ENTITY stats.novice "Acemi">
+<!ENTITY stats.coolUser "Sakin Kullanıcı">
+<!ENTITY stats.addicted "Bağımlı">
+<!ENTITY stats.master "Usta">
+<!ENTITY stats.lastReset "Son Sıfırlama">
+<!ENTITY stats.actions "Eylemlere Göre Tıklamalar">
+<!ENTITY stats.directions "Tallimatlara Göre Tıklamalar">
+<!ENTITY stats.main "Ana Menü">
+<!ENTITY stats.extra "Ekstra Menü">
+<!ENTITY stats.total "Toplam">
+<!ENTITY stats.all "Tüm Eylemler">
+
+<!ENTITY use "Kolay menüyü şununla aç:">
+<!ENTITY use.button.left "sol fare tuşu">
+<!ENTITY use.button.middle "orta fare tuşu">
+<!ENTITY use.button.right "sağ fare tuşu">
+<!ENTITY use.button.custom "varsayılan fare tuşu">
+<!ENTITY use.buttoncode "tuş kodu">
+
+<!ENTITY use.and "ve">
+<!ENTITY use.shift "Shift tuşu">
+<!ENTITY use.ctrl "Ctrl tuşu">
+<!ENTITY use.dragOnly "Sadece sürüklerken aç">
+<!ENTITY use.upleft "Yalnızca Yukarı/Sola">
+<!ENTITY use.afterDelay "Gecikmeden sonra aç">
+<!ENTITY use.alternative "Alternatif menüyü şununla aç:">
+<!ENTITY use.also "(sol Alt tuşunu da kullanabilirsiniz)">
+
+<!ENTITY suppress "Fare tuşunda kolay menü önceliğini şununla durdur:">
+<!ENTITY suppress.ins "Insert tuşu">
+<!ENTITY suppress.alt "Alt tuşu">
+<!ENTITY suppress.ctrl "Ctrl tuşu">
+<!ENTITY suppress.custom "Varsayılan tuş">
+<!ENTITY suppress.keycode "Tuş Kodu">
+
+<!ENTITY link "&apos;Bağlantı Aç&apos; Eylemini Kişiselleştir">
+<!ENTITY link.through "Kolay menü merkezi aracılığıyla bağlantılara tıklamayı etkinleştir.">
+<!ENTITY link.delay "Tıklama için en fazla gecikme (ms)">
+<!ENTITY link.throughAsAction "&apos;Bağlantıyı Aç&apos; Eylemi Tepkisini Kullan">
+<!ENTITY link.throughAsBrowser "Tarayıcı Tepkisini Kullan">
+<!ENTITY link.curTab "Bağlantıyı mevcut sekmede aç">
+<!ENTITY link.newTab "Bağlantıyı Yeni Sekmede Aç">
+<!ENTITY link.newWindow "Bağlantıyı yeni pencerede aç">
+<!ENTITY link.xlink "bağlantıyı bununla etiketle:">
+
+<!ENTITY autoscrolling "Kolay menü merkezi içinde otomatik kaydırma">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Gecikme (ms)">
+
+<!ENTITY extras.menuType "Menü türü">
+<!ENTITY extras.menu "Standart (8 eylem)">
+<!ENTITY extras.largeMenu "Geniş (10 eylem)">
+<!ENTITY extras.display "Görüntüle">
+<!ENTITY extras.noIcons "Temel Görünüm (simgeleri gösterme)">
+<!ENTITY extras.smallIcons "Küçük Simgeler Kullan">
+<!ENTITY extras.linearMenu "Çizgisel Menüye Dönüştür">
+<!ENTITY extras.menuOpacity "Kolay Menü Saydamlığı">
+<!ENTITY extras.ttip "Araç İpuçlarını Etkinleştir">
+<!ENTITY extras.ttipDelayLabel "Araç İpuçları Gecikmesi (ms)">
+<!ENTITY extras.ttipDelayOmit "Araç İpuçları Gecikmesini Yoksay">
+
+<!ENTITY contextmenu "İçerik Hassasiyetini bununla etkinleştir:">
+<!ENTITY contextmenu.showAuto "Her zaman etkin. Hassaslığı durdurmak için aynı tuşu kullanın.">
+<!ENTITY contextmenu.link "Bağlantı">
+<!ENTITY contextmenu.image "Resim">
+<!ENTITY contextmenu.selection "Seçim">
+<!ENTITY contextmenu.textbox "Metin Kutusu">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Resim eylemlerini ilk önce göster">
+<!ENTITY contextmenu.textboxFirst "Metin Kutusu eylemlerini ilk önce göster">
+
+<!ENTITY move "Kolay menüyü taşı">
+<!ENTITY move.key "Shift tuşuna basarak">
+<!ENTITY move.edge "Menü köşesine giderek">
+
+<!ENTITY func.empty "Boş">
+<!ENTITY func.more "Ekstra Menü">
+<!ENTITY func.firstPage "İlk Sayfa">
+<!ENTITY func.lastPage "Son Sayfa">
+<!ENTITY func.backSite "Önceki Sİte">
+<!ENTITY func.forwardSite "Sonraki Site">
+<!ENTITY func.back "Geri">
+<!ENTITY func.forward "İleri">
+<!ENTITY func.reload "Yeniden Yükle- Dur">
+<!ENTITY func.up "Yukarı">
+<!ENTITY func.root "Kök">
+<!ENTITY func.pageTop "Sayfa Başı">
+<!ENTITY func.pageBottom "Sayfa Sonu">
+<!ENTITY func.autoscrolling "Atomatik Kaydırma">
+
+<!ENTITY func.newTab "Yeni Boş Sekme">
+<!ENTITY func.duplicateTab "Sekmeyi İkile">
+<!ENTITY func.prevTab "Önceki Sekme">
+<!ENTITY func.nextTab "Sonraki Sekme">
+<!ENTITY func.closeTab "Sekmeyi Kapat">
+<!ENTITY func.closeOtherTabs "Diğer Sekmeleri Kapat">
+<!ENTITY func.undoCloseTab "Sekme Kapatmayı Geri Al">
+
+<!ENTITY func.newWindow "Yeni Pencere">
+<!ENTITY func.duplicateWindow "Pencereyi İkile">
+<!ENTITY func.closeOtherWindows "Diğer PEncereleri Kapat">
+<!ENTITY func.closeBrowser "Tarayıcıyı Kapat">
+<!ENTITY func.minimizeWindow "Pencereyi Simge Durumuna Küçült">
+<!ENTITY func.fullscreen "Tam Ekrana Geçiş Yap">
+
+<!ENTITY func.openLink "Bağlantıyı Aç">
+<!ENTITY func.openLinkNewWindow "Bağlantıyı Yeni Pencerede Aç">
+<!ENTITY func.copyLink "Bağlantıyı Kopyala">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Resim Konumunu Kopyala">
+<!ENTITY func.saveLinkAs "Bağlantıyı Farklı Kaydet...">
+<!ENTITY func.saveImageAs "Resmi Farklı Kaydet...">
+<!ENTITY func.savePageAs "Sayfayı Farklı Kaydet...">
+<!ENTITY func.hideImages "Resimleri Gösterme">
+<!ENTITY func.copyImage "Resmi Kopyala">
+
+<!ENTITY func.homepage "Ana Sayfa">
+<!ENTITY func.dailyReadings "Günlük Okumalar">
+<!ENTITY func.searchWeb "Web&apos;de Ara">
+<!ENTITY func.translate "Tercüme Et/ Açıkla">
+<!ENTITY func.runProgramFile1 "1. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile2 "2. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile3 "3. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile4 "4. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile5 "5. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile6 "6. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile7 "7. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile8 "8. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile9 "9. Program Dosyasını Çalıştır">
+<!ENTITY func.runProgramFile10 "10. Program Dosyasını Çalıştır">
+
+<!ENTITY func.loadURLScript1 "1. URL/Script yükle">
+<!ENTITY func.loadURLScript2 "2. URL/Script yükle">
+<!ENTITY func.loadURLScript3 "3. URL/Script yükle">
+<!ENTITY func.loadURLScript4 "4. URL/Script yükle">
+<!ENTITY func.loadURLScript5 "5. URL/Script yükle">
+<!ENTITY func.loadURLScript6 "6. URL/Script yükle">
+<!ENTITY func.loadURLScript7 "7. URL/Script yükle">
+<!ENTITY func.loadURLScript8 "8. URL/Script yükle">
+<!ENTITY func.loadURLScript9 "9. URL/Script yükle">
+<!ENTITY func.loadURLScript10 "10. URL/Script yükle">
+<!ENTITY func.loadURLScript11 "11. URL/Script yükle">
+<!ENTITY func.loadURLScript12 "12. URL/Script yükle">
+<!ENTITY func.loadURLScript13 "13. URL/Script yükle">
+<!ENTITY func.loadURLScript14 "14. URL/Script yükle">
+<!ENTITY func.loadURLScript15 "15. URL/Script yükle">
+<!ENTITY func.loadURLScript16 "16. URL/Script yükle">
+<!ENTITY func.loadURLScript17 "17. URL/Script yükle">
+<!ENTITY func.loadURLScript18 "18. URL/Script yükle">
+<!ENTITY func.loadURLScript19 "19. URL/Script yükle">
+<!ENTITY func.loadURLScript20 "20. URL/Script yükle">
+
+<!ENTITY func.markVisitedLinks "Ziyaret Edilmiş Bağlantıları İşaretle">
+<!ENTITY func.bookmarkThisLink "Bu Bağlantıyı Yer İmlerine Ekle...">
+<!ENTITY func.bookmarkPage "Sayfayı Yer İmlerine Ekle">
+<!ENTITY func.bookmarkOpenTabs "Açık Sekmeleri Yer İmlerine Ekle">
+<!ENTITY func.bookmarks "Yer İmlerine Geçiş Yap">
+<!ENTITY func.bookmarksToolbar "Yer İmleri Araç Çubuğuna Geçiş Yap">
+<!ENTITY func.history "Geçmişe Geçiş Yap">
+<!ENTITY func.viewPageSource "Sayfa Kaynağını Göster">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Yalnızca Bu Çerçeveyi Göster">
+<!ENTITY func.properties "Özellikler">
+<!ENTITY func.printPage "Sayfayı Yazdır">
+<!ENTITY func.mail "Posta">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+
+<!ENTITY func.cut "Kes">
+<!ENTITY func.copy "Kopyala">
+<!ENTITY func.paste "Yapıştır">
+<!ENTITY func.undo "Geri Al">
+<!ENTITY func.selectAll "Tümünü Seç">
+<!ENTITY func.highlight "Vurgula/Temizle">
+<!ENTITY func.zoomIn "Yakınlaştır">
+<!ENTITY func.zoomOut "Uzaklaştır">
+<!ENTITY func.zoomReset "Yakınlaştırmayı Sıfırla">
+
+<!ENTITY input.infoSel "Bu eylemleri Eylemler sekmesinde seçebilirsiniz.">
+<!ENTITY input.page1 "Sayfa 1">
+<!ENTITY input.page2 "Sayfa 2">
+<!ENTITY input.page3 "Sayfa 3">
+<!ENTITY input.page4 "Sayfa 4">
+<!ENTITY input.infoPlaceHolder "Sıra yer tutucuları:&#37;s (seçim) ve &#37;u (mevcut URL)">
+
+<!ENTITY highlight "&quot;Vurgula/Temizle&quot; Eylemini Kişiselleştir">
+<!ENTITY highlight.count "Sayımları göster">
+<!ENTITY highlight.color "Renk">
+<!ENTITY highlight.code "Kod">
+<!ENTITY highlight.restoreColors "Renkleri Geri Yükle">
+
+<!ENTITY closeTab "&quot;Sekmeyi Kapat&quot; Eylemini Kişiselleştir">
+<!ENTITY closeTab.closeBrowserOnLastTab "Son sekme kapatılınca tarayıcıyı kapat">
+
+<!ENTITY search "&quot;Web&apos;de Ara&quot; Eylemini Kişiselleştir">
+<!ENTITY search.query "URL&apos;yi Sorgula">
+<!ENTITY translate "&quot;Tercüme Et/Açıkla&quot; Eylemini Kişiselleştir">
+
+<!ENTITY queries "Sonuçları Sorgula">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.curTab "Yeni sekmede göstererek başla">
+<!ENTITY queries.newWindow "Yeni pencerede göster">
+
+<!ENTITY extern "&quot;Program Dosyasını Çalıştır&quot; Eylemini Kişiselleştir">
+<!ENTITY extern.tab "Program Dosyası">
+<!ENTITY extern.name "Araç İpucu">
+<!ENTITY extern.path "Dizin">
+<!ENTITY extern.arguments "Tartışmalar">
+<!ENTITY extern.browse "Gözat...">
+<!ENTITY extern.icon "Uygulama Sİmgesini Kullan">
+
+<!ENTITY urlscript "&quot;URL/Script Yükle&quot; Eylemini Kişiselleştir">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Script">
+<!ENTITY urlscript.name "Araç İpucu">
+<!ENTITY urlscript.host "Host">
+<!ENTITY urlscript.code "Kod">
+<!ENTITY urlscript.load "URL&apos;leri yükle">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "yeni Sekmede">
+<!ENTITY urlscript.newWindow "yeni Pencerede">
+<!ENTITY urlscript.icon "Sitenin Favori Simgesini Kullan">
+<!ENTITY urlscript.faviconNotFound "Favori simge henüz bulunamadı. Aramaya devam etmek ister misiniz?">
+
+<!ENTITY changeIcon "Simgeyi Değiştir">
+<!ENTITY labelNewIcon "Yeni Simge">
+
+<!ENTITY duplicatekey.warning "Bu tuş zaten kullanımda! Farklı bir tuş seçin.">
+
+<!ENTITY skins.change "Dış Görünümü Değiştir">
+<!ENTITY skins.default "Klasik Görünüm (varsayılan)">
+<!ENTITY skins.more "Daha çok dış görünüm al">
+<!ENTITY skins.nopreview "Önizleme Yok">
+<!ENTITY skins.inUse "Kullanımda">
+<!ENTITY skins.use "Dış Görünümü Kullan">
+<!ENTITY skins.uninstall "Dış Görünümü Kaldır">
+
+<!ENTITY tips "İpuçları">
+<!ENTITY previousTip "Önceki">
+<!ENTITY nextTip "Sonraki">
+<!ENTITY closeTip "Kapat">
+<!ENTITY intro "Biliyor muydunuz...">
+<!ENTITY showTips "İpuçlarını başlangıçta göster">
+<!ENTITY copyText "Metni panoya kopyala">
+
+<!ENTITY tip1 "Varsayılan olarak, kolay menüyü görüntüleyebilmek için farenizin orta tuşuna tıklamanız gerekir (Mac kullanıcısı değilseniz). |Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
+<!ENTITY tip2 "Kolay menüyü kullanmanın en hızlı yolu, fare tuşuna basılı tutup çalıştırılacak eylemin üzerine sürüklemek ve tuşu bırakmaktır. Bunu Grafik Kullanıcı Arayüzü ile yapılmış bir fare hareketi gibi düşünebilirsiniz.">
+<!ENTITY tip3 "Kolay menü görüntülenirken &apos;Enter&apos;a basarsanız, kolay menü içerisine bir URL yazabilirsiniz. Tamamlandığında &apos;Enter&apos;a basmak URL&apos;yi mevcut sekmede açacaktır. &apos;Shift+Enter&apos;a basmak URL&apos;yi yeni sekmede açacaktır.">
+<!ENTITY tip4 "Varsayılan olarak,kolay menü görüntülenirken sağ tıklamak alternatif eylemleri gösterecektir: tamamen kişiselleştirilebilir 3 farklı ekran görünümü arasında geçiş yapabilirsiniz. Varsayılan fare tuşu değiştirilebilir. |Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
+<!ENTITY tip5 "EasyGestures, &apos;URL/Script Yükle&apos; eylemlerini kişiselleştirerek ve sonra bunları kolay menü ekran görünümü içine ekleyerek sık kullandığınız yer imlerini açmak için kullanılabilir">
+<!ENTITY tip6 "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır. |Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
+<!ENTITY tip7 "&apos;Program Dosyasını Çalıştır&apos; ve &apos;URL/Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz. Örneğin, herhangi bir Firefox API işlevini ya da başka bir eklenti içindeki bir işlevi çalıştırabilirsiniz.">
+<!ENTITY tip8 "Bir bağlantı üzerinde hareket etmeden yeterince hızlı bir kolay menü tıklaması, bağlantıyı yeni bir sekmede açacak ve sayfada bağlantının yanında kırmızı bir etiket görüntülenecektir.">
+<!ENTITY tip9 "İçerik hassasiyetini kolay menüyü açarken &apos;Ctrl&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
+<!ENTITY tip10 "&apos;Wed&apos;de Ara&apos; eylemiyle, bir sözcüğü sayfa içerisinde seçerek ya da giriş kutusuna yazarak varsayılan arama motorunuzla arayabilirsiniz. Giriş kutusu boş bırakılırsa arama motorunuzun ana sayfası görüntülenecektir. Aynı durum &apos;Tercüme Et/Açıkla&apos; eylemi için de geçerlidir. |Seçenekler/Kişiselleştirmeler/Sorgulamalar&apos;dan arama motoru ekleyip çıkartın.">
+<!ENTITY tip11 "&apos;Insert&apos; tuşuna basılı tutarak, kolay menüyü saklayıp standart içerik menüsüne ulaşabilirsiniz.">
+<!ENTITY tip12 "Kolay menü etrafında fareyi hareket ettirirken &apos;Shift&apos; tuşuna basılı tutarak dolaşabilirsiniz.">
+<!ENTITY tip13 "Eğer ihtiyacınız yoksa araç ipuçlarını görüntülemeyi kapatabilirsiniz. Her eylemin araç ipucunu yeniden adlandırmak da mümkündür. |Görüntülemeyi Seçenekler/Tepki/Sayfa 2&apos;den durdurabilirsiniz.">
+<!ENTITY tip14 "Mevcut parlak görünümü koruyabilir ya da yalnızca metni önemsiyorsanız simgelerin olmadığı sade bir görüntüye geçiş yapabilirsiniz. Ayrıca görüntüyü küçük simgelere de çevirebilirsiniz.">
+<!ENTITY tip15 "Yetkili kullanıcılar kolay menüde daha fazla eylem gerçekleştirebilirler: 3 ana görünümün her birinde 8 yerine 10 eylem.">
+<!ENTITY tip16 "Kolay menüyü göstermek için orta fare tuşu kullanıldığında Firefox&apos;un &apos;Otomatik Kaydırma Kullan&apos; seçeneği devre dışı kalır. Bu durumda Otomatik Kaydırma özelliği kolay menü üzereinde hareketsiz kısa bir beklemeden sonra aşağıya doğru bir fare hareketi ile etkin olabilir.">
+<!ENTITY tip17 "&apos;Vurgula/Temizle&apos; eylemiyle bir sözcüğü ya da tüm bir sayfayı sayfa üzerinde seçerek ya da giriş kutusuna yazarak vurgulayabilirsiniz. Aynı eylem, giriş kutusu boş bırakılmışsa tüm vurguları temizleyecektir.">
+<!ENTITY tip18 "YAlnızca tek bir sekme açıksa &apos;Sekmeyi Kapat&apos; eylemi pencereyi kapatır.">
+<!ENTITY tip19 "Kolay menünün yalnızca fareyi sürüklerken ya da kısa bir beklemeden sonra görüntülenmesini sağlayabilirsiniz. |Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin">
+<!ENTITY tip20 "Bir resim üzerindeki yakınlaştırma eylemi yalnızca o resim üzerinde gerçekleştirilecektir.">
+<!ENTITY tip21 "&apos;Önceki Site&apos; ve &apos;Sonraki Site&apos; eylemleriyle, sayfa sayfa ileri ya da geri gitmek yerine bunu siteler arasında gerçekleştirebilirsiniz.">
+<!ENTITY tip22 "&apos;Bağlantıyı Aç&apos; eylemi seçilen bağlantıyı yeni bir sekmede açacaktır. Eğer bir bağlantı seçilmemişse, panoya yapıştırılmış bağlantı (eğer varsa) açılacaktır.">
+<!ENTITY tip23 "easyGestures dilini Firefox&apos;tan bağımsız olarak değiştirebilirsiniz.">
+<!ENTITY tip24 "Kolay menüyü tamamen kişiselleştirilebilir bir açılan menüye dönüştürebilirsiniz.">
+<!ENTITY tip25 "Seçenekler Diyaloğunu doğrudan kolay menü içerisindeki entegre konum çubuğuna / yazarak ya da durum çubuğundaki easyGestures simgesine tıklayarak görüntüleyebilirsiniz.">
+<!ENTITY tip26 "&apos;Günlük Okumalar&apos; eylemi gerçekleştirildiğinde, Yer İmleri Araç Çubuğunda ilk seferinde *easyGestures* adında bir yer imi klasörü oluşturulur ve bunun içine yerleştirilmiş tüm yer imleri daha sonra açılır.">
+<!ENTITY tip27 "easyGestures menüsünü Firefox penceresindeki durum çubuğu üzerindeki simgeye tıklayarak kolayca açıp kapatabilirsiniz. |Bu simgeyi Seçenekler/Profil/1&apos;den gizleyebilirsiniz.">

@@ -1,0 +1,285 @@
+﻿<!ENTITY locale "pl-PL">
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+<!ENTITY options "Opcje">
+<!ENTITY about "O rozszerzeniu">
+<!ENTITY ok "OK">
+<!ENTITY apply "Zastosuj">
+<!ENTITY cancel "Anuluj">
+<!ENTITY help "Pomoc">
+<!ENTITY close "Zamknij">
+<!ENTITY profile "Profile">
+<!ENTITY behavior "Ustawienia">
+<!ENTITY actions "Akcje">
+<!ENTITY customizations "Dostosuj">
+<!ENTITY skins "Motywy">
+<!ENTITY actions.main "Menu główne">
+<!ENTITY actions.extra "Menu dodatkowe">
+<!ENTITY actions.info "Menu dodatkowe jest wyświetlane po wykonaniu właściwej dla niego akcji.">
+<!ENTITY actions.alt "Wyłącz akcje">
+<!ENTITY actions.primary "Menu główne">
+<!ENTITY actions.alternative "Menu alternatywne">
+<!ENTITY actions.regular "Akcje standardowe">
+<!ENTITY actions.contextual "Menu kontekstowe">
+<!ENTITY customizations.loadURLScript "Otwórz url/skrypt">
+<!ENTITY customizations.runProgramFile "Uruchom program">
+<!ENTITY customizations.queries "Wyszukiwanie">
+<!ENTITY customizations.misc "Różne">
+<!ENTITY about.version "Wersja">
+<!ENTITY about.languageInfo "Język">
+<!ENTITY about.stats "Statystyki">
+<!ENTITY about.statsDisplay "Wyświetl statystyki">
+<!ENTITY about.statsReset "Wyczyść statystyki">
+<!ENTITY about.manage "Zarządzanie ustawieniami">
+<!ENTITY about.import "Importuj ustawienia">
+<!ENTITY about.export "Eksportuj ustawienia">
+<!ENTITY about.reset "Ustawienia domyślne">
+<!ENTITY about.startupTips "Pokazuj podpowiedzi po uruchomieniu">
+<!ENTITY about.statusbarShowIcon "Wyświetl ikonę na pasku stanu">
+<!ENTITY about.feedback "Opinie...">
+<!ENTITY about.history "Co nowego?">
+<!ENTITY about.createdBy "Autor:">
+<!ENTITY stats.use "Użycie Centrum">
+<!ENTITY stats.novice "Początkujący">
+<!ENTITY stats.coolUser "Zaawansowany">
+<!ENTITY stats.addicted "Nałogowiec">
+<!ENTITY stats.master "Mistrz">
+<!ENTITY stats.lastReset "Ostatnie czyszczenie">
+<!ENTITY stats.actions "Uruchomienia wg akcji">
+<!ENTITY stats.directions "Uruchomienia wg kierunków">
+<!ENTITY stats.main "Menu główne Centrum">
+<!ENTITY stats.extra "Menu dodatkowe Centrum">
+<!ENTITY stats.total "Razem">
+<!ENTITY stats.all "Wszystkie akcje">
+<!ENTITY use "Otwórz Centrum nawigacyjne klikając:">
+<!ENTITY use.button.left "lewym przyciskiem myszy">
+<!ENTITY use.button.middle "środkowym przyciskiem myszy">
+<!ENTITY use.button.right "prawym przyciskiem myszy">
+<!ENTITY use.button.custom "ustawionym przyciskiem myszy">
+<!ENTITY use.buttoncode "przyciskiem kodowanym">
+<!ENTITY use.and "+">
+<!ENTITY use.shift "klawisz [ Shift ]">
+<!ENTITY use.ctrl "klawisz [ Ctrl ]">
+<!ENTITY use.dragOnly "Otwieraj tylko po wykonaniu ruchu przeciągania">
+<!ENTITY use.upleft "Tylko do góry, w lewo">
+<!ENTITY use.afterDelay "Otwórz z opóźnieniem">
+<!ENTITY use.alternative "Wyświetlaj alternatywne menu klikając:">
+<!ENTITY use.also "(Można użyć także prawego klawisza [ Alt ])">
+<!ENTITY suppress "Wstrzymaj uruchamianie Centrum myszą używając:">
+<!ENTITY suppress.ins "klawisza [ Insert ]">
+<!ENTITY suppress.alt "klawisza [ Alt ]">
+<!ENTITY suppress.ctrl "klawisza [ Ctrl ]">
+<!ENTITY suppress.custom "klawisza zdefiniowanego przez użytkownika">
+<!ENTITY suppress.keycode "Kod klawisza">
+<!ENTITY link "Dostosuj działanie akcji &quot;Otwórz odnośnik&quot;">
+<!ENTITY link.through "Uruchamianie odnośników przez Centrum nawigacyjne">
+<!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia (ms)">
+<!ENTITY link.throughAsAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
+<!ENTITY link.throughAsBrowser "Użyj ustawień przeglądarki">
+<!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
+<!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
+<!ENTITY link.newWindow "Otwórz odnośnik w nowym oknie">
+<!ENTITY link.xlink "Oznacz odwiedzony odnośnik">
+<!ENTITY autoscrolling "Automatyczne przewijanie">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia (ms)">
+<!ENTITY extras.menuType "Typ menu">
+<!ENTITY extras.menu "Standardowe (8 akcji)">
+<!ENTITY extras.largeMenu "Duże (10 akcji)">
+<!ENTITY extras.display "Wygląd menu Centrum nawigacyjnego">
+<!ENTITY extras.noIcons "Wygląd podstawowy (nie wyświetla ikon)">
+<!ENTITY extras.smallIcons "Użyj małych ikon">
+<!ENTITY extras.linearMenu "Przekształć w menu liniowe">
+<!ENTITY extras.menuOpacity "Przeźroczystość Centrum nawigacyjnego">
+<!ENTITY extras.ttip "Wyświetlanie opisów przycisków">
+<!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania (ms)">
+<!ENTITY extras.ttipDelayOmit "Bez opóźnienia">
+<!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
+<!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
+<!ENTITY contextmenu.link "Odnośnik">
+<!ENTITY contextmenu.image "Obrazek">
+<!ENTITY contextmenu.selection "Zaznaczenie">
+<!ENTITY contextmenu.textbox "Pole tekstowe">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Wyświetl najpierw obrazki akcji">
+<!ENTITY contextmenu.textboxFirst "Wyświetl najpierw opis akcji">
+<!ENTITY move "Przesuwaj menu Centrum">
+<!ENTITY move.key "naciskając klawisz [ Shift ]">
+<!ENTITY move.edge "łapiąc krawędź menu">
+<!ENTITY func.empty "Puste">
+<!ENTITY func.more "Menu dodatkowe">
+<!ENTITY func.firstPage "Pierwsza strona">
+<!ENTITY func.lastPage "Ostatnia strona">
+<!ENTITY func.backSite "Poprzednia witryna">
+<!ENTITY func.forwardSite "Następna witryna">
+<!ENTITY func.back "Wstecz">
+<!ENTITY func.forward "Do przodu">
+<!ENTITY func.reload "Odśwież/Zatrzymaj">
+<!ENTITY func.up "Do góry">
+<!ENTITY func.root "Strona główna">
+<!ENTITY func.pageTop "Idź na górę strony">
+<!ENTITY func.pageBottom "Idź na dół strony">
+<!ENTITY func.autoscrolling "Automatyczne przewijanie">
+<!ENTITY func.newTab "Nowa pusta karta">
+<!ENTITY func.duplicateTab "Powiel kartę">
+<!ENTITY func.prevTab "Poprzednia karta">
+<!ENTITY func.nextTab "Następna karta">
+<!ENTITY func.closeTab "Zamknij kartę">
+<!ENTITY func.closeOtherTabs "Zamknij pozostałe karty">
+<!ENTITY func.undoCloseTab "Przywróć kartę">
+<!ENTITY func.newWindow "Nowe okno">
+<!ENTITY func.duplicateWindow "Powiel okno">
+<!ENTITY func.closeOtherWindows "Zamknij pozostałe okna">
+<!ENTITY func.closeBrowser "Zamknij przeglądarkę">
+<!ENTITY func.minimizeWindow "Minimalizuj okno">
+<!ENTITY func.fullscreen "Pełny ekran">
+<!ENTITY func.openLink "Otwórz odnośnik">
+<!ENTITY func.openLinkNewWindow "Otw.odnośn.w nowym oknie">
+<!ENTITY func.copyLink "Kopiuj odnośnik">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Kopiuj adres obrazka">
+<!ENTITY func.saveLinkAs "Zapisz odnośnik jako...">
+<!ENTITY func.saveImageAs "Zapisz obrazek jako...">
+<!ENTITY func.savePageAs "Zapisz stronę jako...">
+<!ENTITY func.hideImages "Ukryj obrazki">
+<!ENTITY func.copyImage "Kopiuj obrazek">
+<!ENTITY func.homepage "Strona domowa">
+<!ENTITY func.dailyReadings "Wiadomości dnia">
+<!ENTITY func.searchWeb "Znajdź w Internecie">
+<!ENTITY func.translate "Przetłumacz/Objaśnij">
+<!ENTITY func.runProgramFile1 "Uruchom program 1">
+<!ENTITY func.runProgramFile2 "Uruchom program 2">
+<!ENTITY func.runProgramFile3 "Uruchom program 3">
+<!ENTITY func.runProgramFile4 "Uruchom program 4">
+<!ENTITY func.runProgramFile5 "Uruchom program 5">
+<!ENTITY func.runProgramFile6 "Uruchom program 6">
+<!ENTITY func.runProgramFile7 "Uruchom program 7">
+<!ENTITY func.runProgramFile8 "Uruchom program 8">
+<!ENTITY func.runProgramFile9 "Uruchom program 9">
+<!ENTITY func.runProgramFile10 "Uruchom program 10">
+<!ENTITY func.loadURLScript1 "Otwórz url/skrypt 1">
+<!ENTITY func.loadURLScript2 "Otwórz url/skrypt 2">
+<!ENTITY func.loadURLScript3 "Otwórz url/skrypt 3">
+<!ENTITY func.loadURLScript4 "Otwórz url/skrypt 4">
+<!ENTITY func.loadURLScript5 "Otwórz url/skrypt 5">
+<!ENTITY func.loadURLScript6 "Otwórz url/skrypt 6">
+<!ENTITY func.loadURLScript7 "Otwórz url/skrypt 7">
+<!ENTITY func.loadURLScript8 "Otwórz url/skrypt 8">
+<!ENTITY func.loadURLScript9 "Otwórz url/skrypt 9">
+<!ENTITY func.loadURLScript10 "Otwórz url/skrypt 10">
+<!ENTITY func.loadURLScript11 "Otwórz url/skrypt 11">
+<!ENTITY func.loadURLScript12 "Otwórz url/skrypt 12">
+<!ENTITY func.loadURLScript13 "Otwórz url/skrypt 13">
+<!ENTITY func.loadURLScript14 "Otwórz url/skrypt 14">
+<!ENTITY func.loadURLScript15 "Otwórz url/skrypt 15">
+<!ENTITY func.loadURLScript16 "Otwórz url/skrypt 16">
+<!ENTITY func.loadURLScript17 "Otwórz url/skrypt 17">
+<!ENTITY func.loadURLScript18 "Otwórz url/skrypt 18">
+<!ENTITY func.loadURLScript19 "Otwórz url/skrypt 19">
+<!ENTITY func.loadURLScript20 "Otwórz url/skrypt 20">
+<!ENTITY func.markVisitedLinks "Oznacz odwiedz.odnośniki">
+<!ENTITY func.bookmarkThisLink "Dodaj zakładkę do odnośnika">
+<!ENTITY func.bookmarkPage "Dodaj zakładkę do strony">
+<!ENTITY func.bookmarkOpenTabs "Dodaj zakładki do otwartych kart">
+<!ENTITY func.bookmarks "Panel boczny z zakładkami">
+<!ENTITY func.bookmarksToolbar "Włącz pasek zakładek">
+<!ENTITY func.history "Panel boczny z historią">
+<!ENTITY func.viewPageSource "Pokaż źródło strony">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Pokaż tylko tę ramkę">
+<!ENTITY func.properties "Właściwości">
+<!ENTITY func.printPage "Drukuj stronę">
+<!ENTITY func.mail "Poczta">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.cut "Wytnij">
+<!ENTITY func.copy "Kopiuj">
+<!ENTITY func.paste "Wklej">
+<!ENTITY func.undo "Cofnij">
+<!ENTITY func.selectAll "Zaznacz wszystko">
+<!ENTITY func.highlight "Wyróżnij/Wyczyść">
+<!ENTITY func.zoomIn "Powiększ">
+<!ENTITY func.zoomOut "Zmniejsz">
+<!ENTITY func.zoomReset "Wielkość domyślna">
+<!ENTITY input.infoSel "Te akcje można wybrać na karcie &quot;Akcje&quot;.">
+<!ENTITY input.page1 "Strona 1">
+<!ENTITY input.page2 "Strona 2">
+<!ENTITY input.page3 "Strona 3">
+<!ENTITY input.page4 "Strona 4">
+<!ENTITY input.infoPlaceHolder "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
+<!ENTITY highlight "Dostosuj akcję &quot;Wyróżnij/Wyczyść&quot; ">
+<!ENTITY highlight.count "Wyświetl licznik">
+<!ENTITY highlight.color "Kolor">
+<!ENTITY highlight.code "Kod">
+<!ENTITY highlight.restoreColors "Odtwórz kolory">
+<!ENTITY closeTab "Dostosuj działanie akcji &quot;Zamknij kartę&quot;">
+<!ENTITY closeTab.closeBrowserOnLastTab "Zamknij przeglądarkę po zamknięciu ostatniej karty">
+<!ENTITY search "Dostosuj akcję &quot;Znajdź w Internecie&quot; ">
+<!ENTITY search.query "Wyszukiwarka">
+<!ENTITY translate "Dostosuj akcję &quot;Przetłumacz/Objaśnij&quot; ">
+<!ENTITY queries "Wynik wyszukiwania">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.curTab "Pokaż w aktywnej karcie">
+<!ENTITY queries.newWindow "Pokaż w nowym oknie">
+<!ENTITY extern "Dostosuj akcję &quot;Uruchom program&quot; ">
+<!ENTITY extern.tab "Plik programu">
+<!ENTITY extern.name "Nazwa">
+<!ENTITY extern.path "Ścieżka">
+<!ENTITY extern.arguments "Argumenty">
+<!ENTITY extern.browse "Szukaj">
+<!ENTITY extern.icon "Użyj ikony aplikacji">
+<!ENTITY urlscript "Dostosuj akcję &quot;Otwórz url/skrypt&quot; ">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Skrypt">
+<!ENTITY urlscript.name "Nazwa">
+<!ENTITY urlscript.host "Serwer">
+<!ENTITY urlscript.code "Kod">
+<!ENTITY urlscript.load "Otwieraj witryny w:">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "nowej karcie">
+<!ENTITY urlscript.newWindow "nowym oknie">
+<!ENTITY urlscript.icon "Użyj favicony strony">
+<!ENTITY urlscript.faviconNotFound "Nie znaleziono favicony. Kontynuować szukanie?">
+<!ENTITY changeIcon "Zmień ikonę">
+<!ENTITY labelNewIcon "Nowa ikona">
+<!ENTITY duplicatekey.warning "Ten klawisz został już użyty! Wybierz inny.">
+<!ENTITY skins.change "Zmiana motywu">
+<!ENTITY skins.default "Motyw klasyczny (domyślny)">
+<!ENTITY skins.more "Pobierz motywy">
+<!ENTITY skins.nopreview "Brak podglądu">
+<!ENTITY skins.inUse "Aktualnie używany">
+<!ENTITY skins.use "Zastosuj motyw">
+<!ENTITY skins.uninstall "Usuń motyw">
+<!ENTITY tips "Podpowiedzi">
+<!ENTITY previousTip "Poprzednia">
+<!ENTITY nextTip "Następna">
+<!ENTITY closeTip "Zamknij">
+<!ENTITY intro "Czy wiesz że...">
+<!ENTITY showTips "Pokazuj podpowiedzi przy starcie">
+<!ENTITY copyText "Kopiuj tekst do schowka">
+<!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia. |Zmień przycisk myszy w Opcje \u00BB Ustawienia.">
+<!ENTITY tip2 "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
+<!ENTITY tip3 "Gdy menu Centrum jest wyświetlane można po naciśnięciu klawisza [ Enter ] wprowadzić adres URL w wyświetlonym polu. Naciśnięcie klawisza [ Enter ] po wpisaniu adresu spowoduje otworzenie go w aktywnej karcie, zaś naciśnięcie klawiszy [ Shift+Enter ] spowoduje otwarcie adresu URL w nowej karcie.">
+<!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane. |Zmień działanie przycisków myszy w Opcje \u00BB Ustawienia.">
+<!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL/Skrypt\u0022 do menu Centrum. |Dostosuj działanie menu w Opcje \u00BB Dostosowywanie \u00BB Otwórz URL/Skrypt.">
+<!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum. |Dodaj lub usuń akcje w Opcje \u00BB Akcje">
+<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia. |Dostosuj to w Opcje \u00BB Dostosuj \u00BB Uruchom program.">
+<!ENTITY tip8 "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
+<!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum. |Zmień działanie w Opcje \u00BB Ustawienia">
+<!ENTITY tip10 "Gdy zaznaczysz słowo lub wpiszesz je w polu wprowadzania i wybierzesz opcję \u0022Znajdź w Internecie\u0022 rozpocznie się szukanie zaznaczonego słowa. Jeśli pole wprowadzania będzie puste, zostanie wyświetlona strona domowa domyślnej wyszukiwarki. Tak samo działa opcja \u0022Przetłumacz/Objaśnij\u0022. |Dodaj lub usuń wyszukiwarkę w Opcje \u00BB Dostosuj \u00BB Wyszukiwanie">
+<!ENTITY tip11 "Przytrzymując klawisz [ Insert ] można wyłączyć działanie menu Centrum i używać standardowego menu kontekstowego.">
+<!ENTITY tip12 "Przytrzymując klawisz [ Shift ], gdy menu jest otwarte można przemieszczać je w dowolne miejsce na ekranie bez używania przycisków myszy. Menu będzie podążało za kursorem myszy.">
+<!ENTITY tip13 "Można wyłączyć wyświetlanie opisów przycisków, a także zmieniać ich treść dla każdej akcji. |Wyłącz wyświetlanie podpowiedzi w Opcje \u00BB Ustawienia">
+<!ENTITY tip14 "Zamiast domyślnego wyglądu menu można używać menu podstawowego opartego na opisie tekstowym bez ikon. Można także w menu Centrum wyświetlać małe ikony.">
+<!ENTITY tip15 "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.">
+<!ENTITY tip16 "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu. |Włącz automatyczne przewijanie w menu Opcje \u00BB Ustawienia">
+<!ENTITY tip17 "Można wyróżnić jedno lub kilka słów na całej stronie używając akcji \u0022Wyróżnij/Wyczyść\u0022 zaznaczając najpierw dane słowo/frazę lub wpisując je w pole tekstowe. Ta sama akcja usunie wyróżnianie, gdy w polu teksowym nie ma żadnego słowa.">
+<!ENTITY tip18 "Jeśli jest otwarta tylko jedna karta akcja \u0022Zamknij kartę\u0022 zamyka okno.">
+<!ENTITY tip19 "Można wybrać opcję wyświetlania menu Centrum tylko po wykonywaniu ruchu przeciągania myszą lub po chwili zatrzymania. Można też ustawić czas opóźnienia wyświetlania menu. |Zmień działanie w Opcje \u00BB Ustawienia">
+<!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
+<!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
+<!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie. Jeśli odnośnik nie jest wskazany zostanie otworzony odnośnik znajdujący się (o ile jest) w schowku.">
+<!ENTITY tip23 "Można przełączać języki interfejsu Centrum niezależnie od języka używanego przez Firefoksa.">
+<!ENTITY tip24 "Można przekształcić menu Centrum w pełni konfigurowalne, rozwijane menu liniowe.">
+<!ENTITY tip25 "Aby wyświetlić okno dialogowe opcji bezpośrednio z menu Centrum należy w zintegrowanym pasku wpisać / lub dwukrotnie kliknąć na ikonie Centrum znajdującej się na pasku stanu.">
+<!ENTITY tip26 "Podczas pierwszego wywołania akcji \u0022Wiadomości dnia\u0022 na pasku narzędziowym zakładek zostanie utworzony folder o nazwie *easyGestures* i wszystkie umieszczone w nim zakładki zostaną otworzone.">
+<!ENTITY tip27 "Można łatwo włączyć/wyłączyć menu Centrum klikając na jego ikonie umieszczonej na pasku stanu okna Firefoksa. |Aby ukryć tę ikonę należy przejść do Opcje \u00BB Profile">

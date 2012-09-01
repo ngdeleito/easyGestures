@@ -1,0 +1,337 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "zh-TW">
+
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+
+<!ENTITY options "選項">
+<!ENTITY about "關於">
+
+<!ENTITY ok "確定">
+<!ENTITY apply "套用">
+<!ENTITY cancel "取消">
+<!ENTITY help "求助">
+<!ENTITY close "關閉">
+
+<!ENTITY profile "概要">
+<!ENTITY behavior "設定">
+<!ENTITY actions "動作">
+<!ENTITY customizations "自訂">
+<!ENTITY skins "面版">
+
+<!ENTITY actions.main "主要選單">
+<!ENTITY actions.extra "延伸選單">
+<!ENTITY actions.info "延伸選單會在使用對應動作時顯示。">
+<!ENTITY actions.alt "停止作用">
+<!ENTITY actions.primary "基本">
+<!ENTITY actions.alternative "替換">
+<!ENTITY actions.regular "一般動作">
+<!ENTITY actions.contextual "情境動作">
+
+<!ENTITY customizations.loadURLScript "載入網址／Script">
+<!ENTITY customizations.runProgramFile "執行程式">
+<!ENTITY customizations.queries "查詢">
+<!ENTITY customizations.misc "雜項">
+
+<!ENTITY about.version "版本">
+<!ENTITY about.languageInfo "語">
+<!ENTITY about.stats "次數統計">
+<!ENTITY about.statsDisplay "顯示次數統計">
+<!ENTITY about.statsReset "重新統計次數">
+<!ENTITY about.manage "管理設定">
+<!ENTITY about.import "匯入設定">
+<!ENTITY about.export "匯出設定">
+<!ENTITY about.reset "還原設定">
+<!ENTITY about.startupTips "啟動時顯示小提示">
+<!ENTITY about.statusbarShowIcon "在狀態列顯示圖示">
+<!ENTITY about.feedback "回報你的意見">
+<!ENTITY about.history "What's new">
+<!ENTITY about.createdBy "Created by">
+
+<!ENTITY stats.use "圓餅手勢使用率">
+<!ENTITY stats.novice "初學者">
+<!ENTITY stats.coolUser "Cool User">
+<!ENTITY stats.addicted "上癮者">
+<!ENTITY stats.master "專家級">
+<!ENTITY stats.lastReset "最後重置時間">
+<!ENTITY stats.actions "動作使用統計">
+<!ENTITY stats.directions "方向使用統計">
+<!ENTITY stats.main "主要選單">
+<!ENTITY stats.extra "延伸選單">
+<!ENTITY stats.total "總計">
+<!ENTITY stats.all "全部動作">
+
+<!ENTITY use "開啟圓餅選單：用">
+<!ENTITY use.button.left "滑鼠左鍵">
+<!ENTITY use.button.middle "滑鼠中鍵">
+<!ENTITY use.button.right "滑鼠右鍵">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "加上">
+<!ENTITY use.shift "Shift 鍵">
+<!ENTITY use.ctrl "Ctrl 鍵">
+<!ENTITY use.dragOnly "只在拖曳時開啟">
+<!ENTITY use.upleft "只在 向上／向左 時開啟">
+<!ENTITY use.afterDelay "在停頓時開啟">
+<!ENTITY use.alternative "顯示替換選單：用">
+<!ENTITY use.also "（你也可以使用右邊的 Alt 鍵）">
+
+<!ENTITY suppress "封鎖圓餅選單當擊點滑鼠按鍵和">
+<!ENTITY suppress.ins "Insert 鍵">
+<!ENTITY suppress.alt "Alt 鍵">
+<!ENTITY suppress.ctrl "Ctrl 鍵">
+<!ENTITY suppress.custom "自訂按鍵">
+<!ENTITY suppress.keycode "按鍵代碼">
+
+<!ENTITY link "自訂「開啟鏈結」動作">
+<!ENTITY link.through "允許穿過圓餅選單中間點選鏈結">
+<!ENTITY link.delay "擊點的最大延遲時間（毫秒）">
+<!ENTITY link.throughAsAction "使用「開啟鏈結」動作設定">
+<!ENTITY link.throughAsBrowser "使用瀏覽器設定">
+<!ENTITY link.curTab "在現在的分頁開啟鏈結">
+<!ENTITY link.newTab "在新的分頁開啟鏈結">
+<!ENTITY link.newWindow "在新的視窗開啟鏈結">
+<!ENTITY link.xlink "標記鏈結用">
+
+<!ENTITY autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…（毫秒）">
+
+<!ENTITY extras.menuType "選單樣式">
+<!ENTITY extras.menu "標準（八個動作）">
+<!ENTITY extras.largeMenu "大型（十個動作）">
+<!ENTITY extras.display "顯示">
+<!ENTITY extras.noIcons "基本顯示（不顯示圖示）">
+<!ENTITY extras.smallIcons "使用小型圖示">
+<!ENTITY extras.linearMenu "轉換成直式選單">
+<!ENTITY extras.menuOpacity "圓餅選單透明度">
+<!ENTITY extras.ttip "圓餅動作提示">
+<!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…（毫秒）">
+<!ENTITY extras.ttipDelayOmit "省略動作提示延遲時間">
+
+<!ENTITY contextmenu "顯示情境選單：用">
+<!ENTITY contextmenu.showAuto "保持情境動作自動啟用。使用上述按鍵時轉換回基本選單。">
+<!ENTITY contextmenu.link "鏈結">
+<!ENTITY contextmenu.image "圖片">
+<!ENTITY contextmenu.selection "選取區">
+<!ENTITY contextmenu.textbox "文字區塊">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image actions first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
+
+<!ENTITY move "移動圓餅選單">
+<!ENTITY move.key "按住 Shift 鍵時">
+<!ENTITY move.edge "游標在選單邊緣時">
+
+<!ENTITY func.empty "空白">
+<!ENTITY func.more "延伸選單">
+<!ENTITY func.firstPage "第一頁">
+<!ENTITY func.lastPage "最末頁">
+<!ENTITY func.backSite "上個網站">
+<!ENTITY func.forwardSite "下個網站">
+<!ENTITY func.back "上一頁">
+<!ENTITY func.forward "下一頁">
+<!ENTITY func.reload "重整－停止">
+<!ENTITY func.up "網站上一層">
+<!ENTITY func.root "網站根目錄">
+<!ENTITY func.pageTop "頁首">
+<!ENTITY func.pageBottom "頁尾">
+<!ENTITY func.autoscrolling "自動捲動">
+
+<!ENTITY func.newTab "開新分頁">
+<!ENTITY func.duplicateTab "複製分頁">
+<!ENTITY func.prevTab "上一個分頁">
+<!ENTITY func.nextTab "下一個分頁">
+<!ENTITY func.closeTab "關閉分頁">
+<!ENTITY func.closeOtherTabs "關閉其他分頁">
+<!ENTITY func.undoCloseTab "復原關閉的分頁">
+
+<!ENTITY func.newWindow "開新視窗">
+<!ENTITY func.duplicateWindow "複製視窗">
+<!ENTITY func.closeOtherWindows "關閉其他視窗">
+<!ENTITY func.closeBrowser "關閉瀏覽器">
+<!ENTITY func.minimizeWindow "視窗最小化">
+<!ENTITY func.fullscreen "全螢幕">
+
+<!ENTITY func.openLink "開啟鏈結">
+<!ENTITY func.openLinkNewWindow "在新視窗開啟鏈結">
+<!ENTITY func.copyLink "複製鏈結網址">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "複製圖片網址">
+<!ENTITY func.saveLinkAs "鏈結另存新檔…">
+<!ENTITY func.saveImageAs "圖片另存新檔…">
+<!ENTITY func.savePageAs "另存新檔…">
+<!ENTITY func.hideImages "隱藏圖片">
+<!ENTITY func.copyImage "複製圖片">
+
+<!ENTITY func.homepage "首頁">
+<!ENTITY func.dailyReadings "每日閱讀">
+<!ENTITY func.searchWeb "網路搜尋">
+<!ENTITY func.translate "翻譯／釋義">
+<!ENTITY func.runProgramFile1 "執行程式 1">
+<!ENTITY func.runProgramFile2 "執行程式 2">
+<!ENTITY func.runProgramFile3 "執行程式 3">
+<!ENTITY func.runProgramFile4 "執行程式 4">
+<!ENTITY func.runProgramFile5 "執行程式 5">
+<!ENTITY func.runProgramFile6 "執行程式 6">
+<!ENTITY func.runProgramFile7 "執行程式 7">
+<!ENTITY func.runProgramFile8 "執行程式 8">
+<!ENTITY func.runProgramFile9 "執行程式 9">
+<!ENTITY func.runProgramFile10 "執行程式 10">
+
+<!ENTITY func.loadURLScript1 "載入網址／Script 1">
+<!ENTITY func.loadURLScript2 "載入網址／Script 2">
+<!ENTITY func.loadURLScript3 "載入網址／Script 3">
+<!ENTITY func.loadURLScript4 "載入網址／Script 4">
+<!ENTITY func.loadURLScript5 "載入網址／Script 5">
+<!ENTITY func.loadURLScript6 "載入網址／Script 6">
+<!ENTITY func.loadURLScript7 "載入網址／Script 7">
+<!ENTITY func.loadURLScript8 "載入網址／Script 8">
+<!ENTITY func.loadURLScript9 "載入網址／Script 9">
+<!ENTITY func.loadURLScript10 "載入網址／Script 10">
+<!ENTITY func.loadURLScript11 "載入網址／Script 11">
+<!ENTITY func.loadURLScript12 "載入網址／Script 12">
+<!ENTITY func.loadURLScript13 "載入網址／Script 13">
+<!ENTITY func.loadURLScript14 "載入網址／Script 14">
+<!ENTITY func.loadURLScript15 "載入網址／Script 15">
+<!ENTITY func.loadURLScript16 "載入網址／Script 16">
+<!ENTITY func.loadURLScript17 "載入網址／Script 17">
+<!ENTITY func.loadURLScript18 "載入網址／Script 18">
+<!ENTITY func.loadURLScript19 "載入網址／Script 19">
+<!ENTITY func.loadURLScript20 "載入網址／Script 20">
+
+<!ENTITY func.markVisitedLinks "標記拜訪過的鏈結">
+<!ENTITY func.bookmarkThisLink "將此鏈結加入書籤">
+<!ENTITY func.bookmarkPage "將本頁加入書籤">
+<!ENTITY func.bookmarkOpenTabs "將所有開啟分頁加入書籤">
+<!ENTITY func.bookmarks "書籤側邊欄">
+<!ENTITY func.bookmarksToolbar "書籤工具列">
+<!ENTITY func.history "歷史側邊欄">
+<!ENTITY func.viewPageSource "檢視原始碼">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "只顯示本頁框">
+<!ENTITY func.properties "屬性">
+<!ENTITY func.printPage "列印">
+<!ENTITY func.mail "Mail">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+
+<!ENTITY func.cut "剪下">
+<!ENTITY func.copy "複製">
+<!ENTITY func.paste "貼上">
+<!ENTITY func.undo "復原">
+<!ENTITY func.selectAll "全選">
+<!ENTITY func.highlight "標記／清除">
+<!ENTITY func.zoomIn "焦距拉近">
+<!ENTITY func.zoomOut "焦距拉遠">
+<!ENTITY func.zoomReset "還原焦距">
+
+<!ENTITY input.infoSel "你可以在動作選單選擇這些動作。">
+<!ENTITY input.page1 "第一頁">
+<!ENTITY input.page2 "第二頁">
+<!ENTITY input.page3 "第三頁">
+<!ENTITY input.page4 "第四頁">
+<!ENTITY input.infoPlaceHolder "字串 &#37;s（選取區）和 &#37;u（現在的網址）">
+
+<!ENTITY highlight "自訂「標記／清除」動作">
+<!ENTITY highlight.count "顯示標記統計數字">
+<!ENTITY highlight.color "顏色">
+<!ENTITY highlight.code "色碼">
+<!ENTITY highlight.restoreColors "還原顏色">
+
+<!ENTITY closeTab "自訂「關閉分頁」動作">
+<!ENTITY closeTab.closeBrowserOnLastTab "關閉最後一個分頁時關閉瀏覽器">
+
+<!ENTITY search "自訂「網路搜尋」動作">
+<!ENTITY search.query "查詢網址">
+<!ENTITY translate "自訂「翻譯／釋義」動作">
+
+<!ENTITY queries "查詢結果">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.curTab "顯示在現在的分頁">
+<!ENTITY queries.newWindow "顯示在新的視窗">
+
+<!ENTITY extern "自訂「執行程式」動作">
+<!ENTITY extern.tab "程式">
+<!ENTITY extern.name "名稱">
+<!ENTITY extern.path "路徑">
+<!ENTITY extern.arguments "參數">
+<!ENTITY extern.browse "瀏覽…">
+<!ENTITY extern.icon "使用應用程式圖示">
+
+<!ENTITY urlscript "自訂「載入網址／Script」動作">
+<!ENTITY urlscript.url "網址">
+<!ENTITY urlscript.script "Script">
+<!ENTITY urlscript.name "名稱">
+<!ENTITY urlscript.host "網址">
+<!ENTITY urlscript.code "程式碼">
+<!ENTITY urlscript.load "載入網址">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "在新分頁">
+<!ENTITY urlscript.newWindow "在新視窗">
+<!ENTITY urlscript.icon "使用網站圖示">
+<!ENTITY urlscript.faviconNotFound "沒有找到網站圖示。繼續搜尋？">
+
+<!ENTITY changeIcon "更換圖示">
+<!ENTITY labelNewIcon "新的圖示">
+
+<!ENTITY duplicatekey.warning "這個按鍵已經被使用，請選擇另一個不同的按鍵！">
+
+<!ENTITY skins.change "改變面板">
+<!ENTITY skins.default "經典面板（預設）">
+<!ENTITY skins.more "取得更多面板">
+<!ENTITY skins.nopreview "沒有預覽">
+<!ENTITY skins.inUse "使用中">
+<!ENTITY skins.use "使用面板">
+<!ENTITY skins.uninstall "移除面板">
+
+<!ENTITY tips "小提示">
+<!ENTITY previousTip "上一個">
+<!ENTITY nextTip "下一個">
+<!ENTITY closeTip "關閉">
+<!ENTITY intro "你知不知道...">
+<!ENTITY showTips "啟動時顯示小提示">
+<!ENTITY copyText "複製文字到剪貼簿">
+
+<!ENTITY tip1 "預設中你可以擊點滑鼠中鍵來開啟圓餅選單（除非你是Mac使用者）。這個預設鍵是可以更改的。|改變滑鼠按鍵 Options/Behavior">
+<!ENTITY tip2 "使用圓餅選單最快速的方法是按著滑鼠按鍵，把游標拖曳到執行的動作圖示上後放開滑鼠按鍵。你可以想成是有圖形介面的滑鼠手勢。">
+<!ENTITY tip3 "假如你在圓餅選單顯示時按「Enter」鍵，你將可以在圓餅選單中間輸入網址。在網址輸入完成後再按一次「Enter」，可以在現在的分頁開啟這個網址。若在輸入完成後按「Shift + Enter」，則可以在新分頁開啟這個網址。">
+<!ENTITY tip4 "預設在圓餅選單顯示時擊點滑鼠右鍵將會顯示替換動作，最多可有三組自訂圓餅選單循環切換。這個預設切換鍵是可以更改的。|改變滑鼠按鍵 Options/Behavior">
+<!ENTITY tip5 "你可以使用 easyGestures ，設定「載入網址／Script」這個動作在你的圓餅選單上來開啟你喜愛的書籤。|設定動作 Options/Customizations/Load URL/Script">
+<!ENTITY tip6 "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。|新增或移除動作 Options/Actions">
+<!ENTITY tip7 "你可以用「執行程式」和「載入網址／Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。|設定 Options/Customizations/Run Program File">
+<!ENTITY tip8 "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">
+<!ENTITY tip9 "你可以在開啟圓餅選單時，點選「Ctrl」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 Options/Behavior">
+<!ENTITY tip10 "你可以用「網路搜尋」這個動作來查詢頁面上的文字或自行輸入的文字，搜尋引擎的部分可以自訂。自訂搜尋引擎左邊的勾選欄若沒有被勾選起來，這個搜尋引擎就不會被使用。同理可推「翻譯／釋義」這個動作|新增或移除搜尋引擎 Options/Customizations/Queries">
+<!ENTITY tip11 "你可以按住「Insert」鍵來封鎖設在右鍵的圓餅選單，改使用預設的標準快速選單。">
+<!ENTITY tip12 "你可以按住「Shift」鍵來移動已顯示的圓餅選單。">
+<!ENTITY tip13 "假如你不需要圓餅動作提示，你可以關閉它。你也可以修改每個圓餅動作提示文字。|關閉提示顯示 Options/Behavior">
+<!ENTITY tip14 "你可以持續使用預設的圓餅圖示顯示，或以小型圖示取代顯示。如果你喜歡簡單的文字模式，也可以改用沒有圖示的基本顯示。">
+<!ENTITY tip15 "重度使用者可以設定更多動作在你的圓餅選單上：在三個主要圓餅選單上都用十個動作取代預設的八個動作。">
+<!ENTITY tip16 "在滑鼠中鍵被用來顯示圓餅選單時，Firefox 的選項「使用自動捲動(Autoscrolling)」會被設定成關閉。在圓餅選單中間不移動，停頓短暫的時間後可以轉換顯示「自動捲動」。|設定轉換自動捲動的停頓時間 Options/Behavior">
+<!ENTITY tip17 "你可以用「標記／清除」這個動作，在全部的頁面用高亮度標記選取或輸入的一個或多個文字。再做一次同樣動作，把輸入欄留白，就可以清除高亮度標記。">
+<!ENTITY tip18 "只剩下一個分頁時，「關閉分頁」這個動作會把視窗也關閉。">
+<!ENTITY tip19 "你可以改用拖曳游標或按著滑鼠做短暫的停頓這些方法來顯示圓餅選單。|更改設定 Options/Behavior">
+<!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">
+<!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">
+<!ENTITY tip22 "「開啟鏈結」動作會把目標鏈結開在新分頁中。假如沒有目標鏈結，它會開啟在剪貼簿中的鏈結（如果是鏈結的話）">
+<!ENTITY tip23 "你可以無視Firefox的語言設定自己轉換 easyGestures 的顯示語言設定。">
+<!ENTITY tip24 "你可以轉換圓餅選單成自定的直式選單。">
+<!ENTITY tip25 "你可以透過圓餅選單輸入「/」或直接雙擊在狀態列顯示的 easyGestures 圖示來顯示 easyGestures 的選項視窗。">
+<!ENTITY tip26 "當第一次執行「每日閱讀」這個動作時，將會自動產生一個叫做「easyGestures」的書籤資料夾在你的書籤工具列中，當中所有的書籤會同時被開啟。">
+<!ENTITY tip27 "你可以擊點Firfox視窗狀態列的圖示，簡單的啟用／停用 easyGestures選單|隱藏圖示 Options/Profile/1">

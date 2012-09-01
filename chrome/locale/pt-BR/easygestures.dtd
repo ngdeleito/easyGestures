@@ -1,0 +1,337 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "pt-BR">
+
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+
+<!ENTITY options "Opções">
+<!ENTITY about "Sobre">
+
+<!ENTITY ok "OK">
+<!ENTITY apply "Aplicar">
+<!ENTITY cancel "Cancelar">
+<!ENTITY help "Ajuda">
+<!ENTITY close "Fechar">
+
+<!ENTITY profile "Perfil">
+<!ENTITY behavior "Comportamento">
+<!ENTITY actions "Ações">
+<!ENTITY customizations "Personalizações">
+<!ENTITY skins "Skins">
+
+<!ENTITY actions.main "Menu Principal">
+<!ENTITY actions.extra "Menu Extra">
+<!ENTITY actions.info "Menu extra é mostrado usando a ação correspondente.">
+<!ENTITY actions.alt "Desabilitar">
+<!ENTITY actions.primary "Primário">
+<!ENTITY actions.alternative "Alternativo">
+<!ENTITY actions.regular "Ações Regulares">
+<!ENTITY actions.contextual "Ações Contextuais">
+
+<!ENTITY customizations.loadURLScript "Carregar URL/Script">
+<!ENTITY customizations.runProgramFile "Executar Arquivo de Programa">
+<!ENTITY customizations.queries "Consultas">
+<!ENTITY customizations.misc "Miscelânea">
+
+<!ENTITY about.version "Versão">
+<!ENTITY about.languageInfo "Linguagem">
+<!ENTITY about.stats "Estatísticas">
+<!ENTITY about.statsDisplay "Mostrar Estatísticas">
+<!ENTITY about.statsReset "Reiniciar Estatísticas">
+<!ENTITY about.manage "Gerenciar Preferências">
+<!ENTITY about.import "Importar Preferências...">
+<!ENTITY about.export "Exportar Preferências...">
+<!ENTITY about.reset "Reiniciar Preferências">
+<!ENTITY about.startupTips "Mostrar Dicas ao iniciar">
+<!ENTITY about.statusbarShowIcon "Mostrar Ícone na barra de status">
+<!ENTITY about.feedback "Sua Opinião">
+<!ENTITY about.history "O que há de novo">
+<!ENTITY about.createdBy "Criado por">
+
+<!ENTITY stats.use "Uso do Menu de Torta">
+<!ENTITY stats.novice "Novato">
+<!ENTITY stats.coolUser "Usário Descolado">
+<!ENTITY stats.addicted "Viciado">
+<!ENTITY stats.master "Mestre">
+<!ENTITY stats.lastReset "Último Reinício">
+<!ENTITY stats.actions "Cliques por Ações">
+<!ENTITY stats.directions "Cliques por Direções">
+<!ENTITY stats.main "Menu Principal">
+<!ENTITY stats.extra "Menu Extra">
+<!ENTITY stats.total "Total">
+<!ENTITY stats.all "Todas as Ações">
+
+<!ENTITY use "Abrir menu de torta com">
+<!ENTITY use.button.left "botão esquerdo do mouse">
+<!ENTITY use.button.middle "botão do meio do mouse">
+<!ENTITY use.button.right "botão direito do mouse">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "e">
+<!ENTITY use.shift "Tecla Shift">
+<!ENTITY use.ctrl "Tecla Ctrl">
+<!ENTITY use.dragOnly "Abrir apenas quando arrastando">
+<!ENTITY use.upleft "Superior/Esquerdo somente">
+<!ENTITY use.afterDelay "Abrir após atraso">
+<!ENTITY use.alternative "Mostrar menu alternativo com">
+<!ENTITY use.also "(Você também pode usar a tecla Alt direita)">
+
+<!ENTITY suppress "Suprimir a prioridade do menu de torta no botão do mouse com">
+<!ENTITY suppress.ins "Tecla Insert">
+<!ENTITY suppress.alt "Tecla Alt">
+<!ENTITY suppress.ctrl "Tecla Ctrl">
+<!ENTITY suppress.custom "Tecla Personalizada">
+<!ENTITY suppress.keycode "Código da tecla">
+
+<!ENTITY link "Personalizar Ação 'Abrir Link'">
+<!ENTITY link.through "Habilitar clicar em links através do centro do menu de torta">
+<!ENTITY link.delay "Atraso máximo para clicar (ms)">
+<!ENTITY link.throughAsAction "Usar Comportamento da Ação 'Abrir Link'">
+<!ENTITY link.throughAsBrowser "Usar Comportamento do Navegador">
+<!ENTITY link.curTab "Abrir link na Aba corrente">
+<!ENTITY link.newTab "Abrir link na Aba nova">
+<!ENTITY link.newWindow "Abrir link na Janela nova">
+<!ENTITY link.xlink "marcar link com">
+
+<!ENTITY autoscrolling "Auto-rolagem através do centro do menu de torta">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso (ms)">
+
+<!ENTITY extras.menuType "Tipo de Menu">
+<!ENTITY extras.menu "Padrão (8 ações)">
+<!ENTITY extras.largeMenu "Grande (10 ações)">
+<!ENTITY extras.display "Mostrar">
+<!ENTITY extras.noIcons "Mostrar Básico (não mostra ícones)">
+<!ENTITY extras.smallIcons "Usar Ícones Pequenos">
+<!ENTITY extras.linearMenu "Transformar em Menu Linear">
+<!ENTITY extras.menuOpacity "Opacidade do Menu de Torta">
+<!ENTITY extras.ttip "Ativar Dicas">
+<!ENTITY extras.ttipDelayLabel "Atraso das Dicas (ms)">
+<!ENTITY extras.ttipDelayOmit "Omitir atraso das Dicas">
+
+<!ENTITY contextmenu "Ativar sensibilidade contextual com">
+<!ENTITY contextmenu.showAuto "Sempre ativada. Usar a mesma tecla para suprimir sensibilidade.">
+<!ENTITY contextmenu.link "Link">
+<!ENTITY contextmenu.image "Imagem">
+<!ENTITY contextmenu.selection "Seleção">
+<!ENTITY contextmenu.textbox "Caixa de Texto">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image actions first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
+
+<!ENTITY move "Mover menu de torta">
+<!ENTITY move.key "Pressionando a tecla Shift">
+<!ENTITY move.edge "Chegando a borda do menu">
+
+<!ENTITY func.empty "Vazio">
+<!ENTITY func.more "Menu Extra">
+<!ENTITY func.firstPage "Primeira Page">
+<!ENTITY func.lastPage "Última Page">
+<!ENTITY func.backSite "Voltar Site">
+<!ENTITY func.forwardSite "Avançar Site">
+<!ENTITY func.back "Voltar">
+<!ENTITY func.forward "Avançar">
+<!ENTITY func.reload "Parar Recarga">
+<!ENTITY func.up "Para Cima">
+<!ENTITY func.root "Raiz">
+<!ENTITY func.pageTop "Topo da Página">
+<!ENTITY func.pageBottom "Fundo da Página">
+<!ENTITY func.autoscrolling "Auto-rolagem">
+
+<!ENTITY func.newTab "Nova Aba em Branco">
+<!ENTITY func.duplicateTab "Duplicar Aba">
+<!ENTITY func.prevTab "Aba Anterior">
+<!ENTITY func.nextTab "Próxima Aba">
+<!ENTITY func.closeTab "Fechar Aba">
+<!ENTITY func.closeOtherTabs "Fechar Outras Abas">
+<!ENTITY func.undoCloseTab "Desfazer Fechar Aba">
+
+<!ENTITY func.newWindow "Nova Janela">
+<!ENTITY func.duplicateWindow "Duplicar Janela">
+<!ENTITY func.closeOtherWindows "Fechar Outras Janelas">
+<!ENTITY func.closeBrowser "Fecahr Navegador">
+<!ENTITY func.minimizeWindow "Minimizar Janela">
+<!ENTITY func.fullscreen "Alternar Tela Cheia">
+
+<!ENTITY func.openLink "Abrir Link">
+<!ENTITY func.openLinkNewWindow "Abrir Link em Nova Janela">
+<!ENTITY func.copyLink "Copiar Link">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Copiar Localização da Imagem">
+<!ENTITY func.saveLinkAs "Salvar Link Como...">
+<!ENTITY func.saveImageAs "Salvar Imagem Como...">
+<!ENTITY func.savePageAs "Salvar Página Como...">
+<!ENTITY func.hideImages "Esconder Imagens">
+<!ENTITY func.copyImage "Copiar Imagens">
+
+<!ENTITY func.homepage "Página Inicial">
+<!ENTITY func.dailyReadings "Leituras Diárias">
+<!ENTITY func.searchWeb "Buscar na Web">
+<!ENTITY func.translate "Traduzir/Explicar">
+<!ENTITY func.runProgramFile1 "Executar Arquivo de Programa 1">
+<!ENTITY func.runProgramFile2 "Executar Arquivo de Programa 2">
+<!ENTITY func.runProgramFile3 "Executar Arquivo de Programa 3">
+<!ENTITY func.runProgramFile4 "Executar Arquivo de Programa 4">
+<!ENTITY func.runProgramFile5 "Executar Arquivo de Programa 5">
+<!ENTITY func.runProgramFile6 "Executar Arquivo de Programa 6">
+<!ENTITY func.runProgramFile7 "Executar Arquivo de Programa 7">
+<!ENTITY func.runProgramFile8 "Executar Arquivo de Programa 8">
+<!ENTITY func.runProgramFile9 "Executar Arquivo de Programa 9">
+<!ENTITY func.runProgramFile10 "Executar Arquivo de Programa 10">
+
+<!ENTITY func.loadURLScript1 "Carregar URL/Script 1">
+<!ENTITY func.loadURLScript2 "Carregar URL/Script 2">
+<!ENTITY func.loadURLScript3 "Carregar URL/Script 3">
+<!ENTITY func.loadURLScript4 "Carregar URL/Script 4">
+<!ENTITY func.loadURLScript5 "Carregar URL/Script 5">
+<!ENTITY func.loadURLScript6 "Carregar URL/Script 6">
+<!ENTITY func.loadURLScript7 "Carregar URL/Script 7">
+<!ENTITY func.loadURLScript8 "Carregar URL/Script 8">
+<!ENTITY func.loadURLScript9 "Carregar URL/Script 9">
+<!ENTITY func.loadURLScript10 "Carregar URL/Script 10">
+<!ENTITY func.loadURLScript11 "Carregar URL/Script 11">
+<!ENTITY func.loadURLScript12 "Carregar URL/Script 12">
+<!ENTITY func.loadURLScript13 "Carregar URL/Script 13">
+<!ENTITY func.loadURLScript14 "Carregar URL/Script 14">
+<!ENTITY func.loadURLScript15 "Carregar URL/Script 15">
+<!ENTITY func.loadURLScript16 "Carregar URL/Script 16">
+<!ENTITY func.loadURLScript17 "Carregar URL/Script 17">
+<!ENTITY func.loadURLScript18 "Carregar URL/Script 18">
+<!ENTITY func.loadURLScript19 "Carregar URL/Script 19">
+<!ENTITY func.loadURLScript20 "Carregar URL/Script 20">
+
+<!ENTITY func.markVisitedLinks "Marcar Links Visitados">
+<!ENTITY func.bookmarkThisLink "Adicionar Este Link aos Favoritos...">
+<!ENTITY func.bookmarkPage "Adicionar Esta Página aos Favoritos">
+<!ENTITY func.bookmarkOpenTabs "Adicionar Abas Abertas aos Favoritos">
+<!ENTITY func.bookmarks "Alternar Favoritos">
+<!ENTITY func.bookmarksToolbar "Alternar Barra de Favoritos">
+<!ENTITY func.history "Alternar Histórico">
+<!ENTITY func.viewPageSource "Ver Código Fonte da Página">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Mostrar Somente Este Quadro">
+<!ENTITY func.properties "Propriedades">
+<!ENTITY func.printPage "Imprimir Página">
+<!ENTITY func.mail "Correio">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+
+<!ENTITY func.cut "Recortar">
+<!ENTITY func.copy "Copiar">
+<!ENTITY func.paste "Colar">
+<!ENTITY func.undo "Desfazer">
+<!ENTITY func.selectAll "Selecionar Tudo">
+<!ENTITY func.highlight "Realçar/Limpar">
+<!ENTITY func.zoomIn "Mais Zoom">
+<!ENTITY func.zoomOut "Menos Zoom">
+<!ENTITY func.zoomReset "Reiniciar Zoom">
+
+<!ENTITY input.infoSel "Você pode selecionar estas ações na aba de Ações.">
+<!ENTITY input.page1 "Página 1">
+<!ENTITY input.page2 "Página 2">
+<!ENTITY input.page3 "Página 3">
+<!ENTITY input.page4 "Página 4">
+<!ENTITY input.infoPlaceHolder "Espaço reservado para strings: &#37;s (selection) and &#37;u (current URL).">
+
+<!ENTITY highlight "Personalizar Ação 'Realçar/Limpar' ">
+<!ENTITY highlight.count "Mostrar números dos contadores">
+<!ENTITY highlight.color "Cor">
+<!ENTITY highlight.code "Código">
+<!ENTITY highlight.restoreColors "Restaurar Cores">
+
+<!ENTITY closeTab "Personalizar Ação 'Fechar Aba' ">
+<!ENTITY closeTab.closeBrowserOnLastTab "Fechar navegador quando última aba for fechada">
+
+<!ENTITY search "Personalizar Ação 'Busca na Web' ">
+<!ENTITY search.query "Consulta URL">
+<!ENTITY translate "Personalizar Ação 'Traduzir/Explicar' ">
+
+<!ENTITY queries "Resultados da Consulta">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.curTab "Começar mostrando na aba corrente">
+<!ENTITY queries.newWindow "Mostrar em nova janela">
+
+<!ENTITY extern "Personalizar Ação 'Executar Arquivo de Programa' ">
+<!ENTITY extern.tab "Arquivo de Programa">
+<!ENTITY extern.name "Dica">
+<!ENTITY extern.path "Caminho">
+<!ENTITY extern.arguments "Argumentos">
+<!ENTITY extern.browse "Navegar...">
+<!ENTITY extern.icon "Usar Ícone da Aplicação">
+
+<!ENTITY urlscript "Personalizar Ação 'Carregar URL/Script' ">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Script">
+<!ENTITY urlscript.name "Dica">
+<!ENTITY urlscript.host "Host">
+<!ENTITY urlscript.code "Código">
+<!ENTITY urlscript.load "Carregar URLs">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "em nova Aba">
+<!ENTITY urlscript.newWindow "em nova Janela">
+<!ENTITY urlscript.icon "Usar o Favicon do Site">
+<!ENTITY urlscript.faviconNotFound "Favicon ainda não encontrado. Continuar busca?">
+
+<!ENTITY changeIcon "Alterar Ícone">
+<!ENTITY labelNewIcon "Novo Ícone">
+
+<!ENTITY duplicatekey.warning "Esta tecla já está em uso! Escolha uma telca diferente.">
+
+<!ENTITY skins.change "Mudar Skin">
+<!ENTITY skins.default "Skin Clássica (padrão)">
+<!ENTITY skins.more "Obter mais skins">
+<!ENTITY skins.nopreview "Sem Visualização">
+<!ENTITY skins.inUse "Em Uso">
+<!ENTITY skins.use "Use a Skin">
+<!ENTITY skins.uninstall "Desinstalar Skin">
+
+<!ENTITY tips "Dicas">
+<!ENTITY previousTip "Anterior">
+<!ENTITY nextTip "Próxima">
+<!ENTITY closeTip "Fechar">
+<!ENTITY intro "Você sabia...">
+<!ENTITY showTips "Mostrar dicas ao iniciar">
+<!ENTITY copyText "Copiar texto para a área de transferência">
+
+<!ENTITY tip1 "Por padrão, você deve clicar o botão do meio do mouse para mostrar o menu de torta (a menos que você seja um usuário de Mac). O botão padrão do mouse pode ser alterado. |Altere o botão do mouse em Opções/Comportamento">
+<!ENTITY tip2 "A maneira mais rápida de usar o menu de torta é pressionando o botão do mouse, arrastando até a ação a ser executada, e soltando o botão. Pense nele como se fosse um gesto do mouse com uma Interface Gráfica.">
+<!ENTITY tip3 "Se você pressionar 'Enter' enquanto o menu de torta está visível, você poderá digitar uma URL dentro do menu de torta. Pressionando 'Enter' quando terminar abrirá a URL na aba atual. Pressionando 'Shift+Enter' abrirá a URL em uma nova aba. ">
+<!ENTITY tip4 "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado. |Altere o botão do mouse em Opções/Comportamento">
+<!ENTITY tip5 "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL/Script' e então, adicionando-os nos leiautes do menu de torta. |Personalize em Opções/Personalizações/Carregar URL/Script">
+<!ENTITY tip6 "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em Opções/Ações">
+<!ENTITY tip7 "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar URL/Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão. |Personalize em Opções/Personalizações/Executar Arquivo de Programa">
+<!ENTITY tip8 "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba e mostrará uma marca vermelha na página após o link.">
+<!ENTITY tip9 "Você pode ativar senbilidade de contexto pressionando a tecla 'Ctrl' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada. |Altere o comportamento em Opções/Comportamento">
+<!ENTITY tip10 "Você pode procurar uma palavra usando seu mecanismo de busca personalizado com a ação 'Busca na Web' selecionando-a na página ou digitando-a caixa de texto. Se a caixa de texto for deixada em branco, a página inicial do mecanismo de busca será mostrada. O mesmo vale para a ação 'Traduzir/Explicar'. |Adicione ou remova mecanismos de busca em Opções/Personalizações/Consultas">
+<!ENTITY tip11 "Pressionando a tecla 'Insert' durante um clique com o botão direito, você pode suprimir o menu de torta e acessar o menu de contexto padrão.">
+<!ENTITY tip12 "Você pode mover o menu de torta, segurando a tecla 'Shift' enquanto move o mouse.">
+<!ENTITY tip13 "Você pode desligar a visualização das dicas se você não precisa delas. Também é possível renomear cada dica da ação. |Desligue a visualização em Opções/Comportamento">
+<!ENTITY tip14 "Você pode manter a reluzente visualização padrão ou mudar para uma visualização básica sem ícones se você é uma mente orientada ao texto. Você pode também mudar a visualização para ícones pequenos.">
+<!ENTITY tip15 "Usuários avançados podem ter mais ações na torta: 10 ao invés de 8 em cada um dos 3 leiautes principais.">
+<!ENTITY tip16 "A opção 'Usar auto-rolagem' do Firefox está desmarcada quando o botão do meio do mouse é usado para mostrar o menu de torta. O recurso Auto-rolagem pode ser disponibilizado com um pressionamento do mouse através do menu de torta após um curto atraso sem se mover. |Ative auto-rolagem em Opções/Comportamento">
+<!ENTITY tip17 "Você pode realçar uma ou mais palavras em toda uma página com a ação 'Realçar/Limpar',  selecionando-a na página ou digitando-a na caixa de texto. A mesma ação irá limpar todo o realce se a caixa de texto for deixada em branco.">
+<!ENTITY tip18 "A ação 'Fechar aba' fecha a janela se há uma única aba aberta.">
+<!ENTITY tip19 "Você pode ter o menu de torta mostrado apenas quando arrastando o mouse ou após um curto atraso. |Mude o comportamento em Opções/Comportamento">
+<!ENTITY tip20 "Uma ação de zoom sobre uma imagem vai realizar a ação apenas na imagem.">
+<!ENTITY tip21 "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
+<!ENTITY tip22 "A ação 'Abrir Link' abrirá o link apontado em uma aba nova. Se nenhum link está apontado, o que está na área de transferência (se houver algum) será aberto.">
+<!ENTITY tip23 "Você pode alterar a linguagem do easyGestures independente do Firefox.">
+<!ENTITY tip24 "Você pode mudar o menu de torta para um menu dropdown totalmente personalizável.">
+<!ENTITY tip25 "Você pode mostrar o Diálogo de Opções diretamente do menu de torta digitando / na barra integrada de localização ou clicando duas vezes no ícone do easygestures na barra de status.">
+<!ENTITY tip26 "Quando é feita a ação 'Leituras Diárias', uma pasta de favoritos chamada *easyGestures* é criada na primeira vez na Barra de Favoritos e todos os favoritos colocados nela são abertos.">
+<!ENTITY tip27 "Você pode ligar ou desligar o menu easyGestures simplesmente clicando no ícone na barra de status da janela do Firefox. |Esconda este ícone em Opções/Perfil/1">

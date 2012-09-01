@@ -1,0 +1,337 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "fr-FR">
+
+<!ENTITY welcome.click "Cliquez dans la page avec le bouton du milieu pour ouvrir le menu circulaire.">
+<!ENTITY welcome.onoff "Vous pouvez activer/désactiver le menu easyGestures en cliquant sur la flèche bleue dans la barre d'état.">
+<!ENTITY welcome.completed "easyGestures - Installation complétée">
+
+<!ENTITY options "Options">
+<!ENTITY about "À propos">
+
+<!ENTITY ok "OK">
+<!ENTITY cancel "Annuler">
+<!ENTITY apply "Appliquer">
+<!ENTITY help "Aide">
+<!ENTITY close "Fermer">
+
+<!ENTITY profile "Profil">
+<!ENTITY behavior "Comportement">
+<!ENTITY actions "Actions">
+<!ENTITY customizations "Personnalisations">
+<!ENTITY skins "Habillages">
+
+<!ENTITY actions.main "Menu principal">
+<!ENTITY actions.extra "Menu supplémentaire">
+<!ENTITY actions.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante.">
+<!ENTITY actions.alt "Désactiver">
+<!ENTITY actions.primary "Primaire">
+<!ENTITY actions.alternative "Alternatif">
+<!ENTITY actions.regular "Actions régulières">
+<!ENTITY actions.contextual "Actions contextuelles">
+
+<!ENTITY customizations.loadURLScript "Charger URL/Script">
+<!ENTITY customizations.runProgramFile "Exécuter programme">
+<!ENTITY customizations.queries "Requêtes">
+<!ENTITY customizations.misc "Divers">
+
+<!ENTITY about.version "Version">
+<!ENTITY about.languageInfo "Langue">
+<!ENTITY about.stats "Statistiques">
+<!ENTITY about.statsDisplay "Afficher statistiques">
+<!ENTITY about.statsReset "Réinitialiser statistiques">
+<!ENTITY about.manage "Gérer préférences">
+<!ENTITY about.import "Importer préférences...">
+<!ENTITY about.export "Exporter préférences...">
+<!ENTITY about.reset "Réinitialiser préférences">
+<!ENTITY about.startupTips "Afficher astuces au démarrage">
+<!ENTITY about.statusbarShowIcon "Afficher icône dans barre d'état">
+<!ENTITY about.feedback "Vos réactions">
+<!ENTITY about.history "Quoi de neuf">
+<!ENTITY about.createdBy "Créé par">
+
+<!ENTITY stats.use "Utilisation du menu circulaire">
+<!ENTITY stats.novice "Novice">
+<!ENTITY stats.coolUser "Utilisateur cool">
+<!ENTITY stats.addicted "Mordu">
+<!ENTITY stats.master "Maître">
+<!ENTITY stats.lastReset "Dernière réinitialisation">
+<!ENTITY stats.actions "Clics par actions">
+<!ENTITY stats.directions "Clics par directions">
+<!ENTITY stats.main "Menu principal">
+<!ENTITY stats.extra "Menu supplémentaire">
+<!ENTITY stats.total "Total">
+<!ENTITY stats.all "Toutes actions">
+
+<!ENTITY use "Ouvrir menu circulaire avec">
+<!ENTITY use.button.left "bouton gauche souris">
+<!ENTITY use.button.middle "bouton central souris">
+<!ENTITY use.button.right "bouton droit souris">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "et">
+<!ENTITY use.shift "touche Maj">
+<!ENTITY use.ctrl "touche Ctrl">
+<!ENTITY use.dragOnly "Ouvrir seulement par glisser souris">
+<!ENTITY use.upleft "vers haut/gauche seulement">
+<!ENTITY use.afterDelay "Après délai seulement">
+<!ENTITY use.alternative "Afficher menu circulaire alternatif avec">
+<!ENTITY use.also "(la touche Alt aussi est utilisable)">
+
+<!ENTITY suppress "Supprimer priorité menu circulaire sur bouton souris avec">
+<!ENTITY suppress.ins "touche Insert">
+<!ENTITY suppress.alt "touche Alt">
+<!ENTITY suppress.ctrl "touche Ctrl">
+<!ENTITY suppress.custom "touche personnalisée">
+<!ENTITY suppress.keycode "Keycode">
+
+<!ENTITY link "Personnaliser action 'Ouvrir lien'">
+<!ENTITY link.through "Activer clics sur liens par le centre du menu circulaire">
+<!ENTITY link.delay "Délai maximum pour cliquer (ms)">
+<!ENTITY link.throughAsAction "Suivre comportement action 'Ouvrir lien'">
+<!ENTITY link.throughAsBrowser "Suivre comportement du navigateur">
+<!ENTITY link.curTab "Ouvrir lien dans onglet courant">
+<!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
+<!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
+<!ENTITY link.xlink "Marquer le lien avec">
+
+<!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Délai (ms)">
+
+<!ENTITY extras.menuType "Type de menu">
+<!ENTITY extras.menu "Standard (8 actions)">
+<!ENTITY extras.largeMenu "Large (10 actions)">
+<!ENTITY extras.display "Affichage">
+<!ENTITY extras.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
+<!ENTITY extras.smallIcons "Utiliser des petites icônes">
+<!ENTITY extras.linearMenu "Transformer en menu linéaire">
+<!ENTITY extras.menuOpacity "Opacité du menu circulaire">
+<!ENTITY extras.ttip "Activer infobulles">
+<!ENTITY extras.ttipDelayLabel "Délai infobulles (ms)">
+<!ENTITY extras.ttipDelayOmit "Omettre le délai infobulles">
+
+<!ENTITY contextmenu "Activer sensibilité contextuelle avec">
+<!ENTITY contextmenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
+<!ENTITY contextmenu.link "Lien">
+<!ENTITY contextmenu.image "Image">
+<!ENTITY contextmenu.selection "Sélection">
+<!ENTITY contextmenu.textbox "Zone de texte">
+<!ENTITY contextmenu.order "Régler ordre des menu">
+<!ENTITY contextmenu.imageFirst "Afficher actions d'image en premier">
+<!ENTITY contextmenu.textboxFirst "Afficher actions de zone de texte en premier">
+
+<!ENTITY move "Déplacer menu circulaire">
+<!ENTITY move.key "En appuyant sur touche Maj">
+<!ENTITY move.edge "En atteignant la bordure du menu">
+
+<!ENTITY func.empty "Vide">
+<!ENTITY func.more "Menu supplémentaire">
+<!ENTITY func.firstPage "Première page">
+<!ENTITY func.lastPage "Dernière page">
+<!ENTITY func.backSite "Site précédent">
+<!ENTITY func.forwardSite "Site suivant">
+<!ENTITY func.back "Précédente">
+<!ENTITY func.forward "Suivante">
+<!ENTITY func.reload "Actualiser-Arrêter">
+<!ENTITY func.up "Monter">
+<!ENTITY func.root "Racine">
+<!ENTITY func.pageTop "Haut de page">
+<!ENTITY func.pageBottom "Bas de page">
+<!ENTITY func.autoscrolling "Défilement automatique">
+
+<!ENTITY func.newTab "Nouvel onglet blanc">
+<!ENTITY func.duplicateTab "Dupliquer onglet">
+<!ENTITY func.prevTab "Onglet précédent">
+<!ENTITY func.nextTab "Onglet suivant">
+<!ENTITY func.closeTab "Fermer onglet">
+<!ENTITY func.closeOtherTabs "Fermer autres onglets">
+<!ENTITY func.undoCloseTab "Annuler fermer onglet">
+
+<!ENTITY func.newWindow "Nouvelle fenêtre">
+<!ENTITY func.duplicateWindow "Dupliquer fenêtre">
+<!ENTITY func.closeOtherWindows "Fermer autres fenêtres">
+<!ENTITY func.closeBrowser "Fermer navigateur">
+<!ENTITY func.minimizeWindow "Réduire fenêtre">
+<!ENTITY func.fullscreen "Basculer plein écran">
+
+<!ENTITY func.openLink "Ouvrir lien">
+<!ENTITY func.openLinkNewWindow "Ouvrir lien dans nouvelle fenêtre">
+<!ENTITY func.copyLink "Copier lien">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Copier l'adresse de l'image">
+<!ENTITY func.saveLinkAs "Enregistrer lien sous...">
+<!ENTITY func.saveImageAs "Sauvegarder image...">
+<!ENTITY func.savePageAs "Enregistrer page sous...">
+<!ENTITY func.hideImages "Cacher images">
+<!ENTITY func.copyImage "Copier Image">
+
+<!ENTITY func.homepage "Page de démarrage">
+<!ENTITY func.dailyReadings "Lectures quotidiennes">
+<!ENTITY func.searchWeb "Rechercher Web">
+<!ENTITY func.translate "Traduire/Expliquer">
+<!ENTITY func.runProgramFile1 "Exécuter programme 1">
+<!ENTITY func.runProgramFile2 "Exécuter programme 2">
+<!ENTITY func.runProgramFile3 "Exécuter programme 3">
+<!ENTITY func.runProgramFile4 "Exécuter programme 4">
+<!ENTITY func.runProgramFile5 "Exécuter programme 5">
+<!ENTITY func.runProgramFile6 "Exécuter programme 6">
+<!ENTITY func.runProgramFile7 "Exécuter programme 7">
+<!ENTITY func.runProgramFile8 "Exécuter programme 8">
+<!ENTITY func.runProgramFile9 "Exécuter programme 9">
+<!ENTITY func.runProgramFile10 "Exécuter programme 10">
+
+<!ENTITY func.loadURLScript1 "Charger URL/Script 1">
+<!ENTITY func.loadURLScript2 "Charger URL/Script 2">
+<!ENTITY func.loadURLScript3 "Charger URL/Script 3">
+<!ENTITY func.loadURLScript4 "Charger URL/Script 4">
+<!ENTITY func.loadURLScript5 "Charger URL/Script 5">
+<!ENTITY func.loadURLScript6 "Charger URL/Script 6">
+<!ENTITY func.loadURLScript7 "Charger URL/Script 7">
+<!ENTITY func.loadURLScript8 "Charger URL/Script 8">
+<!ENTITY func.loadURLScript9 "Charger URL/Script 9">
+<!ENTITY func.loadURLScript10 "Charger URL/Script 10">
+<!ENTITY func.loadURLScript11 "Charger URL/Script 11">
+<!ENTITY func.loadURLScript12 "Charger URL/Script 12">
+<!ENTITY func.loadURLScript13 "Charger URL/Script 13">
+<!ENTITY func.loadURLScript14 "Charger URL/Script 14">
+<!ENTITY func.loadURLScript15 "Charger URL/Script 15">
+<!ENTITY func.loadURLScript16 "Charger URL/Script 16">
+<!ENTITY func.loadURLScript17 "Charger URL/Script 17">
+<!ENTITY func.loadURLScript18 "Charger URL/Script 18">
+<!ENTITY func.loadURLScript19 "Charger URL/Script 19">
+<!ENTITY func.loadURLScript20 "Charger URL/Script 20">
+
+<!ENTITY func.markVisitedLinks "Marquer liens consultés">
+<!ENTITY func.bookmarkThisLink "Ajouter ce lien aux signets...">
+<!ENTITY func.bookmarkPage "Ajouter aux signets">
+<!ENTITY func.bookmarkOpenTabs "Ajouter onglets ouverts aux signets">
+<!ENTITY func.bookmarks "Basculer signets">
+<!ENTITY func.bookmarksToolbar "Basculer barre des signets">
+<!ENTITY func.history "Basculer historique">
+<!ENTITY func.viewPageSource "Afficher source">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Afficher ce cadre seulement">
+<!ENTITY func.properties "Propriétés">
+<!ENTITY func.printPage "Imprimer page">
+<!ENTITY func.mail "Courrier">
+<!ENTITY func.privateBrowsing "Basculer navigation privée">
+
+<!ENTITY func.cut "Couper">
+<!ENTITY func.copy "Copier">
+<!ENTITY func.paste "Coller">
+<!ENTITY func.undo "Annuler">
+<!ENTITY func.selectAll "Sélectionner tout">
+<!ENTITY func.highlight "Surligner/Nettoyer">
+<!ENTITY func.zoomIn "Zoom avant">
+<!ENTITY func.zoomOut "Zoom arrière">
+<!ENTITY func.zoomReset "Réinitialiser zoom">
+
+<!ENTITY input.infoSel "Vous pouvez sélectionner ces actions dans l'onglet d'actions.">
+<!ENTITY input.page1 "Page 1">
+<!ENTITY input.page2 "Page 2">
+<!ENTITY input.page3 "Page 3">
+<!ENTITY input.page4 "Page 4">
+<!ENTITY input.infoPlaceHolder "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
+
+<!ENTITY highlight "Personnaliser action 'Surligner/Nettoyer' ">
+<!ENTITY highlight.count "Afficher comptage">
+<!ENTITY highlight.color "Couleur">
+<!ENTITY highlight.code "Code">
+<!ENTITY highlight.restoreColors "Restaurer Couleurs">
+
+<!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
+<!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
+
+<!ENTITY search "Personnaliser action 'Rechercher Web' ">
+<!ENTITY search.query "URL de requête">
+<!ENTITY translate "Personnaliser action 'Traduire/Expliquer' ">
+
+<!ENTITY queries "Résultats de requête">
+<!ENTITY queries.newTab "Monter dans un nouvel onglet">
+<!ENTITY queries.curTab "Commencer dans onglet courant">
+<!ENTITY queries.newWindow "Montrer dans nouvelle fenêtre">
+
+<!ENTITY extern "Personnaliser action 'Exécuter programme' ">
+<!ENTITY extern.tab "Programme">
+<!ENTITY extern.name "Infobulle">
+<!ENTITY extern.path "Chemin">
+<!ENTITY extern.arguments "Arguments">
+<!ENTITY extern.browse "Parcourir...">
+<!ENTITY extern.icon "Utiliser icône de l'application">
+
+<!ENTITY urlscript "Personnaliser action 'Charger URL/Script' ">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Script">
+<!ENTITY urlscript.name "Infobulle">
+<!ENTITY urlscript.host "Host">
+<!ENTITY urlscript.code "Code">
+<!ENTITY urlscript.load "Charger les URLs">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "dans nouvel onglet">
+<!ENTITY urlscript.newWindow "dans nouvelle fenêtre">
+<!ENTITY urlscript.icon "Utiliser favicône du site">
+<!ENTITY urlscript.faviconNotFound "Favicône non trouvée. Continuer recherche ?">
+
+<!ENTITY changeIcon "Changer icône">
+<!ENTITY labelNewIcon "Nouvelle icône">
+
+<!ENTITY duplicatekey.warning "Cette touche est déjà utilisée ! Choisissez une touche différente.">
+
+<!ENTITY skins.change "Changer habillage">
+<!ENTITY skins.default "Classic Skin (par défaut)">
+<!ENTITY skins.more "Obtenez plus d'habillages">
+<!ENTITY skins.nopreview "No Preview">
+<!ENTITY skins.inUse "En usage">
+<!ENTITY skins.use "Utiliser habillage">
+<!ENTITY skins.uninstall "Désinstaller habillage">
+
+<!ENTITY tips "Astuces">
+<!ENTITY previousTip "Précédente">
+<!ENTITY nextTip "Suivante">
+<!ENTITY closeTip "Fermer">
+<!ENTITY intro "Saviez-vous...">
+<!ENTITY showTips "Montrer astuces au démarrage">
+<!ENTITY copyText "Copier texte dans le presse-papier">
+
+<!ENTITY tip1 "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé. |Changez bouton souris dans Options/Comportement">
+<!ENTITY tip2 "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
+<!ENTITY tip3 "Si vous appuyez sur 'Entrée' alors que le menu circulaire est affiché, vous pourrez y taper une URL. Appuyez ensuite sur 'Entrée' et l'URL s'ouvrira dans l'onglet courant. Appuyez sur 'Maj+Entrée' et l'URL s'ouvrira dans un nouvel onglet.">
+<!ENTITY tip4 "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé. |Changez bouton souris dans Options/Comportement">
+<!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL/Script'  et en les ajoutant ensuite dans les plans du menu circulaire. |Personnalisez dans Options/Personnalisations/Charger URL/Script">
+<!ENTITY tip6 "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire. |Ajoutez ou retirez actions dans Options/Actions">
+<!ENTITY tip7 "Vous pouvez lancer des applications externes et exécuter du code javascript avec les actions 'Exécuter programme' et 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension. |Personnalisez dans Options/Personnalisations/Exécuter programme">
+<!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet et affichera une marque rouge sur la page à la suite du lien.">
+<!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active. |Changez comportement dans Options/Comportement">
+<!ENTITY tip10 "Vous pouvez rechercher un mot avec votre moteur de recherche personnalisé par l'action 'Rechercher Web' en sélectionnant d'abord le mot ou en le tapant dans la zone de texte. Si celle-ci est laissée vide, la page de démarrage du moteur de recherche s'affichera. Idem pour l'action 'Traduire/Expliquer'.  |Enlevez ou ajout. moteurs recher. dans Options/Personnalisations/Requêtes">
+<!ENTITY tip11 "En maintenant la touche Insert appuyée sur un clic du bouton droit, vous pouvez supprimer le menu circulaire et accéder au menu contextuel standard.">
+<!ENTITY tip12 "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">
+<!ENTITY tip13 "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin. Il est aussi possible de renomer l'infobulle de chaque action. |Arrêtez l'affichage dans Options/Comportement">
+<!ENTITY tip14 "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.">
+<!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.">
+<!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger. |Activatez défilement automatique dans Options/Comportement">
+<!ENTITY tip17 "Vous pouvez surligner un ou plusieurs mots dans une page entière avec l'action 'Surligner/Nettoyer' en selectionnant d'abord le mot ou en le tapant dans la zone de texte. La même action nettoiera tous les surlignages si la zone de texte est laissée vide.">
+<!ENTITY tip18 "L'action 'Fermer onglet' ferme la fenêtre s'il n'y a qu'un seul onglet ouvert.">
+<!ENTITY tip19 "Vous pouvez faire en sorte que le menu circulaire ne s'affiche que lorsque vous glissez la souris ou après un court délai. |Changez comportement dans Options/Comportement">
+<!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
+<!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
+<!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet. Si aucun lien n'est pointé, celui dans le presse-papier (s'il existe) sera ouvert.">
+<!ENTITY tip23 "Vous pouvez changer la langue de easyGestures indépendamment de celle de Firefox.">
+<!ENTITY tip24 "Vous pouvez transformer le menu circulaire en un menu déroulant entièrement personnalisable.">
+<!ENTITY tip25 "Pour afficher les options directement soit à partir du menu circulaire en tapant / dans la barre d'adresses intégrée soit en double cliquant sur l'icône de easyGestures dans la barre d'état.">
+<!ENTITY tip26 "Quand l'action 'Lectures quotidiennes' est exécutée, un dossier de signets nommé *easyGestures* est créé la première fois dans la barre de signets et tous les signets qui y sont placés sont alors ouverts.">
+<!ENTITY tip27 "Vous pouvez activer/désactiver le menu easyGestures simplement en cliquant sur l'icône dans la barre d'état de la fenêtre Firefox. |Cacher cette icône dans Options/Profil/1">

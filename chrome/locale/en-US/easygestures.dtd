@@ -1,0 +1,338 @@
+<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "en-US">
+
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+
+<!ENTITY options "Options">
+<!ENTITY about "About">
+
+<!ENTITY ok "OK">
+<!ENTITY apply "Apply">
+<!ENTITY cancel "Cancel">
+<!ENTITY help "Help">
+<!ENTITY close "Close">
+
+<!ENTITY profile "Profile">
+<!ENTITY behavior "Behavior">
+<!ENTITY actions "Actions">
+<!ENTITY customizations "Customizations">
+<!ENTITY skins "Skins">
+
+<!ENTITY actions.main "Main Menu">
+<!ENTITY actions.extra "Extra Menu">
+<!ENTITY actions.info "Extra menu is displayed using the corresponding action.">
+<!ENTITY actions.alt "Disable">
+<!ENTITY actions.primary "Primary">
+<!ENTITY actions.alternative "Alternative">
+<!ENTITY actions.regular "Regular Actions">
+<!ENTITY actions.contextual "Contextual Actions">
+
+<!ENTITY customizations.loadURLScript "Load URL/Script">
+<!ENTITY customizations.runProgramFile "Run Program File">
+<!ENTITY customizations.queries "Queries">
+<!ENTITY customizations.misc "Miscellaneous">
+
+<!ENTITY about.version "Version">
+<!ENTITY about.languageInfo "Language">
+<!ENTITY about.stats "Statistics">
+<!ENTITY about.statsDisplay "Display Statistics">
+<!ENTITY about.statsReset "Reset Statistics">
+<!ENTITY about.manage "Manage Preferences">
+<!ENTITY about.import "Import Preferences...">
+<!ENTITY about.export "Export Preferences...">
+<!ENTITY about.reset "Reset Preferences">
+<!ENTITY about.startupTips "Show Tips at startup">
+<!ENTITY about.statusbarShowIcon "Show Icon in statusbar">
+<!ENTITY about.feedback "Your Feedback">
+<!ENTITY about.history "What's new">
+<!ENTITY about.createdBy "Created by">
+
+<!ENTITY stats.use "Pie Menu Use">
+<!ENTITY stats.novice "Novice">
+<!ENTITY stats.coolUser "Cool User">
+<!ENTITY stats.addicted "Addicted">
+<!ENTITY stats.master "Master">
+<!ENTITY stats.lastReset "Last Reset">
+<!ENTITY stats.actions "Clicks by Actions">
+<!ENTITY stats.directions "Clicks by Directions">
+<!ENTITY stats.main "Main Menu">
+<!ENTITY stats.extra "Extra Menu">
+<!ENTITY stats.total "Total">
+<!ENTITY stats.all "All Actions">
+
+<!ENTITY use "Open pie menu with">
+<!ENTITY use.button.left "left mouse button">
+<!ENTITY use.button.middle "middle mouse button">
+<!ENTITY use.button.right "right mouse button">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+
+<!ENTITY use.and "and">
+<!ENTITY use.shift "Shift key">
+<!ENTITY use.ctrl "Ctrl key">
+<!ENTITY use.dragOnly "Open only when dragging">
+<!ENTITY use.upleft "Up/Left only">
+<!ENTITY use.afterDelay "Open after delay">
+<!ENTITY use.alternative "Display alternative menu with">
+<!ENTITY use.also "(You can also use right Alt key)">
+
+<!ENTITY suppress "Suppress pie menu priority on mouse button with">
+<!ENTITY suppress.ins "Insert key">
+<!ENTITY suppress.alt "Alt key">
+<!ENTITY suppress.ctrl "Ctrl key">
+<!ENTITY suppress.custom "Custom key">
+<!ENTITY suppress.keycode "Keycode">
+
+<!ENTITY link "Customize 'Open Link' Action">
+<!ENTITY link.through "Enable clicking on links through pie menu center">
+<!ENTITY link.delay "Maximum delay for clicking (ms)">
+<!ENTITY link.throughAsAction "Use 'Open Link' Action Behavior">
+<!ENTITY link.throughAsBrowser "Use Browser Behavior">
+<!ENTITY link.curTab "Open link in current Tab">
+<!ENTITY link.newTab "Open link in new Tab">
+<!ENTITY link.newWindow "Open link in new Window">
+<!ENTITY link.xlink "tag link with">
+
+<!ENTITY autoscrolling "Autoscrolling through pie menu center">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Delay (ms)">
+
+<!ENTITY extras.menuType "Menu type">
+<!ENTITY extras.menu "Standard (8 actions)">
+<!ENTITY extras.largeMenu "Large (10 actions)">
+<!ENTITY extras.display "Display">
+<!ENTITY extras.noIcons "Basic display (don't display icons)">
+<!ENTITY extras.smallIcons "Use Small Icons">
+<!ENTITY extras.linearMenu "Transform into Linear Menu">
+<!ENTITY extras.menuOpacity "Pie Menu Opacity">
+<!ENTITY extras.ttip "Activate Tooltips">
+<!ENTITY extras.ttipDelayLabel "Tooltips delay (ms)">
+<!ENTITY extras.ttipDelayOmit "Omit Tooltips delay">
+
+<!ENTITY contextmenu "Activate contextual sensitivity with">
+<!ENTITY contextmenu.showAuto "Always activated. Use same key for suppressing sensitivity.">
+<!ENTITY contextmenu.link "Link">
+<!ENTITY contextmenu.image "Image">
+<!ENTITY contextmenu.selection "Selection">
+<!ENTITY contextmenu.textbox "Textbox">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image actions first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
+
+<!ENTITY move "Move pie menu">
+<!ENTITY move.key "By pressing Shift key">
+<!ENTITY move.edge "By reaching menu edge">
+
+<!ENTITY func.empty "Empty">
+<!ENTITY func.more "Extra Menu">
+<!ENTITY func.firstPage "First Page">
+<!ENTITY func.lastPage "Last Page">
+<!ENTITY func.backSite "Back Site">
+<!ENTITY func.forwardSite "Forward Site">
+<!ENTITY func.back "Back">
+<!ENTITY func.forward "Forward">
+<!ENTITY func.reload "Reload-Stop">
+<!ENTITY func.up "Up">
+<!ENTITY func.root "Root">
+<!ENTITY func.pageTop "Page Top">
+<!ENTITY func.pageBottom "Page Bottom">
+<!ENTITY func.autoscrolling "Autoscrolling">
+
+<!ENTITY func.newTab "New Blank Tab">
+<!ENTITY func.duplicateTab "Duplicate Tab">
+<!ENTITY func.prevTab "Previous Tab">
+<!ENTITY func.nextTab "Next Tab">
+<!ENTITY func.closeTab "Close Tab">
+<!ENTITY func.closeOtherTabs "Close Other Tabs">
+<!ENTITY func.undoCloseTab "Undo Close Tab">
+
+<!ENTITY func.newWindow "New Window">
+<!ENTITY func.duplicateWindow "Duplicate Window">
+<!ENTITY func.closeOtherWindows "Close Other Windows">
+<!ENTITY func.closeBrowser "Close Browser">
+<!ENTITY func.minimizeWindow "Minimize Window">
+<!ENTITY func.fullscreen "Toggle Fullscreen">
+
+<!ENTITY func.openLink "Open Link">
+<!ENTITY func.openLinkNewWindow "Open Link in New Window">
+<!ENTITY func.copyLink "Copy Link">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Copy Image Location">
+<!ENTITY func.saveLinkAs "Save Link As...">
+<!ENTITY func.saveImageAs "Save Image As...">
+<!ENTITY func.savePageAs "Save Page As...">
+<!ENTITY func.hideImages "Hide Images">
+<!ENTITY func.copyImage "Copy Image">
+
+<!ENTITY func.homepage "Home Page">
+<!ENTITY func.dailyReadings "Daily Readings">
+<!ENTITY func.searchWeb "Search Web">
+<!ENTITY func.translate "Translate/Explain">
+<!ENTITY func.runProgramFile1 "Run Program File 1">
+<!ENTITY func.runProgramFile2 "Run Program File 2">
+<!ENTITY func.runProgramFile3 "Run Program File 3">
+<!ENTITY func.runProgramFile4 "Run Program File 4">
+<!ENTITY func.runProgramFile5 "Run Program File 5">
+<!ENTITY func.runProgramFile6 "Run Program File 6">
+<!ENTITY func.runProgramFile7 "Run Program File 7">
+<!ENTITY func.runProgramFile8 "Run Program File 8">
+<!ENTITY func.runProgramFile9 "Run Program File 9">
+<!ENTITY func.runProgramFile10 "Run Program File 10">
+
+<!ENTITY func.loadURLScript1 "Load URL/Script 1">
+<!ENTITY func.loadURLScript2 "Load URL/Script 2">
+<!ENTITY func.loadURLScript3 "Load URL/Script 3">
+<!ENTITY func.loadURLScript4 "Load URL/Script 4">
+<!ENTITY func.loadURLScript5 "Load URL/Script 5">
+<!ENTITY func.loadURLScript6 "Load URL/Script 6">
+<!ENTITY func.loadURLScript7 "Load URL/Script 7">
+<!ENTITY func.loadURLScript8 "Load URL/Script 8">
+<!ENTITY func.loadURLScript9 "Load URL/Script 9">
+<!ENTITY func.loadURLScript10 "Load URL/Script 10">
+<!ENTITY func.loadURLScript11 "Load URL/Script 11">
+<!ENTITY func.loadURLScript12 "Load URL/Script 12">
+<!ENTITY func.loadURLScript13 "Load URL/Script 13">
+<!ENTITY func.loadURLScript14 "Load URL/Script 14">
+<!ENTITY func.loadURLScript15 "Load URL/Script 15">
+<!ENTITY func.loadURLScript16 "Load URL/Script 16">
+<!ENTITY func.loadURLScript17 "Load URL/Script 17">
+<!ENTITY func.loadURLScript18 "Load URL/Script 18">
+<!ENTITY func.loadURLScript19 "Load URL/Script 19">
+<!ENTITY func.loadURLScript20 "Load URL/Script 20">
+
+<!ENTITY func.markVisitedLinks "Mark Visited Links">
+<!ENTITY func.bookmarkThisLink "Bookmark This Link...">
+<!ENTITY func.bookmarkPage "Bookmark Page">
+<!ENTITY func.bookmarkOpenTabs "Bookmark Open Tabs">
+<!ENTITY func.bookmarks "Toggle Bookmarks">
+<!ENTITY func.bookmarksToolbar "Toggle Bookmarks Toolbar">
+<!ENTITY func.history "Toggle History">
+<!ENTITY func.viewPageSource "View Page Source">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Show Only This Frame">
+<!ENTITY func.properties "Properties">
+<!ENTITY func.printPage "Print Page">
+<!ENTITY func.mail "Mail">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+
+<!ENTITY func.cut "Cut">
+<!ENTITY func.copy "Copy">
+<!ENTITY func.paste "Paste">
+<!ENTITY func.undo "Undo">
+<!ENTITY func.selectAll "Select All">
+<!ENTITY func.highlight "Highlight/Clear">
+<!ENTITY func.zoomIn "Zoom In">
+<!ENTITY func.zoomOut "Zoom Out">
+<!ENTITY func.zoomReset "Reset Zoom">
+
+<!ENTITY input.infoSel "You can select these actions in the Actions tab.">
+<!ENTITY input.page1 "Page 1">
+<!ENTITY input.page2 "Page 2">
+<!ENTITY input.page3 "Page 3">
+<!ENTITY input.page4 "Page 4">
+<!ENTITY input.infoPlaceHolder "String placeholders: &#37;s (selection) and &#37;u (current URL).">
+
+<!ENTITY highlight "Customize 'Highlight/Clear' Action ">
+<!ENTITY highlight.count "Display count numbers">
+<!ENTITY highlight.color "Color">
+<!ENTITY highlight.code "Code">
+<!ENTITY highlight.restoreColors "Restore Colors">
+
+<!ENTITY closeTab "Customize 'Close Tab' Action ">
+<!ENTITY closeTab.closeBrowserOnLastTab "Close browser when last tab is closed">
+
+<!ENTITY search "Customize 'Search Web' Action ">
+<!ENTITY search.query "Query URL">
+<!ENTITY translate "Customize 'Translate/Explain' Action ">
+
+<!ENTITY queries "Query Results">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.curTab "Start showing in current tab">
+<!ENTITY queries.newWindow "Show in new window">
+
+<!ENTITY extern "Customize 'Run Program File' Actions ">
+<!ENTITY extern.tab "Program File">
+<!ENTITY extern.name "Tooltip">
+<!ENTITY extern.path "Path">
+<!ENTITY extern.arguments "Arguments">
+<!ENTITY extern.browse "Browse...">
+<!ENTITY extern.icon "Use Application Icon">
+
+<!ENTITY urlscript "Customize 'Load URL/Script' Actions ">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Script">
+<!ENTITY urlscript.name "Tooltip">
+<!ENTITY urlscript.host "Host">
+<!ENTITY urlscript.code "Code">
+<!ENTITY urlscript.load "Load URLs">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "in new Tab">
+<!ENTITY urlscript.newWindow "in new Window">
+<!ENTITY urlscript.icon "Use Site Favicon">
+<!ENTITY urlscript.faviconNotFound "Favicon not found yet. Continue search?">
+
+<!ENTITY changeIcon "Change Icon">
+<!ENTITY labelNewIcon "New Icon">
+
+<!ENTITY duplicatekey.warning "This key is already in use ! Choose a different key.">
+
+<!ENTITY skins.change "Change Skin">
+<!ENTITY skins.default "Classic Skin (default)">
+<!ENTITY skins.more "Get more skins">
+<!ENTITY skins.nopreview "No Preview">
+<!ENTITY skins.inUse "In Use">
+<!ENTITY skins.use "Use Skin">
+<!ENTITY skins.uninstall "Uninstall Skin">
+
+<!ENTITY tips "Tips">
+<!ENTITY previousTip "Previous">
+<!ENTITY nextTip "Next">
+<!ENTITY closeTip "Close">
+<!ENTITY intro "Did you know...">
+<!ENTITY showTips "Show Tips at startup">
+<!ENTITY copyText "Copy text to clipboard">
+
+<!ENTITY tip1 "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed. |Change mouse button in Options/Behavior">
+<!ENTITY tip2 "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
+<!ENTITY tip3 "If you press 'Enter' while the pie menu is displayed, you will be able to type an URL inside the pie menu. Pressing 'Enter' when done will open the URL in the current tab. Pressing 'Shift+Enter' will open the URL in a new tab. ">
+<!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed. |Change mouse button in Options/Behavior">
+<!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL/Script' actions then adding them in the pie menu layouts. |Customize in Options/Customizations/Load URL/Script">
+<!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in Options/Actions">
+<!ENTITY tip7 "You can launch external applications and execute javascript code with 'Run Program File' and 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension. |Customize in Options/Customizations/Run Program File">
+<!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab and display a red tag on the page after the link.">
+<!ENTITY tip9 "You can activate context sensitivity by pressing 'Ctrl' key when opening pie menu. You can also turn context sensitivity always on. |Change behavior in Options/Behavior">
+<!ENTITY tip10 "You can search for a word with your custom search engine with the 'Search Web' action by first selecting it on the page or typing it in the input box. If the input box is left blank, the search engine home page will be displayed. Same thing for 'Translate/Explain' action. |Add or remove search engines in Options/Customizations/Queries">
+<!ENTITY tip11 "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
+<!ENTITY tip12 "You can move around the pie menu by holding 'Shift' key while moving the mouse.">
+<!ENTITY tip13 "You can switch off the tooltips display if you don't need it. It is also possible to rename each action tooltip. |Switch off display in Options/Behavior">
+<!ENTITY tip14 "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.">
+<!ENTITY tip15 "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.">
+<!ENTITY tip16 "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving. |Activate autoscrolling in Options/Behavior">
+<!ENTITY tip17 "You can highlight a word or more in a whole page with the 'Highlight/Clear' action by first selecting it on the page or typing it in the input box. The same action will clear all highlights if the input box is left blank.">
+<!ENTITY tip18 "The 'Close tab' action closes the window if there is only one tab open.">
+<!ENTITY tip19 "You can have the pie menu displayed only when dragging the mouse or after a short delay. |Change behavior in Options/Behavior">
+<!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
+<!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
+<!ENTITY tip22 "The 'Open Link' action will open the pointed link in a new tab. If no link is pointed, the one in the clipboard (if any) will be opened.">
+<!ENTITY tip23 "You can switch easyGestures language regardless of Firefox.">
+<!ENTITY tip24 "You can turn the pie menu into a fully customizable drop down menu.">
+<!ENTITY tip25 "You can display the Options Dialog directly either from the pie menu by typing / in the integrated location bar or by double clicking on easygestures icon in the status bar.">
+<!ENTITY tip26 "When the 'Daily Readings' action is performed, a bookmarks folder named *easyGestures* is created the first time in the Bookmarks Toolbar and all bookmarks placed in it are then opened.">
+<!ENTITY tip27 "You can turn Off/On easyGestures menu simply by clicking on the icon in the statusbar of Firefox window. |Hide this icon in Options/Profile/1">

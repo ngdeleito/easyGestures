@@ -1,0 +1,302 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+  
+  END OF INSTRUCTIONS
+  -->
+  
+<!ENTITY locale "ko-KR">
+<!ENTITY welcome.click "원형 메뉴를 열려면 페이지 내에서 가운데 클릭하세요.">
+<!ENTITY welcome.onoff "상태 막대 내 파란 화살표를 해 원형 메뉴를 끄고 켤 수 있습니다.">
+<!ENTITY welcome.completed "easyGestures - 설치 완료">
+<!ENTITY options "선택사항">
+<!ENTITY about "확장기능 정보">
+<!ENTITY ok "확인">
+<!ENTITY apply "적용">
+<!ENTITY cancel "취소">
+<!ENTITY help "도움말">
+<!ENTITY close "닫기">
+<!ENTITY profile "프로파일">
+<!ENTITY behavior "행동">
+<!ENTITY actions "동작">
+<!ENTITY customizations "사용자 최적화">
+<!ENTITY skins "스킨">
+<!ENTITY actions.main "주 메뉴">
+<!ENTITY actions.extra "부가 메뉴">
+<!ENTITY actions.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다.">
+<!ENTITY actions.alt "사용안함">
+<!ENTITY actions.primary "우선">
+<!ENTITY actions.alternative "대안">
+<!ENTITY actions.regular "정규 동작">
+<!ENTITY actions.contextual "문맥상 동작">
+<!ENTITY customizations.loadURLScript "URL/스크립트 불러오기">
+<!ENTITY customizations.runProgramFile "프로그램 파일 실행">
+<!ENTITY customizations.queries "검색어">
+<!ENTITY customizations.misc "기타">
+<!ENTITY about.version "버전">
+<!ENTITY about.languageInfo "언어">
+<!ENTITY about.stats "통계">
+<!ENTITY about.statsDisplay "통계 표시">
+<!ENTITY about.statsReset "통계 초기화">
+<!ENTITY about.manage "속성 관리">
+<!ENTITY about.import "속성 불러오기">
+<!ENTITY about.export "속성 내보내기">
+<!ENTITY about.reset "속성 초기화">
+<!ENTITY about.startupTips "시작시 팁 표시">
+<!ENTITY about.statusbarShowIcon "상태막대 내 아이콘 표시">
+<!ENTITY about.feedback "의견 게재">
+<!ENTITY about.history "새로운 것">
+<!ENTITY about.createdBy "제작">
+<!ENTITY stats.use "원형 메뉴 사용">
+<!ENTITY stats.novice "신입">
+<!ENTITY stats.coolUser "멋진 사용자">
+<!ENTITY stats.addicted "중독된">
+<!ENTITY stats.master "달인">
+<!ENTITY stats.lastReset "최종 초기화">
+<!ENTITY stats.actions "동작으로 클릭">
+<!ENTITY stats.directions "방향으로 클릭">
+<!ENTITY stats.main "주 메뉴">
+<!ENTITY stats.extra "부가 메뉴">
+<!ENTITY stats.total "전체">
+<!ENTITY stats.all "모든 동작">
+<!ENTITY use "다음과 함께 원형 메뉴 열기">
+<!ENTITY use.button.left "왼쪽 마우스 버튼">
+<!ENTITY use.button.middle "가운데 마우스 버튼">
+<!ENTITY use.button.right "오른쪽 마우스 버튼">
+<!ENTITY use.button.custom "사용자 지정 마우스 버튼">
+<!ENTITY use.buttoncode "버튼 코드">
+<!ENTITY use.and "와(과)">
+<!ENTITY use.shift "Shift 키">
+<!ENTITY use.ctrl "Ctrl 키">
+<!ENTITY use.dragOnly "드래그시 에만 엽니다">
+<!ENTITY use.upleft "위로/왼쪽 만">
+<!ENTITY use.afterDelay "시간이 지나면 엽니다">
+<!ENTITY use.alternative "대체 메뉴 표시 방법">
+<!ENTITY use.also "(또한 오른쪽 Alt 키를 사용할수 있습니다)">
+<!ENTITY suppress "다음 키과 마우스 버튼으로 원형 메뉴 우선권을 제한시킵니다">
+<!ENTITY suppress.ins "Insert 키">
+<!ENTITY suppress.alt "Alt 키">
+<!ENTITY suppress.ctrl "Ctrl 키">
+<!ENTITY suppress.custom "사용자 지정 키">
+<!ENTITY suppress.keycode "키코드">
+<!ENTITY link "&apos;링크 열기&apos; 동작 지정">
+<!ENTITY link.through "원형 메뉴 중앙을 통해 링크 누르기가 가능하게 하기">
+<!ENTITY link.delay "클릭시 최대 지연시간(ms)">
+<!ENTITY link.throughAsAction "&apos;링크 열기&apos; 동작 행동 사용">
+<!ENTITY link.throughAsBrowser "브라우저 행동 사용">
+<!ENTITY link.curTab "현재 탭에 링크 열기">
+<!ENTITY link.newTab "새 탭으로 링크 열기">
+<!ENTITY link.newWindow "새 창으로 링크 열기">
+<!ENTITY link.xlink "링크에 태그를 붙임">
+<!ENTITY autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "지연시간(ms)">
+<!ENTITY extras.menuType "메뉴 형식">
+<!ENTITY extras.menu "표준(8 동작)">
+<!ENTITY extras.largeMenu "대형(10 동작)">
+<!ENTITY extras.display "표시">
+<!ENTITY extras.noIcons "기본 표시(아이콘 표시하지 않음)">
+<!ENTITY extras.smallIcons "작은 아이콘 사용">
+<!ENTITY extras.linearMenu "선형 메뉴로 변경">
+<!ENTITY extras.menuOpacity "원형 메뉴 투명도">
+<!ENTITY extras.ttip "툴팁 작동">
+<!ENTITY extras.ttipDelayLabel "툴팁 지연(ms)">
+<!ENTITY extras.ttipDelayOmit "곧바로 표시">
+<!ENTITY contextmenu "다음의 키로 상황 감지를 활성화">
+<!ENTITY contextmenu.showAuto "항시 활성화. 상황 감지의 무효화에도 같은 키를 사용합니다.">
+<!ENTITY contextmenu.link "링크">
+<!ENTITY contextmenu.image "이미지">
+<!ENTITY contextmenu.selection "선택">
+<!ENTITY contextmenu.textbox "문서상자">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "이미지 동작 우선 표시">
+<!ENTITY contextmenu.textboxFirst "이미지 문서상자 우선 표시">
+<!ENTITY move "원형 메뉴 이동">
+<!ENTITY move.key "Shift 키를 누를 경우">
+<!ENTITY move.edge "메뉴 모서리에 닿을 경우">
+<!ENTITY func.empty "비었음">
+<!ENTITY func.more "부가 메뉴">
+<!ENTITY func.firstPage "첫 페이지">
+<!ENTITY func.lastPage "마지막 페이지">
+<!ENTITY func.backSite "사이트 뒤로">
+<!ENTITY func.forwardSite "사이트 앞으로">
+<!ENTITY func.back "뒤로">
+<!ENTITY func.forward "앞으로">
+<!ENTITY func.reload "새로고침-중지">
+<!ENTITY func.up "위로">
+<!ENTITY func.root "루트">
+<!ENTITY func.pageTop "페이지 맨위로">
+<!ENTITY func.pageBottom "페이지 맨 밑으로">
+<!ENTITY func.autoscrolling "자동스크롤">
+<!ENTITY func.newTab "새 빈 탭">
+<!ENTITY func.duplicateTab "탭 복제">
+<!ENTITY func.prevTab "이전 탭">
+<!ENTITY func.nextTab "다음 탭">
+<!ENTITY func.closeTab "탭 닫기">
+<!ENTITY func.closeOtherTabs "다른 탭 닫기">
+<!ENTITY func.undoCloseTab "탭 닫기 취소">
+<!ENTITY func.newWindow "새 창">
+<!ENTITY func.duplicateWindow "창 복제">
+<!ENTITY func.closeOtherWindows "다른 창 닫기">
+<!ENTITY func.closeBrowser "브라우저 닫기">
+<!ENTITY func.minimizeWindow "창 최소화">
+<!ENTITY func.fullscreen "전체화면 전환">
+<!ENTITY func.openLink "링크 열기">
+<!ENTITY func.openLinkNewWindow "새 창으로 링크 열기">
+<!ENTITY func.copyLink "링크 복사">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "이미지 위치 복사">
+<!ENTITY func.saveLinkAs "새이름으로 링크 대상 저장">
+<!ENTITY func.saveImageAs "새 이름으로 이미지 저장">
+<!ENTITY func.savePageAs "새 이름으로 페이지 저장">
+<!ENTITY func.hideImages "이미지 감추기">
+<!ENTITY func.copyImage "이미지 복사">
+<!ENTITY func.homepage "홈 페이지">
+<!ENTITY func.dailyReadings "매일 읽기">
+<!ENTITY func.searchWeb "웹 검색">
+<!ENTITY func.translate "번역/해석">
+<!ENTITY func.runProgramFile1 "프로그램 파일 1 실행">
+<!ENTITY func.runProgramFile2 "프로그램 파일 2 실행">
+<!ENTITY func.runProgramFile3 "프로그램 파일 3 실행">
+<!ENTITY func.runProgramFile4 "프로그램 파일 4 실행">
+<!ENTITY func.runProgramFile5 "프로그램 파일 5 실행">
+<!ENTITY func.runProgramFile6 "프로그램 파일 6 실행">
+<!ENTITY func.runProgramFile7 "프로그램 파일 7 실행">
+<!ENTITY func.runProgramFile8 "프로그램 파일 8 실행">
+<!ENTITY func.runProgramFile9 "프로그램 파일 9 실행">
+<!ENTITY func.runProgramFile10 "프로그램 파일 10 실행">
+<!ENTITY func.loadURLScript1 "URL/스크립트 1 불러오기">
+<!ENTITY func.loadURLScript2 "URL/스크립트 2 불러오기">
+<!ENTITY func.loadURLScript3 "URL/스크립트 3 불러오기">
+<!ENTITY func.loadURLScript4 "URL/스크립트 4 불러오기">
+<!ENTITY func.loadURLScript5 "URL/스크립트 5 불러오기">
+<!ENTITY func.loadURLScript6 "URL/스크립트 6 불러오기">
+<!ENTITY func.loadURLScript7 "URL/스크립트 7 불러오기">
+<!ENTITY func.loadURLScript8 "URL/스크립트 8 불러오기">
+<!ENTITY func.loadURLScript9 "URL/스크립트 9 불러오기">
+<!ENTITY func.loadURLScript10 "URL/스크립트 10 불러오기">
+<!ENTITY func.loadURLScript11 "URL/스크립트 11 불러오기">
+<!ENTITY func.loadURLScript12 "URL/스크립트 12 불러오기">
+<!ENTITY func.loadURLScript13 "URL/스크립트 13 불러오기">
+<!ENTITY func.loadURLScript14 "URL/스크립트 14 불러오기">
+<!ENTITY func.loadURLScript15 "URL/스크립트 15 불러오기">
+<!ENTITY func.loadURLScript16 "URL/스크립트 16 불러오기">
+<!ENTITY func.loadURLScript17 "URL/스크립트 17 불러오기">
+<!ENTITY func.loadURLScript18 "URL/스크립트 18 불러오기">
+<!ENTITY func.loadURLScript19 "URL/스크립트 19 불러오기">
+<!ENTITY func.loadURLScript20 "URL/스크립트 20 불러오기">
+<!ENTITY func.markVisitedLinks "방문한 링크로 표시">
+<!ENTITY func.bookmarkThisLink "이 링크를 북마크에 추가...">
+<!ENTITY func.bookmarkPage "페이지를 북마크에 추가">
+<!ENTITY func.bookmarkOpenTabs "열린 탭들을 북마크에 추가">
+<!ENTITY func.bookmarks "북마크 전환">
+<!ENTITY func.bookmarksToolbar "북마크 도구막대 전환">
+<!ENTITY func.history "열어본 페이지 목록 전환">
+<!ENTITY func.viewPageSource "페이지 소스 표시">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "이 프레임만 표시">
+<!ENTITY func.properties "속성">
+<!ENTITY func.printPage "페이지 인쇄">
+<!ENTITY func.mail "메일">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.cut "잘라내기">
+<!ENTITY func.copy "복사">
+<!ENTITY func.paste "붙여넣기">
+<!ENTITY func.undo "실행취소">
+<!ENTITY func.selectAll "모두 선택">
+<!ENTITY func.highlight "강조/취소">
+<!ENTITY func.zoomIn "확대">
+<!ENTITY func.zoomOut "축소">
+<!ENTITY func.zoomReset "배율 초기화">
+<!ENTITY input.infoSel "동작 탭 내 이 동작들을 선택할 수 있습니다.">
+<!ENTITY input.page1 "페이지 1">
+<!ENTITY input.page2 "페이지 2">
+<!ENTITY input.page3 "페이지 3">
+<!ENTITY input.page4 "페이지 4">
+<!ENTITY input.infoPlaceHolder "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
+<!ENTITY highlight "'강조/취소'동작 사용자 지정">
+<!ENTITY highlight.count "계수된 숫자 표시">
+<!ENTITY highlight.color "색상">
+<!ENTITY highlight.code "코드">
+<!ENTITY highlight.restoreColors "색상 복구">
+<!ENTITY closeTab "'탭 닫기' 동작 사용자 지정">
+<!ENTITY closeTab.closeBrowserOnLastTab "마지막 탭이 닫혔을 때 브라우저 닫기">
+<!ENTITY search "'웹 검색' 동작 사용자 지정">
+<!ENTITY search.query "검색 URL">
+<!ENTITY translate "'번역/해석' 동작 사용자 지정">
+<!ENTITY queries "검색 결과">
+<!ENTITY queries.newTab "새 탭 내 표시">
+<!ENTITY queries.curTab "현재 탭으로 표시">
+<!ENTITY queries.newWindow "새 창으로 표시">
+<!ENTITY extern "'프로그램 파일 실행' 동작 사용자 지정">
+<!ENTITY extern.tab "프로그램 파일">
+<!ENTITY extern.name "툴팁">
+<!ENTITY extern.path "경로">
+<!ENTITY extern.arguments "인수">
+<!ENTITY extern.browse "찾아보기...">
+<!ENTITY extern.icon "응용프로그램 아이콘 사용">
+<!ENTITY urlscript "'URL/스크립트 불러오기' 동작 사용자 지정">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "스크립트">
+<!ENTITY urlscript.name "툴팁">
+<!ENTITY urlscript.host "호스트">
+<!ENTITY urlscript.code "코드">
+<!ENTITY urlscript.load "URL 불러오기">
+<!ENTITY urlscript.curTab "현재 탭으로">
+<!ENTITY urlscript.newTab "새 탭으로">
+<!ENTITY urlscript.newWindow "새 창으로">
+<!ENTITY urlscript.icon "사이트 파비콘 사용">
+<!ENTITY urlscript.faviconNotFound "파비콘을 찾을수 없습니다. 다시 검색할까요?">
+<!ENTITY changeIcon "아이콘 변경">
+<!ENTITY labelNewIcon "새 아이콘">
+<!ENTITY duplicatekey.warning "이 키는 이미 사용중입니다! 다른 키를 선택하세요.">
+<!ENTITY skins.change "스킨 변경">
+<!ENTITY skins.default "클래식 스킨 (기본)">
+<!ENTITY skins.more "더 많은 스킨 받기">
+<!ENTITY skins.nopreview "미리보기 없음">
+<!ENTITY skins.inUse "사용중">
+<!ENTITY skins.use "스킨 사용">
+<!ENTITY skins.uninstall "스킨 설치취소">
+<!ENTITY tips "팁">
+<!ENTITY previousTip "이전">
+<!ENTITY nextTip "다음">
+<!ENTITY closeTip "닫기">
+<!ENTITY intro "알고 있나요...">
+<!ENTITY showTips "시작시 팁 표시">
+<!ENTITY copyText "클립보드에 문서 복사">
+<!ENTITY tip1 "기본값에선 마우스의 가운데 버튼을 클릭해 원형 메뉴를 표시하게 되어 있습니다(Mac 유저는 제외). |선택사항/행동/페이지 1 내 마우스 버튼 변경">
+<!ENTITY tip2 "원형 메뉴를 사용하는 가장 빠른 방법은 우선 마우스 버튼을 누른 후 실행하고 싶은 동작까지 드래그 하고 나서 놓으세요. GUI와 함께 마우스 동작을 생각할 수 있을 것입니다.">
+<!ENTITY tip3 "원형 메뉴가 표시되고 있을 때 &apos;Enter&apos;키를 누르면, 거기에 URL을 입력할 수 있게 됩니다. URL 입력 후에 &apos;Enter&apos;키를 누르면, 현재의 탭에 열립니다. &apos;Shift+Enter&apos;키를 누르면, 새로운 탭으로 열립니다.">
+<!ENTITY tip4 "기본값으로, 원형 메뉴가 표시되어 있는 중에 오른쪽 클릭하면, 3가지의 자유롭게 설정 가능한 대체 메뉴로의 변경할 수 있게 되어 있습니다. 기본 마우스 버튼은 변경할 수가 있습니다.|선택사항/행동/페이지1 내에서 마우스 버튼 변경">
+<!ENTITY tip5 "&apos;URL/스크립트의 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다.|선택사항/사용자 최적화/URL/스크립트의 읽기 내에서 사용자 최적화">
+<!ENTITY tip6 "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다.|선택사항/동작 내에서 동작 추가 또는 삭제">
+<!ENTITY tip7 "&apos;프로그램 파일 실행&apos;와&apos;URL/스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.|선택사항/사용자최적화/프로그램 파일 실행 내에서 사용자지정">
+<!ENTITY tip8 "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
+<!ENTITY tip9 "파이 메뉴를 열 때에 &apos;Ctrl&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
+<!ENTITY tip10 "&apos;웹 검색&apos;동작을 사용하면, 원형 메뉴로부터 선택한 것 또는 입력상자에 입력한 것을 사용자가 지정한 검색 엔진으로 검색할 수 있습니다. 입력상자를 비워 두면, 검색 엔진의 홈 페이지가 표시됩니다. &apos;번역/해석&apos;동작도 비슷합니다.|선택사항/사용자최적화/검색어 내에서 검색엔진 추가 또는 삭제">
+<!ENTITY tip11 "오른쪽 클릭할 때 &apos;Insert&apos;키를 누르고 있으면, 원형 메뉴가 아닌 통상의 문맥메뉴가 표시됩니다.">
+<!ENTITY tip12 "마우스를 이동하고 있는 동안 &apos;Shift&apos; 키를 누르고 있으면, 원형 메뉴를 자유롭게 이동시킬 수가 있습니다.">
+<!ENTITY tip13 "만약 필요하지 않으면 툴 팁을 꺼 버릴수 있습니다. 툴 팁에 표시되는 각 동작이름을 변경하는 것도 가능합니다.|선택사항/행위/페이지2 내에서 표시끄기">
+<!ENTITY tip14 "반짝이는 표현을 유지하거나, 만약 글자 기반 취향인 경우 아이콘 없는 기본 표현으로 전환 할 수 있습니다. 작은 아이콘으로도 전환할 수 있습니다.">
+<!ENTITY tip15 "익숙한 사용자의 경우 하나의 원형 메뉴에 표시하는 동작의 수를 원래의 8개에서 10개로 늘릴 수 있을 겁니다.">
+<!ENTITY tip16 "표시된 원형 메뉴에 마우스의 가운데 버튼을 사용하면, Firefox의 &apos;자동 스크롤 사용&apos; 선택사항이 해제 됩니다. 원형 메뉴가 표시되고 나서 잠시동안 커서를 움직이지 않으면, 자동 스크롤 기능을 사용할 수 있도록 할 수 있습니다.|선택사항/행위/페이지2 내에서 자동 스크롤 활성화">
+<!ENTITY tip17 "&apos;강조/취소&apos;동작을 사용하면, 페이지내 처음 선택하거나 입력상자에 입력한 단어나 문장을 페이지내에서 강조 할 수가 있습니다. 동일 동작에서 만약 입력상자를 빈채로 남겨두면 모든 강조는 사라집니다.">
+<!ENTITY tip18 "&apos;탭 닫기&apos;동작은 만약 탭이 하나만 열린 경우 창을 닫습니다.">
+<!ENTITY tip19 "원형 메뉴를 여는 조건을 마우스를 드러그 했을 때나 일정시간이 경과했을 때로만 한정할 수도 있습니다. |선택사항/행위/페이지1 내에서 행위 변경">
+<!ENTITY tip20 "이미지에서의 배율조정 동작은 그 이미지에만 적용됩니다.">
+<!ENTITY tip21 "페이지를 &apos;뒤로&apos; 와 &apos;앞으로&apos;로 이동하는 대신, &apos;뒤 사이트&apos;와 &apos;앞 사이트&apos; 동작을 통해 사이트에 이동할수 있습니다.">
+<!ENTITY tip22 "&apos;링크를 열기&apos;동작은 지정된 링크를 새로운 탭으로 엽니다. 링크를 지정하고 있지 않는 경우에는 클립보드에 존재하는 링크를 엽니다.">
+<!ENTITY tip23 "Firefox에 관계없이 easyGestures 언어를 변경할 수 있습니다.">
+<!ENTITY tip24 "자유롭게 설정할 수 있는 드롭다운 메뉴를 원형 메뉴로부터 바꿀 수도 있습니다.">
+<!ENTITY tip25 "선택사항 대화상자를 직접 열려면, 원형 메뉴의 내장 위치 막대에 입력하거나, 상태 막대의 easyGestures의 아이콘을 더블 클릭 합니다.">
+<!ENTITY tip26 "&apos;매일 읽기&apos;동작이 실행되면, 처음에 *easyGestures* 라고 하는 폴더가 북마크 도구막대 폴더에 만들어집니다. 그 폴더에 있는 모든 북마크가, 동작 실행때마다 열립니다.">
+<!ENTITY tip27 "상태 막대의 아이콘을 클릭하면, easyGestures의 메뉴를 간단하게 온/오프 할 수 있습니다. |선택사항/프로파일/1 내에서 이 아이콘 숨기기">

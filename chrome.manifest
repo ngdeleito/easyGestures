@@ -1,22 +1,22 @@
 overlay chrome://browser/content/browser.xul chrome://easygestures/content/overlay.xul
 
-content easygestures jar:chrome/easygestures.jar!/content/ contentaccessible=yes 
-content customicons chrome/customicons/ contentaccessible=yes
+content easygestures chrome/content/     contentaccessible=yes
+content customicons  chrome/customicons/ contentaccessible=yes
 
-locale easygestures en-US jar:chrome/easygestures.jar!/locale/en-US/
-locale easygestures fr-FR  jar:chrome/easygestures.jar!/locale/fr-FR/
-locale easygestures de-DE jar:chrome/easygestures.jar!/locale/de-DE/
-locale easygestures pl-PL jar:chrome/easygestures.jar!/locale/pl-PL/
-locale easygestures zh-TW jar:chrome/easygestures.jar!/locale/zh-TW/
-locale easygestures es-ES jar:chrome/easygestures.jar!/locale/es-ES/
-locale easygestures pt-BR jar:chrome/easygestures.jar!/locale/pt-BR/
-locale easygestures ja-JP jar:chrome/easygestures.jar!/locale/ja-JP/
-locale easygestures sk-SK jar:chrome/easygestures.jar!/locale/sk-SK/
-locale easygestures ko-KR jar:chrome/easygestures.jar!/locale/ko-KR/
-locale easygestures it-IT jar:chrome/easygestures.jar!/locale/it-IT/
-locale easygestures hu-HU jar:chrome/easygestures.jar!/locale/hu-HU/
-locale easygestures tr-TR jar:chrome/easygestures.jar!/locale/tr-TR/
-locale easygestures cz-CZ jar:chrome/easygestures.jar!/locale/cz-CZ/
-locale easygestures zh-CN jar:chrome/easygestures.jar!/locale/zh-CN/
+locale easygestures en-US chrome/locale/en-US/
+locale easygestures fr-FR chrome/locale/fr-FR/
+locale easygestures de-DE chrome/locale/de-DE/
+locale easygestures pl-PL chrome/locale/pl-PL/
+locale easygestures zh-TW chrome/locale/zh-TW/
+locale easygestures es-ES chrome/locale/es-ES/
+locale easygestures pt-BR chrome/locale/pt-BR/
+locale easygestures ja-JP chrome/locale/ja-JP/
+locale easygestures sk-SK chrome/locale/sk-SK/
+locale easygestures ko-KR chrome/locale/ko-KR/
+locale easygestures it-IT chrome/locale/it-IT/
+locale easygestures hu-HU chrome/locale/hu-HU/
+locale easygestures tr-TR chrome/locale/tr-TR/
+locale easygestures cz-CZ chrome/locale/cz-CZ/
+locale easygestures zh-CN chrome/locale/zh-CN/
 
-skin easygestures classic/1.0 jar:chrome/easygestures.jar!/skin/classic/
+skin easygestures classic/1.0 chrome/skin/classic/

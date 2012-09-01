@@ -1,0 +1,286 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)INSTRUCTIONSContains options dialog strings and pie menu tips.- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.- make sure there is no BOM (Byte Order Mark) at the begining of the file.- only translate expressions between ""- all terms that are still displayed in english need to be translated or re-translated.- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:  use \u0022 code in these strings because of parsing.END OF INSTRUCTIONS-->
+<!ENTITY locale "hu-HU">
+<!ENTITY welcome.click "Középső kattintásra megnyílik a köralakú menü.">
+<!ENTITY welcome.onoff "Az állapotsoron található kék nyílra kattintva ki/bekapcsolható a köralakú menü.">
+<!ENTITY welcome.completed "easyGestures - telepítés befejeződött">
+<!ENTITY options "Beállítások">
+<!ENTITY about "Névjegy">
+<!ENTITY ok "OK">
+<!ENTITY apply "Alkalmaz">
+<!ENTITY cancel "Mégsem">
+<!ENTITY help "Súgó">
+<!ENTITY close "Bezárás">
+<!ENTITY profile "Profil">
+<!ENTITY behavior "Viselkedés">
+<!ENTITY actions "Műveletek">
+<!ENTITY customizations "Személyre szabás">
+<!ENTITY skins "Megjelenés">
+<!ENTITY actions.main "Főmenü">
+<!ENTITY actions.extra "Kiegészítő menü">
+<!ENTITY actions.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg.">
+<!ENTITY actions.alt "Kikapcsolás">
+<!ENTITY actions.primary "Elsődleges">
+<!ENTITY actions.alternative "Alternatív">
+<!ENTITY actions.regular "Általános műveletek">
+<!ENTITY actions.contextual "Környezetfüggő műveletek">
+<!ENTITY customizations.loadURLScript "URL/szkript betöltése">
+<!ENTITY customizations.runProgramFile "Program futtatása">
+<!ENTITY customizations.queries "Keresések">
+<!ENTITY customizations.misc "Egyéb">
+<!ENTITY about.version "Verzió">
+<!ENTITY about.languageInfo "Nyelv">
+<!ENTITY about.stats "Statisztikák">
+<!ENTITY about.statsDisplay "Statisztikák megjelenítése">
+<!ENTITY about.statsReset "Statisztikák nullázása">
+<!ENTITY about.manage "Beállítások kezelése">
+<!ENTITY about.import "Beállítások betöltése">
+<!ENTITY about.export "Beállítások kimentése">
+<!ENTITY about.reset "Beállítások alaphelyzetbe állítása">
+<!ENTITY about.startupTips "Tippek megjelenítése induláskor">
+<!ENTITY about.statusbarShowIcon "Ikon megjelenítése az állapotsoron">
+<!ENTITY about.feedback "Visszajelzés">
+<!ENTITY about.history "Újdonságok">
+<!ENTITY about.createdBy "Készítette">
+<!ENTITY stats.use "Körlakú menü használata">
+<!ENTITY stats.novice "Kezdő">
+<!ENTITY stats.coolUser "Menő">
+<!ENTITY stats.addicted "Függő">
+<!ENTITY stats.master "Mester">
+<!ENTITY stats.lastReset "Legutóbbi nullázás">
+<!ENTITY stats.actions "Kattintások műveletek szerint">
+<!ENTITY stats.directions "Kattintások irány szerint">
+<!ENTITY stats.main "Főmenü">
+<!ENTITY stats.extra "Kiegészítő menü">
+<!ENTITY stats.total "Összesen">
+<!ENTITY stats.all "Összes művelet">
+<!ENTITY use "Köralakú menü megnyitása">
+<!ENTITY use.button.left "a bal egérgombbal">
+<!ENTITY use.button.middle "a középső egérgombbal">
+<!ENTITY use.button.right "a jobb egérgombbal">
+<!ENTITY use.button.custom "egyéb egérgombbal">
+<!ENTITY use.buttoncode "gomb kódja">
+<!ENTITY use.and "és">
+<!ENTITY use.shift "Shíft billentyűvel">
+<!ENTITY use.ctrl "Ctrl billentyűvel">
+<!ENTITY use.dragOnly "Megnyitás csak húzáskor">
+<!ENTITY use.upleft "Csak felfelé/balra">
+<!ENTITY use.afterDelay "Késleltetett megnyitás">
+<!ENTITY use.alternative "Alternatív menü megjelenítése">
+<!ENTITY use.also "(A jobb oldali Alt billentyű is használható)">
+<!ENTITY suppress "Egérgombbal előhívott köralakú menü prioritásának elnyomása">
+<!ENTITY suppress.ins "az Insert billentyűvel">
+<!ENTITY suppress.alt "az Alt billentyűvel">
+<!ENTITY suppress.ctrl "a Ctrl billentyűvel">
+<!ENTITY suppress.custom "egyéb billentyűvel">
+<!ENTITY suppress.keycode "Billentyűkód">
+<!ENTITY link "'Hivatkozás megnyitása' művelet személyre szabása">
+<!ENTITY link.through "Hivatkozásra kattintás a köralakú menü közepén keresztül">
+<!ENTITY link.delay "Késleltetés legfeljebb (ms)">
+<!ENTITY link.throughAsAction "'Hivatkozás megnyitása' művelet viselkedésének használata">
+<!ENTITY link.throughAsBrowser "Böngésző viselkedésének átvétele">
+<!ENTITY link.curTab "Hivatkozás megnyitása az aktuális lapon">
+<!ENTITY link.newTab "Hivatkozás megnyitása új lapon">
+<!ENTITY link.newWindow "Hivatkozás megnyitása új ablakban">
+<!ENTITY link.xlink "Hivatkozás megjelölése">
+<!ENTITY autoscrolling "Automatikus görgetés a köralakú menü közepén keresztül">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Késleltetés (ms)">
+<!ENTITY extras.menuType "Menü típusa">
+<!ENTITY extras.menu "Normál (8 művelet)">
+<!ENTITY extras.largeMenu "Nagy (10 művelet)">
+<!ENTITY extras.display "Megjelenés">
+<!ENTITY extras.noIcons "Egyszerű megjelenés (ikonok elrejtése)">
+<!ENTITY extras.smallIcons "Kis ikonok használata">
+<!ENTITY extras.linearMenu "Átalakítás függőleges menüvé">
+<!ENTITY extras.menuOpacity "Köralakú menü áttetszősége">
+<!ENTITY extras.ttip "Felbukkanó tippek megjelenítése">
+<!ENTITY extras.ttipDelayLabel "Felbukkanó tippek késleltetése (ms)">
+<!ENTITY extras.ttipDelayOmit "Felbukkanó tippek késleltetésének mellőzése">
+<!ENTITY contextmenu "Környezetfüggő működés aktiválása">
+<!ENTITY contextmenu.showAuto "Mindig aktív, ez a billentyű a környezetfüggő menü mellőzésére szolgál.">
+<!ENTITY contextmenu.link "Hivatkozás">
+<!ENTITY contextmenu.image "Kép">
+<!ENTITY contextmenu.selection "Kijelölés">
+<!ENTITY contextmenu.textbox "Szövegdoboz">
+<!ENTITY contextmenu.order "Menük sorrendjének beállítása">
+<!ENTITY contextmenu.imageFirst "Először kép műveletek mutatása">
+<!ENTITY contextmenu.textboxFirst "Először szövegdoboz műveletek mutatása">
+<!ENTITY move "Köralakú menü mozgatása">
+<!ENTITY move.key "Shift billentyű lenyomásával">
+<!ENTITY move.edge "a menü szélének elérésekor">
+<!ENTITY func.empty "Üres">
+<!ENTITY func.more "Kiegészítő Menü">
+<!ENTITY func.firstPage "Első oldal">
+<!ENTITY func.lastPage "Utolsó oldal">
+<!ENTITY func.backSite "Előző honlap">
+<!ENTITY func.forwardSite "Következő honlap">
+<!ENTITY func.back "Vissza">
+<!ENTITY func.forward "Előre">
+<!ENTITY func.reload "Frissítés-Leállítás">
+<!ENTITY func.up "Fel">
+<!ENTITY func.root "Honlap gyökeréhez">
+<!ENTITY func.pageTop "Oldal tetejére">
+<!ENTITY func.pageBottom "Oldal aljára">
+<!ENTITY func.autoscrolling "Automatikus görgetés">
+<!ENTITY func.newTab "Új üres lap">
+<!ENTITY func.duplicateTab "Lap megkettőzése">
+<!ENTITY func.prevTab "Előző lap">
+<!ENTITY func.nextTab "Következő lap">
+<!ENTITY func.closeTab "Lap bezárása">
+<!ENTITY func.closeOtherTabs "Többi lap bezárása">
+<!ENTITY func.undoCloseTab "Lap bezárásának visszavonása">
+<!ENTITY func.newWindow "Új ablak">
+<!ENTITY func.duplicateWindow "Ablak megkettőzése">
+<!ENTITY func.closeOtherWindows "Többi ablak bezárása">
+<!ENTITY func.closeBrowser "Böngésző bezárása">
+<!ENTITY func.minimizeWindow "Ablak minimalizálása">
+<!ENTITY func.fullscreen "Teljes képernyő">
+<!ENTITY func.openLink "Hivatkozás megnyitása">
+<!ENTITY func.openLinkNewWindow "Hivatkozás megnyitása új ablakban">
+<!ENTITY func.copyLink "Hivatkozás címének másolása">
+<!ENTITY func.sendLink "Hivatkozás küldése...">
+<!ENTITY func.copyImageLocation "Kép címének másolása">
+<!ENTITY func.saveLinkAs "Hivatkozás mentése más néven...">
+<!ENTITY func.saveImageAs "Kép mentése más néven...">
+<!ENTITY func.savePageAs "Oldal mentése más néven...">
+<!ENTITY func.hideImages "Képek elrejtése">
+<!ENTITY func.copyImage "Kép másolása">
+<!ENTITY func.homepage "Kezdőlap">
+<!ENTITY func.dailyReadings "Napi olvasnivaló">
+<!ENTITY func.searchWeb "Keresés">
+<!ENTITY func.translate "Fordítás/Magyarázat">
+<!ENTITY func.runProgramFile1 "Program futtatása 1">
+<!ENTITY func.runProgramFile2 "Program futtatása 2">
+<!ENTITY func.runProgramFile3 "Program futtatása 3">
+<!ENTITY func.runProgramFile4 "Program futtatása 4">
+<!ENTITY func.runProgramFile5 "Program futtatása 5">
+<!ENTITY func.runProgramFile6 "Program futtatása 6">
+<!ENTITY func.runProgramFile7 "Program futtatása 7">
+<!ENTITY func.runProgramFile8 "Program futtatása 8">
+<!ENTITY func.runProgramFile9 "Program futtatása 9">
+<!ENTITY func.runProgramFile10 "Program futtatása 10">
+<!ENTITY func.loadURLScript1 "Hivatkozás/szkript betöltése 1">
+<!ENTITY func.loadURLScript2 "Hivatkozás/szkript betöltése 2">
+<!ENTITY func.loadURLScript3 "Hivatkozás/szkript betöltése 3">
+<!ENTITY func.loadURLScript4 "Hivatkozás/szkript betöltése 4">
+<!ENTITY func.loadURLScript5 "Hivatkozás/szkript betöltése 5">
+<!ENTITY func.loadURLScript6 "Hivatkozás/szkript betöltése 6">
+<!ENTITY func.loadURLScript7 "Hivatkozás/szkript betöltése 7">
+<!ENTITY func.loadURLScript8 "Hivatkozás/szkript betöltése 8">
+<!ENTITY func.loadURLScript9 "Hivatkozás/szkript betöltése 9">
+<!ENTITY func.loadURLScript10 "Hivatkozás/szkript betöltése 10">
+<!ENTITY func.loadURLScript11 "Hivatkozás/szkript betöltése 11">
+<!ENTITY func.loadURLScript12 "Hivatkozás/szkript betöltése 12">
+<!ENTITY func.loadURLScript13 "Hivatkozás/szkript betöltése 13">
+<!ENTITY func.loadURLScript14 "Hivatkozás/szkript betöltése 14">
+<!ENTITY func.loadURLScript15 "Hivatkozás/szkript betöltése 15">
+<!ENTITY func.loadURLScript16 "Hivatkozás/szkript betöltése 16">
+<!ENTITY func.loadURLScript17 "Hivatkozás/szkript betöltése 17">
+<!ENTITY func.loadURLScript18 "Hivatkozás/szkript betöltése 18">
+<!ENTITY func.loadURLScript19 "Hivatkozás/szkript betöltése 19">
+<!ENTITY func.loadURLScript20 "Hivatkozás/szkript betöltése 20">
+<!ENTITY func.markVisitedLinks "Meglátogatott hivatkozások megjelölése">
+<!ENTITY func.bookmarkThisLink "Hivatkozás felvétele a könyvjelzők közé...">
+<!ENTITY func.bookmarkPage "Oldal felvétele a könyvjelzők közé...">
+<!ENTITY func.bookmarkOpenTabs "Minden lap egy könyvjelzőbe...">
+<!ENTITY func.bookmarks "Könyvjelzők megjelenítése">
+<!ENTITY func.bookmarksToolbar "Könyvjelzők megjelenítése az oldalsávban">
+<!ENTITY func.history "Előzmények megjelenítése">
+<!ENTITY func.viewPageSource "Oldal forrása">
+<!ENTITY func.viewPageInfo "Oldal tulajdonságainak megtekintése">
+<!ENTITY func.showOnlyThisFrame "Csak ezt a keretet mutassa">
+<!ENTITY func.properties "Tulajdonságok">
+<!ENTITY func.printPage "Oldal nyomtatása">
+<!ENTITY func.mail "Levél">
+<!ENTITY func.privateBrowsing "Privát böngészés">
+<!ENTITY func.cut "Kivágás">
+<!ENTITY func.copy "Másolás">
+<!ENTITY func.paste "Beillesztés">
+<!ENTITY func.undo "Visszavonás">
+<!ENTITY func.selectAll "Minden kijelölése">
+<!ENTITY func.highlight "Kiemelés/törlés">
+<!ENTITY func.zoomIn "Nagyítás">
+<!ENTITY func.zoomOut "Kicsinyítés">
+<!ENTITY func.zoomReset "Visszaállítás">
+<!ENTITY input.infoSel "Ezek a műveletek a Műveletek lapon választhatóak ki.">
+<!ENTITY input.page1 "1. oldal">
+<!ENTITY input.page2 "2. oldal">
+<!ENTITY input.page3 "3. oldal">
+<!ENTITY input.page4 "4. oldal">
+<!ENTITY input.infoPlaceHolder "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
+<!ENTITY highlight "'Kiemelés/törlés' művelet személyre szabása">
+<!ENTITY highlight.count "Számlálók megjelenítése">
+<!ENTITY highlight.color "Szín">
+<!ENTITY highlight.code "Kód">
+<!ENTITY highlight.restoreColors "Színek visszaállítása">
+<!ENTITY closeTab "'Lap bezárása' művelet személyre szabása">
+<!ENTITY closeTab.closeBrowserOnLastTab "Böngésző bezárása az utolsó lap bezárásakor">
+<!ENTITY search "'Keresés' művelet személyre szabása">
+<!ENTITY search.query "Kereső URL">
+<!ENTITY translate "'Fordítás/Magyarázat' művelet személyre szabása">
+<!ENTITY queries "Keresés eredménye">
+<!ENTITY queries.newTab "új lapon jelenjen meg">
+<!ENTITY queries.curTab "az aktuális lapon jelenjenek meg">
+<!ENTITY queries.newWindow "új ablakban jelenjenek meg">
+<!ENTITY extern "'Program futtatása' művelet személyre szabása">
+<!ENTITY extern.tab "Program">
+<!ENTITY extern.name "Felbukkanó tipp">
+<!ENTITY extern.path "Útvonal">
+<!ENTITY extern.arguments "Paraméterek">
+<!ENTITY extern.browse "Tallózás...">
+<!ENTITY extern.icon "Program ikonjának használata">
+<!ENTITY urlscript "'URL/szkript betöltése' művelet személyre szabása">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Szkript">
+<!ENTITY urlscript.name "Felbukkanó tipp">
+<!ENTITY urlscript.host "Kiszolgáló">
+<!ENTITY urlscript.code "Kód">
+<!ENTITY urlscript.load "URL-ek betöltése">
+<!ENTITY urlscript.curTab "az aktuális lapon">
+<!ENTITY urlscript.newTab "új lapon">
+<!ENTITY urlscript.newWindow "új ablakban">
+<!ENTITY urlscript.icon "Könyvjelzőikon használata">
+<!ENTITY urlscript.faviconNotFound "Könyvejelzőikon nincs meg. Keresés folytatása?">
+<!ENTITY changeIcon "Ikon megváltoztatása">
+<!ENTITY labelNewIcon "Új ikon">
+<!ENTITY duplicatekey.warning "Ez a billentyű már foglalt! Válassz egy másikat!">
+<!ENTITY skins.change "Megjelenés megváltoztatása">
+<!ENTITY skins.default "Klasszikus megjelenés (alapbeállítás)">
+<!ENTITY skins.more "További megjelenések letöltése">
+<!ENTITY skins.nopreview "Nincs előnézet">
+<!ENTITY skins.inUse "Aktív">
+<!ENTITY skins.use "Megjelenés alkalmazása">
+<!ENTITY skins.uninstall "Megjelenés eltávolítása">
+<!ENTITY tips "Tippek">
+<!ENTITY previousTip "Előző">
+<!ENTITY nextTip "Következő">
+<!ENTITY closeTip "Bezárás">
+<!ENTITY intro "Tudtad-e...">
+<!ENTITY showTips "Tippek megjelenítése indításkor">
+<!ENTITY copyText "Szöveg másolása a vágólapra">
+<!ENTITY tip1 "Az alapbeállítások szerint a középső egérgomb nyitja meg a köralakú menüt (hacsak nem Mac felhasználó vagy). Az alapértelmezett egérgomb megváltoztatható. |Az egérgomb beállításai a Beállítások/Működés/1. oldalon találhatóak.">
+<!ENTITY tip2 "A leggyorsabb módszer a menü használatára: nyomd le az egérgombot, húzd a kiválasztott funkció fölé, majd engedd fel a gombot. Vagyis ez valójában egy egérmozdulat, amelyhez grafikus felület tartozik.">
+<!ENTITY tip3 "Ha megnyomod az &quot;Enter&quot; billentyűt miközben a menü látható, akkor beírhatsz egy URL-t. Ha kész vagy, üss még egy &quot;Entert&quot; és az URL betöltődik az adott lapon. Ha &quot;Shift+Entert&quot; nyomsz ilyenkor, akkor az URL egy új lapon nyílik meg.">
+<!ENTITY tip4 "Alapesetben ha nyitva van a menü és a jobb gombbal kattintasz, akkor megjelenik az alternatív funkciók listája: összesen három, teljesen személyre szabható beállítás között válthatsz így. Az alapértelmezett egérgomb megváltoztatható. |Az egérgomb beállításai a Beállítások/Működés/1. oldalon találhatóak.">
+<!ENTITY tip5 "Az easyGestures megnyitja a kedvenc könyvjelzőidet, ha az &quot;URL/szkript betöltése&quot; funkcióknál beállítod őket, majd hozzáadod a köralakú menükhöz.|A beállításokat a Beállítások/Személyre szabás/URL/szkript betöltése oldalon találod.">
+<!ENTITY tip6 "Mindegyik menü kiosztását számos beépített funkcióval szabhatod személyre. A használati statisztikák segítenek a köralakú menü optimalizálásában. |Az egyes funkciók hozzáadásához vagy eltávolításához nyisd meg a Beállítások/Funkciók oldalt.">
+<!ENTITY tip7 "Külső programokat vagy javascript kódot futtatthathatsz a &quot;Program futtatása&quot; és az &quot;URL/szkript betöltése&quot; funkciók segítségével. De például bármilyen Firefox API funkciót vagy egy másik kiegészítés egy funkcióját is meghívhatod ilyen módon. |A beállításokat a Beállítások/Személyre szabás/Program futtatása oldalon találod.">
+<!ENTITY tip8 "Ha elég gyorsan kattintasz a menü közepén keresztül egy hivatkozásra és közben nem mozdítod meg az egeret, akkor a hivatkozás megnyílik egy új lapon és egy piros jelet rak az oldalra a hivatkozás után.">
+<!ENTITY tip9 "A tartalomfüggő menü megjelenítéséhez nyomd le a Ctrl billentyűt mielőtt megnyitod a menüt. De akár állandósíthatod is a tartalomfüggő menü megjelenését. |A beállításokat keresd a Beállítások/Működés/1. oldalon.">
+<!ENTITY tip10 "A &quot;Keresés&quot; funkció használatával rákereshetsz egy szóra valamely keresővel, ha előtte kijelölted az oldalon vagy beírtad a szövegdobozba. Ha üresen hagyod a beviteli mezőt, a keresőoldal kezdőlapja jelenik meg. Ugyanez igaz a &quot;Fordítás/magyarázat&quot; funkcióra is. |Keresőmotorok hozzáadásához vagy eltávolításához nyisd meg a Beállítások/Személyre szabás/1. oldalt.">
+<!ENTITY tip11 "Ha nyomva tartod az Insert gombot, miközben a jobb egérgombbal kattintasz, akkor megakadályozhatod, hogy a köralakú menü felbukkanjon, így a hagyományos helyi menü jelenik meg helyette.">
+<!ENTITY tip12 "Mozgathatod a menüt, ha lenyomva tartod a Shift billentyűt miközben mozgatod az egeret.">
+<!ENTITY tip13 "A súgószövegek megjelenítését kikapcsolhatod, ha nincs szükséged rájuk. De akár át is nevezheted az összes súgószöveget. |A Beállítások/Működés/2. oldalon tudod őket kikapcsolni.">
+<!ENTITY tip14 "Megtarthatod a csillogó-villogó külsőt vagy átválthatsz egy ikonok nélküli, egyszerűbb megjelenítésre, ha inkább a szöveges kiírást szereted. De akár kis ikonokat is használhatsz.">
+<!ENTITY tip15 "A haladó felhasználók több funkciót használhatnak, hiszen nyolc helyett akár tíz menüelem is megjeleníthető mindhárom kiosztáson.">
+<!ENTITY tip16 "A Firefox &quot;Automatikus görgetés&quot; funkcióját kikapcsolja, ha a középső egérgomb jeleníti meg a köralakú menüt. Az automatikus görgetés elérhető úgy is, ha a köralakú menün keresztül kattintasz mozgatás nélkül. |Az automatikus görgetés a Beállítások/Működés/2. oldalon kapcsolható be és a késleltetését is itt lehet beállítani.">
+<!ENTITY tip17 "Kiemelhetsz egy vagy több szót egy oldalon a &quot;Kiemelés/törlés&quot; funkcióval, közvetlen kijelöléssel vagy a szövegdobozba gépelve. Ugyanez a funkció kitörli az összes kiemelést, ha a szövegdoboz üres.">
+<!ENTITY tip18 "A &quot;Fül bezárása&quot; funkció bezárja az ablakot is, ha csak egy fül van megnyitva.">
+<!ENTITY tip19 "Beállítható az is, hogy csak akkor húzáskor vagy késleltetve jelenjen meg a köralakú menü. |A Beállítások/Működés/1. oldalon lehet ezeket beállítani.">
+<!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
+<!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
+<!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket. Ha nincs kiválasztott hivatkozás, akkor a vágólapon lévő (amennyiben van ott) hivatkozás nyílik meg.">
+<!ENTITY tip23 "Az easyGestures nyelve a Firefoxtól függetlenül állítható.">
+<!ENTITY tip24 "A köralakú menüt egy teljesen személyre szabható legördülő menüvé alakíthatod.">
+<!ENTITY tip25 "A Beállításokat közvetlenül a menüből is megnyithatod, ha a beépített címmezőbe &quot;/&quot; jelet gépelsz vagy duplán rákattintasz az easyGestures ikonra.">
+<!ENTITY tip26 "Amikor első alkalommal kattintasz a &quot;Napi olvasnivaló&quot; funkcióra, akkor egy &quot;easyGestures&quot; nevű mappa jön létre a Könyvjelző eszköztáron. A következő alkalmakkor az itt elhelyezett könyvjelzők nyílnak meg.">
+<!ENTITY tip27 "Az easyGestrues menüt könnyen ki/bekapcsolhatod, ha rákattintasz az ikonra a státuszsorban. |Az ikont a Beállítások/Profil/1. oldalon elrejtheted.">

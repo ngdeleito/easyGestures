@@ -1,0 +1,338 @@
+﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
+
+INSTRUCTIONS
+
+Contains options dialog strings and pie menu tips.
+
+- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
+- make sure there is no BOM (Byte Order Mark) at the begining of the file.
+
+- only translate expressions between ""
+- all terms that are still displayed in english need to be translated or re-translated.
+- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
+  use \u0022 code in these strings because of parsing.
+
+END OF INSTRUCTIONS
+-->
+
+<!ENTITY locale "cz-CZ">
+
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+
+<!ENTITY options "Možnosti">
+<!ENTITY about "O pluginu">
+
+<!ENTITY ok "OK">
+<!ENTITY apply "Použít">
+<!ENTITY cancel "Zrušit">
+<!ENTITY help "Nápověda">
+<!ENTITY close "Zavřít">
+
+<!ENTITY profile "Profil">
+<!ENTITY behavior "Chování">
+<!ENTITY actions "Akce">
+<!ENTITY customizations "Přizpůsobení">
+<!ENTITY skins "Skiny">
+
+<!ENTITY actions.main "Hlavní nabídka">
+<!ENTITY actions.extra "Extra nabídka">
+<!ENTITY actions.info "Extra nabídka je zobrazená při použití odpovídající akce.">
+<!ENTITY actions.alt "Zakázat">
+<!ENTITY actions.primary "Primární">
+<!ENTITY actions.alternative "Alternativní">
+<!ENTITY actions.regular "Pravidelné akce">
+<!ENTITY actions.contextual "Kontextové akce">
+
+<!ENTITY customizations.loadURLScript "Načíst URL/skript">
+<!ENTITY customizations.runProgramFile "Spustit program">
+<!ENTITY customizations.queries "Požadavky">
+<!ENTITY customizations.misc "Různé">
+
+<!ENTITY about.version "Verze">
+<!ENTITY about.languageInfo "Jazyk">
+<!ENTITY about.stats "Statistiky">
+<!ENTITY about.statsDisplay "Zobrazit statistiky">
+<!ENTITY about.statsReset "Vynulovat statistiky">
+<!ENTITY about.manage "Změny nastavení">
+<!ENTITY about.import "Importovat nastavení...">
+<!ENTITY about.export "Exportovat nastavení...">
+<!ENTITY about.reset "Obnovit nastavení">
+<!ENTITY about.startupTips "Zobrazit tipy při startu">
+<!ENTITY about.statusbarShowIcon "Zobrazit ikonu ve stavovém řádku">
+<!ENTITY about.feedback "Vaše odezva">
+<!ENTITY about.history "Novinky">
+<!ENTITY about.createdBy "Vytvořil">
+
+<!ENTITY stats.use "Využití nabídky">
+<!ENTITY stats.novice "Začátečník">
+<!ENTITY stats.coolUser "Pohodový uživatel">
+<!ENTITY stats.addicted "Nadšenec">
+<!ENTITY stats.master "Zkušený uživatel">
+<!ENTITY stats.lastReset "Poslední vynulování">
+<!ENTITY stats.actions "Kliknutí podle akce">
+<!ENTITY stats.directions "Kliknutí podle směru">
+<!ENTITY stats.main "Hlavní nabídka">
+<!ENTITY stats.extra "Rozšířená nabídka">
+<!ENTITY stats.total "Celkově">
+<!ENTITY stats.all "Všechny akce">
+
+<!ENTITY use "Otevřít nabídku menu">
+<!ENTITY use.button.left "levým tlačítkem myši">
+<!ENTITY use.button.middle "prostředním tlačítkem myši">
+<!ENTITY use.button.right "pravým tlačítkem myši">
+<!ENTITY use.button.custom "uživatelským tlačítkem myši">
+<!ENTITY use.buttoncode "kód tlačítka">
+
+<!ENTITY use.and "a">
+<!ENTITY use.shift "klávesou Shift">
+<!ENTITY use.ctrl "klávesou Ctrl">
+<!ENTITY use.dragOnly "Otevřít jen při tažení">
+<!ENTITY use.upleft "jen nahoru/doleva">
+<!ENTITY use.afterDelay "jen po zpoždění">
+<!ENTITY use.alternative "Zobrazit alternativní nabídku s">
+<!ENTITY use.also "(Kromě toho můžete použít i pravý Alt)">
+
+<!ENTITY suppress "Potlačit zobrazení nabídky s">
+<!ENTITY suppress.ins "klávesou Insert">
+<!ENTITY suppress.alt "klávesou Alt">
+<!ENTITY suppress.ctrl "klávesou Ctrl">
+<!ENTITY suppress.custom "definovanou klávesou">
+<!ENTITY suppress.keycode "Kód klávesy">
+
+<!ENTITY link "Přizpůsobit akci &apos;Otevřít odkaz&apos;">
+<!ENTITY link.through "Povolit kliknutí na odkaz přes střed nabídky">
+<!ENTITY link.delay "Maximální zpoždění pro kliknutí (ms)">
+<!ENTITY link.throughAsAction "Použít chování akce &apos;Otevřít odkaz&apos;">
+<!ENTITY link.throughAsBrowser "Použít chování prohlížeče">
+<!ENTITY link.curTab "Otevřít odkaz v aktuálním panelu">
+<!ENTITY link.newTab "Otevřít odkaz v novém panelu">
+<!ENTITY link.newWindow "Otevřít odkaz v novém okně">
+<!ENTITY link.xlink "označit odkaz s">
+
+<!ENTITY autoscrolling "Automatický posun přes střed nabídky">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Zpoždění [ms]">
+
+<!ENTITY extras.menuType "Typ nabídky">
+<!ENTITY extras.menu "Standardní (8 akcí)">
+<!ENTITY extras.largeMenu "Velká (10 akcí)">
+<!ENTITY extras.display "Zobrazení">
+<!ENTITY extras.noIcons "Základní zobrazení (nezobrazuje ikony)">
+<!ENTITY extras.smallIcons "Použít malé ikony">
+<!ENTITY extras.linearMenu "Transformovat na lineární nabídku">
+<!ENTITY extras.menuOpacity "Průhlednost nabídky">
+<!ENTITY extras.ttip "Aktivovat popisky">
+<!ENTITY extras.ttipDelayLabel "Zpoždění [ms]">
+<!ENTITY extras.ttipDelayOmit "Vynechat zpoždění">
+
+<!ENTITY contextmenu "Zobrazit kontextovou nabídku">
+<!ENTITY contextmenu.showAuto "Vždy aktivované. Používá stejnou klávesu na potlačení citlivosti.">
+<!ENTITY contextmenu.link "Odkaz">
+<!ENTITY contextmenu.image "Obrázek">
+<!ENTITY contextmenu.selection "Výběr">
+<!ENTITY contextmenu.textbox "Textové pole">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Zobrazit první akci pro obrázky">
+<!ENTITY contextmenu.textboxFirst "Zobrazit první akci pro textové pole">
+
+<!ENTITY move "Přesunout nabídku">
+<!ENTITY move.key "Stiskem klávesy Shift">
+<!ENTITY move.edge "Pomocí rohů nabídky">
+
+<!ENTITY func.empty "Prázdné">
+<!ENTITY func.more "Rozšířená nabídka">
+<!ENTITY func.firstPage "První stránka">
+<!ENTITY func.lastPage "Poslední stránka">
+<!ENTITY func.backSite "Předcházející stránka">
+<!ENTITY func.forwardSite "Následující stránka">
+<!ENTITY func.back "Zpět">
+<!ENTITY func.forward "Vpřed">
+<!ENTITY func.reload "Obnovit-Zastavit">
+<!ENTITY func.up "O úroveň výš">
+<!ENTITY func.root "Kořenový adresář">
+<!ENTITY func.pageTop "Začátek stránky">
+<!ENTITY func.pageBottom "Konec stránky">
+<!ENTITY func.autoscrolling "Automatický posun">
+
+<!ENTITY func.newTab "Nový prázdný panel">
+<!ENTITY func.duplicateTab "Duplikovat panel">
+<!ENTITY func.prevTab "Předcházející panel">
+<!ENTITY func.nextTab "Následující panel">
+<!ENTITY func.closeTab "Zavřít panel">
+<!ENTITY func.closeOtherTabs "Zavřít ostatní panely">
+<!ENTITY func.undoCloseTab "Zpět - Zavřít panel">
+
+<!ENTITY func.newWindow "Nové okno">
+<!ENTITY func.duplicateWindow "Duplikovat okno">
+<!ENTITY func.closeOtherWindows "Zavřít ostatní okna">
+<!ENTITY func.closeBrowser "Zavřít prohlížeč">
+<!ENTITY func.minimizeWindow "Minimalizovat okno">
+<!ENTITY func.fullscreen "Na celou obrazovku">
+
+<!ENTITY func.openLink "Otevřít odkaz">
+<!ENTITY func.openLinkNewWindow "Otevřít odkaz v novém okně">
+<!ENTITY func.copyLink "Kopírovat odkaz">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Kopírovat adresu obrázku">
+<!ENTITY func.saveLinkAs "Uložit cíl odkazu jako...">
+<!ENTITY func.saveImageAs "Uložit obrázek jako...">
+<!ENTITY func.savePageAs "Uložit stránku jako...">
+<!ENTITY func.hideImages "Skrýt obrázky">
+<!ENTITY func.copyImage "Kopírovat obrázek">
+
+<!ENTITY func.homepage "Domovská stránka">
+<!ENTITY func.dailyReadings "Každodenní čtení">
+<!ENTITY func.searchWeb "Hledat na webu">
+<!ENTITY func.translate "Přeložit/Vysvětlit">
+<!ENTITY func.runProgramFile1 "Spustit program 1">
+<!ENTITY func.runProgramFile2 "Spustit program 2">
+<!ENTITY func.runProgramFile3 "Spustit program 3">
+<!ENTITY func.runProgramFile4 "Spustit program 4">
+<!ENTITY func.runProgramFile5 "Spustit program 5">
+<!ENTITY func.runProgramFile6 "Spustit program 6">
+<!ENTITY func.runProgramFile7 "Spustit program 7">
+<!ENTITY func.runProgramFile8 "Spustit program 8">
+<!ENTITY func.runProgramFile9 "Spustit program 9">
+<!ENTITY func.runProgramFile10 "Spustit program 10">
+
+<!ENTITY func.loadURLScript1 "Načíst URL/Skript 1">
+<!ENTITY func.loadURLScript2 "Načíst URL/Skript 2">
+<!ENTITY func.loadURLScript3 "Načíst URL/Skript 3">
+<!ENTITY func.loadURLScript4 "Načíst URL/Skript 4">
+<!ENTITY func.loadURLScript5 "Načíst URL/Skript 5">
+<!ENTITY func.loadURLScript6 "Načíst URL/Skript 6">
+<!ENTITY func.loadURLScript7 "Načíst URL/Skript 7">
+<!ENTITY func.loadURLScript8 "Načíst URL/Skript 8">
+<!ENTITY func.loadURLScript9 "Načíst URL/Skript 9">
+<!ENTITY func.loadURLScript10 "Načíst URL/Skript 10">
+<!ENTITY func.loadURLScript11 "Načíst URL/Skript 11">
+<!ENTITY func.loadURLScript12 "Načíst URL/Skript 12">
+<!ENTITY func.loadURLScript13 "Načíst URL/Skript 13">
+<!ENTITY func.loadURLScript14 "Načíst URL/Skript 14">
+<!ENTITY func.loadURLScript15 "Načíst URL/Skript 15">
+<!ENTITY func.loadURLScript16 "Načíst URL/Skript 16">
+<!ENTITY func.loadURLScript17 "Načíst URL/Skript 17">
+<!ENTITY func.loadURLScript18 "Načíst URL/Skript 18">
+<!ENTITY func.loadURLScript19 "Načíst URL/Skript 19">
+<!ENTITY func.loadURLScript20 "Načíst URL/Skript 20">
+
+<!ENTITY func.markVisitedLinks "Označit navštívené odkazy">
+<!ENTITY func.bookmarkThisLink "Přidat k záložkám tento odkaz...">
+<!ENTITY func.bookmarkPage "Přidat k záložkám...">
+<!ENTITY func.bookmarkOpenTabs "Přidat všechny panely mezi záložky...">
+<!ENTITY func.bookmarks "Boční panel záložek">
+<!ENTITY func.bookmarksToolbar "Panel záložek">
+<!ENTITY func.history "Historie">
+<!ENTITY func.viewPageSource "Zobrazit zdrojový kód stránky">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Zobrazit jen tento rámec">
+<!ENTITY func.properties "Vlastnosti">
+<!ENTITY func.printPage "Vytisknout stránku">
+<!ENTITY func.mail "Email">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+
+<!ENTITY func.cut "Vyjmout">
+<!ENTITY func.copy "Kopírovat">
+<!ENTITY func.paste "Vložit">
+<!ENTITY func.undo "Zpět">
+<!ENTITY func.selectAll "Vybrat vše">
+<!ENTITY func.highlight "Zvýraznit/Vyčistit">
+<!ENTITY func.zoomIn "Zvětšit">
+<!ENTITY func.zoomOut "Zmenšit">
+<!ENTITY func.zoomReset "Předvolené zvětšení">
+
+<!ENTITY input.infoSel "Tyto akce můžete vybrat v záložce Akce.">
+<!ENTITY input.page1 "Strana 1">
+<!ENTITY input.page2 "Strana 2">
+<!ENTITY input.page3 "Strana 3">
+<!ENTITY input.page4 "Strana 4">
+<!ENTITY input.infoPlaceHolder "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
+
+<!ENTITY highlight "Přizpůsobit akci &apos;Zvýraznit/Vyčistit&apos;">
+<!ENTITY highlight.count "Zobrazit počítadlo">
+<!ENTITY highlight.color "Barva">
+<!ENTITY highlight.code "Kód">
+<!ENTITY highlight.restoreColors "Obnovit barvy">
+
+<!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
+<!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
+
+<!ENTITY search "Přizpůsobit akci &apos;Hedat na webu&apos;">
+<!ENTITY search.query "Požadavek na URL">
+<!ENTITY translate "Přizpůsobit akci &apos;Přeložit/Vysvětlit&apos;">
+
+<!ENTITY queries "Výsledky požadavků">
+<!ENTITY queries.curTab "Zobrazit v aktuálním panelu">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.newWindow "Zobrazit v novém okně">
+
+<!ENTITY extern "Přizpůsobit akce &apos;Spustit program&apos;">
+<!ENTITY extern.tab "Program">
+<!ENTITY extern.name "Popis">
+<!ENTITY extern.path "Cesta">
+<!ENTITY extern.arguments "Argumenty">
+<!ENTITY extern.browse "Procházet...">
+<!ENTITY extern.icon "Použít ikonu aplikace">
+
+<!ENTITY urlscript "Přizpůsobit akce &apos;Načíst URL/Skript&apos;">
+<!ENTITY urlscript.url "URL">
+<!ENTITY urlscript.script "Skript">
+<!ENTITY urlscript.name "Popis">
+<!ENTITY urlscript.host "Hostiteľ">
+<!ENTITY urlscript.code "Kód">
+<!ENTITY urlscript.load "Načíst URL adresy">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "v novém panelu">
+<!ENTITY urlscript.newWindow "v novém okně">
+<!ENTITY urlscript.icon "Použít ikonu stránky">
+<!ENTITY urlscript.faviconNotFound "Ikona stránky nebyla nalezena. Pokračovat v hledání?">
+
+<!ENTITY changeIcon "Změnit ikonu">
+<!ENTITY labelNewIcon "Nová ikona">
+
+<!ENTITY duplicatekey.warning "Tato klávesa je již použita! Vyberte jinou klávesu.">
+
+<!ENTITY skins.change "Změnit skin">
+<!ENTITY skins.default "Klasický skin (předvolený)">
+<!ENTITY skins.more "Získat další skiny">
+<!ENTITY skins.nopreview "Bez ukázky">
+<!ENTITY skins.inUse "Používá se">
+<!ENTITY skins.use "Použít skin">
+<!ENTITY skins.uninstall "Odinstalovat skin">
+
+<!ENTITY tips "Tipy">
+<!ENTITY previousTip "Předcházející">
+<!ENTITY nextTip "Následující">
+<!ENTITY closeTip "Zavřít">
+<!ENTITY intro "Věděli jste že ...">
+<!ENTITY showTips "Zobrazit tipy při startu">
+<!ENTITY copyText "Zkopírovat text do schránky">
+
+<!ENTITY tip1 "Přednastavené zobrazení nabídky je pomocí stisku prostředního tlačítka myši (pokud nejste uživatel Macu). Toto můžete změnit v nabídce Možnosti/Chování">
+<!ENTITY tip2 "Nejrychlejší způsob použití nabídky je stisknout a podržet tlačítko myši, přesunout kurzor na akci, kterou chcete vybrat a uvolnit tlačítko. Můžete to brát jako gesto myši s GUI.">
+<!ENTITY tip3 "Pokud stisknete klávesu &apos;Enter&apos; během zobrazení nabídky, tak budete moci zadat URL uvnitř nabídky. Opětovným stiskem klávesy &apos;Enter&apos; se otevře URL v aktuálním panelu. Stiskem kláves &apos;Shift+Enter&apos; se otevře URL v novém panelu.">
+<!ENTITY tip4 "Stiskněte pravé tlačítko myši, pokud je zobrazená nabídka a zobrazí se alternativní akce. Můžete přepínat mezi 3 různými plně upravitelnými rozloženími akcí. Předdefinované tlačítko si můžete změnit. Tlačítko myši změníte v Možnosti/Chování">
+<!ENTITY tip5 "Můžete použít easyGetures k otevření vašich oblíbených položek upravením akce &apos;Načíst URL/Skript&apos; a přidáním do rozložení v kruhové nabídce. Přizpůsobíte si to v Možnosti/Přizpůsobení/Načíst URL/Skript">
+<!ENTITY tip6 "Můžete si přizpůsobit kruhovou nabídku výběrem z mnoha předdefinovaných akcí. Statistika použití Vám pomůže optimalizovat kruhovou nabídku. Akce přidáte anebo odstraníte v Možnosti/Akce">
+<!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst URL/Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku. Přizpůsobíte to v Možnosti/Přizpůsobení/Spustit program">
+<!ENTITY tip8 "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
+<!ENTITY tip9 "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Ctrl&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
+<!ENTITY tip10 "Můžete hledat slovo s Vaším libovolným vyhledávačem pomocí akce &apos;Hedat na webu&apos;. Nejprve označíte slovo na stránce, anebo ho napíšete do vstupního políčka. Pokud necháte políčko prázdné, otevře sa hlavní stránka vyhledávače. To samé platí i pro akci &apos;Přeložit/Vysvětlit&apos;. Vyhledávač přidáte anebo odeberete v Možnosti/Přizpůsobení/Požadavky">
+<!ENTITY tip11 "Podržením klávesy &apos;Insert&apos; můžete potlačit zobrazení kruhové nabídky a přistoupit k standardní kontextové nabídce.">
+<!ENTITY tip12 "Můžete hýbat s kruhovou nabídkou stiskem klávesy &apos;Shift&apos; při pohybu myší.">
+<!ENTITY tip13 "Můžete vypnout zobrazování popisků, pokud je nepotřebujete. Také je možné změnit popis každé akce. Zobrazení vypnete v Možnosti/Chování">
+<!ENTITY tip14 "Můžete si nechat předvolený nablýskaný vzhled, anebo přepnout do základního zobrazení bez ikon, pokud jste textově orientovaní. Můžete také přepnout zobrazení na malé ikony.">
+<!ENTITY tip15 "Pokročilý uživatelé mohou mít v kruhové nabídce více akcí: 10 místo 8 na každém ze 3 hlavních rozložení.">
+<!ENTITY tip16 "Nastavení Firefoxu &apos;Povolit automatický posun&apos; je vypnuté, pokud je použité prostřední tlačítko myši pro zobrazení nabídky. Funkce automatického posunu je potom dostupná přes nabídku easyGestures po krátkém zpoždění, pokud nedošlo k pohybu myší. Automatický posun aktivujete v Možnosti/Chování">
+<!ENTITY tip17 "Můžete zvýraznit slovo (anebo více slov) na celé stránce tím, že nejprve označíte to, co chcete zvýraznit a potom použijete akci &apos;Zvýraznit/Vyčistit&apos;. Ta samá akce odstraní veškeré zvýraznění, pokud vstupní políčko necháte prázdné.">
+<!ENTITY tip18 "Akce &apos;Zavřít panel&apos; zavře okno, pokud je to poslední panel v okně.">
+<!ENTITY tip19 "Můžete nastavit, aby se nabídka zobrazovala jen při tažení myší anebo po krátkém zpoždění. Změny uděláte v Možnosti/Chování">
+<!ENTITY tip20 "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">
+<!ENTITY tip21 "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
+<!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu. Pokud nejste myší na žádném odkazu, tak se otevře ten, který je (pokud nějaký je) ve schránce.">
+<!ENTITY tip23 "Jazyk easyGestures můžete změnit nezávisle na prohlížeči Firefox.">
+<!ENTITY tip24 "Kruhovou nabídku si můžete přepnout do plně přizpůsobitelné nabídky.">
+<!ENTITY tip25 "Okno nastavení můžete zobrazit přímo z kruhové nabídky zadáním znaku &apos;/&apos; v integrovaném panelu Umístění anebo dvojitým kliknutím na ikonu easyGestures ve stavovém řádku.">
+<!ENTITY tip26 "Pokud spustíte akci &apos;Denní čtení&apos; poprvé, vytvoří se složka v záložkách s názvem *easyGestures* a všechny záložky, které do této složky umístíte, budou následně otevřené.">
+<!ENTITY tip27 "Můžete vypnout/zapnout nabídku easyGestures jednoduchým kliknutím na ikonu ve stavovém řádku prohlížeče Firefox. Ikonu schováte v Možnosti/Profil.">

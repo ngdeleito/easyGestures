@@ -1,0 +1,286 @@
+<!ENTITY locale "de-DE">
+<!ENTITY welcome.click "Middle click in the page to open the pie menu.">
+<!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
+<!ENTITY welcome.completed "easyGestures - Installation completed">
+
+<!ENTITY options "Einstellungen">
+<!ENTITY about "Über">
+<!ENTITY ok "OK">
+<!ENTITY apply "Übernehmen">
+<!ENTITY cancel "Abbrechen">
+<!ENTITY help "Hilfe">
+<!ENTITY close "Schließen">
+<!ENTITY profile "Profil">
+<!ENTITY behavior "Verhalten">
+<!ENTITY actions "Aktionen">
+<!ENTITY customizations "Anpassungen">
+<!ENTITY skins "Skins">
+<!ENTITY actions.main "Haupt-Kreismenü">
+<!ENTITY actions.extra "Zusatz-Kreismenü">
+<!ENTITY actions.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt.">
+<!ENTITY actions.alt "Deaktivieren">
+<!ENTITY actions.primary "Primär">
+<!ENTITY actions.alternative "Alternativ">
+<!ENTITY actions.regular "Normale Aktionen">
+<!ENTITY actions.contextual "Kontextabhängige Aktionen">
+<!ENTITY customizations.loadURLScript "Adresse/Skript laden">
+<!ENTITY customizations.runProgramFile "Anwendung starten">
+<!ENTITY customizations.queries "Abfragen">
+<!ENTITY customizations.misc "Verschiedenes">
+<!ENTITY about.version "Version">
+<!ENTITY about.languageInfo "Sprache">
+<!ENTITY about.stats "Statistiken">
+<!ENTITY about.statsDisplay "Statistiken anzeigen">
+<!ENTITY about.statsReset "Statistiken zurücksetzen">
+<!ENTITY about.manage "Einstellungen verwalten">
+<!ENTITY about.import "Einstellungen importieren...">
+<!ENTITY about.export "Einstellungen exportieren...">
+<!ENTITY about.reset "Einstellungen zurücksetzen">
+<!ENTITY about.startupTips "Tipps beim Start anzeigen">
+<!ENTITY about.statusbarShowIcon "Symbol in der Statusleiste anzeigen">
+<!ENTITY about.feedback "Feedback">
+<!ENTITY about.history "Was ist neu?">
+<!ENTITY about.createdBy "Erstellt von">
+<!ENTITY stats.use "Kreismenü-Nutzung">
+<!ENTITY stats.novice "Anfänger">
+<!ENTITY stats.coolUser "Fortgeschritten">
+<!ENTITY stats.addicted "Süchtig">
+<!ENTITY stats.master "Meister">
+<!ENTITY stats.lastReset "Zuletzt zurückgesetzt">
+<!ENTITY stats.actions "Klicks nach Aktionen">
+<!ENTITY stats.directions "Klicks nach Richtungen">
+<!ENTITY stats.main "Hauptmenü">
+<!ENTITY stats.extra "Zusatzmenü">
+<!ENTITY stats.total "Gesamt">
+<!ENTITY stats.all "Alle Aktionen">
+<!ENTITY use "Kreismenü öffnen mit">
+<!ENTITY use.button.left "linker Maustaste">
+<!ENTITY use.button.middle "mittlerer Maustaste">
+<!ENTITY use.button.right "rechter Maustaste">
+<!ENTITY use.button.custom "benutzerdefinierter Maustaste">
+<!ENTITY use.buttoncode "Tasten-Code">
+<!ENTITY use.and "und">
+<!ENTITY use.shift "Umschalttaste">
+<!ENTITY use.ctrl "Strg-Taste">
+<!ENTITY use.dragOnly "Nur bei gleichzeitigem Bewegen der Maus öffnen">
+<!ENTITY use.upleft "Nur nach oben/links">
+<!ENTITY use.afterDelay "Mit Verzögerung öffnen">
+<!ENTITY use.alternative "Alternative Menüs anzeigen mit">
+<!ENTITY use.also "(auch über Alt-Taste auswählbar)">
+<!ENTITY suppress "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
+<!ENTITY suppress.ins "Einfügen-Taste">
+<!ENTITY suppress.alt "Alt-Taste">
+<!ENTITY suppress.ctrl "Strg-Taste">
+<!ENTITY suppress.custom "Eigener Taste">
+<!ENTITY suppress.keycode "Tastencode">
+<!ENTITY link "Aktion &apos;Link öffnen&apos; anpassen">
+<!ENTITY link.through "Klicks auf Links durch Kreismenü-Mitte aktivieren">
+<!ENTITY link.delay "Maximale Verzögerung für Klicks (ms)">
+<!ENTITY link.throughAsAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
+<!ENTITY link.throughAsBrowser "Verhalten des Browsers verwenden">
+<!ENTITY link.curTab "Link im aktiven Tab öffnen">
+<!ENTITY link.newTab "Link in neuem Tab öffnen">
+<!ENTITY link.newWindow "Link in neuem Fenster öffnen">
+<!ENTITY link.xlink "Link kennzeichnen mit">
+<!ENTITY autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Verzögerung (ms)">
+<!ENTITY extras.menuType "Menü-Varianten">
+<!ENTITY extras.menu "Standard (8 Aktionen)">
+<!ENTITY extras.largeMenu "Erweitert (10 Aktionen)">
+<!ENTITY extras.display "Anzeige">
+<!ENTITY extras.noIcons "Einfache Anzeige (ohne Symbole) verwenden">
+<!ENTITY extras.smallIcons "Kleine Symbole verwenden">
+<!ENTITY extras.linearMenu "In lineares Menü umwandeln">
+<!ENTITY extras.menuOpacity "Kreismenü-Deckkraft">
+<!ENTITY extras.ttip "Tooltips aktivieren">
+<!ENTITY extras.ttipDelayLabel "Tooltip-Verzögerung (ms)">
+<!ENTITY extras.ttipDelayOmit "Tooltip-Verzögerung deaktivieren">
+<!ENTITY contextmenu "Kontextabhängige Menüreaktion aktivieren mit">
+<!ENTITY contextmenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
+<!ENTITY contextmenu.link "Link">
+<!ENTITY contextmenu.image "Grafik">
+<!ENTITY contextmenu.selection "Auswahl">
+<!ENTITY contextmenu.textbox "Textfeld">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Grafikaktionen zuerst anzeigen">
+<!ENTITY contextmenu.textboxFirst "Textfeldaktionen zuerst anzeigen">
+<!ENTITY move "Kreismenü verschieben">
+<!ENTITY move.key "durch Halten der Umschalttaste">
+<!ENTITY move.edge "bei Berühren der Menüränder">
+<!ENTITY func.empty "Leer">
+<!ENTITY func.more "Zusatz-Menü">
+<!ENTITY func.firstPage "Erste Seite">
+<!ENTITY func.lastPage "Letzte Seite">
+<!ENTITY func.backSite "Vorherige Website">
+<!ENTITY func.forwardSite "Nächste Website">
+<!ENTITY func.back "Zurück">
+<!ENTITY func.forward "Vor">
+<!ENTITY func.reload "Neu Laden/Stopp">
+<!ENTITY func.up "Eine Ebene hoch">
+<!ENTITY func.root "Hauptseite">
+<!ENTITY func.pageTop "Seitenanfang">
+<!ENTITY func.pageBottom "Seitenende">
+<!ENTITY func.autoscrolling "Automatischer Bildlauf">
+<!ENTITY func.newTab "Neuer Tab">
+<!ENTITY func.duplicateTab "Tab duplizieren">
+<!ENTITY func.prevTab "Vorheriger Tab">
+<!ENTITY func.nextTab "Nächster Tab">
+<!ENTITY func.closeTab "Tab schließen">
+<!ENTITY func.closeOtherTabs "Andere Tabs schließen">
+<!ENTITY func.undoCloseTab "Tab wiederherstellen">
+<!ENTITY func.newWindow "Neues Fenster">
+<!ENTITY func.duplicateWindow "Fenster duplizieren">
+<!ENTITY func.closeOtherWindows "Andere Fenster schließen">
+<!ENTITY func.closeBrowser "Browser schließen">
+<!ENTITY func.minimizeWindow "Fenster minimieren">
+<!ENTITY func.fullscreen "Vollbild">
+<!ENTITY func.openLink "Link öffnen">
+<!ENTITY func.openLinkNewWindow "Link in neuem Fenster öffnen">
+<!ENTITY func.copyLink "Link-Adresse kopieren">
+<!ENTITY func.sendLink "Send Link...">
+<!ENTITY func.copyImageLocation "Grafikadresse kopieren">
+<!ENTITY func.saveLinkAs "Ziel speichern unter...">
+<!ENTITY func.saveImageAs "Grafik speichern unter...">
+<!ENTITY func.savePageAs "Seite speichern unter...">
+<!ENTITY func.hideImages "Grafik ausblenden">
+<!ENTITY func.copyImage "Grafik kopieren">
+<!ENTITY func.homepage "Startseite">
+<!ENTITY func.dailyReadings "Tägliche Lektüre">
+<!ENTITY func.searchWeb "Web-Suche">
+<!ENTITY func.translate "Übersetzen/Erklären">
+<!ENTITY func.runProgramFile1 "Anwendung 1 starten">
+<!ENTITY func.runProgramFile2 "Anwendung 2 starten">
+<!ENTITY func.runProgramFile3 "Anwendung 3 starten">
+<!ENTITY func.runProgramFile4 "Anwendung 4 starten">
+<!ENTITY func.runProgramFile5 "Anwendung 5 starten">
+<!ENTITY func.runProgramFile6 "Anwendung 6 starten">
+<!ENTITY func.runProgramFile7 "Anwendung 7 starten">
+<!ENTITY func.runProgramFile8 "Anwendung 8 starten">
+<!ENTITY func.runProgramFile9 "Anwendung 9 starten">
+<!ENTITY func.runProgramFile10 "Anwendung 10 starten">
+<!ENTITY func.loadURLScript1 "Adresse/Skript 1 laden">
+<!ENTITY func.loadURLScript2 "Adresse/Skript 2 laden">
+<!ENTITY func.loadURLScript3 "Adresse/Skript 3 laden">
+<!ENTITY func.loadURLScript4 "Adresse/Skript 4 laden">
+<!ENTITY func.loadURLScript5 "Adresse/Skript 5 laden">
+<!ENTITY func.loadURLScript6 "Adresse/Skript 6 laden">
+<!ENTITY func.loadURLScript7 "Adresse/Skript 7 laden">
+<!ENTITY func.loadURLScript8 "Adresse/Skript 8 laden">
+<!ENTITY func.loadURLScript9 "Adresse/Skript 9 laden">
+<!ENTITY func.loadURLScript10 "Adresse/Skript 10 laden">
+<!ENTITY func.loadURLScript11 "Adresse/Skript 11 laden">
+<!ENTITY func.loadURLScript12 "Adresse/Skript 12 laden">
+<!ENTITY func.loadURLScript13 "Adresse/Skript 13 laden">
+<!ENTITY func.loadURLScript14 "Adresse/Skript 14 laden">
+<!ENTITY func.loadURLScript15 "Adresse/Skript 15 laden">
+<!ENTITY func.loadURLScript16 "Adresse/Skript 16 laden">
+<!ENTITY func.loadURLScript17 "Adresse/Skript 17 laden">
+<!ENTITY func.loadURLScript18 "Adresse/Skript 18 laden">
+<!ENTITY func.loadURLScript19 "Adresse/Skript 19 laden">
+<!ENTITY func.loadURLScript20 "Adresse/Skript 20 laden">
+<!ENTITY func.markVisitedLinks "Besuchte Links markieren">
+<!ENTITY func.bookmarkThisLink "Lesezeichen für Link">
+<!ENTITY func.bookmarkPage "Lesezeichen für Seite">
+<!ENTITY func.bookmarkOpenTabs "Lesezeichen für offene Tabs">
+<!ENTITY func.bookmarks "Lesezeichen">
+<!ENTITY func.bookmarksToolbar "Lesezeichen-Symbolleiste">
+<!ENTITY func.history "Chronik">
+<!ENTITY func.viewPageSource "Seitenquelltext anzeigen">
+<!ENTITY func.viewPageInfo "View Page Info">
+<!ENTITY func.showOnlyThisFrame "Nur diesen Frame anzeigen">
+<!ENTITY func.properties "Eigenschaften">
+<!ENTITY func.printPage "Seite drucken">
+<!ENTITY func.mail "E-Mail">
+<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.cut "Ausschneiden">
+<!ENTITY func.copy "Kopieren">
+<!ENTITY func.paste "Einfügen">
+<!ENTITY func.undo "Rückgängig">
+<!ENTITY func.selectAll "Alles markieren">
+<!ENTITY func.highlight "Hervorheben/Löschen">
+<!ENTITY func.zoomIn "Vergrößern">
+<!ENTITY func.zoomOut "Verkleinern">
+<!ENTITY func.zoomReset "Größe zurücksetzen">
+<!ENTITY input.infoSel "Diese Aktionen können im Bereich &apos;Aktionen&apos; ausgewählt werden.">
+<!ENTITY input.page1 "Seite 1">
+<!ENTITY input.page2 "Seite 2">
+<!ENTITY input.page3 "Seite 3">
+<!ENTITY input.page4 "Seite 4">
+<!ENTITY input.infoPlaceHolder "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
+<!ENTITY highlight "Aktion &apos;Hervorheben/Löschen&apos; anpassen">
+<!ENTITY highlight.count "Nummerierung anzeigen">
+<!ENTITY highlight.color "Farbe">
+<!ENTITY highlight.code "Code">
+<!ENTITY highlight.restoreColors "Farben zurücksetzen">
+<!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
+<!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
+<!ENTITY search "Aktion &apos;Web-Suche&apos; anpassen">
+<!ENTITY search.query "Abfrageadresse">
+<!ENTITY translate "Aktion &apos;Übersetzen/Erklären&apos; anpassen">
+<!ENTITY queries "Abfrageergebnisse">
+<!ENTITY queries.newTab "Show in new tab">
+<!ENTITY queries.curTab "Anzeige im aktuellen Tab beginnen">
+<!ENTITY queries.newWindow "In neuem Fenster zeigen">
+<!ENTITY extern "Aktion &apos;Anwendung starten&apos; anpassen">
+<!ENTITY extern.tab "Anwendung">
+<!ENTITY extern.name "Tooltip">
+<!ENTITY extern.path "Pfad">
+<!ENTITY extern.arguments "Parameter">
+<!ENTITY extern.browse "Durchsuchen...">
+<!ENTITY extern.icon "Anwendungssymbol verwenden">
+<!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
+<!ENTITY urlscript.url "Adresse">
+<!ENTITY urlscript.script "Skript">
+<!ENTITY urlscript.name "Tooltip">
+<!ENTITY urlscript.host "Host">
+<!ENTITY urlscript.code "Code">
+<!ENTITY urlscript.load "Adressen laden">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "in neuem Tab">
+<!ENTITY urlscript.newWindow "in neuem Fenster">
+<!ENTITY urlscript.icon "Favicon der Website verwenden">
+<!ENTITY urlscript.faviconNotFound "Das Favicon wurde noch nicht gefunden. Suche fortsetzen?">
+<!ENTITY changeIcon "Symbol anpassen">
+<!ENTITY labelNewIcon "Neues Symbol">
+<!ENTITY duplicatekey.warning "Diese Taste ist bereits in Verwendung! Bitte eine andere Taste wählen.">
+<!ENTITY skins.change "Skin wechseln">
+<!ENTITY skins.default "Classic Skin (Standard)">
+<!ENTITY skins.more "Weitere Skins herunterladen">
+<!ENTITY skins.nopreview "Keine Vorschau vorhanden">
+<!ENTITY skins.inUse "Wird aktuell verwendet">
+<!ENTITY skins.use "Skin benutzen">
+<!ENTITY skins.uninstall "Skin deinstallieren">
+<!ENTITY tips "Tipps">
+<!ENTITY previousTip "Vorheriger">
+<!ENTITY nextTip "Nächster">
+<!ENTITY closeTip "Schließen">
+<!ENTITY intro "Wussten Sie schon...">
+<!ENTITY showTips "Tipps beim Start anzeigen">
+<!ENTITY copyText "Text in Zwischenablage kopieren">
+<!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen.">
+<!ENTITY tip2 "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
+<!ENTITY tip3 "Durch Drücken der Eingabe-Taste bei geöffnetem Kreismenü kann dort eine Adresse eingegeben werden. Nochmaliges Drücken der Eingabe-Taste nach Beendigung der Eingabe öffnet die Adresse im aktiven Tab. Betätigen der Tastenkombination Umschalt+Eingabe öffnet die Adresse in einem neuen Tab.">
+<!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen">
+<!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse/Skript laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen. |Aktion unter Einstellungen/Anpassungen/&apos;Adresse/Skript laden&apos; anpassen.">
+<!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren. |Aktionen unter Einstellungen/&apos;Aktionen&apos; hinzufügen oder entfernen">
+<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden. |Aktionen unter Einstellungen/Anpassungen/&apos;Anwendung starten&apos; anpassen.">
+<!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab und fügt auf der Seite eine rote Kennzeichnung hinter dem Link ein.">
+<!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren. |Verhalten unter Einstellungen/Verhalten anpassen">
+<!ENTITY tip10 "Durch Auswählen eines Wortes oder direkte Eingabe in das integrierte Suchfeld kann dieses mit der Aktion &apos;Web-Suche&apos; mit Hilfe frei definierbarer Suchmaschinen gesucht werden. Bleibt das Eingabefeld leer, wird die Startseite der Suchmaschine angezeigt. Gleiches gilt für die Aktion &apos;Übersetzen/Erklären&apos;. |Suchmaschinen unter Einstellungen/Anpassungen/&apos;Abfragen&apos; anpassen">
+<!ENTITY tip11 "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
+<!ENTITY tip12 "Das Kreismenü kann bei gedrückter Umschalttaste mit der Maus verschoben werden.">
+<!ENTITY tip13 "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt. Es ist auch möglich, jeden Tooltip umzubenennen. |Tooltips unter Einstellungen/Verhalten deaktivieren">
+<!ENTITY tip14 "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.">
+<!ENTITY tip15 "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.">
+<!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden. |Automatischen Bildlauf unter Einstellungen/Verhalten aktivieren">
+<!ENTITY tip17 "Die Aktion &apos;Hervorheben/Löschen&apos; ermöglicht es, ein Wort (oder auch mehrere Wörter) innerhalb einer Seite hervorzuheben, indem dieses entweder auf der Seite ausgewählt oder direkt in das Eingabefeld eingegeben wird. Die gleiche Aktion löscht die Hervorhebung wieder, wenn das Eingabefeld leer gelassen und die Eingabe-Taste gedrückt wird.">
+<!ENTITY tip18 "Die Aktion &apos;Tab schließen&apos; schließt das Browser-Fenster, wenn nur noch ein Tab offen ist.">
+<!ENTITY tip19 "Das Kreismenü kann so eingestellt werden, dass es nur bei gleichzeitigem Bewegen der Maus oder nach einer kurzen Verzögerung angezeigt wird. |Verhalten unter Einstellungen/Verhalten anpassen">
+<!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
+<!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
+<!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab. Ist kein Link gewählt, wird, falls vorhanden, ein Link aus der Zwischenablage geöffnet.">
+<!ENTITY tip23 "Die Spracheinstellung von easyGestures kann unabhängig von der Firefox-Sprachversion gewechselt werden.">
+<!ENTITY tip24 "Das Kreismenü kann auch in ein voll anpassbares lineares Menü umgewandelt werden.">
+<!ENTITY tip25 "Der Einstellungsdialog von easyGestures kann auch direkt über das Kreismenü durch Eingabe von / (Schrägstrich) in die integrierte Adressleiste (aufzurufen durch Drücken der Eingabe-Taste) oder durch einen Doppelklick auf das Statusleistensymbol geöffnet werden.">
+<!ENTITY tip26 "Beim Ausführen der Aktion &apos;Tägliche Lektüre&apos; wird beim ersten Mal ein Lesezeichenordner namens *easyGestures* in der Lesezeichen-Symbolleiste angelegt und alle darin enthaltenen Lesezeichen werden geöffnet.">
+<!ENTITY tip27 "Das easyGestures-Menü kann einfach über das Symbol in der Statusleiste des Firefox-Fensters ein- oder ausgeschaltet werden. |Statusleisten-Symbol unter Einstellungen/&apos;Profile&apos; ein-/ausblenden">

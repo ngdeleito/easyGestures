@@ -1,0 +1,951 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Version History and General information - easyGestures</title>
+<style type="text/css">
+
+/*
+** MediaWiki 'cavendish' style sheet for CSS2-capable browsers.
+** Copyright Mozilla Foundation - http://www.mozilla.org/
+** License: GPL (http://www.gnu.org/copyleft/gpl.html)
+**
+** Loosely based on the monobook style by Gabriel Wicke
+*/
+
+/* mozilla.org Base Styles
+ * maintained by fantasai
+ * (classes defined in the Markup Guide - http://mozilla.org/contribute/writing/markup )
+ */
+
+/* mozilla.org Base Template Styles
+ * Initial Design by Dave Shea
+ * Severely tweaked by David Baron
+ * Reorganized by fantasai
+ * Large Changes for new Cavendish default by Daniel Burka and Steven Garrity
+ */
+
+/* content styles */
+
+	#toc {
+		/*border:1px solid #2f6fab;*/
+		border:1px solid #aaaaaa;
+		background-color:#f9f9f9;
+		padding:5px;
+		font-size: 95%;
+		margin-top:1em;
+	}
+	#toc .tocindent { margin-left: 2em; }
+	#toc .tocline { margin-bottom: 0px; }
+	#toc p { margin: 0 }
+	#toc .editsection {
+		margin-top: 0.7em;
+		font-size: 94%;
+	}
+
+/* Footer */
+
+	#footer {
+		border-top: 1px solid #999;
+		margin: 2em 0;
+		padding: 1em 0;
+		text-align: center;
+		clear: both;
+		margin-top: 1em;
+		color: #666;
+	}
+
+/* Basic Structure */
+    body, td, th, input { /* redundant rules for bad browsers  */
+            font-family: verdana, sans-serif;
+            font-size: x-small;
+            voice-family: "\"}\"";
+            voice-family: inherit;
+            font-size: small;
+    }
+	
+	body {
+		background: url("images/body_back.gif") repeat-x;
+		background-color: #FFF;
+		margin: 0 20px 20px 20px;
+		padding-top: 0; 
+		min-width: 610px;
+		color: #000;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 1em 0 0.2em 0;
+		border-bottom: 1px solid #ccc;
+		font-family: arial, verdana, sans-serif;
+	}
+	li h1, li h2, li h3, li h4, li h5, li h6 {
+		border: none;
+	}
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 1em 0 0.2em 0;
+		border-bottom: 1px solid #ccc;
+		font-family: arial, verdana, sans-serif;
+	}
+	h3 {
+		font-size: 1.3em;
+		font-weight: bold;
+	}
+	
+	h4 {	
+		font-size: 1.2em;
+		font-weight: bold;
+	}
+	
+	h5 {
+		font-size: 1.1em;
+		font-weight: bold;
+	}	
+	
+	li h1, li h2, li h3, li h4, li h5, li h6 {
+		border: none;
+	}
+
+	h1 { font-size: 160%; font-weight: normal; }
+	h2 { font-size: 150%; font-weight: normal; }
+	h6 { font-size: 90%; border: 0; }
+	
+/* Navigation */
+	:link { color: #039; }
+	:visited { color: #636; }
+	:link:hover, :visited:hover { color: #333; }
+	:link:active, :link:active { color: #000; }	
+
+
+	.text-bloc {
+		border:1px solid #aaaaaa;
+		background-color:#f9f9f9;
+		padding:5px;
+		font-size: 95%;
+		margin-top:1em;
+	}
+
+</style>
+
+</head>
+
+<body >
+<div align="left"><br>
+    <a name="top"></a>
+    <img src="easyGestures.png" width="174" height="59" />
+</div>
+				<table border="0" id="toc">
+						<tr id="toctitle">
+							<td align="center">
+								<b>VERSION HISTORY AND GENERAL INFORMATION<br>
+						  -<br>Table of contents</b></td>
+						</tr>
+						<tr id="tocinside">
+							<td>
+								<ol>
+								<div class="tocline"><li><a href="#LastVersion">What's new in last version</a></li></div>
+								<div class="tocline"><li><a href="#VersionsHistory">Versions history </a></li></div>
+								<div class="tocline"><li><a href="#GeneralInfo">General information </a></li></div>
+								</ol>
+							</td>
+						</tr>
+				</table>
+					<br>
+					
+					<div class="editsection" style="float:right;margin-left:5px;">[<a href="#bottom" title="goto page bottom">bottom</a>]</div>
+                    
+							<table border="0" class="text-bloc">
+								<tr>
+									<td width="379" >
+										(+) New feature&nbsp;&nbsp;&nbsp;	(*) Changed feature&nbsp;&nbsp;&nbsp;	(-) Bug fixed
+									</td>
+								</tr>
+							</table>
+                            
+						<a name="LastVersion"></a>
+						<h2> What's new in last version? </h2>
+							<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.3.2 - last version</b><br>
+									<p>
+                                    * Made eG compatible with FF 4.0 (only)<br>         
+									<p>
+									</p>
+								</td>
+							</tr>
+						</table>					
+						<a name="VersionsHistory"></a>
+						<h2> Versions history </h2>
+							<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.3.1 - last version</b><br>
+                                    + Added Chinese (zh-CN) locale<br>
+									<p>
+                                    * Made eG compatible with FF 3.6 (only)<br>
+                                    * Changed Previous Tab and Next Tab actions: popup is now displayed only after a delay on mousedown over action<br>
+                                    * Location bar now opens on any key pressed. Pressing &lt;Enter&gt; still displays the current or selected url<br>
+                                    * Added Youtube search engine<br>
+                                    * Removed changing locale manually in Options Dialog<br>
+                                    * Changed Properties action because no more supported since FF3.6<br>
+                                    * Replaced all occurences of evil eval function in code to follow the new rules on Mozilla Add-ons<br>
+									<p>
+									- Fixed Dailyreadings action failing in some cases and added middle clicking in popup to open bookmark in new tab<br>
+                                    - Fixed Highlight action not working as expected in some pages<br>
+                                    - Fixed Mark Visited Links action not working correctly in specific cases<br>
+									</p>
+								</td>
+							</tr>
+						</table>							
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.3</b><br>
+                                    + Made eG deleting preferences when uninstalled<br>
+                                    + Made eG displaying on xul/xml<br>
+                                    + Added "Send Link", "View Page Info" and "Toggle Private Browsing" actions<br>
+                                    + Added Turkish (tr-TR) and Czech (cz-CZ) locales<br>
+									+ Action "Search Web" now opens a popup menu for search engine selection on the fly<br>
+                                    + Action "Undo Close Tab" now opens a popup menu to select the tab to restore<br>
+                                    + Action "Daily Readings" now opens a popup menu for bookmark selection on the fly<br>
+                                    + Action "Highligth/Clear" now opens the Find Bar for previous/next functionality<br>
+                                    + Actions "Next Tab" and "Previous Tab" now open a popup menu for tab selection on the fly. Removed repetition<br>
+                                    + Added welcome page on installation 
+									<p>
+                                    * Made eG compatible with FF 3.5 (only)<br>
+                                    * Action "Bookmark Tabs" no more writes the current date inside folder's name field<br>
+                                    * Changed again alternative menu sign :)<br>
+                                    * Changed default preferences<br>
+                                    * Changed display in Options Dialog<br>
+									* Changed display of statistics table and added more precision</p>
+									<p>
+									- Fixed skin installation no longer supported since FF3<br>
+                                    - Fixed copy action not working<br>
+                                    - Fixed eG displaying left of click on a few sites<br>
+                                    - Fixed 'Mail' action<br>
+									- Fixed minor display bugs<br>
+                                    - Fixed upgrading does not keep custom icons and skins<br>
+                                    - Fixed links icon is still displayed after switching to alternative menus<br>
+                                    - Fixed several bugs for linear menu
+									</p>
+								</td>
+							</tr>
+						</table>
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.2</b><br>									
+									+ Added Korean (ko-KR), Italian (it-IT) and Hungarian (hu-HU) locales<br>
+									+ Added selection of search engine on the fly for 'Search Web' action
+									<p>
+									* Made eG only compatible with FF 3.0<br>
+									* Changed default icon size to small<br>
+									* Improved code for switching language: is much faster now<br>
+									* Improved code for favicon retrieving in Options Dialog<br>
+									* Changed background color to white instead of red when using Next/Previous Tab repetition<br>
+									* Changed alternative menu sign<br>
+									* Changed 'Root' action code: top level domains are now correctly identified</p>
+									<p>
+									- Fixed regressions related to FF3<br>
+									- Fixed minor spelling and ponctuation mistakes<br>
+									- Fixed eG_nodes in DOM created too many times<br>
+									- Fixed Options Dialog size and slowness on loading<br>
+									- Fixed 'Run Program Files' action icon not showing when using application's icon<br>
+									- Fixed possible memory leak related to preferences observer whenever a window is closed
+									</p>
+								</td>
+							</tr>
+						</table>
+						
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.1.2</b><br>
+									+ Added options to change order of contextual menus (image/link or link/image and Textbox/Selection or Selection/Textbox)<br>
+									+ Added Slovak (sk-SK) locale
+									<p>
+									* Changed mouse button selection in Options Dialog: Logitech mice (or other) with more than 3 buttons should  now be  supported<br>
+									* Made minor cosmetic changes in Options Dialog
+									</p>
+									<p>
+									- Fixed actions not showing on pie menu in a few web pages<br>
+									- Fixed minor bug when switching from linear menu to pie menu</p></td>
+							</tr>
+						</table>
+																				
+								<table border="0" class="text-bloc">
+								<tr>
+									<td>
+										<b>Version 4.1.1</b><br>
+										+ Added Spanish (es-ES), Portuguese (pt-Br) and Japanese (ja-JP) locales
+										<p>
+										* Changed comptatibility to Firefox 2 and higher<br>
+										* Changed default preferences
+										</p>
+										<p>
+										- Fixed Options Dialog not displaying because of extention conflict<br>
+										- Fixed preferences resetting after update<br>
+										- Fixed favicons for "Load URL/Script" actions not positioned correctly in the pie
+										</p></td>
+								</tr>
+							</table>
+							<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.1</b><br>
+									+ Added skin support<br>
+									+ Added an option to move menu by pressing shift key or by reaching menu edge<br>
+									+ Added paypal donate button in Options Dialog
+									<p>
+									* Optimized size and performance using compound images<br>
+									* No more showing of input textbox after selection: action is now directly performed<br>
+									* Alternative layouts can now be activated separately on main and extra menus<br>
+									* Changed 'Undo close tab' action: replaced previous icon and made it grayable<br>
+									* Changed default actions<br>
+									* Changed a few things in Options Dialog<br>
+									* Changed logo a little bit to make it look bigger in 32x32 resolution
+									</p>
+									<p>
+									- Fixed tab repetition not stopping when switching to alternative menu or when menu is hidding<br>
+									- Fixed 'Paste' action bug<br>
+									- Fixed 'Close Browser' action does not close all open browser windows<br>
+									- Fixed 'Close Other Windows' action stays always grayed<br>
+									- Fixed a few minor bugs in Options Dialog<br>
+									- Fixed bug when right clicking inside location bar or input textbox<br>
+									- Fixed middle clicking does not open link in new tab (or new window) when 'Use browser behavior' is checked
+									</p></td>
+							</tr>
+						</table>
+						
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.0.2</b><br>
+									+ Added Italian (it-IT), Dutch (nl-NL) and German (de-DE) locales<br>
+									<p>
+									* Improved preferences keeping after an update
+									</p>
+									<p>
+									- Fixed eG only working in the first open window<br>
+									- Fixed 'Duplicate Window' action not working when only one tab is open<br>	
+									- Fixed autoscrolling bug when it was triggered from the pie as a normal action<br>
+									- Fixed alert strip was displayed unexpectedly in some cases and made minor changes on strip display<br>
+									- Fixed the conflict with googlebar extension making tooltips incorrectly displayed<br>
+									- Fixed the conflict with Yahoo! Toolbar extension displaying blank page<br>
+									- Fixed tab repetition highlight not displaying<br>
+									- Fixed Firefox autoscrolling not disabled on new installation
+									</p></td>
+							</tr>
+						</table>					
+						
+							</table>
+								<table border="0" class="text-bloc">
+								<tr>
+									<td>
+										<b>Version 4.0.1</b><br>
+										+ Added Croatian (hr-HR) locale<br>
+										<p>
+										- Fixed context sign always displayed on link image object <br>
+										- Fixed tooltips flickering<br>
+										- Fixed Options Window height increasing when options are changed<br>
+										- Fixed textbox input length bug on certain pages<br>
+										- Fixed favicon search freezing in some cases
+									  </p></td>
+								</tr>
+							</table>
+						
+							<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 4.0</b><br>
+									+ Added one more set of alternative actions (3 levels now on pie menu)<br>
+									+ Added possibility to go back to main menu from extra menu<br>
+									+ Added possibility to change pie menu tooltips (labels of actions)<br>
+									+ Added tabs repetition delay in Options Dialog<br>
+									+ Added delay to menu showing in Options Dialog<br>									
+									+ Added statusbar icon to enable/disable menu<br>
+									+ Added 4 new actions: "Close Browser", "Bookmark Open Tabs", "Undo Close Tab", "Show Only This Frame"<br>
+									<p>
+								  * Rewrote a large amount of code<br>
+								  * Changed the way menu handles mouse movements: menu now hides automatically and one must press &lt;shift&gt; key to move it<br>
+								  * Changed input textbox calling for Search Web, Translate and Highlight/Clean actions: just click to open textbox<br>
+								  * Changed Highlight/Clean action : new alert strip when text not found<br>
+								  * Search Web action now gives focus to first new added search tab<br>
+								  * Load URL/Script action now gives focus to new tab created <br>
+								  * Changed width of location bar, input textbox and tooltips inside pie menu with small icons<br>
+								  * Changed code for linear menu display (no more xul menupopup): strokes are now possible and many bugs are fixed<br>
+								  * Changed replacement menu on XUL/XML pages to an alert strip<br>
+								  * Changed stats display<br>
+								  * Changed Export/Import code<br>
+								  * Changed startup tips: now  images are displayed along with text<br>
+								  * Changed default preferences<br>
+								  * Removed temporarily several localizations until they get updated
+								  </p>
+									<p>- Fixed Autoscrolling starting to scroll without moving the mouse <br>
+									- Fixed eG sometimes stops working<br>
+									- Fixed Statistics Table not displaying last actions stats
+								  </p></td>
+							</tr>
+						</table>	
+											
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 3.3</b><br>
+									+ Added repetition for nextTab and prevTab actions <br>
+									+ Added  option to close browser or not when closing last tab<br>
+									+ Added an "Apply" button in Options Dialog<br>
+									+ Added 10 new "Load URL/Script" actions and 6 new "Run Program File" actions<br>
+									+ Added options to change icons for "Load URL/Script" and "Run Program File" actions<br>
+									+ Added 3 new search engine URLs for the "Search Web" action<br>
+									+ Added localized Finnish (fi-FI)<br>								
+									<p>* Enabled selection of text in tips window<br>
+									* Made cosmetic changes in Options Dialog <br>
+									* Made "Omit Tooltips delay" option automatically checked when checking "Basic Display" option<br>
+									* Improved insertion of tag when clicking on a link<br>
+									* Highlight colors can now be changed<br>
+									* Enabled putting same action in different slots<br> 
+									* Added displaying of confirmation before cleaning highlights<br>
+									* removed temporarily pl-PL locale
+								  </p>
+									<p>- Fixed description is always &quot;true&quot; with &quot;Bookmark Page&quot; action<br>
+								  - Fixed a few strings not localized <br>
+								  - Fixed "Highlight/Clean" action does not highlight but hides last occurence of word when "Display count numbers" is unchecked<br>
+								  - Fixed pie menu not showing on xhtml documents<br>
+								  - Fixed Options Dialog was too much slow to display<br>
+								  - Fixed right click contextual issue<br>
+								  - Fixed history lost when duplicating tab<br>
+								  - Fixed icons are displayed incorrectly on pages where css sets minimun height and width for images<br>
+							  - Fixed paths and names containing non-ascii characters in "Run Program File" and &quot;Load URL/Script&quot; actions doesn't work (using now Complex Values)</p></td>
+							</tr>
+						</table>
+						
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 3.2 - (for Firefox 1.5 only)</b><br>
+									+ Added localized simplified Chinese (zh-CN), Polish (pl-PL), Mongolian (mn-MN) and Spanish (es-ES)<br>
+									+ Localized extension's description in Extension Manager<br>
+									+ Added new 'Transform into Linear Menu' option
+									<p>* Localized strings for contextual menu actions in Options Dialog <br>
+									* Options Dialog now looks like the new one in Firefox (using Preferences Panes). Improved Options Dialog code.<br>
+									* Changed 'About' page<br>
+									* Reorganized locales files<br>
+									* Improved link tagging function<br>
+									* Hide mouse pointer when typing in location bar<br>
+									* Changed look of location bar and input textbox
+									</p>
+									<p>- Fixed code to avoid a potential security hole<br>
+										- Fixed no display on 'Server not found' error page<br>
+										- Fixed css bug causing pie menu display problems<br>
+							  			- Fixed 'Mark Visited Links' action not working<br>
+										- Fixed importing preferences from older version not working<br>
+										- Fixed "Page Bottom" action not working correctly on certain pages</p></td>
+							</tr>
+						</table>
+											
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 3.1 - (transitional version only for Deer Park versions of Firefox)</b><br>
+									+ Added Contextual Menus customization in Options Dialog<br>
+									+ Added urls entered into the Pie Menu location bar open in a new tab when &lt;Shift+Enter&gt; pressed. Documented that in tips window<br>
+									+ Added next tab action in Replacement Menu<br>
+									+ Added a &quot;previous&quot; button to the tips window<br>
+									+ Added command to display Options Dialog directly from pie menu: type &quot;/&quot; in the integrated location bar<br>
+									+ Added option to remove the hightlight count number.<br>
+									+ Added an option to transform pie menu into regular linear menu
+									<p>* Changed to new extension packaging<br>
+									  * Made eG only compatible with FF 1.0+ ( intended for Deer Park as transitional version)<br>
+									  * Keep Main Menu showing while displying Extra Menu<br>
+									  * Changed a few default actions<br>
+									  * Made Options dialog and tips window resizable<br>
+									  * Changed tooltips display:<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- reset timeout when moving or when switching to/from alternate and <br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- keep tooltips displayed when pie menu is dragged<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- if tooltips already displayed, omit the delay when showing the extra menu<br>
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- clear tooltips timer when entering text or url<br>
+									* 'Duplicate window' action now duplicates all the open tabs in the original window <br>
+									* Changed german translation of 'Daily Readings'<br>
+									* Replacement Menu is now a true popup menu (no new window opened anymore)</p>
+									<p>- Fixed action radius when moving Pie Menu<br>
+									  - Fixed background color of a few panels in Options Dialog<br>
+									  - Fixed &quot;more&quot; icon does not display when small icons used in basic display mod<br>
+									  - Fixed Pie Menu sensitivity on mouse move. Added small tolerance<br>
+									  - Fixed duplicate actions checking in Options Dialog not working on the 2 additional slots in large Pie Menu<br>
+									  - Fixed autoscrolling behavior<br>
+									  - Fixed 'New window' does the same action as 'Duplicate Window'<br>
+						      - Fixed Pie Menu doesn't show ever again (with right mouse button) when suppressed to give priority to the standard contextual menu </p></td>
+							</tr>
+						</table>
+						<br>
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 3.0</b><br>
+									+ Added contextual menu mode<br>
+									+ Added Actions: 'Undo', 'Select All', 'Copy Image Location', 'Copy Image', 'Open Link in New Window', 'Mark Visited Links' and 'Bookmark This Link...'<br>
+									+ Added an option in Options Dialog to open links in a new window<br>
+									+ Added two more 'Load URL/Script' Actions (now 10)<br>
+									+ Added support for %u (current URL) string placeholder<br>
+									+ Added new option to open a link through the pie menu independently from the 'Open Link' Action options (specially usefull for Mac users)<br>
+									+ Added option under 'Open only when dragging' to show pie menu only if mouse down during a short delay before dragging (makes selections possible same as Up/Left only option)<br>
+									+ Added option to 'Load URL' actions to open in new tab or new window (open in current tab by default)<br>
+								 	+ Added localized brazilian portuguese (pt-BR)<br>
+									+ Re-introduced locale switching<br>
+									+ Added a new tip about Firefox 'Use autoscrolling' option being unchecked.
+									<p>
+										* Changed behavior when same mouse button is used for both showing and toggling alternative pie menu: strokes and clicks on icons actions are enabled in this case (specially usefull for Mac users)<br>
+										* Improved script capabilities in 'Load URL' actions<br>
+										* Changed 'Load URL' to 'Load URL/Script'<br>
+										* Removed large extra menu (simplifying eG)<br>
+										* Buttons on Startup Tips, About, Stats &amp; Options windows can now be pressed with spacebar or enter key<br>
+										* Changed 'Highligth' Action: now page scrolls to first highlighted word from cursor<br>
+										* Changed all DTD locale files content to UTF-8 encoding instead of using &amp;#xxx; character codes: reading and updating will be easier<br>
+										* Changed language in 'Translate/Explain' action input for ru-RU, ja-JP, ar-TN, zh-TW (they were not set correctly)<br>
+										* Changed email address to easygestures@gmail.com<br>
+										* Changed chrome jar file from compressed to uncompressed (for locale switching purpose)<br>
+										* Keep displaying of 'Extra Menu' icon even if 'Basic Display' option is checked<br>
+										* 'Back' and 'Previous Tab' actions in Replacement Menu are now grayed when appropriate<br>
+										* 'Close Other Tabs' and 'close other windows' actions are now grayed when appropriate<br>
+										* Changed 'Save link as...' image<br>
+										* Changed 'Clicks on Actions' and 'Number of Sessions' Statistics to 'Pie Menu Use' and 'Last Reset'<br>
+										* Cleaned up code
+									</p>
+									<p>
+										- Fixed actions 'Load URL' not working correctly<br>
+										- Fixed right click context menu not working<br>
+										- Fixed 'Previous Tab' and 'Next tab' actions not working correctly when tabs order is not the order they were opened<br>
+										- Fixed zoom actions not zooming correctly on images<br>
+										- Fixed standard Contextual Menu displayed when Autoscrolling stopped if right mouse button is used to display Pie Menu<br>			
+										- Fixed 'Page Bottom' action not working on certain pages
+									</p>							  </td>
+							</tr>
+						</table>						
+
+						<table border="0" class="text-bloc">
+							<tr>
+								<td>
+									<b>Version 2.14</b><br>
+									+ Added support of (bookmarks) custom keywords in location bar<br>
+									<p>
+										* Changed again look of Replacement Menu (definitively)<br>
+										* Minor changes in code
+									</p>
+									<p>
+										- Fixed 'Daily Readings' action not working
+									</p>
+								</td>
+							</tr>
+						</table>
+
+						<table border="0" class="text-bloc">
+							<tr>
+						 		<td>
+									<b>Version 2.13.1</b><br>
+									- Fixed Replacement Menu actions not working
+								</td>
+							</tr>
+						</table>
+
+						<table border="0" class="text-bloc">				
+							<tr>
+								<td>
+									<b>Version 2.13</b><br>
+										+ Added Import/Export Preferences menu in Options Dialog<br>
+									<p>
+										* Changed tooltips images and tips background color<br>
+										* Changed look of Replacement Menu<br>
+										* Applied a little fix inside 'contents.rdf' file in all the locale folders<br>
+										* Done some code cleaning
+									</p>
+									<p>
+										- Fixed conflict with Image Zoom (renamed all global variables)
+									</p>
+								</td>
+							</tr>
+						</table>
+
+					<table border="0" class="text-bloc">	
+							<tr>
+							  <td><strong>Version 2.12<br>
+							  </strong>+ Added localized chinese (zh-TW)<br>
+							+ Added 5 more 'Load URL' actions and 1 more 'Run Program File' action<br>
+							<p>* Removed language switching (no more possible within FF 1.0)<br>
+							  * Changed Replacement Toolbar to a small Replacement Menu</p>
+							<p> - Fixed (temporary ?) : when opening Pie Menu only when dragging, replacement toolbar won't show on XUL/XML documents anymore.</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+							<tr>
+								  <td><strong>Version 2.11<br>
+								  </strong>+ Added localized russian, japanese and arabic (all to be improved or completed)<br>
+							+ Added option for automatic delayed autoscrolling on mouse down<br>
+							+ Added marking highlighted words with count number and last highlight with total count<br>
+							
+							+ Added displaying of basic toolbar whenever pie menu can't display (over XUL and XML documents)<br>
+							+ Added display of small icons and menu separators inside actions menuilists of Options Dialog and reordered actions<br>
+							+ Added display of selection by default in location bar on &lt;Enter&gt; whenever a string is selected (should be an url in this case) and keep displaying the current url by default if no selection <br>
+							+ Added custom 'about' page for Extension Manager<br>
+							+ Added new 'full logo'
+							<p>* Changed a few icons<br>
+							  * Changed a few default actions<br>
+							
+							  * Changed size of link tag from 18x18 to 16x16<br>
+							  * Changed stuff in Options Dialog<br>
+							  * Improved translations<br>
+							  * Made location bar and textbox longer<br>
+							  * Made location bar and textbox hidden and related actions cancelled when &lt;Esc&gt; key is pressed<br>
+							
+							  * Changed 'Save Page' to 'Save Page As...'<br>
+							  * Changed 'Daily Review' to 'Daily Readings' and changed code and removed option for this action<br>
+							  * Changed zIndex from value 99 to 2147483647 (Max Int): Pie Menu will always be displayed above all elements (except plugins)<br>
+							  * Changed update system from custon update to default one on update.mozilla.org</p>
+							<p>- Fixed groupboxes captions display in Options Dialog (changed tabpanels background to inherit CSS style)<br>
+							  - Fixed corruption of statistics when a new window is forced to open in a tab by other extensions<br>
+							
+							  - Fixed tips not changing to locale when language is changed in Options Dialog<br>
+							  - Fixed bad default mouse settings on Mac</p></td>
+					  </tr>
+					</table>
+
+					<table border="0"class="text-bloc">	
+						
+							<tr>
+							  <td><strong>Version 2.10<br>
+						
+							  </strong>+ Added 'Properties', 'Cut', 'Copy', 'Paste' and 'Save Image As...' actions<br>
+						+ Added 'Reset Preferences' button in Options Dialog
+						<p>* Changed links options in Options Dialog<br>
+						  * Changed again 'Open Link Out' action for 'Open Link' (definitively)<br>
+						  * Changed icon for 'Open Link Out' action</p>
+						<p>- Fixed selections in Textareas or Text Inputs ignored in some actions ('Search Web', 'Translate', 'Highlight')<br>
+						  - Fixed 'Open link Out' action not displaying red tag and loading clipboard even if a link is pointed<br>
+						
+						  - Fixed selection bug if left mouse button used for Pie Menu and 'Open only when dragging' option checked</p></td>
+							</tr>
+					</table>
+
+					<table border="0"class="text-bloc">	
+							<tr>
+							  <td><strong>Version 2.9 <br>
+							  </strong>+ Added 'Save Link As' and 'View Page Source' actions<br>
+						
+						+ Preferences will now be preserved after update except when names, types or contents changes are needed
+						<p>* Hide 'Extra menu' action from actions menus in Options Dialog except where necessary</p>
+						<p>- Fixed saving preferences problems (hopefully)<br>
+						  - Fixed bug with 'Print Page' action</p></td>
+							</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						   <tr>
+						
+							  <td><strong>Version 2.8 </strong> <br>
+						+ Added 'Pie Menu Opacity' option in Options Dialog
+						  <p>* Cosmetic tweeks in Options Dialog<br>
+						  * Changing locale also localizes search queries</p>
+						  <p>- Fixed bug with clicks on tabs and scrollbar displaying alert message<br>
+						  - Fixed url for 'Search Web' and 'Translate/Explain' actions not encoded properly in some locales<br>
+						  - Fixed default bookmarks for 'Daily Review' action not created</p></td>
+						
+					  </tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						<tr>
+						  <td><strong>Version 2.7.2 <br>
+						  </strong>* Minor cosmetic tweeks in Options Dialog
+						  <p>- Fixed regression when clicking on links in 2.7.1</p></td>
+					
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						<tr>
+						  <td><strong>Version 2.7.1 <br>
+						  </strong>+ Added 'Locale' option in Options Dialog
+						  <p>* Made changes to be compatible with the new Extension Manager: no more install or uninstall dialogs<br>
+					
+					  * Changed Options Dialog<br>
+					  * Changed 'Link Out' action name for more explicit 'Open Link Out'</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						<tr>
+						  <td><strong>Version 2.7 <br>
+					
+						  </strong>+ Added 'Mail' action<br>
+					+ Added 'Load URL' action (3 actions)<br>
+					+ Added new tip about the default mouse button used to display the Pie Menu<br>
+					+ Show navigation toolbar whenever Pie Menu can't be displayed
+					<p>* Cut down size of install.xpi by 25% (120 Ko) by eliminating all '_a' files (highlighting now done by opacity)<br>
+					  * Changed actions 'Up', 'Root', 'Back Site' and 'Forward Site' to deal with 'subnetwork.host.org' structured URLs<br>
+					  * Replaced default Query URL 2 with Vivisimo's URL because of its clustered results technology (moved Altavista URL to Query URL 3)<br>
+					  * Minor cosmetic changes on images<br>
+					
+					  * Changed 'Copy Link' icon<br>
+					  * Changes in Options Dialog<br>
+					  * Eliminated too long tooltips in localized files<br>
+					  * Replaced default action 'Copy Link' by default action 'Autoscrolling' in extra primary Pie Menu<br>
+					  * Changed message displayed when no text highlighted (now displays the text that was searched)</p>
+					<p>- Fixed scrollbar showing when displaying tooltips near window border but still completely inside the window</p></td>
+					
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						<tr>
+						  <td><strong>Version 2.6 <br>
+						  </strong>+ Added new 'Hide Images' action<br>
+					+ Added new 'Autoscrolling' action<br>
+					
+					+ Check during installation if the Daily Review folder already exists (usefull if updating) and<br>
+					turned off renaming of this folder (as backup) during uninstallation
+					<p>* Changed suppress key option to let customize it<br>
+					  * Changed (again) displaying of small tag in alternative mode back to prior to v2.5.2 but with new image and at new position<br>
+					  * Pink background is now only displayed for extra menu tooltip<br>
+					  * Textbox (for search, highlighting or translation) now remembers last typed word in current browser session<br>
+					  * Minor cosmetic changes<br>
+					
+					  <br>
+					  - Fixed no count of actions for stats if small icons used<br>
+					  - Fixed statistics display bug<br>
+					  - Fixed focus was not given to pie menu sometimes<br>
+					  - Fixed display of popup menu in textbox (two clicks were needed instead of one)<br>
+					  - Fixed altavista search in localized languages other than english is not searching the whole Web</p></td>
+					
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+					   <tr>
+						  <td><strong>Version 2.5.2</strong> <br>
+					* Changed displaying of small tag in alternative mode only if no icons displayed
+					  <p> - Fixed displaying home page from Options Dialog link<strong><br>
+					
+					  </strong>- Fixed highlight function wrongly displaying alert message</p></td>
+					  </tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+					   <tr>
+						  <td><strong>Version 2.5.1 <br>
+						  </strong>- Fixed displaying several icons on Linux</td>
+					
+					  </tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						   <tr>
+							  <td><strong>Version 2.5.0 <br>
+							  </strong>+ Added 'Use Small Icons' option in Options Dialog
+							  <p>* Changed text in spanish localization (Tips are now translated)<br>
+						
+						  * Hide pie menu when location bar/textarea closed empty<br>
+						  * Changed quality of all skin images from PNG32 to PNG8 to reduce size of xpi file</p>
+							  <p> - Fixed displaying of small tag in alternative mode<br>
+						  - Fixed bug when switching to/from basic display<br>
+						  - Fixed bug (partially) when page is loading and no html document is displayed (pie menu wasn't displaying)</p></td>
+					  </tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+							<tr>
+							  <td><strong>Version 2.4.0 <br>
+							  </strong>+ Added localized spanish and swedish<br>
+						+ Added new actions: 'Translate/Explain' and 'Toggle Bookmarks Toolbar'<br>
+						+ Added statistics in Options Dialog<br>
+						
+						+ Localized default search queries<br>
+						+ Localized default 'Daily Review' links<br>
+						+ Added use of %s string for argument variable in 'Run Application' actions (as selected or typed words)<br>
+						+ Root and Page up buttons are grayed when appropriate<br>
+						+ Added displaying current url when opening pie menu location bar<br>
+						+ Added displaying current selection when opening search textbox<br>
+						+ Added displaying a message in a highlight action when no text is highlighted in a page<br>
+						+ Added displaying of small tag in alternative mode to show the difference of state when no icons are displayed<br>
+						+ Added sub option to 'open only when dragging' option to disable Up/Left only dragging (when left mouse button is selected)
+						
+						<p>* Link Out action will load the url in the clipboard (if any) when no link is pointed<br>
+						  * Changed highlighting colors<br>
+						  * Changed active icons with a higher contrast<br>
+						  * Changed Page Top, Page Bottom, Highlight, Root, Page Up and Link Out icons<br>
+						  * Changed extra pie menu images<br>
+						  * Changed logo<br>
+						
+						  * Cleaned up code</p></td>
+							</tr>
+					</table>
+
+					<table border="0" class="text-bloc">	
+						<tr>
+						  <td><strong>Version 2.3.0 <br>
+						  </strong>+ Added localized italian<br>
+					
+					+ Added new actions: 'Run Program File' (3 actions), 'Highlight', 'Print Page', 'Save Page', 'Page Bottom' and 'Reset Zoom'<br>
+					+ Added customization for 'Program File' actions in Options Dialog<br>
+					+ Added customization for 'Search Web' action in Options Dialog<br>
+					+ Added shadow on action in basic display mod <br>
+					+ Added alternative extra pie menu: this gives acces to 5 more actions (7 in large pie menu)<br>
+					+ Added a location bar in middle of pie menu for typing URLs (shows only if &lt;enter&gt; is pressed)<br>
+					+ Added possibility to type a word to search or highlight while 'Search Web' or 'Highlight' actions are selected
+					<p> * Changed uninstallation code<br>
+					
+					  * Changed startup code<br>
+					  * Changed duplicate tab and duplicate windows icons<br>
+					  * Link Out icon is removed as soon as user drags mouse</p>
+					<p>- Fixed rare tooltips text bug<br>
+					  - Fixed tooltips image bug when dragging extra pie menu<br>
+					  - Fixed minor tips displaying bug<br>
+					
+					  - Fixed 'cancel' button in Options Dialog<br>
+					  - Fixed selection and double click were not possible when 'open pie menu only when dragging' was checked and pie menu button was left mouse button (changed this option to 'open pie menu only when dragging up')</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">
+						<tr>
+						  <td><strong>Version 2.2.0</strong> <br>
+					
+					+ Added localized german<br>
+					+ Added choice during installation: user's profile or application directory<br>
+					+ Added localized installation and uninstallation
+					<p> * A few changes in text<br>
+					  * Minor cosmetic changes for a few icons<br>
+					  * Extended slightly length of tooltips area<br>
+					  * Changed default settings (moved some actions)</p>
+					
+					<p>- Fixed daily review folder not deleting automatically when daily review option is unchecked<br>
+					  - Fixed copy link to clipboard</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">
+						<tr>
+						  <td><strong>Version 2.1.1 <br>
+					
+						  </strong>+ Localized tips (english &amp; french for now)
+						  <p>- Fixed display of long tooltips</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">
+						<tr>
+						  <td><strong>Version 2.1.0 <br>
+					
+						  </strong>+ Added 'Basic display (don't display icons)' in Options Dialog
+						  <p>- The zoom actions now work on images<br>
+					  - Some actions can now be grayed in extra pie menu<br>
+					  - Tooltips are now displayed correctly while zooming</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">
+						<tr>
+						  <td><strong>Version 2.0.0 <br>
+						  </strong>+ Added choice between two pie menus: standard (8 actions) and large (10 actions).<br>
+					&nbsp;&nbsp;This gives access to 6 more actions (in the case of a large pie menu) considering pie menu, extra pie menu and alternative pie menu
+					<p>* Minor cosmetic changes</p></td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">
+						<tr>
+						  <td><strong>Version 1.1.0 <br>
+						  </strong>+ Added new actions: copy link, zoom in, zoom out, search web, back first new site, forward first new site<br>
+					+ Added logo in Options Dialog</td>
+						</tr>
+					</table>
+
+					<table border="0" class="text-bloc">
+						<tr>
+						  <td><strong>Version 1.0.0 (changes made to the original code) <br>
+						  </strong>+ Added new options in Options Dialog<br>
+					+ Added possibility to customize all actions in Options Dialog<br>
+					+ Added new actions: root, first page, last page, daily review, page top, close other tabs and others<br>
+					+ Added comments in the code<br>
+					+ Added new action: with a pie menu click on a link without dragging, the link is openned in a new tab and a red spot is displayed in the page after the link<br>
+					
+					+ Added changing center icon in menu when a link is pointed<br>
+					+ Added alternative actions will display over pie menu when secondary pie menu button clicked (or when alt key pressed)
+					<p>* Changed size and design of icons, menu and background tooltips images<br>
+					  * Changed tooltips font and size<br>
+					  * Adapated code to display correctly the new icons, menu and tooltips<br>
+					  * Changed tips text and font size<br>
+					  * Eliminated all redundant and confusing pie submenus<br>
+					
+					  * Changed default settings<br>
+					  * Removed german locale (can't translate new terms) and added french locale</p>
+					<p>- Tweaked tooltips displaying</p></td>
+						</tr>
+					</table>
+
+					<a name="GeneralInfo"></a>
+						<h2> General Information</h2>
+
+						<p>First released on Tue Oct 14 2003 03:43:04 UTC. Copyright(C) 2003-2011 Ons Besbes. All rights reserved.</p>
+					  <p>All the code is licensed under Mozilla tri-license version MPL 1.1/GPL 2.0/LGPL 2.1 .</p>
+					
+				<a name="Overview"></a>
+						<h3> Overview</h3>
+
+					<p> It is a pie menu that pops up inside the browser when you click the mouse and then let you perform various actions<br />
+  at the tip of the mouse pointer with minimum mouse movement.</p>
+					<p>The fast straight mouse gestures you perform this way save you from reaching toolbars, menus and keyboard and<br />
+					  keep you from having to memorize any gestures. All behaviors and actions are customizable. </p>
+					<p>This is an extension for Mozilla Firefox Browser.</p>
+					<p>Localized in English(en-US) and French(fr-FR) and several other languages.<br />
+</p>
+					<a name="SystemRequirements"></a>
+						<h3> System requirements</h3>
+					<p>To run easyGestures, your system must have Mozilla Firefox 3.6 installed.</p>
+
+					<a name="Uninstallation"></a>
+						<h3> Uninstallation</h3>
+					<p>To uninstall easyGestures, use Firefox Extension Manager.</p>
+					
+					<a name="ContactInformation"></a>
+						<h3> Contact Information</h3>
+<p>easyGestures was created by Ons Besbes:<br />
+					 * Web site: http://easygestures.mozdev.org/<br />
+					 * Feedback: http://easygestures.mozdev.org/notes.html?en<br />
+					 * E-mail: easygestures@gmail.com</p>
+					<p>Feel free to contact me to get support, report bugs or make suggestions.</p>
+					<a name="KnownIssues"></a>
+						<h3>Known Issues</h3>
+
+					<p>Display of the pie menu:<br />
+					  * is limited to the current frame.<br />
+					  * doesn't work on top of plugins (ex: Flash).</p>
+
+					<a name="Disclaimer"></a>
+						<h3>Disclaimer</h3>
+					<p>Ons Besbes isn't responsible for any damage caused by this program.</p>
+
+					<a name="Translators"></a>
+						<h3>Translators</h3>
+					<p>* German localization (de-DE): Team erweiterungen.de and ReinekeFux from Babelzilla.org.</p>
+					<p>* Polish localization (pl-PL): teo from Babelzilla.org.</p>
+					<p>* Chinese Traditional localization (zh-TW): wechuan 濰泉.</p>
+					<p>* Spanish localization (es-ES): chuzo from Babelzilla.</p>
+					<p>* Portuguese localization (pt-BR): Wenderson Teixeira.</p>
+					<p>* Japanese localization (ja-JP): nekodaisky.</p>
+					<p>* Slovak localization (sk-SK): Hubo from Babelzilla.org.</p>
+					<p>* Korean localization (ko-KR): wtspout from Babelzilla.org.</p>
+					<p>* Italian localization (it-IT): Carlo Baldassi.</p>
+					<p>* Hungarian localization (hu-HU): SchS from Babelzilla.org.</p>
+                    <p>* Turkish localization (tr-TR): Ersen Yoldac from Babelzilla.org.</p>
+                    <p>* Czech localization (cz-CZ): Pavel Endrst.</p>
+                    <p>* Czech localization (zh-CN): yfdyh000 from Babelzilla.</p>
+					
+					<div class="editsection" style="float:right;margin-left:5px;">[<a href="#top" title="goto page top">top</a>]</div>
+					<br>
+					<a name="bottom"></a>
+			
+					<!-- end content -->
+			<div id="footer"></div>	<!-- end of the FOOTER div -->
+</body></html>

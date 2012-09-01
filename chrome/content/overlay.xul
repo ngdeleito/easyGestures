@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>	  
+<?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
+
+<overlay id="easygestures"  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+	<script type="application/x-javascript" src="preferences.js"/>
+	<script type="application/x-javascript" src="integration.js"/> 
+	<script type="application/x-javascript" src="menu.js"/> 
+	<script type="application/x-javascript" src="functions.js"/>
+
+	<stringbundleset id="stringbundleset">  
+		<stringbundle id="easygestures.properties" src="chrome://easygestures/locale/easygestures.properties"/>
+	</stringbundleset>
+</overlay>
+
+
