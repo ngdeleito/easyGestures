@@ -481,7 +481,7 @@ function eG_handleMousedown(evt)	{
     
     // Start popup timer for prevTab or nextTab actions
 	if ( eGm.menuState == 3) {
-		eGm.tabPopupTimerId = setTimeout("eGm.tabPopupTimerFlag=true", eGm.tabPopupDelay);
+		eGm.tabPopupTimerId = setTimeout(function() { eGm.tabPopupTimerFlag = true; }, eGm.tabPopupDelay);
 	}
     
 	// check whether pie menu should change layout or hide (later)
@@ -525,7 +525,7 @@ function eG_handleMousedown(evt)	{
 	}
 	
 	// start timer for delayed show up
-	if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay ) {eGc.showAfterDelayPassed=true; eGc.showAfterDelayTimer=setTimeout("eG_showAfterDelay();", eGm.showAfterDelayDelay);}
+	if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay ) {eGc.showAfterDelayPassed=true; eGc.showAfterDelayTimer=setTimeout(eG_showAfterDelay, eGm.showAfterDelayDelay);}
 	
 	// copying parts of evt object
 	eGc.evtMouseDown = new Object();	// don't just keep a reference to evt because evt will change before it can be used properly
