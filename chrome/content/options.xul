@@ -38,19 +38,22 @@
 <?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
-<!--  type="prefwindow"   buttons="null;"   lastSelected = "profilePane" this.sizeToContent();   persist="screenX, screenY, width, height"
-  width="425px"
-  height="595px"
--->
 <prefwindow
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   id="eG_optionsWindow"
   title="&options; - easyGestures"
-  onload="avoidMultipleInstances();initMenuDialog();"
-  onkeypress="preventCloseOnEnter(event);">
+  type="prefwindow"
+  onload="avoidMultipleInstances(); initMenuDialog();"
+  onkeypress="preventCloseOnEnter(event);"
+  persist="lastSelected screenX screenY width height">
 
-  <prefpane flex="1" image="chrome://easygestures/content/profile.png" label="&profile;" id="profilePane">
+  <prefpane
+    flex="1"
+    image="chrome://easygestures/content/profile.png"
+    label="&profile;"
+    id="profilePane"
+    style="overflow: auto;">
     <vbox flex="1">
       <spacer flex="1" />
       <hbox pack="center">
@@ -121,7 +124,12 @@
     <menuseparator/>
   </prefpane>
 
-  <prefpane flex="1" image="chrome://easygestures/content/behavior.png" label="&behavior;" id="behaviorPane" style="overflow: auto;">
+  <prefpane
+    flex="1"
+    image="chrome://easygestures/content/behavior.png"
+    label="&behavior;"
+    id="behaviorPane"
+    style="overflow: auto;">
     <vbox>
       <label value="&use;" style="font-weight:bold;"/>
       <spacer height="3px" />
@@ -327,7 +335,12 @@
     </vbox>
   </prefpane>
   
-  <prefpane flex="1" image="chrome://easygestures/content/actions.png" label="&actions;" id="actionsPane">
+  <prefpane
+    flex="1"
+    image="chrome://easygestures/content/actions.png"
+    label="&actions;"
+    id="actionsPane"
+    style="overflow: auto;">
     <tabbox orient="vertical" flex="1" id="actionsTabboxes">
       <tabs>
         <tab label="&actions.regular;" />
@@ -447,7 +460,7 @@
             </vbox>
           </vbox>
         </tabpanel>
-        <tabpanel flex="1" style="overflow:auto">
+        <tabpanel flex="1">
           <vbox>
             <label value="&contextmenu.order;" style="font-weight: bold;" />
             <spacer height="3px" />
@@ -475,8 +488,12 @@
     </tabbox>
   </prefpane>
   
-  <prefpane flex="1" image="chrome://easygestures/content/customizations.png"
-    label="&customizations;" id="customizationsPane">
+  <prefpane
+    flex="1"
+    image="chrome://easygestures/content/customizations.png"
+    label="&customizations;"
+    id="customizationsPane"
+    style="overflow: auto;">
     <vbox flex="1">
       <tabbox orient="vertical" flex="1" id="customizationsTabboxes">
         <tabs>
@@ -486,7 +503,7 @@
           <tab label="&customizations.misc;" />
         </tabs>
         <tabpanels flex="1">
-          <tabpanel flex="1" style="overflow: auto;">
+          <tabpanel flex="1">
             <vbox>
               <vbox style="background-color:white;">
                 <hbox>
@@ -573,7 +590,7 @@
               </vbox>
             </vbox>
           </tabpanel>
-          <tabpanel flex="1" style="overflow:auto;">
+          <tabpanel flex="1">
             <vbox>
               <vbox style="background-color:white;">
                 <hbox>
