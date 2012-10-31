@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "Tepki">
 <!ENTITY actions "Eylemler">
 <!ENTITY customizations "Kişiselleştirme">
-<!ENTITY skins "Dış Görünüş">
 
 <!ENTITY actions.main "Ana Menü">
 <!ENTITY actions.extra "Ekstra Menü">
@@ -292,14 +291,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "Yeni Simge">
 
 <!ENTITY duplicatekey.warning "Bu tuş zaten kullanımda! Farklı bir tuş seçin.">
-
-<!ENTITY skins.change "Dış Görünümü Değiştir">
-<!ENTITY skins.default "Klasik Görünüm (varsayılan)">
-<!ENTITY skins.more "Daha çok dış görünüm al">
-<!ENTITY skins.nopreview "Önizleme Yok">
-<!ENTITY skins.inUse "Kullanımda">
-<!ENTITY skins.use "Dış Görünümü Kullan">
-<!ENTITY skins.uninstall "Dış Görünümü Kaldır">
 
 <!ENTITY tips "İpuçları">
 <!ENTITY previousTip "Önceki">

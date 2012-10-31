@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "設定">
 <!ENTITY actions "動作">
 <!ENTITY customizations "自訂">
-<!ENTITY skins "面版">
 
 <!ENTITY actions.main "主要選單">
 <!ENTITY actions.extra "延伸選單">
@@ -291,14 +290,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "新的圖示">
 
 <!ENTITY duplicatekey.warning "這個按鍵已經被使用，請選擇另一個不同的按鍵！">
-
-<!ENTITY skins.change "改變面板">
-<!ENTITY skins.default "經典面板（預設）">
-<!ENTITY skins.more "取得更多面板">
-<!ENTITY skins.nopreview "沒有預覽">
-<!ENTITY skins.inUse "使用中">
-<!ENTITY skins.use "使用面板">
-<!ENTITY skins.uninstall "移除面板">
 
 <!ENTITY tips "小提示">
 <!ENTITY previousTip "上一個">

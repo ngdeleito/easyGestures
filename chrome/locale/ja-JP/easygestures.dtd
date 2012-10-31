@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "動作">
 <!ENTITY actions "アクション">
 <!ENTITY customizations "カスタマイズ">
-<!ENTITY skins "スキン">
 
 <!ENTITY actions.main "メインメニュー">
 <!ENTITY actions.extra "拡張メニュー">
@@ -291,14 +290,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "新しいアイコン">
 
 <!ENTITY duplicatekey.warning "このキーは既に使っています！他のキーを選んでください。">
-
-<!ENTITY skins.change "スキンの変更">
-<!ENTITY skins.default "クラシックスキン (標準)">
-<!ENTITY skins.more "新しいスキンを入手">
-<!ENTITY skins.nopreview "プレビューなし">
-<!ENTITY skins.inUse "使用中">
-<!ENTITY skins.use "スキンを使用">
-<!ENTITY skins.uninstall "スキンを削除">
 
 <!ENTITY tips "ヒント">
 <!ENTITY previousTip "前へ">

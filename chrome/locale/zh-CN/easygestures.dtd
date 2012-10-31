@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "情况">
 <!ENTITY actions "动作">
 <!ENTITY customizations "自定义">
-<!ENTITY skins "皮肤">
 
 <!ENTITY actions.main "主菜单">
 <!ENTITY actions.extra "延伸菜单">
@@ -292,14 +291,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "创建图标">
 
 <!ENTITY duplicatekey.warning "这热键已在使用中！请选择其他热键。">
-
-<!ENTITY skins.change "更改皮肤">
-<!ENTITY skins.default "经典皮肤(默认)">
-<!ENTITY skins.more "获取更多皮肤">
-<!ENTITY skins.nopreview "无预览">
-<!ENTITY skins.inUse "使用中">
-<!ENTITY skins.use "使用皮肤">
-<!ENTITY skins.uninstall "卸载皮肤">
 
 <!ENTITY tips "提示">
 <!ENTITY previousTip "上一个">

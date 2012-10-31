@@ -14,7 +14,6 @@
 <!ENTITY behavior "Správanie">
 <!ENTITY actions "Akcie">
 <!ENTITY customizations "Prispôsobenie">
-<!ENTITY skins "Skiny">
 <!ENTITY actions.main "Hlavná ponuka">
 <!ENTITY actions.extra "Extra ponuka">
 <!ENTITY actions.info "Extra ponuka je zobrazená použitím korešpondujúcej akcie.">
@@ -243,13 +242,6 @@
 <!ENTITY changeIcon "Zmeniť ikonu">
 <!ENTITY labelNewIcon "Nová ikona">
 <!ENTITY duplicatekey.warning "Tento kláves je už použitý! Vyberte iný kláves.">
-<!ENTITY skins.change "Zmeniť skin">
-<!ENTITY skins.default "Klasický skin (predvolený)">
-<!ENTITY skins.more "Získať ďalšie skiny">
-<!ENTITY skins.nopreview "Bez ukážky">
-<!ENTITY skins.inUse "Používa sa">
-<!ENTITY skins.use "Použiť skin">
-<!ENTITY skins.uninstall "Odinštalovať skin">
 <!ENTITY tips "Tipy">
 <!ENTITY previousTip "Predchádzajúci">
 <!ENTITY nextTip "Nasledujúci">

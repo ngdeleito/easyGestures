@@ -13,7 +13,6 @@
 <!ENTITY behavior "Ustawienia">
 <!ENTITY actions "Akcje">
 <!ENTITY customizations "Dostosuj">
-<!ENTITY skins "Motywy">
 <!ENTITY actions.main "Menu główne">
 <!ENTITY actions.extra "Menu dodatkowe">
 <!ENTITY actions.info "Menu dodatkowe jest wyświetlane po wykonaniu właściwej dla niego akcji.">
@@ -242,13 +241,6 @@
 <!ENTITY changeIcon "Zmień ikonę">
 <!ENTITY labelNewIcon "Nowa ikona">
 <!ENTITY duplicatekey.warning "Ten klawisz został już użyty! Wybierz inny.">
-<!ENTITY skins.change "Zmiana motywu">
-<!ENTITY skins.default "Motyw klasyczny (domyślny)">
-<!ENTITY skins.more "Pobierz motywy">
-<!ENTITY skins.nopreview "Brak podglądu">
-<!ENTITY skins.inUse "Aktualnie używany">
-<!ENTITY skins.use "Zastosuj motyw">
-<!ENTITY skins.uninstall "Usuń motyw">
 <!ENTITY tips "Podpowiedzi">
 <!ENTITY previousTip "Poprzednia">
 <!ENTITY nextTip "Następna">

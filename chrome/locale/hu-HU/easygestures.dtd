@@ -14,7 +14,6 @@
 <!ENTITY behavior "Viselkedés">
 <!ENTITY actions "Műveletek">
 <!ENTITY customizations "Személyre szabás">
-<!ENTITY skins "Megjelenés">
 <!ENTITY actions.main "Főmenü">
 <!ENTITY actions.extra "Kiegészítő menü">
 <!ENTITY actions.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg.">
@@ -243,13 +242,6 @@
 <!ENTITY changeIcon "Ikon megváltoztatása">
 <!ENTITY labelNewIcon "Új ikon">
 <!ENTITY duplicatekey.warning "Ez a billentyű már foglalt! Válassz egy másikat!">
-<!ENTITY skins.change "Megjelenés megváltoztatása">
-<!ENTITY skins.default "Klasszikus megjelenés (alapbeállítás)">
-<!ENTITY skins.more "További megjelenések letöltése">
-<!ENTITY skins.nopreview "Nincs előnézet">
-<!ENTITY skins.inUse "Aktív">
-<!ENTITY skins.use "Megjelenés alkalmazása">
-<!ENTITY skins.uninstall "Megjelenés eltávolítása">
 <!ENTITY tips "Tippek">
 <!ENTITY previousTip "Előző">
 <!ENTITY nextTip "Következő">

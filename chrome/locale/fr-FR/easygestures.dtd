@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "Comportement">
 <!ENTITY actions "Actions">
 <!ENTITY customizations "Personnalisations">
-<!ENTITY skins "Habillages">
 
 <!ENTITY actions.main "Menu principal">
 <!ENTITY actions.extra "Menu supplémentaire">
@@ -291,14 +290,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "Nouvelle icône">
 
 <!ENTITY duplicatekey.warning "Cette touche est déjà utilisée ! Choisissez une touche différente.">
-
-<!ENTITY skins.change "Changer habillage">
-<!ENTITY skins.default "Classic Skin (par défaut)">
-<!ENTITY skins.more "Obtenez plus d'habillages">
-<!ENTITY skins.nopreview "No Preview">
-<!ENTITY skins.inUse "En usage">
-<!ENTITY skins.use "Utiliser habillage">
-<!ENTITY skins.uninstall "Désinstaller habillage">
 
 <!ENTITY tips "Astuces">
 <!ENTITY previousTip "Précédente">

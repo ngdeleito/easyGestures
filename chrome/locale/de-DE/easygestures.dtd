@@ -14,7 +14,6 @@
 <!ENTITY behavior "Verhalten">
 <!ENTITY actions "Aktionen">
 <!ENTITY customizations "Anpassungen">
-<!ENTITY skins "Skins">
 <!ENTITY actions.main "Haupt-Kreismenü">
 <!ENTITY actions.extra "Zusatz-Kreismenü">
 <!ENTITY actions.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt.">
@@ -243,13 +242,6 @@
 <!ENTITY changeIcon "Symbol anpassen">
 <!ENTITY labelNewIcon "Neues Symbol">
 <!ENTITY duplicatekey.warning "Diese Taste ist bereits in Verwendung! Bitte eine andere Taste wählen.">
-<!ENTITY skins.change "Skin wechseln">
-<!ENTITY skins.default "Classic Skin (Standard)">
-<!ENTITY skins.more "Weitere Skins herunterladen">
-<!ENTITY skins.nopreview "Keine Vorschau vorhanden">
-<!ENTITY skins.inUse "Wird aktuell verwendet">
-<!ENTITY skins.use "Skin benutzen">
-<!ENTITY skins.uninstall "Skin deinstallieren">
 <!ENTITY tips "Tipps">
 <!ENTITY previousTip "Vorheriger">
 <!ENTITY nextTip "Nächster">

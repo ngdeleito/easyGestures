@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "Comportamento">
 <!ENTITY actions "Ações">
 <!ENTITY customizations "Personalizações">
-<!ENTITY skins "Skins">
 
 <!ENTITY actions.main "Menu Principal">
 <!ENTITY actions.extra "Menu Extra">
@@ -291,14 +290,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "Novo Ícone">
 
 <!ENTITY duplicatekey.warning "Esta tecla já está em uso! Escolha uma telca diferente.">
-
-<!ENTITY skins.change "Mudar Skin">
-<!ENTITY skins.default "Skin Clássica (padrão)">
-<!ENTITY skins.more "Obter mais skins">
-<!ENTITY skins.nopreview "Sem Visualização">
-<!ENTITY skins.inUse "Em Uso">
-<!ENTITY skins.use "Use a Skin">
-<!ENTITY skins.uninstall "Desinstalar Skin">
 
 <!ENTITY tips "Dicas">
 <!ENTITY previousTip "Anterior">

@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "Behavior">
 <!ENTITY actions "Actions">
 <!ENTITY customizations "Customizations">
-<!ENTITY skins "Skins">
 
 <!ENTITY actions.main "Main Menu">
 <!ENTITY actions.extra "Extra Menu">
@@ -292,14 +291,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "New Icon">
 
 <!ENTITY duplicatekey.warning "This key is already in use ! Choose a different key.">
-
-<!ENTITY skins.change "Change Skin">
-<!ENTITY skins.default "Classic Skin (default)">
-<!ENTITY skins.more "Get more skins">
-<!ENTITY skins.nopreview "No Preview">
-<!ENTITY skins.inUse "In Use">
-<!ENTITY skins.use "Use Skin">
-<!ENTITY skins.uninstall "Uninstall Skin">
 
 <!ENTITY tips "Tips">
 <!ENTITY previousTip "Previous">

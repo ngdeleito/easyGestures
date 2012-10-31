@@ -14,7 +14,6 @@
 <!ENTITY behavior "Comportamiento">
 <!ENTITY actions "Acciones">
 <!ENTITY customizations "Personalizar">
-<!ENTITY skins "Temas">
 <!ENTITY actions.main "Menú principal">
 <!ENTITY actions.extra "Menú extra">
 <!ENTITY actions.info "El menú extra se muestra al usar la acción correspondiente.">
@@ -243,13 +242,6 @@
 <!ENTITY changeIcon "Cambiar icono">
 <!ENTITY labelNewIcon "Icono nuevo">
 <!ENTITY duplicatekey.warning "Esta tecla ya está en uso. Elija otra diferente.">
-<!ENTITY skins.change "Cambiar tema">
-<!ENTITY skins.default "Tema clásico (por defecto)">
-<!ENTITY skins.more "Obtener más temas">
-<!ENTITY skins.nopreview "Sin vista previa">
-<!ENTITY skins.inUse "En uso">
-<!ENTITY skins.use "Usar tema">
-<!ENTITY skins.uninstall "Desinstalar tema">
 <!ENTITY tips "Consejos">
 <!ENTITY previousTip "Anterior">
 <!ENTITY nextTip "Siguiente">

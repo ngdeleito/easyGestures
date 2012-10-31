@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "Comportamento">
 <!ENTITY actions "Azioni">
 <!ENTITY customizations "Personalizzazioni">
-<!ENTITY skins "Temi">
 
 <!ENTITY actions.main "Menu Principale">
 <!ENTITY actions.extra "Menu Extra">
@@ -292,14 +291,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "Nuova Icona">
 
 <!ENTITY duplicatekey.warning "Questo tasto è già in uso! Scegli un tasto diverso.">
-
-<!ENTITY skins.change "Cambia Tema">
-<!ENTITY skins.default "Classico (default)">
-<!ENTITY skins.more "Trova altri Temi">
-<!ENTITY skins.nopreview "No Anteprima">
-<!ENTITY skins.inUse "In Uso">
-<!ENTITY skins.use "Usa Tema">
-<!ENTITY skins.uninstall "Disinstalla Tema">
 
 <!ENTITY tips "Suggerimenti">
 <!ENTITY previousTip "Precedente">

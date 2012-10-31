@@ -34,7 +34,6 @@ END OF INSTRUCTIONS
 <!ENTITY behavior "Chování">
 <!ENTITY actions "Akce">
 <!ENTITY customizations "Přizpůsobení">
-<!ENTITY skins "Skiny">
 
 <!ENTITY actions.main "Hlavní nabídka">
 <!ENTITY actions.extra "Extra nabídka">
@@ -292,14 +291,6 @@ END OF INSTRUCTIONS
 <!ENTITY labelNewIcon "Nová ikona">
 
 <!ENTITY duplicatekey.warning "Tato klávesa je již použita! Vyberte jinou klávesu.">
-
-<!ENTITY skins.change "Změnit skin">
-<!ENTITY skins.default "Klasický skin (předvolený)">
-<!ENTITY skins.more "Získat další skiny">
-<!ENTITY skins.nopreview "Bez ukázky">
-<!ENTITY skins.inUse "Používá se">
-<!ENTITY skins.use "Použít skin">
-<!ENTITY skins.uninstall "Odinstalovat skin">
 
 <!ENTITY tips "Tipy">
 <!ENTITY previousTip "Předcházející">

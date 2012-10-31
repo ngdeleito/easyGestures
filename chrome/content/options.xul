@@ -1,4 +1,4 @@
-﻿<?xml version="1.0"?> 
+﻿<?xml version="1.0"?>
 
 <!-- ***** BEGIN LICENSE BLOCK *****
    - Version: MPL 1.1/GPL 2.0/LGPL 2.1
@@ -38,895 +38,827 @@
 <?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
+<!--  type="prefwindow"   buttons="null;"   lastSelected = "profilePane" this.sizeToContent();   persist="screenX, screenY, width, height"
+  width="425px"
+  height="595px"
+-->
 <prefwindow
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	id="eG_optionsWindow"
-	title="&options; - easyGestures"
-	type="prefwindow"
-	onload="avoidMultipleInstances();initMenuDialog();this.sizeToContent();"
-	onkeypress="preventCloseOnEnter(event);"
-	buttons="null;"
-	lastSelected = "profilePane"
-	persist="screenX, screenY, width, height"
-    width="425px"
-    height="595px"
->
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  id="eG_optionsWindow"
+  title="&options; - easyGestures"
+  onload="avoidMultipleInstances();initMenuDialog();"
+  onkeypress="preventCloseOnEnter(event);">
 
-	<prefpane flex="1" image="chrome://easygestures/content/profile.png" label="&profile;" id="profilePane">
-		<vbox flex="1">	
-			<spacer flex="1"/>
-			<hbox pack="center">
-				<image src="chrome://easygestures/content/easyGestures.png"/>
-			</hbox>
-			<hbox pack="center">
-				<label id="version" value="" style="color: #3A69A6;font-weight:bold;" onmouseover="this.style.textDecoration='underline';this.style.cursor='pointer';" onmouseout="this.style.textDecoration='none';this.style.cursor='auto';" onclick="openReadmeWindow();"  tooltiptext="&about.history;"/>
-			</hbox>
-			<separator class="thin"/>
-			<hbox pack="center">
-				<groupbox style="background-color:white;">
-					<spacer height="4"/>
-					<menu id="eG_languageChange" label="&about.languageInfo;" value="changeLanguage" >
-						<menupopup id="language">
-						</menupopup>
-					</menu>
-					<spacer height="4"/>
-					<menu label="&about.manage;">
-						<menupopup>
-							<menuitem  label="&about.import;" onclick="importPrefs();initMenuDialog();"/>
-							<menuitem  label="&about.export;" onclick="saveMenuSettings();exportPrefs();"/>
-							<menuitem  label="&about.reset;" onclick="if (confirm('&about.reset;')) {Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow('navigator:browser').eG_setPrefs(null);initMenuDialog();}"/>
-						</menupopup>
-					</menu>	
-					<spacer height="4"/>
-					<menu label="&about.stats;">
-						<menupopup>
-							<menuitem label="&about.statsDisplay;" onclick="window.openDialog('chrome://easygestures/content/stats.xul','','chrome,alwaysRaised,centerscreen');"/>
-							<menuitem label="&about.statsReset;" onclick="if (confirm('&about.statsReset;')) resetStats();"/>
-						</menupopup>
-					</menu>
-					<spacer height="4"/>								
-				</groupbox>
-			</hbox>	
-			<spacer flex="2"/>
-			
-			<hbox pack="center" flex="1">
-                <hbox>
-				    <html:a href="http://easygestures.mozdev.org/confirmDonation.html" target="_blank"><html:img style="border:0px;" src="chrome://easygestures/content/donate.png"/></html:a>
-                </hbox>
-			</hbox>
-			
-			<hbox pack="center" flex="1">
-				<vbox pack="center">
-					<hbox pack="center">	
-						<label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org" value="http://easygestures.mozdev.org" />
-					</hbox>
-					<separator class="thin"/>
-					<hbox pack="center">
-						<label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org/notes.html?en" value="&about.feedback;" />
-						<vbox pack="center">
-							<image src="chrome://easygestures/content/link.png"/>
-						</vbox>	
-					</hbox>
-				</vbox>
-			</hbox>
-            
-			<spacer flex="2"/>
-            
-			<hbox pack="center">
-				<label value="&about.createdBy;" style="color: #3A69A6;"/>
-				<label value="Ons Besbes" style="color: #3A69A6;;margin-left:-0px;font-weight:bold;"/>
-			</hbox>			
-			
-			<spacer flex="3"/>
-			<hbox pack="start">
-				<checkbox id="startupTips" label="&about.startupTips;"/>
-				<spacer flex="1"/>
-				<checkbox id="statusbarShowIcon" label="&about.statusbarShowIcon;" onclick="showStatusbarIcon(this.checked);"/>
-			</hbox>	
-		</vbox>
-		<menuseparator/>
-	</prefpane>
-    
-	<prefpane flex="1" image="chrome://easygestures/content/behavior.png" label="&behavior;"  id="behaviorPane"> 
-        <tabbox orient="vertical" flex="1" id="">
-			<tabs>
-			</tabs>
-			<tabpanels flex="1">
-				<tabpanel flex="1" style="overflow:auto">
-                    <vbox>
-						<label value="&use;" style="font-weight:bold;"/> 
-                        <spacer height="3px"/>
-						<hbox>	
-							<vbox>
-								<menulist id="showButton" oncommand="updateUI();">
-								<menupopup>
-									<menuitem value="0" label="&use.button.left;"/>
-									<menuitem value="1" label="&use.button.middle;"/>
-									<menuitem value="2" label="&use.button.right;"/>
-									<menuitem value="3" label="&use.button.custom;"/>
-								</menupopup>
-								</menulist>
-							</vbox>
-						    <hbox>
-    						    <vbox pack="center">
-							        <label id="customMouseButtonLabel" value="&use.buttoncode;"/>
-						        </vbox>
-						        <textbox id="customMouseButtonCode" size ="2" onclick="this.value=event.button;checkDuplicateKeys(this);return true;"/>
-						    </hbox>
-                        </hbox>
-						<hbox>
-							<vbox pack="center">
-								<label value="&use.and;" style="font-weight:bold;"/>
-							</vbox>
-							<checkbox id="show_shift" label="&use.shift;" oncommand="if(this.checked) document.getElementById('show_ctrl').checked= false;"/>
-							<checkbox id="show_ctrl" label="&use.ctrl;" oncommand="if(this.checked) document.getElementById('show_shift').checked= false;"/>
-						</hbox>
-						<checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();"/>
-						<hbox>
-							<spacer width="22"/>
-							<vbox pack="center">
-								<label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;"/>
-							</vbox>
-							<textbox id="showAfterDelayDelay" size ="3" />
-						</hbox>	
-						<checkbox id="dragOnly" label="&use.dragOnly;" oncommand="updateUI();"/>
-						<hbox>
-							<label id="dragOnlyUpLeftBlank" value="   "/>
-							<checkbox id="dragOnlyUpLeft" label="&use.upleft;"/>
-						</hbox>
-                            
-						<separator/>
-                            
-                        <menuseparator/>
-						<label value="&use.alternative;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox>	
-							<menulist id="showAltButton"  oncommand="updateUI();">
-								<menupopup>
-									<menuitem value="0" label="&use.button.left;"/>
-									<menuitem value="1" label="&use.button.middle;"/>
-									<menuitem value="2" label="&use.button.right;"/>
-									<menuitem value="3" label="&use.button.custom;"/>
-								</menupopup>
-							</menulist>
-							<hbox>
-								<vbox pack="center">
-									<label id="customAltMouseButtonLabel" value="&use.buttoncode;"/>
-								</vbox>
-								<textbox id="customAltMouseButtonCode" size ="2" onclick="this.value=event.button;checkDuplicateKeys(this);return true;"/>
-							</hbox>
-						</hbox>
-                        <label value="&use.also;"/>
-                            
-                        <separator/>
-                    
-                        <menuseparator/>
-						<label value="&suppress;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-                        <hbox>	
-							<menulist id="supprKey"  oncommand="checkDuplicateKeys(this);updateUI();">
-							<menupopup>
-								<menuitem value="0" label="-----"/>
-								<menuitem value="1" label="&suppress.ins;"/>
-								<menuitem value="2" label="&suppress.alt;"/>
-								<menuitem value="3" label="&suppress.ctrl;"/>
-								<menuitem value="4" label="&suppress.custom;"/>
-							</menupopup>
-							</menulist>
-							<hbox pack="start" flex="1">
-								<vbox pack="center">
-									<label id="customSupprKeyLabel" value="&suppress.keycode;"/>
-								</vbox>
-								<textbox id="customSupprKeyCode" size ="4" onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;"/>
-							</hbox>
-						</hbox>
-                            
-						<separator/>
-                            
-						<menuseparator/>
-						<label value="&move;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox>
-                            <radiogroup flex="1" id="moveMenu" orient="horizontal">
-							    <radio id="moveKey" label="&move.key;"/>
-								<radio id="moveEdge" label="&move.edge;"/>
-							</radiogroup>							
-                        </hbox>
+  <prefpane flex="1" image="chrome://easygestures/content/profile.png" label="&profile;" id="profilePane">
+    <vbox flex="1">
+      <spacer flex="1" />
+      <hbox pack="center">
+        <image src="chrome://easygestures/content/easyGestures.png" />
+      </hbox>
+      <hbox pack="center">
+        <label
+          id="version"
+          value=""
+          style="color: #3A69A6;font-weight:bold;"
+          onmouseover="this.style.textDecoration='underline';this.style.cursor='pointer';"
+          onmouseout="this.style.textDecoration='none';this.style.cursor='auto';"
+          onclick="openReadmeWindow();"
+          tooltiptext="&about.history;" />
+      </hbox>
+      <separator class="thin" />
+      <hbox pack="center">
+        <groupbox style="background-color:white;">
+          <spacer height="4" />
+          <menu id="eG_languageChange" label="&about.languageInfo;" value="changeLanguage">
+            <menupopup id="language"></menupopup>
+          </menu>
+          <spacer height="4" />
+          <menu label="&about.manage;">
+            <menupopup>
+              <menuitem label="&about.import;" onclick="importPrefs();initMenuDialog();" />
+              <menuitem label="&about.export;" onclick="saveMenuSettings();exportPrefs();" />
+              <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) {Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow('navigator:browser').eG_setPrefs(null);initMenuDialog();}" />
+            </menupopup>
+          </menu>
+          <spacer height="4" />
+          <menu label="&about.stats;">
+            <menupopup>
+              <menuitem label="&about.statsDisplay;" onclick="window.openDialog('chrome://easygestures/content/stats.xul','','chrome,alwaysRaised,centerscreen');" />
+              <menuitem label="&about.statsReset;" onclick="if (confirm('&about.statsReset;')) resetStats();" />
+            </menupopup>
+          </menu>
+          <spacer height="4" />
+        </groupbox>
+      </hbox>
+      <spacer flex="2" />
+      <hbox pack="center" flex="1">
+        <vbox pack="center">
+          <hbox pack="center">
+            <label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org" value="http://easygestures.mozdev.org" />
+          </hbox>
+          <separator class="thin" />
+          <hbox pack="center">
+            <label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org/notes.html?en" value="&about.feedback;" />
+            <vbox pack="center">
+              <image src="chrome://easygestures/content/link.png" />
+            </vbox>
+          </hbox>
+        </vbox>
+      </hbox>
+      <spacer flex="2" />
+      <hbox pack="center">
+        <label value="&about.createdBy;" style="color: #3A69A6;" />
+        <label value="Ons Besbes" style="color: #3A69A6;margin-left:-0px;font-weight:bold;" />
+      </hbox>
+      <spacer flex="3" />
+      <hbox pack="start">
+        <checkbox id="startupTips" label="&about.startupTips;" />
+        <spacer flex="1" />
+        <checkbox id="statusbarShowIcon" label="&about.statusbarShowIcon;" onclick="showStatusbarIcon(this.checked);" />
+      </hbox>
+    </vbox>
+    <menuseparator/>
+  </prefpane>
 
-						<separator/>
-                        
-						<menuseparator/>
-						<label value="&contextmenu;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox>	
-							<spacer width="16"/>
-							<menulist id="contextKey"  oncommand="checkDuplicateKeys(this);updateUI();">
-								<menupopup>
-									<menuitem value="0" label="-----"/>
-									<menuitem value="1" label="&suppress.ins;"/>
-									<menuitem value="2" label="&suppress.alt;"/>
-									<menuitem value="3" label="&suppress.ctrl;"/>
-									<menuitem value="4" label="&suppress.custom;"/>
-								</menupopup>
-							</menulist>
-							<hbox pack="start" flex="1">
-								<vbox pack="center">
-									<label id="customContextKeyLabel" value="&suppress.keycode;"/>
-								</vbox>
-								<textbox id="customContextKeyCode" size ="4" onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;"/>
-							</hbox>
-						</hbox>	
-						<checkbox id="contextShowAuto" label="&contextmenu.showAuto;"/>                        
-                        
-						<separator/>
-                        
-                        <menuseparator/>
-						<label value="&extras.menuType;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox>
-							<hbox>
-								<radiogroup flex="1" id="menuType" orient="vertical" oncommand="updateUI();">
-									<radio id="eG_std" label="&extras.menu;"/>
-									<radio id="eG_lrg" label="&extras.largeMenu;"/>
-								</radiogroup>
-							</hbox>
-							<hbox pack="center" flex="1">
-								<groupbox style="background-color:#FDD;">
-								<checkbox id="dropDownMenu" label="&extras.linearMenu;" oncommand="createActions();initActionsBoxes();updateUI();"/>
-								</groupbox>
-							</hbox>
-						</hbox>
-                                
-						<separator/>
-                            
-						<menuseparator/>
-						<label value="&extras.display;" style="font-weight: bold;"/> 
-                        <spacer height="3px"/>
-						<hbox>
-							<label value="&extras.menuOpacity; "/>
-							<scrollbar id="opacitySlider" curpos="50" width="100" increment="1" pageincrement="10" maxpos="100" onmouseup ="document.getElementById('menuOpacity').value=this.getAttribute('curpos')+'% ';" />
-							<label id="menuOpacity" width="40"/>
-						</hbox>
-						<separator class="thin" />
-						<checkbox id="noIcons" label="&extras.noIcons;" oncommand="document.getElementById('tooltipsDelayOmit').checked= this.checked;"/>
-						<checkbox id="smallIcons" label="&extras.smallIcons;"/>
-						
-                        <separator/>
-                            
-						<menuseparator/>
-                        <checkbox id="showTooltips" label="&extras.ttip;" oncommand="updateUI();" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox>
-							<spacer width="22"/>
-							<vbox pack="center">
-								<label id="tooltipsDelayLabel" value="&extras.ttipDelayLabel;"/>
-							</vbox>
-							<textbox id="tooltipsDelay" size ="3" />
-							<hbox pack="center"  flex="1">
-								<checkbox id="tooltipsDelayOmit" label="&extras.ttipDelayOmit;"/>
-							</hbox>
-						</hbox>
-                        
-						<separator/>
-                        
-						<menuseparator/>
-                        <checkbox id="handleLinks" label="&link.through;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox>
-							<spacer width="22"/>
-							<vbox pack="center">
-								<label id="linksDelayLabel" value="&link.delay;"/>
-							</vbox>
-							<textbox id="linksDelay" size ="3" />
-						</hbox>	
-						<hbox>
-							<spacer width="22"/>
-							<radiogroup id="handleLinksAs" orient="vertical">
-								<radio id="handleLinksAsAction" label="&link.throughAsAction;"/>
-								<radio id="handleLinksAsBrowser" label="&link.throughAsBrowser;"/>
-							</radiogroup>
-							<vbox>
-								<spacer height="4"/>
-								<hbox flex="0">
-									<html:div>
-										<html:a href="#" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane'));document.getElementById('customizationsTabboxes').selectedIndex=3;" style="text-decoration:underline;color: #3A69A6;"><image src="chrome://easygestures/content/link.png"/></html:a>
-									</html:div>
-								</hbox>
-								<spacer flex="1"/>
-							</vbox>
-						</hbox>
-                               
-						<separator/>
-                            
-						<menuseparator/>
-                        <checkbox id="autoscrollingOn" label="&autoscrolling;" style="font-weight: bold;" oncommand="updateUI();"/>
-                        <spacer height="3px"/>
-                        <hbox>
-							<spacer width="22"/>
-							<vbox pack="center">
-								<label id="autoscrollingDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;"/>
-							</vbox>
-							<textbox id="autoscrollingDelay" size ="3" />
-						</hbox>
-                    </vbox>
+  <prefpane flex="1" image="chrome://easygestures/content/behavior.png" label="&behavior;" id="behaviorPane" style="overflow: auto;">
+    <vbox>
+      <label value="&use;" style="font-weight:bold;"/>
+      <spacer height="3px" />
+      <hbox>
+        <vbox>
+          <menulist id="showButton" oncommand="updateUI();">
+            <menupopup>
+              <menuitem value="0" label="&use.button.left;" />
+              <menuitem value="1" label="&use.button.middle;" />
+              <menuitem value="2" label="&use.button.right;" />
+              <menuitem value="3" label="&use.button.custom;" />
+            </menupopup>
+          </menulist>
+        </vbox>
+        <hbox>
+          <vbox pack="center">
+            <label id="customMouseButtonLabel" value="&use.buttoncode;" />
+          </vbox>
+          <textbox id="customMouseButtonCode" size ="2"
+            onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
+        </hbox>
+      </hbox>
+      <hbox>
+        <vbox pack="center">
+          <label value="&use.and;" style="font-weight:bold;" />
+        </vbox>
+        <checkbox id="show_shift" label="&use.shift;"
+          oncommand="if(this.checked) document.getElementById('show_ctrl').checked= false;" />
+        <checkbox id="show_ctrl" label="&use.ctrl;"
+          oncommand="if(this.checked) document.getElementById('show_shift').checked= false;" />
+      </hbox>
+      <checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
+      <hbox>
+        <spacer width="22" />
+        <vbox pack="center">
+          <label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
+        </vbox>
+        <textbox id="showAfterDelayDelay" size ="3" />
+      </hbox>
+      <checkbox id="dragOnly" label="&use.dragOnly;" oncommand="updateUI();" />
+      <hbox>
+        <label id="dragOnlyUpLeftBlank" value="   " />
+        <checkbox id="dragOnlyUpLeft" label="&use.upleft;" />
+      </hbox>
+      <menuseparator />
+      <label value="&use.alternative;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <menulist id="showAltButton" oncommand="updateUI();">
+          <menupopup>
+            <menuitem value="0" label="&use.button.left;" />
+            <menuitem value="1" label="&use.button.middle;" />
+            <menuitem value="2" label="&use.button.right;" />
+            <menuitem value="3" label="&use.button.custom;" />
+          </menupopup>
+        </menulist>
+        <hbox>
+          <vbox pack="center">
+            <label id="customAltMouseButtonLabel" value="&use.buttoncode;" />
+          </vbox>
+          <textbox id="customAltMouseButtonCode" size ="2"
+            onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
+        </hbox>
+      </hbox>
+      <label value="&use.also;" />
+      <menuseparator />
+      <label value="&suppress;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <menulist id="supprKey" oncommand="checkDuplicateKeys(this);updateUI();">
+          <menupopup>
+            <menuitem value="0" label="-----" />
+            <menuitem value="1" label="&suppress.ins;" />
+            <menuitem value="2" label="&suppress.alt;" />
+            <menuitem value="3" label="&suppress.ctrl;" />
+            <menuitem value="4" label="&suppress.custom;" />
+          </menupopup>
+        </menulist>
+        <hbox pack="start" flex="1">
+          <vbox pack="center">
+            <label id="customSupprKeyLabel" value="&suppress.keycode;" />
+          </vbox>
+          <textbox id="customSupprKeyCode" size ="4"
+            onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
+        </hbox>
+      </hbox>
+      <menuseparator />
+      <label value="&move;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <radiogroup flex="1" id="moveMenu" orient="horizontal">
+          <radio id="moveKey" label="&move.key;" />
+          <radio id="moveEdge" label="&move.edge;" />
+        </radiogroup>
+      </hbox>
+      <menuseparator />
+      <label value="&contextmenu;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <spacer width="16" />
+        <menulist id="contextKey" oncommand="checkDuplicateKeys(this);updateUI();">
+          <menupopup>
+            <menuitem value="0" label="-----" />
+            <menuitem value="1" label="&suppress.ins;" />
+            <menuitem value="2" label="&suppress.alt;" />
+            <menuitem value="3" label="&suppress.ctrl;" />
+            <menuitem value="4" label="&suppress.custom;" />
+          </menupopup>
+        </menulist>
+        <hbox pack="start" flex="1">
+          <vbox pack="center">
+            <label id="customContextKeyLabel" value="&suppress.keycode;" />
+          </vbox>
+          <textbox id="customContextKeyCode" size ="4"
+            onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
+        </hbox>
+      </hbox>
+      <checkbox id="contextShowAuto" label="&contextmenu.showAuto;" />
+      <menuseparator />
+      <label value="&extras.menuType;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <hbox>
+          <radiogroup flex="1" id="menuType" orient="vertical" oncommand="updateUI();">
+            <radio id="eG_std" label="&extras.menu;" />
+            <radio id="eG_lrg" label="&extras.largeMenu;" />
+          </radiogroup>
+        </hbox>
+        <hbox pack="center" flex="1">
+          <groupbox style="background-color:#FDD;">
+            <checkbox id="dropDownMenu" label="&extras.linearMenu;"
+              oncommand="createActions();initActionsBoxes();updateUI();" />
+          </groupbox>
+        </hbox>
+      </hbox>
+      <menuseparator />
+      <label value="&extras.display;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <label value="&extras.menuOpacity;" />
+        <scrollbar id="opacitySlider" curpos="50" width="100" increment="1" pageincrement="10"
+          maxpos="100"
+          onmouseup ="document.getElementById('menuOpacity').value=this.getAttribute('curpos')+'% ';" />
+        <label id="menuOpacity" width="40" />
+      </hbox>
+      <separator class="thin" />
+      <checkbox id="noIcons" label="&extras.noIcons;"
+        oncommand="document.getElementById('tooltipsDelayOmit').checked= this.checked;" />
+      <checkbox id="smallIcons" label="&extras.smallIcons;" />
+      <menuseparator />
+      <checkbox id="showTooltips" label="&extras.ttip;"
+        oncommand="updateUI();" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <spacer width="22" />
+        <vbox pack="center">
+          <label id="tooltipsDelayLabel" value="&extras.ttipDelayLabel;" />
+        </vbox>
+        <textbox id="tooltipsDelay" size="3" />
+        <hbox pack="center" flex="1">
+          <checkbox id="tooltipsDelayOmit" label="&extras.ttipDelayOmit;" />
+        </hbox>
+      </hbox>
+      <menuseparator />
+      <checkbox id="handleLinks" label="&link.through;" style="font-weight: bold;" />
+      <spacer height="3px" />
+      <hbox>
+        <spacer width="22" />
+        <vbox pack="center">
+          <label id="linksDelayLabel" value="&link.delay;" />
+        </vbox>
+        <textbox id="linksDelay" size="3" />
+      </hbox>
+      <hbox>
+        <spacer width="22" />
+        <radiogroup id="handleLinksAs" orient="vertical">
+          <radio id="handleLinksAsAction" label="&link.throughAsAction;" />
+          <radio id="handleLinksAsBrowser" label="&link.throughAsBrowser;" />
+        </radiogroup>
+        <vbox>
+          <spacer height="4" />
+          <hbox flex="0">
+            <html:div>
+              <html:a href="#" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane'));document.getElementById('customizationsTabboxes').selectedIndex=3;" style="text-decoration:underline;color: #3A69A6;">
+                <image src="chrome://easygestures/content/link.png" />
+              </html:a>
+            </html:div>
+          </hbox>
+          <spacer flex="1" />
+        </vbox>
+      </hbox>
+      <menuseparator />
+      <checkbox id="autoscrollingOn" label="&autoscrolling;" style="font-weight: bold;"
+        oncommand="updateUI();" />
+      <spacer height="3px" />
+      <hbox>
+        <spacer width="22" />
+        <vbox pack="center">
+          <label id="autoscrollingDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
+        </vbox>
+        <textbox id="autoscrollingDelay" size="3" />
+      </hbox>
+    </vbox>
+  </prefpane>
+  
+  <prefpane flex="1" image="chrome://easygestures/content/actions.png" label="&actions;" id="actionsPane">
+    <tabbox orient="vertical" flex="1" id="actionsTabboxes">
+      <tabs>
+        <tab label="&actions.regular;" />
+        <tab label="&actions.contextual;" />
+      </tabs>
+      <tabpanels flex="1">
+        <tabpanel>
+          <vbox>
+            <spacer height="6px" />
+            <toolbar style="-moz-appearance:none;border:0px;">
+              <vbox pack="center">
+                <label value="&actions.main;" style="font-weight: bold;" />
+                <label id="mainLayoutTitle" value="&actions.primary;" style="font-weight: bold;color: #CC0033;" />
+              </vbox>
+              <toolbarspacer />
+              <vbox pack="center">
+                <image src="chrome://easygestures/content/small_arrow.png"/>
+              </vbox>
+              <toolbarbutton label="0" group="layout" type="radio" checked="true"
+                tooltiptext="&actions.primary;"
+                oncommand="document.getElementById('mainAlternative1').setAttribute('collapsed', true);document.getElementById('mainAlternative2').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=0; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.primary;';" />
+              <toolbarbutton label="1" group="layout" type="radio"
+                tooltiptext="&actions.alternative; 1"
+                oncommand="document.getElementById('mainAlternative1').setAttribute('collapsed', false);document.getElementById('mainAlternative2').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=1; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 1';" />
+              <toolbarbutton label="2" group="layout" type="radio"
+                tooltiptext="&actions.alternative; 2"
+                oncommand="document.getElementById('mainAlternative2').setAttribute('collapsed', false);document.getElementById('mainAlternative1').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=2; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 2';" />
+              <toolbarspacer flex="1" />
+              <checkbox collapsed="true" id="mainAlternative1" label="&actions.alt;"
+                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
+                oncommand="updateUI();" />
+              <checkbox collapsed="true" id="mainAlternative2" label="&actions.alt;"
+                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
+                oncommand="updateUI();" />
+              <toolbarspacer />
+            </toolbar>
+            <tabbox orient="vertical" id="actionsMain">
+              <tabs>
+                <tab label="&actions.primary;" hidden="true" />
+                <tab label="&actions.alternative; 1" hidden="true" />
+                <tab label="&actions.alternative; 2" hidden="true" />
+              </tabs>
+              <tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
+                <tabpanel>
+                  <vbox id="gr_main" flex="1"></vbox>
                 </tabpanel>
-            </tabpanels>
-        </tabbox>
-	</prefpane>
-    
-	<prefpane flex="1" image="chrome://easygestures/content/actions.png" label="&actions;"  id="actionsPane">
-		<tabbox orient="vertical" flex="1" id="actionsTabboxes">
-			<tabs >
-				<tab label="&actions.regular;" />
-				<tab label="&actions.contextual;"/>
-			</tabs>
-			<tabpanels flex="1" >
-				<tabpanel>
-					<vbox>
-                        <spacer height="6px"/>
-						<toolbar style="-moz-appearance:none;border:0px;">
-							<vbox pack="center">
-								<label value="&actions.main;" style="font-weight: bold;"/>
-								<label id="mainLayoutTitle" value="&actions.primary;" style="font-weight: bold;color: #CC0033;"/>
-							</vbox>
-							<toolbarspacer/>
-							<vbox pack="center">
-								<image src="chrome://easygestures/content/small_arrow.png"/>                            
-							</vbox>
-							<toolbarbutton label="0" group="layout" type="radio" checked="true" tooltiptext="&actions.primary;" oncommand="document.getElementById('mainAlternative1').setAttribute('collapsed', true);document.getElementById('mainAlternative2').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=0; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.primary;';"/>
-							<toolbarbutton label="1" group="layout" type="radio" tooltiptext="&actions.alternative; 1" oncommand="document.getElementById('mainAlternative1').setAttribute('collapsed', false);document.getElementById('mainAlternative2').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=1; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 1';"/>
-							<toolbarbutton label="2" group="layout" type="radio" tooltiptext="&actions.alternative; 2" oncommand="document.getElementById('mainAlternative2').setAttribute('collapsed', false);document.getElementById('mainAlternative1').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=2; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 2';"/>
-						    <toolbarspacer flex="1"/>
-                            <checkbox collapsed = "true" id="mainAlternative1" label="&actions.alt;" style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;" oncommand="updateUI();"/>	
-                            <checkbox collapsed = "true" id="mainAlternative2" label="&actions.alt;" style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;" oncommand="updateUI();"/>									                            
-                            <toolbarspacer/>
-                        </toolbar>
-						<tabbox orient="vertical" id="actionsMain">
-							<tabs>
-								<tab label="&actions.primary;" hidden="true"/>
-								<tab label="&actions.alternative; 1" hidden="true"/>
-								<tab label="&actions.alternative; 2" hidden="true"/>
-							</tabs>
-							<tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
-								<tabpanel>
-									<vbox id="gr_main" flex="1">
-									</vbox>
-								</tabpanel>
-								<tabpanel>
-									<vbox flex="1">
-										<vbox id="gr_mainAlt1">
-										</vbox>
-									</vbox>
-								</tabpanel>
-								<tabpanel>
-									<vbox flex="1">
-										<vbox id="gr_mainAlt2">
-										</vbox>
-									</vbox>	
-								</tabpanel>
-							</tabpanels>
-						</tabbox>
-                        <separator/>
-						<menuseparator/>
-						<toolbar style="-moz-appearance:none;border:0px;">
-							<vbox pack="center">
-								<label value="&actions.extra;" style="font-weight: bold;"/>
-								<label id="extraLayoutTitle" value="&actions.primary;" style="font-weight: bold;color: #CC0033;"/>
-							</vbox>
-							<toolbarspacer/>
-							<vbox pack="center">
-								<image src="chrome://easygestures/content/small_arrow.png"/>                            
-							</vbox>                            
-							<toolbarbutton label="0" group="layout" type="radio"  checked="true" tooltiptext="&actions.primary;" oncommand="document.getElementById('extraAlternative1').setAttribute('collapsed', true);document.getElementById('extraAlternative2').setAttribute('collapsed', true);document.getElementById('actionsExtra').selectedIndex=0; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.primary;';"/>
-							<toolbarbutton label="1" group="layout" type="radio" tooltiptext="&actions.alternative; 1" oncommand="document.getElementById('extraAlternative1').setAttribute('collapsed', false);document.getElementById('extraAlternative2').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=1; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 1';"/>
-							<toolbarbutton label="2" group="layout" type="radio" tooltiptext="&actions.alternative; 2" oncommand="document.getElementById('extraAlternative2').setAttribute('collapsed', false);document.getElementById('extraAlternative1').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=2; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 2';"/>
-                            <toolbarspacer flex="1"/>
-                            <checkbox collapsed = "true" id="extraAlternative1" label="&actions.alt;" style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;" oncommand="updateUI();"/>
-						    <checkbox collapsed = "true" id="extraAlternative2" label="&actions.alt;" style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;" oncommand="updateUI();"/>
-                            <toolbarspacer/>
-                        </toolbar>	
-						<tabbox orient="vertical" id="actionsExtra">
-							<tabs>
-								<tab label="&actions.primary;" hidden="true"/>
-								<tab label="&actions.alternative; 1" hidden="true"/>
-								<tab label="&actions.alternative; 2" hidden="true"/>
-							</tabs>
-							<tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
-								<tabpanel>
-									<vbox id="gr_extra" flex="1">
-									</vbox>
-								</tabpanel>
-								<tabpanel>
-									<vbox flex="1">
-										<vbox id="gr_extraAlt1" >
-										</vbox>
-									</vbox>	
-								</tabpanel>
-								<tabpanel>
-									<vbox flex="1">
-										<vbox id="gr_extraAlt2" >
-										</vbox>
-									</vbox>	
-								</tabpanel>
-							</tabpanels>
-						</tabbox>
-						<vbox style="background-color:white;">
-							<menuseparator/>
-							<hbox >
-								<vbox>
-									<label value="&actions.info;"  height="16px" style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;"/>
-								</vbox>
-							</hbox>
-						</vbox>
-					</vbox>
-				</tabpanel>
-				<tabpanel flex="1" style="overflow:auto">
-                    <vbox>
-						<label value="&contextmenu.order;" style="font-weight: bold;"/>
-                        <spacer height="3px"/>
-						<hbox pack="start" style="margin-left:16px;">
-                            <vbox>
-                                <checkbox id="contextImageFirst" label="&contextmenu.imageFirst;"/>
-                                <checkbox id="contextTextboxFirst" label="&contextmenu.textboxFirst;"/>
-                            </vbox>
-						</hbox> 
-						<separator/>                            
-						<menuseparator/>
-						<vbox id="gr_contextLink">
-						</vbox>
-						<separator/>
-						<menuseparator/>
-						<vbox  id="gr_contextImage">
-						</vbox>
-						<separator/>
-						<menuseparator/>
-						<vbox  id="gr_contextSelection">
-						</vbox>
-						<separator/>
-						<menuseparator/>
-						<vbox  id="gr_contextTextbox">
-						</vbox>
-                    </vbox>
-				</tabpanel>	
-			</tabpanels>
-		</tabbox>
-	</prefpane>
-    
-	<prefpane flex="1" image="chrome://easygestures/content/customizations.png" label="&customizations;"  id="customizationsPane"> 
-		<vbox flex="1">			
-			<tabbox orient="vertical" flex="1" id="customizationsTabboxes">
-				<tabs>
-					<tab label="&customizations.loadURLScript;"/>
-					<tab label="&customizations.runProgramFile;"/>
-					<tab label="&customizations.queries;"/>
-					<tab label="&customizations.misc;"/>
-				</tabs>
-				<tabpanels flex="1">	
-					<tabpanel flex="1" style="overflow:auto">
-                        <vbox>
-							<vbox style="background-color:white;">
-								<hbox>
-									<vbox>
-										<label value="&input.infoSel;" height="16px" style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;"/>
-										<label value="&input.infoPlaceHolder;" style="margin-left:32px;"/>
-									</vbox>
-								</hbox>
-                            </vbox>
-                            <separator/>
-                            <vbox >
-								<label value="&urlscript.load;" style="font-weight: bold;" />
-                                <spacer height="3px"/>
-                                <hbox>
-                                    <menulist id="loadURLin">
-                                        <menupopup>
-                                            <menuitem value="curTab" label="&urlscript.curTab;"/>
-                                            <menuitem value="newTab" label="&urlscript.newTab;"/>
-                                            <menuitem value="newWindow" label="&urlscript.newWindow;"/>
-                                        </menupopup>
-                                    </menulist>
-                                </hbox> 
-                                <separator/>    
-                                <menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript1">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript2">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript3">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript4">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript5">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript6">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript7">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript8">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript9">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript10">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript11">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript12">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript13">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript14">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript15">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript16">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript17">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript18">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript19">
-								</vbox>
-								<separator/>
-								<menuseparator/>
-								<vbox flex="1" id="gr_loadURLScript20">
-                                </vbox>
-                            </vbox>
-                        </vbox>
-					</tabpanel>
-					<tabpanel flex="1" style="overflow:auto">
-                        <vbox>
-							<vbox style="background-color:white;">
-								<hbox>
-									<vbox>
-										<label value="&input.infoSel;" height="16px" style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;"/>
-										<label value="&input.infoPlaceHolder;" style="margin-left:32px;"/>
-									</vbox>
-								</hbox>
-							</vbox> 
-                            <separator/>
-                            <menuseparator/>
-						<vbox>
-							<vbox flex="1" id="gr_runProgramFile1">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile2">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile3">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile4">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile5">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile6">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile7">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile8">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile9">
-							</vbox>
-							<separator/>
-							<menuseparator/>
-							<vbox flex="1" id="gr_runProgramFile10">
-							</vbox>
-                        </vbox>
-                        </vbox>
-					</tabpanel>	
-					<tabpanel>
-						<vbox>
-							<vbox style="background-color:white;">
-								<hbox>
-									<vbox>
-										<label value="&input.infoSel;" height="16px" style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;"/>
-										<label value="&input.infoPlaceHolder;" style="margin-left:32px;"/>
-									</vbox>
-								</hbox>
-							</vbox>
-                            <separator/>
-                            <label value="&queries;" style="font-weight: bold;"/>
-                            <spacer height="3px"/>
-                            <hbox>
-                                <menulist id="queryIn">
-                                    <menupopup>
-                                        <menuitem value="0" label="&queries.curTab;"/>
-                                        <menuitem value="1" label="&queries.newTab;"/>
-                                        <menuitem value="2" label="&queries.newWindow;"/>
-                                    </menupopup>
-                                </menulist>
-                            </hbox>
-							<separator/>
-							<menuseparator/>                            
-							<hbox>
-								<image id="searchWebImage" class="small_searchWeb"/> 
-								<vbox>
-									<spacer flex="1"/>
-									<label value="&search;" style="font-weight: bold;"/>
-									<spacer flex="1"/>
-								</vbox>
-							</hbox>
-                            <spacer height="3px"/>
-							<vbox>
-								<vbox>
-									<hbox> 
-										<checkbox id="search1" label="&search.query; 1" oncommand="updateUI();"/>
-										<textbox flex="1" id="searchQuery1"/>
-									</hbox>
-								</vbox>
-								<vbox>
-									<hbox> 
-										<checkbox id="search2" label="&search.query; 2" oncommand="updateUI();"/>
-										<textbox flex="1" id="searchQuery2"/>
-									</hbox>
-								</vbox>
-								<vbox>
-									<hbox> 
-										<checkbox id="search3" label="&search.query; 3" oncommand="updateUI();"/>
-										<textbox flex="1" id="searchQuery3"/>
-									</hbox>
-								</vbox>
-								<vbox>
-									<hbox> 
-										<checkbox id="search4" label="&search.query; 4" oncommand="updateUI();"/>
-										<textbox flex="1" id="searchQuery4"/>
-									</hbox>
-								</vbox>
-								<vbox>
-									<hbox> 
-										<checkbox id="search5" label="&search.query; 5" oncommand="updateUI();"/>
-										<textbox flex="1" id="searchQuery5"/>
-									</hbox>
-								</vbox>
-								<vbox>
-									<hbox> 
-										<checkbox id="search6" label="&search.query; 6" oncommand="updateUI();"/>
-										<textbox flex="1" id="searchQuery6"/>
-									</hbox>
-								</vbox>
-							</vbox>
-                               
-							<separator/>
-							<menuseparator/>
-
-							<hbox> 
-								<image id="translateImage" class="small_translate"/> 
-								<vbox>
-									<spacer flex="1"/>
-									<label value="&translate;" style="font-weight: bold;"/>
-									<spacer flex="1"/>
-								</vbox>
-							</hbox>
-                            <spacer height="3px"/>
-							<hbox>
-								<vbox>
-									<spacer height="3"/>
-									<label value="&search.query;"/>
-								</vbox>
-								<textbox flex="1" id="translateQuery"/>
-							</hbox>
-						</vbox>
-					</tabpanel>
-					<tabpanel>
-						<vbox> 
-							<vbox style="background-color:white;">
-								<hbox >
-									<vbox>
-										<label value="&input.infoSel;"  height="16px" style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;"/>
-									</vbox>
-								</hbox>
-							</vbox>  
-                            <separator/>
-                            <menuseparator/>
-							<hbox>
-								<image id="openLinkImage" class="small_openLink"/>
-								<vbox>
-									<spacer flex="1"/>
-									<label value="&link;" style="font-weight: bold;"/>
-									<spacer flex="1"/>
-								</vbox>
-							</hbox>
-                            <spacer height="3px"/>
-							<radiogroup id="linkprefs" orient="vertical" oncommand="updateUI();">
-								<radio id="linkCurTab" label="&link.curTab;"/>
-								<hbox>
-									<vbox>
-										<radio id="linkNewTab" label="&link.newTab;"/>
-										<radio id="linkNewWindow" label="&link.newWindow;"/>
-									</vbox>
-									<vbox flex="1">
-										<spacer flex="1"/>
-										<hbox pack="center">
-											<checkbox id="xlink" label="&link.xlink;"/>
-										</hbox>
-                                        <hbox  pack="center">
-                                            <image src="chrome://easygestures/skin/xLink.png" width="16" height="16"/>
-                                        </hbox>
-										<spacer flex="1"/>
-									</vbox>
-								</hbox>
-							</radiogroup>
-                                
-							<separator/>
-                                
-							<menuseparator/>
-							<hbox>
-								<image id="highlightImage" class="small_highlight"/>
-								<vbox>
-									<spacer flex="1"/>
-									<label value="&highlight;" style="font-weight: bold;"/>
-									<spacer flex="1"/>
-								</vbox>
-							</hbox>
-                            <spacer height="3px"/>
-							<checkbox id="highlightCount" label="&highlight.count;"/>
-							<hbox>	
-								<spacer width="4"/>
-								<menulist id="highlightColorList"  value="0" sizetopopup="false" style="-moz-appearance:none;border:0px;min-width:100px;">
-									<menupopup>
-										<menuitem value="0" label="&highlight.color; 1" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-										<menuitem value="1" label="&highlight.color; 2" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="2" label="&highlight.color; 3" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="3" label="&highlight.color; 4" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="4" label="&highlight.color; 5" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="5" label="&highlight.color; 6" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="6" label="&highlight.color; 7" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="7" label="&highlight.color; 8" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="8" label="&highlight.color; 9" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-										<menuitem value="9" label="&highlight.color; 10" onmouseover="this.style.fontWeight='bold';" onmouseout="this.style.fontWeight='normal';" onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();"/>
-									</menupopup>
-								</menulist>
-								<hbox pack="start" flex="1">
-									<vbox pack="center">
-										<label id="highlightColorCodeLabel" value="&highlight.code;"/>
-									</vbox>
-									<textbox id="highlightColorCode" size ="16" onchange="document.getElementById('highlightColorList').selectedItem.style.backgroundColor=this.value;document.getElementById('highlightColorList').style.backgroundColor=this.value;"/>
-								</hbox>
-							</hbox>
-                            <spacer height="3"/>
-                            <hbox>
-                                <button label="&highlight.restoreColors; " oncommand="restoreDefaultHighlightColors();"/>
-                            </hbox>
-                            
-							<separator/>
-                                
-							<menuseparator/>
-								<hbox>
-									<image id="closeTabImage" class="small_closeTab"/>
-									<vbox>
-										<spacer flex="1"/>
-										<label value="&closeTab;" style="font-weight: bold;"/>
-										<spacer flex="1"/>
-									</vbox>
-								</hbox>
-                                <spacer height="3px"/>
-								<checkbox id="closeBrowserOnLastTab" label="&closeTab.closeBrowserOnLastTab;"/>
-						</vbox>
-					</tabpanel>
-				</tabpanels>
-			</tabbox>
-		</vbox>
-	</prefpane>
-	
-	<prefpane flex="1" image="chrome://easygestures/content/skins.png" label="&skins;"  id="skinsPane">
- 		<vbox flex="1">
-			<tabbox orient="vertical" flex="1" id="">
-				<tabs>
-				</tabs>
-				<tabpanels flex="1">
-					<tabpanel>
-						<vbox flex="1">
-                            <spacer height="6px"/>
-                            <label value="&skins.change;" style="font-weight: bold;"/>
-                            <menuseparator/>
-							<listbox id="skinSelection" seltype="single" style="-moz-appearance:none;border:0px;background-color:inherit;" onselect="updateSkinButtons(this.selectedItem.id);updateSkinPreview(this.selectedItem.id);">
-								<listitem  class="listitem-iconic" image="chrome://easygestures/content/small_arrow_gray.png" id="chrome://easygestures/skin/" label="&skins.default;"/>
-							</listbox>
-							<spacer flex="1"/>
-							<hbox pack="center">
-								<stack>
-									<image id="skinPreview" src="" maxwidth="300px" maxheight="110px" onerror="document.getElementById('noPreview').setAttribute('collapsed','false');"/>
-									<label id="noPreview" collapsed="true" value="&skins.nopreview;" style="font-weight: bold;color:#DD0000;font-size:16px;"/>
-								</stack>
-							</hbox>
-                            <spacer flex="1"/>
-							<hbox pack="center" >
-								<label id="skinInUse" value="&skins.inUse;" style="font-weight: bold;color:#DD0000;font-size:16px;"/>
-							</hbox>
-							<separator/>
-							<hbox>
-								<toolbarspring/>
-								<toolbarbutton style="margin:0px;" id="useSkinButton" orient="horizontal" image="chrome://easygestures/content/ok.png" label="&skins.use;" oncommand="useSkin();"/>
-								<toolbarspacer maxwidth="32px" flex="1"/>
-								<toolbarbutton style="margin:0px;" id="uninstallSkinButton" orient="horizontal" image="chrome://easygestures/content/cancel.png" label="&skins.uninstall;" oncommand="uninstallSkin();"/>
-								<toolbarspring/>
-							</hbox>
-                            <menuseparator/>
-							<separator/>
-							<hbox pack="center">
-								<vbox pack="center">
-									<label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org" value="&skins.more;" />
-								</vbox>	
-								<vbox pack="center">
-									<image src="chrome://easygestures/content/link.png"/>
-								</vbox>
-							</hbox>
-							<spacer flex="1"/>
-                        </vbox>
-					</tabpanel>
-				</tabpanels>	
-			</tabbox>	
-		</vbox>
-	</prefpane>
-	
-	<spacer height="6"/>
-	<hbox flex="1" id="eG_dialogButtons" pack="end" hidden="false">
-		<vbox>
-			<hbox>
-				<button label="&ok;" oncommand="saveMenuSettings();acceptDialog();" />
-				<button label="&cancel;" oncommand="cancelDialog();" />
-				<button id="eG_apply" label="&apply;" oncommand="saveMenuSettings();this.disabled=true;setTimeout('document.getElementById(\'eG_apply\').disabled=false;',2000);" />
-				<button label="&help;" oncommand="window.openDialog('chrome://easygestures/content/tips.xul','','chrome,centerscreen,resizable');" />
-			</hbox>
-			<spacer height="4"/> 
-		</vbox>
-		<resizer dir="bottomend"></resizer>
-	</hbox>
-
-	<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
-	<script type="application/x-javascript" src="chrome://global/content/menu.js"/>
-	<script type="application/x-javascript" src="chrome://easygestures/content/integration.js"/>
-
-	<script type="application/x-javascript">   
+                <tabpanel>
+                  <vbox flex="1">
+                    <vbox id="gr_mainAlt1"></vbox>
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox flex="1">
+                    <vbox id="gr_mainAlt2"></vbox>
+                  </vbox>
+                </tabpanel>
+              </tabpanels>
+            </tabbox>
+            <menuseparator />
+            <toolbar style="-moz-appearance:none;border:0px;">
+              <vbox pack="center">
+                <label value="&actions.extra;" style="font-weight: bold;" />
+                <label id="extraLayoutTitle" value="&actions.primary;" style="font-weight: bold;color: #CC0033;" />
+              </vbox>
+              <toolbarspacer />
+              <vbox pack="center">
+                <image src="chrome://easygestures/content/small_arrow.png"/>
+              </vbox>
+              <toolbarbutton label="0" group="layout" type="radio" checked="true"
+                tooltiptext="&actions.primary;"
+                oncommand="document.getElementById('extraAlternative1').setAttribute('collapsed', true);document.getElementById('extraAlternative2').setAttribute('collapsed', true);document.getElementById('actionsExtra').selectedIndex=0; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.primary;';" />
+              <toolbarbutton label="1" group="layout" type="radio"
+                tooltiptext="&actions.alternative; 1"
+                oncommand="document.getElementById('extraAlternative1').setAttribute('collapsed', false);document.getElementById('extraAlternative2').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=1; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 1';" />
+              <toolbarbutton label="2" group="layout" type="radio"
+                tooltiptext="&actions.alternative; 2"
+                oncommand="document.getElementById('extraAlternative2').setAttribute('collapsed', false);document.getElementById('extraAlternative1').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=2; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 2';" />
+              <toolbarspacer flex="1" />
+              <checkbox collapsed="true" id="extraAlternative1" label="&actions.alt;"
+                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
+                oncommand="updateUI();" />
+              <checkbox collapsed="true" id="extraAlternative2" label="&actions.alt;"
+                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
+                oncommand="updateUI();" />
+              <toolbarspacer />
+            </toolbar>
+            <tabbox orient="vertical" id="actionsExtra">
+              <tabs>
+                <tab label="&actions.primary;" hidden="true" />
+                <tab label="&actions.alternative; 1" hidden="true" />
+                <tab label="&actions.alternative; 2" hidden="true" />
+              </tabs>
+              <tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
+                <tabpanel>
+                  <vbox id="gr_extra" flex="1"></vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox flex="1">
+                    <vbox id="gr_extraAlt1"></vbox>
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox flex="1">
+                    <vbox id="gr_extraAlt2"></vbox>
+                  </vbox>
+                </tabpanel>
+              </tabpanels>
+            </tabbox>
+            <vbox style="background-color:white;">
+              <menuseparator />
+              <hbox>
+                <vbox>
+                  <label value="&actions.info;" height="16px"
+                    style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
+                </vbox>
+              </hbox>
+            </vbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel flex="1" style="overflow:auto">
+          <vbox>
+            <label value="&contextmenu.order;" style="font-weight: bold;" />
+            <spacer height="3px" />
+            <hbox pack="start" style="margin-left:16px;">
+              <vbox>
+                <checkbox id="contextImageFirst" label="&contextmenu.imageFirst;" />
+                <checkbox id="contextTextboxFirst" label="&contextmenu.textboxFirst;" />
+              </vbox>
+            </hbox>
+            <separator />
+            <menuseparator />
+            <vbox id="gr_contextLink"></vbox>
+            <separator />
+            <menuseparator />
+            <vbox id="gr_contextImage"></vbox>
+            <separator />
+            <menuseparator />
+            <vbox id="gr_contextSelection"></vbox>
+            <separator />
+            <menuseparator />
+            <vbox id="gr_contextTextbox"></vbox>
+          </vbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
+  </prefpane>
+  
+  <prefpane flex="1" image="chrome://easygestures/content/customizations.png"
+    label="&customizations;" id="customizationsPane">
+    <vbox flex="1">
+      <tabbox orient="vertical" flex="1" id="customizationsTabboxes">
+        <tabs>
+          <tab label="&customizations.loadURLScript;" />
+          <tab label="&customizations.runProgramFile;" />
+          <tab label="&customizations.queries;" />
+          <tab label="&customizations.misc;" />
+        </tabs>
+        <tabpanels flex="1">
+          <tabpanel flex="1" style="overflow: auto;">
+            <vbox>
+              <vbox style="background-color:white;">
+                <hbox>
+                  <vbox>
+                    <label value="&input.infoSel;" height="16px"
+                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
+                    <label value="&input.infoPlaceHolder;" style="margin-left:32px;" />
+                  </vbox>
+                </hbox>
+              </vbox>
+              <separator />
+              <vbox>
+                <label value="&urlscript.load;" style="font-weight: bold;" />
+                <spacer height="3px" />
+                <hbox>
+                  <menulist id="loadURLin">
+                    <menupopup>
+                      <menuitem value="curTab" label="&urlscript.curTab;" />
+                      <menuitem value="newTab" label="&urlscript.newTab;" />
+                      <menuitem value="newWindow" label="&urlscript.newWindow;" />
+                    </menupopup>
+                  </menulist>
+                </hbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript1"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript2"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript3"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript4"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript5"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript6"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript7"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript8"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript9"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript10"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript11"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript12"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript13"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript14"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript15"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript16"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript17"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript18"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript19"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_loadURLScript20"></vbox>
+              </vbox>
+            </vbox>
+          </tabpanel>
+          <tabpanel flex="1" style="overflow:auto;">
+            <vbox>
+              <vbox style="background-color:white;">
+                <hbox>
+                  <vbox>
+                    <label value="&input.infoSel;" height="16px"
+                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
+                    <label value="&input.infoPlaceHolder;" style="margin-left:32px;" />
+                  </vbox>
+                </hbox>
+              </vbox>
+              <separator />
+              <menuseparator />
+              <vbox>
+                <vbox flex="1" id="gr_runProgramFile1"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile2"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile3"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile4"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile5"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile6"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile7"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile8"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile9"></vbox>
+                <separator />
+                <menuseparator />
+                <vbox flex="1" id="gr_runProgramFile10"></vbox>
+              </vbox>
+            </vbox>
+          </tabpanel>
+          <tabpanel>
+            <vbox>
+              <vbox style="background-color:white;">
+                <hbox>
+                  <vbox>
+                    <label value="&input.infoSel;" height="16px"
+                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
+                    <label value="&input.infoPlaceHolder;" style="margin-left:32px;" />
+                  </vbox>
+                </hbox>
+              </vbox>
+              <separator />
+              <label value="&queries;" style="font-weight: bold;" />
+              <spacer height="3px" />
+              <hbox>
+                <menulist id="queryIn">
+                  <menupopup>
+                    <menuitem value="0" label="&queries.curTab;" />
+                    <menuitem value="1" label="&queries.newTab;" />
+                    <menuitem value="2" label="&queries.newWindow;" />
+                  </menupopup>
+                </menulist>
+              </hbox>
+              <separator />
+              <menuseparator />
+              <hbox>
+                <image id="searchWebImage" class="small_searchWeb" />
+                <vbox>
+                  <spacer flex="1" />
+                  <label value="&search;" style="font-weight: bold;" />
+                  <spacer flex="1" />
+                </vbox>
+              </hbox>
+              <spacer height="3px" />
+              <vbox>
+                <vbox>
+                  <hbox>
+                    <checkbox id="search1" label="&search.query; 1" oncommand="updateUI();" />
+                    <textbox flex="1" id="searchQuery1" />
+                  </hbox>
+                </vbox>
+                <vbox>
+                  <hbox>
+                    <checkbox id="search2" label="&search.query; 2" oncommand="updateUI();" />
+                    <textbox flex="1" id="searchQuery2" />
+                  </hbox>
+                </vbox>
+                <vbox>
+                  <hbox>
+                    <checkbox id="search3" label="&search.query; 3" oncommand="updateUI();" />
+                    <textbox flex="1" id="searchQuery3" />
+                  </hbox>
+                </vbox>
+                <vbox>
+                  <hbox>
+                    <checkbox id="search4" label="&search.query; 4" oncommand="updateUI();" />
+                    <textbox flex="1" id="searchQuery4" />
+                  </hbox>
+                </vbox>
+                <vbox>
+                  <hbox>
+                    <checkbox id="search5" label="&search.query; 5" oncommand="updateUI();" />
+                    <textbox flex="1" id="searchQuery5" />
+                  </hbox>
+                </vbox>
+                <vbox>
+                  <hbox>
+                    <checkbox id="search6" label="&search.query; 6" oncommand="updateUI();" />
+                    <textbox flex="1" id="searchQuery6" />
+                  </hbox>
+                </vbox>
+              </vbox>
+              <separator />
+              <menuseparator />
+              <hbox>
+                <image id="translateImage" class="small_translate" />
+                <vbox>
+                  <spacer flex="1" />
+                  <label value="&translate;" style="font-weight: bold;" />
+                  <spacer flex="1" />
+                </vbox>
+              </hbox>
+              <spacer height="3px" />
+              <hbox>
+                <vbox>
+                  <spacer height="3" />
+                  <label value="&search.query;" />
+                </vbox>
+                <textbox flex="1" id="translateQuery" />
+              </hbox>
+            </vbox>
+          </tabpanel>
+          <tabpanel>
+            <vbox>
+              <vbox style="background-color:white;">
+                <hbox>
+                  <vbox>
+                    <label value="&input.infoSel;"  height="16px"
+                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
+                  </vbox>
+                </hbox>
+              </vbox>
+              <separator />
+              <menuseparator />
+              <hbox>
+                <image id="openLinkImage" class="small_openLink" />
+                <vbox>
+                  <spacer flex="1" />
+                  <label value="&link;" style="font-weight: bold;" />
+                  <spacer flex="1" />
+                </vbox>
+              </hbox>
+              <spacer height="3px" />
+              <radiogroup id="linkprefs" orient="vertical" oncommand="updateUI();">
+                <radio id="linkCurTab" label="&link.curTab;" />
+                <hbox>
+                  <vbox>
+                    <radio id="linkNewTab" label="&link.newTab;" />
+                    <radio id="linkNewWindow" label="&link.newWindow;" />
+                  </vbox>
+                  <vbox flex="1">
+                    <spacer flex="1" />
+                    <hbox pack="center">
+                      <checkbox id="xlink" label="&link.xlink;" />
+                    </hbox>
+                    <hbox pack="center">
+                      <image src="chrome://easygestures/skin/xLink.png" width="16" height="16" />
+                    </hbox>
+                    <spacer flex="1" />
+                  </vbox>
+                </hbox>
+              </radiogroup>
+              <separator />
+              <menuseparator />
+              <hbox>
+                <image id="highlightImage" class="small_highlight" />
+                <vbox>
+                  <spacer flex="1" />
+                  <label value="&highlight;" style="font-weight: bold;" />
+                  <spacer flex="1" />
+                </vbox>
+              </hbox>
+              <spacer height="3px" />
+              <checkbox id="highlightCount" label="&highlight.count;" />
+              <hbox>
+                <spacer width="4" />
+                <menulist id="highlightColorList" value="0" sizetopopup="false"
+                  style="-moz-appearance:none;border:0px;min-width:100px;">
+                  <menupopup>
+                    <menuitem value="0" label="&highlight.color; 1"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="1" label="&highlight.color; 2"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="2" label="&highlight.color; 3"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="3" label="&highlight.color; 4"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="4" label="&highlight.color; 5"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="5" label="&highlight.color; 6"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="6" label="&highlight.color; 7"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="7" label="&highlight.color; 8"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="8" label="&highlight.color; 9"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                    <menuitem value="9" label="&highlight.color; 10"
+                      onmouseover="this.style.fontWeight='bold';"
+                      onmouseout="this.style.fontWeight='normal';"
+                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
+                  </menupopup>
+                </menulist>
+                <hbox pack="start" flex="1">
+                  <vbox pack="center">
+                    <label id="highlightColorCodeLabel" value="&highlight.code;" />
+                  </vbox>
+                  <textbox id="highlightColorCode" size ="16"
+                    onchange="document.getElementById('highlightColorList').selectedItem.style.backgroundColor=this.value;document.getElementById('highlightColorList').style.backgroundColor=this.value;" />
+                </hbox>
+              </hbox>
+              <spacer height="3" />
+              <hbox>
+                <button label="&highlight.restoreColors;" oncommand="restoreDefaultHighlightColors();" />
+              </hbox>
+              <separator />
+              <menuseparator />
+              <hbox>
+                <image id="closeTabImage" class="small_closeTab" />
+                <vbox>
+                  <spacer flex="1" />
+                  <label value="&closeTab;" style="font-weight: bold;" />
+                  <spacer flex="1" />
+                </vbox>
+              </hbox>
+              <spacer height="3px" />
+              <checkbox id="closeBrowserOnLastTab" label="&closeTab.closeBrowserOnLastTab;" />
+            </vbox>
+          </tabpanel>
+        </tabpanels>
+      </tabbox>
+    </vbox>
+  </prefpane>
+  
+  <spacer height="6" />
+  <hbox flex="1" id="eG_dialogButtons" pack="end" hidden="false">
+    <vbox>
+      <hbox>
+        <button label="&ok;" oncommand="saveMenuSettings();acceptDialog();" />
+        <button label="&cancel;" oncommand="cancelDialog();" />
+        <button id="eG_apply" label="&apply;" oncommand="saveMenuSettings();this.disabled=true;setTimeout('document.getElementById(\'eG_apply\').disabled=false;',2000);" />
+        <button label="&help;" oncommand="window.openDialog('chrome://easygestures/content/tips.xul','','chrome,centerscreen,resizable');" />
+      </hbox>
+      <spacer height="4" />
+    </vbox>
+    <resizer dir="bottomend"></resizer>
+  </hbox>
+  
+  <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
+  <script type="application/x-javascript" src="chrome://global/content/menu.js" />
+  <script type="application/x-javascript" src="chrome://easygestures/content/integration.js" />
+  
+  <script type="application/x-javascript">
 	
 		var eG_duplicateKeyMessage="&duplicatekey.warning;";
 		var eG_locale="&locale;";
@@ -1676,9 +1608,9 @@
 			else createActionsForDropDown();
 		}
 
-	</script>
-
-	<script type="application/x-javascript">
+  </script>
+  
+  <script type="application/x-javascript">
 
 		//<![CDATA[
     
@@ -2164,8 +2096,6 @@
  
 			document.getElementById("loadURLin").value= eG_prefs.getCharPref("customizations.loadURLin");
             
-			initSkinsPreviews();
-			
 			updateUI();
 			window.setCursor('auto');
 			
@@ -2654,200 +2584,6 @@
 				} catch(ex) {}
 			}			
 		}
-
-		function initSkinsPreviews(){
-		
-			document.getElementById('skinPreview').src=eG_skinCurrent+"_skinPreview.png";
-			
-			var listbox= document.getElementById('skinSelection');
-			listbox.setAttribute("rows","1");					
-			
-			var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-			var userProfilePath =fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-
-			// cross platform append
-			var skinsPacksfolder=Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-			skinsPacksfolder.initWithPath(userProfilePath);
-			skinsPacksfolder.append("extensions");
-			skinsPacksfolder.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-			skinsPacksfolder.append("chrome");
-			skinsPacksfolder.append("skins packs");
-			if (skinsPacksfolder.exists() ) {	// skins installed ?
-
-				var skins=new Array();
-				var enumerator = skinsPacksfolder.directoryEntries;
-				while (enumerator.hasMoreElements() ) {
-					entry=enumerator.getNext();
-					if (entry.QueryInterface(Components.interfaces.nsIFile).isDirectory()) skins.push(entry);
-				}
-				
-				for (var i=0; i<skins.length; i++) {
-					
-					var skinDisplayName = skins[i].leafName; 
-					var skinPackageName="";
-					var enumerator = skins[i].directoryEntries;
-					
-					while (enumerator.hasMoreElements() ) {
-						entry=enumerator.getNext();
-						if (entry.QueryInterface(Components.interfaces.nsIFile).isFile()) {skinPackageName =entry.leafName.replace(".jar",""); } else continue;
-					}
-										
-					listitem = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "listitem");
-					listitem.setAttribute("id", "chrome://"+skinPackageName+"/skin/");	// must correspond to the skin path because used later for saving pref
-					listitem.setAttribute("label", skinDisplayName);
-					listitem.setAttribute("class", "listitem-iconic");
-					listitem.setAttribute("image", "chrome://easygestures/content/small_arrow_gray.png");
-												
-					listbox.appendChild(listitem);
-					var rows = listbox.getRowCount();
-					listbox.setAttribute("rows", rows<5 ? rows:5);
-												
-				}
-			}
-			
-			document.getElementById(eG_skinCurrent).setAttribute("image", "chrome://easygestures/content/small_ok.png");
-			document.getElementById(eG_skinCurrent).style.backgroundColor="#DEDEDE";
-			updateSkinButtons(eG_skinCurrent);
-			updateSkinPreview(eG_skinCurrent);
-		
-		}
-		
-		function updateSkinPreview(selectionId){
-			document.getElementById('noPreview').setAttribute('collapsed','true');
-			document.getElementById('skinPreview').src=selectionId+"_skinPreview.png";
-			if (selectionId==eG_skinCurrent) {
-				document.getElementById('skinInUse').setAttribute('hidden','false');
-				document.getElementById(eG_skinCurrent).setAttribute('image', 'chrome://easygestures/content/small_ok.png');
-			}
-			else {
-				document.getElementById('skinInUse').setAttribute('hidden','true');
-				document.getElementById(eG_skinCurrent).setAttribute('image', 'chrome://easygestures/content/small_ok_gray.png');
-			}	
-		}
-		
-		function updateSkinButtons(selectionId){
-		
-			if (selectionId==eG_skinCurrent) {
-				document.getElementById('useSkinButton').setAttribute('collapsed','true');
-				document.getElementById('uninstallSkinButton').setAttribute('collapsed','true');
-			}
-			else {
-				document.getElementById('useSkinButton').setAttribute('collapsed','false');
-				document.getElementById('uninstallSkinButton').setAttribute('collapsed','false');
-				
-				document.getElementById('useSkinButton').setAttribute('disabled','false');
-				document.getElementById('useSkinButton').setAttribute('image','chrome://easygestures/content/ok.png');
-				document.getElementById(eG_skinCurrent).style.backgroundColor="";
-				
-				if (selectionId=="chrome://easygestures/skin/") {
-					document.getElementById('uninstallSkinButton').setAttribute('disabled','true');
-					document.getElementById('uninstallSkinButton').setAttribute('image','chrome://easygestures/content/cancel_gray.png');
-				} else {
-					document.getElementById('uninstallSkinButton').setAttribute('disabled','false');
-					document.getElementById('uninstallSkinButton').setAttribute('image','chrome://easygestures/content/cancel.png');
-				}
-			}
-		}
-
-		function useSkin(){
-			document.getElementById(eG_skinCurrent).image='chrome://easygestures/content/small_arrow_gray.png';
-			document.getElementById(eG_skinCurrent).style.backgroundColor="";
-			eG_skinCurrent=document.getElementById('skinSelection').selectedItem.id;
-			document.getElementById(eG_skinCurrent).image='chrome://easygestures/content/small_ok.png';
-			document.getElementById(eG_skinCurrent).style.backgroundColor="#DEDEDE";
-			updateSkinButtons(eG_skinCurrent);
-			updateSkinPreview(eG_skinCurrent);
-		}
-		
-		function uninstallSkin(){
-
-			var listbox= document.getElementById('skinSelection');
-			
-			var skinDisplayName= listbox.selectedItem.label;
-			var skinPackageName= listbox.selectedItem.id.replace("chrome://","").replace("/skin/","");
-			
-			if (skinPackageName=="easygestures" || listbox.selectedItem==document.getElementById(eG_skinCurrent)) return;	// this is the default skin or can't uninstall currently used skin
-			
-			nodeSuppr=document.getElementById(listbox.selectedItem.id);
-			listbox.removeChild(nodeSuppr);
-			document.getElementById('skinPreview').src="";
-			
-			var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-			var userProfilePath =fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-			
-			// cross platform append
-			var folderToRemove=Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-			folderToRemove.initWithPath(userProfilePath);
-			folderToRemove.append("extensions");
-			folderToRemove.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-			folderToRemove.append("chrome");
-			folderToRemove.append("skins packs");
-			folderToRemove.append(skinDisplayName);
-			
-			var jarToRemove= folderToRemove.clone();
-			jarToRemove.append(skinPackageName+".jar");
-
-			// code adapted from "jsLib" extension
-			var IOService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-			var handler = IOService.getProtocolHandler("jar");
-			if (handler instanceof Components.interfaces.nsIJARProtocolHandler) {
-				var zrc = handler.JARCache;
-				var nsIZipReader = zrc.getZip(jarToRemove);
-				nsIZipReader.close();
-			}
-
-			try {
-				jarToRemove.remove(true);
-				folderToRemove.remove(true);
-			} catch(ex) {alert("Exception: "+ ex.toString());}
-			
-            // unregister chrome: delete entries from eG.s manifest
-
-			// File constants copied from file-utils.js
-			const MODE_RDONLY   = 0x01;
-			const MODE_WRONLY   = 0x02;
-			const MODE_TRUNCATE = 0x20;
-
-			var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);				
-			var userProfilePath =fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-            
-            // cross platform append
-            var manisfestFile=Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-            manisfestFile.initWithPath(userProfilePath);
-            manisfestFile.append("extensions");
-            manisfestFile.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-            manisfestFile.append("chrome.manifest");
-            
-			// prepare for reading eG's manifest file 
-			var inputStream = Components.classes["@mozilla.org/network/file-input-stream;1"].createInstance();
-			inputStream = inputStream.QueryInterface(Components.interfaces.nsIFileInputStream);
-			inputStream.init(manisfestFile, MODE_RDONLY, 0664, false);    // open read only
-            inputStream.QueryInterface(Components.interfaces.nsILineInputStream);
-
-            // read lines into array
-            var line = {}, fileContent = "", hasmore;
-            do {
-                hasmore = inputStream.readLine(line);
-                if (line.value.search(skinPackageName) == -1) fileContent+=line.value+"\n";   // remove chrome registration lines for skin
-            } while(hasmore);
-			inputStream.close();
-            
-			// remove chrome registration lines for skin
-            //var str1 = "content " + skinPackageName + " jar:chrome/skins%20packs/" + escape(skinDisplayName) + "/" + skinPackageName +".jar!/content/ contentaccessible=yes" 
-            //var str2 = "skin "+ skinPackageName + " classic/1.0 jar:chrome/skins%20packs/" + escape(skinDisplayName) + "/" + skinPackageName +".jar!/skin/classic/"
-            
-            // prepare for writing to chrome.manifest
-            var outputStream = Components.classes["@mozilla.org/network/file-output-stream;1"].createInstance();
-            outputStream = outputStream.QueryInterface(Components.interfaces.nsIFileOutputStream);
-            outputStream.init(manisfestFile, MODE_WRONLY | MODE_TRUNCATE, 0664, false);    // open write+truncate
-            //outputStream.flush();
-            outputStream.write(fileContent, fileContent.length);
-            outputStream.close();
-
-            initSkinsPreviews();
-		}
-
 		//]]>
-	  </script>
+  </script>
 </prefwindow>
-

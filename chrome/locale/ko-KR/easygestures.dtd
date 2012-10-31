@@ -30,7 +30,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY behavior "행동">
 <!ENTITY actions "동작">
 <!ENTITY customizations "사용자 최적화">
-<!ENTITY skins "스킨">
 <!ENTITY actions.main "주 메뉴">
 <!ENTITY actions.extra "부가 메뉴">
 <!ENTITY actions.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다.">
@@ -259,13 +258,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY changeIcon "아이콘 변경">
 <!ENTITY labelNewIcon "새 아이콘">
 <!ENTITY duplicatekey.warning "이 키는 이미 사용중입니다! 다른 키를 선택하세요.">
-<!ENTITY skins.change "스킨 변경">
-<!ENTITY skins.default "클래식 스킨 (기본)">
-<!ENTITY skins.more "더 많은 스킨 받기">
-<!ENTITY skins.nopreview "미리보기 없음">
-<!ENTITY skins.inUse "사용중">
-<!ENTITY skins.use "스킨 사용">
-<!ENTITY skins.uninstall "스킨 설치취소">
 <!ENTITY tips "팁">
 <!ENTITY previousTip "이전">
 <!ENTITY nextTip "다음">
