@@ -55,7 +55,6 @@
     id="profilePane"
     style="overflow: auto;">
     <vbox flex="1">
-      <spacer flex="1" />
       <hbox pack="center">
         <image src="chrome://easygestures/content/easyGestures.png" />
       </hbox>
@@ -95,21 +94,6 @@
         </groupbox>
       </hbox>
       <spacer flex="2" />
-      <hbox pack="center" flex="1">
-        <vbox pack="center">
-          <hbox pack="center">
-            <label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org" value="http://easygestures.mozdev.org" />
-          </hbox>
-          <separator class="thin" />
-          <hbox pack="center">
-            <label class="text-link" style="color: #3A69A6;" href="http://easygestures.mozdev.org/notes.html?en" value="&about.feedback;" />
-            <vbox pack="center">
-              <image src="chrome://easygestures/content/link.png" />
-            </vbox>
-          </hbox>
-        </vbox>
-      </hbox>
-      <spacer flex="2" />
       <hbox pack="center">
         <label value="&about.createdBy;" style="color: #3A69A6;" />
         <label value="Ons Besbes" style="color: #3A69A6;margin-left:-0px;font-weight:bold;" />
@@ -121,7 +105,6 @@
         <checkbox id="statusbarShowIcon" label="&about.statusbarShowIcon;" onclick="showStatusbarIcon(this.checked);" />
       </hbox>
     </vbox>
-    <menuseparator/>
   </prefpane>
 
   <prefpane
