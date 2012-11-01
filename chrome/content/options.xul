@@ -72,10 +72,6 @@
       <hbox pack="center">
         <groupbox style="background-color:white;">
           <spacer height="4" />
-          <menu id="eG_languageChange" label="&about.languageInfo;" value="changeLanguage">
-            <menupopup id="language"></menupopup>
-          </menu>
-          <spacer height="4" />
           <menu label="&about.manage;">
             <menupopup>
               <menuitem label="&about.import;" onclick="importPrefs();initMenuDialog();" />
@@ -861,7 +857,6 @@
   <script type="application/x-javascript">
 	
 		var eG_duplicateKeyMessage="&duplicatekey.warning;";
-		var eG_locale="&locale;";
 		var eG_version= "&about.version; ";
 		var eG_faviconNotFound="&urlscript.faviconNotFound;";
 		var eG_skinCurrent;
@@ -906,39 +901,6 @@
 			var parameters = "resizable,scrollbars=yes,width=670,height=700, screenX=";
 			parameters += (screen.availWidth - 670) / 2 + ",screenY=" + (screen.availHeight - 700) / 2;
 			window.open('chrome://easygestures/content/readme.html','eG_readme', parameters);
-		}
-	
-		function fillPopupLang(popup, langCode){
-			
-			// this function is needed to initialise correctly the radio menu items with the right language because 'checked' attribute can't be changed dynamically
-			
-            var languages = new Array(
-                "English (en-US)",
-                "Fran&#231;ais (fr-FR)",
-                "Deutsch (de-DE)",
-                "Polski (pl-PL)",
-                "&#31616;&#20307;&#20013;&#25991; (zh-TW)",
-                "Espa&#241;ol (es-ES)",
-                "Portugu&#234;s (pt-BR)",
-                "&#26085;&#26412;&#35486; (ja-JP)",
-                "Sloven&#269;ina (sk-SK)",
-                "&#54620;&#44397;&#50612; (ko-KR)",
-                "Italiano (it-IT)",
-                "Magyar (hu-HU)",
-                "Türkçe (tr-TR)",
-                "Česky (cz-CZ)",
-                "&#32321;&#39636;&#20013;&#25991; (zh-CN)"
-            );
-
-            for (var i=0;i &lt; languages.length;i++) {
-                var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-                itemNode.setAttribute("label",languages[i]);
-                itemNode.setAttribute("type","radio");
-                itemNode.setAttribute("disabled","("+langCode+")"!=languages[i].match(/\(.*\)/g));
-                itemNode.setAttribute("checked","("+langCode+")"==languages[i].match(/\(.*\)/g));         
-                popup.appendChild(itemNode);          
-            }
-            
 		}
 
 		function setLabels(){
@@ -1945,7 +1907,6 @@
 			window.setCursor('wait');
 		
 			document.getElementById('version').value=eG_version + eG_getVersion();
-			fillPopupLang( document.getElementById("language"), eG_locale);
 			eG_skinCurrent=eG_prefs.getCharPref("skin.path");
 			
 			eG_actionsPopupList = createActionsPopupList();

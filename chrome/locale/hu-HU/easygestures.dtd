@@ -1,5 +1,5 @@
 ﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)INSTRUCTIONSContains options dialog strings and pie menu tips.- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.- make sure there is no BOM (Byte Order Mark) at the begining of the file.- only translate expressions between ""- all terms that are still displayed in english need to be translated or re-translated.- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:  use \u0022 code in these strings because of parsing.END OF INSTRUCTIONS-->
-<!ENTITY locale "hu-HU">
+
 <!ENTITY welcome.click "Középső kattintásra megnyílik a köralakú menü.">
 <!ENTITY welcome.onoff "Az állapotsoron található kék nyílra kattintva ki/bekapcsolható a köralakú menü.">
 <!ENTITY welcome.completed "easyGestures - telepítés befejeződött">
