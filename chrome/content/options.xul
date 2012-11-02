@@ -855,1696 +855,1816 @@
   <script type="application/x-javascript" src="chrome://easygestures/content/integration.js" />
   
   <script type="application/x-javascript">
-	
-		var eG_duplicateKeyMessage="&duplicatekey.warning;";
-		var eG_version= "&about.version; ";
-		var eG_faviconNotFound="&urlscript.faviconNotFound;";
-		var eG_skinCurrent;
-	
-        var runProgramFilesIndex = 41;
-        var loadURLScriptIndex = 51;
+    var eG_duplicateKeyMessage = "&duplicatekey.warning;";
+    var eG_version = "&about.version; ";
+    var eG_faviconNotFound = "&urlscript.faviconNotFound;";
+    var eG_skinCurrent;
     
-		//*************************************************************
-		// variables needed in createActionsPopupList() function
-		//*************************************************************
-		
-		var eG_PopupLabels = new Array("&func.empty;", "&func.more;", "&func.firstPage;", "&func.lastPage;", "&func.backSite;", "&func.forwardSite;", "&func.back;", "&func.forward;", "&func.reload;", "&func.up;", "&func.root;", "&func.pageTop;", "&func.pageBottom;", "&func.autoscrolling;",
-		"&func.newTab;", "&func.duplicateTab;", "&func.prevTab;", "&func.nextTab;", "&func.closeTab;", "&func.closeOtherTabs;",  "&func.undoCloseTab;", 
-		"&func.newWindow;", "&func.duplicateWindow;", "&func.closeOtherWindows;", "&func.closeBrowser;", "&func.minimizeWindow;", "&func.fullscreen;",
-		"&func.openLink;", "&func.openLinkNewWindow;", "&func.copyLink;", "&func.sendLink;", "&func.copyImageLocation;", "&func.saveLinkAs;", "&func.saveImageAs;", "&func.savePageAs;", "&func.hideImages;", "&func.copyImage;",
-		"&func.homepage;", "&func.dailyReadings;", "&func.searchWeb;", "&func.translate;",
-		"&func.runProgramFile1;", "&func.runProgramFile2;", "&func.runProgramFile3;", "&func.runProgramFile4;", "&func.runProgramFile5;", "&func.runProgramFile6;", "&func.runProgramFile7;", "&func.runProgramFile8;", "&func.runProgramFile9;", "&func.runProgramFile10;",
-		"&func.loadURLScript1;", "&func.loadURLScript2;", "&func.loadURLScript3;", "&func.loadURLScript4;", "&func.loadURLScript5;", "&func.loadURLScript6;", "&func.loadURLScript7;", "&func.loadURLScript8;", "&func.loadURLScript9;", "&func.loadURLScript10;",
-		"&func.loadURLScript11;", "&func.loadURLScript12;", "&func.loadURLScript13;", "&func.loadURLScript14;", "&func.loadURLScript15;", "&func.loadURLScript16;", "&func.loadURLScript17;", "&func.loadURLScript18;", "&func.loadURLScript19;", "&func.loadURLScript20;",
-		"&func.markVisitedLinks;", "&func.bookmarkThisLink;", "&func.bookmarkPage;", "&func.bookmarkOpenTabs;", "&func.bookmarks;", "&func.bookmarksToolbar;", "&func.history;", "&func.viewPageSource;", "&func.viewPageInfo;", "&func.showOnlyThisFrame;", "&func.properties;", "&func.printPage;", "&func.mail;", "&func.privateBrowsing;",
-		"&func.cut;", "&func.copy;", "&func.paste;", "&func.undo;", "&func.selectAll;", "&func.highlight;", "&func.zoomIn;", "&func.zoomOut;", "&func.zoomReset;");
-				
-		var eG_PopupImages = new Array("empty", "more", "firstPage", "lastPage", "backSite", "forwardSite", "back", "forward", "reload", "up", "root", "pageTop", "pageBottom", "autoscrolling",
-		"newTab", "duplicateTab", "prevTab", "nextTab", "closeTab", "closeOtherTabs", "undoCloseTab", "newWindow", "duplicateWindow", "closeOtherWindows", "closeBrowser", "minimizeWindow", "fullscreen",
-		"openLink", "openLinkNewWindow", "copyLink", "sendLink", "copyImageLocation", "saveLinkAs", "saveImageAs", "savePageAs", "hideImages", "copyImage",
-		"homepage", "dailyReadings", "searchWeb", "translate",
-		"runProgramFile1", "runProgramFile2", "runProgramFile3", "runProgramFile4", "runProgramFile5", "runProgramFile6", "runProgramFile7", "runProgramFile8", "runProgramFile9", "runProgramFile10",
-		"loadURLScript1", "loadURLScript2", "loadURLScript3", "loadURLScript4", "loadURLScript5", "loadURLScript6", "loadURLScript7", "loadURLScript8", "loadURLScript9", "loadURLScript10", 
-		"loadURLScript11", "loadURLScript12", "loadURLScript13", "loadURLScript14", "loadURLScript15", "loadURLScript16", "loadURLScript17", "loadURLScript18", "loadURLScript19", "loadURLScript20", 
-		"markVisitedLinks", "bookmarkThisLink", "bookmarkPage", "bookmarkOpenTabs", "bookmarks", "bookmarksToolbar", "history", "viewPageSource", "viewPageInfo", "showOnlyThisFrame", "properties", "printPage", "mail", "privateBrowsing",
-		"cut", "copy", "paste", "undo", "selectAll", "highlight", "zoomIn", "zoomOut", "zoomReset");
-		
-	
-		var contextCaption= {
-			contextLink:			"&contextmenu.link;",
-			contextImage:			"&contextmenu.image;",
-			contextSelection:		"&contextmenu.selection;",
-			contextTextbox:			"&contextmenu.textbox;",
-		}
-		
-		function openReadmeWindow() {	// need to do that to center window because centerscreen parameter does not work
-			var parameters = "resizable,scrollbars=yes,width=670,height=700, screenX=";
-			parameters += (screen.availWidth - 670) / 2 + ",screenY=" + (screen.availHeight - 700) / 2;
-			window.open('chrome://easygestures/content/readme.html','eG_readme', parameters);
-		}
-
-		function setLabels(){
-
-			for (i=1; i &lt;= 20;i++) {	// loadURLScript 1 to 20
-				document.getElementById("loadURLScript_Label"+i).value= (document.getElementById("loadURLScript_type"+i).selectedItem==document.getElementById("Script"+i))?"&urlscript.code;":"&urlscript.host;";
-			}
-
-		}
-
-		function createRunProgramFileForCustomization () {	
-			for (i=1; i &lt;= 10 ; i++) {	// runProgramFile 1 to 10
-				groupbox = document.getElementById("gr_runProgramFile"+i);
-
-				// empty groupbox if needed first
-				if (groupbox.hasChildNodes() ) {
-					while (groupbox.lastChild !=null) {
-						groupbox.removeChild(groupbox.lastChild);
-					}
-				}
-				
-				//////////////////////////////////////////////////////////
-				// caption
-				//////////////////////////////////////////////////////////				
-				titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				//caption.setAttribute("style","background-color:#F3F3F1;");
-				
-				image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-				image.setAttribute("id","runProgramFileImg");
-				image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
-				image.setAttribute("class","small_runProgramFile"+i);
-				titleNode.appendChild(image);
-				
-				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				titleNode.appendChild(vbox);
-				
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox.appendChild(spacer);
-	
-					label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("value","&extern.tab; "+i);
-					label.setAttribute("style","font-weight: bold;");
-					vbox.appendChild(label);
-	
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox.appendChild(spacer);
-				
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("id","runProgramFileDisplay"+i);
-				titleNode.appendChild(hbox);	
-				
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					hbox.appendChild(vbox);
-					
-					label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("value"," - ");
-					vbox.appendChild(label);
-
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					hbox.appendChild(vbox);
-					
-					image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-					image.setAttribute("id","runProgramFile_newIcon"+i);
-					image.setAttribute("src","");
-					image.setAttribute("maxwidth","20");
-					image.setAttribute("maxheight","20");
-					vbox.appendChild(image);
-				
-				groupbox.appendChild(titleNode);		
-
-				separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");	
-				separator.setAttribute("class","thin");				
-				groupbox.appendChild(separator);
-				
-				//////////////////////////////////////////////////////////
-				// options
-				//////////////////////////////////////////////////////////				
-				
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("flex","1");
-				groupbox.appendChild(hbox);
-				
-				
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					hbox.appendChild(vbox);
-					
-						spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-						spacer.setAttribute("height","3");
-						vbox.appendChild(spacer);
-
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("value","&extern.name;");
-						vbox.appendChild(label);
-
-						spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-						spacer.setAttribute("height","10");
-						vbox.appendChild(spacer);
-
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("value","&extern.path;");
-						vbox.appendChild(label);
-
-						spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-						spacer.setAttribute("height","10");
-						vbox.appendChild(spacer);
-
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("value","&extern.arguments;");
-						vbox.appendChild(label);
-
-						spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-						spacer.setAttribute("height","1");
-						vbox.appendChild(spacer);
-						
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					vbox.setAttribute("flex","1");
-					hbox.appendChild(vbox);
-
-						hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						vbox.appendChild(hbox);
-							textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-							textbox.setAttribute("id","runProgramFile_name"+i);
-							textbox.setAttribute("onchange","updateOtherLabels("+(runProgramFilesIndex+i+-1)+", this.value);");
-							textbox.setAttribute("size","21");
-							textbox.setAttribute("maxlength","20");
-							hbox.appendChild(textbox);
-						
-						hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						vbox.appendChild(hbox);
-						
-							textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-							textbox.setAttribute("id","runProgramFile_path"+i);
-							textbox.setAttribute("flex","1");
-							textbox.setAttribute("onchange","if (document.getElementById('runProgramFile_appIconCheck"+i+"').checked) retrieveAppIcon(this.value,"+i+");");
-							hbox.appendChild(textbox);	
-
-							button = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "button");
-							button.setAttribute("label","&extern.browse;");
-							button.setAttribute("oncommand","browse('runProgramFile_path"+i+"');if (document.getElementById('runProgramFile_appIconCheck"+i+"').checked) retrieveAppIcon(this.value,"+i+");");
-							hbox.appendChild(button);	
-												
-						textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-						textbox.setAttribute("id","runProgramFile_arg"+i);
-						textbox.setAttribute("size","30");
-						vbox.appendChild(textbox);	
-						
-						
-						separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
-						separator.setAttribute("class","thin");
-						vbox.appendChild(separator);	
-
-						hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						vbox.appendChild(hbox);
-						
-							checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
-							checkbox.setAttribute("id","runProgramFile_appIconCheck"+i);
-							checkbox.setAttribute("label","&extern.icon;");
-							checkbox.setAttribute("oncommand","if (this.checked) {retrieveAppIcon(document.getElementById('runProgramFile_path"+i+"').value,"+i+"); document.getElementById('runProgramFile_newIconCheck"+i+"').checked= false;} updateUI();");
-							hbox.appendChild(checkbox);	
-
-							checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
-							checkbox.setAttribute("id","runProgramFile_newIconCheck"+i);
-							checkbox.setAttribute("label","&changeIcon;");
-							checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('runProgramFile_appIconCheck"+i+"').checked= false; updateUI();");
-							hbox.appendChild(checkbox);	
-
-							vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-							vbox.setAttribute("pack","center");
-							hbox.appendChild(vbox);
-								
-								image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-								image.setAttribute("src","chrome://easygestures/content/browse.png");
-								image.setAttribute("onclick","if ( document.getElementById('runProgramFile_newIconCheck"+i+"').checked) retrieveCustomIconFile('runProgramFile',"+i+");");
-								vbox.appendChild(image);
-
-			}
-		}
-
-		function createLoadURLScriptForCustomization () {
-			for (i=1; i &lt;= 20; i++) {	// loadURLScript 1 to 20
-				groupbox = document.getElementById("gr_loadURLScript"+i);
-
-				// empty groupbox if needed first
-				if (groupbox.hasChildNodes() ) {
-					while (groupbox.lastChild !=null) {
-						groupbox.removeChild(groupbox.lastChild);
-					}
-				}
-				
-				//////////////////////////////////////////////////////////
-				// caption
-				//////////////////////////////////////////////////////////
-				titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				//caption.setAttribute("style","background-color:#F3F3F1;");
-				
-				image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-				image.setAttribute("id","loadURLScriptImg");
-				image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
-				image.setAttribute("class","small_loadURLScript"+i);
-				titleNode.appendChild(image);
-				
-				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				titleNode.appendChild(vbox);
-				
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox.appendChild(spacer);
-	
-					label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("value","&urlscript.url;/&urlscript.script; "+i);
-					label.setAttribute("style","font-weight: bold;");
-					vbox.appendChild(label);
-	
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox.appendChild(spacer);
-				
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("id","loadURLScriptDisplay"+i);
-				titleNode.appendChild(hbox);	
-				
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					vbox.setAttribute("pack","center");
-					hbox.appendChild(vbox);
-					
-					label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("value"," - ");
-					vbox.appendChild(label);
-
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					vbox.setAttribute("pack","center");
-					vbox.setAttribute("flex","1");
-					hbox.appendChild(vbox);
-					
-					image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-					image.setAttribute("id","loadURLScript_newIcon"+i);
-					image.setAttribute("src","");
-					image.setAttribute("maxwidth","20");
-					image.setAttribute("maxheight","20");
-					vbox.appendChild(image);
-            
-				groupbox.appendChild(titleNode);	
-
-				separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");	
-				separator.setAttribute("class","thin");
-				groupbox.appendChild(separator);
+    var runProgramFilesIndex = 41;
+    var loadURLScriptIndex = 51;
     
-				//////////////////////////////////////////////////////////
-				// options
-				//////////////////////////////////////////////////////////
+    //*************************************************************
+    // variables needed in createActionsPopupList() function
+    //*************************************************************
     
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("flex","1");
-				groupbox.appendChild(hbox);
+    var eG_PopupLabels = new Array(
+      "&func.empty;", "&func.more;", "&func.firstPage;", "&func.lastPage;",
+      "&func.backSite;", "&func.forwardSite;", "&func.back;", "&func.forward;",
+      "&func.reload;", "&func.up;", "&func.root;", "&func.pageTop;",
+      "&func.pageBottom;", "&func.autoscrolling;", "&func.newTab;",
+      "&func.duplicateTab;", "&func.prevTab;", "&func.nextTab;",
+      "&func.closeTab;", "&func.closeOtherTabs;", "&func.undoCloseTab;",
+      "&func.newWindow;", "&func.duplicateWindow;", "&func.closeOtherWindows;",
+      "&func.closeBrowser;", "&func.minimizeWindow;", "&func.fullscreen;",
+      "&func.openLink;", "&func.openLinkNewWindow;", "&func.copyLink;",
+      "&func.sendLink;", "&func.copyImageLocation;", "&func.saveLinkAs;",
+      "&func.saveImageAs;", "&func.savePageAs;", "&func.hideImages;",
+      "&func.copyImage;", "&func.homepage;", "&func.dailyReadings;",
+      "&func.searchWeb;", "&func.translate;", "&func.runProgramFile1;",
+      "&func.runProgramFile2;", "&func.runProgramFile3;",
+      "&func.runProgramFile4;", "&func.runProgramFile5;",
+      "&func.runProgramFile6;", "&func.runProgramFile7;",
+      "&func.runProgramFile8;", "&func.runProgramFile9;",
+      "&func.runProgramFile10;", "&func.loadURLScript1;",
+      "&func.loadURLScript2;", "&func.loadURLScript3;", "&func.loadURLScript4;",
+      "&func.loadURLScript5;", "&func.loadURLScript6;", "&func.loadURLScript7;",
+      "&func.loadURLScript8;", "&func.loadURLScript9;",
+      "&func.loadURLScript10;", "&func.loadURLScript11;",
+      "&func.loadURLScript12;", "&func.loadURLScript13;",
+      "&func.loadURLScript14;", "&func.loadURLScript15;",
+      "&func.loadURLScript16;", "&func.loadURLScript17;",
+      "&func.loadURLScript18;", "&func.loadURLScript19;",
+      "&func.loadURLScript20;", "&func.markVisitedLinks;",
+      "&func.bookmarkThisLink;", "&func.bookmarkPage;",
+      "&func.bookmarkOpenTabs;", "&func.bookmarks;", "&func.bookmarksToolbar;",
+      "&func.history;", "&func.viewPageSource;", "&func.viewPageInfo;",
+      "&func.showOnlyThisFrame;", "&func.properties;", "&func.printPage;",
+      "&func.mail;", "&func.privateBrowsing;", "&func.cut;", "&func.copy;",
+      "&func.paste;", "&func.undo;", "&func.selectAll;", "&func.highlight;",
+      "&func.zoomIn;", "&func.zoomOut;", "&func.zoomReset;"
+    );
     
+    var eG_PopupImages = new Array(
+      "empty", "more", "firstPage", "lastPage", "backSite", "forwardSite",
+      "back", "forward", "reload", "up", "root", "pageTop", "pageBottom",
+      "autoscrolling", "newTab", "duplicateTab", "prevTab", "nextTab",
+      "closeTab", "closeOtherTabs", "undoCloseTab", "newWindow",
+      "duplicateWindow", "closeOtherWindows", "closeBrowser", "minimizeWindow",
+      "fullscreen", "openLink", "openLinkNewWindow", "copyLink", "sendLink",
+      "copyImageLocation", "saveLinkAs", "saveImageAs", "savePageAs",
+      "hideImages", "copyImage", "homepage", "dailyReadings", "searchWeb",
+      "translate", "runProgramFile1", "runProgramFile2", "runProgramFile3",
+      "runProgramFile4", "runProgramFile5", "runProgramFile6",
+      "runProgramFile7", "runProgramFile8", "runProgramFile9",
+      "runProgramFile10", "loadURLScript1", "loadURLScript2", "loadURLScript3",
+      "loadURLScript4", "loadURLScript5", "loadURLScript6", "loadURLScript7",
+      "loadURLScript8", "loadURLScript9", "loadURLScript10", "loadURLScript11",
+      "loadURLScript12", "loadURLScript13", "loadURLScript14",
+      "loadURLScript15", "loadURLScript16", "loadURLScript17",
+      "loadURLScript18", "loadURLScript19", "loadURLScript20",
+      "markVisitedLinks", "bookmarkThisLink", "bookmarkPage",
+      "bookmarkOpenTabs", "bookmarks", "bookmarksToolbar", "history",
+      "viewPageSource", "viewPageInfo", "showOnlyThisFrame", "properties",
+      "printPage", "mail", "privateBrowsing", "cut", "copy", "paste", "undo",
+      "selectAll", "highlight", "zoomIn", "zoomOut", "zoomReset"
+    );
     
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					hbox.appendChild(vbox);
+    var contextCaption = {
+      contextLink: "&contextmenu.link;",
+      contextImage: "&contextmenu.image;",
+      contextSelection: "&contextmenu.selection;",
+      contextTextbox: "&contextmenu.textbox;",
+    }
+    
+    function openReadmeWindow() {
+      // need to do that to center window because centerscreen parameter does not work
+      var parameters = "resizable,scrollbars=yes,width=670,height=700, screenX=";
+      parameters += (screen.availWidth - 670) / 2 + ",screenY=" + (screen.availHeight - 700) / 2;
+      window.open('chrome://easygestures/content/readme.html','eG_readme', parameters);
+    }
+    
+    function setLabels() {
+      for (i=1; i &lt;= 20; i++) {
+        // loadURLScript 1 to 20
+        document.getElementById("loadURLScript_Label"+i).value= (document.getElementById("loadURLScript_type"+i).selectedItem==document.getElementById("Script"+i))?"&urlscript.code;":"&urlscript.host;";
+      }
+    }
+    
+    function createRunProgramFileForCustomization () {
+      for (i=1; i &lt;= 10 ; i++) {
+        // runProgramFile 1 to 10
+        groupbox = document.getElementById("gr_runProgramFile"+i);
         
-						spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-						spacer.setAttribute("height","3");
-						vbox.appendChild(spacer);
-
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("value","&urlscript.name;");
-						vbox.appendChild(label);
-
-						spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-						spacer.setAttribute("height","10");
-						vbox.appendChild(spacer);
-
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("id","loadURLScript_Label"+i);
-						label.setAttribute("value","");
-						vbox.appendChild(label);
-                    
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					vbox.setAttribute("flex","1");
-					hbox.appendChild(vbox);
-
-						hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						vbox.appendChild(hbox);
-						
-							textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-							textbox.setAttribute("id","loadURLScript_name"+i);
-							textbox.setAttribute("onchange","updateOtherLabels("+(loadURLScriptIndex+i-1)+", this.value);");
-							textbox.setAttribute("size","21");
-							textbox.setAttribute("maxlength","20");
-							hbox.appendChild(textbox);
-                    
-							radiogroup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radiogroup");
-							radiogroup.setAttribute("id","loadURLScript_type"+i);
-							radiogroup.setAttribute("orient","horizontal");
-							radiogroup.setAttribute("oncommand","updateUI();");
-							hbox.appendChild(radiogroup);
-                    
-								radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
-								radio.setAttribute("id","URL"+i);
-								radio.setAttribute("label","&urlscript.url;");
-								radiogroup.appendChild(radio);	
-                            
-								radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
-								radio.setAttribute("id","Script"+i);
-								radio.setAttribute("label","&urlscript.script;");
-								radiogroup.appendChild(radio);
-                            
-						stack = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "stack");
-						vbox.appendChild(stack);
-						
-							textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-							textbox.setAttribute("id","loadURLScript_host"+i);
-							textbox.setAttribute("size","30");
-							textbox.setAttribute("onchange","if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+");");
-							stack.appendChild(textbox);	
-	
-							textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-							textbox.setAttribute("id","loadURLScript_code"+i);
-							textbox.setAttribute("size","30");
-							textbox.setAttribute("multiline","true");
-							textbox.setAttribute("rows","6");
-							stack.appendChild(textbox);	
-                    
-						separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
-						separator.setAttribute("class","thin");
-						vbox.appendChild(separator);
-
-						hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						vbox.appendChild(hbox);
-                    
-							checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
-							checkbox.setAttribute("id","loadURLScript_faviconCheck"+i);
-							checkbox.setAttribute("label","&urlscript.icon;");
-							checkbox.setAttribute("oncommand","if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
-							hbox.appendChild(checkbox);	
-
-							checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
-							checkbox.setAttribute("id","loadURLScript_newIconCheck"+i);
-							checkbox.setAttribute("label","&changeIcon;");
-							checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI();");
-							hbox.appendChild(checkbox);	
-
-							vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-							vbox.setAttribute("pack","center");
-							hbox.appendChild(vbox);
-                            
-								image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-								image.setAttribute("src","chrome://easygestures/content/browse.png");
-								image.setAttribute("onclick","if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
-								vbox.appendChild(image);
-                            
-			}
-		}
-    
-		function createActionsForPie () {
-			var boxes = new Array("main","mainAlt1","mainAlt2","extra","extraAlt1","extraAlt2","contextLink","contextImage","contextSelection","contextTextbox");
-			for (var i=0; i &lt; boxes.length; i++) {	
+        // empty groupbox if needed first
+        if (groupbox.hasChildNodes()) {
+          while (groupbox.lastChild != null) {
+            groupbox.removeChild(groupbox.lastChild);
+          }
+        }
         
-				box = document.getElementById("gr_"+boxes[i]);
-
-				// empty box if needed first
-				if (box.hasChildNodes() ) {
-					while (box.lastChild !=null) {
-						box.removeChild(box.lastChild);
-					}
-				}
-
-				if (boxes[i].search("context")!=-1) {
-					label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("value", contextCaption[boxes[i]]);
-					label.setAttribute("style","font-weight: bold;");
-					box.appendChild(label);
-				}
-            
-				//////////////////////////////////////////////////////////
-				// sector 0
-				//////////////////////////////////////////////////////////
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("pack","center");
-				box.appendChild(hbox);
-            
-				menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-				menulist.setAttribute("id",boxes[i]+"Sector0");
-				menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-				menulist.setAttribute("editable","true");
-				menulist.setAttribute("actionID","");
-				menulist.setAttribute("minwidth","150");
-				menulist.setAttribute("crop","none");
-				menulist.setAttribute("oncommand","updateUI();");
-                menulist.setAttribute("onmousedown","attachMenupopup(this);");
-				menulist.setAttribute("sizetopopup","false");
-				hbox.appendChild(menulist);
-            
-				//////////////////////////////////////////////////////////
-				// sectors 9 and 1
-				//////////////////////////////////////////////////////////
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("pack","center");
-				box.appendChild(hbox);
-    
-					hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox1.setAttribute("pack","center");
-					hbox.appendChild(hbox1);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector9");
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox1.appendChild(menulist);
-            
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("height","0");
-					spacer.setAttribute("width","11px");
-					hbox.appendChild(spacer);
-                
-					hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox1.setAttribute("pack","center");
-					hbox.appendChild(hbox1);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector1");
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox1.appendChild(menulist);
-                
-				//////////////////////////////////////////////////////////
-				// sectors 8,7 and 2,3
-				//////////////////////////////////////////////////////////
-
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("pack","center");
-				box.appendChild(hbox);
-            
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					vbox.setAttribute("pack","center");
-					hbox.appendChild(vbox);	
-
-					hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox1.setAttribute("pack","center");
-					vbox.appendChild(hbox1);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector8");
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox1.appendChild(menulist);
-                
-					if (boxes[i].search("extra")==-1) {
-						hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						hbox1.setAttribute("pack","center");
-						vbox.appendChild(hbox1);
-						
-						menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-						menulist.setAttribute("id",boxes[i]+"Sector7");
-						menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-						menulist.setAttribute("editable","true");
-						menulist.setAttribute("actionID","");
-						menulist.setAttribute("minwidth","150");
-						menulist.setAttribute("crop","none");
-						menulist.setAttribute("oncommand","updateUI();");
-                        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-						menulist.setAttribute("sizetopopup","false");
-						hbox1.appendChild(menulist);
-                    
-					}
-
-					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					hbox.appendChild(vbox);	
-                
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox.appendChild(spacer);
-                
-					image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-					image.setAttribute("id",boxes[i]+"Image");
-					if (boxes[i].search("extra")==-1) image.setAttribute("src","mainMenu.png");
-					else image.setAttribute("src","extraMenu.png");
-                
-					image.setAttribute("width","41");
-					image.setAttribute("height","41");
-					vbox.appendChild(image);
-            
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox.appendChild(spacer);
-                
-					///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-					
-					vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-					vbox.setAttribute("pack","center");
-					hbox.appendChild(vbox);	
-            
-					hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox1.setAttribute("pack","center");
-					vbox.appendChild(hbox1);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector2");
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox1.appendChild(menulist);
-                
-					if (boxes[i].search("extra")==-1) {
-						hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-						hbox1.setAttribute("pack","center");
-						vbox.appendChild(hbox1);
-                    
-						menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-						menulist.setAttribute("id",boxes[i]+"Sector3");
-						menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-						menulist.setAttribute("editable","true");
-						menulist.setAttribute("actionID","");
-						menulist.setAttribute("minwidth","150");
-						menulist.setAttribute("crop","none");
-						menulist.setAttribute("oncommand","updateUI();");
-                        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-						menulist.setAttribute("sizetopopup","false");
-						hbox1.appendChild(menulist);
-					}
-                
-				if (boxes[i].search("extra")!=-1) continue;
-				
-				//////////////////////////////////////////////////////////
-				// sectors 6 and 4
-				//////////////////////////////////////////////////////////
-
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("pack","center");
-				box.appendChild(hbox);
-		
-					hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox1.setAttribute("pack","center");
-					hbox.appendChild(hbox1);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector6");
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox1.appendChild(menulist);
-            
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("height","0");
-					spacer.setAttribute("width","11px");
-					hbox.appendChild(spacer);
-                
-					hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox1.setAttribute("pack","center");
-					hbox.appendChild(hbox1);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector4");
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox1.appendChild(menulist);
-                
-				//////////////////////////////////////////////////////////
-				// sector 5
-				//////////////////////////////////////////////////////////
-            
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("pack","center");
-				box.appendChild(hbox);
-            
-				menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-				menulist.setAttribute("id",boxes[i]+"Sector5");
-				menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-				menulist.setAttribute("editable","true");
-				menulist.setAttribute("actionID","");
-				menulist.setAttribute("minwidth","150");
-				menulist.setAttribute("crop","none");
-				menulist.setAttribute("oncommand","updateUI();");
-                menulist.setAttribute("onmousedown","attachMenupopup(this);");
-				menulist.setAttribute("sizetopopup","false");
-				hbox.appendChild(menulist);
-            
-			}
-
-		}
-
-		function createActionsForDropDown () {
-			var boxes = new Array("main","mainAlt1","mainAlt2","extra","extraAlt1","extraAlt2","contextLink","contextImage","contextSelection","contextTextbox");
+        //////////////////////////////////////////////////////////
+        // caption
+        //////////////////////////////////////////////////////////
+        titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        //caption.setAttribute("style","background-color:#F3F3F1;");
         
-			for (var i=0; i &lt; boxes.length; i++) {	
-			
-				box = document.getElementById("gr_"+boxes[i]);
-
-				// empty box if needed first
-				if (box.hasChildNodes() ) {
-					while (box.lastChild !=null) {
-						box.removeChild(box.lastChild);
-					}
-				}
-            
-				if (boxes[i].search("context")!=-1) {
-					caption = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "caption");
-					caption.setAttribute("label", contextCaption[boxes[i]]);
-					caption.setAttribute("style","font-weight: bold;");
-					box.appendChild(caption);
-				}
-            
-				for (var sector=0; sector &lt; 10; sector++) {
-            
-					if(boxes[i].search("extra")!=-1 &amp;&amp; sector &gt;= 3 &amp;&amp; sector &lt;= 7) continue;
-                
-					hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					hbox.setAttribute("pack","center");
-					box.appendChild(hbox);
-                
-					menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-					menulist.setAttribute("id",boxes[i]+"Sector"+sector);
-					menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-					menulist.setAttribute("editable","true");
-					menulist.setAttribute("actionID","");
-					menulist.setAttribute("minwidth","150");
-					menulist.setAttribute("crop","none");
-					menulist.setAttribute("oncommand","updateUI();");
-                    menulist.setAttribute("onmousedown","attachMenupopup(this);");
-					menulist.setAttribute("sizetopopup","false");
-					hbox.appendChild(menulist);
-				}
-            
-			}
-
-		}
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("id","runProgramFileImg");
+        image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
+        image.setAttribute("class","small_runProgramFile"+i);
+        titleNode.appendChild(image);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        titleNode.appendChild(vbox);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value","&extern.tab; "+i);
+        label.setAttribute("style","font-weight: bold;");
+        vbox.appendChild(label);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        vbox.appendChild(spacer);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("id","runProgramFileDisplay"+i);
+        titleNode.appendChild(hbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        hbox.appendChild(vbox);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value"," - ");
+        vbox.appendChild(label);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        hbox.appendChild(vbox);
+        
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("id","runProgramFile_newIcon"+i);
+        image.setAttribute("src","");
+        image.setAttribute("maxwidth","20");
+        image.setAttribute("maxheight","20");
+        vbox.appendChild(image);
+        
+        groupbox.appendChild(titleNode);
+        
+        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        separator.setAttribute("class","thin");
+        groupbox.appendChild(separator);
+        
+        //////////////////////////////////////////////////////////
+        // options
+        //////////////////////////////////////////////////////////
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("flex","1");
+        groupbox.appendChild(hbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        hbox.appendChild(vbox);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","3");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value","&extern.name;");
+        vbox.appendChild(label);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","10");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value","&extern.path;");
+        vbox.appendChild(label);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","10");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value","&extern.arguments;");
+        vbox.appendChild(label);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","1");
+        vbox.appendChild(spacer);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("flex","1");
+        hbox.appendChild(vbox);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        vbox.appendChild(hbox);
+        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox.setAttribute("id","runProgramFile_name"+i);
+        textbox.setAttribute("onchange","updateOtherLabels("+(runProgramFilesIndex+i+-1)+", this.value);");
+        textbox.setAttribute("size","21");
+        textbox.setAttribute("maxlength","20");
+        hbox.appendChild(textbox);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        vbox.appendChild(hbox);
+        
+        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox.setAttribute("id","runProgramFile_path"+i);
+        textbox.setAttribute("flex","1");
+        textbox.setAttribute("onchange","if (document.getElementById('runProgramFile_appIconCheck"+i+"').checked) retrieveAppIcon(this.value,"+i+");");
+        hbox.appendChild(textbox);
+        
+        button = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "button");
+        button.setAttribute("label","&extern.browse;");
+        button.setAttribute("oncommand","browse('runProgramFile_path"+i+"');if (document.getElementById('runProgramFile_appIconCheck"+i+"').checked) retrieveAppIcon(this.value,"+i+");");
+        hbox.appendChild(button);
+        
+        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox.setAttribute("id","runProgramFile_arg"+i);
+        textbox.setAttribute("size","30");
+        vbox.appendChild(textbox);
+        
+        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        separator.setAttribute("class","thin");
+        vbox.appendChild(separator);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        vbox.appendChild(hbox);
+        
+        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        checkbox.setAttribute("id","runProgramFile_appIconCheck"+i);
+        checkbox.setAttribute("label","&extern.icon;");
+        checkbox.setAttribute("oncommand","if (this.checked) {retrieveAppIcon(document.getElementById('runProgramFile_path"+i+"').value,"+i+"); document.getElementById('runProgramFile_newIconCheck"+i+"').checked= false;} updateUI();");
+        hbox.appendChild(checkbox);
+        
+        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        checkbox.setAttribute("id","runProgramFile_newIconCheck"+i);
+        checkbox.setAttribute("label","&changeIcon;");
+        checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('runProgramFile_appIconCheck"+i+"').checked= false; updateUI();");
+        hbox.appendChild(checkbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("pack","center");
+        hbox.appendChild(vbox);
+        
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("src","chrome://easygestures/content/browse.png");
+        image.setAttribute("onclick","if ( document.getElementById('runProgramFile_newIconCheck"+i+"').checked) retrieveCustomIconFile('runProgramFile',"+i+");");
+        vbox.appendChild(image);
+      }
+    }
     
-		function createActions ()	{
-			if (!document.getElementById("dropDownMenu").checked ) createActionsForPie();
-			else createActionsForDropDown();
-		}
-
+    function createLoadURLScriptForCustomization () {
+      for (i=1; i &lt;= 20; i++) {
+        // loadURLScript 1 to 20
+        groupbox = document.getElementById("gr_loadURLScript"+i);
+        
+        // empty groupbox if needed first
+        if (groupbox.hasChildNodes()) {
+          while (groupbox.lastChild != null) {
+            groupbox.removeChild(groupbox.lastChild);
+          }
+        }
+        
+        //////////////////////////////////////////////////////////
+        // caption
+        //////////////////////////////////////////////////////////
+        
+        titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        //caption.setAttribute("style","background-color:#F3F3F1;");
+        
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("id","loadURLScriptImg");
+        image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
+        image.setAttribute("class","small_loadURLScript"+i);
+        titleNode.appendChild(image);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        titleNode.appendChild(vbox);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value","&urlscript.url;/&urlscript.script; "+i);
+        label.setAttribute("style","font-weight: bold;");
+        vbox.appendChild(label);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        vbox.appendChild(spacer);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("id","loadURLScriptDisplay"+i);
+        titleNode.appendChild(hbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("pack","center");
+        hbox.appendChild(vbox);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value"," - ");
+        vbox.appendChild(label);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("pack","center");
+        vbox.setAttribute("flex","1");
+        hbox.appendChild(vbox);
+        
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("id","loadURLScript_newIcon"+i);
+        image.setAttribute("src","");
+        image.setAttribute("maxwidth","20");
+        image.setAttribute("maxheight","20");
+        vbox.appendChild(image);
+        
+        groupbox.appendChild(titleNode);
+        
+        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        separator.setAttribute("class","thin");
+        groupbox.appendChild(separator);
+        
+        //////////////////////////////////////////////////////////
+        // options
+        //////////////////////////////////////////////////////////
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("flex","1");
+        groupbox.appendChild(hbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        hbox.appendChild(vbox);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","3");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("value","&urlscript.name;");
+        vbox.appendChild(label);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","10");
+        vbox.appendChild(spacer);
+        
+        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label.setAttribute("id","loadURLScript_Label"+i);
+        label.setAttribute("value","");
+        vbox.appendChild(label);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("flex","1");
+        hbox.appendChild(vbox);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        vbox.appendChild(hbox);
+        
+        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox.setAttribute("id","loadURLScript_name"+i);
+        textbox.setAttribute("onchange","updateOtherLabels("+(loadURLScriptIndex+i-1)+", this.value);");
+        textbox.setAttribute("size","21");
+        textbox.setAttribute("maxlength","20");
+        hbox.appendChild(textbox);
+        
+        radiogroup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radiogroup");
+        radiogroup.setAttribute("id","loadURLScript_type"+i);
+        radiogroup.setAttribute("orient","horizontal");
+        radiogroup.setAttribute("oncommand","updateUI();");
+        hbox.appendChild(radiogroup);
+        
+        radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
+        radio.setAttribute("id","URL"+i);
+        radio.setAttribute("label","&urlscript.url;");
+        radiogroup.appendChild(radio);
+        
+        radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
+        radio.setAttribute("id","Script"+i);
+        radio.setAttribute("label","&urlscript.script;");
+        radiogroup.appendChild(radio);
+        
+        stack = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "stack");
+        vbox.appendChild(stack);
+        
+        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox.setAttribute("id","loadURLScript_host"+i);
+        textbox.setAttribute("size","30");
+        textbox.setAttribute("onchange","if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+");");
+        stack.appendChild(textbox);
+        
+        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox.setAttribute("id","loadURLScript_code"+i);
+        textbox.setAttribute("size","30");
+        textbox.setAttribute("multiline","true");
+        textbox.setAttribute("rows","6");
+        stack.appendChild(textbox);
+        
+        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        separator.setAttribute("class","thin");
+        vbox.appendChild(separator);
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        vbox.appendChild(hbox);
+        
+        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        checkbox.setAttribute("id","loadURLScript_faviconCheck"+i);
+        checkbox.setAttribute("label","&urlscript.icon;");
+        checkbox.setAttribute("oncommand","if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
+        hbox.appendChild(checkbox);
+        
+        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        checkbox.setAttribute("id","loadURLScript_newIconCheck"+i);
+        checkbox.setAttribute("label","&changeIcon;");
+        checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI();");
+        hbox.appendChild(checkbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("pack","center");
+        hbox.appendChild(vbox);
+        
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("src","chrome://easygestures/content/browse.png");
+        image.setAttribute("onclick","if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
+        vbox.appendChild(image);
+      }
+    }
+    
+    function createActionsForPie() {
+      var boxes = new Array(
+        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
+        "contextLink", "contextImage", "contextSelection", "contextTextbox"
+      );
+      
+      for (var i=0; i &lt; boxes.length; i++) {
+        box = document.getElementById("gr_"+boxes[i]);
+        
+        // empty box if needed first
+        if (box.hasChildNodes() ) {
+          while (box.lastChild !=null) {
+            box.removeChild(box.lastChild);
+          }
+        }
+        
+        if (boxes[i].search("context") != -1) {
+          label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+          label.setAttribute("value", contextCaption[boxes[i]]);
+          label.setAttribute("style","font-weight: bold;");
+          box.appendChild(label);
+        }
+        
+        //////////////////////////////////////////////////////////
+        // sector 0
+        //////////////////////////////////////////////////////////
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("pack","center");
+        box.appendChild(hbox);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector0");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox.appendChild(menulist);
+        
+        //////////////////////////////////////////////////////////
+        // sectors 9 and 1
+        //////////////////////////////////////////////////////////
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("pack","center");
+        box.appendChild(hbox);
+        
+        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox1.setAttribute("pack","center");
+        hbox.appendChild(hbox1);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector9");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox1.appendChild(menulist);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","0");
+        spacer.setAttribute("width","11px");
+        hbox.appendChild(spacer);
+        
+        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox1.setAttribute("pack","center");
+        hbox.appendChild(hbox1);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector1");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox1.appendChild(menulist);
+        
+        //////////////////////////////////////////////////////////
+        // sectors 8,7 and 2,3
+        //////////////////////////////////////////////////////////
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("pack","center");
+        box.appendChild(hbox);
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("pack","center");
+        hbox.appendChild(vbox);
+        
+        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox1.setAttribute("pack","center");
+        vbox.appendChild(hbox1);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector8");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox1.appendChild(menulist);
+        
+        if (boxes[i].search("extra") == -1) {
+          hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+          hbox1.setAttribute("pack","center");
+          vbox.appendChild(hbox1);
+          
+          menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+          menulist.setAttribute("id",boxes[i]+"Sector7");
+          menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+          menulist.setAttribute("editable","true");
+          menulist.setAttribute("actionID","");
+          menulist.setAttribute("minwidth","150");
+          menulist.setAttribute("crop","none");
+          menulist.setAttribute("oncommand","updateUI();");
+          menulist.setAttribute("onmousedown","attachMenupopup(this);");
+          menulist.setAttribute("sizetopopup","false");
+          hbox1.appendChild(menulist);
+        }
+        
+        ///////////////////////////////
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        hbox.appendChild(vbox);	
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        vbox.appendChild(spacer);
+        
+        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image.setAttribute("id",boxes[i]+"Image");
+        if (boxes[i].search("extra") == -1)
+          image.setAttribute("src","mainMenu.png");
+        else
+          image.setAttribute("src","extraMenu.png");
+        
+        image.setAttribute("width","41");
+        image.setAttribute("height","41");
+        vbox.appendChild(image);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        vbox.appendChild(spacer);
+        
+        ///////////////////////////////
+        
+        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox.setAttribute("pack","center");
+        hbox.appendChild(vbox);
+        
+        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox1.setAttribute("pack","center");
+        vbox.appendChild(hbox1);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector2");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox1.appendChild(menulist);
+        
+        if (boxes[i].search("extra") == -1) {
+          hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+          hbox1.setAttribute("pack","center");
+          vbox.appendChild(hbox1);
+          
+          menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+          menulist.setAttribute("id",boxes[i]+"Sector3");
+          menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+          menulist.setAttribute("editable","true");
+          menulist.setAttribute("actionID","");
+          menulist.setAttribute("minwidth","150");
+          menulist.setAttribute("crop","none");
+          menulist.setAttribute("oncommand","updateUI();");
+          menulist.setAttribute("onmousedown","attachMenupopup(this);");
+          menulist.setAttribute("sizetopopup","false");
+          hbox1.appendChild(menulist);
+        }
+        
+        if (boxes[i].search("extra") != -1)
+          continue;
+        
+        //////////////////////////////////////////////////////////
+        // sectors 6 and 4
+        //////////////////////////////////////////////////////////
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("pack","center");
+        box.appendChild(hbox);
+        
+        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox1.setAttribute("pack","center");
+        hbox.appendChild(hbox1);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector6");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox1.appendChild(menulist);
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("height","0");
+        spacer.setAttribute("width","11px");
+        hbox.appendChild(spacer);
+        
+        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox1.setAttribute("pack","center");
+        hbox.appendChild(hbox1);
+        
+        menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector4");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox1.appendChild(menulist);
+        
+        //////////////////////////////////////////////////////////
+        // sector 5
+        //////////////////////////////////////////////////////////
+        
+        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("pack","center");
+        box.appendChild(hbox);
+        
+        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        menulist.setAttribute("id",boxes[i]+"Sector5");
+        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+        menulist.setAttribute("editable","true");
+        menulist.setAttribute("actionID","");
+        menulist.setAttribute("minwidth","150");
+        menulist.setAttribute("crop","none");
+        menulist.setAttribute("oncommand","updateUI();");
+        menulist.setAttribute("onmousedown","attachMenupopup(this);");
+        menulist.setAttribute("sizetopopup","false");
+        hbox.appendChild(menulist);
+      }
+    }
+    
+    function createActionsForDropDown () {
+      var boxes = new Array(
+        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
+        "contextLink", "contextImage", "contextSelection", "contextTextbox"
+      );
+      
+      for (var i=0; i &lt; boxes.length; i++) {
+        box = document.getElementById("gr_"+boxes[i]);
+        
+        // empty box if needed first
+        if (box.hasChildNodes() ) {
+          while (box.lastChild !=null) {
+            box.removeChild(box.lastChild);
+          }
+        }
+        
+        if (boxes[i].search("context") != -1) {
+          caption = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "caption");
+          caption.setAttribute("label", contextCaption[boxes[i]]);
+          caption.setAttribute("style","font-weight: bold;");
+          box.appendChild(caption);
+        }
+        
+        for (var sector=0; sector &lt; 10; sector++) {
+          if(boxes[i].search("extra") != -1 &amp;&amp; sector &gt;= 3 &amp;&amp; sector &lt;= 7)
+            continue;
+          
+          hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+          hbox.setAttribute("pack","center");
+          box.appendChild(hbox);
+          
+          menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+          menulist.setAttribute("id",boxes[i]+"Sector"+sector);
+          menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
+          menulist.setAttribute("editable","true");
+          menulist.setAttribute("actionID","");
+          menulist.setAttribute("minwidth","150");
+          menulist.setAttribute("crop","none");
+          menulist.setAttribute("oncommand","updateUI();");
+          menulist.setAttribute("onmousedown","attachMenupopup(this);");
+          menulist.setAttribute("sizetopopup","false");
+          hbox.appendChild(menulist);
+        }
+      }
+    }
+    
+    function createActions() {
+      if (!document.getElementById("dropDownMenu").checked)
+        createActionsForPie();
+      else
+        createActionsForDropDown();
+    }
   </script>
   
   <script type="application/x-javascript">
-
-		//<![CDATA[
+    //<![CDATA[
     
-		var eG_prefs= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
-		var eG_actionsPopupList;
+    var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
+    var eG_actionsPopupList;
     
-		function retrieveAppIcon(url, actionNumber) {
-			if (url != "" && ( url.match(/\.exe$/i) !=null || url.match(/\.ico$/i) != null ) ) {
-				url="moz-icon:file:///"+url;
-				url=url+"?size=32";
-				document.getElementById("runProgramFile_newIcon"+actionNumber).src= url;
-			}
-		}
+    function retrieveAppIcon(url, actionNumber) {
+      if (url != "" && ( url.match(/\.exe$/i) !=null || url.match(/\.ico$/i) != null ) ) {
+        url = "moz-icon:file:///"+url;
+        url = url+"?size=32";
+        document.getElementById("runProgramFile_newIcon"+actionNumber).src= url;
+      }
+    }
     
-		function retrieveFavicon(url, actionNumber) {
-            if (url != "") {
-                if (url.match(/\:\/\//i) == null ) url ="http://"+url;
-                var faviconPath=null;
-                var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"].getService(Components.interfaces.nsIFaviconService);
-                var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-                try {
-                    faviconPath = faviconService.getFaviconForPage(ios.newURI(ios.newURI(url, null, null).prePath,null,null)).spec;
-                } catch(e){
-                    faviconPath = ios.newURI(url, null, null).prePath + "/favicon.ico";
-                }
-                if (faviconPath!=null && faviconPath!="") document.getElementById("loadURLScript_newIcon"+actionNumber).src= faviconPath;
-                else {          
-                    document.getElementById("loadURLScript_newIcon"+actionNumber).src= "";
-                    document.getElementById('loadURLScriptDisplay'+actionNumber).collapsed=true;
-                    document.getElementById("loadURLScript_faviconCheck"+actionNumber).checked=false;
-                }
+    function retrieveFavicon(url, actionNumber) {
+      if (url != "") {
+        if (url.match(/\:\/\//i) == null)
+          url ="http://"+url;
+        
+        var faviconPath = null;
+        var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"].getService(Components.interfaces.nsIFaviconService);
+        var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
+        
+        try {
+          faviconPath = faviconService.getFaviconForPage(ios.newURI(ios.newURI(url, null, null).prePath,null,null)).spec;
+        }
+        catch (e) {
+          faviconPath = ios.newURI(url, null, null).prePath + "/favicon.ico";
+        }
+        
+        if (faviconPath != null && faviconPath != "")
+          document.getElementById("loadURLScript_newIcon"+actionNumber).src = faviconPath;
+        else {
+          document.getElementById("loadURLScript_newIcon"+actionNumber).src = "";
+          document.getElementById('loadURLScriptDisplay'+actionNumber).collapsed = true;
+          document.getElementById("loadURLScript_faviconCheck"+actionNumber).checked = false;
+        }
+      }
+    }
+    
+    function retrieveCustomIconFile(action, actionNumber) {
+      var img = document.getElementById(action+"_newIcon"+actionNumber);
+      
+      if (browseImg(img) == false)
+        return; // no image choosen: keep current
+      
+      var newSrc = img.src;
+      removeCustomIconFile(action, actionNumber);
+      
+      // copy icon file to chrome folder newIcon
+      var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+      file.initWithPath(newSrc);
+      
+      var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
+      var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
+      var dest = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+      dest.initWithPath(userProfilePath);
+      dest.append("extensions");
+      dest.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
+      dest.append("chrome");
+      dest.append("customicons");
+      
+      file.copyTo(dest, action+actionNumber);
+      
+      img.src="chrome://customicons/content/"+action + actionNumber;
+      
+      //var chrome=Components.classes["@mozilla.org/chrome/chrome-registry;1"].createInstance(Components.interfaces.nsIChromeRegistry);
+      //chrome.checkForNewChrome();
+      /*
+      try {	// clear xul cache by deleting xul.mlf file
+        var faslService = Components.classes['@mozilla.org/fast-load-service;1'].getService(Components.interfaces.nsIFastLoadService);
+        var faslFile = faslService.newFastLoadFile("XUL");
+        faslFile.remove(false);
+      } catch (ex) {}
+      */
+    }
+    
+    function removeCustomIconFile(action, actionNumber) {
+      var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
+      var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
+      
+      var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+      file.initWithPath(userProfilePath);
+      file.append("extensions");
+      file.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
+      file.append("chrome");
+      file.append("customicons");
+      file.append(action+actionNumber);
+      
+      if (file.exists())
+        file.remove(false);
+      document.getElementById(action+"_newIcon"+actionNumber).src = "";
+    }
+    
+    function preventCloseOnEnter(event) {
+      if (event.keyCode == 13 && event.target.nodeName == "textbox") {
+        if (!event.target.hasAttribute("multiline")) {
+          event.preventDefault();
+          event.target.parentNode.focus();
+        }
+      }
+    }
+    
+    function restoreDefaultHighlightColors() {
+      var colors = eGc.defaultHighlightColorList.split(";");
+      for (var i=0; i<10; i++) {
+        document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor = colors[i];
+      }
+      document.getElementById("highlightColorList").style.backgroundColor=document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
+      document.getElementById("highlightColorCode").value=document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
+    }
+    
+    function createActionsPopupList() {
+      var popupNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menupopup");
+      popupNode.setAttribute("maxheight","500px");
+      
+      for (var i=0; i<eG_PopupLabels.length; i++) {
+        if (i==1 || i==2 || i==14 || i==21 || i==27 || i==37 || i==71 || i==85 ) {
+          var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
+          popupNode.appendChild(itemNode);
+        }
+        
+        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
+        var imageNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        var subItemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        
+        itemNode.appendChild(imageNode);
+        itemNode.appendChild(subItemNode);
+        
+        itemNode.setAttribute("onclick","actionClick(this,"+i+");updateUI();");
+        itemNode.setAttribute("crop","end");
+        itemNode.setAttribute("label", eG_PopupLabels[i]);
+        itemNode.style.paddingRight = "20px";
+        
+        //imageNode.style.listStyleImage="url('"+this.skinPath+"small_actions.png')";
+        imageNode.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
+        imageNode.setAttribute("class", "small_"+eG_PopupImages[i]);
+        
+        subItemNode.setAttribute("value", eG_PopupLabels[i]);
+        popupNode.appendChild(itemNode);
+      }
+      
+      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
+      popupNode.appendChild(itemNode);
+      return popupNode;
+    }
+    
+    function actionClick(item, actionNumber) {
+      item.parentNode.parentNode.setAttribute("actionID", actionNumber);
+      if (i==0)
+        item.parentNode.parentNode.label = "";
+      
+      if (item.firstChild.getAttribute("class").search("loadURLScript") != -1) {
+        var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
+        item.parentNode.parentNode.label = document.getElementById("loadURLScript_name"+n).value;
+      }
+      
+      if (item.firstChild.getAttribute("class").search("runProgramFile") != -1) {
+        var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
+        item.parentNode.parentNode.label = document.getElementById("runProgramFile_name"+n).value;
+      }
+    }
+    
+    function attachMenupopup(menulist) {
+      if (menulist.firstChild == null) {
+        clonedMenupopup = eG_actionsPopupList.cloneNode(true); // menupopup
+        menulist.appendChild(clonedMenupopup); // menulist
+        clonedMenupopup.boxObject.firstChild.setAttribute("style","overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
+        //clonedMenupopup.setAttribute("id",menupopup.id);
+        
+        if (clonedMenupopup.parentNode.id.search("Sector0") == -1) {
+          // remove more action
+          clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
+          clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
+        }
+      }
+    }
+    
+    function resetStats() {
+      // all stats to 0
+      eG_prefs.setIntPref("profile.statsClicks", 0); // total clicks in whole window
+      eG_prefs.setIntPref("profile.statsUse", 0); // clicks within Pie Menu
+      var d = new Date(); // date of last reset
+      eG_prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+      eG_prefs.setCharPref("profile.statsMain", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+      eG_prefs.setCharPref("profile.statsExtra", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+      var actionsStr = new Array();
+      for (i=0; i<eG_PopupImages.length ; i++)
+        actionsStr.push(0); // all actions stats set to 0
+      eG_prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+    }
+    
+    function browseImg(img) {
+      var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+      fp.init(window, 'Icon File', Components.interfaces.nsIFilePicker.modeOpen);
+      fp.appendFilter("Image Files", "*.png;*.jpg;*.bmp;*.gif;*.ico;*.mng;*.xbm;*.jpeg;*.xpm;*.dib;*.jif;*.jiff;*.jpe");
+      fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+      //fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
+      
+      var ret = fp.show();
+      if (ret == Components.interfaces.nsIFilePicker.returnOK) {
+        img.src = fp.file.path;
+        return true;
+      }
+      else
+        return false;
+    }
+    
+    function browse(textboxid) {
+      var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+      fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeOpen);
+      //fp.appendFilter("Applications(*.exe,*.bat)","*.exe;*.bat");
+      fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+      
+      var ret = fp.show();
+      if (ret == Components.interfaces.nsIFilePicker.returnOK) {
+        var textbox = document.getElementById(textboxid);
+        textbox.value = fp.file.path;
+      }
+    }
+    
+    function exportPrefs() {
+      var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+      fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeSave);
+      fp.appendFilter("Preferences (*.ege)","*.ege");
+      var ret = fp.show();
+      if (ret == Components.interfaces.nsIFilePicker.returnOK || ret == Components.interfaces.nsIFilePicker.returnReplace ) {
+        //create file
+        var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+        var filePath = fp.file.path;
+        if (filePath.substring(filePath.length-4,filePath.length)!=".ege")
+          filePath = filePath + ".ege";
+        file.initWithPath(filePath);
+        if (file.exists() == false) {
+          file.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
+        }
+        
+        //write to file
+        var outputStream = Components.classes[ "@mozilla.org/network/file-output-stream;1" ].createInstance(Components.interfaces.nsIFileOutputStream);
+        outputStream.init(file, 0x04 | 0x08, 420, 0);
+        
+        var converterOutputStream = Components.classes["@mozilla.org/intl/converter-output-stream;1"].createInstance(Components.interfaces.nsIConverterOutputStream);
+        converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
+        
+        var prefCount = {value:0};
+        var prefArray = eG_prefs.getChildList("", prefCount);
+        if (!prefArray || (prefCount.value <= 0)) {
+          alert("Export aborted !");
+          converterOutputStream.close();
+          outputStream.close();
+          return;
+        }
+        
+        // add description at the begining of the file
+        var d = new Date();
+        var dateStr = d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+" "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds();
+        converterOutputStream.writeString( "//eG "+ eG_getVersion()+" ("+dateStr+")//\n");
+        
+        for(i=0; i<prefArray.length; i++) {
+          //if (prefArray[i].search("version")!=-1) continue; // don't export version number preference
+          if (prefArray[i].search("stateChange") != -1)
+            continue; // don't export stateChange preferences
+          
+          converterOutputStream.writeString( prefArray[i]+"\n"); // write pref name
+          
+          switch(eG_prefs.getPrefType(prefArray[i])) {
+            case Components.interfaces.nsIPrefBranch.PREF_STRING:
+              converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_STRING+"\n"); // write pref type
+              converterOutputStream.writeString(eG_prefs.getComplexValue(prefArray[i], Components.interfaces.nsISupportsString).data+"\n"); // write pref value
+              break;
+            
+            case Components.interfaces.nsIPrefBranch.PREF_INT:
+              converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_INT+"\n"); // write pref type
+              converterOutputStream.writeString(eG_prefs.getIntPref(prefArray[i])+"\n"); // write pref value
+              break;
+            
+            case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+              converterOutputStream.writeString( Components.interfaces.nsIPrefBranch.PREF_BOOL+"\n"); // write pref type
+              converterOutputStream.writeString(eG_prefs.getBoolPref(prefArray[i])+"\n"); // write pref value
+              break;
+          }
+        }
+        converterOutputStream.close();
+        outputStream.close();
+      }
+    }
+    
+    function importPrefs() {
+      var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+      fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeOpen);
+      fp.appendFilter("Preferences (*.ege)","*.ege");
+      
+      var ret = fp.show();
+      if (ret == Components.interfaces.nsIFilePicker.returnOK) {
+        var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+        var filePath = fp.file.path;
+        if (filePath.substring(filePath.length-4,filePath.length)!=".ege") {
+          alert("This type of file can't be imported !");
+          return;
+        }
+        file.initWithPath(filePath);
+        
+        // read from file
+        var inputStream = Components.classes["@mozilla.org/network/file-input-stream;1"].createInstance(Components.interfaces.nsIFileInputStream);
+        inputStream.init(file, 0x01, 444, 0);
+        
+        var converterInputStream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].createInstance(Components.interfaces.nsIConverterInputStream);
+        converterInputStream.init(inputStream, "UTF-8", 1024, 0xFFFD);
+        
+        if (converterInputStream instanceof Components.interfaces.nsIUnicharLineInputStream) {
+          var line = {};
+          var cont = converterInputStream.readLine(line); // read first line containing description
+          do {
+            cont = converterInputStream.readLine(line); // read pref name
+            var pref = line.value;
+            
+            cont = converterInputStream.readLine(line); // read pref type
+            var type = (new Function ("return " + line.value ))(); // (new Function ("return " + data ))() replacing eval on data
+            
+            cont = converterInputStream.readLine(line); // read pref value
+            var value = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+            value.data = line.value;
+            
+            try {
+              switch (type) {
+                case Components.interfaces.nsIPrefBranch.PREF_STRING:
+                  eG_prefs.setComplexValue(pref, Components.interfaces.nsISupportsString, value);
+                  break;
+                
+                case Components.interfaces.nsIPrefBranch.PREF_INT:
+                  eG_prefs.setIntPref(pref, (new Function ("return " + value.data ))() ); // (new Function ("return " + data ))() replacing eval on data
+                  break;
+                
+                case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+                  eG_prefs.setBoolPref(pref, (new Function ("return " + value.data ))() ); // (new Function ("return " + data ))() replacing eval on data
+                  break;
+              }
             }
-		}
-
-		function retrieveCustomIconFile(action, actionNumber) {
+            catch (ex) {
+              alert("Exception: "+ ex.toString());
+              break;
+            }
+          } while (cont);
+        }
+        converterInputStream.close();
+        inputStream.close();
+      }
+      eG_updatePrefs(eG_prefs);
+    }
     
-			var img = document.getElementById(action+"_newIcon"+actionNumber);
-        
-			if ( browseImg(img)==false ) return;	// no image choosen: keep current
-			var newSrc=img.src;
-			removeCustomIconFile(action, actionNumber);
-
-			// copy icon file to chrome folder newIcon
-			var file=Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-			file.initWithPath(newSrc);
-			
-			var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);				
-			var userProfilePath =fileLocator.get("ProfD", Components.interfaces.nsIFile).path;			
-			var dest=Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-			dest.initWithPath(userProfilePath);
-			dest.append("extensions");
-			dest.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-			dest.append("chrome");			
-			dest.append("customicons");
-            
-			file.copyTo(dest, action+actionNumber);
-            
-			img.src="chrome://customicons/content/"+action + actionNumber;
-        
-			//var chrome=Components.classes["@mozilla.org/chrome/chrome-registry;1"].createInstance(Components.interfaces.nsIChromeRegistry);
-			//chrome.checkForNewChrome();
-			/*
-			try {	// clear xul cache by deleting xul.mlf file
-				var faslService = Components.classes['@mozilla.org/fast-load-service;1'].getService(Components.interfaces.nsIFastLoadService);
-				var faslFile = faslService.newFastLoadFile("XUL");
-				faslFile.remove(false);
-			} catch (ex) {}			
-			*/	
-		}
+    function initMenuDialog() {
+      window.setCursor('wait');
+      
+      document.getElementById('version').value = eG_version + eG_getVersion();
+      eG_skinCurrent = eG_prefs.getCharPref("skin.path");
+      
+      eG_actionsPopupList = createActionsPopupList();
+      
+      document.getElementById("dropDownMenu").checked = eG_prefs.getBoolPref("behavior.dropDownMenu"); // don't move after createActions() function
+      createActions();
+      createRunProgramFileForCustomization();
+      createLoadURLScriptForCustomization();
+      
+      document.getElementById("startupTips").checked = eG_prefs.getBoolPref("profile.startupTips");
+      document.getElementById("statusbarShowIcon").checked = eG_prefs.getBoolPref("profile.statusbarShowIcon");
+      
+      var selectedItem;
+      switch (eG_prefs.getIntPref("behavior.showButton")) {
+        case 0: selectedItem = 0; break; // left button
+        case 1: selectedItem = 1; break; // middle button
+        case 2: selectedItem = 2; break; // right button
+        default: selectedItem = 3; //custom button
+      }
+      document.getElementById("showButton").value = selectedItem;
+      document.getElementById("customMouseButtonCode").value = eG_prefs.getIntPref("behavior.showButton");
+      
+      var selectedItem;
+      switch (eG_prefs.getIntPref("behavior.showAltButton")) {
+        case 0: selectedItem = 0; break; // left button
+        case 1: selectedItem = 1; break; // middle button
+        case 2: selectedItem = 2; break; // right button
+        default: selectedItem = 3; //custom button
+      }
+      document.getElementById("showAltButton").value = selectedItem;
+      document.getElementById("customAltMouseButtonCode").value = eG_prefs.getIntPref("behavior.showAltButton");
+      
+      //document.getElementById("showAltButton").value = eG_prefs.getIntPref("behavior.showAltButton");
+      
+      document.getElementById("show_shift").checked = eG_prefs.getIntPref("behavior.showKey")==16?true:false;
+      document.getElementById("show_ctrl").checked = eG_prefs.getIntPref("behavior.showKey")==17?true:false;
+      document.getElementById("dragOnly").checked = eG_prefs.getBoolPref("behavior.dragOnly");
+      document.getElementById("dragOnlyUpLeft").checked = eG_prefs.getBoolPref("behavior.dragOnlyUpLeft");
+      
+      document.getElementById("showAfterDelay").checked= eG_prefs.getBoolPref("behavior.showAfterDelay");
+      document.getElementById("showAfterDelayDelay").value= eG_prefs.getIntPref("behavior.showAfterDelayDelay");
+      
+      var selectedItem;
+      switch (eG_prefs.getIntPref("behavior.supprKey")) {
+        case 0:  selectedItem = 0; break; // no key
+        case 45: selectedItem = 1; break; // insert key
+        case 18: selectedItem = 2; break; // alt key
+        case 17: selectedItem = 3; break; // suppr key
+        default: selectedItem = 4; // custom key
+      }
+      document.getElementById("supprKey").value = selectedItem;
+      document.getElementById("customSupprKeyCode").value = eG_prefs.getIntPref("behavior.supprKey");
+      
+      document.getElementById("handleLinks").checked = eG_prefs.getBoolPref("behavior.handleLinks");
+      if (eG_prefs.getBoolPref("behavior.handleLinksAsOpenLink"))
+        document.getElementById("handleLinksAs").selectedItem = document.getElementById("handleLinksAsAction");
+      else
+        document.getElementById("handleLinksAs").selectedItem = document.getElementById("handleLinksAsBrowser");
+      document.getElementById("linksDelay").value = eG_prefs.getIntPref("behavior.linksDelay");
+      
+      document.getElementById("autoscrollingOn").checked = eG_prefs.getBoolPref("behavior.autoscrollingOn");
+      document.getElementById("autoscrollingDelay").value = eG_prefs.getIntPref("behavior.autoscrollingDelay");
+      
+      document.getElementById("menuType").selectedItem = document.getElementById(eG_prefs.getBoolPref("behavior.largeMenu")?"eG_lrg":"eG_std");
+      document.getElementById("noIcons").checked = eG_prefs.getBoolPref("behavior.noIcons");
+      document.getElementById("smallIcons").checked = eG_prefs.getBoolPref("behavior.smallIcons");
+      document.getElementById("menuOpacity").value = eG_prefs.getIntPref("behavior.menuOpacity")+'% ';
+      document.getElementById("opacitySlider").setAttribute("curpos",eG_prefs.getIntPref("behavior.menuOpacity"));
+      document.getElementById("showTooltips").checked = eG_prefs.getBoolPref("behavior.showTooltips");
+      document.getElementById("tooltipsDelay").value = eG_prefs.getIntPref("behavior.tooltipsDelay");
+      document.getElementById("tooltipsDelayOmit").checked = eG_prefs.getBoolPref("behavior.tooltipsDelayOmit");
+      document.getElementById("dropDownMenu").checked = eG_prefs.getBoolPref("behavior.dropDownMenu");
+      
+      document.getElementById("contextShowAuto").checked = eG_prefs.getBoolPref("behavior.contextMenuAuto");
+      
+      var selectedItem;
+      switch (eG_prefs.getIntPref("behavior.contextKey")) {
+        case 0:  selectedItem = 0; break; // no key
+        case 45: selectedItem = 1; break; // insert key
+        case 18: selectedItem = 2; break; // alt key
+        case 17: selectedItem = 3; break; // suppr key
+        default: selectedItem = 4; // custom key
+      }
+      document.getElementById("contextKey").value = selectedItem;
+      document.getElementById("customContextKeyCode").value = eG_prefs.getIntPref("behavior.contextKey");
+      
+      document.getElementById("moveMenu").selectedItem = document.getElementById(eG_prefs.getBoolPref("behavior.moveAuto")?"moveEdge":"moveKey");
+      
+      document.getElementById("mainAlternative1").checked = !eG_prefs.getBoolPref("actions.mainAlternative1");
+      document.getElementById("mainAlternative2").checked = !eG_prefs.getBoolPref("actions.mainAlternative2");
+      document.getElementById("extraAlternative1").checked = !eG_prefs.getBoolPref("actions.extraAlternative1");
+      document.getElementById("extraAlternative2").checked = !eG_prefs.getBoolPref("actions.extraAlternative2");
+      
+      document.getElementById("contextImageFirst").checked = eG_prefs.getBoolPref("actions.contextImageFirst");
+      document.getElementById("contextTextboxFirst").checked = eG_prefs.getBoolPref("actions.contextTextboxFirst");
+      
+      initActionsBoxes();
+      
+      document.getElementById("xlink").checked = eG_prefs.getBoolPref("customizations.xlink");
+      var selectedItem;
+      switch (eG_prefs.getCharPref("customizations.openLink")) {
+        case "curTab":
+          selectedItem = document.getElementById("linkCurTab");
+          break;
+        case "newTab":
+          selectedItem = document.getElementById("linkNewTab");
+          break;
+        case "newWindow":
+          selectedItem = document.getElementById("linkNewWindow");
+          break;
+      }
+      document.getElementById("linkprefs").selectedItem = selectedItem;
+      
+      document.getElementById("highlightCount").checked = eG_prefs.getBoolPref("customizations.highlightCount");
+      
+      var colors = eG_prefs.getCharPref("customizations.highlightColorList").split(";");
+      for (var i = 0; i<10; i++)
+        document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor = colors[i];
+      
+      document.getElementById("highlightColorList").style.backgroundColor = document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
+      document.getElementById("highlightColorCode").value = document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
+      
+      document.getElementById("closeBrowserOnLastTab").checked = eG_prefs.getBoolPref("customizations.closeBrowserOnLastTab");
+      
+      var selectedItem = 0;
+      if (eG_prefs.getBoolPref("customizations.queryInNewTab") == true)
+        selectedItem = 1;
+      if (eG_prefs.getBoolPref("customizations.queryInNewWindow") == true)
+        selectedItem = 2;
+      document.getElementById("queryIn").value = selectedItem;
+      
+      for (i=1; i<=6; i++) {
+        // search & searchQuery 1 to 6
+        document.getElementById("search"+i).checked = eG_prefs.getBoolPref("customizations.search"+i);
+        document.getElementById("searchQuery"+i).value = eG_prefs.getCharPref("customizations.searchQuery"+i);
+      }
+      
+      document.getElementById("translateQuery").value = eG_prefs.getCharPref("customizations.translateQuery");
+      
+      for (i=1; i<=10; i++) {
+        // runProgramFile 1 to 10
+        runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
+        document.getElementById("runProgramFile_name"+i).value = runProgramFile[0];
+        document.getElementById("runProgramFile_path"+i).value = runProgramFile[1];
+        document.getElementById("runProgramFile_arg"+i).value = runProgramFile[2];
+        document.getElementById("runProgramFile_newIcon"+i).src = runProgramFile[3];
+        document.getElementById("runProgramFile_appIconCheck"+i).checked = (new Function ("return " + runProgramFile[4] ))(); // (new Function ("return " + data ))() replacing eval on data
+        document.getElementById("runProgramFile_newIconCheck"+i).checked = (new Function ("return " + runProgramFile[5] ))(); // (new Function ("return " + data ))() replacing eval on data
+      }
+      
+      for (i=1; i<=20; i++) {
+        // loadURLScript 1 to 20
+        var loadURLScript = eG_prefs.getComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString).data.split("•");
+        document.getElementById("loadURLScript_name"+i).value = loadURLScript[0];
+        if ((new Function ("return " + loadURLScript[2] ))())
+          document.getElementById("loadURLScript_code"+i).value = loadURLScript[1]; // (new Function ("return " + data ))() replacing eval on data
+        else
+          document.getElementById("loadURLScript_host"+i).value = loadURLScript[1];
+        document.getElementById("loadURLScript_type"+i).selectedItem = document.getElementById( (new Function ("return " + loadURLScript[2] ))()?"Script"+i:"URL"+i); // (new Function ("return " + data ))() replacing eval on data
+        document.getElementById("loadURLScript_newIcon"+i).src = loadURLScript[3];
+        document.getElementById("loadURLScript_faviconCheck"+i).checked = (new Function ("return " + loadURLScript[4] ))(); // (new Function ("return " + data ))() replacing eval on  data
+        document.getElementById("loadURLScript_newIconCheck"+i).checked = (new Function ("return " + loadURLScript[5] ))(); // (new Function ("return " + data ))() replacing eval on data
+      }
+      
+      document.getElementById("loadURLin").value= eG_prefs.getCharPref("customizations.loadURLin");
+      
+      updateUI();
+      window.setCursor('auto');
+      
+      try {
+        // open dialog on appropriate panel when called from tips window
+        var args = window.arguments[1].split("/");
+        document.getElementById(args[0]+"Tabboxes").selectedIndex = parseInt(args[1])-1; // Page 1 is index 0
+      }
+      catch (ex) {}
+    }
     
-		function removeCustomIconFile(action, actionNumber) {
-                    
-			var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);				
-			var userProfilePath =fileLocator.get("ProfD", Components.interfaces.nsIFile).path;	
-        
-			var file=Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-			file.initWithPath(userProfilePath);
-			file.append("extensions");
-			file.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-			file.append("chrome");			
-			file.append("customicons");
-			file.append(action+actionNumber);
-        
-			if (file.exists()) file.remove(false);
-			document.getElementById(action+"_newIcon"+actionNumber).src="";
-		}
-
-		function preventCloseOnEnter(event) {
-			if ( event.keyCode==13 &&  event.target.nodeName=="textbox") {if (!event.target.hasAttribute("multiline") ) {event.preventDefault(); event.target.parentNode.focus();} }
-		}
-
-		function restoreDefaultHighlightColors() {
-			var colors = eGc.defaultHighlightColorList.split(";");
-			for (var i=0;i<10;i++) {
-				document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor=colors[i];
-			}
-			document.getElementById("highlightColorList").style.backgroundColor=document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-			document.getElementById("highlightColorCode").value=document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-		}
+    function saveMenuSettings() {
+      eG_prefs.setBoolPref("profile.startupTips", document.getElementById("startupTips").checked);
+      eG_prefs.setBoolPref("profile.statusbarShowIcon", document.getElementById("statusbarShowIcon").checked);
+      
+      var showButtonValue;
+      switch (document.getElementById("showButton").value) {
+        case "0": showButtonValue = 0; break;
+        case "1": showButtonValue = 1; break;
+        case "2": showButtonValue = 2; break;
+        case "3": showButtonValue = document.getElementById("customMouseButtonCode").value;
+      }
+      eG_prefs.setIntPref("behavior.showButton", showButtonValue);
+      
+      eG_prefs.setIntPref("behavior.showKey",  (document.getElementById("show_shift").checked? 16: (document.getElementById("show_ctrl").checked?17:0) ));
+      eG_prefs.setBoolPref("behavior.dragOnly", document.getElementById("dragOnly").checked);
+      eG_prefs.setBoolPref("behavior.dragOnlyUpLeft", document.getElementById("dragOnlyUpLeft").checked);
+      
+      eG_prefs.setBoolPref("behavior.showAfterDelay", document.getElementById("showAfterDelay").checked);
+      eG_prefs.setIntPref("behavior.showAfterDelayDelay", document.getElementById("showAfterDelayDelay").value);
+      
+      var supprKeyValue;
+      switch (document.getElementById("supprKey").value) {
+        case "0": supprKeyValue = 0; break;
+        case "1": supprKeyValue = 45; break;
+        case "2": supprKeyValue = 18; break;
+        case "3": supprKeyValue = 17; break;
+        case "4": supprKeyValue = document.getElementById("customSupprKeyCode").value;
+      }
+      eG_prefs.setIntPref("behavior.supprKey",supprKeyValue );
+      
+      var showAltButtonValue;
+      switch (document.getElementById("showAltButton").value) {
+        case "0": showAltButtonValue = 0; break;
+        case "1": showAltButtonValue = 1; break;
+        case "2": showAltButtonValue = 2; break;
+        case "3": showAltButtonValue = document.getElementById("customAltMouseButtonCode").value;
+      }
+      eG_prefs.setIntPref("behavior.showAltButton", showAltButtonValue );
+      
+      eG_prefs.setBoolPref("behavior.handleLinks", document.getElementById("handleLinks").checked);
+      eG_prefs.setBoolPref("behavior.handleLinksAsOpenLink", (document.getElementById("handleLinksAs").selectedItem == document.getElementById("handleLinksAsAction")));
+      
+      var openLinkValue;
+      switch (document.getElementById("linkprefs").selectedItem) {
+        case document.getElementById("linkCurTab"):
+          openLinkValue = "curTab";
+          break;
+        case document.getElementById("linkNewTab"):
+          openLinkValue = "newTab";
+          break;
+        case document.getElementById("linkNewWindow"):
+          openLinkValue = "newWindow";
+          break;
+      }
+      eG_prefs.setCharPref("customizations.openLink", openLinkValue);
+      eG_prefs.setIntPref("behavior.linksDelay", document.getElementById("linksDelay").value);
+      
+      eG_prefs.setBoolPref("behavior.autoscrollingOn", document.getElementById("autoscrollingOn").checked);
+      eG_prefs.setIntPref("behavior.autoscrollingDelay", document.getElementById("autoscrollingDelay").value);
+      
+      eG_prefs.setBoolPref("behavior.largeMenu", document.getElementById("eG_lrg").selected);
+      eG_prefs.setBoolPref("behavior.noIcons", document.getElementById("noIcons").checked);
+      eG_prefs.setBoolPref("behavior.smallIcons", document.getElementById("smallIcons").checked);
+      var str = document.getElementById("menuOpacity").value;
+      eG_prefs.setIntPref("behavior.menuOpacity", parseInt(str.substring(0,str.length-2)));
+      eG_prefs.setBoolPref("behavior.showTooltips", document.getElementById("showTooltips").checked);
+      eG_prefs.setIntPref("behavior.tooltipsDelay", document.getElementById("tooltipsDelay").value);
+      eG_prefs.setBoolPref("behavior.tooltipsDelayOmit", document.getElementById("tooltipsDelayOmit").checked);
+      
+      eG_prefs.setBoolPref("behavior.dropDownMenu", document.getElementById("dropDownMenu").checked);
+      
+      eG_prefs.setBoolPref("behavior.contextMenuAuto", document.getElementById("contextShowAuto").checked);
+      
+      eG_prefs.setBoolPref("behavior.moveAuto", document.getElementById("moveEdge").selected);
+      
+      var contextKeyValue;
+      switch (document.getElementById("contextKey").value) {
+        case "0": contextKeyValue = 0;  break;
+        case "1": contextKeyValue = 45; break;
+        case "2": contextKeyValue = 18; break;
+        case "3": contextKeyValue = 17; break;
+        case "4": contextKeyValue = document.getElementById("customContextKeyCode").value;
+      }
+      eG_prefs.setIntPref("behavior.contextKey", contextKeyValue );
+      
+      eG_prefs.setBoolPref("actions.mainAlternative1", !document.getElementById("mainAlternative1").checked);
+      eG_prefs.setBoolPref("actions.mainAlternative2", !document.getElementById("mainAlternative2").checked);
+      eG_prefs.setBoolPref("actions.extraAlternative1", !document.getElementById("extraAlternative1").checked);
+      eG_prefs.setBoolPref("actions.extraAlternative2", !document.getElementById("extraAlternative2").checked);
+      eG_prefs.setBoolPref("actions.contextImageFirst", document.getElementById("contextImageFirst").checked);
+      eG_prefs.setBoolPref("actions.contextTextboxFirst", document.getElementById("contextTextboxFirst").checked);
+      
+      setActionsPrefs();
+      
+      eG_prefs.setBoolPref("customizations.xlink", document.getElementById("xlink").checked);
+      
+      eG_prefs.setBoolPref("customizations.highlightCount", document.getElementById("highlightCount").checked);
+      
+      var colors = "";
+      for (var i = 0; i<10; i++) {
+        colors += document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor +";";
+      }
+      eG_prefs.setCharPref("customizations.highlightColorList", colors);
+      
+      eG_prefs.setBoolPref("customizations.closeBrowserOnLastTab", document.getElementById("closeBrowserOnLastTab").checked);
+      
+      var queryInNewTab = false;
+      var queryInNewWindow = false;
+      switch (document.getElementById("queryIn").value) {
+        case "1": queryInNewTab = true; break;
+        case "2": queryInNewWindow = true; break;
+      }
+      eG_prefs.setBoolPref("customizations.queryInNewTab", queryInNewTab);
+      eG_prefs.setBoolPref("customizations.queryInNewWindow", queryInNewWindow);
+      
+      for (i=1; i<=6; i++) {
+        // search & searchQuery 1 to 6
+        eG_prefs.setBoolPref("customizations.search"+i, document.getElementById("search"+i).checked);
+        eG_prefs.setCharPref("customizations.searchQuery"+i, document.getElementById("searchQuery"+i).value);
+      }
+      
+      eG_prefs.setCharPref("customizations.translateQuery", document.getElementById("translateQuery").value);
+      
+      var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+      
+      for (i=1; i<=10; i++) {
+        // runProgramFile 1 to 10
+        string.data = document.getElementById("runProgramFile_name"+i).value
+          + "•" + document.getElementById("runProgramFile_path"+i).value
+          + "•" + document.getElementById("runProgramFile_arg"+i).value
+          + "•" + document.getElementById("runProgramFile_newIcon"+i).src
+          + "•" + document.getElementById("runProgramFile_appIconCheck"+i).checked
+          + "•" + document.getElementById("runProgramFile_newIconCheck"+i).checked;
+        eG_prefs.setComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString, string);
+      }
+      
+      for (i=1; i<=20; i++) {
+        // loadURLScript 1 to 20
+        string.data = document.getElementById("loadURLScript_name"+i).value
+          + "•" + (document.getElementById("URL"+i).selected ? document.getElementById("loadURLScript_host"+i).value : document.getElementById("loadURLScript_code"+i).value)
+          + "•" + document.getElementById("Script"+i).selected
+          + "•" + document.getElementById("loadURLScript_newIcon"+i).src
+          + "•" + document.getElementById("loadURLScript_faviconCheck"+i).checked
+          + "•" + document.getElementById("loadURLScript_newIconCheck"+i).checked;
+        eG_prefs.setComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString, string);
+      }
+      
+      eG_prefs.setCharPref("customizations.loadURLin", document.getElementById("loadURLin").value);
+      
+      eG_prefs.setCharPref("skin.path", eG_skinCurrent);
+      
+      /////////////////////////////////////////////////////
+      // triggering observer to reset eGm object
+      /////////////////////////////////////////////////////
+      
+      try {
+        eG_prefs.setBoolPref("stateChange.prefs", !eG_prefs.getBoolPref("stateChange.prefs"));
+      }
+      catch (ex) {
+        eG_prefs.setBoolPref("stateChange.prefs", true);
+      }
+    }
     
-		function createActionsPopupList(){
-        
-			var popupNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menupopup");
-            popupNode.setAttribute("maxheight","500px");
-            
-			for (var i=0; i<eG_PopupLabels.length; i++) {
-                        
-				if (i==1 || i==2 || i==14 || i==21 || i==27 || i==37 || i==71 || i==85 ) {
-					var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-					popupNode.appendChild(itemNode);
-				}
-                
-				var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-				var imageNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-				var subItemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-            
-				itemNode.appendChild(imageNode);
-				itemNode.appendChild(subItemNode);
-            
-				itemNode.setAttribute("onclick","actionClick(this,"+i+");updateUI();");
-				itemNode.setAttribute("crop","end");
-				itemNode.setAttribute("label", eG_PopupLabels[i]);
-                itemNode.style.paddingRight="20px";
-            
-				//imageNode.style.listStyleImage="url('"+this.skinPath+"small_actions.png')";
-				imageNode.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
-				imageNode.setAttribute("class", "small_"+eG_PopupImages[i]);
-
-				subItemNode.setAttribute("value", eG_PopupLabels[i]);
-                
-				popupNode.appendChild(itemNode);
-            
-			}
-            
-			var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-			popupNode.appendChild(itemNode);
-            
-			return popupNode;
-
-		}
-
-		function actionClick(item, actionNumber){
-			item.parentNode.parentNode.setAttribute("actionID", actionNumber);
-			if (i==0) item.parentNode.parentNode.label="";
-			
-            if(item.firstChild.getAttribute("class").search("loadURLScript")!=-1) {
-				var n =item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
-				item.parentNode.parentNode.label = document.getElementById("loadURLScript_name"+n).value;
-			}
-            
-            if(item.firstChild.getAttribute("class").search("runProgramFile")!=-1) {
-				var n =item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
-				item.parentNode.parentNode.label = document.getElementById("runProgramFile_name"+n).value;
-			}            
-		}
-
-		function attachMenupopup(menulist) {
-        
-            if (menulist.firstChild==null) {
-		    	clonedMenupopup = eG_actionsPopupList.cloneNode(true);          		// menupopup
-    			menulist.appendChild(clonedMenupopup);                                 // menulist
-			    clonedMenupopup.boxObject.firstChild.setAttribute("style","overflow-x:hidden;");    // boxObject does not exist before menupopup is shown
-                //clonedMenupopup.setAttribute("id",menupopup.id);
-
-			    if (clonedMenupopup.parentNode.id.search("Sector0")==-1) {    		// remove more action
-    			    clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
-			        clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
-			    }
-            }            
-		}
+    function setActionsPrefs() {
+      // setting actions IDs and labels
+      var groupboxes = new Array(
+        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
+        "contextLink", "contextImage", "contextSelection", "contextTextbox"
+      );
+      
+      // setting IDs
+      for (var i=0; i<groupboxes.length; i++) {
+        var string = "";
+        for (j=0; j<=9; j++) {
+          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 )
+            string += "0";
+          else
+            string += document.getElementById(groupboxes[i]+"Sector"+j).getAttribute("actionID");
+          string += (j<9?"/":"");
+        }
+        eG_prefs.setCharPref("actions."+groupboxes[i], string);
+      }
+      
+      // setting labels
+      var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
+      for (var i=0; i<groupboxes.length; i++) {
+        string.data = "";
+        for (j=0; j<=9; j++) {
+          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 )
+            string.data += "";
+          else
+            string.data += document.getElementById(groupboxes[i]+"Sector"+j).label;
+          string.data += (j<9?"•":"");
+        }
+        eG_prefs.setComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString, string);
+      }
+    }
     
-		function resetStats() {	// all stats to 0
-			eG_prefs.setIntPref("profile.statsClicks",0);		// total clicks in whole window
-			eG_prefs.setIntPref("profile.statsUse",0);		// clicks within Pie Menu
-			var d=new Date();							// date of last reset
-			eG_prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );	
-			eG_prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");		// saved as source of an Array
-			eG_prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");				// saved as source of an Array
-			var actionsStr=new Array();
-			for (i=0; i<eG_PopupImages.length ; i++) actionsStr.push(0);									// all actions stats set to 0
-			eG_prefs.setCharPref("profile.statsActions", actionsStr.toSource());								// saved as source of an Array
-		}
-
-		function browseImg(img){
-			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-			fp.init(window, 'Icon File', Components.interfaces.nsIFilePicker.modeOpen);
-			fp.appendFilter("Image Files","*.png;*.jpg;*.bmp;*.gif;*.ico;*.mng;*.xbm;*.jpeg;*.xpm;*.dib;*.jif;*.jiff;*.jpe");
-			fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);			
-			//fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
-	
-			var ret = fp.show();
-			if (ret == Components.interfaces.nsIFilePicker.returnOK) {
-				img.src=fp.file.path;
-				return true;
-			}
-			else return false;
-		}
-		
-		function browse(textboxid){
-			
-			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-			fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeOpen);
-			//fp.appendFilter("Applications(*.exe,*.bat)","*.exe;*.bat");
-			fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
-	
-			var ret = fp.show();
-			if (ret == Components.interfaces.nsIFilePicker.returnOK) {
-				var textbox = document.getElementById(textboxid);
-				textbox.value = fp.file.path;
-			}
-		}
-		
-		function exportPrefs(){
-				
-			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-			fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeSave);
-			fp.appendFilter("Preferences (*.ege)","*.ege");	
-			var ret = fp.show();
-			if (ret == Components.interfaces.nsIFilePicker.returnOK || ret == Components.interfaces.nsIFilePicker.returnReplace ) {
-				
-				//create file
-				var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-				var filePath=fp.file.path;
-				if (filePath.substring(filePath.length-4,filePath.length)!=".ege") filePath=filePath+".ege";
-				file.initWithPath(filePath);
-				if ( file.exists() == false ) {
-					file.create( Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420 );
-				}
-				
-				//write to file
-				var outputStream = Components.classes[ "@mozilla.org/network/file-output-stream;1" ].createInstance( Components.interfaces.nsIFileOutputStream );
-				outputStream.init( file, 0x04 | 0x08, 420, 0 );
-				
-				var converterOutputStream = Components.classes["@mozilla.org/intl/converter-output-stream;1"].createInstance(Components.interfaces.nsIConverterOutputStream);
-				converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
-				
-				var prefCount = {value:0};
-				var prefArray=eG_prefs.getChildList("",prefCount);
-				if (!prefArray || (prefCount.value <= 0)) {alert("Export aborted !"); converterOutputStream.close(); outputStream.close(); return;}
-				
-				// add description at the begining of the file 
-				var d=new Date();
-				var dateStr = d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+" "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds();
-				converterOutputStream.writeString( "//eG "+ eG_getVersion()+" ("+dateStr+")//\n");
-				
-				for(i=0; i<prefArray.length; i++){
-					//if (prefArray[i].search("version")!=-1) continue;		// don't export version number preference
-					if (prefArray[i].search("stateChange")!=-1) continue;	// don't export stateChange preferences
-					
-					converterOutputStream.writeString( prefArray[i]+"\n");	// write pref name
-					
-					switch( eG_prefs.getPrefType(prefArray[i]) ){
-						case Components.interfaces.nsIPrefBranch.PREF_STRING:
-							converterOutputStream.writeString( Components.interfaces.nsIPrefBranch.PREF_STRING+"\n");							// write pref type
-							converterOutputStream.writeString(eG_prefs.getComplexValue(prefArray[i], Components.interfaces.nsISupportsString).data+"\n");	// write pref value
-							break;
-						case Components.interfaces.nsIPrefBranch.PREF_INT:
-							converterOutputStream.writeString( Components.interfaces.nsIPrefBranch.PREF_INT+"\n");	// write pref type
-							converterOutputStream.writeString(eG_prefs.getIntPref(prefArray[i])+"\n"); 				// write pref value
-							break;
-						case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-							converterOutputStream.writeString( Components.interfaces.nsIPrefBranch.PREF_BOOL+"\n");	// write pref type
-							converterOutputStream.writeString(eG_prefs.getBoolPref(prefArray[i])+"\n"); 			// write pref value
-							break;
-					}
-				}
-				converterOutputStream.close();
-				outputStream.close();
-			}
-		}
-		
-		function importPrefs(){
-			
-			var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-			fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeOpen);
-			fp.appendFilter("Preferences (*.ege)","*.ege");
-			
-			var ret = fp.show();
-			if (ret == Components.interfaces.nsIFilePicker.returnOK) {
-				var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-				var filePath=fp.file.path;
-				if (filePath.substring(filePath.length-4,filePath.length)!=".ege") {alert("This type of file can't be imported !"); return;}
-				file.initWithPath(filePath);
-				
-				//read from file
-				var inputStream = Components.classes["@mozilla.org/network/file-input-stream;1"].createInstance( Components.interfaces.nsIFileInputStream );
-				inputStream.init( file, 0x01, 444, 0 );
-				
-				var converterInputStream = Components.classes["@mozilla.org/intl/converter-input-stream;1"].createInstance(Components.interfaces.nsIConverterInputStream);
-				converterInputStream.init(inputStream, "UTF-8", 1024, 0xFFFD);
-				
-				if (converterInputStream instanceof Components.interfaces.nsIUnicharLineInputStream) {
-					var line = {};
-					var cont = converterInputStream.readLine(line);					// read first line containing description
-					do {
-						cont = converterInputStream.readLine(line);					// read pref name
-						var pref = line.value;
-					
-						cont = converterInputStream.readLine(line);					// read pref type
-						var type = (new Function ("return " + line.value ))();      // (new Function ("return " + data ))() replacing eval on data
-						
-						cont = converterInputStream.readLine(line);					// read pref value
-						var value = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-						value.data = line.value;
-						
-						try{
-							switch ( type ){
-								case Components.interfaces.nsIPrefBranch.PREF_STRING:
-									eG_prefs.setComplexValue(pref, Components.interfaces.nsISupportsString, value);
-									break;
-								case Components.interfaces.nsIPrefBranch.PREF_INT:
-									eG_prefs.setIntPref(pref, (new Function ("return " + value.data ))() );    // (new Function ("return " + data ))() replacing eval on data
-									break;
-								case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-									eG_prefs.setBoolPref(pref, (new Function ("return " + value.data ))() );   // (new Function ("return " + data ))() replacing eval on data
-									break;
-							}
-						}
-						catch(ex){ alert("Exception: "+ ex.toString()); break;}
-					
-					} while (cont);
-				}
-				converterInputStream.close();
-				inputStream.close();
-			}
-			
-			eG_updatePrefs(eG_prefs);
-		}
-
-		function initMenuDialog() {
-			
-			window.setCursor('wait');
-		
-			document.getElementById('version').value=eG_version + eG_getVersion();
-			eG_skinCurrent=eG_prefs.getCharPref("skin.path");
-			
-			eG_actionsPopupList = createActionsPopupList();
-			
-			document.getElementById("dropDownMenu").checked = eG_prefs.getBoolPref("behavior.dropDownMenu");	// don't move after createActions() function
-			createActions();
-			createRunProgramFileForCustomization();
-			createLoadURLScriptForCustomization();
-			
-			document.getElementById("startupTips").checked= eG_prefs.getBoolPref("profile.startupTips");
-			document.getElementById("statusbarShowIcon").checked= eG_prefs.getBoolPref("profile.statusbarShowIcon");
-
-			var selectedItem;
-			switch(eG_prefs.getIntPref("behavior.showButton")){
-				case 0: selectedItem = 0; break;		//left button
-				case 1: selectedItem = 1; break;		//middle button
-				case 2: selectedItem = 2; break;		//right button
-				default: selectedItem = 3;			//custom button
-			} 		
-			document.getElementById("showButton").value = selectedItem;
-			document.getElementById("customMouseButtonCode").value = eG_prefs.getIntPref("behavior.showButton");
-
-			var selectedItem;
-			switch(eG_prefs.getIntPref("behavior.showAltButton")){
-				case 0: selectedItem = 0; break;		//left button
-				case 1: selectedItem = 1; break;		//middle button
-				case 2: selectedItem = 2; break;		//right button
-				default: selectedItem = 3;			//custom button
-			} 		
-			document.getElementById("showAltButton").value = selectedItem;
-			document.getElementById("customAltMouseButtonCode").value = eG_prefs.getIntPref("behavior.showAltButton");
-			
-			//document.getElementById("showAltButton").value = eG_prefs.getIntPref("behavior.showAltButton");
-			
-			document.getElementById("show_shift").checked = eG_prefs.getIntPref("behavior.showKey")==16?true:false;
-			document.getElementById("show_ctrl").checked = eG_prefs.getIntPref("behavior.showKey")==17?true:false;
-			document.getElementById("dragOnly").checked = eG_prefs.getBoolPref("behavior.dragOnly");
-			document.getElementById("dragOnlyUpLeft").checked = eG_prefs.getBoolPref("behavior.dragOnlyUpLeft");
-			
-			document.getElementById("showAfterDelay").checked= eG_prefs.getBoolPref("behavior.showAfterDelay");
-			document.getElementById("showAfterDelayDelay").value= eG_prefs.getIntPref("behavior.showAfterDelayDelay");	
-			
-			var selectedItem;
-			switch(eG_prefs.getIntPref("behavior.supprKey")){
-				case 0: selectedItem = 0; break;		//no key
-				case 45: selectedItem = 1; break;		//insert key
-				case 18: selectedItem = 2; break;		//alt key
-				case 17: selectedItem = 3; break;		//suppr key
-				default: selectedItem = 4;			//custom key
-			}
-			document.getElementById("supprKey").value = selectedItem;
-			document.getElementById("customSupprKeyCode").value = eG_prefs.getIntPref("behavior.supprKey");
-			
-			document.getElementById("handleLinks").checked = eG_prefs.getBoolPref("behavior.handleLinks");
-			if (eG_prefs.getBoolPref("behavior.handleLinksAsOpenLink")) document.getElementById("handleLinksAs").selectedItem = document.getElementById("handleLinksAsAction");
-			else document.getElementById("handleLinksAs").selectedItem = document.getElementById("handleLinksAsBrowser");
-			document.getElementById("linksDelay").value = eG_prefs.getIntPref("behavior.linksDelay");
-			
-			document.getElementById("autoscrollingOn").checked = eG_prefs.getBoolPref("behavior.autoscrollingOn");
-			document.getElementById("autoscrollingDelay").value = eG_prefs.getIntPref("behavior.autoscrollingDelay");
-			
-			document.getElementById("menuType").selectedItem = document.getElementById(eG_prefs.getBoolPref("behavior.largeMenu")?"eG_lrg":"eG_std");
-			document.getElementById("noIcons").checked = eG_prefs.getBoolPref("behavior.noIcons");
-			document.getElementById("smallIcons").checked = eG_prefs.getBoolPref("behavior.smallIcons");
-			document.getElementById("menuOpacity").value = eG_prefs.getIntPref("behavior.menuOpacity")+'% ';
-			document.getElementById("opacitySlider").setAttribute("curpos",eG_prefs.getIntPref("behavior.menuOpacity"));
-			document.getElementById("showTooltips").checked = eG_prefs.getBoolPref("behavior.showTooltips");
-			document.getElementById("tooltipsDelay").value = eG_prefs.getIntPref("behavior.tooltipsDelay");
-			document.getElementById("tooltipsDelayOmit").checked = eG_prefs.getBoolPref("behavior.tooltipsDelayOmit");
-			document.getElementById("dropDownMenu").checked = eG_prefs.getBoolPref("behavior.dropDownMenu");
-			
-			document.getElementById("contextShowAuto").checked = eG_prefs.getBoolPref("behavior.contextMenuAuto");
-			
-			var selectedItem;
-			switch(eG_prefs.getIntPref("behavior.contextKey")){
-				case 0: selectedItem = 0; break;		//no key
-				case 45: selectedItem = 1; break;		//insert key
-				case 18: selectedItem = 2; break;		//alt key
-				case 17: selectedItem = 3; break;		//suppr key
-				default: selectedItem = 4;		//custom key
-			} 		
-			document.getElementById("contextKey").value = selectedItem;
-			document.getElementById("customContextKeyCode").value = eG_prefs.getIntPref("behavior.contextKey");
-
-			document.getElementById("moveMenu").selectedItem = document.getElementById(eG_prefs.getBoolPref("behavior.moveAuto")?"moveEdge":"moveKey");
-
-			document.getElementById("mainAlternative1").checked = !eG_prefs.getBoolPref("actions.mainAlternative1");
-			document.getElementById("mainAlternative2").checked = !eG_prefs.getBoolPref("actions.mainAlternative2");
-			document.getElementById("extraAlternative1").checked = !eG_prefs.getBoolPref("actions.extraAlternative1");
-			document.getElementById("extraAlternative2").checked = !eG_prefs.getBoolPref("actions.extraAlternative2");
-
-			document.getElementById("contextImageFirst").checked = eG_prefs.getBoolPref("actions.contextImageFirst");
-			document.getElementById("contextTextboxFirst").checked = eG_prefs.getBoolPref("actions.contextTextboxFirst");
-
-			initActionsBoxes();
-			
-			document.getElementById("xlink").checked = eG_prefs.getBoolPref("customizations.xlink");
-			var selectedItem;
-			switch(eG_prefs.getCharPref("customizations.openLink")){
-				case "curTab":		selectedItem = document.getElementById("linkCurTab");		break;
-				case "newTab":		selectedItem = document.getElementById("linkNewTab");		break;
-				case "newWindow":	selectedItem = document.getElementById("linkNewWindow");	break;
-			}		
-			document.getElementById("linkprefs").selectedItem= selectedItem;
-			
-			document.getElementById("highlightCount").checked = eG_prefs.getBoolPref("customizations.highlightCount");
-			
-			var colors = eG_prefs.getCharPref("customizations.highlightColorList").split(";");
-			for (var i = 0; i<10; i++) document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor = colors[i];
-			
-			document.getElementById("highlightColorList").style.backgroundColor = document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-			document.getElementById("highlightColorCode").value = document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-			
-			document.getElementById("closeBrowserOnLastTab").checked = eG_prefs.getBoolPref("customizations.closeBrowserOnLastTab");
-
-			var selectedItem =0;
-            if (eG_prefs.getBoolPref("customizations.queryInNewTab")==true) selectedItem = 1;
-            if (eG_prefs.getBoolPref("customizations.queryInNewWindow")==true) selectedItem = 2;
-			document.getElementById("queryIn").value= selectedItem;
-
-			for (i=1; i<=6;i++) {	// search &  searchQuery 1 to 6
-				document.getElementById("search"+i).checked = eG_prefs.getBoolPref("customizations.search"+i);
-				document.getElementById("searchQuery"+i).value = eG_prefs.getCharPref("customizations.searchQuery"+i);
-			}		
-			
-			document.getElementById("translateQuery").value = eG_prefs.getCharPref("customizations.translateQuery");
-
-			for (i=1; i<=10; i++) {	// runProgramFile 1 to 10
-				runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
-				document.getElementById("runProgramFile_name"+i).value = runProgramFile[0];
-				document.getElementById("runProgramFile_path"+i).value = runProgramFile[1];
-				document.getElementById("runProgramFile_arg"+i).value = runProgramFile[2];
-				document.getElementById("runProgramFile_newIcon"+i).src = runProgramFile[3];
-				document.getElementById("runProgramFile_appIconCheck"+i).checked = (new Function ("return " + runProgramFile[4] ))();   // (new Function ("return " + data ))() replacing eval on data
-				document.getElementById("runProgramFile_newIconCheck"+i).checked = (new Function ("return " + runProgramFile[5] ))();   // (new Function ("return " + data ))() replacing eval on data
-			}
-
-			for (i=1; i<=20; i++) {	// loadURLScript 1 to 20
-				var loadURLScript = eG_prefs.getComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString).data.split("•"); 
-				document.getElementById("loadURLScript_name"+i).value = loadURLScript[0];
-				if ( (new Function ("return " + loadURLScript[2] ))() ) document.getElementById("loadURLScript_code"+i).value = loadURLScript[1];   // (new Function ("return " + data ))() replacing eval on data
-				else document.getElementById("loadURLScript_host"+i).value = loadURLScript[1];
-				document.getElementById("loadURLScript_type"+i).selectedItem = document.getElementById( (new Function ("return " + loadURLScript[2] ))()?"Script"+i:"URL"+i);   // (new Function ("return " + data ))() replacing eval on data
-				document.getElementById("loadURLScript_newIcon"+i).src = loadURLScript[3];
-				document.getElementById("loadURLScript_faviconCheck"+i).checked = (new Function ("return " + loadURLScript[4] ))();     // (new Function ("return " + data ))() replacing eval on  data
-				document.getElementById("loadURLScript_newIconCheck"+i).checked = (new Function ("return " + loadURLScript[5] ))();     // (new Function ("return " + data ))() replacing eval on data
-			}
- 
-			document.getElementById("loadURLin").value= eG_prefs.getCharPref("customizations.loadURLin");
-            
-			updateUI();
-			window.setCursor('auto');
-			
-			try {// open dialog on appropriate panel when called from tips window
-				var args=window.arguments[1].split("/");
-				document.getElementById(args[0]+"Tabboxes").selectedIndex=parseInt(args[1])-1;		// Page 1 is index 0
-			} catch(ex) {}
-		}
-		
-		function saveMenuSettings() {
-		
-			eG_prefs.setBoolPref("profile.startupTips", document.getElementById("startupTips").checked);
-			eG_prefs.setBoolPref("profile.statusbarShowIcon", document.getElementById("statusbarShowIcon").checked);
-			
-			var showButtonValue;
-			switch(document.getElementById("showButton").value){
-				case "0": showButtonValue = 0; break;
-				case "1": showButtonValue = 1; break;
-				case "2": showButtonValue = 2; break;
-				case "3": showButtonValue = document.getElementById("customMouseButtonCode").value;
-			} 		
-			eG_prefs.setIntPref("behavior.showButton", showButtonValue );
-			
-			eG_prefs.setIntPref("behavior.showKey",  (document.getElementById("show_shift").checked? 16: (document.getElementById("show_ctrl").checked?17:0) ));
-			eG_prefs.setBoolPref("behavior.dragOnly", document.getElementById("dragOnly").checked);
-			eG_prefs.setBoolPref("behavior.dragOnlyUpLeft", document.getElementById("dragOnlyUpLeft").checked);
-			
-			eG_prefs.setBoolPref("behavior.showAfterDelay", document.getElementById("showAfterDelay").checked);
-			eG_prefs.setIntPref("behavior.showAfterDelayDelay", document.getElementById("showAfterDelayDelay").value);
-			
-			var supprKeyValue;
-			switch(document.getElementById("supprKey").value){
-				case "0": supprKeyValue = 0; break;
-				case "1": supprKeyValue = 45; break;
-				case "2": supprKeyValue = 18; break;
-				case "3": supprKeyValue = 17; break;
-				case "4": supprKeyValue = document.getElementById("customSupprKeyCode").value;
-			} 		
-			eG_prefs.setIntPref("behavior.supprKey",supprKeyValue );
-
-			var showAltButtonValue;
-			switch(document.getElementById("showAltButton").value){
-				case "0": showAltButtonValue = 0; break;
-				case "1": showAltButtonValue = 1; break;
-				case "2": showAltButtonValue = 2; break;
-				case "3": showAltButtonValue = document.getElementById("customAltMouseButtonCode").value;
-			} 		
-			eG_prefs.setIntPref("behavior.showAltButton", showAltButtonValue );
-			
-			eG_prefs.setBoolPref("behavior.handleLinks", document.getElementById("handleLinks").checked);
-			eG_prefs.setBoolPref("behavior.handleLinksAsOpenLink", (document.getElementById("handleLinksAs").selectedItem==document.getElementById("handleLinksAsAction")));
-			
-			var openLinkValue;
-			switch(document.getElementById("linkprefs").selectedItem){
-				case document.getElementById("linkCurTab"): 		openLinkValue = "curTab"; 	break;
-				case document.getElementById("linkNewTab"): 		openLinkValue = "newTab"; 	break;
-				case document.getElementById("linkNewWindow"):	openLinkValue = "newWindow"; 	break;
-			}			
-			eG_prefs.setCharPref("customizations.openLink", openLinkValue);
-			eG_prefs.setIntPref("behavior.linksDelay", document.getElementById("linksDelay").value);
-
-			eG_prefs.setBoolPref("behavior.autoscrollingOn", document.getElementById("autoscrollingOn").checked);
-			eG_prefs.setIntPref("behavior.autoscrollingDelay", document.getElementById("autoscrollingDelay").value);
-			
-			eG_prefs.setBoolPref("behavior.largeMenu", document.getElementById("eG_lrg").selected);
-			eG_prefs.setBoolPref("behavior.noIcons", document.getElementById("noIcons").checked);
-			eG_prefs.setBoolPref("behavior.smallIcons", document.getElementById("smallIcons").checked);
-			var str=document.getElementById("menuOpacity").value;
-			eG_prefs.setIntPref("behavior.menuOpacity", parseInt(str.substring(0,str.length-2)));
-			eG_prefs.setBoolPref("behavior.showTooltips", document.getElementById("showTooltips").checked);
-			eG_prefs.setIntPref("behavior.tooltipsDelay", document.getElementById("tooltipsDelay").value);
-			eG_prefs.setBoolPref("behavior.tooltipsDelayOmit", document.getElementById("tooltipsDelayOmit").checked);
-			
-			eG_prefs.setBoolPref("behavior.dropDownMenu", document.getElementById("dropDownMenu").checked);
-			
-			eG_prefs.setBoolPref("behavior.contextMenuAuto", document.getElementById("contextShowAuto").checked);
-
-			eG_prefs.setBoolPref("behavior.moveAuto", document.getElementById("moveEdge").selected);
-
-			var contextKeyValue;
-			switch(document.getElementById("contextKey").value){
-				case "0": contextKeyValue = 0; 	break;
-				case "1": contextKeyValue = 45; 	break;
-				case "2": contextKeyValue = 18; 	break;
-				case "3": contextKeyValue = 17; 	break;
-				case "4": contextKeyValue = document.getElementById("customContextKeyCode").value;
-			} 
-			eG_prefs.setIntPref("behavior.contextKey", contextKeyValue );
-			
-			eG_prefs.setBoolPref("actions.mainAlternative1", !document.getElementById("mainAlternative1").checked);
-			eG_prefs.setBoolPref("actions.mainAlternative2", !document.getElementById("mainAlternative2").checked);
-			eG_prefs.setBoolPref("actions.extraAlternative1", !document.getElementById("extraAlternative1").checked);
-			eG_prefs.setBoolPref("actions.extraAlternative2", !document.getElementById("extraAlternative2").checked);
-
-			eG_prefs.setBoolPref("actions.contextImageFirst", document.getElementById("contextImageFirst").checked);
-			eG_prefs.setBoolPref("actions.contextTextboxFirst", document.getElementById("contextTextboxFirst").checked);
-
-			setActionsPrefs();
-			
-			eG_prefs.setBoolPref("customizations.xlink", document.getElementById("xlink").checked);
-
-			eG_prefs.setBoolPref("customizations.highlightCount", document.getElementById("highlightCount").checked);
-			
-			var colors = "";
-			for (var i = 0; i<10; i++) {
-				colors+= document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor +";";
-			}
-			eG_prefs.setCharPref("customizations.highlightColorList", colors);
-			
-			eG_prefs.setBoolPref("customizations.closeBrowserOnLastTab", document.getElementById("closeBrowserOnLastTab").checked);
-
-			var queryInNewTab=false;
-            var queryInNewWindow=false;
-			switch(document.getElementById("queryIn").value){
-				case "1": queryInNewTab = true; break;
-				case "2": queryInNewWindow = true; break;
-			} 		
-			eG_prefs.setBoolPref("customizations.queryInNewTab", queryInNewTab );
-            eG_prefs.setBoolPref("customizations.queryInNewWindow", queryInNewWindow );
-			
-			for (i=1; i<=6;i++) {	// search &  searchQuery 1 to 6
-				eG_prefs.setBoolPref("customizations.search"+i, document.getElementById("search"+i).checked);
-				eG_prefs.setCharPref("customizations.searchQuery"+i, document.getElementById("searchQuery"+i).value);
-			}
-			
-			eG_prefs.setCharPref("customizations.translateQuery", document.getElementById("translateQuery").value);
-			
-			var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-
-			for (i=1; i<=10; i++) {	// runProgramFile 1 to 10
-				string.data = document.getElementById("runProgramFile_name"+i).value +"•"+
-				document.getElementById("runProgramFile_path"+i).value +"•"+
-				document.getElementById("runProgramFile_arg"+i).value  +"•"+
-				document.getElementById("runProgramFile_newIcon"+i).src +"•"+
-				document.getElementById("runProgramFile_appIconCheck"+i).checked +"•"+
-				document.getElementById("runProgramFile_newIconCheck"+i).checked;
-				eG_prefs.setComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString, string);
-			}
-
-			for (i=1; i<=20; i++) {	// loadURLScript 1 to 20
-				string.data =document.getElementById("loadURLScript_name"+i).value +"•"+
-				(document.getElementById("URL"+i).selected ? document.getElementById("loadURLScript_host"+i).value : document.getElementById("loadURLScript_code"+i).value)  +"•"+
-				document.getElementById("Script"+i).selected +"•"+
-				document.getElementById("loadURLScript_newIcon"+i).src  +"•"+
-				document.getElementById("loadURLScript_faviconCheck"+i).checked +"•"+
-				document.getElementById("loadURLScript_newIconCheck"+i).checked;
-				eG_prefs.setComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString, string);
-			}
-
-            eG_prefs.setCharPref("customizations.loadURLin", document.getElementById("loadURLin").value);
-
-			eG_prefs.setCharPref("skin.path", eG_skinCurrent);
-		
-			///////////////////////////////////////////////////////////////////////////////////////////////
-			//	triggering observer to reset eGm object								//
-			///////////////////////////////////////////////////////////////////////////////////////////////
-
-			try {
-				eG_prefs.setBoolPref("stateChange.prefs", !eG_prefs.getBoolPref("stateChange.prefs"));
-			} catch(ex) {
-				eG_prefs.setBoolPref("stateChange.prefs", true);
-			}
-
-		}
-		
-		function setActionsPrefs () {	// setting actions IDs and labels
-			var groupboxes = new Array("main","mainAlt1","mainAlt2","extra","extraAlt1","extraAlt2","contextLink","contextImage", "contextSelection","contextTextbox");
-			
-			// setting IDs
-			for (var i=0; i<groupboxes.length; i++) {
-				var string = "";
-				for (j=0; j<=9; j++) {
-					if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 ) string+="0";
-					else string+=document.getElementById(groupboxes[i]+"Sector"+j).getAttribute("actionID");
-					string+=(j<9?"/":"");
-				}
-				eG_prefs.setCharPref("actions."+groupboxes[i], string);
-			}
-			
-			// setting labels
-			var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-			for (var i=0; i<groupboxes.length; i++) {
-				string.data = "";
-				for (j=0; j<=9; j++) {
-					if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 ) string.data +="";
-					else string.data +=document.getElementById(groupboxes[i]+"Sector"+j).label;
-					string.data +=(j<9?"•":"");
-				}
-				eG_prefs.setComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString, string);
-			}			
-			
-		}
-
-		function initActionsBoxes () { // initializing actions IDs and labels
-			var groupboxes = new Array("main","mainAlt1","mainAlt2","extra","extraAlt1","extraAlt2","contextLink","contextImage","contextSelection","contextTextbox");
-			
-			// initializing IDs
-			for (var i=0; i<groupboxes.length; i++) {
-				var ids = eG_prefs.getCharPref("actions."+groupboxes[i]).split("/");
-				for (j=0; j<=9; j++) {
-					if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 ) continue;
-					else document.getElementById(groupboxes[i]+"Sector"+j).setAttribute("actionID", ids[j]);
-				}
-			}
-			
-			// initializing labels
-			for (var i=0; i<groupboxes.length; i++) {
-				var labels = eG_prefs.getComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString).data.split("•");
-				for (j=0; j<=9; j++) {
-					if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 ) continue;
-					else document.getElementById(groupboxes[i]+"Sector"+j).label=labels[j];
-				}
-			}			
-		}
-
-		function checkDuplicateKeys (selection){			
-			if ( (document.getElementById("contextKey").value==document.getElementById("supprKey").value) && document.getElementById("contextKey").value!=0 && ( document.getElementById("contextKey").value!=4 ||
-				document.getElementById("contextKey").value==4 && document.getElementById("customContextKeyCode").value==document.getElementById("customSupprKeyCode").value) )	{
-					selection.value=0;
-					alert(eG_duplicateKeyMessage);
-				}
-		}
-		
-		function updateOtherLabels (actionID, label) {
-			var groupboxes = new Array("main","mainAlt1","mainAlt2","extra","extraAlt1","extraAlt2","contextLink","contextImage", "contextSelection","contextTextbox");
-			for (var i=0; i<groupboxes.length; i++) {
-				for (var sector=0; sector<10; sector++) {
-					if(groupboxes[i].search("extra")!=-1 && sector>2 && sector<8) continue;
-					if (document.getElementById(groupboxes[i]+"Sector"+sector).getAttribute("actionID") == actionID)  document.getElementById(groupboxes[i]+"Sector"+sector).label=label;
-				}
-			}
-		}
-		
-		function updateUI() {
-		
-			//*****************************************************************************
-			// disabling tooltip sub-options
-			//*****************************************************************************
-			var checking= document.getElementById("showTooltips").checked;
-			document.getElementById("tooltipsDelayLabel").disabled= !checking;
-			document.getElementById("tooltipsDelay").disabled= !checking;
-			document.getElementById("tooltipsDelayOmit").disabled= !checking;
-			
-			/*
-			if (document.getElementById('eG_linearMenu').checked==true && checkingPrimitive) {// disable popup in alternative menu if more action selected in primitive menu with linear menu
-				document.getElementById("eG_func_n").disabled=true;
-				document.getElementById("eG_func_n").value=1;
-				checkingAlternative=true;
-			}	
-			else	document.getElementById("eG_func_n").disabled=false;
-			*/
-
-			//*****************************************************************************
-			// enabling/disabling alternative boxes
-			//*****************************************************************************
-			var boxes = new Array("main","extra");
-			for (var i=0; i<2; i++) {
-				for (var sector=0; sector<10; sector++) {
-					if(boxes[i].search("extra")!=-1 && sector>2 && sector<8) continue;
-					document.getElementById(boxes[i]+"Alt1Sector"+sector).disabled=document.getElementById(boxes[i]+"Alternative1").checked;
-					document.getElementById(boxes[i]+"Alt2Sector"+sector).disabled=document.getElementById(boxes[i]+"Alternative2").checked;
-				}
-			}
-			
-			//*****************************************************************************
-			// checking for link options
-			//*****************************************************************************
-			checking=(document.getElementById("linkprefs").selectedItem!= document.getElementById("linkCurTab"));
-			document.getElementById("xlink").disabled= !checking;
-			
-			//*****************************************************************************
-			// checking if menu is standard or large
-			//*****************************************************************************
-			menuIsLarge=(document.getElementById("menuType").selectedItem== document.getElementById("eG_lrg"));
-			
-			document.getElementById("mainSector3").hidden=!menuIsLarge;
-			document.getElementById("mainSector7").hidden=!menuIsLarge;	
-			document.getElementById("mainAlt1Sector3").hidden=!menuIsLarge;
-			document.getElementById("mainAlt1Sector7").hidden=!menuIsLarge;
-			document.getElementById("mainAlt2Sector3").hidden=!menuIsLarge;
-			document.getElementById("mainAlt2Sector7").hidden=!menuIsLarge;
-
-			document.getElementById("contextLinkSector3").hidden=!menuIsLarge;
-			document.getElementById("contextLinkSector7").hidden=!menuIsLarge;	
-			document.getElementById("contextImageSector3").hidden=!menuIsLarge;
-			document.getElementById("contextImageSector7").hidden=!menuIsLarge;
-			document.getElementById("contextSelectionSector3").hidden=!menuIsLarge;
-			document.getElementById("contextSelectionSector7").hidden=!menuIsLarge;
-			document.getElementById("contextTextboxSector3").hidden=!menuIsLarge;
-			document.getElementById("contextTextboxSector7").hidden=!menuIsLarge;
-			
-			//*****************************************************************************
-			// checking if search engines are selected
-			//*****************************************************************************
-			document.getElementById("searchQuery1").disabled=!document.getElementById("search1").checked;
-			document.getElementById("searchQuery2").disabled=!document.getElementById("search2").checked;
-			document.getElementById("searchQuery3").disabled=!document.getElementById("search3").checked;
-			document.getElementById("searchQuery4").disabled=!document.getElementById("search4").checked;
-			document.getElementById("searchQuery5").disabled=!document.getElementById("search5").checked;
-			document.getElementById("searchQuery6").disabled=!document.getElementById("search6").checked;
-						
-			//*****************************************************************************
-			
-			document.getElementById("showAfterDelayDelayLabel").hidden=!document.getElementById("showAfterDelay").checked;
-			document.getElementById("showAfterDelayDelay").hidden=!document.getElementById("showAfterDelay").checked;
-			
-			//*****************************************************************************
-			// display or not dragging sub-option
-			//*****************************************************************************
-			var checking= (document.getElementById("showButton").value==0) && document.getElementById("dragOnly").checked;
-			document.getElementById("dragOnlyUpLeftBlank").hidden=!checking;
-			document.getElementById("dragOnlyUpLeft").hidden=!checking;
-
-			//*****************************************************************************
-			// disable or not mouse button code textbox for showing menu
-			//*****************************************************************************
-			if (document.getElementById("showButton").value==3) {
-				document.getElementById("customMouseButtonLabel").disabled=false;
-				document.getElementById("customMouseButtonCode").disabled=false;
-			}
-			else {
-				document.getElementById("customMouseButtonCode").value=document.getElementById("showButton").value;
-				document.getElementById("customMouseButtonLabel").disabled=true;
-				document.getElementById("customMouseButtonCode").disabled=true;
-			}
-			
-			//*****************************************************************************
-			// disable or not mouse button code textbox for showing alternative menu
-			//*****************************************************************************
-			if (document.getElementById("showAltButton").value==3) {
-				document.getElementById("customAltMouseButtonLabel").disabled=false;
-				document.getElementById("customAltMouseButtonCode").disabled=false;
-			}
-			else {
-				document.getElementById("customAltMouseButtonCode").value=document.getElementById("showAltButton").value;
-				document.getElementById("customAltMouseButtonLabel").disabled=true;
-				document.getElementById("customAltMouseButtonCode").disabled=true;
-			}			
-			
-			//*****************************************************************************
-			// disable or not keycode textbox for priority suppression
-			//*****************************************************************************
-			if (document.getElementById("supprKey").value==4) {
-				document.getElementById("customSupprKeyLabel").disabled=false;
-				document.getElementById("customSupprKeyCode").disabled=false;
-			}
-			else {
-				switch(document.getElementById("supprKey").value){
-				case "0":
-					document.getElementById("customSupprKeyCode").value=0;
-					break;
-				case "1":
-					document.getElementById("customSupprKeyCode").value=45;
-					break;
-				case "2":
-					document.getElementById("customSupprKeyCode").value=18;
-					break;
-				case "3":
-					document.getElementById("customSupprKeyCode").value=17;
-					break;
-				} 		
-				document.getElementById("customSupprKeyLabel").disabled=true;
-				document.getElementById("customSupprKeyCode").disabled=true;
-			}
-			
-			//*****************************************************************************
-			// disabling autoscrolling sub-options
-			//*****************************************************************************
-			var checking= document.getElementById("autoscrollingOn").checked;
-			document.getElementById("autoscrollingDelayLabel").disabled= !checking;
-			document.getElementById("autoscrollingDelay").disabled= !checking;
-
-			//*****************************************************************************
-			// disabling contextual menu sub-options
-			//*****************************************************************************
-			if (document.getElementById("contextKey").value==4) {
-				document.getElementById("customContextKeyLabel").disabled=false;
-				document.getElementById("customContextKeyCode").disabled=false;
-			}
-			else {
-				switch(document.getElementById("contextKey").value){
-				case "0":
-					document.getElementById("customContextKeyCode").value=0;
-					break;
-				case "1":
-					document.getElementById("customContextKeyCode").value=45;
-					break;
-				case "2":
-					document.getElementById("customContextKeyCode").value=18;
-					break;
-				case "3":
-					document.getElementById("customContextKeyCode").value=17;
-					break;
-				} 		
-				document.getElementById("customContextKeyLabel").disabled=true;
-				document.getElementById("customContextKeyCode").disabled=true;
-			}
-			
-			//*****************************************************************************
-			// displaying correct label for Load URL/Script 
-			//*****************************************************************************
-			setLabels();
-			
-			//*****************************************************************************
-			// displaying correct textarea for Load URL/Script
-			//*****************************************************************************
-			for (i=1; i<=20; i++) {	// loadURLScript 1 to 20
-				var collapse = ( (document.getElementById('loadURLScript_type'+i).selectedItem== document.getElementById('URL'+i) ) ? true:false);
-				document.getElementById('loadURLScript_code'+i).collapsed=collapse;
-				document.getElementById('loadURLScript_host'+i).collapsed=!collapse;
-			}
-			
-			//*****************************************************************************
-			// Hiding/unhidding favicon check box for loadURLScript actions
-			//*****************************************************************************
-			for (i=1; i<=20; i++) {	// loadURLScript 1 to 20
-				var  checkbox = document.getElementById('loadURLScript_faviconCheck'+i);
-				if (document.getElementById('Script'+i).selected) {
-					checkbox.checked=false;
-					checkbox.collapsed= true;
-				} else checkbox.collapsed=false;
-			}			
-			
-			//*****************************************************************************
-			// Hiding New Icon
-			//*****************************************************************************
-			for (i=1; i<=20; i++) {	// loadURLScript 1 to 20
-				document.getElementById('loadURLScriptDisplay'+i).collapsed=! document.getElementById('loadURLScript_faviconCheck'+i).checked && ! document.getElementById('loadURLScript_newIconCheck'+i).checked;
-			}
-			for (i=1; i<=10; i++) {	// runProgramFile 1 to 10
-				document.getElementById('runProgramFileDisplay'+i).collapsed=! document.getElementById('runProgramFile_appIconCheck'+i).checked && ! document.getElementById('runProgramFile_newIconCheck'+i).checked;
-			}						
-
-			//*****************************************************************************
-			// Setting a few images in Customizations Panel
-			//*****************************************************************************
-			document.getElementById("searchWebImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')"; 
-			document.getElementById("translateImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')"; 
-			document.getElementById("openLinkImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')"; 
-			document.getElementById("highlightImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')"; 
-			document.getElementById("closeTabImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')"; 
-		}
-
-		function eG_getVersion()	{		
-			
-            // Since FF4, replaced the old call to nsIExtensionManager: this works using processNextEvent but is not very clean
-            
-            Components.utils.import("resource://gre/modules/AddonManager.jsm");
-			var version=null;
-            AddonManager.getAddonByID("{11F9F076-72B3-4586-995D-5042CF5D3AD4}",function(addon) {version = addon.version}); 
-            var thread = Components.classes["@mozilla.org/thread-manager;1"].getService(Components.interfaces.nsIThreadManager).currentThread;
-            while (version==null) thread.processNextEvent(true);        // sleep until async value is available       
-            return version;
-		}
-
-		function avoidMultipleInstances()	{	
-			
-			var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
-			
-			while (wenum.hasMoreElements()) {
-				var win = wenum.getNext();
-				if (win.location == "chrome://easygestures/content/options.xul" && win!=this) {
-					win.focus();
-					
-					try {// switch dialog to appropriate panel when called from tips window
-						var args=this.arguments[1].split("/");
-						win.document.getElementById('eG_optionsWindow').showPane(win.document.getElementById(args[0]+'Pane'));
-						win.document.getElementById(args[0]+"Tabboxes").selectedIndex=parseInt(args[1])-1;		// Page 1 is index 0
-					} catch(ex) {}
-					
-					this.close();
-					return;
-				}
-			}			
-		}
-
-		function showStatusbarIcon(collapse)	{	
-			
-			var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
-			
-			while (wenum.hasMoreElements()) {
-				var win = wenum.getNext();
-				try {
-					node = win.document.getElementById("statusbarIcon");
-					node.collapsed=collapse;
-				} catch(ex) {}
-			}			
-		}
-		//]]>
+    function initActionsBoxes () {
+      // initializing actions IDs and labels
+      var groupboxes = new Array(
+        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
+        "contextLink", "contextImage", "contextSelection", "contextTextbox"
+      );
+      
+      // initializing IDs
+      for (var i=0; i<groupboxes.length; i++) {
+        var ids = eG_prefs.getCharPref("actions."+groupboxes[i]).split("/");
+        for (j=0; j<=9; j++) {
+          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
+            continue;
+          else
+            document.getElementById(groupboxes[i]+"Sector"+j).setAttribute("actionID", ids[j]);
+        }
+      }
+      
+      // initializing labels
+      for (var i=0; i<groupboxes.length; i++) {
+        var labels = eG_prefs.getComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString).data.split("•");
+        for (j=0; j<=9; j++) {
+          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
+            continue;
+          else
+            document.getElementById(groupboxes[i]+"Sector"+j).label=labels[j];
+        }
+      }
+    }
+    
+    function checkDuplicateKeys(selection) {
+      if ((document.getElementById("contextKey").value == document.getElementById("supprKey").value)
+           && document.getElementById("contextKey").value != 0
+           && (document.getElementById("contextKey").value != 4 || document.getElementById("contextKey").value == 4 && document.getElementById("customContextKeyCode").value == document.getElementById("customSupprKeyCode").value)) {
+        selection.value = 0;
+        alert(eG_duplicateKeyMessage);
+      }
+    }
+    
+    function updateOtherLabels(actionID, label) {
+      var groupboxes = new Array(
+        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
+        "contextLink", "contextImage", "contextSelection", "contextTextbox"
+      );
+      
+      for (var i=0; i<groupboxes.length; i++) {
+        for (var sector=0; sector<10; sector++) {
+          if (groupboxes[i].search("extra")!=-1 && sector>2 && sector<8)
+            continue;
+          if (document.getElementById(groupboxes[i]+"Sector"+sector).getAttribute("actionID") == actionID)
+            document.getElementById(groupboxes[i]+"Sector"+sector).label = label;
+        }
+      }
+    }
+    
+    function updateUI() {
+      //***************************************************
+      // disabling tooltip sub-options
+      //***************************************************
+      var checking = document.getElementById("showTooltips").checked;
+      document.getElementById("tooltipsDelayLabel").disabled = !checking;
+      document.getElementById("tooltipsDelay").disabled = !checking;
+      document.getElementById("tooltipsDelayOmit").disabled = !checking;
+      
+      /*
+      if (document.getElementById('eG_linearMenu').checked==true && checkingPrimitive) {// disable popup in alternative menu if more action selected in primitive menu with linear menu
+        document.getElementById("eG_func_n").disabled=true;
+        document.getElementById("eG_func_n").value=1;
+        checkingAlternative=true;
+      }
+      else
+        document.getElementById("eG_func_n").disabled=false;
+      */
+      
+      //***************************************************
+      // enabling/disabling alternative boxes
+      //***************************************************
+      var boxes = new Array("main","extra");
+      for (var i=0; i<2; i++) {
+        for (var sector=0; sector<10; sector++) {
+          if (boxes[i].search("extra")!=-1 && sector>2 && sector<8)
+            continue;
+          document.getElementById(boxes[i]+"Alt1Sector"+sector).disabled = document.getElementById(boxes[i]+"Alternative1").checked;
+          document.getElementById(boxes[i]+"Alt2Sector"+sector).disabled = document.getElementById(boxes[i]+"Alternative2").checked;
+        }
+      }
+      
+      //***************************************************
+      // checking for link options
+      //***************************************************
+      checking = (document.getElementById("linkprefs").selectedItem != document.getElementById("linkCurTab"));
+      document.getElementById("xlink").disabled = !checking;
+      
+      //***************************************************
+      // checking if menu is standard or large
+      //***************************************************
+      menuIsLarge = (document.getElementById("menuType").selectedItem == document.getElementById("eG_lrg"));
+      
+      document.getElementById("mainSector3").hidden = !menuIsLarge;
+      document.getElementById("mainSector7").hidden = !menuIsLarge;
+      document.getElementById("mainAlt1Sector3").hidden = !menuIsLarge;
+      document.getElementById("mainAlt1Sector7").hidden = !menuIsLarge;
+      document.getElementById("mainAlt2Sector3").hidden = !menuIsLarge;
+      document.getElementById("mainAlt2Sector7").hidden = !menuIsLarge;
+      
+      document.getElementById("contextLinkSector3").hidden = !menuIsLarge;
+      document.getElementById("contextLinkSector7").hidden = !menuIsLarge;
+      document.getElementById("contextImageSector3").hidden = !menuIsLarge;
+      document.getElementById("contextImageSector7").hidden = !menuIsLarge;
+      document.getElementById("contextSelectionSector3").hidden = !menuIsLarge;
+      document.getElementById("contextSelectionSector7").hidden = !menuIsLarge;
+      document.getElementById("contextTextboxSector3").hidden = !menuIsLarge;
+      document.getElementById("contextTextboxSector7").hidden = !menuIsLarge;
+      
+      //***************************************************
+      // checking if search engines are selected
+      //***************************************************
+      
+      document.getElementById("searchQuery1").disabled = !document.getElementById("search1").checked;
+      document.getElementById("searchQuery2").disabled = !document.getElementById("search2").checked;
+      document.getElementById("searchQuery3").disabled = !document.getElementById("search3").checked;
+      document.getElementById("searchQuery4").disabled = !document.getElementById("search4").checked;
+      document.getElementById("searchQuery5").disabled = !document.getElementById("search5").checked;
+      document.getElementById("searchQuery6").disabled = !document.getElementById("search6").checked;
+      
+      //***************************************************
+      
+      document.getElementById("showAfterDelayDelayLabel").hidden = !document.getElementById("showAfterDelay").checked;
+      document.getElementById("showAfterDelayDelay").hidden = !document.getElementById("showAfterDelay").checked;
+      
+      //***************************************************
+      // display or not dragging sub-option
+      //***************************************************
+      
+      var checking = (document.getElementById("showButton").value==0) && document.getElementById("dragOnly").checked;
+      document.getElementById("dragOnlyUpLeftBlank").hidden = !checking;
+      document.getElementById("dragOnlyUpLeft").hidden = !checking;
+      
+      //***************************************************
+      // disable or not mouse button code textbox for showing menu
+      //***************************************************
+      
+      if (document.getElementById("showButton").value == 3) {
+        document.getElementById("customMouseButtonLabel").disabled = false;
+        document.getElementById("customMouseButtonCode").disabled = false;
+      }
+      else {
+        document.getElementById("customMouseButtonCode").value=document.getElementById("showButton").value;
+        document.getElementById("customMouseButtonLabel").disabled = true;
+        document.getElementById("customMouseButtonCode").disabled = true;
+      }
+      
+      //***************************************************
+      // disable or not mouse button code textbox for showing alternative menu
+      //***************************************************
+      
+      if (document.getElementById("showAltButton").value == 3) {
+        document.getElementById("customAltMouseButtonLabel").disabled = false;
+        document.getElementById("customAltMouseButtonCode").disabled = false;
+      }
+      else {
+        document.getElementById("customAltMouseButtonCode").value = document.getElementById("showAltButton").value;
+        document.getElementById("customAltMouseButtonLabel").disabled = true;
+        document.getElementById("customAltMouseButtonCode").disabled = true;
+      }
+      
+      //***************************************************
+      // disable or not keycode textbox for priority suppression
+      //***************************************************
+      
+      if (document.getElementById("supprKey").value == 4) {
+        document.getElementById("customSupprKeyLabel").disabled = false;
+        document.getElementById("customSupprKeyCode").disabled = false;
+      }
+      else {
+        switch (document.getElementById("supprKey").value) {
+          case "0":
+            document.getElementById("customSupprKeyCode").value = 0;
+            break;
+          case "1":
+            document.getElementById("customSupprKeyCode").value = 45;
+            break;
+          case "2":
+            document.getElementById("customSupprKeyCode").value = 18;
+            break;
+          case "3":
+            document.getElementById("customSupprKeyCode").value = 17;
+            break;
+        }
+        document.getElementById("customSupprKeyLabel").disabled = true;
+        document.getElementById("customSupprKeyCode").disabled = true;
+      }
+      
+      //***************************************************
+      // disabling autoscrolling sub-options
+      //***************************************************
+      
+      var checking = document.getElementById("autoscrollingOn").checked;
+      document.getElementById("autoscrollingDelayLabel").disabled = !checking;
+      document.getElementById("autoscrollingDelay").disabled = !checking;
+      
+      //***************************************************
+      // disabling contextual menu sub-options
+      //***************************************************
+      
+      if (document.getElementById("contextKey").value == 4) {
+        document.getElementById("customContextKeyLabel").disabled = false;
+        document.getElementById("customContextKeyCode").disabled = false;
+      }
+      else {
+        switch (document.getElementById("contextKey").value) {
+          case "0":
+            document.getElementById("customContextKeyCode").value = 0;
+            break;
+          case "1":
+            document.getElementById("customContextKeyCode").value = 45;
+            break;
+          case "2":
+            document.getElementById("customContextKeyCode").value = 18;
+            break;
+          case "3":
+            document.getElementById("customContextKeyCode").value = 17;
+            break;
+        }
+        document.getElementById("customContextKeyLabel").disabled = true;
+        document.getElementById("customContextKeyCode").disabled = true;
+      }
+      
+      //***************************************************
+      // displaying correct label for Load URL/Script
+      //***************************************************
+      
+      setLabels();
+      
+      //***************************************************
+      // displaying correct textarea for Load URL/Script
+      //***************************************************
+      
+      for (i=1; i<=20; i++) { // loadURLScript 1 to 20
+        var collapse = ((document.getElementById('loadURLScript_type'+i).selectedItem == document.getElementById('URL'+i) ) ? true:false);
+        document.getElementById('loadURLScript_code'+i).collapsed = collapse;
+        document.getElementById('loadURLScript_host'+i).collapsed = !collapse;
+      }
+      
+      //***************************************************
+      // Hiding/unhidding favicon check box for loadURLScript actions
+      //***************************************************
+      
+      for (i=1; i<=20; i++) { // loadURLScript 1 to 20
+        var  checkbox = document.getElementById('loadURLScript_faviconCheck'+i);
+        if (document.getElementById('Script'+i).selected) {
+          checkbox.checked = false;
+          checkbox.collapsed = true;
+        }
+        else
+          checkbox.collapsed = false;
+      }
+      
+      //***************************************************
+      // Hiding New Icon
+      //***************************************************
+      
+      for (i=1; i<=20; i++) { // loadURLScript 1 to 20
+        document.getElementById('loadURLScriptDisplay'+i).collapsed = !document.getElementById('loadURLScript_faviconCheck'+i).checked && !document.getElementById('loadURLScript_newIconCheck'+i).checked;
+      }
+      for (i=1; i<=10; i++) { // runProgramFile 1 to 10
+        document.getElementById('runProgramFileDisplay'+i).collapsed = !document.getElementById('runProgramFile_appIconCheck'+i).checked && !document.getElementById('runProgramFile_newIconCheck'+i).checked;
+      }
+      
+      //***************************************************
+      // Setting a few images in Customizations Panel
+      //***************************************************
+      
+      document.getElementById("searchWebImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
+      document.getElementById("translateImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
+      document.getElementById("openLinkImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
+      document.getElementById("highlightImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
+      document.getElementById("closeTabImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
+    }
+    
+    function eG_getVersion() {
+      // Since FF4, replaced the old call to nsIExtensionManager: this works using processNextEvent but is not very clean
+      Components.utils.import("resource://gre/modules/AddonManager.jsm");
+      var version = null;
+      AddonManager.getAddonByID("{11F9F076-72B3-4586-995D-5042CF5D3AD4}",function(addon) {version = addon.version});
+      var thread = Components.classes["@mozilla.org/thread-manager;1"].getService(Components.interfaces.nsIThreadManager).currentThread;
+      while (version == null)
+        thread.processNextEvent(true); // sleep until async value is available       
+      return version;
+    }
+    
+    function avoidMultipleInstances() {
+      var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
+      
+      while (wenum.hasMoreElements()) {
+        var win = wenum.getNext();
+        if (win.location == "chrome://easygestures/content/options.xul" && win != this) {
+          win.focus();
+          try {
+            // switch dialog to appropriate panel when called from tips window
+            var args = this.arguments[1].split("/");
+            win.document.getElementById('eG_optionsWindow').showPane(win.document.getElementById(args[0]+'Pane'));
+            win.document.getElementById(args[0]+"Tabboxes").selectedIndex=parseInt(args[1])-1; // Page 1 is index 0
+          }
+          catch (ex) {}
+          
+          this.close();
+          return;
+        }
+      }
+    }
+    
+    function showStatusbarIcon(collapse) {
+      var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
+      
+      while (wenum.hasMoreElements()) {
+        var win = wenum.getNext();
+        try {
+          node = win.document.getElementById("statusbarIcon");
+          node.collapsed = collapse;
+        } catch (ex) {}
+      }
+    }
+    //]]>
   </script>
 </prefwindow>
