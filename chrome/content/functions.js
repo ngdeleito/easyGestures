@@ -718,7 +718,7 @@ var eGf = {
         return true;
       }
       process.init(file);
-      var arguments = [];
+      var args = [];
       argumentstext = argumentstext.split(/\s/);
 
       var count = 0;
@@ -739,10 +739,10 @@ var eGf = {
         text = text.replace(/\\/g , "");
 
         if (text !="")
-          arguments.push(text);
+          args.push(text);
       }
 
-      process.run(false, arguments, arguments.length, {});
+      process.run(false, args, args.length, {});
       return true;
     }
     catch (ex) {
