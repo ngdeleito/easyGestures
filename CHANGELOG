@@ -1,0 +1,12 @@
+Changes by ngdeleito (see git history for the full details)
+
+2012-09-01 onwards
+- changed version number to 4.4
+- unpacked and removed easygestures.jar file
+- reindented source code in several files
+- rewrote deprecated versions of setTimeout() function calls
+- made several changes in the preferences dialog, among which:
+-- removed support for multiple skins
+-- removed popup menu to change language
+- fixed some warnings
+- removed popup for nextTab and prevTab actions
