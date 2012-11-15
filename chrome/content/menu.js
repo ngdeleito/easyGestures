@@ -309,7 +309,6 @@ function eG_menu () {
   this.highlightColorList = prefs.getCharPref("customizations.highlightColorList").split(";");
 
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
-  this.tabPopupDelay = prefs.getIntPref("customizations.tabPopupDelay"); // popup delay for nextTab and prevTab actions
 
   this.queryInNewWindow = prefs.getBoolPref("customizations.queryInNewWindow"); // open search results in new window
   this.queryInNewTab = prefs.getBoolPref("customizations.queryInNewTab"); // always open first search results in current tab
@@ -405,9 +404,6 @@ function eG_menu () {
   this.iconSize = this.smallIcons? 20 : 32;
   this.locationBarWitdh = 500; // width of inputBox for URL input
   this.inputBoxWidth = 120; // width of inputBox for text input
-
-  this.tabPopupTimerId = null; // ID of popup timoeout for nextTab and prevTab actions
-  this.tabPopupTimerFlag = false;
 
   this.typingText = false; // used to cancel mouse events to pie menu when <enter> is pressed for typing
   this.showingTooltips = false; // tooltips are showing or hidden
@@ -1226,20 +1222,11 @@ eG_menu.prototype = {
     if (this.sector != sector) { // moved to new sector
       this.clearRollover(layout, false);
 
-      if (this.sector >= 0) { // leaving a sector
-        this.resetTabPopupTimer();
-      }
-
       if (sector >= 0) { // sector targetted exists: highlighting icons and labels
         layout.aNode.childNodes[sector].setAttribute("active", "true");
         this.rolloverExternalIcons(layout.actions[sector].src, layout.aNode.childNodes[sector], true);
         if (layout.lNode != null)
           layout.lNode.childNodes[sector].style.fontWeight = "bold";
-
-        // Start popup timer for prevTab or nextTab actions
-        if (this.menuState == 2 && (layout.actions[sector].src.search("prevTab")>=0 || layout.actions[sector].src.search("nextTab")>=0) && layout.aNode.childNodes[sector].getAttribute("grayed")!="true") {
-          this.tabPopupTimerId = setTimeout(function() { eGm.tabPopupTimerFlag = true; }, this.tabPopupDelay);
-        }
       }
     }
 
@@ -1324,8 +1311,6 @@ eG_menu.prototype = {
 
     if (this.showTooltips)
       clearTimeout(this.tooltipsTrigger);
-
-    this.resetTabPopupTimer();
   },
 
   clearRollover : function(layout, hidding) { // clear rollover effect
@@ -1711,15 +1696,6 @@ eG_menu.prototype = {
       else
         this.tooltipsTrigger = setTimeout(eGm.showMenuTooltips, this.tooltipsDelay);
     }
-  },
-
-  resetTabPopupTimer : function() { // reset popup timer for nextTab and prevTab actions
-    if (this.tabPopupTimerId != null) {
-      clearTimeout(this.tabPopupTimerId);
-      this.tabPopupTimerId = null;
-    }
-
-    this.tabPopupTimerFlag = false;
   },
 
   showInputBox : function(enterURL, showInputBoxSignForHighlight) { // showInputBoxSignForHighlight is to display options sign for highlight or SearchWeb actions

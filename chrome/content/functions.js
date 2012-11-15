@@ -265,89 +265,19 @@ var eGf = {
   },
 
   prevTab : function() {
-    if (eGm.tabPopupTimerId != null && eGm.tabPopupTimerFlag == true) {	// show popup
-      eGm.resetTabPopupTimer();
-      var tabs = getBrowser().mTabs;
-      var curTab = getBrowser().mCurrentTab._tPos;
-
-      while (eGm.popup.hasChildNodes()) { // remove all from menupopup
-        eGm.popup.removeChild(eGm.popup.firstChild);
-      }
-      eGm.popup.addEventListener("popuphiding", eG_popup, true);
-
-      for (var i=tabs.length-1; i>=0; i--) {
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-        itemNode.setAttribute("class", "menuitem-iconic");
-        itemNode.setAttribute("label", " " + tabs[i].label);
-        itemNode.setAttribute("oncommand", "getBrowser().selectTabAtIndex("+i+");");
-        itemNode.setAttribute("src", tabs[i].image);
-        itemNode.setAttribute("crop", "end");
-
-        if (i== curTab)
-          itemNode.setAttribute("disabled", true);
-        if (i== curTab-1)
-          itemNode.setAttribute("default", true);
-        eGm.popup.appendChild(itemNode);
-      }
-      dy = parseInt(window.getComputedStyle(eGm.popup,'').borderTopWidth) + parseInt(window.getComputedStyle(eGm.popup,'').borderBottomWidth);
-      dy += (parseInt(window.getComputedStyle(eGm.popup,'').lineHeight) + parseInt(window.getComputedStyle(eGm.popup,'').borderTopWidth) + parseInt(window.getComputedStyle(eGm.popup,'').borderBottomWidth)+1) * (tabs.length - curTab);
-      eGm.popup.openPopupAtScreen(eGc.screenXUp -8, eGc.screenYUp -dy, false);
-      if (eGm.showTooltips)
-        clearTimeout(eGm.tooltipsTrigger);
-    }
-    else {
-      var tabs = getBrowser().mTabBox._tabs;
-      if (tabs.selectedIndex > 0)
-        tabs.advanceSelectedTab(-1);
-      else
-        tabs.selectedIndex = tabs.childNodes.length-1;
-    }
-
-    eGm.tabPopupTimerFlag = false;
+    var tabs = getBrowser().mTabBox._tabs;
+    if (tabs.selectedIndex > 0)
+      tabs.advanceSelectedTab(-1);
+    else
+      tabs.selectedIndex = tabs.childNodes.length-1;
   },
 
   nextTab : function() {
-    if (eGm.tabPopupTimerId != null && eGm.tabPopupTimerFlag == true) {	// show popup
-      eGm.resetTabPopupTimer();
-
-      var tabs = getBrowser().mTabs;
-      var curTab = getBrowser().mCurrentTab._tPos;
-
-      while (eGm.popup.hasChildNodes()) { // remove all from menupopup
-        eGm.popup.removeChild(eGm.popup.firstChild);
-      }
-      eGm.popup.addEventListener("popuphiding", eG_popup, true);
-
-      for (var i=0; i<tabs.length; i++) {
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-        itemNode.setAttribute("class", "menuitem-iconic");
-        itemNode.setAttribute("label", " " + tabs[i].label);
-        itemNode.setAttribute("oncommand", "getBrowser().selectTabAtIndex("+i+");");
-        itemNode.setAttribute("src", tabs[i].image);
-        itemNode.setAttribute("crop", "end");
-
-        if (i == curTab)
-          itemNode.setAttribute("disabled", true);
-        if (i == curTab+1)
-          itemNode.setAttribute("default", true);
-
-        eGm.popup.appendChild(itemNode);
-      }
-      dy = parseInt(window.getComputedStyle(eGm.popup,'').borderTopWidth) + parseInt(window.getComputedStyle(eGm.popup,'').borderBottomWidth);
-      dy += (parseInt(window.getComputedStyle(eGm.popup,'').lineHeight) + parseInt(window.getComputedStyle(eGm.popup,'').borderTopWidth) + parseInt(window.getComputedStyle(eGm.popup,'').borderBottomWidth)+1) * (curTab==tabs.length-1?curTab:curTab+1);
-      eGm.popup.openPopupAtScreen(eGc.screenXUp -8, eGc.screenYUp -dy, false);
-      if (eGm.showTooltips)
-        clearTimeout(eGm.tooltipsTrigger);
-    }
-    else {
-      var tabs = getBrowser().mTabBox._tabs;
-      if (tabs.selectedIndex < tabs.childNodes.length-1)
-        tabs.advanceSelectedTab(+1);
-      else
-        tabs.selectedIndex = 0;
-    }
-
-    eGm.tabPopupTimerFlag = false;
+    var tabs = getBrowser().mTabBox._tabs;
+    if (tabs.selectedIndex < tabs.childNodes.length-1)
+      tabs.advanceSelectedTab(+1);
+    else
+      tabs.selectedIndex = 0;
   },
 
   closeTab : function() {

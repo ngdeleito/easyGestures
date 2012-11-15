@@ -115,8 +115,6 @@ function eG_setPrefs(locale){	// this function is also called in options.xul wit
 	
 	eG_prefsObs.prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
     
-    eG_prefsObs.prefs.setIntPref("customizations.tabPopupDelay", 400);
-    
 	eG_prefsObs.prefs.setBoolPref("customizations.queryInNewWindow", false);
 	eG_prefsObs.prefs.setBoolPref("customizations.queryInNewTab", true);
 

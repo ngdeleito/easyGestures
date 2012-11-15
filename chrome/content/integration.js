@@ -504,11 +504,6 @@ function eG_handleMousedown(evt) {
   
   eGc.blockStdContextMenu = true;
   
-  // Start popup timer for prevTab or nextTab actions
-  if ( eGm.menuState == 3) {
-    eGm.tabPopupTimerId = setTimeout(function() { eGm.tabPopupTimerFlag = true; }, eGm.tabPopupDelay);
-  }
-  
   // check whether pie menu should change layout or hide (later)
   if (eGm.menuState > 0 || eGm.autoscrollingState) {
     // toggle primitive/alternative pie menu
