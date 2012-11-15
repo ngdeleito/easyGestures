@@ -371,7 +371,7 @@ function eG_handleMouseup(evt) {
   
   if (eGm.typingText) {
     evt.preventDefault();
-    return; // REMOVED "false", BECAUSE WARNING
+    return;
   }
 
   if (eGc.openedOnDrag) { // enabling selection
@@ -446,7 +446,7 @@ function eG_handleMousemove(evt) {
   if (eGm.typingText) {
     if (eGm.inputBox.style.cursor != "auto")
       eGm.inputBox.style.cursor = "auto";
-    return; // REMOVED "false", BECAUSE WARNING
+    return;
   }
   
   if (evt.originalTarget.ownerDocument != eGc.frame_doc)
@@ -499,7 +499,7 @@ function eG_handleMousemove(evt) {
 function eG_handleMousedown(evt) {
   if (eGm.typingText) {
     eGc.blockStdContextMenu = false;
-    return; // REMOVED "false", BECAUSE WARNING
+    return;
   }
   
   eGc.blockStdContextMenu = true;
