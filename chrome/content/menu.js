@@ -369,7 +369,7 @@ function eG_menu () {
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   this.curLayoutName = "main";
-  this.baseMenu; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
+  this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.menuState = 0; // 0: not shown    1: showing   2: showing & mouse moved    3: staying open
   this.popup = null; // used for 'Search Web', 'Daily Readings' actions to display a popup on the fly
 
@@ -565,8 +565,8 @@ eG_menu.prototype = {
     var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"].getService(Components.interfaces.nsIFaviconService);
     var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
     for (var i=1; i<=6; i++) {
-      chksearch = eGm["search"+i];
-      query = eGm["searchQuery"+i];
+      var chksearch = eGm["search"+i];
+      var query = eGm["searchQuery"+i];
       if (query !="" && chksearch) {
         try {
           faviconPath = faviconService.getFaviconForPage(ios.newURI(ios.newURI(query, null, null).prePath,null,null)).spec;
@@ -1809,8 +1809,8 @@ eG_menu.prototype = {
       // finding favicons, setting items
       var faviconPath = null;
 
-      chksearch = eGm["search"+i];
-      query = eGm["searchQuery"+i];
+      var chksearch = eGm["search"+i];
+      var query = eGm["searchQuery"+i];
       if (query != "" && chksearch) {
         searchEnginesCount++;
         lastEnabledQuery = i;
