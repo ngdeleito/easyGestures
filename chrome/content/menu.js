@@ -1364,7 +1364,7 @@ eG_menu.prototype = {
       // updatel stats
       ///////////////////////////////////////////////////////////////////////////////////////////////
 
-      index = layout.name.match (/\d+/);
+      var index = layout.name.match (/\d+/);
       if (index == null)
         index = 0;
 
