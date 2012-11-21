@@ -371,7 +371,7 @@ function eG_menu () {
   this.curLayoutName = "main";
   this.baseMenu; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.menuState = 0; // 0: not shown    1: showing   2: showing & mouse moved    3: staying open
-  this.popup = null; // used for 'Search Web', 'Undo Close Tab', 'Daily Readings', 'Next Tab' and 'Previous Tab' actions to display a popup on the fly
+  this.popup = null; // used for 'Search Web', 'Daily Readings' actions to display a popup on the fly
 
   // Coordonnées
   this.pageX = 0; // page x coordinate of pie menu center

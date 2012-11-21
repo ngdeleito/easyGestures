@@ -297,30 +297,10 @@ var eGf = {
   },
 
   undoCloseTab : function() {
-    try { // to avoid error when Firefox pref "browser.sessionstore.enabled" is false
-      var ss = Cc['@mozilla.org/browser/sessionstore;1'].getService(Ci.nsISessionStore);
-      var closedTabsArray = (new Function ("return " + ss.getClosedTabData(window) ))(); // (new Function ("return " + data ))() replacing eval on data
-      while (eGm.popup.hasChildNodes()) { // remove all from menupopup
-        eGm.popup.removeChild(eGm.popup.firstChild);
-      }
-      eGm.popup.addEventListener("popuphiding", eG_popup, true);
-
-      for (var i=0; i<closedTabsArray.length; i++) {
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-        itemNode.setAttribute("class", "menuitem-iconic");
-        if (i==0)
-          itemNode.setAttribute("default", true);
-        itemNode.setAttribute("label", " " + closedTabsArray[i].title);
-        itemNode.setAttribute("oncommand", "window.undoCloseTab("+i+")");
-        itemNode.setAttribute("src", closedTabsArray[i].image);
-        itemNode.setAttribute("crop", "end");
-        eGm.popup.appendChild(itemNode);
-      }
-      eGm.popup.openPopupAtScreen(eGc.screenXUp, eGc.screenYUp, false);
-      if (eGm.showTooltips)
-        clearTimeout(eGm.tooltipsTrigger);
+    var ss = Cc["@mozilla.org/browser/sessionstore;1"].getService(Ci.nsISessionStore);
+    if (ss.getClosedTabCount(window) > 0) {
+      ss.undoCloseTab(window, 0);
     }
-    catch (ex) {}
   },
 
   //*********************************************************************************
