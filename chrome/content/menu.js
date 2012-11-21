@@ -402,7 +402,6 @@ function eG_menu () {
   this.extraMenuAction = null; // position of extra menu action in base menu from which extra menu is called
 
   this.iconSize = this.smallIcons? 20 : 32;
-  this.locationBarWitdh = 500; // width of inputBox for URL input
   this.inputBoxWidth = 120; // width of inputBox for text input
 
   this.typingText = false; // used to cancel mouse events to pie menu when <enter> is pressed for typing
@@ -1698,7 +1697,7 @@ eG_menu.prototype = {
     }
   },
 
-  showInputBox : function(enterURL, showInputBoxSignForHighlight) { // showInputBoxSignForHighlight is to display options sign for highlight or SearchWeb actions
+  showInputBox : function(showInputBoxSignForHighlight) { // argument is to display options sign for highlight or SearchWeb actions
 
     // clear tooltips timeout
     if (this.showTooltips && !this.showingTooltips)
@@ -1714,73 +1713,54 @@ eG_menu.prototype = {
     this.inputBox.style.cursor = "url('chrome://easygestures/skin/empty.png'), default";
     this.inputBox.style.MozBoxSizing = "border-box";
 
-    if (enterURL) { // URL input
-      // positioning and sizing the inputBox
-      this.inputBox.style.width = this.locationBarWitdh+"px";
+    // positioning and sizing the inputBox
+    if (!this.dropDownMenu) {
+      this.inputBox.style.width = this.inputBoxWidth+"px";
 
-      if (!this.dropDownMenu) {
-        this.inputBox.style.left = Math.round(layout.outerR- this.locationBarWitdh/2)+"px";
-        this.inputBox.style.top = Math.round(layout.outerR-txtboxHeight/2+1)+"px";
+      this.inputBox.style.left = parseInt(layout.aNode.childNodes[this.sector].style.left) -  this.inputBoxWidth/2 + this.iconSize/2+ "px";
+      this.inputBox.style.top = parseInt(layout.aNode.childNodes[this.sector].style.top) - (layout.isExtraMenu?layout.outerR*1.2:0)+ "px";
+
+      this.inputBox.style.paddingLeft = "4px";
+      this.inputBox.style.paddingRight = "18px";
+
+      if (showInputBoxSignForHighlight) {
+        this.inputBoxSignForHighlight.style.left = parseInt(this.inputBox.style.left) + this.inputBoxWidth - 26 +"px";
+        this.inputBoxSignForHighlight.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
+        this.inputBoxSignForHighlight.style.visibility = "visible";
       }
       else {
-        this.inputBox.style.left = -Math.round((this.locationBarWitdh)/2 - layout.width/2)+"px";
-        this.inputBox.style.top = -txtboxHeight+"px";
+        this.inputBoxSignForSearchWeb.style.left = parseInt(this.inputBox.style.left) + this.inputBoxWidth - 18 +"px";
+        this.inputBoxSignForSearchWeb.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
+        this.inputBoxSignForSearchWeb.style.visibility = "visible";
       }
-      // put url or selection as a default value
-      if (eGc.selection != "")
-        this.inputBox.value = eGc.selection;
-      else
-        this.inputBox.value = window._content.location.href;
     }
-    else { // text input
-      // positioning and sizing the inputBox
-      if (!this.dropDownMenu) {
-        this.inputBox.style.width = this.inputBoxWidth+"px";
+    else {
+      var txtboxWidth = layout.width;
+      this.inputBox.style.width = txtboxWidth + "px";
 
-        this.inputBox.style.left = parseInt(layout.aNode.childNodes[this.sector].style.left) -  this.inputBoxWidth/2 + this.iconSize/2+ "px";
-        this.inputBox.style.top = parseInt(layout.aNode.childNodes[this.sector].style.top) - (layout.isExtraMenu?layout.outerR*1.2:0)+ "px";
+      var sector = this.sector;
+      if (layout.isExtraMenu && sector > 5)
+        sector -= 3;
+      this.inputBox.style.left = parseInt(layout.aNode.childNodes[sector].style.left) - txtboxWidth/2 + this.iconSize/2 + "px";
+      this.inputBox.style.top = parseInt(layout.aNode.childNodes[sector].style.top) + (this.lineHeight - txtboxHeight)/2;
 
-        this.inputBox.style.paddingLeft = "4px";
-        this.inputBox.style.paddingRight = "18px";
+      this.inputBox.style.paddingLeft = "4px";
+      this.inputBox.style.paddingRight = "18px";
 
-        if (showInputBoxSignForHighlight) {
-          this.inputBoxSignForHighlight.style.left = parseInt(this.inputBox.style.left) + this.inputBoxWidth - 26 +"px";
-          this.inputBoxSignForHighlight.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
-          this.inputBoxSignForHighlight.style.visibility = "visible";
-        }
-        else {
-          this.inputBoxSignForSearchWeb.style.left = parseInt(this.inputBox.style.left) + this.inputBoxWidth - 18 +"px";
-          this.inputBoxSignForSearchWeb.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
-          this.inputBoxSignForSearchWeb.style.visibility = "visible";
-        }
+      if (showInputBoxSignForHighlight) {
+        this.inputBoxSignForHighlight.style.left = parseInt(this.inputBox.style.left) + txtboxWidth - 26 + "px";
+        this.inputBoxSignForHighlight.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth) + "px";
+        this.inputBoxSignForHighlight.style.visibility = "visible";
       }
       else {
-        var txtboxWidth = layout.width;
-        this.inputBox.style.width = txtboxWidth + "px";
-
-        var sector = this.sector;
-        if (layout.isExtraMenu && sector > 5)
-          sector -= 3;
-        this.inputBox.style.left = parseInt(layout.aNode.childNodes[sector].style.left) - txtboxWidth/2 + this.iconSize/2 + "px";
-        this.inputBox.style.top = parseInt(layout.aNode.childNodes[sector].style.top) + (this.lineHeight - txtboxHeight)/2;
-
-        this.inputBox.style.paddingLeft = "4px";
-        this.inputBox.style.paddingRight = "18px";
-
-        if (showInputBoxSignForHighlight) {
-          this.inputBoxSignForHighlight.style.left = parseInt(this.inputBox.style.left) + txtboxWidth - 26 + "px";
-          this.inputBoxSignForHighlight.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth) + "px";
-          this.inputBoxSignForHighlight.style.visibility = "visible";
-        }
-        else {
-          this.inputBoxSignForSearchWeb.style.left = parseInt(this.inputBox.style.left) + txtboxWidth - 18 + "px";
-          this.inputBoxSignForSearchWeb.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth) + "px";
-          this.inputBoxSignForSearchWeb.style.visibility = "visible";
-        }
+        this.inputBoxSignForSearchWeb.style.left = parseInt(this.inputBox.style.left) + txtboxWidth - 18 + "px";
+        this.inputBoxSignForSearchWeb.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth) + "px";
+        this.inputBoxSignForSearchWeb.style.visibility = "visible";
       }
-      // put last typed word as a default value
-      this.inputBox.value = eGc.lastTypedWord;
     }
+    // put last typed word as a default value
+    this.inputBox.value = eGc.lastTypedWord;
+
     this.inputBox.focus();
     this.inputBox.select();
   },

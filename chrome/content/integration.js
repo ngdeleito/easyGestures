@@ -302,11 +302,7 @@ function eG_handleKeys(evt) {
       evt.preventDefault();
     
     if (evt.type == "keydown") {
-      if (eGm.inputBox.style.visibility != "visible" && evt.keyCode != 27 && !evt.shiftKey) {
-        // Any key will unhide the inputBox
-        eGm.showInputBox(true, false); // URL entry only
-      }
-      else if (evt.keyCode == 13 || evt.keyCode == 27) {
+      if (evt.keyCode == 13 || evt.keyCode == 27) {
         // <Enter> key pressed
         eGc.selection = eGm.inputBox.value;
         
@@ -430,7 +426,7 @@ function eG_handleMouseup(evt) {
             // Selected text should not bring up input box
             if (actionName.search("searchWeb") != -1)
               eGm.showPopupForSearchWeb(false);
-            eGm.showInputBox(false, actionName.search("highlight")!=-1 ); // second argument is to display options sign for highlight action
+            eGm.showInputBox(actionName.search("highlight")!=-1 ); // argument is to display options sign for highlight action
           }
           else
             eGm.runAction();
