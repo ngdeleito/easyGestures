@@ -265,19 +265,11 @@ var eGf = {
   },
 
   prevTab : function() {
-    var tabs = getBrowser().mTabBox._tabs;
-    if (tabs.selectedIndex > 0)
-      tabs.advanceSelectedTab(-1);
-    else
-      tabs.selectedIndex = tabs.childNodes.length-1;
+    getBrowser().tabContainer.advanceSelectedTab(-1, true);
   },
 
   nextTab : function() {
-    var tabs = getBrowser().mTabBox._tabs;
-    if (tabs.selectedIndex < tabs.childNodes.length-1)
-      tabs.advanceSelectedTab(+1);
-    else
-      tabs.selectedIndex = 0;
+    getBrowser().tabContainer.advanceSelectedTab(1, true);
   },
 
   closeTab : function() {
