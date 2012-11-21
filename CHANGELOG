@@ -9,4 +9,5 @@ Changes by ngdeleito (see git history for the full details)
 -- removed support for multiple skins
 -- removed popup menu to change language
 - fixed some warnings
-- removed popup for nextTab and prevTab actions
+- removed popup for nextTab, prevTab and undoCloseTab actions
+- removed input box for entering URLs

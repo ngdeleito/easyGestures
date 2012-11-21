@@ -1,0 +1,13 @@
+easyGestures is a Firefox extension that allows browsing the Web from where the cursor is currently located, through a pie menu and without having to go to the navigation toolbar or to the application menu.
+
+easyGestures was created by Ons Besbes, who supported the extension until Firefox 4. The extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically.
+
+Here I try to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of this extension.
+
+I do this on my limited free time. Help is very much welcome.
+
+To install the latest development version:
+- Click on "Downloads"
+- Click on "Download as zip"
+- Once the file downloaded, rename it by replacing "zip" with "xpi"
+- Drop the renamed file into Firefox

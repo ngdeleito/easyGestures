@@ -1,2 +1,5 @@
 TODO
+- fix tooltips popup
+- fix preferences window
 - remove preference: tabPopupDelay
+- add new action to focus location bar (replaces removed input box for entering a URL)
