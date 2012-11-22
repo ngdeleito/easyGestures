@@ -1,4 +1,4 @@
-﻿/***** BEGIN LICENSE BLOCK *****
+/***** BEGIN LICENSE BLOCK *****
 Version: MPL 1.1/GPL 2.0/LGPL 2.1
 
 The contents of this file are subject to the Mozilla Public License Version 
@@ -86,8 +86,8 @@ var eGc = {
   defaultHighlightColorList: "rgb(255,255,176);rgb(255,191,191);rgb(184,230,255);rgb(182,255,183);rgb(233,187,255);yellow;salmon;aqua;SpringGreen;violet",
   gray: "#DDDDDD",
   lightgray: "#F3F3F3",
-  darkgray: "#B2B4BF",
-}
+  darkgray: "#B2B4BF"
+};
 
 var eGm = null;
 var eG_prefsObs = null;
@@ -148,11 +148,13 @@ function eG_initMenuIntegration(evt) {
     var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);
     var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
     var u = ios.newURI(skinPath+"actions.css", null, null);
-    if (!sss.sheetRegistered(u, sss.AGENT_SHEET))
+    if (!sss.sheetRegistered(u, sss.AGENT_SHEET)) {
       sss.loadAndRegisterSheet(u, sss.AGENT_SHEET);
+    }
     
-    if (window.arguments[0] == "about:blank")
+    if (window.arguments[0] == "about:blank") {
       loadURI("about:blank"); // FIX TRICK: when homepage is set to Blank Page, icons won't show because of CSS unless loading explicitly the blank page...
+    }
     
     ///////////////////////////////////////////////////////
     // displaying tips at startup
@@ -160,8 +162,9 @@ function eG_initMenuIntegration(evt) {
     var wenum = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher).getWindowEnumerator();
     wenum.getNext();
     if (!wenum.hasMoreElements()) { // only one Firefox window is open
-      if (eGm.startupTips)
+      if (eGm.startupTips) {
         window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable'); // show tip dialog
+      }
     }
   }
 }
@@ -237,42 +240,48 @@ function eG_activateMenu() {
   getBrowser().addEventListener("keydown", eG_handleKeys, true);
   getBrowser().addEventListener("keyup", eG_handleKeys, true);
   var contextMenu = document.getElementById("contentAreaContextMenu");
-  if (contextMenu)
+  if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
+  }
   
   /////////////////////////////////////////////////////////
   // disabling autoscrolling if middle mouse button is menu's button
   /////////////////////////////////////////////////////////
   if (eGm.showButton == 1) {
     var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("general.");
-    if (prefs.getBoolPref("autoScroll"))
+    if (prefs.getBoolPref("autoScroll")) {
       prefs.setBoolPref("autoScroll", false);
+    }
   }
 }
 
 function eG_changeStatus() {
-  active = eG_prefsObs.prefs.getBoolPref("profile.active");
+  var active = eG_prefsObs.prefs.getBoolPref("profile.active");
   active = !active; // switch status
   eG_prefsObs.prefs.setBoolPref("profile.active", active);
   
   document.getElementById("statusbarIcon").src = "chrome://easygestures/content/statusbar"+(active?"":"_gray")+".png";
-  if (active)
+  if (active) {
     eG_activateMenu();
+  }
   else {
     getBrowser().removeEventListener("mousedown", eG_handleMousedown, true);
     getBrowser().removeEventListener("mouseup", eG_handleMouseup, true);
     getBrowser().removeEventListener("keydown", eG_handleKeys, true);
     getBrowser().removeEventListener("keyup", eG_handleKeys, true);
     var contextMenu = document.getElementById("contentAreaContextMenu");
-    if (contextMenu)
+    if (contextMenu) {
       contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
+    }
   }
 }
 
 // suppress standard context menu
 function eG_handlePopup(evt) {
-	if(eGc.blockStdContextMenu) evt.preventDefault();
-	eGc.blockStdContextMenu= false;
+  if (eGc.blockStdContextMenu) {
+    evt.preventDefault();
+  }
+  eGc.blockStdContextMenu = false;
 }
 
 function eG_handleKeys(evt) {
@@ -280,14 +289,16 @@ function eG_handleKeys(evt) {
   clearTimeout(eGm.autoscrollingTrigger);
   
   // clear tooltips timeout
-  if (eGm.showTooltips && !eGm.showingTooltips)
+  if (eGm.showTooltips && !eGm.showingTooltips) {
     clearTimeout(eGm.tooltipsTrigger);
+  }
   
   if (evt.type == "keyup") {
     eGc.keyPressed = 0;
   }
-  else
+  else {
     eGc.keyPressed = evt.keyCode;
+  }
   
   if (evt.keyCode == 18 && eGm.menuState != 0 && evt.type == "keydown") {
     // <Alt> key is pressed (use right key)
@@ -298,16 +309,18 @@ function eG_handleKeys(evt) {
   // show textarea for typing and retrieve typed text as selected text
   if (eGm.menuState != 0 && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.supprKey) {
     // all keys except keys to control display of pie
-    if (evt.keyCode == 13 || evt.keyCode == 27)
+    if (evt.keyCode == 13 || evt.keyCode == 27) {
       evt.preventDefault();
+    }
     
     if (evt.type == "keydown") {
       if (evt.keyCode == 13 || evt.keyCode == 27) {
         // <Enter> key pressed
         eGc.selection = eGm.inputBox.value;
         
-        if (eGm.sector != -1)
+        if (eGm.sector != -1) {
           eGc.lastTypedWord = eGm.inputBox.value; // remember the last typed word in inputBox except addresses
+        }
         eGm.inputBox.blur(); // removing the cursor
         
         if (evt.keyCode != 27) {
@@ -329,9 +342,10 @@ function eG_handleKeys(evt) {
                   var tabs = container.childNodes;
                   container._selectNewTab(tabs[tabs.length-1]); // selectNewTab removed from FF3
                 }
-                else
+                else {
                   // load url in current tab if only <Enter> pressed
                   loadURI(getShortcutOrURI(eGc.selection, postData)); // load url
+                }
               }
             }
           }
@@ -360,8 +374,9 @@ function eG_handleMouseup(evt) {
   if (document.getElementById("content").mCurrentBrowser._scrollingView == null) {
     if (eGm.autoscrolling) {
       eGm.autoscrolling = false;
-      if (eGm.menuState == 0)
+      if (eGm.menuState == 0) {
         return; // avoid contextual menu when autoscrolling ends (this would be triggered below)
+      }
     }
   }
   
@@ -401,13 +416,16 @@ function eG_handleMouseup(evt) {
         if (evt.button == 1) {
           // middle click
           var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("browser.");
-          if (prefs.getBoolPref("tabs.opentabfor.middleclick"))
+          if (prefs.getBoolPref("tabs.opentabfor.middleclick")) {
             openNewTabWith(eGc.link);
-          else
+          }
+          else {
             openNewWindowWith(eGc.link);
+          }
         }
-        else
+        else {
           loadURI(eGc.link);
+        }
       }
       eGm.close();
     }
@@ -424,15 +442,18 @@ function eG_handleMouseup(evt) {
           if ((actionName.search("searchWeb") != -1 || actionName.search("translate") != -1 || actionName.search("highlight") != -1 ) && eGc.selection == "") {
             // Only for actions needing entry: searchWeb, translate, highlight
             // Selected text should not bring up input box
-            if (actionName.search("searchWeb") != -1)
+            if (actionName.search("searchWeb") != -1) {
               eGm.showPopupForSearchWeb(false);
+            }
             eGm.showInputBox(actionName.search("highlight")!=-1 ); // argument is to display options sign for highlight action
           }
-          else
+          else {
             eGm.runAction();
+          }
         }
-        else
+        else {
           eGm.menuState = 3;
+        }
       }
     }
   }
@@ -440,29 +461,34 @@ function eG_handleMouseup(evt) {
 
 function eG_handleMousemove(evt) {
   if (eGm.typingText) {
-    if (eGm.inputBox.style.cursor != "auto")
+    if (eGm.inputBox.style.cursor != "auto") {
       eGm.inputBox.style.cursor = "auto";
+    }
     return;
   }
   
-  if (evt.originalTarget.ownerDocument != eGc.frame_doc)
+  if (evt.originalTarget.ownerDocument != eGc.frame_doc) {
     return;
+  }
   
   eGc.draggedToOpen = Math.sqrt( Math.pow(evt.clientX- eGc.clientXDown,2) + Math.pow(evt.clientY- eGc.clientYDown,2) ) > eGc.pieDragTolerance;
   
   if (eGm.menuState == 0) {
-    if (eGc.showAfterDelayPassed)
+    if (eGc.showAfterDelayPassed) {
       return;
+    }
     
-    if (eGm.showButton == 0 && eGm.dragOnlyUpLeft && eGm.dragOnly)
+    if (eGm.showButton == 0 && eGm.dragOnlyUpLeft && eGm.dragOnly) {
       eGc.draggedToOpen = ((eGc.clientYDown-evt.clientY) > eGc.pieDragTolerance || (eGc.clientXDown-evt.clientX) > eGc.pieDragTolerance);
+    }
     
     if (eGc.draggedToOpen && eGm.dragOnly) {
       // user dragged mouse to open menu
       
       // get selection if any
-      if (eGc.selection == "" || eGc.selection==null)
+      if (eGc.selection == "" || eGc.selection==null) {
         eGc.selection = eG_getSelection(); // save current selection before removal
+      }
       
       eGc.pageXDown = evt.pageX;
       eGc.pageYDown = evt.pageY;
@@ -481,8 +507,9 @@ function eG_handleMousemove(evt) {
       // clear automatic delayed autoscrolling
       clearTimeout(eGm.autoscrollingTrigger);
       
-      if (!eGm.dropDownMenu && !eGm.showingTooltips)
+      if (!eGm.dropDownMenu && !eGm.showingTooltips) {
         eGm.resetTooltipsTimeout(); // reset tooltips timeout
+      }
       
       // hide center icon if mouse moved
       eGm.linkSign.style.visibility = "hidden";
@@ -551,7 +578,7 @@ function eG_handleMousedown(evt) {
   }
   
   // copying parts of evt object
-  eGc.evtMouseDown = new Object(); // don't just keep a reference to evt because evt will change before it can be used properly
+  eGc.evtMouseDown = {}; // don't just keep a reference to evt because evt will change before it can be used properly
   eGc.evtMouseDown.clientX = evt.clientX;
   eGc.evtMouseDown.clientY = evt.clientY;
   eGc.evtMouseDown.screenX = evt.screenX;
@@ -605,16 +632,20 @@ function eG_handleMousedown(evt) {
   
   // set eGc.contextType property for contextual menu displaying
   eGc.contextType = "";
-  if (eGc.link != null)
+  if (eGc.link != null) {
     eGc.contextType += "link/";
-  if (eGc.image != null)
+  }
+  if (eGc.image != null) {
     eGc.contextType += "image/";
+  }
   if (eGc.contextType == "") {
     // no need to go further if already link or image
-    if (eGc.selection != null && eGc.selection != "")
+    if (eGc.selection != null && eGc.selection != "") {
       eGc.contextType += "selection/";
-    if (eGc.selectionNode != null)
+    }
+    if (eGc.selectionNode != null) {
       eGc.contextType += "textbox/";
+    }
   }
   
   eGc.pageXDown = evt.pageX;
@@ -656,10 +687,12 @@ function eG_handleUnload(evt) {
   catch (ex) {}
   
   var needsChange = eG_needsChange();
-  if (needsChange == "needs-upgrade")
+  if (needsChange == "needs-upgrade") {
     eG_backupCustomIconsAndSkins();
-  else if (needsChange == "needs-uninstall")
+  }
+  else if (needsChange == "needs-uninstall") {
     eG_deleteAllPreferences();
+  }
 }
 
 function eG_countClicks() {
@@ -669,8 +702,9 @@ function eG_countClicks() {
     eG_prefsObs.prefs.setIntPref("profile.statsClicks",  statsClicks );
     
     // disable counting clicks inside window because menu is displayed
-    if (eGm.menuState != 0)
+    if (eGm.menuState != 0) {
       window.removeEventListener("mousedown", eG_countClicks, false);
+    }
   }
   catch (ex) {}
 }
@@ -708,10 +742,12 @@ function eG_openMenu() {
   
   // offset to put mouse cursor just above the middle in case of large pie menu
   if (eGm.largeMenu && !eGm.dropDownMenu) {
-    if (eGm.smallIcons)
+    if (eGm.smallIcons) {
       eGm.clientY += 9;
-    else
+    }
+    else {
       eGm.clientY += 15;
+    }
   }
   
   if ((eGm.contextMenuAuto && eGc.contextType != "" && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextMenuAuto && eGc.contextType != "" && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
@@ -723,10 +759,12 @@ function eG_openMenu() {
         eGm.show("contextImage");
         break;
       case "link/image/":
-        if (eGm.contextImageFirst)
+        if (eGm.contextImageFirst) {
           eGm.show("contextImage");
-        else
+        }
+        else {
           eGm.show("contextLink");
+        }
         break;
       case "selection/":
         eGm.show("contextSelection");
@@ -735,23 +773,27 @@ function eG_openMenu() {
         eGm.show("contextTextbox");
         break;
       case "selection/textbox/":
-        if (eGm.contextTextboxFirst)
+        if (eGm.contextTextboxFirst) {
           eGm.show("contextTextbox");
-        else
+        }
+        else {
           eGm.show("contextSelection");
+        }
         break;
     }
     eGm.contextMenuSign.style.visibility = "visible";
   }
-  else
+  else {
     eGm.show("main");
+  }
 }
 
 function eG_showTextNotFoundStrip(phrase) {
   if (document.getElementById("eGAlertTextNotFound") == null) {
     var panel = getBrowser().mPanelContainer.selectedPanel; // many tabs
-    if (panel == null)
+    if (panel == null) {
       panel = getBrowser().mPanelContainer.firstChild; // one tab only
+    }
     
     hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
     hbox.setAttribute("id","eGAlertTextNotFound");
@@ -899,10 +941,12 @@ function eG_needsChange() {
     
     if (stagedFolder.exists()) {
       // if extensions\staged\{11F9F076-72B3-4586-995D-5042CF5D3AD4} folder exists, check if empty or not: empty means uninstall, not empty means update
-      if (stagedFolder.fileSize != 0)
+      if (stagedFolder.fileSize != 0) {
         return 'needs-upgrade'; // upgrading
-      else
+      }
+      else {
         return 'needs-uninstall'; //uninstalling
+      }
     }
     return "";
   }
