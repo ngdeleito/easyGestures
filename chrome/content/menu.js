@@ -1790,7 +1790,7 @@ eG_menu.prototype = {
         this.showMenuTooltips();
       }
       else {
-        this.tooltipsTrigger = setTimeout(eGm.showMenuTooltips, this.tooltipsDelay);
+        this.tooltipsTrigger = setTimeout(this.showMenuTooltips.bind(eGm), this.tooltipsDelay);
       }
     }
   },

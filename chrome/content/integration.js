@@ -221,7 +221,7 @@ function eG_updatePrefs(prefs) {
     eG_setPrefs(eGc.localizing.getString("locale"));
     
     // display welcome page
-    setTimeout(function () {top.getBrowser().selectedTab=openNewTabWith(getShortcutOrURI("chrome://easygestures/content/welcomePage.xhtml", {}));},100,'');
+    setTimeout(function() { top.getBrowser().selectedTab = openNewTabWith(getShortcutOrURI("chrome://easygestures/content/welcomePage.xhtml", {})); }, 100, '');
   }
 }
 
