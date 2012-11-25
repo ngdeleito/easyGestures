@@ -44,136 +44,142 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   onload="updateContent(tipNbr);"
-  onunload="prefs.setIntPref('profile.tipNbr', tipNbr%tips.length + 1);"
+  onunload="prefs.setIntPref('profile.tipNbr', (tipNbr+1) % tips.length);"
   width="520"
-  height="360"
->
+  height="360">
 
-<groupbox flex="1" style="background-color:white;">	
-	<hbox>
-		<description value="&intro;" style="font-weight: bold; margin-top: 8px; margin-left: 8px"/>
-		<spring flex="1"/>
-		<description id="tipNbrDisplay" value="xx / nn" style="margin-top: 8px; margin-right: 8px"/>
-  	</hbox>
-	<hbox flex="1" style="margin: 8px; padding: 0px; border: solid lightgray 1pt;">			
-		<vbox style="font-size:10pt;background-color: #FFFFE1;border: none;" flex="1">
-			<html:div id="tipText" style="margin: 8px; padding: 0px;" onmouseover="this.style.cursor='default';">Tip</html:div>	
-			<spacer flex="1"/>
-			<hbox pack="center" >
-				<html:div id="tipImage" style="background-image:url('chrome://easygestures/content/tips.png');width:460px;height:130px;"></html:div>
-			</hbox>
-			<spacer flex="1"/>
-			<hbox >
-				<html:div id="tipText" style="margin-left: 8px; padding: 0px;" onmouseover="this.style.cursor='default';">
-					<html:a id="tipLink" href="#" style="text-decoration:underline;color: #3A69A6;">Link</html:a>
-				</html:div>	
-				<spacer flex="1"/>
-                <hbox><!-- keep hbox otherwise the link will not be displayed on the same line. Warning in error console:  XUL box for hbox element contained an inline a child, forcing all its children to be wrapped in a block.-->
-				<html:a href="#">
-					<image src="chrome://easygestures/content/copyToClipboard.png" tooltiptext="&copyText;" onclick="copyDescriptionToClipboard();" onmousedown="this.style.opacity=0.5;this.style.cursor='wait';" onmouseup="this.style.opacity=1;this.style.cursor='pointer';"/>
-				</html:a>
-                </hbox>
-			</hbox>
-		</vbox>	
-	</hbox>
-</groupbox>	
+  <groupbox flex="1" style="background-color:white;">
+    <hbox>
+      <description value="&intro;"
+        style="font-weight: bold; margin-top: 8px; margin-left: 8px" />
+      <spring flex="1" />
+      <description id="tipNbrDisplay" value="xx / nn"
+        style="margin-top: 8px; margin-right: 8px" />
+    </hbox>
+    <hbox flex="1"
+      style="margin: 8px; padding: 0px; border: solid lightgray 1pt;">
+      <vbox style="font-size:10pt;background-color: #FFFFE1;border: none;"
+        flex="1">
+        <html:div id="tipText" style="margin: 8px; padding: 0px;"
+          onmouseover="this.style.cursor='default';">Tip</html:div>
+        <spacer flex="1" />
+        <hbox pack="center">
+          <html:div id="tipImage" style="background-image:url('chrome://easygestures/content/tips.png');width:460px;height:130px;"></html:div>
+        </hbox>
+        <spacer flex="1" />
+        <hbox>
+          <html:div id="tipText" style="margin-left: 8px; padding: 0px;"
+            onmouseover="this.style.cursor='default';">
+            <html:a id="tipLink" href="#" style="text-decoration:underline;color: #3A69A6;">Link</html:a>
+          </html:div>
+          <spacer flex="1" />
+          <hbox><!-- keep hbox otherwise the link will not be displayed on the same line. Warning in error console: XUL box for hbox element contained an inline a child, forcing all its children to be wrapped in a block.-->
+            <html:a href="#">
+              <image src="chrome://easygestures/content/copyToClipboard.png"
+                tooltiptext="&copyText;" onclick="copyDescriptionToClipboard();"
+                onmousedown="this.style.opacity=0.5;this.style.cursor='wait';"
+                onmouseup="this.style.opacity=1;this.style.cursor='pointer';" />
+            </html:a>
+          </hbox>
+        </hbox>
+      </vbox>
+    </hbox>
+  </groupbox>
   <hbox>
-	<checkbox id="showTips" checked="true" label="&showTips;" oncommand="setTipActivation(this.checked);"/>
-	<spring flex="1"/>
-	<vbox>
-		<hbox>
-			<button label="&previousTip;" oncommand="previousTip();"/>
-			<button label="&nextTip;" oncommand="nextTip();"/>
-			<button label="&closeTip;" oncommand="close();"/>
-		</hbox>
-		<spacer height="4"/>
-	</vbox>	
-	<resizer dir="bottomright"></resizer>
-</hbox>
+    <checkbox id="showTips" checked="true" label="&showTips;"
+      oncommand="setTipActivation(this.checked);" />
+    <spring flex="1" />
+    <vbox>
+      <hbox>
+        <button label="&previousTip;" oncommand="updateTipNbr(-1);" />
+        <button label="&nextTip;" oncommand="updateTipNbr(+1);" />
+        <button label="&closeTip;" oncommand="close();" />
+      </hbox>
+      <spacer height="4"/>
+    </vbox>
+    <resizer dir="bottomright"></resizer>
+  </hbox>
 
   <script type="application/x-javascript">
-	// Attention: removed the CDATA line...
-	
-	var tipNbr;
-	var prefs= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
-	document.getElementById("showTips").checked=prefs.getBoolPref("profile.startupTips");
-	try {   tipNbr= prefs.getIntPref("profile.tipNbr");   } 
-	catch (ex) { tipNbr=1; }
-	
-	function tipEntry (description, imageClass, linkRef ) {
-		this.description =description;				
-		this.imageClass = imageClass;		// image source
-		this.linkRef =  linkRef;		// tabbox and index to be selected
-	}
-
-	var tips= new Array(
-		new tipEntry("&tip1;",	"triggerBySelection",    "behavior/1"),				
-		new tipEntry("&tip2;",	"triggerByStroke",    ""),				
-		new tipEntry("&tip3;",	"locationBar",    ""),				
-		new tipEntry("&tip4;",	"alternativeMenus",   "behavior/1"),	
-		new tipEntry("&tip5;",	"bookmarksOnlyLayout",   "customizations/1"),					
-		new tipEntry("&tip6;",	"builtInAction",   "actions/1"),				
-		new tipEntry("&tip7;",	"programsAndScripts",   "customizations/2"),				
-		new tipEntry("&tip8;",	"clickOnLink",   ""),				
-		new tipEntry("&tip9;",	"contextual",	"behavior/1"),				
-		new tipEntry("&tip10;",	"search",   "customizations/3"),				
-		new tipEntry("&tip11;",	"suppressMenu",   ""),				
-		new tipEntry("&tip12;",	"moveMenu",   ""),
-		new tipEntry("&tip13;",	"noTooltips",   "behavior/1"),				
-		new tipEntry("&tip14;", "noIcons",    ""),			
-		new tipEntry("&tip15;",	"largeMenu",   ""),				
-		new tipEntry("&tip16;",	"empty",   "behavior/1"),				
-		new tipEntry("&tip17;",	"empty",   ""),				
-		new tipEntry("&tip18;",	"empty",   ""),				
-		new tipEntry("&tip19;",	"empty",   "behavior/1"),				
-		new tipEntry("&tip20;", "empty",    ""),				
-		new tipEntry("&tip21;",	"empty",   ""),				
-		new tipEntry("&tip22;",	"empty",   ""),			
-		new tipEntry("&tip23;",	"empty",   ""),
-		new tipEntry("&tip24;",	"empty",   ""),
-		new tipEntry("&tip25;",	"empty",   ""),
-		new tipEntry("&tip26;",	"empty",   ""),
-		new tipEntry("&tip27;",	"empty",   "profile/1")
-	);
-
-	function previousTip() {
-		tipNbr=(tipNbr>1?tipNbr-1:tips.length);
-		prefs.setIntPref("profile.tipNbr", tipNbr);	
-		updateContent(tipNbr);
-	}
-
-	function nextTip() {
-		tipNbr=tipNbr%tips.length + 1;
-		prefs.setIntPref("profile.tipNbr", tipNbr);  
-		updateContent(tipNbr);
-	}
-
-	function setTipActivation(activate) {
-		if(activate) prefs.setBoolPref('profile.startupTips', true); 
-		else prefs.setBoolPref('profile.startupTips', false);
-	}
-	
-	function updateContent(tipNbr) {
-		document.getElementById("tipNbrDisplay").value= tipNbr+ " / "+ tips.length;
-		
-		var text = tips[tipNbr-1].description.split("|")[0];
-		var linkText= (tips[tipNbr-1].description.split("|").length>1 ? tips[tipNbr-1].description.split("|")[1]:"");
-		var linkRef = tips[tipNbr-1].linkRef;
-		var linkPane =(linkRef!=""? tips[tipNbr-1].linkRef.split('/')[0]+"Pane":"");		// Pane to focus in options window
-		
-		document.getElementById("tipText").firstChild.data= text;
-		document.getElementById("tipImage").setAttribute("class",tips[tipNbr-1].imageClass);
-		
-		document.getElementById("tipLink").setAttribute("onclick","window.openDialog('chrome://easygestures/content/options.xul','','','"+linkPane+"','"+linkRef+"');");
-		document.getElementById("tipLink").firstChild.data = linkText;
-	}
-	
-	function copyDescriptionToClipboard () {
-		var description = tips[tipNbr-1].description.split("|")[0];
-		Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper).copyString(description); 
-	}
-  
+    // Attention: removed the CDATA line...
+    
+    var tipNbr;
+    var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
+    document.getElementById("showTips").checked = prefs.getBoolPref("profile.startupTips");
+    try {
+      tipNbr = prefs.getIntPref("profile.tipNbr");
+    }
+    catch (ex) {
+      tipNbr = 1;
+    }
+    
+    function tipEntry(description, imageClass, linkRef) {
+      this.description = description;
+      this.imageClass = imageClass; // image source
+      this.linkRef = linkRef; // tabbox and index to be selected
+    }
+    
+    var tips = new Array(
+      new tipEntry("&tip1;",  "triggerBySelection",  "behavior/1"),
+      new tipEntry("&tip2;",  "triggerByStroke",     ""),
+      new tipEntry("&tip3;",  "locationBar",         ""),
+      new tipEntry("&tip4;",  "alternativeMenus",    "behavior/1"),
+      new tipEntry("&tip5;",  "bookmarksOnlyLayout", "customizations/1"),
+      new tipEntry("&tip6;",  "builtInAction",       "actions/1"),
+      new tipEntry("&tip7;",  "programsAndScripts",  "customizations/2"),
+      new tipEntry("&tip8;",  "clickOnLink",         ""),
+      new tipEntry("&tip9;",  "contextual",          "behavior/1"),
+      new tipEntry("&tip10;", "search",              "customizations/3"),
+      new tipEntry("&tip11;", "suppressMenu",        ""),
+      new tipEntry("&tip12;", "moveMenu",            ""),
+      new tipEntry("&tip13;", "noTooltips",          "behavior/1"),
+      new tipEntry("&tip14;", "noIcons",             ""),
+      new tipEntry("&tip15;", "largeMenu",           ""),
+      new tipEntry("&tip16;", "empty",               "behavior/1"),
+      new tipEntry("&tip17;", "empty",               ""),
+      new tipEntry("&tip18;", "empty",               ""),
+      new tipEntry("&tip19;", "empty",               "behavior/1"),
+      new tipEntry("&tip20;", "empty",               ""),
+      new tipEntry("&tip21;", "empty",               ""),
+      new tipEntry("&tip22;", "empty",               ""),
+      new tipEntry("&tip23;", "empty",               ""),
+      new tipEntry("&tip24;", "empty",               ""),
+      new tipEntry("&tip25;", "empty",               ""),
+      new tipEntry("&tip26;", "empty",               ""),
+      new tipEntry("&tip27;", "empty",               "profile/1")
+    );
+    
+    function updateTipNbr(step) {
+      tipNbr = (((tipNbr + step) % tips.length) + tips.length) % tips.length;
+      prefs.setIntPref("profile.tipNbr", tipNbr);
+      updateContent(tipNbr);
+    }
+    
+    function setTipActivation(activate) {
+      prefs.setBoolPref('profile.startupTips', activate);
+    }
+    
+    function updateContent(tipNbr) {
+      document.getElementById("tipNbrDisplay").value = (tipNbr + 1) + " / " + tips.length;
+      
+      var text = tips[tipNbr].description.split("|")[0];
+      var linkText = (tips[tipNbr].description.split("|").length > 1 ?
+                       tips[tipNbr].description.split("|")[1]
+                     : "");
+      var linkRef = tips[tipNbr].linkRef;
+      var linkPane = (linkRef != "" ?
+                       tips[tipNbr].linkRef.split('/')[0] + "Pane"
+                     : ""); // Pane to focus in options window
+      
+      document.getElementById("tipText").firstChild.data = text;
+      document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
+      document.getElementById("tipLink").setAttribute("onclick", "window.openDialog('chrome://easygestures/content/options.xul','','','"+linkPane+"','"+linkRef+"');");
+      document.getElementById("tipLink").firstChild.data = linkText;
+    }
+    
+    function copyDescriptionToClipboard() {
+      var description = tips[tipNbr].description.split("|")[0];
+      Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper).copyString(description);
+    }
   </script>
 </window>
-
-
