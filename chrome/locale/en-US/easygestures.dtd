@@ -300,7 +300,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY tip1 "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed. |Change mouse button in Options/Behavior">
 <!ENTITY tip2 "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
-<!ENTITY tip3 "If you press 'Enter' while the pie menu is displayed, you will be able to type an URL inside the pie menu. Pressing 'Enter' when done will open the URL in the current tab. Pressing 'Shift+Enter' will open the URL in a new tab. ">
 <!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed. |Change mouse button in Options/Behavior">
 <!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL/Script' actions then adding them in the pie menu layouts. |Customize in Options/Customizations/Load URL/Script">
 <!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in Options/Actions">
@@ -320,7 +319,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
 <!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
 <!ENTITY tip22 "The 'Open Link' action will open the pointed link in a new tab. If no link is pointed, the one in the clipboard (if any) will be opened.">
-<!ENTITY tip23 "You can switch easyGestures language regardless of Firefox.">
 <!ENTITY tip24 "You can turn the pie menu into a fully customizable drop down menu.">
 <!ENTITY tip25 "You can display the Options Dialog directly either from the pie menu by typing / in the integrated location bar or by double clicking on easygestures icon in the status bar.">
 <!ENTITY tip26 "When the 'Daily Readings' action is performed, a bookmarks folder named *easyGestures* is created the first time in the Bookmarks Toolbar and all bookmarks placed in it are then opened.">

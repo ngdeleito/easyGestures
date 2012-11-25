@@ -39,7 +39,6 @@ div.empty {	visibility: hidden  !important ; }
 
 div.triggerBySelection {	background-position: 0px 0px  !important ; }
 div.triggerByStroke {	background-position: -460px 0px  !important ; }
-div.locationBar {	background-position: -920px 0px  !important ; }
 
 div.alternativeMenus {	background-position: 0px -130px  !important ; }
 div.bookmarksOnlyLayout {	background-position: -460px -130px  !important ; }

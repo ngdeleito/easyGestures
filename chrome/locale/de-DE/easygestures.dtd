@@ -250,7 +250,6 @@
 <!ENTITY copyText "Text in Zwischenablage kopieren">
 <!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen.">
 <!ENTITY tip2 "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
-<!ENTITY tip3 "Durch Drücken der Eingabe-Taste bei geöffnetem Kreismenü kann dort eine Adresse eingegeben werden. Nochmaliges Drücken der Eingabe-Taste nach Beendigung der Eingabe öffnet die Adresse im aktiven Tab. Betätigen der Tastenkombination Umschalt+Eingabe öffnet die Adresse in einem neuen Tab.">
 <!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse/Skript laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen. |Aktion unter Einstellungen/Anpassungen/&apos;Adresse/Skript laden&apos; anpassen.">
 <!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren. |Aktionen unter Einstellungen/&apos;Aktionen&apos; hinzufügen oder entfernen">
@@ -270,7 +269,6 @@
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
 <!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab. Ist kein Link gewählt, wird, falls vorhanden, ein Link aus der Zwischenablage geöffnet.">
-<!ENTITY tip23 "Die Spracheinstellung von easyGestures kann unabhängig von der Firefox-Sprachversion gewechselt werden.">
 <!ENTITY tip24 "Das Kreismenü kann auch in ein voll anpassbares lineares Menü umgewandelt werden.">
 <!ENTITY tip25 "Der Einstellungsdialog von easyGestures kann auch direkt über das Kreismenü durch Eingabe von / (Schrägstrich) in die integrierte Adressleiste (aufzurufen durch Drücken der Eingabe-Taste) oder durch einen Doppelklick auf das Statusleistensymbol geöffnet werden.">
 <!ENTITY tip26 "Beim Ausführen der Aktion &apos;Tägliche Lektüre&apos; wird beim ersten Mal ein Lesezeichenordner namens *easyGestures* in der Lesezeichen-Symbolleiste angelegt und alle darin enthaltenen Lesezeichen werden geöffnet.">

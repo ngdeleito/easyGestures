@@ -122,7 +122,6 @@
     var tips = new Array(
       new tipEntry("&tip1;",  "triggerBySelection",  "behavior/1"),
       new tipEntry("&tip2;",  "triggerByStroke",     ""),
-      new tipEntry("&tip3;",  "locationBar",         ""),
       new tipEntry("&tip4;",  "alternativeMenus",    "behavior/1"),
       new tipEntry("&tip5;",  "bookmarksOnlyLayout", "customizations/1"),
       new tipEntry("&tip6;",  "builtInAction",       "actions/1"),
@@ -142,7 +141,6 @@
       new tipEntry("&tip20;", "empty",               ""),
       new tipEntry("&tip21;", "empty",               ""),
       new tipEntry("&tip22;", "empty",               ""),
-      new tipEntry("&tip23;", "empty",               ""),
       new tipEntry("&tip24;", "empty",               ""),
       new tipEntry("&tip25;", "empty",               ""),
       new tipEntry("&tip26;", "empty",               ""),

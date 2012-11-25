@@ -300,7 +300,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY tip1 "Per default, devi cliccare il tasto medio del mouse per mostrare il menu circolare (a meno che non sia un utente Mac). Il tasto di default può essere modificato. |Modifica il tasto del mouse in Opzioni/Comportamento">
 <!ENTITY tip2 "Il modo più rapido di usare il menu circolare è di tenere premuto il tasto del mouse, trascinare sull'azione da eseguire, e lasciare il tasto. Puoi pensare a questo come a un gesto del mouse con una GUI.">
-<!ENTITY tip3 "Se premi 'Invio' mentre viene mostrato il menu, potrai digitare una URL dentro il menu circolare. Premendo 'Invio' alla fine aprirà la URL nella linguetta corrente. Premendo 'Shift+Invio' aprirà la URL in una nuova linguetta.">
 <!ENTITY tip4 "Per default, cliccare il tasto destro del mouse mentre viene mostrato il menu mostrerà insiemi di azioni alternative: a rotazione, verranno mostrate 3 diverse configurazioni, completamente personalizzabili. Il tasto del mouse di default può essere modificato. |Modifica il tasto del mouse in Opzioni/Comportamento">
 <!ENTITY tip5 "Puoi usare easyGestures per aprire i tuoi Segnalibri preferiti personalizzando le azioni 'Carica URL/Script' e poi aggiungendole al menu circolare. |Personalizza in Opzioni/Personalizzazioni/Carica URL/Script">
 <!ENTITY tip6 "Puoi personalizzare tutta la disposizione dei comandi del menu usando un gran numero di azioni predefinite. Ance le Statistiche d'uso aiutano ad ottimizzare il menu circolare. |Aggiungi o rimuovi azioni in Opzioni/Azioni">
@@ -320,7 +319,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
 <!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta. Se non viene puntato alvun collegamento, verà aperto quello nella clipboard, se presente.">
-<!ENTITY tip23 "Puoi modificare la lingua di easyGestures indipendentemente da Firefox.">
 <!ENTITY tip24 "Puoi trasformare il menu circolare in un menu a discesa completamente personalizzabile.">
 <!ENTITY tip25 "Puoi mostrare la finestra di dialogo delle Opzioni direttamente, o dal menu circolare, digitando / nella barra di immissione integrata, o facendo doppio-click sull'icona di easyGestures nella barra di stato.">
 <!ENTITY tip26 "Quando si esegue l'azione 'Letture Quotidiane', una cartella dei Segnalibri chiamata *easyGestuers* viene creata la prima volta nella Barra dei Segnalibri, e tutti i segnalibri in essa vengono aperti.">

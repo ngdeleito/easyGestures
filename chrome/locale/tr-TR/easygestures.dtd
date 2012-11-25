@@ -300,7 +300,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY tip1 "Varsayılan olarak, kolay menüyü görüntüleyebilmek için farenizin orta tuşuna tıklamanız gerekir (Mac kullanıcısı değilseniz). |Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
 <!ENTITY tip2 "Kolay menüyü kullanmanın en hızlı yolu, fare tuşuna basılı tutup çalıştırılacak eylemin üzerine sürüklemek ve tuşu bırakmaktır. Bunu Grafik Kullanıcı Arayüzü ile yapılmış bir fare hareketi gibi düşünebilirsiniz.">
-<!ENTITY tip3 "Kolay menü görüntülenirken &apos;Enter&apos;a basarsanız, kolay menü içerisine bir URL yazabilirsiniz. Tamamlandığında &apos;Enter&apos;a basmak URL&apos;yi mevcut sekmede açacaktır. &apos;Shift+Enter&apos;a basmak URL&apos;yi yeni sekmede açacaktır.">
 <!ENTITY tip4 "Varsayılan olarak,kolay menü görüntülenirken sağ tıklamak alternatif eylemleri gösterecektir: tamamen kişiselleştirilebilir 3 farklı ekran görünümü arasında geçiş yapabilirsiniz. Varsayılan fare tuşu değiştirilebilir. |Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
 <!ENTITY tip5 "EasyGestures, &apos;URL/Script Yükle&apos; eylemlerini kişiselleştirerek ve sonra bunları kolay menü ekran görünümü içine ekleyerek sık kullandığınız yer imlerini açmak için kullanılabilir">
 <!ENTITY tip6 "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır. |Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
@@ -320,7 +319,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Bir resim üzerindeki yakınlaştırma eylemi yalnızca o resim üzerinde gerçekleştirilecektir.">
 <!ENTITY tip21 "&apos;Önceki Site&apos; ve &apos;Sonraki Site&apos; eylemleriyle, sayfa sayfa ileri ya da geri gitmek yerine bunu siteler arasında gerçekleştirebilirsiniz.">
 <!ENTITY tip22 "&apos;Bağlantıyı Aç&apos; eylemi seçilen bağlantıyı yeni bir sekmede açacaktır. Eğer bir bağlantı seçilmemişse, panoya yapıştırılmış bağlantı (eğer varsa) açılacaktır.">
-<!ENTITY tip23 "easyGestures dilini Firefox&apos;tan bağımsız olarak değiştirebilirsiniz.">
 <!ENTITY tip24 "Kolay menüyü tamamen kişiselleştirilebilir bir açılan menüye dönüştürebilirsiniz.">
 <!ENTITY tip25 "Seçenekler Diyaloğunu doğrudan kolay menü içerisindeki entegre konum çubuğuna / yazarak ya da durum çubuğundaki easyGestures simgesine tıklayarak görüntüleyebilirsiniz.">
 <!ENTITY tip26 "&apos;Günlük Okumalar&apos; eylemi gerçekleştirildiğinde, Yer İmleri Araç Çubuğunda ilk seferinde *easyGestures* adında bir yer imi klasörü oluşturulur ve bunun içine yerleştirilmiş tüm yer imleri daha sonra açılır.">

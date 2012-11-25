@@ -251,7 +251,6 @@
 <!ENTITY copyText "Copiar texto al portapapeles">
 <!ENTITY tip1 "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario Mac). Los botones por defecto del ratón pueden ser cambiados. |Cambie los botones a través de Opciones/Comportamiento">
 <!ENTITY tip2 "La manera más rapida de usar el menú circular es mantener pulsado el ratón, moverse a la acción seleccionada y soltar el botón. Puede pensar en una especie de gesto del ratón con una interfaz gráfica.">
-<!ENTITY tip3 "Si pulsa &apos;Enter&apos; cuando el menú circular se está mostrando, puede escribir una dirección. Pulsando &apos;Enter&apos; se abrirá la dirección en la pestaña actual, y con &apos;Mayús+Enter&apos; la página se abrirá en una nueva pestaña.">
 <!ENTITY tip4 "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse. |Cambie los botones del ratón en Opciones/Comportamiento">
 <!ENTITY tip5 "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección/Script&apos; y añadiéndolas en el menú circular. |Personalizar en Opciones/Personalizar/Cargar dirección/Script">
 <!ENTITY tip6 "Puede personalizar todas las entradas del menú circular usando acciones pre-diseñadas. Las estadísticas de uso pueden ayudar a optimizar el menú circular.|Añada o elimine acciones desde Opciones/Acciones">
@@ -271,7 +270,6 @@
 <!ENTITY tip20 "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tip21 "En lugar de moverse adelante y atrás página por página, puede hacerlo con sitios usando las acciones &apos;Retroceder sitio&apos; y &apos;Avanzar sitio&apos;.">
 <!ENTITY tip22 "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña. Si no hay ningún enlace seleccionado, se abrirá la página cuya dirección esté en el portapapeles (si la hay).">
-<!ENTITY tip23 "Puede cambiar el idioma de easyGestures independientemente del idioma usado en Firefox.">
 <!ENTITY tip24 "Puede cambiar el menú circular en un menú desplegable totalmente configurable.">
 <!ENTITY tip25 "Puede mostrar el cuadro de opciones directamente desde el menú circular escribiendo / en la barra de direcciones integrada, o haciendo doble clic en el icono de easygestures de la barra de estado.">
 <!ENTITY tip26 "Cuando se ejecuta por primera vez la acción &apos;Lecturas diarias&apos;, se crea una carpeta en la barra de marcadores llamada *easyGestures*, y todos los marcadores incluidos en ella se abrirán.">

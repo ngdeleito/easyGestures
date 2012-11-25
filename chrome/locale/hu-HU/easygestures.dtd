@@ -251,7 +251,6 @@
 <!ENTITY copyText "Szöveg másolása a vágólapra">
 <!ENTITY tip1 "Az alapbeállítások szerint a középső egérgomb nyitja meg a köralakú menüt (hacsak nem Mac felhasználó vagy). Az alapértelmezett egérgomb megváltoztatható. |Az egérgomb beállításai a Beállítások/Működés/1. oldalon találhatóak.">
 <!ENTITY tip2 "A leggyorsabb módszer a menü használatára: nyomd le az egérgombot, húzd a kiválasztott funkció fölé, majd engedd fel a gombot. Vagyis ez valójában egy egérmozdulat, amelyhez grafikus felület tartozik.">
-<!ENTITY tip3 "Ha megnyomod az &quot;Enter&quot; billentyűt miközben a menü látható, akkor beírhatsz egy URL-t. Ha kész vagy, üss még egy &quot;Entert&quot; és az URL betöltődik az adott lapon. Ha &quot;Shift+Entert&quot; nyomsz ilyenkor, akkor az URL egy új lapon nyílik meg.">
 <!ENTITY tip4 "Alapesetben ha nyitva van a menü és a jobb gombbal kattintasz, akkor megjelenik az alternatív funkciók listája: összesen három, teljesen személyre szabható beállítás között válthatsz így. Az alapértelmezett egérgomb megváltoztatható. |Az egérgomb beállításai a Beállítások/Működés/1. oldalon találhatóak.">
 <!ENTITY tip5 "Az easyGestures megnyitja a kedvenc könyvjelzőidet, ha az &quot;URL/szkript betöltése&quot; funkcióknál beállítod őket, majd hozzáadod a köralakú menükhöz.|A beállításokat a Beállítások/Személyre szabás/URL/szkript betöltése oldalon találod.">
 <!ENTITY tip6 "Mindegyik menü kiosztását számos beépített funkcióval szabhatod személyre. A használati statisztikák segítenek a köralakú menü optimalizálásában. |Az egyes funkciók hozzáadásához vagy eltávolításához nyisd meg a Beállítások/Funkciók oldalt.">
@@ -271,7 +270,6 @@
 <!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
 <!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
 <!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket. Ha nincs kiválasztott hivatkozás, akkor a vágólapon lévő (amennyiben van ott) hivatkozás nyílik meg.">
-<!ENTITY tip23 "Az easyGestures nyelve a Firefoxtól függetlenül állítható.">
 <!ENTITY tip24 "A köralakú menüt egy teljesen személyre szabható legördülő menüvé alakíthatod.">
 <!ENTITY tip25 "A Beállításokat közvetlenül a menüből is megnyithatod, ha a beépített címmezőbe &quot;/&quot; jelet gépelsz vagy duplán rákattintasz az easyGestures ikonra.">
 <!ENTITY tip26 "Amikor első alkalommal kattintasz a &quot;Napi olvasnivaló&quot; funkcióra, akkor egy &quot;easyGestures&quot; nevű mappa jön létre a Könyvjelző eszköztáron. A következő alkalmakkor az itt elhelyezett könyvjelzők nyílnak meg.">

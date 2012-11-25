@@ -299,7 +299,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY tip1 "Por padrão, você deve clicar o botão do meio do mouse para mostrar o menu de torta (a menos que você seja um usuário de Mac). O botão padrão do mouse pode ser alterado. |Altere o botão do mouse em Opções/Comportamento">
 <!ENTITY tip2 "A maneira mais rápida de usar o menu de torta é pressionando o botão do mouse, arrastando até a ação a ser executada, e soltando o botão. Pense nele como se fosse um gesto do mouse com uma Interface Gráfica.">
-<!ENTITY tip3 "Se você pressionar 'Enter' enquanto o menu de torta está visível, você poderá digitar uma URL dentro do menu de torta. Pressionando 'Enter' quando terminar abrirá a URL na aba atual. Pressionando 'Shift+Enter' abrirá a URL em uma nova aba. ">
 <!ENTITY tip4 "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado. |Altere o botão do mouse em Opções/Comportamento">
 <!ENTITY tip5 "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL/Script' e então, adicionando-os nos leiautes do menu de torta. |Personalize em Opções/Personalizações/Carregar URL/Script">
 <!ENTITY tip6 "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em Opções/Ações">
@@ -319,7 +318,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Uma ação de zoom sobre uma imagem vai realizar a ação apenas na imagem.">
 <!ENTITY tip21 "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
 <!ENTITY tip22 "A ação 'Abrir Link' abrirá o link apontado em uma aba nova. Se nenhum link está apontado, o que está na área de transferência (se houver algum) será aberto.">
-<!ENTITY tip23 "Você pode alterar a linguagem do easyGestures independente do Firefox.">
 <!ENTITY tip24 "Você pode mudar o menu de torta para um menu dropdown totalmente personalizável.">
 <!ENTITY tip25 "Você pode mostrar o Diálogo de Opções diretamente do menu de torta digitando / na barra integrada de localização ou clicando duas vezes no ícone do easygestures na barra de status.">
 <!ENTITY tip26 "Quando é feita a ação 'Leituras Diárias', uma pasta de favoritos chamada *easyGestures* é criada na primeira vez na Barra de Favoritos e todos os favoritos colocados nela são abertos.">

@@ -249,7 +249,6 @@
 <!ENTITY copyText "Kopiuj tekst do schowka">
 <!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia. |Zmień przycisk myszy w Opcje \u00BB Ustawienia.">
 <!ENTITY tip2 "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
-<!ENTITY tip3 "Gdy menu Centrum jest wyświetlane można po naciśnięciu klawisza [ Enter ] wprowadzić adres URL w wyświetlonym polu. Naciśnięcie klawisza [ Enter ] po wpisaniu adresu spowoduje otworzenie go w aktywnej karcie, zaś naciśnięcie klawiszy [ Shift+Enter ] spowoduje otwarcie adresu URL w nowej karcie.">
 <!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane. |Zmień działanie przycisków myszy w Opcje \u00BB Ustawienia.">
 <!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL/Skrypt\u0022 do menu Centrum. |Dostosuj działanie menu w Opcje \u00BB Dostosowywanie \u00BB Otwórz URL/Skrypt.">
 <!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum. |Dodaj lub usuń akcje w Opcje \u00BB Akcje">
@@ -269,7 +268,6 @@
 <!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
 <!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
 <!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie. Jeśli odnośnik nie jest wskazany zostanie otworzony odnośnik znajdujący się (o ile jest) w schowku.">
-<!ENTITY tip23 "Można przełączać języki interfejsu Centrum niezależnie od języka używanego przez Firefoksa.">
 <!ENTITY tip24 "Można przekształcić menu Centrum w pełni konfigurowalne, rozwijane menu liniowe.">
 <!ENTITY tip25 "Aby wyświetlić okno dialogowe opcji bezpośrednio z menu Centrum należy w zintegrowanym pasku wpisać / lub dwukrotnie kliknąć na ikonie Centrum znajdującej się na pasku stanu.">
 <!ENTITY tip26 "Podczas pierwszego wywołania akcji \u0022Wiadomości dnia\u0022 na pasku narzędziowym zakładek zostanie utworzony folder o nazwie *easyGestures* i wszystkie umieszczone w nim zakładki zostaną otworzone.">

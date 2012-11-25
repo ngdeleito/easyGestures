@@ -250,7 +250,6 @@
 <!ENTITY copyText "Skopírovať text do schránky">
 <!ENTITY tip1 "Prednastavené zobrazenie ponuky je pomocou stlačenia stredného tlačidla myši (pokiaľ nie ste používateľ Macu). Toto môže byť zmenené v ponuke Možnosti/Správanie">
 <!ENTITY tip2 "Najrýchlejší spôsob na použitie ponuky je stlačiť a podržať tlačidlo myši, ťahať kurzor na akciu, ktorú chcete vybrať a uvoľniť tlačidlo. Môžete to brať ako gesto myšou s GUI.">
-<!ENTITY tip3 "Ak stlačíte klávesu &apos;Enter&apos; počas zobrazenej ponuky, tak budete môcť zadať URL vo vnútri ponuky. Opätovným stlačením klávesu &apos;Enter&apos; sa otvorí URL na aktuálnej karte. Stlačením kláves &apos;Shift+Enter&apos; sa otvorí URL na novej karte.">
 <!ENTITY tip4 "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v Možnosti/Správanie">
 <!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL/Skript&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v Možnosti/Prispôsobenie/Načítať URL/Skript">
 <!ENTITY tip6 "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v Možnosti/Akcie">
@@ -270,7 +269,6 @@
 <!ENTITY tip20 "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">
 <!ENTITY tip21 "Namiesto pohybu &apos;Naspäť&apos; a &apos;Dopredu&apos; môžete prejsť na &apos;Predchádzajúcu stránku&apos; a &apos;Nasledujúcu stránku&apos;.">
 <!ENTITY tip22 "Akcia &apos;Otvoriť odkaz&apos; otvorí odkaz, na ktorý ukazujete, na novej karte. Ak neukazujete na žiadny odkaz, tak sa otvorí ten, ktorý je (ak nejaký je) v schránke.">
-<!ENTITY tip23 "Jazyk easyGestures môžete zmeniť nezávisle od prehliadača Firefox.">
 <!ENTITY tip24 "Koláčovú ponuku môžete prepnúť do plne prispôsobiteľnej ponuky.">
 <!ENTITY tip25 "Okno nastavení môžete zobraziť priamo v koláčovej ponuky zadaním znaku / v integrovanom paneli Umiestnenie alebo dvojitým kliknutím na ikonu easygestures v stavovom riadku.">
 <!ENTITY tip26 "Keď vykonáte akciu &apos;Denné čítanie&apos; po prvýkrát, vytvorí sa priečinok v záložkách s názvom *easyGestures* a všetky záložky, ktoré do tohto priečinka umiestnite, budú potom otvorené.">
