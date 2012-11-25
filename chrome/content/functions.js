@@ -46,13 +46,17 @@ var eGf = {
 
     for (var i=2; i<eG_menuItems.length; i++) {
       if (!showAll) {
-        if (i<start) continue;
-        if (i>end) break;
+        if (i < start) {
+          continue;
+        }
+        if (i > end) {
+          break;
+        }
       }
 
       if (i==14 || i==21 || i==27 || i==37 || i==71 || i==85) {
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-        eGm.popup.appendChild(itemNode);
+        var menuSeparator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
+        eGm.popup.appendChild(menuSeparator);
       }
 
       var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
@@ -90,13 +94,15 @@ var eGf = {
         }
         popupNode.appendChild(itemNode);
       }
-      else
+      else {
         eGm.popup.appendChild(itemNode);
+      }
     }
 
     eGm.popup.openPopupAtScreen(eGc.screenXUp, eGc.screenYUp, false);
-    if (eGm.showTooltips)
+    if (eGm.showTooltips) {
       clearTimeout(eGm.tooltipsTrigger);
+    }
   },
 
   firstPage : function() { // two behaviors are possible. Select the prefered lines of code
@@ -118,12 +124,11 @@ var eGf = {
       var url = eGc.doc.URL;
       var backurl = (getWebNavigation().sessionHistory.getEntryAtIndex(index,false)).URI.spec;
 
-      while ( (this.root(url, false).replace("www.","") == this.root(backurl, false).replace("www.","") ) && index >0) {
-	index -= 1;
-	url = backurl;
-	backurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
+      while ( (this.root(url, false).replace("www.","") == this.root(backurl, false).replace("www.","") ) && index > 0) {
+        index -= 1;
+        url = backurl;
+        backurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
       }
-
       getWebNavigation().gotoIndex(index);
     }
   },
@@ -136,8 +141,8 @@ var eGf = {
 
       while (this.root(url, false).replace("www.","") == this.root(forwardurl, false).replace("www.","") && index < getWebNavigation().sessionHistory.count-1) {
         index += 1;
-	url = forwardurl;
-	forwardurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
+        url = forwardurl;
+        forwardurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
       }
       getWebNavigation().gotoIndex(index);
     }
@@ -152,10 +157,12 @@ var eGf = {
   },
 
   reload : function(loading) { // reload or stop
-    if (!loading)
+    if (!loading) {
       BrowserReload(); // BrowserReloadSkipCache();
-    else
+    }
+    else {
       BrowserStop();
+    }
   },
 
   up : function(url) {
@@ -171,7 +178,7 @@ var eGf = {
     for (var i=0; i<splitURL.length; i++)
       if (splitURL[i]!="" && splitURL[i]!=protocol) {
         host = splitURL[i];
-       	break;
+        break;
       }
     //get directory
     directory = url.substring(url.search(host)+host.length+1,url.length);
@@ -180,11 +187,11 @@ var eGf = {
     var splitDIR = directory.split("/");
 
     var updir = directory;
-    var i;
     for (i = splitDIR.length-1; i>=0; i--) {
       if (splitDIR[i]=="") {
-        if (updir!="")
-          updir=updir.substring(0,updir.length-1); //remove the slash at the end
+        if (updir!="") {
+          updir = updir.substring(0,updir.length-1); //remove the slash at the end
+        }
       }
       else {
         checkSubNetwork=false;
@@ -193,8 +200,9 @@ var eGf = {
     }
 
     // remove last part from url
-    if (splitDIR[i]!="" && updir!="")
+    if (splitDIR[i] != "" && updir != "") {
       updir = updir.substring(0,updir.length - splitDIR[i].length);
+    }
     upURL = url.replace(directory,updir);
 
     if (checkSubNetwork) { // remove first subnetwork of host from url if possible
@@ -202,7 +210,7 @@ var eGf = {
       var splitHOST = host.split(".");
       if (splitHOST[0]!="www" && splitHOST.length>2) {
         uphost = host.replace(splitHOST[0]+".","");
-	upURL = url.replace(host,uphost);
+        upURL = url.replace(host,uphost);
       }
     }
 
@@ -222,8 +230,9 @@ var eGf = {
     catch (ex) { // do something when NS_ERROR_HOST_IS_IP_ADDRES or other exception is thrown
       rootURL = url;
     }
-    if (loadURL)
+    if (loadURL) {
       loadURI(rootURL);
+    }
     return rootURL;
   },
 
@@ -275,13 +284,16 @@ var eGf = {
   closeTab : function() {
     gBrowser = document.getElementById("content");
     if (gBrowser.tabContainer.childNodes.length > 1 || !eGm.closeBrowserOnLastTab) {
-      if (gBrowser.tabContainer.childNodes.length==1)
+      if (gBrowser.tabContainer.childNodes.length == 1) {
         loadURI("about:blank");
-      else
+      }
+      else {
         gBrowser.removeCurrentTab();
+      }
     }
-    else
+    else {
       closeWindow(true); //BrowserCloseWindow() removed from FF3;
+    }
   },
 
   closeOtherTabs : function() {
@@ -305,8 +317,8 @@ var eGf = {
       var win;
       for (var i= 0; i < getBrowser().browsers.length; i++) {
         url = getBrowser().browsers[i].currentURI.spec;
-	if (i==0) {
-	  window.open(url);
+        if (i==0) {
+          window.open(url);
           win = windowManagerInterface.getMostRecentWindow( "navigator:browser" );
         }
         else {
@@ -319,8 +331,9 @@ var eGf = {
       var prefs= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("");
       if (prefs.getIntPref("browser.startup.page") == 1) {
         url = prefs.getCharPref("browser.startup.homepage");
-        if (url.split('|')[1])
+        if (url.split('|')[1]) {
           url = "about:blank";
+        }
       }
       window.open(url);
     }
@@ -333,8 +346,9 @@ var eGf = {
     var winEnum = windowManagerInterface.getZOrderDOMWindowEnumerator( "navigator:browser" ,false);
     while (winEnum.hasMoreElements()) {
       win = winEnum.getNext();
-      if (winCur != win)
+      if (winCur != win) {
         win.close();
+      }
     }
   },
 
@@ -350,26 +364,32 @@ var eGf = {
     BrowserFullScreen();
     //hide sidebar
     var sidebar = document.getElementById("sidebar");
-    if (window.fullScreen && sidebar.hasAttribute("hidden") && !sidebar.hidden)
+    if (window.fullScreen && sidebar.hasAttribute("hidden") && !sidebar.hidden) {
       toggleSidebar();
+    }
   },
 
   //*********************************************************************************
 
   openLink : function(link) {
     var url;
-    if (link==null)
+    if (link == null) {
       url = eG_readClipboard();
-    else
+    }
+    else {
       url = link.href;
+    }
 
     switch (eGm.openLink) {
       case "curTab":
-        loadURI(url); break;
+        loadURI(url);
+        break;
       case "newTab":
-        openNewTabWith(url); break;
+        openNewTabWith(url);
+        break;
       case "newWindow":
-        window.open(url); break;
+        window.open(url);
+        break;
     }
 
     if (eGm.xlink) {
@@ -379,13 +399,16 @@ var eGf = {
 
   openLinkNewWindow : function(link) {
     var url;
-    if (link==null)
+    if (link==null) {
       url = eG_readClipboard();
-    else
+    }
+    else {
       url = link.href;
+    }
     openNewWindowWith(url);
-    if (eGm.xlink)
+    if (eGm.xlink) {
       eG_xlink(link);
+    }
   },
 
   copyLink : function(link) { //write to clipboard the link url
@@ -396,10 +419,12 @@ var eGf = {
   },
 
   sendLink : function(link) {
-    if (link!=null)
+    if (link!=null) {
       MailIntegration.sendMessage(link, this.root(link, false));
-    else
+    }
+    else {
       MailIntegration.sendMessage(eGc.doc.URL, eGc.doc.title);
+    }
   },
 
   copyImageLocation : function(src) {
@@ -477,22 +502,24 @@ var eGf = {
         if (bookmarksList.getChild(i).icon != null) {
           itemNode.setAttribute("src", bookmarksList.getChild(i).icon);
         }
-        else
+        else {
           itemNode.setAttribute("src", "" );
+        }
         itemNode.setAttribute("crop", "end");
         eGm.popup.appendChild(itemNode);
       }
 
       eGm.popup.openPopupAtScreen(eGc.screenXUp-8, eGc.screenYUp-8, false);
-      if (eGm.showTooltips)
+      if (eGm.showTooltips) {
         clearTimeout(eGm.tooltipsTrigger);
+      }
     }
   },
 
   searchWeb : function(string) {
     if (eGm.inputBox.style.visibility == "hidden" && eGm.popup.state !="showing" && eGm.popup.state !="hiding" && !eGm.inputBoxSignForSearchWeb.hasAttribute("noPopup")) { // show popup before opening search textbox
       eGm.showPopupForSearchWeb(true);
-     }
+    }
     else {
       var first = true;
       var win = null;
@@ -504,15 +531,18 @@ var eGf = {
         chksearch = eGm["search"+i];
         query = eGm["searchQuery"+i];
 
-        if (query !="" && ( (chksearch && (currentEngine == 0) ) || (currentEngine == i)  ) ) {
+        if (query !="" && ( (chksearch && (currentEngine == 0) ) || (currentEngine == i))) {
           var url = query;
           var curURL = eGc.doc.URL;
-          if (string!="")
+          if (string != "") {
             url = url.replace("%s",string);
-          if (curURL!="")
+          }
+          if (curURL != "") {
             url = url.replace("%u",curURL);
-          if (url==query)
+          }
+          if (url == query) {
             url = eG_getRoot(query); // no placeholders to change the query
+          }
 
           url = encodeURI(url);
 
@@ -521,8 +551,9 @@ var eGf = {
               loadURI(url);
               first=false;
             }
-            else
+            else {
               openNewTabWith(url);
+            }
 
             var container = document.getElementById("content").mTabContainer;
             var tabs = container.childNodes;
@@ -538,8 +569,9 @@ var eGf = {
               win = window.open(url);
               win = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("navigator:browser");
             }
-            else
+            else {
               win.openNewTabWith(url);
+            }
           }
         }
       }
@@ -554,12 +586,15 @@ var eGf = {
     if (query != "") {
       var url = query;
       var curURL = eGc.doc.URL;
-      if (string!="")
+      if (string != "") {
         url = url.replace("%s",string);
-      if (curURL!="")
+      }
+      if (curURL != "") {
         url = url.replace("%u",curURL);
-      if (url==query)
+      }
+      if (url == query) {
         url = eG_getRoot(query); // no placeholders to change the query
+      }
 
       url = encodeURI(url);
 
@@ -568,24 +603,25 @@ var eGf = {
           loadURI(url);
           first=false;
         }
-	else
-	  openNewTabWith(url);
-
+        else {
+          openNewTabWith(url);
+        }
+        
         var container = document.getElementById("content").mTabContainer;
-	var tabs = container.childNodes;
-	// highlighting the last created tab
-	tabs[tabs.length-1].setAttribute('style', 'color:Brown');       // color:IndianRed ?
-	// select new created tab
-        container._selectNewTab(tabs[tabs.length-1]);   // selectNewTab removed from FF3
+        var tabs = container.childNodes;
+        // highlighting the last created tab
+        tabs[tabs.length-1].setAttribute('style', 'color:Brown'); // color:IndianRed ?
+        // select new created tab
+        container._selectNewTab(tabs[tabs.length-1]); // selectNewTab removed from FF3
       }
       else {
         if (win == null) {
           win = window.open(url);
           win = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("navigator:browser");
         }
-	else {
-	  win.openNewTabWith(url);
-	}
+        else {
+          win.openNewTabWith(url);
+        }
       }
     }
   },
@@ -598,23 +634,27 @@ var eGf = {
     var argumentstext = runProgramFile[2];
 
     if (argumentstext != "") {
-      if (string != "")
+      if (string != "") {
         argumentstext = argumentstext.replace("%s",string);
-        var curURL = eGc.doc.URL;
-	if (curURL != "")
-	  argumentstext=argumentstext.replace("%u",curURL);
+      }
+      var curURL = eGc.doc.URL;
+      if (curURL != "") {
+        argumentstext = argumentstext.replace("%u",curURL);
+      }
     }
 
     try {
-      if (path == "")
+      if (path == "") {
         return false;
+      }
 
       var file = Components.classes['@mozilla.org/file/local;1'].createInstance(Components.interfaces.nsILocalFile);
       var process = Components.classes['@mozilla.org/process/util;1'].getService(Components.interfaces.nsIProcess);
       file.initWithPath(path);
 
-      if (!file.exists())
+      if (!file.exists()) {
         return false;
+      }
       if (!file.isExecutable() || path.match(/\.lnk$/i)!=null) {
         file.launch();
         return true;
@@ -640,8 +680,9 @@ var eGf = {
         text = text.replace(/\\v/g , "\v");
         text = text.replace(/\\/g , "");
 
-        if (text !="")
+        if (text !="") {
           args.push(text);
+        }
       }
 
       process.run(false, args, args.length, {});
@@ -660,11 +701,13 @@ var eGf = {
     var isScript = loadURLScript[2];
 
     if (codetext != "") {
-      if (string != "")
+      if (string != "") {
         codetext = codetext.replace("%s",string);
+      }
       var curURL = eGc.doc.URL; // get current URL
-      if (curURL != "")
+      if (curURL != "") {
         codetext = codetext.replace("%u",curURL);
+      }
     }
 
     if ( (new Function ("return " + isScript))() ) (new Function ("return " + codetext))(); // (new Function ("return " + data ))() replacing eval on data
@@ -730,10 +773,12 @@ var eGf = {
 
   bookmarksToolbar : function() {
     tb = document.getElementById("PersonalToolbar");
-    if (tb.hasAttribute("collapsed"))
+    if (tb.hasAttribute("collapsed")) {
       tb.removeAttribute("collapsed");
-    else
+    }
+    else {
       tb.setAttribute("collapsed",true);
+    }
     // make it persistent
     document.persist("PersonalToolbar", 'collapsed');
   },
@@ -756,8 +801,9 @@ var eGf = {
 
   properties : function(target) {
     // no more available since FF 3.6: changed temporaly action to View Image Info
-    if (target != null)
+    if (target != null) {
       BrowserPageInfo(target.ownerDocument, "mediaTab", target);
+    }
   },
 
   printPage : function() {
@@ -805,10 +851,12 @@ var eGf = {
   },
 
   selectAll : function() {
-    if (eGc.evtMouseDown.target instanceof HTMLInputElement || eGc.evtMouseDown.target instanceof HTMLTextAreaElement)
+    if (eGc.evtMouseDown.target instanceof HTMLInputElement || eGc.evtMouseDown.target instanceof HTMLTextAreaElement) {
       eGc.evtMouseDown.target.focus();
-    else
+    }
+    else {
       window._content.focus();
+    }
     goDoCommand('cmd_selectAll');
   },
 
@@ -820,13 +868,15 @@ var eGf = {
 
     // Confirm clearing Highlights
     if (changeColor && phrase=="") {
-      if (!confirm(eGc.localizing.getString("clearHighlightsConfirmation")))
+      if (!confirm(eGc.localizing.getString("clearHighlightsConfirmation"))) {
         return;
+      }
     }
 
     // this is to have same color in all frames
-    if (changeColor)
+    if (changeColor) {
       eGc.highlightColor = (eGc.highlightColor+1) % 10;
+    }
 
     if (!win) {
       // This appears to only highlight the current tab.
@@ -846,8 +896,9 @@ var eGf = {
     }
 
     var doc = win.document;
-    if (!doc)
+    if (!doc) {
       return;
+    }
 
     // Remove highligthing
     if (phrase=="") {
@@ -858,8 +909,9 @@ var eGf = {
         var next = elem.nextSibling;
         var parent = elem.parentNode;
         while ((child = elem.firstChild)) {
-          if (child.id=="eGHighlightCount-id")
+          if (child.id=="eGHighlightCount-id") {
             break; // removing count number after highlighted word
+          }
           docfrag.appendChild(child);
         }
         parent.removeChild(elem);
@@ -871,8 +923,9 @@ var eGf = {
     }
 
     var body = doc.body;
-    if (!body)
+    if (!body) {
       return;
+    }
 
     // Set color
     var color = eGm.highlightColorList[eGc.highlightColor];
@@ -922,7 +975,7 @@ var eGf = {
       // mark highlighted words with count number
       if (highlightCountOption) {
         countHighligths++;
-	supNode = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "sup");
+        supNode = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "sup");
         supNode.innerHTML=countHighligths;
         if (supNode.innerHTML!=countHighligths) { // this is not html document: probably .txt
           supNode = eGc.frame_doc.createTextNode("["+String(countHighligths)+"]");
@@ -952,8 +1005,9 @@ var eGf = {
         // show FindBar for previous and next navigation, from first occurence from cursor
         getBrowser().focus();
         gFindBar._findField.value = phrase;
-        if (gFindBar.hidden)
+        if (gFindBar.hidden) {
           gFindBar.onFindCommand();
+        }
         gFindBar._setCaseSensitivity(caseSensitive); // updates "accessibility.typeaheadfind.casesensitive" preference
         gFindBar._find();
       }
@@ -972,15 +1026,19 @@ var eGf = {
       var width;
       var height;
 
-      if (eGc.image.style.width=="")
+      if (eGc.image.style.width=="") {
         width = eGc.image.width * 2 + "px";
-      else
+      }
+      else {
         width = parseInt(eGc.image.style.width) * 2 + "px";
+      }
 
-      if (eGc.image.style.height=="")
+      if (eGc.image.style.height=="") {
         height=eGc.image.height * 2 + "px";
-      else
+      }
+      else {
         height = parseInt(eGc.image.style.height) * 2 + "px";
+      }
 
       eGc.image.style.width = width;
       eGc.image.style.height = height;
@@ -997,15 +1055,19 @@ var eGf = {
       var width;
       var height;
 
-      if (eGc.image.style.width=="")
+      if (eGc.image.style.width=="") {
         width=eGc.image.width * 0.5 + "px";
-      else
+      }
+      else {
         width = parseInt(eGc.image.style.width) * 0.5 + "px";
+      }
 
-      if (eGc.image.style.height=="")
+      if (eGc.image.style.height=="") {
         height=eGc.image.height * 0.5 + "px";
-      else
+      }
+      else {
         height = parseInt(eGc.image.style.height) * 0.5 + "px";
+      }
 
       eGc.image.style.width = width;
       eGc.image.style.height = height;
@@ -1015,14 +1077,14 @@ var eGf = {
   zoomReset : function () {
     ZoomManager.reset();
   }
-}
+};
 
 //*********************************************************************************
 
 function eG_getRoot(url) {
   // this is a special code only for searchWeb and Translate functions: does not take into acount the subnetwork in a host
 
-  while ( url.lastIndexOf("://")!=url.lastIndexOf("/")-2   ) {
+  while (url.lastIndexOf("://") != url.lastIndexOf("/")-2) {
     goodurl = url;
     url = url.substring(0, url.substring(0, url.length-1).lastIndexOf('/')+1);
   }
@@ -1031,16 +1093,19 @@ function eG_getRoot(url) {
 
 function eG_canGoUp () {
   var url = eGc.doc.URL;
-  if (eGf.root(url, false) != url.replace("www.",""))
+  if (eGf.root(url, false) != url.replace("www.","")) {
     return true;
-  else
+  }
+  else {
     return false;
+  }
 }
 
 function eG_xlink(node) { // tag clicked link
   // avoid tagging twice
-  if ( (node.nextSibling instanceof HTMLImageElement) && node.nextSibling.src.indexOf("xLink.png") >=0)
+  if ( (node.nextSibling instanceof HTMLImageElement) && node.nextSibling.src.indexOf("xLink.png") >= 0) {
     return;
+  }
 
   timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
   eGm.shieldCss(timg);
@@ -1071,27 +1136,32 @@ function eG_readClipboard() {
 
   clipb.getData(transf, clipb.kGlobalClipboard);
 
-  var str = new Object();
-  var strLength = new Object();
+  var str = {};
+  var strLength = {};
 
   transf.getTransferData("text/unicode", str, strLength);
 
   if (str) {
-    if (Components.interfaces.nsISupportsWString)
+    if (Components.interfaces.nsISupportsWString) {
       str = str.value.QueryInterface(Components.interfaces.nsISupportsWString);
+    }
     else
-      if (Components.interfaces.nsISupportsString)
+      if (Components.interfaces.nsISupportsString) {
         str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
-      else
+      }
+      else {
         str = null;
+      }
   }
-  if (str)
+  if (str) {
     return str;
-  else
+  }
+  else {
     return "";
+  }
 }
 
-function eG_popup (evt) {
+function eG_popup(evt) {
   eGm.popup.removeEventListener("popuphiding", eG_popup, true);
   eGm.close();
 }
