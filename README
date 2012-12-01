@@ -9,5 +9,7 @@ I do this on my limited free time. Help is very much welcome.
 To install the latest development version:
 - Click on "Downloads"
 - Click on "Download as zip"
-- Once the file downloaded, rename it by replacing "zip" with "xpi"
-- Drop the renamed file into Firefox
+- Once the file downloaded, unzip it
+- Zip the content of the "easyGestures-development" folder (and not the folder itself)
+- Give to the resulting zip file the "xpi" extension
+- Drop the renamed zipped file into Firefox
