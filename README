@@ -2,7 +2,7 @@ easyGestures is a Firefox extension that allows browsing the Web from where the 
 
 easyGestures was created by Ons Besbes, who supported the extension until Firefox 4. The extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically.
 
-Here I try to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of this extension.
+Here I try to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of this extension (see below).
 
 I do this on my limited free time. Help is very much welcome.
 
@@ -13,3 +13,11 @@ To install the latest development version:
 - Zip the content of the "easyGestures-development" folder (and not the folder itself)
 - Give to the resulting zip file the "xpi" extension
 - Drop the renamed zipped file into Firefox
+
+Features pruned so far and rationale:
+- Support for multiple skins. Only two skins were (publicly) available. Furthermore, easyGesture's skin should ideally match with the current Firefox theme/persona.
+- Support for changing easyGesture's language. easyGesture's language should match the language used by Firefox, as any other extension.
+- Popup for next and previous tab actions. The popup was not present in initial versions of easyGestures, and, once introduced, generated heated discussions in the former easyGestures forum. Furthermore, its presence was inconsistent with the name of those two actions.
+- Popup for undo close tab action. The popup was not present in initial versions of easyGestures. Furthermore, its presence was inconsistent with the name of this action and with the behaviour of Firefox's Ctrl/Cmd-Shift-T shorcut.
+- Input box for entering URLs. Let's not try to duplicate Firefox's location bar.
+- Liner menu. easyGestures is about a pie menu.
