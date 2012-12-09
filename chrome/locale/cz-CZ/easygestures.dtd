@@ -117,7 +117,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.display "Zobrazení">
 <!ENTITY extras.noIcons "Základní zobrazení (nezobrazuje ikony)">
 <!ENTITY extras.smallIcons "Použít malé ikony">
-<!ENTITY extras.linearMenu "Transformovat na lineární nabídku">
 <!ENTITY extras.menuOpacity "Průhlednost nabídky">
 <!ENTITY extras.ttip "Aktivovat popisky">
 <!ENTITY extras.ttipDelayLabel "Zpoždění [ms]">
@@ -319,7 +318,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">
 <!ENTITY tip21 "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
 <!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu. Pokud nejste myší na žádném odkazu, tak se otevře ten, který je (pokud nějaký je) ve schránce.">
-<!ENTITY tip24 "Kruhovou nabídku si můžete přepnout do plně přizpůsobitelné nabídky.">
 <!ENTITY tip25 "Okno nastavení můžete zobrazit přímo z kruhové nabídky zadáním znaku &apos;/&apos; v integrovaném panelu Umístění anebo dvojitým kliknutím na ikonu easyGestures ve stavovém řádku.">
 <!ENTITY tip26 "Pokud spustíte akci &apos;Denní čtení&apos; poprvé, vytvoří se složka v záložkách s názvem *easyGestures* a všechny záložky, které do této složky umístíte, budou následně otevřené.">
 <!ENTITY tip27 "Můžete vypnout/zapnout nabídku easyGestures jednoduchým kliknutím na ikonu ve stavovém řádku prohlížeče Firefox. Ikonu schováte v Možnosti/Profil.">

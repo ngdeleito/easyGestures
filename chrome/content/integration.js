@@ -84,9 +84,7 @@ var eGc = {
   maxzIndex: 2147483647, // Max Int. Same value as the one used for displaying autoscrolling image
   
   defaultHighlightColorList: "rgb(255,255,176);rgb(255,191,191);rgb(184,230,255);rgb(182,255,183);rgb(233,187,255);yellow;salmon;aqua;SpringGreen;violet",
-  gray: "#DDDDDD",
-  lightgray: "#F3F3F3",
-  darkgray: "#B2B4BF"
+  gray: "#DDDDDD"
 };
 
 var eGm = null;
@@ -507,7 +505,7 @@ function eG_handleMousemove(evt) {
       // clear automatic delayed autoscrolling
       clearTimeout(eGm.autoscrollingTrigger);
       
-      if (!eGm.dropDownMenu && !eGm.showingTooltips) {
+      if (!eGm.showingTooltips) {
         eGm.resetTooltipsTimeout(); // reset tooltips timeout
       }
       
@@ -741,7 +739,7 @@ function eG_openMenu() {
   eGm.screenY = eGc.screenYDown;
   
   // offset to put mouse cursor just above the middle in case of large pie menu
-  if (eGm.largeMenu && !eGm.dropDownMenu) {
+  if (eGm.largeMenu) {
     if (eGm.smallIcons) {
       eGm.clientY += 9;
     }

@@ -141,7 +141,6 @@
       new tipEntry("&tip20;", "empty",               ""),
       new tipEntry("&tip21;", "empty",               ""),
       new tipEntry("&tip22;", "empty",               ""),
-      new tipEntry("&tip24;", "empty",               ""),
       new tipEntry("&tip25;", "empty",               ""),
       new tipEntry("&tip26;", "empty",               ""),
       new tipEntry("&tip27;", "empty",               "profile/1")

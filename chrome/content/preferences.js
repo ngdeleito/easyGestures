@@ -92,7 +92,6 @@ function eG_setPrefs(locale){	// this function is also called in options.xul wit
 	eG_prefsObs.prefs.setIntPref("behavior.tooltipsDelay", 1000);
 	eG_prefsObs.prefs.setBoolPref("behavior.tooltipsDelayOmit", false);
 
-	eG_prefsObs.prefs.setBoolPref("behavior.dropDownMenu", false);			// menu is displayed as pie menu or drop down menu
 	eG_prefsObs.prefs.setBoolPref("behavior.moveAuto", false);				// must press <Shitf> key to move menu
 
 	if (locale!=null) eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI","");		// initialize only on first start

@@ -104,7 +104,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY extras.display "표시">
 <!ENTITY extras.noIcons "기본 표시(아이콘 표시하지 않음)">
 <!ENTITY extras.smallIcons "작은 아이콘 사용">
-<!ENTITY extras.linearMenu "선형 메뉴로 변경">
 <!ENTITY extras.menuOpacity "원형 메뉴 투명도">
 <!ENTITY extras.ttip "툴팁 작동">
 <!ENTITY extras.ttipDelayLabel "툴팁 지연(ms)">
@@ -285,7 +284,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY tip20 "이미지에서의 배율조정 동작은 그 이미지에만 적용됩니다.">
 <!ENTITY tip21 "페이지를 &apos;뒤로&apos; 와 &apos;앞으로&apos;로 이동하는 대신, &apos;뒤 사이트&apos;와 &apos;앞 사이트&apos; 동작을 통해 사이트에 이동할수 있습니다.">
 <!ENTITY tip22 "&apos;링크를 열기&apos;동작은 지정된 링크를 새로운 탭으로 엽니다. 링크를 지정하고 있지 않는 경우에는 클립보드에 존재하는 링크를 엽니다.">
-<!ENTITY tip24 "자유롭게 설정할 수 있는 드롭다운 메뉴를 원형 메뉴로부터 바꿀 수도 있습니다.">
 <!ENTITY tip25 "선택사항 대화상자를 직접 열려면, 원형 메뉴의 내장 위치 막대에 입력하거나, 상태 막대의 easyGestures의 아이콘을 더블 클릭 합니다.">
 <!ENTITY tip26 "&apos;매일 읽기&apos;동작이 실행되면, 처음에 *easyGestures* 라고 하는 폴더가 북마크 도구막대 폴더에 만들어집니다. 그 폴더에 있는 모든 북마크가, 동작 실행때마다 열립니다.">
 <!ENTITY tip27 "상태 막대의 아이콘을 클릭하면, easyGestures의 메뉴를 간단하게 온/오프 할 수 있습니다. |선택사항/프로파일/1 내에서 이 아이콘 숨기기">

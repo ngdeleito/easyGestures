@@ -116,7 +116,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.display "Mostrar">
 <!ENTITY extras.noIcons "Mostrar Básico (não mostra ícones)">
 <!ENTITY extras.smallIcons "Usar Ícones Pequenos">
-<!ENTITY extras.linearMenu "Transformar em Menu Linear">
 <!ENTITY extras.menuOpacity "Opacidade do Menu de Torta">
 <!ENTITY extras.ttip "Ativar Dicas">
 <!ENTITY extras.ttipDelayLabel "Atraso das Dicas (ms)">
@@ -318,7 +317,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Uma ação de zoom sobre uma imagem vai realizar a ação apenas na imagem.">
 <!ENTITY tip21 "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
 <!ENTITY tip22 "A ação 'Abrir Link' abrirá o link apontado em uma aba nova. Se nenhum link está apontado, o que está na área de transferência (se houver algum) será aberto.">
-<!ENTITY tip24 "Você pode mudar o menu de torta para um menu dropdown totalmente personalizável.">
 <!ENTITY tip25 "Você pode mostrar o Diálogo de Opções diretamente do menu de torta digitando / na barra integrada de localização ou clicando duas vezes no ícone do easygestures na barra de status.">
 <!ENTITY tip26 "Quando é feita a ação 'Leituras Diárias', uma pasta de favoritos chamada *easyGestures* é criada na primeira vez na Barra de Favoritos e todos os favoritos colocados nela são abertos.">
 <!ENTITY tip27 "Você pode ligar ou desligar o menu easyGestures simplesmente clicando no ícone na barra de status da janela do Firefox. |Esconda este ícone em Opções/Perfil/1">

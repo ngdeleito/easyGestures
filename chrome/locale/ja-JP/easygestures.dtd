@@ -116,7 +116,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.display "表示方法">
 <!ENTITY extras.noIcons "基本タイプ (アイコンを表示しない)">
 <!ENTITY extras.smallIcons "小さいアイコンを使う">
-<!ENTITY extras.linearMenu "直線型メニューに変換">
 <!ENTITY extras.menuOpacity "パイメニューの透明度">
 <!ENTITY extras.ttip "アクション名をツールチップで表示する">
 <!ENTITY extras.ttipDelayLabel " 表示までの遅延時間(ミリ秒)">
@@ -318,7 +317,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "画像への拡大縮小アクションは、その画像のみに適用されます。">
 <!ENTITY tip21 "ページ毎に戻ったり進んだりする替わりに、'サイトを戻る'や'サイトを進む'アクションでサイトごとに移動できます。">
 <!ENTITY tip22 "'リンクを開く'アクションは、ポイントしているリンクを新しいタブに開きます。リンクをポイントしていない場合には、クリップボードに存在するリンクを開きます。">
-<!ENTITY tip24 "自由に設定できる直線型メニューに、パイメニューから切り替えることもできます。">
 <!ENTITY tip25 "オプションダイアログを直接開くには、パイメニューの内蔵ロケーションバーに入力するか、ステータスバーの easyGestures のアイコンをダブルクリックします。">
 <!ENTITY tip26 "'デイリーリーディング'アクションが実行されると、はじめに *easyGestures* というフォルダがブックマークツールバーフォルダに作られます。そのフォルダにあるすべてのブックマークが、アクションの実行のたびに開かれます。">
 <!ENTITY tip27 "ステータスバーのアイコンをクリックすれば、easyGestures のメニューを簡単にオン/オフできます。|アイコンを隠す Options/Profile/1">

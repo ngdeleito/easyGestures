@@ -117,7 +117,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.display "显示">
 <!ENTITY extras.noIcons "基本显示(不显示图标)">
 <!ENTITY extras.smallIcons "使用小图标">
-<!ENTITY extras.linearMenu "转化为线性菜单">
 <!ENTITY extras.menuOpacity "圆饼菜单不透明">
 <!ENTITY extras.ttip "启用悬停提示">
 <!ENTITY extras.ttipDelayLabel "提示延时(ms)">
@@ -319,7 +318,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "放大/缩小这些动作只能在图片上使用。">
 <!ENTITY tip21 "除了可以在页面间进行 上一页/下一页 的移动外，你也可以用“上一个网站”和“下一个网站”进行网站和网站间的移动。">
 <!ENTITY tip22 "“打开链接”动作会在新标签页打开链接。如果没有指出链接，将打开剪贴板里的链接（如果是链接的话）。">
-<!ENTITY tip24 "你可以打开圆饼菜单成为一个完全自定义的下拉菜单。">
 <!ENTITY tip25 "你可以通过在圆饼菜单输入“/”或直接双击在状态栏显示的easyGestures图标来显示easyGestures的选项窗口。">
 <!ENTITY tip26 "当第一次执行“每日阅读”这个动作时，将会自动产生一个“easyGestures”的书签文件夹在书签工具栏中，里面的所有书签会被同时打开。">
 <!ENTITY tip27 "你可以点击Firefox窗口的状态栏中的easyGestures图标，简单的启用/停用easyGestures菜单。|隐藏这个图标在 选项/描述">

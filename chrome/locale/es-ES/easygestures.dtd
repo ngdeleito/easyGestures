@@ -89,7 +89,6 @@
 <!ENTITY extras.display "Visualización">
 <!ENTITY extras.noIcons "Básico (no mostrar iconos)">
 <!ENTITY extras.smallIcons "Usar iconos pequeños">
-<!ENTITY extras.linearMenu "Transformar en un menú lineal">
 <!ENTITY extras.menuOpacity "Opacidad del menú circular">
 <!ENTITY extras.ttip "Activar tooltips">
 <!ENTITY extras.ttipDelayLabel "Retardo en tooltips (ms)">
@@ -270,7 +269,6 @@
 <!ENTITY tip20 "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tip21 "En lugar de moverse adelante y atrás página por página, puede hacerlo con sitios usando las acciones &apos;Retroceder sitio&apos; y &apos;Avanzar sitio&apos;.">
 <!ENTITY tip22 "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña. Si no hay ningún enlace seleccionado, se abrirá la página cuya dirección esté en el portapapeles (si la hay).">
-<!ENTITY tip24 "Puede cambiar el menú circular en un menú desplegable totalmente configurable.">
 <!ENTITY tip25 "Puede mostrar el cuadro de opciones directamente desde el menú circular escribiendo / en la barra de direcciones integrada, o haciendo doble clic en el icono de easygestures de la barra de estado.">
 <!ENTITY tip26 "Cuando se ejecuta por primera vez la acción &apos;Lecturas diarias&apos;, se crea una carpeta en la barra de marcadores llamada *easyGestures*, y todos los marcadores incluidos en ella se abrirán.">
 <!ENTITY tip27 "Puede activar y desactivar el menú de easyGestures simplemente pulsando en el icono de la barra de estado de Firefox. |Oculte este icono en Opciones/Perfil/1">

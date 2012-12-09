@@ -88,7 +88,6 @@
 <!ENTITY extras.display "Zobrazenie">
 <!ENTITY extras.noIcons "Základné zobrazenie (nezobrazuje ikony)">
 <!ENTITY extras.smallIcons "Použiť malé ikony">
-<!ENTITY extras.linearMenu "Transformovať na lineárnu ponuku">
 <!ENTITY extras.menuOpacity "Priehľadnosť ponuky">
 <!ENTITY extras.ttip "Aktivovať popisy">
 <!ENTITY extras.ttipDelayLabel "Oneskorenie [ms]">
@@ -269,7 +268,6 @@
 <!ENTITY tip20 "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">
 <!ENTITY tip21 "Namiesto pohybu &apos;Naspäť&apos; a &apos;Dopredu&apos; môžete prejsť na &apos;Predchádzajúcu stránku&apos; a &apos;Nasledujúcu stránku&apos;.">
 <!ENTITY tip22 "Akcia &apos;Otvoriť odkaz&apos; otvorí odkaz, na ktorý ukazujete, na novej karte. Ak neukazujete na žiadny odkaz, tak sa otvorí ten, ktorý je (ak nejaký je) v schránke.">
-<!ENTITY tip24 "Koláčovú ponuku môžete prepnúť do plne prispôsobiteľnej ponuky.">
 <!ENTITY tip25 "Okno nastavení môžete zobraziť priamo v koláčovej ponuky zadaním znaku / v integrovanom paneli Umiestnenie alebo dvojitým kliknutím na ikonu easygestures v stavovom riadku.">
 <!ENTITY tip26 "Keď vykonáte akciu &apos;Denné čítanie&apos; po prvýkrát, vytvorí sa priečinok v záložkách s názvom *easyGestures* a všetky záložky, ktoré do tohto priečinka umiestnite, budú potom otvorené.">
 <!ENTITY tip27 "Môžete vypnúť/zapnúť ponuku easyGestures jednoduchým kliknutím na ikonu v stavovom riadku prehliadača Firefox. Ikonu schováte v Možnosti/Profil.">

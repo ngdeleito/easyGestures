@@ -231,18 +231,10 @@
       <label value="&extras.menuType;" style="font-weight: bold;" />
       <spacer height="3px" />
       <hbox>
-        <hbox>
-          <radiogroup flex="1" id="menuType" orient="vertical" oncommand="updateUI();">
-            <radio id="eG_std" label="&extras.menu;" />
-            <radio id="eG_lrg" label="&extras.largeMenu;" />
-          </radiogroup>
-        </hbox>
-        <hbox pack="center" flex="1">
-          <groupbox style="background-color:#FDD;">
-            <checkbox id="dropDownMenu" label="&extras.linearMenu;"
-              oncommand="createActions();initActionsBoxes();updateUI();" />
-          </groupbox>
-        </hbox>
+        <radiogroup flex="1" id="menuType" orient="vertical" oncommand="updateUI();">
+          <radio id="eG_std" label="&extras.menu;" />
+          <radio id="eG_lrg" label="&extras.largeMenu;" />
+        </radiogroup>
       </hbox>
       <menuseparator />
       <label value="&extras.display;" style="font-weight: bold;" />
@@ -1293,7 +1285,7 @@
       }
     }
     
-    function createActionsForPie() {
+    function createActions() {
       var boxes = new Array(
         "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
         "contextLink", "contextImage", "contextSelection", "contextTextbox"
@@ -1557,59 +1549,6 @@
         menulist.setAttribute("sizetopopup","false");
         hbox.appendChild(menulist);
       }
-    }
-    
-    function createActionsForDropDown () {
-      var boxes = new Array(
-        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
-        "contextLink", "contextImage", "contextSelection", "contextTextbox"
-      );
-      
-      for (var i=0; i &lt; boxes.length; i++) {
-        box = document.getElementById("gr_"+boxes[i]);
-        
-        // empty box if needed first
-        if (box.hasChildNodes() ) {
-          while (box.lastChild !=null) {
-            box.removeChild(box.lastChild);
-          }
-        }
-        
-        if (boxes[i].search("context") != -1) {
-          caption = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "caption");
-          caption.setAttribute("label", contextCaption[boxes[i]]);
-          caption.setAttribute("style","font-weight: bold;");
-          box.appendChild(caption);
-        }
-        
-        for (var sector=0; sector &lt; 10; sector++) {
-          if(boxes[i].search("extra") != -1 &amp;&amp; sector &gt;= 3 &amp;&amp; sector &lt;= 7)
-            continue;
-          
-          hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-          hbox.setAttribute("pack","center");
-          box.appendChild(hbox);
-          
-          menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-          menulist.setAttribute("id",boxes[i]+"Sector"+sector);
-          menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-          menulist.setAttribute("editable","true");
-          menulist.setAttribute("actionID","");
-          menulist.setAttribute("minwidth","150");
-          menulist.setAttribute("crop","none");
-          menulist.setAttribute("oncommand","updateUI();");
-          menulist.setAttribute("onmousedown","attachMenupopup(this);");
-          menulist.setAttribute("sizetopopup","false");
-          hbox.appendChild(menulist);
-        }
-      }
-    }
-    
-    function createActions() {
-      if (!document.getElementById("dropDownMenu").checked)
-        createActionsForPie();
-      else
-        createActionsForDropDown();
     }
   </script>
   
@@ -1971,7 +1910,6 @@
       
       eG_actionsPopupList = createActionsPopupList();
       
-      document.getElementById("dropDownMenu").checked = eG_prefs.getBoolPref("behavior.dropDownMenu"); // don't move after createActions() function
       createActions();
       createRunProgramFileForCustomization();
       createLoadURLScriptForCustomization();
@@ -2038,7 +1976,6 @@
       document.getElementById("showTooltips").checked = eG_prefs.getBoolPref("behavior.showTooltips");
       document.getElementById("tooltipsDelay").value = eG_prefs.getIntPref("behavior.tooltipsDelay");
       document.getElementById("tooltipsDelayOmit").checked = eG_prefs.getBoolPref("behavior.tooltipsDelayOmit");
-      document.getElementById("dropDownMenu").checked = eG_prefs.getBoolPref("behavior.dropDownMenu");
       
       document.getElementById("contextShowAuto").checked = eG_prefs.getBoolPref("behavior.contextMenuAuto");
       
@@ -2212,8 +2149,6 @@
       eG_prefs.setBoolPref("behavior.showTooltips", document.getElementById("showTooltips").checked);
       eG_prefs.setIntPref("behavior.tooltipsDelay", document.getElementById("tooltipsDelay").value);
       eG_prefs.setBoolPref("behavior.tooltipsDelayOmit", document.getElementById("tooltipsDelayOmit").checked);
-      
-      eG_prefs.setBoolPref("behavior.dropDownMenu", document.getElementById("dropDownMenu").checked);
       
       eG_prefs.setBoolPref("behavior.contextMenuAuto", document.getElementById("contextShowAuto").checked);
       
@@ -2405,16 +2340,6 @@
       document.getElementById("tooltipsDelayLabel").disabled = !checking;
       document.getElementById("tooltipsDelay").disabled = !checking;
       document.getElementById("tooltipsDelayOmit").disabled = !checking;
-      
-      /*
-      if (document.getElementById('eG_linearMenu').checked==true && checkingPrimitive) {// disable popup in alternative menu if more action selected in primitive menu with linear menu
-        document.getElementById("eG_func_n").disabled=true;
-        document.getElementById("eG_func_n").value=1;
-        checkingAlternative=true;
-      }
-      else
-        document.getElementById("eG_func_n").disabled=false;
-      */
       
       //***************************************************
       // enabling/disabling alternative boxes

@@ -117,7 +117,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.display "Display">
 <!ENTITY extras.noIcons "Display di base (senza icone)">
 <!ENTITY extras.smallIcons "Usa Icone piccole">
-<!ENTITY extras.linearMenu "Trasforma in un Menu Lineare">
 <!ENTITY extras.menuOpacity "Opacità del Menu Circolare">
 <!ENTITY extras.ttip "Attiva i Tooltips">
 <!ENTITY extras.ttipDelayLabel "Ritardo dei Tooltips (ms)">
@@ -319,7 +318,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
 <!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta. Se non viene puntato alvun collegamento, verà aperto quello nella clipboard, se presente.">
-<!ENTITY tip24 "Puoi trasformare il menu circolare in un menu a discesa completamente personalizzabile.">
 <!ENTITY tip25 "Puoi mostrare la finestra di dialogo delle Opzioni direttamente, o dal menu circolare, digitando / nella barra di immissione integrata, o facendo doppio-click sull'icona di easyGestures nella barra di stato.">
 <!ENTITY tip26 "Quando si esegue l'azione 'Letture Quotidiane', una cartella dei Segnalibri chiamata *easyGestuers* viene creata la prima volta nella Barra dei Segnalibri, e tutti i segnalibri in essa vengono aperti.">
 <!ENTITY tip27 "Puoi attivare e disattivare il menu easyGestures semplicemente cliccando sull'icona nella barra di stato della finestra di Firefox. |Nascondi questa icona in Opzioni/Profilo/1">

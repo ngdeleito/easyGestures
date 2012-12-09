@@ -89,7 +89,6 @@
 <!ENTITY extras.display "Megjelenés">
 <!ENTITY extras.noIcons "Egyszerű megjelenés (ikonok elrejtése)">
 <!ENTITY extras.smallIcons "Kis ikonok használata">
-<!ENTITY extras.linearMenu "Átalakítás függőleges menüvé">
 <!ENTITY extras.menuOpacity "Köralakú menü áttetszősége">
 <!ENTITY extras.ttip "Felbukkanó tippek megjelenítése">
 <!ENTITY extras.ttipDelayLabel "Felbukkanó tippek késleltetése (ms)">
@@ -270,7 +269,6 @@
 <!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
 <!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
 <!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket. Ha nincs kiválasztott hivatkozás, akkor a vágólapon lévő (amennyiben van ott) hivatkozás nyílik meg.">
-<!ENTITY tip24 "A köralakú menüt egy teljesen személyre szabható legördülő menüvé alakíthatod.">
 <!ENTITY tip25 "A Beállításokat közvetlenül a menüből is megnyithatod, ha a beépített címmezőbe &quot;/&quot; jelet gépelsz vagy duplán rákattintasz az easyGestures ikonra.">
 <!ENTITY tip26 "Amikor első alkalommal kattintasz a &quot;Napi olvasnivaló&quot; funkcióra, akkor egy &quot;easyGestures&quot; nevű mappa jön létre a Könyvjelző eszköztáron. A következő alkalmakkor az itt elhelyezett könyvjelzők nyílnak meg.">
 <!ENTITY tip27 "Az easyGestrues menüt könnyen ki/bekapcsolhatod, ha rákattintasz az ikonra a státuszsorban. |Az ikont a Beállítások/Profil/1. oldalon elrejtheted.">

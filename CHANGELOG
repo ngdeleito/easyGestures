@@ -11,3 +11,4 @@ Changes by ngdeleito (see git history for the full details)
 - fixed some warnings
 - removed popup for nextTab, prevTab and undoCloseTab actions
 - removed input box for entering URLs
+- removed linear menu

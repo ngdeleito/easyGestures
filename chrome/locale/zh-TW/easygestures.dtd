@@ -116,7 +116,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.display "顯示">
 <!ENTITY extras.noIcons "基本顯示（不顯示圖示）">
 <!ENTITY extras.smallIcons "使用小型圖示">
-<!ENTITY extras.linearMenu "轉換成直式選單">
 <!ENTITY extras.menuOpacity "圓餅選單透明度">
 <!ENTITY extras.ttip "圓餅動作提示">
 <!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…（毫秒）">
@@ -318,7 +317,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">
 <!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">
 <!ENTITY tip22 "「開啟鏈結」動作會把目標鏈結開在新分頁中。假如沒有目標鏈結，它會開啟在剪貼簿中的鏈結（如果是鏈結的話）">
-<!ENTITY tip24 "你可以轉換圓餅選單成自定的直式選單。">
 <!ENTITY tip25 "你可以透過圓餅選單輸入「/」或直接雙擊在狀態列顯示的 easyGestures 圖示來顯示 easyGestures 的選項視窗。">
 <!ENTITY tip26 "當第一次執行「每日閱讀」這個動作時，將會自動產生一個叫做「easyGestures」的書籤資料夾在你的書籤工具列中，當中所有的書籤會同時被開啟。">
 <!ENTITY tip27 "你可以擊點Firfox視窗狀態列的圖示，簡單的啟用／停用 easyGestures選單|隱藏圖示 Options/Profile/1">
