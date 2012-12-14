@@ -7,6 +7,7 @@ Here I try to bring easyGestures back to a usable and more maintainable state. T
 I do this on my limited free time. Help is very much welcome.
 
 To install the latest development version:
+- Uninstall any previous version of easyGestures
 - Click on "Downloads"
 - Click on "Download as zip"
 - Once the file downloaded, unzip it
@@ -21,3 +22,4 @@ Features pruned so far and rationale:
 - Popup for undo close tab action. The popup was not present in initial versions of easyGestures. Furthermore, its presence was inconsistent with the name of this action and with the behaviour of Firefox's Ctrl/Cmd-Shift-T shorcut.
 - Input box for entering URLs. Let's not try to duplicate Firefox's location bar.
 - Liner menu. easyGestures is about a pie menu.
+- Translate/explain action. A proper solution for translating a word from any language to any other language seems to be outside the scope of this extension. Explaining a term can be done via a search query.

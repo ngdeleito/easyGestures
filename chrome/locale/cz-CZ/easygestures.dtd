@@ -180,7 +180,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Domovská stránka">
 <!ENTITY func.dailyReadings "Každodenní čtení">
 <!ENTITY func.searchWeb "Hledat na webu">
-<!ENTITY func.translate "Přeložit/Vysvětlit">
 <!ENTITY func.runProgramFile1 "Spustit program 1">
 <!ENTITY func.runProgramFile2 "Spustit program 2">
 <!ENTITY func.runProgramFile3 "Spustit program 3">
@@ -256,7 +255,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "Přizpůsobit akci &apos;Hedat na webu&apos;">
 <!ENTITY search.query "Požadavek na URL">
-<!ENTITY translate "Přizpůsobit akci &apos;Přeložit/Vysvětlit&apos;">
 
 <!ENTITY queries "Výsledky požadavků">
 <!ENTITY queries.curTab "Zobrazit v aktuálním panelu">
@@ -305,7 +303,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst URL/Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku. Přizpůsobíte to v Možnosti/Přizpůsobení/Spustit program">
 <!ENTITY tip8 "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
 <!ENTITY tip9 "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Ctrl&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
-<!ENTITY tip10 "Můžete hledat slovo s Vaším libovolným vyhledávačem pomocí akce &apos;Hedat na webu&apos;. Nejprve označíte slovo na stránce, anebo ho napíšete do vstupního políčka. Pokud necháte políčko prázdné, otevře sa hlavní stránka vyhledávače. To samé platí i pro akci &apos;Přeložit/Vysvětlit&apos;. Vyhledávač přidáte anebo odeberete v Možnosti/Přizpůsobení/Požadavky">
+<!ENTITY tip10 "Můžete hledat slovo s Vaším libovolným vyhledávačem pomocí akce &apos;Hedat na webu&apos;. Nejprve označíte slovo na stránce, anebo ho napíšete do vstupního políčka. Pokud necháte políčko prázdné, otevře sa hlavní stránka vyhledávače. Vyhledávač přidáte anebo odeberete v Možnosti/Přizpůsobení/Požadavky">
 <!ENTITY tip11 "Podržením klávesy &apos;Insert&apos; můžete potlačit zobrazení kruhové nabídky a přistoupit k standardní kontextové nabídce.">
 <!ENTITY tip12 "Můžete hýbat s kruhovou nabídkou stiskem klávesy &apos;Shift&apos; při pohybu myší.">
 <!ENTITY tip13 "Můžete vypnout zobrazování popisků, pokud je nepotřebujete. Také je možné změnit popis každé akce. Zobrazení vypnete v Možnosti/Chování">

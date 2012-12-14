@@ -180,7 +180,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "首页">
 <!ENTITY func.dailyReadings "每天读">
 <!ENTITY func.searchWeb "搜索网络">
-<!ENTITY func.translate "翻译/说明">
 <!ENTITY func.runProgramFile1 "运行程序文件 1">
 <!ENTITY func.runProgramFile2 "运行程序文件 2">
 <!ENTITY func.runProgramFile3 "运行程序文件 3">
@@ -256,7 +255,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "自定义“搜索网站”手势">
 <!ENTITY search.query "查询网址">
-<!ENTITY translate "自定义“翻译/解释”手势">
 
 <!ENTITY queries "查询结果">
 <!ENTITY queries.newTab "在新标签页显示">

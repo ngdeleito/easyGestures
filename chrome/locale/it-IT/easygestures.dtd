@@ -180,7 +180,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Pagina Iniziale">
 <!ENTITY func.dailyReadings "Letture Quotidiane">
 <!ENTITY func.searchWeb "Cerca sul Web">
-<!ENTITY func.translate "Traduci/Spiega">
 <!ENTITY func.runProgramFile1 "Esegui File di Programma 1">
 <!ENTITY func.runProgramFile2 "Esegui File di Programma 2">
 <!ENTITY func.runProgramFile3 "Esegui File di Programma 3">
@@ -256,7 +255,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "Personalizza l'Azione 'Cerca nel Web' ">
 <!ENTITY search.query "URL per la Ricerca">
-<!ENTITY translate "Personalizza l'azione 'Traduci/Spiega' ">
 
 <!ENTITY queries "Risultati della Ricerca">
 <!ENTITY queries.newTab "Show in new tab">
@@ -305,7 +303,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica URL/Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione. |Personalizza in Opzioni/Personalizzazioni/Esegui File di Programma">
 <!ENTITY tip8 "Un click sufficientemente rapido del menu circolare su di un collegamento senza movimenti aprirà il collegamento in una nuova linguetta e mostrerà un marchio rosso dopo il collegamento.">
 <!ENTITY tip9 "Puoi attivare la sensibilità al contesto premendo il tasto 'Ctrl' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva. |Modifica il comportamento in Opzioni/Comportamento">
-<!ENTITY tip10 "Puoi cercare una parola con un motore di ricerca a tua scelta tramite l'azione 'Cerca nel Web', sia selezionandola nella pagina che digitandola nel campo di ricerca che compare. Se il campo di ricerca viene lasciato vuoto, si viene mandati alla homepage del motore di ricerca. Lo stesso accade con l'azione 'Traduci/Spiega'. |Aggiungi o rimuovi motori di ricerca in opzioni/Personalizzazioni/Ricerche">
+<!ENTITY tip10 "Puoi cercare una parola con un motore di ricerca a tua scelta tramite l'azione 'Cerca nel Web', sia selezionandola nella pagina che digitandola nel campo di ricerca che compare. Se il campo di ricerca viene lasciato vuoto, si viene mandati alla homepage del motore di ricerca. |Aggiungi o rimuovi motori di ricerca in opzioni/Personalizzazioni/Ricerche">
 <!ENTITY tip11 "Tenendo premuto il tasto 'Insert' mentre si preme il tasto destro del mouse, puoi sopprimere il menu circolare e accedere al menu contestuale standard.">
 <!ENTITY tip12 "Puoi muovere il menu circolare tenendo premuto il tasto 'Shift' mentre si muove il mouse.">
 <!ENTITY tip13 "Puoi disattivare i tooltips se non ti servono. È anche possibile rinominare ogni tooltip delle azioni. |Disattiva in Opzioni/comportamento">

@@ -179,7 +179,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "ホームページ">
 <!ENTITY func.dailyReadings "デイリーリーディング">
 <!ENTITY func.searchWeb "web を検索">
-<!ENTITY func.translate "翻訳/解説">
 <!ENTITY func.runProgramFile1 "プログラム 1 を実行">
 <!ENTITY func.runProgramFile2 "プログラム 2 を実行">
 <!ENTITY func.runProgramFile3 "プログラム 3 を実行">
@@ -255,7 +254,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "'Web を検索'アクションの設定">
 <!ENTITY search.query "問い合わせ URL">
-<!ENTITY translate "'翻訳/解説'アクションの設定">
 
 <!ENTITY queries "問い合わせ結果">
 <!ENTITY queries.newTab "Show in new tab">

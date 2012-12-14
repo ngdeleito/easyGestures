@@ -179,7 +179,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Página Inicial">
 <!ENTITY func.dailyReadings "Leituras Diárias">
 <!ENTITY func.searchWeb "Buscar na Web">
-<!ENTITY func.translate "Traduzir/Explicar">
 <!ENTITY func.runProgramFile1 "Executar Arquivo de Programa 1">
 <!ENTITY func.runProgramFile2 "Executar Arquivo de Programa 2">
 <!ENTITY func.runProgramFile3 "Executar Arquivo de Programa 3">
@@ -255,7 +254,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "Personalizar Ação 'Busca na Web' ">
 <!ENTITY search.query "Consulta URL">
-<!ENTITY translate "Personalizar Ação 'Traduzir/Explicar' ">
 
 <!ENTITY queries "Resultados da Consulta">
 <!ENTITY queries.newTab "Show in new tab">
@@ -304,7 +302,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar URL/Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão. |Personalize em Opções/Personalizações/Executar Arquivo de Programa">
 <!ENTITY tip8 "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba e mostrará uma marca vermelha na página após o link.">
 <!ENTITY tip9 "Você pode ativar senbilidade de contexto pressionando a tecla 'Ctrl' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada. |Altere o comportamento em Opções/Comportamento">
-<!ENTITY tip10 "Você pode procurar uma palavra usando seu mecanismo de busca personalizado com a ação 'Busca na Web' selecionando-a na página ou digitando-a caixa de texto. Se a caixa de texto for deixada em branco, a página inicial do mecanismo de busca será mostrada. O mesmo vale para a ação 'Traduzir/Explicar'. |Adicione ou remova mecanismos de busca em Opções/Personalizações/Consultas">
+<!ENTITY tip10 "Você pode procurar uma palavra usando seu mecanismo de busca personalizado com a ação 'Busca na Web' selecionando-a na página ou digitando-a caixa de texto. Se a caixa de texto for deixada em branco, a página inicial do mecanismo de busca será mostrada. |Adicione ou remova mecanismos de busca em Opções/Personalizações/Consultas">
 <!ENTITY tip11 "Pressionando a tecla 'Insert' durante um clique com o botão direito, você pode suprimir o menu de torta e acessar o menu de contexto padrão.">
 <!ENTITY tip12 "Você pode mover o menu de torta, segurando a tecla 'Shift' enquanto move o mouse.">
 <!ENTITY tip13 "Você pode desligar a visualização das dicas se você não precisa delas. Também é possível renomear cada dica da ação. |Desligue a visualização em Opções/Comportamento">

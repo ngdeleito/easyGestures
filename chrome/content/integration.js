@@ -437,8 +437,8 @@ function eG_handleMouseup(evt) {
       else {
         if (eGm.sector != -1 || eGm.sector == -1 && (eGm.menuState != 2 || eGm.menuState == 2 && (evt.button != eGm.showButton))) {
           var actionName = (eGm.sector >=0 ? layout.actions[eGm.sector].src : "");
-          if ((actionName.search("searchWeb") != -1 || actionName.search("translate") != -1 || actionName.search("highlight") != -1 ) && eGc.selection == "") {
-            // Only for actions needing entry: searchWeb, translate, highlight
+          if ((actionName.search("searchWeb") != -1 || actionName.search("highlight") != -1 ) && eGc.selection == "") {
+            // Only for actions needing entry: searchWeb, highlight
             // Selected text should not bring up input box
             if (actionName.search("searchWeb") != -1) {
               eGm.showPopupForSearchWeb(false);

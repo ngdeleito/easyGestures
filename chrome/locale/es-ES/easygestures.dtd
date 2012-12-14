@@ -145,7 +145,6 @@
 <!ENTITY func.homepage "Página de inicio">
 <!ENTITY func.dailyReadings "Lecturas diarias">
 <!ENTITY func.searchWeb "Búsqueda en la web">
-<!ENTITY func.translate "Traducir/Explicar">
 <!ENTITY func.runProgramFile1 "Ejecutar programa 1">
 <!ENTITY func.runProgramFile2 "Ejecutar programa 2">
 <!ENTITY func.runProgramFile3 "Ejecutar programa 3">
@@ -214,7 +213,6 @@
 <!ENTITY closeTab.closeBrowserOnLastTab "Cerrar el navegador al cerrar la última pestaña">
 <!ENTITY search "Personalizar acción &apos;Buscar en la Web&apos;">
 <!ENTITY search.query "Dirección de búsqueda">
-<!ENTITY translate "Personalizar acción &apos;Traducir/Explicar&apos;">
 <!ENTITY queries "Resultados de la consulta">
 <!ENTITY queries.newTab "Mostrar en una pestaña nueva">
 <!ENTITY queries.curTab "Comenzar a mostrar en la pestaña actual">
@@ -256,7 +254,7 @@
 <!ENTITY tip7 "Puede ejecutar aplicaciones externas y código javascript usando las acciones &apos;Ejecutar programa&apos; y &apos;Cargar Dirección/Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión. |Personalizar en Opciones/Personalizar/Ejecutar programa">
 <!ENTITY tip8 "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña, y mostrará una marca roja en la página tras el enlace.">
 <!ENTITY tip9 "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto. |Cambie el comportamiento en Opciones/Comportamiento">
-<!ENTITY tip10 "Puede buscar una palabra usando su propio buscador con la acción &apos;Buscar en la Web&apos;, seleccionando primero la palabra o escribiéndola en el cuadro de entrada. Si la entrada se deja en blanco, se mostrará la página de inicio del buscador. Este mismo comportamiento se aplica a la acción &apos;Traducir/Explicar&apos;. |Puede añadir y quitar buscadores a través de Opciones/Personalizar/Consultas">
+<!ENTITY tip10 "Puede buscar una palabra usando su propio buscador con la acción &apos;Buscar en la Web&apos;, seleccionando primero la palabra o escribiéndola en el cuadro de entrada. Si la entrada se deja en blanco, se mostrará la página de inicio del buscador. |Puede añadir y quitar buscadores a través de Opciones/Personalizar/Consultas">
 <!ENTITY tip11 "Pulsando la tecla Insert puede suprimir el menú circular y acceder al menú contextual estándar.">
 <!ENTITY tip12 "Puede moverse a través del menú circular manteniendo pulsada la tecla &apos;Mayús&apos; mientras mueve el ratón.">
 <!ENTITY tip13 "Puede desactivar los textos emergentes (tooltips) si no los necesita. Es posible también renombrar los textos emergentes de cada acción. |Desactivar la visualización en Opciones/Comportamiento">

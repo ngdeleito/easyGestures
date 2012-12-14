@@ -180,7 +180,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Home Page">
 <!ENTITY func.dailyReadings "Daily Readings">
 <!ENTITY func.searchWeb "Search Web">
-<!ENTITY func.translate "Translate/Explain">
+
 <!ENTITY func.runProgramFile1 "Run Program File 1">
 <!ENTITY func.runProgramFile2 "Run Program File 2">
 <!ENTITY func.runProgramFile3 "Run Program File 3">
@@ -256,7 +256,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "Customize 'Search Web' Action ">
 <!ENTITY search.query "Query URL">
-<!ENTITY translate "Customize 'Translate/Explain' Action ">
 
 <!ENTITY queries "Query Results">
 <!ENTITY queries.newTab "Show in new tab">
@@ -305,7 +304,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "You can launch external applications and execute javascript code with 'Run Program File' and 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension. |Customize in Options/Customizations/Run Program File">
 <!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab and display a red tag on the page after the link.">
 <!ENTITY tip9 "You can activate context sensitivity by pressing 'Ctrl' key when opening pie menu. You can also turn context sensitivity always on. |Change behavior in Options/Behavior">
-<!ENTITY tip10 "You can search for a word with your custom search engine with the 'Search Web' action by first selecting it on the page or typing it in the input box. If the input box is left blank, the search engine home page will be displayed. Same thing for 'Translate/Explain' action. |Add or remove search engines in Options/Customizations/Queries">
+<!ENTITY tip10 "You can search for a word with your custom search engine with the 'Search Web' action by first selecting it on the page or typing it in the input box. If the input box is left blank, the search engine home page will be displayed. |Add or remove search engines in Options/Customizations/Queries">
 <!ENTITY tip11 "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
 <!ENTITY tip12 "You can move around the pie menu by holding 'Shift' key while moving the mouse.">
 <!ENTITY tip13 "You can switch off the tooltips display if you don't need it. It is also possible to rename each action tooltip. |Switch off display in Options/Behavior">

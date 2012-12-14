@@ -145,7 +145,6 @@
 <!ENTITY func.homepage "Kezdőlap">
 <!ENTITY func.dailyReadings "Napi olvasnivaló">
 <!ENTITY func.searchWeb "Keresés">
-<!ENTITY func.translate "Fordítás/Magyarázat">
 <!ENTITY func.runProgramFile1 "Program futtatása 1">
 <!ENTITY func.runProgramFile2 "Program futtatása 2">
 <!ENTITY func.runProgramFile3 "Program futtatása 3">
@@ -214,7 +213,6 @@
 <!ENTITY closeTab.closeBrowserOnLastTab "Böngésző bezárása az utolsó lap bezárásakor">
 <!ENTITY search "'Keresés' művelet személyre szabása">
 <!ENTITY search.query "Kereső URL">
-<!ENTITY translate "'Fordítás/Magyarázat' művelet személyre szabása">
 <!ENTITY queries "Keresés eredménye">
 <!ENTITY queries.newTab "új lapon jelenjen meg">
 <!ENTITY queries.curTab "az aktuális lapon jelenjenek meg">
@@ -256,7 +254,7 @@
 <!ENTITY tip7 "Külső programokat vagy javascript kódot futtatthathatsz a &quot;Program futtatása&quot; és az &quot;URL/szkript betöltése&quot; funkciók segítségével. De például bármilyen Firefox API funkciót vagy egy másik kiegészítés egy funkcióját is meghívhatod ilyen módon. |A beállításokat a Beállítások/Személyre szabás/Program futtatása oldalon találod.">
 <!ENTITY tip8 "Ha elég gyorsan kattintasz a menü közepén keresztül egy hivatkozásra és közben nem mozdítod meg az egeret, akkor a hivatkozás megnyílik egy új lapon és egy piros jelet rak az oldalra a hivatkozás után.">
 <!ENTITY tip9 "A tartalomfüggő menü megjelenítéséhez nyomd le a Ctrl billentyűt mielőtt megnyitod a menüt. De akár állandósíthatod is a tartalomfüggő menü megjelenését. |A beállításokat keresd a Beállítások/Működés/1. oldalon.">
-<!ENTITY tip10 "A &quot;Keresés&quot; funkció használatával rákereshetsz egy szóra valamely keresővel, ha előtte kijelölted az oldalon vagy beírtad a szövegdobozba. Ha üresen hagyod a beviteli mezőt, a keresőoldal kezdőlapja jelenik meg. Ugyanez igaz a &quot;Fordítás/magyarázat&quot; funkcióra is. |Keresőmotorok hozzáadásához vagy eltávolításához nyisd meg a Beállítások/Személyre szabás/1. oldalt.">
+<!ENTITY tip10 "A &quot;Keresés&quot; funkció használatával rákereshetsz egy szóra valamely keresővel, ha előtte kijelölted az oldalon vagy beírtad a szövegdobozba. Ha üresen hagyod a beviteli mezőt, a keresőoldal kezdőlapja jelenik meg. |Keresőmotorok hozzáadásához vagy eltávolításához nyisd meg a Beállítások/Személyre szabás/1. oldalt.">
 <!ENTITY tip11 "Ha nyomva tartod az Insert gombot, miközben a jobb egérgombbal kattintasz, akkor megakadályozhatod, hogy a köralakú menü felbukkanjon, így a hagyományos helyi menü jelenik meg helyette.">
 <!ENTITY tip12 "Mozgathatod a menüt, ha lenyomva tartod a Shift billentyűt miközben mozgatod az egeret.">
 <!ENTITY tip13 "A súgószövegek megjelenítését kikapcsolhatod, ha nincs szükséged rájuk. De akár át is nevezheted az összes súgószöveget. |A Beállítások/Működés/2. oldalon tudod őket kikapcsolni.">

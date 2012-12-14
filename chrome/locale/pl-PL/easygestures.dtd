@@ -143,7 +143,6 @@
 <!ENTITY func.homepage "Strona domowa">
 <!ENTITY func.dailyReadings "Wiadomości dnia">
 <!ENTITY func.searchWeb "Znajdź w Internecie">
-<!ENTITY func.translate "Przetłumacz/Objaśnij">
 <!ENTITY func.runProgramFile1 "Uruchom program 1">
 <!ENTITY func.runProgramFile2 "Uruchom program 2">
 <!ENTITY func.runProgramFile3 "Uruchom program 3">
@@ -212,7 +211,6 @@
 <!ENTITY closeTab.closeBrowserOnLastTab "Zamknij przeglądarkę po zamknięciu ostatniej karty">
 <!ENTITY search "Dostosuj akcję &quot;Znajdź w Internecie&quot; ">
 <!ENTITY search.query "Wyszukiwarka">
-<!ENTITY translate "Dostosuj akcję &quot;Przetłumacz/Objaśnij&quot; ">
 <!ENTITY queries "Wynik wyszukiwania">
 <!ENTITY queries.newTab "Show in new tab">
 <!ENTITY queries.curTab "Pokaż w aktywnej karcie">
@@ -254,7 +252,7 @@
 <!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia. |Dostosuj to w Opcje \u00BB Dostosuj \u00BB Uruchom program.">
 <!ENTITY tip8 "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
 <!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum. |Zmień działanie w Opcje \u00BB Ustawienia">
-<!ENTITY tip10 "Gdy zaznaczysz słowo lub wpiszesz je w polu wprowadzania i wybierzesz opcję \u0022Znajdź w Internecie\u0022 rozpocznie się szukanie zaznaczonego słowa. Jeśli pole wprowadzania będzie puste, zostanie wyświetlona strona domowa domyślnej wyszukiwarki. Tak samo działa opcja \u0022Przetłumacz/Objaśnij\u0022. |Dodaj lub usuń wyszukiwarkę w Opcje \u00BB Dostosuj \u00BB Wyszukiwanie">
+<!ENTITY tip10 "Gdy zaznaczysz słowo lub wpiszesz je w polu wprowadzania i wybierzesz opcję \u0022Znajdź w Internecie\u0022 rozpocznie się szukanie zaznaczonego słowa. Jeśli pole wprowadzania będzie puste, zostanie wyświetlona strona domowa domyślnej wyszukiwarki. |Dodaj lub usuń wyszukiwarkę w Opcje \u00BB Dostosuj \u00BB Wyszukiwanie">
 <!ENTITY tip11 "Przytrzymując klawisz [ Insert ] można wyłączyć działanie menu Centrum i używać standardowego menu kontekstowego.">
 <!ENTITY tip12 "Przytrzymując klawisz [ Shift ], gdy menu jest otwarte można przemieszczać je w dowolne miejsce na ekranie bez używania przycisków myszy. Menu będzie podążało za kursorem myszy.">
 <!ENTITY tip13 "Można wyłączyć wyświetlanie opisów przycisków, a także zmieniać ich treść dla każdej akcji. |Wyłącz wyświetlanie podpowiedzi w Opcje \u00BB Ustawienia">

@@ -87,7 +87,7 @@ var eG_menuItems = [
   new eG_menuItem(37,	0, "homepage",           "eGf.homePage();"),
   new eG_menuItem(38,	0, "dailyReadings",      "eGf.dailyReadings();"),
   new eG_menuItem(39,	0, "searchWeb",          "eGf.searchWeb(eGc.selection);"),
-  new eG_menuItem(40,	0, "translate",          "eGf.translate(eGc.selection);"),
+  new eG_menuItem(40,	0, "",          ""),
   new eG_menuItem(41,	0, "runProgramFile1",    "eGf.runProgramFile(1,eGc.selection);"),
   new eG_menuItem(42,	0, "runProgramFile2",    "eGf.runProgramFile(2,eGc.selection);"),
   new eG_menuItem(43,	0, "runProgramFile3",    "eGf.runProgramFile(3,eGc.selection);"),
@@ -319,7 +319,6 @@ function eG_menu () {
   this.search4 = prefs.getBoolPref("customizations.search4");
   this.search5 = prefs.getBoolPref("customizations.search5");
   this.search6 = prefs.getBoolPref("customizations.search6");
-  this.translateQuery = prefs.getCharPref("customizations.translateQuery");
 
   this.searchQuery1 = prefs.getCharPref("customizations.searchQuery1");
   this.searchQuery2 = prefs.getCharPref("customizations.searchQuery2");

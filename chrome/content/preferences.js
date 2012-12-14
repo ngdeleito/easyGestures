@@ -156,7 +156,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=fr");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=1&word=%s");
 			break;
 		case "es-ES":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.es/search?q=%s&ie=UTF-8&hl=es&num=100");
@@ -165,7 +164,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=es");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=3&word=%s");
 			break;			
 		case "de-DE":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.de/search?q=%s&ie=UTF-8&hl=de&num=100");
@@ -174,7 +172,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=de");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=6&word=%s");		
 			break;
 		case "it-IT":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.it/search?q=%s&ie=UTF-8&hl=it&num=100");
@@ -183,7 +180,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=it");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=2&word=%s");
 			break;
 		case "ja-JP":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.co.jp/search?q=%s&ie=UTF-8&hl=ja&num=100");
@@ -192,7 +188,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=ja");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=8&word=%s");
 			break;		
 		case "zh-TW":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com.tw/search?q=%s&ie=UTF-8&hl=zh-TW&num=100");
@@ -201,7 +196,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=zh-TW");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=9&word=%s");
 			break;	
 		case "pt-BR":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=pt-BR&num=100");
@@ -210,7 +204,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=pt");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=5&word=%s");
 			break;
 		case "pl-PL":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=pl&num=100");
@@ -219,7 +212,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=pl");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=0&word=%s");
 			break;
 		case "tr-TR":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=en&num=100");
@@ -228,7 +220,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=en");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=0&word=%s");
 			break;
 		case "zh-CN":
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com.tw/search?q=%s&ie=UTF-8&hl=zh-CN&num=100");
@@ -237,7 +228,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=zh-CN");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=9&word=%s");
 			break;	            
 		default:
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=en&num=100");
@@ -246,7 +236,6 @@ function eG_localizeSearchURLs(locale){
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=en");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
 			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			eG_prefsObs.prefs.setCharPref("customizations.translateQuery", "http://info.babylon.com/cgi-bin/info.cgi?ot=2&layout=combo.html&n=30&lang=0&word=%s");
 			break;
 	}
 }	

@@ -678,24 +678,6 @@
                   </hbox>
                 </vbox>
               </vbox>
-              <separator />
-              <menuseparator />
-              <hbox>
-                <image id="translateImage" class="small_translate" />
-                <vbox>
-                  <spacer flex="1" />
-                  <label value="&translate;" style="font-weight: bold;" />
-                  <spacer flex="1" />
-                </vbox>
-              </hbox>
-              <spacer height="3px" />
-              <hbox>
-                <vbox>
-                  <spacer height="3" />
-                  <label value="&search.query;" />
-                </vbox>
-                <textbox flex="1" id="translateQuery" />
-              </hbox>
             </vbox>
           </tabpanel>
           <tabpanel>
@@ -872,7 +854,7 @@
       "&func.sendLink;", "&func.copyImageLocation;", "&func.saveLinkAs;",
       "&func.saveImageAs;", "&func.savePageAs;", "&func.hideImages;",
       "&func.copyImage;", "&func.homepage;", "&func.dailyReadings;",
-      "&func.searchWeb;", "&func.translate;", "&func.runProgramFile1;",
+      "&func.searchWeb;", "&func.runProgramFile1;",
       "&func.runProgramFile2;", "&func.runProgramFile3;",
       "&func.runProgramFile4;", "&func.runProgramFile5;",
       "&func.runProgramFile6;", "&func.runProgramFile7;",
@@ -905,7 +887,7 @@
       "fullscreen", "openLink", "openLinkNewWindow", "copyLink", "sendLink",
       "copyImageLocation", "saveLinkAs", "saveImageAs", "savePageAs",
       "hideImages", "copyImage", "homepage", "dailyReadings", "searchWeb",
-      "translate", "runProgramFile1", "runProgramFile2", "runProgramFile3",
+      "runProgramFile1", "runProgramFile2", "runProgramFile3",
       "runProgramFile4", "runProgramFile5", "runProgramFile6",
       "runProgramFile7", "runProgramFile8", "runProgramFile9",
       "runProgramFile10", "loadURLScript1", "loadURLScript2", "loadURLScript3",
@@ -2041,8 +2023,6 @@
         document.getElementById("searchQuery"+i).value = eG_prefs.getCharPref("customizations.searchQuery"+i);
       }
       
-      document.getElementById("translateQuery").value = eG_prefs.getCharPref("customizations.translateQuery");
-      
       for (i=1; i<=10; i++) {
         // runProgramFile 1 to 10
         runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
@@ -2199,8 +2179,6 @@
         eG_prefs.setBoolPref("customizations.search"+i, document.getElementById("search"+i).checked);
         eG_prefs.setCharPref("customizations.searchQuery"+i, document.getElementById("searchQuery"+i).value);
       }
-      
-      eG_prefs.setCharPref("customizations.translateQuery", document.getElementById("translateQuery").value);
       
       var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
       
@@ -2541,7 +2519,6 @@
       //***************************************************
       
       document.getElementById("searchWebImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
-      document.getElementById("translateImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("openLinkImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("highlightImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("closeTabImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";

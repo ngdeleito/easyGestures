@@ -180,7 +180,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Ana Sayfa">
 <!ENTITY func.dailyReadings "Günlük Okumalar">
 <!ENTITY func.searchWeb "Web&apos;de Ara">
-<!ENTITY func.translate "Tercüme Et/ Açıkla">
 <!ENTITY func.runProgramFile1 "1. Program Dosyasını Çalıştır">
 <!ENTITY func.runProgramFile2 "2. Program Dosyasını Çalıştır">
 <!ENTITY func.runProgramFile3 "3. Program Dosyasını Çalıştır">
@@ -256,7 +255,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY search "&quot;Web&apos;de Ara&quot; Eylemini Kişiselleştir">
 <!ENTITY search.query "URL&apos;yi Sorgula">
-<!ENTITY translate "&quot;Tercüme Et/Açıkla&quot; Eylemini Kişiselleştir">
 
 <!ENTITY queries "Sonuçları Sorgula">
 <!ENTITY queries.newTab "Show in new tab">
@@ -305,7 +303,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "&apos;Program Dosyasını Çalıştır&apos; ve &apos;URL/Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz. Örneğin, herhangi bir Firefox API işlevini ya da başka bir eklenti içindeki bir işlevi çalıştırabilirsiniz.">
 <!ENTITY tip8 "Bir bağlantı üzerinde hareket etmeden yeterince hızlı bir kolay menü tıklaması, bağlantıyı yeni bir sekmede açacak ve sayfada bağlantının yanında kırmızı bir etiket görüntülenecektir.">
 <!ENTITY tip9 "İçerik hassasiyetini kolay menüyü açarken &apos;Ctrl&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
-<!ENTITY tip10 "&apos;Wed&apos;de Ara&apos; eylemiyle, bir sözcüğü sayfa içerisinde seçerek ya da giriş kutusuna yazarak varsayılan arama motorunuzla arayabilirsiniz. Giriş kutusu boş bırakılırsa arama motorunuzun ana sayfası görüntülenecektir. Aynı durum &apos;Tercüme Et/Açıkla&apos; eylemi için de geçerlidir. |Seçenekler/Kişiselleştirmeler/Sorgulamalar&apos;dan arama motoru ekleyip çıkartın.">
+<!ENTITY tip10 "&apos;Wed&apos;de Ara&apos; eylemiyle, bir sözcüğü sayfa içerisinde seçerek ya da giriş kutusuna yazarak varsayılan arama motorunuzla arayabilirsiniz. Giriş kutusu boş bırakılırsa arama motorunuzun ana sayfası görüntülenecektir. |Seçenekler/Kişiselleştirmeler/Sorgulamalar&apos;dan arama motoru ekleyip çıkartın.">
 <!ENTITY tip11 "&apos;Insert&apos; tuşuna basılı tutarak, kolay menüyü saklayıp standart içerik menüsüne ulaşabilirsiniz.">
 <!ENTITY tip12 "Kolay menü etrafında fareyi hareket ettirirken &apos;Shift&apos; tuşuna basılı tutarak dolaşabilirsiniz.">
 <!ENTITY tip13 "Eğer ihtiyacınız yoksa araç ipuçlarını görüntülemeyi kapatabilirsiniz. Her eylemin araç ipucunu yeniden adlandırmak da mümkündür. |Görüntülemeyi Seçenekler/Tepki/Sayfa 2&apos;den durdurabilirsiniz.">

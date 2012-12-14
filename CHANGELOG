@@ -12,3 +12,4 @@ Changes by ngdeleito (see git history for the full details)
 - removed popup for nextTab, prevTab and undoCloseTab actions
 - removed input box for entering URLs
 - removed linear menu
+- removed translate/explain action

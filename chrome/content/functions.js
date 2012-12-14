@@ -578,54 +578,6 @@ var eGf = {
     }
   },
 
-  translate : function(string) {
-    var first = true;
-    var win = null;
-    var query = eGm.translateQuery;
-
-    if (query != "") {
-      var url = query;
-      var curURL = eGc.doc.URL;
-      if (string != "") {
-        url = url.replace("%s",string);
-      }
-      if (curURL != "") {
-        url = url.replace("%u",curURL);
-      }
-      if (url == query) {
-        url = eG_getRoot(query); // no placeholders to change the query
-      }
-
-      url = encodeURI(url);
-
-      if (!eGm.resultQuery) {
-        if (eGm.firstQuery && first) {
-          loadURI(url);
-          first=false;
-        }
-        else {
-          openNewTabWith(url);
-        }
-        
-        var container = document.getElementById("content").mTabContainer;
-        var tabs = container.childNodes;
-        // highlighting the last created tab
-        tabs[tabs.length-1].setAttribute('style', 'color:Brown'); // color:IndianRed ?
-        // select new created tab
-        container._selectNewTab(tabs[tabs.length-1]); // selectNewTab removed from FF3
-      }
-      else {
-        if (win == null) {
-          win = window.open(url);
-          win = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("navigator:browser");
-        }
-        else {
-          win.openNewTabWith(url);
-        }
-      }
-    }
-  },
-
   runProgramFile : function(appNum, string) {
     //code adapted from "External Application Buttons" extension by Torisugari
 
@@ -1082,7 +1034,7 @@ var eGf = {
 //*********************************************************************************
 
 function eG_getRoot(url) {
-  // this is a special code only for searchWeb and Translate functions: does not take into acount the subnetwork in a host
+  // this is a special code only for searchWeb function: does not take into acount the subnetwork in a host
 
   while (url.lastIndexOf("://") != url.lastIndexOf("/")-2) {
     goodurl = url;

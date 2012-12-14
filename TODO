@@ -1,4 +1,4 @@
 TODO
 - fix preferences window
-- remove preferences: tabPopupDelay, behavior.dropDownMenu
+- remove preferences: tabPopupDelay, behavior.dropDownMenu, customizations.translateQuery
 - add new action to focus location bar (replaces removed input box for entering a URL)
