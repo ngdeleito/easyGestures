@@ -310,23 +310,6 @@ function eG_menu () {
 
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
 
-  this.queryInNewWindow = prefs.getBoolPref("customizations.queryInNewWindow"); // open search results in new window
-  this.queryInNewTab = prefs.getBoolPref("customizations.queryInNewTab"); // always open first search results in current tab
-
-  this.search1 = prefs.getBoolPref("customizations.search1");
-  this.search2 = prefs.getBoolPref("customizations.search2");
-  this.search3 = prefs.getBoolPref("customizations.search3");
-  this.search4 = prefs.getBoolPref("customizations.search4");
-  this.search5 = prefs.getBoolPref("customizations.search5");
-  this.search6 = prefs.getBoolPref("customizations.search6");
-
-  this.searchQuery1 = prefs.getCharPref("customizations.searchQuery1");
-  this.searchQuery2 = prefs.getCharPref("customizations.searchQuery2");
-  this.searchQuery3 = prefs.getCharPref("customizations.searchQuery3");
-  this.searchQuery4 = prefs.getCharPref("customizations.searchQuery4");
-  this.searchQuery5 = prefs.getCharPref("customizations.searchQuery5");
-  this.searchQuery6 = prefs.getCharPref("customizations.searchQuery6");
-
   this.runProgramFile1 = prefs.getComplexValue("customizations.runProgramFile1", Components.interfaces.nsISupportsString).data.split("•"); // [0]: name, [1]:path, [2]:arg, [3]:newIconPath, [4]:appIcon, [5]: newIcon
   this.runProgramFile2 = prefs.getComplexValue("customizations.runProgramFile2", Components.interfaces.nsISupportsString).data.split("•");
   this.runProgramFile3 = prefs.getComplexValue("customizations.runProgramFile3", Components.interfaces.nsISupportsString).data.split("•");
@@ -370,7 +353,7 @@ function eG_menu () {
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.menuState = 0; // 0: not shown    1: showing   2: showing & mouse moved    3: staying open
-  this.popup = null; // used for 'Search Web', 'Daily Readings' actions to display a popup on the fly
+  this.popup = null; // used for 'Daily Readings' action to display a popup on the fly
 
   // Coordonnées
   this.pageX = 0; // page x coordinate of pie menu center
@@ -390,8 +373,6 @@ function eG_menu () {
   this.specialNodes = null; // parent node of all special nodes inserted in the DOM: inputBox, linkSign, altMenuSign and contextMenuSign
   this.inputBox = null;
   this.inputBoxSignForHighlight = null; // used to make a case sensitive search or not
-  this.inputBoxSignForSearchWeb = null; // used to select search engine on the fly
-  this.searchWebEngine = 0;
   this.linkSign = null; // image displayed when a link is pointed
   this.altMenuSign = null; // image displayed when alternative menu is displayed
   this.altMenuSignWidth = 26; // width (size of image 8px + spacing 4px)
@@ -531,56 +512,6 @@ eG_menu.prototype = {
     img.style.visibility = "hidden";
 
     this.inputBoxSignForHighlight = img;
-    node.appendChild(img);
-
-    ////////////////////////////////////////////////////////////////////////////
-    // adding sign image for searchWeb inputBox
-    ///////////////////////////////////////////////////////////////////////////
-
-    var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    this.shieldCss(img);
-    img.style.position = "absolute";
-    //img.style.display = "inline";
-    img.style.zIndex = eGc.maxzIndex;
-
-    // finding favicons, setting items
-    var searchEnginesCount = 0;
-    var lastSearchEngineIndex = 0;
-    var faviconPath = null;
-    var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"].getService(Components.interfaces.nsIFaviconService);
-    var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-    for (var i=1; i<=6; i++) {
-      var chksearch = eGm["search"+i];
-      var query = eGm["searchQuery"+i];
-      if (query !="" && chksearch) {
-        try {
-          faviconPath = faviconService.getFaviconForPage(ios.newURI(ios.newURI(query, null, null).prePath,null,null)).spec;
-          img.setAttribute("searchQuery"+i, faviconPath);
-        }
-        catch (e) {
-          faviconPath = ios.newURI(query, null, null).prePath + "/favicon.ico";
-          img.setAttribute("searchQuery"+i, faviconPath);
-        }
-        if (chksearch) {
-          searchEnginesCount++;
-        }
-        lastSearchEngineIndex = i;
-      }
-    }
-    if (searchEnginesCount > 1) {
-      img.src = this.skinPath +"searchWebSign.png";
-      img.setAttribute("searchQuery0", img.src);
-      img.setAttribute("currentEngine", "0");
-    }
-    else {
-      img.src = faviconPath;
-      img.setAttribute("currentEngine", lastSearchEngineIndex);
-    }
-
-    img.setAttribute ("onclick", "var next = parseInt(getAttribute('currentEngine')); do {next=(next+1)%7;} while (!this.hasAttribute('searchQuery'+next) && (next!=0 || !this.hasAttribute('searchQuery0')) ); this.src=this.getAttribute('searchQuery'+ next);this.setAttribute('currentEngine',next);this.previousSibling.previousSibling.focus();");
-    img.style.visibility = "hidden";
-
-    this.inputBoxSignForSearchWeb = img;
     node.appendChild(img);
 
     ////////////////////////////////////////////////////////////////////////////
@@ -840,9 +771,8 @@ eG_menu.prototype = {
         this.linkSign = this.specialNodes.wrappedJSObject.childNodes[0];
         this.inputBox = this.specialNodes.wrappedJSObject.childNodes[1];
         this.inputBoxSignForHighlight = this.specialNodes.wrappedJSObject.childNodes[2];
-        this.inputBoxSignForSearchWeb = this.specialNodes.wrappedJSObject.childNodes[3];
-        this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[4];
-        this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[5];
+        this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[3];
+        this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[4];
       }
 
     // create resources if necessary
@@ -1032,7 +962,6 @@ eG_menu.prototype = {
     this.linkSign.style.visibility = "hidden";
     this.inputBox.style.visibility = "hidden";
     this.inputBoxSignForHighlight.style.visibility = "hidden";
-    this.inputBoxSignForSearchWeb.style.visibility = "hidden";
     this.altMenuSign.style.visibility = "hidden";
     this.contextMenuSign.style.visibility = "hidden";
     this.contextAltMenuSign.style.visibility = "hidden";
@@ -1472,7 +1401,7 @@ eG_menu.prototype = {
     }
   },
 
-  showInputBox : function(showInputBoxSignForHighlight) { // argument is to display options sign for highlight or SearchWeb actions
+  showInputBox : function(showInputBoxSignForHighlight) { // argument is to display options sign for highlight action
 
     // clear tooltips timeout
     if (this.showTooltips && !this.showingTooltips) {
@@ -1503,11 +1432,6 @@ eG_menu.prototype = {
       this.inputBoxSignForHighlight.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
       this.inputBoxSignForHighlight.style.visibility = "visible";
     }
-    else {
-      this.inputBoxSignForSearchWeb.style.left = parseInt(this.inputBox.style.left) + this.inputBoxWidth - 18 +"px";
-      this.inputBoxSignForSearchWeb.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
-      this.inputBoxSignForSearchWeb.style.visibility = "visible";
-    }
 
     // put last typed word as a default value
     this.inputBox.value = eGc.lastTypedWord;
@@ -1533,89 +1457,6 @@ eG_menu.prototype = {
     layout.lNode.style.display = "block";
     
     this.showingTooltips = true;
-  },
-
-  showPopupForSearchWeb : function(closeMenuAndRunSearchOnHiding) {
-    while (this.popup.hasChildNodes()) {
-      // remove all from menupopup
-      this.popup.removeChild(this.popup.firstChild);
-    }
-    if (closeMenuAndRunSearchOnHiding) {
-      this.popup.addEventListener("popuphiding", eG_popup, true);
-    }
-
-    var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"].getService(Components.interfaces.nsIEffectiveTLDService);
-    var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"].getService(Components.interfaces.nsIFaviconService);
-    var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-    var searchEnginesCount = 0;
-    var lastEnabledQuery;
-
-    for (var i = 1; i <= 6; i++) {
-      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-      itemNode.setAttribute("class", "menuitem-iconic");
-      if (i == 1) {
-        itemNode.setAttribute("default", true);
-      }
-
-      // finding favicons, setting items
-      var faviconPath = null;
-
-      var chksearch = eGm["search"+i];
-      var query = eGm["searchQuery"+i];
-      if (query != "" && chksearch) {
-        searchEnginesCount++;
-        lastEnabledQuery = i;
-        itemNode.setAttribute("label", " " + tld.getBaseDomainFromHost(ios.newURI(query, null, null).host));
-        if (closeMenuAndRunSearchOnHiding) {
-          itemNode.setAttribute("oncommand", "eGm.inputBoxSignForSearchWeb.setAttribute('currentEngine'," +i+ " );eGm.runAction();");
-        }
-        else {
-          itemNode.setAttribute("oncommand", "eGm.inputBoxSignForSearchWeb.src = this.getAttribute('src');eGm.inputBoxSignForSearchWeb.setAttribute('currentEngine'," +i+ " );");
-        }
-        try {
-          faviconPath = faviconService.getFaviconForPage(ios.newURI(ios.newURI(query, null, null).prePath,null,null)).spec;
-        }
-        catch (e) {
-          faviconPath = ios.newURI(query, null, null).prePath + "/favicon.ico";
-        }
-        itemNode.setAttribute("src", faviconPath);
-        itemNode.setAttribute("crop", "end");
-        this.popup.appendChild(itemNode);
-      }
-    }
-
-    // if there are more than one search engine, add a 'Search all Engines' choice
-    if (searchEnginesCount > 1) {
-      // menuseparator
-      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-      this.popup.appendChild(itemNode);
-
-      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-      itemNode.setAttribute("class", "menuitem-iconic");
-      itemNode.setAttribute("label", " " + 'Search All');
-      if (closeMenuAndRunSearchOnHiding) {
-        itemNode.setAttribute("oncommand", "eGm.inputBoxSignForSearchWeb.setAttribute('currentEngine',0);eGm.runAction();");
-      }
-      else {
-        itemNode.setAttribute("oncommand", "eGm.inputBoxSignForSearchWeb.src = this.getAttribute('src');eGm.inputBoxSignForSearchWeb.setAttribute('currentEngine',0);");
-      }
-      itemNode.setAttribute("src", this.skinPath +"searchWebSign.png");
-      this.popup.appendChild(itemNode);
-    }
-    else { // don't show popup if only one search engine found
-      this.inputBoxSignForSearchWeb.setAttribute('currentEngine', lastEnabledQuery);
-      if (closeMenuAndRunSearchOnHiding) {
-        this.inputBoxSignForSearchWeb.setAttribute('noPopup', ''); // avoid infinite loop in searchWeb function
-        this.runAction();
-        this.inputBoxSignForSearchWeb.removeAttribute('noPopup', '');
-      }
-      return; // return to avoid showing popup later
-    }
-
-    this.popup.openPopupAtScreen(eGc.screenXUp -32, eGc.screenYUp -8, false);
-    if (eGm.showTooltips) {
-      clearTimeout(eGm.tooltipsTrigger);
-    }
   },
 
   shieldCss : function(node) {

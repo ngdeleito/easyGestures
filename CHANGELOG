@@ -13,3 +13,4 @@ Changes by ngdeleito (see git history for the full details)
 - removed input box for entering URLs
 - removed linear menu
 - removed translate/explain action
+- changed behaviour of search web action, which now uses Firefox's search engines

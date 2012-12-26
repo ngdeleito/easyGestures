@@ -23,7 +23,6 @@
 <!ENTITY actions.contextual "Kontextabhängige Aktionen">
 <!ENTITY customizations.loadURLScript "Adresse/Skript laden">
 <!ENTITY customizations.runProgramFile "Anwendung starten">
-<!ENTITY customizations.queries "Abfragen">
 <!ENTITY customizations.misc "Verschiedenes">
 <!ENTITY about.version "Version">
 <!ENTITY about.languageInfo "Sprache">
@@ -210,12 +209,6 @@
 <!ENTITY highlight.restoreColors "Farben zurücksetzen">
 <!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
 <!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
-<!ENTITY search "Aktion &apos;Web-Suche&apos; anpassen">
-<!ENTITY search.query "Abfrageadresse">
-<!ENTITY queries "Abfrageergebnisse">
-<!ENTITY queries.newTab "Show in new tab">
-<!ENTITY queries.curTab "Anzeige im aktuellen Tab beginnen">
-<!ENTITY queries.newWindow "In neuem Fenster zeigen">
 <!ENTITY extern "Aktion &apos;Anwendung starten&apos; anpassen">
 <!ENTITY extern.tab "Anwendung">
 <!ENTITY extern.name "Tooltip">
@@ -253,7 +246,7 @@
 <!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden. |Aktionen unter Einstellungen/Anpassungen/&apos;Anwendung starten&apos; anpassen.">
 <!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab und fügt auf der Seite eine rote Kennzeichnung hinter dem Link ein.">
 <!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren. |Verhalten unter Einstellungen/Verhalten anpassen">
-<!ENTITY tip10 "Durch Auswählen eines Wortes oder direkte Eingabe in das integrierte Suchfeld kann dieses mit der Aktion &apos;Web-Suche&apos; mit Hilfe frei definierbarer Suchmaschinen gesucht werden. Bleibt das Eingabefeld leer, wird die Startseite der Suchmaschine angezeigt. |Suchmaschinen unter Einstellungen/Anpassungen/&apos;Abfragen&apos; anpassen">
+<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
 <!ENTITY tip12 "Das Kreismenü kann bei gedrückter Umschalttaste mit der Maus verschoben werden.">
 <!ENTITY tip13 "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt. Es ist auch möglich, jeden Tooltip umzubenennen. |Tooltips unter Einstellungen/Verhalten deaktivieren">

@@ -470,7 +470,6 @@
         <tabs>
           <tab label="&customizations.loadURLScript;" />
           <tab label="&customizations.runProgramFile;" />
-          <tab label="&customizations.queries;" />
           <tab label="&customizations.misc;" />
         </tabs>
         <tabpanels flex="1">
@@ -603,80 +602,6 @@
                 <separator />
                 <menuseparator />
                 <vbox flex="1" id="gr_runProgramFile10"></vbox>
-              </vbox>
-            </vbox>
-          </tabpanel>
-          <tabpanel>
-            <vbox>
-              <vbox style="background-color:white;">
-                <hbox>
-                  <vbox>
-                    <label value="&input.infoSel;" height="16px"
-                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
-                    <label value="&input.infoPlaceHolder;" style="margin-left:32px;" />
-                  </vbox>
-                </hbox>
-              </vbox>
-              <separator />
-              <label value="&queries;" style="font-weight: bold;" />
-              <spacer height="3px" />
-              <hbox>
-                <menulist id="queryIn">
-                  <menupopup>
-                    <menuitem value="0" label="&queries.curTab;" />
-                    <menuitem value="1" label="&queries.newTab;" />
-                    <menuitem value="2" label="&queries.newWindow;" />
-                  </menupopup>
-                </menulist>
-              </hbox>
-              <separator />
-              <menuseparator />
-              <hbox>
-                <image id="searchWebImage" class="small_searchWeb" />
-                <vbox>
-                  <spacer flex="1" />
-                  <label value="&search;" style="font-weight: bold;" />
-                  <spacer flex="1" />
-                </vbox>
-              </hbox>
-              <spacer height="3px" />
-              <vbox>
-                <vbox>
-                  <hbox>
-                    <checkbox id="search1" label="&search.query; 1" oncommand="updateUI();" />
-                    <textbox flex="1" id="searchQuery1" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <hbox>
-                    <checkbox id="search2" label="&search.query; 2" oncommand="updateUI();" />
-                    <textbox flex="1" id="searchQuery2" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <hbox>
-                    <checkbox id="search3" label="&search.query; 3" oncommand="updateUI();" />
-                    <textbox flex="1" id="searchQuery3" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <hbox>
-                    <checkbox id="search4" label="&search.query; 4" oncommand="updateUI();" />
-                    <textbox flex="1" id="searchQuery4" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <hbox>
-                    <checkbox id="search5" label="&search.query; 5" oncommand="updateUI();" />
-                    <textbox flex="1" id="searchQuery5" />
-                  </hbox>
-                </vbox>
-                <vbox>
-                  <hbox>
-                    <checkbox id="search6" label="&search.query; 6" oncommand="updateUI();" />
-                    <textbox flex="1" id="searchQuery6" />
-                  </hbox>
-                </vbox>
               </vbox>
             </vbox>
           </tabpanel>
@@ -2010,19 +1935,6 @@
       
       document.getElementById("closeBrowserOnLastTab").checked = eG_prefs.getBoolPref("customizations.closeBrowserOnLastTab");
       
-      var selectedItem = 0;
-      if (eG_prefs.getBoolPref("customizations.queryInNewTab") == true)
-        selectedItem = 1;
-      if (eG_prefs.getBoolPref("customizations.queryInNewWindow") == true)
-        selectedItem = 2;
-      document.getElementById("queryIn").value = selectedItem;
-      
-      for (i=1; i<=6; i++) {
-        // search & searchQuery 1 to 6
-        document.getElementById("search"+i).checked = eG_prefs.getBoolPref("customizations.search"+i);
-        document.getElementById("searchQuery"+i).value = eG_prefs.getCharPref("customizations.searchQuery"+i);
-      }
-      
       for (i=1; i<=10; i++) {
         // runProgramFile 1 to 10
         runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
@@ -2164,21 +2076,6 @@
       eG_prefs.setCharPref("customizations.highlightColorList", colors);
       
       eG_prefs.setBoolPref("customizations.closeBrowserOnLastTab", document.getElementById("closeBrowserOnLastTab").checked);
-      
-      var queryInNewTab = false;
-      var queryInNewWindow = false;
-      switch (document.getElementById("queryIn").value) {
-        case "1": queryInNewTab = true; break;
-        case "2": queryInNewWindow = true; break;
-      }
-      eG_prefs.setBoolPref("customizations.queryInNewTab", queryInNewTab);
-      eG_prefs.setBoolPref("customizations.queryInNewWindow", queryInNewWindow);
-      
-      for (i=1; i<=6; i++) {
-        // search & searchQuery 1 to 6
-        eG_prefs.setBoolPref("customizations.search"+i, document.getElementById("search"+i).checked);
-        eG_prefs.setCharPref("customizations.searchQuery"+i, document.getElementById("searchQuery"+i).value);
-      }
       
       var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
       
@@ -2360,17 +2257,6 @@
       document.getElementById("contextTextboxSector7").hidden = !menuIsLarge;
       
       //***************************************************
-      // checking if search engines are selected
-      //***************************************************
-      
-      document.getElementById("searchQuery1").disabled = !document.getElementById("search1").checked;
-      document.getElementById("searchQuery2").disabled = !document.getElementById("search2").checked;
-      document.getElementById("searchQuery3").disabled = !document.getElementById("search3").checked;
-      document.getElementById("searchQuery4").disabled = !document.getElementById("search4").checked;
-      document.getElementById("searchQuery5").disabled = !document.getElementById("search5").checked;
-      document.getElementById("searchQuery6").disabled = !document.getElementById("search6").checked;
-      
-      //***************************************************
       
       document.getElementById("showAfterDelayDelayLabel").hidden = !document.getElementById("showAfterDelay").checked;
       document.getElementById("showAfterDelayDelay").hidden = !document.getElementById("showAfterDelay").checked;
@@ -2518,7 +2404,6 @@
       // Setting a few images in Customizations Panel
       //***************************************************
       
-      document.getElementById("searchWebImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("openLinkImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("highlightImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("closeTabImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";

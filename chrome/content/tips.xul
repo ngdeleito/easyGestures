@@ -128,7 +128,7 @@
       new tipEntry("&tip7;",  "programsAndScripts",  "customizations/2"),
       new tipEntry("&tip8;",  "clickOnLink",         ""),
       new tipEntry("&tip9;",  "contextual",          "behavior/1"),
-      new tipEntry("&tip10;", "search",              "customizations/3"),
+      new tipEntry("&tip10;", "empty",               ""),
       new tipEntry("&tip11;", "suppressMenu",        ""),
       new tipEntry("&tip12;", "moveMenu",            ""),
       new tipEntry("&tip13;", "noTooltips",          "behavior/1"),

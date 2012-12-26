@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY customizations.loadURLScript "URL/スクリプトの読み込み">
 <!ENTITY customizations.runProgramFile "プログラムの実行">
-<!ENTITY customizations.queries "検索などの問い合わせ">
 <!ENTITY customizations.misc "その他">
 
 <!ENTITY about.version "バージョン">
@@ -252,14 +251,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "'タブを閉じる'アクションの設定">
 <!ENTITY closeTab.closeBrowserOnLastTab "最後のタブを閉じたらブラウザも閉じる">
 
-<!ENTITY search "'Web を検索'アクションの設定">
-<!ENTITY search.query "問い合わせ URL">
-
-<!ENTITY queries "問い合わせ結果">
-<!ENTITY queries.newTab "Show in new tab">
-<!ENTITY queries.curTab "現在のタブで表示する">
-<!ENTITY queries.newWindow "新しいウィンドウに表示する">
-
 <!ENTITY extern "'プログラムの実行'アクションの設定">
 <!ENTITY extern.tab "プログラム">
 <!ENTITY extern.name "ツールチップでの表示名">
@@ -302,7 +293,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。|設定を変更する Options/Customizations/Run Program File">
 <!ENTITY tip8 "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
 <!ENTITY tip9 "パイメニューを開く時に Ctrl キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する Options/Behavior">
-<!ENTITY tip10 "'web を検索'アクションを使うと、お好きな検索エンジンでパイメニューから検索できます。はじめに文字列を選択しておくか、表示されるインプットボックスに検索文字列を入力してください。インプットボックスを空にしておくと、検索エンジンのホームページが表示されます。'翻訳/解説'アクションについても同様です。|検索エンジンなどを入れ替える Options/Customizations/Queries">
+<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "右クリックするときに Insert キーを押していると、パイメニューではなく通常のコンテキストメニューが表示されます。">
 <!ENTITY tip12 "Shift キーを押している間、パイメニューを自由に移動させることができます。">
 <!ENTITY tip13 "ツールチップに表示されるアクション名を変更したり、もし必要でないならツールチップを無効にすることもできます。|表示設定を変更する Options/Behavior">

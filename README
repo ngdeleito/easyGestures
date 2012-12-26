@@ -23,3 +23,4 @@ Features pruned so far and rationale:
 - Input box for entering URLs. Let's not try to duplicate Firefox's location bar.
 - Liner menu. easyGestures is about a pie menu.
 - Translate/explain action. A proper solution for translating a word from any language to any other language seems to be outside the scope of this extension. Explaining a term can be done via a search query.
+- Own search engines. easyGestures should use Firefox's search engines.

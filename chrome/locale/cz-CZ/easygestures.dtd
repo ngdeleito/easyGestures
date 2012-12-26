@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY customizations.loadURLScript "Načíst URL/skript">
 <!ENTITY customizations.runProgramFile "Spustit program">
-<!ENTITY customizations.queries "Požadavky">
 <!ENTITY customizations.misc "Různé">
 
 <!ENTITY about.version "Verze">
@@ -253,14 +252,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
 
-<!ENTITY search "Přizpůsobit akci &apos;Hedat na webu&apos;">
-<!ENTITY search.query "Požadavek na URL">
-
-<!ENTITY queries "Výsledky požadavků">
-<!ENTITY queries.curTab "Zobrazit v aktuálním panelu">
-<!ENTITY queries.newTab "Show in new tab">
-<!ENTITY queries.newWindow "Zobrazit v novém okně">
-
 <!ENTITY extern "Přizpůsobit akce &apos;Spustit program&apos;">
 <!ENTITY extern.tab "Program">
 <!ENTITY extern.name "Popis">
@@ -303,7 +294,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst URL/Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku. Přizpůsobíte to v Možnosti/Přizpůsobení/Spustit program">
 <!ENTITY tip8 "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
 <!ENTITY tip9 "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Ctrl&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
-<!ENTITY tip10 "Můžete hledat slovo s Vaším libovolným vyhledávačem pomocí akce &apos;Hedat na webu&apos;. Nejprve označíte slovo na stránce, anebo ho napíšete do vstupního políčka. Pokud necháte políčko prázdné, otevře sa hlavní stránka vyhledávače. Vyhledávač přidáte anebo odeberete v Možnosti/Přizpůsobení/Požadavky">
+<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "Podržením klávesy &apos;Insert&apos; můžete potlačit zobrazení kruhové nabídky a přistoupit k standardní kontextové nabídce.">
 <!ENTITY tip12 "Můžete hýbat s kruhovou nabídkou stiskem klávesy &apos;Shift&apos; při pohybu myší.">
 <!ENTITY tip13 "Můžete vypnout zobrazování popisků, pokud je nepotřebujete. Také je možné změnit popis každé akce. Zobrazení vypnete v Možnosti/Chování">

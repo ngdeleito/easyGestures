@@ -517,65 +517,8 @@ var eGf = {
   },
 
   searchWeb : function(string) {
-    if (eGm.inputBox.style.visibility == "hidden" && eGm.popup.state !="showing" && eGm.popup.state !="hiding" && !eGm.inputBoxSignForSearchWeb.hasAttribute("noPopup")) { // show popup before opening search textbox
-      eGm.showPopupForSearchWeb(true);
-    }
-    else {
-      var first = true;
-      var win = null;
-      var chksearch;
-      var query;
-      var currentEngine = parseInt(eGm.inputBoxSignForSearchWeb.getAttribute("currentEngine"));
-
-      for (var i=1; i<=6; i++) {
-        chksearch = eGm["search"+i];
-        query = eGm["searchQuery"+i];
-
-        if (query !="" && ( (chksearch && (currentEngine == 0) ) || (currentEngine == i))) {
-          var url = query;
-          var curURL = eGc.doc.URL;
-          if (string != "") {
-            url = url.replace("%s",string);
-          }
-          if (curURL != "") {
-            url = url.replace("%u",curURL);
-          }
-          if (url == query) {
-            url = eG_getRoot(query); // no placeholders to change the query
-          }
-
-          url = encodeURI(url);
-
-          if (!eGm.queryInNewWindow) {
-            if (!eGm.queryInNewTab && first) {
-              loadURI(url);
-              first=false;
-            }
-            else {
-              openNewTabWith(url);
-            }
-
-            var container = document.getElementById("content").mTabContainer;
-            var tabs = container.childNodes;
-            // highlighting the last created tab
-            tabs[tabs.length-1].setAttribute('style', 'color:Brown');   // color:IndianRed ?
-            // select new created tab
-            if (first) { // selectNewTab removed from FF3
-              container._selectNewTab(tabs[tabs.length-1]); first=false;
-            }
-          }
-          else {
-            if (win==null) {
-              win = window.open(url);
-              win = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow("navigator:browser");
-            }
-            else {
-              win.openNewTabWith(url);
-            }
-          }
-        }
-      }
-    }
+    BrowserSearch.searchBar.value = string;
+    BrowserSearch.webSearch();
   },
 
   runProgramFile : function(appNum, string) {
@@ -1032,16 +975,6 @@ var eGf = {
 };
 
 //*********************************************************************************
-
-function eG_getRoot(url) {
-  // this is a special code only for searchWeb function: does not take into acount the subnetwork in a host
-
-  while (url.lastIndexOf("://") != url.lastIndexOf("/")-2) {
-    goodurl = url;
-    url = url.substring(0, url.substring(0, url.length-1).lastIndexOf('/')+1);
-  }
-  return goodurl;
-}
 
 function eG_canGoUp () {
   var url = eGc.doc.URL;

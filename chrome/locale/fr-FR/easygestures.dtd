@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY customizations.loadURLScript "Charger URL/Script">
 <!ENTITY customizations.runProgramFile "Exécuter programme">
-<!ENTITY customizations.queries "Requêtes">
 <!ENTITY customizations.misc "Divers">
 
 <!ENTITY about.version "Version">
@@ -178,7 +177,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY func.homepage "Page de démarrage">
 <!ENTITY func.dailyReadings "Lectures quotidiennes">
-<!ENTITY func.searchWeb "Rechercher Web">
+<!ENTITY func.searchWeb "Rechercher sur le Web">
 <!ENTITY func.runProgramFile1 "Exécuter programme 1">
 <!ENTITY func.runProgramFile2 "Exécuter programme 2">
 <!ENTITY func.runProgramFile3 "Exécuter programme 3">
@@ -252,14 +251,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
 
-<!ENTITY search "Personnaliser action 'Rechercher Web' ">
-<!ENTITY search.query "URL de requête">
-
-<!ENTITY queries "Résultats de requête">
-<!ENTITY queries.newTab "Monter dans un nouvel onglet">
-<!ENTITY queries.curTab "Commencer dans onglet courant">
-<!ENTITY queries.newWindow "Montrer dans nouvelle fenêtre">
-
 <!ENTITY extern "Personnaliser action 'Exécuter programme' ">
 <!ENTITY extern.tab "Programme">
 <!ENTITY extern.name "Infobulle">
@@ -302,7 +293,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "Vous pouvez lancer des applications externes et exécuter du code javascript avec les actions 'Exécuter programme' et 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension. |Personnalisez dans Options/Personnalisations/Exécuter programme">
 <!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet et affichera une marque rouge sur la page à la suite du lien.">
 <!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active. |Changez comportement dans Options/Comportement">
-<!ENTITY tip10 "Vous pouvez rechercher un mot avec votre moteur de recherche personnalisé par l'action 'Rechercher Web' en sélectionnant d'abord le mot ou en le tapant dans la zone de texte. Si celle-ci est laissée vide, la page de démarrage du moteur de recherche s'affichera. |Enlevez ou ajout. moteurs recher. dans Options/Personnalisations/Requêtes">
+<!ENTITY tip10 "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
 <!ENTITY tip11 "En maintenant la touche Insert appuyée sur un clic du bouton droit, vous pouvez supprimer le menu circulaire et accéder au menu contextuel standard.">
 <!ENTITY tip12 "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">
 <!ENTITY tip13 "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin. Il est aussi possible de renomer l'infobulle de chaque action. |Arrêtez l'affichage dans Options/Comportement">

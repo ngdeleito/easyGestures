@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY customizations.loadURLScript "载入网址/脚本">
 <!ENTITY customizations.runProgramFile "运行程序文件">
-<!ENTITY customizations.queries "询问">
 <!ENTITY customizations.misc "其他">
 
 <!ENTITY about.version "版本">
@@ -253,14 +252,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "自定义“关闭标签页”手势">
 <!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
 
-<!ENTITY search "自定义“搜索网站”手势">
-<!ENTITY search.query "查询网址">
-
-<!ENTITY queries "查询结果">
-<!ENTITY queries.newTab "在新标签页显示">
-<!ENTITY queries.curTab "开始在当前标签页显示">
-<!ENTITY queries.newWindow "在新窗口显示">
-
 <!ENTITY extern "自定义“运行程序文件”手势">
 <!ENTITY extern.tab "程序文件">
 <!ENTITY extern.name "工具提示">
@@ -303,7 +294,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip7 "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。|自定义在 选项/自定义/运行程序文件">
 <!ENTITY tip8 "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
 <!ENTITY tip9 "你可以在圆饼菜单打开时点击“Ctrl”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
-<!ENTITY tip10 "你可以用“搜索网络”动作来查询页面上的文字或自己输入的文字，如果输入框为空，会显示搜索引擎的首页。同样的情况在“翻译/说明”动作。|添加或删除搜索引擎在 选项/自定义/询问">
+<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "你可以按住“Insert”键来临时禁止圆饼菜单，使用标准的页面右键菜单。">
 <!ENTITY tip12 "您可以拖动圆饼菜单，按住“Shift”拖动。">
 <!ENTITY tip13 "如果你不需要显示工具提示，你可以关掉它。还可以重命名每个动作提示。|选择关掉提示在 选项/动作">

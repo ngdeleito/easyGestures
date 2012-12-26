@@ -643,11 +643,6 @@ div.small_dailyReadings {	background-position: -20px -380px  !important ; }
 div.small_dailyReadings[grayed="false"][active="true"] { background-position: -20px -400px  !important ; }
 image.small_dailyReadings { -moz-image-region: rect(380px 40px 400px 20px) !important ; }
 
-div.small_searchWeb[grayed="true"] { background-position: -40px -360px  !important ; }
-div.small_searchWeb {	background-position: -40px -380px  !important ; }
-div.small_searchWeb[grayed="false"][active="true"] { background-position: -40px -400px  !important ; }
-image.small_searchWeb { -moz-image-region: rect(380px 60px 400px 40px) !important ; }
-
 div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px  !important ; }
 div.small_runProgramFile1 {	background-position: -80px -380px  !important ; }
 div.small_runProgramFile1[grayed="false"][active="true"] { background-position: -80px -400px  !important ; }

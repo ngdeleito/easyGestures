@@ -1,4 +1,22 @@
 TODO
 - fix preferences window
-- remove preferences: tabPopupDelay, behavior.dropDownMenu, customizations.translateQuery
 - add new action to focus location bar (replaces removed input box for entering a URL)
+- add to search web action a popup with Firefox's search engines icons
+- remove preferences:
+-- tabPopupDelay
+-- behavior.dropDownMenu
+-- customizations.translateQuery
+-- customizations.queryInNewWindow
+-- customizations.queryInNewTab
+-- customizations.search1
+-- customizations.search2
+-- customizations.search3
+-- customizations.search4
+-- customizations.search5
+-- customizations.search6
+-- customizations.searchQuery1
+-- customizations.searchQuery2
+-- customizations.searchQuery3
+-- customizations.searchQuery4
+-- customizations.searchQuery5
+-- customizations.searchQuery6

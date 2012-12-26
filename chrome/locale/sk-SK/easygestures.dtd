@@ -23,7 +23,6 @@
 <!ENTITY actions.contextual "Kontextové akcie">
 <!ENTITY customizations.loadURLScript "Načítať URL/skript">
 <!ENTITY customizations.runProgramFile "Spustiť program">
-<!ENTITY customizations.queries "Požiadavky">
 <!ENTITY customizations.misc "Rôzne">
 <!ENTITY about.version "Verzia">
 <!ENTITY about.languageInfo "Jazyk">
@@ -210,12 +209,6 @@
 <!ENTITY highlight.restoreColors "Obnoviť farby">
 <!ENTITY closeTab "Prispôsobiť akciu &apos;Zavrieť kartu&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavrieť prehliadač, keď je zavretá posledná karta">
-<!ENTITY search "Prispôsobiť akciu &apos;Hľadať na webe&apos;">
-<!ENTITY search.query "Požiadavka na URL">
-<!ENTITY queries "Výsledky požiadaviek">
-<!ENTITY queries.newTab "Show in new tab">
-<!ENTITY queries.curTab "Začať zobrazovať na aktuálnej karte">
-<!ENTITY queries.newWindow "Zobraziť v novom okne">
 <!ENTITY extern "Prispôsobiť akcie &apos;Spustiť program&apos;">
 <!ENTITY extern.tab "Program">
 <!ENTITY extern.name "Popis">
@@ -253,7 +246,7 @@
 <!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať URL/Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku. Prispôsobíte si to v Možnosti/Prispôsobenie/Spustiť program">
 <!ENTITY tip8 "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
 <!ENTITY tip9 "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v Možnosti/Správanie">
-<!ENTITY tip10 "Môžete hľadať slovo s vaším ľubovoľným vyhľadávačom pomocou akcie &apos;Hľadať na webe&apos;. Najprv označíte slovo na stránke, alebo ho napíšete do vstupného políčka. Ak necháte políčko prázdne, otvorí sa hlavná stránka vyhľadávača. Vyhľadávač pridáte alebo odoberiete v Možnosti/Prispôsobenie/Queries">
+<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "Podržaním klávesu &apos;Insert&apos; môžete potlačiť zobrazenie koláčovej ponuky a pristúpiť k štandardnej kontextovej ponuke.">
 <!ENTITY tip12 "Môžete hýbať s koláčovou ponukou stlačením klávesu &apos;Shift&apos; pri pohybe myšou.">
 <!ENTITY tip13 "Môžete vypnúť zobrazovanie popisov, ak ich nepotrebujete. Tiež je možné zmeniť popis každej akcie. Zobrazenie vypnete v Možnosti/Správanie">

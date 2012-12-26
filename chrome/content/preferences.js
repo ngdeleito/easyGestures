@@ -113,18 +113,6 @@ function eG_setPrefs(locale){	// this function is also called in options.xul wit
 	eG_prefsObs.prefs.setCharPref("customizations.highlightColorList", eGc.defaultHighlightColorList);
 	
 	eG_prefsObs.prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
-    
-	eG_prefsObs.prefs.setBoolPref("customizations.queryInNewWindow", false);
-	eG_prefsObs.prefs.setBoolPref("customizations.queryInNewTab", true);
-
-	if (locale!=null) eG_localizeSearchURLs(locale);		// don't localize searchs if called from Options Dialog (reseting preferences)
-	
-	eG_prefsObs.prefs.setBoolPref("customizations.search1", true);
-	eG_prefsObs.prefs.setBoolPref("customizations.search2", true);
-	eG_prefsObs.prefs.setBoolPref("customizations.search3", false);
-	eG_prefsObs.prefs.setBoolPref("customizations.search4", true);
-	eG_prefsObs.prefs.setBoolPref("customizations.search5", false);
-	eG_prefsObs.prefs.setBoolPref("customizations.search6", false);
 
 	var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
 	
@@ -145,100 +133,6 @@ function eG_setPrefs(locale){	// this function is also called in options.xul wit
 	eG_prefsObs.prefs.setCharPref("skin.path", "chrome://easygestures/skin/");		// path to skin containing icons and images 
 
 }
-
-function eG_localizeSearchURLs(locale){
-	// localizing default search queries
-	switch (locale){
-		case "fr-FR":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.fr/search?q=%s&ie=UTF-8&hl=fr&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://fr.wikipedia.org/wiki/Special:Search?search=%s&go=Consulter");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://fr.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=fr");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-		case "es-ES":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.es/search?q=%s&ie=UTF-8&hl=es&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://es.wikipedia.org/wiki/Especial:Search?search=%s&go=Ir");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://es.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=es");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;			
-		case "de-DE":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.de/search?q=%s&ie=UTF-8&hl=de&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://de.wikipedia.org/wiki/Spezial:Search?search=%s&go=Artikel");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://de.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=de");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-		case "it-IT":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.it/search?q=%s&ie=UTF-8&hl=it&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://it.wikipedia.org/wiki/Speciale:Search?search=%s&go=Vai");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://it.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=it");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-		case "ja-JP":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.co.jp/search?q=%s&ie=UTF-8&hl=ja&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://ja.wikipedia.org/wiki/%E7%89%B9%E5%88%A5:Search?search=%s&go=%E8%A1%A8%E7%A4%BA");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://ja.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=ja");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;		
-		case "zh-TW":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com.tw/search?q=%s&ie=UTF-8&hl=zh-TW&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://zh.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=zh-TW");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;	
-		case "pt-BR":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=pt-BR&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://pt.wikipedia.org/wiki/Especial:Search?search=%s&go=Artigo");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://pt.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=pt");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-		case "pl-PL":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=pl&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://pl.wikipedia.org/wiki/Specjalna:Search?search=%s&go=Przejd%C5%BA");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://pl.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=pl");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-		case "tr-TR":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=en&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://tr.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=en");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-		case "zh-CN":
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com.tw/search?q=%s&ie=UTF-8&hl=zh-CN&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://zh.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=zh-CN");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;	            
-		default:
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery1", "http://www.google.com/search?q=%s&ie=UTF-8&hl=en&num=100");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery2", "http://en.wikipedia.org/wiki/Special:Search?search=%s&go=Go");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery3", "http://en.wiktionary.org/wiki/%s");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery4", "http://www.youtube.com/results?search_type=&search_query=%s&aq=f&hl=en");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery5", "");
-			eG_prefsObs.prefs.setCharPref("customizations.searchQuery6", "");
-			break;
-	}
-}	
 
 function eG_setActions(setAll) {	// setAll is set to false to only update labels after language change
     
