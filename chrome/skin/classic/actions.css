@@ -35,612 +35,612 @@ the terms of any one of the MPL, the GPL or the LGPL.
 						REGULAR IMAGES
 //////////////////////////////////////////////////////////////////////////////////////////////*/
 
-div.empty {	background-position: 0px 0px  !important ; }
-div.empty[active="true"] {	background-position: 0px -64px  !important ; }
+div.empty { background-position: 0px 0px !important ; }
+div.empty[active="true"] { background-position: 0px -64px !important ; }
 
-div.more {	background-position: -32px -32px  !important ; }
-div.more[active="true"],  div.more[extraMenuShowing="true"] { background-position: -32px -64px  !important ; }
+div.more { background-position: -32px -32px !important ; }
+div.more[active="true"], div.more[extraMenuShowing="true"] { background-position: -32px -64px !important ; }
 
-div.moreDropDownMenu {	background-position: -64px -32px  !important ; }
-div.moreDropDownMenu[active="true"],  div.moreDropDownMenu[extraMenuShowing="true"] { background-position: -64px -64px  !important ; }
+div.moreDropDownMenu { background-position: -64px -32px !important ; }
+div.moreDropDownMenu[active="true"], div.moreDropDownMenu[extraMenuShowing="true"] { background-position: -64px -64px !important ; }
 
-div.firstPage[grayed="true"] { background-position: 0px -96px  !important ; }
-div.firstPage {	background-position: 0px -128px  !important ; }
-div.firstPage[grayed="false"][active="true"] { background-position: 0px -160px  !important ; }
+div.firstPage[grayed="true"] { background-position: 0px -96px !important ; }
+div.firstPage { background-position: 0px -128px !important ; }
+div.firstPage[grayed="false"][active="true"] { background-position: 0px -160px !important ; }
 
-div.lastPage[grayed="true"] { background-position: -32px -96px  !important ; }
-div.lastPage {	background-position: -32px -128px  !important ; }
-div.lastPage[grayed="false"][active="true"] { background-position: -32px -160px  !important ; }
+div.lastPage[grayed="true"] { background-position: -32px -96px !important ; }
+div.lastPage { background-position: -32px -128px !important ; }
+div.lastPage[grayed="false"][active="true"] { background-position: -32px -160px !important ; }
 
-div.backSite[grayed="true"] { background-position: -64px -96px  !important ; }
-div.backSite {	background-position: -64px -128px  !important ; }
-div.backSite[grayed="false"][active="true"] { background-position: -64px -160px  !important ; }
+div.backSite[grayed="true"] { background-position: -64px -96px !important ; }
+div.backSite { background-position: -64px -128px !important ; }
+div.backSite[grayed="false"][active="true"] { background-position: -64px -160px !important ; }
 
-div.forwardSite[grayed="true"] { background-position: -96px -96px  !important ; }
-div.forwardSite {	background-position: -96px -128px  !important ; }
-div.forwardSite[grayed="false"][active="true"] { background-position: -96px -160px  !important ; }
+div.forwardSite[grayed="true"] { background-position: -96px -96px !important ; }
+div.forwardSite { background-position: -96px -128px !important ; }
+div.forwardSite[grayed="false"][active="true"] { background-position: -96px -160px !important ; }
 
-div.back[grayed="true"] { background-position: -128px -96px  !important ; }
-div.back {	background-position: -128px -128px  !important ; }
-div.back[grayed="false"][active="true"] { background-position: -128px -160px  !important ; }
+div.back[grayed="true"] { background-position: -128px -96px !important ; }
+div.back { background-position: -128px -128px !important ; }
+div.back[grayed="false"][active="true"] { background-position: -128px -160px !important ; }
 
-div.forward[grayed="true"] { background-position: -160px -96px  !important ; }
-div.forward {	background-position: -160px -128px  !important ; }
-div.forward[grayed="false"][active="true"] { background-position: -160px -160px  !important ; }
+div.forward[grayed="true"] { background-position: -160px -96px !important ; }
+div.forward { background-position: -160px -128px !important ; }
+div.forward[grayed="false"][active="true"] { background-position: -160px -160px !important ; }
 
-div.reload[grayed="true"] { background-position: 0px -192px  !important ; }
-div.reload {	background-position: 0px -224px  !important ; }
-div.reload[grayed="false"][active="true"] { background-position: 0px -256px  !important ; }
+div.reload[grayed="true"] { background-position: 0px -192px !important ; }
+div.reload { background-position: 0px -224px !important ; }
+div.reload[grayed="false"][active="true"] { background-position: 0px -256px !important ; }
 
-div.stop[grayed="true"] { background-position: -32px -192px  !important ; }
-div.stop {	background-position: -32px -224px  !important ; }
-div.stop[grayed="false"][active="true"] { background-position: -32px -256px  !important ; }
+div.stop[grayed="true"] { background-position: -32px -192px !important ; }
+div.stop { background-position: -32px -224px !important ; }
+div.stop[grayed="false"][active="true"] { background-position: -32px -256px !important ; }
 
-div.up[grayed="true"] { background-position: -64px -192px  !important ; }
-div.up {	background-position: -64px -224px  !important ; }
-div.up[grayed="false"][active="true"] { background-position: -64px -256px  !important ; }
+div.up[grayed="true"] { background-position: -64px -192px !important ; }
+div.up { background-position: -64px -224px !important ; }
+div.up[grayed="false"][active="true"] { background-position: -64px -256px !important ; }
 
-div.root[grayed="true"] { background-position: -96px -192px  !important ; }
-div.root {	background-position: -96px -224px  !important ; }
-div.root[grayed="false"][active="true"] { background-position: -96px -256px  !important ; }
+div.root[grayed="true"] { background-position: -96px -192px !important ; }
+div.root { background-position: -96px -224px !important ; }
+div.root[grayed="false"][active="true"] { background-position: -96px -256px !important ; }
 
-div.pageTop[grayed="true"] { background-position: -128px -192px  !important ; }
-div.pageTop {	background-position: -128px -224px  !important ; }
-div.pageTop[grayed="false"][active="true"] { background-position: -128px -256px  !important ; }
+div.pageTop[grayed="true"] { background-position: -128px -192px !important ; }
+div.pageTop { background-position: -128px -224px !important ; }
+div.pageTop[grayed="false"][active="true"] { background-position: -128px -256px !important ; }
 
-div.pageBottom[grayed="true"] { background-position: -160px -192px  !important ; }
-div.pageBottom {	background-position: -160px -224px  !important ; }
-div.pageBottom[grayed="false"][active="true"] { background-position: -160px -256px  !important ; }
+div.pageBottom[grayed="true"] { background-position: -160px -192px !important ; }
+div.pageBottom { background-position: -160px -224px !important ; }
+div.pageBottom[grayed="false"][active="true"] { background-position: -160px -256px !important ; }
 
-div.autoscrolling[grayed="true"] { background-position: -192px -192px  !important ; }
-div.autoscrolling {	background-position: -192px -224px  !important ; }
-div.autoscrolling[grayed="false"][active="true"] { background-position: -192px -256px  !important ; }
-
-/*******************************************************************************************************************/
-
-div.newTab[grayed="true"] { background-position: 0px -288px  !important ; }
-div.newTab {	background-position: 0px -320px  !important ; }
-div.newTab[grayed="false"][active="true"] { background-position: 0px -352px  !important ; }
-
-div.duplicateTab[grayed="true"] { background-position: -32px -288px  !important ; }
-div.duplicateTab {	background-position: -32px -320px  !important ; }
-div.duplicateTab[grayed="false"][active="true"] { background-position: -32px -352px  !important ; }
-
-div.prevTab[grayed="true"] { background-position: -64px -288px  !important ; }
-div.prevTab {	background-position: -64px -320px  !important ; }
-div.prevTab[grayed="false"][active="true"] { background-position: -64px -352px  !important ; }
-
-div.nextTab[grayed="true"] { background-position: -96px -288px  !important ; }
-div.nextTab {	background-position: -96px -320px  !important ; }
-div.nextTab[grayed="false"][active="true"] { background-position: -96px -352px  !important ; }
-
-div.closeTab[grayed="true"] { background-position: -128px -288px  !important ; }
-div.closeTab {	background-position: -128px -320px  !important ; }
-div.closeTab[grayed="false"][active="true"] { background-position: -128px -352px  !important ; }
-
-div.closeOtherTabs[grayed="true"] { background-position: -160px -288px  !important ; }
-div.closeOtherTabs {	background-position: -160px -320px  !important ; }
-div.closeOtherTabs[grayed="false"][active="true"] { background-position: -160px -352px  !important ; }
-
-div.undoCloseTab[grayed="true"] { background-position: -192px -288px  !important ; }
-div.undoCloseTab {	background-position: -192px -320px  !important ; }
-div.undoCloseTab[grayed="false"][active="true"] { background-position: -192px -352px  !important ; }
+div.autoscrolling[grayed="true"] { background-position: -192px -192px !important ; }
+div.autoscrolling { background-position: -192px -224px !important ; }
+div.autoscrolling[grayed="false"][active="true"] { background-position: -192px -256px !important ; }
 
 /*******************************************************************************************************************/
 
-div.newWindow[grayed="true"] { background-position: 0px -384px  !important ; }
-div.newWindow {	background-position: 0px -416px  !important ; }
-div.newWindow[grayed="false"][active="true"] { background-position: 0px -448px  !important ; }
+div.newTab[grayed="true"] { background-position: 0px -288px !important ; }
+div.newTab { background-position: 0px -320px !important ; }
+div.newTab[grayed="false"][active="true"] { background-position: 0px -352px !important ; }
 
-div.duplicateWindow[grayed="true"] { background-position: -32px -384px  !important ; }
-div.duplicateWindow {	background-position: -32px -416px  !important ; }
-div.duplicateWindow[grayed="false"][active="true"] { background-position: -32px -448px  !important ; }
+div.duplicateTab[grayed="true"] { background-position: -32px -288px !important ; }
+div.duplicateTab { background-position: -32px -320px !important ; }
+div.duplicateTab[grayed="false"][active="true"] { background-position: -32px -352px !important ; }
 
-div.closeOtherWindows[grayed="true"] { background-position: -64px -384px  !important ; }
-div.closeOtherWindows {	background-position: -64px -416px  !important ; }
-div.closeOtherWindows[grayed="false"][active="true"] { background-position: -64px -448px  !important ; }
+div.prevTab[grayed="true"] { background-position: -64px -288px !important ; }
+div.prevTab { background-position: -64px -320px !important ; }
+div.prevTab[grayed="false"][active="true"] { background-position: -64px -352px !important ; }
 
-div.closeBrowser[grayed="true"] { background-position: -96px -384px  !important ; }
-div.closeBrowser {	background-position: -96px -416px  !important ; }
-div.closeBrowser[grayed="false"][active="true"] { background-position: -96px -448px  !important ; }
+div.nextTab[grayed="true"] { background-position: -96px -288px !important ; }
+div.nextTab { background-position: -96px -320px !important ; }
+div.nextTab[grayed="false"][active="true"] { background-position: -96px -352px !important ; }
 
-div.minimizeWindow[grayed="true"] { background-position: -128px -384px  !important ; }
-div.minimizeWindow {	background-position: -128px -416px  !important ; }
-div.minimizeWindow[grayed="false"][active="true"] { background-position: -128px -448px  !important ; }
+div.closeTab[grayed="true"] { background-position: -128px -288px !important ; }
+div.closeTab { background-position: -128px -320px !important ; }
+div.closeTab[grayed="false"][active="true"] { background-position: -128px -352px !important ; }
 
-div.fullscreen[grayed="true"] { background-position: -160px -384px  !important ; }
-div.fullscreen {	background-position: -160px -416px  !important ; }
-div.fullscreen[grayed="false"][active="true"] { background-position: -160px -448px  !important ; }
+div.closeOtherTabs[grayed="true"] { background-position: -160px -288px !important ; }
+div.closeOtherTabs { background-position: -160px -320px !important ; }
+div.closeOtherTabs[grayed="false"][active="true"] { background-position: -160px -352px !important ; }
 
-/*******************************************************************************************************************/
-
-div.openLink[grayed="true"] { background-position: 0px -480px  !important ; }
-div.openLink {	background-position: 0px -512px  !important ; }
-div.openLink[grayed="false"][active="true"] { background-position: 0px -544px  !important ; }
-
-div.openLinkNewWindow[grayed="true"] { background-position: -32px -480px  !important ; }
-div.openLinkNewWindow {	background-position: -32px -512px  !important ; }
-div.openLinkNewWindow[grayed="false"][active="true"] { background-position: -32px -544px  !important ; }
-
-div.copyLink[grayed="true"] { background-position: -64px -480px  !important ; }
-div.copyLink {	background-position: -64px -512px  !important ; }
-div.copyLink[grayed="false"][active="true"] { background-position: -64px -544px  !important ; }
-
-div.sendLink[grayed="true"] { background-position: -96px -480px  !important ; }
-div.sendLink {	background-position: -96px -512px  !important ; }
-div.sendLink[grayed="false"][active="true"] { background-position: -96px -544px  !important ; }
-
-div.copyImageLocation[grayed="true"] { background-position: -128px -480px  !important ; }
-div.copyImageLocation {	background-position: -128px -512px  !important ; }
-div.copyImageLocation[grayed="false"][active="true"] { background-position: -128px -544px  !important ; }
-
-div.saveLinkAs[grayed="true"] { background-position: -160px -480px  !important ; }
-div.saveLinkAs {	background-position: -160px -512px  !important ; }
-div.saveLinkAs[grayed="false"][active="true"] { background-position: -160px -544px  !important ; }
-
-div.saveImageAs[grayed="true"] { background-position: -192px -480px  !important ; }
-div.saveImageAs {	background-position: -192px -512px  !important ; }
-div.saveImageAs[grayed="false"][active="true"] { background-position: -192px -544px  !important ; }
-
-div.savePageAs[grayed="true"] { background-position: -224px -480px  !important ; }
-div.savePageAs {	background-position: -224px -512px  !important ; }
-div.savePageAs[grayed="false"][active="true"] { background-position: -224px -544px  !important ; }
-
-div.hideImages[grayed="true"] { background-position: -256px -480px  !important ; }
-div.hideImages {	background-position: -256px -512px  !important ; }
-div.hideImages[grayed="false"][active="true"] { background-position: -256px -544px  !important ; }
-
-div.copyImage[grayed="true"] { background-position: -288px -480px  !important ; }
-div.copyImage {	background-position: -288px -512px  !important ; }
-div.copyImage[grayed="false"][active="true"] { background-position: -288px -544px  !important ; }
+div.undoCloseTab[grayed="true"] { background-position: -192px -288px !important ; }
+div.undoCloseTab { background-position: -192px -320px !important ; }
+div.undoCloseTab[grayed="false"][active="true"] { background-position: -192px -352px !important ; }
 
 /*******************************************************************************************************************/
 
-div.homepage[grayed="true"] { background-position: 0px -576px  !important ; }
-div.homepage {	background-position: 0px -608px  !important ; }
-div.homepage[grayed="false"][active="true"] { background-position: 0px -640px  !important ; }
+div.newWindow[grayed="true"] { background-position: 0px -384px !important ; }
+div.newWindow { background-position: 0px -416px !important ; }
+div.newWindow[grayed="false"][active="true"] { background-position: 0px -448px !important ; }
 
-div.dailyReadings[grayed="true"] { background-position: -32px -576px  !important ; }
-div.dailyReadings {	background-position: -32px -608px  !important ; }
-div.dailyReadings[grayed="false"][active="true"] { background-position: -32px -640px  !important ; }
+div.duplicateWindow[grayed="true"] { background-position: -32px -384px !important ; }
+div.duplicateWindow { background-position: -32px -416px !important ; }
+div.duplicateWindow[grayed="false"][active="true"] { background-position: -32px -448px !important ; }
 
-div.searchWeb[grayed="true"] { background-position: -64px -576px  !important ; }
-div.searchWeb {	background-position: -64px -608px  !important ; }
-div.searchWeb[grayed="false"][active="true"] { background-position: -64px -640px  !important ; }
+div.closeOtherWindows[grayed="true"] { background-position: -64px -384px !important ; }
+div.closeOtherWindows { background-position: -64px -416px !important ; }
+div.closeOtherWindows[grayed="false"][active="true"] { background-position: -64px -448px !important ; }
 
-div.runProgramFile1[grayed="true"] { background-position: -128px -576px  !important ; }
-div.runProgramFile1 {	background-position: -128px -608px  !important ; }
-div.runProgramFile1[grayed="false"][active="true"] { background-position: -128px -640px  !important ; }
+div.closeBrowser[grayed="true"] { background-position: -96px -384px !important ; }
+div.closeBrowser { background-position: -96px -416px !important ; }
+div.closeBrowser[grayed="false"][active="true"] { background-position: -96px -448px !important ; }
 
-div.runProgramFile2[grayed="true"] { background-position: -160px -576px  !important ; }
-div.runProgramFile2 {	background-position: -160px -608px  !important ; }
-div.runProgramFile2[grayed="false"][active="true"] { background-position: -160px -640px  !important ; }
+div.minimizeWindow[grayed="true"] { background-position: -128px -384px !important ; }
+div.minimizeWindow { background-position: -128px -416px !important ; }
+div.minimizeWindow[grayed="false"][active="true"] { background-position: -128px -448px !important ; }
 
-div.runProgramFile3[grayed="true"] { background-position: -192px -576px  !important ; }
-div.runProgramFile3 {	background-position: -192px -608px  !important ; }
-div.runProgramFile3[grayed="false"][active="true"] { background-position: -192px -640px  !important ; }
-
-div.runProgramFile4[grayed="true"] { background-position: -224px -576px  !important ; }
-div.runProgramFile4 {	background-position: -224px -608px  !important ; }
-div.runProgramFile4[grayed="false"][active="true"] { background-position: -224px -640px  !important ; }
-
-div.runProgramFile5[grayed="true"] { background-position: -256px -576px  !important ; }
-div.runProgramFile5 {	background-position: -256px -608px  !important ; }
-div.runProgramFile5[grayed="false"][active="true"] { background-position: -256px -640px  !important ; }
-
-div.runProgramFile6[grayed="true"] { background-position: -288px -576px  !important ; }
-div.runProgramFile6 {	background-position: -288px -608px  !important ; }
-div.runProgramFile6[grayed="false"][active="true"] { background-position: -288px -640px  !important ; }
-
-div.runProgramFile7[grayed="true"] { background-position: -320px -576px  !important ; }
-div.runProgramFile7 {	background-position: -320px -608px  !important ; }
-div.runProgramFile7[grayed="false"][active="true"] { background-position: -320px -640px  !important ; }
-
-div.runProgramFile8[grayed="true"] { background-position: -352px -576px  !important ; }
-div.runProgramFile8 {	background-position: -352px -608px  !important ; }
-div.runProgramFile8[grayed="false"][active="true"] { background-position: -352px -640px  !important ; }
-
-div.runProgramFile9[grayed="true"] { background-position: -384px -576px  !important ; }
-div.runProgramFile9 {	background-position: -384px -608px  !important ; }
-div.runProgramFile9[grayed="false"][active="true"] { background-position: -384px -640px  !important ; }
-
-div.runProgramFile10[grayed="true"] { background-position: -416px -576px  !important ; }
-div.runProgramFile10 {	background-position: -416px -608px  !important ; }
-div.runProgramFile10[grayed="false"][active="true"] { background-position: -416px -640px  !important ; }
+div.fullscreen[grayed="true"] { background-position: -160px -384px !important ; }
+div.fullscreen { background-position: -160px -416px !important ; }
+div.fullscreen[grayed="false"][active="true"] { background-position: -160px -448px !important ; }
 
 /*******************************************************************************************************************/
 
-div.loadURLScript1[grayed="true"] { background-position: 0px -672px  !important ; }
-div.loadURLScript1 {	background-position: 0px -704px  !important ; }
-div.loadURLScript1[grayed="false"][active="true"] { background-position: 0px -736px  !important ; }
+div.openLink[grayed="true"] { background-position: 0px -480px !important ; }
+div.openLink { background-position: 0px -512px !important ; }
+div.openLink[grayed="false"][active="true"] { background-position: 0px -544px !important ; }
 
-div.loadURLScript2[grayed="true"] { background-position: -32px -672px  !important ; }
-div.loadURLScript2 {	background-position: -32px -704px  !important ; }
-div.loadURLScript2[grayed="false"][active="true"] { background-position: -32px -736px  !important ; }
+div.openLinkNewWindow[grayed="true"] { background-position: -32px -480px !important ; }
+div.openLinkNewWindow { background-position: -32px -512px !important ; }
+div.openLinkNewWindow[grayed="false"][active="true"] { background-position: -32px -544px !important ; }
 
-div.loadURLScript3[grayed="true"] { background-position: -64px -672px  !important ; }
-div.loadURLScript3 {	background-position: -64px -704px  !important ; }
-div.loadURLScript3[grayed="false"][active="true"] { background-position: -64px -736px  !important ; }
+div.copyLink[grayed="true"] { background-position: -64px -480px !important ; }
+div.copyLink { background-position: -64px -512px !important ; }
+div.copyLink[grayed="false"][active="true"] { background-position: -64px -544px !important ; }
 
-div.loadURLScript4[grayed="true"] { background-position: -96px -672px  !important ; }
-div.loadURLScript4 {	background-position: -96px -704px  !important ; }
-div.loadURLScript4[grayed="false"][active="true"] { background-position: -96px -736px  !important ; }
+div.sendLink[grayed="true"] { background-position: -96px -480px !important ; }
+div.sendLink { background-position: -96px -512px !important ; }
+div.sendLink[grayed="false"][active="true"] { background-position: -96px -544px !important ; }
 
-div.loadURLScript5[grayed="true"] { background-position: -128px -672px  !important ; }
-div.loadURLScript5 {	background-position: -128px -704px  !important ; }
-div.loadURLScript5[grayed="false"][active="true"] { background-position: -128px -736px  !important ; }
+div.copyImageLocation[grayed="true"] { background-position: -128px -480px !important ; }
+div.copyImageLocation { background-position: -128px -512px !important ; }
+div.copyImageLocation[grayed="false"][active="true"] { background-position: -128px -544px !important ; }
 
-div.loadURLScript6[grayed="true"] { background-position: -160px -672px  !important ; }
-div.loadURLScript6 {	background-position: -160px -704px  !important ; }
-div.loadURLScript6[grayed="false"][active="true"] { background-position: -160px -736px  !important ; }
+div.saveLinkAs[grayed="true"] { background-position: -160px -480px !important ; }
+div.saveLinkAs { background-position: -160px -512px !important ; }
+div.saveLinkAs[grayed="false"][active="true"] { background-position: -160px -544px !important ; }
 
-div.loadURLScript7[grayed="true"] { background-position: -192px -672px  !important ; }
-div.loadURLScript7 {	background-position: -192px -704px  !important ; }
-div.loadURLScript7[grayed="false"][active="true"] { background-position: -192px -736px  !important ; }
+div.saveImageAs[grayed="true"] { background-position: -192px -480px !important ; }
+div.saveImageAs { background-position: -192px -512px !important ; }
+div.saveImageAs[grayed="false"][active="true"] { background-position: -192px -544px !important ; }
 
-div.loadURLScript8[grayed="true"] { background-position: -224px -672px  !important ; }
-div.loadURLScript8 {	background-position: -224px -704px  !important ; }
-div.loadURLScript8[grayed="false"][active="true"] { background-position: -224px -736px  !important ; }
+div.savePageAs[grayed="true"] { background-position: -224px -480px !important ; }
+div.savePageAs { background-position: -224px -512px !important ; }
+div.savePageAs[grayed="false"][active="true"] { background-position: -224px -544px !important ; }
 
-div.loadURLScript9[grayed="true"] { background-position: -256px -672px  !important ; }
-div.loadURLScript9 {	background-position: -256px -704px  !important ; }
-div.loadURLScript9[grayed="false"][active="true"] { background-position: -256px -736px  !important ; }
+div.hideImages[grayed="true"] { background-position: -256px -480px !important ; }
+div.hideImages { background-position: -256px -512px !important ; }
+div.hideImages[grayed="false"][active="true"] { background-position: -256px -544px !important ; }
 
-div.loadURLScript10[grayed="true"] { background-position: -288px -672px  !important ; }
-div.loadURLScript10 {	background-position: -288px -704px  !important ; }
-div.loadURLScript10[grayed="false"][active="true"] { background-position: -288px -736px  !important ; }
-
-/*******************************************************************************************************************/
-
-div.loadURLScript11[grayed="true"] { background-position: 0px -768px  !important ; }
-div.loadURLScript11 {	background-position: 0px -800px  !important ; }
-div.loadURLScript11[grayed="false"][active="true"] { background-position: 0px -832px  !important ; }
-
-div.loadURLScript12[grayed="true"] { background-position: -32px -768px  !important ; }
-div.loadURLScript12 {	background-position: -32px -800px  !important ; }
-div.loadURLScript12[grayed="false"][active="true"] { background-position: -32px -832px  !important ; }
-
-div.loadURLScript13[grayed="true"] { background-position: -64px -768px  !important ; }
-div.loadURLScript13 {	background-position: -64px -800px  !important ; }
-div.loadURLScript13[grayed="false"][active="true"] { background-position: -64px -832px  !important ; }
-
-div.loadURLScript14[grayed="true"] { background-position: -96px -768px  !important ; }
-div.loadURLScript14 {	background-position: -96px -800px  !important ; }
-div.loadURLScript14[grayed="false"][active="true"] { background-position: -96px -832px  !important ; }
-
-div.loadURLScript15[grayed="true"] { background-position: -128px -768px  !important ; }
-div.loadURLScript15 {	background-position: -128px -800px  !important ; }
-div.loadURLScript15[grayed="false"][active="true"] { background-position: -128px -832px  !important ; }
-
-div.loadURLScript16[grayed="true"] { background-position: -160px -768px  !important ; }
-div.loadURLScript16 {	background-position: -160px -800px  !important ; }
-div.loadURLScript16[grayed="false"][active="true"] { background-position: -160px -832px  !important ; }
-
-div.loadURLScript17[grayed="true"] { background-position: -192px -768px  !important ; }
-div.loadURLScript17 {	background-position: -192px -800px  !important ; }
-div.loadURLScript17[grayed="false"][active="true"] { background-position: -192px -832px  !important ; }
-
-div.loadURLScript18[grayed="true"] { background-position: -224px -768px  !important ; }
-div.loadURLScript18 {	background-position: -224px -800px  !important ; }
-div.loadURLScript18[grayed="false"][active="true"] { background-position: -224px -832px  !important ; }
-
-div.loadURLScript19[grayed="true"] { background-position: -256px -768px  !important ; }
-div.loadURLScript19 {	background-position: -256px -800px  !important ; }
-div.loadURLScript19[grayed="false"][active="true"] { background-position: -256px -832px  !important ; }
-
-div.loadURLScript20[grayed="true"] { background-position: -288px -768px  !important ; }
-div.loadURLScript20 {	background-position: -288px -800px  !important ; }
-div.loadURLScript20[grayed="false"][active="true"] { background-position: -288px -832px  !important ; }
+div.copyImage[grayed="true"] { background-position: -288px -480px !important ; }
+div.copyImage { background-position: -288px -512px !important ; }
+div.copyImage[grayed="false"][active="true"] { background-position: -288px -544px !important ; }
 
 /*******************************************************************************************************************/
 
-div.markVisitedLinks[grayed="true"] { background-position: 0px -864px  !important ; }
-div.markVisitedLinks {	background-position: 0px -896px  !important ; }
-div.markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -928px  !important ; }
+div.homepage[grayed="true"] { background-position: 0px -576px !important ; }
+div.homepage { background-position: 0px -608px !important ; }
+div.homepage[grayed="false"][active="true"] { background-position: 0px -640px !important ; }
 
-div.bookmarkThisLink[grayed="true"] { background-position: -32px -864px  !important ; }
-div.bookmarkThisLink {	background-position: -32px -896px  !important ; }
-div.bookmarkThisLink[grayed="false"][active="true"] { background-position: -32px -928px  !important ; }
+div.dailyReadings[grayed="true"] { background-position: -32px -576px !important ; }
+div.dailyReadings { background-position: -32px -608px !important ; }
+div.dailyReadings[grayed="false"][active="true"] { background-position: -32px -640px !important ; }
 
-div.bookmarkPage[grayed="true"] { background-position: -64px -864px  !important ; }
-div.bookmarkPage {	background-position: -64px -896px  !important ; }
-div.bookmarkPage[grayed="false"][active="true"] { background-position: -64px -928px  !important ; }
+div.searchWeb[grayed="true"] { background-position: -64px -576px !important ; }
+div.searchWeb { background-position: -64px -608px !important ; }
+div.searchWeb[grayed="false"][active="true"] { background-position: -64px -640px !important ; }
 
-div.bookmarkOpenTabs[grayed="true"] { background-position: -96px -864px  !important ; }
-div.bookmarkOpenTabs {	background-position: -96px -896px  !important ; }
-div.bookmarkOpenTabs[grayed="false"][active="true"] { background-position: -96px -928px  !important ; }
+div.runProgramFile1[grayed="true"] { background-position: -128px -576px !important ; }
+div.runProgramFile1 { background-position: -128px -608px !important ; }
+div.runProgramFile1[grayed="false"][active="true"] { background-position: -128px -640px !important ; }
 
-div.bookmarks[grayed="true"] { background-position: -128px -864px  !important ; }
-div.bookmarks {	background-position: -128px -896px  !important ; }
-div.bookmarks[grayed="false"][active="true"] { background-position: -128px -928px  !important ; }
+div.runProgramFile2[grayed="true"] { background-position: -160px -576px !important ; }
+div.runProgramFile2 { background-position: -160px -608px !important ; }
+div.runProgramFile2[grayed="false"][active="true"] { background-position: -160px -640px !important ; }
 
-div.bookmarksToolbar[grayed="true"] { background-position: -160px -864px  !important ; }
-div.bookmarksToolbar {	background-position: -160px -896px  !important ; }
-div.bookmarksToolbar[grayed="false"][active="true"] { background-position: -160px -928px  !important ; }
+div.runProgramFile3[grayed="true"] { background-position: -192px -576px !important ; }
+div.runProgramFile3 { background-position: -192px -608px !important ; }
+div.runProgramFile3[grayed="false"][active="true"] { background-position: -192px -640px !important ; }
 
-div.history[grayed="true"] { background-position: -192px -864px  !important ; }
-div.history {	background-position: -192px -896px  !important ; }
-div.history[grayed="false"][active="true"] { background-position: -192px -928px  !important ; }
+div.runProgramFile4[grayed="true"] { background-position: -224px -576px !important ; }
+div.runProgramFile4 { background-position: -224px -608px !important ; }
+div.runProgramFile4[grayed="false"][active="true"] { background-position: -224px -640px !important ; }
 
-div.viewPageSource[grayed="true"] { background-position: -224px -864px  !important ; }
-div.viewPageSource {	background-position: -224px -896px  !important ; }
-div.viewPageSource[grayed="false"][active="true"] { background-position: -224px -928px  !important ; }
+div.runProgramFile5[grayed="true"] { background-position: -256px -576px !important ; }
+div.runProgramFile5 { background-position: -256px -608px !important ; }
+div.runProgramFile5[grayed="false"][active="true"] { background-position: -256px -640px !important ; }
 
-div.viewPageInfo[grayed="true"] { background-position: -256px -864px  !important ; }
-div.viewPageInfo {	background-position: -256px -896px  !important ; }
-div.viewPageInfo[grayed="false"][active="true"] { background-position: -256px -928px  !important ; }
+div.runProgramFile6[grayed="true"] { background-position: -288px -576px !important ; }
+div.runProgramFile6 { background-position: -288px -608px !important ; }
+div.runProgramFile6[grayed="false"][active="true"] { background-position: -288px -640px !important ; }
 
-div.showOnlyThisFrame[grayed="true"] { background-position: -288px -864px  !important ; }
-div.showOnlyThisFrame {	background-position: -288px -896px  !important ; }
-div.showOnlyThisFrame[grayed="false"][active="true"] { background-position: -288px -928px  !important ; }
+div.runProgramFile7[grayed="true"] { background-position: -320px -576px !important ; }
+div.runProgramFile7 { background-position: -320px -608px !important ; }
+div.runProgramFile7[grayed="false"][active="true"] { background-position: -320px -640px !important ; }
 
-div.properties[grayed="true"] { background-position: -320px -864px  !important ; }
-div.properties {	background-position: -320px -896px  !important ; }
-div.properties[grayed="false"][active="true"] { background-position: -320px -928px  !important ; }
+div.runProgramFile8[grayed="true"] { background-position: -352px -576px !important ; }
+div.runProgramFile8 { background-position: -352px -608px !important ; }
+div.runProgramFile8[grayed="false"][active="true"] { background-position: -352px -640px !important ; }
 
-div.printPage[grayed="true"] { background-position: -352px -864px  !important ; }
-div.printPage {	background-position: -352px -896px  !important ; }
-div.printPage[grayed="false"][active="true"] { background-position: -352px -928px  !important ; }
+div.runProgramFile9[grayed="true"] { background-position: -384px -576px !important ; }
+div.runProgramFile9 { background-position: -384px -608px !important ; }
+div.runProgramFile9[grayed="false"][active="true"] { background-position: -384px -640px !important ; }
 
-div.mail[grayed="true"] { background-position: -388px -864px  !important ; }
-div.mail {	background-position: -388px -896px  !important ; }
-div.mail[grayed="false"][active="true"] { background-position: -388px -928px  !important ; }
-
-div.privateBrowsing[grayed="true"] { background-position: -420px -864px  !important ; }
-div.privateBrowsing {	background-position: -420px -896px  !important ; }
-div.privateBrowsing[grayed="false"][active="true"] { background-position: -420px -928px  !important ; }
+div.runProgramFile10[grayed="true"] { background-position: -416px -576px !important ; }
+div.runProgramFile10 { background-position: -416px -608px !important ; }
+div.runProgramFile10[grayed="false"][active="true"] { background-position: -416px -640px !important ; }
 
 /*******************************************************************************************************************/
 
-div.cut[grayed="true"] { background-position: 0px -960px  !important ; }
-div.cut {	background-position: 0px -992px  !important ; }
-div.cut[grayed="false"][active="true"] { background-position: 0px -1024px  !important ; }
+div.loadURLScript1[grayed="true"] { background-position: 0px -672px !important ; }
+div.loadURLScript1 { background-position: 0px -704px !important ; }
+div.loadURLScript1[grayed="false"][active="true"] { background-position: 0px -736px !important ; }
 
-div.copy[grayed="true"] { background-position: -32px -960px  !important ; }
-div.copy {	background-position: -32px -992px  !important ; }
-div.copy[grayed="false"][active="true"] { background-position: -32px -1024px  !important ; }
+div.loadURLScript2[grayed="true"] { background-position: -32px -672px !important ; }
+div.loadURLScript2 { background-position: -32px -704px !important ; }
+div.loadURLScript2[grayed="false"][active="true"] { background-position: -32px -736px !important ; }
 
-div.paste[grayed="true"] { background-position: -64px -960px  !important ; }
-div.paste {	background-position: -64px -992px  !important ; }
-div.paste[grayed="false"][active="true"] { background-position: -64px -1024px  !important ; }
+div.loadURLScript3[grayed="true"] { background-position: -64px -672px !important ; }
+div.loadURLScript3 { background-position: -64px -704px !important ; }
+div.loadURLScript3[grayed="false"][active="true"] { background-position: -64px -736px !important ; }
 
-div.undo[grayed="true"] { background-position: -96px -960px  !important ; }
-div.undo {	background-position: -96px -992px  !important ; }
-div.undo[grayed="false"][active="true"] { background-position: -96px -1024px  !important ; }
+div.loadURLScript4[grayed="true"] { background-position: -96px -672px !important ; }
+div.loadURLScript4 { background-position: -96px -704px !important ; }
+div.loadURLScript4[grayed="false"][active="true"] { background-position: -96px -736px !important ; }
 
-div.selectAll[grayed="true"] { background-position: -128px -960px  !important ; }
-div.selectAll {	background-position: -128px -992px  !important ; }
-div.selectAll[grayed="false"][active="true"] { background-position: -128px -1024px  !important ; }
+div.loadURLScript5[grayed="true"] { background-position: -128px -672px !important ; }
+div.loadURLScript5 { background-position: -128px -704px !important ; }
+div.loadURLScript5[grayed="false"][active="true"] { background-position: -128px -736px !important ; }
 
-div.toggleFindBar[grayed="true"] { background-position: -160px -960px  !important ; }
-div.toggleFindBar {	background-position: -160px -992px  !important ; }
-div.toggleFindBar[grayed="false"][active="true"] { background-position: -160px -1024px  !important ; }
+div.loadURLScript6[grayed="true"] { background-position: -160px -672px !important ; }
+div.loadURLScript6 { background-position: -160px -704px !important ; }
+div.loadURLScript6[grayed="false"][active="true"] { background-position: -160px -736px !important ; }
 
-div.zoomIn[grayed="true"] { background-position: -192px -960px  !important ; }
-div.zoomIn {	background-position: -192px -992px  !important ; }
-div.zoomIn[grayed="false"][active="true"] { background-position: -192px -1024px  !important ; }
+div.loadURLScript7[grayed="true"] { background-position: -192px -672px !important ; }
+div.loadURLScript7 { background-position: -192px -704px !important ; }
+div.loadURLScript7[grayed="false"][active="true"] { background-position: -192px -736px !important ; }
 
-div.zoomOut[grayed="true"] { background-position: -224px -960px  !important ; }
-div.zoomOut {	background-position: -224px -992px  !important ; }
-div.zoomOut[grayed="false"][active="true"] { background-position: -224px -1024px  !important ; }
+div.loadURLScript8[grayed="true"] { background-position: -224px -672px !important ; }
+div.loadURLScript8 { background-position: -224px -704px !important ; }
+div.loadURLScript8[grayed="false"][active="true"] { background-position: -224px -736px !important ; }
 
-div.zoomReset[grayed="true"] { background-position: -256px -960px  !important ; }
-div.zoomReset {	background-position: -256px -992px  !important ; }
-div.zoomReset[grayed="false"][active="true"] { background-position: -256px -1024px  !important ; }
+div.loadURLScript9[grayed="true"] { background-position: -256px -672px !important ; }
+div.loadURLScript9 { background-position: -256px -704px !important ; }
+div.loadURLScript9[grayed="false"][active="true"] { background-position: -256px -736px !important ; }
+
+div.loadURLScript10[grayed="true"] { background-position: -288px -672px !important ; }
+div.loadURLScript10 { background-position: -288px -704px !important ; }
+div.loadURLScript10[grayed="false"][active="true"] { background-position: -288px -736px !important ; }
+
+/*******************************************************************************************************************/
+
+div.loadURLScript11[grayed="true"] { background-position: 0px -768px !important ; }
+div.loadURLScript11 { background-position: 0px -800px !important ; }
+div.loadURLScript11[grayed="false"][active="true"] { background-position: 0px -832px !important ; }
+
+div.loadURLScript12[grayed="true"] { background-position: -32px -768px !important ; }
+div.loadURLScript12 { background-position: -32px -800px !important ; }
+div.loadURLScript12[grayed="false"][active="true"] { background-position: -32px -832px !important ; }
+
+div.loadURLScript13[grayed="true"] { background-position: -64px -768px !important ; }
+div.loadURLScript13 { background-position: -64px -800px !important ; }
+div.loadURLScript13[grayed="false"][active="true"] { background-position: -64px -832px !important ; }
+
+div.loadURLScript14[grayed="true"] { background-position: -96px -768px !important ; }
+div.loadURLScript14 { background-position: -96px -800px !important ; }
+div.loadURLScript14[grayed="false"][active="true"] { background-position: -96px -832px !important ; }
+
+div.loadURLScript15[grayed="true"] { background-position: -128px -768px !important ; }
+div.loadURLScript15 { background-position: -128px -800px !important ; }
+div.loadURLScript15[grayed="false"][active="true"] { background-position: -128px -832px !important ; }
+
+div.loadURLScript16[grayed="true"] { background-position: -160px -768px !important ; }
+div.loadURLScript16 { background-position: -160px -800px !important ; }
+div.loadURLScript16[grayed="false"][active="true"] { background-position: -160px -832px !important ; }
+
+div.loadURLScript17[grayed="true"] { background-position: -192px -768px !important ; }
+div.loadURLScript17 { background-position: -192px -800px !important ; }
+div.loadURLScript17[grayed="false"][active="true"] { background-position: -192px -832px !important ; }
+
+div.loadURLScript18[grayed="true"] { background-position: -224px -768px !important ; }
+div.loadURLScript18 { background-position: -224px -800px !important ; }
+div.loadURLScript18[grayed="false"][active="true"] { background-position: -224px -832px !important ; }
+
+div.loadURLScript19[grayed="true"] { background-position: -256px -768px !important ; }
+div.loadURLScript19 { background-position: -256px -800px !important ; }
+div.loadURLScript19[grayed="false"][active="true"] { background-position: -256px -832px !important ; }
+
+div.loadURLScript20[grayed="true"] { background-position: -288px -768px !important ; }
+div.loadURLScript20 { background-position: -288px -800px !important ; }
+div.loadURLScript20[grayed="false"][active="true"] { background-position: -288px -832px !important ; }
+
+/*******************************************************************************************************************/
+
+div.markVisitedLinks[grayed="true"] { background-position: 0px -864px !important ; }
+div.markVisitedLinks { background-position: 0px -896px !important ; }
+div.markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -928px !important ; }
+
+div.bookmarkThisLink[grayed="true"] { background-position: -32px -864px !important ; }
+div.bookmarkThisLink { background-position: -32px -896px !important ; }
+div.bookmarkThisLink[grayed="false"][active="true"] { background-position: -32px -928px !important ; }
+
+div.bookmarkPage[grayed="true"] { background-position: -64px -864px !important ; }
+div.bookmarkPage { background-position: -64px -896px !important ; }
+div.bookmarkPage[grayed="false"][active="true"] { background-position: -64px -928px !important ; }
+
+div.bookmarkOpenTabs[grayed="true"] { background-position: -96px -864px !important ; }
+div.bookmarkOpenTabs { background-position: -96px -896px !important ; }
+div.bookmarkOpenTabs[grayed="false"][active="true"] { background-position: -96px -928px !important ; }
+
+div.bookmarks[grayed="true"] { background-position: -128px -864px !important ; }
+div.bookmarks { background-position: -128px -896px !important ; }
+div.bookmarks[grayed="false"][active="true"] { background-position: -128px -928px !important ; }
+
+div.bookmarksToolbar[grayed="true"] { background-position: -160px -864px !important ; }
+div.bookmarksToolbar { background-position: -160px -896px !important ; }
+div.bookmarksToolbar[grayed="false"][active="true"] { background-position: -160px -928px !important ; }
+
+div.history[grayed="true"] { background-position: -192px -864px !important ; }
+div.history { background-position: -192px -896px !important ; }
+div.history[grayed="false"][active="true"] { background-position: -192px -928px !important ; }
+
+div.viewPageSource[grayed="true"] { background-position: -224px -864px !important ; }
+div.viewPageSource { background-position: -224px -896px !important ; }
+div.viewPageSource[grayed="false"][active="true"] { background-position: -224px -928px !important ; }
+
+div.viewPageInfo[grayed="true"] { background-position: -256px -864px !important ; }
+div.viewPageInfo { background-position: -256px -896px !important ; }
+div.viewPageInfo[grayed="false"][active="true"] { background-position: -256px -928px !important ; }
+
+div.showOnlyThisFrame[grayed="true"] { background-position: -288px -864px !important ; }
+div.showOnlyThisFrame { background-position: -288px -896px !important ; }
+div.showOnlyThisFrame[grayed="false"][active="true"] { background-position: -288px -928px !important ; }
+
+div.properties[grayed="true"] { background-position: -320px -864px !important ; }
+div.properties { background-position: -320px -896px !important ; }
+div.properties[grayed="false"][active="true"] { background-position: -320px -928px !important ; }
+
+div.printPage[grayed="true"] { background-position: -352px -864px !important ; }
+div.printPage { background-position: -352px -896px !important ; }
+div.printPage[grayed="false"][active="true"] { background-position: -352px -928px !important ; }
+
+div.mail[grayed="true"] { background-position: -388px -864px !important ; }
+div.mail { background-position: -388px -896px !important ; }
+div.mail[grayed="false"][active="true"] { background-position: -388px -928px !important ; }
+
+div.privateBrowsing[grayed="true"] { background-position: -420px -864px !important ; }
+div.privateBrowsing { background-position: -420px -896px !important ; }
+div.privateBrowsing[grayed="false"][active="true"] { background-position: -420px -928px !important ; }
+
+/*******************************************************************************************************************/
+
+div.cut[grayed="true"] { background-position: 0px -960px !important ; }
+div.cut { background-position: 0px -992px !important ; }
+div.cut[grayed="false"][active="true"] { background-position: 0px -1024px !important ; }
+
+div.copy[grayed="true"] { background-position: -32px -960px !important ; }
+div.copy { background-position: -32px -992px !important ; }
+div.copy[grayed="false"][active="true"] { background-position: -32px -1024px !important ; }
+
+div.paste[grayed="true"] { background-position: -64px -960px !important ; }
+div.paste { background-position: -64px -992px !important ; }
+div.paste[grayed="false"][active="true"] { background-position: -64px -1024px !important ; }
+
+div.undo[grayed="true"] { background-position: -96px -960px !important ; }
+div.undo { background-position: -96px -992px !important ; }
+div.undo[grayed="false"][active="true"] { background-position: -96px -1024px !important ; }
+
+div.selectAll[grayed="true"] { background-position: -128px -960px !important ; }
+div.selectAll { background-position: -128px -992px !important ; }
+div.selectAll[grayed="false"][active="true"] { background-position: -128px -1024px !important ; }
+
+div.toggleFindBar[grayed="true"] { background-position: -160px -960px !important ; }
+div.toggleFindBar { background-position: -160px -992px !important ; }
+div.toggleFindBar[grayed="false"][active="true"] { background-position: -160px -1024px !important ; }
+
+div.zoomIn[grayed="true"] { background-position: -192px -960px !important ; }
+div.zoomIn { background-position: -192px -992px !important ; }
+div.zoomIn[grayed="false"][active="true"] { background-position: -192px -1024px !important ; }
+
+div.zoomOut[grayed="true"] { background-position: -224px -960px !important ; }
+div.zoomOut { background-position: -224px -992px !important ; }
+div.zoomOut[grayed="false"][active="true"] { background-position: -224px -1024px !important ; }
+
+div.zoomReset[grayed="true"] { background-position: -256px -960px !important ; }
+div.zoomReset { background-position: -256px -992px !important ; }
+div.zoomReset[grayed="false"][active="true"] { background-position: -256px -1024px !important ; }
 
 
 /*//////////////////////////////////////////////////////////////////////////////////////////////
 						SMALL IMAGES
 //////////////////////////////////////////////////////////////////////////////////////////////*/
 
-div.small_empty {	background-position: 0px 0px  !important ; }
-div.small_empty[active="true"] {	background-position: 0px -40px  !important ; }
+div.small_empty { background-position: 0px 0px !important ; }
+div.small_empty[active="true"] { background-position: 0px -40px !important ; }
 image.small_empty { -moz-image-region: rect(0px 20px 20px 0px) !important ; }
 
-div.small_more {	background-position: -20px -20px  !important ; }
-div.small_more[active="true"],  div.small_more[extraMenuShowing="true"] { background-position: -20px -40px  !important ; }
+div.small_more { background-position: -20px -20px !important ; }
+div.small_more[active="true"], div.small_more[extraMenuShowing="true"] { background-position: -20px -40px !important ; }
 image.small_more { -moz-image-region: rect(20px 40px 40px 20px) !important ; }
 
-div.small_moreDropDownMenu {	background-position: -40px -20px  !important ; }
-div.small_moreDropDownMenu[active="true"],  div.small_moreDropDownMenu[extraMenuShowing="true"] { background-position: -40px -40px  !important ; }
+div.small_moreDropDownMenu { background-position: -40px -20px !important ; }
+div.small_moreDropDownMenu[active="true"], div.small_moreDropDownMenu[extraMenuShowing="true"] { background-position: -40px -40px !important ; }
 image.small_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px) !important ; }
 
-div.small_firstPage[grayed="true"] { background-position: 0px -60px  !important ; }
-div.small_firstPage {	background-position: 0px -80px  !important ; }
-div.small_firstPage[grayed="false"][active="true"] { background-position: 0px -100px  !important ; }
+div.small_firstPage[grayed="true"] { background-position: 0px -60px !important ; }
+div.small_firstPage { background-position: 0px -80px !important ; }
+div.small_firstPage[grayed="false"][active="true"] { background-position: 0px -100px !important ; }
 image.small_firstPage { -moz-image-region: rect(80px 20px 100px 0px) !important ; }
 
-div.small_lastPage[grayed="true"] { background-position: -20px -60px  !important ; }
-div.small_lastPage {	background-position: -20px -80px  !important ; }
-div.small_lastPage[grayed="false"][active="true"] { background-position: -20px -100px  !important ; }
+div.small_lastPage[grayed="true"] { background-position: -20px -60px !important ; }
+div.small_lastPage { background-position: -20px -80px !important ; }
+div.small_lastPage[grayed="false"][active="true"] { background-position: -20px -100px !important ; }
 image.small_lastPage { -moz-image-region: rect(80px 40px 100px 20px) !important ; }
 
-div.small_backSite[grayed="true"] { background-position: -40px -60px  !important ; }
-div.small_backSite {	background-position: -40px -80px  !important ; }
-div.small_backSite[grayed="false"][active="true"] { background-position: -40px -100px  !important ; }
+div.small_backSite[grayed="true"] { background-position: -40px -60px !important ; }
+div.small_backSite { background-position: -40px -80px !important ; }
+div.small_backSite[grayed="false"][active="true"] { background-position: -40px -100px !important ; }
 image.small_backSite { -moz-image-region: rect(80px 60px 100px 40px) !important ; }
 
-div.small_forwardSite[grayed="true"] { background-position: -60px -60px  !important ; }
-div.small_forwardSite {	background-position: -60px -80px  !important ; }
-div.small_forwardSite[grayed="false"][active="true"] { background-position: -60px -100px  !important ; }
+div.small_forwardSite[grayed="true"] { background-position: -60px -60px !important ; }
+div.small_forwardSite { background-position: -60px -80px !important ; }
+div.small_forwardSite[grayed="false"][active="true"] { background-position: -60px -100px !important ; }
 image.small_forwardSite { -moz-image-region: rect(80px 80px 100px 60px) !important ; }
 
-div.small_back[grayed="true"] { background-position: -80px -60px  !important ; }
-div.small_back {	background-position: -80px -80px  !important ; }
-div.small_back[grayed="false"][active="true"] { background-position: -80px -100px  !important ; }
+div.small_back[grayed="true"] { background-position: -80px -60px !important ; }
+div.small_back { background-position: -80px -80px !important ; }
+div.small_back[grayed="false"][active="true"] { background-position: -80px -100px !important ; }
 image.small_back { -moz-image-region: rect(80px 100px 100px 80px) !important ; }
 
-div.small_forward[grayed="true"] { background-position: -100px -60px  !important ; }
-div.small_forward {	background-position: -100px -80px  !important ; }
-div.small_forward[grayed="false"][active="true"] { background-position: -100px -100px  !important ; }
+div.small_forward[grayed="true"] { background-position: -100px -60px !important ; }
+div.small_forward { background-position: -100px -80px !important ; }
+div.small_forward[grayed="false"][active="true"] { background-position: -100px -100px !important ; }
 image.small_forward { -moz-image-region: rect(80px 120px 100px 100px) !important ; }
 
-div.small_reload[grayed="true"] { background-position: 0px -120px  !important ; }
-div.small_reload {	background-position: 0px -140px  !important ; }
-div.small_reload[grayed="false"][active="true"] { background-position: 0px -160px  !important ; }
+div.small_reload[grayed="true"] { background-position: 0px -120px !important ; }
+div.small_reload { background-position: 0px -140px !important ; }
+div.small_reload[grayed="false"][active="true"] { background-position: 0px -160px !important ; }
 image.small_reload { -moz-image-region: rect(140px 20px 160px 0px) !important ; }
 
-div.small_stop[grayed="true"] { background-position: -20px -120px  !important ; }
-div.small_stop {	background-position: -20px -140px  !important ; }
-div.small_stop[grayed="false"][active="true"] { background-position: -20px -160px  !important ; }
+div.small_stop[grayed="true"] { background-position: -20px -120px !important ; }
+div.small_stop { background-position: -20px -140px !important ; }
+div.small_stop[grayed="false"][active="true"] { background-position: -20px -160px !important ; }
 image.small_stop { -moz-image-region: rect(140px 40px 160px 20px) !important ; }
 
-div.small_up[grayed="true"] { background-position: -40px -120px  !important ; }
-div.small_up {	background-position: -40px -140px  !important ; }
-div.small_up[grayed="false"][active="true"] { background-position: -40px -160px  !important ; }
+div.small_up[grayed="true"] { background-position: -40px -120px !important ; }
+div.small_up { background-position: -40px -140px !important ; }
+div.small_up[grayed="false"][active="true"] { background-position: -40px -160px !important ; }
 image.small_up { -moz-image-region: rect(140px 60px 160px 40px) !important ; }
 
-div.small_root[grayed="true"] { background-position: -60px -120px  !important ; }
-div.small_root {	background-position: -60px -140px  !important ; }
-div.small_root[grayed="false"][active="true"] { background-position: -60px -160px  !important ; }
+div.small_root[grayed="true"] { background-position: -60px -120px !important ; }
+div.small_root { background-position: -60px -140px !important ; }
+div.small_root[grayed="false"][active="true"] { background-position: -60px -160px !important ; }
 image.small_root { -moz-image-region: rect(140px 80px 160px 60px) !important ; }
 
-div.small_pageTop[grayed="true"] { background-position: -80px -120px  !important ; }
-div.small_pageTop {	background-position: -80px -140px  !important ; }
-div.small_pageTop[grayed="false"][active="true"] { background-position: -80px -160px  !important ; }
+div.small_pageTop[grayed="true"] { background-position: -80px -120px !important ; }
+div.small_pageTop { background-position: -80px -140px !important ; }
+div.small_pageTop[grayed="false"][active="true"] { background-position: -80px -160px !important ; }
 image.small_pageTop { -moz-image-region: rect(140px 100px 160px 80px) !important ; }
 
-div.small_pageBottom[grayed="true"] { background-position: -100px -120px  !important ; }
-div.small_pageBottom {	background-position: -100px -140px  !important ; }
-div.small_pageBottom[grayed="false"][active="true"] { background-position: -100px -160px  !important ; }
+div.small_pageBottom[grayed="true"] { background-position: -100px -120px !important ; }
+div.small_pageBottom { background-position: -100px -140px !important ; }
+div.small_pageBottom[grayed="false"][active="true"] { background-position: -100px -160px !important ; }
 image.small_pageBottom { -moz-image-region: rect(140px 120px 160px 100px) !important ; }
 
-div.small_autoscrolling[grayed="true"] { background-position: -120px -120px  !important ; }
-div.small_autoscrolling {	background-position: -120px -140px  !important ; }
-div.small_autoscrolling[grayed="false"][active="true"] { background-position: -120px -160px  !important ; }
+div.small_autoscrolling[grayed="true"] { background-position: -120px -120px !important ; }
+div.small_autoscrolling { background-position: -120px -140px !important ; }
+div.small_autoscrolling[grayed="false"][active="true"] { background-position: -120px -160px !important ; }
 image.small_autoscrolling { -moz-image-region: rect(140px 140px 160px 120px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_newTab[grayed="true"] { background-position: 0px -180px  !important ; }
-div.small_newTab {	background-position: 0px -200px  !important ; }
-div.small_newTab[grayed="false"][active="true"] { background-position: 0px -220px  !important ; }
+div.small_newTab[grayed="true"] { background-position: 0px -180px !important ; }
+div.small_newTab { background-position: 0px -200px !important ; }
+div.small_newTab[grayed="false"][active="true"] { background-position: 0px -220px !important ; }
 image.small_newTab { -moz-image-region: rect(200px 20px 220px 0px) !important ; }
 
-div.small_duplicateTab[grayed="true"] { background-position: -20px -180px  !important ; }
-div.small_duplicateTab {	background-position: -20px -200px  !important ; }
-div.small_duplicateTab[grayed="false"][active="true"] { background-position: -20px -220px  !important ; }
+div.small_duplicateTab[grayed="true"] { background-position: -20px -180px !important ; }
+div.small_duplicateTab { background-position: -20px -200px !important ; }
+div.small_duplicateTab[grayed="false"][active="true"] { background-position: -20px -220px !important ; }
 image.small_duplicateTab { -moz-image-region: rect(200px 40px 220px 20px) !important ; }
 
-div.small_prevTab[grayed="true"] { background-position: -40px -180px  !important ; }
-div.small_prevTab {	background-position: -40px -200px  !important ; }
-div.small_prevTab[grayed="false"][active="true"] { background-position: -40px -220px  !important ; }
+div.small_prevTab[grayed="true"] { background-position: -40px -180px !important ; }
+div.small_prevTab { background-position: -40px -200px !important ; }
+div.small_prevTab[grayed="false"][active="true"] { background-position: -40px -220px !important ; }
 image.small_prevTab { -moz-image-region: rect(200px 60px 220px 40px) !important ; }
 
-div.small_nextTab[grayed="true"] { background-position: -60px -180px  !important ; }
-div.small_nextTab {	background-position: -60px -200px  !important ; }
-div.small_nextTab[grayed="false"][active="true"] { background-position: -60px -220px  !important ; }
+div.small_nextTab[grayed="true"] { background-position: -60px -180px !important ; }
+div.small_nextTab { background-position: -60px -200px !important ; }
+div.small_nextTab[grayed="false"][active="true"] { background-position: -60px -220px !important ; }
 image.small_nextTab { -moz-image-region: rect(200px 80px 220px 60px) !important ; }
 
-div.small_closeTab[grayed="true"] { background-position: -80px -180px  !important ; }
-div.small_closeTab {	background-position: -80px -200px  !important ; }
-div.small_closeTab[grayed="false"][active="true"] { background-position: -80px -220px  !important ; }
+div.small_closeTab[grayed="true"] { background-position: -80px -180px !important ; }
+div.small_closeTab { background-position: -80px -200px !important ; }
+div.small_closeTab[grayed="false"][active="true"] { background-position: -80px -220px !important ; }
 image.small_closeTab { -moz-image-region: rect(200px 100px 220px 80px) !important ; }
 
-div.small_closeOtherTabs[grayed="true"] { background-position: -100px -180px  !important ; }
-div.small_closeOtherTabs {	background-position: -100px -200px  !important ; }
-div.small_closeOtherTabs[grayed="false"][active="true"] { background-position: -100px -220px  !important ; }
+div.small_closeOtherTabs[grayed="true"] { background-position: -100px -180px !important ; }
+div.small_closeOtherTabs { background-position: -100px -200px !important ; }
+div.small_closeOtherTabs[grayed="false"][active="true"] { background-position: -100px -220px !important ; }
 image.small_closeOtherTabs { -moz-image-region: rect(200px 120px 220px 100px) !important ; }
 
-div.small_undoCloseTab[grayed="true"] { background-position: -120px -180px  !important ; }
-div.small_undoCloseTab {	background-position: -120px -200px  !important ; }
-div.small_undoCloseTab[grayed="false"][active="true"] { background-position: -120px -220px  !important ; }
+div.small_undoCloseTab[grayed="true"] { background-position: -120px -180px !important ; }
+div.small_undoCloseTab { background-position: -120px -200px !important ; }
+div.small_undoCloseTab[grayed="false"][active="true"] { background-position: -120px -220px !important ; }
 image.small_undoCloseTab { -moz-image-region: rect(200px 140px 220px 120px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_newWindow[grayed="true"] { background-position: 0px -240px  !important ; }
-div.small_newWindow {	background-position: 0px -260px  !important ; }
-div.small_newWindow[grayed="false"][active="true"] { background-position: 0px -280px  !important ; }
+div.small_newWindow[grayed="true"] { background-position: 0px -240px !important ; }
+div.small_newWindow { background-position: 0px -260px !important ; }
+div.small_newWindow[grayed="false"][active="true"] { background-position: 0px -280px !important ; }
 image.small_newWindow { -moz-image-region: rect(260px 20px 280px 0px) !important ; }
 
-div.small_duplicateWindow[grayed="true"] { background-position: -20px -240px  !important ; }
-div.small_duplicateWindow {	background-position: -20px -260px  !important ; }
-div.small_duplicateWindow[grayed="false"][active="true"] { background-position: -20px -280px  !important ; }
+div.small_duplicateWindow[grayed="true"] { background-position: -20px -240px !important ; }
+div.small_duplicateWindow { background-position: -20px -260px !important ; }
+div.small_duplicateWindow[grayed="false"][active="true"] { background-position: -20px -280px !important ; }
 image.small_duplicateWindow { -moz-image-region: rect(260px 40px 280px 20px) !important ; }
 
-div.small_closeOtherWindows[grayed="true"] { background-position: -40px -240px  !important ; }
-div.small_closeOtherWindows {	background-position: -40px -260px  !important ; }
-div.small_closeOtherWindows[grayed="false"][active="true"] { background-position: -40px -280px  !important ; }
+div.small_closeOtherWindows[grayed="true"] { background-position: -40px -240px !important ; }
+div.small_closeOtherWindows { background-position: -40px -260px !important ; }
+div.small_closeOtherWindows[grayed="false"][active="true"] { background-position: -40px -280px !important ; }
 image.small_closeOtherWindows { -moz-image-region: rect(260px 60px 280px 40px) !important ; }
 
-div.small_closeBrowser[grayed="true"] { background-position: -60px -240px  !important ; }
-div.small_closeBrowser {	background-position: -60px -260px  !important ; }
-div.small_closeBrowser[grayed="false"][active="true"] { background-position: -60px -280px  !important ; }
+div.small_closeBrowser[grayed="true"] { background-position: -60px -240px !important ; }
+div.small_closeBrowser { background-position: -60px -260px !important ; }
+div.small_closeBrowser[grayed="false"][active="true"] { background-position: -60px -280px !important ; }
 image.small_closeBrowser { -moz-image-region: rect(260px 80px 280px 60px) !important ; }
 
-div.small_minimizeWindow[grayed="true"] { background-position: -80px -240px  !important ; }
-div.small_minimizeWindow {	background-position: -80px -260px  !important ; }
-div.small_minimizeWindow[grayed="false"][active="true"] { background-position: -80px -280px  !important ; }
+div.small_minimizeWindow[grayed="true"] { background-position: -80px -240px !important ; }
+div.small_minimizeWindow { background-position: -80px -260px !important ; }
+div.small_minimizeWindow[grayed="false"][active="true"] { background-position: -80px -280px !important ; }
 image.small_minimizeWindow { -moz-image-region: rect(260px 100px 280px 80px) !important ; }
 
-div.small_fullscreen[grayed="true"] { background-position: -100px -240px  !important ; }
-div.small_fullscreen {	background-position: -100px -260px  !important ; }
-div.small_fullscreen[grayed="false"][active="true"] { background-position: -100px -280px  !important ; }
+div.small_fullscreen[grayed="true"] { background-position: -100px -240px !important ; }
+div.small_fullscreen { background-position: -100px -260px !important ; }
+div.small_fullscreen[grayed="false"][active="true"] { background-position: -100px -280px !important ; }
 image.small_fullscreen { -moz-image-region: rect(260px 120px 280px 100px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_openLink[grayed="true"] { background-position: 0px -300px  !important ; }
-div.small_openLink {	background-position: 0px -320px  !important ; }
-div.small_openLink[grayed="false"][active="true"] { background-position: 0px -340px  !important ; }
+div.small_openLink[grayed="true"] { background-position: 0px -300px !important ; }
+div.small_openLink { background-position: 0px -320px !important ; }
+div.small_openLink[grayed="false"][active="true"] { background-position: 0px -340px !important ; }
 image.small_openLink { -moz-image-region: rect(320px 20px 340px 0px) !important ; }
 
-div.small_openLinkNewWindow[grayed="true"] { background-position: -20px -300px  !important ; }
-div.small_openLinkNewWindow {	background-position: -20px -320px  !important ; }
-div.small_openLinkNewWindow[grayed="false"][active="true"] { background-position: -20px -340px  !important ; }
+div.small_openLinkNewWindow[grayed="true"] { background-position: -20px -300px !important ; }
+div.small_openLinkNewWindow { background-position: -20px -320px !important ; }
+div.small_openLinkNewWindow[grayed="false"][active="true"] { background-position: -20px -340px !important ; }
 image.small_openLinkNewWindow { -moz-image-region: rect(320px 40px 340px 20px) !important ; }
 
-div.small_copyLink[grayed="true"] { background-position: -40px -300px  !important ; }
-div.small_copyLink {	background-position: -40px -320px  !important ; }
-div.small_copyLink[grayed="false"][active="true"] { background-position: -40px -340px  !important ; }
+div.small_copyLink[grayed="true"] { background-position: -40px -300px !important ; }
+div.small_copyLink { background-position: -40px -320px !important ; }
+div.small_copyLink[grayed="false"][active="true"] { background-position: -40px -340px !important ; }
 image.small_copyLink { -moz-image-region: rect(320px 60px 340px 40px) !important ; }
 
-div.small_sendLink[grayed="true"] { background-position: -60px -300px  !important ; }
-div.small_sendLink {	background-position: -60px -320px  !important ; }
-div.small_sendLink[grayed="false"][active="true"] { background-position: -60px -340px  !important ; }
+div.small_sendLink[grayed="true"] { background-position: -60px -300px !important ; }
+div.small_sendLink { background-position: -60px -320px !important ; }
+div.small_sendLink[grayed="false"][active="true"] { background-position: -60px -340px !important ; }
 image.small_sendLink { -moz-image-region: rect(320px 80px 340px 60px) !important ; }
 
-div.small_copyImageLocation[grayed="true"] { background-position: -80px -300px  !important ; }
-div.small_copyImageLocation {	background-position: -80px -320px  !important ; }
-div.small_copyImageLocation[grayed="false"][active="true"] { background-position: -80px -340px  !important ; }
+div.small_copyImageLocation[grayed="true"] { background-position: -80px -300px !important ; }
+div.small_copyImageLocation { background-position: -80px -320px !important ; }
+div.small_copyImageLocation[grayed="false"][active="true"] { background-position: -80px -340px !important ; }
 image.small_copyImageLocation { -moz-image-region: rect(320px 100px 340px 80px) !important ; }
 
-div.small_saveLinkAs[grayed="true"] { background-position: -100px -300px  !important ; }
-div.small_saveLinkAs {	background-position: -100px -320px  !important ; }
-div.small_saveLinkAs[grayed="false"][active="true"] { background-position: -100px -340px  !important ; }
+div.small_saveLinkAs[grayed="true"] { background-position: -100px -300px !important ; }
+div.small_saveLinkAs { background-position: -100px -320px !important ; }
+div.small_saveLinkAs[grayed="false"][active="true"] { background-position: -100px -340px !important ; }
 image.small_saveLinkAs { -moz-image-region: rect(320px 120px 340px 100px) !important ; }
 
-div.small_saveImageAs[grayed="true"] { background-position: -120px -300px  !important ; }
-div.small_saveImageAs {	background-position: -120px -320px  !important ; }
-div.small_saveImageAs[grayed="false"][active="true"] { background-position: -120px -340px  !important ; }
+div.small_saveImageAs[grayed="true"] { background-position: -120px -300px !important ; }
+div.small_saveImageAs { background-position: -120px -320px !important ; }
+div.small_saveImageAs[grayed="false"][active="true"] { background-position: -120px -340px !important ; }
 image.small_saveImageAs { -moz-image-region: rect(320px 140px 340px 120px) !important ; }
 
-div.small_savePageAs[grayed="true"] { background-position: -140px -300px  !important ; }
-div.small_savePageAs {	background-position: -140px -320px  !important ; }
-div.small_savePageAs[grayed="false"][active="true"] { background-position: -140px -340px  !important ; }
+div.small_savePageAs[grayed="true"] { background-position: -140px -300px !important ; }
+div.small_savePageAs { background-position: -140px -320px !important ; }
+div.small_savePageAs[grayed="false"][active="true"] { background-position: -140px -340px !important ; }
 image.small_savePageAs { -moz-image-region: rect(320px 160px 340px 140px) !important ; }
 
-div.small_hideImages[grayed="true"] { background-position: -160px -300px  !important ; }
-div.small_hideImages {	background-position: -160px -320px  !important ; }
-div.small_hideImages[grayed="false"][active="true"] { background-position: -160px -340px  !important ; }
+div.small_hideImages[grayed="true"] { background-position: -160px -300px !important ; }
+div.small_hideImages { background-position: -160px -320px !important ; }
+div.small_hideImages[grayed="false"][active="true"] { background-position: -160px -340px !important ; }
 image.small_hideImages { -moz-image-region: rect(320px 180px 340px 160px) !important ; }
 
-div.small_copyImage[grayed="true"] { background-position: -180px -300px  !important ; }
-div.small_copyImage {	background-position: -180px -320px  !important ; }
-div.small_copyImage[grayed="false"][active="true"] { background-position: -180px -340px  !important ; }
+div.small_copyImage[grayed="true"] { background-position: -180px -300px !important ; }
+div.small_copyImage { background-position: -180px -320px !important ; }
+div.small_copyImage[grayed="false"][active="true"] { background-position: -180px -340px !important ; }
 image.small_copyImage { -moz-image-region: rect(320px 200px 340px 180px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_homepage[grayed="true"] { background-position: 0px -360px  !important ; }
-div.small_homepage {	background-position: 0px -380px  !important ; }
-div.small_homepage[grayed="false"][active="true"] { background-position: 0px -400px  !important ; }
+div.small_homepage[grayed="true"] { background-position: 0px -360px !important ; }
+div.small_homepage { background-position: 0px -380px !important ; }
+div.small_homepage[grayed="false"][active="true"] { background-position: 0px -400px !important ; }
 image.small_homepage { -moz-image-region: rect(380px 20px 400px 0px) !important ; }
 
-div.small_dailyReadings[grayed="true"] { background-position: -20px -360px  !important ; }
-div.small_dailyReadings {	background-position: -20px -380px  !important ; }
-div.small_dailyReadings[grayed="false"][active="true"] { background-position: -20px -400px  !important ; }
+div.small_dailyReadings[grayed="true"] { background-position: -20px -360px !important ; }
+div.small_dailyReadings { background-position: -20px -380px !important ; }
+div.small_dailyReadings[grayed="false"][active="true"] { background-position: -20px -400px !important ; }
 image.small_dailyReadings { -moz-image-region: rect(380px 40px 400px 20px) !important ; }
 
 div.small_searchWeb[grayed="true"] { background-position: -40px -360px !important ; }
@@ -648,257 +648,257 @@ div.small_searchWeb { background-position: -40px -380px !important ; }
 div.small_searchWeb[grayed="false"][active="true"] { background-position: -40px -400px !important ; }
 image.small_searchWeb { -moz-image-region: rect(380px 60px 400px 40px) !important ; }
 
-div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px  !important ; }
-div.small_runProgramFile1 {	background-position: -80px -380px  !important ; }
-div.small_runProgramFile1[grayed="false"][active="true"] { background-position: -80px -400px  !important ; }
+div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px !important ; }
+div.small_runProgramFile1 { background-position: -80px -380px !important ; }
+div.small_runProgramFile1[grayed="false"][active="true"] { background-position: -80px -400px !important ; }
 image.small_runProgramFile1 { -moz-image-region: rect(380px 100px 400px 80px) !important ; }
 
-div.small_runProgramFile2[grayed="true"] { background-position: -100px -360px  !important ; }
-div.small_runProgramFile2 {	background-position: -100px -380px  !important ; }
-div.small_runProgramFile2[grayed="false"][active="true"] { background-position: -100px -400px  !important ; }
+div.small_runProgramFile2[grayed="true"] { background-position: -100px -360px !important ; }
+div.small_runProgramFile2 { background-position: -100px -380px !important ; }
+div.small_runProgramFile2[grayed="false"][active="true"] { background-position: -100px -400px !important ; }
 image.small_runProgramFile2 { -moz-image-region: rect(380px 120px 400px 100px) !important ; }
 
-div.small_runProgramFile3[grayed="true"] { background-position: -120px -360px  !important ; }
-div.small_runProgramFile3 {	background-position: -120px -380px  !important ; }
-div.small_runProgramFile3[grayed="false"][active="true"] { background-position: -120px -400px  !important ; }
+div.small_runProgramFile3[grayed="true"] { background-position: -120px -360px !important ; }
+div.small_runProgramFile3 { background-position: -120px -380px !important ; }
+div.small_runProgramFile3[grayed="false"][active="true"] { background-position: -120px -400px !important ; }
 image.small_runProgramFile3 { -moz-image-region: rect(380px 140px 400px 120px) !important ; }
 
-div.small_runProgramFile4[grayed="true"] { background-position: -140px -360px  !important ; }
-div.small_runProgramFile4 {	background-position: -140px -380px  !important ; }
-div.small_runProgramFile4[grayed="false"][active="true"] { background-position: -140px -400px  !important ; }
+div.small_runProgramFile4[grayed="true"] { background-position: -140px -360px !important ; }
+div.small_runProgramFile4 { background-position: -140px -380px !important ; }
+div.small_runProgramFile4[grayed="false"][active="true"] { background-position: -140px -400px !important ; }
 image.small_runProgramFile4 { -moz-image-region: rect(380px 160px 400px 140px) !important ; }
 
-div.small_runProgramFile5[grayed="true"] { background-position: -160px -360px  !important ; }
-div.small_runProgramFile5 {	background-position: -160px -380px  !important ; }
-div.small_runProgramFile5[grayed="false"][active="true"] { background-position: -160px -400px  !important ; }
+div.small_runProgramFile5[grayed="true"] { background-position: -160px -360px !important ; }
+div.small_runProgramFile5 { background-position: -160px -380px !important ; }
+div.small_runProgramFile5[grayed="false"][active="true"] { background-position: -160px -400px !important ; }
 image.small_runProgramFile5 { -moz-image-region: rect(380px 180px 400px 160px) !important ; }
 
-div.small_runProgramFile6[grayed="true"] { background-position: -180px -360px  !important ; }
-div.small_runProgramFile6 {	background-position: -180px -380px  !important ; }
-div.small_runProgramFile6[grayed="false"][active="true"] { background-position: -180px -400px  !important ; }
+div.small_runProgramFile6[grayed="true"] { background-position: -180px -360px !important ; }
+div.small_runProgramFile6 { background-position: -180px -380px !important ; }
+div.small_runProgramFile6[grayed="false"][active="true"] { background-position: -180px -400px !important ; }
 image.small_runProgramFile6 { -moz-image-region: rect(380px 200px 400px 180px) !important ; }
 
-div.small_runProgramFile7[grayed="true"] { background-position: -200px -360px  !important ; }
-div.small_runProgramFile7 {	background-position: -200px -380px  !important ; }
-div.small_runProgramFile7[grayed="false"][active="true"] { background-position: -200px -400px  !important ; }
+div.small_runProgramFile7[grayed="true"] { background-position: -200px -360px !important ; }
+div.small_runProgramFile7 { background-position: -200px -380px !important ; }
+div.small_runProgramFile7[grayed="false"][active="true"] { background-position: -200px -400px !important ; }
 image.small_runProgramFile7 { -moz-image-region: rect(380px 220px 400px 200px) !important ; }
 
-div.small_runProgramFile8[grayed="true"] { background-position: -220px -360px  !important ; }
-div.small_runProgramFile8 {	background-position: -220px -380px  !important ; }
-div.small_runProgramFile8[grayed="false"][active="true"] { background-position: -220px -400px  !important ; }
+div.small_runProgramFile8[grayed="true"] { background-position: -220px -360px !important ; }
+div.small_runProgramFile8 { background-position: -220px -380px !important ; }
+div.small_runProgramFile8[grayed="false"][active="true"] { background-position: -220px -400px !important ; }
 image.small_runProgramFile8 { -moz-image-region: rect(380px 240px 400px 220px) !important ; }
 
-div.small_runProgramFile9[grayed="true"] { background-position: -240px -360px  !important ; }
-div.small_runProgramFile9 {	background-position: -240px -380px  !important ; }
-div.small_runProgramFile9[grayed="false"][active="true"] { background-position: -240px -400px  !important ; }
+div.small_runProgramFile9[grayed="true"] { background-position: -240px -360px !important ; }
+div.small_runProgramFile9 { background-position: -240px -380px !important ; }
+div.small_runProgramFile9[grayed="false"][active="true"] { background-position: -240px -400px !important ; }
 image.small_runProgramFile9 { -moz-image-region: rect(380px 260px 400px 240px) !important ; }
 
-div.small_runProgramFile10[grayed="true"] { background-position: -260px -360px  !important ; }
-div.small_runProgramFile10 {	background-position: -260px -380px  !important ; }
-div.small_runProgramFile10[grayed="false"][active="true"] { background-position: -260px -400px  !important ; }
+div.small_runProgramFile10[grayed="true"] { background-position: -260px -360px !important ; }
+div.small_runProgramFile10 { background-position: -260px -380px !important ; }
+div.small_runProgramFile10[grayed="false"][active="true"] { background-position: -260px -400px !important ; }
 image.small_runProgramFile10 { -moz-image-region: rect(380px 280px 400px 260px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_loadURLScript1[grayed="true"] { background-position: 0px -432px  !important ; }
-div.small_loadURLScript1 {	background-position: 0px -440px  !important ; }
-div.small_loadURLScript1[grayed="false"][active="true"] { background-position: 0px -460px  !important ; }
+div.small_loadURLScript1[grayed="true"] { background-position: 0px -432px !important ; }
+div.small_loadURLScript1 { background-position: 0px -440px !important ; }
+div.small_loadURLScript1[grayed="false"][active="true"] { background-position: 0px -460px !important ; }
 image.small_loadURLScript1 { -moz-image-region: rect(440px 20px 460px 0px) !important ; }
 
-div.small_loadURLScript2[grayed="true"] { background-position: -20px -432px  !important ; }
-div.small_loadURLScript2 {	background-position: -20px -440px  !important ; }
-div.small_loadURLScript2[grayed="false"][active="true"] { background-position: -20px -460px  !important ; }
+div.small_loadURLScript2[grayed="true"] { background-position: -20px -432px !important ; }
+div.small_loadURLScript2 { background-position: -20px -440px !important ; }
+div.small_loadURLScript2[grayed="false"][active="true"] { background-position: -20px -460px !important ; }
 image.small_loadURLScript2 { -moz-image-region: rect(440px 40px 460px 20px) !important ; }
 
-div.small_loadURLScript3[grayed="true"] { background-position: -40px -432px  !important ; }
-div.small_loadURLScript3 {	background-position: -40px -440px  !important ; }
-div.small_loadURLScript3[grayed="false"][active="true"] { background-position: -40px -460px  !important ; }
+div.small_loadURLScript3[grayed="true"] { background-position: -40px -432px !important ; }
+div.small_loadURLScript3 { background-position: -40px -440px !important ; }
+div.small_loadURLScript3[grayed="false"][active="true"] { background-position: -40px -460px !important ; }
 image.small_loadURLScript3 { -moz-image-region: rect(440px 60px 460px 40px) !important ; }
 
-div.small_loadURLScript4[grayed="true"] { background-position: -60px -432px  !important ; }
-div.small_loadURLScript4 {	background-position: -60px -440px  !important ; }
-div.small_loadURLScript4[grayed="false"][active="true"] { background-position: -60px -460px  !important ; }
+div.small_loadURLScript4[grayed="true"] { background-position: -60px -432px !important ; }
+div.small_loadURLScript4 { background-position: -60px -440px !important ; }
+div.small_loadURLScript4[grayed="false"][active="true"] { background-position: -60px -460px !important ; }
 image.small_loadURLScript4 { -moz-image-region: rect(440px 80px 460px 60px) !important ; }
 
-div.small_loadURLScript5[grayed="true"] { background-position: -80px -432px  !important ; }
-div.small_loadURLScript5 {	background-position: -80px -440px  !important ; }
-div.small_loadURLScript5[grayed="false"][active="true"] { background-position: -80px -460px  !important ; }
+div.small_loadURLScript5[grayed="true"] { background-position: -80px -432px !important ; }
+div.small_loadURLScript5 { background-position: -80px -440px !important ; }
+div.small_loadURLScript5[grayed="false"][active="true"] { background-position: -80px -460px !important ; }
 image.small_loadURLScript5 { -moz-image-region: rect(440px 100px 460px 80px) !important ; }
 
-div.small_loadURLScript6[grayed="true"] { background-position: -100px -432px  !important ; }
-div.small_loadURLScript6 {	background-position: -100px -440px  !important ; }
-div.small_loadURLScript6[grayed="false"][active="true"] { background-position: -100px -460px  !important ; }
+div.small_loadURLScript6[grayed="true"] { background-position: -100px -432px !important ; }
+div.small_loadURLScript6 { background-position: -100px -440px !important ; }
+div.small_loadURLScript6[grayed="false"][active="true"] { background-position: -100px -460px !important ; }
 image.small_loadURLScript6 { -moz-image-region: rect(440px 120px 460px 100px) !important ; }
 
-div.small_loadURLScript7[grayed="true"] { background-position: -120px -432px  !important ; }
-div.small_loadURLScript7 {	background-position: -120px -440px  !important ; }
-div.small_loadURLScript7[grayed="false"][active="true"] { background-position: -120px -460px  !important ; }
+div.small_loadURLScript7[grayed="true"] { background-position: -120px -432px !important ; }
+div.small_loadURLScript7 { background-position: -120px -440px !important ; }
+div.small_loadURLScript7[grayed="false"][active="true"] { background-position: -120px -460px !important ; }
 image.small_loadURLScript7 { -moz-image-region: rect(440px 140px 460px 120px) !important ; }
 
-div.small_loadURLScript8[grayed="true"] { background-position: -140px -432px  !important ; }
-div.small_loadURLScript8 {	background-position: -140px -440px  !important ; }
-div.small_loadURLScript8[grayed="false"][active="true"] { background-position: -140px -460px  !important ; }
+div.small_loadURLScript8[grayed="true"] { background-position: -140px -432px !important ; }
+div.small_loadURLScript8 { background-position: -140px -440px !important ; }
+div.small_loadURLScript8[grayed="false"][active="true"] { background-position: -140px -460px !important ; }
 image.small_loadURLScript8 { -moz-image-region: rect(440px 160px 460px 140px) !important ; }
 
-div.small_loadURLScript9[grayed="true"] { background-position: -160px -432px  !important ; }
-div.small_loadURLScript9 {	background-position: -160px -440px  !important ; }
-div.small_loadURLScript9[grayed="false"][active="true"] { background-position: -160px -460px  !important ; }
+div.small_loadURLScript9[grayed="true"] { background-position: -160px -432px !important ; }
+div.small_loadURLScript9 { background-position: -160px -440px !important ; }
+div.small_loadURLScript9[grayed="false"][active="true"] { background-position: -160px -460px !important ; }
 image.small_loadURLScript9 { -moz-image-region: rect(440px 180px 460px 160px) !important ; }
 
-div.small_loadURLScript10[grayed="true"] { background-position: -180px -432px  !important ; }
-div.small_loadURLScript10 {	background-position: -180px -440px  !important ; }
-div.small_loadURLScript10[grayed="false"][active="true"] { background-position: -180px -460px  !important ; }
+div.small_loadURLScript10[grayed="true"] { background-position: -180px -432px !important ; }
+div.small_loadURLScript10 { background-position: -180px -440px !important ; }
+div.small_loadURLScript10[grayed="false"][active="true"] { background-position: -180px -460px !important ; }
 image.small_loadURLScript10 { -moz-image-region: rect(440px 200px 460px 180px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_loadURLScript11[grayed="true"] { background-position: 0px -480px  !important ; }
-div.small_loadURLScript11 {	background-position: 0px -500px  !important ; }
-div.small_loadURLScript11[grayed="false"][active="true"] { background-position: 0px -520px  !important ; }
+div.small_loadURLScript11[grayed="true"] { background-position: 0px -480px !important ; }
+div.small_loadURLScript11 { background-position: 0px -500px !important ; }
+div.small_loadURLScript11[grayed="false"][active="true"] { background-position: 0px -520px !important ; }
 image.small_loadURLScript11 { -moz-image-region: rect(500px 20px 520px 0px) !important ; }
 
-div.small_loadURLScript12[grayed="true"] { background-position: -20px -480px  !important ; }
-div.small_loadURLScript12 {	background-position: -20px -500px  !important ; }
-div.small_loadURLScript12[grayed="false"][active="true"] { background-position: -20px -520px  !important ; }
+div.small_loadURLScript12[grayed="true"] { background-position: -20px -480px !important ; }
+div.small_loadURLScript12 { background-position: -20px -500px !important ; }
+div.small_loadURLScript12[grayed="false"][active="true"] { background-position: -20px -520px !important ; }
 image.small_loadURLScript12 { -moz-image-region: rect(500px 40px 520px 20px) !important ; }
 
-div.small_loadURLScript13[grayed="true"] { background-position: -40px -480px  !important ; }
-div.small_loadURLScript13 {	background-position: -40px -500px  !important ; }
-div.small_loadURLScript13[grayed="false"][active="true"] { background-position: -40px -520px  !important ; }
+div.small_loadURLScript13[grayed="true"] { background-position: -40px -480px !important ; }
+div.small_loadURLScript13 { background-position: -40px -500px !important ; }
+div.small_loadURLScript13[grayed="false"][active="true"] { background-position: -40px -520px !important ; }
 image.small_loadURLScript13 { -moz-image-region: rect(500px 60px 520px 40px) !important ; }
 
-div.small_loadURLScript14[grayed="true"] { background-position: -60px -480px  !important ; }
-div.small_loadURLScript14 {	background-position: -60px -500px  !important ; }
-div.small_loadURLScript14[grayed="false"][active="true"] { background-position: -60px -520px  !important ; }
+div.small_loadURLScript14[grayed="true"] { background-position: -60px -480px !important ; }
+div.small_loadURLScript14 { background-position: -60px -500px !important ; }
+div.small_loadURLScript14[grayed="false"][active="true"] { background-position: -60px -520px !important ; }
 image.small_loadURLScript14 { -moz-image-region: rect(500px 80px 520px 60px) !important ; }
 
-div.small_loadURLScript15[grayed="true"] { background-position: -80px -480px  !important ; }
-div.small_loadURLScript15 {	background-position: -80px -500px  !important ; }
-div.small_loadURLScript15[grayed="false"][active="true"] { background-position: -80px -520px  !important ; }
+div.small_loadURLScript15[grayed="true"] { background-position: -80px -480px !important ; }
+div.small_loadURLScript15 { background-position: -80px -500px !important ; }
+div.small_loadURLScript15[grayed="false"][active="true"] { background-position: -80px -520px !important ; }
 image.small_loadURLScript15 { -moz-image-region: rect(500px 100px 520px 80px) !important ; }
 
-div.small_loadURLScript16[grayed="true"] { background-position: -100px -480px  !important ; }
-div.small_loadURLScript16 {	background-position: -100px -500px  !important ; }
-div.small_loadURLScript16[grayed="false"][active="true"] { background-position: -100px -520px  !important ; }
+div.small_loadURLScript16[grayed="true"] { background-position: -100px -480px !important ; }
+div.small_loadURLScript16 { background-position: -100px -500px !important ; }
+div.small_loadURLScript16[grayed="false"][active="true"] { background-position: -100px -520px !important ; }
 image.small_loadURLScript16 { -moz-image-region: rect(500px 120px 520px 100px) !important ; }
 
-div.small_loadURLScript17[grayed="true"] { background-position: -120px -480px  !important ; }
-div.small_loadURLScript17 {	background-position: -120px -500px  !important ; }
-div.small_loadURLScript17[grayed="false"][active="true"] { background-position: -120px -520px  !important ; }
+div.small_loadURLScript17[grayed="true"] { background-position: -120px -480px !important ; }
+div.small_loadURLScript17 { background-position: -120px -500px !important ; }
+div.small_loadURLScript17[grayed="false"][active="true"] { background-position: -120px -520px !important ; }
 image.small_loadURLScript17 { -moz-image-region: rect(500px 140px 520px 120px) !important ; }
 
-div.small_loadURLScript18[grayed="true"] { background-position: -140px -480px  !important ; }
-div.small_loadURLScript18 {	background-position: -140px -500px  !important ; }
-div.small_loadURLScript18[grayed="false"][active="true"] { background-position: -140px -520px  !important ; }
+div.small_loadURLScript18[grayed="true"] { background-position: -140px -480px !important ; }
+div.small_loadURLScript18 { background-position: -140px -500px !important ; }
+div.small_loadURLScript18[grayed="false"][active="true"] { background-position: -140px -520px !important ; }
 image.small_loadURLScript18 { -moz-image-region: rect(500px 160px 520px 140px) !important ; }
 
-div.small_loadURLScript19[grayed="true"] { background-position: -160px -480px  !important ; }
-div.small_loadURLScript19 {	background-position: -160px -500px  !important ; }
-div.small_loadURLScript19[grayed="false"][active="true"] { background-position: -160px -520px  !important ; }
+div.small_loadURLScript19[grayed="true"] { background-position: -160px -480px !important ; }
+div.small_loadURLScript19 { background-position: -160px -500px !important ; }
+div.small_loadURLScript19[grayed="false"][active="true"] { background-position: -160px -520px !important ; }
 image.small_loadURLScript19 { -moz-image-region: rect(500px 180px 520px 160px) !important ; }
 
-div.small_loadURLScript20[grayed="true"] { background-position: -180px -480px  !important ; }
-div.small_loadURLScript20 {	background-position: -180px -500px  !important ; }
-div.small_loadURLScript20[grayed="false"][active="true"] { background-position: -180px -520px  !important ; }
+div.small_loadURLScript20[grayed="true"] { background-position: -180px -480px !important ; }
+div.small_loadURLScript20 { background-position: -180px -500px !important ; }
+div.small_loadURLScript20[grayed="false"][active="true"] { background-position: -180px -520px !important ; }
 image.small_loadURLScript20 { -moz-image-region: rect(500px 200px 520px 180px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_markVisitedLinks[grayed="true"] { background-position: 0px -540px  !important ; }
-div.small_markVisitedLinks {	background-position: 0px -560px  !important ; }
-div.small_markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -580px  !important ; }
+div.small_markVisitedLinks[grayed="true"] { background-position: 0px -540px !important ; }
+div.small_markVisitedLinks { background-position: 0px -560px !important ; }
+div.small_markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -580px !important ; }
 image.small_markVisitedLinks { -moz-image-region: rect(560px 20px 580px 0px) !important ; }
 
-div.small_bookmarkThisLink[grayed="true"] { background-position: -20px -540px  !important ; }
-div.small_bookmarkThisLink {	background-position: -20px -560px  !important ; }
-div.small_bookmarkThisLink[grayed="false"][active="true"] { background-position: -20px -580px  !important ; }
+div.small_bookmarkThisLink[grayed="true"] { background-position: -20px -540px !important ; }
+div.small_bookmarkThisLink { background-position: -20px -560px !important ; }
+div.small_bookmarkThisLink[grayed="false"][active="true"] { background-position: -20px -580px !important ; }
 image.small_bookmarkThisLink { -moz-image-region: rect(560px 40px 580px 20px) !important ; }
 
-div.small_bookmarkPage[grayed="true"] { background-position: -40px -540px  !important ; }
-div.small_bookmarkPage {	background-position: -40px -560px  !important ; }
-div.small_bookmarkPage[grayed="false"][active="true"] { background-position: -40px -580px  !important ; }
+div.small_bookmarkPage[grayed="true"] { background-position: -40px -540px !important ; }
+div.small_bookmarkPage { background-position: -40px -560px !important ; }
+div.small_bookmarkPage[grayed="false"][active="true"] { background-position: -40px -580px !important ; }
 image.small_bookmarkPage { -moz-image-region: rect(560px 60px 580px 40px) !important ; }
 
-div.small_bookmarkOpenTabs[grayed="true"] { background-position: -60px -540px  !important ; }
-div.small_bookmarkOpenTabs {	background-position: -60px -560px  !important ; }
-div.small_bookmarkOpenTabs[grayed="false"][active="true"] { background-position: -60px -580px  !important ; }
+div.small_bookmarkOpenTabs[grayed="true"] { background-position: -60px -540px !important ; }
+div.small_bookmarkOpenTabs { background-position: -60px -560px !important ; }
+div.small_bookmarkOpenTabs[grayed="false"][active="true"] { background-position: -60px -580px !important ; }
 image.small_bookmarkOpenTabs { -moz-image-region: rect(560px 80px 580px 60px) !important ; }
 
-div.small_bookmarks[grayed="true"] { background-position: -80px -540px  !important ; }
-div.small_bookmarks {	background-position: -80px -560px  !important ; }
-div.small_bookmarks[grayed="false"][active="true"] { background-position: -80px -580px  !important ; }
+div.small_bookmarks[grayed="true"] { background-position: -80px -540px !important ; }
+div.small_bookmarks { background-position: -80px -560px !important ; }
+div.small_bookmarks[grayed="false"][active="true"] { background-position: -80px -580px !important ; }
 image.small_bookmarks { -moz-image-region: rect(560px 100px 580px 80px) !important ; }
 
-div.small_bookmarksToolbar[grayed="true"] { background-position: -100px -540px  !important ; }
-div.small_bookmarksToolbar {	background-position: -100px -560px  !important ; }
-div.small_bookmarksToolbar[grayed="false"][active="true"] { background-position: -100px -580px  !important ; }
+div.small_bookmarksToolbar[grayed="true"] { background-position: -100px -540px !important ; }
+div.small_bookmarksToolbar { background-position: -100px -560px !important ; }
+div.small_bookmarksToolbar[grayed="false"][active="true"] { background-position: -100px -580px !important ; }
 image.small_bookmarksToolbar { -moz-image-region: rect(560px 120px 580px 100px) !important ; }
 
-div.small_history[grayed="true"] { background-position: -120px -540px  !important ; }
-div.small_history {	background-position: -120px -560px  !important ; }
-div.small_history[grayed="false"][active="true"] { background-position: -120px -580px  !important ; }
+div.small_history[grayed="true"] { background-position: -120px -540px !important ; }
+div.small_history { background-position: -120px -560px !important ; }
+div.small_history[grayed="false"][active="true"] { background-position: -120px -580px !important ; }
 image.small_history { -moz-image-region: rect(560px 140px 580px 120px) !important ; }
 
-div.small_viewPageSource[grayed="true"] { background-position: -140px -540px  !important ; }
-div.small_viewPageSource {	background-position: -140px -560px  !important ; }
-div.small_viewPageSource[grayed="false"][active="true"] { background-position: -140px -580px  !important ; }
+div.small_viewPageSource[grayed="true"] { background-position: -140px -540px !important ; }
+div.small_viewPageSource { background-position: -140px -560px !important ; }
+div.small_viewPageSource[grayed="false"][active="true"] { background-position: -140px -580px !important ; }
 image.small_viewPageSource { -moz-image-region: rect(560px 160px 580px 140px) !important ; }
 
-div.small_viewPageInfo[grayed="true"] { background-position: -160px -540px  !important ; }
-div.small_viewPageInfo {	background-position: -160px -560px  !important ; }
-div.small_viewPageInfo[grayed="false"][active="true"] { background-position: -160px -580px  !important ; }
+div.small_viewPageInfo[grayed="true"] { background-position: -160px -540px !important ; }
+div.small_viewPageInfo { background-position: -160px -560px !important ; }
+div.small_viewPageInfo[grayed="false"][active="true"] { background-position: -160px -580px !important ; }
 image.small_viewPageInfo { -moz-image-region: rect(560px 180px 580px 160px) !important ; }
 
-div.small_showOnlyThisFrame[grayed="true"] { background-position: -180px -540px  !important ; }
-div.small_showOnlyThisFrame {	background-position: -180px -560px  !important ; }
-div.small_showOnlyThisFrame[grayed="false"][active="true"] { background-position: -180px -580px  !important ; }
+div.small_showOnlyThisFrame[grayed="true"] { background-position: -180px -540px !important ; }
+div.small_showOnlyThisFrame { background-position: -180px -560px !important ; }
+div.small_showOnlyThisFrame[grayed="false"][active="true"] { background-position: -180px -580px !important ; }
 image.small_showOnlyThisFrame { -moz-image-region: rect(560px 200px 580px 180px) !important ; }
 
-div.small_properties[grayed="true"] { background-position: -200px -540px  !important ; }
-div.small_properties {	background-position: -200px -560px  !important ; }
-div.small_properties[grayed="false"][active="true"] { background-position: -200px -580px  !important ; }
+div.small_properties[grayed="true"] { background-position: -200px -540px !important ; }
+div.small_properties { background-position: -200px -560px !important ; }
+div.small_properties[grayed="false"][active="true"] { background-position: -200px -580px !important ; }
 image.small_properties { -moz-image-region: rect(560px 220px 580px 200px) !important ; }
 
-div.small_printPage[grayed="true"] { background-position: -220px -540px  !important ; }
-div.small_printPage {	background-position: -220px -560px  !important ; }
-div.small_printPage[grayed="false"][active="true"] { background-position: -220px -580px  !important ; }
+div.small_printPage[grayed="true"] { background-position: -220px -540px !important ; }
+div.small_printPage { background-position: -220px -560px !important ; }
+div.small_printPage[grayed="false"][active="true"] { background-position: -220px -580px !important ; }
 image.small_printPage { -moz-image-region: rect(560px 240px 580px 220px) !important ; }
 
-div.small_mail[grayed="true"] { background-position: -240px -540px  !important ; }
-div.small_mail {	background-position: -240px -560px  !important ; }
-div.small_mail[grayed="false"][active="true"] { background-position: -240px -580px  !important ; }
+div.small_mail[grayed="true"] { background-position: -240px -540px !important ; }
+div.small_mail { background-position: -240px -560px !important ; }
+div.small_mail[grayed="false"][active="true"] { background-position: -240px -580px !important ; }
 image.small_mail { -moz-image-region: rect(560px 260px 580px 240px) !important ; }
 
-div.small_privateBrowsing[grayed="true"] { background-position: -260px -540px  !important ; }
-div.small_privateBrowsing {	background-position: -260px -560px  !important ; }
-div.small_privateBrowsing[grayed="false"][active="true"] { background-position: -260px -580px  !important ; }
+div.small_privateBrowsing[grayed="true"] { background-position: -260px -540px !important ; }
+div.small_privateBrowsing { background-position: -260px -560px !important ; }
+div.small_privateBrowsing[grayed="false"][active="true"] { background-position: -260px -580px !important ; }
 image.small_privateBrowsing { -moz-image-region: rect(560px 280px 580px 260px) !important ; }
 
 /*******************************************************************************************************************/
 
-div.small_cut[grayed="true"] { background-position: 0px -600px  !important ; }
-div.small_cut {	background-position: 0px -620px  !important ; }
-div.small_cut[grayed="false"][active="true"] { background-position: 0px -640px  !important ; }
+div.small_cut[grayed="true"] { background-position: 0px -600px !important ; }
+div.small_cut { background-position: 0px -620px !important ; }
+div.small_cut[grayed="false"][active="true"] { background-position: 0px -640px !important ; }
 image.small_cut { -moz-image-region: rect(620px 20px 640px 0px) !important ; }
 
-div.small_copy[grayed="true"] { background-position: -20px -600px  !important ; }
-div.small_copy {	background-position: -20px -620px  !important ; }
-div.small_copy[grayed="false"][active="true"] { background-position: -20px -640px  !important ; }
+div.small_copy[grayed="true"] { background-position: -20px -600px !important ; }
+div.small_copy { background-position: -20px -620px !important ; }
+div.small_copy[grayed="false"][active="true"] { background-position: -20px -640px !important ; }
 image.small_copy { -moz-image-region: rect(620px 40px 640px 20px) !important ; }
 
-div.small_paste[grayed="true"] { background-position: -40px -600px  !important ; }
-div.small_paste {	background-position: -40px -620px  !important ; }
-div.small_paste[grayed="false"][active="true"] { background-position: -40px -640px  !important ; }
+div.small_paste[grayed="true"] { background-position: -40px -600px !important ; }
+div.small_paste { background-position: -40px -620px !important ; }
+div.small_paste[grayed="false"][active="true"] { background-position: -40px -640px !important ; }
 image.small_paste { -moz-image-region: rect(620px 60px 640px 40px) !important ; }
 
-div.small_undo[grayed="true"] { background-position: -60px -600px  !important ; }
-div.small_undo {	background-position: -60px -620px  !important ; }
-div.small_undo[grayed="false"][active="true"] { background-position: -60px -640px  !important ; }
+div.small_undo[grayed="true"] { background-position: -60px -600px !important ; }
+div.small_undo { background-position: -60px -620px !important ; }
+div.small_undo[grayed="false"][active="true"] { background-position: -60px -640px !important ; }
 image.small_undo { -moz-image-region: rect(620px 80px 640px 60px) !important ; }
 
-div.small_selectAll[grayed="true"] { background-position: -80px -600px  !important ; }
-div.small_selectAll {	background-position: -80px -620px  !important ; }
-div.small_selectAll[grayed="false"][active="true"] { background-position: -80px -640px  !important ; }
+div.small_selectAll[grayed="true"] { background-position: -80px -600px !important ; }
+div.small_selectAll { background-position: -80px -620px !important ; }
+div.small_selectAll[grayed="false"][active="true"] { background-position: -80px -640px !important ; }
 image.small_selectAll { -moz-image-region: rect(620px 100px 640px 80px) !important ; }
 
 div.small_toggleFindBar[grayed="true"] { background-position: -100px -600px !important ; }
@@ -906,17 +906,17 @@ div.small_toggleFindBar { background-position: -100px -620px !important ; }
 div.small_toggleFindBar[grayed="false"][active="true"] { background-position: -100px -640px !important ; }
 image.small_toggleFindBar { -moz-image-region: rect(620px 120px 640px 100px) !important ; }
 
-div.small_zoomIn[grayed="true"] { background-position: -120px -600px  !important ; }
-div.small_zoomIn {	background-position: -120px -620px  !important ; }
-div.small_zoomIn[grayed="false"][active="true"] { background-position: -120px -640px  !important ; }
+div.small_zoomIn[grayed="true"] { background-position: -120px -600px !important ; }
+div.small_zoomIn { background-position: -120px -620px !important ; }
+div.small_zoomIn[grayed="false"][active="true"] { background-position: -120px -640px !important ; }
 image.small_zoomIn { -moz-image-region: rect(620px 140px 640px 120px) !important ; }
 
-div.small_zoomOut[grayed="true"] { background-position: -140px -600px  !important ; }
-div.small_zoomOut {	background-position: -140px -620px  !important ; }
-div.small_zoomOut[grayed="false"][active="true"] { background-position: -140px -640px  !important ; }
+div.small_zoomOut[grayed="true"] { background-position: -140px -600px !important ; }
+div.small_zoomOut { background-position: -140px -620px !important ; }
+div.small_zoomOut[grayed="false"][active="true"] { background-position: -140px -640px !important ; }
 image.small_zoomOut { -moz-image-region: rect(620px 160px 640px 140px) !important ; }
 
-div.small_zoomReset[grayed="true"] { background-position: -160px -600px  !important ; }
-div.small_zoomReset {	background-position: -160px -620px  !important ; }
-div.small_zoomReset[grayed="false"][active="true"] { background-position: -160px -640px  !important ; }
+div.small_zoomReset[grayed="true"] { background-position: -160px -600px !important ; }
+div.small_zoomReset { background-position: -160px -620px !important ; }
+div.small_zoomReset[grayed="false"][active="true"] { background-position: -160px -640px !important ; }
 image.small_zoomReset { -moz-image-region: rect(620px 180px 640px 160px) !important ; }
