@@ -144,6 +144,7 @@ var eG_menuItems = [
   new eG_menuItem(91,	0, "zoomIn",             "eGf.zoomIn();"),
   new eG_menuItem(92,	0, "zoomOut",            "eGf.zoomOut();"),
   new eG_menuItem(93,	0, "zoomReset",          "eGf.zoomReset();")
+  new eG_menuItem(40,  -1, "empty",              null),
 ];
 
 function eG_menuLayout (menu, name, actionsPrefs, labelsPrefs) {
