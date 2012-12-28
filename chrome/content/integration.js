@@ -299,44 +299,13 @@ function eG_handleKeys(evt) {
   // show textarea for typing and retrieve typed text as selected text
   if (eGm.menuState != 0 && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.supprKey) {
     // all keys except keys to control display of pie
-    if (evt.keyCode == 13 || evt.keyCode == 27) {
+    if (evt.keyCode == 27) {
       evt.preventDefault();
     }
     
     if (evt.type == "keydown") {
-      if (evt.keyCode == 13 || evt.keyCode == 27) {
-        // <Enter> key pressed
-        
-        if (evt.keyCode != 27) {
-          // any other key except <Escape> key pressed
-          if (eGc.selection != "" ) {
-            // do nothing if selection is empty
-            if (eGc.selection == "/") {
-              // open options dialog if character "/" (slash) typed
-              window.openDialog("chrome://easygestures/content/options.xul","","");
-            }
-            else {
-              if (eGm.sector == -1) {
-                var postData = { };
-                if (evt.shiftKey) {
-                  // load url in new tab if <Shift+Enter> pressed
-                  openNewTabWith(getShortcutOrURI(eGc.selection, postData));
-                  // select new created tab
-                  var container = document.getElementById("content").mTabContainer;
-                  var tabs = container.childNodes;
-                  container._selectNewTab(tabs[tabs.length-1]); // selectNewTab removed from FF3
-                }
-                else {
-                  // load url in current tab if only <Enter> pressed
-                  loadURI(getShortcutOrURI(eGc.selection, postData)); // load url
-                }
-              }
-            }
-          }
-        }
-        else { // <Escape> key pressed
-          eGm.sector = -1; // cancel action
-        }
+      if (evt.keyCode == 27) { // ESC key pressed
+        eGm.sector = -1;
         eGm.runAction();
       }
     }
