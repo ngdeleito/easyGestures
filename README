@@ -16,11 +16,12 @@ To install the latest development version:
 - Drop the renamed zipped file into Firefox
 
 Features pruned so far and rationale:
-- Support for multiple skins. Only two skins were (publicly) available. Furthermore, easyGesture's skin should ideally match with the current Firefox theme/persona.
-- Support for changing easyGesture's language. easyGesture's language should match the language used by Firefox, as any other extension.
+- Support for multiple skins. Only two skins were (publicly) available. Furthermore, easyGestures' skin should ideally match with the current Firefox theme/persona.
+- Support for changing easyGestures' language. easyGestures' language should match the language used by Firefox, as any other extension.
 - Popup for next and previous tab actions. The popup was not present in initial versions of easyGestures, and, once introduced, generated heated discussions in the former easyGestures forum. Furthermore, its presence was inconsistent with the name of those two actions.
-- Popup for undo close tab action. The popup was not present in initial versions of easyGestures. Furthermore, its presence was inconsistent with the name of this action and with the behaviour of Firefox's Ctrl/Cmd-Shift-T shorcut.
-- Input box for entering URLs. Let's not try to duplicate Firefox's location bar.
-- Liner menu. easyGestures is about a pie menu.
+- Popup for undo close tab action. The popup was not present in initial versions of easyGestures. Furthermore, its presence was inconsistent with the name of this action and with the behaviour of Firefox's Ctrl/Cmd-Shift-T shortcut.
+- Input box for entering URLs. This feature duplicates Firefox's location bar.
+- Linear menu. easyGestures is about a pie menu.
 - Translate/explain action. A proper solution for translating a word from any language to any other language seems to be outside the scope of this extension. Explaining a term can be done via a search query.
-- Own search engines. easyGestures should use Firefox's search engines.
+- Own search engines. This features duplicates Firefox's search engines.
+- Highlight/clear action. Although it only offers one highlighting color, Firefox offers this feature in its find bar.

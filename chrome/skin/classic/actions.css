@@ -412,9 +412,9 @@ div.selectAll[grayed="true"] { background-position: -128px -960px  !important ; 
 div.selectAll {	background-position: -128px -992px  !important ; }
 div.selectAll[grayed="false"][active="true"] { background-position: -128px -1024px  !important ; }
 
-div.highlight[grayed="true"] { background-position: -160px -960px  !important ; }
-div.highlight {	background-position: -160px -992px  !important ; }
-div.highlight[grayed="false"][active="true"] { background-position: -160px -1024px  !important ; }
+div.toggleFindBar[grayed="true"] { background-position: -160px -960px  !important ; }
+div.toggleFindBar {	background-position: -160px -992px  !important ; }
+div.toggleFindBar[grayed="false"][active="true"] { background-position: -160px -1024px  !important ; }
 
 div.zoomIn[grayed="true"] { background-position: -192px -960px  !important ; }
 div.zoomIn {	background-position: -192px -992px  !important ; }
@@ -895,11 +895,6 @@ div.small_selectAll[grayed="true"] { background-position: -80px -600px  !importa
 div.small_selectAll {	background-position: -80px -620px  !important ; }
 div.small_selectAll[grayed="false"][active="true"] { background-position: -80px -640px  !important ; }
 image.small_selectAll { -moz-image-region: rect(620px 100px 640px 80px) !important ; }
-
-div.small_highlight[grayed="true"] { background-position: -100px -600px  !important ; }
-div.small_highlight {	background-position: -100px -620px  !important ; }
-div.small_highlight[grayed="false"][active="true"] { background-position: -100px -640px  !important ; }
-image.small_highlight { -moz-image-region: rect(620px 120px 640px 100px) !important ; }
 
 div.small_zoomIn[grayed="true"] { background-position: -120px -600px  !important ; }
 div.small_zoomIn {	background-position: -120px -620px  !important ; }

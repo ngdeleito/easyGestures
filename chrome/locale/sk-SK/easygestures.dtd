@@ -192,7 +192,7 @@
 <!ENTITY func.paste "Prilepiť">
 <!ENTITY func.undo "Naspäť">
 <!ENTITY func.selectAll "Vybrať všetko">
-<!ENTITY func.highlight "Zvýrazniť/Vyčistiť">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "Priblížiť">
 <!ENTITY func.zoomOut "Vzdialiť">
 <!ENTITY func.zoomReset "Predvolené priblíženie">
@@ -202,11 +202,6 @@
 <!ENTITY input.page3 "Strana 3">
 <!ENTITY input.page4 "Strana 4">
 <!ENTITY input.infoPlaceHolder "Náhrady reťazcov: &#37;s (výber) a &#37;u (aktuálna URL).">
-<!ENTITY highlight "Prispôsobiť akciu &apos;Zvýrazniť/Vyčistiť&apos;">
-<!ENTITY highlight.count "Zobraziť počítadlo">
-<!ENTITY highlight.color "Farba">
-<!ENTITY highlight.code "Kód">
-<!ENTITY highlight.restoreColors "Obnoviť farby">
 <!ENTITY closeTab "Prispôsobiť akciu &apos;Zavrieť kartu&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavrieť prehliadač, keď je zavretá posledná karta">
 <!ENTITY extern "Prispôsobiť akcie &apos;Spustiť program&apos;">
@@ -253,7 +248,6 @@
 <!ENTITY tip14 "Môžete si nechať predvolený nablýskaný vzhľad, alebo prepnúť do základného zobrazenia bez ikon, ak ste textovo orientovaný. Môžete tiež prepnúť zobrazenie na malé ikony.">
 <!ENTITY tip15 "Pokročilý používatelia môžu mať v koláčovej ponuke viac akcií: 10 namiesto 8 na každom z 3 hlavných rozložení.">
 <!ENTITY tip16 "Nastavenie Firefoxu &apos;Povoliť automatický posun&apos; je vypnuté, keď je použité stredné tlačidlo myši na zobrazenie ponuky. Funkcia automatického posunu je potom dostupná cez ponuku easyGestures, po malom oneskorení, ak nedošlo k pohybu. Automatický posun aktivujte v Možnosti/Správanie">
-<!ENTITY tip17 "Môžete zvýrazniť slovo (alebo viac) v celej stránke tým, že najprv označíte to, čo chcete zvýrazniť a potom použijete akciu &apos;Zvýrazniť/Vyčistiť&apos;. Tá istá akcia odstráni všetko zvýraznenie, ak vstupné políčko necháte prázdne.">
 <!ENTITY tip18 "Akcia &apos;Zavrieť kartu&apos; zavrie okno, ak je to posledná karta v okne.">
 <!ENTITY tip19 "Môžete nastaviť, aby sa ponuka zobrazovala len pri ťahaní myšou, alebo po malom oneskorení. Zmeny urobíte v Možnosti/Správanie">
 <!ENTITY tip20 "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">

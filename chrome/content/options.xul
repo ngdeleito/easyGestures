@@ -648,77 +648,6 @@
               <separator />
               <menuseparator />
               <hbox>
-                <image id="highlightImage" class="small_highlight" />
-                <vbox>
-                  <spacer flex="1" />
-                  <label value="&highlight;" style="font-weight: bold;" />
-                  <spacer flex="1" />
-                </vbox>
-              </hbox>
-              <spacer height="3px" />
-              <checkbox id="highlightCount" label="&highlight.count;" />
-              <hbox>
-                <spacer width="4" />
-                <menulist id="highlightColorList" value="0" sizetopopup="false"
-                  style="-moz-appearance:none;border:0px;min-width:100px;">
-                  <menupopup>
-                    <menuitem value="0" label="&highlight.color; 1"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="1" label="&highlight.color; 2"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="2" label="&highlight.color; 3"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="3" label="&highlight.color; 4"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="4" label="&highlight.color; 5"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="5" label="&highlight.color; 6"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="6" label="&highlight.color; 7"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="7" label="&highlight.color; 8"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="8" label="&highlight.color; 9"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                    <menuitem value="9" label="&highlight.color; 10"
-                      onmouseover="this.style.fontWeight='bold';"
-                      onmouseout="this.style.fontWeight='normal';"
-                      onclick="document.getElementById('highlightColorCode').value=this.style.backgroundColor;this.parentNode.parentNode.style.backgroundColor=this.style.backgroundColor;document.getElementById('highlightColorCode').focus();" />
-                  </menupopup>
-                </menulist>
-                <hbox pack="start" flex="1">
-                  <vbox pack="center">
-                    <label id="highlightColorCodeLabel" value="&highlight.code;" />
-                  </vbox>
-                  <textbox id="highlightColorCode" size ="16"
-                    onchange="document.getElementById('highlightColorList').selectedItem.style.backgroundColor=this.value;document.getElementById('highlightColorList').style.backgroundColor=this.value;" />
-                </hbox>
-              </hbox>
-              <spacer height="3" />
-              <hbox>
-                <button label="&highlight.restoreColors;" oncommand="restoreDefaultHighlightColors();" />
-              </hbox>
-              <separator />
-              <menuseparator />
-              <hbox>
                 <image id="closeTabImage" class="small_closeTab" />
                 <vbox>
                   <spacer flex="1" />
@@ -799,7 +728,7 @@
       "&func.history;", "&func.viewPageSource;", "&func.viewPageInfo;",
       "&func.showOnlyThisFrame;", "&func.properties;", "&func.printPage;",
       "&func.mail;", "&func.privateBrowsing;", "&func.cut;", "&func.copy;",
-      "&func.paste;", "&func.undo;", "&func.selectAll;", "&func.highlight;",
+      "&func.paste;", "&func.undo;", "&func.selectAll;", "&func.toggleFindBar;",
       "&func.zoomIn;", "&func.zoomOut;", "&func.zoomReset;"
     );
     
@@ -825,7 +754,7 @@
       "bookmarkOpenTabs", "bookmarks", "bookmarksToolbar", "history",
       "viewPageSource", "viewPageInfo", "showOnlyThisFrame", "properties",
       "printPage", "mail", "privateBrowsing", "cut", "copy", "paste", "undo",
-      "selectAll", "highlight", "zoomIn", "zoomOut", "zoomReset"
+      "selectAll", "toggleFindBar", "zoomIn", "zoomOut", "zoomReset"
     );
     
     var contextCaption = {
@@ -1562,15 +1491,6 @@
       }
     }
     
-    function restoreDefaultHighlightColors() {
-      var colors = eGc.defaultHighlightColorList.split(";");
-      for (var i=0; i<10; i++) {
-        document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor = colors[i];
-      }
-      document.getElementById("highlightColorList").style.backgroundColor=document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-      document.getElementById("highlightColorCode").value=document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-    }
-    
     function createActionsPopupList() {
       var popupNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menupopup");
       popupNode.setAttribute("maxheight","500px");
@@ -1924,15 +1844,6 @@
       }
       document.getElementById("linkprefs").selectedItem = selectedItem;
       
-      document.getElementById("highlightCount").checked = eG_prefs.getBoolPref("customizations.highlightCount");
-      
-      var colors = eG_prefs.getCharPref("customizations.highlightColorList").split(";");
-      for (var i = 0; i<10; i++)
-        document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor = colors[i];
-      
-      document.getElementById("highlightColorList").style.backgroundColor = document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-      document.getElementById("highlightColorCode").value = document.getElementById("highlightColorList").firstChild.firstChild.style.backgroundColor;
-      
       document.getElementById("closeBrowserOnLastTab").checked = eG_prefs.getBoolPref("customizations.closeBrowserOnLastTab");
       
       for (i=1; i<=10; i++) {
@@ -2066,14 +1977,6 @@
       setActionsPrefs();
       
       eG_prefs.setBoolPref("customizations.xlink", document.getElementById("xlink").checked);
-      
-      eG_prefs.setBoolPref("customizations.highlightCount", document.getElementById("highlightCount").checked);
-      
-      var colors = "";
-      for (var i = 0; i<10; i++) {
-        colors += document.getElementById("highlightColorList").firstChild.childNodes[i].style.backgroundColor +";";
-      }
-      eG_prefs.setCharPref("customizations.highlightColorList", colors);
       
       eG_prefs.setBoolPref("customizations.closeBrowserOnLastTab", document.getElementById("closeBrowserOnLastTab").checked);
       
@@ -2405,7 +2308,6 @@
       //***************************************************
       
       document.getElementById("openLinkImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
-      document.getElementById("highlightImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
       document.getElementById("closeTabImage").style.listStyleImage = "url('"+eG_skinCurrent+"small_actions.png')";
     }
     

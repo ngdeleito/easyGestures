@@ -230,7 +230,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.paste "貼上">
 <!ENTITY func.undo "復原">
 <!ENTITY func.selectAll "全選">
-<!ENTITY func.highlight "標記／清除">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "焦距拉近">
 <!ENTITY func.zoomOut "焦距拉遠">
 <!ENTITY func.zoomReset "還原焦距">
@@ -241,12 +241,6 @@ END OF INSTRUCTIONS
 <!ENTITY input.page3 "第三頁">
 <!ENTITY input.page4 "第四頁">
 <!ENTITY input.infoPlaceHolder "字串 &#37;s（選取區）和 &#37;u（現在的網址）">
-
-<!ENTITY highlight "自訂「標記／清除」動作">
-<!ENTITY highlight.count "顯示標記統計數字">
-<!ENTITY highlight.color "顏色">
-<!ENTITY highlight.code "色碼">
-<!ENTITY highlight.restoreColors "還原顏色">
 
 <!ENTITY closeTab "自訂「關閉分頁」動作">
 <!ENTITY closeTab.closeBrowserOnLastTab "關閉最後一個分頁時關閉瀏覽器">
@@ -300,7 +294,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "你可以持續使用預設的圓餅圖示顯示，或以小型圖示取代顯示。如果你喜歡簡單的文字模式，也可以改用沒有圖示的基本顯示。">
 <!ENTITY tip15 "重度使用者可以設定更多動作在你的圓餅選單上：在三個主要圓餅選單上都用十個動作取代預設的八個動作。">
 <!ENTITY tip16 "在滑鼠中鍵被用來顯示圓餅選單時，Firefox 的選項「使用自動捲動(Autoscrolling)」會被設定成關閉。在圓餅選單中間不移動，停頓短暫的時間後可以轉換顯示「自動捲動」。|設定轉換自動捲動的停頓時間 Options/Behavior">
-<!ENTITY tip17 "你可以用「標記／清除」這個動作，在全部的頁面用高亮度標記選取或輸入的一個或多個文字。再做一次同樣動作，把輸入欄留白，就可以清除高亮度標記。">
 <!ENTITY tip18 "只剩下一個分頁時，「關閉分頁」這個動作會把視窗也關閉。">
 <!ENTITY tip19 "你可以改用拖曳游標或按著滑鼠做短暫的停頓這些方法來顯示圓餅選單。|更改設定 Options/Behavior">
 <!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">

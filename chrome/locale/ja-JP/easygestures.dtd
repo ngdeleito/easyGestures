@@ -230,7 +230,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.paste "貼り付け">
 <!ENTITY func.undo "やり直し">
 <!ENTITY func.selectAll "すべて選択">
-<!ENTITY func.highlight "ハイライト/取り消し">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "大きく">
 <!ENTITY func.zoomOut "小さく">
 <!ENTITY func.zoomReset "標準サイズ">
@@ -241,12 +241,6 @@ END OF INSTRUCTIONS
 <!ENTITY input.page3 "ページ 3">
 <!ENTITY input.page4 "ページ 4">
 <!ENTITY input.infoPlaceHolder "書式指定子: &#37;s (選択文字列) と &#37;u (現在の URL).">
-
-<!ENTITY highlight "'ハイライト/取り消し'アクションの設定">
-<!ENTITY highlight.count "該当数を表示する">
-<!ENTITY highlight.color "色">
-<!ENTITY highlight.code "コード">
-<!ENTITY highlight.restoreColors "色を初期値に戻す">
 
 <!ENTITY closeTab "'タブを閉じる'アクションの設定">
 <!ENTITY closeTab.closeBrowserOnLastTab "最後のタブを閉じたらブラウザも閉じる">
@@ -300,7 +294,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "ぴかぴかの初期スキンのまま使うこともできますし、もしテキスト志向の強い方でしたら、アイコンなしの基本表示にもできます。小さいアイコンに切り替えることもできます。">
 <!ENTITY tip15 "easyGestures に慣れた方は、一つのパイメニューに表示するアクションの数を、元の8個から10個に増やしてみてもいいでしょう。">
 <!ENTITY tip16 "マウスの中央ボタンをパイメニューの表示に使っていると、Firefox の'自動スクロール機能を使用する'オプションが無効になります。パイメニューが表示されてから、少しの間カーソルを動かさないようにして、自動スクロール機能をこのままでも使えるようにもできます。|自動スクロールを有効にする Options/Behavior">
-<!ENTITY tip17 "'ハイライト/取り消し'アクションを使えば、ページ内にある単語や文章をハイライトすることができます。はじめに文字列を選択しておくか、表示されるインプットボックスに入力してください。インプットボックスを空にして Enter キーで確定すると、すべてのハイライトを取り消します。">
 <!ENTITY tip18 "タブが1つだけの時に'タブを閉じる'アクションをすると、そのウィンドウを閉じます。">
 <!ENTITY tip19 "パイメニューを開く条件を、マウスをドラッグした時か一定時間が経過した時のみに限定することもできます。|挙動を変更する Options/Behavior">
 <!ENTITY tip20 "画像への拡大縮小アクションは、その画像のみに適用されます。">

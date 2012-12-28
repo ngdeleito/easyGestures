@@ -109,9 +109,6 @@ function eG_setPrefs(locale){	// this function is also called in options.xul wit
 	eG_prefsObs.prefs.setBoolPref("customizations.xlink", true);			
 	eG_prefsObs.prefs.setCharPref("customizations.openLink", "newTab");			// "curTab"  or "newTab" or "newWindow"
     
-	eG_prefsObs.prefs.setBoolPref("customizations.highlightCount", true);
-	eG_prefsObs.prefs.setCharPref("customizations.highlightColorList", eGc.defaultHighlightColorList);
-	
 	eG_prefsObs.prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
 
 	var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);

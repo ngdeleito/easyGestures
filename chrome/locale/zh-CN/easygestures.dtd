@@ -231,7 +231,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.paste "粘贴">
 <!ENTITY func.undo "撤销">
 <!ENTITY func.selectAll "全选">
-<!ENTITY func.highlight "高亮/清除">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "放大">
 <!ENTITY func.zoomOut "缩小">
 <!ENTITY func.zoomReset "重置缩放值">
@@ -242,12 +242,6 @@ END OF INSTRUCTIONS
 <!ENTITY input.page3 "页面 3">
 <!ENTITY input.page4 "页面 4">
 <!ENTITY input.infoPlaceHolder "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
-
-<!ENTITY highlight "自定义“高亮/清除”手势">
-<!ENTITY highlight.count "显示数字记数">
-<!ENTITY highlight.color "颜色">
-<!ENTITY highlight.code "代码">
-<!ENTITY highlight.restoreColors "复位颜色">
 
 <!ENTITY closeTab "自定义“关闭标签页”手势">
 <!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
@@ -301,7 +295,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "你可以使用默认的圆形图标显示，或者使用小型图标取代，如果你喜欢简单的文字模式，也可以改用没有图标的基本显示。">
 <!ENTITY tip15 "重度使用者可以设置更多的动作在你的圆饼菜单上：在3个主要圆饼菜单上都用10个动作替代默认的8个动作。">
 <!ENTITY tip16 "Firefox选项“使用自动滚动”未选中时，使用鼠标中键是用来显示圆饼菜单的。在圆饼菜单中间停顿短暂时间后可以转换显示“自动滚动”。|激活自动滚动在 选项/动作">
-<!ENTITY tip17 "你可以用“标记/清除”动作，在全部的页面用高亮标记选取或输入的一个或多个文字。再做一次同样动作，把输入框留白，就可以清除高亮标记。">
 <!ENTITY tip18 "如果只有一个标签打开，关闭标签后将关闭浏览器。">
 <!ENTITY tip19 "你可以采用拖拽鼠标或按着鼠标作短暂的停顿这些方法来显示圆饼菜单。|更改设置在 选项/自定义">
 <!ENTITY tip20 "放大/缩小这些动作只能在图片上使用。">

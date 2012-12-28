@@ -232,7 +232,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.paste "Paste">
 <!ENTITY func.undo "Undo">
 <!ENTITY func.selectAll "Select All">
-<!ENTITY func.highlight "Highlight/Clear">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "Zoom In">
 <!ENTITY func.zoomOut "Zoom Out">
 <!ENTITY func.zoomReset "Reset Zoom">
@@ -243,12 +243,6 @@ END OF INSTRUCTIONS
 <!ENTITY input.page3 "Page 3">
 <!ENTITY input.page4 "Page 4">
 <!ENTITY input.infoPlaceHolder "String placeholders: &#37;s (selection) and &#37;u (current URL).">
-
-<!ENTITY highlight "Customize 'Highlight/Clear' Action ">
-<!ENTITY highlight.count "Display count numbers">
-<!ENTITY highlight.color "Color">
-<!ENTITY highlight.code "Code">
-<!ENTITY highlight.restoreColors "Restore Colors">
 
 <!ENTITY closeTab "Customize 'Close Tab' Action ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Close browser when last tab is closed">
@@ -302,7 +296,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.">
 <!ENTITY tip15 "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.">
 <!ENTITY tip16 "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving. |Activate autoscrolling in Options/Behavior">
-<!ENTITY tip17 "You can highlight a word or more in a whole page with the 'Highlight/Clear' action by first selecting it on the page or typing it in the input box. The same action will clear all highlights if the input box is left blank.">
 <!ENTITY tip18 "The 'Close tab' action closes the window if there is only one tab open.">
 <!ENTITY tip19 "You can have the pie menu displayed only when dragging the mouse or after a short delay. |Change behavior in Options/Behavior">
 <!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">

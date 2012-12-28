@@ -231,7 +231,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.paste "Vložit">
 <!ENTITY func.undo "Zpět">
 <!ENTITY func.selectAll "Vybrat vše">
-<!ENTITY func.highlight "Zvýraznit/Vyčistit">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "Zvětšit">
 <!ENTITY func.zoomOut "Zmenšit">
 <!ENTITY func.zoomReset "Předvolené zvětšení">
@@ -242,12 +242,6 @@ END OF INSTRUCTIONS
 <!ENTITY input.page3 "Strana 3">
 <!ENTITY input.page4 "Strana 4">
 <!ENTITY input.infoPlaceHolder "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
-
-<!ENTITY highlight "Přizpůsobit akci &apos;Zvýraznit/Vyčistit&apos;">
-<!ENTITY highlight.count "Zobrazit počítadlo">
-<!ENTITY highlight.color "Barva">
-<!ENTITY highlight.code "Kód">
-<!ENTITY highlight.restoreColors "Obnovit barvy">
 
 <!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
@@ -301,7 +295,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "Můžete si nechat předvolený nablýskaný vzhled, anebo přepnout do základního zobrazení bez ikon, pokud jste textově orientovaní. Můžete také přepnout zobrazení na malé ikony.">
 <!ENTITY tip15 "Pokročilý uživatelé mohou mít v kruhové nabídce více akcí: 10 místo 8 na každém ze 3 hlavních rozložení.">
 <!ENTITY tip16 "Nastavení Firefoxu &apos;Povolit automatický posun&apos; je vypnuté, pokud je použité prostřední tlačítko myši pro zobrazení nabídky. Funkce automatického posunu je potom dostupná přes nabídku easyGestures po krátkém zpoždění, pokud nedošlo k pohybu myší. Automatický posun aktivujete v Možnosti/Chování">
-<!ENTITY tip17 "Můžete zvýraznit slovo (anebo více slov) na celé stránce tím, že nejprve označíte to, co chcete zvýraznit a potom použijete akci &apos;Zvýraznit/Vyčistit&apos;. Ta samá akce odstraní veškeré zvýraznění, pokud vstupní políčko necháte prázdné.">
 <!ENTITY tip18 "Akce &apos;Zavřít panel&apos; zavře okno, pokud je to poslední panel v okně.">
 <!ENTITY tip19 "Můžete nastavit, aby se nabídka zobrazovala jen při tažení myší anebo po krátkém zpoždění. Změny uděláte v Možnosti/Chování">
 <!ENTITY tip20 "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">

@@ -193,7 +193,7 @@
 <!ENTITY func.paste "Beillesztés">
 <!ENTITY func.undo "Visszavonás">
 <!ENTITY func.selectAll "Minden kijelölése">
-<!ENTITY func.highlight "Kiemelés/törlés">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "Nagyítás">
 <!ENTITY func.zoomOut "Kicsinyítés">
 <!ENTITY func.zoomReset "Visszaállítás">
@@ -203,11 +203,6 @@
 <!ENTITY input.page3 "3. oldal">
 <!ENTITY input.page4 "4. oldal">
 <!ENTITY input.infoPlaceHolder "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
-<!ENTITY highlight "'Kiemelés/törlés' művelet személyre szabása">
-<!ENTITY highlight.count "Számlálók megjelenítése">
-<!ENTITY highlight.color "Szín">
-<!ENTITY highlight.code "Kód">
-<!ENTITY highlight.restoreColors "Színek visszaállítása">
 <!ENTITY closeTab "'Lap bezárása' művelet személyre szabása">
 <!ENTITY closeTab.closeBrowserOnLastTab "Böngésző bezárása az utolsó lap bezárásakor">
 <!ENTITY extern "'Program futtatása' művelet személyre szabása">
@@ -254,7 +249,6 @@
 <!ENTITY tip14 "Megtarthatod a csillogó-villogó külsőt vagy átválthatsz egy ikonok nélküli, egyszerűbb megjelenítésre, ha inkább a szöveges kiírást szereted. De akár kis ikonokat is használhatsz.">
 <!ENTITY tip15 "A haladó felhasználók több funkciót használhatnak, hiszen nyolc helyett akár tíz menüelem is megjeleníthető mindhárom kiosztáson.">
 <!ENTITY tip16 "A Firefox &quot;Automatikus görgetés&quot; funkcióját kikapcsolja, ha a középső egérgomb jeleníti meg a köralakú menüt. Az automatikus görgetés elérhető úgy is, ha a köralakú menün keresztül kattintasz mozgatás nélkül. |Az automatikus görgetés a Beállítások/Működés/2. oldalon kapcsolható be és a késleltetését is itt lehet beállítani.">
-<!ENTITY tip17 "Kiemelhetsz egy vagy több szót egy oldalon a &quot;Kiemelés/törlés&quot; funkcióval, közvetlen kijelöléssel vagy a szövegdobozba gépelve. Ugyanez a funkció kitörli az összes kiemelést, ha a szövegdoboz üres.">
 <!ENTITY tip18 "A &quot;Fül bezárása&quot; funkció bezárja az ablakot is, ha csak egy fül van megnyitva.">
 <!ENTITY tip19 "Beállítható az is, hogy csak akkor húzáskor vagy késleltetve jelenjen meg a köralakú menü. |A Beállítások/Működés/1. oldalon lehet ezeket beállítani.">
 <!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">

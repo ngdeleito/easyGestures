@@ -230,7 +230,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.paste "Coller">
 <!ENTITY func.undo "Annuler">
 <!ENTITY func.selectAll "Sélectionner tout">
-<!ENTITY func.highlight "Surligner/Nettoyer">
+<!ENTITY func.toggleFindBar "Basculer barre de recherches">
 <!ENTITY func.zoomIn "Zoom avant">
 <!ENTITY func.zoomOut "Zoom arrière">
 <!ENTITY func.zoomReset "Réinitialiser zoom">
@@ -241,12 +241,6 @@ END OF INSTRUCTIONS
 <!ENTITY input.page3 "Page 3">
 <!ENTITY input.page4 "Page 4">
 <!ENTITY input.infoPlaceHolder "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
-
-<!ENTITY highlight "Personnaliser action 'Surligner/Nettoyer' ">
-<!ENTITY highlight.count "Afficher comptage">
-<!ENTITY highlight.color "Couleur">
-<!ENTITY highlight.code "Code">
-<!ENTITY highlight.restoreColors "Restaurer Couleurs">
 
 <!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
@@ -300,7 +294,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.">
 <!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.">
 <!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger. |Activatez défilement automatique dans Options/Comportement">
-<!ENTITY tip17 "Vous pouvez surligner un ou plusieurs mots dans une page entière avec l'action 'Surligner/Nettoyer' en selectionnant d'abord le mot ou en le tapant dans la zone de texte. La même action nettoiera tous les surlignages si la zone de texte est laissée vide.">
 <!ENTITY tip18 "L'action 'Fermer onglet' ferme la fenêtre s'il n'y a qu'un seul onglet ouvert.">
 <!ENTITY tip19 "Vous pouvez faire en sorte que le menu circulaire ne s'affiche que lorsque vous glissez la souris ou après un court délai. |Changez comportement dans Options/Comportement">
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">

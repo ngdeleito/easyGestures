@@ -62,10 +62,6 @@ var eGc = {
   selectionStart: null, //used for Textarea & Text Input
   selectionEnd: null, //used for Textarea & Text Input
   
-  lastTypedWord: "", // remembers the last word typed in the textarea for search or highlight or translation
-  highlightColor: -1, // used for 'highlight' action
-  noTextHighlighted: true, // used to know if alert must be displayed or not
-  
   // used for drag movements in 'open when dragging' situations
   pageXDown: -1, // needed for to give a tolerance to 'open when dragging'
   pageYDown: -1,
@@ -81,10 +77,7 @@ var eGc = {
   openedOnDrag: false, // used to switch on/off selection
   draggedToOpen: false,
   
-  maxzIndex: 2147483647, // Max Int. Same value as the one used for displaying autoscrolling image
-  
-  defaultHighlightColorList: "rgb(255,255,176);rgb(255,191,191);rgb(184,230,255);rgb(182,255,183);rgb(233,187,255);yellow;salmon;aqua;SpringGreen;violet",
-  gray: "#DDDDDD"
+  maxzIndex: 2147483647 // Max Int. Same value as the one used for displaying autoscrolling image
 };
 
 var eGm = null;
@@ -313,12 +306,6 @@ function eG_handleKeys(evt) {
     if (evt.type == "keydown") {
       if (evt.keyCode == 13 || evt.keyCode == 27) {
         // <Enter> key pressed
-        eGc.selection = eGm.inputBox.value;
-        
-        if (eGm.sector != -1) {
-          eGc.lastTypedWord = eGm.inputBox.value; // remember the last typed word in inputBox except addresses
-        }
-        eGm.inputBox.blur(); // removing the cursor
         
         if (evt.keyCode != 27) {
           // any other key except <Escape> key pressed
@@ -377,11 +364,6 @@ function eG_handleMouseup(evt) {
     }
   }
   
-  if (eGm.typingText) {
-    evt.preventDefault();
-    return;
-  }
-
   if (eGc.openedOnDrag) { // enabling selection
     selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(2); // SELECTION_ON
@@ -432,35 +414,17 @@ function eG_handleMouseup(evt) {
       evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
     }
     else {
-      if (eGm.inputBox.style.visibility == "visible" ) {}
+      if (eGm.sector != -1 || eGm.sector == -1 && (eGm.menuState != 2 || eGm.menuState == 2 && (evt.button != eGm.showButton))) {
+        eGm.runAction();
+      }
       else {
-        if (eGm.sector != -1 || eGm.sector == -1 && (eGm.menuState != 2 || eGm.menuState == 2 && (evt.button != eGm.showButton))) {
-          var actionName = (eGm.sector >=0 ? layout.actions[eGm.sector].src : "");
-          if (actionName.search("highlight") != -1 && eGc.selection == "") {
-            // Only for actions needing entry: highlight
-            // Selected text should not bring up input box
-            eGm.showInputBox(actionName.search("highlight")!=-1 ); // argument is to display options sign for highlight action
-          }
-          else {
-            eGm.runAction();
-          }
-        }
-        else {
-          eGm.menuState = 3;
-        }
+        eGm.menuState = 3;
       }
     }
   }
 }
 
 function eG_handleMousemove(evt) {
-  if (eGm.typingText) {
-    if (eGm.inputBox.style.cursor != "auto") {
-      eGm.inputBox.style.cursor = "auto";
-    }
-    return;
-  }
-  
   if (evt.originalTarget.ownerDocument != eGc.frame_doc) {
     return;
   }
@@ -514,11 +478,6 @@ function eG_handleMousemove(evt) {
 }
 
 function eG_handleMousedown(evt) {
-  if (eGm.typingText) {
-    eGc.blockStdContextMenu = false;
-    return;
-  }
-  
   eGc.blockStdContextMenu = true;
   
   // check whether pie menu should change layout or hide (later)
@@ -779,59 +738,6 @@ function eG_openMenu() {
   }
   else {
     eGm.show("main");
-  }
-}
-
-function eG_showTextNotFoundStrip(phrase) {
-  if (document.getElementById("eGAlertTextNotFound") == null) {
-    var panel = getBrowser().mPanelContainer.selectedPanel; // many tabs
-    if (panel == null) {
-      panel = getBrowser().mPanelContainer.firstChild; // one tab only
-    }
-    
-    hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-    hbox.setAttribute("id","eGAlertTextNotFound");
-    hbox.setAttribute("style","background-color:#FFFFDD;border-top-style:outset;border-width:1px;");
-    panel.appendChild(hbox);
-    
-    vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-    vbox.setAttribute("pack","center");
-    hbox.appendChild(vbox);
-    
-    image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-    image.setAttribute("style","margin-left:10px;");
-    image.setAttribute("src","chrome://easygestures/content/warning.png");
-    vbox.appendChild(image);
-    
-    vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-    vbox.setAttribute("pack","center");
-    hbox.appendChild(vbox);
-    
-    message = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-    message.setAttribute("style","font-weight:bold;");
-    message.setAttribute("value", eGc.localizing.getString("textNotFoundAlert") + "   " +  eGc.localizing.getString("textNotFoundAgain"));
-    vbox.appendChild(message);
-    
-    vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-    vbox.setAttribute("pack","center");
-    hbox.appendChild(vbox);
-    
-    textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-    textbox.setAttribute("value",phrase);
-    textbox.setAttribute("onchange", "eGc.selection=this.value;eGc.lastTypedWord=this.value;this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);eGf.highlight(eGc.selection, window._content,true);");
-    //textbox.select();
-    vbox.appendChild(textbox);
-    
-    spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-    spacer.setAttribute("flex","1");
-    hbox.appendChild(spacer);
-    
-    toolbarbutton = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "toolbarbutton");
-    toolbarbutton.setAttribute("style","list-style-image: url('chrome://global/skin/icons/close.png');-moz-appearance: none;-moz-image-region: rect(0px, 14px, 14px, 0px);padding: 4px 2px;border: none !important;");
-    toolbarbutton.setAttribute("onmouseover","this.style.MozImageRegion='rect(0px, 28px, 14px, 14px)'");
-    toolbarbutton.setAttribute("onmouseout","this.style.MozImageRegion='rect(0px, 14px, 14px, 0px)'"); // with some themes, image disapears on mouseover because image is not a 3 states image
-    toolbarbutton.setAttribute("oncommand","this.parentNode.parentNode.removeChild(this.parentNode);");
-    hbox.appendChild(toolbarbutton);
   }
 }
 

@@ -191,7 +191,7 @@
 <!ENTITY func.paste "Wklej">
 <!ENTITY func.undo "Cofnij">
 <!ENTITY func.selectAll "Zaznacz wszystko">
-<!ENTITY func.highlight "Wyróżnij/Wyczyść">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "Powiększ">
 <!ENTITY func.zoomOut "Zmniejsz">
 <!ENTITY func.zoomReset "Wielkość domyślna">
@@ -201,11 +201,6 @@
 <!ENTITY input.page3 "Strona 3">
 <!ENTITY input.page4 "Strona 4">
 <!ENTITY input.infoPlaceHolder "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
-<!ENTITY highlight "Dostosuj akcję &quot;Wyróżnij/Wyczyść&quot; ">
-<!ENTITY highlight.count "Wyświetl licznik">
-<!ENTITY highlight.color "Kolor">
-<!ENTITY highlight.code "Kod">
-<!ENTITY highlight.restoreColors "Odtwórz kolory">
 <!ENTITY closeTab "Dostosuj działanie akcji &quot;Zamknij kartę&quot;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zamknij przeglądarkę po zamknięciu ostatniej karty">
 <!ENTITY extern "Dostosuj akcję &quot;Uruchom program&quot; ">
@@ -252,7 +247,6 @@
 <!ENTITY tip14 "Zamiast domyślnego wyglądu menu można używać menu podstawowego opartego na opisie tekstowym bez ikon. Można także w menu Centrum wyświetlać małe ikony.">
 <!ENTITY tip15 "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.">
 <!ENTITY tip16 "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu. |Włącz automatyczne przewijanie w menu Opcje \u00BB Ustawienia">
-<!ENTITY tip17 "Można wyróżnić jedno lub kilka słów na całej stronie używając akcji \u0022Wyróżnij/Wyczyść\u0022 zaznaczając najpierw dane słowo/frazę lub wpisując je w pole tekstowe. Ta sama akcja usunie wyróżnianie, gdy w polu teksowym nie ma żadnego słowa.">
 <!ENTITY tip18 "Jeśli jest otwarta tylko jedna karta akcja \u0022Zamknij kartę\u0022 zamyka okno.">
 <!ENTITY tip19 "Można wybrać opcję wyświetlania menu Centrum tylko po wykonywaniu ruchu przeciągania myszą lub po chwili zatrzymania. Można też ustawić czas opóźnienia wyświetlania menu. |Zmień działanie w Opcje \u00BB Ustawienia">
 <!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">

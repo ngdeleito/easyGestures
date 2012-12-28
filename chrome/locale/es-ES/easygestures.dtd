@@ -193,7 +193,7 @@
 <!ENTITY func.paste "Pegar">
 <!ENTITY func.undo "Deshacer">
 <!ENTITY func.selectAll "Seleccionar todo">
-<!ENTITY func.highlight "Marcar/Limpiar">
+<!ENTITY func.toggleFindBar "Mostrar/ocultar barra de búsqueda">
 <!ENTITY func.zoomIn "Acercar zoom">
 <!ENTITY func.zoomOut "Alejar zoom">
 <!ENTITY func.zoomReset "Reiniciar zoom">
@@ -203,11 +203,6 @@
 <!ENTITY input.page3 "Página 3">
 <!ENTITY input.page4 "Página 4">
 <!ENTITY input.infoPlaceHolder "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
-<!ENTITY highlight "Personalizar acción &apos;Marcar/Limpiar&apos;">
-<!ENTITY highlight.count "Mostrar contadores">
-<!ENTITY highlight.color "Color">
-<!ENTITY highlight.code "Código">
-<!ENTITY highlight.restoreColors "Restaurar colores">
 <!ENTITY closeTab "Personalizar acción &apos;Cerrar pestaña&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Cerrar el navegador al cerrar la última pestaña">
 <!ENTITY extern "Personalizar acción &apos;Ejecutar programa&apos;">
@@ -254,7 +249,6 @@
 <!ENTITY tip14 "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede cambiar para mostrar los iconos pequeños.">
 <!ENTITY tip15 "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales.">
 <!ENTITY tip16 "La opción de Firefox &apos;Usar autodesplazamiento&apos; está desmarcada cuando se usa el botón central para mostrar el menú circular. La opción puede habilitarse moviendo el cursor hacia abajo en el menú circular tras un corto tiempo sin movimientos. |Activar autodesplazamiento en Opciones/Comportamiento">
-<!ENTITY tip17 "Puede marcar una o más palabras en una página completa seleccionando la palabra y usando la acción Marcar/Limpiar. La misma acción desmarcará todo si no se ha seleccionado ninguna palabra.">
 <!ENTITY tip18 "La acción &apos;Cerrar pestaña&apos; cerrará la ventana si hay una única pestaña abierta.">
 <!ENTITY tip19 "Puede hacer que el menú circular aparezca únicamente al arrastrar el ratón, o tras un retardo breve. |Cambie el comportamiento en Opciones/Comportamiento">
 <!ENTITY tip20 "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">

@@ -192,7 +192,7 @@
 <!ENTITY func.paste "Einfügen">
 <!ENTITY func.undo "Rückgängig">
 <!ENTITY func.selectAll "Alles markieren">
-<!ENTITY func.highlight "Hervorheben/Löschen">
+<!ENTITY func.toggleFindBar "Toggle Find Bar">
 <!ENTITY func.zoomIn "Vergrößern">
 <!ENTITY func.zoomOut "Verkleinern">
 <!ENTITY func.zoomReset "Größe zurücksetzen">
@@ -202,11 +202,6 @@
 <!ENTITY input.page3 "Seite 3">
 <!ENTITY input.page4 "Seite 4">
 <!ENTITY input.infoPlaceHolder "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
-<!ENTITY highlight "Aktion &apos;Hervorheben/Löschen&apos; anpassen">
-<!ENTITY highlight.count "Nummerierung anzeigen">
-<!ENTITY highlight.color "Farbe">
-<!ENTITY highlight.code "Code">
-<!ENTITY highlight.restoreColors "Farben zurücksetzen">
 <!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
 <!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
 <!ENTITY extern "Aktion &apos;Anwendung starten&apos; anpassen">
@@ -253,7 +248,6 @@
 <!ENTITY tip14 "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.">
 <!ENTITY tip15 "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.">
 <!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden. |Automatischen Bildlauf unter Einstellungen/Verhalten aktivieren">
-<!ENTITY tip17 "Die Aktion &apos;Hervorheben/Löschen&apos; ermöglicht es, ein Wort (oder auch mehrere Wörter) innerhalb einer Seite hervorzuheben, indem dieses entweder auf der Seite ausgewählt oder direkt in das Eingabefeld eingegeben wird. Die gleiche Aktion löscht die Hervorhebung wieder, wenn das Eingabefeld leer gelassen und die Eingabe-Taste gedrückt wird.">
 <!ENTITY tip18 "Die Aktion &apos;Tab schließen&apos; schließt das Browser-Fenster, wenn nur noch ein Tab offen ist.">
 <!ENTITY tip19 "Das Kreismenü kann so eingestellt werden, dass es nur bei gleichzeitigem Bewegen der Maus oder nach einer kurzen Verzögerung angezeigt wird. |Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">

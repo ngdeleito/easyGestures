@@ -12,5 +12,7 @@ Changes by ngdeleito (see git history for the full details)
 - removed popup for nextTab, prevTab and undoCloseTab actions
 - removed input box for entering URLs
 - removed linear menu
-- removed translate/explain action
-- changed behaviour of search web action, which now uses Firefox's search engines
+- removed Translate/Explain action
+- changed behaviour of Search Web action, which now uses Firefox's search engines
+- changed behaviour of Highlight/Clear action so that it now toggles Firefox's find bar
+- renamed highlight action to toggleFindBar

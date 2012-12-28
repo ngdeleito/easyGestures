@@ -140,7 +140,7 @@ var eG_menuItems = [
   new eG_menuItem(87,	0, "paste",              "eGf.paste();"),
   new eG_menuItem(88,	0, "undo",               "eGf.undo();"),
   new eG_menuItem(89,	0, "selectAll",          "eGf.selectAll();"),
-  new eG_menuItem(90,	0, "highlight",          "(eGm.inputBox.value='' || eGf.highlight(eGc.selection,window._content,true))"), // Because inputBox must be set before calling highlight, in one single instruction
+  new eG_menuItem(90,	0, "toggleFindBar",      "eGf.toggleFindBar(eGc.selection)"),
   new eG_menuItem(91,	0, "zoomIn",             "eGf.zoomIn();"),
   new eG_menuItem(92,	0, "zoomOut",            "eGf.zoomOut();"),
   new eG_menuItem(93,	0, "zoomReset",          "eGf.zoomReset();")
@@ -305,9 +305,6 @@ function eG_menu () {
   this.xlink = prefs.getBoolPref("customizations.xlink"); // display red tag after link
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
-  this.highlightCount = prefs.getBoolPref("customizations.highlightCount"); // display count numbers or not when highlighting a word
-  this.highlightColorList = prefs.getCharPref("customizations.highlightColorList").split(";");
-
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
 
   this.runProgramFile1 = prefs.getComplexValue("customizations.runProgramFile1", Components.interfaces.nsISupportsString).data.split("•"); // [0]: name, [1]:path, [2]:arg, [3]:newIconPath, [4]:appIcon, [5]: newIcon
@@ -370,9 +367,7 @@ function eG_menu () {
   this.autoscrollingTrigger = null; // trigger to display autoscrolling
   this.autoscrolling = false; // used for automatic delayed autoscrolling on mouse down
 
-  this.specialNodes = null; // parent node of all special nodes inserted in the DOM: inputBox, linkSign, altMenuSign and contextMenuSign
-  this.inputBox = null;
-  this.inputBoxSignForHighlight = null; // used to make a case sensitive search or not
+  this.specialNodes = null; // parent node of all special nodes inserted in the DOM: linkSign, altMenuSign and contextMenuSign
   this.linkSign = null; // image displayed when a link is pointed
   this.altMenuSign = null; // image displayed when alternative menu is displayed
   this.altMenuSignWidth = 26; // width (size of image 8px + spacing 4px)
@@ -382,9 +377,7 @@ function eG_menu () {
   this.extraMenuAction = null; // position of extra menu action in base menu from which extra menu is called
 
   this.iconSize = this.smallIcons? 20 : 32;
-  this.inputBoxWidth = 120; // width of inputBox for text input
 
-  this.typingText = false; // used to cancel mouse events to pie menu when <enter> is pressed for typing
   this.showingTooltips = false; // tooltips are showing or hidden
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -475,48 +468,9 @@ eG_menu.prototype = {
     this.linkSign = img;
     node.appendChild(img);
 
-    ////////////////////////////////////////////////////////////////////////////
-    // creating inputBox for location bar and text search
     ///////////////////////////////////////////////////////////////////////////
-
-    var txtbox = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "input");
-    txtbox.style.font = "normal 10pt Arial, sans-serif";
-    txtbox.style.backgroundColor = "white";
-    txtbox.style.color = "black";
-    txtbox.style.textAlign = "center";
-    txtbox.style.position = "absolute";
-    txtbox.style.borderColor = eGc.gray;
-    txtbox.style.borderStyle = "solid";
-    txtbox.style.borderTopWidth = "4px";
-    txtbox.style.borderBottomWidth = "8px";
-    txtbox.style.borderLeftWidth = "2px";
-    txtbox.style.borderRightWidth = "2px";
-    txtbox.style.zIndex = eGc.maxzIndex;
-    txtbox.style.visibility = "hidden";
-
-    this.inputBox = txtbox;
-    node.appendChild(txtbox);
-
-    ////////////////////////////////////////////////////////////////////////////
-    // adding sign image for highlight inputBox
-    ///////////////////////////////////////////////////////////////////////////
-
-    var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    this.shieldCss(img);
-    img.src = this.skinPath + "matchCase_Off.png";
-    img.style.position = "absolute";
-    //img.style.display = "inline";
-    img.style.zIndex = eGc.maxzIndex;
-    img.setAttribute("onclick",
-                     "var matchCase = this.src.search('matchCase_On') != -1; this.src = this.src.replace( (matchCase?'On':'Off') , (matchCase?'Off':'On')); this.previousSibling.focus();");
-    img.style.visibility = "hidden";
-
-    this.inputBoxSignForHighlight = img;
-    node.appendChild(img);
-
-    ////////////////////////////////////////////////////////////////////////////
     // adding sign image for alternative menu
-    ///////////////////////////////////////////////////////////////////////////	
+    ///////////////////////////////////////////////////////////////////////////
 
     var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     this.shieldCss(img);
@@ -769,10 +723,8 @@ eG_menu.prototype = {
       if (this.specialNodes != existingNode ) { // get existing nodes
         this.specialNodes = existingNode;
         this.linkSign = this.specialNodes.wrappedJSObject.childNodes[0];
-        this.inputBox = this.specialNodes.wrappedJSObject.childNodes[1];
-        this.inputBoxSignForHighlight = this.specialNodes.wrappedJSObject.childNodes[2];
-        this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[3];
-        this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[4];
+        this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[1];
+        this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[2];
       }
 
     // create resources if necessary
@@ -960,8 +912,6 @@ eG_menu.prototype = {
     }
 
     this.linkSign.style.visibility = "hidden";
-    this.inputBox.style.visibility = "hidden";
-    this.inputBoxSignForHighlight.style.visibility = "hidden";
     this.altMenuSign.style.visibility = "hidden";
     this.contextMenuSign.style.visibility = "hidden";
     this.contextAltMenuSign.style.visibility = "hidden";
@@ -1367,9 +1317,6 @@ eG_menu.prototype = {
     this.sector = -1;
     this.baseMenu = "";
     this.showingTooltips = false;
-    this.inputBox.value = ""; // removes the value typed in textarea if any
-    this.typingText = false;
-    //this.inputBox.blur(); // removing the cursor
 
     window.removeEventListener("mousemove", eG_handleMousemove, true);
 
@@ -1399,45 +1346,6 @@ eG_menu.prototype = {
         this.tooltipsTrigger = setTimeout(this.showMenuTooltips.bind(eGm), this.tooltipsDelay);
       }
     }
-  },
-
-  showInputBox : function(showInputBoxSignForHighlight) { // argument is to display options sign for highlight action
-
-    // clear tooltips timeout
-    if (this.showTooltips && !this.showingTooltips) {
-      clearTimeout(this.tooltipsTrigger);
-    }
-
-    var layout = this.menuSet[this.curLayoutName];
-    var vertBorderWidth = parseInt(this.inputBox.style.borderTopWidth) + parseInt(this.inputBox.style.borderBottomWidth);
-    var txtboxHeight = gBrowser.selectedBrowser.markupDocumentViewer.textZoom/100*parseInt(getComputedStyle(document.getElementById('main-window'),'').getPropertyValue('font-size'))+ vertBorderWidth + 6; // 6 is for padding/margin
-
-    // unhide inputBox
-    this.typingText = true;
-    this.inputBox.style.visibility = "visible";
-    this.inputBox.style.cursor = "url('chrome://easygestures/skin/empty.png'), default";
-    this.inputBox.style.MozBoxSizing = "border-box";
-
-    // positioning and sizing the inputBox
-    this.inputBox.style.width = this.inputBoxWidth+"px";
-
-    this.inputBox.style.left = parseInt(layout.aNode.childNodes[this.sector].style.left) -  this.inputBoxWidth/2 + this.iconSize/2+ "px";
-    this.inputBox.style.top = parseInt(layout.aNode.childNodes[this.sector].style.top) - (layout.isExtraMenu?layout.outerR*1.2:0)+ "px";
-
-    this.inputBox.style.paddingLeft = "4px";
-    this.inputBox.style.paddingRight = "18px";
-
-    if (showInputBoxSignForHighlight) {
-      this.inputBoxSignForHighlight.style.left = parseInt(this.inputBox.style.left) + this.inputBoxWidth - 26 +"px";
-      this.inputBoxSignForHighlight.style.top = parseInt(this.inputBox.style.top) + parseInt(this.inputBox.style.borderTopWidth)+"px";
-      this.inputBoxSignForHighlight.style.visibility = "visible";
-    }
-
-    // put last typed word as a default value
-    this.inputBox.value = eGc.lastTypedWord;
-
-    this.inputBox.focus();
-    this.inputBox.select();
   },
 
   showMenuTooltips : function() { // displaying tooltips
