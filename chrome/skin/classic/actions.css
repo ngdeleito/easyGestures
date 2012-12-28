@@ -643,6 +643,11 @@ div.small_dailyReadings {	background-position: -20px -380px  !important ; }
 div.small_dailyReadings[grayed="false"][active="true"] { background-position: -20px -400px  !important ; }
 image.small_dailyReadings { -moz-image-region: rect(380px 40px 400px 20px) !important ; }
 
+div.small_searchWeb[grayed="true"] { background-position: -40px -360px !important ; }
+div.small_searchWeb { background-position: -40px -380px !important ; }
+div.small_searchWeb[grayed="false"][active="true"] { background-position: -40px -400px !important ; }
+image.small_searchWeb { -moz-image-region: rect(380px 60px 400px 40px) !important ; }
+
 div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px  !important ; }
 div.small_runProgramFile1 {	background-position: -80px -380px  !important ; }
 div.small_runProgramFile1[grayed="false"][active="true"] { background-position: -80px -400px  !important ; }
@@ -895,6 +900,11 @@ div.small_selectAll[grayed="true"] { background-position: -80px -600px  !importa
 div.small_selectAll {	background-position: -80px -620px  !important ; }
 div.small_selectAll[grayed="false"][active="true"] { background-position: -80px -640px  !important ; }
 image.small_selectAll { -moz-image-region: rect(620px 100px 640px 80px) !important ; }
+
+div.small_toggleFindBar[grayed="true"] { background-position: -100px -600px !important ; }
+div.small_toggleFindBar { background-position: -100px -620px !important ; }
+div.small_toggleFindBar[grayed="false"][active="true"] { background-position: -100px -640px !important ; }
+image.small_toggleFindBar { -moz-image-region: rect(620px 120px 640px 100px) !important ; }
 
 div.small_zoomIn[grayed="true"] { background-position: -120px -600px  !important ; }
 div.small_zoomIn {	background-position: -120px -620px  !important ; }
