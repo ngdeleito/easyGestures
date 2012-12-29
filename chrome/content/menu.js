@@ -1327,7 +1327,7 @@ eG_menu.prototype = {
 
     // enabling selection when left mouse button is used because selection is turned off in that case
     if (this.showButton == 0) { // left mouse button
-      selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
+      var selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
       selCon.setDisplaySelection(2); // SELECTION_ON
     }
 

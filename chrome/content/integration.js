@@ -334,7 +334,7 @@ function eG_handleMouseup(evt) {
   }
   
   if (eGc.openedOnDrag) { // enabling selection
-    selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
+    var selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(2); // SELECTION_ON
     eG_openedOnDrag = false;
   }
@@ -651,7 +651,7 @@ function eG_showAfterDelay() {
 function eG_openMenu() {
   // disabling selection when left mouse button is used until mouseup is done or menu is closed
   if (eGm.showButton == 0) { // left mouse button
-    selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
+    var selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
   

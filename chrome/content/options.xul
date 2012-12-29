@@ -772,16 +772,16 @@
     }
     
     function setLabels() {
-      for (i=1; i &lt;= 20; i++) {
+      for (var i=1; i &lt;= 20; i++) {
         // loadURLScript 1 to 20
         document.getElementById("loadURLScript_Label"+i).value= (document.getElementById("loadURLScript_type"+i).selectedItem==document.getElementById("Script"+i))?"&urlscript.code;":"&urlscript.host;";
       }
     }
     
     function createRunProgramFileForCustomization () {
-      for (i=1; i &lt;= 10 ; i++) {
+      for (var i=1; i &lt;= 10 ; i++) {
         // runProgramFile 1 to 10
-        groupbox = document.getElementById("gr_runProgramFile"+i);
+        var groupbox = document.getElementById("gr_runProgramFile"+i);
         
         // empty groupbox if needed first
         if (groupbox.hasChildNodes()) {
@@ -793,23 +793,23 @@
         //////////////////////////////////////////////////////////
         // caption
         //////////////////////////////////////////////////////////
-        titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         //caption.setAttribute("style","background-color:#F3F3F1;");
         
-        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
         image.setAttribute("id","runProgramFileImg");
         image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
         image.setAttribute("class","small_runProgramFile"+i);
         titleNode.appendChild(image);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
         titleNode.appendChild(vbox);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
         spacer.setAttribute("flex","1");
         vbox.appendChild(spacer);
         
-        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
         label.setAttribute("value","&extern.tab; "+i);
         label.setAttribute("style","font-weight: bold;");
         vbox.appendChild(label);
@@ -818,7 +818,7 @@
         spacer.setAttribute("flex","1");
         vbox.appendChild(spacer);
         
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         hbox.setAttribute("id","runProgramFileDisplay"+i);
         titleNode.appendChild(hbox);
         
@@ -841,7 +841,7 @@
         
         groupbox.appendChild(titleNode);
         
-        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        var separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
         separator.setAttribute("class","thin");
         groupbox.appendChild(separator);
         
@@ -890,7 +890,7 @@
         
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         vbox.appendChild(hbox);
-        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        var textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
         textbox.setAttribute("id","runProgramFile_name"+i);
         textbox.setAttribute("onchange","updateOtherLabels("+(runProgramFilesIndex+i+-1)+", this.value);");
         textbox.setAttribute("size","21");
@@ -906,7 +906,7 @@
         textbox.setAttribute("onchange","if (document.getElementById('runProgramFile_appIconCheck"+i+"').checked) retrieveAppIcon(this.value,"+i+");");
         hbox.appendChild(textbox);
         
-        button = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "button");
+        var button = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "button");
         button.setAttribute("label","&extern.browse;");
         button.setAttribute("oncommand","browse('runProgramFile_path"+i+"');if (document.getElementById('runProgramFile_appIconCheck"+i+"').checked) retrieveAppIcon(this.value,"+i+");");
         hbox.appendChild(button);
@@ -923,7 +923,7 @@
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         vbox.appendChild(hbox);
         
-        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        var checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
         checkbox.setAttribute("id","runProgramFile_appIconCheck"+i);
         checkbox.setAttribute("label","&extern.icon;");
         checkbox.setAttribute("oncommand","if (this.checked) {retrieveAppIcon(document.getElementById('runProgramFile_path"+i+"').value,"+i+"); document.getElementById('runProgramFile_newIconCheck"+i+"').checked= false;} updateUI();");
@@ -947,9 +947,9 @@
     }
     
     function createLoadURLScriptForCustomization () {
-      for (i=1; i &lt;= 20; i++) {
+      for (var i=1; i &lt;= 20; i++) {
         // loadURLScript 1 to 20
-        groupbox = document.getElementById("gr_loadURLScript"+i);
+        var groupbox = document.getElementById("gr_loadURLScript"+i);
         
         // empty groupbox if needed first
         if (groupbox.hasChildNodes()) {
@@ -962,23 +962,23 @@
         // caption
         //////////////////////////////////////////////////////////
         
-        titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         //caption.setAttribute("style","background-color:#F3F3F1;");
         
-        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
         image.setAttribute("id","loadURLScriptImg");
         image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
         image.setAttribute("class","small_loadURLScript"+i);
         titleNode.appendChild(image);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
         titleNode.appendChild(vbox);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
         spacer.setAttribute("flex","1");
         vbox.appendChild(spacer);
         
-        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
         label.setAttribute("value","&urlscript.url;/&urlscript.script; "+i);
         label.setAttribute("style","font-weight: bold;");
         vbox.appendChild(label);
@@ -987,7 +987,7 @@
         spacer.setAttribute("flex","1");
         vbox.appendChild(spacer);
         
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         hbox.setAttribute("id","loadURLScriptDisplay"+i);
         titleNode.appendChild(hbox);
         
@@ -1013,7 +1013,7 @@
         
         groupbox.appendChild(titleNode);
         
-        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        var separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
         separator.setAttribute("class","thin");
         groupbox.appendChild(separator);
         
@@ -1052,20 +1052,20 @@
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         vbox.appendChild(hbox);
         
-        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        var textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
         textbox.setAttribute("id","loadURLScript_name"+i);
         textbox.setAttribute("onchange","updateOtherLabels("+(loadURLScriptIndex+i-1)+", this.value);");
         textbox.setAttribute("size","21");
         textbox.setAttribute("maxlength","20");
         hbox.appendChild(textbox);
         
-        radiogroup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radiogroup");
+        var radiogroup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radiogroup");
         radiogroup.setAttribute("id","loadURLScript_type"+i);
         radiogroup.setAttribute("orient","horizontal");
         radiogroup.setAttribute("oncommand","updateUI();");
         hbox.appendChild(radiogroup);
         
-        radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
+        var radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
         radio.setAttribute("id","URL"+i);
         radio.setAttribute("label","&urlscript.url;");
         radiogroup.appendChild(radio);
@@ -1075,7 +1075,7 @@
         radio.setAttribute("label","&urlscript.script;");
         radiogroup.appendChild(radio);
         
-        stack = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "stack");
+        var stack = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "stack");
         vbox.appendChild(stack);
         
         textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
@@ -1098,7 +1098,7 @@
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         vbox.appendChild(hbox);
         
-        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        var checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
         checkbox.setAttribute("id","loadURLScript_faviconCheck"+i);
         checkbox.setAttribute("label","&urlscript.icon;");
         checkbox.setAttribute("oncommand","if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
@@ -1128,7 +1128,7 @@
       );
       
       for (var i=0; i &lt; boxes.length; i++) {
-        box = document.getElementById("gr_"+boxes[i]);
+        var box = document.getElementById("gr_"+boxes[i]);
         
         // empty box if needed first
         if (box.hasChildNodes() ) {
@@ -1138,7 +1138,7 @@
         }
         
         if (boxes[i].search("context") != -1) {
-          label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+          var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
           label.setAttribute("value", contextCaption[boxes[i]]);
           label.setAttribute("style","font-weight: bold;");
           box.appendChild(label);
@@ -1147,11 +1147,11 @@
         //////////////////////////////////////////////////////////
         // sector 0
         //////////////////////////////////////////////////////////
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         hbox.setAttribute("pack","center");
         box.appendChild(hbox);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+        var menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
         menulist.setAttribute("id",boxes[i]+"Sector0");
         menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
         menulist.setAttribute("editable","true");
@@ -1170,7 +1170,7 @@
         hbox.setAttribute("pack","center");
         box.appendChild(hbox);
         
-        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         hbox1.setAttribute("pack","center");
         hbox.appendChild(hbox1);
         
@@ -1186,7 +1186,7 @@
         menulist.setAttribute("sizetopopup","false");
         hbox1.appendChild(menulist);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
         spacer.setAttribute("height","0");
         spacer.setAttribute("width","11px");
         hbox.appendChild(spacer);
@@ -1215,7 +1215,7 @@
         hbox.setAttribute("pack","center");
         box.appendChild(hbox);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
         vbox.setAttribute("pack","center");
         hbox.appendChild(vbox);
         
@@ -1256,13 +1256,13 @@
         ///////////////////////////////
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        hbox.appendChild(vbox);	
+        hbox.appendChild(vbox);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
         spacer.setAttribute("flex","1");
         vbox.appendChild(spacer);
         
-        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
         image.setAttribute("id",boxes[i]+"Image");
         if (boxes[i].search("extra") == -1)
           image.setAttribute("src","mainMenu.png");
@@ -1846,9 +1846,9 @@
       
       document.getElementById("closeBrowserOnLastTab").checked = eG_prefs.getBoolPref("customizations.closeBrowserOnLastTab");
       
-      for (i=1; i<=10; i++) {
+      for (var i=1; i<=10; i++) {
         // runProgramFile 1 to 10
-        runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
+        var runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
         document.getElementById("runProgramFile_name"+i).value = runProgramFile[0];
         document.getElementById("runProgramFile_path"+i).value = runProgramFile[1];
         document.getElementById("runProgramFile_arg"+i).value = runProgramFile[2];
@@ -2065,7 +2065,7 @@
       // initializing IDs
       for (var i=0; i<groupboxes.length; i++) {
         var ids = eG_prefs.getCharPref("actions."+groupboxes[i]).split("/");
-        for (j=0; j<=9; j++) {
+        for (var j=0; j<=9; j++) {
           if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
             continue;
           else
@@ -2076,7 +2076,7 @@
       // initializing labels
       for (var i=0; i<groupboxes.length; i++) {
         var labels = eG_prefs.getComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString).data.split("•");
-        for (j=0; j<=9; j++) {
+        for (var j=0; j<=9; j++) {
           if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
             continue;
           else
@@ -2141,7 +2141,7 @@
       //***************************************************
       // checking if menu is standard or large
       //***************************************************
-      menuIsLarge = (document.getElementById("menuType").selectedItem == document.getElementById("eG_lrg"));
+      var menuIsLarge = (document.getElementById("menuType").selectedItem == document.getElementById("eG_lrg"));
       
       document.getElementById("mainSector3").hidden = !menuIsLarge;
       document.getElementById("mainSector7").hidden = !menuIsLarge;
