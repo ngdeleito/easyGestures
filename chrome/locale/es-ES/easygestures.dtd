@@ -231,7 +231,7 @@
 <!ENTITY previousTip "Anterior">
 <!ENTITY nextTip "Siguiente">
 <!ENTITY closeTip "Cerrar">
-<!ENTITY intro "¿Sabías que ...">
+<!ENTITY intro "¿Sabía que...?">
 <!ENTITY showTips "Mostrar consejos al iniciar">
 <!ENTITY copyText "Copiar texto al portapapeles">
 <!ENTITY tip1 "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario Mac). Los botones por defecto del ratón pueden ser cambiados. |Cambie los botones a través de Opciones/Comportamiento">
