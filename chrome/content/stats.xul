@@ -32,530 +32,562 @@
    - the terms of any one of the MPL, the GPL or the LGPL.
    -
    - ***** END LICENSE BLOCK ***** -->
- 
+
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://easygestures/locale/righttoleft.css" type="text/css"?>
 <?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
-<window 
-	id="eG_statsWindow"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	xmlns:html="http://www.w3.org/1999/xhtml"
-	title="&about.stats; - easyGestures"
-	onload="removeEventListener('load', eG_initMenuIntegration, false);initDialog();"
->
+<window
+  id="eG_statsWindow"
+  xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+  xmlns:html="http://www.w3.org/1999/xhtml"
+  title="&about.stats; - easyGestures"
+  onload="removeEventListener('load', eG_initMenuIntegration, false);initDialog();">
 
-<script type="application/x-javascript" src="chrome://global/content/globalOverlay.js"/>
-<script type="application/x-javascript" src="chrome://global/content/menu.js"/>
-<script type="application/x-javascript" src="integration.js"/>
+  <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
+  <script type="application/x-javascript" src="chrome://global/content/menu.js" />
+  <script type="application/x-javascript" src="integration.js" />
 
-<label hidden="true" id="eG_statsNovice" value="&stats.novice;"/>	
-<label hidden="true" id="eG_statsCoolUser" value="&stats.coolUser;"/>	
-<label hidden="true" id="eG_statsAddicted" value="&stats.addicted;"/>
-<label hidden="true" id="eG_statsMaster" value="&stats.master;"/>
-	
-<hbox flex="1"> 
-	<vbox pack="center">
-		<hbox>
-			<label value="&stats.lastReset; :"/>
-			<label id="eG_statsLastReset" value="0" style="font-weight: bold;"/>
-		</hbox>
-	</vbox>			
-	<spacer flex="1"/>
-	 <groupbox  style="background-color:white;">	
-		<hbox>
-			<label value="&stats.use; :"/>
-			<label id="eG_statsUse" value="0" style="font-weight: bold;"/>
-			<label value="/" />
-			<spacer width="10"/>
-			<hbox style="width:60px;height: 20px; background-image: url('chrome://easygestures/content/use_gray.png');">
-				<hbox id="eG_statsUseStars" width="0px" style="background-image: url('chrome://easygestures/content/use.png');"/>
-			</hbox>
-			<spacer width="10"/>
-			<vbox pack="center">
-				<label id="eG_statsUseComment" value="0" style="font-weight: bold;"/>	
-			</vbox>
-		</hbox>
-	</groupbox>
-</hbox>
-<spacer height="4"/>
-<tabbox orient="vertical">
-	<tabs flex="1">
-		<tab label="&stats.actions;"/>
-		<tab label="&stats.directions;"  id="eG_byDirectionsTab" />
-	</tabs>
-	<tabpanels>	
-		<tabpanel style="background-color:inherit;">
-			<groupbox flex="1" id="actions">
-				<hbox pack="center">
-				</hbox>
-			</groupbox>
-		</tabpanel>
-		<tabpanel style="background-color:inherit;">
-			<groupbox id="gr_Primitive">
-			</groupbox>
-			<spacer flex="1"/>
-			<groupbox id="gr_Alternative1">
-			</groupbox>
-			<spacer flex="1"/>
-			<groupbox id="gr_Alternative2">
-			</groupbox>
-			<spacer flex="1"/>	
-			<groupbox id="gr_Total" style="border:none;background-color:white;">
-			</groupbox>			
-			<spacer flex="1"/>				
-		</tabpanel>
-	</tabpanels>	
+  <label hidden="true" id="eG_statsNovice" value="&stats.novice;" />
+  <label hidden="true" id="eG_statsCoolUser" value="&stats.coolUser;" />
+  <label hidden="true" id="eG_statsAddicted" value="&stats.addicted;" />
+  <label hidden="true" id="eG_statsMaster" value="&stats.master;" />
 
-</tabbox>
-<spacer height="6"/>
-<hbox pack="end" flex="1">
-	<button label="&close;" oncommand="close();"/>
-</hbox>
-<spacer height="4"/>
-
-<script type="application/x-javascript">
-	function fillDirections(layout){
-		var target = document.getElementById("gr_"+ layout);
-		
-		var captionLabel;
-		if (layout=="Primitive") captionLabel="&actions.primary;";
-		else if (layout=="Alternative1") captionLabel="&actions.alternative; 1";
-			else if (layout=="Alternative2") captionLabel="&actions.alternative; 2";
-				else captionLabel="&stats.all;";
-		
-		var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-		label.setAttribute("value", captionLabel);
-		label.setAttribute("style","font-weight: bold;");
-		target.appendChild(label);	
-
-		var spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-		spacer.setAttribute("flex","1");
-		target.appendChild(spacer);
-		
-		var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-		target.appendChild(vbox);
-
-			var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);
-
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout+"Sector0");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);
-	
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout+"Sector9");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-	
-				var text= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
-				text.setAttribute("value","   ");
-				hbox.appendChild(text);
-				
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout+"Sector1");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-			
-			
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);			
-			
-				var vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				vbox2.setAttribute("pack","center");
-				hbox.appendChild(vbox2);	
-
-					var hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					vbox2.appendChild(hbox2);
-		
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("id","main"+layout+"Sector8");
-						label.setAttribute("value","0%");
-						hbox2.appendChild(label);
-
-					hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					vbox2.appendChild(hbox2);
-		
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("id","main"+layout+"Sector7");
-						label.setAttribute("value","0%");
-						hbox2.appendChild(label);
-						
-				vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				hbox.appendChild(vbox2);	
-
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox2.appendChild(spacer);
-
-					var image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-					image.setAttribute("tooltiptext","&stats.main;");
-					image.setAttribute("src","mainMenu.png");
-					image.setAttribute("width","41");
-					image.setAttribute("height","41");
-					vbox2.appendChild(image);
-				
-					spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-					spacer.setAttribute("flex","1");
-					vbox2.appendChild(spacer);
-
-				vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				vbox2.setAttribute("pack","center");
-				hbox.appendChild(vbox2);
-				
-					hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					vbox2.appendChild(hbox2);
-		
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("id","main"+layout+"Sector2");
-						label.setAttribute("value","0%");
-						hbox2.appendChild(label);
-
-					hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-					vbox2.appendChild(hbox2);
-		
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("id","main"+layout+"Sector3");
-						label.setAttribute("value","0%");
-						hbox2.appendChild(label);				
-				
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);
-
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout+"Sector6");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-	
-				text= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
-				text.setAttribute("value","   ");
-				hbox.appendChild(text);
-				
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout+"Sector4");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);			
-
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);
-
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout+"Sector5");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-			
-			var separator= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
-			target.appendChild(separator);
-			
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			target.appendChild(hbox);
-	
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","main"+layout);
-				label.setAttribute("style","font-weight: bold;font-size:medium;");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);			
-
-		spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-		spacer.setAttribute("flex","1");
-		target.appendChild(spacer);
-		
-		separator= document.createElementNS("http://www.w3.org/1999/xhtml", "hr");
-		target.appendChild(separator);
-			
-		spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-		spacer.setAttribute("flex","1");
-		target.appendChild(spacer);
-				
-		vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-		target.appendChild(vbox);
-
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);
-
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","extra"+layout+"Sector0");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);
-	
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","extra"+layout+"Sector7");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-	
-				text= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
-				text.setAttribute("value","   ");
-				hbox.appendChild(text);
-				
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","extra"+layout+"Sector1");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-			
-			
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			vbox.appendChild(hbox);			
-			
-				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				vbox.setAttribute("pack","center");
-				hbox.appendChild(vbox);	
-		
-					label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("id","extra"+layout+"Sector6");
-					label.setAttribute("value","0%");
-					vbox.appendChild(label);
-						
-				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				hbox.appendChild(vbox);	
-
-					image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-					image.setAttribute("tooltiptext","&stats.extra;");
-					image.setAttribute("src","extraMenu.png");
-					image.setAttribute("width","41");
-					image.setAttribute("height","41");
-					vbox.appendChild(image);
-
-				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				vbox.setAttribute("pack","center");
-				hbox.appendChild(vbox);
-				
-					label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-					label.setAttribute("id","extra"+layout+"Sector2");
-					label.setAttribute("value","0%");
-					vbox.appendChild(label);				
-			
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-			hbox.setAttribute("pack","center");
-			target.appendChild(hbox);
-	
-				label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-				label.setAttribute("id","extra"+layout);
-				label.setAttribute("style","font-weight: bold; font-size:medium;");
-				label.setAttribute("value","0%");
-				hbox.appendChild(label);
-
-		spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-		spacer.setAttribute("flex","1");
-		target.appendChild(spacer);
-
-		separator= document.createElementNS("http://www.w3.org/1999/xhtml", "hr");
-		target.appendChild(separator);
-
-		hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-		hbox.setAttribute("pack","end");
-		hbox.setAttribute("style","background-color: white;");
-		target.appendChild(hbox);
-
-			label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-			label.setAttribute("style","font-weight: bold;");
-			label.setAttribute("value","");
-			hbox.appendChild(label);
-
-			label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-			label.setAttribute("id",layout);
-			label.setAttribute("style","font-weight: bold; font-size:medium;");
-			label.setAttribute("value","0%");
-			hbox.appendChild(label);
-			
-	}
-</script>
-
+  <hbox flex="1">
+    <vbox pack="center">
+      <hbox>
+        <label value="&stats.lastReset; :" />
+        <label id="eG_statsLastReset" value="0" style="font-weight: bold;" />
+      </hbox>
+    </vbox>
+    <spacer flex="1" />
+    <groupbox style="background-color:white;">
+      <hbox>
+        <label value="&stats.use; :" />
+        <label id="eG_statsUse" value="0" style="font-weight: bold;" />
+        <label value="/" />
+        <spacer width="10" />
+        <hbox style="width:60px;height: 20px; background-image: url('chrome://easygestures/content/use_gray.png');">
+          <hbox id="eG_statsUseStars"
+            width="0px"
+            style="background-image: url('chrome://easygestures/content/use.png');" />
+        </hbox>
+        <spacer width="10" />
+        <vbox pack="center">
+          <label id="eG_statsUseComment" value="0" style="font-weight: bold;" />
+        </vbox>
+      </hbox>
+    </groupbox>
+  </hbox>
+  <spacer height="4"/>
+  <tabbox orient="vertical">
+    <tabs flex="1">
+      <tab label="&stats.actions;" />
+      <tab label="&stats.directions;" id="eG_byDirectionsTab" />
+    </tabs>
+    <tabpanels>
+      <tabpanel style="background-color:inherit;">
+        <groupbox flex="1" id="actions">
+          <hbox pack="center">
+          </hbox>
+        </groupbox>
+      </tabpanel>
+      <tabpanel style="background-color:inherit;">
+        <groupbox id="gr_Primitive">
+        </groupbox>
+        <spacer flex="1" />
+        <groupbox id="gr_Alternative1">
+        </groupbox>
+        <spacer flex="1" />
+        <groupbox id="gr_Alternative2">
+        </groupbox>
+        <spacer flex="1"/>
+        <groupbox id="gr_Total" style="border:none;background-color:white;">
+        </groupbox>
+        <spacer flex="1" />
+      </tabpanel>
+    </tabpanels>
+  </tabbox>
+  <spacer height="6" />
+  <hbox pack="end" flex="1">
+    <button label="&close;" oncommand="close();" />
+  </hbox>
+  <spacer height="4" />
+  
   <script type="application/x-javascript">
-	//<![CDATA[
-	
-	var eG_prefs= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
-	
-	function fillActions(){
-		var target = document.getElementById("actions").firstChild;
-		
-		for (var n=0; n<5; n++) {	// number of columns		
-				
-			var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-			target.appendChild(vbox);
-			
-			var grid = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "grid");
-			vbox.appendChild(grid);		
-	
-			var columns = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "columns");
-			grid.appendChild(columns);
-	
-			var column = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "column");
-			column.setAttribute("flex","1");
-			columns.appendChild(column);
-			
-			column = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "column");
-			column.setAttribute("flex","1");
-			columns.appendChild(column);		
-					
-			var rows = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "rows");
-			grid.appendChild(rows);				
-			
-			for (var i=n*19+1; i<(n+1)*19+1; i++) {	// starting from 1 to exclude the 'empty' action. 19 rows per column
-			    if (i==94) break;
-				var row = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "row");
-				rows.appendChild(row);
-				
-				var image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-                image.setAttribute("id","eG_image"+i);
-				image.setAttribute("tooltiptext",window.opener.eG_PopupLabels[i]);
-                
-				//image.setAttribute("src","");
-                image.style.listStyleImage="url('"+window.opener.eG_skinCurrent+"small_actions.png')";
-                image.setAttribute("class","small_"+window.opener.eG_PopupImages[i]);
-				row.appendChild(image);	
-	
-				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-				row.appendChild(vbox);
-	
-				var spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-				spacer.setAttribute("flex","1");
-				vbox.appendChild(spacer);	
-	
-				var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-				hbox.setAttribute("style","width:80px;");
-				vbox.appendChild(hbox);	
-	
-						var label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("value"," ");
-						hbox.appendChild(label);
-						
-						image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-						image.setAttribute("id","eG_bar"+i);
-						image.setAttribute("src","chrome://easygestures/content/bar.png");
-						image.setAttribute("maxwidth","40");
-						image.setAttribute("width","0");
-						hbox.appendChild(image);					
-						
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-						label.setAttribute("id","eG_action"+i);
-						//label.setAttribute("style","font-weight: bold;");
-						label.setAttribute("value","0%");
-						hbox.appendChild(label);
-						
-				spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-				spacer.setAttribute("flex","1");
-				vbox.appendChild(spacer);				
-			}
-			
-			spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-			spacer.setAttribute("flex","1");
-			target.appendChild(spacer);	
-		}
-	}
-
-	function initDialog() {
-	
-		fillActions();
-		fillDirections("Primitive");
-		fillDirections("Alternative1");
-		fillDirections("Alternative2");
-		fillDirections("Total");
-		
-		var scaleFactor = 3;
-		var statsClicksOnActions=0;
-
-		var statsMain = (new Function ("return " + eG_prefs.getCharPref("profile.statsMain") ))();          // (new Function ("return " + data ))() replacing eval on data
-		var statsExtra = (new Function ("return " + eG_prefs.getCharPref("profile.statsExtra") ))();        // (new Function ("return " + data ))() replacing eval on data
-		var statsActions = (new Function ("return " + eG_prefs.getCharPref("profile.statsActions") ))();    // (new Function ("return " + data ))() replacing eval on data
-		
-		var statsClicks = eG_prefs.getIntPref("profile.statsClicks");	
-		var statsUse = eG_prefs.getIntPref("profile.statsUse");
-		var statsLastReset = eG_prefs.getCharPref("profile.statsLastReset");
-		
-		if (statsClicks==0) statsClicks=1;		//just avoiding division by 0 to prevent displaying NaN
-		var use=statsUse/statsClicks*100;
-		document.getElementById("eG_statsUse").value=Math.round(use)+"%";
-		if (use <  10) document.getElementById("eG_statsUseStars").width="0px";
-		    else if (use < 30) document.getElementById("eG_statsUseStars").width=20+"px";
-			else if (use < 60) document.getElementById("eG_statsUseStars").width=20*2+"px";
-			    else document.getElementById("eG_statsUseStars").width=20*3+"px";
-			    
-		document.getElementById("eG_statsLastReset").value=statsLastReset;
-		
-		var useComment="";
-		if (use < 10) useComment=document.getElementById("eG_statsNovice").value;
-		else if (use <30) useComment=document.getElementById("eG_statsCoolUser").value;
-			else if (use <60) useComment=document.getElementById("eG_statsAddicted").value;
-				else useComment=document.getElementById("eG_statsMaster").value;
-			
-		document.getElementById("eG_statsUseComment").value=useComment;
-		
-		for (var i=0; i<statsActions.length; i++) statsClicksOnActions+=statsActions[i];
-		if (statsClicksOnActions==0) statsClicksOnActions=1;		//just avoiding division by 0 to prevent displaying NaN
-		
-		var totalMP=0;
-		var totalEP=0;
-		var totalMA1=0;
-		var totalEA1=0;
-		var totalMA2=0;
-		var totalEA2=0;
-
-		for(var i=1; i<statsActions.length; i++){			// starting from 1 to exclude the 'empty' action
-			var count = Math.round(statsActions[i]/(statsClicksOnActions-statsActions[0])*1000)/10;
-            if (count>1) count = Math.round(count);
-            document.getElementById("eG_action"+i).value=(statsActions[i]>0?(count>0.1?count+"%":"<0.1%"):" _ ");
-			document.getElementById("eG_bar"+i).width=count*scaleFactor;
-            document.getElementById("eG_image"+i).setAttribute("tooltiptext", document.getElementById("eG_image"+i).getAttribute("tooltiptext") + " : "+statsActions[i]);
-		}
-
-		for(var i=0; i<10; i++){
-			document.getElementById("mainPrimitiveSector"+String(i)).value=Math.round(statsMain[i]/statsClicksOnActions*100)+"%";
-			document.getElementById("mainAlternative1Sector"+String(i)).value=Math.round(statsMain[10+i]/statsClicksOnActions*100)+"%";
-			document.getElementById("mainAlternative2Sector"+String(i)).value=Math.round(statsMain[20+i]/statsClicksOnActions*100)+"%";
-			document.getElementById("mainTotalSector"+String(i)).value=Math.round((statsMain[i]+statsMain[10+i]+statsMain[20+i])/statsClicksOnActions*100)+"%";
-			totalMP+=statsMain[i];
-			totalMA1+=statsMain[10+i];
-			totalMA2+=statsMain[20+i];
-			if (i<8 && (i<2 || i>5) ){
-				document.getElementById("extraPrimitiveSector"+String(i)).value=Math.round(statsExtra[i]/statsClicksOnActions*100)+"%";			
-				document.getElementById("extraAlternative1Sector"+String(i)).value=Math.round(statsExtra[8+i]/statsClicksOnActions*100)+"%";
-				document.getElementById("extraAlternative2Sector"+String(i)).value=Math.round(statsExtra[16+i]/statsClicksOnActions*100)+"%";
-				document.getElementById("extraTotalSector"+String(i)).value=Math.round((statsExtra[i]+statsExtra[8+i]+statsExtra[16+i])/statsClicksOnActions*100)+"%";			
-				totalEP+=statsExtra[i];
-				totalEA1+=statsExtra[8+i];
-				totalEA2+=statsExtra[16+i];
-			}
-		}
-				
-		document.getElementById("mainPrimitive").value=Math.round(totalMP/statsClicksOnActions*100)+"%";
-		document.getElementById("extraPrimitive").value=Math.round(totalEP/statsClicksOnActions*100)+"%";
-		document.getElementById("Primitive").value=parseInt(document.getElementById("mainPrimitive").value) + parseInt(document.getElementById("extraPrimitive").value) +"%";
-		
-		document.getElementById("mainAlternative1").value=Math.round(totalMA1/statsClicksOnActions*100)+"%";
-		document.getElementById("extraAlternative1").value=Math.round(totalEA1/statsClicksOnActions*100)+"%";
-		document.getElementById("Alternative1").value= parseInt(document.getElementById("mainAlternative1").value) + parseInt(document.getElementById("extraAlternative1").value)+"%";
-		
-		document.getElementById("mainAlternative2").value=Math.round(totalMA2/statsClicksOnActions*100)+"%";
-		document.getElementById("extraAlternative2").value=Math.round(totalEA2/statsClicksOnActions*100)+"%";
-		document.getElementById("Alternative2").value= parseInt(document.getElementById("mainAlternative2").value) + parseInt(document.getElementById("extraAlternative2").value)+"%";
-
-		document.getElementById("mainTotal").value= Math.round((totalMP + totalMA1+totalMA2)/statsClicksOnActions*100)+"%";
-		document.getElementById("extraTotal").value=Math.round((totalEP + totalEA1+totalEA2)/statsClicksOnActions*100)+"%";
-		
-		document.getElementById("Total").value="100%";
-
-		this.sizeToContent();
-		
-	}		
-	
-	//]]>
+    function fillDirections(layout) {
+      var target = document.getElementById("gr_"+ layout);
+      var captionLabel;
+      
+      if (layout == "Primitive") {
+        captionLabel = "&actions.primary;";
+      }
+      else if (layout == "Alternative1") {
+        captionLabel = "&actions.alternative; 1";
+      }
+      else if (layout == "Alternative2") {
+        captionLabel = "&actions.alternative; 2";
+      }
+      else {
+        captionLabel="&stats.all;";
+      }
+      
+      var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("value", captionLabel);
+      label.setAttribute("style","font-weight: bold;");
+      target.appendChild(label);
+      
+      var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+      spacer.setAttribute("flex","1");
+      target.appendChild(spacer);
+      
+      var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      target.appendChild(vbox);
+      
+      var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector0");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector9");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      var text = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
+      text.setAttribute("value","   ");
+      hbox.appendChild(text);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector1");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      var vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      vbox2.setAttribute("pack","center");
+      hbox.appendChild(vbox2);
+      
+      var hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      vbox2.appendChild(hbox2);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector8");
+      label.setAttribute("value","0%");
+      hbox2.appendChild(label);
+      
+      hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      vbox2.appendChild(hbox2);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector7");
+      label.setAttribute("value","0%");
+      hbox2.appendChild(label);
+      
+      vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      hbox.appendChild(vbox2);
+      
+      spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+      spacer.setAttribute("flex","1");
+      vbox2.appendChild(spacer);
+      
+      var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+      image.setAttribute("tooltiptext","&stats.main;");
+      image.setAttribute("src","mainMenu.png");
+      image.setAttribute("width","41");
+      image.setAttribute("height","41");
+      vbox2.appendChild(image);
+      
+      spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+      spacer.setAttribute("flex","1");
+      vbox2.appendChild(spacer);
+      
+      vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      vbox2.setAttribute("pack","center");
+      hbox.appendChild(vbox2);
+      
+      hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      vbox2.appendChild(hbox2);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector2");
+      label.setAttribute("value","0%");
+      hbox2.appendChild(label);
+      
+      hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      vbox2.appendChild(hbox2);
+      
+      label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector3");
+      label.setAttribute("value","0%");
+      hbox2.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector6");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      text = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
+      text.setAttribute("value","   ");
+      hbox.appendChild(text);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector4");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout+"Sector5");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      var separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+      target.appendChild(separator);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      target.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","main"+layout);
+      label.setAttribute("style","font-weight: bold;font-size:medium;");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+      spacer.setAttribute("flex","1");
+      target.appendChild(spacer);
+      
+      separator = document.createElementNS("http://www.w3.org/1999/xhtml", "hr");
+      target.appendChild(separator);
+      
+      spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+      spacer.setAttribute("flex","1");
+      target.appendChild(spacer);
+      
+      vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      target.appendChild(vbox);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","extra"+layout+"Sector0");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","extra"+layout+"Sector7");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      text = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
+      text.setAttribute("value","   ");
+      hbox.appendChild(text);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","extra"+layout+"Sector1");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      vbox.appendChild(hbox);
+      
+      vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      vbox.setAttribute("pack","center");
+      hbox.appendChild(vbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","extra"+layout+"Sector6");
+      label.setAttribute("value","0%");
+      vbox.appendChild(label);
+      
+      vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      hbox.appendChild(vbox);
+      
+      image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+      image.setAttribute("tooltiptext","&stats.extra;");
+      image.setAttribute("src","extraMenu.png");
+      image.setAttribute("width","41");
+      image.setAttribute("height","41");
+      vbox.appendChild(image);
+      
+      vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+      vbox.setAttribute("pack","center");
+      hbox.appendChild(vbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","extra"+layout+"Sector2");
+      label.setAttribute("value","0%");
+      vbox.appendChild(label);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","center");
+      target.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id","extra"+layout);
+      label.setAttribute("style","font-weight: bold; font-size:medium;");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+      
+      spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+      spacer.setAttribute("flex","1");
+      target.appendChild(spacer);
+      
+      separator = document.createElementNS("http://www.w3.org/1999/xhtml", "hr");
+      target.appendChild(separator);
+      
+      hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack","end");
+      hbox.setAttribute("style","background-color: white;");
+      target.appendChild(hbox);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("style","font-weight: bold;");
+      label.setAttribute("value","");
+      hbox.appendChild(label);
+      
+      label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+      label.setAttribute("id",layout);
+      label.setAttribute("style","font-weight: bold; font-size:medium;");
+      label.setAttribute("value","0%");
+      hbox.appendChild(label);
+    }
+  </script>
+  
+  <script type="application/x-javascript">
+    //<![CDATA[
+    
+    var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
+    
+    function fillActions() {
+      var target = document.getElementById("actions").firstChild;
+      
+      for (var n=0; n<5; n++) {	// number of columns
+        var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        target.appendChild(vbox);
+        
+        var grid = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "grid");
+        vbox.appendChild(grid);
+        
+        var columns = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "columns");
+        grid.appendChild(columns);
+        
+        var column = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "column");
+        column.setAttribute("flex","1");
+        columns.appendChild(column);
+        
+        column = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "column");
+        column.setAttribute("flex","1");
+        columns.appendChild(column);
+        
+        var rows = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "rows");
+        grid.appendChild(rows);
+        
+        for (var i=n*19+1; i<(n+1)*19+1; i++) {
+          // starting from 1 to exclude the 'empty' action. 19 rows per column
+          
+          if (i == 94) {
+            break;
+          }
+          
+          var row = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "row");
+          rows.appendChild(row);
+          
+          var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+          image.setAttribute("id","eG_image"+i);
+          image.setAttribute("tooltiptext",window.opener.eG_PopupLabels[i]);
+          
+          //image.setAttribute("src","");
+          image.style.listStyleImage="url('"+window.opener.eG_skinCurrent+"small_actions.png')";
+          image.setAttribute("class","small_"+window.opener.eG_PopupImages[i]);
+          row.appendChild(image);
+          
+          vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+          row.appendChild(vbox);
+          
+          var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+          spacer.setAttribute("flex","1");
+          vbox.appendChild(spacer);
+          
+          var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+          hbox.setAttribute("style","width:80px;");
+          vbox.appendChild(hbox);
+          
+          var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+          label.setAttribute("value"," ");
+          hbox.appendChild(label);
+          
+          image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+          image.setAttribute("id","eG_bar"+i);
+          image.setAttribute("src","chrome://easygestures/content/bar.png");
+          image.setAttribute("maxwidth","40");
+          image.setAttribute("width","0");
+          hbox.appendChild(image);
+          
+          label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+          label.setAttribute("id","eG_action"+i);
+          //label.setAttribute("style","font-weight: bold;");
+          label.setAttribute("value","0%");
+          hbox.appendChild(label);
+          
+          spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+          spacer.setAttribute("flex","1");
+          vbox.appendChild(spacer);
+        }
+        
+        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer.setAttribute("flex","1");
+        target.appendChild(spacer);
+      }
+    }
+    
+    function initDialog() {
+      fillActions();
+      fillDirections("Primitive");
+      fillDirections("Alternative1");
+      fillDirections("Alternative2");
+      fillDirections("Total");
+      
+      var scaleFactor = 3;
+      var statsClicksOnActions = 0;
+      
+      var statsMain = (new Function ("return " + eG_prefs.getCharPref("profile.statsMain") ))();          // (new Function ("return " + data ))() replacing eval on data
+      var statsExtra = (new Function ("return " + eG_prefs.getCharPref("profile.statsExtra") ))();        // (new Function ("return " + data ))() replacing eval on data
+      var statsActions = (new Function ("return " + eG_prefs.getCharPref("profile.statsActions") ))();    // (new Function ("return " + data ))() replacing eval on data
+      
+      var statsClicks = eG_prefs.getIntPref("profile.statsClicks");
+      var statsUse = eG_prefs.getIntPref("profile.statsUse");
+      var statsLastReset = eG_prefs.getCharPref("profile.statsLastReset");
+      
+      if (statsClicks == 0) {
+        statsClicks = 1; //just avoiding division by 0 to prevent displaying NaN
+      }
+      
+      var use = statsUse/statsClicks*100;
+      document.getElementById("eG_statsUse").value = Math.round(use)+"%";
+      if (use < 10) {
+        document.getElementById("eG_statsUseStars").width = "0px";
+      }
+      else if (use < 30) {
+        document.getElementById("eG_statsUseStars").width = 20 + "px";
+      }
+      else if (use < 60) {
+        document.getElementById("eG_statsUseStars").width = 20*2 + "px";
+      }
+      else {
+        document.getElementById("eG_statsUseStars").width = 20*3 + "px";
+      }
+      
+      document.getElementById("eG_statsLastReset").value = statsLastReset;
+      
+      var useComment = "";
+      if (use < 10) {
+        useComment = document.getElementById("eG_statsNovice").value;
+      }
+      else if (use < 30) {
+        useComment = document.getElementById("eG_statsCoolUser").value;
+      }
+      else if (use < 60) {
+        useComment = document.getElementById("eG_statsAddicted").value;
+      }
+      else {
+        useComment = document.getElementById("eG_statsMaster").value;
+      }
+      document.getElementById("eG_statsUseComment").value = useComment;
+      
+      for (var i=0; i<statsActions.length; i++) {
+        statsClicksOnActions += statsActions[i];
+      }
+      if (statsClicksOnActions == 0) {
+        statsClicksOnActions = 1; //just avoiding division by 0 to prevent displaying NaN
+      }
+      
+      var totalMP = 0;
+      var totalEP = 0;
+      var totalMA1 = 0;
+      var totalEA1 = 0;
+      var totalMA2 = 0;
+      var totalEA2 = 0;
+      
+      for (var i=1; i<statsActions.length; i++) {
+        // starting from 1 to exclude the 'empty' action
+        
+        var count = Math.round(statsActions[i]/(statsClicksOnActions-statsActions[0])*1000)/10;
+        if (count > 1) {
+          count = Math.round(count);
+        }
+        document.getElementById("eG_action"+i).value=(statsActions[i]>0?(count>0.1?count+"%":"<0.1%"):" _ ");
+        document.getElementById("eG_bar"+i).width=count*scaleFactor;
+        document.getElementById("eG_image"+i).setAttribute("tooltiptext", document.getElementById("eG_image"+i).getAttribute("tooltiptext") + " : "+statsActions[i]);
+      }
+      
+      for (var i=0; i<10; i++) {
+        document.getElementById("mainPrimitiveSector"+String(i)).value=Math.round(statsMain[i]/statsClicksOnActions*100)+"%";
+        document.getElementById("mainAlternative1Sector"+String(i)).value=Math.round(statsMain[10+i]/statsClicksOnActions*100)+"%";
+        document.getElementById("mainAlternative2Sector"+String(i)).value=Math.round(statsMain[20+i]/statsClicksOnActions*100)+"%";
+        document.getElementById("mainTotalSector"+String(i)).value=Math.round((statsMain[i]+statsMain[10+i]+statsMain[20+i])/statsClicksOnActions*100)+"%";
+        totalMP+=statsMain[i];
+        totalMA1+=statsMain[10+i];
+        totalMA2+=statsMain[20+i];
+        if (i<8 && (i<2 || i>5)) {
+          document.getElementById("extraPrimitiveSector"+String(i)).value=Math.round(statsExtra[i]/statsClicksOnActions*100)+"%";
+          document.getElementById("extraAlternative1Sector"+String(i)).value=Math.round(statsExtra[8+i]/statsClicksOnActions*100)+"%";
+          document.getElementById("extraAlternative2Sector"+String(i)).value=Math.round(statsExtra[16+i]/statsClicksOnActions*100)+"%";
+          document.getElementById("extraTotalSector"+String(i)).value=Math.round((statsExtra[i]+statsExtra[8+i]+statsExtra[16+i])/statsClicksOnActions*100)+"%";
+          totalEP+=statsExtra[i];
+          totalEA1+=statsExtra[8+i];
+          totalEA2+=statsExtra[16+i];
+        }
+      }
+      
+      document.getElementById("mainPrimitive").value=Math.round(totalMP/statsClicksOnActions*100)+"%";
+      document.getElementById("extraPrimitive").value=Math.round(totalEP/statsClicksOnActions*100)+"%";
+      document.getElementById("Primitive").value=parseInt(document.getElementById("mainPrimitive").value) + parseInt(document.getElementById("extraPrimitive").value) +"%";
+      
+      document.getElementById("mainAlternative1").value=Math.round(totalMA1/statsClicksOnActions*100)+"%";
+      document.getElementById("extraAlternative1").value=Math.round(totalEA1/statsClicksOnActions*100)+"%";
+      document.getElementById("Alternative1").value= parseInt(document.getElementById("mainAlternative1").value) + parseInt(document.getElementById("extraAlternative1").value)+"%";
+      
+      document.getElementById("mainAlternative2").value=Math.round(totalMA2/statsClicksOnActions*100)+"%";
+      document.getElementById("extraAlternative2").value=Math.round(totalEA2/statsClicksOnActions*100)+"%";
+      document.getElementById("Alternative2").value= parseInt(document.getElementById("mainAlternative2").value) + parseInt(document.getElementById("extraAlternative2").value)+"%";
+      
+      document.getElementById("mainTotal").value= Math.round((totalMP + totalMA1+totalMA2)/statsClicksOnActions*100)+"%";
+      document.getElementById("extraTotal").value=Math.round((totalEP + totalEA1+totalEA2)/statsClicksOnActions*100)+"%";
+      
+      document.getElementById("Total").value="100%";
+      
+      this.sizeToContent();
+    }
+    
+    //]]>
   </script>
 </window>
-
