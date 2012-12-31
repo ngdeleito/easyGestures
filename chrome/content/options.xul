@@ -1544,7 +1544,7 @@
     
     function attachMenupopup(menulist) {
       if (menulist.firstChild == null) {
-        clonedMenupopup = eG_actionsPopupList.cloneNode(true); // menupopup
+        var clonedMenupopup = eG_actionsPopupList.cloneNode(true); // menupopup
         menulist.appendChild(clonedMenupopup); // menulist
         clonedMenupopup.boxObject.firstChild.setAttribute("style","overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
         //clonedMenupopup.setAttribute("id",menupopup.id);

@@ -117,7 +117,7 @@
 
 <script type="application/x-javascript">
 	function fillDirections(layout){
-		target = document.getElementById("gr_"+ layout);
+		var target = document.getElementById("gr_"+ layout);
 		
 		var captionLabel;
 		if (layout=="Primitive") captionLabel="&actions.primary;";
@@ -125,19 +125,19 @@
 			else if (layout=="Alternative2") captionLabel="&actions.alternative; 2";
 				else captionLabel="&stats.all;";
 		
-		label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+		var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
 		label.setAttribute("value", captionLabel);
 		label.setAttribute("style","font-weight: bold;");
 		target.appendChild(label);	
 
-		spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+		var spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
 		spacer.setAttribute("flex","1");
 		target.appendChild(spacer);
 		
-		vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+		var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
 		target.appendChild(vbox);
 
-			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+			var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
 			hbox.setAttribute("pack","center");
 			vbox.appendChild(hbox);
 
@@ -155,7 +155,7 @@
 				label.setAttribute("value","0%");
 				hbox.appendChild(label);
 	
-				text= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
+				var text= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "text");
 				text.setAttribute("value","   ");
 				hbox.appendChild(text);
 				
@@ -169,11 +169,11 @@
 			hbox.setAttribute("pack","center");
 			vbox.appendChild(hbox);			
 			
-				vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+				var vbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
 				vbox2.setAttribute("pack","center");
 				hbox.appendChild(vbox2);	
 
-					hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+					var hbox2 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
 					vbox2.appendChild(hbox2);
 		
 						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
@@ -196,7 +196,7 @@
 					spacer.setAttribute("flex","1");
 					vbox2.appendChild(spacer);
 
-					image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+					var image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
 					image.setAttribute("tooltiptext","&stats.main;");
 					image.setAttribute("src","mainMenu.png");
 					image.setAttribute("width","41");
@@ -254,7 +254,7 @@
 				label.setAttribute("value","0%");
 				hbox.appendChild(label);
 			
-			separator= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+			var separator= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
 			target.appendChild(separator);
 			
 			hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
@@ -383,20 +383,20 @@
 	var eG_prefs= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
 	
 	function fillActions(){
-		target = document.getElementById("actions").firstChild;
+		var target = document.getElementById("actions").firstChild;
 		
 		for (var n=0; n<5; n++) {	// number of columns		
 				
-			vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+			var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
 			target.appendChild(vbox);
 			
-			grid = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "grid");
+			var grid = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "grid");
 			vbox.appendChild(grid);		
 	
-			columns = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "columns");
+			var columns = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "columns");
 			grid.appendChild(columns);
 	
-			column = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "column");
+			var column = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "column");
 			column.setAttribute("flex","1");
 			columns.appendChild(column);
 			
@@ -404,15 +404,15 @@
 			column.setAttribute("flex","1");
 			columns.appendChild(column);		
 					
-			rows = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "rows");
+			var rows = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "rows");
 			grid.appendChild(rows);				
 			
 			for (var i=n*19+1; i<(n+1)*19+1; i++) {	// starting from 1 to exclude the 'empty' action. 19 rows per column
 			    if (i==94) break;
-				row = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "row");
+				var row = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "row");
 				rows.appendChild(row);
 				
-				image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+				var image= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
                 image.setAttribute("id","eG_image"+i);
 				image.setAttribute("tooltiptext",window.opener.eG_PopupLabels[i]);
                 
@@ -424,15 +424,15 @@
 				vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
 				row.appendChild(vbox);
 	
-				spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+				var spacer= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
 				spacer.setAttribute("flex","1");
 				vbox.appendChild(spacer);	
 	
-				hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+				var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
 				hbox.setAttribute("style","width:80px;");
 				vbox.appendChild(hbox);	
 	
-						label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+						var label= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
 						label.setAttribute("value"," ");
 						hbox.appendChild(label);
 						
@@ -468,7 +468,7 @@
 		fillDirections("Alternative2");
 		fillDirections("Total");
 		
-		scaleFactor = 3;
+		var scaleFactor = 3;
 		var statsClicksOnActions=0;
 
 		var statsMain = (new Function ("return " + eG_prefs.getCharPref("profile.statsMain") ))();          // (new Function ("return " + data ))() replacing eval on data
