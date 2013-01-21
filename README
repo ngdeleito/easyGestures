@@ -8,8 +8,7 @@ I do this on my limited free time. Help is very much welcome.
 
 To install the latest development version:
 - Uninstall any previous version of easyGestures
-- Click on "Downloads"
-- Click on "Download as zip"
+- Click on the button labeled ZIP ("download this repository as a zip file")
 - Once the file downloaded, unzip it
 - Zip the content of the "easyGestures-development" folder (and not the folder itself)
 - Give to the resulting zip file the "xpi" extension
