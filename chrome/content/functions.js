@@ -472,47 +472,8 @@ var eGf = {
   dailyReadings : function() {
     var dailyReadingsFolderNode = eG_checkDailyReadingsFolder();
 
-    if (dailyReadingsFolderNode!=null) {
-      var bookmarksList = PlacesUtils.getFolderContents(dailyReadingsFolderNode.itemId, false, false).root;
-
-      while (eGm.popup.hasChildNodes()) { // remove all from menupopup
-        eGm.popup.removeChild(eGm.popup.firstChild);
-      }
-      eGm.popup.addEventListener("popuphiding", eG_popup, true);
-
-      if (bookmarksList.childCount > 1) {
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-        itemNode.setAttribute("class", "menuitem-iconic");
-        itemNode.setAttribute("default", true);
-        itemNode.setAttribute("label", " Open All in Tabs");
-        itemNode.setAttribute("oncommand", "PlacesUIUtils.openContainerNodeInTabs(eG_checkDailyReadingsFolder(),null);");
-        itemNode.setAttribute("src", "" );
-        eGm.popup.appendChild(itemNode);
-      }
-
-      // menuseparator
-      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-      eGm.popup.appendChild(itemNode);
-
-      for (var i=0; i<bookmarksList.childCount; i++) {
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-        itemNode.setAttribute("class", "menuitem-iconic");
-        itemNode.setAttribute("label", " " + bookmarksList.getChild(i).title);
-        itemNode.setAttribute("onclick", "if (event.button=='0') loadURI('" + bookmarksList.getChild(i).uri+ "'); else {openNewTabWith('" + bookmarksList.getChild(i).uri+ "');var container = document.getElementById('content').mTabContainer;var tabs=container.childNodes;container._selectNewTab(tabs[tabs.length-1]);} eGm.popup.hidePopup();" );
-        if (bookmarksList.getChild(i).icon != null) {
-          itemNode.setAttribute("src", bookmarksList.getChild(i).icon);
-        }
-        else {
-          itemNode.setAttribute("src", "" );
-        }
-        itemNode.setAttribute("crop", "end");
-        eGm.popup.appendChild(itemNode);
-      }
-
-      eGm.popup.openPopupAtScreen(eGc.screenXUp-8, eGc.screenYUp-8, false);
-      if (eGm.showTooltips) {
-        clearTimeout(eGm.tooltipsTrigger);
-      }
+    if (dailyReadingsFolderNode != null) {
+      PlacesUIUtils.openContainerNodeInTabs(dailyReadingsFolderNode, null, eGc.doc.defaultView);
     }
   },
 

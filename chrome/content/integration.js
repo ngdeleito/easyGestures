@@ -753,43 +753,6 @@ function eG_checkDailyReadingsFolder() {
     eGm.dailyReadingsFolderURI = newFolderId;
     eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", newFolderId);
     
-    // adding default bookmarks in folder
-    var locale = eGc.localizing.getString("locale");
-    switch (locale) {
-      case "fr-FR":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://fr.news.yahoo.com/"),-1,"Yahoo! Actualit곢");
-        break;
-      case "de-DE":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://de.news.yahoo.com/"),-1,"Yahoo! Nachrichten");
-        break;
-      case "it-IT":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://it.news.yahoo.com/"),-1,"Yahoo! Notizie");
-        break;
-      case "ja-JP":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://ryuzi.dyndns.org/mozillazine/html/modules/news/"),-1,"mozillaZine ???? - mozillaZine ??");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://dailynews.yahoo.co.jp/fc/"),-1,"Yahoo!???? - ?????");
-        break;
-      case "zh-TW":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://tw.news.yahoo.com/"),-1,"Yahoo!ʟܯس܄");
-        break;
-      case "pt-BR":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://br.news.yahoo.com/"),-1,"Yahoo! Notas");
-        break;
-      case "es-ES":
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://es.news.yahoo.com/"),-1,"Noticias en Yahoo!");
-        break;
-      default:
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://www.mozillazine.org/"),-1,"MozillaZine");
-        PlacesUtils.bookmarks.insertBookmark(newFolderId, PlacesUtils._uri("http://dailynews.yahoo.com/"),-1,"Yahoo! News");
-        break;
-    }
-    
     alert(eGc.localizing.getString("dailyReadingsCreate"));
   }
   return dailyReadingsFolderNode;

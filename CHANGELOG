@@ -16,3 +16,6 @@ Changes by ngdeleito (see git history for the full details)
 - changed behaviour of Search Web action, which now uses Firefox's search engines
 - changed behaviour of Highlight/Clear action so that it now toggles Firefox's find bar
 - renamed highlight action to toggleFindBar
+- changed behaviour of Daily Readings action:
+-- it does no longer provide default bookmarks upon creation of the daily readings folder
+-- it now opens all bookmarks in new tabs
