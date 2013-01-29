@@ -69,8 +69,6 @@ var eGc = {
   clientYDown: -1,
   screenXDown: -1,
   screenYDown: -1,
-  screenXUp: -1,
-  screenYUp: -1,
   pieDragTolerance: 6, // tolerance to 'open when dragging'
   showAfterDelayTimer: null, // trigger to display menu after delay
   showAfterDelayPassed: false, // used to display menu after delay
@@ -319,8 +317,6 @@ function eG_handleMouseup(evt) {
   eGc.showAfterDelayTimer = null;
   eGc.showAfterDelayPassed = false;
   eGc.draggedToOpen = false;
-  eGc.screenXUp = evt.screenX;
-  eGc.screenYUp = evt.screenY;
   
   // clear automatic delayed autoscrolling
   clearTimeout(eGm.autoscrollingTrigger);

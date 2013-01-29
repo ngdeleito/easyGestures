@@ -350,7 +350,6 @@ function eG_menu () {
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.menuState = 0; // 0: not shown    1: showing   2: showing & mouse moved    3: staying open
-  this.popup = null; // used for 'Daily Readings' action to display a popup on the fly
 
   // Coordonnées
   this.pageX = 0; // page x coordinate of pie menu center
@@ -428,13 +427,6 @@ function eG_menu () {
 }
 
 eG_menu.prototype = {
-  createPopup : function () {
-    this.popup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menupopup");
-    this.popup.setAttribute("id", "eG_popup");
-    this.popup.setAttribute("maxwidth", 300);
-    document.getElementById("mainPopupSet").appendChild(this.popup);
-  },
-
   createSpecialNodes : function (layoutName) { //creating DOM nodes
     var layout = this.menuSet[layoutName];
 
@@ -711,10 +703,6 @@ eG_menu.prototype = {
     }
 
     // create resources if necessary
-    if (this.popup == null || document.getElementById("eG_popup") == null) {
-      this.createPopup();
-    }
-
     var existingNode = eGc.frame_doc.getElementById("eG_SpecialNodes");
     if (this.specialNodes == null || existingNode == null) {
       this.createSpecialNodes("main");
@@ -1009,10 +997,6 @@ eG_menu.prototype = {
       catch(ex) {
         alert("Exception: "+ ex.toString());
       }
-
-      if (this.popup != null && this.popup.state == 'showing') {
-        return; // return to avoid closing menu too early when eG_popup is visible
-      }
     }
 
     if (this.sector == -1 || layout.actions[this.sector].type != 1) {
@@ -1296,9 +1280,6 @@ eG_menu.prototype = {
     this.hide(layout);
     if (layout.isExtraMenu) {
       this.hide(baseLayout); // hide base menu too if closing is done from extra menu
-    }
-    if (this.popup != null) {
-      this.popup.hidePopup();
     }
 
     this.reset();

@@ -35,76 +35,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 var eGf = {
-
-  all : function(start, end, showAll) {
-    while (eGm.popup.hasChildNodes()) { // remove all from menupopup
-      eGm.popup.removeChild(eGm.popup.firstChild);
-    }
-
-    eGm.popup.addEventListener("popuphiding", eG_popup, true);
-    var popupNode;
-
-    for (var i=2; i<eG_menuItems.length; i++) {
-      if (!showAll) {
-        if (i < start) {
-          continue;
-        }
-        if (i > end) {
-          break;
-        }
-      }
-
-      if (i==14 || i==21 || i==27 || i==37 || i==71 || i==85) {
-        var menuSeparator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-        eGm.popup.appendChild(menuSeparator);
-      }
-
-      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-      var imageNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-      var subItemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-      itemNode.appendChild(imageNode);
-      itemNode.appendChild(subItemNode);
-      itemNode.setAttribute("oncommand","(new Function ('return ' + eG_menuItems["+i+"].func))();");  // (new Function ("return " + data ))() replacing eval on data
-      itemNode.style.paddingRight="0px";
-      imageNode.style.listStyleImage="url('"+eGm.skinPath+"small_actions.png')";
-      imageNode.setAttribute("class", "small_"+eG_menuItems[i].src);
-
-      var number = eG_menuItems[i].src.match (/\d+/); // for names like runProgramFiles1-10 and loadURLScript1-20
-      var label = eG_menuItems[i].src.replace (number, ""); // for names like runProgramFiles1-10 and loadURLScript1-20, remove number at the end of string
-      subItemNode.setAttribute("value", eGc.localizing.getString(label)+(number==null?"":" "+number));
-
-      if (showAll) {
-        if (i==2 || i==14 || i==21 || i==27 || i==37 || i==71 || i==85) {
-          var menu = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menu");
-          var label;
-          switch (i) {
-            case 2:  label = "Navigation"; break;
-            case 14: label = "Tabs"; break;
-            case 21: label = "Windows"; break;
-            case 27: label = "Links"; break;
-            case 37: label = "Special actions"; break;
-            case 71: label = "Miscellaneous"; break;
-            case 85: label = "Edition"; break;
-          }
-          menu.setAttribute("label", label);
-          eGm.popup.appendChild(menu);
-
-          popupNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menupopup");
-          menu.appendChild(popupNode);
-        }
-        popupNode.appendChild(itemNode);
-      }
-      else {
-        eGm.popup.appendChild(itemNode);
-      }
-    }
-
-    eGm.popup.openPopupAtScreen(eGc.screenXUp, eGc.screenYUp, false);
-    if (eGm.showTooltips) {
-      clearTimeout(eGm.tooltipsTrigger);
-    }
-  },
-
   firstPage : function() { // two behaviors are possible. Select the prefered lines of code
     //Returns at the begining of the history list
     getWebNavigation().gotoIndex(0);
@@ -858,9 +788,4 @@ function eG_readClipboard() {
   else {
     return "";
   }
-}
-
-function eG_popup(evt) {
-  eGm.popup.removeEventListener("popuphiding", eG_popup, true);
-  eGm.close();
 }
