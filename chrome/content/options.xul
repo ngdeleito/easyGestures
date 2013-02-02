@@ -1528,7 +1528,7 @@
     
     function actionClick(item, actionNumber) {
       item.parentNode.parentNode.setAttribute("actionID", actionNumber);
-      if (i==0)
+      if (actionNumber == 0)
         item.parentNode.parentNode.label = "";
       
       if (item.firstChild.getAttribute("class").search("loadURLScript") != -1) {
