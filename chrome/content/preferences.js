@@ -239,7 +239,7 @@ function eG_prefsObserver() {	// observes changes in the Options Dialog
             if (eGc.frame_doc!=null) {
                 var layoutNames = new Array("main","mainAlt1","mainAlt2","extra","extraAlt1","extraAlt2","contextLink","contextImage","contextSelection","contextTextbox");
                 var targetNode;
-                for (i=0; i<layoutNames.length;i++) {
+                for (var i=0; i<layoutNames.length; i++) {
                     targetNode = eGc.frame_doc.getElementById("eG_actions_" + layoutNames[i]);  // actions
                     if (targetNode!=null) targetNode.parentNode.removeChild(targetNode);
                     targetNode = eGc.frame_doc.getElementById("eG_labels_" + layoutNames[i]);   // labels

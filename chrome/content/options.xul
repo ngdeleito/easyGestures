@@ -1982,7 +1982,7 @@
       
       var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
       
-      for (i=1; i<=10; i++) {
+      for (var i=1; i<=10; i++) {
         // runProgramFile 1 to 10
         string.data = document.getElementById("runProgramFile_name"+i).value
           + "•" + document.getElementById("runProgramFile_path"+i).value
@@ -2030,7 +2030,7 @@
       // setting IDs
       for (var i=0; i<groupboxes.length; i++) {
         var string = "";
-        for (j=0; j<=9; j++) {
+        for (var j=0; j<=9; j++) {
           if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 )
             string += "0";
           else
