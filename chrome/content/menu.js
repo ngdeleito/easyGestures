@@ -193,7 +193,7 @@ function eG_menuLayout (menu, name, actionsPrefs, labelsPrefs) {
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   for (var i = 0; i<this.actions.length; i++) {
-    if (this.update[this.actions[i].src] == -1) {
+    if (this.update[this.actions[i].src] !== undefined && this.update[this.actions[i].src] == -1) {
       this.update[this.actions[i].src] = i;
     }
   }
@@ -922,27 +922,26 @@ eG_menu.prototype = {
   },
 
   rolloverExternalIcons : function(src, node, active) { // this is for runProgramFile and loadURLScript actions icons which can be customized or imported from favicons or program's icons
-    try {
-      if (active) {
-        if (this[src][4] == "true") {
-          node.style.backgroundPosition = (!this.smallIcons?"9px 1px":"1px 1px");
-        }
-        else
-          if (this[src][5] == "true") {
-            node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
-          }
+    if (this[src] === undefined) {
+      return;
+    }
+
+    if (active) {
+      if (this[src][4] == "true") {
+        node.style.backgroundPosition = (!this.smallIcons?"9px 1px":"1px 1px");
       }
-      else {
-        if (this[src][4] == "true") {
-          node.style.backgroundPosition = (!this.smallIcons?"8px 0px":"0px 0px");
+      else if (this[src][5] == "true") {
+          node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
         }
-        else
-          if (this[src][5] == "true") {
-            node.style.backgroundPosition = (!this.smallIcons?"0px 0px":"0px 0px");
-          }
+    }
+    else {
+      if (this[src][4] == "true") {
+        node.style.backgroundPosition = (!this.smallIcons?"8px 0px":"0px 0px");
+      }
+      else if (this[src][5] == "true") {
+        node.style.backgroundPosition = (!this.smallIcons?"0px 0px":"0px 0px");
       }
     }
-    catch (ex) {}
   },
 
   runAction : function() {
