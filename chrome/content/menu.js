@@ -203,18 +203,13 @@ function eG_menuLayout (menu, name, actionsPrefs, labelsPrefs) {
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   this.menuImage = menu.skinPath + (menu.smallIcons ? "small_":"") + (menu.noIcons ? "basic_":"");
-  if (!this.isExtraMenu) {
-    this.menuImage += menu.largeMenu ? "largeMenu.png": "menu.png";
-  }
-  else {
-    this.menuImage += "extraMenu.png"; // extra menus are never large
-  }
-
   this.tooltipsImage = menu.skinPath;
   if (!this.isExtraMenu) {
+    this.menuImage += menu.largeMenu ? "largeMenu.png": "menu.png";
     this.tooltipsImage += (this.hasExtraMenuAction ? "other_": "") + (menu.largeMenu ? "largeLabels.png":"labels.png");
   }
   else {
+    this.menuImage += "extraMenu.png"; // extra menus are never large
     this.tooltipsImage += "extraLabels.png";
   }
 
@@ -349,7 +344,7 @@ function eG_menu () {
 
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
-  this.menuState = 0; // 0: not shown    1: showing   2: showing & mouse moved    3: staying open
+  this.menuState = 0; // 0: not shown; 1: showing; 2: showing & mouse moved; 3: staying open
 
   // Coordonnées
   this.pageX = 0; // page x coordinate of pie menu center
@@ -380,7 +375,7 @@ function eG_menu () {
   this.showingTooltips = false; // tooltips are showing or hidden
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
-  // final initilalizations
+  // final initializations
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
@@ -439,7 +434,7 @@ eG_menu.prototype = {
     this.shieldCss(node);
     node.style.position = "fixed";
     node.style.display = "inline";
-    node.style.zIndex =eGc.maxzIndex;
+    node.style.zIndex = eGc.maxzIndex;
 
     ////////////////////////////////////////////////////////////////////////////
     // creating link sign
@@ -449,10 +444,10 @@ eG_menu.prototype = {
     this.shieldCss(img);
     img.style.position = "absolute";
     // img.style.display = "inline";
-    img.style.left = Math.round(layout.outerR -this.iconSize/2)+"px";
-    img.style.top = Math.round(layout.outerR -this.iconSize/2)+"px";
-    img.style.width = this.iconSize+"px";
-    img.style.height = this.iconSize+"px";
+    img.style.left = Math.round(layout.outerR - this.iconSize/2) + "px";
+    img.style.top = Math.round(layout.outerR - this.iconSize/2) + "px";
+    img.style.width = this.iconSize + "px";
+    img.style.height = this.iconSize + "px";
     img.src = this.skinPath + (this.smallIcons ? "small_" : "") + "link.png";
     img.alt = "";
     img.style.visibility = "hidden";
@@ -466,9 +461,10 @@ eG_menu.prototype = {
 
     var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     this.shieldCss(img);
-    img.src = this.skinPath +"altMenuSign0.png";
     img.style.position = "absolute";
     //img.style.display = "inline";
+    img.src = this.skinPath + "altMenuSign0.png";
+    img.alt = "";
     img.style.visibility = "hidden";
 
     this.altMenuSign = img;
@@ -511,7 +507,7 @@ eG_menu.prototype = {
     img2.style.top = parseInt(img.style.top)-4+"px";
 
     div.appendChild(img2); // img2 is for indicationg that there is an alternative context
-    this.contextAltMenuSign=img2;
+    this.contextAltMenuSign = img2;
 
     div.appendChild(img);
     div.appendChild(text);
@@ -607,9 +603,9 @@ eG_menu.prototype = {
     var timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     this.shieldCss(timg);
     timg.style.zIndex = layout.zIndex-1;
-    timg.src=layout.menuImage;
-    timg.style.width = 2*layout.outerR+"px";
-    timg.style.height = 2*layout.outerR +"px";
+    timg.src = layout.menuImage;
+    timg.style.width = 2*layout.outerR + "px";
+    timg.style.height = 2*layout.outerR + "px";
     timg.style.opacity = this.menuOpacity;
     timg.alt = "";
     node.appendChild(timg);
@@ -628,7 +624,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
-    node.setAttribute("id","eG_labels_"+layoutName); // used to know if labels have already been displayed in the current document
+    node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
     this.shieldCss(node);
     if (eGc.localizing.getString("locale") == "ar-TN") {
       node.style.direction= "rtl";
@@ -641,9 +637,9 @@ eG_menu.prototype = {
     node.style.textAlign = "left";
     node.style.textIndent = "0px";
     node.style.position = "fixed";
-    node.style.height = layout.height+"px";
-    node.style.width = layout.width+"px";
-    node.style.zIndex =  layout.zIndex-1; // labels are displayed below menu level
+    node.style.height = layout.height + "px";
+    node.style.width = layout.width + "px";
+    node.style.zIndex =  layout.zIndex - 1; // labels are displayed below menu level
 
     ////////////////////////////////////////////////////////////////////////////
     // creating labels and adjusting labels position
@@ -660,11 +656,11 @@ eG_menu.prototype = {
 
       var tdiv = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
       this.shieldCss(tdiv);
-      tdiv.style.zIndex = layout.zIndex-1;
+      tdiv.style.zIndex = layout.zIndex - 1;
       tdiv.style.fontWeigth = "normal";
       tdiv.style.position = "absolute";
-      tdiv.style.left = Math.round(xpos)+"px";
-      tdiv.style.top = Math.round(ypos)+"px";
+      tdiv.style.left = Math.round(xpos) + "px";
+      tdiv.style.top = Math.round(ypos) + "px";
       tdiv.style.width = "250px"; // gives space for bold text (highlighted)
       tdiv.appendChild(eGc.frame_doc.createTextNode(layout.labels[i]) );
       node.appendChild(tdiv);
@@ -676,10 +672,10 @@ eG_menu.prototype = {
 
     var timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     this.shieldCss(timg);
-    timg.style.zIndex = layout.zIndex-2;
+    timg.style.zIndex = layout.zIndex - 2;
     timg.src = layout.tooltipsImage;
-    timg.style.width = layout.width+"px";
-    timg.style.height = layout.height+"px";
+    timg.style.width = layout.width + "px";
+    timg.style.height = layout.height + "px";
     node.appendChild(timg);
 
     // save node and hide it
@@ -707,17 +703,16 @@ eG_menu.prototype = {
     if (this.specialNodes == null || existingNode == null) {
       this.createSpecialNodes("main");
     }
-    else
-      if (this.specialNodes != existingNode ) { // get existing nodes
-        this.specialNodes = existingNode;
-        this.linkSign = this.specialNodes.wrappedJSObject.childNodes[0];
-        this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[1];
-        this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[2];
-      }
+    else if (this.specialNodes != existingNode ) { // get existing nodes
+      this.specialNodes = existingNode;
+      this.linkSign = this.specialNodes.wrappedJSObject.childNodes[0];
+      this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[1];
+      this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[2];
+    }
 
     // create resources if necessary
-    var existingNode = eGc.frame_doc.getElementById("eG_actions_"+layoutName);
-    if (layout.aNode == null ||  existingNode == null) {
+    var existingNode = eGc.frame_doc.getElementById("eG_actions_" + layoutName);
+    if (layout.aNode == null || existingNode == null) {
       this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
     }
     else if (layout.aNode != existingNode) {
@@ -847,30 +842,28 @@ eG_menu.prototype = {
         this.close();
       }
     }
-    else
-      if (radius > layout.outerR) {
-        if (layout.actions[sector].type == 1) {	// show extra menu
-          this.showExtraMenu();
-        }
+    else if (radius > layout.outerR) {
+      if (layout.actions[sector].type == 1) {	// show extra menu
+        this.showExtraMenu();
       }
-      else
-        if (radius>layout.innerR && sector>2 && sector <6 && layout.isExtraMenu && movDir>0) { // hide extra menu
-          var baseLayout = this.menuSet[this.baseMenu];
-          baseLayout.aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
+    }
+    else if (radius>layout.innerR && sector>2 && sector <6 && layout.isExtraMenu && movDir>0) { // hide extra menu
+      var baseLayout = this.menuSet[this.baseMenu];
+      baseLayout.aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
 
-          this.hide(layout);
+      this.hide(layout);
 
-          this.altMenuSign.style.top = -10-(layout.isLarge ? this.iconSize/2 :0)+"px";
-          this.altMenuSign.style.visibility = "visible";
-          this.updateAltMenuSign(this.baseMenu, this.mainAlternative1==true && this.mainAlternative2==true);
+      this.altMenuSign.style.top = -10-(layout.isLarge ? this.iconSize/2 :0)+"px";
+      this.altMenuSign.style.visibility = "visible";
+      this.updateAltMenuSign(this.baseMenu, this.mainAlternative1==true && this.mainAlternative2==true);
 
-          this.pageY = this.pageY+baseLayout.outerR*1.2;
-          this.clientY = this.clientY+baseLayout.outerR*1.2;
-          this.screenY = this.screenY+baseLayout.outerR*1.2;
+      this.pageY = this.pageY+baseLayout.outerR*1.2;
+      this.clientY = this.clientY+baseLayout.outerR*1.2;
+      this.screenY = this.screenY+baseLayout.outerR*1.2;
 
-          this.curLayoutName = this.baseMenu;
-          this.resetTooltipsTimeout();
-        }
+      this.curLayoutName = this.baseMenu;
+      this.resetTooltipsTimeout();
+    }
   },
 
   showExtraMenu : function() {
@@ -1387,7 +1380,7 @@ eG_menu.prototype = {
         default:   lNode.style.fontSize = "10pt"; break;
       }
     }
-    else
+    else {
       switch (currentZoom) {
         case 450:  lNode.style.fontSize = "2pt"; break;
         case 300:  lNode.style.fontSize = "3pt"; break;
@@ -1402,5 +1395,6 @@ eG_menu.prototype = {
         case 22:   lNode.style.fontSize = "28pt"; break;
         default:   lNode.style.fontSize = "8pt"; break;
       }
+    }
   }
 };
