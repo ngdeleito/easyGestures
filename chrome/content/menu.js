@@ -565,9 +565,8 @@ eG_menu.prototype = {
         if (this[layout.actions[i].src][4]=="true" || this[layout.actions[i].src][5]=="true") {
           if (!this.smallIcons && this[layout.actions[i].src][4]=="true") { // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
             timg.style.font="bold 10px Arial, sans-serif";
-            timg.style.paddingTop="16px";
-            timg.style.paddingLeft="6px";
-            timg.style.backgroundPosition="8px 0px";
+            timg.style.backgroundPosition = "4px 4px";
+            timg.style.backgroundSize = "26px 26px";
             var number = parseInt(layout.actions[i].src.replace(/([^0-9])+/g,""));
             var protocol = this[layout.actions[i].src][1];
             protocol = protocol.substring(0,protocol.search("://")+1);
@@ -936,7 +935,7 @@ eG_menu.prototype = {
 
     if (active) {
       if (this[src][4] == "true") {
-        node.style.backgroundPosition = (!this.smallIcons?"9px 1px":"1px 1px");
+        node.style.backgroundPosition = (!this.smallIcons?"5px 5px":"1px 1px");
       }
       else if (this[src][5] == "true") {
           node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
@@ -944,7 +943,7 @@ eG_menu.prototype = {
     }
     else {
       if (this[src][4] == "true") {
-        node.style.backgroundPosition = (!this.smallIcons?"8px 0px":"0px 0px");
+        node.style.backgroundPosition = (!this.smallIcons?"4px 4px":"0px 0px");
       }
       else if (this[src][5] == "true") {
         node.style.backgroundPosition = (!this.smallIcons?"0px 0px":"0px 0px");
