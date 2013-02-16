@@ -348,7 +348,8 @@ function eG_handleMouseup(evt) {
       eGm.menuState = 3;
     }
     
-    if (eGm.linkSign.style.visibility == "visible" && eGc.link != null && eGm.handleLinks && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
+    var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
+    if (linkSign.style.visibility == "visible" && eGc.link != null && eGm.handleLinks && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
       // if a link is clicked without dragging and related option is checked
       // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (eGm.handleLinksAsOpenLink) {
@@ -435,7 +436,8 @@ function eG_handleMousemove(evt) {
       }
       
       // hide center icon if mouse moved
-      eGm.linkSign.style.visibility = "hidden";
+      var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
+      linkSign.style.visibility = "hidden";
       
       eGm.handleMousemove(evt);
     }
@@ -699,7 +701,8 @@ function eG_openMenu() {
         }
         break;
     }
-    eGm.contextMenuSign.style.visibility = "visible";
+    var contextMenuSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[2];
+    contextMenuSign.style.visibility = "visible";
   }
   else {
     eGm.show("main");

@@ -152,8 +152,6 @@ function eG_menuLayout (menu, name, actionsPrefs, labelsPrefs) {
   this.isLarge = menu.largeMenu && !this.isExtraMenu; // extra menus are never large
   this.actions = [];
   this.labels = [];
-  this.aNode = null; // actions DOM node
-  this.lNode = null; // labels DOM node
   this.update = { // contains all actions positions that need to be updated according to context
     firstPage:         -1,
     backSite:          -1,
@@ -355,18 +353,12 @@ function eG_menu () {
   this.screenY = 0;
 
   this.sector = -1; // index of item under mouse
-  this.node = null; // root of DOM tree containing the pie menu
 
   this.tooltipsTrigger = null; // trigger to display pie menu labels
   this.autoscrollingTrigger = null; // trigger to display autoscrolling
   this.autoscrolling = false; // used for automatic delayed autoscrolling on mouse down
 
-  this.specialNodes = null; // parent node of all special nodes inserted in the DOM: linkSign, altMenuSign and contextMenuSign
-  this.linkSign = null; // image displayed when a link is pointed
-  this.altMenuSign = null; // image displayed when alternative menu is displayed
   this.altMenuSignWidth = 26; // width (size of image 8px + spacing 4px)
-  this.contextMenuSign = null; // image displayed when contextual menu is displayed
-  this.contextAltMenuSign = null; // image displayed when contextual menu is displayed and when an alternative contextual layout is available
 
   this.extraMenuAction = null; // position of extra menu action in base menu from which extra menu is called
 
@@ -452,7 +444,6 @@ eG_menu.prototype = {
     img.alt = "";
     img.style.visibility = "hidden";
 
-    this.linkSign = img;
     node.appendChild(img);
 
     ///////////////////////////////////////////////////////////////////////////
@@ -467,7 +458,6 @@ eG_menu.prototype = {
     img.alt = "";
     img.style.visibility = "hidden";
 
-    this.altMenuSign = img;
     node.appendChild(img);
     //dumpObject(img.wrappedJSObject, false,0,0);
 
@@ -501,24 +491,23 @@ eG_menu.prototype = {
     img.style.top = parseInt(text.style.top)-6+"px";
 
     var img2 = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    img2.setAttribute("id", "eG_contextAltMenuSign");
     img2.src = this.skinPath+"contextMenuSign.png";
     img2.style.position = "absolute";
     img2.style.left = parseInt(img.style.left)+4+"px";
     img2.style.top = parseInt(img.style.top)-4+"px";
 
     div.appendChild(img2); // img2 is for indicationg that there is an alternative context
-    this.contextAltMenuSign = img2;
 
     div.appendChild(img);
     div.appendChild(text);
 
     div.style.visibility = "hidden";
 
-    this.contextMenuSign = div;
     node.appendChild(div);
 
-    this.specialNodes = node;
-    eGc.body.insertBefore(this.specialNodes, eGc.body.firstChild);
+    eGc.body.insertBefore(node, eGc.body.firstChild);
+    return node;
   },
 
   createActionsNodes : function(layoutName) { //creating DOM nodes
@@ -611,9 +600,9 @@ eG_menu.prototype = {
     node.appendChild(timg);
 
     // save node and hide it
-    layout.aNode = node;
-    layout.aNode.style.display = "none";
-    eGc.body.insertBefore(layout.aNode, eGc.body.firstChild);
+    node.style.display = "none";
+    eGc.body.insertBefore(node, eGc.body.firstChild);
+    return node;
   },
 
   createLabelsNodes : function(layoutName) { //creating DOM nodes
@@ -679,14 +668,14 @@ eG_menu.prototype = {
     node.appendChild(timg);
 
     // save node and hide it
-    layout.lNode = node;
-    layout.lNode.style.display = "none";
-    eGc.body.insertBefore(layout.lNode, eGc.body.firstChild);
+    node.style.display = "none";
+    eGc.body.insertBefore(node, eGc.body.firstChild);
+    return node;
   },
 
   show : function(layoutName) { // makes menu visible
     var layout = this.menuSet[layoutName];
-
+    
     if (this.showButton == 2) { // right click: make sure "Disable or replace context menus" Browser option is checked so that eG can control right click context menu display
       if (eGc.allowContextBrowserOptionTimerId != null) {
         clearTimeout(eGc.allowContextBrowserOptionTimerId);
@@ -699,38 +688,31 @@ eG_menu.prototype = {
     }
 
     // create resources if necessary
-    var existingNode = eGc.frame_doc.getElementById("eG_SpecialNodes");
-    if (this.specialNodes == null || existingNode == null) {
-      this.createSpecialNodes("main");
-    }
-    else if (this.specialNodes != existingNode ) { // get existing nodes
-      this.specialNodes = existingNode;
-      this.linkSign = this.specialNodes.wrappedJSObject.childNodes[0];
-      this.altMenuSign = this.specialNodes.wrappedJSObject.childNodes[1];
-      this.contextMenuSign = this.specialNodes.wrappedJSObject.childNodes[2];
+    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    if (specialNodes == null) {
+      specialNodes = this.createSpecialNodes("main");
     }
 
+    var altMenuSign = specialNodes.childNodes[1];
+
     // create resources if necessary
-    var existingNode = eGc.frame_doc.getElementById("eG_actions_" + layoutName);
-    if (layout.aNode == null || existingNode == null) {
-      this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
-    }
-    else if (layout.aNode != existingNode) {
-      layout.aNode = existingNode;
+    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layoutName);
+    if (layout_aNode == null) {
+      layout_aNode = this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
     }
 
     // recalculate positions
-    layout.aNode.style.left = this.clientX + layout.aNodeXOff + "px";
-    layout.aNode.style.top = this.clientY + layout.aNodeYOff+ "px";
-    layout.aNode.style.display = "block";
+    layout_aNode.style.left = this.clientX + layout.aNodeXOff + "px";
+    layout_aNode.style.top = this.clientY + layout.aNodeYOff+ "px";
+    layout_aNode.style.display = "block";
 
-    this.specialNodes.style.left = this.clientX + layout.aNodeXOff + "px";
+    specialNodes.style.left = this.clientX + layout.aNodeXOff + "px";
     //this.specialNodes.style.top=this.clientX + layout.aNodeYOff+ "px";
     if (!layout.isExtraMenu) {
-      this.specialNodes.style.top = this.clientY + layout.aNodeYOff + "px";
+      specialNodes.style.top = this.clientY + layout.aNodeYOff + "px";
     }
-    this.altMenuSign.style.top = -10-(layout.isExtraMenu?layout.outerR*1.2 + (layout.isLarge ? this.iconSize/2 :0):0)+"px";
-    this.altMenuSign.style.left=layout.outerR-12 + "px";
+    altMenuSign.style.top = -10-(layout.isExtraMenu?layout.outerR*1.2 + (layout.isLarge ? this.iconSize/2 :0):0)+"px";
+    altMenuSign.style.left=layout.outerR-12 + "px";
 
     if (this.menuState == 0) {
       this.menuState = 1; // menu is showing
@@ -742,7 +724,14 @@ eG_menu.prototype = {
 
   handleMousemove : function(event) { // handle rollover effects and switch to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-
+    
+    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
+    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
+    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
+    var baseLayout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.baseMenu);
+    var altMenuSign = specialNodes.childNodes[1];
+    
     // state change if was dragged
     if (this.menuState == 1 && (Math.abs(event.clientX- this.clientX)> 1 || Math.abs(event.clientY- this.clientY)> 1)) {
       this.menuState = 2;
@@ -782,23 +771,23 @@ eG_menu.prototype = {
         this.clientX += dx;
         this.clientY += dy;
 
-        layout.aNode.style.left = parseFloat(layout.aNode.style.left)+dx+ "px"; // parseFloat !!!
-        layout.aNode.style.top = parseFloat(layout.aNode.style.top)+dy+ "px";
-        if (layout.lNode!=null) {
-          layout.lNode.style.left = parseFloat(layout.lNode.style.left)+dx+ "px";
-          layout.lNode.style.top = parseFloat(layout.lNode.style.top)+dy+ "px";
+        layout_aNode.style.left = parseFloat(layout_aNode.style.left)+dx+ "px"; // parseFloat !!!
+        layout_aNode.style.top = parseFloat(layout_aNode.style.top)+dy+ "px";
+        if (layout_lNode!=null) {
+          layout_lNode.style.left = parseFloat(layout_lNode.style.left)+dx+ "px";
+          layout_lNode.style.top = parseFloat(layout_lNode.style.top)+dy+ "px";
         }
 
-        this.specialNodes.style.left = parseFloat(this.specialNodes.style.left)+dx+ "px";
-        this.specialNodes.style.top = parseFloat(this.specialNodes.style.top)+dy+ "px";
+        specialNodes.style.left = parseFloat(specialNodes.style.left)+dx+ "px";
+        specialNodes.style.top = parseFloat(specialNodes.style.top)+dy+ "px";
 
         if (layout.isExtraMenu) { // extra menu is displayed: move base menu too
           var baseLayout = this.menuSet[this.baseMenu];
-          baseLayout.aNode.style.left = parseFloat(baseLayout.aNode.style.left)+dx+ "px"; // parseFloat !!!
-          baseLayout.aNode.style.top = parseFloat(baseLayout.aNode.style.top)+dy+ "px";
-          if (baseLayout.lNode!=null) {
-            baseLayout.lNode.style.left = parseFloat(baseLayout.lNode.style.left)+dx+ "px";
-            baseLayout.lNode.style.top = parseFloat(baseLayout.lNode.style.top)+dy+ "px";
+          baseLayout_aNode.style.left = parseFloat(baseLayout_aNode.style.left)+dx+ "px"; // parseFloat !!!
+          baseLayout_aNode.style.top = parseFloat(baseLayout_aNode.style.top)+dy+ "px";
+          if (baseLayout_lNode!=null) {
+            baseLayout_lNode.style.left = parseFloat(baseLayout_lNode.style.left)+dx+ "px";
+            baseLayout_lNode.style.top = parseFloat(baseLayout_lNode.style.top)+dy+ "px";
           }
         }
       }
@@ -823,10 +812,10 @@ eG_menu.prototype = {
       this.clearRollover(layout, false);
 
       if (sector >= 0) { // sector targetted exists: highlighting icons and labels
-        layout.aNode.childNodes[sector].setAttribute("active", "true");
-        this.rolloverExternalIcons(layout.actions[sector].src, layout.aNode.childNodes[sector], true);
-        if (layout.lNode != null) {
-          layout.lNode.childNodes[sector].style.fontWeight = "bold";
+        layout_aNode.childNodes[sector].setAttribute("active", "true");
+        this.rolloverExternalIcons(layout.actions[sector].src, layout_aNode.childNodes[sector], true);
+        if (layout_lNode != null) {
+          layout_lNode.childNodes[sector].style.fontWeight = "bold";
         }
       }
     }
@@ -849,13 +838,13 @@ eG_menu.prototype = {
     }
     else if (radius>layout.innerR && sector>2 && sector <6 && layout.isExtraMenu && movDir>0) { // hide extra menu
       var baseLayout = this.menuSet[this.baseMenu];
-      baseLayout.aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
+      baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
 
       this.hide(layout);
 
-      this.altMenuSign.style.top = -10-(layout.isLarge ? this.iconSize/2 :0)+"px";
-      this.altMenuSign.style.visibility = "visible";
-      this.updateAltMenuSign(this.baseMenu, this.mainAlternative1==true && this.mainAlternative2==true);
+      altMenuSign.style.top = -10-(layout.isLarge ? this.iconSize/2 :0)+"px";
+      altMenuSign.style.visibility = "visible";
+      this.updateAltMenuSign(altMenuSign, this.baseMenu, this.mainAlternative1==true && this.mainAlternative2==true);
 
       this.pageY = this.pageY+baseLayout.outerR*1.2;
       this.clientY = this.clientY+baseLayout.outerR*1.2;
@@ -868,7 +857,11 @@ eG_menu.prototype = {
 
   showExtraMenu : function() {
     var layout = this.menuSet[this.curLayoutName];
-    layout.aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","true");
+    
+    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
+    var baseLayout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.baseMenu);
+    
+    layout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","true");
 
     this.pageY = this.pageY-layout.outerR*1.2;
     this.clientY = this.clientY-layout.outerR*1.2;
@@ -878,24 +871,31 @@ eG_menu.prototype = {
     this.show("extra");
 
     // hide main menu tooltips after extra menu showed
-    var baseLayout = this.menuSet[this.baseMenu];
-    if (baseLayout.lNode != null) {
-      baseLayout.lNode.style.display = "none";
+    if (baseLayout_lNode != null) {
+      baseLayout_lNode.style.display = "none";
     }
   },
 
   hide : function(layout) { // makes menu invisible
-    if (layout.aNode != null) {
-      layout.aNode.style.display = "none";
+    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layout.name);
+    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + layout.name);
+    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var linkSign = specialNodes.childNodes[0];
+    var altMenuSign = specialNodes.childNodes[1];
+    var contextMenuSign = specialNodes.childNodes[2];
+    var contextAltMenuSign = eGc.frame_doc.getElementById("eG_contextAltMenuSign");
+  
+    if (layout_aNode != null) {
+      layout_aNode.style.display = "none";
     }
-    if (layout.lNode != null) {
-      layout.lNode.style.display = "none";
+    if (layout_lNode != null) {
+      layout_lNode.style.display = "none";
     }
 
-    this.linkSign.style.visibility = "hidden";
-    this.altMenuSign.style.visibility = "hidden";
-    this.contextMenuSign.style.visibility = "hidden";
-    this.contextAltMenuSign.style.visibility = "hidden";
+    linkSign.style.visibility = "hidden";
+    altMenuSign.style.visibility = "hidden";
+    contextMenuSign.style.visibility = "hidden";
+    contextAltMenuSign.style.visibility = "hidden";
 
     this.clearRollover(layout, true);
 
@@ -905,19 +905,27 @@ eG_menu.prototype = {
   },
 
   clearRollover : function(layout, hidding) { // clear rollover effect
+    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layout.name);
+    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + layout.name);
+    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
+    var linkSign = specialNodes.childNodes[0];
+    var altMenuSign = specialNodes.childNodes[1];
+    var contextMenuSign = specialNodes.childNodes[2];
+  
     if (this.sector >= 0) {
-      layout.aNode.childNodes[this.sector].setAttribute("active", "false");
-      this.rolloverExternalIcons(layout.actions[this.sector].src, layout.aNode.childNodes[this.sector], false);
-      if (layout.lNode != null) {
-        layout.lNode.childNodes[this.sector].style.fontWeight = "normal";
+      layout_aNode.childNodes[this.sector].setAttribute("active", "false");
+      this.rolloverExternalIcons(layout.actions[this.sector].src, layout_aNode.childNodes[this.sector], false);
+      if (layout_lNode != null) {
+        layout_lNode.childNodes[this.sector].style.fontWeight = "normal";
       }
     }
 
     // reset rollover for extra menu in base menu if needed
     var baseLayout = this.menuSet[this.baseMenu];
     if (baseLayout != null && baseLayout.hasExtraMenuAction && hidding) {
-      baseLayout.aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
-      baseLayout.aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
+      baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
+      baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
     }
   },
 
@@ -998,17 +1006,24 @@ eG_menu.prototype = {
 
   update : function() { // update menu content (gray actions, display special signs etc.)
     var layout = this.menuSet[this.curLayoutName];
+    
+    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
+    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var linkSign = specialNodes.childNodes[0];
+    var altMenuSign = specialNodes.childNodes[1];
+    var contextMenuSign = specialNodes.childNodes[2];
+    var contextAltMenuSign = eGc.frame_doc.getElementById("eG_contextAltMenuSign");
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     if (eGc.link != null && this.handleLinks && this.menuState!=2 && this.menuState!=3 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
-      this.linkSign.style.visibility = "visible";
-      this.linkTrigger = setTimeout(function() { eGm.linkSign.style.visibility = "hidden"; }, this.linksDelay);
+      linkSign.style.visibility = "visible";
+      this.linkTrigger = setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }
     else {
-      this.linkSign.style.visibility = "hidden";
+      linkSign.style.visibility = "hidden";
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -1018,7 +1033,7 @@ eG_menu.prototype = {
     var actionNode = null;
     var actionName = "back";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getWebNavigation().canGoBack) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1029,7 +1044,7 @@ eG_menu.prototype = {
 
     actionName = "backSite";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getWebNavigation().canGoBack) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1040,7 +1055,7 @@ eG_menu.prototype = {
 
     actionName = "firstPage";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getWebNavigation().canGoBack) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1051,7 +1066,7 @@ eG_menu.prototype = {
 
     actionName = "forward";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getWebNavigation().canGoForward) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1062,7 +1077,7 @@ eG_menu.prototype = {
 
     actionName = "forwardSite";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getWebNavigation().canGoForward) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1073,7 +1088,7 @@ eG_menu.prototype = {
 
     actionName = "lastPage";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getWebNavigation().canGoForward) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1084,7 +1099,7 @@ eG_menu.prototype = {
 
     actionName = "nextTab";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getBrowser().mTabContainer.childNodes.length > 1) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1095,7 +1110,7 @@ eG_menu.prototype = {
 
     actionName = "prevTab";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getBrowser().mTabContainer.childNodes.length > 1) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1106,7 +1121,7 @@ eG_menu.prototype = {
 
     actionName = "closeOtherTabs";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (getBrowser().mTabContainer.childNodes.length > 1) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1117,7 +1132,7 @@ eG_menu.prototype = {
 
     actionName = "undoCloseTab";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (Cc["@mozilla.org/browser/sessionstore;1"].getService(Ci.nsISessionStore).getClosedTabCount(window) > 0) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1128,7 +1143,7 @@ eG_menu.prototype = {
 
     actionName = "closeOtherWindows";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
 
       var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService();
       var windowManagerInterface = windowManager.QueryInterface( Components.interfaces.nsIWindowMediator);
@@ -1147,7 +1162,7 @@ eG_menu.prototype = {
 
     actionName = "reload";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
 
       var stop_bcaster = document.getElementById("Browser:Stop");
       eGc.loading = !stop_bcaster.hasAttribute("disabled");
@@ -1163,7 +1178,7 @@ eG_menu.prototype = {
 
     actionName = "up";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (eG_canGoUp()) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1174,7 +1189,7 @@ eG_menu.prototype = {
 
     actionName = "root";
     if (layout.update[actionName] != -1) {
-      actionNode = layout.aNode.childNodes[layout.update[actionName]];
+      actionNode = layout_aNode.childNodes[layout.update[actionName]];
       if (eG_canGoUp()) {
         actionNode.setAttribute("grayed", "false");
       }
@@ -1188,33 +1203,33 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     if (layout.name.search("context") != -1) {
-      this.contextMenuSign.childNodes[2].wrappedJSObject.firstChild.data=eGc.localizing.getString(layout.name);
-      this.contextAltMenuSign.wrappedJSObject.style.visibility=(eGc.contextType.split("/").length>2 ? "visible": "hidden"); // alternative context exists or not
+      contextMenuSign.childNodes[2].wrappedJSObject.firstChild.data=eGc.localizing.getString(layout.name);
+      contextAltMenuSign.style.visibility=(eGc.contextType.split("/").length>2 ? "visible": "hidden"); // alternative context exists or not
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // show alternative menu sign
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    this.altMenuSign.style.visibility = "visible";
-    this.updateAltMenuSign(layout.name,(this.mainAlternative1==true && this.mainAlternative2==true && layout.name.search("main") !=-1) || (this.extraAlternative1==true && this.extraAlternative2==true && layout.name.search("extra") !=-1) );
+    altMenuSign.style.visibility = "visible";
+    this.updateAltMenuSign(altMenuSign, layout.name,(this.mainAlternative1==true && this.mainAlternative2==true && layout.name.search("main") !=-1) || (this.extraAlternative1==true && this.extraAlternative2==true && layout.name.search("extra") !=-1) );
   },
 
-  updateAltMenuSign : function(layoutName, alternative1and2Enabled) {
+  updateAltMenuSign : function(altMenuSign, layoutName, alternative1and2Enabled) {
     var altLayoutNumber = parseInt(layoutName.replace(/^\D*/,'0'));
 
     if (alternative1and2Enabled) {
       switch (altLayoutNumber) {
-        case 0: this.altMenuSign.src = this.skinPath + "altMenuSign0.png"; break;
-        case 1: this.altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
-        case 2: this.altMenuSign.src = this.skinPath + "altMenuSign2.png"; break;
+        case 0: altMenuSign.src = this.skinPath + "altMenuSign0.png"; break;
+        case 1: altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
+        case 2: altMenuSign.src = this.skinPath + "altMenuSign2.png"; break;
       }
     }
     else {
       switch (altLayoutNumber) {
-        case 0: this.altMenuSign.src = this.skinPath + "altMenuSign0.png"; break;
-        case 1: this.altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
-        case 2: this.altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
+        case 0: altMenuSign.src = this.skinPath + "altMenuSign0.png"; break;
+        case 1: altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
+        case 2: altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
       }
     }
   },
@@ -1222,6 +1237,9 @@ eG_menu.prototype = {
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
     var nextLayoutName = "";
+    
+    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var contextMenuSign = specialNodes.childNodes[2];
 
     if (this.curLayoutName.search("context") == -1) { // switch to alternative layouts
       this.hide(layout);
@@ -1260,7 +1278,7 @@ eG_menu.prototype = {
         }
 
         this.show(nextLayoutName);
-        this.contextMenuSign.style.visibility = "visible";
+        contextMenuSign.style.visibility = "visible";
       }
     }
   },
@@ -1323,19 +1341,18 @@ eG_menu.prototype = {
 
   showMenuTooltips : function() { // displaying tooltips
     var layout = this.menuSet[this.curLayoutName];
+    
+    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
 
     // create resources if necessary
-    if (layout.lNode == null || eGc.frame_doc.getElementById("eG_labels_"+this.curLayoutName) == null) {
-      this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
-    }
-    else if (layout.lNode != eGc.frame_doc.getElementById("eG_labels_"+this.curLayoutName)) {
-      layout.lNode = eGc.frame_doc.getElementById("eG_labels_"+this.curLayoutName);
+    if (layout_lNode == null) {
+      layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
     }
 
-    layout.lNode.style.left = this.clientX + layout.lNodeXOff + "px";
-    layout.lNode.style.top = this.clientY + layout.lNodeYOff + "px";
-    this.compensateTextZoom(layout.lNode);
-    layout.lNode.style.display = "block";
+    layout_lNode.style.left = this.clientX + layout.lNodeXOff + "px";
+    layout_lNode.style.top = this.clientY + layout.lNodeYOff + "px";
+    this.compensateTextZoom(layout_lNode);
+    layout_lNode.style.display = "block";
     
     this.showingTooltips = true;
   },
