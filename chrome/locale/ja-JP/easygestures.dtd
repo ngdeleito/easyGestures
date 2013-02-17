@@ -104,7 +104,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "リンクの現在のタブで開く">
 <!ENTITY link.newTab "リンクを新しいタブで開く">
 <!ENTITY link.newWindow "リンクを新しいウィンドウで開く">
-<!ENTITY link.xlink "リンクに目印を付ける">
 
 <!ENTITY autoscrolling "パイメニューの中心から自動スクロールする">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "遅延時間 (ミリ秒)">

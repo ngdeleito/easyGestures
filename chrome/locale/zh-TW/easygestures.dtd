@@ -104,7 +104,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "在現在的分頁開啟鏈結">
 <!ENTITY link.newTab "在新的分頁開啟鏈結">
 <!ENTITY link.newWindow "在新的視窗開啟鏈結">
-<!ENTITY link.xlink "標記鏈結用">
 
 <!ENTITY autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…（毫秒）">

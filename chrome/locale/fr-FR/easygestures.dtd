@@ -104,7 +104,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "Ouvrir lien dans onglet courant">
 <!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
 <!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
-<!ENTITY link.xlink "Marquer le lien avec">
 
 <!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Délai (ms)">

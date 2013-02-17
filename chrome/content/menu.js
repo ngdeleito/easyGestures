@@ -295,7 +295,6 @@ function eG_menu () {
   this.contextImageFirst = prefs.getBoolPref("actions.contextImageFirst");
   this.contextTextboxFirst = prefs.getBoolPref("actions.contextTextboxFirst");
 
-  this.xlink = prefs.getBoolPref("customizations.xlink"); // display red tag after link
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed

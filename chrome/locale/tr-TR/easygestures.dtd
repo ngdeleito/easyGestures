@@ -105,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "Bağlantıyı mevcut sekmede aç">
 <!ENTITY link.newTab "Bağlantıyı Yeni Sekmede Aç">
 <!ENTITY link.newWindow "Bağlantıyı yeni pencerede aç">
-<!ENTITY link.xlink "bağlantıyı bununla etiketle:">
 
 <!ENTITY autoscrolling "Kolay menü merkezi içinde otomatik kaydırma">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Gecikme (ms)">

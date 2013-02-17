@@ -94,7 +94,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY link.curTab "현재 탭에 링크 열기">
 <!ENTITY link.newTab "새 탭으로 링크 열기">
 <!ENTITY link.newWindow "새 창으로 링크 열기">
-<!ENTITY link.xlink "링크에 태그를 붙임">
 <!ENTITY autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "지연시간(ms)">
 <!ENTITY extras.menuType "메뉴 형식">

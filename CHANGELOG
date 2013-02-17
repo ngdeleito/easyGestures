@@ -19,3 +19,4 @@ Changes by ngdeleito (see git history for the full details)
 - changed behaviour of Daily Readings action:
 -- it does no longer provide default bookmarks upon creation of the daily readings folder
 -- it now opens all bookmarks in new tabs
+- removed red tag for links

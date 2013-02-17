@@ -21,5 +21,6 @@ TODO
 -- customizations.searchQuery4
 -- customizations.searchQuery5
 -- customizations.searchQuery6
-- customizations.highlightColorList
-- customizations.highlightCount
+-- customizations.highlightColorList
+-- customizations.highlightCount
+-- customizations.xlink

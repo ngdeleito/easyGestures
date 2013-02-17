@@ -105,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "在当前标签页打开链接">
 <!ENTITY link.newTab "在新标签页打开链接">
 <!ENTITY link.newWindow "在新窗口打开链接">
-<!ENTITY link.xlink "标志链接">
 
 <!ENTITY autoscrolling "自动卷轴通过圆饼菜单中心">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "延迟时间(ms)">

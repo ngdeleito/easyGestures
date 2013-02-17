@@ -79,7 +79,6 @@
 <!ENTITY link.curTab "Hivatkozás megnyitása az aktuális lapon">
 <!ENTITY link.newTab "Hivatkozás megnyitása új lapon">
 <!ENTITY link.newWindow "Hivatkozás megnyitása új ablakban">
-<!ENTITY link.xlink "Hivatkozás megjelölése">
 <!ENTITY autoscrolling "Automatikus görgetés a köralakú menü közepén keresztül">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Késleltetés (ms)">
 <!ENTITY extras.menuType "Menü típusa">

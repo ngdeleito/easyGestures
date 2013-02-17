@@ -628,22 +628,8 @@
               <spacer height="3px" />
               <radiogroup id="linkprefs" orient="vertical" oncommand="updateUI();">
                 <radio id="linkCurTab" label="&link.curTab;" />
-                <hbox>
-                  <vbox>
-                    <radio id="linkNewTab" label="&link.newTab;" />
-                    <radio id="linkNewWindow" label="&link.newWindow;" />
-                  </vbox>
-                  <vbox flex="1">
-                    <spacer flex="1" />
-                    <hbox pack="center">
-                      <checkbox id="xlink" label="&link.xlink;" />
-                    </hbox>
-                    <hbox pack="center">
-                      <image src="chrome://easygestures/skin/xLink.png" width="16" height="16" />
-                    </hbox>
-                    <spacer flex="1" />
-                  </vbox>
-                </hbox>
+                <radio id="linkNewTab" label="&link.newTab;" />
+                <radio id="linkNewWindow" label="&link.newWindow;" />
               </radiogroup>
               <separator />
               <menuseparator />
@@ -1829,7 +1815,6 @@
       
       initActionsBoxes();
       
-      document.getElementById("xlink").checked = eG_prefs.getBoolPref("customizations.xlink");
       var selectedItem;
       switch (eG_prefs.getCharPref("customizations.openLink")) {
         case "curTab":
@@ -1975,8 +1960,6 @@
       eG_prefs.setBoolPref("actions.contextTextboxFirst", document.getElementById("contextTextboxFirst").checked);
       
       setActionsPrefs();
-      
-      eG_prefs.setBoolPref("customizations.xlink", document.getElementById("xlink").checked);
       
       eG_prefs.setBoolPref("customizations.closeBrowserOnLastTab", document.getElementById("closeBrowserOnLastTab").checked);
       
@@ -2131,12 +2114,6 @@
           document.getElementById(boxes[i]+"Alt2Sector"+sector).disabled = document.getElementById(boxes[i]+"Alternative2").checked;
         }
       }
-      
-      //***************************************************
-      // checking for link options
-      //***************************************************
-      checking = (document.getElementById("linkprefs").selectedItem != document.getElementById("linkCurTab"));
-      document.getElementById("xlink").disabled = !checking;
       
       //***************************************************
       // checking if menu is standard or large

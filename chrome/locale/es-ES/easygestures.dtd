@@ -79,7 +79,6 @@
 <!ENTITY link.curTab "Abrir enlace en la pestaña actual">
 <!ENTITY link.newTab "Abrir enlace en una pestaña nueva">
 <!ENTITY link.newWindow "Abrir enlace en una ventana nueva">
-<!ENTITY link.xlink "destino con">
 <!ENTITY autoscrolling "Autodezplazamiento a través del menú circular">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Retraso (ms)">
 <!ENTITY extras.menuType "Tipo de menú">

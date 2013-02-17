@@ -78,7 +78,6 @@
 <!ENTITY link.curTab "Link im aktiven Tab öffnen">
 <!ENTITY link.newTab "Link in neuem Tab öffnen">
 <!ENTITY link.newWindow "Link in neuem Fenster öffnen">
-<!ENTITY link.xlink "Link kennzeichnen mit">
 <!ENTITY autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Verzögerung (ms)">
 <!ENTITY extras.menuType "Menü-Varianten">

@@ -104,7 +104,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "Abrir link na Aba corrente">
 <!ENTITY link.newTab "Abrir link na Aba nova">
 <!ENTITY link.newWindow "Abrir link na Janela nova">
-<!ENTITY link.xlink "marcar link com">
 
 <!ENTITY autoscrolling "Auto-rolagem através do centro do menu de torta">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso (ms)">

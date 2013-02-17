@@ -105,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "Apri il collegamento nella Linguetta corrente">
 <!ENTITY link.newTab "Apri il collegamento in una nuova Linguetta">
 <!ENTITY link.newWindow "Apri il collegamento in una nuova Finestra">
-<!ENTITY link.xlink "Marca i collegamento con">
 
 <!ENTITY autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Ritado (ms)">

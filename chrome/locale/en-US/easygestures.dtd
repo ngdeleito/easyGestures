@@ -105,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY link.curTab "Open link in current Tab">
 <!ENTITY link.newTab "Open link in new Tab">
 <!ENTITY link.newWindow "Open link in new Window">
-<!ENTITY link.xlink "tag link with">
 
 <!ENTITY autoscrolling "Autoscrolling through pie menu center">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Delay (ms)">

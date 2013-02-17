@@ -77,7 +77,6 @@
 <!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
 <!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
 <!ENTITY link.newWindow "Otwórz odnośnik w nowym oknie">
-<!ENTITY link.xlink "Oznacz odwiedzony odnośnik">
 <!ENTITY autoscrolling "Automatyczne przewijanie">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia (ms)">
 <!ENTITY extras.menuType "Typ menu">

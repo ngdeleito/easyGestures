@@ -78,7 +78,6 @@
 <!ENTITY link.curTab "Otvoriť odkaz na aktuálnej karte">
 <!ENTITY link.newTab "Otvoriť odkaz na novej karte">
 <!ENTITY link.newWindow "Otvoriť odkaz v novom okne">
-<!ENTITY link.xlink "označiť odkaz s">
 <!ENTITY autoscrolling "Automatický posun cez stred ponuky">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Oneskorenie [ms]">
 <!ENTITY extras.menuType "Typ ponuky">

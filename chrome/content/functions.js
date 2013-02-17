@@ -321,10 +321,6 @@ var eGf = {
         window.open(url);
         break;
     }
-
-    if (eGm.xlink) {
-      eG_xlink(link);
-    }
   },
 
   openLinkNewWindow : function(link) {
@@ -336,9 +332,6 @@ var eGf = {
       url = link.href;
     }
     openNewWindowWith(url);
-    if (eGm.xlink) {
-      eG_xlink(link);
-    }
   },
 
   copyLink : function(link) { //write to clipboard the link url
@@ -529,7 +522,7 @@ var eGf = {
           allLinks[i].style.textDecoration = "line-through";
 
           var image = allLinks[i].getElementsByTagName("img")[0]; // don't use uppercase tag name because of xhtml
-          if (image!=null && image.src!=eGm.skinPath + "xLink.png") { // any image inside the link must be tagged too except xLink tag inserted by eG
+          if (image!=null) { // any image inside the link must be tagged too
             image.style.backgroundColor = "#eeeeee";
             image.style.border = "6px dotted #c0c0c0";
           }
@@ -728,25 +721,6 @@ function eG_canGoUp () {
   else {
     return false;
   }
-}
-
-function eG_xlink(node) { // tag clicked link
-  // avoid tagging twice
-  if ( (node.nextSibling instanceof HTMLImageElement) && node.nextSibling.src.indexOf("xLink.png") >= 0) {
-    return;
-  }
-
-  timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-  eGm.shieldCss(timg);
-  timg.style.position = "relative";
-  timg.style.display = "inline";
-  timg.style.left = "0px";
-  timg.style.top = "0px";
-  timg.style.width = 16; //size of xlink.png image
-  timg.style.height = 16;
-  timg.src = eGm.skinPath + "xLink.png";
-  timg.alt = "";
-  node.appendChild(timg); // add node inside <a> </a> tag in last position
 }
 
 function eG_getSelection() { // find text selection in current HTML document
