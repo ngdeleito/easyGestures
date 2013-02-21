@@ -46,7 +46,7 @@ function eG_setPrefs(locale){	// this function is also called in options.xul wit
 		eG_prefsObs.prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");		// saved as source of an Array
 		eG_prefsObs.prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");			// saved as source of an Array
 		var actionsStr=new Array();
-		for (i=0; i<eG_menuItems.length ; i++) actionsStr.push(0);										// all actions stats set to 0
+		for (var i=0; i<eG_menuItems.length ; i++) actionsStr.push(0);										// all actions stats set to 0
 		eG_prefsObs.prefs.setCharPref("profile.statsActions", actionsStr.toSource());								// saved as source of an Array
 	}
 
@@ -259,7 +259,9 @@ function eG_prefsObserver() {	// observes changes in the Options Dialog
 	}
 }
 
-function eG_deleteAllPreferences(){    // called if eG is uninstalled
-    prefs=Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
-    prefs.deleteBranch("");
+function eG_deleteAllPreferences() { // called if eG is uninstalled
+  var prefs = Components.classes["@mozilla.org/preferences-service;1"]
+                        .getService(Components.interfaces.nsIPrefService)
+                        .getBranch("easygestures.");
+  prefs.deleteBranch("");
 }
