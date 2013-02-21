@@ -147,8 +147,9 @@ function eG_setActions(setAll) {	// setAll is set to false to only update labels
 		// set labels
 		var actionsSplit = actions.split("/");
 		var prefStr="";
-		for (var n=0; n<actionsSplit.length; n++) { 
-			if (actionsSplit[n]!="0") {
+		for (var n=0; n<actionsSplit.length; n++) {
+		  var eG_menuItem = eG_menuItems[parseInt(actionsSplit[n])];
+			if (eG_menuItem.type != -1) {
 				var number = eG_menuItems[parseInt(actionsSplit[n])].src.match (/\d+/);	// for names like runProgramFiles1-10 and loadURLScript1-20
 				var label = eG_menuItems[parseInt(actionsSplit[n])].src.replace (number, "");	// for names like runProgramFiles1-10 and loadURLScript1-20, remove number at the end of string
 				prefStr+=eGc.localizing.getString(label)+(number==null?"":" "+number);
