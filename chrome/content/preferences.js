@@ -69,7 +69,7 @@ function eG_setPrefs(locale) {
     // mac users need different defaults
     eG_prefsObs.prefs.setIntPref("behavior.showButton", 0);
     eG_prefsObs.prefs.setIntPref("behavior.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
-    eG_prefsObs.prefs.setIntPref("behavior.showKey", 0);
+    eG_prefsObs.prefs.setIntPref("behavior.showKey", 16);
     eG_prefsObs.prefs.setIntPref("behavior.supprKey", 17);
     eG_prefsObs.prefs.setIntPref("behavior.contextKey", 0);
     eG_prefsObs.prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
@@ -91,7 +91,7 @@ function eG_setPrefs(locale) {
   
   eG_prefsObs.prefs.setBoolPref("behavior.largeMenu", false);
   eG_prefsObs.prefs.setBoolPref("behavior.noIcons", false);
-  eG_prefsObs.prefs.setBoolPref("behavior.smallIcons", true);
+  eG_prefsObs.prefs.setBoolPref("behavior.smallIcons", false);
   eG_prefsObs.prefs.setIntPref("behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
   eG_prefsObs.prefs.setBoolPref("behavior.showTooltips", true);
   eG_prefsObs.prefs.setIntPref("behavior.tooltipsDelay", 1000);
