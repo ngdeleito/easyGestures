@@ -1507,8 +1507,6 @@
         popupNode.appendChild(itemNode);
       }
       
-      var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
-      popupNode.appendChild(itemNode);
       return popupNode;
     }
     
