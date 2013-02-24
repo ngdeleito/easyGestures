@@ -1107,6 +1107,20 @@
       }
     }
     
+    function createActionsMenulistWithSectorID(sectorID) {
+      var menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
+      menulist.setAttribute("id", sectorID);
+      menulist.setAttribute("onchange", "updateOtherLabels(this.getAttribute('actionID'), this.label)");
+      menulist.setAttribute("editable", "true");
+      menulist.setAttribute("actionID", "");
+      menulist.setAttribute("minwidth", "150");
+      menulist.setAttribute("crop", "none");
+      menulist.setAttribute("oncommand", "updateUI()");
+      menulist.setAttribute("onmousedown", "attachMenupopup(this)");
+      menulist.setAttribute("sizetopopup", "false");
+      return menulist;
+    }
+    
     function createActions() {
       var boxes = new Array(
         "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
@@ -1117,8 +1131,8 @@
         var box = document.getElementById("gr_"+boxes[i]);
         
         // empty box if needed first
-        if (box.hasChildNodes() ) {
-          while (box.lastChild !=null) {
+        if (box.hasChildNodes()) {
+          while (box.lastChild != null) {
             box.removeChild(box.lastChild);
           }
         }
@@ -1137,16 +1151,7 @@
         hbox.setAttribute("pack","center");
         box.appendChild(hbox);
         
-        var menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector0");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        var menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector0");
         hbox.appendChild(menulist);
         
         //////////////////////////////////////////////////////////
@@ -1160,16 +1165,7 @@
         hbox1.setAttribute("pack","center");
         hbox.appendChild(hbox1);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector9");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector9");
         hbox1.appendChild(menulist);
         
         var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
@@ -1181,16 +1177,7 @@
         hbox1.setAttribute("pack","center");
         hbox.appendChild(hbox1);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector1");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector1");
         hbox1.appendChild(menulist);
         
         //////////////////////////////////////////////////////////
@@ -1209,16 +1196,7 @@
         hbox1.setAttribute("pack","center");
         vbox.appendChild(hbox1);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector8");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector8");
         hbox1.appendChild(menulist);
         
         if (boxes[i].search("extra") == -1) {
@@ -1226,16 +1204,7 @@
           hbox1.setAttribute("pack","center");
           vbox.appendChild(hbox1);
           
-          menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-          menulist.setAttribute("id",boxes[i]+"Sector7");
-          menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-          menulist.setAttribute("editable","true");
-          menulist.setAttribute("actionID","");
-          menulist.setAttribute("minwidth","150");
-          menulist.setAttribute("crop","none");
-          menulist.setAttribute("oncommand","updateUI();");
-          menulist.setAttribute("onmousedown","attachMenupopup(this);");
-          menulist.setAttribute("sizetopopup","false");
+          menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector7");
           hbox1.appendChild(menulist);
         }
         
@@ -1273,16 +1242,7 @@
         hbox1.setAttribute("pack","center");
         vbox.appendChild(hbox1);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector2");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector2");
         hbox1.appendChild(menulist);
         
         if (boxes[i].search("extra") == -1) {
@@ -1290,16 +1250,7 @@
           hbox1.setAttribute("pack","center");
           vbox.appendChild(hbox1);
           
-          menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-          menulist.setAttribute("id",boxes[i]+"Sector3");
-          menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-          menulist.setAttribute("editable","true");
-          menulist.setAttribute("actionID","");
-          menulist.setAttribute("minwidth","150");
-          menulist.setAttribute("crop","none");
-          menulist.setAttribute("oncommand","updateUI();");
-          menulist.setAttribute("onmousedown","attachMenupopup(this);");
-          menulist.setAttribute("sizetopopup","false");
+          menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector3");
           hbox1.appendChild(menulist);
         }
         
@@ -1318,16 +1269,7 @@
         hbox1.setAttribute("pack","center");
         hbox.appendChild(hbox1);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector6");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector6");
         hbox1.appendChild(menulist);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
@@ -1339,16 +1281,7 @@
         hbox1.setAttribute("pack","center");
         hbox.appendChild(hbox1);
         
-        menulist= document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector4");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector4");
         hbox1.appendChild(menulist);
         
         //////////////////////////////////////////////////////////
@@ -1359,16 +1292,7 @@
         hbox.setAttribute("pack","center");
         box.appendChild(hbox);
         
-        menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
-        menulist.setAttribute("id",boxes[i]+"Sector5");
-        menulist.setAttribute("onchange","updateOtherLabels(this.getAttribute('actionID'), this.label);");
-        menulist.setAttribute("editable","true");
-        menulist.setAttribute("actionID","");
-        menulist.setAttribute("minwidth","150");
-        menulist.setAttribute("crop","none");
-        menulist.setAttribute("oncommand","updateUI();");
-        menulist.setAttribute("onmousedown","attachMenupopup(this);");
-        menulist.setAttribute("sizetopopup","false");
+        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector5");
         hbox.appendChild(menulist);
       }
     }
@@ -2036,7 +1960,7 @@
       }
     }
     
-    function initActionsBoxes () {
+    function initActionsBoxes() {
       // initializing actions IDs and labels
       var groupboxes = new Array(
         "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
@@ -2060,8 +1984,9 @@
         for (var j=0; j<=9; j++) {
           if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
             continue;
-          else
-            document.getElementById(groupboxes[i]+"Sector"+j).label=labels[j];
+          else {
+            document.getElementById(groupboxes[i]+"Sector"+j).setAttribute("label", labels[j]);
+          }
         }
       }
     }
