@@ -166,7 +166,6 @@ function eG_updatePrefs(prefs) {
     if (prevVersion == eGc.version) { // no new version
       // update newly localized prefs if language was changed
       if (prefs.getBoolPref("stateChange.language")) {
-        eG_setActions(false);
         prefs.setBoolPref("stateChange.language", false);
       }
     }

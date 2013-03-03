@@ -111,7 +111,7 @@ function eG_setPrefs(locale) {
   eG_prefsObs.prefs.setBoolPref("actions.contextImageFirst", false);
   eG_prefsObs.prefs.setBoolPref("actions.contextTextboxFirst", true);
   
-  eG_setActions(true);
+  eG_setActions();
   
   eG_prefsObs.prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
   
@@ -136,9 +136,7 @@ function eG_setPrefs(locale) {
   eG_prefsObs.prefs.setCharPref("skin.path", "chrome://easygestures/skin/"); // path to skin containing icons and images
 }
 
-function eG_setActions(setAll) {
-  // setAll is set to false to only update labels after language change
-  
+function eG_setActions() {
   var menus = new Array("main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
                         "extraAlt2", "contextLink", "contextImage",
                         "contextSelection", "contextTextbox");
@@ -155,37 +153,9 @@ function eG_setActions(setAll) {
   var actions;
   
   for (var i=0; i<menus.length; i++) {
-    if (setAll) {
-      // set actions
-      actions = actionsList[i];
-      eG_prefsObs.prefs.setCharPref("actions." + menus[i], actions);
-    }
-    else {
-      actions = eG_prefsObs.prefs.getCharPref("actions." + menus[i]);
-    }
-    
-    // set labels
-    var actionsSplit = actions.split("/");
-    var prefStr = "";
-    for (var n=0; n<actionsSplit.length; n++) {
-      var eG_menuItem = eG_menuItems[parseInt(actionsSplit[n])];
-      if (eG_menuItem.type != -1) {
-        var number = eG_menuItem.src.match(/\d+/); // for names like runProgramFiles1-10 and loadURLScript1-20
-        var label = eG_menuItem.src.replace(number, ""); // for names like runProgramFiles1-10 and loadURLScript1-20, remove number at the end of string
-        prefStr += eGc.localizing.getString(label) + (number==null ? "" : " " + number);
-      }
-      else {
-        prefStr += "";
-      }
-      if (n<actionsSplit.length-1) {
-        prefStr += "•"; // this is the separator, prefStr ends without seprator
-      }
-    }
-    
-    var string = Components.classes["@mozilla.org/supports-string;1"]
-                           .createInstance(Components.interfaces.nsISupportsString);
-    string.data = prefStr;
-    eG_prefsObs.prefs.setComplexValue("actions.labels."+menus[i], Components.interfaces.nsISupportsString, string);
+    // set actions
+    actions = actionsList[i];
+    eG_prefsObs.prefs.setCharPref("actions." + menus[i], actions);
   }
 }
 
@@ -197,7 +167,6 @@ function eG_updateToVersion43() {
   
   for (var i=0; i<menus.length; i++) {
     var actionsSplit = eG_prefsObs.prefs.getCharPref("actions." + menus[i]).split("/");
-    var labelsPrefs = "";
     var actionsPrefs = "";
     
     for (var n=0; n<actionsSplit.length; n++) {
@@ -213,25 +182,10 @@ function eG_updateToVersion43() {
       
       actionsPrefs += actionsSplit[n];
       
-      if (actionsSplit[n] != "0") {
-        var number = eG_menuItems[parseInt(actionsSplit[n])].src.match(/\d+/); // for names like runProgramFiles1-10 and loadURLScript1-20
-        var label = eG_menuItems[parseInt(actionsSplit[n])].src.replace(number, ""); // for names like runProgramFiles1-10 and loadURLScript1-20, remove number at the end of string
-        labelsPrefs += eGc.localizing.getString(label) + (number==null ? "" : " " + number);
-      }
-      else {
-        labelsPrefs += "";
-      }
       if (n<actionsSplit.length-1) {
-        labelsPrefs += "•"; // this is the separator, prefStr ends without separator
-        actionsPrefs += "/";
+        actionsPrefs += "/"; // this is the separator, prefStr ends without separator
       }
     }
-    
-    // update labels
-    var string = Components.classes["@mozilla.org/supports-string;1"]
-                           .createInstance(Components.interfaces.nsISupportsString);
-    string.data = labelsPrefs;
-    eG_prefsObs.prefs.setComplexValue("actions.labels." + menus[i], Components.interfaces.nsISupportsString, string);
     
     // update actions
     eG_prefsObs.prefs.setCharPref("actions." + menus[i], actionsPrefs);

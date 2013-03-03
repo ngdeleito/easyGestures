@@ -24,3 +24,13 @@ TODO
 -- customizations.highlightColorList
 -- customizations.highlightCount
 -- customizations.xlink
+-- actions.labels.main
+-- actions.labels.mainAlt1
+-- actions.labels.mainAlt2
+-- actions.labels.extra
+-- actions.labels.extraAlt1
+-- actions.labels.extraAlt2
+-- actions.labels.contextLink
+-- actions.labels.contextImage
+-- actions.labels.contextSelection
+-- actions.labels.contextTextbox

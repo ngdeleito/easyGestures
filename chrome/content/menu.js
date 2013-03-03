@@ -146,7 +146,7 @@ var eG_menuItems = [
   new eG_menuItem(93,   0, "zoomReset",          "eGf.zoomReset();")
 ];
 
-function eG_menuLayout (menu, name, actionsPrefs, labelsPrefs) {
+function eG_menuLayout(menu, name, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
   this.isExtraMenu = name.search("extra") != -1;
   this.isLarge = menu.largeMenu && !this.isExtraMenu; // extra menus are never large
@@ -179,8 +179,19 @@ function eG_menuLayout (menu, name, actionsPrefs, labelsPrefs) {
       if (eG_menuItems[actionsPrefs[i]].type==1) {
         eG_menuItems[actionsPrefs[i]].src = "more";
       }
+      var action = eG_menuItems[actionsPrefs[i]];
       this.actions.push(eG_menuItems[actionsPrefs[i]]);
-      this.labels.push(this.isExtraMenu && i>2&& i<8?"": labelsPrefs[i]);
+      var label = "";
+      if (action.type != -1) {
+         // if the name of the action ends with a number (i.e. runProgramFile
+         // and loadURLScript), extract this number...
+        var number = action.src.match(/\d+$/);
+        // ... and remove it from the name
+        var actionName = action.src.replace(number, "");
+        label = eGc.localizing.getString(actionName)
+                + (number==null ? "" : " " + number);
+      }
+      this.labels.push(this.isExtraMenu && i>2 && i<8 ? "" : label);
     }
   }
 
@@ -371,44 +382,34 @@ function eG_menu () {
 
   this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
     main: new eG_menuLayout(this, "main",
-                            prefs.getCharPref("actions.main").split("/"),
-                            prefs.getComplexValue("actions.labels.main", Components.interfaces.nsISupportsString).data.split("•")),
+                            prefs.getCharPref("actions.main").split("/")),
 
     mainAlt1: new eG_menuLayout(this, "mainAlt1",
-                                prefs.getCharPref("actions.mainAlt1").split("/"),
-                                prefs.getComplexValue("actions.labels.mainAlt1", Components.interfaces.nsISupportsString).data.split("•")),
+                                prefs.getCharPref("actions.mainAlt1").split("/")),
 
     mainAlt2: new eG_menuLayout(this, "mainAlt2",
-                                prefs.getCharPref("actions.mainAlt2").split("/"),
-                                prefs.getComplexValue("actions.labels.mainAlt2", Components.interfaces.nsISupportsString).data.split("•")),
+                                prefs.getCharPref("actions.mainAlt2").split("/")),
 
     extra: new eG_menuLayout(this, "extra",
-                             prefs.getCharPref("actions.extra").split("/"),
-                             prefs.getComplexValue("actions.labels.extra", Components.interfaces.nsISupportsString).data.split("•")),
+                             prefs.getCharPref("actions.extra").split("/")),
 
     extraAlt1: new eG_menuLayout(this, "extraAlt1",
-                                 prefs.getCharPref("actions.extraAlt1").split("/"),
-                                 prefs.getComplexValue("actions.labels.extraAlt1", Components.interfaces.nsISupportsString).data.split("•")),
+                                 prefs.getCharPref("actions.extraAlt1").split("/")),
 
     extraAlt2: new eG_menuLayout(this, "extraAlt2",
-                                 prefs.getCharPref("actions.extraAlt2").split("/"),
-                                 prefs.getComplexValue("actions.labels.extraAlt2", Components.interfaces.nsISupportsString).data.split("•")),
+                                 prefs.getCharPref("actions.extraAlt2").split("/")),
 
     contextLink: new eG_menuLayout(this, "contextLink",
-                                   prefs.getCharPref("actions.contextLink").split("/"),
-                                   prefs.getComplexValue("actions.labels.contextLink", Components.interfaces.nsISupportsString).data.split("•")),
+                                   prefs.getCharPref("actions.contextLink").split("/")),
 
     contextImage: new eG_menuLayout(this, "contextImage",
-                                    prefs.getCharPref("actions.contextImage").split("/"),
-                                    prefs.getComplexValue("actions.labels.contextImage", Components.interfaces.nsISupportsString).data.split("•")),
+                                    prefs.getCharPref("actions.contextImage").split("/")),
 
     contextSelection: new eG_menuLayout(this, "contextSelection",
-                                        prefs.getCharPref("actions.contextSelection").split("/"),
-                                        prefs.getComplexValue("actions.labels.contextSelection", Components.interfaces.nsISupportsString).data.split("•")),
+                                        prefs.getCharPref("actions.contextSelection").split("/")),
 
     contextTextbox: new eG_menuLayout(this, "contextTextbox",
-                                      prefs.getCharPref("actions.contextTextbox").split("/"),
-                                      prefs.getComplexValue("actions.labels.contextTextbox", Components.interfaces.nsISupportsString).data.split("•"))
+                                      prefs.getCharPref("actions.contextTextbox").split("/"))
   };
 }
 

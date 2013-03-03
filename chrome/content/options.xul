@@ -1108,17 +1108,22 @@
     }
     
     function createActionsMenulistWithSectorID(sectorID) {
+      var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      hbox.setAttribute("pack", "center");
+      
       var menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
       menulist.setAttribute("id", sectorID);
-      menulist.setAttribute("onchange", "updateOtherLabels(this.getAttribute('actionID'), this.label)");
-      menulist.setAttribute("editable", "true");
+      menulist.setAttribute("editable", "false");
+      menulist.setAttribute("width", "150");
+      menulist.setAttribute("crop", "end");
+      menulist.setAttribute("sizetopopup", "false");
       menulist.setAttribute("actionID", "");
-      menulist.setAttribute("minwidth", "150");
-      menulist.setAttribute("crop", "none");
+      menulist.setAttribute("onchange", "updateOtherLabels(this.getAttribute('actionID'), this.label)");
       menulist.setAttribute("oncommand", "updateUI()");
       menulist.setAttribute("onmousedown", "attachMenupopup(this)");
-      menulist.setAttribute("sizetopopup", "false");
-      return menulist;
+
+      hbox.appendChild(menulist);
+      return hbox;
     }
     
     function createActions() {
@@ -1144,156 +1149,92 @@
           box.appendChild(label);
         }
         
-        //////////////////////////////////////////////////////////
         // sector 0
-        //////////////////////////////////////////////////////////
-        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("pack","center");
-        box.appendChild(hbox);
+        box.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector0"));
         
-        var menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector0");
-        hbox.appendChild(menulist);
-        
-        //////////////////////////////////////////////////////////
         // sectors 9 and 1
-        //////////////////////////////////////////////////////////
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("pack","center");
-        box.appendChild(hbox);
+        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox.setAttribute("pack", "center");
         
-        var hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox1.setAttribute("pack","center");
-        hbox.appendChild(hbox1);
-        
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector9");
-        hbox1.appendChild(menulist);
+        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector9"));
         
         var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("height","0");
-        spacer.setAttribute("width","11px");
+        spacer.setAttribute("height", "0");
+        spacer.setAttribute("width", "11px");
         hbox.appendChild(spacer);
         
-        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox1.setAttribute("pack","center");
-        hbox.appendChild(hbox1);
+        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector1"));
+        box.appendChild(hbox);
         
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector1");
-        hbox1.appendChild(menulist);
-        
-        //////////////////////////////////////////////////////////
         // sectors 8,7 and 2,3
-        //////////////////////////////////////////////////////////
-        
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("pack","center");
+        hbox.setAttribute("pack", "center");
         box.appendChild(hbox);
         
         var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack","center");
+        vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
-        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox1.setAttribute("pack","center");
-        vbox.appendChild(hbox1);
-        
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector8");
-        hbox1.appendChild(menulist);
+        vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector8"));
         
         if (boxes[i].search("extra") == -1) {
-          hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-          hbox1.setAttribute("pack","center");
-          vbox.appendChild(hbox1);
-          
-          menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector7");
-          hbox1.appendChild(menulist);
+          vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector7"));
         }
         
         ///////////////////////////////
-        
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
         hbox.appendChild(vbox);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("flex","1");
+        spacer.setAttribute("flex", "1");
         vbox.appendChild(spacer);
         
         var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-        image.setAttribute("id",boxes[i]+"Image");
-        if (boxes[i].search("extra") == -1)
-          image.setAttribute("src","mainMenu.png");
-        else
-          image.setAttribute("src","extraMenu.png");
-        
-        image.setAttribute("width","41");
-        image.setAttribute("height","41");
+        image.setAttribute("id", boxes[i]+"Image");
+        if (boxes[i].search("extra") == -1) {
+          image.setAttribute("src", "mainMenu.png");
+        }
+        else {
+          image.setAttribute("src", "extraMenu.png");
+        }
+        image.setAttribute("width", "41");
+        image.setAttribute("height", "41");
         vbox.appendChild(image);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("flex","1");
+        spacer.setAttribute("flex", "1");
         vbox.appendChild(spacer);
-        
         ///////////////////////////////
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack","center");
+        vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
-        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox1.setAttribute("pack","center");
-        vbox.appendChild(hbox1);
-        
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector2");
-        hbox1.appendChild(menulist);
+        vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector2"));
         
         if (boxes[i].search("extra") == -1) {
-          hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-          hbox1.setAttribute("pack","center");
-          vbox.appendChild(hbox1);
-          
-          menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector3");
-          hbox1.appendChild(menulist);
+          vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector3"));
         }
         
         if (boxes[i].search("extra") != -1)
           continue;
         
-        //////////////////////////////////////////////////////////
         // sectors 6 and 4
-        //////////////////////////////////////////////////////////
-        
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("pack","center");
-        box.appendChild(hbox);
+        hbox.setAttribute("pack", "center");
         
-        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox1.setAttribute("pack","center");
-        hbox.appendChild(hbox1);
-        
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector6");
-        hbox1.appendChild(menulist);
+        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector6"));
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("height","0");
-        spacer.setAttribute("width","11px");
+        spacer.setAttribute("height", "0");
+        spacer.setAttribute("width", "11px");
         hbox.appendChild(spacer);
         
-        hbox1 = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox1.setAttribute("pack","center");
-        hbox.appendChild(hbox1);
-        
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector4");
-        hbox1.appendChild(menulist);
-        
-        //////////////////////////////////////////////////////////
-        // sector 5
-        //////////////////////////////////////////////////////////
-        
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("pack","center");
+        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector4"));
         box.appendChild(hbox);
         
-        menulist = createActionsMenulistWithSectorID(boxes[i] + "Sector5");
-        hbox.appendChild(menulist);
+        // sector 5
+        box.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector5"));
       }
     }
   </script>
@@ -1945,20 +1886,6 @@
         }
         eG_prefs.setCharPref("actions."+groupboxes[i], string);
       }
-      
-      // setting labels
-      var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
-      for (var i=0; i<groupboxes.length; i++) {
-        string.data = "";
-        for (j=0; j<=9; j++) {
-          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 )
-            string.data += "";
-          else
-            string.data += document.getElementById(groupboxes[i]+"Sector"+j).label;
-          string.data += (j<9?"•":"");
-        }
-        eG_prefs.setComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString, string);
-      }
     }
     
     function initActionsBoxes() {
@@ -1974,19 +1901,10 @@
         for (var j=0; j<=9; j++) {
           if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
             continue;
-          else
-            document.getElementById(groupboxes[i]+"Sector"+j).setAttribute("actionID", ids[j]);
-        }
-      }
-      
-      // initializing labels
-      for (var i=0; i<groupboxes.length; i++) {
-        var labels = eG_prefs.getComplexValue("actions.labels."+groupboxes[i], Components.interfaces.nsISupportsString).data.split("•");
-        for (var j=0; j<=9; j++) {
-          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
-            continue;
           else {
-            document.getElementById(groupboxes[i]+"Sector"+j).setAttribute("label", labels[j]);
+            var element = document.getElementById(groupboxes[i]+"Sector"+j);
+            element.setAttribute("actionID", ids[j]);
+            element.setAttribute("label", eG_PopupLabels[ids[j]]);
           }
         }
       }
