@@ -183,13 +183,23 @@ function eG_menuLayout(menu, name, actionsPrefs) {
       this.actions.push(eG_menuItems[actionsPrefs[i]]);
       var label = "";
       if (action.type != -1) {
-         // if the name of the action ends with a number (i.e. runProgramFile
-         // and loadURLScript), extract this number...
+        // if the name of the action ends with a number (i.e. runProgramFile
+        // and loadURLScript), extract this number...
         var number = action.src.match(/\d+$/);
         // ... and remove it from the name
         var actionName = action.src.replace(number, "");
-        label = eGc.localizing.getString(actionName)
-                + (number==null ? "" : " " + number);
+        label = eGc.localizing.getString(actionName);
+        
+        if (number != null) {
+          if (menu[action.src][0] != "") {
+            // if the action has already a name given by the user, then use it
+            label = menu[action.src][0];
+          }
+          else {
+            // otherwise use the standard one
+            label += " " + number;
+          }
+        }
       }
       this.labels.push(this.isExtraMenu && i>2 && i<8 ? "" : label);
     }
