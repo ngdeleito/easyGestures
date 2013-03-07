@@ -1376,17 +1376,17 @@
     function actionClick(item, actionNumber) {
       item.parentNode.parentNode.setAttribute("actionID", actionNumber);
       if (actionNumber == 0) {
-        item.parentNode.parentNode.label = "";
+        item.parentNode.parentNode.setAttribute("label", "");
       }
       
       if (item.firstChild.getAttribute("class").search("loadURLScript") != -1) {
         var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
-        item.parentNode.parentNode.label = document.getElementById("loadURLScript_name"+n).value;
+        item.parentNode.parentNode.setAttribute("label", document.getElementById("loadURLScript_name"+n).value);
       }
       
       if (item.firstChild.getAttribute("class").search("runProgramFile") != -1) {
         var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
-        item.parentNode.parentNode.label = document.getElementById("runProgramFile_name"+n).value;
+        item.parentNode.parentNode.setAttribute("label", document.getElementById("runProgramFile_name"+n).value);
       }
     }
     
@@ -1928,8 +1928,11 @@
         for (var sector=0; sector<10; sector++) {
           if (groupboxes[i].search("extra")!=-1 && sector>2 && sector<8)
             continue;
-          if (document.getElementById(groupboxes[i]+"Sector"+sector).getAttribute("actionID") == actionID)
-            document.getElementById(groupboxes[i]+"Sector"+sector).label = label;
+          
+          var element = document.getElementById(groupboxes[i] + "Sector" + sector);
+          if (element.getAttribute("actionID") == actionID) {
+            element.setAttribute("label", label);
+          }
         }
       }
     }
