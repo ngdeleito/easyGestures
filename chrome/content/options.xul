@@ -932,10 +932,10 @@
       }
     }
     
-    function createLoadURLScriptForCustomization () {
+    function createLoadURLScriptForCustomization() {
       for (var i=1; i &lt;= 20; i++) {
         // loadURLScript 1 to 20
-        var groupbox = document.getElementById("gr_loadURLScript"+i);
+        var groupbox = document.getElementById("gr_loadURLScript" + i);
         
         // empty groupbox if needed first
         if (groupbox.hasChildNodes()) {
@@ -945,62 +945,61 @@
         }
         
         //////////////////////////////////////////////////////////
-        // caption
+        // titleNode
         //////////////////////////////////////////////////////////
         
         var titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        //caption.setAttribute("style","background-color:#F3F3F1;");
         
         var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-        image.setAttribute("id","loadURLScriptImg");
-        image.style.listStyleImage="url('"+eG_skinCurrent+"small_actions.png')";
-        image.setAttribute("class","small_loadURLScript"+i);
+        image.setAttribute("id", "loadURLScriptImg");
+        image.style.listStyleImage = "url('" + eG_skinCurrent + "small_actions.png')";
+        image.setAttribute("class", "small_loadURLScript" + i);
         titleNode.appendChild(image);
         
         var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
         titleNode.appendChild(vbox);
         
         var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("flex","1");
+        spacer.setAttribute("flex", "1");
         vbox.appendChild(spacer);
         
         var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-        label.setAttribute("value","&urlscript.url;/&urlscript.script; "+i);
-        label.setAttribute("style","font-weight: bold;");
+        label.setAttribute("value", "&urlscript.url;/&urlscript.script; " + i);
+        label.setAttribute("style", "font-weight: bold;");
         vbox.appendChild(label);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("flex","1");
+        spacer.setAttribute("flex", "1");
         vbox.appendChild(spacer);
         
         var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("id","loadURLScriptDisplay"+i);
+        hbox.setAttribute("id", "loadURLScriptDisplay" + i);
         titleNode.appendChild(hbox);
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack","center");
+        vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
         label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-        label.setAttribute("value"," - ");
+        label.setAttribute("value", " - ");
         vbox.appendChild(label);
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack","center");
-        vbox.setAttribute("flex","1");
+        vbox.setAttribute("pack", "center");
+        vbox.setAttribute("flex", "1");
         hbox.appendChild(vbox);
         
         image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-        image.setAttribute("id","loadURLScript_newIcon"+i);
-        image.setAttribute("src","");
-        image.setAttribute("maxwidth","20");
-        image.setAttribute("maxheight","20");
+        image.setAttribute("id", "loadURLScript_newIcon" + i);
+        image.setAttribute("src", "");
+        image.setAttribute("maxwidth", "20");
+        image.setAttribute("maxheight", "20");
         vbox.appendChild(image);
         
         groupbox.appendChild(titleNode);
         
         var separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
-        separator.setAttribute("class","thin");
+        separator.setAttribute("class", "thin");
         groupbox.appendChild(separator);
         
         //////////////////////////////////////////////////////////
@@ -1008,101 +1007,101 @@
         //////////////////////////////////////////////////////////
         
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("flex","1");
+        hbox.setAttribute("flex", "1");
         groupbox.appendChild(hbox);
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
         hbox.appendChild(vbox);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("height","3");
+        spacer.setAttribute("height", "3");
         vbox.appendChild(spacer);
         
         label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-        label.setAttribute("value","&urlscript.name;");
+        label.setAttribute("value", "&urlscript.name;");
         vbox.appendChild(label);
         
         spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("height","10");
+        spacer.setAttribute("height", "10");
         vbox.appendChild(spacer);
         
         label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
-        label.setAttribute("id","loadURLScript_Label"+i);
-        label.setAttribute("value","");
+        label.setAttribute("id", "loadURLScript_Label" + i);
+        label.setAttribute("value", "");
         vbox.appendChild(label);
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("flex","1");
+        vbox.setAttribute("flex", "1");
         hbox.appendChild(vbox);
         
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         vbox.appendChild(hbox);
         
         var textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-        textbox.setAttribute("id","loadURLScript_name"+i);
-        textbox.setAttribute("onchange","updateOtherLabels("+(loadURLScriptIndex+i-1)+", this.value);");
-        textbox.setAttribute("size","21");
-        textbox.setAttribute("maxlength","20");
+        textbox.setAttribute("id", "loadURLScript_name" + i);
+        textbox.setAttribute("onchange", "updateOtherLabels(" + (loadURLScriptIndex+i-1) + ", this.value);");
+        textbox.setAttribute("size", "21");
+        textbox.setAttribute("maxlength", "20");
         hbox.appendChild(textbox);
         
         var radiogroup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radiogroup");
-        radiogroup.setAttribute("id","loadURLScript_type"+i);
-        radiogroup.setAttribute("orient","horizontal");
-        radiogroup.setAttribute("oncommand","updateUI();");
+        radiogroup.setAttribute("id", "loadURLScript_type" + i);
+        radiogroup.setAttribute("orient", "horizontal");
+        radiogroup.setAttribute("oncommand", "updateUI();");
         hbox.appendChild(radiogroup);
         
         var radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
-        radio.setAttribute("id","URL"+i);
-        radio.setAttribute("label","&urlscript.url;");
+        radio.setAttribute("id", "URL" + i);
+        radio.setAttribute("label", "&urlscript.url;");
         radiogroup.appendChild(radio);
         
         radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
-        radio.setAttribute("id","Script"+i);
-        radio.setAttribute("label","&urlscript.script;");
+        radio.setAttribute("id", "Script" + i);
+        radio.setAttribute("label", "&urlscript.script;");
         radiogroup.appendChild(radio);
         
         var stack = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "stack");
         vbox.appendChild(stack);
         
         textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-        textbox.setAttribute("id","loadURLScript_host"+i);
-        textbox.setAttribute("size","30");
-        textbox.setAttribute("onchange","if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+");");
+        textbox.setAttribute("id", "loadURLScript_host" + i);
+        textbox.setAttribute("size", "30");
+        textbox.setAttribute("onchange", "if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+");");
         stack.appendChild(textbox);
         
         textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
-        textbox.setAttribute("id","loadURLScript_code"+i);
-        textbox.setAttribute("size","30");
-        textbox.setAttribute("multiline","true");
-        textbox.setAttribute("rows","6");
+        textbox.setAttribute("id", "loadURLScript_code" + i);
+        textbox.setAttribute("size", "30");
+        textbox.setAttribute("multiline", "true");
+        textbox.setAttribute("rows", "6");
         stack.appendChild(textbox);
         
         separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
-        separator.setAttribute("class","thin");
+        separator.setAttribute("class", "thin");
         vbox.appendChild(separator);
         
         hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
         vbox.appendChild(hbox);
         
         var checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
-        checkbox.setAttribute("id","loadURLScript_faviconCheck"+i);
-        checkbox.setAttribute("label","&urlscript.icon;");
-        checkbox.setAttribute("oncommand","if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
+        checkbox.setAttribute("id", "loadURLScript_faviconCheck" + i);
+        checkbox.setAttribute("label", "&urlscript.icon;");
+        checkbox.setAttribute("oncommand", "if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
         hbox.appendChild(checkbox);
         
         checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
-        checkbox.setAttribute("id","loadURLScript_newIconCheck"+i);
-        checkbox.setAttribute("label","&changeIcon;");
+        checkbox.setAttribute("id", "loadURLScript_newIconCheck" + i);
+        checkbox.setAttribute("label", "&changeIcon;");
         checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI();");
         hbox.appendChild(checkbox);
         
         vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack","center");
+        vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
         image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-        image.setAttribute("src","chrome://easygestures/content/browse.png");
-        image.setAttribute("onclick","if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
+        image.setAttribute("src", "chrome://easygestures/content/browse.png");
+        image.setAttribute("onclick", "if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
         vbox.appendChild(image);
       }
     }
