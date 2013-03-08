@@ -26,6 +26,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY help "도움말">
 <!ENTITY close "닫기">
 <!ENTITY profile "프로파일">
+<!ENTITY activation "Activation">
 <!ENTITY behavior "행동">
 <!ENTITY actions "동작">
 <!ENTITY customizations "사용자 최적화">

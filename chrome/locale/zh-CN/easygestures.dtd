@@ -29,6 +29,7 @@ END OF INSTRUCTIONS
 <!ENTITY close "关闭">
 
 <!ENTITY profile "描述">
+<!ENTITY activation "Activation">
 <!ENTITY behavior "情况">
 <!ENTITY actions "动作">
 <!ENTITY customizations "自定义">

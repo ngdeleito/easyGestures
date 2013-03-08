@@ -102,6 +102,122 @@
       </hbox>
     </vbox>
   </prefpane>
+  
+  <prefpane
+    flex="1"
+    image="chrome://easygestures/content/behavior.png"
+    label="&activation;"
+    id="activationPane"
+    style="overflow: auto;">
+    <label value="&use;" style="font-weight:bold;"/>
+    <spacer height="3px" />
+    <hbox>
+      <vbox>
+        <menulist id="showButton" oncommand="updateUI();">
+          <menupopup>
+            <menuitem value="0" label="&use.button.left;" />
+            <menuitem value="1" label="&use.button.middle;" />
+            <menuitem value="2" label="&use.button.right;" />
+            <menuitem value="3" label="&use.button.custom;" />
+          </menupopup>
+        </menulist>
+      </vbox>
+      <hbox>
+        <vbox pack="center">
+          <label id="customMouseButtonLabel" value="&use.buttoncode;" />
+        </vbox>
+        <textbox id="customMouseButtonCode" size ="2"
+          onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
+      </hbox>
+    </hbox>
+    <hbox>
+      <vbox pack="center">
+        <label value="&use.and;" style="font-weight:bold;" />
+      </vbox>
+      <checkbox id="show_shift" label="&use.shift;"
+        oncommand="if(this.checked) document.getElementById('show_ctrl').checked= false;" />
+      <checkbox id="show_ctrl" label="&use.ctrl;"
+        oncommand="if(this.checked) document.getElementById('show_shift').checked= false;" />
+    </hbox>
+    <checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
+    <hbox>
+      <spacer width="22" />
+      <vbox pack="center">
+        <label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
+      </vbox>
+      <textbox id="showAfterDelayDelay" size ="3" />
+    </hbox>
+    <checkbox id="dragOnly" label="&use.dragOnly;" oncommand="updateUI();" />
+    <hbox>
+      <label id="dragOnlyUpLeftBlank" value="   " />
+      <checkbox id="dragOnlyUpLeft" label="&use.upleft;" />
+    </hbox>
+    <menuseparator />
+    <label value="&use.alternative;" style="font-weight: bold;" />
+    <spacer height="3px" />
+    <hbox>
+      <menulist id="showAltButton" oncommand="updateUI();">
+        <menupopup>
+          <menuitem value="0" label="&use.button.left;" />
+          <menuitem value="1" label="&use.button.middle;" />
+          <menuitem value="2" label="&use.button.right;" />
+          <menuitem value="3" label="&use.button.custom;" />
+        </menupopup>
+      </menulist>
+      <hbox>
+        <vbox pack="center">
+          <label id="customAltMouseButtonLabel" value="&use.buttoncode;" />
+        </vbox>
+        <textbox id="customAltMouseButtonCode" size ="2"
+          onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
+      </hbox>
+    </hbox>
+    <label value="&use.also;" />
+    <menuseparator />
+    <label value="&suppress;" style="font-weight: bold;" />
+    <spacer height="3px" />
+    <hbox>
+      <menulist id="supprKey" oncommand="checkDuplicateKeys(this);updateUI();">
+        <menupopup>
+          <menuitem value="0" label="-----" />
+          <menuitem value="1" label="&suppress.ins;" />
+          <menuitem value="2" label="&suppress.alt;" />
+          <menuitem value="3" label="&suppress.ctrl;" />
+          <menuitem value="4" label="&suppress.custom;" />
+        </menupopup>
+      </menulist>
+      <hbox pack="start" flex="1">
+        <vbox pack="center">
+          <label id="customSupprKeyLabel" value="&suppress.keycode;" />
+        </vbox>
+        <textbox id="customSupprKeyCode" size ="4"
+          onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
+      </hbox>
+    </hbox>
+    <menuseparator />
+    <label value="&contextmenu;" style="font-weight: bold;" />
+    <spacer height="3px" />
+    <hbox>
+      <spacer width="16" />
+      <menulist id="contextKey" oncommand="checkDuplicateKeys(this);updateUI();">
+        <menupopup>
+          <menuitem value="0" label="-----" />
+          <menuitem value="1" label="&suppress.ins;" />
+          <menuitem value="2" label="&suppress.alt;" />
+          <menuitem value="3" label="&suppress.ctrl;" />
+          <menuitem value="4" label="&suppress.custom;" />
+        </menupopup>
+      </menulist>
+      <hbox pack="start" flex="1">
+        <vbox pack="center">
+          <label id="customContextKeyLabel" value="&suppress.keycode;" />
+        </vbox>
+        <textbox id="customContextKeyCode" size ="4"
+          onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
+      </hbox>
+    </hbox>
+    <checkbox id="contextShowAuto" label="&contextmenu.showAuto;" />
+  </prefpane>
 
   <prefpane
     flex="1"
@@ -110,92 +226,6 @@
     id="behaviorPane"
     style="overflow: auto;">
     <vbox>
-      <label value="&use;" style="font-weight:bold;"/>
-      <spacer height="3px" />
-      <hbox>
-        <vbox>
-          <menulist id="showButton" oncommand="updateUI();">
-            <menupopup>
-              <menuitem value="0" label="&use.button.left;" />
-              <menuitem value="1" label="&use.button.middle;" />
-              <menuitem value="2" label="&use.button.right;" />
-              <menuitem value="3" label="&use.button.custom;" />
-            </menupopup>
-          </menulist>
-        </vbox>
-        <hbox>
-          <vbox pack="center">
-            <label id="customMouseButtonLabel" value="&use.buttoncode;" />
-          </vbox>
-          <textbox id="customMouseButtonCode" size ="2"
-            onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
-        </hbox>
-      </hbox>
-      <hbox>
-        <vbox pack="center">
-          <label value="&use.and;" style="font-weight:bold;" />
-        </vbox>
-        <checkbox id="show_shift" label="&use.shift;"
-          oncommand="if(this.checked) document.getElementById('show_ctrl').checked= false;" />
-        <checkbox id="show_ctrl" label="&use.ctrl;"
-          oncommand="if(this.checked) document.getElementById('show_shift').checked= false;" />
-      </hbox>
-      <checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
-      <hbox>
-        <spacer width="22" />
-        <vbox pack="center">
-          <label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
-        </vbox>
-        <textbox id="showAfterDelayDelay" size ="3" />
-      </hbox>
-      <checkbox id="dragOnly" label="&use.dragOnly;" oncommand="updateUI();" />
-      <hbox>
-        <label id="dragOnlyUpLeftBlank" value="   " />
-        <checkbox id="dragOnlyUpLeft" label="&use.upleft;" />
-      </hbox>
-      <menuseparator />
-      <label value="&use.alternative;" style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <menulist id="showAltButton" oncommand="updateUI();">
-          <menupopup>
-            <menuitem value="0" label="&use.button.left;" />
-            <menuitem value="1" label="&use.button.middle;" />
-            <menuitem value="2" label="&use.button.right;" />
-            <menuitem value="3" label="&use.button.custom;" />
-          </menupopup>
-        </menulist>
-        <hbox>
-          <vbox pack="center">
-            <label id="customAltMouseButtonLabel" value="&use.buttoncode;" />
-          </vbox>
-          <textbox id="customAltMouseButtonCode" size ="2"
-            onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
-        </hbox>
-      </hbox>
-      <label value="&use.also;" />
-      <menuseparator />
-      <label value="&suppress;" style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <menulist id="supprKey" oncommand="checkDuplicateKeys(this);updateUI();">
-          <menupopup>
-            <menuitem value="0" label="-----" />
-            <menuitem value="1" label="&suppress.ins;" />
-            <menuitem value="2" label="&suppress.alt;" />
-            <menuitem value="3" label="&suppress.ctrl;" />
-            <menuitem value="4" label="&suppress.custom;" />
-          </menupopup>
-        </menulist>
-        <hbox pack="start" flex="1">
-          <vbox pack="center">
-            <label id="customSupprKeyLabel" value="&suppress.keycode;" />
-          </vbox>
-          <textbox id="customSupprKeyCode" size ="4"
-            onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
-        </hbox>
-      </hbox>
-      <menuseparator />
       <label value="&move;" style="font-weight: bold;" />
       <spacer height="3px" />
       <hbox>
@@ -204,29 +234,6 @@
           <radio id="moveEdge" label="&move.edge;" />
         </radiogroup>
       </hbox>
-      <menuseparator />
-      <label value="&contextmenu;" style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <spacer width="16" />
-        <menulist id="contextKey" oncommand="checkDuplicateKeys(this);updateUI();">
-          <menupopup>
-            <menuitem value="0" label="-----" />
-            <menuitem value="1" label="&suppress.ins;" />
-            <menuitem value="2" label="&suppress.alt;" />
-            <menuitem value="3" label="&suppress.ctrl;" />
-            <menuitem value="4" label="&suppress.custom;" />
-          </menupopup>
-        </menulist>
-        <hbox pack="start" flex="1">
-          <vbox pack="center">
-            <label id="customContextKeyLabel" value="&suppress.keycode;" />
-          </vbox>
-          <textbox id="customContextKeyCode" size ="4"
-            onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
-        </hbox>
-      </hbox>
-      <checkbox id="contextShowAuto" label="&contextmenu.showAuto;" />
       <menuseparator />
       <label value="&extras.menuType;" style="font-weight: bold;" />
       <spacer height="3px" />

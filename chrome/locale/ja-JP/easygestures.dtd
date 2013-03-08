@@ -29,6 +29,7 @@ END OF INSTRUCTIONS
 <!ENTITY close "閉じる">
 
 <!ENTITY profile "プロファイル">
+<!ENTITY activation "Activation">
 <!ENTITY behavior "動作">
 <!ENTITY actions "アクション">
 <!ENTITY customizations "カスタマイズ">

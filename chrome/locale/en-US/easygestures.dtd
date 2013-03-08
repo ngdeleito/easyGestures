@@ -29,6 +29,7 @@ END OF INSTRUCTIONS
 <!ENTITY close "Close">
 
 <!ENTITY profile "Profile">
+<!ENTITY activation "Activation">
 <!ENTITY behavior "Behavior">
 <!ENTITY actions "Actions">
 <!ENTITY customizations "Customizations">
