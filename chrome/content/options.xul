@@ -134,10 +134,10 @@
       <vbox pack="center">
         <label value="&use.and;" style="font-weight:bold;" />
       </vbox>
-      <checkbox id="show_shift" label="&use.shift;"
-        oncommand="if(this.checked) document.getElementById('show_ctrl').checked= false;" />
-      <checkbox id="show_ctrl" label="&use.ctrl;"
-        oncommand="if(this.checked) document.getElementById('show_shift').checked= false;" />
+      <radiogroup id="showKey">
+        <radio label="&use.shift;" />
+        <radio label="&use.ctrl;" />
+      </radiogroup>
     </hbox>
     <checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
     <hbox>
@@ -1622,8 +1622,7 @@
       
       //document.getElementById("showAltButton").value = eG_prefs.getIntPref("behavior.showAltButton");
       
-      document.getElementById("show_shift").checked = eG_prefs.getIntPref("behavior.showKey")==16?true:false;
-      document.getElementById("show_ctrl").checked = eG_prefs.getIntPref("behavior.showKey")==17?true:false;
+      document.getElementById("showKey").selectedIndex = eG_prefs.getIntPref("behavior.showKey") - 16;
       document.getElementById("dragOnly").checked = eG_prefs.getBoolPref("behavior.dragOnly");
       document.getElementById("dragOnlyUpLeft").checked = eG_prefs.getBoolPref("behavior.dragOnlyUpLeft");
       
@@ -1752,7 +1751,7 @@
       }
       eG_prefs.setIntPref("behavior.showButton", showButtonValue);
       
-      eG_prefs.setIntPref("behavior.showKey",  (document.getElementById("show_shift").checked? 16: (document.getElementById("show_ctrl").checked?17:0) ));
+      eG_prefs.setIntPref("behavior.showKey",  (document.getElementById("showKey").selectedIndex + 16));
       eG_prefs.setBoolPref("behavior.dragOnly", document.getElementById("dragOnly").checked);
       eG_prefs.setBoolPref("behavior.dragOnlyUpLeft", document.getElementById("dragOnlyUpLeft").checked);
       
