@@ -134,7 +134,7 @@
       <vbox pack="center">
         <label value="&use.and;" style="font-weight:bold;" />
       </vbox>
-      <radiogroup id="showKey">
+      <radiogroup id="showKey" orient="horizontal">
         <radio label="&use.shift;" />
         <radio label="&use.ctrl;" />
       </radiogroup>
