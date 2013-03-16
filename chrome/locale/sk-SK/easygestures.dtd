@@ -58,6 +58,7 @@
 <!ENTITY use.button.custom "custom mouse button">
 <!ENTITY use.buttoncode "button code">
 <!ENTITY use.and "a">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "klávesom Shift">
 <!ENTITY use.ctrl "klávesom Ctrl">
 <!ENTITY use.dragOnly "Otvoriť len pri ťahaní">

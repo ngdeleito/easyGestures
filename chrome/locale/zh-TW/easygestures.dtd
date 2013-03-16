@@ -82,6 +82,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.button.custom "custom mouse button">
 <!ENTITY use.buttoncode "button code">
 <!ENTITY use.and "加上">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift 鍵">
 <!ENTITY use.ctrl "Ctrl 鍵">
 <!ENTITY use.dragOnly "只在拖曳時開啟">

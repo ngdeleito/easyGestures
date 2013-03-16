@@ -83,6 +83,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.buttoncode "button code">
 
 <!ENTITY use.and "and">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift key">
 <!ENTITY use.ctrl "Ctrl key">
 <!ENTITY use.dragOnly "Open only when dragging">

@@ -83,6 +83,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.buttoncode "按钮代码">
 
 <!ENTITY use.and "和">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift">
 <!ENTITY use.ctrl "Ctrl">
 <!ENTITY use.dragOnly "只有打开拖动">

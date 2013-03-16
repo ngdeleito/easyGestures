@@ -57,6 +57,7 @@
 <!ENTITY use.button.custom "ustawionym przyciskiem myszy">
 <!ENTITY use.buttoncode "przyciskiem kodowanym">
 <!ENTITY use.and "+">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "klawisz [ Shift ]">
 <!ENTITY use.ctrl "klawisz [ Ctrl ]">
 <!ENTITY use.dragOnly "Otwieraj tylko po wykonaniu ruchu przeciągania">

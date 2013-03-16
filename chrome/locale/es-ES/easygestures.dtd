@@ -59,6 +59,7 @@
 <!ENTITY use.button.custom "botón personalizado del ratón">
 <!ENTITY use.buttoncode "código del botón">
 <!ENTITY use.and "y">
+<!ENTITY use.noKey "Ninguna tecla">
 <!ENTITY use.shift "Tecla mayúsculas">
 <!ENTITY use.ctrl "Tecla Ctrl">
 <!ENTITY use.dragOnly "Abrir sólo al arrastrar">

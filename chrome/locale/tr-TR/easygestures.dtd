@@ -83,6 +83,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.buttoncode "tuş kodu">
 
 <!ENTITY use.and "ve">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift tuşu">
 <!ENTITY use.ctrl "Ctrl tuşu">
 <!ENTITY use.dragOnly "Sadece sürüklerken aç">

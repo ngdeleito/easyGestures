@@ -83,6 +83,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.buttoncode "kód tlačítka">
 
 <!ENTITY use.and "a">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "klávesou Shift">
 <!ENTITY use.ctrl "klávesou Ctrl">
 <!ENTITY use.dragOnly "Otevřít jen při tažení">

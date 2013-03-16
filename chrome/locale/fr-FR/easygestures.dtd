@@ -82,6 +82,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.button.custom "custom mouse button">
 <!ENTITY use.buttoncode "button code">
 <!ENTITY use.and "et">
+<!ENTITY use.noKey "aucune touche">
 <!ENTITY use.shift "touche Maj">
 <!ENTITY use.ctrl "touche Ctrl">
 <!ENTITY use.dragOnly "Ouvrir seulement par glisser souris">

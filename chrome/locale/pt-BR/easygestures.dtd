@@ -82,6 +82,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.button.custom "custom mouse button">
 <!ENTITY use.buttoncode "button code">
 <!ENTITY use.and "e">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Tecla Shift">
 <!ENTITY use.ctrl "Tecla Ctrl">
 <!ENTITY use.dragOnly "Abrir apenas quando arrastando">

@@ -74,6 +74,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY use.button.custom "사용자 지정 마우스 버튼">
 <!ENTITY use.buttoncode "버튼 코드">
 <!ENTITY use.and "와(과)">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift 키">
 <!ENTITY use.ctrl "Ctrl 키">
 <!ENTITY use.dragOnly "드래그시 에만 엽니다">

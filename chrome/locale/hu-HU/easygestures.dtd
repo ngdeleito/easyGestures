@@ -59,6 +59,7 @@
 <!ENTITY use.button.custom "egyéb egérgombbal">
 <!ENTITY use.buttoncode "gomb kódja">
 <!ENTITY use.and "és">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shíft billentyűvel">
 <!ENTITY use.ctrl "Ctrl billentyűvel">
 <!ENTITY use.dragOnly "Megnyitás csak húzáskor">

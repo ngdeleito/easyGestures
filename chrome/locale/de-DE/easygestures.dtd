@@ -58,6 +58,7 @@
 <!ENTITY use.button.custom "benutzerdefinierter Maustaste">
 <!ENTITY use.buttoncode "Tasten-Code">
 <!ENTITY use.and "und">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Umschalttaste">
 <!ENTITY use.ctrl "Strg-Taste">
 <!ENTITY use.dragOnly "Nur bei gleichzeitigem Bewegen der Maus öffnen">

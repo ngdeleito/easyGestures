@@ -83,6 +83,7 @@ END OF INSTRUCTIONS
 <!ENTITY use.buttoncode "codice del tasto">
 
 <!ENTITY use.and "e">
+<!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Tasto Shift">
 <!ENTITY use.ctrl "Tasto Ctrl">
 <!ENTITY use.dragOnly "Apri solo con il trascinamento">

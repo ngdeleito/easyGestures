@@ -109,6 +109,9 @@
     label="&activation;"
     id="activationPane"
     style="overflow: auto;">
+    <preferences>
+      <preference id="showKey" name="easygestures.behavior.showKey" type="int" />
+    </preferences>
     <label value="&use;" style="font-weight:bold;"/>
     <spacer height="3px" />
     <hbox>
@@ -130,16 +133,13 @@
           onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
       </hbox>
     </hbox>
-    <hbox>
-      <vbox pack="center">
-        <label value="&use.and;" style="font-weight:bold;" />
-      </vbox>
-      <radiogroup id="showKey" orient="horizontal">
-        <radio label="&use.shift;" />
-        <radio label="&use.ctrl;" />
-      </radiogroup>
-    </hbox>
     <checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
+    <label value="&use.and;" style="font-weight:bold;" />
+    <radiogroup preference="showKey" style="margin-left: 1em">
+      <radio label="&use.noKey;" value="0" />
+      <radio label="&use.shift;" value="16" />
+      <radio label="&use.ctrl;" value="17" />
+    </radiogroup>
     <hbox>
       <spacer width="22" />
       <vbox pack="center">
@@ -1622,7 +1622,6 @@
       
       //document.getElementById("showAltButton").value = eG_prefs.getIntPref("behavior.showAltButton");
       
-      document.getElementById("showKey").selectedIndex = eG_prefs.getIntPref("behavior.showKey") - 16;
       document.getElementById("dragOnly").checked = eG_prefs.getBoolPref("behavior.dragOnly");
       document.getElementById("dragOnlyUpLeft").checked = eG_prefs.getBoolPref("behavior.dragOnlyUpLeft");
       
@@ -1751,7 +1750,6 @@
       }
       eG_prefs.setIntPref("behavior.showButton", showButtonValue);
       
-      eG_prefs.setIntPref("behavior.showKey",  (document.getElementById("showKey").selectedIndex + 16));
       eG_prefs.setBoolPref("behavior.dragOnly", document.getElementById("dragOnly").checked);
       eG_prefs.setBoolPref("behavior.dragOnlyUpLeft", document.getElementById("dragOnlyUpLeft").checked);
       
