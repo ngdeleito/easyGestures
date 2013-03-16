@@ -54,6 +54,10 @@
     label="&profile;"
     id="profilePane"
     style="overflow: auto;">
+    <preferences>
+      <preference id="startupTips" name="easygestures.profile.startupTips" type="bool" />
+      <preference id="statusbarShowIcon" name="easygestures.profile.statusbarShowIcon" type="bool" />
+    </preferences>
     <vbox flex="1">
       <hbox pack="center">
         <image src="chrome://easygestures/content/easyGestures.png" />
@@ -96,9 +100,9 @@
       </hbox>
       <spacer flex="3" />
       <hbox pack="start">
-        <checkbox id="startupTips" label="&about.startupTips;" />
+        <checkbox preference="startupTips" label="&about.startupTips;" />
         <spacer flex="1" />
-        <checkbox id="statusbarShowIcon" label="&about.statusbarShowIcon;" onclick="showStatusbarIcon(this.checked);" />
+        <checkbox preference="statusbarShowIcon" label="&about.statusbarShowIcon;" onclick="showStatusbarIcon(this.checked);" />
       </hbox>
     </vbox>
   </prefpane>
@@ -111,6 +115,11 @@
     style="overflow: auto;">
     <preferences>
       <preference id="showKey" name="easygestures.behavior.showKey" type="int" />
+      <preference id="showAfterDelay" name="easygestures.behavior.showAfterDelay" type="bool" />
+      <preference id="showAfterDelayDelay" name="easygestures.behavior.showAfterDelayDelay" type="int" />
+      <preference id="dragOnly" name="easygestures.behavior.dragOnly" type="bool" />
+      <preference id="dragOnlyUpLeft" name="easygestures.behavior.dragOnlyUpLeft" type="bool" />
+      <preference id="contextShowAuto" name="easygestures.behavior.contextMenuAuto" type="bool" />
     </preferences>
     <label value="&use;" style="font-weight:bold;"/>
     <spacer height="3px" />
@@ -133,24 +142,24 @@
           onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
       </hbox>
     </hbox>
-    <checkbox id="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
     <label value="&use.and;" style="font-weight:bold;" />
     <radiogroup preference="showKey" style="margin-left: 1em">
       <radio label="&use.noKey;" value="0" />
       <radio label="&use.shift;" value="16" />
       <radio label="&use.ctrl;" value="17" />
     </radiogroup>
+    <checkbox id="showAfterDelayCheckbox" preference="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
     <hbox>
       <spacer width="22" />
       <vbox pack="center">
         <label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
       </vbox>
-      <textbox id="showAfterDelayDelay" size ="3" />
+      <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayDelay" size="3" />
     </hbox>
-    <checkbox id="dragOnly" label="&use.dragOnly;" oncommand="updateUI();" />
+    <checkbox id="dragOnlyCheckbox" preference="dragOnly" label="&use.dragOnly;" oncommand="updateUI();" />
     <hbox>
       <label id="dragOnlyUpLeftBlank" value="   " />
-      <checkbox id="dragOnlyUpLeft" label="&use.upleft;" />
+      <checkbox id="dragOnlyUpLeftCheckbox" preference="dragOnlyUpLeft" label="&use.upleft;" />
     </hbox>
     <menuseparator />
     <label value="&use.alternative;" style="font-weight: bold;" />
@@ -216,7 +225,7 @@
           onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
       </hbox>
     </hbox>
-    <checkbox id="contextShowAuto" label="&contextmenu.showAuto;" />
+    <checkbox preference="contextShowAuto" label="&contextmenu.showAuto;" />
   </prefpane>
 
   <prefpane
@@ -225,22 +234,36 @@
     label="&behavior;"
     id="behaviorPane"
     style="overflow: auto;">
+    <preferences>
+      <preference id="moveAuto" name="easygestures.behavior.moveAuto" type="bool" />
+      <preference id="largeMenu" name="easygestures.behavior.largeMenu" type="bool" />
+      <preference id="noIcons" name="easygestures.behavior.noIcons" type="bool" />
+      <preference id="smallIcons" name="easygestures.behavior.smallIcons" type="bool" />
+      <preference id="showTooltips" name="easygestures.behavior.showTooltips" type="bool" />
+      <preference id="tooltipsDelay" name="easygestures.behavior.tooltipsDelay" type="int" />
+      <preference id="tooltipsDelayOmit" name="easygestures.behavior.tooltipsDelayOmit" type="bool" />
+      <preference id="handleLinks" name="easygestures.behavior.handleLinks" type="bool" />
+      <preference id="linksDelay" name="easygestures.behavior.linksDelay" type="int" />
+      <preference id="handleLinksAsOpenLink" name="easygestures.behavior.handleLinksAsOpenLink" type="bool" />
+      <preference id="autoscrollingOn" name="easygestures.behavior.autoscrollingOn" type="bool" />
+      <preference id="autoscrollingDelay" name="easygestures.behavior.autoscrollingDelay" type="int" />
+    </preferences>
     <vbox>
       <label value="&move;" style="font-weight: bold;" />
       <spacer height="3px" />
       <hbox>
-        <radiogroup flex="1" id="moveMenu" orient="horizontal">
-          <radio id="moveKey" label="&move.key;" />
-          <radio id="moveEdge" label="&move.edge;" />
+        <radiogroup flex="1" preference="moveAuto" orient="horizontal">
+          <radio label="&move.key;" value="false" />
+          <radio label="&move.edge;" value="true" />
         </radiogroup>
       </hbox>
       <menuseparator />
       <label value="&extras.menuType;" style="font-weight: bold;" />
       <spacer height="3px" />
       <hbox>
-        <radiogroup flex="1" id="menuType" orient="vertical" oncommand="updateUI();">
-          <radio id="eG_std" label="&extras.menu;" />
-          <radio id="eG_lrg" label="&extras.largeMenu;" />
+        <radiogroup flex="1" id="menuType" preference="largeMenu" orient="vertical" oncommand="updateUI();">
+          <radio label="&extras.menu;" value="false" />
+          <radio label="&extras.largeMenu;" value="true" />
         </radiogroup>
       </hbox>
       <menuseparator />
@@ -254,38 +277,40 @@
         <label id="menuOpacity" width="40" />
       </hbox>
       <separator class="thin" />
-      <checkbox id="noIcons" label="&extras.noIcons;"
-        oncommand="document.getElementById('tooltipsDelayOmit').checked= this.checked;" />
-      <checkbox id="smallIcons" label="&extras.smallIcons;" />
+      <checkbox preference="noIcons" label="&extras.noIcons;"
+        oncommand="document.getElementById('tooltipsDelayOmitCheckbox').checked = this.checked;" />
+      <checkbox preference="smallIcons" label="&extras.smallIcons;" />
       <menuseparator />
-      <checkbox id="showTooltips" label="&extras.ttip;"
-        oncommand="updateUI();" style="font-weight: bold;" />
+      <checkbox id="showTooltipsCheckbox" preference="showTooltips"
+        label="&extras.ttip;" oncommand="updateUI();"
+        style="font-weight: bold;" />
       <spacer height="3px" />
       <hbox>
         <spacer width="22" />
         <vbox pack="center">
           <label id="tooltipsDelayLabel" value="&extras.ttipDelayLabel;" />
         </vbox>
-        <textbox id="tooltipsDelay" size="3" />
+        <textbox id="tooltipsDelayTextbox" preference="tooltipsDelay" size="3" />
         <hbox pack="center" flex="1">
-          <checkbox id="tooltipsDelayOmit" label="&extras.ttipDelayOmit;" />
+          <checkbox id="tooltipsDelayOmitCheckbox"
+            preference="tooltipsDelayOmit" label="&extras.ttipDelayOmit;" />
         </hbox>
       </hbox>
       <menuseparator />
-      <checkbox id="handleLinks" label="&link.through;" style="font-weight: bold;" />
+      <checkbox preference="handleLinks" label="&link.through;" style="font-weight: bold;" />
       <spacer height="3px" />
       <hbox>
         <spacer width="22" />
         <vbox pack="center">
           <label id="linksDelayLabel" value="&link.delay;" />
         </vbox>
-        <textbox id="linksDelay" size="3" />
+        <textbox preference="linksDelay" size="3" />
       </hbox>
       <hbox>
         <spacer width="22" />
-        <radiogroup id="handleLinksAs" orient="vertical">
-          <radio id="handleLinksAsAction" label="&link.throughAsAction;" />
-          <radio id="handleLinksAsBrowser" label="&link.throughAsBrowser;" />
+        <radiogroup preference="handleLinksAsOpenLink" orient="vertical">
+          <radio label="&link.throughAsAction;" value="true" />
+          <radio label="&link.throughAsBrowser;" value="false" />
         </radiogroup>
         <vbox>
           <spacer height="4" />
@@ -300,15 +325,15 @@
         </vbox>
       </hbox>
       <menuseparator />
-      <checkbox id="autoscrollingOn" label="&autoscrolling;" style="font-weight: bold;"
-        oncommand="updateUI();" />
+      <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
+        label="&autoscrolling;" style="font-weight: bold;" oncommand="updateUI();" />
       <spacer height="3px" />
       <hbox>
         <spacer width="22" />
         <vbox pack="center">
           <label id="autoscrollingDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
         </vbox>
-        <textbox id="autoscrollingDelay" size="3" />
+        <textbox id="autoscrollingDelayTextbox" preference="autoscrollingDelay" size="3" />
       </hbox>
     </vbox>
   </prefpane>
@@ -319,6 +344,10 @@
     label="&actions;"
     id="actionsPane"
     style="overflow: auto;">
+    <preferences>
+      <preference id="contextImageFirst" name="easygestures.actions.contextImageFirst" type="bool" />
+      <preference id="contextTextboxFirst" name="easygestures.actions.contextTextboxFirst" type="bool" />
+    </preferences>
     <tabbox orient="vertical" flex="1" id="actionsTabboxes">
       <tabs>
         <tab label="&actions.regular;" />
@@ -444,8 +473,8 @@
             <spacer height="3px" />
             <hbox pack="start" style="margin-left:16px;">
               <vbox>
-                <checkbox id="contextImageFirst" label="&contextmenu.imageFirst;" />
-                <checkbox id="contextTextboxFirst" label="&contextmenu.textboxFirst;" />
+                <checkbox preference="contextImageFirst" label="&contextmenu.imageFirst;" />
+                <checkbox preference="contextTextboxFirst" label="&contextmenu.textboxFirst;" />
               </vbox>
             </hbox>
             <separator />
@@ -472,6 +501,11 @@
     label="&customizations;"
     id="customizationsPane"
     style="overflow: auto;">
+    <preferences>
+      <preference id="loadURLin" name="easygestures.customizations.loadURLin" type="string" />
+      <preference id="openLink" name="easygestures.customizations.openLink" type="string" />
+      <preference id="closeBrowserOnLastTab" name="easygestures.customizations.closeBrowserOnLastTab" type="bool" />
+    </preferences>
     <vbox flex="1">
       <tabbox orient="vertical" flex="1" id="customizationsTabboxes">
         <tabs>
@@ -496,11 +530,11 @@
                 <label value="&urlscript.load;" style="font-weight: bold;" />
                 <spacer height="3px" />
                 <hbox>
-                  <menulist id="loadURLin">
+                  <menulist preference="loadURLin">
                     <menupopup>
-                      <menuitem value="curTab" label="&urlscript.curTab;" />
-                      <menuitem value="newTab" label="&urlscript.newTab;" />
-                      <menuitem value="newWindow" label="&urlscript.newWindow;" />
+                      <menuitem label="&urlscript.curTab;" value="curTab" />
+                      <menuitem label="&urlscript.newTab;" value="newTab" />
+                      <menuitem label="&urlscript.newWindow;" value="newWindow" />
                     </menupopup>
                   </menulist>
                 </hbox>
@@ -633,10 +667,10 @@
                 </vbox>
               </hbox>
               <spacer height="3px" />
-              <radiogroup id="linkprefs" orient="vertical" oncommand="updateUI();">
-                <radio id="linkCurTab" label="&link.curTab;" />
-                <radio id="linkNewTab" label="&link.newTab;" />
-                <radio id="linkNewWindow" label="&link.newWindow;" />
+              <radiogroup preference="openLink" orient="vertical" oncommand="updateUI();">
+                <radio label="&link.curTab;" value="curTab" />
+                <radio label="&link.newTab;" value="newTab" />
+                <radio label="&link.newWindow;" value="newWindow" />
               </radiogroup>
               <separator />
               <menuseparator />
@@ -649,7 +683,7 @@
                 </vbox>
               </hbox>
               <spacer height="3px" />
-              <checkbox id="closeBrowserOnLastTab" label="&closeTab.closeBrowserOnLastTab;" />
+              <checkbox preference="closeBrowserOnLastTab" label="&closeTab.closeBrowserOnLastTab;" />
             </vbox>
           </tabpanel>
         </tabpanels>
@@ -1597,9 +1631,6 @@
       createRunProgramFileForCustomization();
       createLoadURLScriptForCustomization();
       
-      document.getElementById("startupTips").checked = eG_prefs.getBoolPref("profile.startupTips");
-      document.getElementById("statusbarShowIcon").checked = eG_prefs.getBoolPref("profile.statusbarShowIcon");
-      
       var selectedItem;
       switch (eG_prefs.getIntPref("behavior.showButton")) {
         case 0: selectedItem = 0; break; // left button
@@ -1620,14 +1651,6 @@
       document.getElementById("showAltButton").value = selectedItem;
       document.getElementById("customAltMouseButtonCode").value = eG_prefs.getIntPref("behavior.showAltButton");
       
-      //document.getElementById("showAltButton").value = eG_prefs.getIntPref("behavior.showAltButton");
-      
-      document.getElementById("dragOnly").checked = eG_prefs.getBoolPref("behavior.dragOnly");
-      document.getElementById("dragOnlyUpLeft").checked = eG_prefs.getBoolPref("behavior.dragOnlyUpLeft");
-      
-      document.getElementById("showAfterDelay").checked= eG_prefs.getBoolPref("behavior.showAfterDelay");
-      document.getElementById("showAfterDelayDelay").value= eG_prefs.getIntPref("behavior.showAfterDelayDelay");
-      
       var selectedItem;
       switch (eG_prefs.getIntPref("behavior.supprKey")) {
         case 0:  selectedItem = 0; break; // no key
@@ -1639,26 +1662,8 @@
       document.getElementById("supprKey").value = selectedItem;
       document.getElementById("customSupprKeyCode").value = eG_prefs.getIntPref("behavior.supprKey");
       
-      document.getElementById("handleLinks").checked = eG_prefs.getBoolPref("behavior.handleLinks");
-      if (eG_prefs.getBoolPref("behavior.handleLinksAsOpenLink"))
-        document.getElementById("handleLinksAs").selectedItem = document.getElementById("handleLinksAsAction");
-      else
-        document.getElementById("handleLinksAs").selectedItem = document.getElementById("handleLinksAsBrowser");
-      document.getElementById("linksDelay").value = eG_prefs.getIntPref("behavior.linksDelay");
-      
-      document.getElementById("autoscrollingOn").checked = eG_prefs.getBoolPref("behavior.autoscrollingOn");
-      document.getElementById("autoscrollingDelay").value = eG_prefs.getIntPref("behavior.autoscrollingDelay");
-      
-      document.getElementById("menuType").selectedItem = document.getElementById(eG_prefs.getBoolPref("behavior.largeMenu")?"eG_lrg":"eG_std");
-      document.getElementById("noIcons").checked = eG_prefs.getBoolPref("behavior.noIcons");
-      document.getElementById("smallIcons").checked = eG_prefs.getBoolPref("behavior.smallIcons");
       document.getElementById("menuOpacity").value = eG_prefs.getIntPref("behavior.menuOpacity")+'% ';
       document.getElementById("opacitySlider").setAttribute("curpos",eG_prefs.getIntPref("behavior.menuOpacity"));
-      document.getElementById("showTooltips").checked = eG_prefs.getBoolPref("behavior.showTooltips");
-      document.getElementById("tooltipsDelay").value = eG_prefs.getIntPref("behavior.tooltipsDelay");
-      document.getElementById("tooltipsDelayOmit").checked = eG_prefs.getBoolPref("behavior.tooltipsDelayOmit");
-      
-      document.getElementById("contextShowAuto").checked = eG_prefs.getBoolPref("behavior.contextMenuAuto");
       
       var selectedItem;
       switch (eG_prefs.getIntPref("behavior.contextKey")) {
@@ -1671,33 +1676,12 @@
       document.getElementById("contextKey").value = selectedItem;
       document.getElementById("customContextKeyCode").value = eG_prefs.getIntPref("behavior.contextKey");
       
-      document.getElementById("moveMenu").selectedItem = document.getElementById(eG_prefs.getBoolPref("behavior.moveAuto")?"moveEdge":"moveKey");
-      
       document.getElementById("mainAlternative1").checked = !eG_prefs.getBoolPref("actions.mainAlternative1");
       document.getElementById("mainAlternative2").checked = !eG_prefs.getBoolPref("actions.mainAlternative2");
       document.getElementById("extraAlternative1").checked = !eG_prefs.getBoolPref("actions.extraAlternative1");
       document.getElementById("extraAlternative2").checked = !eG_prefs.getBoolPref("actions.extraAlternative2");
       
-      document.getElementById("contextImageFirst").checked = eG_prefs.getBoolPref("actions.contextImageFirst");
-      document.getElementById("contextTextboxFirst").checked = eG_prefs.getBoolPref("actions.contextTextboxFirst");
-      
       initActionsBoxes();
-      
-      var selectedItem;
-      switch (eG_prefs.getCharPref("customizations.openLink")) {
-        case "curTab":
-          selectedItem = document.getElementById("linkCurTab");
-          break;
-        case "newTab":
-          selectedItem = document.getElementById("linkNewTab");
-          break;
-        case "newWindow":
-          selectedItem = document.getElementById("linkNewWindow");
-          break;
-      }
-      document.getElementById("linkprefs").selectedItem = selectedItem;
-      
-      document.getElementById("closeBrowserOnLastTab").checked = eG_prefs.getBoolPref("customizations.closeBrowserOnLastTab");
       
       for (var i=1; i<=10; i++) {
         // runProgramFile 1 to 10
@@ -1724,8 +1708,6 @@
         document.getElementById("loadURLScript_newIconCheck"+i).checked = (new Function ("return " + loadURLScript[5] ))(); // (new Function ("return " + data ))() replacing eval on data
       }
       
-      document.getElementById("loadURLin").value= eG_prefs.getCharPref("customizations.loadURLin");
-      
       updateUI();
       window.setCursor('auto');
       
@@ -1738,9 +1720,6 @@
     }
     
     function saveMenuSettings() {
-      eG_prefs.setBoolPref("profile.startupTips", document.getElementById("startupTips").checked);
-      eG_prefs.setBoolPref("profile.statusbarShowIcon", document.getElementById("statusbarShowIcon").checked);
-      
       var showButtonValue;
       switch (document.getElementById("showButton").value) {
         case "0": showButtonValue = 0; break;
@@ -1749,12 +1728,6 @@
         case "3": showButtonValue = document.getElementById("customMouseButtonCode").value;
       }
       eG_prefs.setIntPref("behavior.showButton", showButtonValue);
-      
-      eG_prefs.setBoolPref("behavior.dragOnly", document.getElementById("dragOnly").checked);
-      eG_prefs.setBoolPref("behavior.dragOnlyUpLeft", document.getElementById("dragOnlyUpLeft").checked);
-      
-      eG_prefs.setBoolPref("behavior.showAfterDelay", document.getElementById("showAfterDelay").checked);
-      eG_prefs.setIntPref("behavior.showAfterDelayDelay", document.getElementById("showAfterDelayDelay").value);
       
       var supprKeyValue;
       switch (document.getElementById("supprKey").value) {
@@ -1775,39 +1748,8 @@
       }
       eG_prefs.setIntPref("behavior.showAltButton", showAltButtonValue );
       
-      eG_prefs.setBoolPref("behavior.handleLinks", document.getElementById("handleLinks").checked);
-      eG_prefs.setBoolPref("behavior.handleLinksAsOpenLink", (document.getElementById("handleLinksAs").selectedItem == document.getElementById("handleLinksAsAction")));
-      
-      var openLinkValue;
-      switch (document.getElementById("linkprefs").selectedItem) {
-        case document.getElementById("linkCurTab"):
-          openLinkValue = "curTab";
-          break;
-        case document.getElementById("linkNewTab"):
-          openLinkValue = "newTab";
-          break;
-        case document.getElementById("linkNewWindow"):
-          openLinkValue = "newWindow";
-          break;
-      }
-      eG_prefs.setCharPref("customizations.openLink", openLinkValue);
-      eG_prefs.setIntPref("behavior.linksDelay", document.getElementById("linksDelay").value);
-      
-      eG_prefs.setBoolPref("behavior.autoscrollingOn", document.getElementById("autoscrollingOn").checked);
-      eG_prefs.setIntPref("behavior.autoscrollingDelay", document.getElementById("autoscrollingDelay").value);
-      
-      eG_prefs.setBoolPref("behavior.largeMenu", document.getElementById("eG_lrg").selected);
-      eG_prefs.setBoolPref("behavior.noIcons", document.getElementById("noIcons").checked);
-      eG_prefs.setBoolPref("behavior.smallIcons", document.getElementById("smallIcons").checked);
       var str = document.getElementById("menuOpacity").value;
       eG_prefs.setIntPref("behavior.menuOpacity", parseInt(str.substring(0,str.length-2)));
-      eG_prefs.setBoolPref("behavior.showTooltips", document.getElementById("showTooltips").checked);
-      eG_prefs.setIntPref("behavior.tooltipsDelay", document.getElementById("tooltipsDelay").value);
-      eG_prefs.setBoolPref("behavior.tooltipsDelayOmit", document.getElementById("tooltipsDelayOmit").checked);
-      
-      eG_prefs.setBoolPref("behavior.contextMenuAuto", document.getElementById("contextShowAuto").checked);
-      
-      eG_prefs.setBoolPref("behavior.moveAuto", document.getElementById("moveEdge").selected);
       
       var contextKeyValue;
       switch (document.getElementById("contextKey").value) {
@@ -1823,12 +1765,8 @@
       eG_prefs.setBoolPref("actions.mainAlternative2", !document.getElementById("mainAlternative2").checked);
       eG_prefs.setBoolPref("actions.extraAlternative1", !document.getElementById("extraAlternative1").checked);
       eG_prefs.setBoolPref("actions.extraAlternative2", !document.getElementById("extraAlternative2").checked);
-      eG_prefs.setBoolPref("actions.contextImageFirst", document.getElementById("contextImageFirst").checked);
-      eG_prefs.setBoolPref("actions.contextTextboxFirst", document.getElementById("contextTextboxFirst").checked);
       
       setActionsPrefs();
-      
-      eG_prefs.setBoolPref("customizations.closeBrowserOnLastTab", document.getElementById("closeBrowserOnLastTab").checked);
       
       var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
       
@@ -1853,8 +1791,6 @@
           + "•" + document.getElementById("loadURLScript_newIconCheck"+i).checked;
         eG_prefs.setComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString, string);
       }
-      
-      eG_prefs.setCharPref("customizations.loadURLin", document.getElementById("loadURLin").value);
       
       eG_prefs.setCharPref("skin.path", eG_skinCurrent);
       
@@ -1945,10 +1881,10 @@
       //***************************************************
       // disabling tooltip sub-options
       //***************************************************
-      var checking = document.getElementById("showTooltips").checked;
+      var checking = document.getElementById("showTooltipsCheckbox").checked;
       document.getElementById("tooltipsDelayLabel").disabled = !checking;
-      document.getElementById("tooltipsDelay").disabled = !checking;
-      document.getElementById("tooltipsDelayOmit").disabled = !checking;
+      document.getElementById("tooltipsDelayTextbox").disabled = !checking;
+      document.getElementById("tooltipsDelayOmitCheckbox").disabled = !checking;
       
       //***************************************************
       // enabling/disabling alternative boxes
@@ -1966,7 +1902,7 @@
       //***************************************************
       // checking if menu is standard or large
       //***************************************************
-      var menuIsLarge = (document.getElementById("menuType").selectedItem == document.getElementById("eG_lrg"));
+      var menuIsLarge = (document.getElementById("menuType").selectedItem.value == "true");
       
       document.getElementById("mainSector3").hidden = !menuIsLarge;
       document.getElementById("mainSector7").hidden = !menuIsLarge;
@@ -1986,16 +1922,16 @@
       
       //***************************************************
       
-      document.getElementById("showAfterDelayDelayLabel").hidden = !document.getElementById("showAfterDelay").checked;
-      document.getElementById("showAfterDelayDelay").hidden = !document.getElementById("showAfterDelay").checked;
+      document.getElementById("showAfterDelayDelayLabel").hidden = !document.getElementById("showAfterDelayCheckbox").checked;
+      document.getElementById("showAfterDelayDelayTextbox").hidden = !document.getElementById("showAfterDelayCheckbox").checked;
       
       //***************************************************
       // display or not dragging sub-option
       //***************************************************
       
-      var checking = (document.getElementById("showButton").value==0) && document.getElementById("dragOnly").checked;
+      var checking = (document.getElementById("showButton").value==0) && document.getElementById("dragOnlyCheckbox").checked;
       document.getElementById("dragOnlyUpLeftBlank").hidden = !checking;
-      document.getElementById("dragOnlyUpLeft").hidden = !checking;
+      document.getElementById("dragOnlyUpLeftCheckbox").hidden = !checking;
       
       //***************************************************
       // disable or not mouse button code textbox for showing menu
@@ -2056,9 +1992,9 @@
       // disabling autoscrolling sub-options
       //***************************************************
       
-      var checking = document.getElementById("autoscrollingOn").checked;
+      var checking = document.getElementById("autoscrollingOnCheckbox").checked;
       document.getElementById("autoscrollingDelayLabel").disabled = !checking;
-      document.getElementById("autoscrollingDelay").disabled = !checking;
+      document.getElementById("autoscrollingDelayTextbox").disabled = !checking;
       
       //***************************************************
       // disabling contextual menu sub-options
