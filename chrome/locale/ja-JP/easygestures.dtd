@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "メインメニュー">
 <!ENTITY actions.extra "拡張メニュー">
 <!ENTITY actions.info "拡張メニューは対応するアクションで表示されます。">
-<!ENTITY actions.alt "無効化">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "優先">
 <!ENTITY actions.alternative "代替">
 <!ENTITY actions.regular "通常アクション">

@@ -18,7 +18,7 @@
 <!ENTITY actions.main "Főmenü">
 <!ENTITY actions.extra "Kiegészítő menü">
 <!ENTITY actions.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg.">
-<!ENTITY actions.alt "Kikapcsolás">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "Elsődleges">
 <!ENTITY actions.alternative "Alternatív">
 <!ENTITY actions.regular "Általános műveletek">

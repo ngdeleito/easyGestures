@@ -33,7 +33,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY actions.main "주 메뉴">
 <!ENTITY actions.extra "부가 메뉴">
 <!ENTITY actions.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다.">
-<!ENTITY actions.alt "사용안함">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "우선">
 <!ENTITY actions.alternative "대안">
 <!ENTITY actions.regular "정규 동작">

@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "主要選單">
 <!ENTITY actions.extra "延伸選單">
 <!ENTITY actions.info "延伸選單會在使用對應動作時顯示。">
-<!ENTITY actions.alt "停止作用">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "基本">
 <!ENTITY actions.alternative "替換">
 <!ENTITY actions.regular "一般動作">

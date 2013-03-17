@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "主菜单">
 <!ENTITY actions.extra "延伸菜单">
 <!ENTITY actions.info "额外的菜单显示了使用的相应手势。">
-<!ENTITY actions.alt "禁用">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "基本的">
 <!ENTITY actions.alternative "另类的">
 <!ENTITY actions.regular "常用手势">

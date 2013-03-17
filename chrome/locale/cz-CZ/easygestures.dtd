@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "Hlavní nabídka">
 <!ENTITY actions.extra "Extra nabídka">
 <!ENTITY actions.info "Extra nabídka je zobrazená při použití odpovídající akce.">
-<!ENTITY actions.alt "Zakázat">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "Primární">
 <!ENTITY actions.alternative "Alternativní">
 <!ENTITY actions.regular "Pravidelné akce">

@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "Ana Menü">
 <!ENTITY actions.extra "Ekstra Menü">
 <!ENTITY actions.info "Ekstra menü, ilgili eylemi kullanarak görüntülenir.">
-<!ENTITY actions.alt "Engelle">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "Öncelikli">
 <!ENTITY actions.alternative "Alternatif">
 <!ENTITY actions.regular "Olağan Eylemler">

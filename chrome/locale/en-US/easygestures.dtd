@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "Main Menu">
 <!ENTITY actions.extra "Extra Menu">
 <!ENTITY actions.info "Extra menu is displayed using the corresponding action.">
-<!ENTITY actions.alt "Disable">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "Primary">
 <!ENTITY actions.alternative "Alternative">
 <!ENTITY actions.regular "Regular Actions">

@@ -344,6 +344,10 @@
     id="actionsPane"
     style="overflow: auto;">
     <preferences>
+      <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />
+      <preference id="mainAlternative2" name="easygestures.actions.mainAlternative2" type="bool" />
+      <preference id="extraAlternative1" name="easygestures.actions.extraAlternative1" type="bool" />
+      <preference id="extraAlternative2" name="easygestures.actions.extraAlternative2" type="bool" />
       <preference id="contextImageFirst" name="easygestures.actions.contextImageFirst" type="bool" />
       <preference id="contextTextboxFirst" name="easygestures.actions.contextTextboxFirst" type="bool" />
     </preferences>
@@ -367,18 +371,20 @@
               </vbox>
               <toolbarbutton label="0" group="layout" type="radio" checked="true"
                 tooltiptext="&actions.primary;"
-                oncommand="document.getElementById('mainAlternative1').setAttribute('collapsed', true);document.getElementById('mainAlternative2').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=0; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.primary;';" />
+                oncommand="document.getElementById('mainAlternative1Checkbox').setAttribute('collapsed', true);document.getElementById('mainAlternative2Checkbox').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=0; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.primary;';" />
               <toolbarbutton label="1" group="layout" type="radio"
                 tooltiptext="&actions.alternative; 1"
-                oncommand="document.getElementById('mainAlternative1').setAttribute('collapsed', false);document.getElementById('mainAlternative2').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=1; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 1';" />
+                oncommand="document.getElementById('mainAlternative1Checkbox').setAttribute('collapsed', false);document.getElementById('mainAlternative2Checkbox').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=1; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 1';" />
               <toolbarbutton label="2" group="layout" type="radio"
                 tooltiptext="&actions.alternative; 2"
-                oncommand="document.getElementById('mainAlternative2').setAttribute('collapsed', false);document.getElementById('mainAlternative1').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=2; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 2';" />
+                oncommand="document.getElementById('mainAlternative2Checkbox').setAttribute('collapsed', false);document.getElementById('mainAlternative1Checkbox').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=2; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 2';" />
               <toolbarspacer flex="1" />
-              <checkbox collapsed="true" id="mainAlternative1" label="&actions.alt;"
+              <checkbox collapsed="true" id="mainAlternative1Checkbox"
+                preference="mainAlternative1" label="&actions.enabled;"
                 style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
                 oncommand="updateUI();" />
-              <checkbox collapsed="true" id="mainAlternative2" label="&actions.alt;"
+              <checkbox collapsed="true" id="mainAlternative2Checkbox"
+                preference="mainAlternative2" label="&actions.enabled;"
                 style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
                 oncommand="updateUI();" />
               <toolbarspacer />
@@ -417,18 +423,20 @@
               </vbox>
               <toolbarbutton label="0" group="layout" type="radio" checked="true"
                 tooltiptext="&actions.primary;"
-                oncommand="document.getElementById('extraAlternative1').setAttribute('collapsed', true);document.getElementById('extraAlternative2').setAttribute('collapsed', true);document.getElementById('actionsExtra').selectedIndex=0; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.primary;';" />
+                oncommand="document.getElementById('extraAlternative1Checkbox').setAttribute('collapsed', true);document.getElementById('extraAlternative2Checkbox').setAttribute('collapsed', true);document.getElementById('actionsExtra').selectedIndex=0; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.primary;';" />
               <toolbarbutton label="1" group="layout" type="radio"
                 tooltiptext="&actions.alternative; 1"
-                oncommand="document.getElementById('extraAlternative1').setAttribute('collapsed', false);document.getElementById('extraAlternative2').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=1; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 1';" />
+                oncommand="document.getElementById('extraAlternative1Checkbox').setAttribute('collapsed', false);document.getElementById('extraAlternative2Checkbox').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=1; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 1';" />
               <toolbarbutton label="2" group="layout" type="radio"
                 tooltiptext="&actions.alternative; 2"
-                oncommand="document.getElementById('extraAlternative2').setAttribute('collapsed', false);document.getElementById('extraAlternative1').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=2; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 2';" />
+                oncommand="document.getElementById('extraAlternative2Checkbox').setAttribute('collapsed', false);document.getElementById('extraAlternative1Checkbox').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=2; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 2';" />
               <toolbarspacer flex="1" />
-              <checkbox collapsed="true" id="extraAlternative1" label="&actions.alt;"
+              <checkbox collapsed="true" id="extraAlternative1Checkbox"
+                preference="extraAlternative1" label="&actions.enabled;"
                 style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
                 oncommand="updateUI();" />
-              <checkbox collapsed="true" id="extraAlternative2" label="&actions.alt;"
+              <checkbox collapsed="true" id="extraAlternative2Checkbox"
+                preference="extraAlternative2" label="&actions.enabled;"
                 style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
                 oncommand="updateUI();" />
               <toolbarspacer />
@@ -1672,11 +1680,6 @@
       document.getElementById("contextKey").value = selectedItem;
       document.getElementById("customContextKeyCode").value = eG_prefs.getIntPref("behavior.contextKey");
       
-      document.getElementById("mainAlternative1").checked = !eG_prefs.getBoolPref("actions.mainAlternative1");
-      document.getElementById("mainAlternative2").checked = !eG_prefs.getBoolPref("actions.mainAlternative2");
-      document.getElementById("extraAlternative1").checked = !eG_prefs.getBoolPref("actions.extraAlternative1");
-      document.getElementById("extraAlternative2").checked = !eG_prefs.getBoolPref("actions.extraAlternative2");
-      
       initActionsBoxes();
       
       for (var i=1; i<=10; i++) {
@@ -1753,11 +1756,6 @@
         case "4": contextKeyValue = document.getElementById("customContextKeyCode").value;
       }
       eG_prefs.setIntPref("behavior.contextKey", contextKeyValue );
-      
-      eG_prefs.setBoolPref("actions.mainAlternative1", !document.getElementById("mainAlternative1").checked);
-      eG_prefs.setBoolPref("actions.mainAlternative2", !document.getElementById("mainAlternative2").checked);
-      eG_prefs.setBoolPref("actions.extraAlternative1", !document.getElementById("extraAlternative1").checked);
-      eG_prefs.setBoolPref("actions.extraAlternative2", !document.getElementById("extraAlternative2").checked);
       
       setActionsPrefs();
       

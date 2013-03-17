@@ -17,7 +17,7 @@
 <!ENTITY actions.main "Haupt-Kreismenü">
 <!ENTITY actions.extra "Zusatz-Kreismenü">
 <!ENTITY actions.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt.">
-<!ENTITY actions.alt "Deaktivieren">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "Primär">
 <!ENTITY actions.alternative "Alternativ">
 <!ENTITY actions.regular "Normale Aktionen">

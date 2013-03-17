@@ -37,7 +37,7 @@ END OF INSTRUCTIONS
 <!ENTITY actions.main "Menu principal">
 <!ENTITY actions.extra "Menu supplémentaire">
 <!ENTITY actions.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante.">
-<!ENTITY actions.alt "Désactiver">
+<!ENTITY actions.enabled "Activé">
 <!ENTITY actions.primary "Primaire">
 <!ENTITY actions.alternative "Alternatif">
 <!ENTITY actions.regular "Actions régulières">

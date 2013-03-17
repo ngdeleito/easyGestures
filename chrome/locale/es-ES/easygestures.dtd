@@ -18,7 +18,7 @@
 <!ENTITY actions.main "Menú principal">
 <!ENTITY actions.extra "Menú extra">
 <!ENTITY actions.info "El menú extra se muestra al usar la acción correspondiente.">
-<!ENTITY actions.alt "Deshabilitar">
+<!ENTITY actions.enabled "Habilitado">
 <!ENTITY actions.primary "Primaria">
 <!ENTITY actions.alternative "Alternativa">
 <!ENTITY actions.regular "Acciones regulares">

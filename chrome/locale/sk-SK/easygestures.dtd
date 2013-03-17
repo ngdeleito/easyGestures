@@ -17,7 +17,7 @@
 <!ENTITY actions.main "Hlavná ponuka">
 <!ENTITY actions.extra "Extra ponuka">
 <!ENTITY actions.info "Extra ponuka je zobrazená použitím korešpondujúcej akcie.">
-<!ENTITY actions.alt "Zakázať">
+<!ENTITY actions.enabled "Enabled">
 <!ENTITY actions.primary "Primárny">
 <!ENTITY actions.alternative "Alternatívny">
 <!ENTITY actions.regular "Pravidelné akcie">
