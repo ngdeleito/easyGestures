@@ -237,6 +237,7 @@
     <preferences>
       <preference id="moveAuto" name="easygestures.behavior.moveAuto" type="bool" />
       <preference id="largeMenu" name="easygestures.behavior.largeMenu" type="bool" />
+      <preference id="menuOpacity" name="easygestures.behavior.menuOpacity" type="int" />
       <preference id="noIcons" name="easygestures.behavior.noIcons" type="bool" />
       <preference id="smallIcons" name="easygestures.behavior.smallIcons" type="bool" />
       <preference id="showTooltips" name="easygestures.behavior.showTooltips" type="bool" />
@@ -269,12 +270,10 @@
       <menuseparator />
       <label value="&extras.display;" style="font-weight: bold;" />
       <spacer height="3px" />
-      <hbox>
+      <hbox align="center">
         <label value="&extras.menuOpacity;" />
-        <scrollbar id="opacitySlider" curpos="50" width="100" increment="1" pageincrement="10"
-          maxpos="100"
-          onmouseup ="document.getElementById('menuOpacity').value=this.getAttribute('curpos')+'% ';" />
-        <label id="menuOpacity" width="40" />
+        <textbox preference="menuOpacity" type="number" min="0" max="100" size="3" />
+        <label value="%" />
       </hbox>
       <separator class="thin" />
       <checkbox preference="noIcons" label="&extras.noIcons;"
@@ -1662,9 +1661,6 @@
       document.getElementById("supprKey").value = selectedItem;
       document.getElementById("customSupprKeyCode").value = eG_prefs.getIntPref("behavior.supprKey");
       
-      document.getElementById("menuOpacity").value = eG_prefs.getIntPref("behavior.menuOpacity")+'% ';
-      document.getElementById("opacitySlider").setAttribute("curpos",eG_prefs.getIntPref("behavior.menuOpacity"));
-      
       var selectedItem;
       switch (eG_prefs.getIntPref("behavior.contextKey")) {
         case 0:  selectedItem = 0; break; // no key
@@ -1747,9 +1743,6 @@
         case "3": showAltButtonValue = document.getElementById("customAltMouseButtonCode").value;
       }
       eG_prefs.setIntPref("behavior.showAltButton", showAltButtonValue );
-      
-      var str = document.getElementById("menuOpacity").value;
-      eG_prefs.setIntPref("behavior.menuOpacity", parseInt(str.substring(0,str.length-2)));
       
       var contextKeyValue;
       switch (document.getElementById("contextKey").value) {
