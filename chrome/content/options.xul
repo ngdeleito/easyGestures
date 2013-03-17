@@ -1913,16 +1913,16 @@
       
       //***************************************************
       
-      document.getElementById("showAfterDelayDelayLabel").hidden = !document.getElementById("showAfterDelayCheckbox").checked;
-      document.getElementById("showAfterDelayDelayTextbox").hidden = !document.getElementById("showAfterDelayCheckbox").checked;
+      document.getElementById("showAfterDelayDelayLabel").disabled = !document.getElementById("showAfterDelayCheckbox").checked;
+      document.getElementById("showAfterDelayDelayTextbox").disabled = !document.getElementById("showAfterDelayCheckbox").checked;
       
       //***************************************************
       // display or not dragging sub-option
       //***************************************************
       
       var checking = (document.getElementById("showButton").value==0) && document.getElementById("dragOnlyCheckbox").checked;
-      document.getElementById("dragOnlyUpLeftBlank").hidden = !checking;
-      document.getElementById("dragOnlyUpLeftCheckbox").hidden = !checking;
+      document.getElementById("dragOnlyUpLeftBlank").disabled = !checking;
+      document.getElementById("dragOnlyUpLeftCheckbox").disabled = !checking;
       
       //***************************************************
       // disable or not mouse button code textbox for showing menu
