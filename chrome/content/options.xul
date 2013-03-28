@@ -707,7 +707,7 @@
     var eG_duplicateKeyMessage = "&duplicatekey.warning;";
     var eG_version = "&about.version; ";
     var eG_faviconNotFound = "&urlscript.faviconNotFound;";
-    var eG_skinCurrent;
+    var eG_skinCurrent = "chrome://easygestures/skin/";
     
     var runProgramFilesIndex = 41;
     var loadURLScriptIndex = 51;
@@ -1617,7 +1617,6 @@
       window.setCursor('wait');
       
       document.getElementById('version').value = eG_version + eG_getVersion();
-      eG_skinCurrent = eG_prefs.getCharPref("skin.path");
       
       eG_actionsPopupList = createActionsPopupList();
       
@@ -1699,8 +1698,6 @@
           + "•" + document.getElementById("loadURLScript_newIconCheck"+i).checked;
         eG_prefs.setComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString, string);
       }
-      
-      eG_prefs.setCharPref("skin.path", eG_skinCurrent);
       
       /////////////////////////////////////////////////////
       // triggering observer to reset eGm object

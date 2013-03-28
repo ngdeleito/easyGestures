@@ -130,8 +130,6 @@ function eG_setPrefs(locale) {
   }
   
   eG_prefsObs.prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
-  
-  eG_prefsObs.prefs.setCharPref("skin.path", "chrome://easygestures/skin/"); // path to skin containing icons and images
 }
 
 function eG_setActions() {

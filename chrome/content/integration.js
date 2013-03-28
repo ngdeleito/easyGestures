@@ -129,7 +129,7 @@ function eG_initMenuIntegration(evt) {
   
   if (active) {
     eG_activateMenu();
-    var skinPath = eG_prefsObs.prefs.getCharPref("skin.path");
+    var skinPath = "chrome://easygestures/skin/";
     
     ///////////////////////////////////////////////////////
     // register CSS for images
