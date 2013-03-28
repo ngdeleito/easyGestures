@@ -17,7 +17,7 @@
    -
    - The Initial Developer of the Original Code is Ons Besbes.
    -
-   - Contributor(s):
+   - Contributor(s): ngdeleito
    -
    - Alternatively, the contents of this file may be used under the terms of
    - either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -114,33 +114,31 @@
     id="activationPane"
     style="overflow: auto;">
     <preferences>
+      <preference id="showButton" name="easygestures.behavior.showButton" type="int" />
       <preference id="showKey" name="easygestures.behavior.showKey" type="int" />
       <preference id="showAfterDelay" name="easygestures.behavior.showAfterDelay" type="bool" />
       <preference id="showAfterDelayDelay" name="easygestures.behavior.showAfterDelayDelay" type="int" />
       <preference id="dragOnly" name="easygestures.behavior.dragOnly" type="bool" />
       <preference id="dragOnlyUpLeft" name="easygestures.behavior.dragOnlyUpLeft" type="bool" />
+      <preference id="showAltButton" name="easygestures.behavior.showAltButton" type="int" />
+      <preference id="supprKey" name="easygestures.behavior.supprKey" type="int" />
+      <preference id="contextKey" name="easygestures.behavior.contextKey" type="int" />
       <preference id="contextShowAuto" name="easygestures.behavior.contextMenuAuto" type="bool" />
     </preferences>
     <label value="&use;" style="font-weight:bold;"/>
     <spacer height="3px" />
-    <hbox>
-      <vbox>
-        <menulist id="showButton" oncommand="updateUI();">
-          <menupopup>
-            <menuitem value="0" label="&use.button.left;" />
-            <menuitem value="1" label="&use.button.middle;" />
-            <menuitem value="2" label="&use.button.right;" />
-            <menuitem value="3" label="&use.button.custom;" />
-          </menupopup>
-        </menulist>
-      </vbox>
-      <hbox>
-        <vbox pack="center">
-          <label id="customMouseButtonLabel" value="&use.buttoncode;" />
-        </vbox>
-        <textbox id="customMouseButtonCode" size ="2"
-          onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
-      </hbox>
+    <hbox align="center">
+      <menulist id="showButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
+        <menupopup>
+          <menuitem label="&use.button.left;" value="0" />
+          <menuitem label="&use.button.middle;" value="1" />
+          <menuitem label="&use.button.right;" value="2" />
+          <menuitem label="&use.button.custom;" />
+        </menupopup>
+      </menulist>
+      <label value="&use.buttoncode;" />
+      <textbox preference="showButton" size="2"
+        onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
     <label value="&use.and;" style="font-weight:bold;" />
     <radiogroup preference="showKey" style="margin-left: 1em">
@@ -164,66 +162,55 @@
     <menuseparator />
     <label value="&use.alternative;" style="font-weight: bold;" />
     <spacer height="3px" />
-    <hbox>
-      <menulist id="showAltButton" oncommand="updateUI();">
+    <hbox align="center">
+      <menulist id="showAltButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem value="0" label="&use.button.left;" />
-          <menuitem value="1" label="&use.button.middle;" />
-          <menuitem value="2" label="&use.button.right;" />
-          <menuitem value="3" label="&use.button.custom;" />
+          <menuitem label="&use.button.left;" value="0" />
+          <menuitem label="&use.button.middle;" value="1" />
+          <menuitem label="&use.button.right;" value="2" />
+          <menuitem label="&use.button.custom;" />
         </menupopup>
       </menulist>
-      <hbox>
-        <vbox pack="center">
-          <label id="customAltMouseButtonLabel" value="&use.buttoncode;" />
-        </vbox>
-        <textbox id="customAltMouseButtonCode" size ="2"
-          onclick="this.value=event.button;checkDuplicateKeys(this);return true;" />
-      </hbox>
+      <label value="&use.buttoncode;" />
+      <textbox preference="showAltButton" size="2"
+        onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
     <label value="&use.also;" />
     <menuseparator />
     <label value="&suppress;" style="font-weight: bold;" />
     <spacer height="3px" />
-    <hbox>
-      <menulist id="supprKey" oncommand="checkDuplicateKeys(this);updateUI();">
+    <hbox align="center">
+      <menulist id="supprKeyMenulist"
+        oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild);  fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem value="0" label="-----" />
-          <menuitem value="1" label="&suppress.ins;" />
-          <menuitem value="2" label="&suppress.alt;" />
-          <menuitem value="3" label="&suppress.ctrl;" />
-          <menuitem value="4" label="&suppress.custom;" />
+          <menuitem label="&use.noKey;" value="0" />
+          <menuitem label="&suppress.ins;" value="45" />
+          <menuitem label="&suppress.alt;" value="18" />
+          <menuitem label="&suppress.ctrl;" value="17" />
+          <menuitem label="&suppress.custom;" />
         </menupopup>
       </menulist>
-      <hbox pack="start" flex="1">
-        <vbox pack="center">
-          <label id="customSupprKeyLabel" value="&suppress.keycode;" />
-        </vbox>
-        <textbox id="customSupprKeyCode" size ="4"
-          onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
-      </hbox>
+      <label value="&suppress.keycode;" />
+      <textbox id="customSupprKeyCode" preference="supprKey" size="4"
+        onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
     <menuseparator />
     <label value="&contextmenu;" style="font-weight: bold;" />
     <spacer height="3px" />
-    <hbox>
-      <spacer width="16" />
-      <menulist id="contextKey" oncommand="checkDuplicateKeys(this);updateUI();">
+    <hbox align="center">
+      <menulist id="contextKeyMenulist"
+        oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem value="0" label="-----" />
-          <menuitem value="1" label="&suppress.ins;" />
-          <menuitem value="2" label="&suppress.alt;" />
-          <menuitem value="3" label="&suppress.ctrl;" />
-          <menuitem value="4" label="&suppress.custom;" />
+          <menuitem label="&use.noKey;" value="0" />
+          <menuitem label="&suppress.ins;" value="45" />
+          <menuitem label="&suppress.alt;" value="18" />
+          <menuitem label="&suppress.ctrl;" value="17" />
+          <menuitem label="&suppress.custom;" />
         </menupopup>
       </menulist>
-      <hbox pack="start" flex="1">
-        <vbox pack="center">
-          <label id="customContextKeyLabel" value="&suppress.keycode;" />
-        </vbox>
-        <textbox id="customContextKeyCode" size ="4"
-          onkeyup="this.value=event.keyCode;checkDuplicateKeys(this);return true;" />
-      </hbox>
+      <label value="&suppress.keycode;" />
+      <textbox id="customContextKeyCode" preference="contextKey" size="4"
+        onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
     <checkbox preference="contextShowAuto" label="&contextmenu.showAuto;" />
   </prefpane>
@@ -1638,47 +1625,15 @@
       createRunProgramFileForCustomization();
       createLoadURLScriptForCustomization();
       
-      var selectedItem;
-      switch (eG_prefs.getIntPref("behavior.showButton")) {
-        case 0: selectedItem = 0; break; // left button
-        case 1: selectedItem = 1; break; // middle button
-        case 2: selectedItem = 2; break; // right button
-        default: selectedItem = 3; //custom button
-      }
-      document.getElementById("showButton").value = selectedItem;
-      document.getElementById("customMouseButtonCode").value = eG_prefs.getIntPref("behavior.showButton");
-      
-      var selectedItem;
-      switch (eG_prefs.getIntPref("behavior.showAltButton")) {
-        case 0: selectedItem = 0; break; // left button
-        case 1: selectedItem = 1; break; // middle button
-        case 2: selectedItem = 2; break; // right button
-        default: selectedItem = 3; //custom button
-      }
-      document.getElementById("showAltButton").value = selectedItem;
-      document.getElementById("customAltMouseButtonCode").value = eG_prefs.getIntPref("behavior.showAltButton");
-      
-      var selectedItem;
-      switch (eG_prefs.getIntPref("behavior.supprKey")) {
-        case 0:  selectedItem = 0; break; // no key
-        case 45: selectedItem = 1; break; // insert key
-        case 18: selectedItem = 2; break; // alt key
-        case 17: selectedItem = 3; break; // suppr key
-        default: selectedItem = 4; // custom key
-      }
-      document.getElementById("supprKey").value = selectedItem;
-      document.getElementById("customSupprKeyCode").value = eG_prefs.getIntPref("behavior.supprKey");
-      
-      var selectedItem;
-      switch (eG_prefs.getIntPref("behavior.contextKey")) {
-        case 0:  selectedItem = 0; break; // no key
-        case 45: selectedItem = 1; break; // insert key
-        case 18: selectedItem = 2; break; // alt key
-        case 17: selectedItem = 3; break; // suppr key
-        default: selectedItem = 4; // custom key
-      }
-      document.getElementById("contextKey").value = selectedItem;
-      document.getElementById("customContextKeyCode").value = eG_prefs.getIntPref("behavior.contextKey");
+      ["showButton", "showAltButton", "supprKey", "contextKey"].forEach(
+        function (element, index, array) {
+          var menulist = document.getElementById(element + "Menulist");
+          menulist.value = eG_prefs.getIntPref("behavior." + element);
+          if (menulist.selectedIndex == -1) {
+            menulist.selectedIndex = menulist.itemCount - 1;
+          }
+          updateLabelAndTextboxFor(menulist);
+        });
       
       initActionsBoxes();
       
@@ -1719,44 +1674,6 @@
     }
     
     function saveMenuSettings() {
-      var showButtonValue;
-      switch (document.getElementById("showButton").value) {
-        case "0": showButtonValue = 0; break;
-        case "1": showButtonValue = 1; break;
-        case "2": showButtonValue = 2; break;
-        case "3": showButtonValue = document.getElementById("customMouseButtonCode").value;
-      }
-      eG_prefs.setIntPref("behavior.showButton", showButtonValue);
-      
-      var supprKeyValue;
-      switch (document.getElementById("supprKey").value) {
-        case "0": supprKeyValue = 0; break;
-        case "1": supprKeyValue = 45; break;
-        case "2": supprKeyValue = 18; break;
-        case "3": supprKeyValue = 17; break;
-        case "4": supprKeyValue = document.getElementById("customSupprKeyCode").value;
-      }
-      eG_prefs.setIntPref("behavior.supprKey",supprKeyValue );
-      
-      var showAltButtonValue;
-      switch (document.getElementById("showAltButton").value) {
-        case "0": showAltButtonValue = 0; break;
-        case "1": showAltButtonValue = 1; break;
-        case "2": showAltButtonValue = 2; break;
-        case "3": showAltButtonValue = document.getElementById("customAltMouseButtonCode").value;
-      }
-      eG_prefs.setIntPref("behavior.showAltButton", showAltButtonValue );
-      
-      var contextKeyValue;
-      switch (document.getElementById("contextKey").value) {
-        case "0": contextKeyValue = 0;  break;
-        case "1": contextKeyValue = 45; break;
-        case "2": contextKeyValue = 18; break;
-        case "3": contextKeyValue = 17; break;
-        case "4": contextKeyValue = document.getElementById("customContextKeyCode").value;
-      }
-      eG_prefs.setIntPref("behavior.contextKey", contextKeyValue );
-      
       setActionsPrefs();
       
       var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
@@ -1840,13 +1757,23 @@
       }
     }
     
-    function checkDuplicateKeys(selection) {
-      if ((document.getElementById("contextKey").value == document.getElementById("supprKey").value)
-           && document.getElementById("contextKey").value != 0
-           && (document.getElementById("contextKey").value != 4 || document.getElementById("contextKey").value == 4 && document.getElementById("customContextKeyCode").value == document.getElementById("customSupprKeyCode").value)) {
-        selection.value = 0;
+    function resetOnDuplicatedKeys(menulist, textbox) {
+      var contextKeyCode = document.getElementById("customContextKeyCode").value;
+      var supprKeyCode = document.getElementById("customSupprKeyCode").value;
+
+      if ((contextKeyCode == supprKeyCode) && contextKeyCode != 0) {
+        menulist.value = 0;
+        textbox.value = 0;
         alert(eG_duplicateKeyMessage);
       }
+    }
+    
+    function fireChangeEventOn(element) {
+      // firing a change event triggers XUL's preferences system to change the
+      // value of the preference
+      var event = document.createEvent('Event');
+      event.initEvent('change', true, false);
+      element.dispatchEvent(event);
     }
     
     function updateOtherLabels(actionID, label) {
@@ -1865,6 +1792,18 @@
             element.setAttribute("label", label);
           }
         }
+      }
+    }
+    
+    function updateLabelAndTextboxFor(menulist) {
+      var label = menulist.nextElementSibling;
+      var textbox = label.nextElementSibling;
+      var shouldBeDisabled = menulist.selectedIndex != menulist.itemCount - 1;
+      
+      label.disabled = shouldBeDisabled;
+      textbox.disabled = shouldBeDisabled;
+      if (shouldBeDisabled) {
+        textbox.value = menulist.value;
       }
     }
     
@@ -1920,64 +1859,10 @@
       // display or not dragging sub-option
       //***************************************************
       
-      var checking = (document.getElementById("showButton").value==0) && document.getElementById("dragOnlyCheckbox").checked;
+      var checking = (document.getElementById("showButtonMenulist").selectedIndex == 0)
+                     && document.getElementById("dragOnlyCheckbox").checked;
       document.getElementById("dragOnlyUpLeftBlank").disabled = !checking;
       document.getElementById("dragOnlyUpLeftCheckbox").disabled = !checking;
-      
-      //***************************************************
-      // disable or not mouse button code textbox for showing menu
-      //***************************************************
-      
-      if (document.getElementById("showButton").value == 3) {
-        document.getElementById("customMouseButtonLabel").disabled = false;
-        document.getElementById("customMouseButtonCode").disabled = false;
-      }
-      else {
-        document.getElementById("customMouseButtonCode").value=document.getElementById("showButton").value;
-        document.getElementById("customMouseButtonLabel").disabled = true;
-        document.getElementById("customMouseButtonCode").disabled = true;
-      }
-      
-      //***************************************************
-      // disable or not mouse button code textbox for showing alternative menu
-      //***************************************************
-      
-      if (document.getElementById("showAltButton").value == 3) {
-        document.getElementById("customAltMouseButtonLabel").disabled = false;
-        document.getElementById("customAltMouseButtonCode").disabled = false;
-      }
-      else {
-        document.getElementById("customAltMouseButtonCode").value = document.getElementById("showAltButton").value;
-        document.getElementById("customAltMouseButtonLabel").disabled = true;
-        document.getElementById("customAltMouseButtonCode").disabled = true;
-      }
-      
-      //***************************************************
-      // disable or not keycode textbox for priority suppression
-      //***************************************************
-      
-      if (document.getElementById("supprKey").value == 4) {
-        document.getElementById("customSupprKeyLabel").disabled = false;
-        document.getElementById("customSupprKeyCode").disabled = false;
-      }
-      else {
-        switch (document.getElementById("supprKey").value) {
-          case "0":
-            document.getElementById("customSupprKeyCode").value = 0;
-            break;
-          case "1":
-            document.getElementById("customSupprKeyCode").value = 45;
-            break;
-          case "2":
-            document.getElementById("customSupprKeyCode").value = 18;
-            break;
-          case "3":
-            document.getElementById("customSupprKeyCode").value = 17;
-            break;
-        }
-        document.getElementById("customSupprKeyLabel").disabled = true;
-        document.getElementById("customSupprKeyCode").disabled = true;
-      }
       
       //***************************************************
       // disabling autoscrolling sub-options
@@ -1986,33 +1871,6 @@
       var checking = document.getElementById("autoscrollingOnCheckbox").checked;
       document.getElementById("autoscrollingDelayLabel").disabled = !checking;
       document.getElementById("autoscrollingDelayTextbox").disabled = !checking;
-      
-      //***************************************************
-      // disabling contextual menu sub-options
-      //***************************************************
-      
-      if (document.getElementById("contextKey").value == 4) {
-        document.getElementById("customContextKeyLabel").disabled = false;
-        document.getElementById("customContextKeyCode").disabled = false;
-      }
-      else {
-        switch (document.getElementById("contextKey").value) {
-          case "0":
-            document.getElementById("customContextKeyCode").value = 0;
-            break;
-          case "1":
-            document.getElementById("customContextKeyCode").value = 45;
-            break;
-          case "2":
-            document.getElementById("customContextKeyCode").value = 18;
-            break;
-          case "3":
-            document.getElementById("customContextKeyCode").value = 17;
-            break;
-        }
-        document.getElementById("customContextKeyLabel").disabled = true;
-        document.getElementById("customContextKeyCode").disabled = true;
-      }
       
       //***************************************************
       // displaying correct label for Load URL/Script
