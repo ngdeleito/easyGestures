@@ -8,6 +8,8 @@ Changes by ngdeleito (see git history for the full details)
 - made several changes in the preferences dialog, among which:
 -- removed support for multiple skins
 -- removed popup menu to change language
+-- split the "Behavior" pane in two
+-- made use of XUL's preferences system
 - fixed some warnings
 - removed popup for nextTab, prevTab and undoCloseTab actions
 - removed input box for entering URLs
