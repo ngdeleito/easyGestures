@@ -980,60 +980,42 @@
         }
         
         //////////////////////////////////////////////////////////
-        // titleNode
+        // header
         //////////////////////////////////////////////////////////
         
-        var titleNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var titleNode = document.createElement("hbox");
+        titleNode.setAttribute("align", "center");
         
-        var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        var image = document.createElement("image");
         image.setAttribute("id", "loadURLScriptImg");
         image.style.listStyleImage = "url('" + eG_skinCurrent + "small_actions.png')";
         image.setAttribute("class", "small_loadURLScript" + i);
         titleNode.appendChild(image);
         
-        var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        titleNode.appendChild(vbox);
-        
-        var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("flex", "1");
-        vbox.appendChild(spacer);
-        
-        var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        var label = document.createElement("label");
         label.setAttribute("value", "&urlscript.url;/&urlscript.script; " + i);
         label.setAttribute("style", "font-weight: bold;");
-        vbox.appendChild(label);
+        titleNode.appendChild(label);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("flex", "1");
-        vbox.appendChild(spacer);
-        
-        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var hbox = document.createElement("hbox");
         hbox.setAttribute("id", "loadURLScriptDisplay" + i);
+        hbox.setAttribute("align", "center");
         titleNode.appendChild(hbox);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack", "center");
-        hbox.appendChild(vbox);
-        
-        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label = document.createElement("label");
         label.setAttribute("value", " - ");
-        vbox.appendChild(label);
+        hbox.appendChild(label);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack", "center");
-        vbox.setAttribute("flex", "1");
-        hbox.appendChild(vbox);
-        
-        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image = document.createElement("image");
         image.setAttribute("id", "loadURLScript_newIcon" + i);
         image.setAttribute("src", "");
         image.setAttribute("maxwidth", "20");
         image.setAttribute("maxheight", "20");
-        vbox.appendChild(image);
+        hbox.appendChild(image);
         
         groupbox.appendChild(titleNode);
         
-        var separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        var separator = document.createElement("separator");
         separator.setAttribute("class", "thin");
         groupbox.appendChild(separator);
         
@@ -1041,103 +1023,100 @@
         // options
         //////////////////////////////////////////////////////////
         
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox = document.createElement("hbox");
         hbox.setAttribute("flex", "1");
         groupbox.appendChild(hbox);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        var vbox = document.createElement("vbox");
         hbox.appendChild(vbox);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        var spacer = document.createElement("spacer");
         spacer.setAttribute("height", "3");
         vbox.appendChild(spacer);
         
-        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label = document.createElement("label");
         label.setAttribute("value", "&urlscript.name;");
         vbox.appendChild(label);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer = document.createElement("spacer");
         spacer.setAttribute("height", "10");
         vbox.appendChild(spacer);
         
-        label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        label = document.createElement("label");
         label.setAttribute("id", "loadURLScript_Label" + i);
         label.setAttribute("value", "");
         vbox.appendChild(label);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox = document.createElement("vbox");
         vbox.setAttribute("flex", "1");
         hbox.appendChild(vbox);
         
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox = document.createElement("hbox");
         vbox.appendChild(hbox);
         
-        var textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        var textbox = document.createElement("textbox");
         textbox.setAttribute("id", "loadURLScript_name" + i);
         textbox.setAttribute("onchange", "updateOtherLabels(" + (loadURLScriptIndex+i-1) + ", this.value);");
         textbox.setAttribute("size", "21");
         textbox.setAttribute("maxlength", "20");
         hbox.appendChild(textbox);
         
-        var radiogroup = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radiogroup");
+        var radiogroup = document.createElement("radiogroup");
         radiogroup.setAttribute("id", "loadURLScript_type" + i);
         radiogroup.setAttribute("orient", "horizontal");
         radiogroup.setAttribute("oncommand", "updateUI();");
         hbox.appendChild(radiogroup);
         
-        var radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
+        var radio = document.createElement("radio");
         radio.setAttribute("id", "URL" + i);
         radio.setAttribute("label", "&urlscript.url;");
         radiogroup.appendChild(radio);
         
-        radio = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "radio");
+        radio = document.createElement("radio");
         radio.setAttribute("id", "Script" + i);
         radio.setAttribute("label", "&urlscript.script;");
         radiogroup.appendChild(radio);
         
-        var stack = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "stack");
+        var stack = document.createElement("stack");
         vbox.appendChild(stack);
         
-        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox = document.createElement("textbox");
         textbox.setAttribute("id", "loadURLScript_host" + i);
         textbox.setAttribute("size", "30");
         textbox.setAttribute("onchange", "if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+");");
         stack.appendChild(textbox);
         
-        textbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "textbox");
+        textbox = document.createElement("textbox");
         textbox.setAttribute("id", "loadURLScript_code" + i);
         textbox.setAttribute("size", "30");
         textbox.setAttribute("multiline", "true");
         textbox.setAttribute("rows", "6");
         stack.appendChild(textbox);
         
-        separator = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "separator");
+        separator = document.createElement("separator");
         separator.setAttribute("class", "thin");
         vbox.appendChild(separator);
         
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox = document.createElement("hbox");
+        hbox.setAttribute("align", "center");
         vbox.appendChild(hbox);
         
-        var checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        var checkbox = document.createElement("checkbox");
         checkbox.setAttribute("id", "loadURLScript_faviconCheck" + i);
         checkbox.setAttribute("label", "&urlscript.icon;");
         checkbox.setAttribute("oncommand", "if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
         hbox.appendChild(checkbox);
         
-        checkbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "checkbox");
+        checkbox = document.createElement("checkbox");
         checkbox.setAttribute("id", "loadURLScript_newIconCheck" + i);
         checkbox.setAttribute("label", "&changeIcon;");
         checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI();");
         hbox.appendChild(checkbox);
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
-        vbox.setAttribute("pack", "center");
-        hbox.appendChild(vbox);
-        
-        image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        image = document.createElement("image");
         image.setAttribute("src", "chrome://easygestures/content/browse.png");
         image.setAttribute("onclick", "if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
-        vbox.appendChild(image);
+        hbox.appendChild(image);
       }
     }
     
