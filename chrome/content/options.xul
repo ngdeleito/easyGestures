@@ -497,6 +497,26 @@
     style="overflow: auto;">
     <preferences>
       <preference id="loadURLin" name="easygestures.customizations.loadURLin" type="string" />
+      <preference id="loadURLScript1" name="easygestures.customizations.loadURLScript1" type="unichar" />
+      <preference id="loadURLScript2" name="easygestures.customizations.loadURLScript2" type="unichar" />
+      <preference id="loadURLScript3" name="easygestures.customizations.loadURLScript3" type="unichar" />
+      <preference id="loadURLScript4" name="easygestures.customizations.loadURLScript4" type="unichar" />
+      <preference id="loadURLScript5" name="easygestures.customizations.loadURLScript5" type="unichar" />
+      <preference id="loadURLScript6" name="easygestures.customizations.loadURLScript6" type="unichar" />
+      <preference id="loadURLScript7" name="easygestures.customizations.loadURLScript7" type="unichar" />
+      <preference id="loadURLScript8" name="easygestures.customizations.loadURLScript8" type="unichar" />
+      <preference id="loadURLScript9" name="easygestures.customizations.loadURLScript9" type="unichar" />
+      <preference id="loadURLScript10" name="easygestures.customizations.loadURLScript10" type="unichar" />
+      <preference id="loadURLScript11" name="easygestures.customizations.loadURLScript11" type="unichar" />
+      <preference id="loadURLScript12" name="easygestures.customizations.loadURLScript12" type="unichar" />
+      <preference id="loadURLScript13" name="easygestures.customizations.loadURLScript13" type="unichar" />
+      <preference id="loadURLScript14" name="easygestures.customizations.loadURLScript14" type="unichar" />
+      <preference id="loadURLScript15" name="easygestures.customizations.loadURLScript15" type="unichar" />
+      <preference id="loadURLScript16" name="easygestures.customizations.loadURLScript16" type="unichar" />
+      <preference id="loadURLScript17" name="easygestures.customizations.loadURLScript17" type="unichar" />
+      <preference id="loadURLScript18" name="easygestures.customizations.loadURLScript18" type="unichar" />
+      <preference id="loadURLScript19" name="easygestures.customizations.loadURLScript19" type="unichar" />
+      <preference id="loadURLScript20" name="easygestures.customizations.loadURLScript20" type="unichar" />
       <preference id="openLink" name="easygestures.customizations.openLink" type="string" />
       <preference id="closeBrowserOnLastTab" name="easygestures.customizations.closeBrowserOnLastTab" type="bool" />
     </preferences>
@@ -534,64 +554,84 @@
                 </hbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript1"></vbox>
+                <vbox flex="1" id="gr_loadURLScript1" preference-editable="true"
+                  preference="loadURLScript1" onsynctopreference="return writeLoadURLScriptPreference(1);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript2"></vbox>
+                <vbox flex="1" id="gr_loadURLScript2" preference-editable="true"
+                  preference="loadURLScript2" onsynctopreference="return writeLoadURLScriptPreference(2);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript3"></vbox>
+                <vbox flex="1" id="gr_loadURLScript3" preference-editable="true"
+                  preference="loadURLScript3" onsynctopreference="return writeLoadURLScriptPreference(3);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript4"></vbox>
+                <vbox flex="1" id="gr_loadURLScript4" preference-editable="true"
+                  preference="loadURLScript4" onsynctopreference="return writeLoadURLScriptPreference(4);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript5"></vbox>
+                <vbox flex="1" id="gr_loadURLScript5" preference-editable="true"
+                  preference="loadURLScript5" onsynctopreference="return writeLoadURLScriptPreference(5);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript6"></vbox>
+                <vbox flex="1" id="gr_loadURLScript6" preference-editable="true"
+                  preference="loadURLScript6" onsynctopreference="return writeLoadURLScriptPreference(6);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript7"></vbox>
+                <vbox flex="1" id="gr_loadURLScript7" preference-editable="true"
+                  preference="loadURLScript7" onsynctopreference="return writeLoadURLScriptPreference(7);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript8"></vbox>
+                <vbox flex="1" id="gr_loadURLScript8" preference-editable="true"
+                  preference="loadURLScript8" onsynctopreference="return writeLoadURLScriptPreference(8);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript9"></vbox>
+                <vbox flex="1" id="gr_loadURLScript9" preference-editable="true"
+                  preference="loadURLScript9" onsynctopreference="return writeLoadURLScriptPreference(9);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript10"></vbox>
+                <vbox flex="1" id="gr_loadURLScript10" preference-editable="true"
+                  preference="loadURLScript10" onsynctopreference="return writeLoadURLScriptPreference(10);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript11"></vbox>
+                <vbox flex="1" id="gr_loadURLScript11" preference-editable="true"
+                  preference="loadURLScript11" onsynctopreference="return writeLoadURLScriptPreference(11);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript12"></vbox>
+                <vbox flex="1" id="gr_loadURLScript12" preference-editable="true"
+                  preference="loadURLScript12" onsynctopreference="return writeLoadURLScriptPreference(12);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript13"></vbox>
+                <vbox flex="1" id="gr_loadURLScript13" preference-editable="true"
+                  preference="loadURLScript13" onsynctopreference="return writeLoadURLScriptPreference(13);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript14"></vbox>
+                <vbox flex="1" id="gr_loadURLScript14" preference-editable="true"
+                  preference="loadURLScript14" onsynctopreference="return writeLoadURLScriptPreference(14);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript15"></vbox>
+                <vbox flex="1" id="gr_loadURLScript15" preference-editable="true"
+                  preference="loadURLScript15" onsynctopreference="return writeLoadURLScriptPreference(15);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript16"></vbox>
+                <vbox flex="1" id="gr_loadURLScript16" preference-editable="true"
+                  preference="loadURLScript16" onsynctopreference="return writeLoadURLScriptPreference(16);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript17"></vbox>
+                <vbox flex="1" id="gr_loadURLScript17" preference-editable="true"
+                  preference="loadURLScript17" onsynctopreference="return writeLoadURLScriptPreference(17);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript18"></vbox>
+                <vbox flex="1" id="gr_loadURLScript18" preference-editable="true"
+                  preference="loadURLScript18" onsynctopreference="return writeLoadURLScriptPreference(18);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript19"></vbox>
+                <vbox flex="1" id="gr_loadURLScript19" preference-editable="true"
+                  preference="loadURLScript19" onsynctopreference="return writeLoadURLScriptPreference(19);"></vbox>
                 <separator />
                 <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript20"></vbox>
+                <vbox flex="1" id="gr_loadURLScript20" preference-editable="true"
+                  preference="loadURLScript20" onsynctopreference="return writeLoadURLScriptPreference(20);"></vbox>
               </vbox>
             </vbox>
           </tabpanel>
@@ -1056,7 +1096,7 @@
         
         var textbox = document.createElement("textbox");
         textbox.setAttribute("id", "loadURLScript_name" + i);
-        textbox.setAttribute("onchange", "updateOtherLabels(" + (loadURLScriptIndex+i-1) + ", this.value);");
+        textbox.setAttribute("onchange", "updateOtherLabels(" + (loadURLScriptIndex+i-1) + ", this.value); fireChangeEventOnLoadURLScript(" + i + ");");
         textbox.setAttribute("size", "21");
         textbox.setAttribute("maxlength", "20");
         hbox.appendChild(textbox);
@@ -1064,7 +1104,7 @@
         var radiogroup = document.createElement("radiogroup");
         radiogroup.setAttribute("id", "loadURLScript_type" + i);
         radiogroup.setAttribute("orient", "horizontal");
-        radiogroup.setAttribute("oncommand", "updateUI();");
+        radiogroup.setAttribute("oncommand", "updateUI(); fireChangeEventOnLoadURLScript(" + i + ");");
         hbox.appendChild(radiogroup);
         
         var radio = document.createElement("radio");
@@ -1083,7 +1123,7 @@
         textbox = document.createElement("textbox");
         textbox.setAttribute("id", "loadURLScript_host" + i);
         textbox.setAttribute("size", "30");
-        textbox.setAttribute("onchange", "if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+");");
+        textbox.setAttribute("onchange", "if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+"); fireChangeEventOnLoadURLScript(" + i + ");");
         stack.appendChild(textbox);
         
         textbox = document.createElement("textbox");
@@ -1091,6 +1131,7 @@
         textbox.setAttribute("size", "30");
         textbox.setAttribute("multiline", "true");
         textbox.setAttribute("rows", "6");
+        textbox.setAttribute("onchange", "fireChangeEventOnLoadURLScript(" + i + ");");
         stack.appendChild(textbox);
         
         separator = document.createElement("separator");
@@ -1104,19 +1145,21 @@
         var checkbox = document.createElement("checkbox");
         checkbox.setAttribute("id", "loadURLScript_faviconCheck" + i);
         checkbox.setAttribute("label", "&urlscript.icon;");
-        checkbox.setAttribute("oncommand", "if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI();");
+        checkbox.setAttribute("oncommand", "if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI(); fireChangeEventOnLoadURLScript(" + i + ");");
         hbox.appendChild(checkbox);
         
         checkbox = document.createElement("checkbox");
         checkbox.setAttribute("id", "loadURLScript_newIconCheck" + i);
         checkbox.setAttribute("label", "&changeIcon;");
-        checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI();");
+        checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI(); fireChangeEventOnLoadURLScript(" + i + ");");
         hbox.appendChild(checkbox);
         
         image = document.createElement("image");
         image.setAttribute("src", "chrome://easygestures/content/browse.png");
         image.setAttribute("onclick", "if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
         hbox.appendChild(image);
+        
+        readLoadURLScriptPreference(i);
       }
     }
     
@@ -1626,20 +1669,6 @@
         document.getElementById("runProgramFile_newIconCheck"+i).checked = (new Function ("return " + runProgramFile[5] ))(); // (new Function ("return " + data ))() replacing eval on data
       }
       
-      for (i=1; i<=20; i++) {
-        // loadURLScript 1 to 20
-        var loadURLScript = eG_prefs.getComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString).data.split("•");
-        document.getElementById("loadURLScript_name"+i).value = loadURLScript[0];
-        if ((new Function ("return " + loadURLScript[2] ))())
-          document.getElementById("loadURLScript_code"+i).value = loadURLScript[1]; // (new Function ("return " + data ))() replacing eval on data
-        else
-          document.getElementById("loadURLScript_host"+i).value = loadURLScript[1];
-        document.getElementById("loadURLScript_type"+i).selectedItem = document.getElementById( (new Function ("return " + loadURLScript[2] ))()?"Script"+i:"URL"+i); // (new Function ("return " + data ))() replacing eval on data
-        document.getElementById("loadURLScript_newIcon"+i).src = loadURLScript[3];
-        document.getElementById("loadURLScript_faviconCheck"+i).checked = (new Function ("return " + loadURLScript[4] ))(); // (new Function ("return " + data ))() replacing eval on  data
-        document.getElementById("loadURLScript_newIconCheck"+i).checked = (new Function ("return " + loadURLScript[5] ))(); // (new Function ("return " + data ))() replacing eval on data
-      }
-      
       updateUI();
       window.setCursor('auto');
       
@@ -1667,17 +1696,6 @@
         eG_prefs.setComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString, string);
       }
       
-      for (i=1; i<=20; i++) {
-        // loadURLScript 1 to 20
-        string.data = document.getElementById("loadURLScript_name"+i).value
-          + "•" + (document.getElementById("URL"+i).selected ? document.getElementById("loadURLScript_host"+i).value : document.getElementById("loadURLScript_code"+i).value)
-          + "•" + document.getElementById("Script"+i).selected
-          + "•" + document.getElementById("loadURLScript_newIcon"+i).src
-          + "•" + document.getElementById("loadURLScript_faviconCheck"+i).checked
-          + "•" + document.getElementById("loadURLScript_newIconCheck"+i).checked;
-        eG_prefs.setComplexValue("customizations.loadURLScript"+i, Components.interfaces.nsISupportsString, string);
-      }
-      
       /////////////////////////////////////////////////////
       // triggering observer to reset eGm object
       /////////////////////////////////////////////////////
@@ -1688,6 +1706,42 @@
       catch (ex) {
         eG_prefs.setBoolPref("stateChange.prefs", true);
       }
+    }
+    
+    function readLoadURLScriptPreference(number) {
+      var preference = document.getElementById("loadURLScript" + number);
+      var string = preference.value.split("•");
+
+      document.getElementById("loadURLScript_name" + number).value = string[0];
+      if ((new Function ("return " + string[2] ))()) {
+        document.getElementById("loadURLScript_code" + number).value = string[1];
+      }
+      else {
+        document.getElementById("loadURLScript_host" + number).value = string[1];
+      }
+      document.getElementById("loadURLScript_type" + number).selectedItem =
+        document.getElementById( (new Function ("return " + string[2] ))() ?
+          "Script" + number
+        : "URL" + number);
+      document.getElementById("loadURLScript_newIcon" + number).src = string[3];
+      document.getElementById("loadURLScript_faviconCheck" + number).checked =
+        (new Function ("return " + string[4] ))();
+      document.getElementById("loadURLScript_newIconCheck" + number).checked =
+        (new Function ("return " + string[5] ))();
+    }
+    
+    function writeLoadURLScriptPreference(number) {
+      var string = Components.classes["@mozilla.org/supports-string;1"]
+                             .createInstance(Components.interfaces.nsISupportsString);
+      string.data = document.getElementById("loadURLScript_name" + number).value
+        + "•" + (document.getElementById("URL" + number).selected ?
+                  document.getElementById("loadURLScript_host" + number).value
+                : document.getElementById("loadURLScript_code" + number).value)
+        + "•" + document.getElementById("Script" + number).selected
+        + "•" + document.getElementById("loadURLScript_newIcon" + number).src
+        + "•" + document.getElementById("loadURLScript_faviconCheck" + number).checked
+        + "•" + document.getElementById("loadURLScript_newIconCheck" + number).checked;
+        return string;
     }
     
     function setActionsPrefs() {
@@ -1742,6 +1796,11 @@
         textbox.value = 0;
         alert(eG_duplicateKeyMessage);
       }
+    }
+    
+    function fireChangeEventOnLoadURLScript(number) {
+      var element = document.getElementById("gr_loadURLScript" + number);
+      fireChangeEventOn(element);
     }
     
     function fireChangeEventOn(element) {
