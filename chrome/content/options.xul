@@ -1876,8 +1876,10 @@
         for (var sector=0; sector<10; sector++) {
           if (boxes[i].search("extra")!=-1 && sector>2 && sector<8)
             continue;
-          document.getElementById(boxes[i]+"Alt1Sector"+sector).disabled = document.getElementById(boxes[i]+"Alternative1").checked;
-          document.getElementById(boxes[i]+"Alt2Sector"+sector).disabled = document.getElementById(boxes[i]+"Alternative2").checked;
+          document.getElementById(boxes[i] + "Alt1Sector" + sector).disabled =
+            !document.getElementById(boxes[i] + "Alternative1Checkbox").checked;
+          document.getElementById(boxes[i] + "Alt2Sector" + sector).disabled =
+            !document.getElementById(boxes[i] + "Alternative2Checkbox").checked;
         }
       }
       
