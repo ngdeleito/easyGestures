@@ -1164,11 +1164,11 @@
     }
     
     function createActionsMenulistWithSectorID(sectorID) {
-      var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+      var hbox = document.createElement("hbox");
       hbox.setAttribute("pack", "center");
       
-      var menulist = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menulist");
       menulist.setAttribute("id", sectorID);
+      var menulist = document.createElement("menulist");
       menulist.setAttribute("editable", "false");
       menulist.setAttribute("width", "150");
       menulist.setAttribute("crop", "end");
@@ -1189,7 +1189,7 @@
       );
       
       for (var i=0; i &lt; boxes.length; i++) {
-        var box = document.getElementById("gr_"+boxes[i]);
+        var box = document.getElementById("gr_" + boxes[i]);
         
         // empty box if needed first
         if (box.hasChildNodes()) {
@@ -1199,7 +1199,7 @@
         }
         
         if (boxes[i].search("context") != -1) {
-          var label = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+          var label = document.createElement("label");
           label.setAttribute("value", contextCaption[boxes[i]]);
           label.setAttribute("style","font-weight: bold;");
           box.appendChild(label);
@@ -1209,12 +1209,12 @@
         box.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector0"));
         
         // sectors 9 and 1
-        var hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        var hbox = document.createElement("hbox");
         hbox.setAttribute("pack", "center");
         
         hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector9"));
         
-        var spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        var spacer = document.createElement("spacer");
         spacer.setAttribute("height", "0");
         spacer.setAttribute("width", "11px");
         hbox.appendChild(spacer);
@@ -1223,31 +1223,31 @@
         box.appendChild(hbox);
         
         // sectors 8,7 and 2,3
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
+        hbox = document.createElement("hbox");
         hbox.setAttribute("pack", "center");
         box.appendChild(hbox);
         
-        var vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        var vbox = document.createElement("vbox");
         vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
         vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector8"));
         
-        if (boxes[i].search("extra") == -1) {
           vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector7"));
+        if (!boxes[i].startsWith("extra")) {
         }
         
         ///////////////////////////////
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox = document.createElement("vbox");
         hbox.appendChild(vbox);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer = document.createElement("spacer");
         spacer.setAttribute("flex", "1");
         vbox.appendChild(spacer);
         
-        var image = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
+        var image = document.createElement("image");
         image.setAttribute("id", boxes[i]+"Image");
-        if (boxes[i].search("extra") == -1) {
+        if (!boxes[i].startsWith("extra")) {
           image.setAttribute("src", "mainMenu.png");
         }
         else {
@@ -1257,40 +1257,40 @@
         image.setAttribute("height", "41");
         vbox.appendChild(image);
         
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
+        spacer = document.createElement("spacer");
         spacer.setAttribute("flex", "1");
         vbox.appendChild(spacer);
         ///////////////////////////////
         
-        vbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "vbox");
+        vbox = document.createElement("vbox");
         vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
         vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector2"));
         
-        if (boxes[i].search("extra") == -1) {
           vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector3"));
+        if (!boxes[i].startsWith("extra")) {
         }
         
-        if (boxes[i].search("extra") != -1)
-          continue;
+        if (!boxes[i].startsWith("extra")) {
+          // sectors 6 and 4
+          hbox = document.createElement("hbox");
+          hbox.setAttribute("pack", "center");
+          
+          hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector6"));
+          
+          spacer = document.createElement("spacer");
+          spacer.setAttribute("height", "0");
+          spacer.setAttribute("width", "11px");
+          hbox.appendChild(spacer);
+          
+          hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector4"));
+          box.appendChild(hbox);
+          
+          // sector 5
+          box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector5"));
+        }
         
-        // sectors 6 and 4
-        hbox = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "hbox");
-        hbox.setAttribute("pack", "center");
-        
-        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector6"));
-        
-        spacer = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "spacer");
-        spacer.setAttribute("height", "0");
-        spacer.setAttribute("width", "11px");
-        hbox.appendChild(spacer);
-        
-        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector4"));
-        box.appendChild(hbox);
-        
-        // sector 5
-        box.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector5"));
       }
     }
   </script>
@@ -1399,18 +1399,18 @@
     }
     
     function createActionsPopupList() {
-      var popupNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menupopup");
+      var popupNode = document.createElement("menupopup");
       popupNode.setAttribute("maxheight", "500px");
       
       for (var i=0; i<eG_PopupLabels.length; i++) {
         if (i==1 || i==2 || i==14 || i==21 || i==27 || i==37 || i==71 || i==85) {
-          var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuseparator");
+          var itemNode = document.createElement("menuseparator");
           popupNode.appendChild(itemNode);
         }
         
-        var itemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "menuitem");
-        var imageNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "image");
-        var subItemNode = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "label");
+        var itemNode = document.createElement("menuitem");
+        var imageNode = document.createElement("image");
+        var subItemNode = document.createElement("label");
         
         itemNode.appendChild(imageNode);
         itemNode.appendChild(subItemNode);
@@ -1741,7 +1741,7 @@
         + "•" + document.getElementById("loadURLScript_newIcon" + number).src
         + "•" + document.getElementById("loadURLScript_faviconCheck" + number).checked
         + "•" + document.getElementById("loadURLScript_newIconCheck" + number).checked;
-        return string;
+      return string;
     }
     
     function setActionsPrefs() {
