@@ -333,10 +333,20 @@
     <preferences>
       <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />
       <preference id="mainAlternative2" name="easygestures.actions.mainAlternative2" type="bool" />
+      <preference id="mainActions" name="easygestures.actions.main" type="string" />
+      <preference id="mainAlt1Actions" name="easygestures.actions.mainAlt1" type="string" />
+      <preference id="mainAlt2Actions" name="easygestures.actions.mainAlt2" type="string" />
       <preference id="extraAlternative1" name="easygestures.actions.extraAlternative1" type="bool" />
       <preference id="extraAlternative2" name="easygestures.actions.extraAlternative2" type="bool" />
+      <preference id="extraActions" name="easygestures.actions.extra" type="string" />
+      <preference id="extraAlt1Actions" name="easygestures.actions.extraAlt1" type="string" />
+      <preference id="extraAlt2Actions" name="easygestures.actions.extraAlt2" type="string" />
       <preference id="contextImageFirst" name="easygestures.actions.contextImageFirst" type="bool" />
       <preference id="contextTextboxFirst" name="easygestures.actions.contextTextboxFirst" type="bool" />
+      <preference id="contextLinkActions" name="easygestures.actions.contextLink" type="string" />
+      <preference id="contextImageActions" name="easygestures.actions.contextImage" type="string" />
+      <preference id="contextSelectionActions" name="easygestures.actions.contextSelection" type="string" />
+      <preference id="contextTextboxActions" name="easygestures.actions.contextTextbox" type="string" />
     </preferences>
     <tabbox orient="vertical" flex="1" id="actionsTabboxes">
       <tabs>
@@ -384,16 +394,19 @@
               </tabs>
               <tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
                 <tabpanel>
-                  <vbox id="gr_main" flex="1"></vbox>
+                  <vbox id="gr_main" flex="1" preference-editable="true"
+                    preference="mainActions" onsynctopreference="return writeNormalActionsGroupPreference('main');"></vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox flex="1">
-                    <vbox id="gr_mainAlt1"></vbox>
+                    <vbox id="gr_mainAlt1" preference-editable="true"
+                      preference="mainAlt1Actions" onsynctopreference="return writeNormalActionsGroupPreference('mainAlt1');"></vbox>
                   </vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox flex="1">
-                    <vbox id="gr_mainAlt2"></vbox>
+                    <vbox id="gr_mainAlt2" preference-editable="true"
+                      preference="mainAlt2Actions" onsynctopreference="return writeNormalActionsGroupPreference('mainAlt2');"></vbox>
                   </vbox>
                 </tabpanel>
               </tabpanels>
@@ -436,16 +449,19 @@
               </tabs>
               <tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
                 <tabpanel>
-                  <vbox id="gr_extra" flex="1"></vbox>
+                  <vbox id="gr_extra" flex="1" preference-editable="true"
+                    preference="extraActions" onsynctopreference="return writeExtraActionsGroupPreference('extra');"></vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox flex="1">
-                    <vbox id="gr_extraAlt1"></vbox>
+                    <vbox id="gr_extraAlt1" preference-editable="true"
+                      preference="extraAlt1Actions" onsynctopreference="return writeExtraActionsGroupPreference('extraAlt1');"></vbox>
                   </vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox flex="1">
-                    <vbox id="gr_extraAlt2"></vbox>
+                    <vbox id="gr_extraAlt2" preference-editable="true"
+                      preference="extraAlt2Actions" onsynctopreference="return writeExtraActionsGroupPreference('extraAlt2');"></vbox>
                   </vbox>
                 </tabpanel>
               </tabpanels>
@@ -473,16 +489,20 @@
             </hbox>
             <separator />
             <menuseparator />
-            <vbox id="gr_contextLink"></vbox>
+            <vbox id="gr_contextLink" preference-editable="true"
+              preference="contextLinkActions" onsynctopreference="return writeNormalActionsGroupPreference('contextLink');"></vbox>
             <separator />
             <menuseparator />
-            <vbox id="gr_contextImage"></vbox>
+            <vbox id="gr_contextImage" preference-editable="true"
+              preference="contextImageActions" onsynctopreference="return writeNormalActionsGroupPreference('contextImage');"></vbox>
             <separator />
             <menuseparator />
-            <vbox id="gr_contextSelection"></vbox>
+            <vbox id="gr_contextSelection" preference-editable="true"
+              preference="contextSelectionActions" onsynctopreference="return writeNormalActionsGroupPreference('contextSelection');"></vbox>
             <separator />
             <menuseparator />
-            <vbox id="gr_contextTextbox"></vbox>
+            <vbox id="gr_contextTextbox" preference-editable="true"
+              preference="contextTextboxActions" onsynctopreference="return writeNormalActionsGroupPreference('contextTextbox');"></vbox>
           </vbox>
         </tabpanel>
       </tabpanels>
@@ -1163,20 +1183,19 @@
       }
     }
     
-    function createActionsMenulistWithSectorID(sectorID) {
+    function createActionsMenulistWithSectorID(name, sectorNumber) {
       var hbox = document.createElement("hbox");
       hbox.setAttribute("pack", "center");
       
-      menulist.setAttribute("id", sectorID);
       var menulist = document.createElement("menulist");
+      menulist.setAttribute("id", name + sectorNumber);
       menulist.setAttribute("editable", "false");
       menulist.setAttribute("width", "150");
       menulist.setAttribute("crop", "end");
       menulist.setAttribute("sizetopopup", "false");
       menulist.setAttribute("actionID", "");
-      menulist.setAttribute("onchange", "updateOtherLabels(this.getAttribute('actionID'), this.label)");
-      menulist.setAttribute("oncommand", "updateUI()");
-      menulist.setAttribute("onmousedown", "attachMenupopup(this)");
+      menulist.setAttribute("oncommand", "updateUI(); updateOtherLabels(this.getAttribute('actionID'), this.label); fireChangeEventOnActionsGroup('" + name + "');");
+      menulist.setAttribute("onmousedown", "attachMenupopup(this);");
 
       hbox.appendChild(menulist);
       return hbox;
@@ -1206,20 +1225,20 @@
         }
         
         // sector 0
-        box.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector0"));
+        box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector0"));
         
         // sectors 9 and 1
         var hbox = document.createElement("hbox");
         hbox.setAttribute("pack", "center");
         
-        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector9"));
+        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector9"));
         
         var spacer = document.createElement("spacer");
         spacer.setAttribute("height", "0");
         spacer.setAttribute("width", "11px");
         hbox.appendChild(spacer);
         
-        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector1"));
+        hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector1"));
         box.appendChild(hbox);
         
         // sectors 8,7 and 2,3
@@ -1231,10 +1250,10 @@
         vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
-        vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector8"));
+        vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector8"));
         
-          vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector7"));
         if (!boxes[i].startsWith("extra")) {
+          vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector7"));
         }
         
         ///////////////////////////////
@@ -1266,10 +1285,10 @@
         vbox.setAttribute("pack", "center");
         hbox.appendChild(vbox);
         
-        vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector2"));
+        vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector2"));
         
-          vbox.appendChild(createActionsMenulistWithSectorID(boxes[i] + "Sector3"));
         if (!boxes[i].startsWith("extra")) {
+          vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector3"));
         }
         
         if (!boxes[i].startsWith("extra")) {
@@ -1291,6 +1310,7 @@
           box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector5"));
         }
         
+        readActionsGroupPreference(boxes[i]);
       }
     }
   </script>
@@ -1415,7 +1435,7 @@
         itemNode.appendChild(imageNode);
         itemNode.appendChild(subItemNode);
         
-        itemNode.setAttribute("onclick", "actionClick(this," + i + "); updateUI();");
+        itemNode.setAttribute("oncommand", "actionClick(this," + i + "); updateUI();");
         itemNode.setAttribute("crop", "end");
         itemNode.setAttribute("label", eG_PopupLabels[i]);
         itemNode.style.paddingRight = "20px";
@@ -1656,8 +1676,6 @@
           updateLabelAndTextboxFor(menulist);
         });
       
-      initActionsBoxes();
-      
       for (var i=1; i<=10; i++) {
         // runProgramFile 1 to 10
         var runProgramFile = eG_prefs.getComplexValue("customizations.runProgramFile"+i, Components.interfaces.nsISupportsString).data.split("•");
@@ -1681,8 +1699,6 @@
     }
     
     function saveMenuSettings() {
-      setActionsPrefs();
-      
       var string = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
       
       for (var i=1; i<=10; i++) {
@@ -1706,6 +1722,45 @@
       catch (ex) {
         eG_prefs.setBoolPref("stateChange.prefs", true);
       }
+    }
+    
+    function readActionsGroupPreference(name) {
+      var preference = document.getElementById(name + "Actions");
+      var ids = preference.value.split("/");
+      
+      var indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      if (name.startsWith("extra")) {
+        indexes = [0, 1, 2, 8, 9];
+      }
+      
+      indexes.forEach(function (value, index, array) {
+        var element = document.getElementById(name + "Sector" + value);
+        element.setAttribute("actionID", ids[value]);
+        element.setAttribute("label", eG_PopupLabels[ids[value]]);
+      });
+    }
+    
+    function writeNormalActionsGroupPreference(name) {
+      var result = [];
+      
+      [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (value, index, array) {
+        result.push(document.getElementById(name + "Sector" + value).getAttribute("actionID"));
+      });
+      return result.join("/");
+    }
+    
+    function writeExtraActionsGroupPreference(name) {
+      var result = [];
+      
+      [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (value, index, array) {
+        if (value >= 3 && value <= 7) {
+          result.push("0");
+        }
+        else {
+          result.push(document.getElementById(name + "Sector" + value).getAttribute("actionID"));
+        }
+      });
+      return result.join("/");
     }
     
     function readLoadURLScriptPreference(number) {
@@ -1744,49 +1799,6 @@
       return string;
     }
     
-    function setActionsPrefs() {
-      // setting actions IDs and labels
-      var groupboxes = new Array(
-        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
-        "contextLink", "contextImage", "contextSelection", "contextTextbox"
-      );
-      
-      // setting IDs
-      for (var i=0; i<groupboxes.length; i++) {
-        var string = "";
-        for (var j=0; j<=9; j++) {
-          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7 )
-            string += "0";
-          else
-            string += document.getElementById(groupboxes[i]+"Sector"+j).getAttribute("actionID");
-          string += (j<9?"/":"");
-        }
-        eG_prefs.setCharPref("actions."+groupboxes[i], string);
-      }
-    }
-    
-    function initActionsBoxes() {
-      // initializing actions IDs and labels
-      var groupboxes = new Array(
-        "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
-        "contextLink", "contextImage", "contextSelection", "contextTextbox"
-      );
-      
-      // initializing IDs
-      for (var i=0; i<groupboxes.length; i++) {
-        var ids = eG_prefs.getCharPref("actions."+groupboxes[i]).split("/");
-        for (var j=0; j<=9; j++) {
-          if (groupboxes[i].search("extra")!=-1 && j>=3 && j<=7)
-            continue;
-          else {
-            var element = document.getElementById(groupboxes[i]+"Sector"+j);
-            element.setAttribute("actionID", ids[j]);
-            element.setAttribute("label", eG_PopupLabels[ids[j]]);
-          }
-        }
-      }
-    }
-    
     function resetOnDuplicatedKeys(menulist, textbox) {
       var contextKeyCode = document.getElementById("customContextKeyCode").value;
       var supprKeyCode = document.getElementById("customSupprKeyCode").value;
@@ -1796,6 +1808,11 @@
         textbox.value = 0;
         alert(eG_duplicateKeyMessage);
       }
+    }
+    
+    function fireChangeEventOnActionsGroup(name) {
+      var element = document.getElementById("gr_" + name);
+      fireChangeEventOn(element);
     }
     
     function fireChangeEventOnLoadURLScript(number) {
