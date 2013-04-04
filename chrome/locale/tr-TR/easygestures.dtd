@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "Duruma Bağlı Eylemler">
 
 <!ENTITY customizations.loadURLScript "URL/Script Yükle">
-<!ENTITY customizations.runProgramFile "Program Dosyasını Çalıştır">
 <!ENTITY customizations.misc "Çeşitli">
 
 <!ENTITY about.version "Sürüm">
@@ -180,16 +179,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Ana Sayfa">
 <!ENTITY func.dailyReadings "Günlük Okumalar">
 <!ENTITY func.searchWeb "Web&apos;de Ara">
-<!ENTITY func.runProgramFile1 "1. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile2 "2. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile3 "3. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile4 "4. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile5 "5. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile6 "6. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile7 "7. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile8 "8. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile9 "9. Program Dosyasını Çalıştır">
-<!ENTITY func.runProgramFile10 "10. Program Dosyasını Çalıştır">
 
 <!ENTITY func.loadURLScript1 "1. URL/Script yükle">
 <!ENTITY func.loadURLScript2 "2. URL/Script yükle">
@@ -246,14 +235,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY closeTab "&quot;Sekmeyi Kapat&quot; Eylemini Kişiselleştir">
 <!ENTITY closeTab.closeBrowserOnLastTab "Son sekme kapatılınca tarayıcıyı kapat">
-
-<!ENTITY extern "&quot;Program Dosyasını Çalıştır&quot; Eylemini Kişiselleştir">
-<!ENTITY extern.tab "Program Dosyası">
-<!ENTITY extern.name "Araç İpucu">
-<!ENTITY extern.path "Dizin">
-<!ENTITY extern.arguments "Tartışmalar">
-<!ENTITY extern.browse "Gözat...">
-<!ENTITY extern.icon "Uygulama Sİmgesini Kullan">
 
 <!ENTITY urlscript "&quot;URL/Script Yükle&quot; Eylemini Kişiselleştir">
 <!ENTITY urlscript.url "URL">

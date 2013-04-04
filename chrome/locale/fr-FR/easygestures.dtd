@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "Actions contextuelles">
 
 <!ENTITY customizations.loadURLScript "Charger URL/Script">
-<!ENTITY customizations.runProgramFile "Exécuter programme">
 <!ENTITY customizations.misc "Divers">
 
 <!ENTITY about.version "Version">
@@ -179,16 +178,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Page de démarrage">
 <!ENTITY func.dailyReadings "Lectures quotidiennes">
 <!ENTITY func.searchWeb "Rechercher sur le Web">
-<!ENTITY func.runProgramFile1 "Exécuter programme 1">
-<!ENTITY func.runProgramFile2 "Exécuter programme 2">
-<!ENTITY func.runProgramFile3 "Exécuter programme 3">
-<!ENTITY func.runProgramFile4 "Exécuter programme 4">
-<!ENTITY func.runProgramFile5 "Exécuter programme 5">
-<!ENTITY func.runProgramFile6 "Exécuter programme 6">
-<!ENTITY func.runProgramFile7 "Exécuter programme 7">
-<!ENTITY func.runProgramFile8 "Exécuter programme 8">
-<!ENTITY func.runProgramFile9 "Exécuter programme 9">
-<!ENTITY func.runProgramFile10 "Exécuter programme 10">
 
 <!ENTITY func.loadURLScript1 "Charger URL/Script 1">
 <!ENTITY func.loadURLScript2 "Charger URL/Script 2">
@@ -246,14 +235,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
 
-<!ENTITY extern "Personnaliser action 'Exécuter programme' ">
-<!ENTITY extern.tab "Programme">
-<!ENTITY extern.name "Infobulle">
-<!ENTITY extern.path "Chemin">
-<!ENTITY extern.arguments "Arguments">
-<!ENTITY extern.browse "Parcourir...">
-<!ENTITY extern.icon "Utiliser icône de l'application">
-
 <!ENTITY urlscript "Personnaliser action 'Charger URL/Script' ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">
@@ -285,7 +266,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé. |Changez bouton souris dans Options/Comportement">
 <!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL/Script'  et en les ajoutant ensuite dans les plans du menu circulaire. |Personnalisez dans Options/Personnalisations/Charger URL/Script">
 <!ENTITY tip6 "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire. |Ajoutez ou retirez actions dans Options/Actions">
-<!ENTITY tip7 "Vous pouvez lancer des applications externes et exécuter du code javascript avec les actions 'Exécuter programme' et 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension. |Personnalisez dans Options/Personnalisations/Exécuter programme">
+<!ENTITY tip7 "Vous pouvez exécuter du code Javascript avec les actions 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.">
 <!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet et affichera une marque rouge sur la page à la suite du lien.">
 <!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active. |Changez comportement dans Options/Comportement">
 <!ENTITY tip10 "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">

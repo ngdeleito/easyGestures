@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "上下文手势">
 
 <!ENTITY customizations.loadURLScript "载入网址/脚本">
-<!ENTITY customizations.runProgramFile "运行程序文件">
 <!ENTITY customizations.misc "其他">
 
 <!ENTITY about.version "版本">
@@ -180,16 +179,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "首页">
 <!ENTITY func.dailyReadings "每天读">
 <!ENTITY func.searchWeb "搜索网络">
-<!ENTITY func.runProgramFile1 "运行程序文件 1">
-<!ENTITY func.runProgramFile2 "运行程序文件 2">
-<!ENTITY func.runProgramFile3 "运行程序文件 3">
-<!ENTITY func.runProgramFile4 "运行程序文件 4">
-<!ENTITY func.runProgramFile5 "运行程序文件 5">
-<!ENTITY func.runProgramFile6 "运行程序文件 6">
-<!ENTITY func.runProgramFile7 "运行程序文件 7">
-<!ENTITY func.runProgramFile8 "运行程序文件 8">
-<!ENTITY func.runProgramFile9 "运行程序文件 9">
-<!ENTITY func.runProgramFile10 "运行程序文件 10">
 
 <!ENTITY func.loadURLScript1 "载入网址/脚本 1">
 <!ENTITY func.loadURLScript2 "载入网址/脚本 2">
@@ -247,14 +236,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "自定义“关闭标签页”手势">
 <!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
 
-<!ENTITY extern "自定义“运行程序文件”手势">
-<!ENTITY extern.tab "程序文件">
-<!ENTITY extern.name "工具提示">
-<!ENTITY extern.path "路径">
-<!ENTITY extern.arguments "参数">
-<!ENTITY extern.browse "浏览...">
-<!ENTITY extern.icon "使用应用程序图标">
-
 <!ENTITY urlscript "自定义“载入网址/脚本”手势">
 <!ENTITY urlscript.url "网址">
 <!ENTITY urlscript.script "脚本">
@@ -286,7 +267,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
 <!ENTITY tip5 "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。|自定义在 选项/自定义/载入网址/脚本">
 <!ENTITY tip6 "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。|添加或删除动作在 选项/动作">
-<!ENTITY tip7 "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。|自定义在 选项/自定义/运行程序文件">
+<!ENTITY tip7 "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。">
 <!ENTITY tip8 "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
 <!ENTITY tip9 "你可以在圆饼菜单打开时点击“Ctrl”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

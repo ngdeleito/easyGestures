@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "Contextual Actions">
 
 <!ENTITY customizations.loadURLScript "Load URL/Script">
-<!ENTITY customizations.runProgramFile "Run Program File">
 <!ENTITY customizations.misc "Miscellaneous">
 
 <!ENTITY about.version "Version">
@@ -181,17 +180,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.dailyReadings "Daily Readings">
 <!ENTITY func.searchWeb "Search Web">
 
-<!ENTITY func.runProgramFile1 "Run Program File 1">
-<!ENTITY func.runProgramFile2 "Run Program File 2">
-<!ENTITY func.runProgramFile3 "Run Program File 3">
-<!ENTITY func.runProgramFile4 "Run Program File 4">
-<!ENTITY func.runProgramFile5 "Run Program File 5">
-<!ENTITY func.runProgramFile6 "Run Program File 6">
-<!ENTITY func.runProgramFile7 "Run Program File 7">
-<!ENTITY func.runProgramFile8 "Run Program File 8">
-<!ENTITY func.runProgramFile9 "Run Program File 9">
-<!ENTITY func.runProgramFile10 "Run Program File 10">
-
 <!ENTITY func.loadURLScript1 "Load URL/Script 1">
 <!ENTITY func.loadURLScript2 "Load URL/Script 2">
 <!ENTITY func.loadURLScript3 "Load URL/Script 3">
@@ -248,14 +236,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Customize 'Close Tab' Action ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Close browser when last tab is closed">
 
-<!ENTITY extern "Customize 'Run Program File' Actions ">
-<!ENTITY extern.tab "Program File">
-<!ENTITY extern.name "Tooltip">
-<!ENTITY extern.path "Path">
-<!ENTITY extern.arguments "Arguments">
-<!ENTITY extern.browse "Browse...">
-<!ENTITY extern.icon "Use Application Icon">
-
 <!ENTITY urlscript "Customize 'Load URL/Script' Actions ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">
@@ -287,7 +267,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed. |Change mouse button in Options/Behavior">
 <!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL/Script' actions then adding them in the pie menu layouts. |Customize in Options/Customizations/Load URL/Script">
 <!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in Options/Actions">
-<!ENTITY tip7 "You can launch external applications and execute javascript code with 'Run Program File' and 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension. |Customize in Options/Customizations/Run Program File">
+<!ENTITY tip7 "You can execute Javascript code with the 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension.">
 <!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab and display a red tag on the page after the link.">
 <!ENTITY tip9 "You can activate context sensitivity by pressing 'Ctrl' key when opening pie menu. You can also turn context sensitivity always on. |Change behavior in Options/Behavior">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

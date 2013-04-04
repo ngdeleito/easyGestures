@@ -119,11 +119,6 @@ function eG_setPrefs(locale) {
   
   var string = Components.classes["@mozilla.org/supports-string;1"]
                          .createInstance(Components.interfaces.nsISupportsString);
-  for (i=1; i<=10; i++) {
-    string.data = "••••false•false"; // name, path, arg, newIconPath, appIcon and newIcon: '•' is the separator
-    eG_prefsObs.prefs.setComplexValue("customizations.runProgramFile" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
-  }
-  
   for (i=1; i<=20; i++) {
     string.data = "••false••false•false"; // name, text, isScript, newIconPath, favicon, newIcon: '•' is the separator
     eG_prefsObs.prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters

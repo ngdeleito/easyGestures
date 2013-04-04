@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "Ações Contextuais">
 
 <!ENTITY customizations.loadURLScript "Carregar URL/Script">
-<!ENTITY customizations.runProgramFile "Executar Arquivo de Programa">
 <!ENTITY customizations.misc "Miscelânea">
 
 <!ENTITY about.version "Versão">
@@ -179,16 +178,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Página Inicial">
 <!ENTITY func.dailyReadings "Leituras Diárias">
 <!ENTITY func.searchWeb "Buscar na Web">
-<!ENTITY func.runProgramFile1 "Executar Arquivo de Programa 1">
-<!ENTITY func.runProgramFile2 "Executar Arquivo de Programa 2">
-<!ENTITY func.runProgramFile3 "Executar Arquivo de Programa 3">
-<!ENTITY func.runProgramFile4 "Executar Arquivo de Programa 4">
-<!ENTITY func.runProgramFile5 "Executar Arquivo de Programa 5">
-<!ENTITY func.runProgramFile6 "Executar Arquivo de Programa 6">
-<!ENTITY func.runProgramFile7 "Executar Arquivo de Programa 7">
-<!ENTITY func.runProgramFile8 "Executar Arquivo de Programa 8">
-<!ENTITY func.runProgramFile9 "Executar Arquivo de Programa 9">
-<!ENTITY func.runProgramFile10 "Executar Arquivo de Programa 10">
 
 <!ENTITY func.loadURLScript1 "Carregar URL/Script 1">
 <!ENTITY func.loadURLScript2 "Carregar URL/Script 2">
@@ -246,14 +235,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Personalizar Ação 'Fechar Aba' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fechar navegador quando última aba for fechada">
 
-<!ENTITY extern "Personalizar Ação 'Executar Arquivo de Programa' ">
-<!ENTITY extern.tab "Arquivo de Programa">
-<!ENTITY extern.name "Dica">
-<!ENTITY extern.path "Caminho">
-<!ENTITY extern.arguments "Argumentos">
-<!ENTITY extern.browse "Navegar...">
-<!ENTITY extern.icon "Usar Ícone da Aplicação">
-
 <!ENTITY urlscript "Personalizar Ação 'Carregar URL/Script' ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">
@@ -285,7 +266,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado. |Altere o botão do mouse em Opções/Comportamento">
 <!ENTITY tip5 "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL/Script' e então, adicionando-os nos leiautes do menu de torta. |Personalize em Opções/Personalizações/Carregar URL/Script">
 <!ENTITY tip6 "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em Opções/Ações">
-<!ENTITY tip7 "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar URL/Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão. |Personalize em Opções/Personalizações/Executar Arquivo de Programa">
+<!ENTITY tip7 "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar URL/Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão.">
 <!ENTITY tip8 "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba e mostrará uma marca vermelha na página após o link.">
 <!ENTITY tip9 "Você pode ativar senbilidade de contexto pressionando a tecla 'Ctrl' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada. |Altere o comportamento em Opções/Comportamento">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

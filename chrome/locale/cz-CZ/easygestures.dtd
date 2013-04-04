@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "Kontextové akce">
 
 <!ENTITY customizations.loadURLScript "Načíst URL/skript">
-<!ENTITY customizations.runProgramFile "Spustit program">
 <!ENTITY customizations.misc "Různé">
 
 <!ENTITY about.version "Verze">
@@ -180,16 +179,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Domovská stránka">
 <!ENTITY func.dailyReadings "Každodenní čtení">
 <!ENTITY func.searchWeb "Hledat na webu">
-<!ENTITY func.runProgramFile1 "Spustit program 1">
-<!ENTITY func.runProgramFile2 "Spustit program 2">
-<!ENTITY func.runProgramFile3 "Spustit program 3">
-<!ENTITY func.runProgramFile4 "Spustit program 4">
-<!ENTITY func.runProgramFile5 "Spustit program 5">
-<!ENTITY func.runProgramFile6 "Spustit program 6">
-<!ENTITY func.runProgramFile7 "Spustit program 7">
-<!ENTITY func.runProgramFile8 "Spustit program 8">
-<!ENTITY func.runProgramFile9 "Spustit program 9">
-<!ENTITY func.runProgramFile10 "Spustit program 10">
 
 <!ENTITY func.loadURLScript1 "Načíst URL/Skript 1">
 <!ENTITY func.loadURLScript2 "Načíst URL/Skript 2">
@@ -247,14 +236,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
 
-<!ENTITY extern "Přizpůsobit akce &apos;Spustit program&apos;">
-<!ENTITY extern.tab "Program">
-<!ENTITY extern.name "Popis">
-<!ENTITY extern.path "Cesta">
-<!ENTITY extern.arguments "Argumenty">
-<!ENTITY extern.browse "Procházet...">
-<!ENTITY extern.icon "Použít ikonu aplikace">
-
 <!ENTITY urlscript "Přizpůsobit akce &apos;Načíst URL/Skript&apos;">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Skript">
@@ -286,7 +267,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "Stiskněte pravé tlačítko myši, pokud je zobrazená nabídka a zobrazí se alternativní akce. Můžete přepínat mezi 3 různými plně upravitelnými rozloženími akcí. Předdefinované tlačítko si můžete změnit. Tlačítko myši změníte v Možnosti/Chování">
 <!ENTITY tip5 "Můžete použít easyGetures k otevření vašich oblíbených položek upravením akce &apos;Načíst URL/Skript&apos; a přidáním do rozložení v kruhové nabídce. Přizpůsobíte si to v Možnosti/Přizpůsobení/Načíst URL/Skript">
 <!ENTITY tip6 "Můžete si přizpůsobit kruhovou nabídku výběrem z mnoha předdefinovaných akcí. Statistika použití Vám pomůže optimalizovat kruhovou nabídku. Akce přidáte anebo odstraníte v Možnosti/Akce">
-<!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst URL/Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku. Přizpůsobíte to v Možnosti/Přizpůsobení/Spustit program">
+<!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst URL/Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku.">
 <!ENTITY tip8 "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
 <!ENTITY tip9 "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Ctrl&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -23,7 +23,6 @@
 <!ENTITY actions.regular "Normale Aktionen">
 <!ENTITY actions.contextual "Kontextabhängige Aktionen">
 <!ENTITY customizations.loadURLScript "Adresse/Skript laden">
-<!ENTITY customizations.runProgramFile "Anwendung starten">
 <!ENTITY customizations.misc "Verschiedenes">
 <!ENTITY about.version "Version">
 <!ENTITY about.languageInfo "Sprache">
@@ -144,16 +143,6 @@
 <!ENTITY func.homepage "Startseite">
 <!ENTITY func.dailyReadings "Tägliche Lektüre">
 <!ENTITY func.searchWeb "Web-Suche">
-<!ENTITY func.runProgramFile1 "Anwendung 1 starten">
-<!ENTITY func.runProgramFile2 "Anwendung 2 starten">
-<!ENTITY func.runProgramFile3 "Anwendung 3 starten">
-<!ENTITY func.runProgramFile4 "Anwendung 4 starten">
-<!ENTITY func.runProgramFile5 "Anwendung 5 starten">
-<!ENTITY func.runProgramFile6 "Anwendung 6 starten">
-<!ENTITY func.runProgramFile7 "Anwendung 7 starten">
-<!ENTITY func.runProgramFile8 "Anwendung 8 starten">
-<!ENTITY func.runProgramFile9 "Anwendung 9 starten">
-<!ENTITY func.runProgramFile10 "Anwendung 10 starten">
 <!ENTITY func.loadURLScript1 "Adresse/Skript 1 laden">
 <!ENTITY func.loadURLScript2 "Adresse/Skript 2 laden">
 <!ENTITY func.loadURLScript3 "Adresse/Skript 3 laden">
@@ -205,13 +194,6 @@
 <!ENTITY input.infoPlaceHolder "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
 <!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
 <!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
-<!ENTITY extern "Aktion &apos;Anwendung starten&apos; anpassen">
-<!ENTITY extern.tab "Anwendung">
-<!ENTITY extern.name "Tooltip">
-<!ENTITY extern.path "Pfad">
-<!ENTITY extern.arguments "Parameter">
-<!ENTITY extern.browse "Durchsuchen...">
-<!ENTITY extern.icon "Anwendungssymbol verwenden">
 <!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
 <!ENTITY urlscript.url "Adresse">
 <!ENTITY urlscript.script "Skript">
@@ -239,7 +221,7 @@
 <!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse/Skript laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen. |Aktion unter Einstellungen/Anpassungen/&apos;Adresse/Skript laden&apos; anpassen.">
 <!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren. |Aktionen unter Einstellungen/&apos;Aktionen&apos; hinzufügen oder entfernen">
-<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden. |Aktionen unter Einstellungen/Anpassungen/&apos;Anwendung starten&apos; anpassen.">
+<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.">
 <!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab und fügt auf der Seite eine rote Kennzeichnung hinter dem Link ein.">
 <!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren. |Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

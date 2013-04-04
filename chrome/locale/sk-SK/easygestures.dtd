@@ -23,7 +23,6 @@
 <!ENTITY actions.regular "Pravidelné akcie">
 <!ENTITY actions.contextual "Kontextové akcie">
 <!ENTITY customizations.loadURLScript "Načítať URL/skript">
-<!ENTITY customizations.runProgramFile "Spustiť program">
 <!ENTITY customizations.misc "Rôzne">
 <!ENTITY about.version "Verzia">
 <!ENTITY about.languageInfo "Jazyk">
@@ -144,16 +143,6 @@
 <!ENTITY func.homepage "Domovská stránka">
 <!ENTITY func.dailyReadings "Každodenné čítanie">
 <!ENTITY func.searchWeb "Hľadať na webe">
-<!ENTITY func.runProgramFile1 "Spustiť program 1">
-<!ENTITY func.runProgramFile2 "Spustiť program 2">
-<!ENTITY func.runProgramFile3 "Spustiť program 3">
-<!ENTITY func.runProgramFile4 "Spustiť program 4">
-<!ENTITY func.runProgramFile5 "Spustiť program 5">
-<!ENTITY func.runProgramFile6 "Spustiť program 6">
-<!ENTITY func.runProgramFile7 "Spustiť program 7">
-<!ENTITY func.runProgramFile8 "Spustiť program 8">
-<!ENTITY func.runProgramFile9 "Spustiť program 9">
-<!ENTITY func.runProgramFile10 "Spustiť program 10">
 <!ENTITY func.loadURLScript1 "Načítať URL/Skript 1">
 <!ENTITY func.loadURLScript2 "Načítať URL/Skript 2">
 <!ENTITY func.loadURLScript3 "Načítať URL/Skript 3">
@@ -205,13 +194,6 @@
 <!ENTITY input.infoPlaceHolder "Náhrady reťazcov: &#37;s (výber) a &#37;u (aktuálna URL).">
 <!ENTITY closeTab "Prispôsobiť akciu &apos;Zavrieť kartu&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavrieť prehliadač, keď je zavretá posledná karta">
-<!ENTITY extern "Prispôsobiť akcie &apos;Spustiť program&apos;">
-<!ENTITY extern.tab "Program">
-<!ENTITY extern.name "Popis">
-<!ENTITY extern.path "Cesta">
-<!ENTITY extern.arguments "Argumenty">
-<!ENTITY extern.browse "Prehľadávať...">
-<!ENTITY extern.icon "Použiť ikonu aplikácie">
 <!ENTITY urlscript "Prispôsobiť akcie &apos;Načítať URL/Skript&apos;">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Skript">
@@ -239,7 +221,7 @@
 <!ENTITY tip4 "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v Možnosti/Správanie">
 <!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL/Skript&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v Možnosti/Prispôsobenie/Načítať URL/Skript">
 <!ENTITY tip6 "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v Možnosti/Akcie">
-<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať URL/Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku. Prispôsobíte si to v Možnosti/Prispôsobenie/Spustiť program">
+<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať URL/Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.">
 <!ENTITY tip8 "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
 <!ENTITY tip9 "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v Možnosti/Správanie">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

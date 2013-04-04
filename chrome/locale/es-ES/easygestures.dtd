@@ -24,7 +24,6 @@
 <!ENTITY actions.regular "Acciones regulares">
 <!ENTITY actions.contextual "Acciones contextuales">
 <!ENTITY customizations.loadURLScript "Cargar dirección/Script">
-<!ENTITY customizations.runProgramFile "Ejecutar programa">
 <!ENTITY customizations.misc "Varios">
 <!ENTITY about.version "Versión">
 <!ENTITY about.languageInfo "Idioma">
@@ -145,16 +144,6 @@
 <!ENTITY func.homepage "Página de inicio">
 <!ENTITY func.dailyReadings "Lecturas diarias">
 <!ENTITY func.searchWeb "Buscar en la Web">
-<!ENTITY func.runProgramFile1 "Ejecutar programa 1">
-<!ENTITY func.runProgramFile2 "Ejecutar programa 2">
-<!ENTITY func.runProgramFile3 "Ejecutar programa 3">
-<!ENTITY func.runProgramFile4 "Ejecutar programa 4">
-<!ENTITY func.runProgramFile5 "Ejecutar programa 5">
-<!ENTITY func.runProgramFile6 "Ejecutar programa 6">
-<!ENTITY func.runProgramFile7 "Ejecutar programa 7">
-<!ENTITY func.runProgramFile8 "Ejecutar programa 8">
-<!ENTITY func.runProgramFile9 "Ejecutar programa 9">
-<!ENTITY func.runProgramFile10 "Ejecutar programa 10">
 <!ENTITY func.loadURLScript1 "Dirección/Script 1">
 <!ENTITY func.loadURLScript2 "Dirección/Script 2">
 <!ENTITY func.loadURLScript3 "Dirección/Script 3">
@@ -206,13 +195,6 @@
 <!ENTITY input.infoPlaceHolder "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
 <!ENTITY closeTab "Personalizar acción &apos;Cerrar pestaña&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Cerrar el navegador al cerrar la última pestaña">
-<!ENTITY extern "Personalizar acción &apos;Ejecutar programa&apos;">
-<!ENTITY extern.tab "Programa">
-<!ENTITY extern.name "Descripción">
-<!ENTITY extern.path "Ruta">
-<!ENTITY extern.arguments "Parámetros">
-<!ENTITY extern.browse "Buscar...">
-<!ENTITY extern.icon "Usar icono de la aplicación">
 <!ENTITY urlscript "Personalizar acción &apos;Cargar dirección/Script&apos;">
 <!ENTITY urlscript.url "Dirección">
 <!ENTITY urlscript.script "Script">
@@ -240,7 +222,7 @@
 <!ENTITY tip4 "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse. |Cambie los botones del ratón en Opciones/Comportamiento">
 <!ENTITY tip5 "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección/Script&apos; y añadiéndolas en el menú circular. |Personalizar en Opciones/Personalizar/Cargar dirección/Script">
 <!ENTITY tip6 "Puede personalizar todas las entradas del menú circular usando acciones pre-diseñadas. Las estadísticas de uso pueden ayudar a optimizar el menú circular.|Añada o elimine acciones desde Opciones/Acciones">
-<!ENTITY tip7 "Puede ejecutar aplicaciones externas y código javascript usando las acciones &apos;Ejecutar programa&apos; y &apos;Cargar Dirección/Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión. |Personalizar en Opciones/Personalizar/Ejecutar programa">
+<!ENTITY tip7 "Puede ejecutar código Javascript usando las acciones &apos;Cargar Dirección/Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión.">
 <!ENTITY tip8 "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña, y mostrará una marca roja en la página tras el enlace.">
 <!ENTITY tip9 "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto. |Cambie el comportamiento en Opciones/Comportamiento">
 <!ENTITY tip10 "Puede realizar una búsqueda con uno de sus motores de búsqueda con la acción 'Buscar en la Web'. Si hay texto seleccionado, la selección se copiará en el campo de búsquedas. Pulse 'Enter' para realizar la búsqueda.">

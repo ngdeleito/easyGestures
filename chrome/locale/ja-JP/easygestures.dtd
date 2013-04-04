@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "状況依存アクション">
 
 <!ENTITY customizations.loadURLScript "URL/スクリプトの読み込み">
-<!ENTITY customizations.runProgramFile "プログラムの実行">
 <!ENTITY customizations.misc "その他">
 
 <!ENTITY about.version "バージョン">
@@ -179,16 +178,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "ホームページ">
 <!ENTITY func.dailyReadings "デイリーリーディング">
 <!ENTITY func.searchWeb "web を検索">
-<!ENTITY func.runProgramFile1 "プログラム 1 を実行">
-<!ENTITY func.runProgramFile2 "プログラム 2 を実行">
-<!ENTITY func.runProgramFile3 "プログラム 3 を実行">
-<!ENTITY func.runProgramFile4 "プログラム 4 を実行">
-<!ENTITY func.runProgramFile5 "プログラム 5 を実行">
-<!ENTITY func.runProgramFile6 "プログラム 6 を実行">
-<!ENTITY func.runProgramFile7 "プログラム 7 を実行">
-<!ENTITY func.runProgramFile8 "プログラム 8 を実行">
-<!ENTITY func.runProgramFile9 "プログラム 9 を実行">
-<!ENTITY func.runProgramFile10 "プログラム 10 を実行">
 
 <!ENTITY func.loadURLScript1 "URL/スクリプト 1 の読み込み">
 <!ENTITY func.loadURLScript2 "URL/スクリプト 2 の読み込み">
@@ -246,14 +235,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "'タブを閉じる'アクションの設定">
 <!ENTITY closeTab.closeBrowserOnLastTab "最後のタブを閉じたらブラウザも閉じる">
 
-<!ENTITY extern "'プログラムの実行'アクションの設定">
-<!ENTITY extern.tab "プログラム">
-<!ENTITY extern.name "ツールチップでの表示名">
-<!ENTITY extern.path "パス">
-<!ENTITY extern.arguments "引数">
-<!ENTITY extern.browse "参照...">
-<!ENTITY extern.icon "プログラムのアイコンを使用する">
-
 <!ENTITY urlscript "'URL/スクリプトの読み込み'アクションの設定">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "スクリプト">
@@ -285,7 +266,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "初期設定では、パイメニューの表示中に右クリックすることで、3つの自由に設定可能な代替メニューを切り替えるようになっています。使うボタンは変更することができます。|マウスボタンの設定を変更する Options/Behavior">
 <!ENTITY tip5 "'URL/スクリプトの読み込み' アクションに URL を設定してパイメニューに配置すると、easyGestures からお好きなブックマークを開くこともできます。|設定を変更する Options/Customizations/Load URL/Script">
 <!ENTITY tip6 "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。|アクションを入れ替える Options/Actions">
-<!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。|設定を変更する Options/Customizations/Run Program File">
+<!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。">
 <!ENTITY tip8 "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
 <!ENTITY tip9 "パイメニューを開く時に Ctrl キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する Options/Behavior">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -22,7 +22,6 @@
 <!ENTITY actions.regular "Akcje standardowe">
 <!ENTITY actions.contextual "Menu kontekstowe">
 <!ENTITY customizations.loadURLScript "Otwórz url/skrypt">
-<!ENTITY customizations.runProgramFile "Uruchom program">
 <!ENTITY customizations.misc "Różne">
 <!ENTITY about.version "Wersja">
 <!ENTITY about.languageInfo "Język">
@@ -143,16 +142,6 @@
 <!ENTITY func.homepage "Strona domowa">
 <!ENTITY func.dailyReadings "Wiadomości dnia">
 <!ENTITY func.searchWeb "Znajdź w Internecie">
-<!ENTITY func.runProgramFile1 "Uruchom program 1">
-<!ENTITY func.runProgramFile2 "Uruchom program 2">
-<!ENTITY func.runProgramFile3 "Uruchom program 3">
-<!ENTITY func.runProgramFile4 "Uruchom program 4">
-<!ENTITY func.runProgramFile5 "Uruchom program 5">
-<!ENTITY func.runProgramFile6 "Uruchom program 6">
-<!ENTITY func.runProgramFile7 "Uruchom program 7">
-<!ENTITY func.runProgramFile8 "Uruchom program 8">
-<!ENTITY func.runProgramFile9 "Uruchom program 9">
-<!ENTITY func.runProgramFile10 "Uruchom program 10">
 <!ENTITY func.loadURLScript1 "Otwórz url/skrypt 1">
 <!ENTITY func.loadURLScript2 "Otwórz url/skrypt 2">
 <!ENTITY func.loadURLScript3 "Otwórz url/skrypt 3">
@@ -204,13 +193,6 @@
 <!ENTITY input.infoPlaceHolder "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
 <!ENTITY closeTab "Dostosuj działanie akcji &quot;Zamknij kartę&quot;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zamknij przeglądarkę po zamknięciu ostatniej karty">
-<!ENTITY extern "Dostosuj akcję &quot;Uruchom program&quot; ">
-<!ENTITY extern.tab "Plik programu">
-<!ENTITY extern.name "Nazwa">
-<!ENTITY extern.path "Ścieżka">
-<!ENTITY extern.arguments "Argumenty">
-<!ENTITY extern.browse "Szukaj">
-<!ENTITY extern.icon "Użyj ikony aplikacji">
 <!ENTITY urlscript "Dostosuj akcję &quot;Otwórz url/skrypt&quot; ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Skrypt">
@@ -238,7 +220,7 @@
 <!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane. |Zmień działanie przycisków myszy w Opcje \u00BB Ustawienia.">
 <!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL/Skrypt\u0022 do menu Centrum. |Dostosuj działanie menu w Opcje \u00BB Dostosowywanie \u00BB Otwórz URL/Skrypt.">
 <!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum. |Dodaj lub usuń akcje w Opcje \u00BB Akcje">
-<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia. |Dostosuj to w Opcje \u00BB Dostosuj \u00BB Uruchom program.">
+<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.">
 <!ENTITY tip8 "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
 <!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum. |Zmień działanie w Opcje \u00BB Ustawienia">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "Azioni Contestuali">
 
 <!ENTITY customizations.loadURLScript "Carica URL/Script">
-<!ENTITY customizations.runProgramFile "Esegui un File di Programma">
 <!ENTITY customizations.misc "Varie">
 
 <!ENTITY about.version "Versione">
@@ -180,16 +179,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Pagina Iniziale">
 <!ENTITY func.dailyReadings "Letture Quotidiane">
 <!ENTITY func.searchWeb "Cerca sul Web">
-<!ENTITY func.runProgramFile1 "Esegui File di Programma 1">
-<!ENTITY func.runProgramFile2 "Esegui File di Programma 2">
-<!ENTITY func.runProgramFile3 "Esegui File di Programma 3">
-<!ENTITY func.runProgramFile4 "Esegui File di Programma 4">
-<!ENTITY func.runProgramFile5 "Esegui File di Programma 5">
-<!ENTITY func.runProgramFile6 "Esegui File di Programma 6">
-<!ENTITY func.runProgramFile7 "Esegui File di Programma 7">
-<!ENTITY func.runProgramFile8 "Esegui File di Programma 8">
-<!ENTITY func.runProgramFile9 "Esegui File di Programma 9">
-<!ENTITY func.runProgramFile10 "Esegui File di Programma 10">
 
 <!ENTITY func.loadURLScript1 "Carica URL/Script 1">
 <!ENTITY func.loadURLScript2 "Carica URL/Script 2">
@@ -247,14 +236,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "Personalizza l'Azione 'Chiudi Linguetta' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Chiudi il browser quando viene chiusa l'ultima linguetta">
 
-<!ENTITY extern "Personalizza l'Azione 'Esegui un File di Programma' ">
-<!ENTITY extern.tab "File di Programma">
-<!ENTITY extern.name "Tooltip">
-<!ENTITY extern.path "Percorso">
-<!ENTITY extern.arguments "Argomenti">
-<!ENTITY extern.browse "Esplora...">
-<!ENTITY extern.icon "Usa l'Icona dell'Applicazione">
-
 <!ENTITY urlscript "Personalizza l'azione 'Carica URL/Script' ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">
@@ -286,7 +267,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "Per default, cliccare il tasto destro del mouse mentre viene mostrato il menu mostrerà insiemi di azioni alternative: a rotazione, verranno mostrate 3 diverse configurazioni, completamente personalizzabili. Il tasto del mouse di default può essere modificato. |Modifica il tasto del mouse in Opzioni/Comportamento">
 <!ENTITY tip5 "Puoi usare easyGestures per aprire i tuoi Segnalibri preferiti personalizzando le azioni 'Carica URL/Script' e poi aggiungendole al menu circolare. |Personalizza in Opzioni/Personalizzazioni/Carica URL/Script">
 <!ENTITY tip6 "Puoi personalizzare tutta la disposizione dei comandi del menu usando un gran numero di azioni predefinite. Ance le Statistiche d'uso aiutano ad ottimizzare il menu circolare. |Aggiungi o rimuovi azioni in Opzioni/Azioni">
-<!ENTITY tip7 "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica URL/Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione. |Personalizza in Opzioni/Personalizzazioni/Esegui File di Programma">
+<!ENTITY tip7 "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica URL/Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione.">
 <!ENTITY tip8 "Un click sufficientemente rapido del menu circolare su di un collegamento senza movimenti aprirà il collegamento in una nuova linguetta e mostrerà un marchio rosso dopo il collegamento.">
 <!ENTITY tip9 "Puoi attivare la sensibilità al contesto premendo il tasto 'Ctrl' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva. |Modifica il comportamento in Opzioni/Comportamento">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -39,7 +39,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY actions.regular "정규 동작">
 <!ENTITY actions.contextual "문맥상 동작">
 <!ENTITY customizations.loadURLScript "URL/스크립트 불러오기">
-<!ENTITY customizations.runProgramFile "프로그램 파일 실행">
 <!ENTITY customizations.misc "기타">
 <!ENTITY about.version "버전">
 <!ENTITY about.languageInfo "언어">
@@ -160,16 +159,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.homepage "홈 페이지">
 <!ENTITY func.dailyReadings "매일 읽기">
 <!ENTITY func.searchWeb "웹 검색">
-<!ENTITY func.runProgramFile1 "프로그램 파일 1 실행">
-<!ENTITY func.runProgramFile2 "프로그램 파일 2 실행">
-<!ENTITY func.runProgramFile3 "프로그램 파일 3 실행">
-<!ENTITY func.runProgramFile4 "프로그램 파일 4 실행">
-<!ENTITY func.runProgramFile5 "프로그램 파일 5 실행">
-<!ENTITY func.runProgramFile6 "프로그램 파일 6 실행">
-<!ENTITY func.runProgramFile7 "프로그램 파일 7 실행">
-<!ENTITY func.runProgramFile8 "프로그램 파일 8 실행">
-<!ENTITY func.runProgramFile9 "프로그램 파일 9 실행">
-<!ENTITY func.runProgramFile10 "프로그램 파일 10 실행">
 <!ENTITY func.loadURLScript1 "URL/스크립트 1 불러오기">
 <!ENTITY func.loadURLScript2 "URL/스크립트 2 불러오기">
 <!ENTITY func.loadURLScript3 "URL/스크립트 3 불러오기">
@@ -221,13 +210,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY input.infoPlaceHolder "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
 <!ENTITY closeTab "'탭 닫기' 동작 사용자 지정">
 <!ENTITY closeTab.closeBrowserOnLastTab "마지막 탭이 닫혔을 때 브라우저 닫기">
-<!ENTITY extern "'프로그램 파일 실행' 동작 사용자 지정">
-<!ENTITY extern.tab "프로그램 파일">
-<!ENTITY extern.name "툴팁">
-<!ENTITY extern.path "경로">
-<!ENTITY extern.arguments "인수">
-<!ENTITY extern.browse "찾아보기...">
-<!ENTITY extern.icon "응용프로그램 아이콘 사용">
 <!ENTITY urlscript "'URL/스크립트 불러오기' 동작 사용자 지정">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "스크립트">
@@ -255,7 +237,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY tip4 "기본값으로, 원형 메뉴가 표시되어 있는 중에 오른쪽 클릭하면, 3가지의 자유롭게 설정 가능한 대체 메뉴로의 변경할 수 있게 되어 있습니다. 기본 마우스 버튼은 변경할 수가 있습니다.|선택사항/행동/페이지1 내에서 마우스 버튼 변경">
 <!ENTITY tip5 "&apos;URL/스크립트의 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다.|선택사항/사용자 최적화/URL/스크립트의 읽기 내에서 사용자 최적화">
 <!ENTITY tip6 "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다.|선택사항/동작 내에서 동작 추가 또는 삭제">
-<!ENTITY tip7 "&apos;프로그램 파일 실행&apos;와&apos;URL/스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.|선택사항/사용자최적화/프로그램 파일 실행 내에서 사용자지정">
+<!ENTITY tip7 "&apos;프로그램 파일 실행&apos;와&apos;URL/스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.">
 <!ENTITY tip8 "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
 <!ENTITY tip9 "파이 메뉴를 열 때에 &apos;Ctrl&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

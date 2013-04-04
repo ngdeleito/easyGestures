@@ -44,7 +44,6 @@ END OF INSTRUCTIONS
 <!ENTITY actions.contextual "情境動作">
 
 <!ENTITY customizations.loadURLScript "載入網址／Script">
-<!ENTITY customizations.runProgramFile "執行程式">
 <!ENTITY customizations.misc "雜項">
 
 <!ENTITY about.version "版本">
@@ -179,16 +178,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "首頁">
 <!ENTITY func.dailyReadings "每日閱讀">
 <!ENTITY func.searchWeb "網路搜尋">
-<!ENTITY func.runProgramFile1 "執行程式 1">
-<!ENTITY func.runProgramFile2 "執行程式 2">
-<!ENTITY func.runProgramFile3 "執行程式 3">
-<!ENTITY func.runProgramFile4 "執行程式 4">
-<!ENTITY func.runProgramFile5 "執行程式 5">
-<!ENTITY func.runProgramFile6 "執行程式 6">
-<!ENTITY func.runProgramFile7 "執行程式 7">
-<!ENTITY func.runProgramFile8 "執行程式 8">
-<!ENTITY func.runProgramFile9 "執行程式 9">
-<!ENTITY func.runProgramFile10 "執行程式 10">
 
 <!ENTITY func.loadURLScript1 "載入網址／Script 1">
 <!ENTITY func.loadURLScript2 "載入網址／Script 2">
@@ -246,14 +235,6 @@ END OF INSTRUCTIONS
 <!ENTITY closeTab "自訂「關閉分頁」動作">
 <!ENTITY closeTab.closeBrowserOnLastTab "關閉最後一個分頁時關閉瀏覽器">
 
-<!ENTITY extern "自訂「執行程式」動作">
-<!ENTITY extern.tab "程式">
-<!ENTITY extern.name "名稱">
-<!ENTITY extern.path "路徑">
-<!ENTITY extern.arguments "參數">
-<!ENTITY extern.browse "瀏覽…">
-<!ENTITY extern.icon "使用應用程式圖示">
-
 <!ENTITY urlscript "自訂「載入網址／Script」動作">
 <!ENTITY urlscript.url "網址">
 <!ENTITY urlscript.script "Script">
@@ -285,7 +266,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "預設在圓餅選單顯示時擊點滑鼠右鍵將會顯示替換動作，最多可有三組自訂圓餅選單循環切換。這個預設切換鍵是可以更改的。|改變滑鼠按鍵 Options/Behavior">
 <!ENTITY tip5 "你可以使用 easyGestures ，設定「載入網址／Script」這個動作在你的圓餅選單上來開啟你喜愛的書籤。|設定動作 Options/Customizations/Load URL/Script">
 <!ENTITY tip6 "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。|新增或移除動作 Options/Actions">
-<!ENTITY tip7 "你可以用「執行程式」和「載入網址／Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。|設定 Options/Customizations/Run Program File">
+<!ENTITY tip7 "你可以用「執行程式」和「載入網址／Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。">
 <!ENTITY tip8 "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">
 <!ENTITY tip9 "你可以在開啟圓餅選單時，點選「Ctrl」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 Options/Behavior">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -88,16 +88,16 @@ var eG_menuItems = [
   new eG_menuItem(38,   0, "dailyReadings",      "eGf.dailyReadings();"),
   new eG_menuItem(39,   0, "searchWeb",          "eGf.searchWeb(eGc.selection);"),
   new eG_menuItem(40,  -1, "empty",              null),
-  new eG_menuItem(41,   0, "runProgramFile1",    "eGf.runProgramFile(1,eGc.selection);"),
-  new eG_menuItem(42,   0, "runProgramFile2",    "eGf.runProgramFile(2,eGc.selection);"),
-  new eG_menuItem(43,   0, "runProgramFile3",    "eGf.runProgramFile(3,eGc.selection);"),
-  new eG_menuItem(44,   0, "runProgramFile4",    "eGf.runProgramFile(4,eGc.selection);"),
-  new eG_menuItem(45,   0, "runProgramFile5",    "eGf.runProgramFile(5,eGc.selection);"),
-  new eG_menuItem(46,   0, "runProgramFile6",    "eGf.runProgramFile(6,eGc.selection);"),
-  new eG_menuItem(47,   0, "runProgramFile7",    "eGf.runProgramFile(7,eGc.selection);"),
-  new eG_menuItem(48,   0, "runProgramFile8",    "eGf.runProgramFile(8,eGc.selection);"),
-  new eG_menuItem(49,   0, "runProgramFile9",    "eGf.runProgramFile(9,eGc.selection);"),
-  new eG_menuItem(50,   0, "runProgramFile10",   "eGf.runProgramFile(10,eGc.selection);"),
+  new eG_menuItem(41,  -1, "empty",              null),
+  new eG_menuItem(42,  -1, "empty",              null),
+  new eG_menuItem(43,  -1, "empty",              null),
+  new eG_menuItem(44,  -1, "empty",              null),
+  new eG_menuItem(45,  -1, "empty",              null),
+  new eG_menuItem(46,  -1, "empty",              null),
+  new eG_menuItem(47,  -1, "empty",              null),
+  new eG_menuItem(48,  -1, "empty",              null),
+  new eG_menuItem(49,  -1, "empty",              null),
+  new eG_menuItem(50,  -1, "empty",              null),
 
   new eG_menuItem(51,   0, "loadURLScript1",     "eGf.loadURLScript(1,eGc.selection);"),
   new eG_menuItem(52,   0, "loadURLScript2",     "eGf.loadURLScript(2,eGc.selection);"),
@@ -183,8 +183,8 @@ function eG_menuLayout(menu, name, actionsPrefs) {
       this.actions.push(eG_menuItems[actionsPrefs[i]]);
       var label = "";
       if (action.type != -1) {
-        // if the name of the action ends with a number (i.e. runProgramFile
-        // and loadURLScript), extract this number...
+        // if the name of the action ends with a number (i.e. loadURLScript),
+        // extract this number...
         var number = action.src.match(/\d+$/);
         // ... and remove it from the name
         var actionName = action.src.replace(number, "");
@@ -319,17 +319,6 @@ function eG_menu () {
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
-
-  this.runProgramFile1 = prefs.getComplexValue("customizations.runProgramFile1", Components.interfaces.nsISupportsString).data.split("•"); // [0]: name, [1]:path, [2]:arg, [3]:newIconPath, [4]:appIcon, [5]: newIcon
-  this.runProgramFile2 = prefs.getComplexValue("customizations.runProgramFile2", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile3 = prefs.getComplexValue("customizations.runProgramFile3", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile4 = prefs.getComplexValue("customizations.runProgramFile4", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile5 = prefs.getComplexValue("customizations.runProgramFile5", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile6 = prefs.getComplexValue("customizations.runProgramFile6", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile7 = prefs.getComplexValue("customizations.runProgramFile7", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile8 = prefs.getComplexValue("customizations.runProgramFile8", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile9 = prefs.getComplexValue("customizations.runProgramFile9", Components.interfaces.nsISupportsString).data.split("•");
-  this.runProgramFile10 = prefs.getComplexValue("customizations.runProgramFile10", Components.interfaces.nsISupportsString).data.split("•");
 
   this.loadURLScript1 = prefs.getComplexValue("customizations.loadURLScript1", Components.interfaces.nsISupportsString).data.split("•"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon
   this.loadURLScript2 = prefs.getComplexValue("customizations.loadURLScript2", Components.interfaces.nsISupportsString).data.split("•");
@@ -565,13 +554,13 @@ eG_menu.prototype = {
       timg.setAttribute("grayed", "false");
       timg.setAttribute("active", "false");
 
-      if (layout.actions[i].src.search("loadURLScript")==-1 && layout.actions[i].src.search("runProgramFile")==-1) {
+      if (layout.actions[i].src.search("loadURLScript")==-1) {
         timg.setAttribute("class", ( (this.smallIcons ? "small_":"") + (this.noIcons ? "empty": layout.actions[i].src) ) );
         if (layout.actions[i].type==1) {
           this.extraMenuAction = i;
         }
       }
-      else { // new icon path for both type of actions: loadURLScript & runProgramFile ?
+      else { // new icon path for loadURLScript ?
         if (this[layout.actions[i].src][4]=="true" || this[layout.actions[i].src][5]=="true") {
           if (!this.smallIcons && this[layout.actions[i].src][4]=="true") { // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
             timg.style.font="bold 10px Arial, sans-serif";
@@ -938,7 +927,7 @@ eG_menu.prototype = {
     }
   },
 
-  rolloverExternalIcons : function(src, node, active) { // this is for runProgramFile and loadURLScript actions icons which can be customized or imported from favicons or program's icons
+  rolloverExternalIcons : function(src, node, active) { // this is for loadURLScript actions icons which can be customized or imported from favicons or program's icons
     if (this[src] === undefined) {
       return;
     }
