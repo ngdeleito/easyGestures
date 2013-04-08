@@ -21,7 +21,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY welcome.onoff "상태 막대 내 파란 화살표를 해 원형 메뉴를 끄고 켤 수 있습니다.">
 <!ENTITY welcome.completed "easyGestures - 설치 완료">
 <!ENTITY options "선택사항">
-<!ENTITY about "확장기능 정보">
 <!ENTITY close "닫기">
 <!ENTITY profile "프로파일">
 <!ENTITY activation "Activation">
@@ -38,7 +37,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY actions.contextual "문맥상 동작">
 <!ENTITY customizations.loadURLScript "URL/스크립트 불러오기">
 <!ENTITY customizations.misc "기타">
-<!ENTITY about.version "버전">
 <!ENTITY about.languageInfo "언어">
 <!ENTITY about.stats "통계">
 <!ENTITY about.statsDisplay "통계 표시">
@@ -49,9 +47,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY about.reset "속성 초기화">
 <!ENTITY about.startupTips "시작시 팁 표시">
 <!ENTITY about.statusbarShowIcon "상태막대 내 아이콘 표시">
-<!ENTITY about.feedback "의견 게재">
-<!ENTITY about.history "새로운 것">
-<!ENTITY about.createdBy "제작">
 <!ENTITY stats.use "원형 메뉴 사용">
 <!ENTITY stats.novice "신입">
 <!ENTITY stats.coolUser "멋진 사용자">

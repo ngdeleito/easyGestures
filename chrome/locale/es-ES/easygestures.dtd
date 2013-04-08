@@ -6,7 +6,6 @@
 <!ENTITY welcome.onoff "Puede activar y desactivar el menú circular pulsando en la flecha azul de la barra de estado.">
 <!ENTITY welcome.completed "easyGestures - Instalación completada">
 <!ENTITY options "Opciones">
-<!ENTITY about "Acerca de">
 <!ENTITY close "Cerrar">
 <!ENTITY profile "Perfil">
 <!ENTITY activation "Activación">
@@ -23,7 +22,6 @@
 <!ENTITY actions.contextual "Acciones contextuales">
 <!ENTITY customizations.loadURLScript "Cargar dirección/Script">
 <!ENTITY customizations.misc "Varios">
-<!ENTITY about.version "Versión">
 <!ENTITY about.languageInfo "Idioma">
 <!ENTITY about.stats "Estadísticas">
 <!ENTITY about.statsDisplay "Mostrar estadísticas">
@@ -34,9 +32,6 @@
 <!ENTITY about.reset "Reiniciar opciones">
 <!ENTITY about.startupTips "Mostrar consejos al iniciar">
 <!ENTITY about.statusbarShowIcon "Mostrar icono en la barra de estado">
-<!ENTITY about.feedback "Tus comentarios">
-<!ENTITY about.history "Novedades">
-<!ENTITY about.createdBy "Creada por">
 <!ENTITY stats.use "Uso del menú circular">
 <!ENTITY stats.novice "Novato">
 <!ENTITY stats.coolUser "Usuario total">

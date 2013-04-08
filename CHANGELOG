@@ -24,3 +24,4 @@ Changes by ngdeleito (see git history for the full details)
 - removed red tag for links
 - made select boxes for actions non editable
 - removed runProgramFile actions
+- removed custom about dialog

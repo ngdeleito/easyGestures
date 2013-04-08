@@ -22,7 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "選項">
-<!ENTITY about "關於">
 
 <!ENTITY close "關閉">
 
@@ -44,7 +43,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "載入網址／Script">
 <!ENTITY customizations.misc "雜項">
 
-<!ENTITY about.version "版本">
 <!ENTITY about.languageInfo "語">
 <!ENTITY about.stats "次數統計">
 <!ENTITY about.statsDisplay "顯示次數統計">
@@ -55,9 +53,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "還原設定">
 <!ENTITY about.startupTips "啟動時顯示小提示">
 <!ENTITY about.statusbarShowIcon "在狀態列顯示圖示">
-<!ENTITY about.feedback "回報你的意見">
-<!ENTITY about.history "What's new">
-<!ENTITY about.createdBy "Created by">
 
 <!ENTITY stats.use "圓餅手勢使用率">
 <!ENTITY stats.novice "初學者">

@@ -5,7 +5,6 @@
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "Možnosti">
-<!ENTITY about "O rozšírení">
 <!ENTITY close "Zavrieť">
 <!ENTITY profile "Profil">
 <!ENTITY activation "Activation">
@@ -22,7 +21,6 @@
 <!ENTITY actions.contextual "Kontextové akcie">
 <!ENTITY customizations.loadURLScript "Načítať URL/skript">
 <!ENTITY customizations.misc "Rôzne">
-<!ENTITY about.version "Verzia">
 <!ENTITY about.languageInfo "Jazyk">
 <!ENTITY about.stats "Štatistiky">
 <!ENTITY about.statsDisplay "Zobraziť štatistiky">
@@ -33,9 +31,6 @@
 <!ENTITY about.reset "Obnoviť nastavenia">
 <!ENTITY about.startupTips "Zobraziť tipy pri štarte">
 <!ENTITY about.statusbarShowIcon "Zobraziť ikonu v stavovom riadku">
-<!ENTITY about.feedback "Vaša odozva">
-<!ENTITY about.history "Čo je nové">
-<!ENTITY about.createdBy "Vytvoril">
 <!ENTITY stats.use "Využitie ponuky">
 <!ENTITY stats.novice "Začiatočník">
 <!ENTITY stats.coolUser "Pohodový používateľ">

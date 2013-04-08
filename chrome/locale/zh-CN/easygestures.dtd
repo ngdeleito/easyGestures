@@ -22,7 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - 安装完成">
 
 <!ENTITY options "选项">
-<!ENTITY about "关于">
 
 <!ENTITY close "关闭">
 
@@ -44,7 +43,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "载入网址/脚本">
 <!ENTITY customizations.misc "其他">
 
-<!ENTITY about.version "版本">
 <!ENTITY about.languageInfo "语言">
 <!ENTITY about.stats "统计">
 <!ENTITY about.statsDisplay "显示统计">
@@ -55,9 +53,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "恢复默认设置">
 <!ENTITY about.startupTips "启动时显示提示">
 <!ENTITY about.statusbarShowIcon "在状态栏显示图标">
-<!ENTITY about.feedback "您的建议">
-<!ENTITY about.history "最新消息">
-<!ENTITY about.createdBy "创建者">
 
 <!ENTITY stats.use "使用弹出菜单">
 <!ENTITY stats.novice "初学者">

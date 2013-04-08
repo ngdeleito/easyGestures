@@ -5,7 +5,6 @@
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "Einstellungen">
-<!ENTITY about "Über">
 <!ENTITY close "Schließen">
 <!ENTITY profile "Profil">
 <!ENTITY activation "Activation">
@@ -22,7 +21,6 @@
 <!ENTITY actions.contextual "Kontextabhängige Aktionen">
 <!ENTITY customizations.loadURLScript "Adresse/Skript laden">
 <!ENTITY customizations.misc "Verschiedenes">
-<!ENTITY about.version "Version">
 <!ENTITY about.languageInfo "Sprache">
 <!ENTITY about.stats "Statistiken">
 <!ENTITY about.statsDisplay "Statistiken anzeigen">
@@ -33,9 +31,6 @@
 <!ENTITY about.reset "Einstellungen zurücksetzen">
 <!ENTITY about.startupTips "Tipps beim Start anzeigen">
 <!ENTITY about.statusbarShowIcon "Symbol in der Statusleiste anzeigen">
-<!ENTITY about.feedback "Feedback">
-<!ENTITY about.history "Was ist neu?">
-<!ENTITY about.createdBy "Erstellt von">
 <!ENTITY stats.use "Kreismenü-Nutzung">
 <!ENTITY stats.novice "Anfänger">
 <!ENTITY stats.coolUser "Fortgeschritten">

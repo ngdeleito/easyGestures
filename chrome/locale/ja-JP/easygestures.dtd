@@ -22,7 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "オプション">
-<!ENTITY about "この拡張について">
 
 <!ENTITY close "閉じる">
 
@@ -44,7 +43,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "URL/スクリプトの読み込み">
 <!ENTITY customizations.misc "その他">
 
-<!ENTITY about.version "バージョン">
 <!ENTITY about.languageInfo "言語">
 <!ENTITY about.stats "使用統計">
 <!ENTITY about.statsDisplay "使用統計を表示する">
@@ -55,9 +53,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "設定をリセットする">
 <!ENTITY about.startupTips "起動時にヒントを表示する">
 <!ENTITY about.statusbarShowIcon "ステータスバーにアイコンを表示する">
-<!ENTITY about.feedback "ご意見などをどうぞ">
-<!ENTITY about.history "新機能">
-<!ENTITY about.createdBy "作成者">
 
 <!ENTITY stats.use "パイメニューの使用率">
 <!ENTITY stats.novice "ひよっこ">

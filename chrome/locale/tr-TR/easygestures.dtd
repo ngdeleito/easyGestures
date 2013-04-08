@@ -22,7 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "Seçenekler">
-<!ENTITY about "Hakkında">
 
 <!ENTITY close "Kapat">
 
@@ -44,7 +43,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "URL/Script Yükle">
 <!ENTITY customizations.misc "Çeşitli">
 
-<!ENTITY about.version "Sürüm">
 <!ENTITY about.languageInfo "Dil">
 <!ENTITY about.stats "İstatistikler">
 <!ENTITY about.statsDisplay "İstatistikleri Göster">
@@ -55,9 +53,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "Tercihleri Sıfırla">
 <!ENTITY about.startupTips "Başlangıçta ipuçlarını göster">
 <!ENTITY about.statusbarShowIcon "Durum çubuğunda Simgeyi göster">
-<!ENTITY about.feedback "Görüşleriniz">
-<!ENTITY about.history "Yenilikler">
-<!ENTITY about.createdBy "Yazan">
 
 <!ENTITY stats.use "Kolay Menü Kullanımı">
 <!ENTITY stats.novice "Acemi">

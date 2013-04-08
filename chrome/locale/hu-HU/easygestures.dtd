@@ -6,7 +6,6 @@
 <!ENTITY welcome.onoff "Az állapotsoron található kék nyílra kattintva ki/bekapcsolható a köralakú menü.">
 <!ENTITY welcome.completed "easyGestures - telepítés befejeződött">
 <!ENTITY options "Beállítások">
-<!ENTITY about "Névjegy">
 <!ENTITY close "Bezárás">
 <!ENTITY profile "Profil">
 <!ENTITY activation "Activation">
@@ -23,7 +22,6 @@
 <!ENTITY actions.contextual "Környezetfüggő műveletek">
 <!ENTITY customizations.loadURLScript "URL/szkript betöltése">
 <!ENTITY customizations.misc "Egyéb">
-<!ENTITY about.version "Verzió">
 <!ENTITY about.languageInfo "Nyelv">
 <!ENTITY about.stats "Statisztikák">
 <!ENTITY about.statsDisplay "Statisztikák megjelenítése">
@@ -34,9 +32,6 @@
 <!ENTITY about.reset "Beállítások alaphelyzetbe állítása">
 <!ENTITY about.startupTips "Tippek megjelenítése induláskor">
 <!ENTITY about.statusbarShowIcon "Ikon megjelenítése az állapotsoron">
-<!ENTITY about.feedback "Visszajelzés">
-<!ENTITY about.history "Újdonságok">
-<!ENTITY about.createdBy "Készítette">
 <!ENTITY stats.use "Körlakú menü használata">
 <!ENTITY stats.novice "Kezdő">
 <!ENTITY stats.coolUser "Menő">

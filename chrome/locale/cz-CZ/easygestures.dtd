@@ -22,7 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "Možnosti">
-<!ENTITY about "O pluginu">
 
 <!ENTITY close "Zavřít">
 
@@ -44,7 +43,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "Načíst URL/skript">
 <!ENTITY customizations.misc "Různé">
 
-<!ENTITY about.version "Verze">
 <!ENTITY about.languageInfo "Jazyk">
 <!ENTITY about.stats "Statistiky">
 <!ENTITY about.statsDisplay "Zobrazit statistiky">
@@ -55,9 +53,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "Obnovit nastavení">
 <!ENTITY about.startupTips "Zobrazit tipy při startu">
 <!ENTITY about.statusbarShowIcon "Zobrazit ikonu ve stavovém řádku">
-<!ENTITY about.feedback "Vaše odezva">
-<!ENTITY about.history "Novinky">
-<!ENTITY about.createdBy "Vytvořil">
 
 <!ENTITY stats.use "Využití nabídky">
 <!ENTITY stats.novice "Začátečník">

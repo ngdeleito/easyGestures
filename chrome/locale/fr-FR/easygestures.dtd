@@ -20,7 +20,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - Installation complétée">
 
 <!ENTITY options "Options">
-<!ENTITY about "À propos">
 
 <!ENTITY close "Fermer">
 
@@ -42,7 +41,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "Charger URL/Script">
 <!ENTITY customizations.misc "Divers">
 
-<!ENTITY about.version "Version">
 <!ENTITY about.languageInfo "Langue">
 <!ENTITY about.stats "Statistiques">
 <!ENTITY about.statsDisplay "Afficher statistiques">
@@ -53,9 +51,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "Réinitialiser préférences">
 <!ENTITY about.startupTips "Afficher astuces au démarrage">
 <!ENTITY about.statusbarShowIcon "Afficher icône dans barre d'état">
-<!ENTITY about.feedback "Vos réactions">
-<!ENTITY about.history "Quoi de neuf">
-<!ENTITY about.createdBy "Créé par">
 
 <!ENTITY stats.use "Utilisation du menu circulaire">
 <!ENTITY stats.novice "Novice">

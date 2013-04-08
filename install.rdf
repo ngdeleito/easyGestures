@@ -25,6 +25,5 @@
 
     <!-- Front End Integration Hooks (used by Extension Manager)-->
     <em:optionsURL>chrome://easygestures/content/options.xul</em:optionsURL>
-    <em:aboutURL>chrome://easygestures/content/about.xul</em:aboutURL>
   </Description>
 </RDF>

@@ -4,7 +4,6 @@
 <!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 <!ENTITY options "Opcje">
-<!ENTITY about "O rozszerzeniu">
 <!ENTITY close "Zamknij">
 <!ENTITY profile "Profile">
 <!ENTITY activation "Activation">
@@ -21,7 +20,6 @@
 <!ENTITY actions.contextual "Menu kontekstowe">
 <!ENTITY customizations.loadURLScript "Otwórz url/skrypt">
 <!ENTITY customizations.misc "Różne">
-<!ENTITY about.version "Wersja">
 <!ENTITY about.languageInfo "Język">
 <!ENTITY about.stats "Statystyki">
 <!ENTITY about.statsDisplay "Wyświetl statystyki">
@@ -32,9 +30,6 @@
 <!ENTITY about.reset "Ustawienia domyślne">
 <!ENTITY about.startupTips "Pokazuj podpowiedzi po uruchomieniu">
 <!ENTITY about.statusbarShowIcon "Wyświetl ikonę na pasku stanu">
-<!ENTITY about.feedback "Opinie...">
-<!ENTITY about.history "Co nowego?">
-<!ENTITY about.createdBy "Autor:">
 <!ENTITY stats.use "Użycie Centrum">
 <!ENTITY stats.novice "Początkujący">
 <!ENTITY stats.coolUser "Zaawansowany">

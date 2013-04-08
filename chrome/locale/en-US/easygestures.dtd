@@ -20,7 +20,6 @@ END OF INSTRUCTIONS
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 
 <!ENTITY options "Options">
-<!ENTITY about "About">
 
 <!ENTITY close "Close">
 
@@ -42,7 +41,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.loadURLScript "Load URL/Script">
 <!ENTITY customizations.misc "Miscellaneous">
 
-<!ENTITY about.version "Version">
 <!ENTITY about.languageInfo "Language">
 <!ENTITY about.stats "Statistics">
 <!ENTITY about.statsDisplay "Display Statistics">
@@ -53,9 +51,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.reset "Reset Preferences">
 <!ENTITY about.startupTips "Show Tips at startup">
 <!ENTITY about.statusbarShowIcon "Show Icon in statusbar">
-<!ENTITY about.feedback "Your Feedback">
-<!ENTITY about.history "What's new">
-<!ENTITY about.createdBy "Created by">
 
 <!ENTITY stats.use "Pie Menu Use">
 <!ENTITY stats.novice "Novice">
