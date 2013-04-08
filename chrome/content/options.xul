@@ -528,7 +528,7 @@
           <tab label="&customizations.misc;" />
         </tabs>
         <tabpanels flex="1">
-          <tabpanel flex="1">
+          <tabpanel flex="1" style="overflow: auto;">
             <vbox>
               <vbox style="background-color:white;">
                 <hbox>
