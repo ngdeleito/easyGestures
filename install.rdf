@@ -21,7 +21,8 @@
     <em:name>easyGestures</em:name>
     <em:description>[en-US] - Mouse gestures within a popup pie menu.</em:description>
     <em:creator>Ons Besbes</em:creator>
-    <em:homepageURL>http://easygestures.mozdev.org/</em:homepageURL>
+    <em:developer>Nicolás González-Deleito</em:developer>
+    <em:homepageURL>https://github.com/ngdeleito/easyGestures</em:homepageURL>
 
     <!-- Front End Integration Hooks (used by Extension Manager)-->
     <em:optionsURL>chrome://easygestures/content/options.xul</em:optionsURL>
