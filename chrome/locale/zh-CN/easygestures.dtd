@@ -15,6 +15,8 @@ Contains options dialog strings and pie menu tips.
 END OF INSTRUCTIONS
 -->
 
+<!-- Chinese localization (zh-CN): yfdyh000 from Babelzilla -->
+
 <!ENTITY welcome.click "页面点击中键打开菜单。">
 <!ENTITY welcome.onoff "你可以在状态栏点击蓝色箭头开/关圆饼菜单。">
 <!ENTITY welcome.completed "easyGestures - 安装完成">

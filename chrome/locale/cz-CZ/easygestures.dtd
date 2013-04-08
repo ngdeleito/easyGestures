@@ -15,6 +15,8 @@ Contains options dialog strings and pie menu tips.
 END OF INSTRUCTIONS
 -->
 
+<!-- Czech localization (cz-CZ): Pavel Endrst -->
+
 <!ENTITY welcome.click "Middle click in the page to open the pie menu.">
 <!ENTITY welcome.onoff "You can turn the pie menu on/off by clicking on the blue arrow in the status bar.">
 <!ENTITY welcome.completed "easyGestures - Installation completed">
