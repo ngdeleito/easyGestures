@@ -1403,13 +1403,6 @@
       
       updateUI();
       window.setCursor('auto');
-      
-      try {
-        // open dialog on appropriate panel when called from tips window
-        var args = window.arguments[1].split("/");
-        document.getElementById(args[0]+"Tabboxes").selectedIndex = parseInt(args[1])-1; // Page 1 is index 0
-      }
-      catch (ex) {}
     }
     
     function triggerObserverToResetEGm() {
