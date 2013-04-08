@@ -73,14 +73,14 @@
             <html:a id="tipLink" href="#" style="text-decoration:underline;color: #3A69A6;">Link</html:a>
           </html:div>
           <spacer flex="1" />
-          <hbox><!-- keep hbox otherwise the link will not be displayed on the same line. Warning in error console: XUL box for hbox element contained an inline a child, forcing all its children to be wrapped in a block.-->
+          <html:div>
             <html:a href="#">
               <image src="chrome://easygestures/content/copyToClipboard.png"
                 tooltiptext="&copyText;" onclick="copyDescriptionToClipboard();"
                 onmousedown="this.style.opacity=0.5;this.style.cursor='wait';"
                 onmouseup="this.style.opacity=1;this.style.cursor='pointer';" />
             </html:a>
-          </hbox>
+          </html:div>
         </hbox>
       </vbox>
     </hbox>
