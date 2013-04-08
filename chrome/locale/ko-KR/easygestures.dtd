@@ -20,10 +20,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY welcome.completed "easyGestures - 설치 완료">
 <!ENTITY options "선택사항">
 <!ENTITY about "확장기능 정보">
-<!ENTITY ok "확인">
-<!ENTITY apply "적용">
-<!ENTITY cancel "취소">
-<!ENTITY help "도움말">
 <!ENTITY close "닫기">
 <!ENTITY profile "프로파일">
 <!ENTITY activation "Activation">

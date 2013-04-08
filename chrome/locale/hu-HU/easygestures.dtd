@@ -5,10 +5,6 @@
 <!ENTITY welcome.completed "easyGestures - telepítés befejeződött">
 <!ENTITY options "Beállítások">
 <!ENTITY about "Névjegy">
-<!ENTITY ok "OK">
-<!ENTITY apply "Alkalmaz">
-<!ENTITY cancel "Mégsem">
-<!ENTITY help "Súgó">
 <!ENTITY close "Bezárás">
 <!ENTITY profile "Profil">
 <!ENTITY activation "Activation">

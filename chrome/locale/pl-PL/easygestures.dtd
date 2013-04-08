@@ -3,10 +3,6 @@
 <!ENTITY welcome.completed "easyGestures - Installation completed">
 <!ENTITY options "Opcje">
 <!ENTITY about "O rozszerzeniu">
-<!ENTITY ok "OK">
-<!ENTITY apply "Zastosuj">
-<!ENTITY cancel "Anuluj">
-<!ENTITY help "Pomoc">
 <!ENTITY close "Zamknij">
 <!ENTITY profile "Profile">
 <!ENTITY activation "Activation">

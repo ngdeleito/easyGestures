@@ -4,10 +4,6 @@
 
 <!ENTITY options "Einstellungen">
 <!ENTITY about "Über">
-<!ENTITY ok "OK">
-<!ENTITY apply "Übernehmen">
-<!ENTITY cancel "Abbrechen">
-<!ENTITY help "Hilfe">
 <!ENTITY close "Schließen">
 <!ENTITY profile "Profil">
 <!ENTITY activation "Activation">

@@ -22,10 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY options "Options">
 <!ENTITY about "About">
 
-<!ENTITY ok "OK">
-<!ENTITY apply "Apply">
-<!ENTITY cancel "Cancel">
-<!ENTITY help "Help">
 <!ENTITY close "Close">
 
 <!ENTITY profile "Profile">

@@ -22,10 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY options "Seçenekler">
 <!ENTITY about "Hakkında">
 
-<!ENTITY ok "TAMAM">
-<!ENTITY apply "Uygula">
-<!ENTITY cancel "İptal">
-<!ENTITY help "Yardım">
 <!ENTITY close "Kapat">
 
 <!ENTITY profile "Profil">

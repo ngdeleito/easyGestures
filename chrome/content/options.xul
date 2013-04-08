@@ -43,10 +43,13 @@
   xmlns:html="http://www.w3.org/1999/xhtml"
   id="eG_optionsWindow"
   title="&options; - easyGestures"
-  type="prefwindow"
-  onload="avoidMultipleInstances(); initMenuDialog();"
   onkeypress="preventCloseOnEnter(event);"
-  persist="lastSelected screenX screenY width height">
+  persist="lastSelected screenX screenY width height"
+  
+  onload="avoidMultipleInstances(); initMenuDialog();"
+  onunload="triggerObserverToResetEGm();"
+  buttons="accept,cancel,disclosure"
+  ondialogdisclosure="window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable');">
 
   <prefpane
     flex="1"
@@ -78,8 +81,8 @@
           <spacer height="4" />
           <menu label="&about.manage;">
             <menupopup>
-              <menuitem label="&about.import;" onclick="importPrefs();initMenuDialog();" />
-              <menuitem label="&about.export;" onclick="saveMenuSettings();exportPrefs();" />
+              <menuitem label="&about.import;" onclick="importPrefs(); initMenuDialog();" />
+              <menuitem label="&about.export;" onclick="saveAllPreferences(this); triggerObserverToResetEGm(); exportPrefs();" />
               <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) {Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow('navigator:browser').eG_setPrefs(null);initMenuDialog();}" />
             </menupopup>
           </menu>
@@ -699,18 +702,8 @@
     </vbox>
   </prefpane>
   
-  <spacer height="6" />
-  <hbox flex="1" id="eG_dialogButtons" pack="end" hidden="false">
-    <vbox>
-      <hbox>
-        <button label="&ok;" oncommand="saveMenuSettings();acceptDialog();" />
-        <button label="&cancel;" oncommand="cancelDialog();" />
-        <button id="eG_apply" label="&apply;" oncommand="saveMenuSettings();this.disabled=true;setTimeout('document.getElementById(\'eG_apply\').disabled=false;',2000);" />
-        <button label="&help;" oncommand="window.openDialog('chrome://easygestures/content/tips.xul','','chrome,centerscreen,resizable');" />
-      </hbox>
-      <spacer height="4" />
-    </vbox>
-    <resizer dir="bottomend"></resizer>
+  <hbox flex="1" pack="end">
+    <resizer dir="bottomend"></resizer><!-- type="window"-->
   </hbox>
   
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
@@ -1452,16 +1445,24 @@
       catch (ex) {}
     }
     
-    function saveMenuSettings() {
-      /////////////////////////////////////////////////////
-      // triggering observer to reset eGm object
-      /////////////////////////////////////////////////////
-      
+    function triggerObserverToResetEGm() {
       try {
         eG_prefs.setBoolPref("stateChange.prefs", !eG_prefs.getBoolPref("stateChange.prefs"));
       }
       catch (ex) {
         eG_prefs.setBoolPref("stateChange.prefs", true);
+      }
+    }
+    
+    function saveAllPreferences(element) {
+      // we retrieve the associated prefwindow element
+      while (element.tagName !== "prefwindow") {
+        element = element.parentNode;
+      }
+      
+      // we save the preferences of each preference pane
+      for (var i=0; i < element.preferencePanes.length; ++i) {
+        element.preferencePanes[i].writePreferences();
       }
     }
     

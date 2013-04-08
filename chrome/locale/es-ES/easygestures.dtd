@@ -5,10 +5,6 @@
 <!ENTITY welcome.completed "easyGestures - Instalación completada">
 <!ENTITY options "Opciones">
 <!ENTITY about "Acerca de">
-<!ENTITY ok "OK">
-<!ENTITY apply "Aplicar">
-<!ENTITY cancel "Cancelar">
-<!ENTITY help "Ayuda">
 <!ENTITY close "Cerrar">
 <!ENTITY profile "Perfil">
 <!ENTITY activation "Activación">

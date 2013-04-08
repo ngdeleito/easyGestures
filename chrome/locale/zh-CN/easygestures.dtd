@@ -22,10 +22,6 @@ END OF INSTRUCTIONS
 <!ENTITY options "选项">
 <!ENTITY about "关于">
 
-<!ENTITY ok "确定">
-<!ENTITY apply "应用">
-<!ENTITY cancel "取消">
-<!ENTITY help "帮助">
 <!ENTITY close "关闭">
 
 <!ENTITY profile "描述">
