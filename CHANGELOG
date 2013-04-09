@@ -25,3 +25,4 @@ Changes by ngdeleito (see git history for the full details)
 - made select boxes for actions non editable
 - removed runProgramFile actions
 - removed custom about dialog
+- added new Restart Firefox action

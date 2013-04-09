@@ -87,7 +87,7 @@ var eG_menuItems = [
   new eG_menuItem(37,   0, "homepage",           "eGf.homePage();"),
   new eG_menuItem(38,   0, "dailyReadings",      "eGf.dailyReadings();"),
   new eG_menuItem(39,   0, "searchWeb",          "eGf.searchWeb(eGc.selection);"),
-  new eG_menuItem(40,  -1, "empty",              null),
+  new eG_menuItem(40,   0, "restart",            "eGf.restart();"),
   new eG_menuItem(41,  -1, "empty",              null),
   new eG_menuItem(42,  -1, "empty",              null),
   new eG_menuItem(43,  -1, "empty",              null),

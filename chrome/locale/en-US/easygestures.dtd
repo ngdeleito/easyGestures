@@ -170,6 +170,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Home Page">
 <!ENTITY func.dailyReadings "Daily Readings">
 <!ENTITY func.searchWeb "Search Web">
+<!ENTITY func.restart "Restart Firefox">
 
 <!ENTITY func.loadURLScript1 "Load URL/Script 1">
 <!ENTITY func.loadURLScript2 "Load URL/Script 2">

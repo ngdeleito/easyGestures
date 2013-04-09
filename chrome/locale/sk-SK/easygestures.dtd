@@ -136,6 +136,7 @@
 <!ENTITY func.homepage "Domovská stránka">
 <!ENTITY func.dailyReadings "Každodenné čítanie">
 <!ENTITY func.searchWeb "Hľadať na webe">
+<!ENTITY func.restart "Restart Firefox">
 <!ENTITY func.loadURLScript1 "Načítať URL/Skript 1">
 <!ENTITY func.loadURLScript2 "Načítať URL/Skript 2">
 <!ENTITY func.loadURLScript3 "Načítať URL/Skript 3">

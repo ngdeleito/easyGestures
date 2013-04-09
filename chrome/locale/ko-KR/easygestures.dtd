@@ -152,6 +152,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.homepage "홈 페이지">
 <!ENTITY func.dailyReadings "매일 읽기">
 <!ENTITY func.searchWeb "웹 검색">
+<!ENTITY func.restart "Restart Firefox">
 <!ENTITY func.loadURLScript1 "URL/스크립트 1 불러오기">
 <!ENTITY func.loadURLScript2 "URL/스크립트 2 불러오기">
 <!ENTITY func.loadURLScript3 "URL/스크립트 3 불러오기">

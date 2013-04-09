@@ -172,6 +172,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Domovská stránka">
 <!ENTITY func.dailyReadings "Každodenní čtení">
 <!ENTITY func.searchWeb "Hledat na webu">
+<!ENTITY func.restart "Restart Firefox">
 
 <!ENTITY func.loadURLScript1 "Načíst URL/Skript 1">
 <!ENTITY func.loadURLScript2 "Načíst URL/Skript 2">

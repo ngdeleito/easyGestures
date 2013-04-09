@@ -137,6 +137,7 @@
 <!ENTITY func.homepage "Kezdőlap">
 <!ENTITY func.dailyReadings "Napi olvasnivaló">
 <!ENTITY func.searchWeb "Keresés">
+<!ENTITY func.restart "Restart Firefox">
 <!ENTITY func.loadURLScript1 "Hivatkozás/szkript betöltése 1">
 <!ENTITY func.loadURLScript2 "Hivatkozás/szkript betöltése 2">
 <!ENTITY func.loadURLScript3 "Hivatkozás/szkript betöltése 3">

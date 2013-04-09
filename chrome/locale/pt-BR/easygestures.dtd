@@ -171,6 +171,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Página Inicial">
 <!ENTITY func.dailyReadings "Leituras Diárias">
 <!ENTITY func.searchWeb "Buscar na Web">
+<!ENTITY func.restart "Restart Firefox">
 
 <!ENTITY func.loadURLScript1 "Carregar URL/Script 1">
 <!ENTITY func.loadURLScript2 "Carregar URL/Script 2">

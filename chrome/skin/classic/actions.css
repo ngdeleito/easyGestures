@@ -208,6 +208,10 @@ div.searchWeb[grayed="true"] { background-position: -64px -576px !important ; }
 div.searchWeb { background-position: -64px -608px !important ; }
 div.searchWeb[grayed="false"][active="true"] { background-position: -64px -640px !important ; }
 
+div.restart[grayed="true"] { background-position: -128px -576px !important ; }
+div.restart { background-position: -128px -608px !important ; }
+div.restart[grayed="false"][active="true"] { background-position: -128px -640px !important ; }
+
 div.runProgramFile1[grayed="true"] { background-position: -128px -576px !important ; }
 div.runProgramFile1 { background-position: -128px -608px !important ; }
 div.runProgramFile1[grayed="false"][active="true"] { background-position: -128px -640px !important ; }
@@ -647,6 +651,11 @@ div.small_searchWeb[grayed="true"] { background-position: -40px -360px !importan
 div.small_searchWeb { background-position: -40px -380px !important ; }
 div.small_searchWeb[grayed="false"][active="true"] { background-position: -40px -400px !important ; }
 image.small_searchWeb { -moz-image-region: rect(380px 60px 400px 40px) !important ; }
+
+div.small_restart[grayed="true"] { background-position: -80px -360px !important ; }
+div.small_restart { background-position: -80px -380px !important ; }
+div.small_restart[grayed="false"][active="true"] { background-position: -80px -400px !important ; }
+image.small_restart { -moz-image-region: rect(380px 100px 400px 80px) !important ; }
 
 div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px !important ; }
 div.small_runProgramFile1 { background-position: -80px -380px !important ; }

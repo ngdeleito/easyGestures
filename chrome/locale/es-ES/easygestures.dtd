@@ -137,6 +137,7 @@
 <!ENTITY func.homepage "Página de inicio">
 <!ENTITY func.dailyReadings "Lecturas diarias">
 <!ENTITY func.searchWeb "Buscar en la Web">
+<!ENTITY func.restart "Reinicializar Firefox">
 <!ENTITY func.loadURLScript1 "Dirección/Script 1">
 <!ENTITY func.loadURLScript2 "Dirección/Script 2">
 <!ENTITY func.loadURLScript3 "Dirección/Script 3">

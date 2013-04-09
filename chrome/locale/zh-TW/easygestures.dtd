@@ -171,6 +171,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "首頁">
 <!ENTITY func.dailyReadings "每日閱讀">
 <!ENTITY func.searchWeb "網路搜尋">
+<!ENTITY func.restart "Restart Firefox">
 
 <!ENTITY func.loadURLScript1 "載入網址／Script 1">
 <!ENTITY func.loadURLScript2 "載入網址／Script 2">

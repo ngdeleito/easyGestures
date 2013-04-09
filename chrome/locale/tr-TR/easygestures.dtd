@@ -172,6 +172,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "Ana Sayfa">
 <!ENTITY func.dailyReadings "Günlük Okumalar">
 <!ENTITY func.searchWeb "Web&apos;de Ara">
+<!ENTITY func.restart "Restart Firefox">
 
 <!ENTITY func.loadURLScript1 "1. URL/Script yükle">
 <!ENTITY func.loadURLScript2 "2. URL/Script yükle">

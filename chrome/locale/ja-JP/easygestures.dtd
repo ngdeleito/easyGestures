@@ -171,6 +171,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.homepage "ホームページ">
 <!ENTITY func.dailyReadings "デイリーリーディング">
 <!ENTITY func.searchWeb "web を検索">
+<!ENTITY func.restart "Restart Firefox">
 
 <!ENTITY func.loadURLScript1 "URL/スクリプト 1 の読み込み">
 <!ENTITY func.loadURLScript2 "URL/スクリプト 2 の読み込み">
