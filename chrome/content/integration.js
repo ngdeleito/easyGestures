@@ -170,7 +170,6 @@ function eG_updatePrefs(prefs) {
       }
     }
     else { // new version installed
-      eG_restoreCustomIconsAndSkins(); // restore custom icons and skins from previously made temporary backup on last unload
       if (versionCompare.compare(prevVersion, "4.3.1") >= 0) {
         // Keep current preferences because no changes to prefs have been made since version 4.3.1
       }
@@ -607,7 +606,6 @@ function eG_handleUnload(evt) {
   
   var needsChange = eG_needsChange();
   if (needsChange == "needs-upgrade") {
-    eG_backupCustomIconsAndSkins();
   }
   else if (needsChange == "needs-uninstall") {
     eG_deleteAllPreferences();
@@ -735,74 +733,4 @@ function eG_needsChange() {
   catch (ex) {
     return "";
   }
-}
-
-function eG_backupCustomIconsAndSkins() {
-  // save customicons and skins packs folders to a temp folder
-  try {
-    var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-    var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-    
-    var destinationFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    destinationFolder.initWithPath(userProfilePath);
-    destinationFolder.append("extensions");
-    destinationFolder.append("temp_" + eGc.id);
-    
-    // copy customicons folder into temp_ folder
-    var customiconsFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    customiconsFolder.initWithPath(userProfilePath);
-    customiconsFolder.append("extensions");
-    customiconsFolder.append(eGc.id);
-    customiconsFolder.append("chrome");
-    customiconsFolder.append("customicons");
-    customiconsFolder.copyTo(destinationFolder, "");
-    
-    // copy skin packs folder into temp_ folder
-    var skinsFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    skinsFolder.initWithPath(userProfilePath);
-    skinsFolder.append("extensions");
-    skinsFolder.append(eGc.id);
-    skinsFolder.append("chrome");
-    skinsFolder.append("skins packs");
-    skinsFolder.copyTo(destinationFolder, "");
-  }
-  catch (ex) {}
-}
-
-function eG_restoreCustomIconsAndSkins() {
-  // restore customicons and skins packs folders from temp_ folder
-  try {
-    var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-    var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-    
-    var destinationFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    destinationFolder.initWithPath(userProfilePath);
-    destinationFolder.append("extensions");
-    destinationFolder.append(eGc.id);
-    destinationFolder.append("chrome");
-    
-    // copy customicons folder into eG's chrome folder
-    var customiconsFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    customiconsFolder.initWithPath(userProfilePath);
-    customiconsFolder.append("extensions");
-    customiconsFolder.append("temp_" + eGc.id);
-    customiconsFolder.append("customicons");
-    customiconsFolder.copyTo(destinationFolder, "");
-    
-    // copy skin packs folder into eG's chrome folder
-    var skinsFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    skinsFolder.initWithPath(userProfilePath);
-    skinsFolder.append("extensions");
-    customiconsFolder.append("temp_" + eGc.id);
-    skinsFolder.append("skins packs");
-    skinsFolder.copyTo(destinationFolder, "");
-    
-    // delete temp_ folder
-    var tempFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    tempFolder.initWithPath(userProfilePath);
-    tempFolder.append("extensions");
-    tempFolder.append("temp_" + eGc.id);
-    tempFolder.remove(true);
-  }
-  catch (ex) {}
 }

@@ -918,7 +918,7 @@
         
         image = document.createElement("image");
         image.setAttribute("src", "chrome://easygestures/content/browse.png");
-        image.setAttribute("onclick", "if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+");");
+        image.setAttribute("onclick", "if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+"); fireChangeEventOnLoadURLScript(" + i + ");");
         hbox.appendChild(image);
         
         readLoadURLScriptPreference(i);
@@ -1090,57 +1090,16 @@
     }
     
     function retrieveCustomIconFile(action, actionNumber) {
-      var img = document.getElementById(action+"_newIcon"+actionNumber);
+      var fp = Components.classes["@mozilla.org/filepicker;1"]
+                         .createInstance(Components.interfaces.nsIFilePicker);
+      fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
+      fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
       
-      if (browseImg(img) == false)
-        return; // no image choosen: keep current
-      
-      var newSrc = img.src;
-      removeCustomIconFile(action, actionNumber);
-      
-      // copy icon file to chrome folder newIcon
-      var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-      file.initWithPath(newSrc);
-      
-      var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-      var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-      var dest = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-      dest.initWithPath(userProfilePath);
-      dest.append("extensions");
-      dest.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-      dest.append("chrome");
-      dest.append("customicons");
-      
-      file.copyTo(dest, action+actionNumber);
-      
-      img.src="chrome://customicons/content/"+action + actionNumber;
-      
-      //var chrome=Components.classes["@mozilla.org/chrome/chrome-registry;1"].createInstance(Components.interfaces.nsIChromeRegistry);
-      //chrome.checkForNewChrome();
-      /*
-      try {	// clear xul cache by deleting xul.mlf file
-        var faslService = Components.classes['@mozilla.org/fast-load-service;1'].getService(Components.interfaces.nsIFastLoadService);
-        var faslFile = faslService.newFastLoadFile("XUL");
-        faslFile.remove(false);
-      } catch (ex) {}
-      */
-    }
-    
-    function removeCustomIconFile(action, actionNumber) {
-      var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-      var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-      
-      var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-      file.initWithPath(userProfilePath);
-      file.append("extensions");
-      file.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-      file.append("chrome");
-      file.append("customicons");
-      file.append(action+actionNumber);
-      
-      if (file.exists())
-        file.remove(false);
-      document.getElementById(action+"_newIcon"+actionNumber).src = "";
+      var returnValue = fp.show();
+      if (returnValue == Components.interfaces.nsIFilePicker.returnOK) {
+        var img = document.getElementById(action + "_newIcon" + actionNumber);
+        img.src = "file://" + fp.file.path;
+      }
     }
     
     function preventCloseOnEnter(event) {
@@ -1224,22 +1183,6 @@
       for (i=0; i<eG_PopupImages.length ; i++)
         actionsStr.push(0); // all actions stats set to 0
       eG_prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
-    }
-    
-    function browseImg(img) {
-      var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-      fp.init(window, 'Icon File', Components.interfaces.nsIFilePicker.modeOpen);
-      fp.appendFilter("Image Files", "*.png;*.jpg;*.bmp;*.gif;*.ico;*.mng;*.xbm;*.jpeg;*.xpm;*.dib;*.jif;*.jiff;*.jpe");
-      fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
-      //fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
-      
-      var ret = fp.show();
-      if (ret == Components.interfaces.nsIFilePicker.returnOK) {
-        img.src = fp.file.path;
-        return true;
-      }
-      else
-        return false;
     }
     
     function browse(textboxid) {

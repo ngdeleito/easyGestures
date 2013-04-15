@@ -1,7 +1,6 @@
 overlay chrome://browser/content/browser.xul chrome://easygestures/content/overlay.xul
 
 content easygestures chrome/content/     contentaccessible=yes
-content customicons  chrome/customicons/ contentaccessible=yes
 
 locale easygestures en-US chrome/locale/en-US/
 locale easygestures fr-FR chrome/locale/fr-FR/
