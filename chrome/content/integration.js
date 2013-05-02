@@ -36,7 +36,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 var eGc = {
   version: "4.3.2", // Ex: 1.1beta
-  id: "{11F9F076-72B3-4586-995D-5042CF5D3AD4}", // easyGestures ID
   localizing: null, // Access to string bundle for easygestures.properties file
   
   blockStdContextMenu: false, // whether the std context menu should be suppressed
@@ -92,15 +91,6 @@ window.addEventListener("mousedown", eG_countClicks, false);
 function eG_initMenuIntegration(evt) {
   // set the prefs, initiate menu
   eGc.localizing = document.getElementById("easygestures.properties");
-  
-  /////////////////////////////////////////////////////////
-  // localizing extension's description in Extension Manager
-  /////////////////////////////////////////////////////////
-
-  var eGLocalizationPrefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("extensions."+eGc.id+".");
-  var supportsString = Components.classes[ "@mozilla.org/supports-string;1" ].createInstance(Components.interfaces.nsISupportsString);
-  supportsString.data = eGc.localizing.getString("description");
-  eGLocalizationPrefs.setComplexValue( "description", Components.interfaces.nsISupportsString, supportsString );
   
   /////////////////////////////////////////////////////////
   // setting preferences
