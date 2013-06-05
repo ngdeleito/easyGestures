@@ -928,7 +928,7 @@ eG_menu.prototype = {
   },
 
   rolloverExternalIcons : function(src, node, active) { // this is for loadURLScript actions icons which can be customized or imported from favicons or program's icons
-    if (this[src] === undefined) {
+    if (this[src] === undefined || src === "autoscrolling") {
       return;
     }
 
