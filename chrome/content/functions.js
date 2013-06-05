@@ -396,9 +396,57 @@ var eGf = {
   homePage : function() {
     BrowserHome();
   },
+  
+  _checkDailyReadingsFolder : function() {
+    var dailyReadingsFolderNode = null;
+    var folderName = "@easyGestures";
+    
+    try {
+      // check if dailyReadings folder already exists in toolbarFolder
+      var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
+                                     .getService(Components.interfaces.nsINavHistoryService);
+      var bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
+                                       .getService(Components.interfaces.nsINavBookmarksService);
+      var options = historyService.getNewQueryOptions();
+      var query = historyService.getNewQuery();
+      options.excludeItems = true;
+      query.setFolders([bookmarksService.toolbarFolder], 1); //query.setFolders([bookmarksService.placesRoot], 1);
+      var result = historyService.executeQuery(query, options);
+      
+      result.root.containerOpen = true;
+      for (var i = 0; i < result.root.childCount; i++) {
+        // iterate over the immediate children of this folder
+        if (result.root.getChild(i).itemId == eGm.dailyReadingsFolderURI && eGm.dailyReadingsFolderURI != "" || result.root.getChild(i).title == folderName) {
+          dailyReadingsFolderNode = result.root.getChild(i);
+          if (eGm.dailyReadingsFolderURI == "") {
+            // update value if no value found
+            eGm.dailyReadingsFolderURI = result.root.getChild(i).itemId;
+            eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", eGm.dailyReadingsFolderURI);
+          }
+          break;
+        }
+      }
+      result.root.containerOpen = false; // close a container after using it!
+    }
+    catch (ex) {
+      alert("Exception: "+ ex.toString());
+      return false;
+    }
+    
+    if (eGm.dailyReadingsFolderURI == "" || dailyReadingsFolderNode == null) {
+      var menuFolder = PlacesUtils.bookmarks.toolbarFolder; //Bookmarks menu folder: bookmarksMenuFolder, Toolbar folder: toolbarFolder,
+      var newFolderId = PlacesUtils.bookmarks.createFolder(menuFolder, folderName, -1);
+      
+      eGm.dailyReadingsFolderURI = newFolderId;
+      eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", newFolderId);
+      
+      alert(eGc.localizing.getString("dailyReadingsCreate"));
+    }
+    return dailyReadingsFolderNode;
+  },
 
   dailyReadings : function() {
-    var dailyReadingsFolderNode = eG_checkDailyReadingsFolder();
+    var dailyReadingsFolderNode = this._checkDailyReadingsFolder();
 
     if (dailyReadingsFolderNode != null) {
       PlacesUIUtils.openContainerNodeInTabs(dailyReadingsFolderNode, null, eGc.doc.defaultView);
@@ -698,52 +746,4 @@ function eG_readClipboard() {
   else {
     return "";
   }
-}
-
-function eG_checkDailyReadingsFolder() {
-  var dailyReadingsFolderNode = null;
-  var folderName = "@easyGestures";
-  
-  try {
-    // check if dailyReadings folder already exists in toolbarFolder
-    var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
-                                   .getService(Components.interfaces.nsINavHistoryService);
-    var bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
-                                     .getService(Components.interfaces.nsINavBookmarksService);
-    var options = historyService.getNewQueryOptions();
-    var query = historyService.getNewQuery();
-    options.excludeItems = true;
-    query.setFolders([bookmarksService.toolbarFolder], 1); //query.setFolders([bookmarksService.placesRoot], 1);
-    var result = historyService.executeQuery(query, options);
-    
-    result.root.containerOpen = true;
-    for (var i = 0; i < result.root.childCount; i++) {
-      // iterate over the immediate children of this folder
-      if (result.root.getChild(i).itemId == eGm.dailyReadingsFolderURI && eGm.dailyReadingsFolderURI != "" || result.root.getChild(i).title == folderName) {
-        dailyReadingsFolderNode = result.root.getChild(i);
-        if (eGm.dailyReadingsFolderURI == "") {
-          // update value if no value found
-          eGm.dailyReadingsFolderURI = result.root.getChild(i).itemId;
-          eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", eGm.dailyReadingsFolderURI);
-        }
-        break;
-      }
-    }
-    result.root.containerOpen = false; // close a container after using it!
-  }
-  catch (ex) {
-    alert("Exception: "+ ex.toString());
-    return false;
-  }
-  
-  if (eGm.dailyReadingsFolderURI == "" || dailyReadingsFolderNode == null) {
-    var menuFolder = PlacesUtils.bookmarks.toolbarFolder; //Bookmarks menu folder: bookmarksMenuFolder, Toolbar folder: toolbarFolder,
-    var newFolderId = PlacesUtils.bookmarks.createFolder(menuFolder, folderName, -1);
-    
-    eGm.dailyReadingsFolderURI = newFolderId;
-    eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", newFolderId);
-    
-    alert(eGc.localizing.getString("dailyReadingsCreate"));
-  }
-  return dailyReadingsFolderNode;
 }
