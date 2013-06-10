@@ -252,6 +252,15 @@ function eG_changeStatus() {
   }
 }
 
+function eG_getSelection() { // find text selection in current HTML document
+  var sel = eGc.evtMouseDown.view.getSelection();
+  sel = sel.toString();
+  sel = sel.replace( /^\s+/, "" );        // remove all spaces at the beginnng of the string
+  sel = sel.replace(/(\n|\r|\t)+/g, " "); // replace all Linefeed, Carriage return & Tab with a space
+  sel = sel.replace(/\s+$/,"");           // remove all spaces at the end of the string
+  return sel;
+}
+
 // suppress standard context menu
 function eG_handlePopup(evt) {
   if (eGc.blockStdContextMenu) {
