@@ -55,7 +55,7 @@ var eGf = {
       var url = eGc.doc.URL;
       var backurl = (getWebNavigation().sessionHistory.getEntryAtIndex(index,false)).URI.spec;
 
-      while ( (this.root(url, false).replace("www.","") == this.root(backurl, false).replace("www.","") ) && index > 0) {
+      while ((this.root(url, false).replace("www.", "") == this.root(backurl, false).replace("www.", "")) && index > 0) {
         index -= 1;
         url = backurl;
         backurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
@@ -156,7 +156,7 @@ var eGf = {
     var uri = ios.newURI(url, null, null);
     var rootURL;
     try {
-      rootURL = uri.scheme + "://"+ tld.getBaseDomainFromHost(uri.host)+"/";
+      rootURL = uri.scheme + "://" + tld.getBaseDomainFromHost(uri.host) + "/";
     }
     catch (ex) { // do something when NS_ERROR_HOST_IS_IP_ADDRES or other exception is thrown
       rootURL = url;
@@ -307,10 +307,12 @@ var eGf = {
   //*********************************************************************************
 
   _readClipboard : function() {
-    clipb = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(Components.interfaces.nsIClipboard);
-    transf = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-    transf.addDataFlavor("text/unicode");
+    var clipb = Components.classes["@mozilla.org/widget/clipboard;1"]
+                          .createInstance(Components.interfaces.nsIClipboard);
+    var transf = Components.classes["@mozilla.org/widget/transferable;1"]
+                           .createInstance(Components.interfaces.nsITransferable);
 
+    transf.addDataFlavor("text/unicode");
     clipb.getData(transf, clipb.kGlobalClipboard);
 
     var str = {};
@@ -362,7 +364,7 @@ var eGf = {
 
   openLinkNewWindow : function(link) {
     var url;
-    if (link==null) {
+    if (link == null) {
       url = this._readClipboard();
     }
     else {
@@ -372,14 +374,14 @@ var eGf = {
   },
 
   copyLink : function(link) { //write to clipboard the link url
-    if (link!=null) {
+    if (link != null) {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(link.href);
     }
   },
 
   sendLink : function(link) {
-    if (link!=null) {
+    if (link != null) {
       MailIntegration.sendMessage(link, this.root(link, false));
     }
     else {
@@ -388,8 +390,8 @@ var eGf = {
   },
 
   copyImageLocation : function(src) {
-    if (src!=null) {
-      const cbhelper= Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+    if (src != null) {
+      const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(src);
     }
   },
@@ -408,7 +410,7 @@ var eGf = {
 
   hideImages : function() {
     if (eGc.image != null) {
-      eGc.image.style.display="none";
+      eGc.image.style.display = "none";
     }
     else {
       var imgs = eGc.doc.getElementsByTagName("img");
@@ -491,21 +493,23 @@ var eGf = {
   },
 
   loadURLScript : function(appNum, string) {
-    var loadURLScript= eGm["loadURLScript"+appNum];
+    var loadURLScript = eGm["loadURLScript" + appNum];
     var codetext = loadURLScript[1];
     var isScript = loadURLScript[2];
 
     if (codetext != "") {
       if (string != "") {
-        codetext = codetext.replace("%s",string);
+        codetext = codetext.replace("%s", string);
       }
       var curURL = eGc.doc.URL; // get current URL
       if (curURL != "") {
-        codetext = codetext.replace("%u",curURL);
+        codetext = codetext.replace("%u", curURL);
       }
     }
 
-    if ( (new Function ("return " + isScript))() ) (new Function ("return " + codetext))(); // (new Function ("return " + data ))() replacing eval on data
+    if ( (new Function ("return " + isScript))() ) {
+      (new Function ("return " + codetext))(); // (new Function ("return " + data ))() replacing eval on data
+    }
     else {
       switch (eGm.loadURLin) {
         case "curTab":
@@ -518,7 +522,8 @@ var eGf = {
           container._selectNewTab(tabs[tabs.length-1]);   // selectNewTab removed from FF3
           break;
         case "newWindow":
-          window.open(codetext); break;
+          window.open(codetext);
+          break;
       }
     }
     return false; // avoid JavaScript Error
@@ -527,18 +532,20 @@ var eGf = {
   //*********************************************************************************
 
   markVisitedLinks : function() {
-    var globalHistory = Components.classes["@mozilla.org/browser/global-history;2"].getService(Components.interfaces.nsIGlobalHistory2);
-    var ioService = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-    allLinks = eGc.body.getElementsByTagName("a"); // don't use uppercase tag name because of xhtml
-    for (var i=0; i<allLinks.length; i++) {
-      if (allLinks[i].href!="") {
+    var globalHistory = Components.classes["@mozilla.org/browser/global-history;2"]
+                                  .getService(Components.interfaces.nsIGlobalHistory2);
+    var ioService = Components.classes["@mozilla.org/network/io-service;1"]
+                              .getService(Components.interfaces.nsIIOService);
+    var allLinks = eGc.body.getElementsByTagName("a"); // don't use uppercase tag name because of xhtml
+    for (var i=0; i < allLinks.length; i++) {
+      if (allLinks[i].href != "") {
         var uri = ioService.newURI(allLinks[i].href, null, null);
         if (globalHistory.isVisited(uri)) {
           allLinks[i].style.color = "gray";
           allLinks[i].style.textDecoration = "line-through";
 
           var image = allLinks[i].getElementsByTagName("img")[0]; // don't use uppercase tag name because of xhtml
-          if (image!=null) { // any image inside the link must be tagged too
+          if (image != null) { // any image inside the link must be tagged too
             image.style.backgroundColor = "#eeeeee";
             image.style.border = "6px dotted #c0c0c0";
           }
@@ -567,12 +574,12 @@ var eGf = {
   },
 
   bookmarksToolbar : function() {
-    tb = document.getElementById("PersonalToolbar");
+    var tb = document.getElementById("PersonalToolbar");
     if (tb.hasAttribute("collapsed")) {
       tb.removeAttribute("collapsed");
     }
     else {
-      tb.setAttribute("collapsed",true);
+      tb.setAttribute("collapsed", true);
     }
     // make it persistent
     document.persist("PersonalToolbar", 'collapsed');
@@ -674,15 +681,15 @@ var eGf = {
       var width;
       var height;
 
-      if (eGc.image.style.width=="") {
+      if (eGc.image.style.width == "") {
         width = eGc.image.width * 2 + "px";
       }
       else {
         width = parseInt(eGc.image.style.width) * 2 + "px";
       }
 
-      if (eGc.image.style.height=="") {
-        height=eGc.image.height * 2 + "px";
+      if (eGc.image.style.height == "") {
+        height = eGc.image.height * 2 + "px";
       }
       else {
         height = parseInt(eGc.image.style.height) * 2 + "px";
@@ -703,15 +710,15 @@ var eGf = {
       var width;
       var height;
 
-      if (eGc.image.style.width=="") {
-        width=eGc.image.width * 0.5 + "px";
+      if (eGc.image.style.width == "") {
+        width = eGc.image.width * 0.5 + "px";
       }
       else {
         width = parseInt(eGc.image.style.width) * 0.5 + "px";
       }
 
-      if (eGc.image.style.height=="") {
-        height=eGc.image.height * 0.5 + "px";
+      if (eGc.image.style.height == "") {
+        height = eGc.image.height * 0.5 + "px";
       }
       else {
         height = parseInt(eGc.image.style.height) * 0.5 + "px";
@@ -731,12 +738,5 @@ var eGf = {
 
 function eG_canGoUp () {
   var url = eGc.doc.URL;
-  if (eGf.root(url, false) != url.replace("www.","")) {
-    return true;
-  }
-  else {
-    return false;
-  }
-}
-
+  return eGf.root(url, false) != url.replace("www.", "");
 }
