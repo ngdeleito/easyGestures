@@ -306,10 +306,42 @@ var eGf = {
 
   //*********************************************************************************
 
+  _readClipboard : function() {
+    clipb = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(Components.interfaces.nsIClipboard);
+    transf = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
+    transf.addDataFlavor("text/unicode");
+
+    clipb.getData(transf, clipb.kGlobalClipboard);
+
+    var str = {};
+    var strLength = {};
+
+    transf.getTransferData("text/unicode", str, strLength);
+
+    if (str) {
+      if (Components.interfaces.nsISupportsWString) {
+        str = str.value.QueryInterface(Components.interfaces.nsISupportsWString);
+      }
+      else
+        if (Components.interfaces.nsISupportsString) {
+          str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
+        }
+        else {
+          str = null;
+        }
+    }
+    if (str) {
+      return str;
+    }
+    else {
+      return "";
+    }
+  },
+
   openLink : function(link) {
     var url;
     if (link == null) {
-      url = eG_readClipboard();
+      url = this._readClipboard();
     }
     else {
       url = link.href;
@@ -331,7 +363,7 @@ var eGf = {
   openLinkNewWindow : function(link) {
     var url;
     if (link==null) {
-      url = eG_readClipboard();
+      url = this._readClipboard();
     }
     else {
       url = link.href;
@@ -716,34 +748,4 @@ function eG_getSelection() { // find text selection in current HTML document
   return sel;
 }
 
-function eG_readClipboard() {
-  clipb = Components.classes["@mozilla.org/widget/clipboard;1"].createInstance(Components.interfaces.nsIClipboard);
-  transf = Components.classes["@mozilla.org/widget/transferable;1"].createInstance(Components.interfaces.nsITransferable);
-  transf.addDataFlavor("text/unicode");
-
-  clipb.getData(transf, clipb.kGlobalClipboard);
-
-  var str = {};
-  var strLength = {};
-
-  transf.getTransferData("text/unicode", str, strLength);
-
-  if (str) {
-    if (Components.interfaces.nsISupportsWString) {
-      str = str.value.QueryInterface(Components.interfaces.nsISupportsWString);
-    }
-    else
-      if (Components.interfaces.nsISupportsString) {
-        str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
-      }
-      else {
-        str = null;
-      }
-  }
-  if (str) {
-    return str;
-  }
-  else {
-    return "";
-  }
 }
