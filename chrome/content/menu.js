@@ -1201,7 +1201,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     if (layout.name.search("context") != -1) {
-      contextMenuSign.childNodes[2].wrappedJSObject.firstChild.data=eGc.localizing.getString(layout.name);
+      contextMenuSign.childNodes[2].firstChild.data = eGc.localizing.getString(layout.name);
       contextAltMenuSign.style.visibility=(eGc.contextType.split("/").length>2 ? "visible": "hidden"); // alternative context exists or not
     }
 
