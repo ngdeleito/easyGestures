@@ -1,5 +1,3 @@
-overlay chrome://browser/content/browser.xul chrome://easygestures/content/overlay.xul
-
 content easygestures chrome/content/     contentaccessible=yes
 
 locale easygestures en-US chrome/locale/en-US/

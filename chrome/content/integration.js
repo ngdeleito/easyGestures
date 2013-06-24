@@ -19,6 +19,7 @@ the Initial Developer. All Rights Reserved.
 
 Contributor(s):
   Ons Besbes.
+  ngdeleito
   
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -80,17 +81,8 @@ var eGc = {
 var eGm = null;
 var eG_prefsObs = null;
 
-if (window.document.location != 'chrome://easygestures/content/options.xul') {
-  // avoid a call when options dialog is opened or closed
-  window.addEventListener("load", eG_initMenuIntegration, false);
-  window.addEventListener("unload", eG_handleUnload, false);
-}
-
-window.addEventListener("mousedown", eG_countClicks, false);
-
-function eG_initMenuIntegration(evt) {
-  // set the prefs, initiate menu
-  eGc.localizing = document.getElementById("easygestures.properties");
+function eG_initMenuIntegration(window) {
+  var document = window.document;
   
   /////////////////////////////////////////////////////////
   // setting preferences
@@ -99,7 +91,6 @@ function eG_initMenuIntegration(evt) {
   
   eG_updatePrefs(eG_prefsObs.prefs);
   
-  var active = eG_prefsObs.prefs.getBoolPref("profile.active");
   if (eG_prefsObs.prefs.getBoolPref("profile.statusbarShowIcon")) {
     ///////////////////////////////////////////////////////
     // adding status bar icon and activating/deactivating menu
@@ -107,43 +98,42 @@ function eG_initMenuIntegration(evt) {
     ///////////////////////////////////////////////////////
     
     var statusBar = document.getElementById("addon-bar");
-    var statusbarpanel = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "statusbarpanel");
-    statusbarpanel.setAttribute("id","statusbarIcon");
-    statusbarpanel.setAttribute("tooltiptext", eGc.localizing.getString("statusMenuTooltip"));
-    statusbarpanel.setAttribute("src","chrome://easygestures/content/statusbar"+(active?"":"_gray")+".png");
-    statusbarpanel.setAttribute("class","statusbarpanel-iconic");
-    statusbarpanel.setAttribute("onclick","if (event.button=='0') eG_changeStatus();if (event.button=='2') window.openDialog('chrome://easygestures/content/options.xul','','chrome,titlebar,toolbar,centerscreen,resizable');");
-    statusbarpanel.setAttribute("ondblclick","if (event.button=='0') window.openDialog('chrome://easygestures/content/options.xul','','chrome,titlebar,toolbar,centerscreen,resizable');");
-    statusBar.appendChild(statusbarpanel);
+    if (statusBar != null) {
+      var statusbarpanel = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "statusbarpanel");
+      statusbarpanel.setAttribute("id","statusbarIcon");
+      statusbarpanel.setAttribute("tooltiptext", eGc.localizing.getString("statusMenuTooltip"));
+      statusbarpanel.setAttribute("src","chrome://easygestures/content/statusbar.png");
+      statusbarpanel.setAttribute("class","statusbarpanel-iconic");
+      statusbarpanel.setAttribute("onclick","if (event.button=='2') window.openDialog('chrome://easygestures/content/options.xul','','chrome,titlebar,toolbar,centerscreen,resizable');");
+      statusbarpanel.setAttribute("ondblclick","if (event.button=='0') window.openDialog('chrome://easygestures/content/options.xul','','chrome,titlebar,toolbar,centerscreen,resizable');");
+      statusBar.appendChild(statusbarpanel);
+    }
   }
   
-  if (active) {
-    eG_activateMenu();
-    var skinPath = "chrome://easygestures/skin/";
-    
-    ///////////////////////////////////////////////////////
-    // register CSS for images
-    ///////////////////////////////////////////////////////
-    var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"].getService(Components.interfaces.nsIStyleSheetService);
-    var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-    var u = ios.newURI(skinPath+"actions.css", null, null);
-    if (!sss.sheetRegistered(u, sss.AGENT_SHEET)) {
-      sss.loadAndRegisterSheet(u, sss.AGENT_SHEET);
-    }
-    
-    if (window.arguments[0] == "about:blank") {
-      loadURI("about:blank"); // FIX TRICK: when homepage is set to Blank Page, icons won't show because of CSS unless loading explicitly the blank page...
-    }
-    
-    ///////////////////////////////////////////////////////
-    // displaying tips at startup
-    ///////////////////////////////////////////////////////
-    var wenum = Components.classes["@mozilla.org/embedcomp/window-watcher;1"].getService(Components.interfaces.nsIWindowWatcher).getWindowEnumerator();
-    wenum.getNext();
-    if (!wenum.hasMoreElements()) { // only one Firefox window is open
-      if (eGm.startupTips) {
-        window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable'); // show tip dialog
-      }
+  eG_activateMenu(document);
+  
+  ///////////////////////////////////////////////////////
+  // register CSS for images
+  ///////////////////////////////////////////////////////
+  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
+                      .getService(Components.interfaces.nsIStyleSheetService);
+  var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
+  if (!sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
+    sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
+  }
+  
+  if (window.arguments[0] == "about:blank") {
+    window.gBrowser.loadURI("about:blank"); // FIX TRICK: when homepage is set to Blank Page, icons won't show because of CSS unless loading explicitly the blank page...
+  }
+  
+  ///////////////////////////////////////////////////////
+  // displaying tips at startup
+  ///////////////////////////////////////////////////////
+  var wenum = Services.ww.getWindowEnumerator();
+  wenum.getNext();
+  if (!wenum.hasMoreElements()) { // only one Firefox window is open
+    if (eGm.startupTips) {
+      window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable'); // show tip dialog
     }
   }
 }
@@ -197,11 +187,16 @@ function eG_updatePrefs(prefs) {
     eG_setPrefs(eGc.localizing.getString("locale"));
     
     // display welcome page
-    setTimeout(function() { top.getBrowser().selectedTab = openNewTabWith(getShortcutOrURI("chrome://easygestures/content/welcomePage.xhtml", {})); }, 100, '');
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.setTimeout(function() {
+      window.gBrowser.selectedTab = window.gBrowser.addTab("chrome://easygestures/content/welcomePage.xhtml");
+    }, 100, '');
   }
 }
 
-function eG_activateMenu() {
+function eG_activateMenu(document) {
+  var gBrowser = document.defaultView.gBrowser;
+  
   /////////////////////////////////////////////////////////
   // creating menu
   /////////////////////////////////////////////////////////
@@ -211,10 +206,10 @@ function eG_activateMenu() {
   // setting events handlers
   /////////////////////////////////////////////////////////
   
-  getBrowser().addEventListener("mousedown", eG_handleMousedown, true);
-  getBrowser().addEventListener("mouseup", eG_handleMouseup, true);
-  getBrowser().addEventListener("keydown", eG_handleKeys, true);
-  getBrowser().addEventListener("keyup", eG_handleKeys, true);
+  gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
+  gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
+  gBrowser.addEventListener("keydown", eG_handleKeys, true);
+  gBrowser.addEventListener("keyup", eG_handleKeys, true);
   var contextMenu = document.getElementById("contentAreaContextMenu");
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
@@ -224,31 +219,36 @@ function eG_activateMenu() {
   // disabling autoscrolling if middle mouse button is menu's button
   /////////////////////////////////////////////////////////
   if (eGm.showButton == 1) {
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("general.");
+    var prefs = Services.prefs.getBranch("general.");
     if (prefs.getBoolPref("autoScroll")) {
       prefs.setBoolPref("autoScroll", false);
     }
   }
 }
 
-function eG_changeStatus() {
-  var active = eG_prefsObs.prefs.getBoolPref("profile.active");
-  active = !active; // switch status
-  eG_prefsObs.prefs.setBoolPref("profile.active", active);
-  
-  document.getElementById("statusbarIcon").src = "chrome://easygestures/content/statusbar"+(active?"":"_gray")+".png";
-  if (active) {
-    eG_activateMenu();
-  }
-  else {
-    getBrowser().removeEventListener("mousedown", eG_handleMousedown, true);
-    getBrowser().removeEventListener("mouseup", eG_handleMouseup, true);
-    getBrowser().removeEventListener("keydown", eG_handleKeys, true);
-    getBrowser().removeEventListener("keyup", eG_handleKeys, true);
-    var contextMenu = document.getElementById("contentAreaContextMenu");
-    if (contextMenu) {
-      contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
+function eG_deactivateMenu(window) {
+  if (eG_prefsObs.prefs.getBoolPref("profile.statusbarShowIcon")) {
+    var statusBar = window.document.getElementById("addon-bar");
+    if (statusBar != null) {
+      var statusbarpanel = window.document.getElementById("statusbarIcon");
+      statusBar.removeChild(statusbarpanel);
     }
+  }
+  
+  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
+                      .getService(Components.interfaces.nsIStyleSheetService);
+  var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
+  if (sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
+    sss.unregisterSheet(uri, sss.AGENT_SHEET);
+  }
+  
+  window.gBrowser.removeEventListener("mousedown", eG_handleMousedown, true);
+  window.gBrowser.removeEventListener("mouseup", eG_handleMouseup, true);
+  window.gBrowser.removeEventListener("keydown", eG_handleKeys, true);
+  window.gBrowser.removeEventListener("keyup", eG_handleKeys, true);
+  var contextMenu = window.document.getElementById("contentAreaContextMenu");
+  if (contextMenu) {
+    contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
   }
 }
 
@@ -270,12 +270,14 @@ function eG_handlePopup(evt) {
 }
 
 function eG_handleKeys(evt) {
+  var window = evt.target.ownerDocument.defaultView;
+
   // clear automatic delayed autoscrolling
-  clearTimeout(eGm.autoscrollingTrigger);
+  window.clearTimeout(eGm.autoscrollingTrigger);
   
   // clear tooltips timeout
   if (eGm.showTooltips && !eGm.showingTooltips) {
-    clearTimeout(eGm.tooltipsTrigger);
+    window.clearTimeout(eGm.tooltipsTrigger);
   }
   
   if (evt.type == "keyup") {
@@ -308,16 +310,17 @@ function eG_handleKeys(evt) {
 }
 
 function eG_handleMouseup(evt) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
   var layout = eGm.menuSet[eGm.curLayoutName];
   
-  clearTimeout(eGc.showAfterDelayTimer);
+  window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
   eGc.showAfterDelayPassed = false;
   eGc.draggedToOpen = false;
   
   // clear automatic delayed autoscrolling
-  clearTimeout(eGm.autoscrollingTrigger);
-  if (document.getElementById("content").mCurrentBrowser._scrollingView == null) {
+  window.clearTimeout(eGm.autoscrollingTrigger);
+  if (window.document.getElementById("content").mCurrentBrowser._scrollingView == null) {
     if (eGm.autoscrolling) {
       eGm.autoscrolling = false;
       if (eGm.menuState == 0) {
@@ -327,9 +330,9 @@ function eG_handleMouseup(evt) {
   }
   
   if (eGc.openedOnDrag) { // enabling selection
-    var selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
+    var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(2); // SELECTION_ON
-    eG_openedOnDrag = false;
+    //eG_openedOnDrag = false; //variable does not exist; is it meant eGc.openedOnDrag?
   }
   
   // menuState:    0-> not shown    1-> showing   2-> showing & mouse moved    3-> staying open
@@ -359,14 +362,14 @@ function eG_handleMouseup(evt) {
           // middle click
           var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("browser.");
           if (prefs.getBoolPref("tabs.opentabfor.middleclick")) {
-            openNewTabWith(eGc.link);
+            window.gBrowser.addTab(eGc.link);
           }
           else {
-            openNewWindowWith(eGc.link);
+            window.open(eGc.link);
           }
         }
         else {
-          loadURI(eGc.link);
+          window.gBrowser.loadURI(eGc.link);
         }
       }
       eGm.close();
@@ -388,6 +391,8 @@ function eG_handleMouseup(evt) {
 }
 
 function eG_handleMousemove(evt) {
+  var window = evt.target.ownerDocument.defaultView;
+  
   if (evt.originalTarget.ownerDocument != eGc.frame_doc) {
     return;
   }
@@ -426,7 +431,7 @@ function eG_handleMousemove(evt) {
     // check if moved outside tolerance
     if (eGc.draggedToOpen) {
       // clear automatic delayed autoscrolling
-      clearTimeout(eGm.autoscrollingTrigger);
+      window.clearTimeout(eGm.autoscrollingTrigger);
       
       if (!eGm.showingTooltips) {
         eGm.resetTooltipsTimeout(); // reset tooltips timeout
@@ -442,6 +447,8 @@ function eG_handleMousemove(evt) {
 }
 
 function eG_handleMousedown(evt) {
+  var window = evt.target.ownerDocument.defaultView;
+  
   eGc.blockStdContextMenu = true;
   
   // check whether pie menu should change layout or hide (later)
@@ -484,14 +491,14 @@ function eG_handleMousedown(evt) {
   
   // "Disable or replace context menus" Browser option back to false if was false before showing pie menu. This is needed in case the timeout in hide function has not elapsed
   if (eGm.showButton == 2 && !eGc.allowContextBrowserOption && eGc.menuState == 0) {
-    clearTimeout(eGc.allowContextBrowserOptionTimerId);
+    window.clearTimeout(eGc.allowContextBrowserOptionTimerId);
     eG_resetInitialContextBrowserOption();
   }
   
   // start timer for delayed show up
   if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay) {
     eGc.showAfterDelayPassed = true;
-    eGc.showAfterDelayTimer = setTimeout(eG_showAfterDelay, eGm.showAfterDelayDelay);
+    eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayDelay);
   }
   
   // copying parts of evt object
@@ -507,27 +514,27 @@ function eG_handleMousedown(evt) {
   eGc.evtMouseDown.view=evt.view;
   
   // identify context, find body etc
-  eGc.doc = window._content.document;
+  eGc.doc = evt.target.ownerDocument;
   eGc.frame_doc = evt.originalTarget.ownerDocument;
   eGc.body = eGc.frame_doc.documentElement;
   
   eGc.selection = eG_getSelection();
   
   for (var node = evt.originalTarget; node != null; node = node.parentNode) {
-    if (node.nodeType == Node.ELEMENT_NODE) {
-      if ((node instanceof HTMLAreaElement) || (node instanceof HTMLAnchorElement)) {
+    if (node.nodeType == window.Node.ELEMENT_NODE) {
+      if ((node instanceof window.HTMLAreaElement) || (node instanceof window.HTMLAnchorElement)) {
         if (node.href != null && node.href != "") {
           eGc.link = node;
         }
         continue;
       }
       
-      if (node instanceof HTMLImageElement) {
+      if (node instanceof window.HTMLImageElement) {
         eGc.image = node;
         continue;
       }
       
-      if (node instanceof HTMLTextAreaElement) {
+      if (node instanceof window.HTMLTextAreaElement) {
         eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
         eGc.selectionNode = node;
         eGc.selectionStart = node.selectionStart;
@@ -535,7 +542,7 @@ function eG_handleMousedown(evt) {
         continue;
       }
       
-      if (node instanceof HTMLInputElement) {
+      if (node instanceof window.HTMLInputElement) {
         if (node.type.toUpperCase() == "TEXT" || node.type.toUpperCase() == "PASSWORD") {
           eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
           eGc.selectionNode = node;
@@ -580,14 +587,15 @@ function eG_handleMousedown(evt) {
   }
   
   // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
-  getBrowser().focus();
+  var mainWindow = Services.wm.getMostRecentWindow("navigator:browser");
+  mainWindow.gBrowser.focus();
   
   if (eGm.autoscrollingOn) {
     // automatic delayed autoscrolling on mouse down
     
     // making a partial clone of current evt for setTimeout because object will be lost
     // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
-    eGm.autoscrollingTrigger = setTimeout(function foo(arg) {eGm.autoscrolling=true; eGm.close(); eGf.autoscrolling(arg); }, eGm.autoscrollingDelay, eGc.evtMouseDown);
+    eGm.autoscrollingTrigger = window.setTimeout(function foo(arg) {eGm.autoscrolling=true; eGm.close(); eGf.autoscrolling(arg); }, eGm.autoscrollingDelay, eGc.evtMouseDown);
   }
 }
 
@@ -602,13 +610,6 @@ function eG_handleUnload(evt) {
     prefs.QueryInterface(Components.interfaces.nsIPrefBranchInternal).removeObserver("easygestures.stateChange.prefs", eG_prefsObs);
   }
   catch (ex) {}
-  
-  var needsChange = eG_needsChange();
-  if (needsChange == "needs-upgrade") {
-  }
-  else if (needsChange == "needs-uninstall") {
-    eG_deleteAllPreferences();
-  }
 }
 
 function eG_countClicks() {
@@ -633,8 +634,9 @@ function eG_resetInitialContextBrowserOption() {
 }
 
 function eG_showAfterDelay() {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
   eGc.showAfterDelayPassed = false;
-  clearTimeout(eGc.showAfterDelayTimer);
+  window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
   
   if (!eGm.dragOnly && !eGc.draggedToOpen) {
@@ -645,7 +647,8 @@ function eG_showAfterDelay() {
 function eG_openMenu() {
   // disabling selection when left mouse button is used until mouseup is done or menu is closed
   if (eGm.showButton == 0) { // left mouse button
-    var selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
   
@@ -702,34 +705,5 @@ function eG_openMenu() {
   }
   else {
     eGm.show("main");
-  }
-}
-
-function eG_needsChange() {
-  // returns "" if no change or "needs-upgrade" or "needs-uninstall"
-  try {
-    var fileLocator = Components.classes["@mozilla.org/file/directory_service;1"].getService(Components.interfaces.nsIProperties);
-    var userProfilePath = fileLocator.get("ProfD", Components.interfaces.nsIFile).path;
-    
-    // cross platform append
-    var stagedFolder = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
-    stagedFolder.initWithPath(userProfilePath);
-    stagedFolder.append("extensions");
-    stagedFolder.append("staged");
-    stagedFolder.append("{11F9F076-72B3-4586-995D-5042CF5D3AD4}");
-    
-    if (stagedFolder.exists()) {
-      // if extensions\staged\{11F9F076-72B3-4586-995D-5042CF5D3AD4} folder exists, check if empty or not: empty means uninstall, not empty means update
-      if (stagedFolder.fileSize != 0) {
-        return 'needs-upgrade'; // upgrading
-      }
-      else {
-        return 'needs-uninstall'; //uninstalling
-      }
-    }
-    return "";
-  }
-  catch (ex) {
-    return "";
   }
 }

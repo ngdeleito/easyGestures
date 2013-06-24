@@ -16,6 +16,7 @@ The Original Code is easyGestures.
 The Initial Developer of the Original Code is Ons Besbes.
 
 Contributor(s):
+  ngdeleito
 
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -35,7 +36,6 @@ function eG_setPrefs(locale) {
   // this function is also called in options.xul with 'null' argument to reset
   // preferences without changing locale
   eG_prefsObs.prefs.setCharPref("profile.version", eGc.version);
-  eG_prefsObs.prefs.setBoolPref("profile.active", true);
   eG_prefsObs.prefs.setBoolPref("profile.statusbarShowIcon", true);
   
   eG_prefsObs.prefs.setBoolPref("stateChange.language", false);
@@ -57,7 +57,8 @@ function eG_setPrefs(locale) {
   eG_prefsObs.prefs.setBoolPref("profile.startupTips", true);
   eG_prefsObs.prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
   
-  if (navigator.userAgent.indexOf("Mac") == -1) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  if (window.navigator.userAgent.indexOf("Mac") == -1) {
     eG_prefsObs.prefs.setIntPref("behavior.showButton", 1); // middle button
     eG_prefsObs.prefs.setIntPref("behavior.showAltButton", 2); // right button
     eG_prefsObs.prefs.setIntPref("behavior.showKey", 0); // 0=none 16=shift 17=ctrl
@@ -120,7 +121,7 @@ function eG_setPrefs(locale) {
   var string = Components.classes["@mozilla.org/supports-string;1"]
                          .createInstance(Components.interfaces.nsISupportsString);
   for (i=1; i<=20; i++) {
-    string.data = "••false••false•false"; // name, text, isScript, newIconPath, favicon, newIcon: '•' is the separator
+    string.data = "\u2022\u2022false\u2022\u2022false\u2022false"; // name, text, isScript, newIconPath, favicon, newIcon: '•' is the separator
     eG_prefsObs.prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
   }
   
@@ -268,11 +269,4 @@ function eG_prefsObserver() {
       alert(ex);
     }
   }
-}
-
-function eG_deleteAllPreferences() { // called if eG is uninstalled
-  var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                        .getService(Components.interfaces.nsIPrefService)
-                        .getBranch("easygestures.");
-  prefs.deleteBranch("");
 }

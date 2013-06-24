@@ -19,6 +19,8 @@
     </em:targetApplication>
 
     <!-- Front End MetaData -->
+    <em:bootstrap>true</em:bootstrap>
+    
     <em:name>easyGestures</em:name>
     <em:description>Mouse gestures within a popup pie menu.</em:description>
     <em:creator>Ons Besbes</em:creator>

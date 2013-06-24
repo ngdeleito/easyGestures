@@ -1410,7 +1410,7 @@
     
     function readLoadURLScriptPreference(number) {
       var preference = document.getElementById("loadURLScript" + number);
-      var string = preference.value.split("•");
+      var string = preference.value.split("\u2022");
 
       document.getElementById("loadURLScript_name" + number).value = string[0];
       if ((new Function ("return " + string[2] ))()) {
@@ -1434,13 +1434,13 @@
       var string = Components.classes["@mozilla.org/supports-string;1"]
                              .createInstance(Components.interfaces.nsISupportsString);
       string.data = document.getElementById("loadURLScript_name" + number).value
-        + "•" + (document.getElementById("URL" + number).selected ?
-                  document.getElementById("loadURLScript_host" + number).value
-                : document.getElementById("loadURLScript_code" + number).value)
-        + "•" + document.getElementById("Script" + number).selected
-        + "•" + document.getElementById("loadURLScript_newIcon" + number).src
-        + "•" + document.getElementById("loadURLScript_faviconCheck" + number).checked
-        + "•" + document.getElementById("loadURLScript_newIconCheck" + number).checked;
+        + "\u2022" + (document.getElementById("URL" + number).selected ?
+                       document.getElementById("loadURLScript_host" + number).value
+                     : document.getElementById("loadURLScript_code" + number).value)
+        + "\u2022" + document.getElementById("Script" + number).selected
+        + "\u2022" + document.getElementById("loadURLScript_newIcon" + number).src
+        + "\u2022" + document.getElementById("loadURLScript_faviconCheck" + number).checked
+        + "\u2022" + document.getElementById("loadURLScript_newIconCheck" + number).checked;
       return string;
     }
     

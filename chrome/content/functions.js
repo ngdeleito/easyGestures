@@ -36,63 +36,71 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 var eGf = {
-  firstPage : function() { // two behaviors are possible. Select the prefered lines of code
-    //Returns at the begining of the history list
-    getWebNavigation().gotoIndex(0);
-
-    //Load again the first visited page --- enable this code if wanted and disable the code above
-    //entry = getWebNavigation().sessionHistory.getEntryAtIndex(0, false);
-    //loadURI(entry.title);
+  firstPage : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.gotoIndex(0);
   },
 
   lastPage : function() {
-    getWebNavigation().gotoIndex(getWebNavigation().sessionHistory.count-1);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
   },
 
   backSite : function() {
-    var index = getWebNavigation().sessionHistory.index-1;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    var index = gBrowser.sessionHistory.index - 1;
+    
     if (index >= 0) {
       var url = eGc.doc.URL;
-      var backurl = (getWebNavigation().sessionHistory.getEntryAtIndex(index,false)).URI.spec;
+      var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
 
       while ((this.root(url, false).replace("www.", "") == this.root(backurl, false).replace("www.", "")) && index > 0) {
         index -= 1;
         url = backurl;
-        backurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
+        backurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
       }
-      getWebNavigation().gotoIndex(index);
+      gBrowser.gotoIndex(index);
     }
   },
 
   forwardSite : function() {
-    var index = getWebNavigation().sessionHistory.index+1;
-    if (index <= getWebNavigation().sessionHistory.count-1) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    var index = gBrowser.sessionHistory.index + 1;
+    
+    if (index <= gBrowser.sessionHistory.count - 1) {
       var url = eGc.doc.URL;
-      var forwardurl = (getWebNavigation().sessionHistory.getEntryAtIndex(index,false)).URI.spec;
+      var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
 
-      while (this.root(url, false).replace("www.","") == this.root(forwardurl, false).replace("www.","") && index < getWebNavigation().sessionHistory.count-1) {
+      while (this.root(url, false).replace("www.", "") == this.root(forwardurl, false).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
         index += 1;
         url = forwardurl;
-        forwardurl = getWebNavigation().sessionHistory.getEntryAtIndex(index,false).URI.spec;
+        forwardurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
       }
-      getWebNavigation().gotoIndex(index);
+      gBrowser.gotoIndex(index);
     }
   },
 
   forward : function() {
-    BrowserForward();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.goForward();
   },
 
   back : function() {
-    BrowserBack();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.goBack();
   },
 
   reload : function(loading) { // reload or stop
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+
     if (!loading) {
-      BrowserReload(); // BrowserReloadSkipCache();
+      gBrowser.reload();
     }
     else {
-      BrowserStop();
+      gBrowser.stop();
     }
   },
 
@@ -145,7 +153,8 @@ var eGf = {
       }
     }
 
-    loadURI(upURL);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadURI(upURL);
     return upURL;
   },
 
@@ -162,7 +171,8 @@ var eGf = {
       rootURL = url;
     }
     if (loadURL) {
-      loadURI(rootURL);
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      window.gBrowser.loadURI(rootURL);
     }
     return rootURL;
   },
@@ -180,59 +190,64 @@ var eGf = {
   },
 
   autoscrolling : function(evt) {
-    document.getElementById("content").mCurrentBrowser.startScroll(evt);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.document.getElementById("content").mCurrentBrowser.startScroll(evt);
   },
 
   //*********************************************************************************
 
   newTab : function(duplicate) {
-    var originalHistory = getBrowser().sessionHistory;
-    var originalIndex = originalHistory.index;
-
-    BrowserOpenTab();
-    if (duplicate) {
-      // duplicate history first
-      var newHistory = getBrowser().sessionHistory;
-
-      for (var i = 0; i < originalHistory.count; i++) {
-        var entry = originalHistory.getEntryAtIndex(i,false);
-        var newEntry = entry;
-        newHistory.QueryInterface(Components.interfaces.nsISHistoryInternal).addEntry(newEntry, true);
-      }
-      // go to original index
-      getWebNavigation().gotoIndex(originalIndex);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    
+    if (!duplicate) {
+      gBrowser.selectedTab = gBrowser.addTab();
+      window.gURLBar.focus();
+    }
+    else {
+      var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                         .getService(Components.interfaces.nsISessionStore);
+      gBrowser.selectedTab = ss.duplicateTab(window, gBrowser.selectedTab);
     }
   },
 
   prevTab : function() {
-    getBrowser().tabContainer.advanceSelectedTab(-1, true);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.tabContainer.advanceSelectedTab(-1, true);
   },
 
   nextTab : function() {
-    getBrowser().tabContainer.advanceSelectedTab(1, true);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.tabContainer.advanceSelectedTab(1, true);
   },
 
   closeTab : function() {
-    gBrowser = document.getElementById("content");
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+
     if (gBrowser.tabContainer.childNodes.length > 1 || !eGm.closeBrowserOnLastTab) {
       if (gBrowser.tabContainer.childNodes.length == 1) {
-        loadURI("about:blank");
+        gBrowser.loadURI("about:blank");
       }
       else {
         gBrowser.removeCurrentTab();
       }
     }
     else {
-      closeWindow(true); //BrowserCloseWindow() removed from FF3;
+      window.close();
     }
   },
 
   closeOtherTabs : function() {
-    getBrowser().removeAllTabsBut(getBrowser().selectedTab);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    gBrowser.removeAllTabsBut(gBrowser.selectedTab);
   },
 
   undoCloseTab : function() {
-    var ss = Cc["@mozilla.org/browser/sessionstore;1"].getService(Ci.nsISessionStore);
+    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                       .getService(Components.interfaces.nsISessionStore);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (ss.getClosedTabCount(window) > 0) {
       ss.undoCloseTab(window, 0);
     }
@@ -243,65 +258,61 @@ var eGf = {
   newWindow : function(duplicate) {
     var url = "";
     if (duplicate) {
-      var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService();
-      var windowManagerInterface = windowManager.QueryInterface( Components.interfaces.nsIWindowMediator);
-      var win;
-      for (var i= 0; i < getBrowser().browsers.length; i++) {
-        url = getBrowser().browsers[i].currentURI.spec;
-        if (i==0) {
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      var gBrowser = window.gBrowser;
+      var newWindow;
+      for (var i = 0; i < gBrowser.browsers.length; i++) {
+        url = gBrowser.browsers[i].currentURI.spec;
+        if (i == 0) {
           window.open(url);
-          win = windowManagerInterface.getMostRecentWindow( "navigator:browser" );
+          newWindow = Services.wm.getMostRecentWindow("navigator:browser");
         }
         else {
-          win.BrowserOpenTab();
-          win.loadURI(url);
+          newWindow.gBrowser.addTab(url);
         }
       }
     }
     else {
-      var prefs= Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("");
-      if (prefs.getIntPref("browser.startup.page") == 1) {
-        url = prefs.getCharPref("browser.startup.homepage");
+      if (Services.prefs.getIntPref("browser.startup.page") == 1) {
+        url = Services.prefs.getCharPref("browser.startup.homepage");
         if (url.split('|')[1]) {
           url = "about:blank";
         }
       }
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
       window.open(url);
     }
   },
 
   closeOtherWindows : function() {
-    var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService();
-    var windowManagerInterface = windowManager.QueryInterface( Components.interfaces.nsIWindowMediator);
-    var winCur = windowManagerInterface.getMostRecentWindow( "navigator:browser" );
-    var winEnum = windowManagerInterface.getZOrderDOMWindowEnumerator( "navigator:browser" ,false);
-    while (winEnum.hasMoreElements()) {
-      win = winEnum.getNext();
-      if (winCur != win) {
-        win.close();
+    var currentWindow = Services.wm.getMostRecentWindow("navigator:browser");
+    var openWindows = Services.wm.getEnumerator("navigator:browser");
+    
+    while (openWindows.hasMoreElements()) {
+      let window = openWindows.getNext();
+      if (window != currentWindow) {
+        window.close();
       }
     }
   },
   
   restart : function() {
-    Application.restart();
+    Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit
+                         |Components.interfaces.nsIAppStartup.eRestart);
   },
 
   closeBrowser : function() {
-    goQuitApplication(); /*closeWindow(true);*/
+    Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit);
   },
 
   minimizeWindow : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.minimize();
   },
 
   fullscreen : function() {
-    BrowserFullScreen();
-    //hide sidebar
-    var sidebar = document.getElementById("sidebar");
-    if (window.fullScreen && sidebar.hasAttribute("hidden") && !sidebar.hidden) {
-      toggleSidebar();
-    }
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.fullScreen = !window.fullScreen;
   },
 
   //*********************************************************************************
@@ -341,6 +352,8 @@ var eGf = {
   },
 
   openLink : function(link) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
     var url;
     if (link == null) {
       url = this._readClipboard();
@@ -351,10 +364,10 @@ var eGf = {
 
     switch (eGm.openLink) {
       case "curTab":
-        loadURI(url);
+        gBrowser.loadURI(url);
         break;
       case "newTab":
-        openNewTabWith(url);
+        gBrowser.addTab(url);
         break;
       case "newWindow":
         window.open(url);
@@ -370,7 +383,8 @@ var eGf = {
     else {
       url = link.href;
     }
-    openNewWindowWith(url);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.open(url);
   },
 
   copyLink : function(link) { //write to clipboard the link url
@@ -381,11 +395,12 @@ var eGf = {
   },
 
   sendLink : function(link) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (link != null) {
-      MailIntegration.sendMessage(link, this.root(link, false));
+      window.MailIntegration.sendMessage(link, this.root(link, false));
     }
     else {
-      MailIntegration.sendMessage(eGc.doc.URL, eGc.doc.title);
+      window.MailIntegration.sendMessage(eGc.doc.URL, eGc.doc.title);
     }
   },
 
@@ -396,16 +411,63 @@ var eGf = {
     }
   },
 
+  _getFileForSavingData : function(filter, defaultName) {
+    const nsIFilePicker = Components.interfaces.nsIFilePicker;
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                       .createInstance(nsIFilePicker);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+
+    fp.init(window, null, nsIFilePicker.modeSave);
+    fp.appendFilters(filter);
+    fp.defaultString = defaultName;
+    var returnValue = fp.show();
+    if (returnValue == nsIFilePicker.returnOK || returnValue == nsIFilePicker.returnReplace) {
+      return fp.file;
+    }
+    else {
+      return null;
+    }
+  },
+  
+  _saveContentFromLink : function(link, filter) {
+    var uri = Services.io.newURI(link, null, null);
+    var file = this._getFileForSavingData(
+                 filter,
+                 uri.path.substring(uri.path.lastIndexOf("/") + 1));
+
+    if (file != null) {
+      var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
+                          .createInstance(Components.interfaces.nsIWebBrowserPersist);
+      // don't save gzipped
+      wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      var privacyContext = window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
+                                 .getInterface(Components.interfaces.nsIWebNavigation)
+                                 .QueryInterface(Components.interfaces.nsILoadContext);
+      wbp.saveURI(uri, null, null, null, null, file, privacyContext);
+    }
+  },
+  
   saveLinkAs : function(link) {
-    saveURL(link, null, null, false);
+    this._saveContentFromLink(link, Components.interfaces.nsIFilePicker.filterHTML);
   },
 
-  saveImageAs : function(src, title) {
-    saveURL(src, title, null, false); /*false means don't bypass cache*/
+  saveImageAs : function(link) {
+    this._saveContentFromLink(link, Components.interfaces.nsIFilePicker.filterImages);
   },
 
-  savePageAs : function(doc) {
-    saveDocument(doc);
+  savePageAs : function(document) {
+    var file = this._getFileForSavingData(
+                 Components.interfaces.nsIFilePicker.filterHTML,
+                 document.title);
+
+    if (file != null) {
+      var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
+                          .createInstance(Components.interfaces.nsIWebBrowserPersist);
+      // don't save gzipped
+      wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
+      wbp.saveDocument(document, file, null, null, null, null);
+    }
   },
 
   hideImages : function() {
@@ -421,14 +483,17 @@ var eGf = {
   },
 
   copyImage : function() {
-    document.popupNode = eGc.image;
-    goDoCommand('cmd_copyImageContents');
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.document.popupNode = eGc.image;
+    window.goDoCommand('cmd_copyImageContents');
   },
 
   //*********************************************************************************
 
   homePage : function() {
-    BrowserHome();
+    var homepage = Services.prefs.getCharPref("browser.startup.homepage");
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadTabs(homepage.split("|"), true, false);
   },
   
   _checkDailyReadingsFolder : function() {
@@ -443,7 +508,7 @@ var eGf = {
                                        .getService(Components.interfaces.nsINavBookmarksService);
       var options = historyService.getNewQueryOptions();
       var query = historyService.getNewQuery();
-      options.excludeItems = true;
+      options.excludeItems = false;
       query.setFolders([bookmarksService.toolbarFolder], 1); //query.setFolders([bookmarksService.placesRoot], 1);
       var result = historyService.executeQuery(query, options);
       
@@ -468,13 +533,13 @@ var eGf = {
     }
     
     if (eGm.dailyReadingsFolderURI == "" || dailyReadingsFolderNode == null) {
-      var menuFolder = PlacesUtils.bookmarks.toolbarFolder; //Bookmarks menu folder: bookmarksMenuFolder, Toolbar folder: toolbarFolder,
-      var newFolderId = PlacesUtils.bookmarks.createFolder(menuFolder, folderName, -1);
+      var menuFolder = bookmarksService.toolbarFolder;
+      var newFolderId = bookmarksService.createFolder(menuFolder, folderName, -1);
       
       eGm.dailyReadingsFolderURI = newFolderId;
       eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", newFolderId);
       
-      alert(eGc.localizing.getString("dailyReadingsCreate"));
+      Services.prompt.alert(null, "", eGc.localizing.getString("dailyReadingsCreate"));
     }
     return dailyReadingsFolderNode;
   },
@@ -483,13 +548,22 @@ var eGf = {
     var dailyReadingsFolderNode = this._checkDailyReadingsFolder();
 
     if (dailyReadingsFolderNode != null) {
-      PlacesUIUtils.openContainerNodeInTabs(dailyReadingsFolderNode, null, eGc.doc.defaultView);
+      dailyReadingsFolderNode.QueryInterface(Components.interfaces.nsINavHistoryContainerResultNode);
+      dailyReadingsFolderNode.containerOpen = true;
+      var uris = [];
+      for (let i=0; i < dailyReadingsFolderNode.childCount; ++i) {
+        uris.push(dailyReadingsFolderNode.getChild(i).uri);
+      }
+      dailyReadingsFolderNode.containerOpen = false;
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      window.gBrowser.loadTabs(uris, true, false);
     }
   },
 
   searchWeb : function(string) {
-    BrowserSearch.searchBar.value = string;
-    BrowserSearch.webSearch();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.BrowserSearch.searchBar.value = string;
+    window.BrowserSearch.webSearch();
   },
 
   loadURLScript : function(appNum, string) {
@@ -511,15 +585,15 @@ var eGf = {
       (new Function ("return " + codetext))(); // (new Function ("return " + data ))() replacing eval on data
     }
     else {
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      var gBrowser = window.gBrowser;
+      
       switch (eGm.loadURLin) {
         case "curTab":
-          loadURI(codetext); break;
+          gBrowser.loadURI(codetext);
+          break;
         case "newTab":
-          openNewTabWith(codetext);
-          var container = document.getElementById("content").mTabContainer;
-          var tabs = container.childNodes;
-          // select new created tab
-          container._selectNewTab(tabs[tabs.length-1]);   // selectNewTab removed from FF3
+          gBrowser.selectedTab = gBrowser.addTab(codetext);
           break;
         case "newWindow":
           window.open(codetext);
@@ -555,25 +629,31 @@ var eGf = {
   },
 
   bookmarkThisLink : function(url) {
-    PlacesCommandHook.bookmarkLink(PlacesUtils.unfiledBookmarksFolderId, url.href, url.text);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.unfiledBookmarksFolderId, url.href, url.text);
     //PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), url.text);    // classic UI
   },
 
   bookmarkPage : function(url, name, doc) {
-    PlacesCommandHook.bookmarkPage (getBrowser().selectedBrowser, PlacesUtils.unfiledBookmarksFolderId, true);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.bookmarkPage(window.gBrowser.selectedBrowser, window.PlacesUtils.unfiledBookmarksFolderId, true);
     // PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), name, PlacesUtils.getDescriptionFromDocument(doc));   // classic UI
   },
 
   bookmarkOpenTabs : function() {
-    PlacesCommandHook.bookmarkCurrentPages();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.bookmarkCurrentPages();
     //PlacesUIUtils.showMinimalAddMultiBookmarkUI(PlacesCommandHook._getUniqueTabInfo());
   },
 
   bookmarks : function() {
-    toggleSidebar("viewBookmarksSidebar");
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.toggleSidebar("viewBookmarksSidebar");
   },
 
   bookmarksToolbar : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var document = window.document;
     var tb = document.getElementById("PersonalToolbar");
     if (tb.hasAttribute("collapsed")) {
       tb.removeAttribute("collapsed");
@@ -586,37 +666,43 @@ var eGf = {
   },
 
   history : function() {
-    toggleSidebar("viewHistorySidebar");
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.toggleSidebar("viewHistorySidebar");
   },
 
   viewPageSource : function(doc) {
-    BrowserViewSourceOfDocument(doc);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.BrowserViewSourceOfDocument(doc);
   },
 
   viewPageInfo : function(doc) {
-    BrowserPageInfo(doc, null);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.BrowserPageInfo(doc, null);
   },
 
   showOnlyThisFrame : function(frame_doc) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.loadURI(frame_doc.location.href);
   },
 
   properties : function(target) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     // no more available since FF 3.6: changed temporaly action to View Image Info
     if (target != null) {
-      BrowserPageInfo(target.ownerDocument, "mediaTab", target);
+      window.BrowserPageInfo(target.ownerDocument, "mediaTab", target);
     }
   },
 
   printPage : function() {
-    //BrowserPrintPreview();		//could be that !
-    PrintUtils.print(); 
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PrintUtils.print();
   },
 
   mail : function() {
     // No more function in Firefox 3
     // MailIntegration.readMail();
-    loadURI("mailto:");
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadURI("mailto:");
   },
 
   privateBrowsing : function() {
@@ -627,54 +713,61 @@ var eGf = {
   //*********************************************************************************
 
   cut : function() {
-    if (eGc.selectionNode!=null) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.selectionNode != null) {
       eGc.selectionNode.select();
       eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
     }
-    goDoCommand('cmd_cut');
+    window.goDoCommand('cmd_cut');
   },
 
   copy : function() {
-    if (eGc.selectionNode!=null) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.selectionNode != null) {
       eGc.selectionNode.select();
       eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
     }
-    goDoCommand('cmd_copy');
+    window.goDoCommand('cmd_copy');
   },
 
   paste : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     eGc.evtMouseDown.target.focus();
-    goDoCommand('cmd_paste');
+    window.goDoCommand('cmd_paste');
   },
 
   undo : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     eGc.evtMouseDown.target.focus();
-    goDoCommand('cmd_undo');
+    window.goDoCommand('cmd_undo');
   },
 
   selectAll : function() {
-    if (eGc.evtMouseDown.target instanceof HTMLInputElement || eGc.evtMouseDown.target instanceof HTMLTextAreaElement) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.evtMouseDown.target instanceof window.HTMLInputElement || eGc.evtMouseDown.target instanceof window.HTMLTextAreaElement) {
       eGc.evtMouseDown.target.focus();
     }
     else {
       window._content.focus();
     }
-    goDoCommand('cmd_selectAll');
+    window.goDoCommand('cmd_selectAll');
   },
 
   toggleFindBar : function(currentSelection) {
-    if (gFindBar.hidden) {
-      gFindBar.onFindCommand(currentSelection);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (window.gFindBar.hidden) {
+      window.gFindBar.onFindCommand(currentSelection);
     }
     else {
-      gFindBar.close();
+      window.gFindBar.close();
     }
   },
 
   zoomIn : function zoomIn() {
-    if (eGc.image==null) {
-      ZoomManager.useFullZoom=false; //zoom text only because eG's actions images look ugly when scaled
-      ZoomManager.enlarge();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.image == null) {
+      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
+      window.ZoomManager.enlarge();
     }
     else {
       // double image size only
@@ -701,9 +794,10 @@ var eGf = {
   },
 
   zoomOut : function() {
-    if (eGc.image==null) {
-      ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
-      ZoomManager.reduce();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.image == null) {
+      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
+      window.ZoomManager.reduce();
     }
     else {
       // halve image size only
@@ -730,7 +824,8 @@ var eGf = {
   },
 
   zoomReset : function () {
-    ZoomManager.reset();
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.ZoomManager.reset();
   }
 };
 

@@ -19,6 +19,7 @@ the Initial Developer. All Rights Reserved.
 
 Contributor(s):
   Ons Besbes.
+  ngdeleito
   
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -79,7 +80,7 @@ var eG_menuItems = [
   new eG_menuItem(30,   0, "sendLink",           "eGf.sendLink(eGc.link);"),
   new eG_menuItem(31,   0, "copyImageLocation",  "eGf.copyImageLocation(eGc.image.src);"),
   new eG_menuItem(32,   0, "saveLinkAs",         "eGf.saveLinkAs(eGc.link);"),
-  new eG_menuItem(33,   0, "saveImageAs",        "eGf.saveImageAs(eGc.image.src,eGc.doc.title);"),
+  new eG_menuItem(33,   0, "saveImageAs",        "eGf.saveImageAs(eGc.image.src);"),
   new eG_menuItem(34,   0, "savePageAs",         "eGf.savePageAs(eGc.doc);"),
   new eG_menuItem(35,   0, "hideImages",         "eGf.hideImages();"),
   new eG_menuItem(36,   0, "copyImage",          "eGf.copyImage();"),
@@ -320,26 +321,26 @@ function eG_menu () {
 
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
 
-  this.loadURLScript1 = prefs.getComplexValue("customizations.loadURLScript1", Components.interfaces.nsISupportsString).data.split("•"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon
-  this.loadURLScript2 = prefs.getComplexValue("customizations.loadURLScript2", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript3 = prefs.getComplexValue("customizations.loadURLScript3", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript4 = prefs.getComplexValue("customizations.loadURLScript4", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript5 = prefs.getComplexValue("customizations.loadURLScript5", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript6 = prefs.getComplexValue("customizations.loadURLScript6", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript7 = prefs.getComplexValue("customizations.loadURLScript7", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript8 = prefs.getComplexValue("customizations.loadURLScript8", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript9 = prefs.getComplexValue("customizations.loadURLScript9", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript10 = prefs.getComplexValue("customizations.loadURLScript10", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript11 = prefs.getComplexValue("customizations.loadURLScript11", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript12 = prefs.getComplexValue("customizations.loadURLScript12", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript13 = prefs.getComplexValue("customizations.loadURLScript13", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript14 = prefs.getComplexValue("customizations.loadURLScript14", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript15 = prefs.getComplexValue("customizations.loadURLScript15", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript16 = prefs.getComplexValue("customizations.loadURLScript16", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript17 = prefs.getComplexValue("customizations.loadURLScript17", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript18 = prefs.getComplexValue("customizations.loadURLScript18", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript19 = prefs.getComplexValue("customizations.loadURLScript19", Components.interfaces.nsISupportsString).data.split("•");
-  this.loadURLScript20 = prefs.getComplexValue("customizations.loadURLScript20", Components.interfaces.nsISupportsString).data.split("•");
+  this.loadURLScript1 = prefs.getComplexValue("customizations.loadURLScript1", Components.interfaces.nsISupportsString).data.split("\u2022"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
+  this.loadURLScript2 = prefs.getComplexValue("customizations.loadURLScript2", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript3 = prefs.getComplexValue("customizations.loadURLScript3", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript4 = prefs.getComplexValue("customizations.loadURLScript4", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript5 = prefs.getComplexValue("customizations.loadURLScript5", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript6 = prefs.getComplexValue("customizations.loadURLScript6", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript7 = prefs.getComplexValue("customizations.loadURLScript7", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript8 = prefs.getComplexValue("customizations.loadURLScript8", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript9 = prefs.getComplexValue("customizations.loadURLScript9", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript10 = prefs.getComplexValue("customizations.loadURLScript10", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript11 = prefs.getComplexValue("customizations.loadURLScript11", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript12 = prefs.getComplexValue("customizations.loadURLScript12", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript13 = prefs.getComplexValue("customizations.loadURLScript13", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript14 = prefs.getComplexValue("customizations.loadURLScript14", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript15 = prefs.getComplexValue("customizations.loadURLScript15", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript16 = prefs.getComplexValue("customizations.loadURLScript16", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript17 = prefs.getComplexValue("customizations.loadURLScript17", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript18 = prefs.getComplexValue("customizations.loadURLScript18", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript19 = prefs.getComplexValue("customizations.loadURLScript19", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLScript20 = prefs.getComplexValue("customizations.loadURLScript20", Components.interfaces.nsISupportsString).data.split("\u2022");
 
   this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
@@ -898,7 +899,8 @@ eG_menu.prototype = {
     this.clearRollover(layout, true);
 
     if (this.showTooltips) {
-      clearTimeout(this.tooltipsTrigger);
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      window.clearTimeout(this.tooltipsTrigger);
     }
   },
 
@@ -993,7 +995,10 @@ eG_menu.prototype = {
         (new Function ("return " + layout.actions[this.sector].func ))(); // (new Function ("return " + data ))() replacing eval on data
       }
       catch(ex) {
-        alert("Exception: "+ ex.toString());
+        var error = Components.classes["@mozilla.org/scripterror;1"]
+                              .createInstance(Components.interfaces.nsIScriptError);
+        error.init("easyGestures exception: " + ex.toString(), null, null, null, null, error.errorFlag, null);
+        Services.console.logMessage(error);
       }
     }
 
@@ -1012,13 +1017,16 @@ eG_menu.prototype = {
     var contextMenuSign = specialNodes.childNodes[2];
     var contextAltMenuSign = eGc.frame_doc.getElementById("eG_contextAltMenuSign");
 
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     if (eGc.link != null && this.handleLinks && this.menuState!=2 && this.menuState!=3 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
       linkSign.style.visibility = "visible";
-      this.linkTrigger = setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
+      this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }
     else {
       linkSign.style.visibility = "hidden";
@@ -1027,12 +1035,12 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // graying actions
     ///////////////////////////////////////////////////////////////////////////////////////////////
-
+    
     var actionNode = null;
     var actionName = "back";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getWebNavigation().canGoBack) {
+      if (gBrowser.canGoBack) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1043,7 +1051,7 @@ eG_menu.prototype = {
     actionName = "backSite";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getWebNavigation().canGoBack) {
+      if (gBrowser.canGoBack) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1054,7 +1062,7 @@ eG_menu.prototype = {
     actionName = "firstPage";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getWebNavigation().canGoBack) {
+      if (gBrowser.canGoBack) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1065,7 +1073,7 @@ eG_menu.prototype = {
     actionName = "forward";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getWebNavigation().canGoForward) {
+      if (gBrowser.canGoForward) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1076,7 +1084,7 @@ eG_menu.prototype = {
     actionName = "forwardSite";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getWebNavigation().canGoForward) {
+      if (gBrowser.canGoForward) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1087,7 +1095,7 @@ eG_menu.prototype = {
     actionName = "lastPage";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getWebNavigation().canGoForward) {
+      if (gBrowser.canGoForward) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1098,7 +1106,7 @@ eG_menu.prototype = {
     actionName = "nextTab";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getBrowser().mTabContainer.childNodes.length > 1) {
+      if (gBrowser.mTabContainer.childNodes.length > 1) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1109,7 +1117,7 @@ eG_menu.prototype = {
     actionName = "prevTab";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getBrowser().mTabContainer.childNodes.length > 1) {
+      if (gBrowser.mTabContainer.childNodes.length > 1) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1120,7 +1128,7 @@ eG_menu.prototype = {
     actionName = "closeOtherTabs";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (getBrowser().mTabContainer.childNodes.length > 1) {
+      if (gBrowser.mTabContainer.childNodes.length > 1) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1131,7 +1139,7 @@ eG_menu.prototype = {
     actionName = "undoCloseTab";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (Cc["@mozilla.org/browser/sessionstore;1"].getService(Ci.nsISessionStore).getClosedTabCount(window) > 0) {
+      if (Components.classes["@mozilla.org/browser/sessionstore;1"].getService(Components.interfaces.nsISessionStore).getClosedTabCount(window) > 0) {
         actionNode.setAttribute("grayed", "false");
       }
       else {
@@ -1143,9 +1151,7 @@ eG_menu.prototype = {
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
 
-      var windowManager = Components.classes['@mozilla.org/appshell/window-mediator;1'].getService();
-      var windowManagerInterface = windowManager.QueryInterface( Components.interfaces.nsIWindowMediator);
-      var winEnum = windowManagerInterface.getZOrderDOMWindowEnumerator("navigator:browser", false);
+      var winEnum = Services.wm.getZOrderDOMWindowEnumerator("navigator:browser", false);
       if (winEnum.hasMoreElements()) {
         winEnum.getNext(); //first window
       }
@@ -1162,7 +1168,7 @@ eG_menu.prototype = {
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
 
-      var stop_bcaster = document.getElementById("Browser:Stop");
+      var stop_bcaster = window.document.getElementById("Browser:Stop");
       eGc.loading = !stop_bcaster.hasAttribute("disabled");
 
       var actionClass = actionNode.getAttribute("class");
@@ -1298,6 +1304,7 @@ eG_menu.prototype = {
     eG_prefsObs.prefs.setIntPref("profile.statsUse", statsUse);
 
     // re-enable counting clicks inside window
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.addEventListener("mousedown", eG_countClicks, false);
   },
 
@@ -1307,6 +1314,7 @@ eG_menu.prototype = {
     this.baseMenu = "";
     this.showingTooltips = false;
 
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.removeEventListener("mousemove", eG_handleMousemove, true);
 
     eGc.image = null; // removes the pointed image if any
@@ -1316,23 +1324,25 @@ eG_menu.prototype = {
 
     // enabling selection when left mouse button is used because selection is turned off in that case
     if (this.showButton == 0) { // left mouse button
-      var selCon = getBrowser().docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
+      var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
       selCon.setDisplaySelection(2); // SELECTION_ON
     }
 
     if (this.showButton == 2 && !eGc.allowContextBrowserOption) { // set "Disable or replace context menus" Browser option back to false if was false before showing pie menu
-      eGc.allowContextBrowserOptionTimerId = setTimeout(resetInitialContextBrowserOption, 1000); // setting the timer to make sure the reset function is called after completion of mouseup event
+      eGc.allowContextBrowserOptionTimerId = window.setTimeout(resetInitialContextBrowserOption, 1000); // setting the timer to make sure the reset function is called after completion of mouseup event
     }
   },
 
   resetTooltipsTimeout : function() { // setting and resetting tooltips timeout
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    
     if (this.showTooltips) {
-      clearTimeout(this.tooltipsTrigger);
+      window.clearTimeout(this.tooltipsTrigger);
       if (this.showingTooltips || this.tooltipsDelayOmit) {
         this.showMenuTooltips();
       }
       else {
-        this.tooltipsTrigger = setTimeout(this.showMenuTooltips.bind(eGm), this.tooltipsDelay);
+        this.tooltipsTrigger = window.setTimeout(this.showMenuTooltips.bind(eGm), this.tooltipsDelay);
       }
     }
   },
@@ -1375,7 +1385,8 @@ eG_menu.prototype = {
   },
 
   compensateTextZoom : function(lNode) { // adjust labels font size to compensate for zoom changes
-    var currentZoom = gBrowser.selectedBrowser.markupDocumentViewer.textZoom;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var currentZoom = window.gBrowser.selectedBrowser.markupDocumentViewer.textZoom;
     //lNode.style.fontSize = Math.round(10*100/currentZoom)+"pt";
 
     if (!this.smallIcons) {
