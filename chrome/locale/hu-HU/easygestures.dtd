@@ -2,9 +2,6 @@
 
 <!-- Hungarian localization (hu-HU): SchS from Babelzilla.org -->
 
-<!ENTITY welcome.click "Középső kattintásra megnyílik a köralakú menü.">
-<!ENTITY welcome.onoff "Az állapotsoron található kék nyílra kattintva ki/bekapcsolható a köralakú menü.">
-<!ENTITY welcome.completed "easyGestures - telepítés befejeződött">
 <!ENTITY options "Beállítások">
 <!ENTITY close "Bezárás">
 <!ENTITY profile "Profil">

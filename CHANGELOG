@@ -27,3 +27,4 @@ Changes by ngdeleito (see git history for the full details)
 - removed custom about dialog
 - added new Restart Firefox action
 - easyGestures is now a restartless extension
+- removed welcome page

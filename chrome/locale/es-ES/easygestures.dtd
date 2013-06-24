@@ -2,9 +2,6 @@
 
 <!-- Spanish localization (es-ES): chuzo from Babelzilla -->
 
-<!ENTITY welcome.click "Clic central en la página para abrir el menú circular.">
-<!ENTITY welcome.onoff "Puede activar y desactivar el menú circular pulsando en la flecha azul de la barra de estado.">
-<!ENTITY welcome.completed "easyGestures - Instalación completada">
 <!ENTITY options "Opciones">
 <!ENTITY close "Cerrar">
 <!ENTITY profile "Perfil">

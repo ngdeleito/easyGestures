@@ -27,5 +27,6 @@ Features pruned so far and rationale:
 - Default, locale dependent bookmarks for Daily Readings action. They need to be maintained.
 - Popup for Daily Readings action. Opening a specific bookmark is better achieved by a Load URL action.
 - Red tag for links. This should be achieved through a user style sheet.
-- Editable select boxes for actions. It feels counterintuitive that they were editable since we are not adding new items (like in e.g. Firefox's address bar) but editing existing ones. Labels (whether edited or not) were stored in the preferences. Since easyGestures' language depends now on Firefox's language, easyGestures did no longer changed the labels upon language change.
+- Editable select boxes for actions. It feels counterintuitive that they were editable since we are not adding new items (like in e.g. Firefox's address bar) but editing existing ones. Labels (whether edited or not) were stored in the preferences. Since easyGestures' language depends now on Firefox's language, easyGestures did no longer change the labels upon language change.
 - Run Program File actions. I do not see any useful use case for this feature. Furthermore, the existing implementation seemed too Windows-based (although I might be wrong).
+- Welcome page. Tips should be sufficient. Furthermore the instructions did not apply to Mac users.

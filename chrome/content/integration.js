@@ -185,12 +185,6 @@ function eG_updatePrefs(prefs) {
   }
   catch (ex) { // default values at first start
     eG_setPrefs(eGc.localizing.getString("locale"));
-    
-    // display welcome page
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.setTimeout(function() {
-      window.gBrowser.selectedTab = window.gBrowser.addTab("chrome://easygestures/content/welcomePage.xhtml");
-    }, 100, '');
   }
 }
 

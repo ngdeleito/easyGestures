@@ -15,10 +15,6 @@ Contains options dialog strings and pie menu tips.
 END OF INSTRUCTIONS
 -->
 
-<!ENTITY welcome.click "Cliquez dans la page avec le bouton du milieu pour ouvrir le menu circulaire.">
-<!ENTITY welcome.onoff "Vous pouvez activer/désactiver le menu easyGestures en cliquant sur la flèche bleue dans la barre d'état.">
-<!ENTITY welcome.completed "easyGestures - Installation complétée">
-
 <!ENTITY options "Options">
 
 <!ENTITY close "Fermer">
