@@ -45,7 +45,22 @@ var eGf = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
   },
-
+  
+  _getRootURL : function(url) {
+    // this should work correcly with http://jolt.co.uk or gouv.qc.ca domains.
+    var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"]
+                        .getService(Components.interfaces.nsIEffectiveTLDService);
+    var uri = Services.io.newURI(url, null, null);
+    var rootURL;
+    try {
+      rootURL = uri.scheme + "://" + tld.getBaseDomainFromHost(uri.host) + "/";
+    }
+    catch (ex) { // do something when NS_ERROR_HOST_IS_IP_ADDRES or other exception is thrown
+      rootURL = url;
+    }
+    return rootURL;
+  },
+  
   backSite : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
@@ -55,7 +70,7 @@ var eGf = {
       var url = eGc.doc.URL;
       var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
 
-      while ((this.root(url, false).replace("www.", "") == this.root(backurl, false).replace("www.", "")) && index > 0) {
+      while ((this._getRootURL(url).replace("www.", "") == this._getRootURL(backurl).replace("www.", "")) && index > 0) {
         index -= 1;
         url = backurl;
         backurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
@@ -73,7 +88,7 @@ var eGf = {
       var url = eGc.doc.URL;
       var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
 
-      while (this.root(url, false).replace("www.", "") == this.root(forwardurl, false).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
+      while (this._getRootURL(url).replace("www.", "") == this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
         index += 1;
         url = forwardurl;
         forwardurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
@@ -158,23 +173,10 @@ var eGf = {
     return upURL;
   },
 
-  root : function(url, loadURL)	{ // when eG_canGoUp calls root, url must not be loaded
-    // this should work correcly with http://jolt.co.uk or gouv.qc.ca domains.
-    var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-    var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"].getService(Components.interfaces.nsIEffectiveTLDService);
-    var uri = ios.newURI(url, null, null);
-    var rootURL;
-    try {
-      rootURL = uri.scheme + "://" + tld.getBaseDomainFromHost(uri.host) + "/";
-    }
-    catch (ex) { // do something when NS_ERROR_HOST_IS_IP_ADDRES or other exception is thrown
-      rootURL = url;
-    }
-    if (loadURL) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      window.gBrowser.loadURI(rootURL);
-    }
-    return rootURL;
+  root : function(url)	{
+    var rootURL = this._getRootURL(url);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadURI(rootURL);
   },
 
   pageTop : function() {
@@ -397,7 +399,7 @@ var eGf = {
   sendLink : function(link) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (link != null) {
-      window.MailIntegration.sendMessage(link, this.root(link, false));
+      window.MailIntegration.sendMessage(link, this._getRootURL(link));
     }
     else {
       window.MailIntegration.sendMessage(eGc.doc.URL, eGc.doc.title);
@@ -833,5 +835,5 @@ var eGf = {
 
 function eG_canGoUp () {
   var url = eGc.doc.URL;
-  return eGf.root(url, false) != url.replace("www.", "");
+  return eGf._getRootURL(url) != url.replace("www.", "");
 }

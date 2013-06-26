@@ -54,7 +54,7 @@ var eG_menuItems = [
   new eG_menuItem(7,    0, "forward",            "eGf.forward();"),
   new eG_menuItem(8,    0, "reload",             "eGf.reload(eGc.loading);"),
   new eG_menuItem(9,    0, "up",                 "eGf.up(eGc.doc.URL);"),
-  new eG_menuItem(10,   0, "root",               "eGf.root(eGc.doc.URL, true);"),
+  new eG_menuItem(10,   0, "root",               "eGf.root(eGc.doc.URL);"),
   new eG_menuItem(11,   0, "pageTop",            "eGf.pageTop();"),
   new eG_menuItem(12,   0, "pageBottom",         "eGf.pageBottom();"),
   new eG_menuItem(13,   0, "autoscrolling",      "eGf.autoscrolling(eGc.evtMouseDown);"),
