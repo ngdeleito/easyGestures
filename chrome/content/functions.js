@@ -255,32 +255,32 @@ var eGf = {
 
   //*********************************************************************************
 
-  newWindow : function(duplicate) {
+  newWindow : function() {
     var url = "";
-    if (duplicate) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      var gBrowser = window.gBrowser;
-      var newWindow;
-      for (var i = 0; i < gBrowser.browsers.length; i++) {
-        url = gBrowser.browsers[i].currentURI.spec;
-        if (i == 0) {
-          window.open(url);
-          newWindow = Services.wm.getMostRecentWindow("navigator:browser");
-        }
-        else {
-          newWindow.gBrowser.addTab(url);
-        }
+    if (Services.prefs.getIntPref("browser.startup.page") == 1) {
+      url = Services.prefs.getCharPref("browser.startup.homepage");
+      if (url.split('|')[1]) {
+        url = "about:blank";
       }
     }
-    else {
-      if (Services.prefs.getIntPref("browser.startup.page") == 1) {
-        url = Services.prefs.getCharPref("browser.startup.homepage");
-        if (url.split('|')[1]) {
-          url = "about:blank";
-        }
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.open(url);
+  },
+  
+  duplicateWindow : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    var newWindow;
+    
+    for (let i = 0; i < gBrowser.browsers.length; i++) {
+      let url = gBrowser.browsers[i].currentURI.spec;
+      if (i == 0) {
+        window.open(url);
+        newWindow = Services.wm.getMostRecentWindow("navigator:browser");
       }
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      window.open(url);
+      else {
+        newWindow.gBrowser.addTab(url);
+      }
     }
   },
 
