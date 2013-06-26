@@ -183,7 +183,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.properties "속성">
 <!ENTITY func.printPage "페이지 인쇄">
 <!ENTITY func.mail "메일">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 <!ENTITY func.cut "잘라내기">
 <!ENTITY func.copy "복사">
 <!ENTITY func.paste "붙여넣기">

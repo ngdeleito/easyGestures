@@ -204,7 +204,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "属性">
 <!ENTITY func.printPage "打印页面">
 <!ENTITY func.mail "主要">
-<!ENTITY func.privateBrowsing "切换为隐私模式">
+<!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "剪切">
 <!ENTITY func.copy "复制">

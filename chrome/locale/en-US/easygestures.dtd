@@ -202,7 +202,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "Properties">
 <!ENTITY func.printPage "Print Page">
 <!ENTITY func.mail "Mail">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "Cut">
 <!ENTITY func.copy "Copy">

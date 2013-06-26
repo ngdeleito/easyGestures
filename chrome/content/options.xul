@@ -727,7 +727,7 @@
       "&func.bookmarkOpenTabs;", "&func.bookmarks;", "&func.bookmarksToolbar;",
       "&func.history;", "&func.viewPageSource;", "&func.viewPageInfo;",
       "&func.showOnlyThisFrame;", "&func.properties;", "&func.printPage;",
-      "&func.mail;", "&func.privateBrowsing;", "&func.cut;", "&func.copy;",
+      "&func.mail;", "&func.newPrivateWindow;", "&func.cut;", "&func.copy;",
       "&func.paste;", "&func.undo;", "&func.selectAll;", "&func.toggleFindBar;",
       "&func.zoomIn;", "&func.zoomOut;", "&func.zoomReset;"
     );
@@ -751,7 +751,7 @@
       "loadURLScript20", "markVisitedLinks", "bookmarkThisLink", "bookmarkPage",
       "bookmarkOpenTabs", "bookmarks", "bookmarksToolbar", "history",
       "viewPageSource", "viewPageInfo", "showOnlyThisFrame", "properties",
-      "printPage", "mail", "privateBrowsing", "cut", "copy", "paste", "undo",
+      "printPage", "mail", "newPrivateWindow", "cut", "copy", "paste", "undo",
       "selectAll", "toggleFindBar", "zoomIn", "zoomOut", "zoomReset"
     );
     

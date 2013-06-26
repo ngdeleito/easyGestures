@@ -707,9 +707,9 @@ var eGf = {
     window.gBrowser.loadURI("mailto:");
   },
 
-  privateBrowsing : function() {
-    var pbs = Components.classes["@mozilla.org/privatebrowsing;1"].getService(Components.interfaces.nsIPrivateBrowsingService);  
-    pbs.privateBrowsingEnabled = !pbs.privateBrowsingEnabled;
+  newPrivateWindow : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.OpenBrowserWindow({private: true});
   },
 
   //*********************************************************************************

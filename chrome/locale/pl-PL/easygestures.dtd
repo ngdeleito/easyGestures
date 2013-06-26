@@ -166,7 +166,7 @@
 <!ENTITY func.properties "Właściwości">
 <!ENTITY func.printPage "Drukuj stronę">
 <!ENTITY func.mail "Poczta">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 <!ENTITY func.cut "Wytnij">
 <!ENTITY func.copy "Kopiuj">
 <!ENTITY func.paste "Wklej">

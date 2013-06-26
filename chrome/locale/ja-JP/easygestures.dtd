@@ -203,7 +203,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "プロパティ">
 <!ENTITY func.printPage "ページを印刷">
 <!ENTITY func.mail "メール">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "切り取り">
 <!ENTITY func.copy "コピー">

@@ -166,7 +166,7 @@
 <!ENTITY func.properties "Vlastnosti">
 <!ENTITY func.printPage "Tlačiť stránku">
 <!ENTITY func.mail "Pošta">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 <!ENTITY func.cut "Vystrihnúť">
 <!ENTITY func.copy "Kopírovať">
 <!ENTITY func.paste "Prilepiť">

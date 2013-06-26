@@ -204,7 +204,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "Vlastnosti">
 <!ENTITY func.printPage "Vytisknout stránku">
 <!ENTITY func.mail "Email">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "Vyjmout">
 <!ENTITY func.copy "Kopírovat">

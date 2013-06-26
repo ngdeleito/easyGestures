@@ -203,7 +203,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "屬性">
 <!ENTITY func.printPage "列印">
 <!ENTITY func.mail "Mail">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "剪下">
 <!ENTITY func.copy "複製">

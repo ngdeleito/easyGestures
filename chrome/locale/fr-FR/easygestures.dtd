@@ -201,7 +201,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "Propriétés">
 <!ENTITY func.printPage "Imprimer page">
 <!ENTITY func.mail "Courrier">
-<!ENTITY func.privateBrowsing "Basculer navigation privée">
+<!ENTITY func.newPrivateWindow "Nouvelle fenêtre de navigation privée">
 
 <!ENTITY func.cut "Couper">
 <!ENTITY func.copy "Copier">

@@ -204,7 +204,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.properties "Özellikler">
 <!ENTITY func.printPage "Sayfayı Yazdır">
 <!ENTITY func.mail "Posta">
-<!ENTITY func.privateBrowsing "Toggle Private Browsing">
+<!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "Kes">
 <!ENTITY func.copy "Kopyala">
