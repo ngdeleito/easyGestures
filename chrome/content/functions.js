@@ -196,19 +196,19 @@ var eGf = {
 
   //*********************************************************************************
 
-  newTab : function(duplicate) {
+  newTab : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
-    
-    if (!duplicate) {
-      gBrowser.selectedTab = gBrowser.addTab();
-      window.gURLBar.focus();
-    }
-    else {
-      var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                         .getService(Components.interfaces.nsISessionStore);
-      gBrowser.selectedTab = ss.duplicateTab(window, gBrowser.selectedTab);
-    }
+    gBrowser.selectedTab = gBrowser.addTab();
+    window.gURLBar.focus();
+  },
+  
+  duplicateTab : function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                       .getService(Components.interfaces.nsISessionStore);
+    gBrowser.selectedTab = ss.duplicateTab(window, gBrowser.selectedTab);
   },
 
   prevTab : function() {

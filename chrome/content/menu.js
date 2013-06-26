@@ -59,8 +59,8 @@ var eG_menuItems = [
   new eG_menuItem(12,   0, "pageBottom",         "eGf.pageBottom();"),
   new eG_menuItem(13,   0, "autoscrolling",      "eGf.autoscrolling(eGc.evtMouseDown);"),
 
-  new eG_menuItem(14,   0, "newTab",             "eGf.newTab(false);"),
-  new eG_menuItem(15,   0, "duplicateTab",       "eGf.newTab(true);"),
+  new eG_menuItem(14,   0, "newTab",             "eGf.newTab();"),
+  new eG_menuItem(15,   0, "duplicateTab",       "eGf.duplicateTab();"),
   new eG_menuItem(16,   0, "prevTab",            "eGf.prevTab();"),
   new eG_menuItem(17,   0, "nextTab",            "eGf.nextTab();"),
   new eG_menuItem(18,   0, "closeTab",           "eGf.closeTab();"),
