@@ -303,7 +303,7 @@ var eGf = {
                          |Components.interfaces.nsIAppStartup.eRestart);
   },
 
-  closeBrowser : function() {
+  quit : function() {
     Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit);
   },
 

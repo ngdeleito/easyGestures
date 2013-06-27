@@ -150,7 +150,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "Yeni Pencere">
 <!ENTITY func.duplicateWindow "Pencereyi İkile">
 <!ENTITY func.closeOtherWindows "Diğer PEncereleri Kapat">
-<!ENTITY func.closeBrowser "Tarayıcıyı Kapat">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Pencereyi Simge Durumuna Küçült">
 <!ENTITY func.fullscreen "Tam Ekrana Geçiş Yap">
 

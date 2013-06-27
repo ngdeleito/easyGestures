@@ -70,7 +70,7 @@ var eG_menuItems = [
   new eG_menuItem(21,   0, "newWindow",          "eGf.newWindow();"),
   new eG_menuItem(22,   0, "duplicateWindow",    "eGf.duplicateWindow();"),
   new eG_menuItem(23,   0, "closeOtherWindows",  "eGf.closeOtherWindows();"),
-  new eG_menuItem(24,   0, "closeBrowser",       "eGf.closeBrowser();"),
+  new eG_menuItem(24,   0, "quit",               "eGf.quit();"),
   new eG_menuItem(25,   0, "minimizeWindow",     "eGf.minimizeWindow();"),
   new eG_menuItem(26,   0, "fullscreen",         "eGf.fullscreen();"),
 

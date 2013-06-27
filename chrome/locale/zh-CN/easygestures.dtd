@@ -150,7 +150,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "新建窗口">
 <!ENTITY func.duplicateWindow "复制窗口">
 <!ENTITY func.closeOtherWindows "关闭其他窗口">
-<!ENTITY func.closeBrowser "关闭浏览器">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "最小化窗口">
 <!ENTITY func.fullscreen "切换为全屏">
 

@@ -149,7 +149,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "新しいウィンドウ">
 <!ENTITY func.duplicateWindow "ウィンドウを複製">
 <!ENTITY func.closeOtherWindows "他のウィンドウを閉じる">
-<!ENTITY func.closeBrowser "ブラウザを閉じる">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "最小化">
 <!ENTITY func.fullscreen "全画面の切り替え">
 

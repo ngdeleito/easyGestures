@@ -118,7 +118,7 @@
 <!ENTITY func.newWindow "Új ablak">
 <!ENTITY func.duplicateWindow "Ablak megkettőzése">
 <!ENTITY func.closeOtherWindows "Többi ablak bezárása">
-<!ENTITY func.closeBrowser "Böngésző bezárása">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Ablak minimalizálása">
 <!ENTITY func.fullscreen "Teljes képernyő">
 <!ENTITY func.openLink "Hivatkozás megnyitása">

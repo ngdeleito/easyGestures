@@ -140,9 +140,9 @@ div.closeOtherWindows[grayed="true"] { background-position: -64px -384px !import
 div.closeOtherWindows { background-position: -64px -416px !important ; }
 div.closeOtherWindows[grayed="false"][active="true"] { background-position: -64px -448px !important ; }
 
-div.closeBrowser[grayed="true"] { background-position: -96px -384px !important ; }
-div.closeBrowser { background-position: -96px -416px !important ; }
-div.closeBrowser[grayed="false"][active="true"] { background-position: -96px -448px !important ; }
+div.quit[grayed="true"] { background-position: -96px -384px !important ; }
+div.quit { background-position: -96px -416px !important ; }
+div.quit[grayed="false"][active="true"] { background-position: -96px -448px !important ; }
 
 div.minimizeWindow[grayed="true"] { background-position: -128px -384px !important ; }
 div.minimizeWindow { background-position: -128px -416px !important ; }
@@ -568,10 +568,10 @@ div.small_closeOtherWindows { background-position: -40px -260px !important ; }
 div.small_closeOtherWindows[grayed="false"][active="true"] { background-position: -40px -280px !important ; }
 image.small_closeOtherWindows { -moz-image-region: rect(260px 60px 280px 40px) !important ; }
 
-div.small_closeBrowser[grayed="true"] { background-position: -60px -240px !important ; }
-div.small_closeBrowser { background-position: -60px -260px !important ; }
-div.small_closeBrowser[grayed="false"][active="true"] { background-position: -60px -280px !important ; }
-image.small_closeBrowser { -moz-image-region: rect(260px 80px 280px 60px) !important ; }
+div.small_quit[grayed="true"] { background-position: -60px -240px !important ; }
+div.small_quit { background-position: -60px -260px !important ; }
+div.small_quit[grayed="false"][active="true"] { background-position: -60px -280px !important ; }
+image.small_quit { -moz-image-region: rect(260px 80px 280px 60px) !important ; }
 
 div.small_minimizeWindow[grayed="true"] { background-position: -80px -240px !important ; }
 div.small_minimizeWindow { background-position: -80px -260px !important ; }

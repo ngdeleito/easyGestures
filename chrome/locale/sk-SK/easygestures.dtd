@@ -116,7 +116,7 @@
 <!ENTITY func.newWindow "Nové okno">
 <!ENTITY func.duplicateWindow "Duplikovať okno">
 <!ENTITY func.closeOtherWindows "Zavrieť ostatné okná">
-<!ENTITY func.closeBrowser "Ukončiť prehliadač">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Minimalizovať okno">
 <!ENTITY func.fullscreen "Na celú obrazovku">
 <!ENTITY func.openLink "Otvoriť odkaz">

@@ -150,7 +150,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "Nové okno">
 <!ENTITY func.duplicateWindow "Duplikovat okno">
 <!ENTITY func.closeOtherWindows "Zavřít ostatní okna">
-<!ENTITY func.closeBrowser "Zavřít prohlížeč">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Minimalizovat okno">
 <!ENTITY func.fullscreen "Na celou obrazovku">
 

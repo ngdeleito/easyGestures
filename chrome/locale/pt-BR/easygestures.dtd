@@ -149,7 +149,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "Nova Janela">
 <!ENTITY func.duplicateWindow "Duplicar Janela">
 <!ENTITY func.closeOtherWindows "Fechar Outras Janelas">
-<!ENTITY func.closeBrowser "Fecahr Navegador">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Minimizar Janela">
 <!ENTITY func.fullscreen "Alternar Tela Cheia">
 

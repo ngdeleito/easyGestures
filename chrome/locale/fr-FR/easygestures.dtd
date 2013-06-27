@@ -147,7 +147,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "Nouvelle fenêtre">
 <!ENTITY func.duplicateWindow "Dupliquer fenêtre">
 <!ENTITY func.closeOtherWindows "Fermer autres fenêtres">
-<!ENTITY func.closeBrowser "Fermer navigateur">
+<!ENTITY func.quit "Quitter Firefox">
 <!ENTITY func.minimizeWindow "Réduire fenêtre">
 <!ENTITY func.fullscreen "Basculer plein écran">
 

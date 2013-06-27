@@ -133,7 +133,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.newWindow "새 창">
 <!ENTITY func.duplicateWindow "창 복제">
 <!ENTITY func.closeOtherWindows "다른 창 닫기">
-<!ENTITY func.closeBrowser "브라우저 닫기">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "창 최소화">
 <!ENTITY func.fullscreen "전체화면 전환">
 <!ENTITY func.openLink "링크 열기">

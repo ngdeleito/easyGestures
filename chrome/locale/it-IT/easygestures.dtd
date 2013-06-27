@@ -150,7 +150,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "Nuova Finestra">
 <!ENTITY func.duplicateWindow "Duplica Finestra">
 <!ENTITY func.closeOtherWindows "Chiudi le Altre Finestre">
-<!ENTITY func.closeBrowser "Chiudi il Browser">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Minimizza la Finestra">
 <!ENTITY func.fullscreen "Attiva/Disattiva Schermo Intero">
 

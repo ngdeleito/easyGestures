@@ -116,7 +116,7 @@
 <!ENTITY func.newWindow "Nowe okno">
 <!ENTITY func.duplicateWindow "Powiel okno">
 <!ENTITY func.closeOtherWindows "Zamknij pozostałe okna">
-<!ENTITY func.closeBrowser "Zamknij przeglądarkę">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Minimalizuj okno">
 <!ENTITY func.fullscreen "Pełny ekran">
 <!ENTITY func.openLink "Otwórz odnośnik">

@@ -148,7 +148,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.newWindow "New Window">
 <!ENTITY func.duplicateWindow "Duplicate Window">
 <!ENTITY func.closeOtherWindows "Close Other Windows">
-<!ENTITY func.closeBrowser "Close Browser">
+<!ENTITY func.quit "Quit Firefox">
 <!ENTITY func.minimizeWindow "Minimize Window">
 <!ENTITY func.fullscreen "Toggle Fullscreen">
 

@@ -29,3 +29,4 @@ Changes by ngdeleito (see git history for the full details)
 - easyGestures is now a restartless extension
 - removed welcome page
 - renamed and adapted accordingly privateBrowsing action to newPrivateWindow
+- renamed closeBrowser action to quit
