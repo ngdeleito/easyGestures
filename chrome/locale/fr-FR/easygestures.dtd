@@ -46,7 +46,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.export "Exporter préférences...">
 <!ENTITY about.reset "Réinitialiser préférences">
 <!ENTITY about.startupTips "Afficher astuces au démarrage">
-<!ENTITY about.statusbarShowIcon "Afficher icône dans barre d'état">
 
 <!ENTITY stats.use "Utilisation du menu circulaire">
 <!ENTITY stats.novice "Novice">
@@ -269,6 +268,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
 <!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet. Si aucun lien n'est pointé, celui dans le presse-papier (s'il existe) sera ouvert.">
-<!ENTITY tip25 "Pour afficher les options directement soit à partir du menu circulaire en tapant / dans la barre d'adresses intégrée soit en double cliquant sur l'icône de easyGestures dans la barre d'état.">
 <!ENTITY tip26 "Quand l'action 'Lectures quotidiennes' est exécutée, un dossier de signets nommé *easyGestures* est créé la première fois dans la barre de signets et tous les signets qui y sont placés sont alors ouverts.">
-<!ENTITY tip27 "Vous pouvez activer/désactiver le menu easyGestures simplement en cliquant sur l'icône dans la barre d'état de la fenêtre Firefox. |Cacher cette icône dans Options/Profil/1">

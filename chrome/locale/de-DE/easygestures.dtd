@@ -26,7 +26,6 @@
 <!ENTITY about.export "Einstellungen exportieren...">
 <!ENTITY about.reset "Einstellungen zurücksetzen">
 <!ENTITY about.startupTips "Tipps beim Start anzeigen">
-<!ENTITY about.statusbarShowIcon "Symbol in der Statusleiste anzeigen">
 <!ENTITY stats.use "Kreismenü-Nutzung">
 <!ENTITY stats.novice "Anfänger">
 <!ENTITY stats.coolUser "Fortgeschritten">
@@ -226,6 +225,4 @@
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
 <!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab. Ist kein Link gewählt, wird, falls vorhanden, ein Link aus der Zwischenablage geöffnet.">
-<!ENTITY tip25 "Der Einstellungsdialog von easyGestures kann auch direkt über das Kreismenü durch Eingabe von / (Schrägstrich) in die integrierte Adressleiste (aufzurufen durch Drücken der Eingabe-Taste) oder durch einen Doppelklick auf das Statusleistensymbol geöffnet werden.">
 <!ENTITY tip26 "Beim Ausführen der Aktion &apos;Tägliche Lektüre&apos; wird beim ersten Mal ein Lesezeichenordner namens *easyGestures* in der Lesezeichen-Symbolleiste angelegt und alle darin enthaltenen Lesezeichen werden geöffnet.">
-<!ENTITY tip27 "Das easyGestures-Menü kann einfach über das Symbol in der Statusleiste des Firefox-Fensters ein- oder ausgeschaltet werden. |Statusleisten-Symbol unter Einstellungen/&apos;Profile&apos; ein-/ausblenden">

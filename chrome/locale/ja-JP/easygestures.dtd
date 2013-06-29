@@ -48,7 +48,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.export "設定をエクスポート...">
 <!ENTITY about.reset "設定をリセットする">
 <!ENTITY about.startupTips "起動時にヒントを表示する">
-<!ENTITY about.statusbarShowIcon "ステータスバーにアイコンを表示する">
 
 <!ENTITY stats.use "パイメニューの使用率">
 <!ENTITY stats.novice "ひよっこ">
@@ -271,6 +270,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "画像への拡大縮小アクションは、その画像のみに適用されます。">
 <!ENTITY tip21 "ページ毎に戻ったり進んだりする替わりに、'サイトを戻る'や'サイトを進む'アクションでサイトごとに移動できます。">
 <!ENTITY tip22 "'リンクを開く'アクションは、ポイントしているリンクを新しいタブに開きます。リンクをポイントしていない場合には、クリップボードに存在するリンクを開きます。">
-<!ENTITY tip25 "オプションダイアログを直接開くには、パイメニューの内蔵ロケーションバーに入力するか、ステータスバーの easyGestures のアイコンをダブルクリックします。">
 <!ENTITY tip26 "'デイリーリーディング'アクションが実行されると、はじめに *easyGestures* というフォルダがブックマークツールバーフォルダに作られます。そのフォルダにあるすべてのブックマークが、アクションの実行のたびに開かれます。">
-<!ENTITY tip27 "ステータスバーのアイコンをクリックすれば、easyGestures のメニューを簡単にオン/オフできます。|アイコンを隠す Options/Profile/1">

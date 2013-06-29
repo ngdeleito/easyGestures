@@ -26,7 +26,6 @@
 <!ENTITY about.export "Eksportuj ustawienia">
 <!ENTITY about.reset "Ustawienia domyślne">
 <!ENTITY about.startupTips "Pokazuj podpowiedzi po uruchomieniu">
-<!ENTITY about.statusbarShowIcon "Wyświetl ikonę na pasku stanu">
 <!ENTITY stats.use "Użycie Centrum">
 <!ENTITY stats.novice "Początkujący">
 <!ENTITY stats.coolUser "Zaawansowany">
@@ -226,6 +225,4 @@
 <!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
 <!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
 <!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie. Jeśli odnośnik nie jest wskazany zostanie otworzony odnośnik znajdujący się (o ile jest) w schowku.">
-<!ENTITY tip25 "Aby wyświetlić okno dialogowe opcji bezpośrednio z menu Centrum należy w zintegrowanym pasku wpisać / lub dwukrotnie kliknąć na ikonie Centrum znajdującej się na pasku stanu.">
 <!ENTITY tip26 "Podczas pierwszego wywołania akcji \u0022Wiadomości dnia\u0022 na pasku narzędziowym zakładek zostanie utworzony folder o nazwie *easyGestures* i wszystkie umieszczone w nim zakładki zostaną otworzone.">
-<!ENTITY tip27 "Można łatwo włączyć/wyłączyć menu Centrum klikając na jego ikonie umieszczonej na pasku stanu okna Firefoksa. |Aby ukryć tę ikonę należy przejść do Opcje \u00BB Profile">

@@ -91,25 +91,6 @@ function eG_initMenuIntegration(window) {
   
   eG_updatePrefs(eG_prefsObs.prefs);
   
-  if (eG_prefsObs.prefs.getBoolPref("profile.statusbarShowIcon")) {
-    ///////////////////////////////////////////////////////
-    // adding status bar icon and activating/deactivating menu
-    // Note: no more status bar on Firefox 4. Replaced by addon-bar
-    ///////////////////////////////////////////////////////
-    
-    var statusBar = document.getElementById("addon-bar");
-    if (statusBar != null) {
-      var statusbarpanel = document.createElementNS("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul", "statusbarpanel");
-      statusbarpanel.setAttribute("id","statusbarIcon");
-      statusbarpanel.setAttribute("tooltiptext", eGc.localizing.getString("statusMenuTooltip"));
-      statusbarpanel.setAttribute("src","chrome://easygestures/content/statusbar.png");
-      statusbarpanel.setAttribute("class","statusbarpanel-iconic");
-      statusbarpanel.setAttribute("onclick","if (event.button=='2') window.openDialog('chrome://easygestures/content/options.xul','','chrome,titlebar,toolbar,centerscreen,resizable');");
-      statusbarpanel.setAttribute("ondblclick","if (event.button=='0') window.openDialog('chrome://easygestures/content/options.xul','','chrome,titlebar,toolbar,centerscreen,resizable');");
-      statusBar.appendChild(statusbarpanel);
-    }
-  }
-  
   eG_activateMenu(document);
   
   ///////////////////////////////////////////////////////
@@ -221,14 +202,6 @@ function eG_activateMenu(document) {
 }
 
 function eG_deactivateMenu(window) {
-  if (eG_prefsObs.prefs.getBoolPref("profile.statusbarShowIcon")) {
-    var statusBar = window.document.getElementById("addon-bar");
-    if (statusBar != null) {
-      var statusbarpanel = window.document.getElementById("statusbarIcon");
-      statusBar.removeChild(statusbarpanel);
-    }
-  }
-  
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                       .getService(Components.interfaces.nsIStyleSheetService);
   var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);

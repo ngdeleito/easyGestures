@@ -30,3 +30,4 @@ Features pruned so far and rationale:
 - Editable select boxes for actions. It feels counterintuitive that they were editable since we are not adding new items (like in e.g. Firefox's address bar) but editing existing ones. Labels (whether edited or not) were stored in the preferences. Since easyGestures' language depends now on Firefox's language, easyGestures did no longer change the labels upon language change.
 - Run Program File actions. I do not see any useful use case for this feature. Furthermore, the existing implementation seemed too Windows-based (although I might be wrong).
 - Welcome page. Tips should be sufficient. Furthermore the instructions did not apply to Mac users.
+- Statusbar icon. Enabling and disabling easyGestures is best done through Firefox's Add-ons Manager.

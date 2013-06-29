@@ -48,7 +48,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.export "Tercihleri Aktar...">
 <!ENTITY about.reset "Tercihleri Sıfırla">
 <!ENTITY about.startupTips "Başlangıçta ipuçlarını göster">
-<!ENTITY about.statusbarShowIcon "Durum çubuğunda Simgeyi göster">
 
 <!ENTITY stats.use "Kolay Menü Kullanımı">
 <!ENTITY stats.novice "Acemi">
@@ -272,6 +271,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Bir resim üzerindeki yakınlaştırma eylemi yalnızca o resim üzerinde gerçekleştirilecektir.">
 <!ENTITY tip21 "&apos;Önceki Site&apos; ve &apos;Sonraki Site&apos; eylemleriyle, sayfa sayfa ileri ya da geri gitmek yerine bunu siteler arasında gerçekleştirebilirsiniz.">
 <!ENTITY tip22 "&apos;Bağlantıyı Aç&apos; eylemi seçilen bağlantıyı yeni bir sekmede açacaktır. Eğer bir bağlantı seçilmemişse, panoya yapıştırılmış bağlantı (eğer varsa) açılacaktır.">
-<!ENTITY tip25 "Seçenekler Diyaloğunu doğrudan kolay menü içerisindeki entegre konum çubuğuna / yazarak ya da durum çubuğundaki easyGestures simgesine tıklayarak görüntüleyebilirsiniz.">
 <!ENTITY tip26 "&apos;Günlük Okumalar&apos; eylemi gerçekleştirildiğinde, Yer İmleri Araç Çubuğunda ilk seferinde *easyGestures* adında bir yer imi klasörü oluşturulur ve bunun içine yerleştirilmiş tüm yer imleri daha sonra açılır.">
-<!ENTITY tip27 "easyGestures menüsünü Firefox penceresindeki durum çubuğu üzerindeki simgeye tıklayarak kolayca açıp kapatabilirsiniz. |Bu simgeyi Seçenekler/Profil/1&apos;den gizleyebilirsiniz.">

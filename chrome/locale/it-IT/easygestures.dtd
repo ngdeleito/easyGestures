@@ -48,7 +48,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.export "Esporta le Preferenze...">
 <!ENTITY about.reset "Ripristina le Preferenze">
 <!ENTITY about.startupTips "Mostra i Consigli all'avvio">
-<!ENTITY about.statusbarShowIcon "Mostra un'Icona nella barra di stato">
 
 <!ENTITY stats.use "Utilizzo del Menu Circolare">
 <!ENTITY stats.novice "Novizio">
@@ -272,6 +271,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
 <!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta. Se non viene puntato alvun collegamento, verà aperto quello nella clipboard, se presente.">
-<!ENTITY tip25 "Puoi mostrare la finestra di dialogo delle Opzioni direttamente, o dal menu circolare, digitando / nella barra di immissione integrata, o facendo doppio-click sull'icona di easyGestures nella barra di stato.">
 <!ENTITY tip26 "Quando si esegue l'azione 'Letture Quotidiane', una cartella dei Segnalibri chiamata *easyGestuers* viene creata la prima volta nella Barra dei Segnalibri, e tutti i segnalibri in essa vengono aperti.">
-<!ENTITY tip27 "Puoi attivare e disattivare il menu easyGestures semplicemente cliccando sull'icona nella barra di stato della finestra di Firefox. |Nascondi questa icona in Opzioni/Profilo/1">

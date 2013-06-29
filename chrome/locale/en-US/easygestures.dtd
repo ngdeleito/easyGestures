@@ -46,7 +46,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.export "Export Preferences...">
 <!ENTITY about.reset "Reset Preferences">
 <!ENTITY about.startupTips "Show Tips at startup">
-<!ENTITY about.statusbarShowIcon "Show Icon in statusbar">
 
 <!ENTITY stats.use "Pie Menu Use">
 <!ENTITY stats.novice "Novice">
@@ -270,6 +269,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
 <!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
 <!ENTITY tip22 "The 'Open Link' action will open the pointed link in a new tab. If no link is pointed, the one in the clipboard (if any) will be opened.">
-<!ENTITY tip25 "You can display the Options Dialog directly either from the pie menu by typing / in the integrated location bar or by double clicking on easygestures icon in the status bar.">
 <!ENTITY tip26 "When the 'Daily Readings' action is performed, a bookmarks folder named *easyGestures* is created the first time in the Bookmarks Toolbar and all bookmarks placed in it are then opened.">
-<!ENTITY tip27 "You can turn Off/On easyGestures menu simply by clicking on the icon in the statusbar of Firefox window. |Hide this icon in Options/Profile/1">

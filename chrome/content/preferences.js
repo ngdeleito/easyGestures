@@ -36,7 +36,6 @@ function eG_setPrefs(locale) {
   // this function is also called in options.xul with 'null' argument to reset
   // preferences without changing locale
   eG_prefsObs.prefs.setCharPref("profile.version", eGc.version);
-  eG_prefsObs.prefs.setBoolPref("profile.statusbarShowIcon", true);
   
   eG_prefsObs.prefs.setBoolPref("stateChange.language", false);
   

@@ -48,7 +48,6 @@ END OF INSTRUCTIONS
 <!ENTITY about.export "导出设置...">
 <!ENTITY about.reset "恢复默认设置">
 <!ENTITY about.startupTips "启动时显示提示">
-<!ENTITY about.statusbarShowIcon "在状态栏显示图标">
 
 <!ENTITY stats.use "使用弹出菜单">
 <!ENTITY stats.novice "初学者">
@@ -272,6 +271,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "放大/缩小这些动作只能在图片上使用。">
 <!ENTITY tip21 "除了可以在页面间进行 上一页/下一页 的移动外，你也可以用“上一个网站”和“下一个网站”进行网站和网站间的移动。">
 <!ENTITY tip22 "“打开链接”动作会在新标签页打开链接。如果没有指出链接，将打开剪贴板里的链接（如果是链接的话）。">
-<!ENTITY tip25 "你可以通过在圆饼菜单输入“/”或直接双击在状态栏显示的easyGestures图标来显示easyGestures的选项窗口。">
 <!ENTITY tip26 "当第一次执行“每日阅读”这个动作时，将会自动产生一个“easyGestures”的书签文件夹在书签工具栏中，里面的所有书签会被同时打开。">
-<!ENTITY tip27 "你可以点击Firefox窗口的状态栏中的easyGestures图标，简单的启用/停用easyGestures菜单。|隐藏这个图标在 选项/描述">
