@@ -608,26 +608,11 @@ var eGf = {
   //*********************************************************************************
 
   markVisitedLinks : function() {
-    var globalHistory = Components.classes["@mozilla.org/browser/global-history;2"]
-                                  .getService(Components.interfaces.nsIGlobalHistory2);
-    var ioService = Components.classes["@mozilla.org/network/io-service;1"]
-                              .getService(Components.interfaces.nsIIOService);
-    var allLinks = eGc.body.getElementsByTagName("a"); // don't use uppercase tag name because of xhtml
-    for (var i=0; i < allLinks.length; i++) {
-      if (allLinks[i].href != "") {
-        var uri = ioService.newURI(allLinks[i].href, null, null);
-        if (globalHistory.isVisited(uri)) {
-          allLinks[i].style.color = "gray";
-          allLinks[i].style.textDecoration = "line-through";
-
-          var image = allLinks[i].getElementsByTagName("img")[0]; // don't use uppercase tag name because of xhtml
-          if (image != null) { // any image inside the link must be tagged too
-            image.style.backgroundColor = "#eeeeee";
-            image.style.border = "6px dotted #c0c0c0";
-          }
-        }
-      }
-    }
+    var styleElement = eGc.doc.createElement("style");
+    eGc.doc.getElementsByTagName("head")[0].appendChild(styleElement);
+    var styleSheet = eGc.doc.styleSheets[eGc.doc.styleSheets.length - 1];
+    styleSheet.insertRule(":link, :link img { outline: dashed medium white !important; }", 0);
+    styleSheet.insertRule(":visited, :visited img { outline-color: red !important; }", 1);
   },
 
   bookmarkThisLink : function(url) {

@@ -1062,27 +1062,26 @@
     
     function retrieveFavicon(url, actionNumber) {
       if (url != "") {
-        if (url.match(/\:\/\//i) == null)
-          url ="http://"+url;
-        
-        var faviconPath = null;
-        var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"].getService(Components.interfaces.nsIFaviconService);
-        var ios = Components.classes["@mozilla.org/network/io-service;1"].getService(Components.interfaces.nsIIOService);
-        
-        try {
-          faviconPath = faviconService.getFaviconForPage(ios.newURI(ios.newURI(url, null, null).prePath,null,null)).spec;
-        }
-        catch (e) {
-          faviconPath = ios.newURI(url, null, null).prePath + "/favicon.ico";
+        if (url.match(/\:\/\//i) == null) {
+          url = "http://" + url;
         }
         
-        if (faviconPath != null && faviconPath != "")
-          document.getElementById("loadURLScript_newIcon"+actionNumber).src = faviconPath;
-        else {
-          document.getElementById("loadURLScript_newIcon"+actionNumber).src = "";
-          document.getElementById('loadURLScriptDisplay'+actionNumber).collapsed = true;
-          document.getElementById("loadURLScript_faviconCheck"+actionNumber).checked = false;
-        }
+        var faviconService = Components.classes["@mozilla.org/browser/favicon-service;1"]
+                                       .getService(Components.interfaces.mozIAsyncFavicons);
+        var ios = Components.classes["@mozilla.org/network/io-service;1"]
+                            .getService(Components.interfaces.nsIIOService);
+        var uri = ios.newURI(url, null, null).prePath;
+        
+        faviconService.getFaviconURLForPage(ios.newURI(uri, null, null), function(aURI) {
+          if (aURI != null && aURI != "") {
+            document.getElementById("loadURLScript_newIcon" + actionNumber).src = aURI.spec;
+          }
+          else {
+            document.getElementById("loadURLScript_newIcon" + actionNumber).src = "";
+            document.getElementById("loadURLScriptDisplay" + actionNumber).collapsed = true;
+            document.getElementById("loadURLScript_faviconCheck" + actionNumber).checked = false;
+          }
+        });
       }
     }
     
