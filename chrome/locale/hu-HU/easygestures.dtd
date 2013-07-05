@@ -166,7 +166,7 @@
 <!ENTITY func.showOnlyThisFrame "Csak ezt a keretet mutassa">
 <!ENTITY func.properties "Tulajdonságok">
 <!ENTITY func.printPage "Oldal nyomtatása">
-<!ENTITY func.mail "Levél">
+<!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">
 <!ENTITY func.cut "Kivágás">
 <!ENTITY func.copy "Másolás">

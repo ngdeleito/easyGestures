@@ -1,6 +1,5 @@
 TODO
 - fix preferences window
-- add new action to focus location bar (replaces removed input box for entering a URL)
 - add to Search Web action a popup with Firefox's search engines icons
 - let the user select the folder for the Daily Readings action
 - remove preferences:

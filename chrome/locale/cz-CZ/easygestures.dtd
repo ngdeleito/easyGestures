@@ -202,7 +202,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.showOnlyThisFrame "Zobrazit jen tento rámec">
 <!ENTITY func.properties "Vlastnosti">
 <!ENTITY func.printPage "Vytisknout stránku">
-<!ENTITY func.mail "Email">
+<!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "Vyjmout">

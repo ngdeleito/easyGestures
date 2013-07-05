@@ -31,3 +31,4 @@ Features pruned so far and rationale:
 - Run Program File actions. I do not see any useful use case for this feature. Furthermore, the existing implementation seemed too Windows-based (although I might be wrong).
 - Welcome page. Tips should be sufficient. Furthermore the instructions did not apply to Mac users.
 - Statusbar icon. Enabling and disabling easyGestures is best done through Firefox's Add-ons Manager.
+- Mail action. This feature had little to do with Firefox.

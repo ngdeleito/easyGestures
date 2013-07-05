@@ -31,3 +31,5 @@ Changes by ngdeleito (see git history for the full details)
 - renamed and adapted accordingly privateBrowsing action to newPrivateWindow
 - renamed closeBrowser action to quit
 - removed statusbar icon
+- removed mail action
+- added focusLocationBar action

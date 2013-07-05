@@ -133,7 +133,7 @@ var eG_menuItems = [
   new eG_menuItem(80,   0, "showOnlyThisFrame",  "eGf.showOnlyThisFrame(eGc.frame_doc);"),
   new eG_menuItem(81,   0, "properties",         "eGf.properties(eGc.evtMouseDown.originalTarget);"),
   new eG_menuItem(82,   0, "printPage",          "eGf.printPage();"),
-  new eG_menuItem(83,   0, "mail",               "eGf.mail();"),
+  new eG_menuItem(83,   0, "focusLocationBar",   "eGf.focusLocationBar();"),
   new eG_menuItem(84,   0, "newPrivateWindow",   "eGf.newPrivateWindow();"),
 
   new eG_menuItem(85,   0, "cut",                "eGf.cut();"),

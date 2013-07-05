@@ -166,7 +166,7 @@
 <!ENTITY func.showOnlyThisFrame "Mostrar sólo este marco">
 <!ENTITY func.properties "Propiedades">
 <!ENTITY func.printPage "Imprimir página">
-<!ENTITY func.mail "Correo">
+<!ENTITY func.focusLocationBar "Seleccionar barra de direcciones">
 <!ENTITY func.newPrivateWindow "Nueva ventana privada">
 <!ENTITY func.cut "Cortar">
 <!ENTITY func.copy "Copiar">

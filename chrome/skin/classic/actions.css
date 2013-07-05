@@ -212,6 +212,10 @@ div.restart[grayed="true"] { background-position: -128px -576px !important ; }
 div.restart { background-position: -128px -608px !important ; }
 div.restart[grayed="false"][active="true"] { background-position: -128px -640px !important ; }
 
+div.focusLocationBar[grayed="true"] { background-position: -160px -576px !important ; }
+div.focusLocationBar { background-position: -160px -608px !important ; }
+div.focusLocationBar[grayed="false"][active="true"] { background-position: -160px -640px !important ; }
+
 div.runProgramFile1[grayed="true"] { background-position: -128px -576px !important ; }
 div.runProgramFile1 { background-position: -128px -608px !important ; }
 div.runProgramFile1[grayed="false"][active="true"] { background-position: -128px -640px !important ; }
@@ -385,10 +389,6 @@ div.properties[grayed="false"][active="true"] { background-position: -320px -928
 div.printPage[grayed="true"] { background-position: -352px -864px !important ; }
 div.printPage { background-position: -352px -896px !important ; }
 div.printPage[grayed="false"][active="true"] { background-position: -352px -928px !important ; }
-
-div.mail[grayed="true"] { background-position: -388px -864px !important ; }
-div.mail { background-position: -388px -896px !important ; }
-div.mail[grayed="false"][active="true"] { background-position: -388px -928px !important ; }
 
 div.newPrivateWindow[grayed="true"] { background-position: -420px -864px !important ; }
 div.newPrivateWindow { background-position: -420px -896px !important ; }
@@ -657,6 +657,11 @@ div.small_restart { background-position: -80px -380px !important ; }
 div.small_restart[grayed="false"][active="true"] { background-position: -80px -400px !important ; }
 image.small_restart { -moz-image-region: rect(380px 100px 400px 80px) !important ; }
 
+div.small_focusLocationBar[grayed="true"] { background-position: -100px -360px !important ; }
+div.small_focusLocationBar { background-position: -100px -380px !important ; }
+div.small_focusLocationBar[grayed="false"][active="true"] { background-position: -100px -400px !important ; }
+image.small_focusLocationBar { -moz-image-region: rect(380px 120px 400px 100px) !important ; }
+
 div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px !important ; }
 div.small_runProgramFile1 { background-position: -80px -380px !important ; }
 div.small_runProgramFile1[grayed="false"][active="true"] { background-position: -80px -400px !important ; }
@@ -872,11 +877,6 @@ div.small_printPage[grayed="true"] { background-position: -220px -540px !importa
 div.small_printPage { background-position: -220px -560px !important ; }
 div.small_printPage[grayed="false"][active="true"] { background-position: -220px -580px !important ; }
 image.small_printPage { -moz-image-region: rect(560px 240px 580px 220px) !important ; }
-
-div.small_mail[grayed="true"] { background-position: -240px -540px !important ; }
-div.small_mail { background-position: -240px -560px !important ; }
-div.small_mail[grayed="false"][active="true"] { background-position: -240px -580px !important ; }
-image.small_mail { -moz-image-region: rect(560px 260px 580px 240px) !important ; }
 
 div.small_newPrivateWindow[grayed="true"] { background-position: -260px -540px !important ; }
 div.small_newPrivateWindow { background-position: -260px -560px !important ; }

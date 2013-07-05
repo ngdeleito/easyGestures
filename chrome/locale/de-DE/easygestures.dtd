@@ -164,7 +164,7 @@
 <!ENTITY func.showOnlyThisFrame "Nur diesen Frame anzeigen">
 <!ENTITY func.properties "Eigenschaften">
 <!ENTITY func.printPage "Seite drucken">
-<!ENTITY func.mail "E-Mail">
+<!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">
 <!ENTITY func.cut "Ausschneiden">
 <!ENTITY func.copy "Kopieren">

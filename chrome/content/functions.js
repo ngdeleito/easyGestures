@@ -684,12 +684,10 @@ var eGf = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PrintUtils.print();
   },
-
-  mail : function() {
-    // No more function in Firefox 3
-    // MailIntegration.readMail();
+  
+  focusLocationBar : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadURI("mailto:");
+    window.gURLBar.focus();
   },
 
   newPrivateWindow : function() {

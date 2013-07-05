@@ -201,7 +201,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.showOnlyThisFrame "只顯示本頁框">
 <!ENTITY func.properties "屬性">
 <!ENTITY func.printPage "列印">
-<!ENTITY func.mail "Mail">
+<!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">
 
 <!ENTITY func.cut "剪下">
