@@ -32,14 +32,14 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-function eG_setPrefs(locale) {
-  // this function is also called in options.xul with 'null' argument to reset
-  // preferences without changing locale
+function eG_setPrefs(fullReset) {
+  // this function is also called in options.xul with 'false' argument to reset
+  // preferences
   eG_prefsObs.prefs.setCharPref("profile.version", eGc.version);
   
   eG_prefsObs.prefs.setBoolPref("stateChange.language", false);
   
-  if (locale != null) { // the call is not from Options Dialog
+  if (fullReset) { // the call is not from Options Dialog
     eG_prefsObs.prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
     eG_prefsObs.prefs.setIntPref("profile.statsUse", 0); // calls for menu
     var d = new Date(); // date of last reset
@@ -99,7 +99,7 @@ function eG_setPrefs(locale) {
   
   eG_prefsObs.prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
   
-  if (locale != null) {
+  if (fullReset) {
     eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", ""); // initialize only on first start
   }
   

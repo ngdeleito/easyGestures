@@ -614,12 +614,6 @@ eG_menu.prototype = {
     var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
     this.shieldCss(node);
-    if (eGc.localizing.getString("locale") == "ar-TN") {
-      node.style.direction= "rtl";
-    }
-    else {
-      node.style.direction = "ltr";
-    }
     node.style.font = "normal 0mm tahoma,arial,helvetica,sans-serif"; // font size is changed in compensateTextZoom
     node.style.verticalAlign = "baseline";
     node.style.textAlign = "left";

@@ -68,7 +68,7 @@
             <menupopup>
               <menuitem label="&about.import;" onclick="importPrefs(); initMenuDialog();" />
               <menuitem label="&about.export;" onclick="saveAllPreferences(this); triggerObserverToResetEGm(); exportPrefs();" />
-              <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) {Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow('navigator:browser').eG_setPrefs(null);initMenuDialog();}" />
+              <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) {Components.classes['@mozilla.org/appshell/window-mediator;1'].getService(Components.interfaces.nsIWindowMediator).getMostRecentWindow('navigator:browser').eG_setPrefs(false);initMenuDialog();}" />
             </menupopup>
           </menu>
           <spacer height="4" />

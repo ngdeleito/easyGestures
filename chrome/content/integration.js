@@ -157,7 +157,7 @@ function eG_updatePrefs(prefs) {
       }
       else {
         // update all preferences for all versions prior to version 4.1.2
-        eG_setPrefs(eGc.localizing.getString("locale"));
+        eG_setPrefs(true);
       }
       
       // update version
@@ -165,7 +165,7 @@ function eG_updatePrefs(prefs) {
     }
   }
   catch (ex) { // default values at first start
-    eG_setPrefs(eGc.localizing.getString("locale"));
+    eG_setPrefs(true);
   }
 }
 
