@@ -35,96 +35,98 @@ the terms of any one of the MPL, the GPL or the LGPL.
 function eG_setPrefs(fullReset) {
   // this function is also called in options.xul with 'false' argument to reset
   // preferences
-  eG_prefsObs.prefs.setCharPref("profile.version", eGc.version);
+  var prefs = Services.prefs.getBranch("easygestures.");
   
-  eG_prefsObs.prefs.setBoolPref("stateChange.language", false);
+  prefs.setCharPref("profile.version", eGc.version);
+  
+  prefs.setBoolPref("stateChange.language", false);
   
   if (fullReset) { // the call is not from Options Dialog
-    eG_prefsObs.prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
-    eG_prefsObs.prefs.setIntPref("profile.statsUse", 0); // calls for menu
+    prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
+    prefs.setIntPref("profile.statsUse", 0); // calls for menu
     var d = new Date(); // date of last reset
-    eG_prefsObs.prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
-    eG_prefsObs.prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    eG_prefsObs.prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+    prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+    prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+    prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
     var actionsStr = new Array();
     for (var i=0; i<eG_menuItems.length; i++) {
       actionsStr.push(0); // all actions stats set to 0
     }
-    eG_prefsObs.prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+    prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
   }
   
-  eG_prefsObs.prefs.setBoolPref("profile.startupTips", true);
-  eG_prefsObs.prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
+  prefs.setBoolPref("profile.startupTips", true);
+  prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
   
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   if (window.navigator.userAgent.indexOf("Mac") == -1) {
-    eG_prefsObs.prefs.setIntPref("behavior.showButton", 1); // middle button
-    eG_prefsObs.prefs.setIntPref("behavior.showAltButton", 2); // right button
-    eG_prefsObs.prefs.setIntPref("behavior.showKey", 0); // 0=none 16=shift 17=ctrl
-    eG_prefsObs.prefs.setIntPref("behavior.supprKey", 45); // 18=alt 45=insert
-    eG_prefsObs.prefs.setIntPref("behavior.contextKey", 17);
-    eG_prefsObs.prefs.setBoolPref("behavior.handleLinksAsOpenLink", true);
+    prefs.setIntPref("behavior.showButton", 1); // middle button
+    prefs.setIntPref("behavior.showAltButton", 2); // right button
+    prefs.setIntPref("behavior.showKey", 0); // 0=none 16=shift 17=ctrl
+    prefs.setIntPref("behavior.supprKey", 45); // 18=alt 45=insert
+    prefs.setIntPref("behavior.contextKey", 17);
+    prefs.setBoolPref("behavior.handleLinksAsOpenLink", true);
   }
   else {
     // mac users need different defaults
-    eG_prefsObs.prefs.setIntPref("behavior.showButton", 0);
-    eG_prefsObs.prefs.setIntPref("behavior.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
-    eG_prefsObs.prefs.setIntPref("behavior.showKey", 16);
-    eG_prefsObs.prefs.setIntPref("behavior.supprKey", 17);
-    eG_prefsObs.prefs.setIntPref("behavior.contextKey", 0);
-    eG_prefsObs.prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
+    prefs.setIntPref("behavior.showButton", 0);
+    prefs.setIntPref("behavior.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
+    prefs.setIntPref("behavior.showKey", 16);
+    prefs.setIntPref("behavior.supprKey", 17);
+    prefs.setIntPref("behavior.contextKey", 0);
+    prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
   }
   
-  eG_prefsObs.prefs.setBoolPref("behavior.dragOnly", false);
-  eG_prefsObs.prefs.setBoolPref("behavior.dragOnlyUpLeft", false);
+  prefs.setBoolPref("behavior.dragOnly", false);
+  prefs.setBoolPref("behavior.dragOnlyUpLeft", false);
   
-  eG_prefsObs.prefs.setBoolPref("behavior.showAfterDelay", false);
-  eG_prefsObs.prefs.setIntPref("behavior.showAfterDelayDelay", 200);
+  prefs.setBoolPref("behavior.showAfterDelay", false);
+  prefs.setIntPref("behavior.showAfterDelayDelay", 200);
   
-  eG_prefsObs.prefs.setBoolPref("behavior.contextMenuAuto", false); // Show contextual pie menu automatically
+  prefs.setBoolPref("behavior.contextMenuAuto", false); // Show contextual pie menu automatically
   
-  eG_prefsObs.prefs.setBoolPref("behavior.handleLinks", true);
-  eG_prefsObs.prefs.setIntPref("behavior.linksDelay", 300);
+  prefs.setBoolPref("behavior.handleLinks", true);
+  prefs.setIntPref("behavior.linksDelay", 300);
   
-  eG_prefsObs.prefs.setBoolPref("behavior.autoscrollingOn", false);
-  eG_prefsObs.prefs.setIntPref("behavior.autoscrollingDelay", 750);
+  prefs.setBoolPref("behavior.autoscrollingOn", false);
+  prefs.setIntPref("behavior.autoscrollingDelay", 750);
   
-  eG_prefsObs.prefs.setBoolPref("behavior.largeMenu", false);
-  eG_prefsObs.prefs.setBoolPref("behavior.noIcons", false);
-  eG_prefsObs.prefs.setBoolPref("behavior.smallIcons", false);
-  eG_prefsObs.prefs.setIntPref("behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
-  eG_prefsObs.prefs.setBoolPref("behavior.showTooltips", true);
-  eG_prefsObs.prefs.setIntPref("behavior.tooltipsDelay", 1000);
-  eG_prefsObs.prefs.setBoolPref("behavior.tooltipsDelayOmit", false);
+  prefs.setBoolPref("behavior.largeMenu", false);
+  prefs.setBoolPref("behavior.noIcons", false);
+  prefs.setBoolPref("behavior.smallIcons", false);
+  prefs.setIntPref("behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
+  prefs.setBoolPref("behavior.showTooltips", true);
+  prefs.setIntPref("behavior.tooltipsDelay", 1000);
+  prefs.setBoolPref("behavior.tooltipsDelayOmit", false);
   
-  eG_prefsObs.prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
+  prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
   
   if (fullReset) {
-    eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", ""); // initialize only on first start
+    prefs.setCharPref("behavior.dailyReadingsFolderURI", ""); // initialize only on first start
   }
   
-  eG_prefsObs.prefs.setBoolPref("actions.mainAlternative1", true); // activate main alternative 1 layout
-  eG_prefsObs.prefs.setBoolPref("actions.mainAlternative2", false);
-  eG_prefsObs.prefs.setBoolPref("actions.extraAlternative1", true);
-  eG_prefsObs.prefs.setBoolPref("actions.extraAlternative2", false);
+  prefs.setBoolPref("actions.mainAlternative1", true); // activate main alternative 1 layout
+  prefs.setBoolPref("actions.mainAlternative2", false);
+  prefs.setBoolPref("actions.extraAlternative1", true);
+  prefs.setBoolPref("actions.extraAlternative2", false);
   
-  eG_prefsObs.prefs.setBoolPref("actions.contextImageFirst", false);
-  eG_prefsObs.prefs.setBoolPref("actions.contextTextboxFirst", true);
+  prefs.setBoolPref("actions.contextImageFirst", false);
+  prefs.setBoolPref("actions.contextTextboxFirst", true);
   
   eG_setActions();
   
-  eG_prefsObs.prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
+  prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
   
-  eG_prefsObs.prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
+  prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
   
   var string = Components.classes["@mozilla.org/supports-string;1"]
                          .createInstance(Components.interfaces.nsISupportsString);
   for (i=1; i<=20; i++) {
     string.data = "\u2022\u2022false\u2022\u2022false\u2022false"; // name, text, isScript, newIconPath, favicon, newIcon: '•' is the separator
-    eG_prefsObs.prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
+    prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
   }
   
-  eG_prefsObs.prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
+  prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
 }
 
 function eG_setActions() {
@@ -142,11 +144,12 @@ function eG_setActions() {
                               "39/90/86/0/0/0/0/0/89/40",
                               "88/85/86/0/87/0/0/0/89/0");
   var actions;
+  var prefs = Services.prefs.getBranch("easygestures.");
   
   for (var i=0; i<menus.length; i++) {
     // set actions
     actions = actionsList[i];
-    eG_prefsObs.prefs.setCharPref("actions." + menus[i], actions);
+    prefs.setCharPref("actions." + menus[i], actions);
   }
 }
 
