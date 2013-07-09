@@ -1322,7 +1322,7 @@
         converterInputStream.close();
         inputStream.close();
       }
-      eG_updatePrefs(eG_prefs);
+      eG_updatePrefs();
     }
     
     function initMenuDialog() {

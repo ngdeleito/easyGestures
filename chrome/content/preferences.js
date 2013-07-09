@@ -32,6 +32,58 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+function eG_updatePrefs() {
+  var prefs = Services.prefs.getBranch("easygestures.");
+  
+  try {
+    var versionCompare = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
+    var prevVersion = prefs.getCharPref("profile.version"); // if a previous version is not already installed, this will trigger the catch statement to set all prefs
+    
+    if (prevVersion == eGc.version) { // no new version
+      // update newly localized prefs if language was changed
+      if (prefs.getBoolPref("stateChange.language")) {
+        prefs.setBoolPref("stateChange.language", false);
+      }
+    }
+    else { // new version installed
+      if (versionCompare.compare(prevVersion, "4.3.1") >= 0) {
+        // Keep current preferences because no changes to prefs have been made since version 4.3.1
+      }
+      else if (versionCompare.compare(prevVersion, "4.3") >= 0) {
+        // make a few changes for all versions from version 4.3 to prior to version 4.3.1
+        
+        // update value of prefs
+        prefs.setIntPref("customizations.tabPopupDelay", 400);
+      }
+      else if (versionCompare.compare(prevVersion, "4.1.2") >= 0) {
+        // make a few changes for all versions from version 4.1.2 to prior to version 4.3
+        
+        // update value of prefs for 4.3.1
+        prefs.setIntPref("customizations.tabPopupDelay", 400);
+        
+        // update actions numbers and labels because of addition of 3 new actions
+        eG_updateToVersion43();
+        
+        // clear obsolete user prefs
+        prefs.clearUserPref("customizations.tabRepetitionDelay");
+        
+        // update value of prefs
+        prefs.setBoolPref("customizations.queryInNewTab", !prefs.getBoolPref("customizations.queryInNewTab"));
+      }
+      else {
+        // update all preferences for all versions prior to version 4.1.2
+        eG_setPrefs(true);
+      }
+      
+      // update version
+      prefs.setCharPref("profile.version", eGc.version);
+    }
+  }
+  catch (ex) { // default values at first start
+    eG_setPrefs(true);
+  }
+}
+
 function eG_setPrefs(fullReset) {
   // this function is also called in options.xul with 'false' argument to reset
   // preferences
