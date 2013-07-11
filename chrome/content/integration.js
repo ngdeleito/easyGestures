@@ -102,10 +102,6 @@ function eG_initMenuIntegration(window) {
   if (!sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
     sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
   }
-  
-  if (window.arguments[0] == "about:blank") {
-    window.gBrowser.loadURI("about:blank"); // FIX TRICK: when homepage is set to Blank Page, icons won't show because of CSS unless loading explicitly the blank page...
-  }
 }
 
 function eG_activateMenu(document) {
