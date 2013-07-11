@@ -106,17 +106,6 @@ function eG_initMenuIntegration(window) {
   if (window.arguments[0] == "about:blank") {
     window.gBrowser.loadURI("about:blank"); // FIX TRICK: when homepage is set to Blank Page, icons won't show because of CSS unless loading explicitly the blank page...
   }
-  
-  ///////////////////////////////////////////////////////
-  // displaying tips at startup
-  ///////////////////////////////////////////////////////
-  var wenum = Services.ww.getWindowEnumerator();
-  wenum.getNext();
-  if (!wenum.hasMoreElements()) { // only one Firefox window is open
-    if (eGm.startupTips) {
-      window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable'); // show tip dialog
-    }
-  }
 }
 
 function eG_activateMenu(document) {

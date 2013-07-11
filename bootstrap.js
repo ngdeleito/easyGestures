@@ -127,6 +127,15 @@ function startup(data, reason) {
     }
 
     Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
+    
+    if (eGm.startupTips) {
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      window.addEventListener("load", function displayTipsAtStartup() {
+        window.removeEventListener("load", displayTipsAtStartup, false);
+        window.openDialog("chrome://easygestures/content/tips.xul", "",
+                          "chrome,centerscreen,resizable");
+      }, false);
+    }
   });
 }
 
