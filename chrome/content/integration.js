@@ -92,6 +92,15 @@ function eG_initMenuIntegration(window) {
   eG_updatePrefs();
   
   eG_activateMenu(document);
+}
+
+function eG_activateMenu(document) {
+  var gBrowser = document.defaultView.gBrowser;
+  
+  /////////////////////////////////////////////////////////
+  // creating menu
+  /////////////////////////////////////////////////////////
+  eGm = new eG_menu();
   
   ///////////////////////////////////////////////////////
   // register CSS for images
@@ -102,15 +111,6 @@ function eG_initMenuIntegration(window) {
   if (!sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
     sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
   }
-}
-
-function eG_activateMenu(document) {
-  var gBrowser = document.defaultView.gBrowser;
-  
-  /////////////////////////////////////////////////////////
-  // creating menu
-  /////////////////////////////////////////////////////////
-  eGm = new eG_menu();
   
   /////////////////////////////////////////////////////////
   // setting events handlers
