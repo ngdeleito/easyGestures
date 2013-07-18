@@ -68,7 +68,7 @@
             <menupopup>
               <menuitem label="&about.import;" onclick="importPrefs(); initMenuDialog();" />
               <menuitem label="&about.export;" onclick="saveAllPreferences(this); triggerObserverToResetEGm(); exportPrefs();" />
-              <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) { Components.utils.import('resource://gre/modules/Services.jsm'); Services.scriptloader.loadSubScript('chrome://easygestures/content/preferences.js'); eG_setPrefs(false); initMenuDialog(); }" />
+              <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) { eG_setDefaultSettings(); initMenuDialog(); }" />
             </menupopup>
           </menu>
           <spacer height="4" />
@@ -684,8 +684,11 @@
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   <script type="application/x-javascript" src="chrome://easygestures/content/integration.js" />
+  <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
   
   <script type="application/x-javascript">
+    Components.utils.import('resource://gre/modules/Services.jsm');
+    
     var eG_duplicateKeyMessage = "&duplicatekey.warning;";
     var eG_faviconNotFound = "&urlscript.faviconNotFound;";
     var eG_skinCurrent = "chrome://easygestures/skin/";

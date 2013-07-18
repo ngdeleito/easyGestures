@@ -72,7 +72,8 @@ function eG_updatePrefs() {
       }
       else {
         // update all preferences for all versions prior to version 4.1.2
-        eG_setPrefs(true);
+        eG_setDefaultSettings();
+        eG_initializeStats();
       }
       
       // update version
@@ -80,32 +81,35 @@ function eG_updatePrefs() {
     }
   }
   catch (ex) { // default values at first start
-    eG_setPrefs(true);
+    eG_setDefaultSettings();
+    eG_initializeStats();
   }
 }
 
-function eG_setPrefs(fullReset) {
+function eG_initializeStats() {
   // this function is also called in options.xul with 'false' argument to reset
   // preferences
   var prefs = Services.prefs.getBranch("easygestures.");
   
-  prefs.setCharPref("profile.version", eGc.version);
   
-  prefs.setBoolPref("stateChange.language", false);
-  
-  if (fullReset) { // the call is not from Options Dialog
-    prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
-    prefs.setIntPref("profile.statsUse", 0); // calls for menu
-    var d = new Date(); // date of last reset
-    prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
-    prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    var actionsStr = new Array();
-    for (var i=0; i<eG_menuItems.length; i++) {
-      actionsStr.push(0); // all actions stats set to 0
-    }
-    prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+  prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
+  prefs.setIntPref("profile.statsUse", 0); // calls for menu
+  var d = new Date(); // date of last reset
+  prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+  prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+  prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+  var actionsStr = new Array();
+  for (let i=0; i<numberOfActions; i++) {
+    actionsStr.push(0); // all actions stats set to 0
   }
+  prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+}
+  
+function eG_setDefaultSettings() {
+  var prefs = Services.prefs.getBranch("easygestures.");
+  
+  prefs.setCharPref("profile.version", eGc.version);
+  prefs.setBoolPref("stateChange.language", false);
   
   prefs.setBoolPref("profile.startupTips", true);
   prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
@@ -162,7 +166,7 @@ function eG_setPrefs(fullReset) {
   
   var string = Components.classes["@mozilla.org/supports-string;1"]
                          .createInstance(Components.interfaces.nsISupportsString);
-  for (i=1; i<=20; i++) {
+  for (let i=1; i<=20; i++) {
     string.data = "\u2022\u2022false\u2022\u2022false\u2022false"; // name, text, isScript, newIconPath, favicon, newIcon: '•' is the separator
     prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
   }
