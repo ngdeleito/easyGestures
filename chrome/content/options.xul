@@ -75,7 +75,7 @@
           <menu label="&about.stats;">
             <menupopup>
               <menuitem label="&about.statsDisplay;" onclick="window.openDialog('chrome://easygestures/content/stats.xul', '', 'chrome,alwaysRaised,centerscreen');" />
-              <menuitem label="&about.statsReset;" onclick="if (confirm('&about.statsReset;')) resetStats();" />
+              <menuitem label="&about.statsReset;" onclick="if (confirm('&about.statsReset;')) { eG_initializeStats(); }" />
             </menupopup>
           </menu>
           <spacer height="4" />
@@ -684,6 +684,7 @@
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   <script type="application/x-javascript" src="chrome://easygestures/content/integration.js" />
+  // enabling access to eG_setDefaultSettings() and eG_initializeStats()
   <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
   
   <script type="application/x-javascript">
@@ -1170,20 +1171,6 @@
         clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
         clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
       }
-    }
-    
-    function resetStats() {
-      // all stats to 0
-      eG_prefs.setIntPref("profile.statsClicks", 0); // total clicks in whole window
-      eG_prefs.setIntPref("profile.statsUse", 0); // clicks within Pie Menu
-      var d = new Date(); // date of last reset
-      eG_prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
-      eG_prefs.setCharPref("profile.statsMain", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-      eG_prefs.setCharPref("profile.statsExtra", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-      var actionsStr = new Array();
-      for (i=0; i<eG_PopupImages.length ; i++)
-        actionsStr.push(0); // all actions stats set to 0
-      eG_prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
     }
     
     function browse(textboxid) {

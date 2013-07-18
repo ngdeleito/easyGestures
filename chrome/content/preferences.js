@@ -91,6 +91,13 @@ function eG_initializeStats() {
   // preferences
   var prefs = Services.prefs.getBranch("easygestures.");
   
+  var numberOfActions;
+  if (typeof eG_menuItems === "undefined") {
+    numberOfActions = eG_PopupImages.length;
+  }
+  else {
+    numberOfActions = eG_menuItems.length;
+  }
   
   prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
   prefs.setIntPref("profile.statsUse", 0); // calls for menu
