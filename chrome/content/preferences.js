@@ -148,9 +148,7 @@ function eG_setPrefs(fullReset) {
   prefs.setBoolPref("behavior.autoscrollingOn", false);
   prefs.setIntPref("behavior.autoscrollingDelay", 750);
   
-  if (fullReset) {
-    prefs.setCharPref("behavior.dailyReadingsFolderURI", ""); // initialize only on first start
-  }
+  prefs.setCharPref("behavior.dailyReadingsFolderURI", "");
   
   prefs.setBoolPref("actions.mainAlternative1", true); // activate main alternative 1 layout
   prefs.setBoolPref("actions.mainAlternative2", false);
