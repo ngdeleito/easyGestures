@@ -164,8 +164,8 @@ function eG_setPrefs(fullReset) {
   
   prefs.setBoolPref("actions.contextImageFirst", false);
   prefs.setBoolPref("actions.contextTextboxFirst", true);
+  eG_setDefaultMenus();
   
-  eG_setActions();
   
   prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
   
@@ -181,27 +181,23 @@ function eG_setPrefs(fullReset) {
   prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
 }
 
-function eG_setActions() {
-  var menus = new Array("main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
-                        "extraAlt2", "contextLink", "contextImage",
-                        "contextSelection", "contextTextbox");
-  var actionsList = new Array("1/17/7/14/12/75/18/24/6/11",
-                              "1/84/5/80/25/73/19/81/4/26",
-                              "1/51/52/58/53/54/55/59/56/57",
-                              "39/90/38/0/0/0/0/0/37/8",
-                              "40/20/71/0/0/0/0/0/10/9",
-                              "91/77/74/0/0/0/0/0/82/93",
-                              "29/72/32/0/71/0/30/0/28/27",
-                              "36/33/91/0/92/81/0/0/35/31",
-                              "39/90/86/0/0/0/0/0/89/40",
-                              "88/85/86/0/87/0/0/0/89/0");
-  var actions;
+function eG_setDefaultMenus() {
   var prefs = Services.prefs.getBranch("easygestures.");
+  var menus = {
+    main:             "1/17/7/14/12/75/18/24/6/11",
+    mainAlt1:         "1/84/5/80/25/73/19/81/4/26",
+    mainAlt2:         "1/51/52/58/53/54/55/59/56/57",
+    extra:            "39/90/38/0/0/0/0/0/37/8",
+    extraAlt1:        "40/20/71/0/0/0/0/0/10/9",
+    extraAlt2:        "91/77/74/0/0/0/0/0/82/93",
+    contextLink:      "29/72/32/0/71/0/30/0/28/27",
+    contextImage:     "36/33/91/0/92/81/0/0/35/31",
+    contextSelection: "39/90/86/0/0/0/0/0/89/40",
+    contextTextbox:   "88/85/86/0/87/0/0/0/89/0"
+  };
   
-  for (var i=0; i<menus.length; i++) {
-    // set actions
-    actions = actionsList[i];
-    prefs.setCharPref("actions." + menus[i], actions);
+  for (let [menuName, actions] in Iterator(menus)) {
+    prefs.setCharPref("actions." + menuName, actions);
   }
 }
 
