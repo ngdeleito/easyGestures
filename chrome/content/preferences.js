@@ -113,8 +113,8 @@ function eG_setPrefs(fullReset) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   if (window.navigator.userAgent.indexOf("Mac") == -1) {
     prefs.setIntPref("behavior.showButton", 1); // middle button
-    prefs.setIntPref("behavior.showAltButton", 2); // right button
     prefs.setIntPref("behavior.showKey", 0); // 0=none 16=shift 17=ctrl
+    prefs.setIntPref("behavior.showAltButton", 2); // right button
     prefs.setIntPref("behavior.supprKey", 45); // 18=alt 45=insert
     prefs.setIntPref("behavior.contextKey", 17);
     prefs.setBoolPref("behavior.handleLinksAsOpenLink", true);
@@ -122,36 +122,31 @@ function eG_setPrefs(fullReset) {
   else {
     // mac users need different defaults
     prefs.setIntPref("behavior.showButton", 0);
-    prefs.setIntPref("behavior.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
     prefs.setIntPref("behavior.showKey", 16);
+    prefs.setIntPref("behavior.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
     prefs.setIntPref("behavior.supprKey", 17);
     prefs.setIntPref("behavior.contextKey", 0);
     prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
   }
   
-  prefs.setBoolPref("behavior.dragOnly", false);
-  prefs.setBoolPref("behavior.dragOnlyUpLeft", false);
-  
   prefs.setBoolPref("behavior.showAfterDelay", false);
   prefs.setIntPref("behavior.showAfterDelayDelay", 200);
-  
+  prefs.setBoolPref("behavior.dragOnly", false);
+  prefs.setBoolPref("behavior.dragOnlyUpLeft", false);
   prefs.setBoolPref("behavior.contextMenuAuto", false); // Show contextual pie menu automatically
   
-  prefs.setBoolPref("behavior.handleLinks", true);
-  prefs.setIntPref("behavior.linksDelay", 300);
-  
-  prefs.setBoolPref("behavior.autoscrollingOn", false);
-  prefs.setIntPref("behavior.autoscrollingDelay", 750);
-  
+  prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
   prefs.setBoolPref("behavior.largeMenu", false);
+  prefs.setIntPref("behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
   prefs.setBoolPref("behavior.noIcons", false);
   prefs.setBoolPref("behavior.smallIcons", false);
-  prefs.setIntPref("behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
   prefs.setBoolPref("behavior.showTooltips", true);
   prefs.setIntPref("behavior.tooltipsDelay", 1000);
   prefs.setBoolPref("behavior.tooltipsDelayOmit", false);
-  
-  prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
+  prefs.setBoolPref("behavior.handleLinks", true);
+  prefs.setIntPref("behavior.linksDelay", 300);
+  prefs.setBoolPref("behavior.autoscrollingOn", false);
+  prefs.setIntPref("behavior.autoscrollingDelay", 750);
   
   if (fullReset) {
     prefs.setCharPref("behavior.dailyReadingsFolderURI", ""); // initialize only on first start
@@ -161,15 +156,11 @@ function eG_setPrefs(fullReset) {
   prefs.setBoolPref("actions.mainAlternative2", false);
   prefs.setBoolPref("actions.extraAlternative1", true);
   prefs.setBoolPref("actions.extraAlternative2", false);
-  
   prefs.setBoolPref("actions.contextImageFirst", false);
   prefs.setBoolPref("actions.contextTextboxFirst", true);
   eG_setDefaultMenus();
   
-  
-  prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
-  
-  prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
+  prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
   
   var string = Components.classes["@mozilla.org/supports-string;1"]
                          .createInstance(Components.interfaces.nsISupportsString);
@@ -178,7 +169,8 @@ function eG_setPrefs(fullReset) {
     prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
   }
   
-  prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
+  prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
+  prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
 }
 
 function eG_setDefaultMenus() {
