@@ -40,10 +40,6 @@ function eG_updatePrefs() {
     var prevVersion = prefs.getCharPref("profile.version"); // if a previous version is not already installed, this will trigger the catch statement to set all prefs
     
     if (prevVersion == eGc.version) { // no new version
-      // update newly localized prefs if language was changed
-      if (prefs.getBoolPref("stateChange.language")) {
-        prefs.setBoolPref("stateChange.language", false);
-      }
     }
     else { // new version installed
       if (versionCompare.compare(prevVersion, "4.3.1") >= 0) {
@@ -116,8 +112,6 @@ function eG_setDefaultSettings() {
   var prefs = Services.prefs.getBranch("easygestures.");
   
   prefs.setCharPref("profile.version", eGc.version);
-  prefs.setBoolPref("stateChange.language", false);
-  
   prefs.setBoolPref("profile.startupTips", true);
   prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
   
