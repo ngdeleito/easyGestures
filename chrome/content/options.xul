@@ -684,7 +684,7 @@
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   <script type="application/x-javascript" src="chrome://easygestures/content/integration.js" />
-  // enabling access to eG_setDefaultSettings() and eG_initializeStats()
+  <!-- enabling access to eG_setDefaultSettings() and eG_initializeStats() -->
   <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
   
   <script type="application/x-javascript">
