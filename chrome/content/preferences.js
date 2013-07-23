@@ -32,72 +32,26 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-function eG_updatePrefs() {
+function eG_setDefaultMenus() {
   var prefs = Services.prefs.getBranch("easygestures.");
+  var menus = {
+    main:             "1/17/7/14/12/75/18/24/6/11",
+    mainAlt1:         "1/84/5/80/25/73/19/81/4/26",
+    mainAlt2:         "1/51/52/58/53/54/55/59/56/57",
+    extra:            "39/90/38/0/0/0/0/0/37/8",
+    extraAlt1:        "40/20/71/0/0/0/0/0/10/9",
+    extraAlt2:        "91/77/74/0/0/0/0/0/82/93",
+    contextLink:      "29/72/32/0/71/0/30/0/28/27",
+    contextImage:     "36/33/91/0/92/81/0/0/35/31",
+    contextSelection: "39/90/86/0/0/0/0/0/89/40",
+    contextTextbox:   "88/85/86/0/87/0/0/0/89/0"
+  };
   
-  var versionCompare = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-  var prevVersion = prefs.getCharPref("profile.version"); // if a previous version is not already installed, this will trigger the catch statement to set all prefs
-  
-  if (versionCompare.compare(prevVersion, "4.3.1") >= 0) {
-    // Keep current preferences because no changes to prefs have been made since version 4.3.1
+  for (let [menuName, actions] in Iterator(menus)) {
+    prefs.setCharPref("actions." + menuName, actions);
   }
-  else if (versionCompare.compare(prevVersion, "4.3") >= 0) {
-    // make a few changes for all versions from version 4.3 to prior to version 4.3.1
-    
-    // update value of prefs
-    prefs.setIntPref("customizations.tabPopupDelay", 400);
-  }
-  else if (versionCompare.compare(prevVersion, "4.1.2") >= 0) {
-    // make a few changes for all versions from version 4.1.2 to prior to version 4.3
-    
-    // update value of prefs for 4.3.1
-    prefs.setIntPref("customizations.tabPopupDelay", 400);
-    
-    // update actions numbers and labels because of addition of 3 new actions
-    eG_updateToVersion43();
-    
-    // clear obsolete user prefs
-    prefs.clearUserPref("customizations.tabRepetitionDelay");
-    
-    // update value of prefs
-    prefs.setBoolPref("customizations.queryInNewTab", !prefs.getBoolPref("customizations.queryInNewTab"));
-  }
-  else {
-    // update all preferences for all versions prior to version 4.1.2
-    eG_setDefaultSettings();
-    eG_initializeStats();
-  }
-  
-  // update version
-  prefs.setCharPref("profile.version", eGc.version);
 }
 
-function eG_initializeStats() {
-  // this function is also called in options.xul with 'false' argument to reset
-  // preferences
-  var prefs = Services.prefs.getBranch("easygestures.");
-  
-  var numberOfActions;
-  if (typeof eG_menuItems === "undefined") {
-    numberOfActions = eG_PopupImages.length;
-  }
-  else {
-    numberOfActions = eG_menuItems.length;
-  }
-  
-  prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
-  prefs.setIntPref("profile.statsUse", 0); // calls for menu
-  var d = new Date(); // date of last reset
-  prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
-  prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-  prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-  var actionsStr = new Array();
-  for (let i=0; i<numberOfActions; i++) {
-    actionsStr.push(0); // all actions stats set to 0
-  }
-  prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
-}
-  
 function eG_setDefaultSettings() {
   var prefs = Services.prefs.getBranch("easygestures.");
   
@@ -166,24 +120,30 @@ function eG_setDefaultSettings() {
   prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
 }
 
-function eG_setDefaultMenus() {
+function eG_initializeStats() {
+  // this function is also called in options.xul with 'false' argument to reset
+  // preferences
   var prefs = Services.prefs.getBranch("easygestures.");
-  var menus = {
-    main:             "1/17/7/14/12/75/18/24/6/11",
-    mainAlt1:         "1/84/5/80/25/73/19/81/4/26",
-    mainAlt2:         "1/51/52/58/53/54/55/59/56/57",
-    extra:            "39/90/38/0/0/0/0/0/37/8",
-    extraAlt1:        "40/20/71/0/0/0/0/0/10/9",
-    extraAlt2:        "91/77/74/0/0/0/0/0/82/93",
-    contextLink:      "29/72/32/0/71/0/30/0/28/27",
-    contextImage:     "36/33/91/0/92/81/0/0/35/31",
-    contextSelection: "39/90/86/0/0/0/0/0/89/40",
-    contextTextbox:   "88/85/86/0/87/0/0/0/89/0"
-  };
   
-  for (let [menuName, actions] in Iterator(menus)) {
-    prefs.setCharPref("actions." + menuName, actions);
+  var numberOfActions;
+  if (typeof eG_menuItems === "undefined") {
+    numberOfActions = eG_PopupImages.length;
   }
+  else {
+    numberOfActions = eG_menuItems.length;
+  }
+  
+  prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
+  prefs.setIntPref("profile.statsUse", 0); // calls for menu
+  var d = new Date(); // date of last reset
+  prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+  prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+  prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+  var actionsStr = new Array();
+  for (let i=0; i<numberOfActions; i++) {
+    actionsStr.push(0); // all actions stats set to 0
+  }
+  prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
 }
 
 function eG_updateToVersion43() {
@@ -246,6 +206,46 @@ function eG_updateToVersion43() {
   }
   
   eG_prefsObs.prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+}
+
+function eG_updatePrefs() {
+  var prefs = Services.prefs.getBranch("easygestures.");
+  
+  var versionCompare = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
+  var prevVersion = prefs.getCharPref("profile.version"); // if a previous version is not already installed, this will trigger the catch statement to set all prefs
+  
+  if (versionCompare.compare(prevVersion, "4.3.1") >= 0) {
+    // Keep current preferences because no changes to prefs have been made since version 4.3.1
+  }
+  else if (versionCompare.compare(prevVersion, "4.3") >= 0) {
+    // make a few changes for all versions from version 4.3 to prior to version 4.3.1
+    
+    // update value of prefs
+    prefs.setIntPref("customizations.tabPopupDelay", 400);
+  }
+  else if (versionCompare.compare(prevVersion, "4.1.2") >= 0) {
+    // make a few changes for all versions from version 4.1.2 to prior to version 4.3
+    
+    // update value of prefs for 4.3.1
+    prefs.setIntPref("customizations.tabPopupDelay", 400);
+    
+    // update actions numbers and labels because of addition of 3 new actions
+    eG_updateToVersion43();
+    
+    // clear obsolete user prefs
+    prefs.clearUserPref("customizations.tabRepetitionDelay");
+    
+    // update value of prefs
+    prefs.setBoolPref("customizations.queryInNewTab", !prefs.getBoolPref("customizations.queryInNewTab"));
+  }
+  else {
+    // update all preferences for all versions prior to version 4.1.2
+    eG_setDefaultSettings();
+    eG_initializeStats();
+  }
+  
+  // update version
+  prefs.setCharPref("profile.version", eGc.version);
 }
 
 function eG_prefsObserver() {
