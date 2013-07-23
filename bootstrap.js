@@ -113,21 +113,39 @@ function loadEasyGesturesOnNewWindow(aSubject, aTopic, aData) {
 }
 
 function startup(data, reason) {
-  AddonManager.getAddonByID(data.id, function(addon) {
-    Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
-    Services.scriptloader.loadSubScript("chrome://easygestures/content/preferences.js");
-    Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
-    Services.scriptloader.loadSubScript("chrome://easygestures/content/functions.js");
+  Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
+  Services.scriptloader.loadSubScript("chrome://easygestures/content/preferences.js");
+  Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
+  Services.scriptloader.loadSubScript("chrome://easygestures/content/functions.js");
   
+  AddonManager.getAddonByID(data.id, function(addon) {
+    // installing or upgrading preferences
+    var count = {};
+    Services.prefs.getChildList("easygestures.", count);
+    if (reason == ADDON_INSTALL || (reason == ADDON_ENABLE && count.value == 0)) {
+      // when installing an extension by copying it to the extensions folder
+      // reason == ADDON_ENABLE, hence the test to see if there are already
+      // preferences in the easygestures preferences branch
+      eG_setDefaultSettings();
+      eG_initializeStats();
+    }
+    else if (reason == ADDON_UPGRADE) {
+      eG_updatePrefs();
+    }
+    
+    // getting access to localization strings
     eGc.localizing = new stringBundle(addon);
 
+    // activating easyGestures on current windows
     var currentWindows = Services.wm.getEnumerator("navigator:browser");
     while (currentWindows.hasMoreElements()) {
       loadEasyGesturesOn(currentWindows.getNext());
     }
 
+    // activating easyGestures on new windows
     Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
     
+    // displaying startup tips
     if (eGm.startupTips) {
       var window = Services.wm.getMostRecentWindow("navigator:browser");
       window.addEventListener("load", function displayTipsAtStartup() {

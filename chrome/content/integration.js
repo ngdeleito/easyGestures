@@ -84,13 +84,7 @@ var eG_prefsObs = null;
 function eG_initMenuIntegration(window) {
   var document = window.document;
   
-  /////////////////////////////////////////////////////////
-  // setting preferences
-  /////////////////////////////////////////////////////////
   eG_prefsObs = new eG_prefsObserver();
-  
-  eG_updatePrefs();
-  
   eG_activateMenu(document);
 }
 
