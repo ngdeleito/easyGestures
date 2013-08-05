@@ -43,7 +43,7 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   title="&about.stats; - easyGestures"
-  onload="removeEventListener('load', eG_initMenuIntegration, false);initDialog();">
+  onload="initDialog();">
 
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
