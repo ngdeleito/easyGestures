@@ -141,8 +141,8 @@ function startup(data, reason) {
     while (currentWindows.hasMoreElements()) {
       loadEasyGesturesOn(currentWindows.getNext());
     }
-
-    // activating easyGestures on new windows
+    
+    // start listening on new windows to activate easyGestures
     Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
     
     // displaying startup tips
@@ -161,11 +161,13 @@ function shutdown(data, reason) {
   // flushing because a string bundle was created
   Services.strings.flushBundles();
   
+  // disabling easyGestures on current windows
   var currentWindows = Services.wm.getEnumerator("navigator:browser");
   while (currentWindows.hasMoreElements()) {
     unloadEasyGesturesOn(currentWindows.getNext());
   }
   
+  // stop listening on new windows
   Services.ww.unregisterNotification(loadEasyGesturesOnNewWindow);
 }
 
