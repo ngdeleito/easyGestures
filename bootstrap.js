@@ -147,7 +147,8 @@ function startup(data, reason) {
       loadEasyGesturesOn(currentWindows.getNext());
     }
     
-    // start listening on new windows to activate easyGestures
+    // start listening to new window events in order to activate easyGestures on
+    // such windows
     Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
     
     // displaying startup tips
@@ -175,7 +176,7 @@ function shutdown(data, reason) {
     unloadEasyGesturesOn(currentWindows.getNext());
   }
   
-  // stop listening on new windows
+  // stop listening to new window events
   Services.ww.unregisterNotification(loadEasyGesturesOnNewWindow);
 }
 

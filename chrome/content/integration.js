@@ -90,14 +90,10 @@ function eG_initMenuIntegration(window) {
 function eG_activateMenu(document) {
   var gBrowser = document.defaultView.gBrowser;
   
-  /////////////////////////////////////////////////////////
   // creating menu
-  /////////////////////////////////////////////////////////
   eGm = new eG_menu();
   
-  ///////////////////////////////////////////////////////
-  // register CSS for images
-  ///////////////////////////////////////////////////////
+  // registering style sheet
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                       .getService(Components.interfaces.nsIStyleSheetService);
   var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
@@ -105,10 +101,7 @@ function eG_activateMenu(document) {
     sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
   }
   
-  /////////////////////////////////////////////////////////
   // setting events handlers
-  /////////////////////////////////////////////////////////
-  
   gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
   gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
   gBrowser.addEventListener("keydown", eG_handleKeys, true);
@@ -118,9 +111,7 @@ function eG_activateMenu(document) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
   }
   
-  /////////////////////////////////////////////////////////
   // disabling autoscrolling if middle mouse button is menu's button
-  /////////////////////////////////////////////////////////
   if (eGm.showButton == 1) {
     var prefs = Services.prefs.getBranch("general.");
     if (prefs.getBoolPref("autoScroll")) {
@@ -130,6 +121,7 @@ function eG_activateMenu(document) {
 }
 
 function eG_deactivateMenu(window) {
+  // unregistering style sheet
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                       .getService(Components.interfaces.nsIStyleSheetService);
   var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
@@ -137,6 +129,7 @@ function eG_deactivateMenu(window) {
     sss.unregisterSheet(uri, sss.AGENT_SHEET);
   }
   
+  // removing event handlers
   window.gBrowser.removeEventListener("mousedown", eG_handleMousedown, true);
   window.gBrowser.removeEventListener("mouseup", eG_handleMouseup, true);
   window.gBrowser.removeEventListener("keydown", eG_handleKeys, true);
