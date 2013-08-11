@@ -135,7 +135,12 @@ function startup(data, reason) {
     
     // getting access to localization strings
     eGc.localizing = new stringBundle(addon);
-
+    
+    // start listening to changes in preferences that could require rebuilding
+    // the menus
+    eG_prefsObs = new eG_prefsObserver();
+    eGPrefsObserver.register();
+    
     // activating easyGestures on current windows
     var currentWindows = Services.wm.getEnumerator("navigator:browser");
     while (currentWindows.hasMoreElements()) {
@@ -160,6 +165,9 @@ function startup(data, reason) {
 function shutdown(data, reason) {
   // flushing because a string bundle was created
   Services.strings.flushBundles();
+  
+  // stop listening to changes in preferences
+  eGPrefsObserver.unregister();
   
   // disabling easyGestures on current windows
   var currentWindows = Services.wm.getEnumerator("navigator:browser");

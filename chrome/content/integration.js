@@ -84,7 +84,6 @@ var eG_prefsObs = null;
 function eG_initMenuIntegration(window) {
   var document = window.document;
   
-  eG_prefsObs = new eG_prefsObserver();
   eG_activateMenu(document);
 }
 
@@ -500,12 +499,6 @@ function eG_handleUnload(evt) {
     // "Disable or replace context menus" Browser option back to false if was false before showing pie menu
     eG_resetInitialContextBrowserOption();
   }
-  
-  try { // remove the prefs observer to prevent memory leaks
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch(null);
-    prefs.QueryInterface(Components.interfaces.nsIPrefBranchInternal).removeObserver("easygestures.stateChange.prefs", eG_prefsObs);
-  }
-  catch (ex) {}
 }
 
 function eG_countClicks() {

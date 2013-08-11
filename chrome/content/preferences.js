@@ -249,59 +249,55 @@ function eG_updatePrefs() {
 }
 
 function eG_prefsObserver() {
-  // observes changes in the Options Dialog
-  try {
-    // add the observer
-    var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                          .getService(Components.interfaces.nsIPrefService)
-                          .getBranch(null);
-    prefs.QueryInterface(Components.interfaces.nsIPrefBranchInternal)
-         .addObserver("easygestures.stateChange.prefs", this, false);
-  }
-  catch (ex) {
-  }
-  
   this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
                          .getService(Components.interfaces.nsIPrefService)
                          .getBranch("easygestures.");
-  this.domain = "easygestures";
-  
-  this.observe = function(subject, topic, pname) {
-    // handle changes in preferences
-    try {
-      // clean all previous insertions inside page
-      if (eGc.frame_doc != null) {
-        var layoutNames = new Array("main", "mainAlt1", "mainAlt2", "extra",
-                                    "extraAlt1", "extraAlt2", "contextLink",
-                                    "contextImage", "contextSelection",
-                                    "contextTextbox");
-        var targetNode;
-        for (var i=0; i<layoutNames.length; i++) {
-          targetNode = eGc.frame_doc.getElementById("eG_actions_" + layoutNames[i]); // actions
+}
+
+var eGPrefsObserver = {
+  register: function() {
+    this._branch = Services.prefs.getBranch("easygestures.stateChange.prefs");
+    this._branch.addObserver("", this, false);
+  },
+
+  unregister: function() {
+    this._branch.removeObserver("", this);
+  },
+
+  observe: function(aSubject, aTopic, aData) {
+    // iterating over all windows and over all tabs in each window, in order to
+    // remove any previously inserted easyGesture menu
+    var openWindows = Services.wm.getEnumerator("navigator:browser");
+    while (openWindows.hasMoreElements()) {
+      let window = openWindows.getNext();
+      let tabs = window.gBrowser.tabs;
+      Array.forEach(tabs, function(element, index, array) {
+        var document = window.gBrowser.getBrowserForTab(element).contentDocument;
+        var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+                         "extraAlt2", "contextLink", "contextImage",
+                         "contextSelection", "contextTextbox"];
+        menuNames.forEach(function(element, index, array) {
+          var targetNode = document.getElementById("eG_actions_" + element);
           if (targetNode != null) {
             targetNode.parentNode.removeChild(targetNode);
           }
-          targetNode = eGc.frame_doc.getElementById("eG_labels_" + layoutNames[i]); // labels
+          targetNode = document.getElementById("eG_labels_" + element);
           if (targetNode!=null) {
             targetNode.parentNode.removeChild(targetNode);
           }
-        }
-      }
-      
-      eGm = new eG_menu(); // rebuild menu
-      
-      // disable mouse scroll if middle mouse button is menu's button
-      if (eGm.showButton == 1) {
-        var prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                              .getService(Components.interfaces.nsIPrefService)
-                              .getBranch("general.");
-        if (prefs.getBoolPref("autoScroll")) {
-          prefs.setBoolPref("autoScroll", false);
-        }
-      }
+        });
+      });
     }
-    catch (ex) {
-      alert(ex);
+    
+    // rebulding the menu
+    eGm = new eG_menu();
+    
+    // disabling mouse scroll if middle mouse button is menu's button
+    if (eGm.showButton == 1) {
+      let generalBranch = Services.prefs.getBranch("general.");
+      if (generalBranch.getBoolPref("autoScroll")) {
+        generalBranch.setBoolPref("autoScroll", false);
+      }
     }
   }
-}
+};
