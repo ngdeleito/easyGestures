@@ -84,7 +84,7 @@ function loadEasyGesturesOn(window) {
     return;
   }
   
-  eG_initMenuIntegration(window);
+  eG_activateMenu(window);
   window.addEventListener("unload", eG_handleUnload, false);
   window.addEventListener("mousedown", eG_countClicks, false);
 }

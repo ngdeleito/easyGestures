@@ -81,15 +81,7 @@ var eGc = {
 var eGm = null;
 var eG_prefsObs = null;
 
-function eG_initMenuIntegration(window) {
-  var document = window.document;
-  
-  eG_activateMenu(document);
-}
-
-function eG_activateMenu(document) {
-  var gBrowser = document.defaultView.gBrowser;
-  
+function eG_activateMenu(window) {
   // creating menu
   eGm = new eG_menu();
   
@@ -102,11 +94,11 @@ function eG_activateMenu(document) {
   }
   
   // setting events handlers
-  gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
-  gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
-  gBrowser.addEventListener("keydown", eG_handleKeys, true);
-  gBrowser.addEventListener("keyup", eG_handleKeys, true);
-  var contextMenu = document.getElementById("contentAreaContextMenu");
+  window.gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
+  window.gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
+  window.gBrowser.addEventListener("keydown", eG_handleKeys, true);
+  window.gBrowser.addEventListener("keyup", eG_handleKeys, true);
+  var contextMenu = window.document.getElementById("contentAreaContextMenu");
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
   }
