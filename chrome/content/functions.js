@@ -522,7 +522,7 @@ var eGf = {
           if (eGm.dailyReadingsFolderURI == "") {
             // update value if no value found
             eGm.dailyReadingsFolderURI = result.root.getChild(i).itemId;
-            eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", eGm.dailyReadingsFolderURI);
+            eGPrefs.setDailyReadingsFolderPref(eGm.dailyReadingsFolderURI);
           }
           break;
         }
@@ -539,7 +539,7 @@ var eGf = {
       var newFolderId = bookmarksService.createFolder(menuFolder, folderName, -1);
       
       eGm.dailyReadingsFolderURI = newFolderId;
-      eG_prefsObs.prefs.setCharPref("behavior.dailyReadingsFolderURI", newFolderId);
+      eGPrefs.setDailyReadingsFolderPref(newFolderId);
       
       Services.prompt.alert(null, "", eGc.localizing.getString("dailyReadingsCreate"));
     }

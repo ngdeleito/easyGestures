@@ -961,7 +961,7 @@ eG_menu.prototype = {
       }
 
       if (layout.name.search("extra") == -1) { // main
-        var statsMainArray = (new Function ("return " + eG_prefsObs.prefs.getCharPref("profile.statsMain") ))(); // (new Function ("return " + data ))() replacing eval on data
+        var statsMainArray = (new Function ("return " + eGPrefs.getStatsMainPref()))(); // (new Function ("return " + data ))() replacing eval on data
 
         var sector8To10 = this.sector;
         if (!layout.isLarge) {
@@ -973,17 +973,17 @@ eG_menu.prototype = {
           }
         }
         statsMainArray[index*10+sector8To10]++;
-        eG_prefsObs.prefs.setCharPref("profile.statsMain", statsMainArray.toSource());
+        eGPrefs.setStatsMainPref(statsMainArray.toSource());
       }
       else { // extra
-        var statsExtraArray = (new Function ("return " + eG_prefsObs.prefs.getCharPref("profile.statsExtra") ))(); // (new Function ("return " + data ))() replacing eval on data
+        var statsExtraArray = (new Function ("return " + eGPrefs.getStatsExtraPref()))(); // (new Function ("return " + data ))() replacing eval on data
         statsExtraArray[index*8+this.sector]++;
-        eG_prefsObs.prefs.setCharPref("profile.statsExtra", statsExtraArray.toSource());
+        eGPrefs.setStatsExtraPref(statsExtraArray.toSource());
       }
 
-      var statsActionsArray = (new Function ("return " + eG_prefsObs.prefs.getCharPref("profile.statsActions") ))(); // (new Function ("return " + data ))() replacing eval on data
+      var statsActionsArray = (new Function ("return " + eGPrefs.getStatsActionsPref()))(); // (new Function ("return " + data ))() replacing eval on data
       statsActionsArray[layout.actions[this.sector].id]++;
-      eG_prefsObs.prefs.setCharPref("profile.statsActions", statsActionsArray.toSource());
+      eGPrefs.setStatsActionsPref(statsActionsArray.toSource());
 
       try {
         (new Function ("return " + layout.actions[this.sector].func ))(); // (new Function ("return " + data ))() replacing eval on data
@@ -1293,9 +1293,7 @@ eG_menu.prototype = {
     this.reset();
 
     // update statsUse preference
-    var statsUse = eG_prefsObs.prefs.getIntPref("profile.statsUse");
-    statsUse++;
-    eG_prefsObs.prefs.setIntPref("profile.statsUse", statsUse);
+    eGPrefs.incrementStatsUsePref();
 
     // re-enable counting clicks inside window
     var window = Services.wm.getMostRecentWindow("navigator:browser");

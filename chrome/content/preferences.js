@@ -140,6 +140,44 @@ var eGPrefs = {
       actionsStr.push(0); // all actions stats set to 0
     }
     this._prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+  },
+  
+  setDailyReadingsFolderPref : function(aString) {
+    this._prefs.setCharPref("behavior.dailyReadingsFolderURI", aString);
+  },
+  
+  incrementStatsClicksPref : function() {
+    var value = this._prefs.getIntPref("profile.statsClicks");
+    this._prefs.setIntPref("profile.statsClicks", ++value);
+  },
+  
+  incrementStatsUsePref : function() {
+    var value = this._prefs.getIntPref("profile.statsUse");
+    this._prefs.setIntPref("profile.statsUse", ++value);
+  },
+  
+  getStatsMainPref : function() {
+    return this._prefs.getCharPref("profile.statsMain");
+  },
+  
+  setStatsMainPref : function(aString) {
+    this._prefs.setCharPref("profile.statsMain", aString);
+  },
+  
+  getStatsExtraPref : function() {
+    return this._prefs.getCharPref("profile.statsExtra");
+  },
+  
+  setStatsExtraPref : function(aString) {
+    this._prefs.setCharPref("profile.statsExtra", aString);
+  },
+  
+  getStatsActionsPref : function() {
+    return this._prefs.getCharPref("profile.statsActions");
+  },
+  
+  setStatsActionsPref : function(aString) {
+    this._prefs.setCharPref("profile.statsActions", aString);
   }
 };
 
@@ -150,7 +188,7 @@ function eG_updateToVersion43() {
                         "contextSelection","contextTextbox");
   
   for (var i=0; i<menus.length; i++) {
-    var actionsSplit = eG_prefsObs.prefs.getCharPref("actions." + menus[i]).split("/");
+    var actionsSplit = eGPrefs._prefs.getCharPref("actions." + menus[i]).split("/");
     var actionsPrefs = "";
     
     for (var n=0; n<actionsSplit.length; n++) {
@@ -172,11 +210,11 @@ function eG_updateToVersion43() {
     }
     
     // update actions
-    eG_prefsObs.prefs.setCharPref("actions." + menus[i], actionsPrefs);
+    eGPrefs._prefs.setCharPref("actions." + menus[i], actionsPrefs);
   }
   
   // update actions stats
-  var prevActionsStr = (new Function ("return " + eG_prefsObs.prefs.getCharPref("profile.statsActions")))(); // (new Function ("return " + data ))() replacing eval on data
+  var prevActionsStr = (new Function ("return " + eGPrefs.getStatsActionsPref()))(); // (new Function ("return " + data ))() replacing eval on data
   var actionsStr = new Array();
   for (i=0; i<eG_menuItems.length; i++) {
     if (i<30) {
@@ -202,7 +240,7 @@ function eG_updateToVersion43() {
     }
   }
   
-  eG_prefsObs.prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+  eGPrefs.setStatsActionsPref(actionsStr.toSource()); // saved as source of an Array
 }
 
 function eG_updatePrefs() {
@@ -243,12 +281,6 @@ function eG_updatePrefs() {
   
   // update version
   prefs.setCharPref("profile.version", eGc.version);
-}
-
-function eG_prefsObserver() {
-  this.prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                         .getService(Components.interfaces.nsIPrefService)
-                         .getBranch("easygestures.");
 }
 
 var eGPrefsObserver = {

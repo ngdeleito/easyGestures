@@ -79,7 +79,6 @@ var eGc = {
 };
 
 var eGm = null;
-var eG_prefsObs = null;
 
 function eG_activateMenu(window) {
   // creating menu
@@ -489,8 +488,7 @@ function eG_handleUnload(evt) {
 function eG_countClicks() {
   // update statsClicks preference
   try { // because could be called from options.xul
-    var statsClicks = eG_prefsObs.prefs.getIntPref("profile.statsClicks")+1;
-    eG_prefsObs.prefs.setIntPref("profile.statsClicks",  statsClicks );
+    eGPrefs.incrementStatsClicksPref();
     
     // disable counting clicks inside window because menu is displayed
     if (eGm.menuState != 0) {

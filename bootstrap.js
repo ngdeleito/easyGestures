@@ -138,7 +138,6 @@ function startup(data, reason) {
     
     // start listening to changes in preferences that could require rebuilding
     // the menus
-    eG_prefsObs = new eG_prefsObserver();
     eGPrefsObserver.register();
     
     // activating easyGestures on current windows
