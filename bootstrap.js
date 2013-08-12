@@ -126,8 +126,8 @@ function startup(data, reason) {
       // when installing an extension by copying it to the extensions folder
       // reason == ADDON_ENABLE, hence the test to see if there are already
       // preferences in the easygestures preferences branch
-      eG_setDefaultSettings();
-      eG_initializeStats();
+      eGPrefs.setDefaultSettings();
+      eGPrefs.initializeStats();
     }
     else if (reason == ADDON_UPGRADE) {
       eG_updatePrefs();
