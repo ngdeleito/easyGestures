@@ -1411,5 +1411,35 @@ eG_menu.prototype = {
         default:   lNode.style.fontSize = "8pt"; break;
       }
     }
+  },
+  
+  removeExistingMenusFromPages : function() {
+    // iterating over all windows and over all tabs in each window, in order to
+    // remove any previously inserted easyGestures menus
+    var openWindows = Services.wm.getEnumerator("navigator:browser");
+    while (openWindows.hasMoreElements()) {
+      let window = openWindows.getNext();
+      let tabs = window.gBrowser.tabs;
+      Array.forEach(tabs, function(element, index, array) {
+        var document = window.gBrowser.getBrowserForTab(element).contentDocument;
+        var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+                         "extraAlt2", "contextLink", "contextImage",
+                         "contextSelection", "contextTextbox"];
+        var targetNode = document.getElementById("eG_SpecialNodes");
+        if (targetNode != null) {
+          targetNode.parentNode.removeChild(targetNode);
+        }
+        menuNames.forEach(function(element, index, array) {
+          targetNode = document.getElementById("eG_actions_" + element);
+          if (targetNode != null) {
+            targetNode.parentNode.removeChild(targetNode);
+          }
+          targetNode = document.getElementById("eG_labels_" + element);
+          if (targetNode != null) {
+            targetNode.parentNode.removeChild(targetNode);
+          }
+        });
+      });
+    }
   }
 };

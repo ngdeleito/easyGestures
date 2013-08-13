@@ -298,29 +298,8 @@ var eGPrefsObserver = {
   },
 
   observe: function(aSubject, aTopic, aData) {
-    // iterating over all windows and over all tabs in each window, in order to
-    // remove any previously inserted easyGesture menu
-    var openWindows = Services.wm.getEnumerator("navigator:browser");
-    while (openWindows.hasMoreElements()) {
-      let window = openWindows.getNext();
-      let tabs = window.gBrowser.tabs;
-      Array.forEach(tabs, function(element, index, array) {
-        var document = window.gBrowser.getBrowserForTab(element).contentDocument;
-        var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
-                         "extraAlt2", "contextLink", "contextImage",
-                         "contextSelection", "contextTextbox"];
-        menuNames.forEach(function(element, index, array) {
-          var targetNode = document.getElementById("eG_actions_" + element);
-          if (targetNode != null) {
-            targetNode.parentNode.removeChild(targetNode);
-          }
-          targetNode = document.getElementById("eG_labels_" + element);
-          if (targetNode!=null) {
-            targetNode.parentNode.removeChild(targetNode);
-          }
-        });
-      });
-    }
+    // removing existing easyGestures menus from open web pages
+    eGm.removeExistingMenusFromPages();
     
     // rebulding the menu
     eGm = new eG_menu();

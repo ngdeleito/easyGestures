@@ -180,6 +180,9 @@ function shutdown(data, reason) {
   // stop listening to changes in preferences
   eGPrefsObserver.unregister();
   
+  // removing existing easyGestures menus from open web pages
+  eGm.removeExistingMenusFromPages();
+  
   // unregistering style sheet
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                       .getService(Components.interfaces.nsIStyleSheetService);
