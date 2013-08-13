@@ -142,6 +142,10 @@ var eGPrefs = {
     this._prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
   },
   
+  areStartupTipsOn : function() {
+    return this._prefs.getBoolPref("profile.startupTips");
+  },
+  
   setDailyReadingsFolderPref : function(aString) {
     this._prefs.setCharPref("behavior.dailyReadingsFolderURI", aString);
   },

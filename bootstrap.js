@@ -151,8 +151,8 @@ function startup(data, reason) {
     Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
     
     // displaying startup tips
-    if (eGm.startupTips) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGPrefs.areStartupTipsOn()) {
+      let window = Services.wm.getMostRecentWindow("navigator:browser");
       window.addEventListener("load", function displayTipsAtStartup() {
         window.removeEventListener("load", displayTipsAtStartup, false);
         window.openDialog("chrome://easygestures/content/tips.xul", "",
