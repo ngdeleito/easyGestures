@@ -77,8 +77,8 @@ stringBundle.prototype = {
 }
 
 function loadEasyGesturesOn(window) {
-  // make sure that easyGestures is only loaded on navigator windows and not on
-  // e.g. preferences and console windows
+  // making sure that easyGestures is only loaded on navigator windows and not
+  // on e.g. preferences and console windows
   var wintype = window.document.documentElement.getAttribute("windowtype");
   if (wintype != "navigator:browser") {
     return;
