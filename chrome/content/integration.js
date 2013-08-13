@@ -81,17 +81,6 @@ var eGc = {
 var eGm = null;
 
 function eG_activateMenu(window) {
-  // creating menu
-  eGm = new eG_menu();
-  
-  // registering style sheet
-  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-                      .getService(Components.interfaces.nsIStyleSheetService);
-  var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-  if (!sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
-    sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
-  }
-  
   // setting events handlers
   window.gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
   window.gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
@@ -112,14 +101,6 @@ function eG_activateMenu(window) {
 }
 
 function eG_deactivateMenu(window) {
-  // unregistering style sheet
-  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-                      .getService(Components.interfaces.nsIStyleSheetService);
-  var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-  if (sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
-    sss.unregisterSheet(uri, sss.AGENT_SHEET);
-  }
-  
   // removing event handlers
   window.gBrowser.removeEventListener("mousedown", eG_handleMousedown, true);
   window.gBrowser.removeEventListener("mouseup", eG_handleMouseup, true);
