@@ -104,6 +104,16 @@ function eG_deactivateMenu(window) {
   }
 }
 
+function eG_countClicks(anEvent) {
+  eGPrefs.incrementStatsClicksPref();
+  
+  // disabling counting clicks inside window if menu is displayed
+  if (eGm.menuState != 0) {
+    let window = anEvent.currentTarget;
+    window.removeEventListener("mousedown", eG_countClicks, false);
+  }
+}
+
 function eG_getSelection() { // find text selection in current HTML document
   var sel = eGc.evtMouseDown.view.getSelection();
   sel = sel.toString();
@@ -456,19 +466,6 @@ function eG_handleUnload(evt) {
     // "Disable or replace context menus" Browser option back to false if was false before showing pie menu
     eG_resetInitialContextBrowserOption();
   }
-}
-
-function eG_countClicks() {
-  // update statsClicks preference
-  try { // because could be called from options.xul
-    eGPrefs.incrementStatsClicksPref();
-    
-    // disable counting clicks inside window because menu is displayed
-    if (eGm.menuState != 0) {
-      window.removeEventListener("mousedown", eG_countClicks, false);
-    }
-  }
-  catch (ex) {}
 }
 
 function eG_resetInitialContextBrowserOption() {
