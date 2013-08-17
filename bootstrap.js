@@ -1,9 +1,9 @@
 /***** BEGIN LICENSE BLOCK *****
 Version: MPL 1.1/GPL 2.0/LGPL 2.1
 
-The contents of this file are subject to the Mozilla Public License Version 
-1.1 (the "License"); you may not use this file except in compliance with 
-the License. You may obtain a copy of the License at 
+The contents of this file are subject to the Mozilla Public License Version
+1.1 (the "License"); you may not use this file except in compliance with
+the License. You may obtain a copy of the License at
 http://www.mozilla.org/MPL/
 
 Software distributed under the License is distributed on an "AS IS" basis,
@@ -74,7 +74,7 @@ stringBundle.prototype = {
   getString : function(stringName) {
     return this.stringBundle.GetStringFromName(stringName);
   }
-}
+};
 
 function loadEasyGesturesOn(window) {
   // making sure that easyGestures is only loaded on navigator windows and not
@@ -122,7 +122,7 @@ function startup(data, reason) {
     // installing or upgrading preferences
     var count = {};
     Services.prefs.getChildList("easygestures.", count);
-    if (reason == ADDON_INSTALL || (reason == ADDON_ENABLE && count.value == 0)) {
+    if (reason == ADDON_INSTALL || (reason == ADDON_ENABLE && count.value === 0)) {
       // when installing an extension by copying it to the extensions folder
       // reason == ADDON_ENABLE, hence the test to see if there are already
       // preferences in the easygestures preferences branch

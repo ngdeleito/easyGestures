@@ -342,7 +342,7 @@ function eG_menu () {
 
   this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
-  this.skinPath = "chrome://easygestures/skin/" // path to skin containing icons and images
+  this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	initializing properties
