@@ -303,13 +303,5 @@ var eGPrefsObserver = {
     
     // rebulding the menu
     eGm = new eG_menu();
-    
-    // disabling mouse scroll if middle mouse button is menu's button
-    if (eGm.showButton == 1) {
-      let generalBranch = Services.prefs.getBranch("general.");
-      if (generalBranch.getBoolPref("autoScroll")) {
-        generalBranch.setBoolPref("autoScroll", false);
-      }
-    }
   }
 };

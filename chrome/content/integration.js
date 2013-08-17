@@ -90,14 +90,6 @@ function eG_activateMenu(window) {
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
   }
-  
-  // disabling autoscrolling if middle mouse button is menu's button
-  if (eGm.showButton == 1) {
-    var prefs = Services.prefs.getBranch("general.");
-    if (prefs.getBoolPref("autoScroll")) {
-      prefs.setBoolPref("autoScroll", false);
-    }
-  }
 }
 
 function eG_deactivateMenu(window) {
