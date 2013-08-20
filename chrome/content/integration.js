@@ -40,8 +40,6 @@ var eGc = {
   localizing: null, // Access to string bundle for easygestures.properties file
   
   blockStdContextMenu: false, // whether the std context menu should be suppressed
-  allowContextBrowserOption: null, // used to set back "Disable or replace context menus" Browser option
-  allowContextBrowserOptionTimerId: null,
   keyPressed: 0, // used to control display of pie menu
   
   contextType: "", // link/, image/, selection/ or textbox/
@@ -351,12 +349,6 @@ function eG_handleMousedown(evt) {
     return;
   }
   
-  // "Disable or replace context menus" Browser option back to false if was false before showing pie menu. This is needed in case the timeout in hide function has not elapsed
-  if (eGm.showButton == 2 && !eGc.allowContextBrowserOption && eGc.menuState == 0) {
-    window.clearTimeout(eGc.allowContextBrowserOptionTimerId);
-    eG_resetInitialContextBrowserOption();
-  }
-  
   // start timer for delayed show up
   if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay) {
     eGc.showAfterDelayPassed = true;
@@ -459,20 +451,6 @@ function eG_handleMousedown(evt) {
     // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
     eGm.autoscrollingTrigger = window.setTimeout(function foo(arg) {eGm.autoscrolling=true; eGm.close(); eGf.autoscrolling(arg); }, eGm.autoscrollingDelay, eGc.evtMouseDown);
   }
-}
-
-function eG_handleUnload(evt) {
-  if (eGm.showButton == 2 && !eGc.allowContextBrowserOption && eGm.stateMenu == 0) {
-    // "Disable or replace context menus" Browser option back to false if was false before showing pie menu
-    eG_resetInitialContextBrowserOption();
-  }
-}
-
-function eG_resetInitialContextBrowserOption() {
-  // reset the initial value of 'Allow scripts to...Disable or replace context menu' in browser options
-  var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-  pref.setBoolPref("dom.event.contextmenu.enabled", false);
-  eGc.allowContextBrowserOptionTimerId = null;
 }
 
 function eG_showAfterDelay() {

@@ -667,17 +667,6 @@ eG_menu.prototype = {
   show : function(layoutName) { // makes menu visible
     var layout = this.menuSet[layoutName];
     
-    if (this.showButton == 2) { // right click: make sure "Disable or replace context menus" Browser option is checked so that eG can control right click context menu display
-      if (eGc.allowContextBrowserOptionTimerId != null) {
-        clearTimeout(eGc.allowContextBrowserOptionTimerId);
-      }
-      var pref = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefBranch);
-      eGc.allowContextBrowserOption = pref.getBoolPref("dom.event.contextmenu.enabled");
-      if (!eGc.allowContextBrowserOption) {
-        pref.setBoolPref("dom.event.contextmenu.enabled", true);
-      }
-    }
-
     // create resources if necessary
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
     if (specialNodes == null) {
@@ -1316,10 +1305,6 @@ eG_menu.prototype = {
     if (this.showButton == 0) { // left mouse button
       var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
       selCon.setDisplaySelection(2); // SELECTION_ON
-    }
-
-    if (this.showButton == 2 && !eGc.allowContextBrowserOption) { // set "Disable or replace context menus" Browser option back to false if was false before showing pie menu
-      eGc.allowContextBrowserOptionTimerId = window.setTimeout(resetInitialContextBrowserOption, 1000); // setting the timer to make sure the reset function is called after completion of mouseup event
     }
   },
 

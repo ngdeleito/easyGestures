@@ -85,7 +85,6 @@ function loadEasyGesturesOn(window) {
   }
   
   eG_activateMenu(window);
-  window.addEventListener("unload", eG_handleUnload, false);
   window.addEventListener("mousedown", eG_countClicks, false);
 }
 
@@ -94,7 +93,6 @@ function unloadEasyGesturesOn(window) {
   // additional test)
   
   eG_deactivateMenu(window);
-  window.removeEventListener("unload", eG_handleUnload, false);
   window.removeEventListener("mousedown", eG_countClicks, false);
 }
 
