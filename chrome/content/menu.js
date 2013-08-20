@@ -412,6 +412,14 @@ function eG_menu () {
 }
 
 eG_menu.prototype = {
+  isMenuHidden : function() {
+    return this.menuState === 0;
+  },
+  
+  isMenuDisplayed : function() {
+    return this.menuState !== 0;
+  },
+  
   createSpecialNodes : function (layoutName) { //creating DOM nodes
     var layout = this.menuSet[layoutName];
 
@@ -694,7 +702,7 @@ eG_menu.prototype = {
     altMenuSign.style.top = -10-(layout.isExtraMenu?layout.outerR*1.2 + (layout.isLarge ? this.iconSize/2 :0):0)+"px";
     altMenuSign.style.left=layout.outerR-12 + "px";
 
-    if (this.menuState == 0) {
+    if (this.isMenuHidden()) {
       this.menuState = 1; // menu is showing
     }
     this.curLayoutName = layoutName;

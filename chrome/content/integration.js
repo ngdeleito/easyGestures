@@ -106,7 +106,7 @@ function eG_countClicks(anEvent) {
   eGPrefs.incrementStatsClicksPref();
   
   // disabling counting clicks inside window if menu is displayed
-  if (eGm.menuState != 0) {
+  if (eGm.isMenuDisplayed()) {
     let window = anEvent.currentTarget;
     window.removeEventListener("mousedown", eG_countClicks, false);
   }
@@ -147,14 +147,14 @@ function eG_handleKeys(evt) {
     eGc.keyPressed = evt.keyCode;
   }
   
-  if (evt.keyCode == 18 && eGm.menuState != 0 && evt.type == "keydown") {
+  if (evt.keyCode == 18 && eGm.isMenuDisplayed() && evt.type == "keydown") {
     // <Alt> key is pressed (use right key)
     eGm.switchLayout();
     return;
   }
   
   // show textarea for typing and retrieve typed text as selected text
-  if (eGm.menuState != 0 && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.supprKey) {
+  if (eGm.isMenuDisplayed() && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.supprKey) {
     // all keys except keys to control display of pie
     if (evt.keyCode == 27) {
       evt.preventDefault();
@@ -183,7 +183,7 @@ function eG_handleMouseup(evt) {
   if (window.document.getElementById("content").mCurrentBrowser._scrollingView == null) {
     if (eGm.autoscrolling) {
       eGm.autoscrolling = false;
-      if (eGm.menuState == 0) {
+      if (eGm.isMenuHidden()) {
         return; // avoid contextual menu when autoscrolling ends (this would be triggered below)
       }
     }
@@ -196,7 +196,7 @@ function eG_handleMouseup(evt) {
   }
   
   // menuState:    0-> not shown    1-> showing   2-> showing & mouse moved    3-> staying open
-  if (eGm.menuState == 0) {
+  if (eGm.isMenuHidden()) {
     if (!eGm.autoscrolling) {
       // avoid enabling contextual menu when autoscrolling
       eGc.blockStdContextMenu = false;
@@ -259,7 +259,7 @@ function eG_handleMousemove(evt) {
   
   eGc.draggedToOpen = Math.sqrt( Math.pow(evt.clientX- eGc.clientXDown,2) + Math.pow(evt.clientY- eGc.clientYDown,2) ) > eGc.pieDragTolerance;
   
-  if (eGm.menuState == 0) {
+  if (eGm.isMenuHidden()) {
     if (eGc.showAfterDelayPassed) {
       return;
     }
@@ -312,7 +312,7 @@ function eG_handleMousedown(evt) {
   eGc.blockStdContextMenu = true;
   
   // check whether pie menu should change layout or hide (later)
-  if (eGm.menuState > 0 || eGm.autoscrollingState) {
+  if (eGm.isMenuDisplayed() || eGm.autoscrollingState) {
     // toggle primitive/alternative pie menu
     eGm.autoscrollingState = false; // disable autoscrolling if any
     
