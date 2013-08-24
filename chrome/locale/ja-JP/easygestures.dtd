@@ -21,10 +21,10 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "閉じる">
 
-<!ENTITY profile "プロファイル">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "動作">
-<!ENTITY actions "アクション">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "カスタマイズ">
 
 <!ENTITY actions.main "メインメニュー">

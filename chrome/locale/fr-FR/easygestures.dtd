@@ -19,10 +19,10 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Fermer">
 
-<!ENTITY profile "Profil">
+<!ENTITY general "Général">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Comportement">
-<!ENTITY actions "Actions">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Personnalisations">
 
 <!ENTITY actions.main "Menu principal">

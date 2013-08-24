@@ -21,10 +21,10 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "关闭">
 
-<!ENTITY profile "描述">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "情况">
-<!ENTITY actions "动作">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "自定义">
 
 <!ENTITY actions.main "主菜单">

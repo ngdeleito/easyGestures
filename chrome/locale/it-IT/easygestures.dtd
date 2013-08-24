@@ -21,10 +21,10 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Chiudi">
 
-<!ENTITY profile "Profilo">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Comportamento">
-<!ENTITY actions "Azioni">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Personalizzazioni">
 
 <!ENTITY actions.main "Menu Principale">

@@ -2,10 +2,10 @@
 
 <!ENTITY options "Einstellungen">
 <!ENTITY close "Schließen">
-<!ENTITY profile "Profil">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Verhalten">
-<!ENTITY actions "Aktionen">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Anpassungen">
 <!ENTITY actions.main "Haupt-Kreismenü">
 <!ENTITY actions.extra "Zusatz-Kreismenü">

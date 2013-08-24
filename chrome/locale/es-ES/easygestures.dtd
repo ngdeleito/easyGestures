@@ -4,10 +4,10 @@
 
 <!ENTITY options "Opciones">
 <!ENTITY close "Cerrar">
-<!ENTITY profile "Perfil">
+<!ENTITY general "General">
 <!ENTITY activation "Activación">
 <!ENTITY behavior "Comportamiento">
-<!ENTITY actions "Acciones">
+<!ENTITY menus "Menús">
 <!ENTITY customizations "Personalizar">
 <!ENTITY actions.main "Menú principal">
 <!ENTITY actions.extra "Menú extra">

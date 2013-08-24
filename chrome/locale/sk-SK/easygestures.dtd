@@ -2,10 +2,10 @@
 
 <!ENTITY options "Možnosti">
 <!ENTITY close "Zavrieť">
-<!ENTITY profile "Profil">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Správanie">
-<!ENTITY actions "Akcie">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Prispôsobenie">
 <!ENTITY actions.main "Hlavná ponuka">
 <!ENTITY actions.extra "Extra ponuka">

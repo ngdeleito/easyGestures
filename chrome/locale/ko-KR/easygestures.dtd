@@ -19,10 +19,10 @@ Contains options dialog strings and pie menu tips.
 
 <!ENTITY options "선택사항">
 <!ENTITY close "닫기">
-<!ENTITY profile "프로파일">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "행동">
-<!ENTITY actions "동작">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "사용자 최적화">
 <!ENTITY actions.main "주 메뉴">
 <!ENTITY actions.extra "부가 메뉴">

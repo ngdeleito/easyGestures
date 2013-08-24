@@ -19,10 +19,10 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Close">
 
-<!ENTITY profile "Profile">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Behavior">
-<!ENTITY actions "Actions">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Customizations">
 
 <!ENTITY actions.main "Main Menu">

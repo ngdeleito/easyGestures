@@ -4,10 +4,10 @@
 
 <!ENTITY options "Beállítások">
 <!ENTITY close "Bezárás">
-<!ENTITY profile "Profil">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Viselkedés">
-<!ENTITY actions "Műveletek">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Személyre szabás">
 <!ENTITY actions.main "Főmenü">
 <!ENTITY actions.extra "Kiegészítő menü">

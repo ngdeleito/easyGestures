@@ -54,8 +54,8 @@
   <prefpane
     flex="1"
     image="chrome://easygestures/content/profile.png"
-    label="&profile;"
-    id="profilePane"
+    label="&general;"
+    id="generalPane"
     style="overflow: auto;">
     <preferences>
       <preference id="startupTips" name="easygestures.profile.startupTips" type="bool" />
@@ -305,8 +305,8 @@
   <prefpane
     flex="1"
     image="chrome://easygestures/content/actions.png"
-    label="&actions;"
-    id="actionsPane"
+    label="&menus;"
+    id="menusPane"
     style="overflow: auto;">
     <preferences>
       <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />

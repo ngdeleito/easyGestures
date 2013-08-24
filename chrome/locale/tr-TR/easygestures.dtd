@@ -21,10 +21,10 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Kapat">
 
-<!ENTITY profile "Profil">
+<!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Tepki">
-<!ENTITY actions "Eylemler">
+<!ENTITY menus "Menus">
 <!ENTITY customizations "Kişiselleştirme">
 
 <!ENTITY actions.main "Ana Menü">
