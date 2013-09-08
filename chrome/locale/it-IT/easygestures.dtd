@@ -73,8 +73,6 @@ END OF INSTRUCTIONS
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Tasto Shift">
 <!ENTITY use.ctrl "Tasto Ctrl">
-<!ENTITY use.dragOnly "Apri solo con il trascinamento">
-<!ENTITY use.upleft "Solo in Alto/a Sinistra">
 <!ENTITY use.afterDelay "Solo dopo un intervallo di tempo">
 <!ENTITY use.alternative "Mostra il menu alternativo con">
 <!ENTITY use.also "(Puoi anche usare il tasto Alt destro)">
@@ -267,7 +265,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip15 "Gli utenti esperti possono usare più azioni sul cerchio: 10 anziché 8 su ognuna delle 3 configurazioni del menu.">
 <!ENTITY tip16 "L'opzione di Firefox 'Usa l'autoscorrimento' viene disattivata quando il tasto medio del mouse è usato per mostrare il menu circolare. L'autoscorrimento può però essere utilizzato tenedo premuto il tasto per un breve periodo di tempo. |Attiva l'autoscorrimento in Opzioni/Comportamento">
 <!ENTITY tip18 "L'azione 'Chiudi Linguetta' chiude la finestra se c'è una sola linguetta aperta.">
-<!ENTITY tip19 "Puoi fare in modo che il menu circolare compaia solo se si trascina il mouse oppure solo dopo un breve periodo. |Modifica il comportamento in Opzioni/Comportamento">
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
 <!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta. Se non viene puntato alvun collegamento, verà aperto quello nella clipboard, se presente.">

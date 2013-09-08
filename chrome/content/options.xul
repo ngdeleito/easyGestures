@@ -96,8 +96,6 @@
       <preference id="showKey" name="easygestures.behavior.showKey" type="int" />
       <preference id="showAfterDelay" name="easygestures.behavior.showAfterDelay" type="bool" />
       <preference id="showAfterDelayDelay" name="easygestures.behavior.showAfterDelayDelay" type="int" />
-      <preference id="dragOnly" name="easygestures.behavior.dragOnly" type="bool" />
-      <preference id="dragOnlyUpLeft" name="easygestures.behavior.dragOnlyUpLeft" type="bool" />
       <preference id="showAltButton" name="easygestures.behavior.showAltButton" type="int" />
       <preference id="supprKey" name="easygestures.behavior.supprKey" type="int" />
       <preference id="contextKey" name="easygestures.behavior.contextKey" type="int" />
@@ -132,10 +130,7 @@
       </vbox>
       <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayDelay" size="3" />
     </hbox>
-    <checkbox id="dragOnlyCheckbox" preference="dragOnly" label="&use.dragOnly;" oncommand="updateUI();" />
     <hbox>
-      <label id="dragOnlyUpLeftBlank" value="   " />
-      <checkbox id="dragOnlyUpLeftCheckbox" preference="dragOnlyUpLeft" label="&use.upleft;" />
     </hbox>
     <menuseparator />
     <label value="&use.alternative;" style="font-weight: bold;" />
@@ -1543,15 +1538,6 @@
       
       document.getElementById("showAfterDelayDelayLabel").disabled = !document.getElementById("showAfterDelayCheckbox").checked;
       document.getElementById("showAfterDelayDelayTextbox").disabled = !document.getElementById("showAfterDelayCheckbox").checked;
-      
-      //***************************************************
-      // display or not dragging sub-option
-      //***************************************************
-      
-      var checking = (document.getElementById("showButtonMenulist").selectedIndex == 0)
-                     && document.getElementById("dragOnlyCheckbox").checked;
-      document.getElementById("dragOnlyUpLeftBlank").disabled = !checking;
-      document.getElementById("dragOnlyUpLeftCheckbox").disabled = !checking;
       
       //***************************************************
       // disabling autoscrolling sub-options

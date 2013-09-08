@@ -136,7 +136,6 @@
       new tipEntry("&tip15;", "largeMenu",           ""),
       new tipEntry("&tip16;", "empty",               "behavior/1"),
       new tipEntry("&tip18;", "empty",               ""),
-      new tipEntry("&tip19;", "empty",               "behavior/1"),
       new tipEntry("&tip20;", "empty",               ""),
       new tipEntry("&tip21;", "empty",               ""),
       new tipEntry("&tip22;", "empty",               ""),

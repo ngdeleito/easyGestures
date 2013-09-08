@@ -48,8 +48,6 @@
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Umschalttaste">
 <!ENTITY use.ctrl "Strg-Taste">
-<!ENTITY use.dragOnly "Nur bei gleichzeitigem Bewegen der Maus öffnen">
-<!ENTITY use.upleft "Nur nach oben/links">
 <!ENTITY use.afterDelay "Mit Verzögerung öffnen">
 <!ENTITY use.alternative "Alternative Menüs anzeigen mit">
 <!ENTITY use.also "(auch über Alt-Taste auswählbar)">
@@ -221,7 +219,6 @@
 <!ENTITY tip15 "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.">
 <!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden. |Automatischen Bildlauf unter Einstellungen/Verhalten aktivieren">
 <!ENTITY tip18 "Die Aktion &apos;Tab schließen&apos; schließt das Browser-Fenster, wenn nur noch ein Tab offen ist.">
-<!ENTITY tip19 "Das Kreismenü kann so eingestellt werden, dass es nur bei gleichzeitigem Bewegen der Maus oder nach einer kurzen Verzögerung angezeigt wird. |Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
 <!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab. Ist kein Link gewählt, wird, falls vorhanden, ein Link aus der Zwischenablage geöffnet.">

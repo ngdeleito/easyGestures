@@ -65,8 +65,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift 키">
 <!ENTITY use.ctrl "Ctrl 키">
-<!ENTITY use.dragOnly "드래그시 에만 엽니다">
-<!ENTITY use.upleft "위로/왼쪽 만">
 <!ENTITY use.afterDelay "시간이 지나면 엽니다">
 <!ENTITY use.alternative "대체 메뉴 표시 방법">
 <!ENTITY use.also "(또한 오른쪽 Alt 키를 사용할수 있습니다)">
@@ -238,7 +236,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY tip15 "익숙한 사용자의 경우 하나의 원형 메뉴에 표시하는 동작의 수를 원래의 8개에서 10개로 늘릴 수 있을 겁니다.">
 <!ENTITY tip16 "표시된 원형 메뉴에 마우스의 가운데 버튼을 사용하면, Firefox의 &apos;자동 스크롤 사용&apos; 선택사항이 해제 됩니다. 원형 메뉴가 표시되고 나서 잠시동안 커서를 움직이지 않으면, 자동 스크롤 기능을 사용할 수 있도록 할 수 있습니다.|선택사항/행위/페이지2 내에서 자동 스크롤 활성화">
 <!ENTITY tip18 "&apos;탭 닫기&apos;동작은 만약 탭이 하나만 열린 경우 창을 닫습니다.">
-<!ENTITY tip19 "원형 메뉴를 여는 조건을 마우스를 드러그 했을 때나 일정시간이 경과했을 때로만 한정할 수도 있습니다. |선택사항/행위/페이지1 내에서 행위 변경">
 <!ENTITY tip20 "이미지에서의 배율조정 동작은 그 이미지에만 적용됩니다.">
 <!ENTITY tip21 "페이지를 &apos;뒤로&apos; 와 &apos;앞으로&apos;로 이동하는 대신, &apos;뒤 사이트&apos;와 &apos;앞 사이트&apos; 동작을 통해 사이트에 이동할수 있습니다.">
 <!ENTITY tip22 "&apos;링크를 열기&apos;동작은 지정된 링크를 새로운 탭으로 엽니다. 링크를 지정하고 있지 않는 경우에는 클립보드에 존재하는 링크를 엽니다.">

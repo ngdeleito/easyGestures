@@ -70,8 +70,6 @@ END OF INSTRUCTIONS
 <!ENTITY use.noKey "aucune touche">
 <!ENTITY use.shift "touche Maj">
 <!ENTITY use.ctrl "touche Ctrl">
-<!ENTITY use.dragOnly "Ouvrir seulement par glisser souris">
-<!ENTITY use.upleft "vers haut/gauche seulement">
 <!ENTITY use.afterDelay "Après délai seulement">
 <!ENTITY use.alternative "Afficher menu circulaire alternatif avec">
 <!ENTITY use.also "(la touche Alt aussi est utilisable)">
@@ -264,7 +262,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.">
 <!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger. |Activatez défilement automatique dans Options/Comportement">
 <!ENTITY tip18 "L'action 'Fermer onglet' ferme la fenêtre s'il n'y a qu'un seul onglet ouvert.">
-<!ENTITY tip19 "Vous pouvez faire en sorte que le menu circulaire ne s'affiche que lorsque vous glissez la souris ou après un court délai. |Changez comportement dans Options/Comportement">
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
 <!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet. Si aucun lien n'est pointé, celui dans le presse-papier (s'il existe) sera ouvert.">

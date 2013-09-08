@@ -67,11 +67,8 @@ var eGc = {
   clientYDown: -1,
   screenXDown: -1,
   screenYDown: -1,
-  pieDragTolerance: 6, // tolerance to 'open when dragging'
   showAfterDelayTimer: null, // trigger to display menu after delay
   showAfterDelayPassed: false, // used to display menu after delay
-  openedOnDrag: false, // used to switch on/off selection
-  draggedToOpen: false,
   
   maxzIndex: 2147483647 // Max Int. Same value as the one used for displaying autoscrolling image
 };
@@ -176,7 +173,6 @@ function eG_handleMouseup(evt) {
   window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
   eGc.showAfterDelayPassed = false;
-  eGc.draggedToOpen = false;
   
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
@@ -187,12 +183,6 @@ function eG_handleMouseup(evt) {
         return; // avoid contextual menu when autoscrolling ends (this would be triggered below)
       }
     }
-  }
-  
-  if (eGc.openedOnDrag) { // enabling selection
-    var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
-    selCon.setDisplaySelection(2); // SELECTION_ON
-    //eG_openedOnDrag = false; //variable does not exist; is it meant eGc.openedOnDrag?
   }
   
   // menuState:    0-> not shown    1-> showing   2-> showing & mouse moved    3-> staying open
@@ -257,52 +247,24 @@ function eG_handleMousemove(evt) {
     return;
   }
   
-  eGc.draggedToOpen = Math.sqrt( Math.pow(evt.clientX- eGc.clientXDown,2) + Math.pow(evt.clientY- eGc.clientYDown,2) ) > eGc.pieDragTolerance;
-  
   if (eGm.isMenuHidden()) {
     if (eGc.showAfterDelayPassed) {
       return;
     }
-    
-    if (eGm.showButton == 0 && eGm.dragOnlyUpLeft && eGm.dragOnly) {
-      eGc.draggedToOpen = ((eGc.clientYDown-evt.clientY) > eGc.pieDragTolerance || (eGc.clientXDown-evt.clientX) > eGc.pieDragTolerance);
-    }
-    
-    if (eGc.draggedToOpen && eGm.dragOnly) {
-      // user dragged mouse to open menu
-      
-      // get selection if any
-      if (eGc.selection == "" || eGc.selection==null) {
-        eGc.selection = eG_getSelection(); // save current selection before removal
-      }
-      
-      eGc.pageXDown = evt.pageX;
-      eGc.pageYDown = evt.pageY;
-      eGc.clientXDown = evt.clientX;
-      eGc.clientYDown = evt.clientY;
-      eGc.screenXDown = evt.screenX;
-      eGc.screenYDown = evt.screenY;
-      
-      eG_openMenu();
-      eGc.openedOnDrag = true; // used to switch on again selection
-    }
   }
   else {
-    // check if moved outside tolerance
-    if (eGc.draggedToOpen) {
-      // clear automatic delayed autoscrolling
-      window.clearTimeout(eGm.autoscrollingTrigger);
-      
-      if (!eGm.showingTooltips) {
-        eGm.resetTooltipsTimeout(); // reset tooltips timeout
-      }
-      
-      // hide center icon if mouse moved
-      var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
-      linkSign.style.visibility = "hidden";
-      
-      eGm.handleMousemove(evt);
+    // clear automatic delayed autoscrolling
+    window.clearTimeout(eGm.autoscrollingTrigger);
+    
+    if (!eGm.showingTooltips) {
+      eGm.resetTooltipsTimeout(); // reset tooltips timeout
     }
+    
+    // hide center icon if mouse moved
+    var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
+    linkSign.style.visibility = "hidden";
+    
+    eGm.handleMousemove(evt);
   }
 }
 
@@ -339,7 +301,7 @@ function eG_handleMousedown(evt) {
   if (excludeTarget || (evt.button != eGm.showButton)
       || (eGc.keyPressed != eGm.showKey && eGm.showKey != 0)
       || (eGc.keyPressed == eGm.supprKey && eGm.supprKey != 0)) {
-    if (!eGm.dragOnly && excludeTarget) {
+    if (excludeTarget) {
       eGc.blockStdContextMenu=true; // to be suppressed ?
     }
     else {
@@ -435,7 +397,7 @@ function eG_handleMousedown(evt) {
   
   window.addEventListener("mousemove", eG_handleMousemove, true);
   
-  if ((!eGm.dragOnly || (eGc.link != null && eGm.handleLinks)) && !eGm.showAfterDelay) {
+  if (!eGm.showAfterDelay) {
     //evt.preventDefault();
     eG_openMenu();
   }
@@ -458,10 +420,7 @@ function eG_showAfterDelay() {
   eGc.showAfterDelayPassed = false;
   window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
-  
-  if (!eGm.dragOnly && !eGc.draggedToOpen) {
-    eG_openMenu();
-  }
+  eG_openMenu();
 }
 
 function eG_openMenu() {

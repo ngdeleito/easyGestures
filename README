@@ -32,3 +32,4 @@ Features pruned so far and rationale:
 - Welcome page. Tips should be sufficient. Furthermore the instructions did not apply to Mac users.
 - Statusbar icon. Enabling and disabling easyGestures is best done through Firefox's Add-ons Manager.
 - Mail action. This feature had little to do with Firefox.
+- Open on drag. It feels like a feature for über-users. It is currently buggy. The "up/left only" option only works with the left mouse button, but this is not documented anywhere (except in the source code).

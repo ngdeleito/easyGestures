@@ -73,8 +73,6 @@ END OF INSTRUCTIONS
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift">
 <!ENTITY use.ctrl "Ctrl">
-<!ENTITY use.dragOnly "只有打开拖动">
-<!ENTITY use.upleft "只有上/下">
 <!ENTITY use.afterDelay "在打开延迟">
 <!ENTITY use.alternative "显示替代菜单">
 <!ENTITY use.also "(您也可以使用 右 Alt 键)">
@@ -267,7 +265,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip15 "重度使用者可以设置更多的动作在你的圆饼菜单上：在3个主要圆饼菜单上都用10个动作替代默认的8个动作。">
 <!ENTITY tip16 "Firefox选项“使用自动滚动”未选中时，使用鼠标中键是用来显示圆饼菜单的。在圆饼菜单中间停顿短暂时间后可以转换显示“自动滚动”。|激活自动滚动在 选项/动作">
 <!ENTITY tip18 "如果只有一个标签打开，关闭标签后将关闭浏览器。">
-<!ENTITY tip19 "你可以采用拖拽鼠标或按着鼠标作短暂的停顿这些方法来显示圆饼菜单。|更改设置在 选项/自定义">
 <!ENTITY tip20 "放大/缩小这些动作只能在图片上使用。">
 <!ENTITY tip21 "除了可以在页面间进行 上一页/下一页 的移动外，你也可以用“上一个网站”和“下一个网站”进行网站和网站间的移动。">
 <!ENTITY tip22 "“打开链接”动作会在新标签页打开链接。如果没有指出链接，将打开剪贴板里的链接（如果是链接的话）。">

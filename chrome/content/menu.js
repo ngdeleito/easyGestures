@@ -279,8 +279,6 @@ function eG_menu () {
 
   this.showButton = prefs.getIntPref("behavior.showButton"); // mouse button for opening the pie menu
   this.showKey = prefs.getIntPref("behavior.showKey"); // key for showing the pie menu with mouse button clicked
-  this.dragOnly = prefs.getBoolPref("behavior.dragOnly"); // show pie menu only when dragging
-  this.dragOnlyUpLeft = prefs.getBoolPref("behavior.dragOnlyUpLeft"); // dragging for pie menu is only up/left
   this.showAltButton = prefs.getIntPref("behavior.showAltButton"); // mouse button for switching between primary and alternative pie menu
   this.supprKey = prefs.getIntPref("behavior.supprKey"); // key for suppressing the pie menu
 

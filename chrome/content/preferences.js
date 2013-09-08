@@ -80,8 +80,6 @@ var eGPrefs = {
     
     this._prefs.setBoolPref("behavior.showAfterDelay", false);
     this._prefs.setIntPref("behavior.showAfterDelayDelay", 200);
-    this._prefs.setBoolPref("behavior.dragOnly", false);
-    this._prefs.setBoolPref("behavior.dragOnlyUpLeft", false);
     this._prefs.setBoolPref("behavior.contextMenuAuto", false); // Show contextual pie menu automatically
     
     this._prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu

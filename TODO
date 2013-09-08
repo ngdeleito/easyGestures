@@ -39,3 +39,5 @@ TODO
 -- profile.active
 -- profile.statusbarShowIcon
 -- stateChange.language
+-- behavior.dragOnlyUpLeft
+-- behavior.dragOnly

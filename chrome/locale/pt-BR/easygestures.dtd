@@ -72,8 +72,6 @@ END OF INSTRUCTIONS
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Tecla Shift">
 <!ENTITY use.ctrl "Tecla Ctrl">
-<!ENTITY use.dragOnly "Abrir apenas quando arrastando">
-<!ENTITY use.upleft "Superior/Esquerdo somente">
 <!ENTITY use.afterDelay "Abrir após atraso">
 <!ENTITY use.alternative "Mostrar menu alternativo com">
 <!ENTITY use.also "(Você também pode usar a tecla Alt direita)">
@@ -266,7 +264,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip15 "Usuários avançados podem ter mais ações na torta: 10 ao invés de 8 em cada um dos 3 leiautes principais.">
 <!ENTITY tip16 "A opção 'Usar auto-rolagem' do Firefox está desmarcada quando o botão do meio do mouse é usado para mostrar o menu de torta. O recurso Auto-rolagem pode ser disponibilizado com um pressionamento do mouse através do menu de torta após um curto atraso sem se mover. |Ative auto-rolagem em Opções/Comportamento">
 <!ENTITY tip18 "A ação 'Fechar aba' fecha a janela se há uma única aba aberta.">
-<!ENTITY tip19 "Você pode ter o menu de torta mostrado apenas quando arrastando o mouse ou após um curto atraso. |Mude o comportamento em Opções/Comportamento">
 <!ENTITY tip20 "Uma ação de zoom sobre uma imagem vai realizar a ação apenas na imagem.">
 <!ENTITY tip21 "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
 <!ENTITY tip22 "A ação 'Abrir Link' abrirá o link apontado em uma aba nova. Se nenhum link está apontado, o que está na área de transferência (se houver algum) será aberto.">

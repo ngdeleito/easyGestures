@@ -48,8 +48,6 @@
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "klawisz [ Shift ]">
 <!ENTITY use.ctrl "klawisz [ Ctrl ]">
-<!ENTITY use.dragOnly "Otwieraj tylko po wykonaniu ruchu przeciągania">
-<!ENTITY use.upleft "Tylko do góry, w lewo">
 <!ENTITY use.afterDelay "Otwórz z opóźnieniem">
 <!ENTITY use.alternative "Wyświetlaj alternatywne menu klikając:">
 <!ENTITY use.also "(Można użyć także prawego klawisza [ Alt ])">
@@ -221,7 +219,6 @@
 <!ENTITY tip15 "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.">
 <!ENTITY tip16 "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu. |Włącz automatyczne przewijanie w menu Opcje \u00BB Ustawienia">
 <!ENTITY tip18 "Jeśli jest otwarta tylko jedna karta akcja \u0022Zamknij kartę\u0022 zamyka okno.">
-<!ENTITY tip19 "Można wybrać opcję wyświetlania menu Centrum tylko po wykonywaniu ruchu przeciągania myszą lub po chwili zatrzymania. Można też ustawić czas opóźnienia wyświetlania menu. |Zmień działanie w Opcje \u00BB Ustawienia">
 <!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
 <!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
 <!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie. Jeśli odnośnik nie jest wskazany zostanie otworzony odnośnik znajdujący się (o ile jest) w schowku.">

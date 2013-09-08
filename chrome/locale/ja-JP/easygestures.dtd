@@ -72,8 +72,6 @@ END OF INSTRUCTIONS
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift キー">
 <!ENTITY use.ctrl "Ctrl キー">
-<!ENTITY use.dragOnly "ドラッグした時のみ開く">
-<!ENTITY use.upleft "上/左のみ">
 <!ENTITY use.afterDelay "時間が経ったら開く">
 <!ENTITY use.alternative "代替メニューの表示法">
 <!ENTITY use.also "(右 Alt キーでも表示できます)">
@@ -266,7 +264,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip15 "easyGestures に慣れた方は、一つのパイメニューに表示するアクションの数を、元の8個から10個に増やしてみてもいいでしょう。">
 <!ENTITY tip16 "マウスの中央ボタンをパイメニューの表示に使っていると、Firefox の'自動スクロール機能を使用する'オプションが無効になります。パイメニューが表示されてから、少しの間カーソルを動かさないようにして、自動スクロール機能をこのままでも使えるようにもできます。|自動スクロールを有効にする Options/Behavior">
 <!ENTITY tip18 "タブが1つだけの時に'タブを閉じる'アクションをすると、そのウィンドウを閉じます。">
-<!ENTITY tip19 "パイメニューを開く条件を、マウスをドラッグした時か一定時間が経過した時のみに限定することもできます。|挙動を変更する Options/Behavior">
 <!ENTITY tip20 "画像への拡大縮小アクションは、その画像のみに適用されます。">
 <!ENTITY tip21 "ページ毎に戻ったり進んだりする替わりに、'サイトを戻る'や'サイトを進む'アクションでサイトごとに移動できます。">
 <!ENTITY tip22 "'リンクを開く'アクションは、ポイントしているリンクを新しいタブに開きます。リンクをポイントしていない場合には、クリップボードに存在するリンクを開きます。">

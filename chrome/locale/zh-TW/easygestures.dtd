@@ -72,8 +72,6 @@ END OF INSTRUCTIONS
 <!ENTITY use.noKey "No key">
 <!ENTITY use.shift "Shift 鍵">
 <!ENTITY use.ctrl "Ctrl 鍵">
-<!ENTITY use.dragOnly "只在拖曳時開啟">
-<!ENTITY use.upleft "只在 向上／向左 時開啟">
 <!ENTITY use.afterDelay "在停頓時開啟">
 <!ENTITY use.alternative "顯示替換選單：用">
 <!ENTITY use.also "（你也可以使用右邊的 Alt 鍵）">
@@ -266,7 +264,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip15 "重度使用者可以設定更多動作在你的圓餅選單上：在三個主要圓餅選單上都用十個動作取代預設的八個動作。">
 <!ENTITY tip16 "在滑鼠中鍵被用來顯示圓餅選單時，Firefox 的選項「使用自動捲動(Autoscrolling)」會被設定成關閉。在圓餅選單中間不移動，停頓短暫的時間後可以轉換顯示「自動捲動」。|設定轉換自動捲動的停頓時間 Options/Behavior">
 <!ENTITY tip18 "只剩下一個分頁時，「關閉分頁」這個動作會把視窗也關閉。">
-<!ENTITY tip19 "你可以改用拖曳游標或按著滑鼠做短暫的停頓這些方法來顯示圓餅選單。|更改設定 Options/Behavior">
 <!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">
 <!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">
 <!ENTITY tip22 "「開啟鏈結」動作會把目標鏈結開在新分頁中。假如沒有目標鏈結，它會開啟在剪貼簿中的鏈結（如果是鏈結的話）">
