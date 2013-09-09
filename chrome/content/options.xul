@@ -89,9 +89,9 @@
   
   <prefpane
     flex="1"
-    image="chrome://easygestures/content/behavior.png"
-    label="&activation;"
     id="activationPane"
+    label="&activation;"
+    image="chrome://easygestures/content/behavior.png"
     style="overflow: auto;">
     <preferences>
       <preference id="showButton" name="easygestures.behavior.showButton" type="int" />
@@ -103,9 +103,8 @@
       <preference id="contextKey" name="easygestures.behavior.contextKey" type="int" />
       <preference id="contextShowAuto" name="easygestures.behavior.contextMenuAuto" type="bool" />
     </preferences>
-    <label value="&use;" style="font-weight:bold;"/>
-    <spacer height="3px" />
-    <hbox align="center">
+    <label value="&use;" style="font-weight: bold"/>
+    <hbox align="center" style="margin-left: 1em">
       <menulist id="showButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
           <menuitem label="&use.button.left;" value="0" />
@@ -118,26 +117,27 @@
       <textbox preference="showButton" size="2"
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
-    <label value="&use.and;" style="font-weight:bold;" />
+    <label value="&use.and;" style="font-weight: bold" />
     <radiogroup preference="showKey" style="margin-left: 1em">
       <radio label="&use.noKey;" value="0" />
       <radio label="&use.shift;" value="16" />
       <radio label="&use.ctrl;" value="17" />
     </radiogroup>
+    
+    <separator orient="horizontal" class="thin" />
+    
     <checkbox id="showAfterDelayCheckbox" preference="showAfterDelay" label="&use.afterDelay;" oncommand="updateUI();" />
-    <hbox>
-      <spacer width="22" />
-      <vbox pack="center">
-        <label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
-      </vbox>
-      <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayDelay" size="3" />
+    <hbox align="center" style="margin-left: 1em">
+      <label id="showAfterDelayDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
+      <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayDelay" size="3" style="text-align: right" />
+      <label value="ms" />
     </hbox>
-    <hbox>
-    </hbox>
+    
+    <separator orient="horizontal" class="thin" />
     <menuseparator />
-    <label value="&use.alternative;" style="font-weight: bold;" />
-    <spacer height="3px" />
-    <hbox align="center">
+    
+    <label value="&use.alternative;" style="font-weight: bold" />
+    <hbox align="center" style="margin-left: 1em">
       <menulist id="showAltButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
           <menuitem label="&use.button.left;" value="0" />
@@ -151,10 +151,12 @@
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
     <label value="&use.also;" />
+    
+    <separator orient="horizontal" class="thin" />
     <menuseparator />
+    
     <label value="&suppress;" style="font-weight: bold;" />
-    <spacer height="3px" />
-    <hbox align="center">
+    <hbox align="center" style="margin-left: 1em">
       <menulist id="supprKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild);  fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
@@ -169,10 +171,12 @@
       <textbox id="customSupprKeyCode" preference="supprKey" size="4"
         onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
+    
+    <separator orient="horizontal" class="thin" />
     <menuseparator />
+    
     <label value="&contextmenu;" style="font-weight: bold;" />
-    <spacer height="3px" />
-    <hbox align="center">
+    <hbox align="center" style="margin-left: 1em">
       <menulist id="contextKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
