@@ -53,36 +53,38 @@
 
   <prefpane
     flex="1"
-    image="chrome://easygestures/content/profile.png"
-    label="&general;"
     id="generalPane"
+    label="&general;"
+    image="chrome://easygestures/content/profile.png"
     style="overflow: auto;">
     <preferences>
       <preference id="startupTips" name="easygestures.profile.startupTips" type="bool" />
     </preferences>
-    <vbox flex="1">
-      <hbox pack="center">
-        <groupbox>
-          <spacer height="4" />
-          <menu label="&about.manage;">
-            <menupopup>
-              <menuitem label="&about.import;" onclick="importPrefs(); initMenuDialog();" />
-              <menuitem label="&about.export;" onclick="saveAllPreferences(this); triggerObserverToResetEGm(); exportPrefs();" />
-              <menuitem label="&about.reset;" onclick="if (confirm('&about.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
-            </menupopup>
-          </menu>
-          <spacer height="4" />
-          <menu label="&about.stats;">
-            <menupopup>
-              <menuitem label="&about.statsDisplay;" onclick="window.openDialog('chrome://easygestures/content/stats.xul', '', 'chrome,alwaysRaised,centerscreen');" />
-              <menuitem label="&about.statsReset;" onclick="if (confirm('&about.statsReset;')) { eGPrefs.initializeStats(); }" />
-            </menupopup>
-          </menu>
-          <spacer height="4" />
-        </groupbox>
-      </hbox>
-      <checkbox preference="startupTips" label="&about.startupTips;" />
-    </vbox>
+    <checkbox preference="startupTips" label="&about.startupTips;" />
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+    
+    <label value="&about.manage;" style="font-weight: bold" />
+    <hbox>
+      <button disabled="true" label="&about.import;"
+              oncommand="importPrefs(); initMenuDialog();" />
+      <button disabled="true" label="&about.export;"
+              oncommand="saveAllPreferences(this); triggerObserverToResetEGm(); exportPrefs();" />
+      <button label="&about.reset;"
+              oncommand="if (confirm('&about.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
+    </hbox>
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+
+    <label value="&about.stats;" style="font-weight: bold" />
+    <hbox>
+      <button label="&about.statsDisplay;"
+              oncommand="window.openDialog('chrome://easygestures/content/stats.xul', '', 'chrome,alwaysRaised,centerscreen');" />
+      <button label="&about.statsReset;"
+              oncommand="if (confirm('&about.statsReset;')) { eGPrefs.initializeStats(); }" />
+    </hbox>
   </prefpane>
   
   <prefpane
