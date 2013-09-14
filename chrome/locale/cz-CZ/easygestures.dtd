@@ -86,7 +86,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "Přizpůsobit akci &apos;Otevřít odkaz&apos;">
 <!ENTITY link.through "Povolit kliknutí na odkaz přes střed nabídky">
-<!ENTITY link.delay "Maximální zpoždění pro kliknutí (ms)">
+<!ENTITY link.delay "Maximální zpoždění pro kliknutí">
 <!ENTITY link.throughAsAction "Použít chování akce &apos;Otevřít odkaz&apos;">
 <!ENTITY link.throughAsBrowser "Použít chování prohlížeče">
 <!ENTITY link.curTab "Otevřít odkaz v aktuálním panelu">
@@ -94,7 +94,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "Otevřít odkaz v novém okně">
 
 <!ENTITY autoscrolling "Automatický posun přes střed nabídky">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Zpoždění [ms]">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Zpoždění">
 
 <!ENTITY extras.menuType "Typ nabídky">
 <!ENTITY extras.menu "Standardní (8 akcí)">
@@ -104,8 +104,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Použít malé ikony">
 <!ENTITY extras.menuOpacity "Průhlednost nabídky">
 <!ENTITY extras.ttip "Aktivovat popisky">
-<!ENTITY extras.ttipDelayLabel "Zpoždění [ms]">
 <!ENTITY extras.ttipDelayOmit "Vynechat zpoždění">
+<!ENTITY extras.ttipDelayLabel "Zpoždění">
 
 <!ENTITY contextmenu "Zobrazit kontextovou nabídku">
 <!ENTITY contextmenu.showAuto "Vždy aktivované. Používá stejnou klávesu na potlačení citlivosti.">

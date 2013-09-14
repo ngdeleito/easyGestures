@@ -85,7 +85,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "'リンクを開く'アクションの設定">
 <!ENTITY link.through "パイメニューの中心からリンクをクリックできるようにする">
-<!ENTITY link.delay "クリックの最大遅延時間 (ミリ秒)">
+<!ENTITY link.delay "クリックの最大遅延時間">
 <!ENTITY link.throughAsAction "'リンクを開く'アクションの動作を使う">
 <!ENTITY link.throughAsBrowser "ブラウザの動作を使う">
 <!ENTITY link.curTab "リンクの現在のタブで開く">
@@ -93,7 +93,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "リンクを新しいウィンドウで開く">
 
 <!ENTITY autoscrolling "パイメニューの中心から自動スクロールする">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "遅延時間 (ミリ秒)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "遅延時間">
 
 <!ENTITY extras.menuType "メニューの種類">
 <!ENTITY extras.menu "標準サイズ (8 アクション)">
@@ -103,8 +103,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "小さいアイコンを使う">
 <!ENTITY extras.menuOpacity "パイメニューの透明度">
 <!ENTITY extras.ttip "アクション名をツールチップで表示する">
-<!ENTITY extras.ttipDelayLabel " 表示までの遅延時間(ミリ秒)">
 <!ENTITY extras.ttipDelayOmit "すぐに表示する">
+<!ENTITY extras.ttipDelayLabel " 表示までの遅延時間">
 
 <!ENTITY contextmenu "次のキーで状況依存メニューを有効化">
 <!ENTITY contextmenu.showAuto "常に有効にする。状況依存メニューの無効化にも同じキーを使います。">

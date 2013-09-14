@@ -85,7 +85,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "自訂「開啟鏈結」動作">
 <!ENTITY link.through "允許穿過圓餅選單中間點選鏈結">
-<!ENTITY link.delay "擊點的最大延遲時間（毫秒）">
+<!ENTITY link.delay "擊點的最大延遲時間">
 <!ENTITY link.throughAsAction "使用「開啟鏈結」動作設定">
 <!ENTITY link.throughAsBrowser "使用瀏覽器設定">
 <!ENTITY link.curTab "在現在的分頁開啟鏈結">
@@ -93,7 +93,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "在新的視窗開啟鏈結">
 
 <!ENTITY autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…（毫秒）">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…">
 
 <!ENTITY extras.menuType "選單樣式">
 <!ENTITY extras.menu "標準（八個動作）">
@@ -103,8 +103,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "使用小型圖示">
 <!ENTITY extras.menuOpacity "圓餅選單透明度">
 <!ENTITY extras.ttip "圓餅動作提示">
-<!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…（毫秒）">
 <!ENTITY extras.ttipDelayOmit "省略動作提示延遲時間">
+<!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…">
 
 <!ENTITY contextmenu "顯示情境選單：用">
 <!ENTITY contextmenu.showAuto "保持情境動作自動啟用。使用上述按鍵時轉換回基本選單。">

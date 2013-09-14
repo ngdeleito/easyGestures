@@ -61,14 +61,14 @@
 <!ENTITY suppress.keycode "Código de la tecla">
 <!ENTITY link "Personalizar acción &apos;Abrir enlace&apos;">
 <!ENTITY link.through "Habilitar pulsar enlaces a través del menú circular">
-<!ENTITY link.delay "Máximo retraso para las pulsaciones (ms)">
+<!ENTITY link.delay "Máximo retraso para las pulsaciones">
 <!ENTITY link.throughAsAction "Usar comportamiento de la acción &apos;Abrir enlace&apos;">
 <!ENTITY link.throughAsBrowser "Usar comportamiento del navegador">
 <!ENTITY link.curTab "Abrir enlace en la pestaña actual">
 <!ENTITY link.newTab "Abrir enlace en una pestaña nueva">
 <!ENTITY link.newWindow "Abrir enlace en una ventana nueva">
 <!ENTITY autoscrolling "Autodezplazamiento a través del menú circular">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Retraso (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Retraso">
 <!ENTITY extras.menuType "Tipo de menú">
 <!ENTITY extras.menu "Estándar (8 acciones)">
 <!ENTITY extras.largeMenu "Ampliado (10 acciones)">
@@ -77,8 +77,8 @@
 <!ENTITY extras.smallIcons "Usar iconos pequeños">
 <!ENTITY extras.menuOpacity "Opacidad del menú circular">
 <!ENTITY extras.ttip "Activar tooltips">
-<!ENTITY extras.ttipDelayLabel "Retardo en tooltips (ms)">
 <!ENTITY extras.ttipDelayOmit "Omitir retardo en tooltips">
+<!ENTITY extras.ttipDelayLabel "Retardo en tooltips">
 <!ENTITY contextmenu "Activar sensibilidad al contexto con">
 <!ENTITY contextmenu.showAuto "Siempre activado. Usar la misma tecla para desactivar la sensibilidad.">
 <!ENTITY contextmenu.link "Enlace">

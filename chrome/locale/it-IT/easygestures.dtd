@@ -86,7 +86,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "Personalizza l'azione 'Apri Collegamento'">
 <!ENTITY link.through "Abilita il click ai collegamenti attraverso il centro del menu circolare">
-<!ENTITY link.delay "Ritardo massimo per cliccare (ms)">
+<!ENTITY link.delay "Ritardo massimo per cliccare">
 <!ENTITY link.throughAsAction "Apri secondo l'azione 'Apri Collegamento'">
 <!ENTITY link.throughAsBrowser "Segui il comportamento del Browser">
 <!ENTITY link.curTab "Apri il collegamento nella Linguetta corrente">
@@ -94,7 +94,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "Apri il collegamento in una nuova Finestra">
 
 <!ENTITY autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Ritado (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Ritado">
 
 <!ENTITY extras.menuType "Tipo di Menu">
 <!ENTITY extras.menu "Standard (8 azioni)">
@@ -104,8 +104,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Usa Icone piccole">
 <!ENTITY extras.menuOpacity "Opacità del Menu Circolare">
 <!ENTITY extras.ttip "Attiva i Tooltips">
-<!ENTITY extras.ttipDelayLabel "Ritardo dei Tooltips (ms)">
 <!ENTITY extras.ttipDelayOmit "Non ritardare i Tooltips">
+<!ENTITY extras.ttipDelayLabel "Ritardo dei Tooltips">
 
 <!ENTITY contextmenu "Attiva la sensibilità contestuale con">
 <!ENTITY contextmenu.showAuto "Sempre attiva. Usa lo stesso tasto per disattivarla.">

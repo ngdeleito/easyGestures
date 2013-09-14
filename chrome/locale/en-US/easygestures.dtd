@@ -84,7 +84,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "Customize 'Open Link' Action">
 <!ENTITY link.through "Enable clicking on links through pie menu center">
-<!ENTITY link.delay "Maximum delay for clicking (ms)">
+<!ENTITY link.delay "Maximum delay for clicking">
 <!ENTITY link.throughAsAction "Use 'Open Link' Action Behavior">
 <!ENTITY link.throughAsBrowser "Use Browser Behavior">
 <!ENTITY link.curTab "Open link in current Tab">
@@ -92,7 +92,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "Open link in new Window">
 
 <!ENTITY autoscrolling "Autoscrolling through pie menu center">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Delay (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Delay">
 
 <!ENTITY extras.menuType "Menu type">
 <!ENTITY extras.menu "Standard (8 actions)">
@@ -102,8 +102,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Use Small Icons">
 <!ENTITY extras.menuOpacity "Pie Menu Opacity">
 <!ENTITY extras.ttip "Activate Tooltips">
-<!ENTITY extras.ttipDelayLabel "Tooltips delay (ms)">
 <!ENTITY extras.ttipDelayOmit "Omit Tooltips delay">
+<!ENTITY extras.ttipDelayLabel "Tooltips delay">
 
 <!ENTITY contextmenu "Activate contextual sensitivity with">
 <!ENTITY contextmenu.showAuto "Always activated. Use same key for suppressing sensitivity.">

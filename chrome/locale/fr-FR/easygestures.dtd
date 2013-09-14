@@ -83,7 +83,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "Personnaliser action 'Ouvrir lien'">
 <!ENTITY link.through "Activer clics sur liens par le centre du menu circulaire">
-<!ENTITY link.delay "Délai maximum pour cliquer (ms)">
+<!ENTITY link.delay "Délai maximum pour cliquer">
 <!ENTITY link.throughAsAction "Suivre comportement action 'Ouvrir lien'">
 <!ENTITY link.throughAsBrowser "Suivre comportement du navigateur">
 <!ENTITY link.curTab "Ouvrir lien dans onglet courant">
@@ -91,7 +91,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
 
 <!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Délai (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Délai">
 
 <!ENTITY extras.menuType "Type de menu">
 <!ENTITY extras.menu "Standard (8 actions)">
@@ -101,8 +101,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Utiliser des petites icônes">
 <!ENTITY extras.menuOpacity "Opacité du menu circulaire">
 <!ENTITY extras.ttip "Activer infobulles">
-<!ENTITY extras.ttipDelayLabel "Délai infobulles (ms)">
 <!ENTITY extras.ttipDelayOmit "Omettre le délai infobulles">
+<!ENTITY extras.ttipDelayLabel "Délai infobulles">
 
 <!ENTITY contextmenu "Activer sensibilité contextuelle avec">
 <!ENTITY contextmenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">

@@ -59,14 +59,14 @@
 <!ENTITY suppress.keycode "Kód klávesu">
 <!ENTITY link "Prispôsobiť akciu &apos;Otvoriť odkaz&apos;">
 <!ENTITY link.through "Povoliť kliknutie na odkaz cez stred ponuky">
-<!ENTITY link.delay "Maximálne oneskorenie pre kliknutie (ms)">
+<!ENTITY link.delay "Maximálne oneskorenie pre kliknutie">
 <!ENTITY link.throughAsAction "Použiť správanie akcie &apos;Otvoriť odkaz&apos;">
 <!ENTITY link.throughAsBrowser "Použiť správanie prehliadača">
 <!ENTITY link.curTab "Otvoriť odkaz na aktuálnej karte">
 <!ENTITY link.newTab "Otvoriť odkaz na novej karte">
 <!ENTITY link.newWindow "Otvoriť odkaz v novom okne">
 <!ENTITY autoscrolling "Automatický posun cez stred ponuky">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Oneskorenie [ms]">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Oneskorenie">
 <!ENTITY extras.menuType "Typ ponuky">
 <!ENTITY extras.menu "Štandardná (8 akcií)">
 <!ENTITY extras.largeMenu "Veľká (10 akcií)">
@@ -75,8 +75,8 @@
 <!ENTITY extras.smallIcons "Použiť malé ikony">
 <!ENTITY extras.menuOpacity "Priehľadnosť ponuky">
 <!ENTITY extras.ttip "Aktivovať popisy">
-<!ENTITY extras.ttipDelayLabel "Oneskorenie [ms]">
 <!ENTITY extras.ttipDelayOmit "Vynechať oneskorenie">
+<!ENTITY extras.ttipDelayLabel "Oneskorenie">
 <!ENTITY contextmenu "Zobraziť kontextovú ponuku">
 <!ENTITY contextmenu.showAuto "Vždy aktivované. Používa rovnaký kláves na potlačenie citlivosti.">
 <!ENTITY contextmenu.link "Odkaz">

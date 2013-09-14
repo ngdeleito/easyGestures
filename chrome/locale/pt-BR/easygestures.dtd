@@ -85,7 +85,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "Personalizar Ação 'Abrir Link'">
 <!ENTITY link.through "Habilitar clicar em links através do centro do menu de torta">
-<!ENTITY link.delay "Atraso máximo para clicar (ms)">
+<!ENTITY link.delay "Atraso máximo para clicar">
 <!ENTITY link.throughAsAction "Usar Comportamento da Ação 'Abrir Link'">
 <!ENTITY link.throughAsBrowser "Usar Comportamento do Navegador">
 <!ENTITY link.curTab "Abrir link na Aba corrente">
@@ -93,7 +93,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "Abrir link na Janela nova">
 
 <!ENTITY autoscrolling "Auto-rolagem através do centro do menu de torta">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso">
 
 <!ENTITY extras.menuType "Tipo de Menu">
 <!ENTITY extras.menu "Padrão (8 ações)">
@@ -103,8 +103,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Usar Ícones Pequenos">
 <!ENTITY extras.menuOpacity "Opacidade do Menu de Torta">
 <!ENTITY extras.ttip "Ativar Dicas">
-<!ENTITY extras.ttipDelayLabel "Atraso das Dicas (ms)">
 <!ENTITY extras.ttipDelayOmit "Omitir atraso das Dicas">
+<!ENTITY extras.ttipDelayLabel "Atraso das Dicas">
 
 <!ENTITY contextmenu "Ativar sensibilidade contextual com">
 <!ENTITY contextmenu.showAuto "Sempre ativada. Usar a mesma tecla para suprimir sensibilidade.">

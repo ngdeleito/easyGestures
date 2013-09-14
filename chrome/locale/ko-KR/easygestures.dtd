@@ -76,14 +76,14 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY suppress.keycode "키코드">
 <!ENTITY link "&apos;링크 열기&apos; 동작 지정">
 <!ENTITY link.through "원형 메뉴 중앙을 통해 링크 누르기가 가능하게 하기">
-<!ENTITY link.delay "클릭시 최대 지연시간(ms)">
+<!ENTITY link.delay "클릭시 최대 지연시간">
 <!ENTITY link.throughAsAction "&apos;링크 열기&apos; 동작 행동 사용">
 <!ENTITY link.throughAsBrowser "브라우저 행동 사용">
 <!ENTITY link.curTab "현재 탭에 링크 열기">
 <!ENTITY link.newTab "새 탭으로 링크 열기">
 <!ENTITY link.newWindow "새 창으로 링크 열기">
 <!ENTITY autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "지연시간(ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "지연시간">
 <!ENTITY extras.menuType "메뉴 형식">
 <!ENTITY extras.menu "표준(8 동작)">
 <!ENTITY extras.largeMenu "대형(10 동작)">
@@ -92,8 +92,8 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY extras.smallIcons "작은 아이콘 사용">
 <!ENTITY extras.menuOpacity "원형 메뉴 투명도">
 <!ENTITY extras.ttip "툴팁 작동">
-<!ENTITY extras.ttipDelayLabel "툴팁 지연(ms)">
 <!ENTITY extras.ttipDelayOmit "곧바로 표시">
+<!ENTITY extras.ttipDelayLabel "툴팁 지연">
 <!ENTITY contextmenu "다음의 키로 상황 감지를 활성화">
 <!ENTITY contextmenu.showAuto "항시 활성화. 상황 감지의 무효화에도 같은 키를 사용합니다.">
 <!ENTITY contextmenu.link "링크">

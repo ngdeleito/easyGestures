@@ -59,14 +59,14 @@
 <!ENTITY suppress.keycode "Kod klawisza">
 <!ENTITY link "Dostosuj działanie akcji &quot;Otwórz odnośnik&quot;">
 <!ENTITY link.through "Uruchamianie odnośników przez Centrum nawigacyjne">
-<!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia (ms)">
+<!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia">
 <!ENTITY link.throughAsAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
 <!ENTITY link.throughAsBrowser "Użyj ustawień przeglądarki">
 <!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
 <!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
 <!ENTITY link.newWindow "Otwórz odnośnik w nowym oknie">
 <!ENTITY autoscrolling "Automatyczne przewijanie">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia">
 <!ENTITY extras.menuType "Typ menu">
 <!ENTITY extras.menu "Standardowe (8 akcji)">
 <!ENTITY extras.largeMenu "Duże (10 akcji)">
@@ -75,8 +75,8 @@
 <!ENTITY extras.smallIcons "Użyj małych ikon">
 <!ENTITY extras.menuOpacity "Przeźroczystość Centrum nawigacyjnego">
 <!ENTITY extras.ttip "Wyświetlanie opisów przycisków">
-<!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania (ms)">
 <!ENTITY extras.ttipDelayOmit "Bez opóźnienia">
+<!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania">
 <!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
 <!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
 <!ENTITY contextmenu.link "Odnośnik">

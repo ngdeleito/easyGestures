@@ -86,7 +86,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY link "&apos;Bağlantı Aç&apos; Eylemini Kişiselleştir">
 <!ENTITY link.through "Kolay menü merkezi aracılığıyla bağlantılara tıklamayı etkinleştir.">
-<!ENTITY link.delay "Tıklama için en fazla gecikme (ms)">
+<!ENTITY link.delay "Tıklama için en fazla gecikme">
 <!ENTITY link.throughAsAction "&apos;Bağlantıyı Aç&apos; Eylemi Tepkisini Kullan">
 <!ENTITY link.throughAsBrowser "Tarayıcı Tepkisini Kullan">
 <!ENTITY link.curTab "Bağlantıyı mevcut sekmede aç">
@@ -94,7 +94,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.newWindow "Bağlantıyı yeni pencerede aç">
 
 <!ENTITY autoscrolling "Kolay menü merkezi içinde otomatik kaydırma">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Gecikme (ms)">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Gecikme">
 
 <!ENTITY extras.menuType "Menü türü">
 <!ENTITY extras.menu "Standart (8 eylem)">
@@ -104,8 +104,8 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Küçük Simgeler Kullan">
 <!ENTITY extras.menuOpacity "Kolay Menü Saydamlığı">
 <!ENTITY extras.ttip "Araç İpuçlarını Etkinleştir">
-<!ENTITY extras.ttipDelayLabel "Araç İpuçları Gecikmesi (ms)">
 <!ENTITY extras.ttipDelayOmit "Araç İpuçları Gecikmesini Yoksay">
+<!ENTITY extras.ttipDelayLabel "Araç İpuçları Gecikmesi">
 
 <!ENTITY contextmenu "İçerik Hassasiyetini bununla etkinleştir:">
 <!ENTITY contextmenu.showAuto "Her zaman etkin. Hassaslığı durdurmak için aynı tuşu kullanın.">
