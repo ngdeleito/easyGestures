@@ -88,6 +88,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "启用自动点击链接通过圆饼菜单中心">
 <!ENTITY link.delay "最大点击延迟">
 <!ENTITY link.throughAsAction "使用“打开链接”行动手势">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "使用浏览器动作">
 <!ENTITY link.curTab "在当前标签页打开链接">
 <!ENTITY link.newTab "在新标签页打开链接">
@@ -104,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "使用小图标">
 <!ENTITY extras.menuOpacity "圆饼菜单不透明">
 <!ENTITY extras.ttip "启用悬停提示">
-<!ENTITY extras.ttipDelayOmit "禁用悬停提示延时">
 <!ENTITY extras.ttipDelayLabel "提示延时">
 
 <!ENTITY contextmenu "激活上下文敏感">

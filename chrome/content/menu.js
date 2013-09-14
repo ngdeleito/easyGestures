@@ -301,7 +301,6 @@ function eG_menu () {
   this.menuOpacity = prefs.getIntPref("behavior.menuOpacity")/100; // because menuopacity is set in % in preferences dialog
   this.showTooltips = prefs.getBoolPref("behavior.showTooltips"); // tooltip showing
   this.tooltipsDelay = prefs.getIntPref("behavior.tooltipsDelay"); // tooltip delay
-  this.tooltipsDelayOmit = prefs.getBoolPref("behavior.tooltipsDelayOmit"); // tooltip delay omit
   this.dailyReadingsFolderURI = prefs.getCharPref("behavior.dailyReadingsFolderURI");
 
   this.moveAuto = prefs.getBoolPref("behavior.moveAuto"); // true: menu moves when reaching edge. false: memu moves by pressing <Shift> key
@@ -1319,7 +1318,7 @@ eG_menu.prototype = {
     
     if (this.showTooltips) {
       window.clearTimeout(this.tooltipsTrigger);
-      if (this.showingTooltips || this.tooltipsDelayOmit) {
+      if (this.showingTooltips || this.tooltipsDelay === 0) {
         this.showMenuTooltips();
       }
       else {

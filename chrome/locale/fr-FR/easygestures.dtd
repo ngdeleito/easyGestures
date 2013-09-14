@@ -85,6 +85,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "Activer clics sur liens par le centre du menu circulaire">
 <!ENTITY link.delay "Délai maximum pour cliquer">
 <!ENTITY link.throughAsAction "Suivre comportement action 'Ouvrir lien'">
+<!ENTITY configureAction "Configurer cette action">
 <!ENTITY link.throughAsBrowser "Suivre comportement du navigateur">
 <!ENTITY link.curTab "Ouvrir lien dans onglet courant">
 <!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
@@ -101,7 +102,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Utiliser des petites icônes">
 <!ENTITY extras.menuOpacity "Opacité du menu circulaire">
 <!ENTITY extras.ttip "Activer infobulles">
-<!ENTITY extras.ttipDelayOmit "Omettre le délai infobulles">
 <!ENTITY extras.ttipDelayLabel "Délai infobulles">
 
 <!ENTITY contextmenu "Activer sensibilité contextuelle avec">

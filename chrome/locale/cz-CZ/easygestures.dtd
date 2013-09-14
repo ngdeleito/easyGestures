@@ -88,6 +88,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "Povolit kliknutí na odkaz přes střed nabídky">
 <!ENTITY link.delay "Maximální zpoždění pro kliknutí">
 <!ENTITY link.throughAsAction "Použít chování akce &apos;Otevřít odkaz&apos;">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Použít chování prohlížeče">
 <!ENTITY link.curTab "Otevřít odkaz v aktuálním panelu">
 <!ENTITY link.newTab "Otevřít odkaz v novém panelu">
@@ -104,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Použít malé ikony">
 <!ENTITY extras.menuOpacity "Průhlednost nabídky">
 <!ENTITY extras.ttip "Aktivovat popisky">
-<!ENTITY extras.ttipDelayOmit "Vynechat zpoždění">
 <!ENTITY extras.ttipDelayLabel "Zpoždění">
 
 <!ENTITY contextmenu "Zobrazit kontextovou nabídku">

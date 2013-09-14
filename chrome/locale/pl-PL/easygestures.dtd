@@ -61,6 +61,7 @@
 <!ENTITY link.through "Uruchamianie odnośników przez Centrum nawigacyjne">
 <!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia">
 <!ENTITY link.throughAsAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Użyj ustawień przeglądarki">
 <!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
 <!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
@@ -75,7 +76,6 @@
 <!ENTITY extras.smallIcons "Użyj małych ikon">
 <!ENTITY extras.menuOpacity "Przeźroczystość Centrum nawigacyjnego">
 <!ENTITY extras.ttip "Wyświetlanie opisów przycisków">
-<!ENTITY extras.ttipDelayOmit "Bez opóźnienia">
 <!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania">
 <!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
 <!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">

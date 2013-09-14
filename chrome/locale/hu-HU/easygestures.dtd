@@ -63,6 +63,7 @@
 <!ENTITY link.through "Hivatkozásra kattintás a köralakú menü közepén keresztül">
 <!ENTITY link.delay "Késleltetés legfeljebb">
 <!ENTITY link.throughAsAction "'Hivatkozás megnyitása' művelet viselkedésének használata">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Böngésző viselkedésének átvétele">
 <!ENTITY link.curTab "Hivatkozás megnyitása az aktuális lapon">
 <!ENTITY link.newTab "Hivatkozás megnyitása új lapon">
@@ -77,7 +78,6 @@
 <!ENTITY extras.smallIcons "Kis ikonok használata">
 <!ENTITY extras.menuOpacity "Köralakú menü áttetszősége">
 <!ENTITY extras.ttip "Felbukkanó tippek megjelenítése">
-<!ENTITY extras.ttipDelayOmit "Felbukkanó tippek késleltetésének mellőzése">
 <!ENTITY extras.ttipDelayLabel "Felbukkanó tippek késleltetése">
 <!ENTITY contextmenu "Környezetfüggő működés aktiválása">
 <!ENTITY contextmenu.showAuto "Mindig aktív, ez a billentyű a környezetfüggő menü mellőzésére szolgál.">

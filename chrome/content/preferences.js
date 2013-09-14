@@ -89,7 +89,6 @@ var eGPrefs = {
     this._prefs.setBoolPref("behavior.smallIcons", false);
     this._prefs.setBoolPref("behavior.showTooltips", true);
     this._prefs.setIntPref("behavior.tooltipsDelay", 1000);
-    this._prefs.setBoolPref("behavior.tooltipsDelayOmit", false);
     this._prefs.setBoolPref("behavior.handleLinks", true);
     this._prefs.setIntPref("behavior.linksDelay", 300);
     this._prefs.setBoolPref("behavior.autoscrollingOn", false);

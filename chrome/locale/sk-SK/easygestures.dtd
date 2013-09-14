@@ -61,6 +61,7 @@
 <!ENTITY link.through "Povoliť kliknutie na odkaz cez stred ponuky">
 <!ENTITY link.delay "Maximálne oneskorenie pre kliknutie">
 <!ENTITY link.throughAsAction "Použiť správanie akcie &apos;Otvoriť odkaz&apos;">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Použiť správanie prehliadača">
 <!ENTITY link.curTab "Otvoriť odkaz na aktuálnej karte">
 <!ENTITY link.newTab "Otvoriť odkaz na novej karte">
@@ -75,7 +76,6 @@
 <!ENTITY extras.smallIcons "Použiť malé ikony">
 <!ENTITY extras.menuOpacity "Priehľadnosť ponuky">
 <!ENTITY extras.ttip "Aktivovať popisy">
-<!ENTITY extras.ttipDelayOmit "Vynechať oneskorenie">
 <!ENTITY extras.ttipDelayLabel "Oneskorenie">
 <!ENTITY contextmenu "Zobraziť kontextovú ponuku">
 <!ENTITY contextmenu.showAuto "Vždy aktivované. Používa rovnaký kláves na potlačenie citlivosti.">

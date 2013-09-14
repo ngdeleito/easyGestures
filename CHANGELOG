@@ -34,3 +34,4 @@ Changes by ngdeleito (see git history for the full details)
 - removed mail action
 - added focusLocationBar action
 - removed ability to open menu only on drag
+- removed the omit tooltips delay option

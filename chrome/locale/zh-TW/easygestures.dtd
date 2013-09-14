@@ -87,6 +87,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "允許穿過圓餅選單中間點選鏈結">
 <!ENTITY link.delay "擊點的最大延遲時間">
 <!ENTITY link.throughAsAction "使用「開啟鏈結」動作設定">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "使用瀏覽器設定">
 <!ENTITY link.curTab "在現在的分頁開啟鏈結">
 <!ENTITY link.newTab "在新的分頁開啟鏈結">
@@ -103,7 +104,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "使用小型圖示">
 <!ENTITY extras.menuOpacity "圓餅選單透明度">
 <!ENTITY extras.ttip "圓餅動作提示">
-<!ENTITY extras.ttipDelayOmit "省略動作提示延遲時間">
 <!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…">
 
 <!ENTITY contextmenu "顯示情境選單：用">

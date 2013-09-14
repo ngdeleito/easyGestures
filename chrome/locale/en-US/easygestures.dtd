@@ -86,6 +86,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "Enable clicking on links through pie menu center">
 <!ENTITY link.delay "Maximum delay for clicking">
 <!ENTITY link.throughAsAction "Use 'Open Link' Action Behavior">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Use Browser Behavior">
 <!ENTITY link.curTab "Open link in current Tab">
 <!ENTITY link.newTab "Open link in new Tab">
@@ -102,7 +103,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Use Small Icons">
 <!ENTITY extras.menuOpacity "Pie Menu Opacity">
 <!ENTITY extras.ttip "Activate Tooltips">
-<!ENTITY extras.ttipDelayOmit "Omit Tooltips delay">
 <!ENTITY extras.ttipDelayLabel "Tooltips delay">
 
 <!ENTITY contextmenu "Activate contextual sensitivity with">

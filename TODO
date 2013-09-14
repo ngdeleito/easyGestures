@@ -41,3 +41,4 @@ TODO
 -- stateChange.language
 -- behavior.dragOnlyUpLeft
 -- behavior.dragOnly
+-- behavior.tooltipsDelayOmit

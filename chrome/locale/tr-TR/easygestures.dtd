@@ -88,6 +88,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "Kolay menü merkezi aracılığıyla bağlantılara tıklamayı etkinleştir.">
 <!ENTITY link.delay "Tıklama için en fazla gecikme">
 <!ENTITY link.throughAsAction "&apos;Bağlantıyı Aç&apos; Eylemi Tepkisini Kullan">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Tarayıcı Tepkisini Kullan">
 <!ENTITY link.curTab "Bağlantıyı mevcut sekmede aç">
 <!ENTITY link.newTab "Bağlantıyı Yeni Sekmede Aç">
@@ -104,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Küçük Simgeler Kullan">
 <!ENTITY extras.menuOpacity "Kolay Menü Saydamlığı">
 <!ENTITY extras.ttip "Araç İpuçlarını Etkinleştir">
-<!ENTITY extras.ttipDelayOmit "Araç İpuçları Gecikmesini Yoksay">
 <!ENTITY extras.ttipDelayLabel "Araç İpuçları Gecikmesi">
 
 <!ENTITY contextmenu "İçerik Hassasiyetini bununla etkinleştir:">

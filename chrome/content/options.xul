@@ -199,111 +199,99 @@
 
   <prefpane
     flex="1"
-    image="chrome://easygestures/content/behavior.png"
-    label="&behavior;"
     id="behaviorPane"
+    label="&behavior;"
+    image="chrome://easygestures/content/behavior.png"
     style="overflow: auto;">
     <preferences>
-      <preference id="moveAuto" name="easygestures.behavior.moveAuto" type="bool" />
       <preference id="largeMenu" name="easygestures.behavior.largeMenu" type="bool" />
-      <preference id="menuOpacity" name="easygestures.behavior.menuOpacity" type="int" />
       <preference id="noIcons" name="easygestures.behavior.noIcons" type="bool" />
       <preference id="smallIcons" name="easygestures.behavior.smallIcons" type="bool" />
+      <preference id="menuOpacity" name="easygestures.behavior.menuOpacity" type="int" />
       <preference id="showTooltips" name="easygestures.behavior.showTooltips" type="bool" />
       <preference id="tooltipsDelay" name="easygestures.behavior.tooltipsDelay" type="int" />
-      <preference id="tooltipsDelayOmit" name="easygestures.behavior.tooltipsDelayOmit" type="bool" />
+      <preference id="moveAuto" name="easygestures.behavior.moveAuto" type="bool" />
       <preference id="handleLinks" name="easygestures.behavior.handleLinks" type="bool" />
       <preference id="linksDelay" name="easygestures.behavior.linksDelay" type="int" />
       <preference id="handleLinksAsOpenLink" name="easygestures.behavior.handleLinksAsOpenLink" type="bool" />
       <preference id="autoscrollingOn" name="easygestures.behavior.autoscrollingOn" type="bool" />
       <preference id="autoscrollingDelay" name="easygestures.behavior.autoscrollingDelay" type="int" />
     </preferences>
-    <vbox>
-      <label value="&move;" style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <radiogroup flex="1" preference="moveAuto" orient="horizontal">
-          <radio label="&move.key;" value="false" />
-          <radio label="&move.edge;" value="true" />
-        </radiogroup>
-      </hbox>
-      <menuseparator />
-      <label value="&extras.menuType;" style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <radiogroup flex="1" id="menuType" preference="largeMenu" orient="vertical" oncommand="updateUI();">
-          <radio label="&extras.menu;" value="false" />
-          <radio label="&extras.largeMenu;" value="true" />
-        </radiogroup>
-      </hbox>
-      <menuseparator />
-      <label value="&extras.display;" style="font-weight: bold;" />
-      <spacer height="3px" />
+    <label value="&extras.menuType;" class="header" />
+    <radiogroup id="menuType" preference="largeMenu" oncommand="updateUI();"
+      style="margin-left: 1em">
+      <radio label="&extras.menu;" value="false" />
+      <radio label="&extras.largeMenu;" value="true" />
+    </radiogroup>
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+    
+    <label value="&extras.display;" class="header" />
+    <vbox style="margin-left: 1em">
+      <checkbox preference="noIcons" label="&extras.noIcons;" />
+      <checkbox preference="smallIcons" label="&extras.smallIcons;" />
       <hbox align="center">
         <label value="&extras.menuOpacity;" />
-        <textbox preference="menuOpacity" type="number" min="0" max="100" size="3" />
+        <textbox preference="menuOpacity" type="number" min="0" max="100"
+          size="3" />
         <label value="%" />
       </hbox>
-      <separator class="thin" />
-      <checkbox preference="noIcons" label="&extras.noIcons;"
-        oncommand="document.getElementById('tooltipsDelayOmitCheckbox').checked = this.checked;" />
-      <checkbox preference="smallIcons" label="&extras.smallIcons;" />
-      <menuseparator />
-      <checkbox id="showTooltipsCheckbox" preference="showTooltips"
-        label="&extras.ttip;" oncommand="updateUI();"
-        style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <spacer width="22" />
-        <vbox pack="center">
-          <label id="tooltipsDelayLabel" value="&extras.ttipDelayLabel;" />
-        </vbox>
-        <textbox id="tooltipsDelayTextbox" preference="tooltipsDelay" size="3" />
-        <hbox pack="center" flex="1">
-          <checkbox id="tooltipsDelayOmitCheckbox"
-            preference="tooltipsDelayOmit" label="&extras.ttipDelayOmit;" />
-        </hbox>
-      </hbox>
-      <menuseparator />
-      <checkbox preference="handleLinks" label="&link.through;" style="font-weight: bold;" />
-      <spacer height="3px" />
-      <hbox>
-        <spacer width="22" />
-        <vbox pack="center">
-          <label id="linksDelayLabel" value="&link.delay;" />
-        </vbox>
-        <textbox preference="linksDelay" size="3" />
-      </hbox>
-      <hbox>
-        <spacer width="22" />
-        <radiogroup preference="handleLinksAsOpenLink" orient="vertical">
-          <radio label="&link.throughAsAction;" value="true" />
-          <radio label="&link.throughAsBrowser;" value="false" />
-        </radiogroup>
-        <vbox>
-          <spacer height="4" />
-          <hbox flex="0">
-            <html:div>
-              <html:a href="#" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane'));document.getElementById('customizationsTabboxes').selectedIndex=3;" style="text-decoration:underline;color: #3A69A6;">
-                <image src="chrome://easygestures/content/link.png" />
-              </html:a>
-            </html:div>
-          </hbox>
-          <spacer flex="1" />
-        </vbox>
-      </hbox>
-      <menuseparator />
-      <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
-        label="&autoscrolling;" style="font-weight: bold;" oncommand="updateUI();" />
-      <spacer height="3px" />
-      <hbox>
-        <spacer width="22" />
-        <vbox pack="center">
-          <label id="autoscrollingDelayLabel" value="&autoscrolling.autoscrollingDelayLabel;" />
-        </vbox>
-        <textbox id="autoscrollingDelayTextbox" preference="autoscrollingDelay" size="3" />
-      </hbox>
     </vbox>
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+    
+    <checkbox id="showTooltipsCheckbox" preference="showTooltips"
+      label="&extras.ttip;" oncommand="updateUI();" class="header" />
+    <hbox align="center" style="margin-left: 1em">
+      <label id="tooltipsDelayLabel" value="&extras.ttipDelayLabel;" />
+      <textbox id="tooltipsDelayValue" preference="tooltipsDelay" size="3"
+        style="text-align: right" />
+      <label id="tooltipsDelayUnit" value="ms" />
+    </hbox>
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+    
+    <label value="&move;" class="header" />
+    <radiogroup preference="moveAuto" style="margin-left: 1em">
+      <radio label="&move.key;" value="false" />
+      <radio label="&move.edge;" value="true" />
+    </radiogroup>
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+    
+    <checkbox preference="handleLinks" label="&link.through;" class="header" />
+    <hbox align="center" style="margin-left: 1em">
+      <label id="linksDelayLabel" value="&link.delay;" />
+      <textbox preference="linksDelay" size="3" style="text-align: right" />
+      <label value="ms" />
+    </hbox>
+    <hbox style="margin-left: 1em">
+      <radiogroup preference="handleLinksAsOpenLink">
+        <hbox align="center">
+          <radio label="&link.throughAsAction;" value="true" />
+          <separator orient="vertical"  />
+          <label class="text-link" value="&configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('miscCustomizationsTab'));" />
+        </hbox>
+        <radio label="&link.throughAsBrowser;" value="false" />
+      </radiogroup>
+    </hbox>
+    
+    <separator orient="horizontal" class="thin" />
+    <menuseparator />
+    
+    <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
+      label="&autoscrolling;" oncommand="updateUI();" class="header" />
+    <hbox align="center" style="margin-left: 1em">
+      <label id="autoscrollingDelayLabel"
+        value="&autoscrolling.autoscrollingDelayLabel;" />
+      <textbox id="autoscrollingDelayValue" preference="autoscrollingDelay"
+        size="3" style="text-align: right" />
+      <label id="autoscrollingDelayUnit" value="ms" />
+    </hbox>
   </prefpane>
   
   <prefpane
@@ -526,7 +514,7 @@
       <tabbox orient="vertical" flex="1" id="customizationsTabboxes">
         <tabs>
           <tab label="&customizations.loadURLScript;" />
-          <tab label="&customizations.misc;" />
+          <tab label="&customizations.misc;" id="miscCustomizationsTab" />
         </tabs>
         <tabpanels flex="1">
           <tabpanel flex="1" style="overflow: auto;">
@@ -1504,8 +1492,8 @@
       //***************************************************
       var checking = document.getElementById("showTooltipsCheckbox").checked;
       document.getElementById("tooltipsDelayLabel").disabled = !checking;
-      document.getElementById("tooltipsDelayTextbox").disabled = !checking;
-      document.getElementById("tooltipsDelayOmitCheckbox").disabled = !checking;
+      document.getElementById("tooltipsDelayValue").disabled = !checking;
+      document.getElementById("tooltipsDelayUnit").disabled = !checking;
       
       //***************************************************
       // enabling/disabling alternative boxes
@@ -1554,7 +1542,8 @@
       
       var checking = document.getElementById("autoscrollingOnCheckbox").checked;
       document.getElementById("autoscrollingDelayLabel").disabled = !checking;
-      document.getElementById("autoscrollingDelayTextbox").disabled = !checking;
+      document.getElementById("autoscrollingDelayValue").disabled = !checking;
+      document.getElementById("autoscrollingDelayUnit").disabled = !checking;
       
       //***************************************************
       // displaying correct label for Load URL/Script

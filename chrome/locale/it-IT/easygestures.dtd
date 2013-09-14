@@ -88,6 +88,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "Abilita il click ai collegamenti attraverso il centro del menu circolare">
 <!ENTITY link.delay "Ritardo massimo per cliccare">
 <!ENTITY link.throughAsAction "Apri secondo l'azione 'Apri Collegamento'">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Segui il comportamento del Browser">
 <!ENTITY link.curTab "Apri il collegamento nella Linguetta corrente">
 <!ENTITY link.newTab "Apri il collegamento in una nuova Linguetta">
@@ -104,7 +105,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "Usa Icone piccole">
 <!ENTITY extras.menuOpacity "Opacità del Menu Circolare">
 <!ENTITY extras.ttip "Attiva i Tooltips">
-<!ENTITY extras.ttipDelayOmit "Non ritardare i Tooltips">
 <!ENTITY extras.ttipDelayLabel "Ritardo dei Tooltips">
 
 <!ENTITY contextmenu "Attiva la sensibilità contestuale con">

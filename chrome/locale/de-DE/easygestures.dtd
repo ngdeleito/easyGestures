@@ -61,6 +61,7 @@
 <!ENTITY link.through "Klicks auf Links durch Kreismenü-Mitte aktivieren">
 <!ENTITY link.delay "Maximale Verzögerung für Klicks">
 <!ENTITY link.throughAsAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "Verhalten des Browsers verwenden">
 <!ENTITY link.curTab "Link im aktiven Tab öffnen">
 <!ENTITY link.newTab "Link in neuem Tab öffnen">
@@ -75,7 +76,6 @@
 <!ENTITY extras.smallIcons "Kleine Symbole verwenden">
 <!ENTITY extras.menuOpacity "Kreismenü-Deckkraft">
 <!ENTITY extras.ttip "Tooltips aktivieren">
-<!ENTITY extras.ttipDelayOmit "Tooltip-Verzögerung deaktivieren">
 <!ENTITY extras.ttipDelayLabel "Tooltip-Verzögerung">
 <!ENTITY contextmenu "Kontextabhängige Menüreaktion aktivieren mit">
 <!ENTITY contextmenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">

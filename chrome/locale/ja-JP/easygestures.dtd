@@ -87,6 +87,7 @@ END OF INSTRUCTIONS
 <!ENTITY link.through "パイメニューの中心からリンクをクリックできるようにする">
 <!ENTITY link.delay "クリックの最大遅延時間">
 <!ENTITY link.throughAsAction "'リンクを開く'アクションの動作を使う">
+<!ENTITY configureAction "Configure this action">
 <!ENTITY link.throughAsBrowser "ブラウザの動作を使う">
 <!ENTITY link.curTab "リンクの現在のタブで開く">
 <!ENTITY link.newTab "リンクを新しいタブで開く">
@@ -103,7 +104,6 @@ END OF INSTRUCTIONS
 <!ENTITY extras.smallIcons "小さいアイコンを使う">
 <!ENTITY extras.menuOpacity "パイメニューの透明度">
 <!ENTITY extras.ttip "アクション名をツールチップで表示する">
-<!ENTITY extras.ttipDelayOmit "すぐに表示する">
 <!ENTITY extras.ttipDelayLabel " 表示までの遅延時間">
 
 <!ENTITY contextmenu "次のキーで状況依存メニューを有効化">
