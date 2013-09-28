@@ -29,12 +29,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "Ana Menü">
 <!ENTITY actions.extra "Ekstra Menü">
-<!ENTITY actions.info "Ekstra menü, ilgili eylemi kullanarak görüntülenir.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Öncelikli">
 <!ENTITY actions.alternative "Alternatif">
-<!ENTITY actions.regular "Olağan Eylemler">
-<!ENTITY actions.contextual "Duruma Bağlı Eylemler">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Ekstra menü, ilgili eylemi kullanarak görüntülenir">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Bağlantı">
+<!ENTITY contextmenu.image "Resim">
+<!ENTITY contextmenu.selection "Seçim">
+<!ENTITY contextmenu.textbox "Metin Kutusu">
 
 <!ENTITY customizations.loadURLScript "URL/Script Yükle">
 <!ENTITY customizations.misc "Çeşitli">
@@ -109,13 +115,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "İçerik Hassasiyetini bununla etkinleştir:">
 <!ENTITY contextmenu.showAuto "Her zaman etkin. Hassaslığı durdurmak için aynı tuşu kullanın.">
-<!ENTITY contextmenu.link "Bağlantı">
-<!ENTITY contextmenu.image "Resim">
-<!ENTITY contextmenu.selection "Seçim">
-<!ENTITY contextmenu.textbox "Metin Kutusu">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Resim eylemlerini ilk önce göster">
-<!ENTITY contextmenu.textboxFirst "Metin Kutusu eylemlerini ilk önce göster">
 
 <!ENTITY move "Kolay menüyü taşı">
 <!ENTITY move.key "Shift tuşuna basarak">

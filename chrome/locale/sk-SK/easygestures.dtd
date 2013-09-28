@@ -9,12 +9,18 @@
 <!ENTITY customizations "Prispôsobenie">
 <!ENTITY actions.main "Hlavná ponuka">
 <!ENTITY actions.extra "Extra ponuka">
-<!ENTITY actions.info "Extra ponuka je zobrazená použitím korešpondujúcej akcie.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Primárny">
 <!ENTITY actions.alternative "Alternatívny">
-<!ENTITY actions.regular "Pravidelné akcie">
-<!ENTITY actions.contextual "Kontextové akcie">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Extra ponuka je zobrazená použitím korešpondujúcej akcie">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Odkaz">
+<!ENTITY contextmenu.image "Obrázok">
+<!ENTITY contextmenu.selection "Výber">
+<!ENTITY contextmenu.textbox "Textové pole">
 <!ENTITY customizations.loadURLScript "Načítať URL/skript">
 <!ENTITY customizations.misc "Rôzne">
 <!ENTITY about.languageInfo "Jazyk">
@@ -79,13 +85,6 @@
 <!ENTITY extras.ttipDelayLabel "Oneskorenie">
 <!ENTITY contextmenu "Zobraziť kontextovú ponuku">
 <!ENTITY contextmenu.showAuto "Vždy aktivované. Používa rovnaký kláves na potlačenie citlivosti.">
-<!ENTITY contextmenu.link "Odkaz">
-<!ENTITY contextmenu.image "Obrázok">
-<!ENTITY contextmenu.selection "Výber">
-<!ENTITY contextmenu.textbox "Textové pole">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image actions first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
 <!ENTITY move "Presunúť ponuku">
 <!ENTITY move.key "Stlačením klávesu Shift">
 <!ENTITY move.edge "Pomocou rohov ponuky">

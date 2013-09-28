@@ -27,12 +27,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "Main Menu">
 <!ENTITY actions.extra "Extra Menu">
-<!ENTITY actions.info "Extra menu is displayed using the corresponding action.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Primary">
 <!ENTITY actions.alternative "Alternative">
-<!ENTITY actions.regular "Regular Actions">
-<!ENTITY actions.contextual "Contextual Actions">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Extra menu is displayed using the corresponding action">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Link">
+<!ENTITY contextmenu.image "Image">
+<!ENTITY contextmenu.selection "Selection">
+<!ENTITY contextmenu.textbox "Textbox">
 
 <!ENTITY customizations.loadURLScript "Load URL/Script">
 <!ENTITY customizations.misc "Miscellaneous">
@@ -107,13 +113,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "Activate contextual sensitivity with">
 <!ENTITY contextmenu.showAuto "Always activated. Use same key for suppressing sensitivity.">
-<!ENTITY contextmenu.link "Link">
-<!ENTITY contextmenu.image "Image">
-<!ENTITY contextmenu.selection "Selection">
-<!ENTITY contextmenu.textbox "Textbox">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image actions first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
 
 <!ENTITY move "Move pie menu">
 <!ENTITY move.key "By pressing Shift key">

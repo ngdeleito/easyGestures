@@ -27,12 +27,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "Menu principal">
 <!ENTITY actions.extra "Menu supplémentaire">
-<!ENTITY actions.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante.">
-<!ENTITY actions.enabled "Activé">
+<!ENTITY actions.contextual "Menus contextuels">
 <!ENTITY actions.primary "Primaire">
 <!ENTITY actions.alternative "Alternatif">
-<!ENTITY actions.regular "Actions régulières">
-<!ENTITY actions.contextual "Actions contextuelles">
+<!ENTITY actions.enabled "Activé">
+<!ENTITY actions.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante">
+<!ENTITY contextmenu.order "Régler ordre des menu">
+<!ENTITY contextmenu.imageFirst "Afficher le menu image en premier">
+<!ENTITY contextmenu.textboxFirst "Afficher le menu zone de texte en premier">
+<!ENTITY contextmenu.link "Lien">
+<!ENTITY contextmenu.image "Image">
+<!ENTITY contextmenu.selection "Sélection">
+<!ENTITY contextmenu.textbox "Zone de texte">
 
 <!ENTITY customizations.loadURLScript "Charger URL/Script">
 <!ENTITY customizations.misc "Divers">
@@ -106,13 +112,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "Activer sensibilité contextuelle avec">
 <!ENTITY contextmenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
-<!ENTITY contextmenu.link "Lien">
-<!ENTITY contextmenu.image "Image">
-<!ENTITY contextmenu.selection "Sélection">
-<!ENTITY contextmenu.textbox "Zone de texte">
-<!ENTITY contextmenu.order "Régler ordre des menu">
-<!ENTITY contextmenu.imageFirst "Afficher actions d'image en premier">
-<!ENTITY contextmenu.textboxFirst "Afficher actions de zone de texte en premier">
 
 <!ENTITY move "Déplacer menu circulaire">
 <!ENTITY move.key "En appuyant sur touche Maj">

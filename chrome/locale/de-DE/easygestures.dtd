@@ -9,12 +9,18 @@
 <!ENTITY customizations "Anpassungen">
 <!ENTITY actions.main "Haupt-Kreismenü">
 <!ENTITY actions.extra "Zusatz-Kreismenü">
-<!ENTITY actions.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Primär">
 <!ENTITY actions.alternative "Alternativ">
-<!ENTITY actions.regular "Normale Aktionen">
-<!ENTITY actions.contextual "Kontextabhängige Aktionen">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Link">
+<!ENTITY contextmenu.image "Grafik">
+<!ENTITY contextmenu.selection "Auswahl">
+<!ENTITY contextmenu.textbox "Textfeld">
 <!ENTITY customizations.loadURLScript "Adresse/Skript laden">
 <!ENTITY customizations.misc "Verschiedenes">
 <!ENTITY about.languageInfo "Sprache">
@@ -79,13 +85,6 @@
 <!ENTITY extras.ttipDelayLabel "Tooltip-Verzögerung">
 <!ENTITY contextmenu "Kontextabhängige Menüreaktion aktivieren mit">
 <!ENTITY contextmenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
-<!ENTITY contextmenu.link "Link">
-<!ENTITY contextmenu.image "Grafik">
-<!ENTITY contextmenu.selection "Auswahl">
-<!ENTITY contextmenu.textbox "Textfeld">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Grafikaktionen zuerst anzeigen">
-<!ENTITY contextmenu.textboxFirst "Textfeldaktionen zuerst anzeigen">
 <!ENTITY move "Kreismenü verschieben">
 <!ENTITY move.key "durch Halten der Umschalttaste">
 <!ENTITY move.edge "bei Berühren der Menüränder">

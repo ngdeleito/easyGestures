@@ -29,12 +29,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "Menu Principal">
 <!ENTITY actions.extra "Menu Extra">
-<!ENTITY actions.info "Menu extra é mostrado usando a ação correspondente.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Primário">
 <!ENTITY actions.alternative "Alternativo">
-<!ENTITY actions.regular "Ações Regulares">
-<!ENTITY actions.contextual "Ações Contextuais">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Menu extra é mostrado usando a ação correspondente">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Link">
+<!ENTITY contextmenu.image "Imagem">
+<!ENTITY contextmenu.selection "Seleção">
+<!ENTITY contextmenu.textbox "Caixa de Texto">
 
 <!ENTITY customizations.loadURLScript "Carregar URL/Script">
 <!ENTITY customizations.misc "Miscelânea">
@@ -108,13 +114,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "Ativar sensibilidade contextual com">
 <!ENTITY contextmenu.showAuto "Sempre ativada. Usar a mesma tecla para suprimir sensibilidade.">
-<!ENTITY contextmenu.link "Link">
-<!ENTITY contextmenu.image "Imagem">
-<!ENTITY contextmenu.selection "Seleção">
-<!ENTITY contextmenu.textbox "Caixa de Texto">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image actions first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
 
 <!ENTITY move "Mover menu de torta">
 <!ENTITY move.key "Pressionando a tecla Shift">

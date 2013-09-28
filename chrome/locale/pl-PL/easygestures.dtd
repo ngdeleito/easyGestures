@@ -9,12 +9,18 @@
 <!ENTITY customizations "Dostosuj">
 <!ENTITY actions.main "Menu główne">
 <!ENTITY actions.extra "Menu dodatkowe">
-<!ENTITY actions.info "Menu dodatkowe jest wyświetlane po wykonaniu właściwej dla niego akcji.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Menu główne">
 <!ENTITY actions.alternative "Menu alternatywne">
-<!ENTITY actions.regular "Akcje standardowe">
-<!ENTITY actions.contextual "Menu kontekstowe">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Menu dodatkowe jest wyświetlane po wykonaniu właściwej dla niego akcji">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Odnośnik">
+<!ENTITY contextmenu.image "Obrazek">
+<!ENTITY contextmenu.selection "Zaznaczenie">
+<!ENTITY contextmenu.textbox "Pole tekstowe">
 <!ENTITY customizations.loadURLScript "Otwórz url/skrypt">
 <!ENTITY customizations.misc "Różne">
 <!ENTITY about.languageInfo "Język">
@@ -79,13 +85,6 @@
 <!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania">
 <!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
 <!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
-<!ENTITY contextmenu.link "Odnośnik">
-<!ENTITY contextmenu.image "Obrazek">
-<!ENTITY contextmenu.selection "Zaznaczenie">
-<!ENTITY contextmenu.textbox "Pole tekstowe">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Wyświetl najpierw obrazki akcji">
-<!ENTITY contextmenu.textboxFirst "Wyświetl najpierw opis akcji">
 <!ENTITY move "Przesuwaj menu Centrum">
 <!ENTITY move.key "naciskając klawisz [ Shift ]">
 <!ENTITY move.edge "łapiąc krawędź menu">

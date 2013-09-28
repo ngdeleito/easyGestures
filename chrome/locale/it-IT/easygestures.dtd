@@ -29,12 +29,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "Menu Principale">
 <!ENTITY actions.extra "Menu Extra">
-<!ENTITY actions.info "Il menu Extra viene mostrato usando l'azione corrspondente.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Primario">
 <!ENTITY actions.alternative "Alternativo">
-<!ENTITY actions.regular "Azioni Regolari">
-<!ENTITY actions.contextual "Azioni Contestuali">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "Il menu Extra viene mostrato usando l'azione corrspondente">
+<!ENTITY contextmenu.order "Imposta l'Ordine dei Menu">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Collegamento">
+<!ENTITY contextmenu.image "Immagine">
+<!ENTITY contextmenu.selection "Selezione">
+<!ENTITY contextmenu.textbox "Riquadro di Testo">
 
 <!ENTITY customizations.loadURLScript "Carica URL/Script">
 <!ENTITY customizations.misc "Varie">
@@ -109,13 +115,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "Attiva la sensibilità contestuale con">
 <!ENTITY contextmenu.showAuto "Sempre attiva. Usa lo stesso tasto per disattivarla.">
-<!ENTITY contextmenu.link "Collegamento">
-<!ENTITY contextmenu.image "Immagine">
-<!ENTITY contextmenu.selection "Selezione">
-<!ENTITY contextmenu.textbox "Riquadro di Testo">
-<!ENTITY contextmenu.order "Imposta l'Ordine dei Menu">
-<!ENTITY contextmenu.imageFirst "Mostra prima le Azioni per le Immagini">
-<!ENTITY contextmenu.textboxFirst "Mostra prima le Azioni per i Riquadri di Testo">
 
 <!ENTITY move "Muovi il menu circolare">
 <!ENTITY move.key "Premendo il tasto Shift">

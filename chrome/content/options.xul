@@ -295,21 +295,20 @@
   </prefpane>
   
   <prefpane
-    flex="1"
-    image="chrome://easygestures/content/actions.png"
-    label="&menus;"
     id="menusPane"
+    label="&menus;"
+    image="chrome://easygestures/content/actions.png"
     style="overflow: auto;">
     <preferences>
-      <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />
-      <preference id="mainAlternative2" name="easygestures.actions.mainAlternative2" type="bool" />
       <preference id="mainActions" name="easygestures.actions.main" type="string" />
+      <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />
       <preference id="mainAlt1Actions" name="easygestures.actions.mainAlt1" type="string" />
+      <preference id="mainAlternative2" name="easygestures.actions.mainAlternative2" type="bool" />
       <preference id="mainAlt2Actions" name="easygestures.actions.mainAlt2" type="string" />
-      <preference id="extraAlternative1" name="easygestures.actions.extraAlternative1" type="bool" />
-      <preference id="extraAlternative2" name="easygestures.actions.extraAlternative2" type="bool" />
       <preference id="extraActions" name="easygestures.actions.extra" type="string" />
+      <preference id="extraAlternative1" name="easygestures.actions.extraAlternative1" type="bool" />
       <preference id="extraAlt1Actions" name="easygestures.actions.extraAlt1" type="string" />
+      <preference id="extraAlternative2" name="easygestures.actions.extraAlternative2" type="bool" />
       <preference id="extraAlt2Actions" name="easygestures.actions.extraAlt2" type="string" />
       <preference id="contextImageFirst" name="easygestures.actions.contextImageFirst" type="bool" />
       <preference id="contextTextboxFirst" name="easygestures.actions.contextTextboxFirst" type="bool" />
@@ -318,161 +317,146 @@
       <preference id="contextSelectionActions" name="easygestures.actions.contextSelection" type="string" />
       <preference id="contextTextboxActions" name="easygestures.actions.contextTextbox" type="string" />
     </preferences>
-    <tabbox orient="vertical" flex="1" id="actionsTabboxes">
+    <tabbox id="actionsTabboxes">
       <tabs>
-        <tab label="&actions.regular;" />
+        <tab label="&actions.main;" />
+        <tab label="&actions.extra;" />
         <tab label="&actions.contextual;" />
       </tabs>
-      <tabpanels flex="1">
-        <tabpanel>
-          <vbox>
-            <spacer height="6px" />
-            <toolbar style="-moz-appearance:none;border:0px;">
-              <vbox pack="center">
-                <label value="&actions.main;" style="font-weight: bold;" />
-                <label id="mainLayoutTitle" value="&actions.primary;" style="font-weight: bold;color: #CC0033;" />
-              </vbox>
-              <toolbarspacer />
-              <vbox pack="center">
-                <image src="chrome://easygestures/content/small_arrow.png"/>
-              </vbox>
-              <toolbarbutton label="0" group="layout" type="radio" checked="true"
-                tooltiptext="&actions.primary;"
-                oncommand="document.getElementById('mainAlternative1Checkbox').setAttribute('collapsed', true);document.getElementById('mainAlternative2Checkbox').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=0; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.primary;';" />
-              <toolbarbutton label="1" group="layout" type="radio"
-                tooltiptext="&actions.alternative; 1"
-                oncommand="document.getElementById('mainAlternative1Checkbox').setAttribute('collapsed', false);document.getElementById('mainAlternative2Checkbox').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=1; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 1';" />
-              <toolbarbutton label="2" group="layout" type="radio"
-                tooltiptext="&actions.alternative; 2"
-                oncommand="document.getElementById('mainAlternative2Checkbox').setAttribute('collapsed', false);document.getElementById('mainAlternative1Checkbox').setAttribute('collapsed', true);document.getElementById('actionsMain').selectedIndex=2; document.getElementById('actionsMain').focus();document.getElementById('mainLayoutTitle').value='&actions.alternative; 2';" />
-              <toolbarspacer flex="1" />
-              <checkbox collapsed="true" id="mainAlternative1Checkbox"
-                preference="mainAlternative1" label="&actions.enabled;"
-                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
-                oncommand="updateUI();" />
-              <checkbox collapsed="true" id="mainAlternative2Checkbox"
-                preference="mainAlternative2" label="&actions.enabled;"
-                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
-                oncommand="updateUI();" />
-              <toolbarspacer />
-            </toolbar>
-            <tabbox orient="vertical" id="actionsMain">
-              <tabs>
-                <tab label="&actions.primary;" hidden="true" />
-                <tab label="&actions.alternative; 1" hidden="true" />
-                <tab label="&actions.alternative; 2" hidden="true" />
-              </tabs>
-              <tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
-                <tabpanel>
-                  <vbox id="gr_main" flex="1" preference-editable="true"
-                    preference="mainActions" onsynctopreference="return writeNormalActionsGroupPreference('main');"></vbox>
-                </tabpanel>
-                <tabpanel>
-                  <vbox flex="1">
-                    <vbox id="gr_mainAlt1" preference-editable="true"
-                      preference="mainAlt1Actions" onsynctopreference="return writeNormalActionsGroupPreference('mainAlt1');"></vbox>
-                  </vbox>
-                </tabpanel>
-                <tabpanel>
-                  <vbox flex="1">
-                    <vbox id="gr_mainAlt2" preference-editable="true"
-                      preference="mainAlt2Actions" onsynctopreference="return writeNormalActionsGroupPreference('mainAlt2');"></vbox>
-                  </vbox>
-                </tabpanel>
-              </tabpanels>
-            </tabbox>
-            <menuseparator />
-            <toolbar style="-moz-appearance:none;border:0px;">
-              <vbox pack="center">
-                <label value="&actions.extra;" style="font-weight: bold;" />
-                <label id="extraLayoutTitle" value="&actions.primary;" style="font-weight: bold;color: #CC0033;" />
-              </vbox>
-              <toolbarspacer />
-              <vbox pack="center">
-                <image src="chrome://easygestures/content/small_arrow.png"/>
-              </vbox>
-              <toolbarbutton label="0" group="layout" type="radio" checked="true"
-                tooltiptext="&actions.primary;"
-                oncommand="document.getElementById('extraAlternative1Checkbox').setAttribute('collapsed', true);document.getElementById('extraAlternative2Checkbox').setAttribute('collapsed', true);document.getElementById('actionsExtra').selectedIndex=0; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.primary;';" />
-              <toolbarbutton label="1" group="layout" type="radio"
-                tooltiptext="&actions.alternative; 1"
-                oncommand="document.getElementById('extraAlternative1Checkbox').setAttribute('collapsed', false);document.getElementById('extraAlternative2Checkbox').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=1; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 1';" />
-              <toolbarbutton label="2" group="layout" type="radio"
-                tooltiptext="&actions.alternative; 2"
-                oncommand="document.getElementById('extraAlternative2Checkbox').setAttribute('collapsed', false);document.getElementById('extraAlternative1Checkbox').setAttribute('collapsed', true); document.getElementById('actionsExtra').selectedIndex=2; document.getElementById('actionsExtra').focus();document.getElementById('extraLayoutTitle').value='&actions.alternative; 2';" />
-              <toolbarspacer flex="1" />
-              <checkbox collapsed="true" id="extraAlternative1Checkbox"
-                preference="extraAlternative1" label="&actions.enabled;"
-                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
-                oncommand="updateUI();" />
-              <checkbox collapsed="true" id="extraAlternative2Checkbox"
-                preference="extraAlternative2" label="&actions.enabled;"
-                style="font-weight: bold;padding:0px;margin-left:0px;margin-bottom:0px;margin-top:-0px;"
-                oncommand="updateUI();" />
-              <toolbarspacer />
-            </toolbar>
-            <tabbox orient="vertical" id="actionsExtra">
-              <tabs>
-                <tab label="&actions.primary;" hidden="true" />
-                <tab label="&actions.alternative; 1" hidden="true" />
-                <tab label="&actions.alternative; 2" hidden="true" />
-              </tabs>
-              <tabpanels style="-moz-appearance:none;border:0px;background-color:inherit;">
-                <tabpanel>
-                  <vbox id="gr_extra" flex="1" preference-editable="true"
-                    preference="extraActions" onsynctopreference="return writeExtraActionsGroupPreference('extra');"></vbox>
-                </tabpanel>
-                <tabpanel>
-                  <vbox flex="1">
-                    <vbox id="gr_extraAlt1" preference-editable="true"
-                      preference="extraAlt1Actions" onsynctopreference="return writeExtraActionsGroupPreference('extraAlt1');"></vbox>
-                  </vbox>
-                </tabpanel>
-                <tabpanel>
-                  <vbox flex="1">
-                    <vbox id="gr_extraAlt2" preference-editable="true"
-                      preference="extraAlt2Actions" onsynctopreference="return writeExtraActionsGroupPreference('extraAlt2');"></vbox>
-                  </vbox>
-                </tabpanel>
-              </tabpanels>
-            </tabbox>
-            <vbox style="background-color:white;">
-              <menuseparator />
-              <hbox>
+      <tabpanels>
+        <tabpanel pack="center">
+          <tabbox>
+            <tabs>
+              <tab label="&actions.primary;" />
+              <tab label="&actions.alternative; 1" />
+              <tab label="&actions.alternative; 2" />
+            </tabs>
+            <tabpanels>
+              <tabpanel>
                 <vbox>
-                  <label value="&actions.info;" height="16px"
-                    style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
+                  <spacer style="height: calc(2em + 8px)" />
+                  <vbox id="gr_main" preference-editable="true"
+                    preference="mainActions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('main');">
+                  </vbox>
                 </vbox>
-              </hbox>
-            </vbox>
+              </tabpanel>
+              <tabpanel>
+                <vbox>
+                  <checkbox id="mainAlternative1Checkbox"
+                    preference="mainAlternative1" label="&actions.enabled;"
+                    oncommand="updateUI();" style="height: 2em;" />
+                  <vbox id="gr_mainAlt1" preference-editable="true"
+                    preference="mainAlt1Actions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt1');">
+                  </vbox>
+                </vbox>
+              </tabpanel>
+              <tabpanel>
+                <vbox>
+                  <checkbox id="mainAlternative2Checkbox"
+                    preference="mainAlternative2" label="&actions.enabled;"
+                    oncommand="updateUI();" style="height: 2em" />
+                  <vbox id="gr_mainAlt2" preference-editable="true"
+                    preference="mainAlt2Actions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt2');">
+                  </vbox>
+                </vbox>
+              </tabpanel>
+            </tabpanels>
+          </tabbox>
+        </tabpanel>
+        <tabpanel pack="center">
+          <vbox>
+            <hbox align="center">
+              <image class="message-icon" style="height: 1.5em; width: auto" />
+              <label value="&actions.info;" />
+            </hbox>
+            <separator orient="horizontal" style="height: 2em" />
+            <tabbox>
+              <tabs>
+                <tab label="&actions.primary;" />
+                <tab label="&actions.alternative; 1" />
+                <tab label="&actions.alternative; 2" />
+              </tabs>
+              <tabpanels>
+                <tabpanel>
+                  <vbox>
+                    <spacer style="height: calc(2em + 8px)" />
+                    <vbox id="gr_extra" preference-editable="true"
+                      preference="extraActions"
+                      onsynctopreference="return preparePreferenceValueForExtraMenu('extra');">
+                    </vbox>
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox>
+                    <checkbox id="extraAlternative1Checkbox"
+                      preference="extraAlternative1" label="&actions.enabled;"
+                      oncommand="updateUI();" style="height: 2em" />
+                    <vbox id="gr_extraAlt1" preference-editable="true"
+                      preference="extraAlt1Actions"
+                      onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt1');">
+                    </vbox>
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox>
+                    <checkbox id="extraAlternative2Checkbox"
+                      preference="extraAlternative2" label="&actions.enabled;"
+                      oncommand="updateUI();" style="height: 2em" />
+                    <vbox id="gr_extraAlt2" preference-editable="true"
+                      preference="extraAlt2Actions"
+                      onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt2');">
+                    </vbox>
+                  </vbox>
+                </tabpanel>
+              </tabpanels>
+            </tabbox>
           </vbox>
         </tabpanel>
-        <tabpanel flex="1">
+        <tabpanel pack="center">
           <vbox>
-            <label value="&contextmenu.order;" style="font-weight: bold;" />
-            <spacer height="3px" />
-            <hbox pack="start" style="margin-left:16px;">
-              <vbox>
-                <checkbox preference="contextImageFirst" label="&contextmenu.imageFirst;" />
-                <checkbox preference="contextTextboxFirst" label="&contextmenu.textboxFirst;" />
-              </vbox>
-            </hbox>
-            <separator />
-            <menuseparator />
-            <vbox id="gr_contextLink" preference-editable="true"
-              preference="contextLinkActions" onsynctopreference="return writeNormalActionsGroupPreference('contextLink');"></vbox>
-            <separator />
-            <menuseparator />
-            <vbox id="gr_contextImage" preference-editable="true"
-              preference="contextImageActions" onsynctopreference="return writeNormalActionsGroupPreference('contextImage');"></vbox>
-            <separator />
-            <menuseparator />
-            <vbox id="gr_contextSelection" preference-editable="true"
-              preference="contextSelectionActions" onsynctopreference="return writeNormalActionsGroupPreference('contextSelection');"></vbox>
-            <separator />
-            <menuseparator />
-            <vbox id="gr_contextTextbox" preference-editable="true"
-              preference="contextTextboxActions" onsynctopreference="return writeNormalActionsGroupPreference('contextTextbox');"></vbox>
+            <label value="&contextmenu.order;" class="header" />
+            <vbox style="margin-left: 1em">
+              <checkbox preference="contextImageFirst" label="&contextmenu.imageFirst;" />
+              <checkbox preference="contextTextboxFirst" label="&contextmenu.textboxFirst;" />
+            </vbox>
+            <separator orient="horizontal" style="height: 2em" />
+            <tabbox>
+              <tabs>
+                <tab label="&contextmenu.link;" />
+                <tab label="&contextmenu.image;" />
+                <tab label="&contextmenu.selection;" />
+                <tab label="&contextmenu.textbox;" />
+              </tabs>
+              <tabpanels>
+                <tabpanel>
+                  <vbox id="gr_contextLink" preference-editable="true"
+                    preference="contextLinkActions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextLink');">
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox id="gr_contextImage" preference-editable="true"
+                    preference="contextImageActions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextImage');">
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox id="gr_contextSelection" preference-editable="true"
+                    preference="contextSelectionActions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextSelection');">
+                  </vbox>
+                </tabpanel>
+                <tabpanel>
+                  <vbox id="gr_contextTextbox" preference-editable="true"
+                    preference="contextTextboxActions"
+                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextTextbox');">
+                  </vbox>
+                </tabpanel>
+              </tabpanels>
+            </tabbox>
           </vbox>
         </tabpanel>
       </tabpanels>
@@ -752,13 +736,6 @@
       "zoomReset"
     );
     
-    var contextCaption = {
-      contextLink: "&contextmenu.link;",
-      contextImage: "&contextmenu.image;",
-      contextSelection: "&contextmenu.selection;",
-      contextTextbox: "&contextmenu.textbox;",
-    }
-    
     function setLabels() {
       for (var i=1; i &lt;= 20; i++) {
         // loadURLScript 1 to 20
@@ -954,13 +931,6 @@
           while (box.lastChild != null) {
             box.removeChild(box.lastChild);
           }
-        }
-        
-        if (boxes[i].search("context") != -1) {
-          var label = document.createElement("label");
-          label.setAttribute("value", contextCaption[boxes[i]]);
-          label.setAttribute("style","font-weight: bold;");
-          box.appendChild(label);
         }
         
         // sector 0
@@ -1367,7 +1337,7 @@
       });
     }
     
-    function writeNormalActionsGroupPreference(name) {
+    function preparePreferenceValueForNormalMenu(name) {
       var result = [];
       
       [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (value, index, array) {
@@ -1376,7 +1346,7 @@
       return result.join("/");
     }
     
-    function writeExtraActionsGroupPreference(name) {
+    function preparePreferenceValueForExtraMenu(name) {
       var result = [];
       
       [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (value, index, array) {

@@ -11,12 +11,18 @@
 <!ENTITY customizations "Személyre szabás">
 <!ENTITY actions.main "Főmenü">
 <!ENTITY actions.extra "Kiegészítő menü">
-<!ENTITY actions.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "Elsődleges">
 <!ENTITY actions.alternative "Alternatív">
-<!ENTITY actions.regular "Általános műveletek">
-<!ENTITY actions.contextual "Környezetfüggő műveletek">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg">
+<!ENTITY contextmenu.order "Menük sorrendjének beállítása">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "Hivatkozás">
+<!ENTITY contextmenu.image "Kép">
+<!ENTITY contextmenu.selection "Kijelölés">
+<!ENTITY contextmenu.textbox "Szövegdoboz">
 <!ENTITY customizations.loadURLScript "URL/szkript betöltése">
 <!ENTITY customizations.misc "Egyéb">
 <!ENTITY about.languageInfo "Nyelv">
@@ -81,13 +87,6 @@
 <!ENTITY extras.ttipDelayLabel "Felbukkanó tippek késleltetése">
 <!ENTITY contextmenu "Környezetfüggő működés aktiválása">
 <!ENTITY contextmenu.showAuto "Mindig aktív, ez a billentyű a környezetfüggő menü mellőzésére szolgál.">
-<!ENTITY contextmenu.link "Hivatkozás">
-<!ENTITY contextmenu.image "Kép">
-<!ENTITY contextmenu.selection "Kijelölés">
-<!ENTITY contextmenu.textbox "Szövegdoboz">
-<!ENTITY contextmenu.order "Menük sorrendjének beállítása">
-<!ENTITY contextmenu.imageFirst "Először kép műveletek mutatása">
-<!ENTITY contextmenu.textboxFirst "Először szövegdoboz műveletek mutatása">
 <!ENTITY move "Köralakú menü mozgatása">
 <!ENTITY move.key "Shift billentyű lenyomásával">
 <!ENTITY move.edge "a menü szélének elérésekor">

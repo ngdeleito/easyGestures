@@ -29,12 +29,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "主菜单">
 <!ENTITY actions.extra "延伸菜单">
-<!ENTITY actions.info "额外的菜单显示了使用的相应手势。">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "基本的">
 <!ENTITY actions.alternative "另类的">
-<!ENTITY actions.regular "常用手势">
-<!ENTITY actions.contextual "上下文手势">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "额外的菜单显示了使用的相应手势">
+<!ENTITY contextmenu.order "菜单命令">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "链接">
+<!ENTITY contextmenu.image "图像">
+<!ENTITY contextmenu.selection "选择">
+<!ENTITY contextmenu.textbox "文本框">
 
 <!ENTITY customizations.loadURLScript "载入网址/脚本">
 <!ENTITY customizations.misc "其他">
@@ -109,13 +115,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "激活上下文敏感">
 <!ENTITY contextmenu.showAuto "始终激活。使用相同的密钥抑制敏感度。">
-<!ENTITY contextmenu.link "链接">
-<!ENTITY contextmenu.image "图像">
-<!ENTITY contextmenu.selection "选择">
-<!ENTITY contextmenu.textbox "文本框">
-<!ENTITY contextmenu.order "菜单命令">
-<!ENTITY contextmenu.imageFirst "首先作用显示图片">
-<!ENTITY contextmenu.textboxFirst "首先作用显示文本框">
 
 <!ENTITY move "移动圆饼菜单">
 <!ENTITY move.key "按 Shift 键">

@@ -29,12 +29,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "主要選單">
 <!ENTITY actions.extra "延伸選單">
-<!ENTITY actions.info "延伸選單會在使用對應動作時顯示。">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "基本">
 <!ENTITY actions.alternative "替換">
-<!ENTITY actions.regular "一般動作">
-<!ENTITY actions.contextual "情境動作">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "延伸選單會在使用對應動作時顯示">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "鏈結">
+<!ENTITY contextmenu.image "圖片">
+<!ENTITY contextmenu.selection "選取區">
+<!ENTITY contextmenu.textbox "文字區塊">
 
 <!ENTITY customizations.loadURLScript "載入網址／Script">
 <!ENTITY customizations.misc "雜項">
@@ -108,13 +114,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "顯示情境選單：用">
 <!ENTITY contextmenu.showAuto "保持情境動作自動啟用。使用上述按鍵時轉換回基本選單。">
-<!ENTITY contextmenu.link "鏈結">
-<!ENTITY contextmenu.image "圖片">
-<!ENTITY contextmenu.selection "選取區">
-<!ENTITY contextmenu.textbox "文字區塊">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image actions first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
 
 <!ENTITY move "移動圓餅選單">
 <!ENTITY move.key "按住 Shift 鍵時">

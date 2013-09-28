@@ -29,12 +29,18 @@ END OF INSTRUCTIONS
 
 <!ENTITY actions.main "メインメニュー">
 <!ENTITY actions.extra "拡張メニュー">
-<!ENTITY actions.info "拡張メニューは対応するアクションで表示されます。">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "優先">
 <!ENTITY actions.alternative "代替">
-<!ENTITY actions.regular "通常アクション">
-<!ENTITY actions.contextual "状況依存アクション">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "拡張メニューは対応するアクションで表示されます">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "リンク">
+<!ENTITY contextmenu.image "画像">
+<!ENTITY contextmenu.selection "選択範囲">
+<!ENTITY contextmenu.textbox "テキストボックス">
 
 <!ENTITY customizations.loadURLScript "URL/スクリプトの読み込み">
 <!ENTITY customizations.misc "その他">
@@ -108,13 +114,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY contextmenu "次のキーで状況依存メニューを有効化">
 <!ENTITY contextmenu.showAuto "常に有効にする。状況依存メニューの無効化にも同じキーを使います。">
-<!ENTITY contextmenu.link "リンク">
-<!ENTITY contextmenu.image "画像">
-<!ENTITY contextmenu.selection "選択範囲">
-<!ENTITY contextmenu.textbox "テキストボックス">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image actions first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox actions first">
 
 <!ENTITY move "パイメニューの移動法">
 <!ENTITY move.key "Shift キーを押して">

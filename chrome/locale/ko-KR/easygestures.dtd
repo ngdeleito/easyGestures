@@ -26,12 +26,18 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY customizations "사용자 최적화">
 <!ENTITY actions.main "주 메뉴">
 <!ENTITY actions.extra "부가 메뉴">
-<!ENTITY actions.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다.">
-<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.contextual "Contextual Menus">
 <!ENTITY actions.primary "우선">
 <!ENTITY actions.alternative "대안">
-<!ENTITY actions.regular "정규 동작">
-<!ENTITY actions.contextual "문맥상 동작">
+<!ENTITY actions.enabled "Enabled">
+<!ENTITY actions.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다">
+<!ENTITY contextmenu.order "Set menus order">
+<!ENTITY contextmenu.imageFirst "Show Image menu first">
+<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
+<!ENTITY contextmenu.link "링크">
+<!ENTITY contextmenu.image "이미지">
+<!ENTITY contextmenu.selection "선택">
+<!ENTITY contextmenu.textbox "문서상자">
 <!ENTITY customizations.loadURLScript "URL/스크립트 불러오기">
 <!ENTITY customizations.misc "기타">
 <!ENTITY about.languageInfo "언어">
@@ -96,13 +102,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY extras.ttipDelayLabel "툴팁 지연">
 <!ENTITY contextmenu "다음의 키로 상황 감지를 활성화">
 <!ENTITY contextmenu.showAuto "항시 활성화. 상황 감지의 무효화에도 같은 키를 사용합니다.">
-<!ENTITY contextmenu.link "링크">
-<!ENTITY contextmenu.image "이미지">
-<!ENTITY contextmenu.selection "선택">
-<!ENTITY contextmenu.textbox "문서상자">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "이미지 동작 우선 표시">
-<!ENTITY contextmenu.textboxFirst "이미지 문서상자 우선 표시">
 <!ENTITY move "원형 메뉴 이동">
 <!ENTITY move.key "Shift 키를 누를 경우">
 <!ENTITY move.edge "메뉴 모서리에 닿을 경우">

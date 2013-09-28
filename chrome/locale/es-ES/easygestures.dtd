@@ -11,12 +11,18 @@
 <!ENTITY customizations "Personalizar">
 <!ENTITY actions.main "Menú principal">
 <!ENTITY actions.extra "Menú extra">
-<!ENTITY actions.info "El menú extra se muestra al usar la acción correspondiente.">
-<!ENTITY actions.enabled "Habilitado">
+<!ENTITY actions.contextual "Menús contextuales">
 <!ENTITY actions.primary "Primaria">
 <!ENTITY actions.alternative "Alternativa">
-<!ENTITY actions.regular "Acciones regulares">
-<!ENTITY actions.contextual "Acciones contextuales">
+<!ENTITY actions.enabled "Habilitado">
+<!ENTITY actions.info "El menú extra se muestra al usar la acción correspondiente">
+<!ENTITY contextmenu.order "Establecer orden de los menús">
+<!ENTITY contextmenu.imageFirst "Ver primero el menú imágen">
+<!ENTITY contextmenu.textboxFirst "Ver primero el menú cuadro de texto">
+<!ENTITY contextmenu.link "Enlace">
+<!ENTITY contextmenu.image "Imagen">
+<!ENTITY contextmenu.selection "Selección">
+<!ENTITY contextmenu.textbox "Cuadro de texto">
 <!ENTITY customizations.loadURLScript "Cargar dirección/Script">
 <!ENTITY customizations.misc "Varios">
 <!ENTITY about.languageInfo "Idioma">
@@ -81,13 +87,6 @@
 <!ENTITY extras.ttipDelayLabel "Retardo en tooltips">
 <!ENTITY contextmenu "Activar sensibilidad al contexto con">
 <!ENTITY contextmenu.showAuto "Siempre activado. Usar la misma tecla para desactivar la sensibilidad.">
-<!ENTITY contextmenu.link "Enlace">
-<!ENTITY contextmenu.image "Imagen">
-<!ENTITY contextmenu.selection "Selección">
-<!ENTITY contextmenu.textbox "Cuadro de texto">
-<!ENTITY contextmenu.order "Establecer orden de los menús">
-<!ENTITY contextmenu.imageFirst "Ver primero las acciones de imágenes">
-<!ENTITY contextmenu.textboxFirst "Ver primero las acciones de cuadros de texto">
 <!ENTITY move "Mover el menú circular">
 <!ENTITY move.key "Pulsando la tecla Mayús">
 <!ENTITY move.edge "Al llegar al borde del menú">
