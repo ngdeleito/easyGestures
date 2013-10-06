@@ -52,11 +52,9 @@
   ondialogdisclosure="window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable');">
 
   <prefpane
-    flex="1"
     id="generalPane"
     label="&general;"
-    image="chrome://easygestures/content/profile.png"
-    style="overflow: auto;">
+    image="chrome://easygestures/content/profile.png">
     <preferences>
       <preference id="startupTips" name="easygestures.profile.startupTips" type="bool" />
     </preferences>
@@ -88,11 +86,9 @@
   </prefpane>
   
   <prefpane
-    flex="1"
     id="activationPane"
     label="&activation;"
-    image="chrome://easygestures/content/behavior.png"
-    style="overflow: auto;">
+    image="chrome://easygestures/content/behavior.png">
     <preferences>
       <preference id="showButton" name="easygestures.behavior.showButton" type="int" />
       <preference id="showKey" name="easygestures.behavior.showKey" type="int" />
@@ -196,13 +192,11 @@
     </hbox>
     <checkbox preference="contextShowAuto" label="&contextmenu.showAuto;" />
   </prefpane>
-
+  
   <prefpane
-    flex="1"
     id="behaviorPane"
     label="&behavior;"
-    image="chrome://easygestures/content/behavior.png"
-    style="overflow: auto;">
+    image="chrome://easygestures/content/behavior.png">
     <preferences>
       <preference id="largeMenu" name="easygestures.behavior.largeMenu" type="bool" />
       <preference id="noIcons" name="easygestures.behavior.noIcons" type="bool" />
@@ -273,7 +267,7 @@
       <radiogroup preference="handleLinksAsOpenLink">
         <hbox align="center">
           <radio label="&link.throughAsAction;" value="true" />
-          <separator orient="vertical"  />
+          <separator orient="vertical" />
           <label class="text-link" value="&configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
         </hbox>
         <radio label="&link.throughAsBrowser;" value="false" />
@@ -297,8 +291,7 @@
   <prefpane
     id="menusPane"
     label="&menus;"
-    image="chrome://easygestures/content/actions.png"
-    style="overflow: auto;">
+    image="chrome://easygestures/content/actions.png">
     <preferences>
       <preference id="mainActions" name="easygestures.actions.main" type="string" />
       <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />
@@ -334,7 +327,8 @@
             <tabpanels>
               <tabpanel>
                 <vbox>
-                  <spacer style="height: calc(2em + 8px)" />
+                  <checkbox label="&actions.enabled;"
+                    style="visibility: hidden" />
                   <vbox id="gr_main" preference-editable="true"
                     preference="mainActions"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('main');">
@@ -345,7 +339,7 @@
                 <vbox>
                   <checkbox id="mainAlternative1Checkbox"
                     preference="mainAlternative1" label="&actions.enabled;"
-                    oncommand="updateUI();" style="height: 2em;" />
+                    oncommand="updateUI();" />
                   <vbox id="gr_mainAlt1" preference-editable="true"
                     preference="mainAlt1Actions"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt1');">
@@ -356,7 +350,7 @@
                 <vbox>
                   <checkbox id="mainAlternative2Checkbox"
                     preference="mainAlternative2" label="&actions.enabled;"
-                    oncommand="updateUI();" style="height: 2em" />
+                    oncommand="updateUI();" />
                   <vbox id="gr_mainAlt2" preference-editable="true"
                     preference="mainAlt2Actions"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt2');">
@@ -382,7 +376,8 @@
               <tabpanels>
                 <tabpanel>
                   <vbox>
-                    <spacer style="height: calc(2em + 8px)" />
+                  <checkbox label="&actions.enabled;"
+                    style="visibility: hidden" />
                     <vbox id="gr_extra" preference-editable="true"
                       preference="extraActions"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extra');">
@@ -393,7 +388,7 @@
                   <vbox>
                     <checkbox id="extraAlternative1Checkbox"
                       preference="extraAlternative1" label="&actions.enabled;"
-                      oncommand="updateUI();" style="height: 2em" />
+                      oncommand="updateUI();" />
                     <vbox id="gr_extraAlt1" preference-editable="true"
                       preference="extraAlt1Actions"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt1');">
@@ -404,7 +399,7 @@
                   <vbox>
                     <checkbox id="extraAlternative2Checkbox"
                       preference="extraAlternative2" label="&actions.enabled;"
-                      oncommand="updateUI();" style="height: 2em" />
+                      oncommand="updateUI();" />
                     <vbox id="gr_extraAlt2" preference-editable="true"
                       preference="extraAlt2Actions"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt2');">
@@ -678,7 +673,7 @@
   </prefpane>
   
   <hbox flex="1" pack="end">
-    <resizer dir="bottomend"></resizer><!-- type="window"-->
+    <resizer dir="bottomend" type="window"></resizer>
   </hbox>
   
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
