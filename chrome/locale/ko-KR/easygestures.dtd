@@ -38,8 +38,10 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY contextmenu.image "이미지">
 <!ENTITY contextmenu.selection "선택">
 <!ENTITY contextmenu.textbox "문서상자">
-<!ENTITY customizations.loadURLScript "URL/스크립트 불러오기">
-<!ENTITY customizations.misc "기타">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
 <!ENTITY about.languageInfo "언어">
 <!ENTITY about.stats "통계">
 <!ENTITY about.statsDisplay "통계 표시">
@@ -189,12 +191,10 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.zoomIn "확대">
 <!ENTITY func.zoomOut "축소">
 <!ENTITY func.zoomReset "배율 초기화">
-<!ENTITY input.infoSel "동작 탭 내 이 동작들을 선택할 수 있습니다.">
 <!ENTITY input.page1 "페이지 1">
 <!ENTITY input.page2 "페이지 2">
 <!ENTITY input.page3 "페이지 3">
 <!ENTITY input.page4 "페이지 4">
-<!ENTITY input.infoPlaceHolder "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
 <!ENTITY closeTab "'탭 닫기' 동작 사용자 지정">
 <!ENTITY closeTab.closeBrowserOnLastTab "마지막 탭이 닫혔을 때 브라우저 닫기">
 <!ENTITY urlscript "'URL/스크립트 불러오기' 동작 사용자 지정">

@@ -23,8 +23,10 @@
 <!ENTITY contextmenu.image "Imagen">
 <!ENTITY contextmenu.selection "Selección">
 <!ENTITY contextmenu.textbox "Cuadro de texto">
-<!ENTITY customizations.loadURLScript "Cargar dirección/Script">
-<!ENTITY customizations.misc "Varios">
+<!ENTITY customizations.loadURLScriptActions "Acciones Cargar dirección/Script">
+<!ENTITY customizations.otherActions "Otras acciones">
+<!ENTITY customizations.infoActions "Puede selecionar estas acciones en el panel '&menus;'">
+<!ENTITY customizations.infoPlaceholders "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
 <!ENTITY about.languageInfo "Idioma">
 <!ENTITY about.stats "Estadísticas">
 <!ENTITY about.statsDisplay "Mostrar estadísticas">
@@ -174,12 +176,10 @@
 <!ENTITY func.zoomIn "Acercar zoom">
 <!ENTITY func.zoomOut "Alejar zoom">
 <!ENTITY func.zoomReset "Reiniciar zoom">
-<!ENTITY input.infoSel "Puede selecionar estas acciones en las pestañas de acciones.">
 <!ENTITY input.page1 "Página 1">
 <!ENTITY input.page2 "Página 2">
 <!ENTITY input.page3 "Página 3">
 <!ENTITY input.page4 "Página 4">
-<!ENTITY input.infoPlaceHolder "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
 <!ENTITY closeTab "Personalizar acción &apos;Cerrar pestaña&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Cerrar el navegador al cerrar la última pestaña">
 <!ENTITY urlscript "Personalizar acción &apos;Cargar dirección/Script&apos;">

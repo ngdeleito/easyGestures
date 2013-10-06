@@ -23,8 +23,10 @@
 <!ENTITY contextmenu.image "Kép">
 <!ENTITY contextmenu.selection "Kijelölés">
 <!ENTITY contextmenu.textbox "Szövegdoboz">
-<!ENTITY customizations.loadURLScript "URL/szkript betöltése">
-<!ENTITY customizations.misc "Egyéb">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
 <!ENTITY about.languageInfo "Nyelv">
 <!ENTITY about.stats "Statisztikák">
 <!ENTITY about.statsDisplay "Statisztikák megjelenítése">
@@ -174,12 +176,10 @@
 <!ENTITY func.zoomIn "Nagyítás">
 <!ENTITY func.zoomOut "Kicsinyítés">
 <!ENTITY func.zoomReset "Visszaállítás">
-<!ENTITY input.infoSel "Ezek a műveletek a Műveletek lapon választhatóak ki.">
 <!ENTITY input.page1 "1. oldal">
 <!ENTITY input.page2 "2. oldal">
 <!ENTITY input.page3 "3. oldal">
 <!ENTITY input.page4 "4. oldal">
-<!ENTITY input.infoPlaceHolder "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
 <!ENTITY closeTab "'Lap bezárása' művelet személyre szabása">
 <!ENTITY closeTab.closeBrowserOnLastTab "Böngésző bezárása az utolsó lap bezárásakor">
 <!ENTITY urlscript "'URL/szkript betöltése' művelet személyre szabása">

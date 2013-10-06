@@ -42,8 +42,10 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "選択範囲">
 <!ENTITY contextmenu.textbox "テキストボックス">
 
-<!ENTITY customizations.loadURLScript "URL/スクリプトの読み込み">
-<!ENTITY customizations.misc "その他">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "書式指定子: &#37;s (選択文字列) と &#37;u (現在の URL).">
 
 <!ENTITY about.languageInfo "言語">
 <!ENTITY about.stats "使用統計">
@@ -211,13 +213,10 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "小さく">
 <!ENTITY func.zoomReset "標準サイズ">
 
-<!ENTITY input.infoSel "これらのアクションを、アクションタブで選択できます。">
 <!ENTITY input.page1 "ページ 1">
 <!ENTITY input.page2 "ページ 2">
 <!ENTITY input.page3 "ページ 3">
 <!ENTITY input.page4 "ページ 4">
-<!ENTITY input.infoPlaceHolder "書式指定子: &#37;s (選択文字列) と &#37;u (現在の URL).">
-
 <!ENTITY closeTab "'タブを閉じる'アクションの設定">
 <!ENTITY closeTab.closeBrowserOnLastTab "最後のタブを閉じたらブラウザも閉じる">
 

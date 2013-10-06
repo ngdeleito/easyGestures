@@ -42,8 +42,10 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "选择">
 <!ENTITY contextmenu.textbox "文本框">
 
-<!ENTITY customizations.loadURLScript "载入网址/脚本">
-<!ENTITY customizations.misc "其他">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
 
 <!ENTITY about.languageInfo "语言">
 <!ENTITY about.stats "统计">
@@ -212,13 +214,10 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "缩小">
 <!ENTITY func.zoomReset "重置缩放值">
 
-<!ENTITY input.infoSel "你可以选择在标签手势的一个手势。">
 <!ENTITY input.page1 "页面 1">
 <!ENTITY input.page2 "页面 2">
 <!ENTITY input.page3 "页面 3">
 <!ENTITY input.page4 "页面 4">
-<!ENTITY input.infoPlaceHolder "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
-
 <!ENTITY closeTab "自定义“关闭标签页”手势">
 <!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
 

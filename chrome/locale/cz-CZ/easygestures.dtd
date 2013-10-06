@@ -42,8 +42,10 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Výběr">
 <!ENTITY contextmenu.textbox "Textové pole">
 
-<!ENTITY customizations.loadURLScript "Načíst URL/skript">
-<!ENTITY customizations.misc "Různé">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
 
 <!ENTITY about.languageInfo "Jazyk">
 <!ENTITY about.stats "Statistiky">
@@ -212,13 +214,10 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Zmenšit">
 <!ENTITY func.zoomReset "Předvolené zvětšení">
 
-<!ENTITY input.infoSel "Tyto akce můžete vybrat v záložce Akce.">
 <!ENTITY input.page1 "Strana 1">
 <!ENTITY input.page2 "Strana 2">
 <!ENTITY input.page3 "Strana 3">
 <!ENTITY input.page4 "Strana 4">
-<!ENTITY input.infoPlaceHolder "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
-
 <!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
 

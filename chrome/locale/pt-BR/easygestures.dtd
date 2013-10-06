@@ -42,8 +42,10 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Seleção">
 <!ENTITY contextmenu.textbox "Caixa de Texto">
 
-<!ENTITY customizations.loadURLScript "Carregar URL/Script">
-<!ENTITY customizations.misc "Miscelânea">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "Espaço reservado para strings: &#37;s (selection) and &#37;u (current URL).">
 
 <!ENTITY about.languageInfo "Linguagem">
 <!ENTITY about.stats "Estatísticas">
@@ -211,13 +213,10 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Menos Zoom">
 <!ENTITY func.zoomReset "Reiniciar Zoom">
 
-<!ENTITY input.infoSel "Você pode selecionar estas ações na aba de Ações.">
 <!ENTITY input.page1 "Página 1">
 <!ENTITY input.page2 "Página 2">
 <!ENTITY input.page3 "Página 3">
 <!ENTITY input.page4 "Página 4">
-<!ENTITY input.infoPlaceHolder "Espaço reservado para strings: &#37;s (selection) and &#37;u (current URL).">
-
 <!ENTITY closeTab "Personalizar Ação 'Fechar Aba' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fechar navegador quando última aba for fechada">
 

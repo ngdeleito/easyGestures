@@ -42,8 +42,10 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Seçim">
 <!ENTITY contextmenu.textbox "Metin Kutusu">
 
-<!ENTITY customizations.loadURLScript "URL/Script Yükle">
-<!ENTITY customizations.misc "Çeşitli">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "Sıra yer tutucuları:&#37;s (seçim) ve &#37;u (mevcut URL)">
 
 <!ENTITY about.languageInfo "Dil">
 <!ENTITY about.stats "İstatistikler">
@@ -212,13 +214,10 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Uzaklaştır">
 <!ENTITY func.zoomReset "Yakınlaştırmayı Sıfırla">
 
-<!ENTITY input.infoSel "Bu eylemleri Eylemler sekmesinde seçebilirsiniz.">
 <!ENTITY input.page1 "Sayfa 1">
 <!ENTITY input.page2 "Sayfa 2">
 <!ENTITY input.page3 "Sayfa 3">
 <!ENTITY input.page4 "Sayfa 4">
-<!ENTITY input.infoPlaceHolder "Sıra yer tutucuları:&#37;s (seçim) ve &#37;u (mevcut URL)">
-
 <!ENTITY closeTab "&quot;Sekmeyi Kapat&quot; Eylemini Kişiselleştir">
 <!ENTITY closeTab.closeBrowserOnLastTab "Son sekme kapatılınca tarayıcıyı kapat">
 

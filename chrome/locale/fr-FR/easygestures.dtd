@@ -40,8 +40,10 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Sélection">
 <!ENTITY contextmenu.textbox "Zone de texte">
 
-<!ENTITY customizations.loadURLScript "Charger URL/Script">
-<!ENTITY customizations.misc "Divers">
+<!ENTITY customizations.loadURLScriptActions "Actions Charger URL/Script">
+<!ENTITY customizations.otherActions "Autres actions">
+<!ENTITY customizations.infoActions "Vous pouvez sélectionner ces actions dans le panneau '&menus;'">
+<!ENTITY customizations.infoPlaceholders "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
 
 <!ENTITY about.languageInfo "Langue">
 <!ENTITY about.stats "Statistiques">
@@ -209,13 +211,10 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Zoom arrière">
 <!ENTITY func.zoomReset "Réinitialiser zoom">
 
-<!ENTITY input.infoSel "Vous pouvez sélectionner ces actions dans l'onglet d'actions.">
 <!ENTITY input.page1 "Page 1">
 <!ENTITY input.page2 "Page 2">
 <!ENTITY input.page3 "Page 3">
 <!ENTITY input.page4 "Page 4">
-<!ENTITY input.infoPlaceHolder "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
-
 <!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
 

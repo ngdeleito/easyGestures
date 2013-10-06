@@ -274,7 +274,7 @@
         <hbox align="center">
           <radio label="&link.throughAsAction;" value="true" />
           <separator orient="vertical"  />
-          <label class="text-link" value="&configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('miscCustomizationsTab'));" />
+          <label class="text-link" value="&configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
         </hbox>
         <radio label="&link.throughAsBrowser;" value="false" />
       </radiogroup>
@@ -464,11 +464,9 @@
   </prefpane>
   
   <prefpane
-    flex="1"
-    image="chrome://easygestures/content/customizations.png"
-    label="&customizations;"
     id="customizationsPane"
-    style="overflow: auto;">
+    label="&customizations;"
+    image="chrome://easygestures/content/customizations.png">
     <preferences>
       <preference id="loadURLin" name="easygestures.customizations.loadURLin" type="string" />
       <preference id="loadURLScript1" name="easygestures.customizations.loadURLScript1" type="unichar" />
@@ -494,163 +492,189 @@
       <preference id="openLink" name="easygestures.customizations.openLink" type="string" />
       <preference id="closeBrowserOnLastTab" name="easygestures.customizations.closeBrowserOnLastTab" type="bool" />
     </preferences>
-    <vbox flex="1">
-      <tabbox orient="vertical" flex="1" id="customizationsTabboxes">
-        <tabs>
-          <tab label="&customizations.loadURLScript;" />
-          <tab label="&customizations.misc;" id="miscCustomizationsTab" />
-        </tabs>
-        <tabpanels flex="1">
-          <tabpanel flex="1" style="overflow: auto;">
-            <vbox>
-              <vbox style="background-color:white;">
-                <hbox>
-                  <vbox>
-                    <label value="&input.infoSel;" height="16px"
-                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
-                    <label value="&input.infoPlaceHolder;" style="margin-left:32px;" />
-                  </vbox>
-                </hbox>
-              </vbox>
-              <separator />
+    <tabbox id="customizationsTabboxes">
+      <tabs>
+        <tab label="&customizations.loadURLScriptActions;" />
+        <tab label="&customizations.otherActions;" id="otherActionsCustomizationsTab" />
+      </tabs>
+      <tabpanels>
+        <tabpanel>
+          <vbox flex="1" style="height: 480px; overflow: auto">
+            <hbox align="start">
+              <image class="message-icon" style="height: 1.5em; width: auto" />
               <vbox>
-                <label value="&urlscript.load;" style="font-weight: bold;" />
-                <spacer height="3px" />
-                <hbox>
-                  <menulist preference="loadURLin">
-                    <menupopup>
-                      <menuitem label="&urlscript.curTab;" value="curTab" />
-                      <menuitem label="&urlscript.newTab;" value="newTab" />
-                      <menuitem label="&urlscript.newWindow;" value="newWindow" />
-                    </menupopup>
-                  </menulist>
-                </hbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript1" preference-editable="true"
-                  preference="loadURLScript1" onsynctopreference="return writeLoadURLScriptPreference(1);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript2" preference-editable="true"
-                  preference="loadURLScript2" onsynctopreference="return writeLoadURLScriptPreference(2);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript3" preference-editable="true"
-                  preference="loadURLScript3" onsynctopreference="return writeLoadURLScriptPreference(3);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript4" preference-editable="true"
-                  preference="loadURLScript4" onsynctopreference="return writeLoadURLScriptPreference(4);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript5" preference-editable="true"
-                  preference="loadURLScript5" onsynctopreference="return writeLoadURLScriptPreference(5);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript6" preference-editable="true"
-                  preference="loadURLScript6" onsynctopreference="return writeLoadURLScriptPreference(6);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript7" preference-editable="true"
-                  preference="loadURLScript7" onsynctopreference="return writeLoadURLScriptPreference(7);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript8" preference-editable="true"
-                  preference="loadURLScript8" onsynctopreference="return writeLoadURLScriptPreference(8);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript9" preference-editable="true"
-                  preference="loadURLScript9" onsynctopreference="return writeLoadURLScriptPreference(9);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript10" preference-editable="true"
-                  preference="loadURLScript10" onsynctopreference="return writeLoadURLScriptPreference(10);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript11" preference-editable="true"
-                  preference="loadURLScript11" onsynctopreference="return writeLoadURLScriptPreference(11);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript12" preference-editable="true"
-                  preference="loadURLScript12" onsynctopreference="return writeLoadURLScriptPreference(12);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript13" preference-editable="true"
-                  preference="loadURLScript13" onsynctopreference="return writeLoadURLScriptPreference(13);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript14" preference-editable="true"
-                  preference="loadURLScript14" onsynctopreference="return writeLoadURLScriptPreference(14);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript15" preference-editable="true"
-                  preference="loadURLScript15" onsynctopreference="return writeLoadURLScriptPreference(15);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript16" preference-editable="true"
-                  preference="loadURLScript16" onsynctopreference="return writeLoadURLScriptPreference(16);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript17" preference-editable="true"
-                  preference="loadURLScript17" onsynctopreference="return writeLoadURLScriptPreference(17);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript18" preference-editable="true"
-                  preference="loadURLScript18" onsynctopreference="return writeLoadURLScriptPreference(18);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript19" preference-editable="true"
-                  preference="loadURLScript19" onsynctopreference="return writeLoadURLScriptPreference(19);"></vbox>
-                <separator />
-                <menuseparator />
-                <vbox flex="1" id="gr_loadURLScript20" preference-editable="true"
-                  preference="loadURLScript20" onsynctopreference="return writeLoadURLScriptPreference(20);"></vbox>
+                <label value="&customizations.infoActions;" />
+                <label value="&customizations.infoPlaceholders;" />
               </vbox>
+            </hbox>
+            
+            <separator orient="horizontal" style="height: 2em" />
+            
+            <label value="&urlscript.load;" class="header" />
+            <hbox>
+              <menulist preference="loadURLin" style="margin-left: 1em">
+                <menupopup>
+                  <menuitem label="&urlscript.curTab;" value="curTab" />
+                  <menuitem label="&urlscript.newTab;" value="newTab" />
+                  <menuitem label="&urlscript.newWindow;" value="newWindow" />
+                </menupopup>
+              </menulist>
+            </hbox>
+            
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript1" preference-editable="true"
+              preference="loadURLScript1"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(1);">
             </vbox>
-          </tabpanel>
-          <tabpanel>
-            <vbox>
-              <vbox style="background-color:white;">
-                <hbox>
-                  <vbox>
-                    <label value="&input.infoSel;"  height="16px"
-                      style="background-image:url(info.png);background-repeat:no-repeat; padding-left:22px; margin-left:10px;" />
-                  </vbox>
-                </hbox>
-              </vbox>
-              <separator />
-              <menuseparator />
-              <hbox>
-                <image id="openLinkImage" class="small_openLink" />
-                <vbox>
-                  <spacer flex="1" />
-                  <label value="&link;" style="font-weight: bold;" />
-                  <spacer flex="1" />
-                </vbox>
-              </hbox>
-              <spacer height="3px" />
-              <radiogroup preference="openLink" orient="vertical" oncommand="updateUI();">
-                <radio label="&link.curTab;" value="curTab" />
-                <radio label="&link.newTab;" value="newTab" />
-                <radio label="&link.newWindow;" value="newWindow" />
-              </radiogroup>
-              <separator />
-              <menuseparator />
-              <hbox>
-                <image id="closeTabImage" class="small_closeTab" />
-                <vbox>
-                  <spacer flex="1" />
-                  <label value="&closeTab;" style="font-weight: bold;" />
-                  <spacer flex="1" />
-                </vbox>
-              </hbox>
-              <spacer height="3px" />
-              <checkbox preference="closeBrowserOnLastTab" label="&closeTab.closeBrowserOnLastTab;" />
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript2" preference-editable="true"
+              preference="loadURLScript2"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(2);">
             </vbox>
-          </tabpanel>
-        </tabpanels>
-      </tabbox>
-    </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript3" preference-editable="true"
+              preference="loadURLScript3"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(3);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript4" preference-editable="true"
+              preference="loadURLScript4"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(4);">
+            </vbox>
+            <vbox id="gr_loadURLScript5" preference-editable="true"
+              preference="loadURLScript5"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(5);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript6" preference-editable="true"
+              preference="loadURLScript6"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(6);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript7" preference-editable="true"
+              preference="loadURLScript7"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(7);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript8" preference-editable="true"
+              preference="loadURLScript8"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(8);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript9" preference-editable="true"
+              preference="loadURLScript9"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(9);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript10" preference-editable="true"
+              preference="loadURLScript10"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(10);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript11" preference-editable="true"
+              preference="loadURLScript11"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(11);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript12" preference-editable="true"
+              preference="loadURLScript12"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(12);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript13" preference-editable="true"
+              preference="loadURLScript13"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(13);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript14" preference-editable="true"
+              preference="loadURLScript14"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(14);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript15" preference-editable="true"
+              preference="loadURLScript15"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(15);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript16" preference-editable="true"
+              preference="loadURLScript16"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(16);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript17" preference-editable="true"
+              preference="loadURLScript17"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(17);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript18" preference-editable="true"
+              preference="loadURLScript18"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(18);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript19" preference-editable="true"
+              preference="loadURLScript19"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(19);">
+            </vbox>
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="gr_loadURLScript20" preference-editable="true"
+              preference="loadURLScript20"
+              onsynctopreference="return preparePreferenceValueForLoadURLScript(20);">
+            </vbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel>
+          <vbox flex="1">
+            <hbox align="center">
+              <image class="message-icon" style="height: 1.5em; width: auto" />
+              <label value="&customizations.infoActions;" />
+            </hbox>
+            
+            <separator orient="horizontal" style="height: 2em" />
+            
+            <hbox align="center">
+              <image id="openLinkImage" class="small_openLink" />
+              <label value="&link;" class="header" />
+            </hbox>
+            <radiogroup preference="openLink" oncommand="updateUI();"
+              style="margin-left: 1em">
+              <radio label="&link.curTab;" value="curTab" />
+              <radio label="&link.newTab;" value="newTab" />
+              <radio label="&link.newWindow;" value="newWindow" />
+            </radiogroup>
+            
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            
+            <hbox align="center">
+              <image id="closeTabImage" class="small_closeTab" />
+              <label value="&closeTab;" class="header" />
+            </hbox>
+            <checkbox preference="closeBrowserOnLastTab"
+              label="&closeTab.closeBrowserOnLastTab;"
+              style="margin-left: 1em" />
+          </vbox>
+        </tabpanel>
+      </tabpanels>
+    </tabbox>
   </prefpane>
   
   <hbox flex="1" pack="end">
@@ -1382,7 +1406,7 @@
         (new Function ("return " + string[5] ))();
     }
     
-    function writeLoadURLScriptPreference(number) {
+    function preparePreferenceValueForLoadURLScript(number) {
       var string = Components.classes["@mozilla.org/supports-string;1"]
                              .createInstance(Components.interfaces.nsISupportsString);
       string.data = document.getElementById("loadURLScript_name" + number).value

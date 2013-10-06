@@ -21,8 +21,10 @@
 <!ENTITY contextmenu.image "Grafik">
 <!ENTITY contextmenu.selection "Auswahl">
 <!ENTITY contextmenu.textbox "Textfeld">
-<!ENTITY customizations.loadURLScript "Adresse/Skript laden">
-<!ENTITY customizations.misc "Verschiedenes">
+<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.otherActions "Other Actions">
+<!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
+<!ENTITY customizations.infoPlaceholders "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
 <!ENTITY about.languageInfo "Sprache">
 <!ENTITY about.stats "Statistiken">
 <!ENTITY about.statsDisplay "Statistiken anzeigen">
@@ -172,12 +174,10 @@
 <!ENTITY func.zoomIn "Vergrößern">
 <!ENTITY func.zoomOut "Verkleinern">
 <!ENTITY func.zoomReset "Größe zurücksetzen">
-<!ENTITY input.infoSel "Diese Aktionen können im Bereich &apos;Aktionen&apos; ausgewählt werden.">
 <!ENTITY input.page1 "Seite 1">
 <!ENTITY input.page2 "Seite 2">
 <!ENTITY input.page3 "Seite 3">
 <!ENTITY input.page4 "Seite 4">
-<!ENTITY input.infoPlaceHolder "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
 <!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
 <!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
 <!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
