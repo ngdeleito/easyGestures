@@ -211,10 +211,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Zoom arrière">
 <!ENTITY func.zoomReset "Réinitialiser zoom">
 
-<!ENTITY input.page1 "Page 1">
-<!ENTITY input.page2 "Page 2">
-<!ENTITY input.page3 "Page 3">
-<!ENTITY input.page4 "Page 4">
 <!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
 

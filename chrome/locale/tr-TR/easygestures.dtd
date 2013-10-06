@@ -214,10 +214,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Uzaklaştır">
 <!ENTITY func.zoomReset "Yakınlaştırmayı Sıfırla">
 
-<!ENTITY input.page1 "Sayfa 1">
-<!ENTITY input.page2 "Sayfa 2">
-<!ENTITY input.page3 "Sayfa 3">
-<!ENTITY input.page4 "Sayfa 4">
 <!ENTITY closeTab "&quot;Sekmeyi Kapat&quot; Eylemini Kişiselleştir">
 <!ENTITY closeTab.closeBrowserOnLastTab "Son sekme kapatılınca tarayıcıyı kapat">
 

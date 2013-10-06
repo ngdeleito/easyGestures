@@ -174,10 +174,6 @@
 <!ENTITY func.zoomIn "Priblížiť">
 <!ENTITY func.zoomOut "Vzdialiť">
 <!ENTITY func.zoomReset "Predvolené priblíženie">
-<!ENTITY input.page1 "Strana 1">
-<!ENTITY input.page2 "Strana 2">
-<!ENTITY input.page3 "Strana 3">
-<!ENTITY input.page4 "Strana 4">
 <!ENTITY closeTab "Prispôsobiť akciu &apos;Zavrieť kartu&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavrieť prehliadač, keď je zavretá posledná karta">
 <!ENTITY urlscript "Prispôsobiť akcie &apos;Načítať URL/Skript&apos;">

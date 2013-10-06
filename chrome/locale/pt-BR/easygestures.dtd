@@ -213,10 +213,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Menos Zoom">
 <!ENTITY func.zoomReset "Reiniciar Zoom">
 
-<!ENTITY input.page1 "Página 1">
-<!ENTITY input.page2 "Página 2">
-<!ENTITY input.page3 "Página 3">
-<!ENTITY input.page4 "Página 4">
 <!ENTITY closeTab "Personalizar Ação 'Fechar Aba' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Fechar navegador quando última aba for fechada">
 

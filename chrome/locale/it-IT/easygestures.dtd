@@ -214,10 +214,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Zoom Indietro">
 <!ENTITY func.zoomReset "Zoom Iniziale">
 
-<!ENTITY input.page1 "Pagina 1">
-<!ENTITY input.page2 "Pagina 2">
-<!ENTITY input.page3 "Pagina 3">
-<!ENTITY input.page4 "Pagina 4">
 <!ENTITY closeTab "Personalizza l'Azione 'Chiudi Linguetta' ">
 <!ENTITY closeTab.closeBrowserOnLastTab "Chiudi il browser quando viene chiusa l'ultima linguetta">
 

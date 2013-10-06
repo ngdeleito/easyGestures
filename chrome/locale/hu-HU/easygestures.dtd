@@ -176,10 +176,6 @@
 <!ENTITY func.zoomIn "Nagyítás">
 <!ENTITY func.zoomOut "Kicsinyítés">
 <!ENTITY func.zoomReset "Visszaállítás">
-<!ENTITY input.page1 "1. oldal">
-<!ENTITY input.page2 "2. oldal">
-<!ENTITY input.page3 "3. oldal">
-<!ENTITY input.page4 "4. oldal">
 <!ENTITY closeTab "'Lap bezárása' művelet személyre szabása">
 <!ENTITY closeTab.closeBrowserOnLastTab "Böngésző bezárása az utolsó lap bezárásakor">
 <!ENTITY urlscript "'URL/szkript betöltése' művelet személyre szabása">

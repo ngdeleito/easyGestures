@@ -214,10 +214,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "Zmenšit">
 <!ENTITY func.zoomReset "Předvolené zvětšení">
 
-<!ENTITY input.page1 "Strana 1">
-<!ENTITY input.page2 "Strana 2">
-<!ENTITY input.page3 "Strana 3">
-<!ENTITY input.page4 "Strana 4">
 <!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
 

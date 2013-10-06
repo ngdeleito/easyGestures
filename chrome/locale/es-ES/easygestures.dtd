@@ -176,10 +176,6 @@
 <!ENTITY func.zoomIn "Acercar zoom">
 <!ENTITY func.zoomOut "Alejar zoom">
 <!ENTITY func.zoomReset "Reiniciar zoom">
-<!ENTITY input.page1 "Página 1">
-<!ENTITY input.page2 "Página 2">
-<!ENTITY input.page3 "Página 3">
-<!ENTITY input.page4 "Página 4">
 <!ENTITY closeTab "Personalizar acción &apos;Cerrar pestaña&apos;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Cerrar el navegador al cerrar la última pestaña">
 <!ENTITY urlscript "Personalizar acción &apos;Cargar dirección/Script&apos;">

@@ -214,10 +214,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "缩小">
 <!ENTITY func.zoomReset "重置缩放值">
 
-<!ENTITY input.page1 "页面 1">
-<!ENTITY input.page2 "页面 2">
-<!ENTITY input.page3 "页面 3">
-<!ENTITY input.page4 "页面 4">
 <!ENTITY closeTab "自定义“关闭标签页”手势">
 <!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
 

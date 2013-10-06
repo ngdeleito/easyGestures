@@ -174,10 +174,6 @@
 <!ENTITY func.zoomIn "Powiększ">
 <!ENTITY func.zoomOut "Zmniejsz">
 <!ENTITY func.zoomReset "Wielkość domyślna">
-<!ENTITY input.page1 "Strona 1">
-<!ENTITY input.page2 "Strona 2">
-<!ENTITY input.page3 "Strona 3">
-<!ENTITY input.page4 "Strona 4">
 <!ENTITY closeTab "Dostosuj działanie akcji &quot;Zamknij kartę&quot;">
 <!ENTITY closeTab.closeBrowserOnLastTab "Zamknij przeglądarkę po zamknięciu ostatniej karty">
 <!ENTITY urlscript "Dostosuj akcję &quot;Otwórz url/skrypt&quot; ">

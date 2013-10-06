@@ -213,10 +213,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.zoomOut "焦距拉遠">
 <!ENTITY func.zoomReset "還原焦距">
 
-<!ENTITY input.page1 "第一頁">
-<!ENTITY input.page2 "第二頁">
-<!ENTITY input.page3 "第三頁">
-<!ENTITY input.page4 "第四頁">
 <!ENTITY closeTab "自訂「關閉分頁」動作">
 <!ENTITY closeTab.closeBrowserOnLastTab "關閉最後一個分頁時關閉瀏覽器">
 

@@ -174,10 +174,6 @@
 <!ENTITY func.zoomIn "Vergrößern">
 <!ENTITY func.zoomOut "Verkleinern">
 <!ENTITY func.zoomReset "Größe zurücksetzen">
-<!ENTITY input.page1 "Seite 1">
-<!ENTITY input.page2 "Seite 2">
-<!ENTITY input.page3 "Seite 3">
-<!ENTITY input.page4 "Seite 4">
 <!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
 <!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
 <!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
