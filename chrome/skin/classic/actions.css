@@ -437,6 +437,8 @@ div.zoomReset[grayed="false"][active="true"] { background-position: -256px -1024
 						SMALL IMAGES
 //////////////////////////////////////////////////////////////////////////////////////////////*/
 
+image[class^="small_"]{ list-style-image: url("small_actions.png") }
+
 div.small_empty { background-position: 0px 0px !important ; }
 div.small_empty[active="true"] { background-position: 0px -40px !important ; }
 image.small_empty { -moz-image-region: rect(0px 20px 20px 0px) !important ; }

@@ -426,7 +426,6 @@
           image.setAttribute("tooltiptext",window.opener.eG_PopupLabels[i]);
           
           //image.setAttribute("src","");
-          image.style.listStyleImage="url('"+window.opener.eG_skinCurrent+"small_actions.png')";
           image.setAttribute("class","small_"+window.opener.eG_PopupImages[i]);
           row.appendChild(image);
           
