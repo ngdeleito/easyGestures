@@ -143,8 +143,16 @@ var eGPrefs = {
     return this._prefs.getBoolPref("profile.startupTips");
   },
   
+  isLargeMenuOff : function() {
+    return !this._prefs.getBoolPref("behavior.largeMenu");
+  },
+  
   setDailyReadingsFolderPref : function(aString) {
     this._prefs.setCharPref("behavior.dailyReadingsFolderURI", aString);
+  },
+  
+  getStatsClicksPref : function() {
+    return this._prefs.getIntPref("profile.statsClicks");
   },
   
   incrementStatsClicksPref : function() {
@@ -152,9 +160,17 @@ var eGPrefs = {
     this._prefs.setIntPref("profile.statsClicks", ++value);
   },
   
+  getStatsUsePref : function() {
+    return this._prefs.getIntPref("profile.statsUse");
+  },
+  
   incrementStatsUsePref : function() {
     var value = this._prefs.getIntPref("profile.statsUse");
     this._prefs.setIntPref("profile.statsUse", ++value);
+  },
+  
+  getStatsLastResetPref : function() {
+    return this._prefs.getCharPref("profile.statsLastReset");
   },
   
   getStatsMainPref : function() {

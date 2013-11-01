@@ -48,6 +48,11 @@
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   <script type="application/x-javascript" src="integration.js" />
+  <!-- getting access to eGPrefs -->
+  <script type="application/x-javascript">
+    Components.utils.import('resource://gre/modules/Services.jsm');
+  </script>
+  <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
 
   <label hidden="true" id="eG_statsNovice" value="&stats.novice;" />
   <label hidden="true" id="eG_statsCoolUser" value="&stats.coolUser;" />
@@ -298,8 +303,6 @@
   <script type="application/x-javascript">
     //<![CDATA[
     
-    var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
-    
     function fillActions() {
       var target = document.getElementById("statsActionsTab");
       
@@ -385,13 +388,13 @@
       var scaleFactor = 3;
       var statsClicksOnActions = 0;
       
-      var statsMain = (new Function ("return " + eG_prefs.getCharPref("profile.statsMain") ))();          // (new Function ("return " + data ))() replacing eval on data
-      var statsExtra = (new Function ("return " + eG_prefs.getCharPref("profile.statsExtra") ))();        // (new Function ("return " + data ))() replacing eval on data
-      var statsActions = (new Function ("return " + eG_prefs.getCharPref("profile.statsActions") ))();    // (new Function ("return " + data ))() replacing eval on data
+      var statsMain = (new Function ("return " + eGPrefs.getStatsMainPref() ))();          // (new Function ("return " + data ))() replacing eval on data
+      var statsExtra = (new Function ("return " + eGPrefs.getStatsExtraPref() ))();        // (new Function ("return " + data ))() replacing eval on data
+      var statsActions = (new Function ("return " + eGPrefs.getStatsActionsPref() ))();    // (new Function ("return " + data ))() replacing eval on data
       
-      var statsClicks = eG_prefs.getIntPref("profile.statsClicks");
-      var statsUse = eG_prefs.getIntPref("profile.statsUse");
-      var statsLastReset = eG_prefs.getCharPref("profile.statsLastReset");
+      var statsClicks = eGPrefs.getStatsClicksPref();
+      var statsUse = eGPrefs.getStatsUsePref();
+      var statsLastReset = eGPrefs.getStatsLastResetPref();
       
       if (statsClicks == 0) {
         statsClicks = 1; //just avoiding division by 0 to prevent displaying NaN
