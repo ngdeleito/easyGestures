@@ -174,7 +174,7 @@ var eGPrefs = {
   },
   
   getStatsMainPref : function() {
-    return this._prefs.getCharPref("profile.statsMain");
+    return JSON.parse(this._prefs.getCharPref("profile.statsMain"));
   },
   
   setStatsMainPref : function(aString) {
@@ -182,7 +182,7 @@ var eGPrefs = {
   },
   
   getStatsExtraPref : function() {
-    return this._prefs.getCharPref("profile.statsExtra");
+    return JSON.parse(this._prefs.getCharPref("profile.statsExtra"));
   },
   
   setStatsExtraPref : function(aString) {
@@ -190,7 +190,7 @@ var eGPrefs = {
   },
   
   getStatsActionsPref : function() {
-    return this._prefs.getCharPref("profile.statsActions");
+    return JSON.parse(this._prefs.getCharPref("profile.statsActions"));
   },
   
   setStatsActionsPref : function(aString) {
@@ -231,7 +231,7 @@ function eG_updateToVersion43() {
   }
   
   // update actions stats
-  var prevActionsStr = (new Function ("return " + eGPrefs.getStatsActionsPref()))(); // (new Function ("return " + data ))() replacing eval on data
+  var prevActionsStr = eGPrefs.getStatsActionsPref();
   var actionsStr = new Array();
   for (i=0; i<eG_menuItems.length; i++) {
     if (i<30) {

@@ -953,7 +953,7 @@ eG_menu.prototype = {
       }
 
       if (layout.name.search("extra") == -1) { // main
-        var statsMainArray = (new Function ("return " + eGPrefs.getStatsMainPref()))(); // (new Function ("return " + data ))() replacing eval on data
+        var statsMainArray = eGPrefs.getStatsMainPref();
 
         var sector8To10 = this.sector;
         if (!layout.isLarge) {
@@ -968,12 +968,12 @@ eG_menu.prototype = {
         eGPrefs.setStatsMainPref(statsMainArray.toSource());
       }
       else { // extra
-        var statsExtraArray = (new Function ("return " + eGPrefs.getStatsExtraPref()))(); // (new Function ("return " + data ))() replacing eval on data
+        var statsExtraArray = eGPrefs.getStatsExtraPref();
         statsExtraArray[index*8+this.sector]++;
         eGPrefs.setStatsExtraPref(statsExtraArray.toSource());
       }
 
-      var statsActionsArray = (new Function ("return " + eGPrefs.getStatsActionsPref()))(); // (new Function ("return " + data ))() replacing eval on data
+      var statsActionsArray = eGPrefs.getStatsActionsPref();
       statsActionsArray[layout.actions[this.sector].id]++;
       eGPrefs.setStatsActionsPref(statsActionsArray.toSource());
 
