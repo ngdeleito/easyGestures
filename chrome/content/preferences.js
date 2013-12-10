@@ -143,6 +143,18 @@ var eGPrefs = {
     return this._prefs.getBoolPref("profile.startupTips");
   },
   
+  toggleStartupTips : function() {
+    this._prefs.setBoolPref("profile.startupTips", !this.areStartupTipsOn());
+  },
+  
+  getTipNumberPref : function() {
+    return this._prefs.getIntPref("profile.tipNbr");
+  },
+  
+  setTipNumberPref : function(anInteger) {
+    return this._prefs.setIntPref("profile.tipNbr", anInteger);
+  },
+  
   isLargeMenuOff : function() {
     return !this._prefs.getBoolPref("behavior.largeMenu");
   },
