@@ -55,7 +55,6 @@ var eGPrefs = {
   },
 
   setDefaultSettings : function() {
-    this._prefs.setCharPref("profile.version", eGc.version);
     this._prefs.setBoolPref("profile.startupTips", true);
     this._prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
     
@@ -209,108 +208,15 @@ var eGPrefs = {
     this._prefs.setCharPref("profile.statsActions", aString);
   }
 };
-
-function eG_updateToVersion43() {
-  // update actions numbers, labels and stats because of addition of 3 new actions
-  var menus = new Array("main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
-                        "extraAlt2", "contextLink", "contextImage",
-                        "contextSelection","contextTextbox");
   
-  for (var i=0; i<menus.length; i++) {
-    var actionsSplit = eGPrefs._prefs.getCharPref("actions." + menus[i]).split("/");
-    var actionsPrefs = "";
-    
-    for (var n=0; n<actionsSplit.length; n++) {
-      if (parseInt(actionsSplit[n]) >= 82) {
-        actionsSplit[n] = parseInt(actionsSplit[n]) + 3;
-      }
-      else if (parseInt(actionsSplit[n]) >= 78) {
-        actionsSplit[n] = parseInt(actionsSplit[n]) + 2;
-      }
-      else if (parseInt(actionsSplit[n]) >= 30) {
-        actionsSplit[n] = parseInt(actionsSplit[n]) + 1;
-      }
-      
-      actionsPrefs += actionsSplit[n];
-      
-      if (n<actionsSplit.length-1) {
-        actionsPrefs += "/"; // this is the separator, prefStr ends without separator
-      }
     }
     
-    // update actions
-    eGPrefs._prefs.setCharPref("actions." + menus[i], actionsPrefs);
+    
+    
+    
+    
+    
   }
-  
-  // update actions stats
-  var prevActionsStr = eGPrefs.getStatsActionsPref();
-  var actionsStr = new Array();
-  for (i=0; i<eG_menuItems.length; i++) {
-    if (i<30) {
-      actionsStr.push(prevActionsStr[i]);
-    }
-    else if (i==30) {
-      actionsStr.push(0);
-    }
-    else if (i>30 && i<78) {
-      actionsStr.push(prevActionsStr[i-1]);
-    }
-    else if (i==78) {
-      actionsStr.push(0);
-    }
-    else if (i>78 && i<82) {
-      actionsStr.push(prevActionsStr[i-2]);
-    }
-    else if (i==82) {
-      actionsStr.push(0);
-    }
-    else {
-      actionsStr.push(prevActionsStr[i-3]);
-    }
-  }
-  
-  eGPrefs.setStatsActionsPref(actionsStr.toSource()); // saved as source of an Array
-}
-
-function eG_updatePrefs() {
-  var prefs = Services.prefs.getBranch("easygestures.");
-  
-  var versionCompare = Components.classes["@mozilla.org/xpcom/version-comparator;1"].getService(Components.interfaces.nsIVersionComparator);
-  var prevVersion = prefs.getCharPref("profile.version"); // if a previous version is not already installed, this will trigger the catch statement to set all prefs
-  
-  if (versionCompare.compare(prevVersion, "4.3.1") >= 0) {
-    // Keep current preferences because no changes to prefs have been made since version 4.3.1
-  }
-  else if (versionCompare.compare(prevVersion, "4.3") >= 0) {
-    // make a few changes for all versions from version 4.3 to prior to version 4.3.1
-    
-    // update value of prefs
-    prefs.setIntPref("customizations.tabPopupDelay", 400);
-  }
-  else if (versionCompare.compare(prevVersion, "4.1.2") >= 0) {
-    // make a few changes for all versions from version 4.1.2 to prior to version 4.3
-    
-    // update value of prefs for 4.3.1
-    prefs.setIntPref("customizations.tabPopupDelay", 400);
-    
-    // update actions numbers and labels because of addition of 3 new actions
-    eG_updateToVersion43();
-    
-    // clear obsolete user prefs
-    prefs.clearUserPref("customizations.tabRepetitionDelay");
-    
-    // update value of prefs
-    prefs.setBoolPref("customizations.queryInNewTab", !prefs.getBoolPref("customizations.queryInNewTab"));
-  }
-  else {
-    // update all preferences for all versions prior to version 4.1.2
-    eGPrefs.setDefaultSettings();
-    eGPrefs.initializeStats();
-  }
-  
-  // update version
-  prefs.setCharPref("profile.version", eGc.version);
-}
 
 var eGPrefsObserver = {
   register: function() {

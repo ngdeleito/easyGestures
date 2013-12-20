@@ -128,7 +128,6 @@ function startup(data, reason) {
       eGPrefs.initializeStats();
     }
     else if (reason == ADDON_UPGRADE) {
-      eG_updatePrefs();
     }
     
     // getting access to localization strings

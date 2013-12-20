@@ -1204,7 +1204,6 @@
         converterOutputStream.writeString( "//eG "+ eG_getVersion()+" ("+dateStr+")//\n");
         
         for(var i=0; i<prefArray.length; i++) {
-          //if (prefArray[i].search("version")!=-1) continue; // don't export version number preference
           if (prefArray[i].search("stateChange") != -1)
             continue; // don't export stateChange preferences
           
@@ -1292,7 +1291,6 @@
         converterInputStream.close();
         inputStream.close();
       }
-      eG_updatePrefs();
     }
     
     function initMenuDialog() {

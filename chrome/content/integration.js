@@ -36,7 +36,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 var eGc = {
-  version: "4.3.2", // Ex: 1.1beta
   localizing: null, // Access to string bundle for easygestures.properties file
   
   blockStdContextMenu: false, // whether the std context menu should be suppressed
