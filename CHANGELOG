@@ -36,3 +36,4 @@ Changes by ngdeleito (see git history for the full details)
 - removed ability to open menu only on drag
 - removed the omit tooltips delay option
 - removed support for upgrading from versions prior to 4.3.2
+- moved preferences to the extensions. branch

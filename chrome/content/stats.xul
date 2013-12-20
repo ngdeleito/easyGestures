@@ -388,19 +388,19 @@
       var scaleFactor = 3;
       var statsClicksOnActions = 0;
       
-      var statsMainArray = eGPrefs.getStatsMainPref();
-      var statsExtraArray = eGPrefs.getStatsExtraPref();
+      var statsMainArray = eGPrefs.getStatsMainMenuPref();
+      var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
       var statsActionsArray = eGPrefs.getStatsActionsPref();
       
       var statsClicks = eGPrefs.getStatsClicksPref();
-      var statsUse = eGPrefs.getStatsUsePref();
+      var statsMenuShown = eGPrefs.getStatsMenuShownPref();
       var statsLastReset = eGPrefs.getStatsLastResetPref();
       
       if (statsClicks == 0) {
         statsClicks = 1; //just avoiding division by 0 to prevent displaying NaN
       }
       
-      var use = statsUse / statsClicks * 100;
+      var use = statsMenuShown / statsClicks * 100;
       document.getElementById("eG_statsUse").value = Math.round(use) + "%";
       if (use < 10) {
         document.getElementById("eG_statsUseStars").width = "0px";

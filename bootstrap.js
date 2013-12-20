@@ -119,7 +119,7 @@ function startup(data, reason) {
   AddonManager.getAddonByID(data.id, function(addon) {
     // installing or upgrading preferences
     var count = {};
-    Services.prefs.getChildList("easygestures.", count);
+    Services.prefs.getChildList("extensions.easygestures.", count);
     if (reason == ADDON_INSTALL || (reason == ADDON_ENABLE && count.value === 0)) {
       // when installing an extension by copying it to the extensions folder
       // reason == ADDON_ENABLE, hence the test to see if there are already
@@ -128,6 +128,7 @@ function startup(data, reason) {
       eGPrefs.initializeStats();
     }
     else if (reason == ADDON_UPGRADE) {
+      eGPrefs.updateToV4_5();
     }
     
     // getting access to localization strings
@@ -203,7 +204,7 @@ function install(data, reason) {
 
 function uninstall(data, reason) {
   if (reason == ADDON_UNINSTALL) {
-    var prefs = Services.prefs.getBranch("easygestures.");
+    var prefs = Services.prefs.getBranch("extensions.easygestures.");
     prefs.deleteBranch("");
   }
 }

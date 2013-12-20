@@ -47,7 +47,6 @@
   persist="lastSelected screenX screenY width height"
   
   onload="avoidMultipleInstances(); initMenuDialog();"
-  onunload="triggerObserverToResetEGm();"
   buttons="accept,cancel,disclosure"
   ondialogdisclosure="window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable');">
 
@@ -56,7 +55,7 @@
     label="&general;"
     image="chrome://easygestures/content/profile.png">
     <preferences>
-      <preference id="startupTips" name="easygestures.profile.startupTips" type="bool" />
+      <preference id="startupTips" name="extensions.easygestures.general.startupTips" type="bool" />
     </preferences>
     <checkbox preference="startupTips" label="&about.startupTips;" />
     
@@ -68,7 +67,7 @@
       <button disabled="true" label="&about.import;"
               oncommand="importPrefs(); initMenuDialog();" />
       <button disabled="true" label="&about.export;"
-              oncommand="saveAllPreferences(this); triggerObserverToResetEGm(); exportPrefs();" />
+              oncommand="saveAllPreferences(this); exportPrefs();" />
       <button label="&about.reset;"
               oncommand="if (confirm('&about.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
     </hbox>
@@ -90,14 +89,14 @@
     label="&activation;"
     image="chrome://easygestures/content/behavior.png">
     <preferences>
-      <preference id="showButton" name="easygestures.behavior.showButton" type="int" />
-      <preference id="showKey" name="easygestures.behavior.showKey" type="int" />
-      <preference id="showAfterDelay" name="easygestures.behavior.showAfterDelay" type="bool" />
-      <preference id="showAfterDelayDelay" name="easygestures.behavior.showAfterDelayDelay" type="int" />
-      <preference id="showAltButton" name="easygestures.behavior.showAltButton" type="int" />
-      <preference id="supprKey" name="easygestures.behavior.supprKey" type="int" />
-      <preference id="contextKey" name="easygestures.behavior.contextKey" type="int" />
-      <preference id="contextShowAuto" name="easygestures.behavior.contextMenuAuto" type="bool" />
+      <preference id="showButton" name="extensions.easygestures.activation.showButton" type="int" />
+      <preference id="showKey" name="extensions.easygestures.activation.showKey" type="int" />
+      <preference id="showAfterDelay" name="extensions.easygestures.activation.showAfterDelay" type="bool" />
+      <preference id="showAfterDelayValue" name="extensions.easygestures.activation.showAfterDelayValue" type="int" />
+      <preference id="showAltButton" name="extensions.easygestures.activation.showAltButton" type="int" />
+      <preference id="suppressKey" name="extensions.easygestures.activation.suppressKey" type="int" />
+      <preference id="contextKey" name="extensions.easygestures.activation.contextKey" type="int" />
+      <preference id="contextShowAuto" name="extensions.easygestures.activation.contextShowAuto" type="bool" />
     </preferences>
     <label value="&use;" class="header" />
     <hbox align="center" style="margin-left: 1em">
@@ -127,7 +126,7 @@
     <hbox align="center" style="margin-left: 1em">
       <label id="showAfterDelayDelayLabel"
         value="&autoscrolling.autoscrollingDelayLabel;" />
-      <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayDelay"
+      <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayValue"
         size="3" style="text-align: right" />
       <label value="ms" />
     </hbox>
@@ -156,7 +155,7 @@
     
     <label value="&suppress;" class="header" />
     <hbox align="center" style="margin-left: 1em">
-      <menulist id="supprKeyMenulist"
+      <menulist id="suppressKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
           <menuitem label="&use.noKey;" value="0" />
@@ -167,7 +166,7 @@
         </menupopup>
       </menulist>
       <label value="&suppress.keycode;" />
-      <textbox id="customSupprKeyCode" preference="supprKey" size="4"
+      <textbox id="customSupprKeyCode" preference="suppressKey" size="4"
         onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
     
@@ -198,18 +197,18 @@
     label="&behavior;"
     image="chrome://easygestures/content/behavior.png">
     <preferences>
-      <preference id="largeMenu" name="easygestures.behavior.largeMenu" type="bool" />
-      <preference id="noIcons" name="easygestures.behavior.noIcons" type="bool" />
-      <preference id="smallIcons" name="easygestures.behavior.smallIcons" type="bool" />
-      <preference id="menuOpacity" name="easygestures.behavior.menuOpacity" type="int" />
-      <preference id="showTooltips" name="easygestures.behavior.showTooltips" type="bool" />
-      <preference id="tooltipsDelay" name="easygestures.behavior.tooltipsDelay" type="int" />
-      <preference id="moveAuto" name="easygestures.behavior.moveAuto" type="bool" />
-      <preference id="handleLinks" name="easygestures.behavior.handleLinks" type="bool" />
-      <preference id="linksDelay" name="easygestures.behavior.linksDelay" type="int" />
-      <preference id="handleLinksAsOpenLink" name="easygestures.behavior.handleLinksAsOpenLink" type="bool" />
-      <preference id="autoscrollingOn" name="easygestures.behavior.autoscrollingOn" type="bool" />
-      <preference id="autoscrollingDelay" name="easygestures.behavior.autoscrollingDelay" type="int" />
+      <preference id="largeMenu" name="extensions.easygestures.behavior.largeMenu" type="bool" />
+      <preference id="noIcons" name="extensions.easygestures.behavior.noIcons" type="bool" />
+      <preference id="smallIcons" name="extensions.easygestures.behavior.smallIcons" type="bool" />
+      <preference id="menuOpacity" name="extensions.easygestures.behavior.menuOpacity" type="int" />
+      <preference id="showTooltips" name="extensions.easygestures.behavior.showTooltips" type="bool" />
+      <preference id="tooltipsDelay" name="extensions.easygestures.behavior.tooltipsDelay" type="int" />
+      <preference id="moveAuto" name="extensions.easygestures.behavior.moveAuto" type="bool" />
+      <preference id="handleLinks" name="extensions.easygestures.behavior.handleLinks" type="bool" />
+      <preference id="linksDelay" name="extensions.easygestures.behavior.linksDelay" type="int" />
+      <preference id="handleLinksAsOpenLink" name="extensions.easygestures.behavior.handleLinksAsOpenLink" type="bool" />
+      <preference id="autoscrollingOn" name="extensions.easygestures.behavior.autoscrollingOn" type="bool" />
+      <preference id="autoscrollingDelay" name="extensions.easygestures.behavior.autoscrollingDelay" type="int" />
     </preferences>
     <label value="&extras.menuType;" class="header" />
     <radiogroup id="menuType" preference="largeMenu" oncommand="updateUI();"
@@ -293,22 +292,22 @@
     label="&menus;"
     image="chrome://easygestures/content/actions.png">
     <preferences>
-      <preference id="mainActions" name="easygestures.actions.main" type="string" />
-      <preference id="mainAlternative1" name="easygestures.actions.mainAlternative1" type="bool" />
-      <preference id="mainAlt1Actions" name="easygestures.actions.mainAlt1" type="string" />
-      <preference id="mainAlternative2" name="easygestures.actions.mainAlternative2" type="bool" />
-      <preference id="mainAlt2Actions" name="easygestures.actions.mainAlt2" type="string" />
-      <preference id="extraActions" name="easygestures.actions.extra" type="string" />
-      <preference id="extraAlternative1" name="easygestures.actions.extraAlternative1" type="bool" />
-      <preference id="extraAlt1Actions" name="easygestures.actions.extraAlt1" type="string" />
-      <preference id="extraAlternative2" name="easygestures.actions.extraAlternative2" type="bool" />
-      <preference id="extraAlt2Actions" name="easygestures.actions.extraAlt2" type="string" />
-      <preference id="contextImageFirst" name="easygestures.actions.contextImageFirst" type="bool" />
-      <preference id="contextTextboxFirst" name="easygestures.actions.contextTextboxFirst" type="bool" />
-      <preference id="contextLinkActions" name="easygestures.actions.contextLink" type="string" />
-      <preference id="contextImageActions" name="easygestures.actions.contextImage" type="string" />
-      <preference id="contextSelectionActions" name="easygestures.actions.contextSelection" type="string" />
-      <preference id="contextTextboxActions" name="easygestures.actions.contextTextbox" type="string" />
+      <preference id="mainMenu" name="extensions.easygestures.menus.main" type="string" />
+      <preference id="mainAlt1Enabled" name="extensions.easygestures.menus.mainAlt1Enabled" type="bool" />
+      <preference id="mainAlt1Menu" name="extensions.easygestures.menus.mainAlt1" type="string" />
+      <preference id="mainAlt2Enabled" name="extensions.easygestures.menus.mainAlt2Enabled" type="bool" />
+      <preference id="mainAlt2Menu" name="extensions.easygestures.menus.mainAlt2" type="string" />
+      <preference id="extraMenu" name="extensions.easygestures.menus.extra" type="string" />
+      <preference id="extraAlt1Enabled" name="extensions.easygestures.menus.extraAlt1Enabled" type="bool" />
+      <preference id="extraAlt1Menu" name="extensions.easygestures.menus.extraAlt1" type="string" />
+      <preference id="extraAlt2Enabled" name="extensions.easygestures.menus.extraAlt2Enabled" type="bool" />
+      <preference id="extraAlt2Menu" name="extensions.easygestures.menus.extraAlt2" type="string" />
+      <preference id="contextImageFirst" name="extensions.easygestures.menus.contextImageFirst" type="bool" />
+      <preference id="contextTextboxFirst" name="extensions.easygestures.menus.contextTextboxFirst" type="bool" />
+      <preference id="contextLinkMenu" name="extensions.easygestures.menus.contextLink" type="string" />
+      <preference id="contextImageMenu" name="extensions.easygestures.menus.contextImage" type="string" />
+      <preference id="contextSelectionMenu" name="extensions.easygestures.menus.contextSelection" type="string" />
+      <preference id="contextTextboxMenu" name="extensions.easygestures.menus.contextTextbox" type="string" />
     </preferences>
     <tabbox id="actionsTabboxes">
       <tabs>
@@ -330,7 +329,7 @@
                   <checkbox label="&actions.enabled;"
                     style="visibility: hidden" />
                   <vbox id="gr_main" preference-editable="true"
-                    preference="mainActions"
+                    preference="mainMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('main');">
                   </vbox>
                 </vbox>
@@ -338,10 +337,10 @@
               <tabpanel>
                 <vbox>
                   <checkbox id="mainAlternative1Checkbox"
-                    preference="mainAlternative1" label="&actions.enabled;"
+                    preference="mainAlt1Enabled" label="&actions.enabled;"
                     oncommand="updateUI();" />
                   <vbox id="gr_mainAlt1" preference-editable="true"
-                    preference="mainAlt1Actions"
+                    preference="mainAlt1Menu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt1');">
                   </vbox>
                 </vbox>
@@ -349,10 +348,10 @@
               <tabpanel>
                 <vbox>
                   <checkbox id="mainAlternative2Checkbox"
-                    preference="mainAlternative2" label="&actions.enabled;"
+                    preference="mainAlt2Enabled" label="&actions.enabled;"
                     oncommand="updateUI();" />
                   <vbox id="gr_mainAlt2" preference-editable="true"
-                    preference="mainAlt2Actions"
+                    preference="mainAlt2Menu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt2');">
                   </vbox>
                 </vbox>
@@ -379,7 +378,7 @@
                   <checkbox label="&actions.enabled;"
                     style="visibility: hidden" />
                     <vbox id="gr_extra" preference-editable="true"
-                      preference="extraActions"
+                      preference="extraMenu"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extra');">
                     </vbox>
                   </vbox>
@@ -387,10 +386,10 @@
                 <tabpanel>
                   <vbox>
                     <checkbox id="extraAlternative1Checkbox"
-                      preference="extraAlternative1" label="&actions.enabled;"
+                      preference="extraAlt1Enabled" label="&actions.enabled;"
                       oncommand="updateUI();" />
                     <vbox id="gr_extraAlt1" preference-editable="true"
-                      preference="extraAlt1Actions"
+                      preference="extraAlt1Menu"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt1');">
                     </vbox>
                   </vbox>
@@ -398,10 +397,10 @@
                 <tabpanel>
                   <vbox>
                     <checkbox id="extraAlternative2Checkbox"
-                      preference="extraAlternative2" label="&actions.enabled;"
+                      preference="extraAlt2Enabled" label="&actions.enabled;"
                       oncommand="updateUI();" />
                     <vbox id="gr_extraAlt2" preference-editable="true"
-                      preference="extraAlt2Actions"
+                      preference="extraAlt2Menu"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt2');">
                     </vbox>
                   </vbox>
@@ -428,25 +427,25 @@
               <tabpanels>
                 <tabpanel>
                   <vbox id="gr_contextLink" preference-editable="true"
-                    preference="contextLinkActions"
+                    preference="contextLinkMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextLink');">
                   </vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox id="gr_contextImage" preference-editable="true"
-                    preference="contextImageActions"
+                    preference="contextImageMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextImage');">
                   </vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox id="gr_contextSelection" preference-editable="true"
-                    preference="contextSelectionActions"
+                    preference="contextSelectionMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextSelection');">
                   </vbox>
                 </tabpanel>
                 <tabpanel>
                   <vbox id="gr_contextTextbox" preference-editable="true"
-                    preference="contextTextboxActions"
+                    preference="contextTextboxMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextTextbox');">
                   </vbox>
                 </tabpanel>
@@ -463,29 +462,29 @@
     label="&customizations;"
     image="chrome://easygestures/content/customizations.png">
     <preferences>
-      <preference id="loadURLin" name="easygestures.customizations.loadURLin" type="string" />
-      <preference id="loadURLScript1" name="easygestures.customizations.loadURLScript1" type="unichar" />
-      <preference id="loadURLScript2" name="easygestures.customizations.loadURLScript2" type="unichar" />
-      <preference id="loadURLScript3" name="easygestures.customizations.loadURLScript3" type="unichar" />
-      <preference id="loadURLScript4" name="easygestures.customizations.loadURLScript4" type="unichar" />
-      <preference id="loadURLScript5" name="easygestures.customizations.loadURLScript5" type="unichar" />
-      <preference id="loadURLScript6" name="easygestures.customizations.loadURLScript6" type="unichar" />
-      <preference id="loadURLScript7" name="easygestures.customizations.loadURLScript7" type="unichar" />
-      <preference id="loadURLScript8" name="easygestures.customizations.loadURLScript8" type="unichar" />
-      <preference id="loadURLScript9" name="easygestures.customizations.loadURLScript9" type="unichar" />
-      <preference id="loadURLScript10" name="easygestures.customizations.loadURLScript10" type="unichar" />
-      <preference id="loadURLScript11" name="easygestures.customizations.loadURLScript11" type="unichar" />
-      <preference id="loadURLScript12" name="easygestures.customizations.loadURLScript12" type="unichar" />
-      <preference id="loadURLScript13" name="easygestures.customizations.loadURLScript13" type="unichar" />
-      <preference id="loadURLScript14" name="easygestures.customizations.loadURLScript14" type="unichar" />
-      <preference id="loadURLScript15" name="easygestures.customizations.loadURLScript15" type="unichar" />
-      <preference id="loadURLScript16" name="easygestures.customizations.loadURLScript16" type="unichar" />
-      <preference id="loadURLScript17" name="easygestures.customizations.loadURLScript17" type="unichar" />
-      <preference id="loadURLScript18" name="easygestures.customizations.loadURLScript18" type="unichar" />
-      <preference id="loadURLScript19" name="easygestures.customizations.loadURLScript19" type="unichar" />
-      <preference id="loadURLScript20" name="easygestures.customizations.loadURLScript20" type="unichar" />
-      <preference id="openLink" name="easygestures.customizations.openLink" type="string" />
-      <preference id="closeBrowserOnLastTab" name="easygestures.customizations.closeBrowserOnLastTab" type="bool" />
+      <preference id="loadURLin" name="extensions.easygestures.customizations.loadURLin" type="string" />
+      <preference id="loadURLScript1" name="extensions.easygestures.customizations.loadURLScript1" type="unichar" />
+      <preference id="loadURLScript2" name="extensions.easygestures.customizations.loadURLScript2" type="unichar" />
+      <preference id="loadURLScript3" name="extensions.easygestures.customizations.loadURLScript3" type="unichar" />
+      <preference id="loadURLScript4" name="extensions.easygestures.customizations.loadURLScript4" type="unichar" />
+      <preference id="loadURLScript5" name="extensions.easygestures.customizations.loadURLScript5" type="unichar" />
+      <preference id="loadURLScript6" name="extensions.easygestures.customizations.loadURLScript6" type="unichar" />
+      <preference id="loadURLScript7" name="extensions.easygestures.customizations.loadURLScript7" type="unichar" />
+      <preference id="loadURLScript8" name="extensions.easygestures.customizations.loadURLScript8" type="unichar" />
+      <preference id="loadURLScript9" name="extensions.easygestures.customizations.loadURLScript9" type="unichar" />
+      <preference id="loadURLScript10" name="extensions.easygestures.customizations.loadURLScript10" type="unichar" />
+      <preference id="loadURLScript11" name="extensions.easygestures.customizations.loadURLScript11" type="unichar" />
+      <preference id="loadURLScript12" name="extensions.easygestures.customizations.loadURLScript12" type="unichar" />
+      <preference id="loadURLScript13" name="extensions.easygestures.customizations.loadURLScript13" type="unichar" />
+      <preference id="loadURLScript14" name="extensions.easygestures.customizations.loadURLScript14" type="unichar" />
+      <preference id="loadURLScript15" name="extensions.easygestures.customizations.loadURLScript15" type="unichar" />
+      <preference id="loadURLScript16" name="extensions.easygestures.customizations.loadURLScript16" type="unichar" />
+      <preference id="loadURLScript17" name="extensions.easygestures.customizations.loadURLScript17" type="unichar" />
+      <preference id="loadURLScript18" name="extensions.easygestures.customizations.loadURLScript18" type="unichar" />
+      <preference id="loadURLScript19" name="extensions.easygestures.customizations.loadURLScript19" type="unichar" />
+      <preference id="loadURLScript20" name="extensions.easygestures.customizations.loadURLScript20" type="unichar" />
+      <preference id="openLink" name="extensions.easygestures.customizations.openLink" type="string" />
+      <preference id="closeBrowserOnLastTab" name="extensions.easygestures.customizations.closeBrowserOnLastTab" type="bool" />
     </preferences>
     <tabbox id="customizationsTabboxes">
       <tabs>
@@ -1045,7 +1044,7 @@
   <script type="application/x-javascript">
     //<![CDATA[
     
-    var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
+    var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("extensions.easygestures.");
     var eG_actionsPopupList;
     
     function retrieveFavicon(url, actionNumber) {
@@ -1204,9 +1203,6 @@
         converterOutputStream.writeString( "//eG "+ eG_getVersion()+" ("+dateStr+")//\n");
         
         for(var i=0; i<prefArray.length; i++) {
-          if (prefArray[i].search("stateChange") != -1)
-            continue; // don't export stateChange preferences
-          
           converterOutputStream.writeString( prefArray[i]+"\n"); // write pref name
           
           switch(eG_prefs.getPrefType(prefArray[i])) {
@@ -1300,10 +1296,10 @@
       createActions();
       createLoadURLScriptForCustomization();
       
-      ["showButton", "showAltButton", "supprKey", "contextKey"].forEach(
+      ["showButton", "showAltButton", "suppressKey", "contextKey"].forEach(
         function (element, index, array) {
           var menulist = document.getElementById(element + "Menulist");
-          menulist.value = eG_prefs.getIntPref("behavior." + element);
+          menulist.value = eG_prefs.getIntPref("activation." + element);
           if (menulist.selectedIndex == -1) {
             menulist.selectedIndex = menulist.itemCount - 1;
           }
@@ -1312,15 +1308,6 @@
       
       updateUI();
       window.setCursor('auto');
-    }
-    
-    function triggerObserverToResetEGm() {
-      try {
-        eG_prefs.setBoolPref("stateChange.prefs", !eG_prefs.getBoolPref("stateChange.prefs"));
-      }
-      catch (ex) {
-        eG_prefs.setBoolPref("stateChange.prefs", true);
-      }
     }
     
     function saveAllPreferences(element) {
@@ -1336,7 +1323,7 @@
     }
     
     function readActionsGroupPreference(name) {
-      var preference = document.getElementById(name + "Actions");
+      var preference = document.getElementById(name + "Menu");
       var ids = preference.value.split("/");
       
       var indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];

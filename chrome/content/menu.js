@@ -271,22 +271,22 @@ function eG_menuLayout(menu, name, actionsPrefs) {
 
 // menu Constructor
 function eG_menu () {
-  var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("easygestures.");
+  var prefs = Services.prefs.getBranch("extensions.easygestures.");
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   // loading preferences first
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  this.showButton = prefs.getIntPref("behavior.showButton"); // mouse button for opening the pie menu
-  this.showKey = prefs.getIntPref("behavior.showKey"); // key for showing the pie menu with mouse button clicked
-  this.showAltButton = prefs.getIntPref("behavior.showAltButton"); // mouse button for switching between primary and alternative pie menu
-  this.supprKey = prefs.getIntPref("behavior.supprKey"); // key for suppressing the pie menu
+  this.showButton = prefs.getIntPref("activation.showButton"); // mouse button for opening the pie menu
+  this.showKey = prefs.getIntPref("activation.showKey"); // key for showing the pie menu with mouse button clicked
+  this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
+  this.supprKey = prefs.getIntPref("activation.suppressKey"); // key for suppressing the pie menu
 
-  this.showAfterDelay = prefs.getBoolPref("behavior.showAfterDelay"); // enabling display pie menu after delay before dragging
-  this.showAfterDelayDelay = prefs.getIntPref("behavior.showAfterDelayDelay"); // delay to display pie menu after delay before dragging
+  this.showAfterDelay = prefs.getBoolPref("activation.showAfterDelay"); // enabling display pie menu after delay before dragging
+  this.showAfterDelayDelay = prefs.getIntPref("activation.showAfterDelayValue"); // delay to display pie menu after delay before dragging
 
-  this.contextMenuAuto = prefs.getBoolPref("behavior.contextMenuAuto");	// enables context sensitivity
-  this.contextKey = prefs.getIntPref("behavior.contextKey"); // key for forcing non contextual or contextual pie menu
+  this.contextMenuAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
+  this.contextKey = prefs.getIntPref("activation.contextKey"); // key for forcing non contextual or contextual pie menu
 
   this.handleLinks = prefs.getBoolPref("behavior.handleLinks"); // handle clicking on links through pie menu button
   this.handleLinksAsOpenLink = prefs.getBoolPref("behavior.handleLinksAsOpenLink");
@@ -301,16 +301,16 @@ function eG_menu () {
   this.menuOpacity = prefs.getIntPref("behavior.menuOpacity")/100; // because menuopacity is set in % in preferences dialog
   this.showTooltips = prefs.getBoolPref("behavior.showTooltips"); // tooltip showing
   this.tooltipsDelay = prefs.getIntPref("behavior.tooltipsDelay"); // tooltip delay
-  this.dailyReadingsFolderURI = prefs.getCharPref("behavior.dailyReadingsFolderURI");
+  this.dailyReadingsFolderURI = prefs.getCharPref("customizations.dailyReadingsFolder");
 
   this.moveAuto = prefs.getBoolPref("behavior.moveAuto"); // true: menu moves when reaching edge. false: memu moves by pressing <Shift> key
 
-  this.mainAlternative1 = prefs.getBoolPref("actions.mainAlternative1"); // activate main alternative 1 layout
-  this.mainAlternative2 = prefs.getBoolPref("actions.mainAlternative2");
-  this.extraAlternative1 = prefs.getBoolPref("actions.extraAlternative1");
-  this.extraAlternative2 = prefs.getBoolPref("actions.extraAlternative2");
-  this.contextImageFirst = prefs.getBoolPref("actions.contextImageFirst");
-  this.contextTextboxFirst = prefs.getBoolPref("actions.contextTextboxFirst");
+  this.mainAlternative1 = prefs.getBoolPref("menus.mainAlt1Enabled");
+  this.mainAlternative2 = prefs.getBoolPref("menus.mainAlt2Enabled");
+  this.extraAlternative1 = prefs.getBoolPref("menus.extraAlt1Enabled");
+  this.extraAlternative2 = prefs.getBoolPref("menus.extraAlt2Enabled");
+  this.contextImageFirst = prefs.getBoolPref("menus.contextImageFirst");
+  this.contextTextboxFirst = prefs.getBoolPref("menus.contextTextboxFirst");
 
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
@@ -377,34 +377,34 @@ function eG_menu () {
 
   this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
     main: new eG_menuLayout(this, "main",
-                            prefs.getCharPref("actions.main").split("/")),
+                            prefs.getCharPref("menus.main").split("/")),
 
     mainAlt1: new eG_menuLayout(this, "mainAlt1",
-                                prefs.getCharPref("actions.mainAlt1").split("/")),
+                                prefs.getCharPref("menus.mainAlt1").split("/")),
 
     mainAlt2: new eG_menuLayout(this, "mainAlt2",
-                                prefs.getCharPref("actions.mainAlt2").split("/")),
+                                prefs.getCharPref("menus.mainAlt2").split("/")),
 
     extra: new eG_menuLayout(this, "extra",
-                             prefs.getCharPref("actions.extra").split("/")),
+                             prefs.getCharPref("menus.extra").split("/")),
 
     extraAlt1: new eG_menuLayout(this, "extraAlt1",
-                                 prefs.getCharPref("actions.extraAlt1").split("/")),
+                                 prefs.getCharPref("menus.extraAlt1").split("/")),
 
     extraAlt2: new eG_menuLayout(this, "extraAlt2",
-                                 prefs.getCharPref("actions.extraAlt2").split("/")),
+                                 prefs.getCharPref("menus.extraAlt2").split("/")),
 
     contextLink: new eG_menuLayout(this, "contextLink",
-                                   prefs.getCharPref("actions.contextLink").split("/")),
+                                   prefs.getCharPref("menus.contextLink").split("/")),
 
     contextImage: new eG_menuLayout(this, "contextImage",
-                                    prefs.getCharPref("actions.contextImage").split("/")),
+                                    prefs.getCharPref("menus.contextImage").split("/")),
 
     contextSelection: new eG_menuLayout(this, "contextSelection",
-                                        prefs.getCharPref("actions.contextSelection").split("/")),
+                                        prefs.getCharPref("menus.contextSelection").split("/")),
 
     contextTextbox: new eG_menuLayout(this, "contextTextbox",
-                                      prefs.getCharPref("actions.contextTextbox").split("/"))
+                                      prefs.getCharPref("menus.contextTextbox").split("/"))
   };
 }
 
@@ -953,7 +953,7 @@ eG_menu.prototype = {
       }
 
       if (layout.name.search("extra") == -1) { // main
-        var statsMainArray = eGPrefs.getStatsMainPref();
+        var statsMainArray = eGPrefs.getStatsMainMenuPref();
 
         var sector8To10 = this.sector;
         if (!layout.isLarge) {
@@ -965,12 +965,12 @@ eG_menu.prototype = {
           }
         }
         statsMainArray[index*10+sector8To10]++;
-        eGPrefs.setStatsMainPref(statsMainArray.toSource());
+        eGPrefs.setStatsMainMenuPref(statsMainArray.toSource());
       }
       else { // extra
-        var statsExtraArray = eGPrefs.getStatsExtraPref();
+        var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
         statsExtraArray[index*8+this.sector]++;
-        eGPrefs.setStatsExtraPref(statsExtraArray.toSource());
+        eGPrefs.setStatsExtraMenuPref(statsExtraArray.toSource());
       }
 
       var statsActionsArray = eGPrefs.getStatsActionsPref();
@@ -1284,8 +1284,7 @@ eG_menu.prototype = {
 
     this.reset();
 
-    // update statsUse preference
-    eGPrefs.incrementStatsUsePref();
+    eGPrefs.incrementStatsMenuShownPref();
 
     // re-enable counting clicks inside window
     var window = Services.wm.getMostRecentWindow("navigator:browser");

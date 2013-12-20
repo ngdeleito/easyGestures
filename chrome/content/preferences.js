@@ -33,7 +33,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 var eGPrefs = {
-  _prefs : Services.prefs.getBranch("easygestures."),
+  _prefs : Services.prefs.getBranch("extensions.easygestures."),
   
   _setDefaultMenus : function() {
     var menus = {
@@ -50,36 +50,36 @@ var eGPrefs = {
     };
     
     for (let [menuName, actions] in Iterator(menus)) {
-      this._prefs.setCharPref("actions." + menuName, actions);
+      this._prefs.setCharPref("menus." + menuName, actions);
     }
   },
 
   setDefaultSettings : function() {
-    this._prefs.setBoolPref("profile.startupTips", true);
-    this._prefs.setIntPref("profile.tipNbr", 1); // used in tips.xul
+    this._prefs.setBoolPref("general.startupTips", true);
+    this._prefs.setIntPref("general.tipNumber", 1);
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (window.navigator.userAgent.indexOf("Mac") == -1) {
-      this._prefs.setIntPref("behavior.showButton", 1); // middle button
-      this._prefs.setIntPref("behavior.showKey", 0); // 0=none 16=shift 17=ctrl
-      this._prefs.setIntPref("behavior.showAltButton", 2); // right button
-      this._prefs.setIntPref("behavior.supprKey", 45); // 18=alt 45=insert
-      this._prefs.setIntPref("behavior.contextKey", 17);
+      this._prefs.setIntPref("activation.showButton", 1); // middle button
+      this._prefs.setIntPref("activation.showKey", 0); // 0=none 16=shift 17=ctrl
+      this._prefs.setIntPref("activation.showAltButton", 2); // right button
+      this._prefs.setIntPref("activation.suppressKey", 45); // 18=alt 45=insert
+      this._prefs.setIntPref("activation.contextKey", 17);
       this._prefs.setBoolPref("behavior.handleLinksAsOpenLink", true);
     }
     else {
       // mac users need different defaults
-      this._prefs.setIntPref("behavior.showButton", 0);
-      this._prefs.setIntPref("behavior.showKey", 16);
-      this._prefs.setIntPref("behavior.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
-      this._prefs.setIntPref("behavior.supprKey", 17);
-      this._prefs.setIntPref("behavior.contextKey", 0);
+      this._prefs.setIntPref("activation.showButton", 0);
+      this._prefs.setIntPref("activation.showKey", 16);
+      this._prefs.setIntPref("activation.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
+      this._prefs.setIntPref("activation.suppressKey", 17);
+      this._prefs.setIntPref("activation.contextKey", 0);
       this._prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
     }
     
-    this._prefs.setBoolPref("behavior.showAfterDelay", false);
-    this._prefs.setIntPref("behavior.showAfterDelayDelay", 200);
-    this._prefs.setBoolPref("behavior.contextMenuAuto", false); // Show contextual pie menu automatically
+    this._prefs.setBoolPref("activation.showAfterDelay", false);
+    this._prefs.setIntPref("activation.showAfterDelayValue", 200);
+    this._prefs.setBoolPref("activation.contextShowAuto", false); // Show contextual pie menu automatically
     
     this._prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
     this._prefs.setBoolPref("behavior.largeMenu", false);
@@ -93,14 +93,14 @@ var eGPrefs = {
     this._prefs.setBoolPref("behavior.autoscrollingOn", false);
     this._prefs.setIntPref("behavior.autoscrollingDelay", 750);
     
-    this._prefs.setCharPref("behavior.dailyReadingsFolderURI", "");
+    this._prefs.setCharPref("customizations.dailyReadingsFolder", "");
     
-    this._prefs.setBoolPref("actions.mainAlternative1", true); // activate main alternative 1 layout
-    this._prefs.setBoolPref("actions.mainAlternative2", false);
-    this._prefs.setBoolPref("actions.extraAlternative1", true);
-    this._prefs.setBoolPref("actions.extraAlternative2", false);
-    this._prefs.setBoolPref("actions.contextImageFirst", false);
-    this._prefs.setBoolPref("actions.contextTextboxFirst", true);
+    this._prefs.setBoolPref("menus.mainAlt1Enabled", true);
+    this._prefs.setBoolPref("menus.mainAlt2Enabled", false);
+    this._prefs.setBoolPref("menus.extraAlt1Enabled", true);
+    this._prefs.setBoolPref("menus.extraAlt2Enabled", false);
+    this._prefs.setBoolPref("menus.contextImageFirst", false);
+    this._prefs.setBoolPref("menus.contextTextboxFirst", true);
     this._setDefaultMenus();
     
     this._prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
@@ -125,33 +125,33 @@ var eGPrefs = {
       numberOfActions = eG_menuItems.length;
     }
     
-    this._prefs.setIntPref("profile.statsClicks", 0); // clicks inside window excluding clicks inside menu
-    this._prefs.setIntPref("profile.statsUse", 0); // calls for menu
+    this._prefs.setIntPref("stats.clicks", 0); // clicks inside window excluding clicks inside menu
+    this._prefs.setIntPref("stats.menuShown", 0); // calls for menu
     var d = new Date(); // date of last reset
-    this._prefs.setCharPref("profile.statsLastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
-    this._prefs.setCharPref("profile.statsMain","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    this._prefs.setCharPref("profile.statsExtra","[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+    this._prefs.setCharPref("stats.lastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+    this._prefs.setCharPref("stats.mainMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
+    this._prefs.setCharPref("stats.extraMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
     var actionsStr = new Array();
     for (let i=0; i<numberOfActions; i++) {
       actionsStr.push(0); // all actions stats set to 0
     }
-    this._prefs.setCharPref("profile.statsActions", actionsStr.toSource()); // saved as source of an Array
+    this._prefs.setCharPref("stats.actions", actionsStr.toSource()); // saved as source of an Array
   },
   
   areStartupTipsOn : function() {
-    return this._prefs.getBoolPref("profile.startupTips");
+    return this._prefs.getBoolPref("general.startupTips");
   },
   
   toggleStartupTips : function() {
-    this._prefs.setBoolPref("profile.startupTips", !this.areStartupTipsOn());
+    this._prefs.setBoolPref("general.startupTips", !this.areStartupTipsOn());
   },
   
   getTipNumberPref : function() {
-    return this._prefs.getIntPref("profile.tipNbr");
+    return this._prefs.getIntPref("general.tipNumber");
   },
   
   setTipNumberPref : function(anInteger) {
-    return this._prefs.setIntPref("profile.tipNbr", anInteger);
+    return this._prefs.setIntPref("general.tipNumber", anInteger);
   },
   
   isLargeMenuOff : function() {
@@ -159,73 +159,149 @@ var eGPrefs = {
   },
   
   setDailyReadingsFolderPref : function(aString) {
-    this._prefs.setCharPref("behavior.dailyReadingsFolderURI", aString);
+    this._prefs.setCharPref("customizations.dailyReadingsFolder", aString);
   },
   
   getStatsClicksPref : function() {
-    return this._prefs.getIntPref("profile.statsClicks");
+    return this._prefs.getIntPref("stats.clicks");
   },
   
   incrementStatsClicksPref : function() {
-    var value = this._prefs.getIntPref("profile.statsClicks");
-    this._prefs.setIntPref("profile.statsClicks", ++value);
+    var value = this._prefs.getIntPref("stats.clicks");
+    this._prefs.setIntPref("stats.clicks", ++value);
   },
   
-  getStatsUsePref : function() {
-    return this._prefs.getIntPref("profile.statsUse");
+  getStatsMenuShownPref : function() {
+    return this._prefs.getIntPref("stats.menuShown");
   },
   
-  incrementStatsUsePref : function() {
-    var value = this._prefs.getIntPref("profile.statsUse");
-    this._prefs.setIntPref("profile.statsUse", ++value);
+  incrementStatsMenuShownPref : function() {
+    var value = this._prefs.getIntPref("stats.menuShown");
+    this._prefs.setIntPref("stats.menuShown", ++value);
   },
   
   getStatsLastResetPref : function() {
-    return this._prefs.getCharPref("profile.statsLastReset");
+    return this._prefs.getCharPref("stats.lastReset");
   },
   
-  getStatsMainPref : function() {
-    return JSON.parse(this._prefs.getCharPref("profile.statsMain"));
+  getStatsMainMenuPref : function() {
+    return JSON.parse(this._prefs.getCharPref("stats.mainMenu"));
   },
   
-  setStatsMainPref : function(aString) {
-    this._prefs.setCharPref("profile.statsMain", aString);
+  setStatsMainMenuPref : function(aString) {
+    this._prefs.setCharPref("stats.mainMenu", aString);
   },
   
-  getStatsExtraPref : function() {
-    return JSON.parse(this._prefs.getCharPref("profile.statsExtra"));
+  getStatsExtraMenuPref : function() {
+    return JSON.parse(this._prefs.getCharPref("stats.extraMenu"));
   },
   
-  setStatsExtraPref : function(aString) {
-    this._prefs.setCharPref("profile.statsExtra", aString);
+  setStatsExtraMenuPref : function(aString) {
+    this._prefs.setCharPref("stats.extraMenu", aString);
   },
   
   getStatsActionsPref : function() {
-    return JSON.parse(this._prefs.getCharPref("profile.statsActions"));
+    return JSON.parse(this._prefs.getCharPref("stats.actions"));
   },
   
   setStatsActionsPref : function(aString) {
-    this._prefs.setCharPref("profile.statsActions", aString);
-  }
-};
+    this._prefs.setCharPref("stats.actions", aString);
+  },
   
+  updateToV4_5 : function() {
+    function PrefUpdate(type, oldPref, newPref) {
+      this.type = type;
+      this.oldPref = oldPref;
+      this.newPref = newPref;
     }
     
+    var prefsToUpdate = [];
+    var oldBranch = Services.prefs.getBranch("easygestures.");
     
+    prefsToUpdate.push(new PrefUpdate("Bool", "profile.startupTips", "general.startupTips"));
+    prefsToUpdate.push(new PrefUpdate("Int", "profile.tipNbr", "general.tipNumber"));
     
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.showButton", "activation.showButton"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.showKey", "activation.showKey"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.showAfterDelay", "activation.showAfterDelay"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.showAfterDelayDelay", "activation.showAfterDelayValue"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.showAltButton", "activation.showAltButton"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.supprKey", "activation.suppressKey"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.contextKey", "activation.contextKey"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.contextMenuAuto", "activation.contextShowAuto"));
     
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.largeMenu", "behavior.largeMenu"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.noIcons", "behavior.noIcons"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.smallIcons", "behavior.smallIcons"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.menuOpacity", "behavior.menuOpacity"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.showTooltips", "behavior.showTooltips"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.tooltipsDelay", "behavior.tooltipsDelay"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.moveAuto", "behavior.moveAuto"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.handleLinks", "behavior.handleLinks"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.linksDelay", "behavior.linksDelay"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.handleLinksAsOpenLink", "behavior.handleLinksAsOpenLink"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "behavior.autoscrollingOn", "behavior.autoscrollingOn"));
+    prefsToUpdate.push(new PrefUpdate("Int", "behavior.autoscrollingDelay", "behavior.autoscrollingDelay"));
     
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.main", "menus.main"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "actions.mainAlternative1", "menus.mainAlt1Enabled"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.mainAlt1", "menus.mainAlt1"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "actions.mainAlternative2", "menus.mainAlt2Enabled"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.mainAlt2", "menus.mainAlt2"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.extra", "menus.extra"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "actions.extraAlternative1", "menus.extraAlt1Enabled"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.extraAlt1", "menus.extraAlt1"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "actions.extraAlternative2", "menus.extraAlt2Enabled"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.extraAlt2", "menus.extraAlt2"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "actions.contextImageFirst", "menus.contextImageFirst"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "actions.contextTextboxFirst", "menus.contextTextboxFirst"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.contextLink", "menus.contextLink"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.contextImage", "menus.contextImage"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.contextSelection", "menus.contextSelection"));
+    prefsToUpdate.push(new PrefUpdate("Char", "actions.contextTextbox", "menus.contextTextbox"));
     
+    prefsToUpdate.push(new PrefUpdate("Char", "customizations.loadURLin", "customizations.loadURLin"));
+    prefsToUpdate.push(new PrefUpdate("Char", "customizations.openLink", "customizations.openLink"));
+    prefsToUpdate.push(new PrefUpdate("Bool", "customizations.closeBrowserOnLastTab", "customizations.closeBrowserOnLastTab"));
+    prefsToUpdate.push(new PrefUpdate("Char", "behavior.dailyReadingsFolderURI", "customizations.dailyReadingsFolder"));
+    
+    prefsToUpdate.push(new PrefUpdate("Int", "profile.statsClicks", "stats.clicks"));
+    prefsToUpdate.push(new PrefUpdate("Int", "profile.statsUse", "stats.menuShown"));
+    prefsToUpdate.push(new PrefUpdate("Char", "profile.statsLastReset", "stats.lastReset"));
+    prefsToUpdate.push(new PrefUpdate("Char", "profile.statsMain", "stats.mainMenu"));
+    prefsToUpdate.push(new PrefUpdate("Char", "profile.statsExtra", "stats.extraMenu"));
+    prefsToUpdate.push(new PrefUpdate("Char", "profile.statsActions", "stats.actions"));
+    
+    prefsToUpdate.forEach(function (prefToUpdate, index, array) {
+      this._prefs["set" + prefToUpdate.type + "Pref"](prefToUpdate.newPref,
+        oldBranch["get" + prefToUpdate.type + "Pref"](prefToUpdate.oldPref));
+    }, this);
+    
+    for (let i=1; i<=20; ++i) {
+      this._prefs.setComplexValue("customizations.loadURLScript" + i,
+                                  Components.interfaces.nsISupportsString,
+                                  oldBranch.getComplexValue("customizations.loadURLScript" + i,
+                                                            Components.interfaces.nsISupportsString));
+    }
+    
+    oldBranch.deleteBranch("");
   }
+};
 
 var eGPrefsObserver = {
   register: function() {
-    this._branch = Services.prefs.getBranch("easygestures.stateChange.prefs");
-    this._branch.addObserver("", this, false);
+    this._branch = Services.prefs.getBranch("extensions.easygestures.");
+    this._branch.addObserver("activation.", this, false);
+    this._branch.addObserver("behavior.", this, false);
+    this._branch.addObserver("menus.", this, false);
+    this._branch.addObserver("customizations.", this, false);
   },
 
   unregister: function() {
-    this._branch.removeObserver("", this);
+    this._branch.removeObserver("activation.", this);
+    this._branch.removeObserver("behavior.", this);
+    this._branch.removeObserver("menus.", this);
+    this._branch.removeObserver("customizations.", this);
   },
 
   observe: function(aSubject, aTopic, aData) {
