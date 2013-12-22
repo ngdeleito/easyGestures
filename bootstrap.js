@@ -77,15 +77,19 @@ stringBundle.prototype = {
 };
 
 function loadEasyGesturesOn(window) {
-  // making sure that easyGestures is only loaded on navigator windows and not
-  // on e.g. preferences and console windows
-  var wintype = window.document.documentElement.getAttribute("windowtype");
-  if (wintype != "navigator:browser") {
-    return;
-  }
-  
-  eG_activateMenu(window);
-  window.addEventListener("mousedown", eG_countClicks, false);
+  window.addEventListener("load", function runOnLoad() {
+    window.removeEventListener("load", runOnLoad, false);
+    
+    // making sure that easyGestures is only loaded on navigator windows and not
+    // on e.g. preferences and console windows
+    var wintype = window.document.documentElement.getAttribute("windowtype");
+    if (wintype != "navigator:browser") {
+      return;
+    }
+    
+    eG_activateMenu(window);
+    window.addEventListener("mousedown", eG_countClicks, false);
+  }, false);
 }
 
 function unloadEasyGesturesOn(window) {
@@ -98,15 +102,7 @@ function unloadEasyGesturesOn(window) {
 
 function loadEasyGesturesOnNewWindow(aSubject, aTopic, aData) {
   if (aTopic == "domwindowopened") {
-    if (aSubject.document.readyState == "complete") {
-      loadEasyGesturesOn(aSubject);
-    }
-    else {
-      aSubject.addEventListener("load", function runOnLoad() {
-        aSubject.removeEventListener("load", runOnLoad, false);
-        loadEasyGesturesOn(aSubject);
-      }, false);
-    }
+    loadEasyGesturesOn(aSubject);
   }
 }
 
