@@ -170,11 +170,11 @@ function eG_menuLayout(menu, name, actionsPrefs) {
     undoCloseTab:      -1
   };
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //	 initializing layout's actions & labels arrays
-  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //  initializing layout's actions & labels arrays
+  //////////////////////////////////////////////////////////////////////////////
 
-  for (var i=0; i<actionsPrefs.length; i++) {
+  for (let i=0; i<actionsPrefs.length; i++) {
     if ( !this.isLarge && (i==3 || i==7) ) {} // don't push actions that are intended for large menus
     else {
       if (eG_menuItems[actionsPrefs[i]].type==1) {
@@ -212,7 +212,7 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   //	 initializing update object
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  for (var i = 0; i<this.actions.length; i++) {
+  for (let i = 0; i<this.actions.length; i++) {
     if (this.update[this.actions[i].src] !== undefined && this.update[this.actions[i].src] == -1) {
       this.update[this.actions[i].src] = i;
     }
@@ -453,7 +453,7 @@ eG_menu.prototype = {
     // adding sign image for alternative menu
     ///////////////////////////////////////////////////////////////////////////
 
-    var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     this.shieldCss(img);
     img.style.position = "absolute";
     //img.style.display = "inline";
@@ -487,7 +487,7 @@ eG_menu.prototype = {
     //text.appendChild(eGc.frame_doc.createTextNode(eGc.localizing.getString("contextual")));
     text.appendChild(eGc.frame_doc.createTextNode(""));
 
-    var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     img.src = this.skinPath+"contextMenuSign.png";
     img.style.position = "absolute";
     img.style.left = parseInt(text.style.left)+"px";
@@ -829,7 +829,7 @@ eG_menu.prototype = {
 
       altMenuSign.style.top = -10-(layout.isLarge ? this.iconSize/2 :0)+"px";
       altMenuSign.style.visibility = "visible";
-      this.updateAltMenuSign(altMenuSign, this.baseMenu, this.mainAlternative1==true && this.mainAlternative2==true);
+      this.updateAltMenuSign(altMenuSign, this.baseMenu, this.mainAlternative1 && this.mainAlternative2);
 
       this.pageY = this.pageY+baseLayout.outerR*1.2;
       this.clientY = this.clientY+baseLayout.outerR*1.2;
@@ -925,8 +925,8 @@ eG_menu.prototype = {
         node.style.backgroundPosition = (!this.smallIcons?"5px 5px":"1px 1px");
       }
       else if (this[src][5] == "true") {
-          node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
-        }
+        node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
+      }
     }
     else {
       if (this[src][4] == "true") {
@@ -1202,7 +1202,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     altMenuSign.style.visibility = "visible";
-    this.updateAltMenuSign(altMenuSign, layout.name,(this.mainAlternative1==true && this.mainAlternative2==true && layout.name.search("main") !=-1) || (this.extraAlternative1==true && this.extraAlternative2==true && layout.name.search("extra") !=-1) );
+    this.updateAltMenuSign(altMenuSign, layout.name, (this.mainAlternative1 && this.mainAlternative2 && layout.name.search("main") !=-1) || (this.extraAlternative1 && this.extraAlternative2 && layout.name.search("extra") !=-1) );
   },
 
   updateAltMenuSign : function(altMenuSign, layoutName, alternative1and2Enabled) {
@@ -1239,20 +1239,18 @@ eG_menu.prototype = {
         if (this.curLayoutName == "main" && this.mainAlternative1) {
           nextLayoutName = "mainAlt1";
         }
-        else
-          if (this.curLayoutName == "mainAlt1" && this.mainAlternative2 || this.curLayoutName == "main" && !this.mainAlternative1 && this.mainAlternative2) {
-            nextLayoutName = "mainAlt2";
-          }
+        else if (this.curLayoutName == "mainAlt1" && this.mainAlternative2 || this.curLayoutName == "main" && !this.mainAlternative1 && this.mainAlternative2) {
+          nextLayoutName = "mainAlt2";
+        }
       }
       else {
         nextLayoutName = "extra";
         if (this.curLayoutName == "extra" && this.extraAlternative1) {
           nextLayoutName = "extraAlt1";
         }
-        else
-          if (this.curLayoutName == "extraAlt1" && this.extraAlternative2 || this.curLayoutName == "extra" && !this.extraAlternative1 && this.extraAlternative2) {
-            nextLayoutName = "extraAlt2";
-          }
+        else if (this.curLayoutName == "extraAlt1" && this.extraAlternative2 || this.curLayoutName == "extra" && !this.extraAlternative1 && this.extraAlternative2) {
+          nextLayoutName = "extraAlt2";
+        }
       }
 
       this.show(nextLayoutName);

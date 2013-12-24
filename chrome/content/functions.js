@@ -276,7 +276,7 @@ var eGf = {
     
     for (let i = 0; i < gBrowser.browsers.length; i++) {
       let url = gBrowser.browsers[i].currentURI.spec;
-      if (i == 0) {
+      if (i === 0) {
         window.open(url);
         newWindow = Services.wm.getMostRecentWindow("navigator:browser");
       }
@@ -337,13 +337,12 @@ var eGf = {
       if (Components.interfaces.nsISupportsWString) {
         str = str.value.QueryInterface(Components.interfaces.nsISupportsWString);
       }
-      else
-        if (Components.interfaces.nsISupportsString) {
-          str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
-        }
-        else {
-          str = null;
-        }
+      else if (Components.interfaces.nsISupportsString) {
+        str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
+      }
+      else {
+        str = null;
+      }
     }
     if (str) {
       return str;

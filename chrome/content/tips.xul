@@ -34,7 +34,6 @@
    - ***** END LICENSE BLOCK ***** -->
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<?xml-stylesheet href="chrome://easygestures/locale/righttoleft.css" type="text/css"?>
 <?xml-stylesheet href="chrome://easygestures/content/tips.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
