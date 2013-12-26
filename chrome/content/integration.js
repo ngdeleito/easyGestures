@@ -284,29 +284,12 @@ function eG_handleMousedown(evt) {
     return;
   }
   
-  // check for tabbroswer area to exclude it from clickable area
-  var excludeTarget = false;
-  for (var node = evt.originalTarget; node != null; node = node.parentNode) {
-    if ((node.nodeName.toString().indexOf("tabbrowser") >= 0 && node.id.toString().indexOf("content")>= 0)
-        || evt.originalTarget.nodeName == "xul:scrollbarbutton"
-        || evt.originalTarget.nodeName == "xul:thumb"
-        || evt.originalTarget.nodeName == "xul:slider") {
-      excludeTarget = true;
-      break;
-    }
-  }
-  
   // check if menu should not be displayed
-  if (excludeTarget || (evt.button != eGm.showButton)
-      || (eGc.keyPressed != eGm.showKey && eGm.showKey != 0)
-      || (eGc.keyPressed == eGm.supprKey && eGm.supprKey != 0)) {
-    if (excludeTarget) {
-      eGc.blockStdContextMenu=true; // to be suppressed ?
-    }
-    else {
-      eGc.blockStdContextMenu = false;
-      eGc.keyPressed = 0;
-    }
+  if ((evt.button != eGm.showButton) ||
+      (eGc.keyPressed != eGm.showKey && eGm.showKey != 0) ||
+      (eGc.keyPressed == eGm.supprKey && eGm.supprKey != 0)) {
+    eGc.unblockStdContextMenu();
+    eGc.keyPressed = 0;
     return;
   }
   
