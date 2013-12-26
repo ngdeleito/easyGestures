@@ -38,7 +38,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 var eGc = {
   localizing: null, // Access to string bundle for easygestures.properties file
   
-  blockStdContextMenu: false, // whether the std context menu should be suppressed
+  _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
   contextType: "", // link/, image/, selection/ or textbox/
@@ -69,7 +69,19 @@ var eGc = {
   showAfterDelayTimer: null, // trigger to display menu after delay
   showAfterDelayPassed: false, // used to display menu after delay
   
-  maxzIndex: 2147483647 // Max Int. Same value as the one used for displaying autoscrolling image
+  maxzIndex: 2147483647, // Max Int. Same value as the one used for displaying autoscrolling image
+  
+  isStdContextMenuBlocked : function() {
+    return this._blockStdContextMenu;
+  },
+  
+  blockStdContextMenu : function() {
+    this._blockStdContextMenu = true;
+  },
+  
+  unblockStdContextMenu : function() {
+    this._blockStdContextMenu = false;
+  }
 };
 
 var eGm = null;
@@ -115,14 +127,6 @@ function eG_getSelection() { // find text selection in current HTML document
   sel = sel.replace(/(\n|\r|\t)+/g, " "); // replace all Linefeed, Carriage return & Tab with a space
   sel = sel.replace(/\s+$/,"");           // remove all spaces at the end of the string
   return sel;
-}
-
-// suppress standard context menu
-function eG_handlePopup(evt) {
-  if (eGc.blockStdContextMenu) {
-    evt.preventDefault();
-  }
-  eGc.blockStdContextMenu = false;
 }
 
 function eG_handleKeys(evt) {
@@ -188,7 +192,7 @@ function eG_handleMouseup(evt) {
   if (eGm.isMenuHidden()) {
     if (!eGm.autoscrolling) {
       // avoid enabling contextual menu when autoscrolling
-      eGc.blockStdContextMenu = false;
+      eGc.unblockStdContextMenu();
       window.removeEventListener("mousemove", eG_handleMousemove, true);
     }
   }
@@ -270,7 +274,7 @@ function eG_handleMousemove(evt) {
 function eG_handleMousedown(evt) {
   var window = evt.target.ownerDocument.defaultView;
   
-  eGc.blockStdContextMenu = true;
+  eGc.blockStdContextMenu();
   
   // check whether pie menu should change layout or hide (later)
   if (eGm.isMenuDisplayed() || eGm.autoscrollingState) {
@@ -467,4 +471,11 @@ function eG_openMenu() {
   else {
     eGm.show("main");
   }
+}
+
+function eG_handlePopup(evt) {
+  if (eGc.isStdContextMenuBlocked()) {
+    evt.preventDefault();
+  }
+  eGc.unblockStdContextMenu();
 }
