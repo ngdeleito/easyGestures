@@ -425,27 +425,20 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
-    node.setAttribute("id","eG_SpecialNodes"); // used to know if menu has already been displayed in the current document
-    this.shieldCss(node);
-    node.style.position = "fixed";
-    node.style.display = "inline";
-    node.style.zIndex = eGc.maxzIndex;
+    node.setAttribute("id", "eG_SpecialNodes"); // used to know if menu has already been displayed in the current document
 
     ////////////////////////////////////////////////////////////////////////////
     // creating link sign
     ///////////////////////////////////////////////////////////////////////////
 
     var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    this.shieldCss(img);
-    img.style.position = "absolute";
-    // img.style.display = "inline";
+    img.setAttribute("id", "eG_linkSign");
     img.style.left = Math.round(layout.outerR - this.iconSize/2) + "px";
     img.style.top = Math.round(layout.outerR - this.iconSize/2) + "px";
     img.style.width = this.iconSize + "px";
     img.style.height = this.iconSize + "px";
     img.src = this.skinPath + (this.smallIcons ? "small_" : "") + "link.png";
     img.alt = "";
-    img.style.visibility = "hidden";
 
     node.appendChild(img);
 
@@ -454,12 +447,9 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    this.shieldCss(img);
-    img.style.position = "absolute";
-    //img.style.display = "inline";
+    img.setAttribute("id", "eG_altMenuSign");
     img.src = this.skinPath + "altMenuSign0.png";
     img.alt = "";
-    img.style.visibility = "hidden";
 
     node.appendChild(img);
     //dumpObject(img.wrappedJSObject, false,0,0);
@@ -469,19 +459,11 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var div = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
-    this.shieldCss(div);
+    div.setAttribute("id", "eG_contextMenuSign");
     div.style.backgroundImage = "url('chrome://easygestures/skin/contextMenuSign.png')";
     div.style.backgroundColor = "red";
 
     var text = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
-    //this.shieldCss(text);
-    text.style.position = "absolute";
-    //text.style.display = "inline";
-    text.style.textAlign = "center";
-    text.style.fontWeight = "bold";
-    text.style.fontSize = "8pt";
-    text.style.color = "#777777";
-    text.style.width = 76+"px";
     text.style.left = Math.round(layout.outerR-76/2)+"px";
     text.style.top = Math.round(-this.iconSize/4-7)+"px";
     //text.appendChild(eGc.frame_doc.createTextNode(eGc.localizing.getString("contextual")));
@@ -489,14 +471,12 @@ eG_menu.prototype = {
 
     img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     img.src = this.skinPath+"contextMenuSign.png";
-    img.style.position = "absolute";
     img.style.left = parseInt(text.style.left)+"px";
     img.style.top = parseInt(text.style.top)-6+"px";
 
     var img2 = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     img2.setAttribute("id", "eG_contextAltMenuSign");
     img2.src = this.skinPath+"contextMenuSign.png";
-    img2.style.position = "absolute";
     img2.style.left = parseInt(img.style.left)+4+"px";
     img2.style.top = parseInt(img.style.top)-4+"px";
 
@@ -504,8 +484,6 @@ eG_menu.prototype = {
 
     div.appendChild(img);
     div.appendChild(text);
-
-    div.style.visibility = "hidden";
 
     node.appendChild(div);
 
@@ -521,10 +499,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
-    node.setAttribute("id","eG_actions_"+layoutName); // used to know if menu has already been displayed in the current document
-    this.shieldCss(node);
-    //node.style.position = "absolute";
-    node.style.position = "fixed";
+    node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
     node.style.width = 2*layout.outerR + "px";
     node.style.height = 2*layout.outerR + "px";
     node.style.zIndex = layout.zIndex;
@@ -545,16 +520,13 @@ eG_menu.prototype = {
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
       timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div"); // was img tag. Changed to div tag to use compound image
-      this.shieldCss(timg);
+      timg.setAttribute("id", "eG_action_" + layoutName + "_" + i);
       timg.style.zIndex = layout.zIndex;
-      timg.style.position = "absolute";
-      timg.style.display = "inline";
       timg.style.left = Math.round(xpos) + "px";
       timg.style.top = Math.round(ypos) + "px";
       timg.style.width = this.iconSize + "px";
       timg.style.height = this.iconSize + "px";
       timg.style.backgroundImage="url('"+this.skinPath+(this.smallIcons ? "small_actions.png":"actions.png") + "')";
-      timg.style.backgroundRepeat="no-repeat";
       timg.setAttribute("grayed", "false");
       timg.setAttribute("active", "false");
 
@@ -592,7 +564,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    this.shieldCss(timg);
+    timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
     timg.style.zIndex = layout.zIndex-1;
     timg.src = layout.menuImage;
     timg.style.width = 2*layout.outerR + "px";
@@ -616,12 +588,6 @@ eG_menu.prototype = {
 
     var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
-    this.shieldCss(node);
-    node.style.font = "normal 0mm tahoma,arial,helvetica,sans-serif"; // font size is changed in compensateTextZoom
-    node.style.verticalAlign = "baseline";
-    node.style.textAlign = "left";
-    node.style.textIndent = "0px";
-    node.style.position = "fixed";
     node.style.height = layout.height + "px";
     node.style.width = layout.width + "px";
     node.style.zIndex =  layout.zIndex - 1; // labels are displayed below menu level
@@ -640,13 +606,10 @@ eG_menu.prototype = {
       var ypos = layout.yLabelsPos[i] + yofs;
 
       var tdiv = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
-      this.shieldCss(tdiv);
+      tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
       tdiv.style.zIndex = layout.zIndex - 1;
-      tdiv.style.fontWeigth = "normal";
-      tdiv.style.position = "absolute";
       tdiv.style.left = Math.round(xpos) + "px";
       tdiv.style.top = Math.round(ypos) + "px";
-      tdiv.style.width = "250px"; // gives space for bold text (highlighted)
       tdiv.appendChild(eGc.frame_doc.createTextNode(layout.labels[i]) );
       node.appendChild(tdiv);
     }
@@ -656,7 +619,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    this.shieldCss(timg);
+    timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
     timg.style.zIndex = layout.zIndex - 2;
     timg.src = layout.tooltipsImage;
     timg.style.width = layout.width + "px";
@@ -1340,25 +1303,6 @@ eG_menu.prototype = {
     layout_lNode.style.display = "block";
     
     this.showingTooltips = true;
-  },
-
-  shieldCss : function(node) {
-    node.style.display = "block";
-    node.style.margin = "0px";
-    node.style.padding = "0px";
-    node.style.border = "none 0px";
-    node.style.cssFloat = "none";
-
-    try {
-      node.style.color = "black";
-      node.style.backgroundImage = "none";
-      node.style.backgroundColor = "transparent";
-      node.style.minHeight = 0;
-      node.style.minWidth = 0;
-    }
-    catch (ex) {}
-
-    node.style.lineHeight = "0.8";
   },
 
   compensateTextZoom : function(lNode) { // adjust labels font size to compensate for zoom changes

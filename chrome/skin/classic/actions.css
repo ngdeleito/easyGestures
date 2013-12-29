@@ -31,6 +31,78 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+[id^="eG_"] {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  float: none;
+  color: black;
+  background-image: none;
+  background-color: transparent;
+  min-height: 0;
+  min-width: 0;
+  line-height: 0.8;
+}
+
+#eG_SpecialNodes {
+  position: fixed;
+  display: inline;
+  z-index: 2147483647;
+}
+
+#eG_linkSign {
+  position: absolute;
+  visibility: hidden;
+}
+
+#eG_altMenuSign {
+  position: absolute;
+  visibility: hidden;
+}
+
+#eG_contextMenuSign {
+  visibility: hidden;
+}
+
+#eG_contextMenuSign > div {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  font-size: 8pt;
+  color: #777777;
+  width: 76px;
+}
+
+#eG_contextMenuSign img {
+  position: absolute;
+}
+
+[id^="eG_actions_"] {
+  position: fixed;
+}
+
+[id^="eG_action_"] {
+  position: absolute;
+  display: inline;
+  background-repeat: no-repeat;
+}
+
+[id^="eG_labels_"] {
+  font-style: normal;
+  font-family: tahoma,arial,helvetica,sans-serif;
+  vertical-align: baseline;
+  text-align: left;
+  text-indent: 0px;
+  position: fixed;
+}
+
+[id^="eG_label_"] {
+  font-weigth: normal;
+  position: absolute;
+  width: 250px;
+}
+
 /*/////////////////////////////////////////////////////////////////////////////////////////////
 						REGULAR IMAGES
 //////////////////////////////////////////////////////////////////////////////////////////////*/
