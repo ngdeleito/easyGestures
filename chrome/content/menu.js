@@ -279,21 +279,12 @@ function eG_menu () {
 
   this.showButton = prefs.getIntPref("activation.showButton"); // mouse button for opening the pie menu
   this.showKey = prefs.getIntPref("activation.showKey"); // key for showing the pie menu with mouse button clicked
-  this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
-  this.supprKey = prefs.getIntPref("activation.suppressKey"); // key for suppressing the pie menu
-
   this.showAfterDelay = prefs.getBoolPref("activation.showAfterDelay"); // enabling display pie menu after delay before dragging
-  this.showAfterDelayDelay = prefs.getIntPref("activation.showAfterDelayValue"); // delay to display pie menu after delay before dragging
-
-  this.contextMenuAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
+  this.showAfterDelayValue = prefs.getIntPref("activation.showAfterDelayValue"); // delay to display pie menu after delay before dragging
+  this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
+  this.suppressKey = prefs.getIntPref("activation.suppressKey"); // key for suppressing the pie menu
   this.contextKey = prefs.getIntPref("activation.contextKey"); // key for forcing non contextual or contextual pie menu
-
-  this.handleLinks = prefs.getBoolPref("behavior.handleLinks"); // handle clicking on links through pie menu button
-  this.handleLinksAsOpenLink = prefs.getBoolPref("behavior.handleLinksAsOpenLink");
-  this.linksDelay = prefs.getIntPref("behavior.linksDelay"); // max delay to click on a link. If delay is passed, a keyup will just keep menu open
-
-  this.autoscrollingOn = prefs.getBoolPref("behavior.autoscrollingOn");	// autoscrolling enabling
-  this.autoscrollingDelay = prefs.getIntPref("behavior.autoscrollingDelay"); // autoscrolling delay
+  this.contextShowAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
 
   this.largeMenu = prefs.getBoolPref("behavior.largeMenu"); // use larger pie menu with 10 actions instead of 8
   this.noIcons = prefs.getBoolPref("behavior.noIcons");
@@ -301,21 +292,21 @@ function eG_menu () {
   this.menuOpacity = prefs.getIntPref("behavior.menuOpacity")/100; // because menuopacity is set in % in preferences dialog
   this.showTooltips = prefs.getBoolPref("behavior.showTooltips"); // tooltip showing
   this.tooltipsDelay = prefs.getIntPref("behavior.tooltipsDelay"); // tooltip delay
-  this.dailyReadingsFolderURI = prefs.getCharPref("customizations.dailyReadingsFolder");
-
   this.moveAuto = prefs.getBoolPref("behavior.moveAuto"); // true: menu moves when reaching edge. false: memu moves by pressing <Shift> key
+  this.handleLinks = prefs.getBoolPref("behavior.handleLinks"); // handle clicking on links through pie menu button
+  this.linksDelay = prefs.getIntPref("behavior.linksDelay"); // max delay to click on a link. If delay is passed, a keyup will just keep menu open
+  this.handleLinksAsOpenLink = prefs.getBoolPref("behavior.handleLinksAsOpenLink");
+  this.autoscrollingOn = prefs.getBoolPref("behavior.autoscrollingOn");	// autoscrolling enabling
+  this.autoscrollingDelay = prefs.getIntPref("behavior.autoscrollingDelay"); // autoscrolling delay
 
-  this.mainAlternative1 = prefs.getBoolPref("menus.mainAlt1Enabled");
-  this.mainAlternative2 = prefs.getBoolPref("menus.mainAlt2Enabled");
-  this.extraAlternative1 = prefs.getBoolPref("menus.extraAlt1Enabled");
-  this.extraAlternative2 = prefs.getBoolPref("menus.extraAlt2Enabled");
+  this.mainAlt1MenuEnabled = prefs.getBoolPref("menus.mainAlt1Enabled");
+  this.mainAlt2MenuEnabled = prefs.getBoolPref("menus.mainAlt2Enabled");
+  this.extraAlt1MenuEnabled = prefs.getBoolPref("menus.extraAlt1Enabled");
+  this.extraAlt2MenuEnabled = prefs.getBoolPref("menus.extraAlt2Enabled");
   this.contextImageFirst = prefs.getBoolPref("menus.contextImageFirst");
   this.contextTextboxFirst = prefs.getBoolPref("menus.contextTextboxFirst");
 
-  this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-
-  this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
-
+  this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
   this.loadURLScript1 = prefs.getComplexValue("customizations.loadURLScript1", Components.interfaces.nsISupportsString).data.split("\u2022"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
   this.loadURLScript2 = prefs.getComplexValue("customizations.loadURLScript2", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.loadURLScript3 = prefs.getComplexValue("customizations.loadURLScript3", Components.interfaces.nsISupportsString).data.split("\u2022");
@@ -336,8 +327,10 @@ function eG_menu () {
   this.loadURLScript18 = prefs.getComplexValue("customizations.loadURLScript18", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.loadURLScript19 = prefs.getComplexValue("customizations.loadURLScript19", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.loadURLScript20 = prefs.getComplexValue("customizations.loadURLScript20", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
+  this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
 
-  this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
+  this.dailyReadingsFolderURI = prefs.getCharPref("customizations.dailyReadingsFolder");
 
   this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
 
@@ -792,7 +785,7 @@ eG_menu.prototype = {
 
       altMenuSign.style.top = -10-(layout.isLarge ? this.iconSize/2 :0)+"px";
       altMenuSign.style.visibility = "visible";
-      this.updateAltMenuSign(altMenuSign, this.baseMenu, this.mainAlternative1 && this.mainAlternative2);
+      this.updateAltMenuSign(altMenuSign, this.baseMenu, this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled);
 
       this.pageY = this.pageY+baseLayout.outerR*1.2;
       this.clientY = this.clientY+baseLayout.outerR*1.2;
@@ -1165,7 +1158,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     altMenuSign.style.visibility = "visible";
-    this.updateAltMenuSign(altMenuSign, layout.name, (this.mainAlternative1 && this.mainAlternative2 && layout.name.search("main") !=-1) || (this.extraAlternative1 && this.extraAlternative2 && layout.name.search("extra") !=-1) );
+    this.updateAltMenuSign(altMenuSign, layout.name, (this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled && layout.name.search("main") !=-1) || (this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled && layout.name.search("extra") !=-1) );
   },
 
   updateAltMenuSign : function(altMenuSign, layoutName, alternative1and2Enabled) {
@@ -1199,19 +1192,19 @@ eG_menu.prototype = {
 
       if (!layout.isExtraMenu) {
         nextLayoutName = "main";
-        if (this.curLayoutName == "main" && this.mainAlternative1) {
+        if (this.curLayoutName == "main" && this.mainAlt1MenuEnabled) {
           nextLayoutName = "mainAlt1";
         }
-        else if (this.curLayoutName == "mainAlt1" && this.mainAlternative2 || this.curLayoutName == "main" && !this.mainAlternative1 && this.mainAlternative2) {
+        else if (this.curLayoutName == "mainAlt1" && this.mainAlt2MenuEnabled || this.curLayoutName == "main" && !this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled) {
           nextLayoutName = "mainAlt2";
         }
       }
       else {
         nextLayoutName = "extra";
-        if (this.curLayoutName == "extra" && this.extraAlternative1) {
+        if (this.curLayoutName == "extra" && this.extraAlt1MenuEnabled) {
           nextLayoutName = "extraAlt1";
         }
-        else if (this.curLayoutName == "extraAlt1" && this.extraAlternative2 || this.curLayoutName == "extra" && !this.extraAlternative1 && this.extraAlternative2) {
+        else if (this.curLayoutName == "extraAlt1" && this.extraAlt2MenuEnabled || this.curLayoutName == "extra" && !this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) {
           nextLayoutName = "extraAlt2";
         }
       }

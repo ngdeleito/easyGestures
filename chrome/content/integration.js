@@ -154,7 +154,7 @@ function eG_handleKeys(evt) {
   }
   
   // show textarea for typing and retrieve typed text as selected text
-  if (eGm.isMenuDisplayed() && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.supprKey) {
+  if (eGm.isMenuDisplayed() && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.suppressKey) {
     // all keys except keys to control display of pie
     if (evt.keyCode == 27) {
       evt.preventDefault();
@@ -291,7 +291,7 @@ function eG_handleMousedown(evt) {
   // check if menu should not be displayed
   if ((evt.button != eGm.showButton) ||
       (eGc.keyPressed != eGm.showKey && eGm.showKey != 0) ||
-      (eGc.keyPressed == eGm.supprKey && eGm.supprKey != 0)) {
+      (eGc.keyPressed == eGm.suppressKey && eGm.suppressKey != 0)) {
     eGc.unblockStdContextMenu();
     eGc.keyPressed = 0;
     return;
@@ -300,7 +300,7 @@ function eG_handleMousedown(evt) {
   // start timer for delayed show up
   if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay) {
     eGc.showAfterDelayPassed = true;
-    eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayDelay);
+    eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayValue);
   }
   
   // copying parts of evt object
@@ -434,7 +434,7 @@ function eG_openMenu() {
     }
   }
   
-  if ((eGm.contextMenuAuto && eGc.contextType != "" && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextMenuAuto && eGc.contextType != "" && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
+  if ((eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
     switch (eGc.contextType) {
       case "link/":
         eGm.show("contextLink");
