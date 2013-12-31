@@ -1130,7 +1130,11 @@
       
       if (item.firstChild.getAttribute("class").search("loadURLScript") != -1) {
         var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
-        item.parentNode.parentNode.setAttribute("label", document.getElementById("loadURLScript_name"+n).value);
+        var label = document.getElementById("loadURLScript_name" + n).value;
+        if (label === "") {
+          label = eG_PopupLabels[actionNumber];
+        }
+        item.parentNode.parentNode.setAttribute("label", label);
       }
     }
     
