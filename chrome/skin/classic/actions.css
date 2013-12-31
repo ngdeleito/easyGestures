@@ -51,9 +51,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647;
 }
 
-#eG_linkSign {
+[id^="eG_linkSign_"] {
   position: absolute;
   visibility: hidden;
+  width: 32px;
+  height: 32px;
+}
+
+#eG_linkSign_small {
+  width: 20px;
+  height: 20px;
 }
 
 #eG_altMenuSign {
@@ -86,6 +93,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
   position: absolute;
   display: inline;
   background-repeat: no-repeat;
+  background-image: url("actions.png");
+  width: 32px;
+  height: 32px;
+}
+
+[id^="eG_action_small_"] {
+  background-image: url("small_actions.png");
+  width: 20px;
+  height: 20px;
 }
 
 [id^="eG_labels_"] {

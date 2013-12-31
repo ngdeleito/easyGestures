@@ -222,7 +222,7 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   //	setting menu and tooltips images
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
-  this.menuImage = menu.skinPath + (menu.smallIcons ? "small_":"") + (menu.noIcons ? "basic_":"");
+  this.menuImage = menu.skinPath + menu.smallMenuTag + (menu.noIcons ? "basic_":"");
   this.tooltipsImage = menu.skinPath;
   if (!this.isExtraMenu) {
     this.menuImage += menu.largeMenu ? "largeMenu.png": "menu.png";
@@ -337,6 +337,9 @@ function eG_menu () {
 
   this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
   
+  this.smallMenuTag = this.smallIcons ? "small_" : "";
+  this.linkSignPath = this.skinPath + this.smallMenuTag + "link.png";
+
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.menuState = 0; // 0: not shown; 1: showing; 2: showing & mouse moved; 3: staying open
@@ -422,12 +425,10 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
-    img.setAttribute("id", "eG_linkSign");
+    img.setAttribute("id", "eG_linkSign_" + this.smallMenuTag);
     img.style.left = Math.round(layout.outerR - this.iconSize/2) + "px";
     img.style.top = Math.round(layout.outerR - this.iconSize/2) + "px";
-    img.style.width = this.iconSize + "px";
-    img.style.height = this.iconSize + "px";
-    img.src = this.skinPath + (this.smallIcons ? "small_" : "") + "link.png";
+    img.src = this.linkSignPath;
     img.alt = "";
 
     node.appendChild(img);
@@ -510,18 +511,15 @@ eG_menu.prototype = {
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
       timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div"); // was img tag. Changed to div tag to use compound image
-      timg.setAttribute("id", "eG_action_" + layoutName + "_" + i);
+      timg.setAttribute("id", "eG_action_" + this.smallMenuTag + layoutName + "_" + i);
       timg.style.zIndex = layout.zIndex;
       timg.style.left = Math.round(xpos) + "px";
       timg.style.top = Math.round(ypos) + "px";
-      timg.style.width = this.iconSize + "px";
-      timg.style.height = this.iconSize + "px";
-      timg.style.backgroundImage="url('"+this.skinPath+(this.smallIcons ? "small_actions.png":"actions.png") + "')";
       timg.setAttribute("grayed", "false");
       timg.setAttribute("active", "false");
 
       if (layout.actions[i].src.search("loadURLScript")==-1) {
-        timg.setAttribute("class", ( (this.smallIcons ? "small_":"") + (this.noIcons ? "empty": layout.actions[i].src) ) );
+        timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": layout.actions[i].src)));
         if (layout.actions[i].type==1) {
           this.extraMenuAction = i;
         }
@@ -538,10 +536,10 @@ eG_menu.prototype = {
             timg.appendChild(eGc.frame_doc.createTextNode(protocol));
           }
           timg.style.backgroundImage="url('"+(this[layout.actions[i].src][3]).replace(/\\/g , "\\\\")+"')";
-          timg.setAttribute("class", ( (this.smallIcons ? "small_":"") + (this.noIcons ? "empty": "customIcon") ) );
+          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
         }
         else {
-          timg.setAttribute("class", ( (this.smallIcons ? "small_":"") + (this.noIcons ? "empty": layout.actions[i].src) ) );
+          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": layout.actions[i].src)));
         }
       }
 
