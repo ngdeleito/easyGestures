@@ -329,15 +329,14 @@ function eG_menu () {
   this.loadURLScript20 = prefs.getComplexValue("customizations.loadURLScript20", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
   this.closeBrowserOnLastTab = prefs.getBoolPref("customizations.closeBrowserOnLastTab"); // close browser when last tab is closed
-
   this.dailyReadingsFolderURI = prefs.getCharPref("customizations.dailyReadingsFolder");
-
-  this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	initializing properties
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
+  this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
+  
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.menuState = 0; // 0: not shown; 1: showing; 2: showing & mouse moved; 3: staying open
@@ -355,8 +354,6 @@ function eG_menu () {
   this.tooltipsTrigger = null; // trigger to display pie menu labels
   this.autoscrollingTrigger = null; // trigger to display autoscrolling
   this.autoscrolling = false; // used for automatic delayed autoscrolling on mouse down
-
-  this.altMenuSignWidth = 26; // width (size of image 8px + spacing 4px)
 
   this.extraMenuAction = null; // position of extra menu action in base menu from which extra menu is called
 
