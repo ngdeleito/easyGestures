@@ -163,7 +163,6 @@
 <!ENTITY func.viewPageSource "Oldal forrása">
 <!ENTITY func.viewPageInfo "Oldal tulajdonságainak megtekintése">
 <!ENTITY func.showOnlyThisFrame "Csak ezt a keretet mutassa">
-<!ENTITY func.properties "Tulajdonságok">
 <!ENTITY func.printPage "Oldal nyomtatása">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

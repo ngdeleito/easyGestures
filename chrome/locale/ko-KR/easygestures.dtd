@@ -178,7 +178,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.viewPageSource "페이지 소스 표시">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "이 프레임만 표시">
-<!ENTITY func.properties "속성">
 <!ENTITY func.printPage "페이지 인쇄">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

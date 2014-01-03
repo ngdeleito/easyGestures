@@ -197,7 +197,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.viewPageSource "View Page Source">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "Show Only This Frame">
-<!ENTITY func.properties "Properties">
 <!ENTITY func.printPage "Print Page">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

@@ -671,14 +671,6 @@ var eGf = {
     window.loadURI(frame_doc.location.href);
   },
 
-  properties : function(target) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    // no more available since FF 3.6: changed temporaly action to View Image Info
-    if (target != null) {
-      window.BrowserPageInfo(target.ownerDocument, "mediaTab", target);
-    }
-  },
-
   printPage : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PrintUtils.print();

@@ -198,7 +198,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.viewPageSource "ページのソースを表示">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "このフレームだけを表示">
-<!ENTITY func.properties "プロパティ">
 <!ENTITY func.printPage "ページを印刷">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

@@ -161,7 +161,6 @@
 <!ENTITY func.viewPageSource "Seitenquelltext anzeigen">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "Nur diesen Frame anzeigen">
-<!ENTITY func.properties "Eigenschaften">
 <!ENTITY func.printPage "Seite drucken">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

@@ -196,7 +196,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.viewPageSource "Afficher source">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "Afficher ce cadre seulement">
-<!ENTITY func.properties "Propriétés">
 <!ENTITY func.printPage "Imprimer page">
 <!ENTITY func.focusLocationBar "Sélectionner la barre d'adresse">
 <!ENTITY func.newPrivateWindow "Nouvelle fenêtre de navigation privée">

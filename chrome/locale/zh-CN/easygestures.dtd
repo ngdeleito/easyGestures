@@ -199,7 +199,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.viewPageSource "查看页面源代码">
 <!ENTITY func.viewPageInfo "查看页面信息">
 <!ENTITY func.showOnlyThisFrame "仅显示此框架">
-<!ENTITY func.properties "属性">
 <!ENTITY func.printPage "打印页面">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

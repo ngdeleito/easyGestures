@@ -199,7 +199,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.viewPageSource "Sayfa Kaynağını Göster">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "Yalnızca Bu Çerçeveyi Göster">
-<!ENTITY func.properties "Özellikler">
 <!ENTITY func.printPage "Sayfayı Yazdır">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

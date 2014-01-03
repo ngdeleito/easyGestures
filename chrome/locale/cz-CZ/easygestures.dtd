@@ -199,7 +199,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.viewPageSource "Zobrazit zdrojový kód stránky">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "Zobrazit jen tento rámec">
-<!ENTITY func.properties "Vlastnosti">
 <!ENTITY func.printPage "Vytisknout stránku">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">

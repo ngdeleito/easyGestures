@@ -161,7 +161,6 @@
 <!ENTITY func.viewPageSource "Zobraziť zdrojový kód stránky">
 <!ENTITY func.viewPageInfo "View Page Info">
 <!ENTITY func.showOnlyThisFrame "Zobraziť len tento rámec">
-<!ENTITY func.properties "Vlastnosti">
 <!ENTITY func.printPage "Tlačiť stránku">
 <!ENTITY func.focusLocationBar "Focus Location Bar">
 <!ENTITY func.newPrivateWindow "New Private Window">
