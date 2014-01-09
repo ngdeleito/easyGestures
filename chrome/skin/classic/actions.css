@@ -33,16 +33,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 [id^="eG_"] {
   display: block;
-  margin: 0;
-  padding: 0;
-  border: 0 none;
-  float: none;
-  color: black;
-  background-image: none;
-  background-color: transparent;
-  min-height: 0;
-  min-width: 0;
-  line-height: 0.8;
+  margin: 0 !important;
+  padding: 0 !important;
+  border: 0 none !important;
+  float: none !important;
+  color: black !important;
+  background-image: none !important;
+  background-color: transparent !important;
+  min-height: 0 !important;
+  min-width: 0 !important;
+  line-height: 0.8 !important;
 }
 
 #eG_SpecialNodes {
@@ -93,13 +93,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
   position: absolute;
   display: inline;
   background-repeat: no-repeat;
-  background-image: url("actions.png");
+  background-image: url("actions.png") !important;
   width: 32px;
   height: 32px;
 }
 
 [id^="eG_action_small_"] {
-  background-image: url("small_actions.png");
+  background-image: url("small_actions.png") !important;
   width: 20px;
   height: 20px;
 }
