@@ -94,19 +94,19 @@ the terms of any one of the MPL, the GPL or the LGPL.
   display: inline;
   background-repeat: no-repeat;
   background-image: url("actions.png") !important;
-  width: 32px;
-  height: 32px;
+  width: 32px !important;
+  height: 32px !important;
 }
 
 [id^="eG_action_small_"] {
   background-image: url("small_actions.png") !important;
-  width: 20px;
-  height: 20px;
+  width: 20px !important;
+  height: 20px !important;
 }
 
 [id^="eG_labels_"] {
   font-style: normal;
-  font-family: tahoma,arial,helvetica,sans-serif;
+  font-family: tahoma,arial,helvetica,sans-serif !important;
   vertical-align: baseline;
   text-align: left;
   text-indent: 0px;
