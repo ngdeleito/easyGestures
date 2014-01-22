@@ -120,57 +120,16 @@ var eGf = {
   },
 
   up : function(url) {
-    var protocol;
-    var host;
-    var directory;
-    var upURL;
-    var checkSubNetwork=true;
-    var splitURL = url.split("/");
-    //get protocol
-    protocol = (splitURL[0].search(":")==-1?"":splitURL[0]);
-    //get host
-    for (var i=0; i<splitURL.length; i++)
-      if (splitURL[i]!="" && splitURL[i]!=protocol) {
-        host = splitURL[i];
-        break;
-      }
-    //get directory
-    directory = url.substring(url.search(host)+host.length+1,url.length);
-
-    //going up
-    var splitDIR = directory.split("/");
-
-    var updir = directory;
-    for (i = splitDIR.length-1; i>=0; i--) {
-      if (splitDIR[i]=="") {
-        if (updir!="") {
-          updir = updir.substring(0,updir.length-1); //remove the slash at the end
-        }
-      }
-      else {
-        checkSubNetwork=false;
-        break;
-      }
-    }
-
-    // remove last part from url
-    if (splitDIR[i] != "" && updir != "") {
-      updir = updir.substring(0,updir.length - splitDIR[i].length);
-    }
-    upURL = url.replace(directory,updir);
-
-    if (checkSubNetwork) { // remove first subnetwork of host from url if possible
-      var uphost = host;
-      var splitHOST = host.split(".");
-      if (splitHOST[0]!="www" && splitHOST.length>2) {
-        uphost = host.replace(splitHOST[0]+".","");
-        upURL = url.replace(host,uphost);
-      }
-    }
+    // removing any trailing "/"
+    url = url.replace(/\/$/, "");
+    // creating a nsIURI and removing the last "/"-separated item from its path
+    var uri = Services.io.newURI(url, null, null);
+    var path = uri.path.split("/");
+    path.pop();
+    var upurl = uri.prePath + path.join("/");
 
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadURI(upURL);
-    return upURL;
+    window.gBrowser.loadURI(upurl);
   },
 
   root : function(url)	{
