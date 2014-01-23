@@ -315,7 +315,7 @@ var eGf = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var url;
-    if (link == null) {
+    if (link === null) {
       url = this._readClipboard();
     }
     else {
@@ -337,7 +337,7 @@ var eGf = {
 
   openLinkNewWindow : function(link) {
     var url;
-    if (link == null) {
+    if (link === null) {
       url = this._readClipboard();
     }
     else {
@@ -348,14 +348,14 @@ var eGf = {
   },
 
   copyLink : function(link) { //write to clipboard the link url
-    if (link != null) {
+    if (link !== null) {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(link.href);
     }
   },
 
   copyImageLocation : function(src) {
-    if (src != null) {
+    if (src !== null) {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(src);
     }
@@ -385,7 +385,7 @@ var eGf = {
                  filter,
                  uri.path.substring(uri.path.lastIndexOf("/") + 1));
 
-    if (file != null) {
+    if (file !== null) {
       var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
                           .createInstance(Components.interfaces.nsIWebBrowserPersist);
       // don't save gzipped
@@ -411,7 +411,7 @@ var eGf = {
                  Components.interfaces.nsIFilePicker.filterHTML,
                  document.title);
 
-    if (file != null) {
+    if (file !== null) {
       var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
                           .createInstance(Components.interfaces.nsIWebBrowserPersist);
       // don't save gzipped
@@ -421,7 +421,7 @@ var eGf = {
   },
 
   hideImages : function() {
-    if (eGc.image != null) {
+    if (eGc.image !== null) {
       eGc.image.style.display = "none";
     }
     else {
@@ -449,13 +449,13 @@ var eGf = {
   _checkDailyReadingsFolder : function() {
     var dailyReadingsFolderNode = null;
     var folderName = "@easyGestures";
+    var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
+                                   .getService(Components.interfaces.nsINavHistoryService);
+    var bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
+                                     .getService(Components.interfaces.nsINavBookmarksService);
     
     try {
       // check if dailyReadings folder already exists in toolbarFolder
-      var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
-                                     .getService(Components.interfaces.nsINavHistoryService);
-      var bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
-                                       .getService(Components.interfaces.nsINavBookmarksService);
       var options = historyService.getNewQueryOptions();
       var query = historyService.getNewQuery();
       options.excludeItems = false;
@@ -465,9 +465,9 @@ var eGf = {
       result.root.containerOpen = true;
       for (var i = 0; i < result.root.childCount; i++) {
         // iterate over the immediate children of this folder
-        if (result.root.getChild(i).itemId == eGm.dailyReadingsFolderURI && eGm.dailyReadingsFolderURI != "" || result.root.getChild(i).title == folderName) {
+        if (result.root.getChild(i).itemId == eGm.dailyReadingsFolderURI && eGm.dailyReadingsFolderURI !== "" || result.root.getChild(i).title == folderName) {
           dailyReadingsFolderNode = result.root.getChild(i);
-          if (eGm.dailyReadingsFolderURI == "") {
+          if (eGm.dailyReadingsFolderURI === "") {
             // update value if no value found
             eGm.dailyReadingsFolderURI = result.root.getChild(i).itemId;
             eGPrefs.setDailyReadingsFolderPref(eGm.dailyReadingsFolderURI);
@@ -482,7 +482,7 @@ var eGf = {
       return false;
     }
     
-    if (eGm.dailyReadingsFolderURI == "" || dailyReadingsFolderNode == null) {
+    if (eGm.dailyReadingsFolderURI === "" || dailyReadingsFolderNode === null) {
       var menuFolder = bookmarksService.toolbarFolder;
       var newFolderId = bookmarksService.createFolder(menuFolder, folderName, -1);
       
@@ -497,7 +497,7 @@ var eGf = {
   dailyReadings : function() {
     var dailyReadingsFolderNode = this._checkDailyReadingsFolder();
 
-    if (dailyReadingsFolderNode != null) {
+    if (dailyReadingsFolderNode !== null) {
       dailyReadingsFolderNode.QueryInterface(Components.interfaces.nsINavHistoryContainerResultNode);
       dailyReadingsFolderNode.containerOpen = true;
       var uris = [];
@@ -521,18 +521,18 @@ var eGf = {
     var codetext = loadURLScript[1];
     var isScript = loadURLScript[2];
 
-    if (codetext != "") {
-      if (string != "") {
+    if (codetext !== "") {
+      if (string !== "") {
         codetext = codetext.replace("%s", string);
       }
       var curURL = eGc.doc.URL; // get current URL
-      if (curURL != "") {
+      if (curURL !== "") {
         codetext = codetext.replace("%u", curURL);
       }
     }
 
-    if ( (new Function ("return " + isScript))() ) {
-      (new Function ("return " + codetext))(); // (new Function ("return " + data ))() replacing eval on data
+    if (isScript === "true") {
+      (new Function ("return " + codetext))();
     }
     else {
       var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -639,7 +639,7 @@ var eGf = {
 
   cut : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.selectionNode != null) {
+    if (eGc.selectionNode !== null) {
       eGc.selectionNode.select();
       eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
     }
@@ -648,7 +648,7 @@ var eGf = {
 
   copy : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.selectionNode != null) {
+    if (eGc.selectionNode !== null) {
       eGc.selectionNode.select();
       eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
     }
@@ -690,7 +690,7 @@ var eGf = {
 
   zoomIn : function zoomIn() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.image == null) {
+    if (eGc.image === null) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.enlarge();
     }
@@ -699,18 +699,18 @@ var eGf = {
       var width;
       var height;
 
-      if (eGc.image.style.width == "") {
+      if (eGc.image.style.width === "") {
         width = eGc.image.width * 2 + "px";
       }
       else {
-        width = parseInt(eGc.image.style.width) * 2 + "px";
+        width = parseInt(eGc.image.style.width, 10) * 2 + "px";
       }
 
-      if (eGc.image.style.height == "") {
+      if (eGc.image.style.height === "") {
         height = eGc.image.height * 2 + "px";
       }
       else {
-        height = parseInt(eGc.image.style.height) * 2 + "px";
+        height = parseInt(eGc.image.style.height, 10) * 2 + "px";
       }
 
       eGc.image.style.width = width;
@@ -720,7 +720,7 @@ var eGf = {
 
   zoomOut : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.image == null) {
+    if (eGc.image === null) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.reduce();
     }
@@ -729,18 +729,18 @@ var eGf = {
       var width;
       var height;
 
-      if (eGc.image.style.width == "") {
+      if (eGc.image.style.width === "") {
         width = eGc.image.width * 0.5 + "px";
       }
       else {
-        width = parseInt(eGc.image.style.width) * 0.5 + "px";
+        width = parseInt(eGc.image.style.width, 10) * 0.5 + "px";
       }
 
-      if (eGc.image.style.height == "") {
+      if (eGc.image.style.height === "") {
         height = eGc.image.height * 0.5 + "px";
       }
       else {
-        height = parseInt(eGc.image.style.height) * 0.5 + "px";
+        height = parseInt(eGc.image.style.height, 10) * 0.5 + "px";
       }
 
       eGc.image.style.width = width;
