@@ -155,7 +155,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.openLink "Apri Collegamento">
 <!ENTITY func.openLinkNewWindow "Apri Collegamento in una Nuova Finestra">
 <!ENTITY func.copyLink "Copia Collegamento">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "Copia Posizione dell'Immagine">
 <!ENTITY func.saveLinkAs "Salva Collegamento con Nome...">
 <!ENTITY func.saveImageAs "Salva Immagine con Nome...">

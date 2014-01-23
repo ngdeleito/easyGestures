@@ -35,3 +35,4 @@ Features pruned so far and rationale:
 - Open on drag. It feels like a feature for über-users. It is currently buggy. The "up/left only" option only works with the left mouse button, but this is not documented anywhere (except in the source code).
 - Omit tooltips delay option. It feels easier to just set the tooltips delay to zero.
 - Properties action. This feature (very similar to View Page Info) was apparently related to a feature that no longer exists in Firefox.
+- Send Link action. This feature exceeds the extent of Firefox.

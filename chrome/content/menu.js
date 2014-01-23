@@ -77,7 +77,7 @@ var eG_menuItems = [
   new eG_menuItem(27,   0, "openLink",           "eGf.openLink(eGc.link);"),
   new eG_menuItem(28,   0, "openLinkNewWindow",  "eGf.openLinkNewWindow(eGc.link);"),
   new eG_menuItem(29,   0, "copyLink",           "eGf.copyLink(eGc.link);"),
-  new eG_menuItem(30,   0, "sendLink",           "eGf.sendLink(eGc.link);"),
+  new eG_menuItem(30,  -1, "empty",              null),
   new eG_menuItem(31,   0, "copyImageLocation",  "eGf.copyImageLocation(eGc.image.src);"),
   new eG_menuItem(32,   0, "saveLinkAs",         "eGf.saveLinkAs(eGc.link);"),
   new eG_menuItem(33,   0, "saveImageAs",        "eGf.saveImageAs(eGc.image.src);"),

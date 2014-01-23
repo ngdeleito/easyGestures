@@ -122,7 +122,6 @@
 <!ENTITY func.openLink "Hivatkozás megnyitása">
 <!ENTITY func.openLinkNewWindow "Hivatkozás megnyitása új ablakban">
 <!ENTITY func.copyLink "Hivatkozás címének másolása">
-<!ENTITY func.sendLink "Hivatkozás küldése...">
 <!ENTITY func.copyImageLocation "Kép címének másolása">
 <!ENTITY func.saveLinkAs "Hivatkozás mentése más néven...">
 <!ENTITY func.saveImageAs "Kép mentése más néven...">

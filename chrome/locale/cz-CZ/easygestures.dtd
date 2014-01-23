@@ -155,7 +155,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.openLink "Otevřít odkaz">
 <!ENTITY func.openLinkNewWindow "Otevřít odkaz v novém okně">
 <!ENTITY func.copyLink "Kopírovat odkaz">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "Kopírovat adresu obrázku">
 <!ENTITY func.saveLinkAs "Uložit cíl odkazu jako...">
 <!ENTITY func.saveImageAs "Uložit obrázek jako...">

@@ -137,7 +137,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.openLink "링크 열기">
 <!ENTITY func.openLinkNewWindow "새 창으로 링크 열기">
 <!ENTITY func.copyLink "링크 복사">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "이미지 위치 복사">
 <!ENTITY func.saveLinkAs "새이름으로 링크 대상 저장">
 <!ENTITY func.saveImageAs "새 이름으로 이미지 저장">

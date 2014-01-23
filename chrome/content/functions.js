@@ -354,16 +354,6 @@ var eGf = {
     }
   },
 
-  sendLink : function(link) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (link != null) {
-      window.MailIntegration.sendMessage(link, this._getRootURL(link));
-    }
-    else {
-      window.MailIntegration.sendMessage(eGc.doc.URL, eGc.doc.title);
-    }
-  },
-
   copyImageLocation : function(src) {
     if (src != null) {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);

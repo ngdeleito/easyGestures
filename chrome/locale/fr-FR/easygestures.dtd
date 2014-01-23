@@ -152,7 +152,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.openLink "Ouvrir lien">
 <!ENTITY func.openLinkNewWindow "Ouvrir lien dans nouvelle fenêtre">
 <!ENTITY func.copyLink "Copier lien">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "Copier l'adresse de l'image">
 <!ENTITY func.saveLinkAs "Enregistrer lien sous...">
 <!ENTITY func.saveImageAs "Sauvegarder image...">

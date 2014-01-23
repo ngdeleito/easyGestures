@@ -154,7 +154,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.openLink "開啟鏈結">
 <!ENTITY func.openLinkNewWindow "在新視窗開啟鏈結">
 <!ENTITY func.copyLink "複製鏈結網址">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "複製圖片網址">
 <!ENTITY func.saveLinkAs "鏈結另存新檔…">
 <!ENTITY func.saveImageAs "圖片另存新檔…">

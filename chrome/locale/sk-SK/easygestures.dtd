@@ -120,7 +120,6 @@
 <!ENTITY func.openLink "Otvoriť odkaz">
 <!ENTITY func.openLinkNewWindow "Otvoriť odkaz v novom okne">
 <!ENTITY func.copyLink "Kopírovať odkaz">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "Kopírovať adresu obrázka">
 <!ENTITY func.saveLinkAs "Uložiť cieľ odkazu ako...">
 <!ENTITY func.saveImageAs "Uložiť obrázok ako...">

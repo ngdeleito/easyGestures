@@ -154,7 +154,6 @@ END OF INSTRUCTIONS
 <!ENTITY func.openLink "リンクを開く">
 <!ENTITY func.openLinkNewWindow "リンクを新しいウィンドウで開く">
 <!ENTITY func.copyLink "リンクのコピー">
-<!ENTITY func.sendLink "Send Link...">
 <!ENTITY func.copyImageLocation "画像の URL をコピー">
 <!ENTITY func.saveLinkAs "名前を付けてリンクを保存...">
 <!ENTITY func.saveImageAs "名前を付けて画像を保存...">
