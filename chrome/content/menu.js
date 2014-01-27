@@ -191,8 +191,8 @@ function eG_menuLayout(menu, name, actionsPrefs) {
         var actionName = action.src.replace(number, "");
         label = eGc.localizing.getString(actionName);
         
-        if (number != null) {
-          if (menu[action.src][0] != "") {
+        if (number !== null) {
+          if (menu[action.src][0] !== "") {
             // if the action has already a name given by the user, then use it
             label = menu[action.src][0];
           }
@@ -208,9 +208,9 @@ function eG_menuLayout(menu, name, actionsPrefs) {
 
   this.hasExtraMenuAction = (this.actions[0].type==1);
 
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //	 initializing update object
-  ///////////////////////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  // initializing update object
+  //////////////////////////////////////////////////////////////////////////////
 
   for (let i = 0; i<this.actions.length; i++) {
     if (this.update[this.actions[i].src] !== undefined && this.update[this.actions[i].src] == -1) {
@@ -462,14 +462,14 @@ eG_menu.prototype = {
 
     img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     img.src = this.skinPath+"contextMenuSign.png";
-    img.style.left = parseInt(text.style.left)+"px";
-    img.style.top = parseInt(text.style.top)-6+"px";
+    img.style.left = parseInt(text.style.left, 10) + "px";
+    img.style.top = parseInt(text.style.top, 10) - 6 + "px";
 
     var img2 = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
     img2.setAttribute("id", "eG_contextAltMenuSign");
     img2.src = this.skinPath+"contextMenuSign.png";
-    img2.style.left = parseInt(img.style.left)+4+"px";
-    img2.style.top = parseInt(img.style.top)-4+"px";
+    img2.style.left = parseInt(img.style.left, 10) + 4 + "px";
+    img2.style.top = parseInt(img.style.top, 10) - 4 + "px";
 
     div.appendChild(img2); // img2 is for indicationg that there is an alternative context
 
@@ -625,7 +625,7 @@ eG_menu.prototype = {
     
     // create resources if necessary
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
-    if (specialNodes == null) {
+    if (specialNodes === null) {
       specialNodes = this.createSpecialNodes("main");
     }
 
@@ -633,7 +633,7 @@ eG_menu.prototype = {
 
     // create resources if necessary
     var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layoutName);
-    if (layout_aNode == null) {
+    if (layout_aNode === null) {
       layout_aNode = this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
     }
 
@@ -709,7 +709,7 @@ eG_menu.prototype = {
 
         layout_aNode.style.left = parseFloat(layout_aNode.style.left)+dx+ "px"; // parseFloat !!!
         layout_aNode.style.top = parseFloat(layout_aNode.style.top)+dy+ "px";
-        if (layout_lNode!=null) {
+        if (layout_lNode !== null) {
           layout_lNode.style.left = parseFloat(layout_lNode.style.left)+dx+ "px";
           layout_lNode.style.top = parseFloat(layout_lNode.style.top)+dy+ "px";
         }
@@ -721,7 +721,7 @@ eG_menu.prototype = {
           var baseLayout = this.menuSet[this.baseMenu];
           baseLayout_aNode.style.left = parseFloat(baseLayout_aNode.style.left)+dx+ "px"; // parseFloat !!!
           baseLayout_aNode.style.top = parseFloat(baseLayout_aNode.style.top)+dy+ "px";
-          if (baseLayout_lNode!=null) {
+          if (baseLayout_lNode !== null) {
             baseLayout_lNode.style.left = parseFloat(baseLayout_lNode.style.left)+dx+ "px";
             baseLayout_lNode.style.top = parseFloat(baseLayout_lNode.style.top)+dy+ "px";
           }
@@ -750,7 +750,7 @@ eG_menu.prototype = {
       if (sector >= 0) { // sector targetted exists: highlighting icons and labels
         layout_aNode.childNodes[sector].setAttribute("active", "true");
         this.rolloverExternalIcons(layout.actions[sector].src, layout_aNode.childNodes[sector], true);
-        if (layout_lNode != null) {
+        if (layout_lNode !== null) {
           layout_lNode.childNodes[sector].style.fontWeight = "bold";
         }
       }
@@ -807,7 +807,7 @@ eG_menu.prototype = {
     this.show("extra");
 
     // hide main menu tooltips after extra menu showed
-    if (baseLayout_lNode != null) {
+    if (baseLayout_lNode !== null) {
       baseLayout_lNode.style.display = "none";
     }
   },
@@ -821,10 +821,10 @@ eG_menu.prototype = {
     var contextMenuSign = specialNodes.childNodes[2];
     var contextAltMenuSign = eGc.frame_doc.getElementById("eG_contextAltMenuSign");
   
-    if (layout_aNode != null) {
+    if (layout_aNode !== null) {
       layout_aNode.style.display = "none";
     }
-    if (layout_lNode != null) {
+    if (layout_lNode !== null) {
       layout_lNode.style.display = "none";
     }
 
@@ -853,14 +853,14 @@ eG_menu.prototype = {
     if (this.sector >= 0) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
       this.rolloverExternalIcons(layout.actions[this.sector].src, layout_aNode.childNodes[this.sector], false);
-      if (layout_lNode != null) {
+      if (layout_lNode !== null) {
         layout_lNode.childNodes[this.sector].style.fontWeight = "normal";
       }
     }
 
     // reset rollover for extra menu in base menu if needed
     var baseLayout = this.menuSet[this.baseMenu];
-    if (baseLayout != null && baseLayout.hasExtraMenuAction && hidding) {
+    if (baseLayout !== undefined && baseLayout.hasExtraMenuAction && hidding) {
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
     }
@@ -899,7 +899,7 @@ eG_menu.prototype = {
       ///////////////////////////////////////////////////////////////////////////////////////////////
 
       var index = layout.name.match (/\d+/);
-      if (index == null) {
+      if (index === null) {
         index = 0;
       }
 
@@ -961,7 +961,7 @@ eG_menu.prototype = {
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (eGc.link != null && this.handleLinks && this.menuState!=2 && this.menuState!=3 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
+    if (eGc.link !== null && this.handleLinks && this.menuState!=2 && this.menuState!=3 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
       linkSign.style.visibility = "visible";
       this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }
@@ -1157,20 +1157,32 @@ eG_menu.prototype = {
   },
 
   updateAltMenuSign : function(altMenuSign, layoutName, alternative1and2Enabled) {
-    var altLayoutNumber = parseInt(layoutName.replace(/^\D*/,'0'));
+    var altLayoutNumber = parseInt(layoutName.replace(/^\D*/,'0'), 10);
 
     if (alternative1and2Enabled) {
       switch (altLayoutNumber) {
-        case 0: altMenuSign.src = this.skinPath + "altMenuSign0.png"; break;
-        case 1: altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
-        case 2: altMenuSign.src = this.skinPath + "altMenuSign2.png"; break;
+        case 0:
+          altMenuSign.src = this.skinPath + "altMenuSign0.png";
+          break;
+        case 1:
+          altMenuSign.src = this.skinPath + "altMenuSign1.png";
+          break;
+        case 2:
+          altMenuSign.src = this.skinPath + "altMenuSign2.png";
+          break;
       }
     }
     else {
       switch (altLayoutNumber) {
-        case 0: altMenuSign.src = this.skinPath + "altMenuSign0.png"; break;
-        case 1: altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
-        case 2: altMenuSign.src = this.skinPath + "altMenuSign1.png"; break;
+        case 0:
+          altMenuSign.src = this.skinPath + "altMenuSign0.png";
+          break;
+        case 1:
+          altMenuSign.src = this.skinPath + "altMenuSign1.png";
+          break;
+        case 2:
+          altMenuSign.src = this.skinPath + "altMenuSign1.png";
+          break;
       }
     }
   },
@@ -1255,7 +1267,7 @@ eG_menu.prototype = {
     eGc.selectionNode = null; // removes the selected node if any
 
     // enabling selection when left mouse button is used because selection is turned off in that case
-    if (this.showButton == 0) { // left mouse button
+    if (this.showButton === 0) { // left mouse button
       var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
       selCon.setDisplaySelection(2); // SELECTION_ON
     }
@@ -1281,7 +1293,7 @@ eG_menu.prototype = {
     var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
 
     // create resources if necessary
-    if (layout_lNode == null) {
+    if (layout_lNode === null) {
       layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
     }
 
@@ -1345,16 +1357,16 @@ eG_menu.prototype = {
                          "extraAlt2", "contextLink", "contextImage",
                          "contextSelection", "contextTextbox"];
         var targetNode = document.getElementById("eG_SpecialNodes");
-        if (targetNode != null) {
+        if (targetNode !== null) {
           targetNode.parentNode.removeChild(targetNode);
         }
         menuNames.forEach(function(element, index, array) {
           targetNode = document.getElementById("eG_actions_" + element);
-          if (targetNode != null) {
+          if (targetNode !== null) {
             targetNode.parentNode.removeChild(targetNode);
           }
           targetNode = document.getElementById("eG_labels_" + element);
-          if (targetNode != null) {
+          if (targetNode !== null) {
             targetNode.parentNode.removeChild(targetNode);
           }
         });
