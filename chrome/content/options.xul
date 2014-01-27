@@ -1058,7 +1058,7 @@
         var uri = ios.newURI(url, null, null).prePath;
         
         faviconService.getFaviconURLForPage(ios.newURI(uri, null, null), function(aURI) {
-          if (aURI != null && aURI != "") {
+          if (aURI != null && aURI.spec != "") {
             document.getElementById("loadURLScript_newIcon" + actionNumber).src = aURI.spec;
           }
           else {
