@@ -531,12 +531,8 @@ eG_menu.prototype = {
       else { // new icon path for loadURLScript ?
         if (this[layout.actions[i].src][4]=="true" || this[layout.actions[i].src][5]=="true") {
           if (!this.smallIcons && this[layout.actions[i].src][4]=="true") { // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
-            timg.style.font="bold 10px Arial, sans-serif";
             timg.style.backgroundPosition = "4px 4px";
             timg.style.backgroundSize = "26px 26px";
-            var protocol = this[layout.actions[i].src][1];
-            protocol = protocol.substring(0,protocol.search("://")+1);
-            timg.appendChild(eGc.frame_doc.createTextNode(protocol));
           }
           timg.style.backgroundImage="url('"+(this[layout.actions[i].src][3]).replace(/\\/g , "\\\\")+"')";
           timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
