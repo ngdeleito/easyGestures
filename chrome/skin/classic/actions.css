@@ -16,6 +16,7 @@ The Original Code is easyGestures.
 The Initial Developer of the Original Code is Ons Besbes.
 
 Contributor(s):
+  ngdeleito
 
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -31,18 +32,18 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-[id^="eG_"] {
+#easyGesturesPieMenu [id^="eG_"] {
   display: block;
-  margin: 0 !important;
-  padding: 0 !important;
-  border: 0 none !important;
-  float: none !important;
-  color: black !important;
-  background-image: none !important;
-  background-color: transparent !important;
-  min-height: 0 !important;
-  min-width: 0 !important;
-  line-height: 0.8 !important;
+  margin: 0;
+  padding: 0;
+  border: 0 none;
+  float: none;
+  color: black;
+  background-image: none;
+  background-color: transparent;
+  min-height: 0;
+  min-width: 0;
+  line-height: 0.8;
 }
 
 #eG_SpecialNodes {
@@ -89,24 +90,24 @@ the terms of any one of the MPL, the GPL or the LGPL.
   position: fixed;
 }
 
-[id^="eG_action_"] {
+#easyGesturesPieMenu [id^="eG_action_"] {
   position: absolute;
   display: inline;
   background-repeat: no-repeat;
-  background-image: url("actions.png") !important;
-  width: 32px !important;
-  height: 32px !important;
+  background-image: url("actions.png");
+  width: 32px;
+  height: 32px;
 }
 
-[id^="eG_action_small_"] {
-  background-image: url("small_actions.png") !important;
-  width: 20px !important;
-  height: 20px !important;
+#easyGesturesPieMenu [id^="eG_action_small_"] {
+  background-image: url("small_actions.png");
+  width: 20px;
+  height: 20px;
 }
 
 [id^="eG_labels_"] {
   font-style: normal;
-  font-family: tahoma,arial,helvetica,sans-serif !important;
+  font-family: tahoma,arial,helvetica,sans-serif;
   vertical-align: baseline;
   text-align: left;
   text-indent: 0px;

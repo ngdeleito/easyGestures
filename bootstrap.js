@@ -141,8 +141,8 @@ function startup(data, reason) {
     var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                         .getService(Components.interfaces.nsIStyleSheetService);
     var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-    if (!sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
-      sss.loadAndRegisterSheet(uri, sss.AGENT_SHEET);
+    if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
+      sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
     
     // activating easyGestures on current windows
@@ -181,8 +181,8 @@ function shutdown(data, reason) {
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
                       .getService(Components.interfaces.nsIStyleSheetService);
   var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-  if (sss.sheetRegistered(uri, sss.AGENT_SHEET)) {
-    sss.unregisterSheet(uri, sss.AGENT_SHEET);
+  if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
+    sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
   }
   
   // disabling easyGestures on current windows
