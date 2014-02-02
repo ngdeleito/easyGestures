@@ -410,6 +410,12 @@ eG_menu.prototype = {
     return this.menuState !== 0;
   },
   
+  createEasyGesturesNode : function(aDocument) {
+    var aDiv = aDocument.createElementNS(eGc.HTMLNamespace, "div");
+    aDiv.setAttribute("id", eGc.easyGesturesID);
+    return aDiv;
+  },
+  
   createSpecialNodes : function (layoutName) { //creating DOM nodes
     var layout = this.menuSet[layoutName];
 
@@ -477,8 +483,6 @@ eG_menu.prototype = {
     div.appendChild(text);
 
     node.appendChild(div);
-
-    eGc.body.insertBefore(node, eGc.body.firstChild);
     return node;
   },
 
@@ -563,7 +567,6 @@ eG_menu.prototype = {
 
     // save node and hide it
     node.style.display = "none";
-    eGc.body.insertBefore(node, eGc.body.firstChild);
     return node;
   },
 
@@ -616,7 +619,6 @@ eG_menu.prototype = {
 
     // save node and hide it
     node.style.display = "none";
-    eGc.body.insertBefore(node, eGc.body.firstChild);
     return node;
   },
 
@@ -624,9 +626,16 @@ eG_menu.prototype = {
     var layout = this.menuSet[layoutName];
     
     // create resources if necessary
+    var easyGesturesNode = eGc.frame_doc.getElementById(eGc.easyGesturesID);
+    if (easyGesturesNode === null) {
+      easyGesturesNode = this.createEasyGesturesNode(eGc.frame_doc);
+      eGc.body.insertBefore(easyGesturesNode, eGc.body.firstChild);
+    }
+    
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
     if (specialNodes === null) {
       specialNodes = this.createSpecialNodes("main");
+      easyGesturesNode.appendChild(specialNodes);
     }
 
     var altMenuSign = specialNodes.childNodes[1];
@@ -635,6 +644,7 @@ eG_menu.prototype = {
     var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layoutName);
     if (layout_aNode === null) {
       layout_aNode = this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
+      easyGesturesNode.appendChild(layout_aNode);
     }
 
     // recalculate positions
@@ -1289,12 +1299,13 @@ eG_menu.prototype = {
 
   showMenuTooltips : function() { // displaying tooltips
     var layout = this.menuSet[this.curLayoutName];
+    var easyGesturesNode = eGc.frame_doc.getElementById(eGc.easyGesturesID);
     
-    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
-
     // create resources if necessary
+    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
     if (layout_lNode === null) {
       layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
+      easyGesturesNode.appendChild(layout_lNode);
     }
 
     layout_lNode.style.left = this.clientX + layout.lNodeXOff + "px";
@@ -1353,23 +1364,10 @@ eG_menu.prototype = {
       let tabs = window.gBrowser.tabs;
       Array.forEach(tabs, function(element, index, array) {
         var document = window.gBrowser.getBrowserForTab(element).contentDocument;
-        var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
-                         "extraAlt2", "contextLink", "contextImage",
-                         "contextSelection", "contextTextbox"];
-        var targetNode = document.getElementById("eG_SpecialNodes");
-        if (targetNode !== null) {
-          targetNode.parentNode.removeChild(targetNode);
+        var easyGesturesNode = document.getElementById(eGc.easyGesturesID);
+        if (easyGesturesNode !== null) {
+          easyGesturesNode.parentNode.removeChild(easyGesturesNode);
         }
-        menuNames.forEach(function(element, index, array) {
-          targetNode = document.getElementById("eG_actions_" + element);
-          if (targetNode !== null) {
-            targetNode.parentNode.removeChild(targetNode);
-          }
-          targetNode = document.getElementById("eG_labels_" + element);
-          if (targetNode !== null) {
-            targetNode.parentNode.removeChild(targetNode);
-          }
-        });
       });
     }
   }

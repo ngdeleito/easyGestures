@@ -71,6 +71,9 @@ var eGc = {
   
   maxzIndex: 2147483647, // Max Int. Same value as the one used for displaying autoscrolling image
   
+  HTMLNamespace: "http://www.w3.org/1999/xhtml",
+  easyGesturesID: "easyGesturesPieMenu",
+  
   isStdContextMenuBlocked : function() {
     return this._blockStdContextMenu;
   },
