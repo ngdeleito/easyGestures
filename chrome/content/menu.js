@@ -534,7 +534,6 @@ eG_menu.prototype = {
             timg.style.font="bold 10px Arial, sans-serif";
             timg.style.backgroundPosition = "4px 4px";
             timg.style.backgroundSize = "26px 26px";
-            var number = parseInt(layout.actions[i].src.replace(/([^0-9])+/g,""));
             var protocol = this[layout.actions[i].src][1];
             protocol = protocol.substring(0,protocol.search("://")+1);
             timg.appendChild(eGc.frame_doc.createTextNode(protocol));
@@ -728,7 +727,6 @@ eG_menu.prototype = {
         specialNodes.style.top = parseFloat(specialNodes.style.top)+dy+ "px";
 
         if (layout.isExtraMenu) { // extra menu is displayed: move base menu too
-          var baseLayout = this.menuSet[this.baseMenu];
           baseLayout_aNode.style.left = parseFloat(baseLayout_aNode.style.left)+dx+ "px"; // parseFloat !!!
           baseLayout_aNode.style.top = parseFloat(baseLayout_aNode.style.top)+dy+ "px";
           if (baseLayout_lNode !== null) {
