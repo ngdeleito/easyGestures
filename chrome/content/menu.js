@@ -423,14 +423,14 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    var node = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
     node.setAttribute("id", "eG_SpecialNodes"); // used to know if menu has already been displayed in the current document
 
     ////////////////////////////////////////////////////////////////////////////
     // creating link sign
     ///////////////////////////////////////////////////////////////////////////
 
-    var img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    var img = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
     img.setAttribute("id", "eG_linkSign_" + this.smallMenuTag);
     img.style.left = Math.round(layout.outerR - this.iconSize/2) + "px";
     img.style.top = Math.round(layout.outerR - this.iconSize/2) + "px";
@@ -443,7 +443,7 @@ eG_menu.prototype = {
     // adding sign image for alternative menu
     ///////////////////////////////////////////////////////////////////////////
 
-    img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    img = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
     img.setAttribute("id", "eG_altMenuSign");
     img.src = this.skinPath + "altMenuSign0.png";
     img.alt = "";
@@ -455,23 +455,23 @@ eG_menu.prototype = {
     // Adding sign image for contextual menu
     ///////////////////////////////////////////////////////////////////////////
 
-    var div = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    var div = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
     div.setAttribute("id", "eG_contextMenuSign");
     div.style.backgroundImage = "url('chrome://easygestures/skin/contextMenuSign.png')";
     div.style.backgroundColor = "red";
 
-    var text = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    var text = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
     text.style.left = Math.round(layout.outerR-76/2)+"px";
     text.style.top = Math.round(-this.iconSize/4-7)+"px";
     //text.appendChild(eGc.frame_doc.createTextNode(eGc.localizing.getString("contextual")));
     text.appendChild(eGc.frame_doc.createTextNode(""));
 
-    img = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    img = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
     img.src = this.skinPath+"contextMenuSign.png";
     img.style.left = parseInt(text.style.left, 10) + "px";
     img.style.top = parseInt(text.style.top, 10) - 6 + "px";
 
-    var img2 = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    var img2 = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
     img2.setAttribute("id", "eG_contextAltMenuSign");
     img2.src = this.skinPath+"contextMenuSign.png";
     img2.style.left = parseInt(img.style.left, 10) + 4 + "px";
@@ -493,7 +493,7 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    var node = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
     node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
     node.style.width = 2*layout.outerR + "px";
     node.style.height = 2*layout.outerR + "px";
@@ -514,7 +514,7 @@ eG_menu.prototype = {
       var xpos = imageR* Math.cos(angle)+ xofs;
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
-      timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div"); // was img tag. Changed to div tag to use compound image
+      timg = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
       timg.setAttribute("id", "eG_action_" + this.smallMenuTag + layoutName + "_" + i);
       timg.style.zIndex = layout.zIndex;
       timg.style.left = Math.round(xpos) + "px";
@@ -550,7 +550,7 @@ eG_menu.prototype = {
     // creating menu image
     ///////////////////////////////////////////////////////////////////////////
 
-    var timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    var timg = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
     timg.style.zIndex = layout.zIndex-1;
     timg.src = layout.menuImage;
@@ -572,7 +572,7 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+    var node = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
     node.style.height = layout.height + "px";
     node.style.width = layout.width + "px";
@@ -591,7 +591,7 @@ eG_menu.prototype = {
       var xpos = layout.xLabelsPos[i] + xofs;
       var ypos = layout.yLabelsPos[i] + yofs;
 
-      var tdiv = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "div");
+      var tdiv = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
       tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
       tdiv.style.zIndex = layout.zIndex - 1;
       tdiv.style.left = Math.round(xpos) + "px";
@@ -604,7 +604,7 @@ eG_menu.prototype = {
     // creating tooltips image
     ///////////////////////////////////////////////////////////////////////////
 
-    var timg = eGc.frame_doc.createElementNS("http://www.w3.org/1999/xhtml", "img");
+    var timg = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
     timg.style.zIndex = layout.zIndex - 2;
     timg.src = layout.tooltipsImage;
