@@ -1350,19 +1350,21 @@ eG_menu.prototype = {
   },
   
   removeExistingMenusFromPages : function() {
+    var removeMenus = function(element, index, array) {
+      var document = this.gBrowser.getBrowserForTab(element).contentDocument;
+      var easyGesturesNode = document.getElementById(eGc.easyGesturesID);
+      if (easyGesturesNode !== null) {
+        easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+      }
+    };
+    
     // iterating over all windows and over all tabs in each window, in order to
     // remove any previously inserted easyGestures menus
     var openWindows = Services.wm.getEnumerator("navigator:browser");
     while (openWindows.hasMoreElements()) {
       let window = openWindows.getNext();
       let tabs = window.gBrowser.tabs;
-      Array.forEach(tabs, function(element, index, array) {
-        var document = window.gBrowser.getBrowserForTab(element).contentDocument;
-        var easyGesturesNode = document.getElementById(eGc.easyGesturesID);
-        if (easyGesturesNode !== null) {
-          easyGesturesNode.parentNode.removeChild(easyGesturesNode);
-        }
-      });
+      Array.forEach(tabs, removeMenus, window); // window is this in removeMenus
     }
   }
 };
