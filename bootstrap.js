@@ -77,19 +77,33 @@ stringBundle.prototype = {
 };
 
 function loadEasyGesturesOn(window) {
-  window.addEventListener("load", function runOnLoad() {
-    window.removeEventListener("load", runOnLoad, false);
-    
-    // making sure that easyGestures is only loaded on navigator windows and not
-    // on e.g. preferences and console windows
-    var wintype = window.document.documentElement.getAttribute("windowtype");
-    if (wintype != "navigator:browser") {
-      return;
-    }
-    
-    eG_activateMenu(window);
-    window.addEventListener("mousedown", eG_countClicks, false);
-  }, false);
+  // making sure that easyGestures is only loaded on navigator windows and not
+  // on e.g. preferences and console windows
+  var wintype = window.document.documentElement.getAttribute("windowtype");
+  if (wintype != "navigator:browser") {
+    return;
+  }
+  
+  eG_activateMenu(window);
+  window.addEventListener("mousedown", eG_countClicks, false);
+}
+
+function loadEasyGesturesOnExistingWindow(window) {
+  if (window.document.readyState == "complete") {
+    loadEasyGesturesOn(window);
+  }
+  else {
+    window.addEventListener("load", function runOnLoad() {
+      window.removeEventListener("load", runOnLoad, false);
+      loadEasyGesturesOn(window);
+    }, false);
+  }
+}
+
+function loadEasyGesturesOnNewWindow(aSubject, aTopic, aData) {
+  if (aTopic == "domwindowopened") {
+    loadEasyGesturesOn(aSubject);
+  }
 }
 
 function unloadEasyGesturesOn(window) {
@@ -98,12 +112,6 @@ function unloadEasyGesturesOn(window) {
   
   eG_deactivateMenu(window);
   window.removeEventListener("mousedown", eG_countClicks, false);
-}
-
-function loadEasyGesturesOnNewWindow(aSubject, aTopic, aData) {
-  if (aTopic == "domwindowopened") {
-    loadEasyGesturesOn(aSubject);
-  }
 }
 
 function startup(data, reason) {
@@ -148,7 +156,7 @@ function startup(data, reason) {
     // activating easyGestures on current windows
     var currentWindows = Services.wm.getEnumerator("navigator:browser");
     while (currentWindows.hasMoreElements()) {
-      loadEasyGesturesOn(currentWindows.getNext());
+      loadEasyGesturesOnExistingWindow(currentWindows.getNext());
     }
     
     // start listening to new window events in order to activate easyGestures on
