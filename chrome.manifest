@@ -16,4 +16,4 @@ locale easygestures tr-TR chrome/locale/tr-TR/
 locale easygestures cz-CZ chrome/locale/cz-CZ/
 locale easygestures zh-CN chrome/locale/zh-CN/
 
-skin easygestures classic/1.0 chrome/skin/classic/
+skin easygestures default chrome/skin/
