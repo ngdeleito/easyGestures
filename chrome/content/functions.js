@@ -258,8 +258,8 @@ var eGf = {
   },
   
   restart : function() {
-    Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit
-                         |Components.interfaces.nsIAppStartup.eRestart);
+    Services.startup.quit(Components.interfaces.nsIAppStartup.eAttemptQuit |
+                          Components.interfaces.nsIAppStartup.eRestart);
   },
 
   quit : function() {
