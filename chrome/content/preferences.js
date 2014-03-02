@@ -56,7 +56,7 @@ var eGPrefs = {
 
   setDefaultSettings : function() {
     this._prefs.setBoolPref("general.startupTips", true);
-    this._prefs.setIntPref("general.tipNumber", 1);
+    this._prefs.setIntPref("general.tipNumber", 0);
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (window.navigator.userAgent.indexOf("Mac") == -1) {
