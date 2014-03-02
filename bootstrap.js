@@ -102,7 +102,7 @@ function loadEasyGesturesOnExistingWindow(window) {
 
 function loadEasyGesturesOnNewWindow(aSubject, aTopic, aData) {
   if (aTopic == "domwindowopened") {
-    loadEasyGesturesOn(aSubject);
+    loadEasyGesturesOnExistingWindow(aSubject);
   }
 }
 
