@@ -166,11 +166,17 @@ function startup(data, reason) {
     // displaying startup tips
     if (eGPrefs.areStartupTipsOn()) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
-      window.addEventListener("load", function displayTipsAtStartup() {
-        window.removeEventListener("load", displayTipsAtStartup, false);
+      if (window.document.readyState == "complete") {
         window.openDialog("chrome://easygestures/content/tips.xul", "",
                           "chrome,centerscreen,resizable");
-      }, false);
+      }
+      else {
+        window.addEventListener("load", function displayTipsAtStartup() {
+          window.removeEventListener("load", displayTipsAtStartup, false);
+          window.openDialog("chrome://easygestures/content/tips.xul", "",
+                            "chrome,centerscreen,resizable");
+        }, false);
+      }
     }
   });
 }
