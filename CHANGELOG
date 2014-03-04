@@ -1,41 +1,35 @@
-Changes by ngdeleito (see git history for the full details)
+Changes since version 4.3.2 by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
-2012-09-01 onwards
-- changed version number to 4.4
-- unpacked and removed easygestures.jar file
-- reindented source code in several files
-- rewrote deprecated versions of setTimeout() function calls
-- made several changes in the preferences dialog, among which:
--- removed support for multiple skins
--- removed popup menu to change language
--- split the "Behavior" pane in two
--- made use of XUL's preferences system
-- fixed some warnings
-- removed popup for nextTab, prevTab and undoCloseTab actions
-- removed input box for entering URLs
-- removed linear menu
-- removed Translate/Explain action
-- changed behaviour of Search Web action, which now uses Firefox's search engines
-- changed behaviour of Highlight/Clear action so that it now toggles Firefox's find bar
-- renamed highlight action to toggleFindBar
-- changed behaviour of Daily Readings action:
--- it does no longer provide default bookmarks upon creation of the daily readings folder
--- it now opens all bookmarks in new tabs
-- removed red tag for links
-- made select boxes for actions non editable
-- removed runProgramFile actions
-- removed custom about dialog
-- added new Restart Firefox action
-- easyGestures is now a restartless extension
-- removed welcome page
-- renamed and adapted accordingly privateBrowsing action to newPrivateWindow
-- renamed closeBrowser action to quit
-- removed statusbar icon
-- removed mail action
-- added focusLocationBar action
-- removed ability to open menu only on drag
-- removed the omit tooltips delay option
+Version 4.5 (September 2012--March 2014)
+- made easyGestures work with recent versions of Firefox
+- made easyGestures a restartless extension
 - removed support for upgrading from versions prior to 4.3.2
-- moved preferences to the extensions. branch
-- removed properties action
-- removed sendLink action
+- moved preferences to the "extensions." branch
+- made several changes in the preferences dialog, among which:
+  - removed support for multiple skins
+  - removed popup menu to change language
+  - split the "Behavior" pane in two
+  - made use of XUL's preferences system
+  - made select boxes for actions non editable
+- removed features:
+  - input box for entering URLs
+  - linear menu
+  - red tag for links
+  - custom "About" dialog
+  - welcome page
+  - statusbar icon
+  - ability to open menu only on drag
+  - "omit tooltips delay" option
+  - popup for "Next Tab", "Previous Tab" and "Undo Close Tab" actions
+  - "Translate/Explain", "Run Program File", "Mail", "Properties" and "Send
+    Link" actions
+- changed features:
+  - "Search Web" action uses Firefox's search engines
+  - "Highlight/Clear" action toggles Firefox's find bar and was renamed to
+    "Toggle Find Bar"
+  - "Daily Readings" action no longer provides default bookmarks upon creation
+    of the daily readings folder and opens all bookmarks in new tabs
+  - "Private Browsing" action was changed to "New Private Window"
+  - "Close Browser" action was renamed to "Quit Firefox"
+- added features:
+  - "Restart Firefox" and "Focus Location Bar" actions

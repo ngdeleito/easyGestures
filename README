@@ -1,38 +1,13 @@
-easyGestures is a Firefox extension that allows browsing the Web from where the cursor is currently located, through a pie menu and without having to go to the navigation toolbar or to the application menu.
+easyGestures is a Firefox extension that provides a pie menu for browsing the Web from where your cursor is currently located.
 
-easyGestures was created by Ons Besbes, who supported the extension until Firefox 4. The extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically and generating "TypeError: can't access dead object" errors, which are now fixed.
+It was created by Ons Besbes, who maintained it until Firefox 4. The extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically and generating "TypeError: can't access dead object" errors, which are now fixed.
 
-Here I try to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of this extension (see below).
-
-I do this on my limited free time. Help is very much welcome.
+This is an (ongoing) attempt to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of this extension. Help is very much welcome, especially for updating and maintaining both the visual appearance and the current locales.
 
 To install the latest development version:
-- Uninstall any previous version of easyGestures
-- Click on the button labeled "Download ZIP" ("download this repository as a zip file")
+- Uninstall any version of easyGestures prior to version 4.3.2
+- Click on the button labeled "Download ZIP"
 - Once the file downloaded, unzip it
-- Zip the content of the "easyGestures-development" folder (and not the folder itself)
+- Zip the content of the "easyGestures-development" folder (and not the folder itself!)
 - Give to the resulting zip file the "xpi" extension
 - Drop the renamed zipped file into Firefox
-
-Features pruned so far and rationale:
-- Support for multiple skins. Only two skins were (publicly) available. Furthermore, easyGestures' skin should ideally match with the current Firefox theme/persona.
-- Support for changing easyGestures' language. easyGestures' language should match the language used by Firefox, as any other extension.
-- Popup for next and previous tab actions. The popup was not present in initial versions of easyGestures, and, once introduced, generated heated discussions in the former easyGestures forum. Furthermore, its presence was inconsistent with the name of those two actions.
-- Popup for undo close tab action. The popup was not present in initial versions of easyGestures. Furthermore, its presence was inconsistent with the name of this action and with the behaviour of Firefox's Ctrl/Cmd-Shift-T shortcut.
-- Input box for entering URLs. This feature duplicates Firefox's location bar.
-- Linear menu. easyGestures is about a pie menu.
-- Translate/Explain action. A proper solution for translating a word from any language to any other language seems to be outside the scope of this extension. Explaining a term can be done via a search query.
-- Own search engines. This feature duplicates Firefox's search engines.
-- Highlight/Clear action. Although it only offers one highlighting color, Firefox offers this feature in its find bar.
-- Default, locale dependent bookmarks for Daily Readings action. They need to be maintained.
-- Popup for Daily Readings action. Opening a specific bookmark is better achieved by a Load URL action.
-- Red tag for links. This should be achieved through a user style sheet.
-- Editable select boxes for actions. It feels counterintuitive that they were editable since we are not adding new items (like in e.g. Firefox's address bar) but editing existing ones. Labels (whether edited or not) were stored in the preferences. Since easyGestures' language depends now on Firefox's language, easyGestures did no longer change the labels upon language change.
-- Run Program File actions. I do not see any useful use case for this feature. Furthermore, the existing implementation seemed too Windows-based (although I might be wrong).
-- Welcome page. Tips should be sufficient. Furthermore the instructions did not apply to Mac users.
-- Statusbar icon. Enabling and disabling easyGestures is best done through Firefox's Add-ons Manager.
-- Mail action. This feature had little to do with Firefox.
-- Open on drag. It feels like a feature for über-users. It is currently buggy. The "up/left only" option only works with the left mouse button, but this is not documented anywhere (except in the source code).
-- Omit tooltips delay option. It feels easier to just set the tooltips delay to zero.
-- Properties action. This feature (very similar to View Page Info) was apparently related to a feature that no longer exists in Firefox.
-- Send Link action. This feature exceeds the extent of Firefox.
