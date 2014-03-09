@@ -73,10 +73,7 @@
         </hbox>
         <spacer flex="1" />
         <hbox>
-          <html:div id="tipText" style="margin-left: 8px; padding: 0px;"
-            onmouseover="this.style.cursor='default';">
-            <html:a id="tipLink" href="#" style="text-decoration:underline;color: #3A69A6;">Link</html:a>
-          </html:div>
+          <label id="tipLink" class="text-link" onclick="tipLinkClick();" />
           <spacer flex="1" />
           <html:div>
             <html:a href="#">
@@ -117,33 +114,34 @@
       tipNbr = 1;
     }
     
-    function tipEntry(description, imageClass, linkRef) {
+    function tipEntry(description, imageClass, paneName, tabNumber) {
       this.description = description;
       this.imageClass = imageClass; // image source
-      this.linkRef = linkRef; // tabbox and index to be selected
+      this.paneName = paneName;
+      this.tabNumber = tabNumber;
     }
     
     var tips = new Array(
-      new tipEntry("&tip1;",  "triggerBySelection",  "behavior/1"),
-      new tipEntry("&tip2;",  "triggerByStroke",     ""),
-      new tipEntry("&tip4;",  "alternativeMenus",    "behavior/1"),
-      new tipEntry("&tip5;",  "bookmarksOnlyLayout", "customizations/1"),
-      new tipEntry("&tip6;",  "builtInAction",       "actions/1"),
-      new tipEntry("&tip7;",  "programsAndScripts",  "customizations/2"),
-      new tipEntry("&tip8;",  "clickOnLink",         ""),
-      new tipEntry("&tip9;",  "contextual",          "behavior/1"),
-      new tipEntry("&tip10;", "empty",               ""),
-      new tipEntry("&tip11;", "suppressMenu",        ""),
-      new tipEntry("&tip12;", "moveMenu",            ""),
-      new tipEntry("&tip13;", "noTooltips",          "behavior/1"),
-      new tipEntry("&tip14;", "noIcons",             ""),
-      new tipEntry("&tip15;", "largeMenu",           ""),
-      new tipEntry("&tip16;", "empty",               "behavior/1"),
-      new tipEntry("&tip18;", "empty",               ""),
-      new tipEntry("&tip20;", "empty",               ""),
-      new tipEntry("&tip21;", "empty",               ""),
-      new tipEntry("&tip22;", "empty",               ""),
-      new tipEntry("&tip26;", "empty",               "")
+      new tipEntry("&tip1;",  "triggerBySelection",  "activation",     "0"),
+      new tipEntry("&tip2;",  "triggerByStroke",     ""          ,     "0"),
+      new tipEntry("&tip4;",  "alternativeMenus",    "activation",     "0"),
+      new tipEntry("&tip5;",  "bookmarksOnlyLayout", "customizations", "0"),
+      new tipEntry("&tip6;",  "builtInAction",       "menus",          "0"),
+      new tipEntry("&tip7;",  "programsAndScripts",  "customizations", "0"),
+      new tipEntry("&tip8;",  "clickOnLink",         "",               "0"),
+      new tipEntry("&tip9;",  "contextual",          "activation",     "0"),
+      new tipEntry("&tip10;", "empty",               "",               "0"),
+      new tipEntry("&tip11;", "suppressMenu",        "",               "0"),
+      new tipEntry("&tip12;", "moveMenu",            "",               "0"),
+      new tipEntry("&tip13;", "noTooltips",          "behavior",       "0"),
+      new tipEntry("&tip14;", "noIcons",             "",               "0"),
+      new tipEntry("&tip15;", "largeMenu",           "",               "0"),
+      new tipEntry("&tip16;", "empty",               "behavior",       "0"),
+      new tipEntry("&tip18;", "empty",               "",               "0"),
+      new tipEntry("&tip20;", "empty",               "",               "0"),
+      new tipEntry("&tip21;", "empty",               "",               "0"),
+      new tipEntry("&tip22;", "empty",               "",               "0"),
+      new tipEntry("&tip26;", "empty",               "",               "0")
     );
     
     function updateTipNbr(step) {
@@ -152,22 +150,54 @@
       updateContent(tipNbr);
     }
     
+    function showPaneAndTabOn(paneName, tabNumber, doc) {
+      var pane = doc.getElementById(paneName + "Pane");
+      doc.getElementById("eG_optionsWindow").showPane(pane);
+      if (tabNumber > 0) {
+        var tabbox = doc.getElementById(paneName + "Tabboxes");
+        tabbox.selectedIndex = tabNumber;
+      }
+    }
+    
+    function openPreferencesWith(paneName, tabNumber) {
+      var winenum = Services.wm.getEnumerator("");
+      var found = false;
+      var win;
+      while (winenum.hasMoreElements() &amp;&amp; !found) {
+        win = winenum.getNext();
+        found = win.location == "chrome://easygestures/content/options.xul";
+      }
+      if (!found) {
+        win = window.openDialog("chrome://easygestures/content/options.xul", "", "");
+        win.addEventListener("load", function runOnLoad() {
+          removeEventListener("load", runOnLoad, false);
+          showPaneAndTabOn(paneName, tabNumber, win.document);
+        }, false);
+      }
+      else {
+        showPaneAndTabOn(paneName, tabNumber, win.document);
+        win.focus();
+      }
+    }
+    
+    function tipLinkClick(anEvent) {
+      var paneName = tips[tipNbr].paneName;
+      var tabNumber = tips[tipNbr].tabNumber;
+      openPreferencesWith(paneName, tabNumber);
+    }
+    
     function updateContent(tipNbr) {
       document.getElementById("tipNbrDisplay").value = (tipNbr + 1) + " / " + tips.length;
       
       var text = tips[tipNbr].description.split("|")[0];
-      var linkText = (tips[tipNbr].description.split("|").length > 1 ?
-                       tips[tipNbr].description.split("|")[1]
+      var linkText = (tips[tipNbr].description.split("|").length > 1
+                     ? tips[tipNbr].description.split("|")[1]
                      : "");
-      var linkRef = tips[tipNbr].linkRef;
-      var linkPane = (linkRef != "" ?
-                       tips[tipNbr].linkRef.split('/')[0] + "Pane"
-                     : ""); // Pane to focus in options window
       
       document.getElementById("tipText").firstChild.data = text;
       document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
-      document.getElementById("tipLink").setAttribute("onclick", "window.openDialog('chrome://easygestures/content/options.xul','','','"+linkPane+"','"+linkRef+"');");
-      document.getElementById("tipLink").firstChild.data = linkText;
+      var tipLinkElement = document.getElementById("tipLink");
+      tipLinkElement.value = linkText;
     }
     
     function copyDescriptionToClipboard() {

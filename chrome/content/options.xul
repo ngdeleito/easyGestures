@@ -45,7 +45,7 @@
   onkeypress="preventCloseOnEnter(event);"
   persist="lastSelected screenX screenY width height"
   
-  onload="avoidMultipleInstances(); initMenuDialog();"
+  onload="initMenuDialog();"
   buttons="accept,cancel,disclosure"
   ondialogdisclosure="window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable');">
 
@@ -1566,27 +1566,6 @@
       while (version == null)
         thread.processNextEvent(true); // sleep until async value is available       
       return version;
-    }
-    
-    function avoidMultipleInstances() {
-      var wenum = Components.classes["@mozilla.org/appshell/window-mediator;1"].getService(Components.interfaces.nsIWindowMediator).getEnumerator("");
-      
-      while (wenum.hasMoreElements()) {
-        var win = wenum.getNext();
-        if (win.location == "chrome://easygestures/content/options.xul" && win != this) {
-          win.focus();
-          try {
-            // switch dialog to appropriate panel when called from tips window
-            var args = this.arguments[1].split("/");
-            win.document.getElementById('eG_optionsWindow').showPane(win.document.getElementById(args[0]+'Pane'));
-            win.document.getElementById(args[0]+"Tabboxes").selectedIndex=parseInt(args[1])-1; // Page 1 is index 0
-          }
-          catch (ex) {}
-          
-          this.close();
-          return;
-        }
-      }
     }
     //]]>
   </script>
