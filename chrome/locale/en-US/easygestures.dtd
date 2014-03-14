@@ -19,6 +19,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Close">
 
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Behavior">
@@ -239,21 +240,21 @@ END OF INSTRUCTIONS
 <!ENTITY showTips "Show Tips at startup">
 <!ENTITY copyText "Copy text to clipboard">
 
-<!ENTITY tip1 "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed. |Change mouse button in Options/Behavior">
+<!ENTITY tip1 "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
 <!ENTITY tip2 "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
-<!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed. |Change mouse button in Options/Behavior">
-<!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL/Script' actions then adding them in the pie menu layouts. |Customize in Options/Customizations/Load URL/Script">
-<!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in Options/Actions">
-<!ENTITY tip7 "You can execute Javascript code with the 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension.">
-<!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab and display a red tag on the page after the link.">
-<!ENTITY tip9 "You can activate context sensitivity by pressing 'Ctrl' key when opening pie menu. You can also turn context sensitivity always on. |Change behavior in Options/Behavior">
+<!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
+<!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL/Script' actions then adding them in the pie menu layouts.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
+<!ENTITY tip7 "You can execute Javascript code with the 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab.">
+<!ENTITY tip9 "You can activate context sensitivity by pressing the 'Ctrl' key when opening the pie menu. You can also turn context sensitivity always on.|Change behavior in &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
 <!ENTITY tip12 "You can move around the pie menu by holding 'Shift' key while moving the mouse.">
-<!ENTITY tip13 "You can switch off the tooltips display if you don't need it. It is also possible to rename each action tooltip. |Switch off display in Options/Behavior">
-<!ENTITY tip14 "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.">
-<!ENTITY tip15 "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.">
-<!ENTITY tip16 "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving. |Activate autoscrolling in Options/Behavior">
+<!ENTITY tip13 "You can switch off the tooltips display if you don't need it.|Switch off tooltips display in &preferences;/&behavior;">
+<!ENTITY tip14 "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tip15 "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tip16 "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving.|Activate autoscrolling in &preferences;/&behavior;">
 <!ENTITY tip18 "The 'Close tab' action closes the window if there is only one tab open.">
 <!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
 <!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">

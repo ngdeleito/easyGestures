@@ -131,8 +131,8 @@
       new tipEntry("&tip9;",  "contextual",          "activation",     "0"),
       new tipEntry("&tip11;", "suppressMenu",        "",               "0"),
       new tipEntry("&tip12;", "moveMenu",            "",               "0"),
-      new tipEntry("&tip14;", "noIcons",             "",               "0"),
-      new tipEntry("&tip15;", "largeMenu",           "",               "0"),
+      new tipEntry("&tip14;", "noIcons",             "behavior",       "0"),
+      new tipEntry("&tip15;", "largeMenu",           "behavior",       "0"),
       new tipEntry("&tip16;", "empty",               "behavior",       "0"),
       new tipEntry("&tip18;", "empty",               "",               "0"),
       new tipEntry("&tip20;", "empty",               "",               "0"),
@@ -193,6 +193,7 @@
       document.getElementById("tipText").textContent = text;
       document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
       document.getElementById("tipLink").textContent = linkText;
+      sizeToContent();
     }
     
     function copyDescriptionToClipboard() {
