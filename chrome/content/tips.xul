@@ -55,34 +55,30 @@
   
   <groupbox flex="1" style="background-color:white;">
     <hbox>
-      <description value="&intro;"
-        style="font-weight: bold; margin-top: 8px; margin-left: 8px" />
+      <description value="&intro;" class="header" />
       <spring flex="1" />
-      <description id="tipNbrDisplay" value="xx / nn"
-        style="margin-top: 8px; margin-right: 8px" />
+      <description id="tipNbrDisplay" value="xx / nn" />
     </hbox>
-    <hbox flex="1"
-      style="margin: 8px; padding: 0px; border: solid lightgray 1pt;">
-      <vbox style="font-size:10pt;background-color: #FFFFE1;border: none;"
+    <hbox flex="1" style="border: solid lightgray 1pt;margin-bottom: 8px;">
+      <vbox style="font-size:larger;background-color: #FFFFE1;border: none;"
         flex="1">
-        <html:div id="tipText" style="margin: 8px; padding: 0px;"
-          onmouseover="this.style.cursor='default';">Tip</html:div>
+        <description id="tipText" style="margin: 8px; padding: 0px;">
+          Tip
+        </description>
         <spacer flex="1" />
         <hbox pack="center">
           <html:div id="tipImage" style="background-image:url('chrome://easygestures/content/tips.png');width:460px;height:130px;"></html:div>
         </hbox>
         <spacer flex="1" />
-        <hbox>
-          <label id="tipLink" class="text-link" onclick="tipLinkClick();" />
+        <hbox align="center" style="margin: 8px; padding: 0px;">
+          <description id="tipLink" class="text-link" onclick="tipLinkClick();">
+            Link
+          </description>
           <spacer flex="1" />
-          <html:div>
-            <html:a href="#">
-              <image src="chrome://easygestures/content/copyToClipboard.png"
-                tooltiptext="&copyText;" onclick="copyDescriptionToClipboard();"
-                onmousedown="this.style.opacity=0.5;this.style.cursor='wait';"
-                onmouseup="this.style.opacity=1;this.style.cursor='pointer';" />
-            </html:a>
-          </html:div>
+          <image src="chrome://easygestures/content/copyToClipboard.png"
+            tooltiptext="&copyText;" onclick="copyDescriptionToClipboard();"
+            onmousedown="this.style.opacity=0.5;"
+            onmouseup="this.style.opacity=1;" />
         </hbox>
       </vbox>
     </hbox>
@@ -194,10 +190,9 @@
                      ? tips[tipNbr].description.split("|")[1]
                      : "");
       
-      document.getElementById("tipText").firstChild.data = text;
+      document.getElementById("tipText").textContent = text;
       document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
-      var tipLinkElement = document.getElementById("tipLink");
-      tipLinkElement.value = linkText;
+      document.getElementById("tipLink").textContent = linkText;
     }
     
     function copyDescriptionToClipboard() {
