@@ -41,7 +41,7 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   id="eG_optionsWindow"
-  title="&options; - easyGestures"
+  title="&preferences; - easyGestures"
   onkeypress="preventCloseOnEnter(event);"
   persist="lastSelected screenX screenY width height"
   

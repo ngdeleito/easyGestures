@@ -17,7 +17,6 @@ Contains options dialog strings and pie menu tips.
 
 <!-- Korean localization (ko-KR): wtspout from Babelzilla.org -->
 
-<!ENTITY options "선택사항">
 <!ENTITY close "닫기">
 <!ENTITY preferences "Preferences">
 <!ENTITY general "General">

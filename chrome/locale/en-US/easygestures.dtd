@@ -15,8 +15,6 @@ Contains options dialog strings and pie menu tips.
 END OF INSTRUCTIONS
 -->
 
-<!ENTITY options "Options">
-
 <!ENTITY close "Close">
 
 <!ENTITY preferences "Preferences">
