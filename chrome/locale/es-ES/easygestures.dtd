@@ -4,6 +4,7 @@
 
 <!ENTITY options "Opciones">
 <!ENTITY close "Cerrar">
+<!ENTITY preferences "Preferencias">
 <!ENTITY general "General">
 <!ENTITY activation "Activación">
 <!ENTITY behavior "Comportamiento">
@@ -198,21 +199,21 @@
 <!ENTITY intro "¿Sabía que...?">
 <!ENTITY showTips "Mostrar consejos al iniciar">
 <!ENTITY copyText "Copiar texto al portapapeles">
-<!ENTITY tip1 "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario Mac). Los botones por defecto del ratón pueden ser cambiados. |Cambie los botones a través de Opciones/Comportamiento">
+<!ENTITY tip1 "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario Mac). Los botones por defecto del ratón pueden ser cambiados.|Cambie los botones a través de &preferences;/&activation;">
 <!ENTITY tip2 "La manera más rapida de usar el menú circular es mantener pulsado el ratón, moverse a la acción seleccionada y soltar el botón. Puede pensar en una especie de gesto del ratón con una interfaz gráfica.">
-<!ENTITY tip4 "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse. |Cambie los botones del ratón en Opciones/Comportamiento">
-<!ENTITY tip5 "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección/Script&apos; y añadiéndolas en el menú circular. |Personalizar en Opciones/Personalizar/Cargar dirección/Script">
-<!ENTITY tip6 "Puede personalizar todas las entradas del menú circular usando acciones pre-diseñadas. Las estadísticas de uso pueden ayudar a optimizar el menú circular.|Añada o elimine acciones desde Opciones/Acciones">
-<!ENTITY tip7 "Puede ejecutar código Javascript usando las acciones &apos;Cargar Dirección/Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión.">
-<!ENTITY tip8 "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña, y mostrará una marca roja en la página tras el enlace.">
-<!ENTITY tip9 "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto. |Cambie el comportamiento en Opciones/Comportamiento">
+<!ENTITY tip4 "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse.|Cambie los botones del ratón en &preferences;/&activation;">
+<!ENTITY tip5 "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección/Script&apos; y añadiéndolas en el menú circular.|Personalizar en &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "Puede personalizar todas las entradas del menú circular usando acciones pre-diseñadas. Las estadísticas de uso pueden ayudar a optimizar el menú circular.|Añada o elimine acciones desde &preferences;/&menus;">
+<!ENTITY tip7 "Puede ejecutar código Javascript usando las acciones &apos;Cargar Dirección/Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión.|Configure las acciones 'Cargar Dirección/Script' en &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip8 "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña.">
+<!ENTITY tip9 "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto.|Cambie el comportamiento en &preferences;/&activation;">
 <!ENTITY tip10 "Puede realizar una búsqueda con uno de sus motores de búsqueda con la acción 'Buscar en la Web'. Si hay texto seleccionado, la selección se copiará en el campo de búsquedas. Pulse 'Enter' para realizar la búsqueda.">
 <!ENTITY tip11 "Pulsando la tecla Insert puede suprimir el menú circular y acceder al menú contextual estándar.">
 <!ENTITY tip12 "Puede moverse a través del menú circular manteniendo pulsada la tecla &apos;Mayús&apos; mientras mueve el ratón.">
-<!ENTITY tip13 "Puede desactivar los textos emergentes (tooltips) si no los necesita. Es posible también renombrar los textos emergentes de cada acción. |Desactivar la visualización en Opciones/Comportamiento">
-<!ENTITY tip14 "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede cambiar para mostrar los iconos pequeños.">
-<!ENTITY tip15 "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales.">
-<!ENTITY tip16 "La opción de Firefox &apos;Usar autodesplazamiento&apos; está desmarcada cuando se usa el botón central para mostrar el menú circular. La opción puede habilitarse moviendo el cursor hacia abajo en el menú circular tras un corto tiempo sin movimientos. |Activar autodesplazamiento en Opciones/Comportamiento">
+<!ENTITY tip13 "Puede desactivar los textos emergentes (tooltips) si no los necesita.|Desactivar la visualización en &preferences;/&behavior;">
+<!ENTITY tip14 "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede cambiar para mostrar los iconos pequeños.|Cambie la aparencia del menú en &preferences;/&behavior;">
+<!ENTITY tip15 "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales.|Cambie el número de opciones en &preferences;/&behavior;">
+<!ENTITY tip16 "La opción de Firefox &apos;Usar autodesplazamiento&apos; está desmarcada cuando se usa el botón central para mostrar el menú circular. La opción puede habilitarse moviendo el cursor hacia abajo en el menú circular tras un corto tiempo sin movimientos.|Activar autodesplazamiento en &preferences;/&behavior;">
 <!ENTITY tip18 "La acción &apos;Cerrar pestaña&apos; cerrará la ventana si hay una única pestaña abierta.">
 <!ENTITY tip20 "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tip21 "En lugar de moverse adelante y atrás página por página, puede hacerlo con sitios usando las acciones &apos;Retroceder sitio&apos; y &apos;Avanzar sitio&apos;.">

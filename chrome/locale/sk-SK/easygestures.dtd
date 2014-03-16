@@ -2,6 +2,7 @@
 
 <!ENTITY options "Možnosti">
 <!ENTITY close "Zavrieť">
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Správanie">
@@ -196,21 +197,21 @@
 <!ENTITY intro "Vedeli ste...">
 <!ENTITY showTips "Zobraziť tipy pri štarte">
 <!ENTITY copyText "Skopírovať text do schránky">
-<!ENTITY tip1 "Prednastavené zobrazenie ponuky je pomocou stlačenia stredného tlačidla myši (pokiaľ nie ste používateľ Macu). Toto môže byť zmenené v ponuke Možnosti/Správanie">
+<!ENTITY tip1 "Prednastavené zobrazenie ponuky je pomocou stlačenia stredného tlačidla myši (pokiaľ nie ste používateľ Macu). Toto môže byť zmenené v ponuke &preferences;/&activation;">
 <!ENTITY tip2 "Najrýchlejší spôsob na použitie ponuky je stlačiť a podržať tlačidlo myši, ťahať kurzor na akciu, ktorú chcete vybrať a uvoľniť tlačidlo. Môžete to brať ako gesto myšou s GUI.">
-<!ENTITY tip4 "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v Možnosti/Správanie">
-<!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL/Skript&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v Možnosti/Prispôsobenie/Načítať URL/Skript">
-<!ENTITY tip6 "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v Možnosti/Akcie">
-<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať URL/Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.">
+<!ENTITY tip4 "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v &preferences;/&activation;">
+<!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL/Skript&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v &preferences;/&menus;">
+<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať URL/Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
 <!ENTITY tip8 "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
-<!ENTITY tip9 "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v Možnosti/Správanie">
+<!ENTITY tip9 "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "Podržaním klávesu &apos;Insert&apos; môžete potlačiť zobrazenie koláčovej ponuky a pristúpiť k štandardnej kontextovej ponuke.">
 <!ENTITY tip12 "Môžete hýbať s koláčovou ponukou stlačením klávesu &apos;Shift&apos; pri pohybe myšou.">
-<!ENTITY tip13 "Môžete vypnúť zobrazovanie popisov, ak ich nepotrebujete. Tiež je možné zmeniť popis každej akcie. Zobrazenie vypnete v Možnosti/Správanie">
-<!ENTITY tip14 "Môžete si nechať predvolený nablýskaný vzhľad, alebo prepnúť do základného zobrazenia bez ikon, ak ste textovo orientovaný. Môžete tiež prepnúť zobrazenie na malé ikony.">
-<!ENTITY tip15 "Pokročilý používatelia môžu mať v koláčovej ponuke viac akcií: 10 namiesto 8 na každom z 3 hlavných rozložení.">
-<!ENTITY tip16 "Nastavenie Firefoxu &apos;Povoliť automatický posun&apos; je vypnuté, keď je použité stredné tlačidlo myši na zobrazenie ponuky. Funkcia automatického posunu je potom dostupná cez ponuku easyGestures, po malom oneskorení, ak nedošlo k pohybu. Automatický posun aktivujte v Možnosti/Správanie">
+<!ENTITY tip13 "Môžete vypnúť zobrazovanie popisov, ak ich nepotrebujete.|Zobrazenie vypnete v &preferences;/&behavior;">
+<!ENTITY tip14 "Môžete si nechať predvolený nablýskaný vzhľad, alebo prepnúť do základného zobrazenia bez ikon, ak ste textovo orientovaný. Môžete tiež prepnúť zobrazenie na malé ikony.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tip15 "Pokročilý používatelia môžu mať v koláčovej ponuke viac akcií: 10 namiesto 8 na každom z 3 hlavných rozložení.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tip16 "Nastavenie Firefoxu &apos;Povoliť automatický posun&apos; je vypnuté, keď je použité stredné tlačidlo myši na zobrazenie ponuky. Funkcia automatického posunu je potom dostupná cez ponuku easyGestures, po malom oneskorení, ak nedošlo k pohybu. Automatický posun aktivujte v &preferences;/&behavior;">
 <!ENTITY tip18 "Akcia &apos;Zavrieť kartu&apos; zavrie okno, ak je to posledná karta v okne.">
 <!ENTITY tip20 "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">
 <!ENTITY tip21 "Namiesto pohybu &apos;Naspäť&apos; a &apos;Dopredu&apos; môžete prejsť na &apos;Predchádzajúcu stránku&apos; a &apos;Nasledujúcu stránku&apos;.">

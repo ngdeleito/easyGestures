@@ -2,6 +2,7 @@
 
 <!ENTITY options "Einstellungen">
 <!ENTITY close "Schließen">
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Verhalten">
@@ -196,21 +197,21 @@
 <!ENTITY intro "Wussten Sie schon...">
 <!ENTITY showTips "Tipps beim Start anzeigen">
 <!ENTITY copyText "Text in Zwischenablage kopieren">
-<!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen.">
+<!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden.|Maustaste unter &preferences;/&activation;">
 <!ENTITY tip2 "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
-<!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden. |Maustaste unter Einstellungen/Verhalten anpassen">
-<!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse/Skript laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen. |Aktion unter Einstellungen/Anpassungen/&apos;Adresse/Skript laden&apos; anpassen.">
-<!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren. |Aktionen unter Einstellungen/&apos;Aktionen&apos; hinzufügen oder entfernen">
-<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.">
-<!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab und fügt auf der Seite eine rote Kennzeichnung hinter dem Link ein.">
-<!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren. |Verhalten unter Einstellungen/Verhalten anpassen">
+<!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden.|Maustaste unter &preferences;/&activation;">
+<!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse/Skript laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen.|Aktion unter &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren.|Aktionen unter &preferences;/&menus; hinzufügen oder entfernen">
+<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab.">
+<!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren.|Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
 <!ENTITY tip12 "Das Kreismenü kann bei gedrückter Umschalttaste mit der Maus verschoben werden.">
-<!ENTITY tip13 "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt. Es ist auch möglich, jeden Tooltip umzubenennen. |Tooltips unter Einstellungen/Verhalten deaktivieren">
-<!ENTITY tip14 "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.">
-<!ENTITY tip15 "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.">
-<!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden. |Automatischen Bildlauf unter Einstellungen/Verhalten aktivieren">
+<!ENTITY tip13 "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt.|Tooltips unter &preferences;/&behavior;">
+<!ENTITY tip14 "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tip15 "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden.|Automatischen Bildlauf unter &preferences;/&behavior; aktivieren">
 <!ENTITY tip18 "Die Aktion &apos;Tab schließen&apos; schließt das Browser-Fenster, wenn nur noch ein Tab offen ist.">
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">

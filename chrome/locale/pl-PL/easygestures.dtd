@@ -2,6 +2,7 @@
 
 <!ENTITY options "Opcje">
 <!ENTITY close "Zamknij">
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Ustawienia">
@@ -196,21 +197,21 @@
 <!ENTITY intro "Czy wiesz że...">
 <!ENTITY showTips "Pokazuj podpowiedzi przy starcie">
 <!ENTITY copyText "Kopiuj tekst do schowka">
-<!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia. |Zmień przycisk myszy w Opcje \u00BB Ustawienia.">
+<!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia.|Zmień przycisk myszy w &preferences;/&activation;">
 <!ENTITY tip2 "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
-<!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane. |Zmień działanie przycisków myszy w Opcje \u00BB Ustawienia.">
-<!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL/Skrypt\u0022 do menu Centrum. |Dostosuj działanie menu w Opcje \u00BB Dostosowywanie \u00BB Otwórz URL/Skrypt.">
-<!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum. |Dodaj lub usuń akcje w Opcje \u00BB Akcje">
-<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.">
+<!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane.|Zmień działanie przycisków myszy w &preferences;/&activation;">
+<!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL/Skrypt\u0022 do menu Centrum.|Dostosuj działanie menu w &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum.|Dodaj lub usuń akcje w &preferences;/&menus;">
+<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
 <!ENTITY tip8 "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
-<!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum. |Zmień działanie w Opcje \u00BB Ustawienia">
+<!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum.|Zmień działanie w &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "Przytrzymując klawisz [ Insert ] można wyłączyć działanie menu Centrum i używać standardowego menu kontekstowego.">
 <!ENTITY tip12 "Przytrzymując klawisz [ Shift ], gdy menu jest otwarte można przemieszczać je w dowolne miejsce na ekranie bez używania przycisków myszy. Menu będzie podążało za kursorem myszy.">
-<!ENTITY tip13 "Można wyłączyć wyświetlanie opisów przycisków, a także zmieniać ich treść dla każdej akcji. |Wyłącz wyświetlanie podpowiedzi w Opcje \u00BB Ustawienia">
-<!ENTITY tip14 "Zamiast domyślnego wyglądu menu można używać menu podstawowego opartego na opisie tekstowym bez ikon. Można także w menu Centrum wyświetlać małe ikony.">
-<!ENTITY tip15 "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.">
-<!ENTITY tip16 "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu. |Włącz automatyczne przewijanie w menu Opcje \u00BB Ustawienia">
+<!ENTITY tip13 "Można wyłączyć wyświetlanie opisów przycisków, a także zmieniać ich treść dla każdej akcji.|Wyłącz wyświetlanie podpowiedzi w &preferences;/&behavior;">
+<!ENTITY tip14 "Zamiast domyślnego wyglądu menu można używać menu podstawowego opartego na opisie tekstowym bez ikon. Można także w menu Centrum wyświetlać małe ikony.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tip15 "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tip16 "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu.|Włącz automatyczne przewijanie w menu &preferences;/&behavior;">
 <!ENTITY tip18 "Jeśli jest otwarta tylko jedna karta akcja \u0022Zamknij kartę\u0022 zamyka okno.">
 <!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
 <!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">

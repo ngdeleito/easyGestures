@@ -21,6 +21,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "閉じる">
 
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "動作">
@@ -240,21 +241,21 @@ END OF INSTRUCTIONS
 <!ENTITY showTips "起動時にヒントを見る">
 <!ENTITY copyText "クリップボードに文章をコピーする">
 
-<!ENTITY tip1 "初期設定では、マウスの中央ボタンをクリックして、パイメニューを表示するようになっています(Mac ユーザは除く)。|マウスボタンの設定を変更する Options/Behavior">
+<!ENTITY tip1 "初期設定では、マウスの中央ボタンをクリックして、パイメニューを表示するようになっています(Mac ユーザは除く)。|マウスボタンの設定を変更する &preferences;/&activation;">
 <!ENTITY tip2 "手早くパイメニューを使う方法もあります。まずマウスボタンを押し、実行したいアクションまでドラッグしてから、放してみてください。GUI の付いたマウスジェスチャとしても使えるということです。">
-<!ENTITY tip4 "初期設定では、パイメニューの表示中に右クリックすることで、3つの自由に設定可能な代替メニューを切り替えるようになっています。使うボタンは変更することができます。|マウスボタンの設定を変更する Options/Behavior">
-<!ENTITY tip5 "'URL/スクリプトの読み込み' アクションに URL を設定してパイメニューに配置すると、easyGestures からお好きなブックマークを開くこともできます。|設定を変更する Options/Customizations/Load URL/Script">
-<!ENTITY tip6 "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。|アクションを入れ替える Options/Actions">
-<!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。">
+<!ENTITY tip4 "初期設定では、パイメニューの表示中に右クリックすることで、3つの自由に設定可能な代替メニューを切り替えるようになっています。使うボタンは変更することができます。|マウスボタンの設定を変更する &preferences;/&activation;">
+<!ENTITY tip5 "'URL/スクリプトの読み込み' アクションに URL を設定してパイメニューに配置すると、easyGestures からお好きなブックマークを開くこともできます。|設定を変更する &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。|アクションを入れ替える &preferences;/&menus;">
+<!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
 <!ENTITY tip8 "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
-<!ENTITY tip9 "パイメニューを開く時に Ctrl キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する Options/Behavior">
+<!ENTITY tip9 "パイメニューを開く時に Ctrl キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "右クリックするときに Insert キーを押していると、パイメニューではなく通常のコンテキストメニューが表示されます。">
 <!ENTITY tip12 "Shift キーを押している間、パイメニューを自由に移動させることができます。">
-<!ENTITY tip13 "ツールチップに表示されるアクション名を変更したり、もし必要でないならツールチップを無効にすることもできます。|表示設定を変更する Options/Behavior">
-<!ENTITY tip14 "ぴかぴかの初期スキンのまま使うこともできますし、もしテキスト志向の強い方でしたら、アイコンなしの基本表示にもできます。小さいアイコンに切り替えることもできます。">
-<!ENTITY tip15 "easyGestures に慣れた方は、一つのパイメニューに表示するアクションの数を、元の8個から10個に増やしてみてもいいでしょう。">
-<!ENTITY tip16 "マウスの中央ボタンをパイメニューの表示に使っていると、Firefox の'自動スクロール機能を使用する'オプションが無効になります。パイメニューが表示されてから、少しの間カーソルを動かさないようにして、自動スクロール機能をこのままでも使えるようにもできます。|自動スクロールを有効にする Options/Behavior">
+<!ENTITY tip13 "ツールチップに表示されるアクション名を変更したり、もし必要でないならツールチップを無効にすることもできます。|表示設定を変更する &preferences;/&behavior;">
+<!ENTITY tip14 "ぴかぴかの初期スキンのまま使うこともできますし、もしテキスト志向の強い方でしたら、アイコンなしの基本表示にもできます。小さいアイコンに切り替えることもできます。|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tip15 "easyGestures に慣れた方は、一つのパイメニューに表示するアクションの数を、元の8個から10個に増やしてみてもいいでしょう。|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tip16 "マウスの中央ボタンをパイメニューの表示に使っていると、Firefox の'自動スクロール機能を使用する'オプションが無効になります。パイメニューが表示されてから、少しの間カーソルを動かさないようにして、自動スクロール機能をこのままでも使えるようにもできます。|自動スクロールを有効にする &preferences;/&behavior;">
 <!ENTITY tip18 "タブが1つだけの時に'タブを閉じる'アクションをすると、そのウィンドウを閉じます。">
 <!ENTITY tip20 "画像への拡大縮小アクションは、その画像のみに適用されます。">
 <!ENTITY tip21 "ページ毎に戻ったり進んだりする替わりに、'サイトを戻る'や'サイトを進む'アクションでサイトごとに移動できます。">

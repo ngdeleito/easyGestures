@@ -19,6 +19,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Fermer">
 
+<!ENTITY preferences "Préférences">
 <!ENTITY general "Général">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Comportement">
@@ -238,21 +239,21 @@ END OF INSTRUCTIONS
 <!ENTITY showTips "Montrer astuces au démarrage">
 <!ENTITY copyText "Copier texte dans le presse-papier">
 
-<!ENTITY tip1 "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé. |Changez bouton souris dans Options/Comportement">
+<!ENTITY tip1 "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé.|Changez bouton souris dans &preferences;/&activation;">
 <!ENTITY tip2 "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
-<!ENTITY tip4 "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé. |Changez bouton souris dans Options/Comportement">
-<!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL/Script'  et en les ajoutant ensuite dans les plans du menu circulaire. |Personnalisez dans Options/Personnalisations/Charger URL/Script">
-<!ENTITY tip6 "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire. |Ajoutez ou retirez actions dans Options/Actions">
-<!ENTITY tip7 "Vous pouvez exécuter du code Javascript avec les actions 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.">
-<!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet et affichera une marque rouge sur la page à la suite du lien.">
-<!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active. |Changez comportement dans Options/Comportement">
+<!ENTITY tip4 "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé.|Changez bouton souris dans &preferences;/&activation;">
+<!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL/Script'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.|Ajoutez ou retirez actions dans &preferences;/&menus;">
+<!ENTITY tip7 "Vous pouvez exécuter du code Javascript avec les actions 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.|Personnalisez les actions 'Charger URL/Script' dans &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
+<!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active.|Changez comportement dans &preferences;/&activation;">
 <!ENTITY tip10 "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
 <!ENTITY tip11 "En maintenant la touche Insert appuyée sur un clic du bouton droit, vous pouvez supprimer le menu circulaire et accéder au menu contextuel standard.">
 <!ENTITY tip12 "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">
-<!ENTITY tip13 "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin. Il est aussi possible de renomer l'infobulle de chaque action. |Arrêtez l'affichage dans Options/Comportement">
-<!ENTITY tip14 "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.">
-<!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.">
-<!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger. |Activatez défilement automatique dans Options/Comportement">
+<!ENTITY tip13 "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin.|Arrêtez l'affichage dans &preferences;/&behavior;">
+<!ENTITY tip14 "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.|Changez l'affichage du menu dans &preferences;/&behavior;">
+<!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.|Changez le nombre d'actions dans &preferences;/&behavior;">
+<!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger.|Activatez défilement automatique dans &preferences;/&behavior;">
 <!ENTITY tip18 "L'action 'Fermer onglet' ferme la fenêtre s'il n'y a qu'un seul onglet ouvert.">
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">

@@ -21,6 +21,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "關閉">
 
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "設定">
@@ -240,21 +241,21 @@ END OF INSTRUCTIONS
 <!ENTITY showTips "啟動時顯示小提示">
 <!ENTITY copyText "複製文字到剪貼簿">
 
-<!ENTITY tip1 "預設中你可以擊點滑鼠中鍵來開啟圓餅選單（除非你是Mac使用者）。這個預設鍵是可以更改的。|改變滑鼠按鍵 Options/Behavior">
+<!ENTITY tip1 "預設中你可以擊點滑鼠中鍵來開啟圓餅選單（除非你是Mac使用者）。這個預設鍵是可以更改的。|改變滑鼠按鍵 &preferences;/&activation;">
 <!ENTITY tip2 "使用圓餅選單最快速的方法是按著滑鼠按鍵，把游標拖曳到執行的動作圖示上後放開滑鼠按鍵。你可以想成是有圖形介面的滑鼠手勢。">
-<!ENTITY tip4 "預設在圓餅選單顯示時擊點滑鼠右鍵將會顯示替換動作，最多可有三組自訂圓餅選單循環切換。這個預設切換鍵是可以更改的。|改變滑鼠按鍵 Options/Behavior">
-<!ENTITY tip5 "你可以使用 easyGestures ，設定「載入網址／Script」這個動作在你的圓餅選單上來開啟你喜愛的書籤。|設定動作 Options/Customizations/Load URL/Script">
-<!ENTITY tip6 "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。|新增或移除動作 Options/Actions">
-<!ENTITY tip7 "你可以用「執行程式」和「載入網址／Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。">
+<!ENTITY tip4 "預設在圓餅選單顯示時擊點滑鼠右鍵將會顯示替換動作，最多可有三組自訂圓餅選單循環切換。這個預設切換鍵是可以更改的。|改變滑鼠按鍵 &preferences;/&activation;">
+<!ENTITY tip5 "你可以使用 easyGestures ，設定「載入網址／Script」這個動作在你的圓餅選單上來開啟你喜愛的書籤。|設定動作 &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip6 "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。|新增或移除動作 &preferences;/&menus;">
+<!ENTITY tip7 "你可以用「執行程式」和「載入網址／Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
 <!ENTITY tip8 "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">
-<!ENTITY tip9 "你可以在開啟圓餅選單時，點選「Ctrl」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 Options/Behavior">
+<!ENTITY tip9 "你可以在開啟圓餅選單時，點選「Ctrl」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tip11 "你可以按住「Insert」鍵來封鎖設在右鍵的圓餅選單，改使用預設的標準快速選單。">
 <!ENTITY tip12 "你可以按住「Shift」鍵來移動已顯示的圓餅選單。">
-<!ENTITY tip13 "假如你不需要圓餅動作提示，你可以關閉它。你也可以修改每個圓餅動作提示文字。|關閉提示顯示 Options/Behavior">
-<!ENTITY tip14 "你可以持續使用預設的圓餅圖示顯示，或以小型圖示取代顯示。如果你喜歡簡單的文字模式，也可以改用沒有圖示的基本顯示。">
-<!ENTITY tip15 "重度使用者可以設定更多動作在你的圓餅選單上：在三個主要圓餅選單上都用十個動作取代預設的八個動作。">
-<!ENTITY tip16 "在滑鼠中鍵被用來顯示圓餅選單時，Firefox 的選項「使用自動捲動(Autoscrolling)」會被設定成關閉。在圓餅選單中間不移動，停頓短暫的時間後可以轉換顯示「自動捲動」。|設定轉換自動捲動的停頓時間 Options/Behavior">
+<!ENTITY tip13 "假如你不需要圓餅動作提示，你可以關閉它。你也可以修改每個圓餅動作提示文字。|關閉提示顯示 &preferences;/&behavior;">
+<!ENTITY tip14 "你可以持續使用預設的圓餅圖示顯示，或以小型圖示取代顯示。如果你喜歡簡單的文字模式，也可以改用沒有圖示的基本顯示。|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tip15 "重度使用者可以設定更多動作在你的圓餅選單上：在三個主要圓餅選單上都用十個動作取代預設的八個動作。|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tip16 "在滑鼠中鍵被用來顯示圓餅選單時，Firefox 的選項「使用自動捲動(Autoscrolling)」會被設定成關閉。在圓餅選單中間不移動，停頓短暫的時間後可以轉換顯示「自動捲動」。|設定轉換自動捲動的停頓時間 &preferences;/&behavior;">
 <!ENTITY tip18 "只剩下一個分頁時，「關閉分頁」這個動作會把視窗也關閉。">
 <!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">
 <!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">

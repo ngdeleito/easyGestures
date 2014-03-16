@@ -21,6 +21,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY close "Zavřít">
 
+<!ENTITY preferences "Preferences">
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Chování">
