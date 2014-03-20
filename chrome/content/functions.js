@@ -520,6 +520,7 @@ var eGf = {
     var loadURLScript = eGm["loadURLScript" + appNum];
     var codetext = loadURLScript[1];
     var isScript = loadURLScript[2];
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
 
     if (codetext !== "") {
       if (string !== "") {
@@ -532,10 +533,11 @@ var eGf = {
     }
 
     if (isScript === "true") {
-      (new Function ("return " + codetext))();
+      var sandbox = Components.utils.Sandbox(window);
+      sandbox.window = window;
+      Components.utils.evalInSandbox(codetext, sandbox);
     }
     else {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
       var gBrowser = window.gBrowser;
       
       switch (eGm.loadURLin) {
