@@ -209,7 +209,7 @@ function eG_handleMouseup(evt) {
       // if a link is clicked without dragging and related option is checked
       // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (eGm.handleLinksAsOpenLink) {
-        eGf.openLink(eGc.link);
+        eGf.openLink();
       }
       else {
         // when option "use browser behavior" is checked to open links

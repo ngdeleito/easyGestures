@@ -107,11 +107,11 @@ var eGf = {
     window.gBrowser.goBack();
   },
 
-  reload : function(loading) { // reload or stop
+  reload : function() { // reload or stop
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
 
-    if (!loading) {
+    if (!eGc.loading) {
       gBrowser.reload();
     }
     else {
@@ -119,7 +119,8 @@ var eGf = {
     }
   },
 
-  up : function(url) {
+  up : function() {
+    var url = eGc.doc.URL;
     // removing any trailing "/"
     url = url.replace(/\/$/, "");
     // creating a nsIURI and removing the last "/"-separated item from its path
@@ -132,7 +133,8 @@ var eGf = {
     window.gBrowser.loadURI(upurl);
   },
 
-  root : function(url)	{
+  root : function() {
+    var url = eGc.doc.URL;
     var rootURL = this._getRootURL(url);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.loadURI(rootURL);
@@ -150,7 +152,8 @@ var eGf = {
     frame.scroll(0,2147483647);	// max Int value
   },
 
-  autoscrolling : function(evt) {
+  autoscrolling : function() {
+    var evt = eGc.evtMouseDown;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.document.getElementById("content").mCurrentBrowser.startScroll(evt);
   },
@@ -311,7 +314,8 @@ var eGf = {
     }
   },
 
-  openLink : function(link) {
+  openLink : function() {
+    var link = eGc.link;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var url;
@@ -335,7 +339,8 @@ var eGf = {
     }
   },
 
-  openLinkNewWindow : function(link) {
+  openLinkNewWindow : function() {
+    var link = eGc.link;
     var url;
     if (link === null) {
       url = this._readClipboard();
@@ -347,14 +352,16 @@ var eGf = {
     window.open(url);
   },
 
-  copyLink : function(link) { //write to clipboard the link url
+  copyLink : function() { //write to clipboard the link url
+    var link = eGc.link;
     if (link !== null) {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(link.href);
     }
   },
 
-  copyImageLocation : function(src) {
+  copyImageLocation : function() {
+    var src = eGc.image.src;
     if (src !== null) {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(src);
@@ -398,15 +405,16 @@ var eGf = {
     }
   },
   
-  saveLinkAs : function(link) {
-    this._saveContentFromLink(link, Components.interfaces.nsIFilePicker.filterHTML);
+  saveLinkAs : function() {
+    this._saveContentFromLink(eGc.link, Components.interfaces.nsIFilePicker.filterHTML);
   },
 
-  saveImageAs : function(link) {
-    this._saveContentFromLink(link, Components.interfaces.nsIFilePicker.filterImages);
+  saveImageAs : function() {
+    this._saveContentFromLink(eGc.image.src, Components.interfaces.nsIFilePicker.filterImages);
   },
 
-  savePageAs : function(document) {
+  savePageAs : function() {
+    var document = eGc.doc;
     var file = this._getFileForSavingData(
                  Components.interfaces.nsIFilePicker.filterHTML,
                  document.title);
@@ -510,16 +518,17 @@ var eGf = {
     }
   },
 
-  searchWeb : function(string) {
+  searchWeb : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserSearch.searchBar.value = string;
+    window.BrowserSearch.searchBar.value = eGc.selection;
     window.BrowserSearch.webSearch();
   },
 
-  loadURLScript : function(appNum, string) {
+  loadURLScript : function(appNum) {
     var loadURLScript = eGm["loadURLScript" + appNum];
     var codetext = loadURLScript[1];
     var isScript = loadURLScript[2];
+    var string = eGc.selection;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
 
     if (codetext !== "") {
@@ -565,15 +574,17 @@ var eGf = {
     styleSheet.insertRule(":visited, :visited img { outline-color: red !important; }", 1);
   },
 
-  bookmarkThisLink : function(url) {
+  bookmarkThisLink : function() {
+    var url = eGc.link;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.unfiledBookmarksFolderId, url.href, url.text);
     //PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), url.text);    // classic UI
   },
 
-  bookmarkPage : function(url, name, doc) {
+  bookmarkPage : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkPage(window.gBrowser.selectedBrowser, window.PlacesUtils.unfiledBookmarksFolderId, true);
+    // var url = eGc.doc.URL, name = eGc.doc.title, doc = eGc.doc;
     // PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), name, PlacesUtils.getDescriptionFromDocument(doc));   // classic UI
   },
 
@@ -607,19 +618,19 @@ var eGf = {
     window.toggleSidebar("viewHistorySidebar");
   },
 
-  viewPageSource : function(doc) {
+  viewPageSource : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserViewSourceOfDocument(doc);
+    window.BrowserViewSourceOfDocument(eGc.doc);
   },
 
-  viewPageInfo : function(doc) {
+  viewPageInfo : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserPageInfo(doc, null);
+    window.BrowserPageInfo(eGc.doc, null);
   },
 
-  showOnlyThisFrame : function(frame_doc) {
+  showOnlyThisFrame : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.loadURI(frame_doc.location.href);
+    window.loadURI(eGc.frame_doc.location.href);
   },
 
   printPage : function() {
@@ -680,10 +691,10 @@ var eGf = {
     window.goDoCommand('cmd_selectAll');
   },
 
-  toggleFindBar : function(currentSelection) {
+  toggleFindBar : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (window.gFindBar.hidden) {
-      window.gFindBar.onFindCommand(currentSelection);
+      window.gFindBar.onFindCommand(eGc.selection);
     }
     else {
       window.gFindBar.close();
