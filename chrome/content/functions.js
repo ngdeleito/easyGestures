@@ -690,7 +690,7 @@ var eGf = {
     }
   },
 
-  zoomIn : function zoomIn() {
+  zoomIn : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (eGc.image === null) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
@@ -750,7 +750,7 @@ var eGf = {
     }
   },
 
-  zoomReset : function () {
+  zoomReset : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.ZoomManager.reset();
   }
@@ -758,7 +758,7 @@ var eGf = {
 
 //*********************************************************************************
 
-function eG_canGoUp () {
+function eG_canGoUp() {
   var url = eGc.doc.URL;
   return eGf._getRootURL(url) != url.replace("www.", "");
 }
