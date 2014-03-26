@@ -36,6 +36,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 var eGf = {
+  empty : function() {},
+  
+  more : function() {
+    eGm.showExtraMenu();
+  },
+  
   firstPage : function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.gotoIndex(0);
@@ -524,7 +530,7 @@ var eGf = {
     window.BrowserSearch.webSearch();
   },
 
-  loadURLScript : function(appNum) {
+  _loadURLScript : function(appNum) {
     var loadURLScript = eGm["loadURLScript" + appNum];
     var codetext = loadURLScript[1];
     var isScript = loadURLScript[2];
@@ -563,9 +569,89 @@ var eGf = {
     }
     return false; // avoid JavaScript Error
   },
-
-  //*********************************************************************************
-
+  
+  loadURLScript1 : function() {
+    this._loadURLScript(1);
+  },
+  
+  loadURLScript2 : function() {
+    this._loadURLScript(2);
+  },
+  
+  loadURLScript3 : function() {
+    this._loadURLScript(3);
+  },
+  
+  loadURLScript4 : function() {
+    this._loadURLScript(4);
+  },
+  
+  loadURLScript5 : function() {
+    this._loadURLScript(5);
+  },
+  
+  loadURLScript6 : function() {
+    this._loadURLScript(6);
+  },
+  
+  loadURLScript7 : function() {
+    this._loadURLScript(7);
+  },
+  
+  loadURLScript8 : function() {
+    this._loadURLScript(8);
+  },
+  
+  loadURLScript9 : function() {
+    this._loadURLScript(9);
+  },
+  
+  loadURLScript10 : function() {
+    this._loadURLScript(10);
+  },
+  
+  loadURLScript11 : function() {
+    this._loadURLScript(11);
+  },
+  
+  loadURLScript12 : function() {
+    this._loadURLScript(12);
+  },
+  
+  loadURLScript13 : function() {
+    this._loadURLScript(13);
+  },
+  
+  loadURLScript14 : function() {
+    this._loadURLScript(14);
+  },
+  
+  loadURLScript15 : function() {
+    this._loadURLScript(15);
+  },
+  
+  loadURLScript16 : function() {
+    this._loadURLScript(16);
+  },
+  
+  loadURLScript17 : function() {
+    this._loadURLScript(17);
+  },
+  
+  loadURLScript18 : function() {
+    this._loadURLScript(18);
+  },
+  
+  loadURLScript19 : function() {
+    this._loadURLScript(19);
+  },
+  
+  loadURLScript20 : function() {
+    this._loadURLScript(20);
+  },
+  
+  //****************************************************************************
+  
   markVisitedLinks : function() {
     var styleElement = eGc.doc.createElement("style");
     eGc.doc.getElementsByTagName("head")[0].appendChild(styleElement);
