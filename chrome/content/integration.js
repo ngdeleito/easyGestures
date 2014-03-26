@@ -400,7 +400,11 @@ function eG_handleMousedown(evt) {
     
     // making a partial clone of current evt for setTimeout because object will be lost
     // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
-    eGm.autoscrollingTrigger = window.setTimeout(function foo(arg) {eGm.autoscrolling=true; eGm.close(); eGf.autoscrolling(arg); }, eGm.autoscrollingDelay, eGc.evtMouseDown);
+    eGm.autoscrollingTrigger = window.setTimeout(function() {
+      eGm.autoscrolling = true;
+      eGm.close();
+      eGf.autoscrolling();
+    }, eGm.autoscrollingDelay);
   }
 }
 
