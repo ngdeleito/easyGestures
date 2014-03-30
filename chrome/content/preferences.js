@@ -35,6 +35,31 @@ the terms of any one of the MPL, the GPL or the LGPL.
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
   
+  exportPrefsToString : function() {
+    var prefsNames = this._prefs.getChildList("");
+    var result = "";
+    
+    prefsNames.forEach(function(prefName, index, array) {
+      result += prefName + "\n";
+      let prefType = this._prefs.getPrefType(prefName);
+      result +=  prefType + "\n";
+      switch (prefType) {
+        case Components.interfaces.nsIPrefBranch.PREF_STRING:
+          result += this._prefs.getComplexValue(prefName,
+                      Components.interfaces.nsISupportsString).data;
+          break;
+        case Components.interfaces.nsIPrefBranch.PREF_INT:
+          result += this._prefs.getIntPref(prefName);
+          break;
+        case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+          result += this._prefs.getBoolPref(prefName);
+          break;
+      }
+      result += "\n";
+    }, this);
+    return result;
+  },
+  
   _setDefaultMenus : function() {
     var menus = {
       main:             "1/11/17/14/4/2/18/24/6/14",

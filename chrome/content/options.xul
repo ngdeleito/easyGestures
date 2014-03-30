@@ -1211,26 +1211,7 @@
           converterOutputStream.writeString("//eG " + version + " (" +
             dateStr + ")//\n");
           
-          for (var i=0; i < prefArray.length; i++) {
-            converterOutputStream.writeString(prefArray[i] + "\n");
-            
-            switch(eG_prefs.getPrefType(prefArray[i])) {
-              case Components.interfaces.nsIPrefBranch.PREF_STRING:
-                 converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_STRING + "\n");
-                 converterOutputStream.writeString(eG_prefs.getComplexValue(prefArray[i], Components.interfaces.nsISupportsString).data + "\n");
-                break;
-                
-              case Components.interfaces.nsIPrefBranch.PREF_INT:
-                 converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_INT + "\n");
-                 converterOutputStream.writeString(eG_prefs.getIntPref(prefArray[i]) + "\n");
-                break;
-                
-              case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-                converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_BOOL+"\n");
-                 converterOutputStream.writeString(eG_prefs.getBoolPref(prefArray[i]) + "\n");
-                break;
-            }
-          }
+          converterOutputStream.writeString(eGPrefs.exportPrefsToString());
           converterOutputStream.close();
           outputStream.close();
         });
