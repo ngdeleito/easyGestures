@@ -1259,7 +1259,7 @@
             var pref = line.value;
             
             cont = converterInputStream.readLine(line); // read pref type
-            var type = (new Function ("return " + line.value ))(); // (new Function ("return " + data ))() replacing eval on data
+            var type = JSON.parse(line.value);
             
             cont = converterInputStream.readLine(line); // read pref value
             var value = Components.classes["@mozilla.org/supports-string;1"].createInstance(Components.interfaces.nsISupportsString);
@@ -1272,11 +1272,11 @@
                   break;
                 
                 case Components.interfaces.nsIPrefBranch.PREF_INT:
-                  eG_prefs.setIntPref(pref, (new Function ("return " + value.data ))() ); // (new Function ("return " + data ))() replacing eval on data
+                  eG_prefs.setIntPref(pref, JSON.parse(value.data));
                   break;
                 
                 case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-                  eG_prefs.setBoolPref(pref, (new Function ("return " + value.data ))() ); // (new Function ("return " + data ))() replacing eval on data
+                  eG_prefs.setBoolPref(pref, JSON.parse(value.data));
                   break;
               }
             }
@@ -1368,21 +1368,19 @@
       var string = preference.value.split("\u2022");
 
       document.getElementById("loadURLScript_name" + number).value = string[0];
-      if ((new Function ("return " + string[2] ))()) {
+      if (string[2] === "true") {
         document.getElementById("loadURLScript_code" + number).value = string[1];
       }
       else {
         document.getElementById("loadURLScript_host" + number).value = string[1];
       }
       document.getElementById("loadURLScript_type" + number).selectedItem =
-        document.getElementById( (new Function ("return " + string[2] ))() ?
-          "Script" + number
-        : "URL" + number);
+        document.getElementById((string[2] === "true" ? "Script" : "URL") + number);
       document.getElementById("loadURLScript_newIcon" + number).src = string[3];
       document.getElementById("loadURLScript_faviconCheck" + number).checked =
-        (new Function ("return " + string[4] ))();
+        string[4] === "true";
       document.getElementById("loadURLScript_newIconCheck" + number).checked =
-        (new Function ("return " + string[5] ))();
+        string[5] === "true";
     }
     
     function preparePreferenceValueForLoadURLScript(number) {
