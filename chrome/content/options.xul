@@ -1168,13 +1168,15 @@
     }
     
     function exportPrefs() {
-      var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
+      var fp = Components.classes["@mozilla.org/filepicker;1"]
+                         .createInstance(Components.interfaces.nsIFilePicker);
       fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeSave);
-      fp.appendFilter("Preferences (*.ege)","*.ege");
+      fp.appendFilter("Preferences (*.ege)", "*.ege");
       var ret = fp.show();
       if (ret == Components.interfaces.nsIFilePicker.returnOK || ret == Components.interfaces.nsIFilePicker.returnReplace ) {
         //create file
-        var file = Components.classes["@mozilla.org/file/local;1"].createInstance(Components.interfaces.nsILocalFile);
+        var file = Components.classes["@mozilla.org/file/local;1"]
+                             .createInstance(Components.interfaces.nsILocalFile);
         var filePath = fp.file.path;
         if (filePath.substring(filePath.length-4,filePath.length)!=".ege")
           filePath = filePath + ".ege";
@@ -1199,37 +1201,38 @@
           return;
         }
         
-        // add description at the begining of the file
-        var d = new Date();
-        var dateStr = d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+" "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds();
-        converterOutputStream.writeString( "//eG "+ eG_getVersion()+" ("+dateStr+")//\n");
-        
-        for(var i=0; i<prefArray.length; i++) {
-          converterOutputStream.writeString( prefArray[i]+"\n"); // write pref name
         Components.utils.import("resource://gre/modules/AddonManager.jsm");
         AddonManager.getAddonByID("{11F9F076-72B3-4586-995D-5042CF5D3AD4}",
           function(addon) {
           var version = addon.version
+          // add description at the begining of the file
+          var d = new Date();
+          var dateStr = d.toString();
+          converterOutputStream.writeString("//eG " + version + " (" +
+            dateStr + ")//\n");
           
-          switch(eG_prefs.getPrefType(prefArray[i])) {
-            case Components.interfaces.nsIPrefBranch.PREF_STRING:
-              converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_STRING+"\n"); // write pref type
-              converterOutputStream.writeString(eG_prefs.getComplexValue(prefArray[i], Components.interfaces.nsISupportsString).data+"\n"); // write pref value
-              break;
+          for (var i=0; i < prefArray.length; i++) {
+            converterOutputStream.writeString(prefArray[i] + "\n");
             
-            case Components.interfaces.nsIPrefBranch.PREF_INT:
-              converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_INT+"\n"); // write pref type
-              converterOutputStream.writeString(eG_prefs.getIntPref(prefArray[i])+"\n"); // write pref value
-              break;
-            
-            case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-              converterOutputStream.writeString( Components.interfaces.nsIPrefBranch.PREF_BOOL+"\n"); // write pref type
-              converterOutputStream.writeString(eG_prefs.getBoolPref(prefArray[i])+"\n"); // write pref value
-              break;
+            switch(eG_prefs.getPrefType(prefArray[i])) {
+              case Components.interfaces.nsIPrefBranch.PREF_STRING:
+                 converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_STRING + "\n");
+                 converterOutputStream.writeString(eG_prefs.getComplexValue(prefArray[i], Components.interfaces.nsISupportsString).data + "\n");
+                break;
+                
+              case Components.interfaces.nsIPrefBranch.PREF_INT:
+                 converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_INT + "\n");
+                 converterOutputStream.writeString(eG_prefs.getIntPref(prefArray[i]) + "\n");
+                break;
+                
+              case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+                converterOutputStream.writeString(Components.interfaces.nsIPrefBranch.PREF_BOOL+"\n");
+                 converterOutputStream.writeString(eG_prefs.getBoolPref(prefArray[i]) + "\n");
+                break;
+            }
           }
-        }
-        converterOutputStream.close();
-        outputStream.close();
+          converterOutputStream.close();
+          outputStream.close();
         });
       }
     }
