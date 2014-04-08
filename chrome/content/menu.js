@@ -937,7 +937,7 @@ eG_menu.prototype = {
       catch(ex) {
         var error = Components.classes["@mozilla.org/scripterror;1"]
                               .createInstance(Components.interfaces.nsIScriptError);
-        error.init("easyGestures exception: " + ex.toString(), null, null, null, null, error.errorFlag, null);
+        error.init("easyGestures N exception: " + ex.toString(), null, null, null, null, error.errorFlag, null);
         Services.console.logMessage(error);
       }
     }

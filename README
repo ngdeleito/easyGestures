@@ -1,8 +1,8 @@
-easyGestures is a Firefox extension that provides a pie menu for browsing the Web from where your cursor is currently located.
+easyGestures N is a Firefox extension that provides a pie menu for browsing the Web from where your cursor is currently located.
 
-It was created by Ons Besbes, who maintained it until Firefox 4. The extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically and generating "TypeError: can't access dead object" errors, which are now fixed.
+It is a fork of the easyGestures extension created by Ons Besbes, who maintained it until Firefox 4. This extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically and generating "TypeError: can't access dead object" errors.
 
-This is an (ongoing) attempt to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of this extension. Help is very much welcome, especially for updating and maintaining both the visual appearance and the current locales.
+easyGestures N is an (ongoing) attempt to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of the extension. Help is very much welcome, especially for updating and maintaining both the visual appearance and the current locales.
 
 To install the latest development version:
 - Uninstall any version of easyGestures prior to version 4.3.2

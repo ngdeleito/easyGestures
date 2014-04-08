@@ -41,7 +41,7 @@
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   id="eG_optionsWindow"
-  title="&preferences; - easyGestures"
+  title="&preferences; - easyGestures N"
   onkeypress="preventCloseOnEnter(event);"
   persist="lastSelected screenX screenY width height"
   
@@ -1156,7 +1156,7 @@
     
     function browse(textboxid) {
       var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-      fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeOpen);
+      fp.init(window, 'easyGestures N', Components.interfaces.nsIFilePicker.modeOpen);
       //fp.appendFilter("Applications(*.exe,*.bat)","*.exe;*.bat");
       fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
       
@@ -1170,7 +1170,7 @@
     function exportPrefs() {
       var fp = Components.classes["@mozilla.org/filepicker;1"]
                          .createInstance(Components.interfaces.nsIFilePicker);
-      fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeSave);
+      fp.init(window, 'easyGestures N', Components.interfaces.nsIFilePicker.modeSave);
       fp.appendFilter("Preferences (*.ege)", "*.ege");
       var ret = fp.show();
       if (ret == Components.interfaces.nsIFilePicker.returnOK || ret == Components.interfaces.nsIFilePicker.returnReplace ) {
@@ -1220,7 +1220,7 @@
     
     function importPrefs() {
       var fp = Components.classes["@mozilla.org/filepicker;1"].createInstance(Components.interfaces.nsIFilePicker);
-      fp.init(window, 'easyGestures', Components.interfaces.nsIFilePicker.modeOpen);
+      fp.init(window, 'easyGestures N', Components.interfaces.nsIFilePicker.modeOpen);
       fp.appendFilter("Preferences (*.ege)","*.ege");
       
       var ret = fp.show();
