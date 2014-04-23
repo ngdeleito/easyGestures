@@ -83,7 +83,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   position: absolute;
 }
 
-[id^="eG_actions_"] {
+div[id^="eG_actions_"] {
   position: fixed;
 }
 
@@ -102,7 +102,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 20px;
 }
 
-[id^="eG_labels_"] {
+div[id^="eG_labels_"] {
   font-style: normal;
   font-family: tahoma,arial,helvetica,sans-serif;
   vertical-align: baseline;
