@@ -772,7 +772,7 @@ var eGf = {
       eGc.evtMouseDown.target.focus();
     }
     else {
-      window._content.focus();
+      window.content.focus();
     }
     window.goDoCommand('cmd_selectAll');
   },
