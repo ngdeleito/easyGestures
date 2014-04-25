@@ -1,5 +1,10 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
+Version 4.5.1 (April 25, 2014)
+
+- fixed: menu was not properly displayed when moved
+
+
 Version 4.5 (September 2012--April 2014)
 - made easyGestures work with recent versions of Firefox
 - made easyGestures a restartless extension
