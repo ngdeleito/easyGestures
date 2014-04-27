@@ -97,19 +97,8 @@
     </vbox>
     <resizer dir="bottomright"></resizer>
   </hbox>
-
+  
   <script type="application/x-javascript">
-    // Attention: removed the CDATA line...
-    
-    var tipNbr;
-    document.getElementById("showTips").checked = eGPrefs.areStartupTipsOn();
-    try {
-      tipNbr = eGPrefs.getTipNumberPref();
-    }
-    catch (ex) {
-      tipNbr = 1;
-    }
-    
     function tipEntry(description, imageClass, paneName, tabNumber) {
       this.description = description;
       this.imageClass = imageClass; // image source
@@ -117,7 +106,7 @@
       this.tabNumber = tabNumber;
     }
     
-    var tips = new Array(
+    var tips = [
       new tipEntry("&tip1;",  "triggerBySelection",  "activation",     "0"),
       new tipEntry("&tip2;",  "triggerByStroke",     ""          ,     "0"),
       new tipEntry("&tip4;",  "alternativeMenus",    "activation",     "0"),
@@ -138,67 +127,7 @@
       new tipEntry("&tip20;", "empty",               "",               "0"),
       new tipEntry("&tip22;", "empty",               "",               "0"),
       new tipEntry("&tip26;", "empty",               "",               "0")
-    );
-    
-    function updateTipNbr(step) {
-      tipNbr = (((tipNbr + step) % tips.length) + tips.length) % tips.length;
-      eGPrefs.setTipNumberPref(tipNbr);
-      updateContent(tipNbr);
-    }
-    
-    function showPaneAndTabOn(paneName, tabNumber, doc) {
-      var pane = doc.getElementById(paneName + "Pane");
-      doc.getElementById("eG_optionsWindow").showPane(pane);
-      if (tabNumber > 0) {
-        var tabbox = doc.getElementById(paneName + "Tabboxes");
-        tabbox.selectedIndex = tabNumber;
-      }
-    }
-    
-    function openPreferencesWith(paneName, tabNumber) {
-      var winenum = Services.wm.getEnumerator("");
-      var found = false;
-      var win;
-      while (winenum.hasMoreElements() &amp;&amp; !found) {
-        win = winenum.getNext();
-        found = win.location == "chrome://easygestures/content/options.xul";
-      }
-      if (!found) {
-        win = window.openDialog("chrome://easygestures/content/options.xul", "", "");
-        win.addEventListener("load", function runOnLoad() {
-          removeEventListener("load", runOnLoad, false);
-          showPaneAndTabOn(paneName, tabNumber, win.document);
-        }, false);
-      }
-      else {
-        showPaneAndTabOn(paneName, tabNumber, win.document);
-        win.focus();
-      }
-    }
-    
-    function tipLinkClick(anEvent) {
-      var paneName = tips[tipNbr].paneName;
-      var tabNumber = tips[tipNbr].tabNumber;
-      openPreferencesWith(paneName, tabNumber);
-    }
-    
-    function updateContent(tipNbr) {
-      document.getElementById("tipNbrDisplay").value = (tipNbr + 1) + " / " + tips.length;
-      
-      var text = tips[tipNbr].description.split("|")[0];
-      var linkText = (tips[tipNbr].description.split("|").length > 1
-                     ? tips[tipNbr].description.split("|")[1]
-                     : "");
-      
-      document.getElementById("tipText").textContent = text;
-      document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
-      document.getElementById("tipLink").textContent = linkText;
-      sizeToContent();
-    }
-    
-    function copyDescriptionToClipboard() {
-      var description = tips[tipNbr].description.split("|")[0];
-      Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper).copyString(description);
-    }
+    ];
   </script>
+  <script type="application/x-javascript" src="tips.js" />
 </window>
