@@ -1,5 +1,8 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
+Version 4.5.3 (May 11, 2014)
+- fixed some issues
+
 Version 4.5.2 (April 27, 2014)
 - made internal changes to comply with AMO requirements
 
