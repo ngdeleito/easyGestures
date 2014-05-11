@@ -39,6 +39,66 @@ function setLabels() {
   }
 }
 
+function addEventListenerToLoadURLScriptName(element, actionNumber) {
+  element.addEventListener("change", function(event) {
+    updateOtherLabels(loadURLScriptIndex + actionNumber - 1, this.value);
+    fireChangeEventOnLoadURLScript(actionNumber);
+  }, false);
+}
+
+function addEventListenerToLoadURLScriptType(element, actionNumber) {
+  element.addEventListener("command", function(event) {
+    updateUI();
+    fireChangeEventOnLoadURLScript(actionNumber);
+  }, false);
+}
+
+function addEventListenerToLoadURLScriptHost(element, actionNumber) {
+  element.addEventListener("change", function(event) {
+    if (document.getElementById("loadURLScript_faviconCheck" + actionNumber).checked) {
+      retrieveFavicon(this.value, actionNumber);
+    }
+    fireChangeEventOnLoadURLScript(actionNumber);
+  }, false);
+}
+
+function addEventListenerToLoadURLScriptCode(element, actionNumber) {
+  element.addEventListener("change", function(event) {
+    fireChangeEventOnLoadURLScript(actionNumber);
+  }, false);
+}
+
+function addEventListenerToLoadURLScriptFavicon(element, actionNumber) {
+  element.addEventListener("command", function(event) {
+    if (this.checked) {
+      let faviconURL = document.getElementById("loadURLScript_host" + actionNumber).value;
+      retrieveFavicon(faviconURL, actionNumber);
+      document.getElementById("loadURLScript_newIconCheck" + actionNumber).checked = false;
+    }
+    updateUI();
+    fireChangeEventOnLoadURLScript(actionNumber);
+  }, false);
+}
+
+function addEventListenerToLoadURLScriptNewIcon(element, actionNumber) {
+  element.addEventListener("command", function(event) {
+    if (this.checked) {
+      document.getElementById("loadURLScript_faviconCheck" + actionNumber).checked = false;
+    }
+    updateUI();
+    fireChangeEventOnLoadURLScript(actionNumber);
+  }, false);
+}
+
+function addEventListenerToNewIconImage(element, actionNumber) {
+  element.addEventListener("click", function(event) {
+    if (document.getElementById("loadURLScript_newIconCheck" + actionNumber).checked) {
+      retrieveCustomIconFile(actionNumber);
+      fireChangeEventOnLoadURLScript(actionNumber);
+    }
+  }, false);
+}
+
 function createLoadURLScriptForCustomization() {
   for (var i=1; i <= 20; i++) {
     // loadURLScript 1 to 20
@@ -127,7 +187,7 @@ function createLoadURLScriptForCustomization() {
     
     var textbox = document.createElement("textbox");
     textbox.setAttribute("id", "loadURLScript_name" + i);
-    textbox.setAttribute("onchange", "updateOtherLabels(" + (loadURLScriptIndex+i-1) + ", this.value); fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToLoadURLScriptName(textbox, i);
     textbox.setAttribute("size", "21");
     textbox.setAttribute("maxlength", "20");
     hbox.appendChild(textbox);
@@ -135,7 +195,7 @@ function createLoadURLScriptForCustomization() {
     var radiogroup = document.createElement("radiogroup");
     radiogroup.setAttribute("id", "loadURLScript_type" + i);
     radiogroup.setAttribute("orient", "horizontal");
-    radiogroup.setAttribute("oncommand", "updateUI(); fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToLoadURLScriptType(radiogroup, i);
     hbox.appendChild(radiogroup);
     
     var radio = document.createElement("radio");
@@ -154,7 +214,7 @@ function createLoadURLScriptForCustomization() {
     textbox = document.createElement("textbox");
     textbox.setAttribute("id", "loadURLScript_host" + i);
     textbox.setAttribute("size", "30");
-    textbox.setAttribute("onchange", "if (document.getElementById('loadURLScript_faviconCheck"+i+"').checked) retrieveFavicon(this.value,"+i+"); fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToLoadURLScriptHost(textbox, i);
     stack.appendChild(textbox);
     
     textbox = document.createElement("textbox");
@@ -162,7 +222,7 @@ function createLoadURLScriptForCustomization() {
     textbox.setAttribute("size", "30");
     textbox.setAttribute("multiline", "true");
     textbox.setAttribute("rows", "6");
-    textbox.setAttribute("onchange", "fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToLoadURLScriptCode(textbox, i);
     stack.appendChild(textbox);
     
     separator = document.createElement("separator");
@@ -176,18 +236,18 @@ function createLoadURLScriptForCustomization() {
     var checkbox = document.createElement("checkbox");
     checkbox.setAttribute("id", "loadURLScript_faviconCheck" + i);
     checkbox.setAttribute("label", customizationsLabels.urlscriptIcon);
-    checkbox.setAttribute("oncommand", "if (this.checked) {retrieveFavicon(document.getElementById('loadURLScript_host"+i+"').value,"+i+"); document.getElementById('loadURLScript_newIconCheck"+i+"').checked= false;} updateUI(); fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToLoadURLScriptFavicon(checkbox, i);
     hbox.appendChild(checkbox);
     
     checkbox = document.createElement("checkbox");
     checkbox.setAttribute("id", "loadURLScript_newIconCheck" + i);
     checkbox.setAttribute("label", customizationsLabels.changeIcon);
-    checkbox.setAttribute("oncommand","if (this.checked) document.getElementById('loadURLScript_faviconCheck"+i+"').checked= false; updateUI(); fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToLoadURLScriptNewIcon(checkbox, i);
     hbox.appendChild(checkbox);
     
     image = document.createElement("image");
     image.setAttribute("src", "chrome://easygestures/content/browse.png");
-    image.setAttribute("onclick", "if ( document.getElementById('loadURLScript_newIconCheck"+i+"').checked) retrieveCustomIconFile('loadURLScript',"+i+"); fireChangeEventOnLoadURLScript(" + i + ");");
+    addEventListenerToNewIconImage(image, i);
     hbox.appendChild(image);
     
     readLoadURLScriptPreference(i);
@@ -205,8 +265,14 @@ function createActionsMenulistWithSectorID(name, sectorNumber) {
   menulist.setAttribute("crop", "end");
   menulist.setAttribute("sizetopopup", "false");
   menulist.setAttribute("actionID", "");
-  menulist.setAttribute("oncommand", "updateUI(); updateOtherLabels(this.getAttribute('actionID'), this.label); fireChangeEventOnActionsGroup('" + name + "');");
-  menulist.setAttribute("onmousedown", "attachMenupopup(this);");
+  menulist.addEventListener("command", function(event) {
+    updateUI();
+    updateOtherLabels(this.getAttribute("actionID"), this.label);
+    fireChangeEventOnActionsGroup(name);
+  }, false);
+  menulist.addEventListener("mousedown", function(event) {
+    attachMenupopup(this);
+  }, false);
 
   hbox.appendChild(menulist);
   return hbox;
@@ -351,7 +417,7 @@ function retrieveFavicon(url, actionNumber) {
   }
 }
 
-function retrieveCustomIconFile(action, actionNumber) {
+function retrieveCustomIconFile(actionNumber) {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
   fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
@@ -359,7 +425,7 @@ function retrieveCustomIconFile(action, actionNumber) {
   
   var returnValue = fp.show();
   if (returnValue == Components.interfaces.nsIFilePicker.returnOK) {
-    var img = document.getElementById(action + "_newIcon" + actionNumber);
+    var img = document.getElementById("loadURLScript_newIcon" + actionNumber);
     img.src = "file://" + fp.file.path;
   }
 }
@@ -391,7 +457,9 @@ function createActionsPopupList() {
     itemNode.appendChild(imageNode);
     itemNode.appendChild(subItemNode);
     
-    itemNode.setAttribute("oncommand", "actionClick(this," + i + "); updateUI();");
+    itemNode.setAttribute("actionNumber", i);
+    // for some reason addEventListener does not work on the next line
+    itemNode.setAttribute("oncommand", "actionClick(this); updateUI();");
     itemNode.setAttribute("crop", "end");
     itemNode.setAttribute("label", eG_PopupLabels[i]);
     itemNode.style.paddingRight = "20px";
@@ -404,7 +472,8 @@ function createActionsPopupList() {
   return popupNode;
 }
 
-function actionClick(item, actionNumber) {
+function actionClick(item) {
+  var actionNumber = item.getAttribute('actionNumber');
   item.parentNode.parentNode.setAttribute("actionID", actionNumber);
   if (actionNumber === 0) {
     item.parentNode.parentNode.setAttribute("label", "");
