@@ -132,7 +132,9 @@ function startup(data, reason) {
       eGPrefs.initializeStats();
     }
     else if (reason == ADDON_UPGRADE) {
-      eGPrefs.updateToV4_5();
+      if (Services.vc.compare(data.oldVersion, "4.5") < 0) {
+        eGPrefs.updateToV4_5();
+      }
     }
     
     // getting access to localization strings
