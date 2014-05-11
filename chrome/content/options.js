@@ -489,7 +489,7 @@ function exportPrefs() {
     }
     
     Components.utils.import("resource://gre/modules/AddonManager.jsm");
-    AddonManager.getAddonByID("{11F9F076-72B3-4586-995D-5042CF5D3AD4}",
+    AddonManager.getAddonByID("easyGesturesN@ngdeleito.eu",
     function(addon) {
       var version = addon.version;
       // add description at the begining of the file
