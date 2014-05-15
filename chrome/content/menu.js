@@ -451,36 +451,13 @@ eG_menu.prototype = {
     //dumpObject(img.wrappedJSObject, false,0,0);
 
     ////////////////////////////////////////////////////////////////////////////
-    // Adding sign image for contextual menu
-    ///////////////////////////////////////////////////////////////////////////
-
+    // Adding sign for contextual menu
+    ////////////////////////////////////////////////////////////////////////////
+    
     var div = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
-    div.setAttribute("id", "eG_contextMenuSign");
-    div.style.backgroundImage = "url('chrome://easygestures/skin/contextMenuSign.png')";
-    div.style.backgroundColor = "red";
-
-    var text = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
-    text.style.left = Math.round(layout.outerR-76/2)+"px";
-    text.style.top = Math.round(-this.iconSize/4-7)+"px";
-    //text.appendChild(eGc.frame_doc.createTextNode(eGc.localizing.getString("contextual")));
-    text.appendChild(eGc.frame_doc.createTextNode(""));
-
-    img = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
-    img.src = this.skinPath+"contextMenuSign.png";
-    img.style.left = parseInt(text.style.left, 10) + "px";
-    img.style.top = parseInt(text.style.top, 10) - 6 + "px";
-
-    var img2 = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
-    img2.setAttribute("id", "eG_contextAltMenuSign");
-    img2.src = this.skinPath+"contextMenuSign.png";
-    img2.style.left = parseInt(img.style.left, 10) + 4 + "px";
-    img2.style.top = parseInt(img.style.top, 10) - 4 + "px";
-
-    div.appendChild(img2); // img2 is for indicationg that there is an alternative context
-
-    div.appendChild(img);
-    div.appendChild(text);
-
+    div.setAttribute("id", "easyGesturesContextMenuSign");
+    div.style.left = layout.outerR + this.iconSize + "px";
+    
     node.appendChild(div);
     return node;
   },
@@ -822,7 +799,6 @@ eG_menu.prototype = {
     var linkSign = specialNodes.childNodes[0];
     var altMenuSign = specialNodes.childNodes[1];
     var contextMenuSign = specialNodes.childNodes[2];
-    var contextAltMenuSign = eGc.frame_doc.getElementById("eG_contextAltMenuSign");
   
     if (layout_aNode !== null) {
       layout_aNode.style.display = "none";
@@ -834,7 +810,6 @@ eG_menu.prototype = {
     linkSign.style.visibility = "hidden";
     altMenuSign.style.visibility = "hidden";
     contextMenuSign.style.visibility = "hidden";
-    contextAltMenuSign.style.visibility = "hidden";
 
     this.clearRollover(layout, true);
 
@@ -955,8 +930,7 @@ eG_menu.prototype = {
     var linkSign = specialNodes.childNodes[0];
     var altMenuSign = specialNodes.childNodes[1];
     var contextMenuSign = specialNodes.childNodes[2];
-    var contextAltMenuSign = eGc.frame_doc.getElementById("eG_contextAltMenuSign");
-
+    
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
 
@@ -1142,18 +1116,23 @@ eG_menu.prototype = {
       }
     }
 
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
     // update context title and signs
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
+    ////////////////////////////////////////////////////////////////////////////
+    
     if (layout.name.search("context") != -1) {
-      contextMenuSign.childNodes[2].firstChild.data = eGc.localizing.getString(layout.name);
-      contextAltMenuSign.style.visibility=(eGc.contextType.split("/").length>2 ? "visible": "hidden"); // alternative context exists or not
+      contextMenuSign.innerHTML = eGc.localizing.getString(layout.name);
+      if (eGc.contextType.split("/").length > 2) {
+        contextMenuSign.className = "withAltSign";
+      }
+      else {
+        contextMenuSign.removeAttribute("class");
+      }
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+    
+    ////////////////////////////////////////////////////////////////////////////
     // show alternative menu sign
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
 
     altMenuSign.style.visibility = "visible";
     this.updateAltMenuSign(altMenuSign, layout.name, (this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled && layout.name.search("main") !=-1) || (this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled && layout.name.search("extra") !=-1) );

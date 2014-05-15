@@ -66,21 +66,22 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   visibility: hidden;
 }
 
-#eG_contextMenuSign {
+#easyGesturesContextMenuSign {
   visibility: hidden;
+  position: absolute;
+  top: -1em; /* line-height/2 + padding-bottom + border-bottom + shadow offset */
+  background-color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 50%);
+  border: solid 0.1em hsl(0, 0%, 50%);
+  border-radius: 0.4em;
+  padding: 0.2em;
+  line-height: 1em;
+  font-size: smaller;
+  font-family: sans-serif;
 }
 
-#eG_contextMenuSign > div {
-  position: absolute;
-  text-align: center;
-  font-weight: bold;
-  font-size: 8pt;
-  color: #777777;
-  width: 76px;
-}
-
-#eG_contextMenuSign img {
-  position: absolute;
+#easyGesturesContextMenuSign.withAltSign {
+  box-shadow: 0.1em 0.1em hsl(0, 0%, 80%), 0.2em 0.2em hsl(0, 0%, 50%);
 }
 
 div[id^="eG_actions_"] {
