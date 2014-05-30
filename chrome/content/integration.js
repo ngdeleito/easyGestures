@@ -472,7 +472,7 @@ function eG_openMenu() {
         }
         break;
     }
-    var contextMenuSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[2];
+    var contextMenuSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[3];
     contextMenuSign.style.visibility = "visible";
   }
   else {

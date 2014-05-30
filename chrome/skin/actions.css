@@ -29,6 +29,10 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+#easyGesturesPieMenu {
+  font-size: medium;
+}
+
 #easyGesturesPieMenu [id^="eG_"] {
   display: block;
   margin: 0;
@@ -61,9 +65,41 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 20px;
 }
 
-#eG_altMenuSign {
+#easyGesturesMainMenusSign {
   position: absolute;
+  top: -0.5em; /* height/2 of a child */
+  width: 3.1em; /* border-width and width for 3 children + space between 2 children */
+}
+
+#easyGesturesExtraMenusSign {
   visibility: hidden;
+  position: absolute;
+  width: 3.1em;
+}
+
+#easyGesturesMainMenusSign span:only-child,
+#easyGesturesExtraMenusSign span:only-child {
+  display: none;
+}
+
+#easyGesturesMainMenusSign span,
+#easyGesturesExtraMenusSign span {
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: hsl(0, 0%, 80%);
+  border: solid 0.1em hsl(0, 0%, 50%);
+  border-radius: 50%;
+}
+
+#easyGesturesMainMenusSign span + span,
+#easyGesturesExtraMenusSign span + span {
+  margin-left: 0.5em;
+}
+
+#easyGesturesMainMenusSign span.active,
+#easyGesturesExtraMenusSign span.active {
+  background-color: hsl(0, 0%, 60%);
 }
 
 #easyGesturesContextMenuSign {
