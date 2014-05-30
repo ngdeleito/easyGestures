@@ -176,9 +176,6 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   for (let i=0; i<actionsPrefs.length; i++) {
     if ( !this.isLarge && (i==3 || i==7) ) {} // don't push actions that are intended for large menus
     else {
-      if (eG_menuItems[actionsPrefs[i]].type==1) {
-        eG_menuItems[actionsPrefs[i]].src = "more";
-      }
       var action = eG_menuItems[actionsPrefs[i]];
       this.actions.push(eG_menuItems[actionsPrefs[i]]);
       var label = "";
@@ -822,11 +819,7 @@ eG_menu.prototype = {
   clearRollover : function(layout, hidding) { // clear rollover effect
     var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layout.name);
     var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + layout.name);
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
     var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
-    var linkSign = specialNodes.childNodes[0];
-    var altMenuSign = specialNodes.childNodes[1];
-    var contextMenuSign = specialNodes.childNodes[2];
   
     if (this.sector >= 0) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
