@@ -174,7 +174,6 @@ function eG_handleKeys(evt) {
 
 function eG_handleMouseup(evt) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
-  var layout = eGm.menuSet[eGm.curLayoutName];
   
   window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
