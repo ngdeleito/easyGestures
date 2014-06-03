@@ -454,7 +454,7 @@ var eGf = {
 
   //*********************************************************************************
 
-  homePage : function() {
+  homepage : function() {
     var homepage = Services.prefs.getCharPref("browser.startup.homepage");
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.loadTabs(homepage.split("|"), true, false);
