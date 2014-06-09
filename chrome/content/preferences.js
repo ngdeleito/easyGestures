@@ -187,6 +187,11 @@ var eGPrefs = {
     this._prefs.setCharPref("customizations.dailyReadingsFolder", aString);
   },
   
+  getLoadURLScriptPref : function(anInteger) {
+    return this._prefs.getComplexValue("customizations.loadURLScript" + anInteger,
+      Components.interfaces.nsISupportsString).data.split("\u2022");
+  },
+  
   getStatsClicksPref : function() {
     return this._prefs.getIntPref("stats.clicks");
   },

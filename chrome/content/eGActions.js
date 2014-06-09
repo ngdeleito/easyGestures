@@ -37,6 +37,10 @@ function Action(name, action) {
   this._name = name;
   this.run = action;
   
+  this.getLabel = function() {
+    return eGc.localizing.getString(this._name);
+  };
+  
   // helper functions
   
   this._getRootURL = function(url) {
@@ -182,6 +186,17 @@ function LoadURLScriptAction(number) {
       }
     }
     return false; // avoid JavaScript Error
+  };
+  
+  this.getLabel = function() {
+    var prefValue = eGPrefs.getLoadURLScriptPref(this._number);
+    var label = prefValue[0];
+    if (label !== "") {
+      // if this action has already a label given by the user, then use it
+      return label;
+    }
+    // otherwise use the default label
+    return eGc.localizing.getString(this._name) + " " + number;
   };
 }
 LoadURLScriptAction.prototype = new Action();
