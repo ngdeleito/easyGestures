@@ -118,7 +118,7 @@ function startup(data, reason) {
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/preferences.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
-  Services.scriptloader.loadSubScript("chrome://easygestures/content/functions.js");
+  Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js");
   
   AddonManager.getAddonByID(data.id, function(addon) {
     // installing or upgrading preferences

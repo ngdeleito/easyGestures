@@ -922,7 +922,7 @@ eG_menu.prototype = {
       eGPrefs.setStatsActionsPref(statsActionsArray.toSource());
 
       try {
-        eGf[layout.actions[this.sector].src]();
+        eGActions[layout.actions[this.sector].src].run();
       }
       catch(ex) {
         var error = Components.classes["@mozilla.org/scripterror;1"]

@@ -208,7 +208,7 @@ function eG_handleMouseup(evt) {
       // if a link is clicked without dragging and related option is checked
       // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (eGm.handleLinksAsOpenLink) {
-        eGf.openLink();
+        eGActions.openLink.run();
       }
       else {
         // when option "use browser behavior" is checked to open links
@@ -402,7 +402,7 @@ function eG_handleMousedown(evt) {
     eGm.autoscrollingTrigger = window.setTimeout(function() {
       eGm.autoscrolling = true;
       eGm.close();
-      eGf.autoscrolling();
+      eGActions.autoscrolling.run();
     }, eGm.autoscrollingDelay);
   }
 }
