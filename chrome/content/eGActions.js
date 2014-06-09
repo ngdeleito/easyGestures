@@ -143,15 +143,9 @@ ExtraMenuAction.prototype = new Action();
 
 function LoadURLScriptAction(number) {
   Action.call(this, "loadURLScript", function() {
-    this._loadURLScript(this._number);
-  });
-  
-  this._number = number;
-  
-  this._loadURLScript = function(appNum) {
-    var loadURLScript = eGm["loadURLScript" + appNum];
-    var codetext = loadURLScript[1];
-    var isScript = loadURLScript[2];
+    var prefValue = eGPrefs.getLoadURLScriptPref(this._number);
+    var codetext = prefValue[1];
+    var isScript = prefValue[2];
     var string = eGc.selection;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     
@@ -186,7 +180,9 @@ function LoadURLScriptAction(number) {
       }
     }
     return false; // avoid JavaScript Error
-  };
+  });
+  
+  this._number = number;
   
   this.getLabel = function() {
     var prefValue = eGPrefs.getLoadURLScriptPref(this._number);
