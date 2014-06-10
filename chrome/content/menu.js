@@ -183,7 +183,7 @@ function eG_menuLayout(menu, name, actionsPrefs) {
     }
   }
 
-  this.hasExtraMenuAction = (this.actions[0].type==1);
+  this.hasExtraMenuAction = eGActions[this.actions[0].src].isExtraMenuAction;
 
   //////////////////////////////////////////////////////////////////////////////
   // initializing update object
@@ -500,7 +500,7 @@ eG_menu.prototype = {
 
       if (layout.actions[i].src.search("loadURLScript")==-1) {
         timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": layout.actions[i].src)));
-        if (layout.actions[i].type==1) {
+        if (eGActions[layout.actions[i].src].isExtraMenuAction) {
           this.extraMenuAction = i;
         }
       }
@@ -675,7 +675,8 @@ eG_menu.prototype = {
     // moving menu when shift key is down
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    var moveAutoTrigger = (radius >= layout.outerR && layout.actions[sector].type != 1);
+    var moveAutoTrigger = (radius >= layout.outerR &&
+                           !eGActions[layout.actions[sector].src].isExtraMenuAction);
 
     if (event.shiftKey && !this.moveAuto || this.moveAuto && moveAutoTrigger ) {
       if (eGc.moving) {
@@ -745,7 +746,7 @@ eG_menu.prototype = {
       }
     }
     else if (radius > layout.outerR) {
-      if (layout.actions[sector].type == 1) {	// show extra menu
+      if (eGActions[layout.actions[sector].src].isExtraMenuAction) {
         this.showExtraMenu();
       }
     }
@@ -913,7 +914,8 @@ eG_menu.prototype = {
       }
     }
 
-    if (this.sector == -1 || layout.actions[this.sector].type != 1) {
+    if (this.sector == -1 ||
+        !eGActions[layout.actions[this.sector].src].isExtraMenuAction) {
       this.close(); // close menu if no extra menu is called from action or no action
     }
   },

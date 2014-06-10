@@ -41,6 +41,8 @@ function Action(name, action) {
     return eGc.localizing.getString(this._name);
   };
   
+  this.isExtraMenuAction = false;
+  
   // helper functions
   
   this._getRootURL = function(url) {
@@ -138,6 +140,8 @@ function ExtraMenuAction() {
   Action.call(this, "more", function() {
     eGm.showExtraMenu();
   });
+  
+  this.isExtraMenuAction = true;
 }
 ExtraMenuAction.prototype = new Action();
 
