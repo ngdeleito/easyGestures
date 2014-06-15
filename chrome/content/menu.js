@@ -840,24 +840,24 @@ eG_menu.prototype = {
     }
   },
 
-  rolloverExternalIcons : function(src, node, active) { // this is for loadURLScript actions icons which can be customized or imported from favicons or program's icons
-    if (this[src] === undefined || src === "autoscrolling") {
+  rolloverExternalIcons : function(actionName, node, active) { // this is for loadURLScript actions icons which can be customized or imported from favicons or program's icons
+    if (this[actionName] === undefined || actionName === "autoscrolling") {
       return;
     }
 
     if (active) {
-      if (this[src][4] == "true") {
+      if (this[actionName][4] == "true") {
         node.style.backgroundPosition = (!this.smallIcons?"5px 5px":"1px 1px");
       }
-      else if (this[src][5] == "true") {
+      else if (this[actionName][5] == "true") {
         node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
       }
     }
     else {
-      if (this[src][4] == "true") {
+      if (this[actionName][4] == "true") {
         node.style.backgroundPosition = (!this.smallIcons?"4px 4px":"0px 0px");
       }
-      else if (this[src][5] == "true") {
+      else if (this[actionName][5] == "true") {
         node.style.backgroundPosition = (!this.smallIcons?"0px 0px":"0px 0px");
       }
     }
