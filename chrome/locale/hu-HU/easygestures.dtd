@@ -114,6 +114,7 @@
 <!ENTITY func.closeOtherTabs "Többi lap bezárása">
 <!ENTITY func.undoCloseTab "Lap bezárásának visszavonása">
 <!ENTITY func.newWindow "Új ablak">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Ablak megkettőzése">
 <!ENTITY func.closeOtherWindows "Többi ablak bezárása">
 <!ENTITY func.quit "Quit Firefox">

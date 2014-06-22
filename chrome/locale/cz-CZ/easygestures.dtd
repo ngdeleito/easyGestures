@@ -145,6 +145,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "Zpět - Zavřít panel">
 
 <!ENTITY func.newWindow "Nové okno">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Duplikovat okno">
 <!ENTITY func.closeOtherWindows "Zavřít ostatní okna">
 <!ENTITY func.quit "Quit Firefox">

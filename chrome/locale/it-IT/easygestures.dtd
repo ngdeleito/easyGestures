@@ -145,6 +145,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "Annulla Chiudi Linguetta">
 
 <!ENTITY func.newWindow "Nuova Finestra">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Duplica Finestra">
 <!ENTITY func.closeOtherWindows "Chiudi le Altre Finestre">
 <!ENTITY func.quit "Quit Firefox">

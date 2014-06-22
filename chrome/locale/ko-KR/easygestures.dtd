@@ -129,6 +129,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.closeOtherTabs "다른 탭 닫기">
 <!ENTITY func.undoCloseTab "탭 닫기 취소">
 <!ENTITY func.newWindow "새 창">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "창 복제">
 <!ENTITY func.closeOtherWindows "다른 창 닫기">
 <!ENTITY func.quit "Quit Firefox">

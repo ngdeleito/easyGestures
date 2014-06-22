@@ -382,6 +382,11 @@ var eGActions = {
     window.open(url);
   }),
   
+  newBlankWindow : new Action("newBlankWindow", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.open("about:blank");
+  }),
+  
   duplicateWindow : new Action("duplicateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;

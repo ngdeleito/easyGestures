@@ -114,6 +114,7 @@
 <!ENTITY func.closeOtherTabs "Cerrar las otras pestañas">
 <!ENTITY func.undoCloseTab "Deshacer cerrar pestaña">
 <!ENTITY func.newWindow "Nueva ventana">
+<!ENTITY func.newBlankWindow "Nueva ventana en blanco">
 <!ENTITY func.duplicateWindow "Duplicar ventana">
 <!ENTITY func.closeOtherWindows "Cerrar las otras ventanas">
 <!ENTITY func.quit "Salir de Firefox">

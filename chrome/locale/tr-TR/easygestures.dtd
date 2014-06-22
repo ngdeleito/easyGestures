@@ -145,6 +145,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "Sekme Kapatmayı Geri Al">
 
 <!ENTITY func.newWindow "Yeni Pencere">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Pencereyi İkile">
 <!ENTITY func.closeOtherWindows "Diğer PEncereleri Kapat">
 <!ENTITY func.quit "Quit Firefox">

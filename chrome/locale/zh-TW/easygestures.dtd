@@ -144,6 +144,8 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "復原關閉的分頁">
 
 <!ENTITY func.newWindow "開新視窗">
+<!ENTITY func.newBlankWindow "New Blank Window">
+
 <!ENTITY func.duplicateWindow "複製視窗">
 <!ENTITY func.closeOtherWindows "關閉其他視窗">
 <!ENTITY func.quit "Quit Firefox">

@@ -144,6 +144,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "タブの復元">
 
 <!ENTITY func.newWindow "新しいウィンドウ">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "ウィンドウを複製">
 <!ENTITY func.closeOtherWindows "他のウィンドウを閉じる">
 <!ENTITY func.quit "Quit Firefox">

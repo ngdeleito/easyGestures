@@ -112,6 +112,7 @@
 <!ENTITY func.closeOtherTabs "Andere Tabs schließen">
 <!ENTITY func.undoCloseTab "Tab wiederherstellen">
 <!ENTITY func.newWindow "Neues Fenster">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Fenster duplizieren">
 <!ENTITY func.closeOtherWindows "Andere Fenster schließen">
 <!ENTITY func.quit "Quit Firefox">

@@ -112,6 +112,7 @@
 <!ENTITY func.closeOtherTabs "Zamknij pozostałe karty">
 <!ENTITY func.undoCloseTab "Przywróć kartę">
 <!ENTITY func.newWindow "Nowe okno">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Powiel okno">
 <!ENTITY func.closeOtherWindows "Zamknij pozostałe okna">
 <!ENTITY func.quit "Quit Firefox">

@@ -142,6 +142,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "Annuler fermer onglet">
 
 <!ENTITY func.newWindow "Nouvelle fenêtre">
+<!ENTITY func.newBlankWindow "Nouvelle fenêtre en blanc">
 <!ENTITY func.duplicateWindow "Dupliquer fenêtre">
 <!ENTITY func.closeOtherWindows "Fermer autres fenêtres">
 <!ENTITY func.quit "Quitter Firefox">

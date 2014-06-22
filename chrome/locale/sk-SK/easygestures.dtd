@@ -112,6 +112,7 @@
 <!ENTITY func.closeOtherTabs "Zavrieť ostatné karty">
 <!ENTITY func.undoCloseTab "Späť - Zavrieť kartu">
 <!ENTITY func.newWindow "Nové okno">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Duplikovať okno">
 <!ENTITY func.closeOtherWindows "Zavrieť ostatné okná">
 <!ENTITY func.quit "Quit Firefox">

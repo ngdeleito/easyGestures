@@ -144,6 +144,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "Desfazer Fechar Aba">
 
 <!ENTITY func.newWindow "Nova Janela">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Duplicar Janela">
 <!ENTITY func.closeOtherWindows "Fechar Outras Janelas">
 <!ENTITY func.quit "Quit Firefox">

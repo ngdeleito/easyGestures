@@ -143,6 +143,7 @@ END OF INSTRUCTIONS
 <!ENTITY func.undoCloseTab "Undo Close Tab">
 
 <!ENTITY func.newWindow "New Window">
+<!ENTITY func.newBlankWindow "New Blank Window">
 <!ENTITY func.duplicateWindow "Duplicate Window">
 <!ENTITY func.closeOtherWindows "Close Other Windows">
 <!ENTITY func.quit "Quit Firefox">

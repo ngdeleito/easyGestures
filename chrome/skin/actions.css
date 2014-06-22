@@ -255,6 +255,10 @@ div.newWindow[grayed="true"] { background-position: 0px -384px !important ; }
 div.newWindow { background-position: 0px -416px !important ; }
 div.newWindow[grayed="false"][active="true"] { background-position: 0px -448px !important ; }
 
+div.newBlankWindow[grayed="true"] { background-position: 0px -384px !important ; }
+div.newBlankWindow { background-position: 0px -416px !important ; }
+div.newBlankWindow[grayed="false"][active="true"] { background-position: 0px -448px !important ; }
+
 div.duplicateWindow[grayed="true"] { background-position: -32px -384px !important ; }
 div.duplicateWindow { background-position: -32px -416px !important ; }
 div.duplicateWindow[grayed="false"][active="true"] { background-position: -32px -448px !important ; }
@@ -682,6 +686,11 @@ div.small_newWindow[grayed="true"] { background-position: 0px -240px !important 
 div.small_newWindow { background-position: 0px -260px !important ; }
 div.small_newWindow[grayed="false"][active="true"] { background-position: 0px -280px !important ; }
 image.small_newWindow { -moz-image-region: rect(260px 20px 280px 0px) !important ; }
+
+div.small_newBlankWindow[grayed="true"] { background-position: 0px -240px !important ; }
+div.small_newBlankWindow { background-position: 0px -260px !important ; }
+div.small_newBlankWindow[grayed="false"][active="true"] { background-position: 0px -280px !important ; }
+image.small_newBlankWindow { -moz-image-region: rect(260px 20px 280px 0px) !important ; }
 
 div.small_duplicateWindow[grayed="true"] { background-position: -20px -240px !important ; }
 div.small_duplicateWindow { background-position: -20px -260px !important ; }
