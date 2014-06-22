@@ -122,6 +122,7 @@
 <!ENTITY func.fullscreen "Activar/desactivar pantalla completa">
 <!ENTITY func.openLink "Abrir enlace">
 <!ENTITY func.openLinkNewWindow "Abrir enlace en una ventana nueva">
+<!ENTITY func.openLinkInNewPrivateWindow "Abrir enlace en una nueva ventana privada">
 <!ENTITY func.copyLink "Copiar enlace">
 <!ENTITY func.copyImageLocation "Copiar dirección de la imagen">
 <!ENTITY func.saveLinkAs "Guardar enlace como...">

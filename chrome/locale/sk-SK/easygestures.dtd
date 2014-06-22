@@ -120,6 +120,7 @@
 <!ENTITY func.fullscreen "Na celú obrazovku">
 <!ENTITY func.openLink "Otvoriť odkaz">
 <!ENTITY func.openLinkNewWindow "Otvoriť odkaz v novom okne">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "Kopírovať odkaz">
 <!ENTITY func.copyImageLocation "Kopírovať adresu obrázka">
 <!ENTITY func.saveLinkAs "Uložiť cieľ odkazu ako...">

@@ -289,6 +289,10 @@ div.openLinkNewWindow[grayed="true"] { background-position: -32px -480px !import
 div.openLinkNewWindow { background-position: -32px -512px !important ; }
 div.openLinkNewWindow[grayed="false"][active="true"] { background-position: -32px -544px !important ; }
 
+div.openLinkInNewPrivateWindow[grayed="true"] { background-position: -32px -480px !important ; }
+div.openLinkInNewPrivateWindow { background-position: -32px -512px !important ; }
+div.openLinkInNewPrivateWindow[grayed="false"][active="true"] { background-position: -32px -544px !important ; }
+
 div.copyLink[grayed="true"] { background-position: -64px -480px !important ; }
 div.copyLink { background-position: -64px -512px !important ; }
 div.copyLink[grayed="false"][active="true"] { background-position: -64px -544px !important ; }
@@ -728,6 +732,11 @@ div.small_openLinkNewWindow[grayed="true"] { background-position: -20px -300px !
 div.small_openLinkNewWindow { background-position: -20px -320px !important ; }
 div.small_openLinkNewWindow[grayed="false"][active="true"] { background-position: -20px -340px !important ; }
 image.small_openLinkNewWindow { -moz-image-region: rect(320px 40px 340px 20px) !important ; }
+
+div.small_openLinkInNewPrivateWindow[grayed="true"] { background-position: -20px -300px !important ; }
+div.small_openLinkInNewPrivateWindow { background-position: -20px -320px !important ; }
+div.small_openLinkInNewPrivateWindow[grayed="false"][active="true"] { background-position: -20px -340px !important ; }
+image.small_openLinkInNewPrivateWindow { -moz-image-region: rect(320px 40px 340px 20px) !important ; }
 
 div.small_copyLink[grayed="true"] { background-position: -40px -300px !important ; }
 div.small_copyLink { background-position: -40px -320px !important ; }

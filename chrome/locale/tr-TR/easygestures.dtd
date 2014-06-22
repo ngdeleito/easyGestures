@@ -154,6 +154,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY func.openLink "Bağlantıyı Aç">
 <!ENTITY func.openLinkNewWindow "Bağlantıyı Yeni Pencerede Aç">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "Bağlantıyı Kopyala">
 <!ENTITY func.copyImageLocation "Resim Konumunu Kopyala">
 <!ENTITY func.saveLinkAs "Bağlantıyı Farklı Kaydet...">

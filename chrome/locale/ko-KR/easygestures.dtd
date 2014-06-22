@@ -137,6 +137,7 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY func.fullscreen "전체화면 전환">
 <!ENTITY func.openLink "링크 열기">
 <!ENTITY func.openLinkNewWindow "새 창으로 링크 열기">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "링크 복사">
 <!ENTITY func.copyImageLocation "이미지 위치 복사">
 <!ENTITY func.saveLinkAs "새이름으로 링크 대상 저장">

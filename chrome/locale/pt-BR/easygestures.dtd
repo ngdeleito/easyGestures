@@ -153,6 +153,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY func.openLink "Abrir Link">
 <!ENTITY func.openLinkNewWindow "Abrir Link em Nova Janela">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "Copiar Link">
 <!ENTITY func.copyImageLocation "Copiar Localização da Imagem">
 <!ENTITY func.saveLinkAs "Salvar Link Como...">

@@ -120,6 +120,7 @@
 <!ENTITY func.fullscreen "Pełny ekran">
 <!ENTITY func.openLink "Otwórz odnośnik">
 <!ENTITY func.openLinkNewWindow "Otw.odnośn.w nowym oknie">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "Kopiuj odnośnik">
 <!ENTITY func.copyImageLocation "Kopiuj adres obrazka">
 <!ENTITY func.saveLinkAs "Zapisz odnośnik jako...">

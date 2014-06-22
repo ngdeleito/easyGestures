@@ -154,6 +154,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY func.openLink "打开链接">
 <!ENTITY func.openLinkNewWindow "在新窗口打开链接">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "复制链接地址">
 <!ENTITY func.copyImageLocation "复制图片地址">
 <!ENTITY func.saveLinkAs "保存链接到...">

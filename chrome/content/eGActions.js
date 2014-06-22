@@ -729,6 +729,20 @@ var eGActions = {
     window.OpenBrowserWindow({private: true});
   }),
   
+  openLinkInNewPrivateWindow : new Action("openLinkInNewPrivateWindow", function() {
+    var link = eGc.link;
+    var url;
+    if (link === null) {
+      url = this._readClipboard();
+    }
+    else {
+      url = link.href;
+    }
+    
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.open(url, "_blank", "menubar,toolbar,location,personalbar,scrollbars,private");
+  }),
+  
   cut : new Action("cut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (eGc.selectionNode !== null) {

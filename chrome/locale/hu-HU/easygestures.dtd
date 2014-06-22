@@ -122,6 +122,7 @@
 <!ENTITY func.fullscreen "Teljes képernyő">
 <!ENTITY func.openLink "Hivatkozás megnyitása">
 <!ENTITY func.openLinkNewWindow "Hivatkozás megnyitása új ablakban">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "Hivatkozás címének másolása">
 <!ENTITY func.copyImageLocation "Kép címének másolása">
 <!ENTITY func.saveLinkAs "Hivatkozás mentése más néven...">

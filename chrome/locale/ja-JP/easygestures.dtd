@@ -153,6 +153,7 @@ END OF INSTRUCTIONS
 
 <!ENTITY func.openLink "リンクを開く">
 <!ENTITY func.openLinkNewWindow "リンクを新しいウィンドウで開く">
+<!ENTITY func.openLinkInNewPrivateWindow "Open Link In New Private Window">
 <!ENTITY func.copyLink "リンクのコピー">
 <!ENTITY func.copyImageLocation "画像の URL をコピー">
 <!ENTITY func.saveLinkAs "名前を付けてリンクを保存...">
