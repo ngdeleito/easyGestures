@@ -740,7 +740,7 @@ var eGActions = {
     }
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(url, "_blank", "menubar,toolbar,location,personalbar,scrollbars,private");
+    window.open(url, "_blank", "toolbar,location,personalbar,resizable,scrollbars,private");
   }),
   
   cut : new Action("cut", function() {
