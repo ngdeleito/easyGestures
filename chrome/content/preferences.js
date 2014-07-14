@@ -62,16 +62,16 @@ var eGPrefs = {
   
   _setDefaultMenus : function() {
     var menus = {
-      main:             "1/11/17/14/4/2/18/24/6/14",
-      mainAlt1:         "1/15/7/80/5/3/12/81/16/20",
-      mainAlt2:         "1/51/52/58/53/54/55/59/56/57",
-      extra:            "39/90/38/0/0/0/0/0/37/8",
-      extraAlt1:        "40/20/71/0/0/0/0/0/10/9",
-      extraAlt2:        "91/77/74/0/0/0/0/0/82/93",
-      contextLink:      "29/72/32/0/71/0/30/0/28/27",
-      contextImage:     "36/33/91/0/92/81/0/0/35/31",
-      contextSelection: "39/90/86/0/0/0/0/0/89/40",
-      contextTextbox:   "88/85/86/0/87/0/0/0/89/0"
+      main:             "more/pageTop/nextTab/newTab/backSite/firstPage/closeTab/quit/back/newTab",
+      mainAlt1:         "more/duplicateTab/forward/showOnlyThisFrame/forwardSite/lastPage/pageBottom/empty/prevTab/undoCloseTab",
+      mainAlt2:         "more/loadURLScript1/loadURLScript2/loadURLScript8/loadURLScript3/loadURLScript4/loadURLScript5/loadURLScript9/loadURLScript6/loadURLScript7",
+      extra:            "searchWeb/toggleFindBar/dailyReadings/empty/empty/empty/empty/empty/homepage/reload",
+      extraAlt1:        "restart/undoCloseTab/markVisitedLinks/empty/empty/empty/empty/empty/root/up",
+      extraAlt2:        "zoomIn/history/bookmarkOpenTabs/empty/empty/empty/empty/empty/printPage/zoomReset",
+      contextLink:      "copyLink/bookmarkThisLink/saveLinkAs/empty/markVisitedLinks/empty/newBlankWindow/empty/openLinkNewWindow/openLink",
+      contextImage:     "copyImage/saveImageAs/zoomIn/empty/zoomOut/empty/empty/empty/hideImages/copyImageLocation",
+      contextSelection: "searchWeb/toggleFindBar/copy/empty/empty/empty/empty/empty/selectAll/restart",
+      contextTextbox:   "undo/cut/copy/empty/paste/empty/empty/empty/selectAll/empty"
     };
     
     for (let [menuName, actions] in Iterator(menus)) {
@@ -142,25 +142,18 @@ var eGPrefs = {
   },
 
   initializeStats : function() {
-    var numberOfActions;
-    if (typeof eG_menuItems === "undefined") {
-      numberOfActions = eG_PopupImages.length;
-    }
-    else {
-      numberOfActions = eG_menuItems.length;
-    }
-    
     this._prefs.setIntPref("stats.clicks", 0); // clicks inside window excluding clicks inside menu
     this._prefs.setIntPref("stats.menuShown", 0); // calls for menu
     var d = new Date(); // date of last reset
     this._prefs.setCharPref("stats.lastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
     this._prefs.setCharPref("stats.mainMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
     this._prefs.setCharPref("stats.extraMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    var actionsStr = [];
-    for (let i=0; i<numberOfActions; i++) {
-      actionsStr.push(0); // all actions stats set to 0
+    
+    var actionsStats = {};
+    for (let action in eGActions) {
+      actionsStats[action] = 0;
     }
-    this._prefs.setCharPref("stats.actions", actionsStr.toSource()); // saved as source of an Array
+    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
   },
   
   areStartupTipsOn : function() {
@@ -230,12 +223,14 @@ var eGPrefs = {
     this._prefs.setCharPref("stats.extraMenu", aString);
   },
   
-  getStatsActionsPref : function() {
-    return JSON.parse(this._prefs.getCharPref("stats.actions"));
+  updateStatsForAction : function(anActionName) {
+    var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
+    ++actionsStats[anActionName];
+    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
   },
   
-  setStatsActionsPref : function(aString) {
-    this._prefs.setCharPref("stats.actions", aString);
+  getStatsActionsPref : function() {
+    return JSON.parse(this._prefs.getCharPref("stats.actions"));
   },
   
   updateToV4_5 : function() {
@@ -315,6 +310,56 @@ var eGPrefs = {
     }
     
     oldBranch.deleteBranch("");
+  },
+  
+  updateToV4_6 : function() {
+    var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+      "extraAlt2", "contextLink", "contextImage", "contextSelection",
+      "contextTextbox"];
+    var actionNames = ["empty", "more", "firstPage", "lastPage", "backSite",
+      "forwardSite", "back", "forward", "reload", "up", "root", "pageTop",
+      "pageBottom", "autoscrolling", "newTab", "duplicateTab", "prevTab",
+      "nextTab", "closeTab", "closeOtherTabs", "undoCloseTab", "newWindow",
+      "duplicateWindow", "closeOtherWindows", "quit", "minimizeWindow",
+      "fullscreen", "openLink", "openLinkNewWindow", "copyLink",
+      "newBlankWindow", "copyImageLocation", "saveLinkAs", "saveImageAs",
+      "savePageAs", "hideImages", "copyImage", "homepage", "dailyReadings",
+      "searchWeb", "restart", "openLinkInNewPrivateWindow", "empty", "empty",
+      "empty", "empty", "empty", "empty", "empty", "empty", "empty",
+      "loadURLScript1", "loadURLScript2", "loadURLScript3", "loadURLScript4",
+      "loadURLScript5", "loadURLScript6", "loadURLScript7", "loadURLScript8",
+      "loadURLScript9", "loadURLScript10", "loadURLScript11", "loadURLScript12",
+      "loadURLScript13", "loadURLScript14", "loadURLScript15",
+      "loadURLScript16", "loadURLScript17", "loadURLScript18",
+      "loadURLScript19", "loadURLScript20", "markVisitedLinks",
+      "bookmarkThisLink", "bookmarkPage", "bookmarkOpenTabs", "bookmarks",
+      "bookmarksToolbar", "history", "viewPageSource", "viewPageInfo",
+      "showOnlyThisFrame", "empty", "printPage", "focusLocationBar",
+      "newPrivateWindow", "cut", "copy", "paste", "undo", "selectAll",
+      "toggleFindBar", "zoomIn", "zoomOut", "zoomReset"];
+    
+    function transformFromActionNumbersToActionNames(anArray) {
+      anArray.forEach(function(actionNumber, index, array) {
+        array[index] = actionNames[actionNumber];
+      });
+    }
+    
+    menuNames.forEach(function(menuName) {
+      let actionsString = this._prefs.getCharPref("menus." + menuName);
+      let actionsArray = actionsString.split("/");
+      transformFromActionNumbersToActionNames(actionsArray);
+      this._prefs.setCharPref("menus." + menuName, actionsArray.join("/"));
+    }, this);
+    
+    var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
+    var newActionsStats = {};
+    actionsStats.forEach(function(statValue, index) {
+      let actionName = actionNames[index];
+      if (actionName !== "empty" || index === 0) {
+        newActionsStats[actionName] = statValue;
+      }
+    });
+    this._prefs.setCharPref("stats.actions", JSON.stringify(newActionsStats));
   }
 };
 

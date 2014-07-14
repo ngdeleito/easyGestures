@@ -41,7 +41,7 @@ function setLabels() {
 
 function addEventListenerToLoadURLScriptName(element, actionNumber) {
   element.addEventListener("change", function(event) {
-    updateOtherLabels(loadURLScriptIndex + actionNumber - 1, this.value);
+    updateOtherLabels("loadURLScript" + actionNumber, this.value);
     fireChangeEventOnLoadURLScript(actionNumber);
   }, false);
 }
@@ -264,10 +264,10 @@ function createActionsMenulistWithSectorID(name, sectorNumber) {
   menulist.setAttribute("width", "150");
   menulist.setAttribute("crop", "end");
   menulist.setAttribute("sizetopopup", "false");
-  menulist.setAttribute("actionID", "");
+  menulist.setAttribute("actionName", "");
   menulist.addEventListener("command", function(event) {
     updateUI();
-    updateOtherLabels(this.getAttribute("actionID"), this.label);
+    updateOtherLabels(this.getAttribute("actionName"), this.label);
     fireChangeEventOnActionsGroup(name);
   }, false);
   menulist.addEventListener("mousedown", function(event) {
@@ -443,7 +443,7 @@ function createActionsPopupList() {
   var popupNode = document.createElement("menupopup");
   popupNode.setAttribute("maxheight", "500px");
   
-  for (var i=0; i<eG_PopupLabels.length; i++) {
+  for (var i=0; i<eG_PopupImages.length; i++) {
     var itemNode;
     if (i==1 || i==2 || i==14 || i==21 || i==27 || i==37 || i==71 || i==85) {
       itemNode = document.createElement("menuseparator");
@@ -457,15 +457,15 @@ function createActionsPopupList() {
     itemNode.appendChild(imageNode);
     itemNode.appendChild(subItemNode);
     
-    itemNode.setAttribute("actionNumber", i);
+    itemNode.setAttribute("actionName", eG_PopupImages[i]);
     // for some reason addEventListener does not work on the next line
     itemNode.setAttribute("oncommand", "actionClick(this); updateUI();");
     itemNode.setAttribute("crop", "end");
-    itemNode.setAttribute("label", eG_PopupLabels[i]);
+    itemNode.setAttribute("label", eGActionsXULLabels[eG_PopupImages[i]]);
     itemNode.style.paddingRight = "20px";
     imageNode.setAttribute("class", "small_" + eG_PopupImages[i]);
     
-    subItemNode.setAttribute("value", eG_PopupLabels[i]);
+    subItemNode.setAttribute("value", eGActionsXULLabels[eG_PopupImages[i]]);
     popupNode.appendChild(itemNode);
   }
   
@@ -473,9 +473,9 @@ function createActionsPopupList() {
 }
 
 function actionClick(item) {
-  var actionNumber = item.getAttribute('actionNumber');
-  item.parentNode.parentNode.setAttribute("actionID", actionNumber);
-  if (actionNumber === 0) {
+  var actionName = item.getAttribute("actionName");
+  item.parentNode.parentNode.setAttribute("actionName", actionName);
+  if (actionName === "empty") {
     item.parentNode.parentNode.setAttribute("label", "");
   }
   
@@ -483,7 +483,7 @@ function actionClick(item) {
     var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
     var label = document.getElementById("loadURLScript_name" + n).value;
     if (label === "") {
-      label = eG_PopupLabels[actionNumber];
+      label = eGActionsXULLabels[actionName];
     }
     item.parentNode.parentNode.setAttribute("label", label);
   }
@@ -678,25 +678,25 @@ function saveAllPreferences(element) {
 
 function readActionsGroupPreference(name) {
   var preference = document.getElementById(name + "Menu");
-  var ids = preference.value.split("/");
+  var actionNames = preference.value.split("/");
   
   var indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
   if (name.startsWith("extra")) {
     indexes = [0, 1, 2, 8, 9];
   }
   
-  indexes.forEach(function (value, index, array) {
+  indexes.forEach(function(value) {
     var element = document.getElementById(name + "Sector" + value);
-    element.setAttribute("actionID", ids[value]);
-    element.setAttribute("label", eG_PopupLabels[ids[value]]);
+    element.setAttribute("actionName", actionNames[value]);
+    element.setAttribute("label", eGActionsXULLabels[actionNames[value]]);
   });
 }
 
 function preparePreferenceValueForNormalMenu(name) {
   var result = [];
   
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (value, index, array) {
-    result.push(document.getElementById(name + "Sector" + value).getAttribute("actionID"));
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(value) {
+    result.push(document.getElementById(name + "Sector" + value).getAttribute("actionName"));
   });
   return result.join("/");
 }
@@ -704,12 +704,12 @@ function preparePreferenceValueForNormalMenu(name) {
 function preparePreferenceValueForExtraMenu(name) {
   var result = [];
   
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (value, index, array) {
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(value) {
     if (value >= 3 && value <= 7) {
-      result.push("0");
+      result.push("empty");
     }
     else {
-      result.push(document.getElementById(name + "Sector" + value).getAttribute("actionID"));
+      result.push(document.getElementById(name + "Sector" + value).getAttribute("actionName"));
     }
   });
   return result.join("/");
@@ -778,7 +778,7 @@ function fireChangeEventOn(element) {
   element.dispatchEvent(event);
 }
 
-function updateOtherLabels(actionID, label) {
+function updateOtherLabels(actionName, label) {
   var groupboxes = new Array(
     "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
     "contextLink", "contextImage", "contextSelection", "contextTextbox"
@@ -790,7 +790,7 @@ function updateOtherLabels(actionID, label) {
         continue;
       
       var element = document.getElementById(groupboxes[i] + "Sector" + sector);
-      if (element.getAttribute("actionID") == actionID) {
+      if (element.getAttribute("actionName") == actionName) {
         element.setAttribute("label", label);
       }
     }

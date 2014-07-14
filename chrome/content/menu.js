@@ -36,26 +36,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-var eG_menuItems = ["empty", "more", "firstPage", "lastPage", "backSite",
-  "forwardSite", "back", "forward", "reload", "up", "root", "pageTop",
-  "pageBottom", "autoscrolling", "newTab", "duplicateTab", "prevTab", "nextTab",
-  "closeTab", "closeOtherTabs", "undoCloseTab", "newWindow", "duplicateWindow",
-  "closeOtherWindows", "quit", "minimizeWindow", "fullscreen", "openLink",
-  "openLinkNewWindow", "copyLink", "newBlankWindow", "copyImageLocation",
-  "saveLinkAs", "saveImageAs", "savePageAs", "hideImages", "copyImage",
-  "homepage", "dailyReadings", "searchWeb", "restart",
-  "openLinkInNewPrivateWindow", "empty", "empty", "empty", "empty", "empty",
-  "empty", "empty", "empty", "empty", "loadURLScript1", "loadURLScript2",
-  "loadURLScript3", "loadURLScript4", "loadURLScript5", "loadURLScript6",
-  "loadURLScript7", "loadURLScript8", "loadURLScript9", "loadURLScript10",
-  "loadURLScript11", "loadURLScript12", "loadURLScript13", "loadURLScript14",
-  "loadURLScript15", "loadURLScript16", "loadURLScript17", "loadURLScript18",
-  "loadURLScript19", "loadURLScript20", "markVisitedLinks", "bookmarkThisLink",
-  "bookmarkPage", "bookmarkOpenTabs", "bookmarks", "bookmarksToolbar",
-  "history", "viewPageSource", "viewPageInfo", "showOnlyThisFrame", "empty",
-  "printPage", "focusLocationBar", "newPrivateWindow", "cut", "copy", "paste",
-  "undo", "selectAll", "toggleFindBar", "zoomIn", "zoomOut", "zoomReset"];
-
 function eG_menuLayout(menu, name, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
   this.isExtraMenu = name.search("extra") != -1;
@@ -86,23 +66,23 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   for (let i=0; i<actionsPrefs.length; i++) {
     if ( !this.isLarge && (i==3 || i==7) ) {} // don't push actions that are intended for large menus
     else {
-      var actionNumber = actionsPrefs[i];
-      this.actions.push(actionNumber);
-      var label = eGActions[eG_menuItems[actionNumber]].getLabel();
+      var actionName = actionsPrefs[i];
+      this.actions.push(actionName);
+      var label = eGActions[actionName].getLabel();
       this.labels.push(this.isExtraMenu && i>2 && i<8 ? "" : label);
     }
   }
   
-  this.hasExtraMenuAction = eGActions[eG_menuItems[this.actions[0]]].isExtraMenuAction;
+  this.hasExtraMenuAction = eGActions[this.actions[0]].isExtraMenuAction;
   
   //////////////////////////////////////////////////////////////////////////////
   // initializing update object
   //////////////////////////////////////////////////////////////////////////////
 
   for (let i = 0; i<this.actions.length; i++) {
-    if (this.update[eG_menuItems[this.actions[i]]] !== undefined &&
-        this.update[eG_menuItems[this.actions[i]]] == -1) {
-      this.update[eG_menuItems[this.actions[i]]] = i;
+    if (this.update[this.actions[i]] !== undefined &&
+        this.update[this.actions[i]] == -1) {
+      this.update[this.actions[i]] = i;
     }
   }
 
@@ -409,26 +389,26 @@ eG_menu.prototype = {
       timg.setAttribute("grayed", "false");
       timg.setAttribute("active", "false");
 
-      if (eG_menuItems[layout.actions[i]].search("loadURLScript") == -1) {
+      if (layout.actions[i].search("loadURLScript") == -1) {
         timg.setAttribute("class", (this.smallMenuTag +
-                   (this.noIcons ? "empty" : eG_menuItems[layout.actions[i]])));
-        if (eGActions[eG_menuItems[layout.actions[i]]].isExtraMenuAction) {
+                   (this.noIcons ? "empty" : layout.actions[i])));
+        if (eGActions[layout.actions[i]].isExtraMenuAction) {
           this.extraMenuAction = i;
         }
       }
       else { // new icon path for loadURLScript ?
-        if (this[eG_menuItems[layout.actions[i]]][4] == "true" ||
-            this[eG_menuItems[layout.actions[i]]][5] == "true") {
-          if (!this.smallIcons && this[eG_menuItems[layout.actions[i]]][4] == "true") {
+        if (this[layout.actions[i]][4] == "true" ||
+            this[layout.actions[i]][5] == "true") {
+          if (!this.smallIcons && this[layout.actions[i]][4] == "true") {
             // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
             timg.style.backgroundPosition = "4px 4px";
             timg.style.backgroundSize = "26px 26px";
           }
-          timg.style.backgroundImage = "url('" + (this[eG_menuItems[layout.actions[i]]][3]).replace(/\\/g , "\\\\") + "')";
+          timg.style.backgroundImage = "url('" + (this[layout.actions[i]][3]).replace(/\\/g , "\\\\") + "')";
           timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
         }
         else {
-          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty" : eG_menuItems[layout.actions[i]])));
+          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty" : layout.actions[i])));
         }
       }
 
@@ -590,7 +570,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     var moveAutoTrigger = (radius >= layout.outerR &&
-                           !eGActions[eG_menuItems[layout.actions[sector]]].isExtraMenuAction);
+                           !eGActions[layout.actions[sector]].isExtraMenuAction);
     
     if (event.shiftKey && !this.moveAuto || this.moveAuto && moveAutoTrigger ) {
       if (eGc.moving) {
@@ -641,7 +621,7 @@ eG_menu.prototype = {
 
       if (sector >= 0) { // sector targetted exists: highlighting icons and labels
         layout_aNode.childNodes[sector].setAttribute("active", "true");
-        this.rolloverExternalIcons(eG_menuItems[layout.actions[sector]], layout_aNode.childNodes[sector], true);
+        this.rolloverExternalIcons(layout.actions[sector], layout_aNode.childNodes[sector], true);
         if (layout_lNode !== null) {
           layout_lNode.childNodes[sector].style.fontWeight = "bold";
         }
@@ -660,7 +640,7 @@ eG_menu.prototype = {
       }
     }
     else if (radius > layout.outerR) {
-      if (eGActions[eG_menuItems[layout.actions[sector]]].isExtraMenuAction) {
+      if (eGActions[layout.actions[sector]].isExtraMenuAction) {
         this.showExtraMenu();
       }
     }
@@ -741,7 +721,7 @@ eG_menu.prototype = {
   
     if (this.sector >= 0) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
-      this.rolloverExternalIcons(eG_menuItems[layout.actions[this.sector]], layout_aNode.childNodes[this.sector], false);
+      this.rolloverExternalIcons(layout.actions[this.sector], layout_aNode.childNodes[this.sector], false);
       if (layout_lNode !== null) {
         layout_lNode.childNodes[this.sector].style.fontWeight = "normal";
       }
@@ -812,13 +792,11 @@ eG_menu.prototype = {
         statsExtraArray[index*8+this.sector]++;
         eGPrefs.setStatsExtraMenuPref(statsExtraArray.toSource());
       }
-
-      var statsActionsArray = eGPrefs.getStatsActionsPref();
-      statsActionsArray[layout.actions[this.sector]]++;
-      eGPrefs.setStatsActionsPref(statsActionsArray.toSource());
-
+      
+      eGPrefs.updateStatsForAction(layout.actions[this.sector]);
+      
       try {
-        eGActions[eG_menuItems[layout.actions[this.sector]]].run();
+        eGActions[layout.actions[this.sector]].run();
       }
       catch(ex) {
         var error = Components.classes["@mozilla.org/scripterror;1"]
@@ -829,7 +807,7 @@ eG_menu.prototype = {
     }
 
     if (this.sector == -1 ||
-        !eGActions[eG_menuItems[layout.actions[this.sector]]].isExtraMenuAction) {
+        !eGActions[layout.actions[this.sector]].isExtraMenuAction) {
       this.close(); // close menu if no extra menu is called from action or no action
     }
   },

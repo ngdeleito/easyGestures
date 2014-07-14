@@ -326,8 +326,12 @@
         var rows = document.createElement("rows");
         grid.appendChild(rows);
         
-        for (var i=n*19+1; i<(n+1)*19+1 && i < window.opener.eG_PopupLabels.length; i++) {
-          // starting from 1 to exclude the 'empty' action. 19 rows per column
+        var actionNames =
+          Object.getOwnPropertyNames(window.opener.eGActionsXULLabels);
+        // excluding "empty" action from the actionNames array
+        actionNames.splice(actionNames.indexOf("empty"), 1);
+        for (var i=n*19; i<(n+1)*19 && i < actionNames.length; i++) {
+          // 19 rows per column
           
           var row = document.createElement("row");
           rows.appendChild(row);
@@ -339,9 +343,10 @@
           vbox.appendChild(hbox);
           
           var image = document.createElement("image");
-          image.setAttribute("id", "eG_image"+i);
-          image.setAttribute("tooltiptext", window.opener.eG_PopupLabels[i]);
-          image.setAttribute("class", "small_"+window.opener.eG_PopupImages[i]);
+          image.setAttribute("id", "eG_image" + actionNames[i]);
+          image.setAttribute("tooltiptext",
+            window.opener.eGActionsXULLabels[actionNames[i]]);
+          image.setAttribute("class", "small_" + actionNames[i]);
           hbox.appendChild(image);
           
           var hbox2 = document.createElement("hbox");
@@ -354,7 +359,7 @@
           hbox2.appendChild(label);
           
           image = document.createElement("image");
-          image.setAttribute("id", "eG_bar"+i);
+          image.setAttribute("id", "eG_bar" + actionNames[i]);
           image.setAttribute("src", "chrome://easygestures/content/bar.png");
           image.setAttribute("maxwidth", "40");
           image.setAttribute("width", "0");
@@ -362,7 +367,7 @@
           hbox2.appendChild(image);
           
           label = document.createElement("label");
-          label.setAttribute("id", "eG_action"+i);
+          label.setAttribute("id", "eG_action" + actionNames[i]);
           label.setAttribute("value", "0%");
           hbox2.appendChild(label);
           
@@ -389,7 +394,7 @@
       
       var statsMainArray = eGPrefs.getStatsMainMenuPref();
       var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
-      var statsActionsArray = eGPrefs.getStatsActionsPref();
+      var statsActions = eGPrefs.getStatsActionsPref();
       
       var statsClicks = eGPrefs.getStatsClicksPref();
       var statsMenuShown = eGPrefs.getStatsMenuShownPref();
@@ -431,8 +436,8 @@
       }
       document.getElementById("eG_statsUseComment").value = useComment;
       
-      for (var i=0; i<statsActionsArray.length; i++) {
-        statsClicksOnActions += statsActionsArray[i];
+      for (let action in statsActions) {
+        statsClicksOnActions += statsActions[action];
       }
       if (statsClicksOnActions == 0) {
         statsClicksOnActions = 1; //just avoiding division by 0 to prevent displaying NaN
@@ -445,16 +450,19 @@
       var totalMA2 = 0;
       var totalEA2 = 0;
       
-      for (var i=1; i<statsActionsArray.length; i++) {
-        // starting from 1 to exclude the 'empty' action
-        
-        var count = Math.round(statsActionsArray[i]/(statsClicksOnActions-statsActionsArray[0])*1000)/10;
-        if (count > 1) {
-          count = Math.round(count);
+      var clicksForEmptyAction = statsActions["empty"];
+      for (let actionName in statsActions) {
+        if (actionName !== "empty") {
+          var clicksForAction = statsActions[actionName];
+          var count = Math.round(clicksForAction/(statsClicksOnActions - clicksForEmptyAction)*1000)/10;
+          if (count > 1) {
+            count = Math.round(count);
+          }
+          
+          document.getElementById("eG_action" + actionName).value = (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : " _ ");
+          document.getElementById("eG_bar" + actionName).width = count * scaleFactor;
+          document.getElementById("eG_image" + actionName).setAttribute("tooltiptext", document.getElementById("eG_image" + actionName).getAttribute("tooltiptext") + " : " + clicksForAction);
         }
-        document.getElementById("eG_action"+i).value=(statsActionsArray[i]>0?(count>0.1?count+"%":"<0.1%"):" _ ");
-        document.getElementById("eG_bar"+i).width=count*scaleFactor;
-        document.getElementById("eG_image"+i).setAttribute("tooltiptext", document.getElementById("eG_image"+i).getAttribute("tooltiptext") + " : "+statsActionsArray[i]);
       }
       
       for (var i=0; i<10; i++) {
