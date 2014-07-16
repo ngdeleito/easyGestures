@@ -1012,7 +1012,7 @@ eG_menu.prototype = {
     ////////////////////////////////////////////////////////////////////////////
     
     if (layout.name.search("context") != -1) {
-      contextMenuSign.innerHTML = eGc.localizing.getString(layout.name);
+      contextMenuSign.textContent = eGc.localizing.getString(layout.name);
       if (eGc.contextType.split("/").length > 2) {
         contextMenuSign.className = "withAltSign";
       }
