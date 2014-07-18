@@ -461,11 +461,11 @@ function createActionsPopupList() {
     // for some reason addEventListener does not work on the next line
     itemNode.setAttribute("oncommand", "actionClick(this); updateUI();");
     itemNode.setAttribute("crop", "end");
-    itemNode.setAttribute("label", eGActionsXULLabels[eG_PopupImages[i]]);
+    itemNode.setAttribute("label", eGActions[eG_PopupImages[i]].getXULLabel());
     itemNode.style.paddingRight = "20px";
     imageNode.setAttribute("class", "small_" + eG_PopupImages[i]);
     
-    subItemNode.setAttribute("value", eGActionsXULLabels[eG_PopupImages[i]]);
+    subItemNode.setAttribute("value", eGActions[eG_PopupImages[i]].getXULLabel());
     popupNode.appendChild(itemNode);
   }
   
@@ -483,7 +483,7 @@ function actionClick(item) {
     var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
     var label = document.getElementById("loadURLScript_name" + n).value;
     if (label === "") {
-      label = eGActionsXULLabels[actionName];
+      label = eGActions[actionName].getXULLabel();
     }
     item.parentNode.parentNode.setAttribute("label", label);
   }
@@ -688,7 +688,7 @@ function readActionsGroupPreference(name) {
   indexes.forEach(function(value) {
     var element = document.getElementById(name + "Sector" + value);
     element.setAttribute("actionName", actionNames[value]);
-    element.setAttribute("label", eGActionsXULLabels[actionNames[value]]);
+    element.setAttribute("label", eGActions[actionNames[value]].getXULLabel());
   });
 }
 

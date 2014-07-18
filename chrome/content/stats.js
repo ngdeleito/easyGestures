@@ -203,8 +203,7 @@ function fillActions() {
     var rows = document.createElement("rows");
     grid.appendChild(rows);
     
-    var actionNames =
-      Object.getOwnPropertyNames(window.opener.eGActionsXULLabels);
+    var actionNames = Object.getOwnPropertyNames(window.opener.eGActions);
     // excluding "empty" action from the actionNames array
     actionNames.splice(actionNames.indexOf("empty"), 1);
     for (var i=n*19; i<(n+1)*19 && i < actionNames.length; i++) {
@@ -222,7 +221,7 @@ function fillActions() {
       var image = document.createElement("image");
       image.setAttribute("id", "eG_image" + actionNames[i]);
       image.setAttribute("tooltiptext",
-        window.opener.eGActionsXULLabels[actionNames[i]]);
+        window.opener.eGActions[actionNames[i]].getXULLabel());
       image.setAttribute("class", "small_" + actionNames[i]);
       hbox.appendChild(image);
       

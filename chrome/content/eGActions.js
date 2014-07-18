@@ -41,6 +41,10 @@ function Action(name, action) {
     return eGc.localizing.getString(this._name);
   };
   
+  this.getXULLabel = function() {
+    return document.getElementById("strings").getString(this._name);
+  };
+  
   this.isExtraMenuAction = false;
   
   // helper functions
@@ -133,6 +137,10 @@ function Action(name, action) {
 
 function EmptyAction() {
   Action.call(this, "empty", function() {});
+  
+  this.getXULLabel = function() {
+    return document.getElementById("strings").getString("emptyActionName");
+  }
 }
 EmptyAction.prototype = new Action();
 
@@ -141,9 +149,31 @@ function ExtraMenuAction() {
     eGm.showExtraMenu();
   });
   
+  this.getXULLabel = function() {
+    return document.getElementById("strings").getString("extraMenuActionName");
+  }
+  
   this.isExtraMenuAction = true;
 }
 ExtraMenuAction.prototype = new Action();
+
+function ReloadAction() {
+  Action.call(this, "reload", function() { // reload or stop
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    
+    if (!eGc.loading) {
+      gBrowser.reload();
+    }
+    else {
+      gBrowser.stop();
+    }
+  });
+  
+  this.getXULLabel = function() {
+    return document.getElementById("strings").getString("reloadActionName");
+  }
+}
 
 function LoadURLScriptAction(number) {
   Action.call(this, "loadURLScript", function() {
@@ -198,6 +228,10 @@ function LoadURLScriptAction(number) {
     // otherwise use the default label
     return eGc.localizing.getString(this._name) + " " + number;
   };
+  
+  this.getXULLabel = function() {
+    return document.getElementById("strings").getString(this._name + this._number);
+  }
 }
 LoadURLScriptAction.prototype = new Action();
 
@@ -262,17 +296,7 @@ var eGActions = {
     window.gBrowser.goBack();
   }),
   
-  reload : new Action("reload", function() { // reload or stop
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    
-    if (!eGc.loading) {
-      gBrowser.reload();
-    }
-    else {
-      gBrowser.stop();
-    }
-  }),
+  reload : new ReloadAction(),
   
   up : new Action("up", function() {
     var url = eGc.doc.URL;
