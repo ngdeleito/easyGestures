@@ -694,30 +694,6 @@
   <script type="application/x-javascript">
     var eG_duplicateKeyMessage = "&duplicatekey.warning;";
     var eG_faviconNotFound = "&urlscript.faviconNotFound;";
-    
-    var eG_PopupImages = [
-      "empty", "more", "firstPage", "lastPage", "backSite", "forwardSite",
-      "back", "forward", "reload", "up", "root", "pageTop", "pageBottom",
-      "autoscrolling", "newTab", "duplicateTab", "prevTab", "nextTab",
-      "closeTab", "closeOtherTabs", "undoCloseTab", "newWindow",
-      "duplicateWindow", "closeOtherWindows", "quit", "minimizeWindow",
-      "fullscreen", "openLink", "openLinkNewWindow", "copyLink",
-      "newBlankWindow", "copyImageLocation", "saveLinkAs", "saveImageAs",
-      "savePageAs", "hideImages", "copyImage", "homepage", "dailyReadings",
-      "searchWeb", "restart", "openLinkInNewPrivateWindow", "loadURLScript1",
-      "loadURLScript2", "loadURLScript3", "loadURLScript4", "loadURLScript5",
-      "loadURLScript6", "loadURLScript7", "loadURLScript8", "loadURLScript9",
-      "loadURLScript10", "loadURLScript11", "loadURLScript12",
-      "loadURLScript13", "loadURLScript14", "loadURLScript15",
-      "loadURLScript16", "loadURLScript17", "loadURLScript18",
-      "loadURLScript19", "loadURLScript20", "markVisitedLinks",
-      "bookmarkThisLink", "bookmarkPage", "bookmarkOpenTabs", "bookmarks",
-      "bookmarksToolbar", "history", "viewPageSource", "viewPageInfo",
-      "showOnlyThisFrame", "printPage", "focusLocationBar", "newPrivateWindow",
-      "cut", "copy", "paste", "undo", "selectAll", "toggleFindBar", "zoomIn",
-      "zoomOut", "zoomReset"
-    ];
-    
     var customizationsLabels = {
       urlscriptCode: "&urlscript.code;",
       urlscriptHost: "&urlscript.host;",
