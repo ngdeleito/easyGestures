@@ -42,7 +42,7 @@ function Action(name, action) {
   };
   
   this.getXULLabel = function() {
-    return document.getElementById("strings").getString(this._name);
+    return document.getElementById("easyGesturesNStrings").getString(this._name);
   };
   
   this.isExtraMenuAction = false;
@@ -139,7 +139,7 @@ function EmptyAction() {
   Action.call(this, "empty", function() {});
   
   this.getXULLabel = function() {
-    return document.getElementById("strings").getString("emptyActionName");
+    return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
   }
 }
 EmptyAction.prototype = new Action();
@@ -150,7 +150,7 @@ function ExtraMenuAction() {
   });
   
   this.getXULLabel = function() {
-    return document.getElementById("strings").getString("extraMenuActionName");
+    return document.getElementById("easyGesturesNStrings").getString("extraMenuActionName");
   }
   
   this.isExtraMenuAction = true;
@@ -171,7 +171,7 @@ function ReloadAction() {
   });
   
   this.getXULLabel = function() {
-    return document.getElementById("strings").getString("reloadActionName");
+    return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
   }
 }
 
@@ -230,7 +230,7 @@ function LoadURLScriptAction(number) {
   };
   
   this.getXULLabel = function() {
-    return document.getElementById("strings").getString(this._name + this._number);
+    return document.getElementById("easyGesturesNStrings").getString(this._name + this._number);
   }
 }
 LoadURLScriptAction.prototype = new Action();

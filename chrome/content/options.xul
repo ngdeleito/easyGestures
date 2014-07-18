@@ -50,7 +50,7 @@
   ondialogdisclosure="window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable');">
 
   <stringbundleset>
-    <stringbundle id="strings"
+    <stringbundle id="easyGesturesNStrings"
       src="chrome://easygestures/locale/easygestures.properties" />
   </stringbundleset>
 
