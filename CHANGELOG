@@ -1,5 +1,8 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
+Version 4.6.1 (July 18, 2014)
+- fixed some warnings issued by AMO scripts
+
 Version 4.6 (July 16, 2014)
 - new CSS-based context and alternative menus indicators
 - new actions: "New Blank Window" and "Open Link in New Private Window" (suggested by Steve Beckwitt)
