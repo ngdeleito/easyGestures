@@ -99,35 +99,10 @@
   </hbox>
   
   <script type="application/x-javascript">
-    function tipEntry(description, imageClass, paneName, tabNumber) {
-      this.description = description;
-      this.imageClass = imageClass; // image source
-      this.paneName = paneName;
-      this.tabNumber = tabNumber;
-    }
-    
-    var tips = [
-      new tipEntry("&tip1;",  "triggerBySelection",  "activation",     "0"),
-      new tipEntry("&tip2;",  "triggerByStroke",     ""          ,     "0"),
-      new tipEntry("&tip4;",  "alternativeMenus",    "activation",     "0"),
-      new tipEntry("&tip6;",  "builtInAction",       "menus",          "0"),
-      new tipEntry("&tip8;",  "clickOnLink",         "",               "0"),
-      new tipEntry("&tip13;", "noTooltips",          "behavior",       "0"),
-      new tipEntry("&tip10;", "empty",               "",               "0"),
-      new tipEntry("&tip21;", "empty",               "",               "0"),
-      new tipEntry("&tip5;",  "bookmarksOnlyLayout", "customizations", "0"),
-      new tipEntry("&tip7;",  "programsAndScripts",  "customizations", "0"),
-      new tipEntry("&tip9;",  "contextual",          "activation",     "0"),
-      new tipEntry("&tip11;", "suppressMenu",        "",               "0"),
-      new tipEntry("&tip12;", "moveMenu",            "",               "0"),
-      new tipEntry("&tip14;", "noIcons",             "behavior",       "0"),
-      new tipEntry("&tip15;", "largeMenu",           "behavior",       "0"),
-      new tipEntry("&tip16;", "empty",               "behavior",       "0"),
-      new tipEntry("&tip18;", "empty",               "",               "0"),
-      new tipEntry("&tip20;", "empty",               "",               "0"),
-      new tipEntry("&tip22;", "empty",               "",               "0"),
-      new tipEntry("&tip26;", "empty",               "",               "0")
-    ];
+    var tipLabels = ["&tip1;", "&tip2;", "&tip4;", "&tip6;", "&tip8;",
+      "&tip13;", "&tip10;", "&tip21;", "&tip5;", "&tip7;", "&tip9;", "&tip11;",
+      "&tip12;", "&tip14;", "&tip15;", "&tip16;", "&tip18;", "&tip20;",
+      "&tip22;", "&tip26;"];
   </script>
   <script type="application/x-javascript" src="tips.js" />
 </window>

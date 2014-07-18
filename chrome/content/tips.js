@@ -31,6 +31,37 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+
+function tipEntry(tipLabelIndex, imageClass, paneName, tabNumber) {
+  this.description = tipLabels[tipLabelIndex];
+  this.imageClass = imageClass; // image source
+  this.paneName = paneName;
+  this.tabNumber = tabNumber;
+}
+
+var tips = [
+  new tipEntry(0,  "triggerBySelection",  "activation",     "0"),
+  new tipEntry(1,  "triggerByStroke",     ""          ,     "0"),
+  new tipEntry(2,  "alternativeMenus",    "activation",     "0"),
+  new tipEntry(3,  "builtInAction",       "menus",          "0"),
+  new tipEntry(4,  "clickOnLink",         "",               "0"),
+  new tipEntry(5,  "noTooltips",          "behavior",       "0"),
+  new tipEntry(6,  "empty",               "",               "0"),
+  new tipEntry(7,  "empty",               "",               "0"),
+  new tipEntry(8,  "bookmarksOnlyLayout", "customizations", "0"),
+  new tipEntry(9,  "programsAndScripts",  "customizations", "0"),
+  new tipEntry(10, "contextual",          "activation",     "0"),
+  new tipEntry(11, "suppressMenu",        "",               "0"),
+  new tipEntry(12, "moveMenu",            "",               "0"),
+  new tipEntry(13, "noIcons",             "behavior",       "0"),
+  new tipEntry(14, "largeMenu",           "behavior",       "0"),
+  new tipEntry(15, "empty",               "behavior",       "0"),
+  new tipEntry(16, "empty",               "",               "0"),
+  new tipEntry(17, "empty",               "",               "0"),
+  new tipEntry(18, "empty",               "",               "0"),
+  new tipEntry(19, "empty",               "",               "0")
+];
+
 var tipNbr;
 document.getElementById("showTips").checked = eGPrefs.areStartupTipsOn();
 try {
