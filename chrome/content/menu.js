@@ -845,128 +845,79 @@ eG_menu.prototype = {
     var actionName = "back";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.canGoBack) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!gBrowser.canGoBack).toString());
     }
-
+    
     actionName = "backSite";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.canGoBack) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!gBrowser.canGoBack).toString());
     }
-
+    
     actionName = "firstPage";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.canGoBack) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!gBrowser.canGoBack).toString());
     }
-
+    
     actionName = "forward";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.canGoForward) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!gBrowser.canGoForward).toString());
     }
-
+    
     actionName = "forwardSite";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.canGoForward) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!gBrowser.canGoForward).toString());
     }
-
+    
     actionName = "lastPage";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.canGoForward) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!gBrowser.canGoForward).toString());
     }
-
+    
     actionName = "nextTab";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.mTabContainer.childNodes.length > 1) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      let disabled = gBrowser.mTabContainer.childNodes.length <= 1;
+      actionNode.setAttribute("grayed", disabled.toString());
     }
-
+    
     actionName = "prevTab";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.mTabContainer.childNodes.length > 1) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      let disabled = gBrowser.mTabContainer.childNodes.length <= 1;
+      actionNode.setAttribute("grayed", disabled.toString());
     }
-
+    
     actionName = "closeOtherTabs";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (gBrowser.mTabContainer.childNodes.length > 1) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      let disabled = gBrowser.mTabContainer.childNodes.length <= 1;
+      actionNode.setAttribute("grayed", disabled.toString());
     }
-
+    
     actionName = "undoCloseTab";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (Components.classes["@mozilla.org/browser/sessionstore;1"].getService(Components.interfaces.nsISessionStore).getClosedTabCount(window) > 0) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      let disabled = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                       .getService(Components.interfaces.nsISessionStore)
+                       .getClosedTabCount(window) <= 0;
+      actionNode.setAttribute("grayed", disabled.toString());
     }
-
+    
     actionName = "closeOtherWindows";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-
+      
       var winEnum = Services.wm.getZOrderDOMWindowEnumerator("navigator:browser", false);
       if (winEnum.hasMoreElements()) {
         winEnum.getNext(); //first window
       }
-
-      if (winEnum.hasMoreElements()) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      let disabled = !winEnum.hasMoreElements();
+      actionNode.setAttribute("grayed", disabled.toString());
     }
 
     actionName = "reload";
@@ -988,25 +939,15 @@ eG_menu.prototype = {
     actionName = "up";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (eG_canGoUp()) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!eG_canGoUp()).toString());
     }
-
+    
     actionName = "root";
     if (layout.update[actionName] != -1) {
       actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      if (eG_canGoUp()) {
-        actionNode.setAttribute("grayed", "false");
-      }
-      else {
-        actionNode.setAttribute("grayed", "true");
-      }
+      actionNode.setAttribute("grayed", (!eG_canGoUp()).toString());
     }
-
+    
     ////////////////////////////////////////////////////////////////////////////
     // update context title and signs
     ////////////////////////////////////////////////////////////////////////////
