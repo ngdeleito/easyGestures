@@ -553,8 +553,9 @@ function exportPrefs() {
     var file = Components.classes["@mozilla.org/file/local;1"]
                          .createInstance(Components.interfaces.nsILocalFile);
     var filePath = fp.file.path;
-    if (filePath.substring(filePath.length-4,filePath.length)!=".ege")
+    if (filePath.substring(filePath.length-4,filePath.length)!=".ege") {
       filePath = filePath + ".ege";
+    }
     file.initWithPath(filePath);
     if (!file.exists()) {
       file.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
@@ -809,8 +810,9 @@ function updateOtherLabels(actionName, label) {
   
   for (var i=0; i<groupboxes.length; i++) {
     for (var sector=0; sector<10; sector++) {
-      if (groupboxes[i].search("extra")!=-1 && sector>2 && sector<8)
+      if (groupboxes[i].search("extra")!=-1 && sector>2 && sector<8) {
         continue;
+      }
       
       var element = document.getElementById(groupboxes[i] + "Sector" + sector);
       if (element.getAttribute("actionName") == actionName) {
@@ -847,8 +849,9 @@ function updateUI() {
   var boxes = new Array("main","extra");
   for (var i=0; i<2; i++) {
     for (var sector=0; sector<10; sector++) {
-      if (boxes[i].search("extra")!=-1 && sector>2 && sector<8)
+      if (boxes[i].search("extra")!=-1 && sector>2 && sector<8) {
         continue;
+      }
       document.getElementById(boxes[i] + "Alt1Sector" + sector).disabled =
         !document.getElementById(boxes[i] + "Alternative1Checkbox").checked;
       document.getElementById(boxes[i] + "Alt2Sector" + sector).disabled =
@@ -917,8 +920,9 @@ function updateUI() {
       checkbox.checked = false;
       checkbox.collapsed = true;
     }
-    else
+    else {
       checkbox.collapsed = false;
+    }
   }
   
   //***************************************************
