@@ -33,9 +33,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-function Action(name, action) {
+
+function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = action;
+  
+  // startsNewGroup and nextAction are used in options.js to display a sorted
+  // list of available actions
+  this.startsNewGroup = startsNewGroup;
+  this.nextAction = nextAction;
   
   this.getLabel = function() {
     return eGc.localizing.getString(this._name);
@@ -136,7 +142,7 @@ function Action(name, action) {
 }
 
 function EmptyAction() {
-  Action.call(this, "empty", function() {});
+  Action.call(this, "empty", function() {}, false, "more");
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
@@ -147,7 +153,7 @@ EmptyAction.prototype = new Action();
 function ExtraMenuAction() {
   Action.call(this, "more", function() {
     eGm.showExtraMenu();
-  });
+  }, true, "back");
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("extraMenuActionName");
@@ -168,14 +174,14 @@ function ReloadAction() {
     else {
       gBrowser.stop();
     }
-  });
+  }, false, "homepage");
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
   };
 }
 
-function LoadURLScriptAction(number) {
+function LoadURLScriptAction(number, startsNewGroup, nextAction) {
   Action.call(this, "loadURLScript", function() {
     var prefValue = eGPrefs.getLoadURLScriptPref(this._number);
     var codetext = prefValue[1];
@@ -214,7 +220,7 @@ function LoadURLScriptAction(number) {
       }
     }
     return false; // avoid JavaScript Error
-  });
+  }, startsNewGroup, nextAction);
   
   this._number = number;
   
@@ -240,15 +246,10 @@ var eGActions = {
   
   more : new ExtraMenuAction(),
   
-  firstPage : new Action("firstPage", function() {
+  back : new Action("back", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.gotoIndex(0);
-  }),
-  
-  lastPage : new Action("lastPage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
-  }),
+    window.gBrowser.goBack();
+  }, true, "backSite"),
   
   backSite : new Action("backSite", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -266,7 +267,17 @@ var eGActions = {
       }
       gBrowser.gotoIndex(index);
     }
-  }),
+  }, false, "firstPage"),
+  
+  firstPage : new Action("firstPage", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.gotoIndex(0);
+  }, false, "forward"),
+  
+  forward : new Action("forward", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.goForward();
+  }, false, "forwardSite"),
   
   forwardSite : new Action("forwardSite", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -284,65 +295,155 @@ var eGActions = {
       }
       gBrowser.gotoIndex(index);
     }
-  }),
+  }, false, "lastPage"),
   
-  forward : new Action("forward", function() {
+  lastPage : new Action("lastPage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.goForward();
-  }),
-  
-  back : new Action("back", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.goBack();
-  }),
+    window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
+  }, false, "reload"),
   
   reload : new ReloadAction(),
   
-  up : new Action("up", function() {
-    var url = eGc.doc.URL;
-    // removing any trailing "/"
-    url = url.replace(/\/$/, "");
-    // creating a nsIURI and removing the last "/"-separated item from its path
-    var uri = Services.io.newURI(url, null, null);
-    var path = uri.path.split("/");
-    path.pop();
-    var upurl = uri.prePath + path.join("/");
-    
+  homepage : new Action("homepage", function() {
+    var homepage = Services.prefs.getCharPref("browser.startup.homepage");
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadURI(upurl);
-  }),
-  
-  root : new Action("root", function() {
-    var url = eGc.doc.URL;
-    var rootURL = this._getRootURL(url);
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadURI(rootURL);
-  }),
+    window.gBrowser.loadTabs(homepage.split("|"), true, false);
+  }, false, "pageTop"),
   
   pageTop : new Action("pageTop", function() {
     var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
     frame.scroll(0,0);
-  }),
+  }, true, "pageBottom"),
   
   pageBottom : new Action("pageBottom", function() {
     var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
     //var doc= eGc.evt.originalTarget.ownerDocument;
     //frame.scroll(0,doc.getBoxObjectFor(doc.documentElement).height);
     frame.scroll(0,2147483647);	// max Int value
-  }),
+  }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
     var evt = eGc.evtMouseDown;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.document.getElementById("content").mCurrentBrowser.startScroll(evt);
-  }),
+  }, false, "zoomIn"),
+  
+  zoomIn : new Action("zoomIn", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.image === null) {
+      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
+      window.ZoomManager.enlarge();
+    }
+    else {
+      // double image size only
+      var width;
+      var height;
+      
+      if (eGc.image.style.width === "") {
+        width = eGc.image.width * 2 + "px";
+      }
+      else {
+        width = parseInt(eGc.image.style.width, 10) * 2 + "px";
+      }
+      
+      if (eGc.image.style.height === "") {
+        height = eGc.image.height * 2 + "px";
+      }
+      else {
+        height = parseInt(eGc.image.style.height, 10) * 2 + "px";
+      }
+      
+      eGc.image.style.width = width;
+      eGc.image.style.height = height;
+    }
+  }, false, "zoomOut"),
+  
+  zoomOut : new Action("zoomOut", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (eGc.image === null) {
+      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
+      window.ZoomManager.reduce();
+    }
+    else {
+      // halve image size only
+      var width;
+      var height;
+      
+      if (eGc.image.style.width === "") {
+        width = eGc.image.width * 0.5 + "px";
+      }
+      else {
+        width = parseInt(eGc.image.style.width, 10) * 0.5 + "px";
+      }
+      
+      if (eGc.image.style.height === "") {
+        height = eGc.image.height * 0.5 + "px";
+      }
+      else {
+        height = parseInt(eGc.image.style.height, 10) * 0.5 + "px";
+      }
+      
+      eGc.image.style.width = width;
+      eGc.image.style.height = height;
+    }
+  }, false, "zoomReset"),
+  
+  zoomReset : new Action("zoomReset", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.ZoomManager.reset();
+  }, false, "fullscreen"),
+  
+  fullscreen : new Action("fullscreen", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.fullScreen = !window.fullScreen;
+  }, false, "toggleFindBar"),
+  
+  toggleFindBar : new Action("toggleFindBar", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (window.gFindBar.hidden) {
+      window.gFindBar.onFindCommand(eGc.selection);
+    }
+    else {
+      window.gFindBar.close();
+    }
+  }, false, "savePageAs"),
+  
+  savePageAs : new Action("savePageAs", function() {
+    var document = eGc.doc;
+    var file = this._getFileForSavingData(
+                 Components.interfaces.nsIFilePicker.filterHTML,
+                 document.title);
+    
+    if (file !== null) {
+      var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
+                          .createInstance(Components.interfaces.nsIWebBrowserPersist);
+      // don't save gzipped
+      wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
+      wbp.saveDocument(document, file, null, null, null, null);
+    }
+  }, false, "printPage"),
+  
+  printPage : new Action("printPage", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PrintUtils.print();
+  }, false, "viewPageSource"),
+  
+  viewPageSource : new Action("viewPageSource", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.BrowserViewSourceOfDocument(eGc.doc);
+  }, false, "viewPageInfo"),
+  
+  viewPageInfo : new Action("viewPageInfo", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.BrowserPageInfo(eGc.doc, null);
+  }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     gBrowser.selectedTab = gBrowser.addTab();
     window.gURLBar.focus();
-  }),
+  }, true, "duplicateTab"),
   
   duplicateTab : new Action("duplicateTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -350,17 +451,7 @@ var eGActions = {
     var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
                        .getService(Components.interfaces.nsISessionStore);
     gBrowser.selectedTab = ss.duplicateTab(window, gBrowser.selectedTab);
-  }),
-  
-  prevTab : new Action("prevTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.tabContainer.advanceSelectedTab(-1, true);
-  }),
-  
-  nextTab : new Action("nextTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.tabContainer.advanceSelectedTab(1, true);
-  }),
+  }, false, "closeTab"),
   
   closeTab : new Action("closeTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -377,13 +468,13 @@ var eGActions = {
     else {
       window.close();
     }
-  }),
+  }, false, "closeOtherTabs"),
   
   closeOtherTabs : new Action("closeOtherTabs", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     gBrowser.removeAllTabsBut(gBrowser.selectedTab);
-  }),
+  }, false, "undoCloseTab"),
   
   undoCloseTab : new Action("undoCloseTab", function() {
     var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
@@ -392,7 +483,17 @@ var eGActions = {
     if (ss.getClosedTabCount(window) > 0) {
       ss.undoCloseTab(window, 0);
     }
-  }),
+  }, false, "prevTab"),
+  
+  prevTab : new Action("prevTab", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.tabContainer.advanceSelectedTab(-1, true);
+  }, false, "nextTab"),
+  
+  nextTab : new Action("nextTab", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.tabContainer.advanceSelectedTab(1, true);
+  }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
     var url = "";
@@ -404,12 +505,17 @@ var eGActions = {
     }
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.open(url);
-  }),
+  }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.open("about:blank");
-  }),
+  }, false, "newPrivateWindow"),
+  
+  newPrivateWindow : new Action("newPrivateWindow", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.OpenBrowserWindow({private: true});
+  }, false, "duplicateWindow"),
   
   duplicateWindow : new Action("duplicateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -426,7 +532,12 @@ var eGActions = {
         newWindow.gBrowser.addTab(url);
       }
     }
-  }),
+  }, false, "minimizeWindow"),
+  
+  minimizeWindow : new Action("minimizeWindow", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.minimize();
+  }, false, "closeOtherWindows"),
   
   closeOtherWindows : new Action("closeOtherWindows", function() {
     var currentWindow = Services.wm.getMostRecentWindow("navigator:browser");
@@ -438,26 +549,53 @@ var eGActions = {
         window.close();
       }
     }
-  }),
+  }, false, "up"),
+  
+  up : new Action("up", function() {
+    var url = eGc.doc.URL;
+    // removing any trailing "/"
+    url = url.replace(/\/$/, "");
+    // creating a nsIURI and removing the last "/"-separated item from its path
+    var uri = Services.io.newURI(url, null, null);
+    var path = uri.path.split("/");
+    path.pop();
+    var upurl = uri.prePath + path.join("/");
+    
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadURI(upurl);
+  }, true, "root"),
+  
+  root : new Action("root", function() {
+    var url = eGc.doc.URL;
+    var rootURL = this._getRootURL(url);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadURI(rootURL);
+  }, false, "showOnlyThisFrame"),
+  
+  showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.loadURI(eGc.frame_doc.location.href);
+  }, false, "focusLocationBar"),
+  
+  focusLocationBar : new Action("focusLocationBar", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gURLBar.focus();
+  }, false, "searchWeb"),
+  
+  searchWeb : new Action("searchWeb", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.BrowserSearch.searchBar.value = eGc.selection;
+    window.BrowserSearch.webSearch();
+  }, false, "quit"),
+  
+  quit : new Action("quit", function() {
+    Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit);
+  }, false, "restart"),
   
   restart : new Action("restart", function() {
     Services.startup.quit(Components.interfaces.nsIAppStartup.eAttemptQuit |
                           Components.interfaces.nsIAppStartup.eRestart);
-  }),
-  
-  quit : new Action("quit", function() {
-    Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit);
-  }),
-  
-  minimizeWindow : new Action("minimizeWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.minimize();
-  }),
-  
-  fullscreen : new Action("fullscreen", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.fullScreen = !window.fullScreen;
-  }),
+  }, false, "openLink"),
   
   openLink : new Action("openLink", function() {
     var link = eGc.link;
@@ -482,7 +620,7 @@ var eGActions = {
         window.open(url);
         break;
     }
-  }),
+  }, true, "openLinkNewWindow"),
   
   openLinkNewWindow : new Action("openLinkNewWindow", function() {
     var link = eGc.link;
@@ -495,7 +633,21 @@ var eGActions = {
     }
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.open(url);
-  }),
+  }, false, "openLinkInNewPrivateWindow"),
+  
+  openLinkInNewPrivateWindow : new Action("openLinkInNewPrivateWindow", function() {
+    var link = eGc.link;
+    var url;
+    if (link === null) {
+      url = this._readClipboard();
+    }
+    else {
+      url = link.href;
+    }
+    
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.open(url, "_blank", "toolbar,location,personalbar,resizable,scrollbars,private");
+  }, false, "copyLink"),
   
   copyLink : new Action("copyLink", function() { //write to clipboard the link url
     var link = eGc.link;
@@ -503,62 +655,11 @@ var eGActions = {
       const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
       cbhelper.copyString(link.href);
     }
-  }),
-  
-  copyImageLocation : new Action("copyImageLocation", function() {
-    var src = eGc.image.src;
-    if (src !== null) {
-      const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
-      cbhelper.copyString(src);
-    }
-  }),
+  }, false, "saveLinkAs"),
   
   saveLinkAs : new Action("saveLinkAs", function() {
     this._saveContentFromLink(eGc.link, Components.interfaces.nsIFilePicker.filterHTML);
-  }),
-  
-  saveImageAs : new Action("saveImageAs", function() {
-    this._saveContentFromLink(eGc.image.src, Components.interfaces.nsIFilePicker.filterImages);
-  }),
-  
-  savePageAs : new Action("savePageAs", function() {
-    var document = eGc.doc;
-    var file = this._getFileForSavingData(
-                 Components.interfaces.nsIFilePicker.filterHTML,
-                 document.title);
-    
-    if (file !== null) {
-      var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
-                          .createInstance(Components.interfaces.nsIWebBrowserPersist);
-      // don't save gzipped
-      wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
-      wbp.saveDocument(document, file, null, null, null, null);
-    }
-  }),
-  
-  hideImages : new Action("hideImages", function() {
-    if (eGc.image !== null) {
-      eGc.image.style.display = "none";
-    }
-    else {
-      var imgs = eGc.doc.getElementsByTagName("img");
-      for (var i=0; i < imgs.length; i++) {
-        imgs[i].style.display = "none";
-      }
-    }
-  }),
-  
-  copyImage : new Action("copyImage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.document.popupNode = eGc.image;
-    window.goDoCommand('cmd_copyImageContents');
-  }),
-  
-  homepage : new Action("homepage", function() {
-    var homepage = Services.prefs.getCharPref("browser.startup.homepage");
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadTabs(homepage.split("|"), true, false);
-  }),
+  }, false, "dailyReadings"),
   
   dailyReadings : new Action("dailyReadings", function() {
     function _checkDailyReadingsFolder() {
@@ -623,86 +724,32 @@ var eGActions = {
       var window = Services.wm.getMostRecentWindow("navigator:browser");
       window.gBrowser.loadTabs(uris, true, false);
     }
-  }),
-  
-  searchWeb : new Action("searchWeb", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserSearch.searchBar.value = eGc.selection;
-    window.BrowserSearch.webSearch();
-  }),
-  
-  loadURLScript1 : new LoadURLScriptAction(1),
-  
-  loadURLScript2 : new LoadURLScriptAction(2),
-  
-  loadURLScript3 : new LoadURLScriptAction(3),
-  
-  loadURLScript4 : new LoadURLScriptAction(4),
-  
-  loadURLScript5 : new LoadURLScriptAction(5),
-  
-  loadURLScript6 : new LoadURLScriptAction(6),
-  
-  loadURLScript7 : new LoadURLScriptAction(7),
-  
-  loadURLScript8 : new LoadURLScriptAction(8),
-  
-  loadURLScript9 : new LoadURLScriptAction(9),
-  
-  loadURLScript10 : new LoadURLScriptAction(10),
-  
-  loadURLScript11 : new LoadURLScriptAction(11),
-  
-  loadURLScript12 : new LoadURLScriptAction(12),
-  
-  loadURLScript13 : new LoadURLScriptAction(13),
-  
-  loadURLScript14 : new LoadURLScriptAction(14),
-  
-  loadURLScript15 : new LoadURLScriptAction(15),
-  
-  loadURLScript16 : new LoadURLScriptAction(16),
-  
-  loadURLScript17 : new LoadURLScriptAction(17),
-  
-  loadURLScript18 : new LoadURLScriptAction(18),
-  
-  loadURLScript19 : new LoadURLScriptAction(19),
-  
-  loadURLScript20 : new LoadURLScriptAction(20),
-  
-  markVisitedLinks : new Action("markVisitedLinks", function() {
-    var styleElement = eGc.doc.createElement("style");
-    eGc.doc.getElementsByTagName("head")[0].appendChild(styleElement);
-    var styleSheet = eGc.doc.styleSheets[eGc.doc.styleSheets.length - 1];
-    styleSheet.insertRule(":link, :link img { outline: dashed medium white !important; }", 0);
-    styleSheet.insertRule(":visited, :visited img { outline-color: red !important; }", 1);
-  }),
-  
-  bookmarkThisLink : new Action("bookmarkThisLink", function() {
-    var url = eGc.link;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.unfiledBookmarksFolderId, url.href, url.text);
-    //PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), url.text);    // classic UI
-  }),
+  }, true, "bookmarkPage"),
   
   bookmarkPage : new Action("bookmarkPage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkPage(window.gBrowser.selectedBrowser, window.PlacesUtils.unfiledBookmarksFolderId, true);
     // var url = eGc.doc.URL, name = eGc.doc.title, doc = eGc.doc;
     // PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), name, PlacesUtils.getDescriptionFromDocument(doc));   // classic UI
-  }),
+  }, false, "bookmarkThisLink"),
+  
+  bookmarkThisLink : new Action("bookmarkThisLink", function() {
+    var url = eGc.link;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.unfiledBookmarksFolderId, url.href, url.text);
+    //PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), url.text);    // classic UI
+  }, false, "bookmarkOpenTabs"),
   
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkCurrentPages();
     //PlacesUIUtils.showMinimalAddMultiBookmarkUI(PlacesCommandHook._getUniqueTabInfo());
-  }),
+  }, false, "bookmarks"),
   
   bookmarks : new Action("bookmarks", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.toggleSidebar("viewBookmarksSidebar");
-  }),
+  }, false, "bookmarksToolbar"),
   
   bookmarksToolbar : new Action("bookmarksToolbar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -716,56 +763,82 @@ var eGActions = {
     }
     // make it persistent
     document.persist("PersonalToolbar", 'collapsed');
-  }),
+  }, false, "history"),
   
   history : new Action("history", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.toggleSidebar("viewHistorySidebar");
-  }),
+  }, false, "loadURLScript1"),
   
-  viewPageSource : new Action("viewPageSource", function() {
+  loadURLScript1 : new LoadURLScriptAction(1, true, "loadURLScript2"),
+  
+  loadURLScript2 : new LoadURLScriptAction(2, false, "loadURLScript3"),
+  
+  loadURLScript3 : new LoadURLScriptAction(3, false, "loadURLScript4"),
+  
+  loadURLScript4 : new LoadURLScriptAction(4, false, "loadURLScript5"),
+  
+  loadURLScript5 : new LoadURLScriptAction(5, false, "loadURLScript6"),
+  
+  loadURLScript6 : new LoadURLScriptAction(6, false, "loadURLScript7"),
+  
+  loadURLScript7 : new LoadURLScriptAction(7, false, "loadURLScript8"),
+  
+  loadURLScript8 : new LoadURLScriptAction(8, false, "loadURLScript9"),
+  
+  loadURLScript9 : new LoadURLScriptAction(9, false, "loadURLScript10"),
+  
+  loadURLScript10 : new LoadURLScriptAction(10, false, "loadURLScript11"),
+  
+  loadURLScript11 : new LoadURLScriptAction(11, false, "loadURLScript12"),
+  
+  loadURLScript12 : new LoadURLScriptAction(12, false, "loadURLScript13"),
+  
+  loadURLScript13 : new LoadURLScriptAction(13, false, "loadURLScript14"),
+  
+  loadURLScript14 : new LoadURLScriptAction(14, false, "loadURLScript15"),
+  
+  loadURLScript15 : new LoadURLScriptAction(15, false, "loadURLScript16"),
+  
+  loadURLScript16 : new LoadURLScriptAction(16, false, "loadURLScript17"),
+  
+  loadURLScript17 : new LoadURLScriptAction(17, false, "loadURLScript18"),
+  
+  loadURLScript18 : new LoadURLScriptAction(18, false, "loadURLScript19"),
+  
+  loadURLScript19 : new LoadURLScriptAction(19, false, "loadURLScript20"),
+  
+  loadURLScript20 : new LoadURLScriptAction(20, false, "copyImageLocation"),
+  
+  copyImageLocation : new Action("copyImageLocation", function() {
+    var src = eGc.image.src;
+    if (src !== null) {
+      const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
+      cbhelper.copyString(src);
+    }
+  }, true, "copyImage"),
+  
+  copyImage : new Action("copyImage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserViewSourceOfDocument(eGc.doc);
-  }),
+    window.document.popupNode = eGc.image;
+    window.goDoCommand('cmd_copyImageContents');
+  }, false, "saveImageAs"),
   
-  viewPageInfo : new Action("viewPageInfo", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserPageInfo(eGc.doc, null);
-  }),
+  saveImageAs : new Action("saveImageAs", function() {
+    this._saveContentFromLink(eGc.image.src, Components.interfaces.nsIFilePicker.filterImages);
+  }, false, "hideImages"),
   
-  showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.loadURI(eGc.frame_doc.location.href);
-  }),
-  
-  printPage : new Action("printPage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PrintUtils.print();
-  }),
-  
-  focusLocationBar : new Action("focusLocationBar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gURLBar.focus();
-  }),
-  
-  newPrivateWindow : new Action("newPrivateWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.OpenBrowserWindow({private: true});
-  }),
-  
-  openLinkInNewPrivateWindow : new Action("openLinkInNewPrivateWindow", function() {
-    var link = eGc.link;
-    var url;
-    if (link === null) {
-      url = this._readClipboard();
+  hideImages : new Action("hideImages", function() {
+    if (eGc.image !== null) {
+      eGc.image.style.display = "none";
     }
     else {
-      url = link.href;
+      var imgs = eGc.doc.getElementsByTagName("img");
+      for (var i=0; i < imgs.length; i++) {
+        imgs[i].style.display = "none";
+      }
     }
-    
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(url, "_blank", "toolbar,location,personalbar,resizable,scrollbars,private");
-  }),
+  }, false, "cut"),
   
   cut : new Action("cut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -774,7 +847,7 @@ var eGActions = {
       eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
     }
     window.goDoCommand('cmd_cut');
-  }),
+  }, true, "copy"),
   
   copy : new Action("copy", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -783,19 +856,19 @@ var eGActions = {
       eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
     }
     window.goDoCommand('cmd_copy');
-  }),
+  }, false, "paste"),
   
   paste : new Action("paste", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     eGc.evtMouseDown.target.focus();
     window.goDoCommand('cmd_paste');
-  }),
+  }, false, "undo"),
   
   undo : new Action("undo", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     eGc.evtMouseDown.target.focus();
     window.goDoCommand('cmd_undo');
-  }),
+  }, false, "selectAll"),
   
   selectAll : new Action("selectAll", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -806,82 +879,15 @@ var eGActions = {
       window.content.focus();
     }
     window.goDoCommand('cmd_selectAll');
-  }),
+  }, false, "markVisitedLinks"),
   
-  toggleFindBar : new Action("toggleFindBar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (window.gFindBar.hidden) {
-      window.gFindBar.onFindCommand(eGc.selection);
-    }
-    else {
-      window.gFindBar.close();
-    }
-  }),
-  
-  zoomIn : new Action("zoomIn", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.image === null) {
-      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
-      window.ZoomManager.enlarge();
-    }
-    else {
-      // double image size only
-      var width;
-      var height;
-      
-      if (eGc.image.style.width === "") {
-        width = eGc.image.width * 2 + "px";
-      }
-      else {
-        width = parseInt(eGc.image.style.width, 10) * 2 + "px";
-      }
-      
-      if (eGc.image.style.height === "") {
-        height = eGc.image.height * 2 + "px";
-      }
-      else {
-        height = parseInt(eGc.image.style.height, 10) * 2 + "px";
-      }
-      
-      eGc.image.style.width = width;
-      eGc.image.style.height = height;
-    }
-  }),
-  
-  zoomOut : new Action("zoomOut", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.image === null) {
-      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
-      window.ZoomManager.reduce();
-    }
-    else {
-      // halve image size only
-      var width;
-      var height;
-      
-      if (eGc.image.style.width === "") {
-        width = eGc.image.width * 0.5 + "px";
-      }
-      else {
-        width = parseInt(eGc.image.style.width, 10) * 0.5 + "px";
-      }
-      
-      if (eGc.image.style.height === "") {
-        height = eGc.image.height * 0.5 + "px";
-      }
-      else {
-        height = parseInt(eGc.image.style.height, 10) * 0.5 + "px";
-      }
-      
-      eGc.image.style.width = width;
-      eGc.image.style.height = height;
-    }
-  }),
-  
-  zoomReset : new Action("zoomReset", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.ZoomManager.reset();
-  })
+  markVisitedLinks : new Action("markVisitedLinks", function() {
+    var styleElement = eGc.doc.createElement("style");
+    eGc.doc.getElementsByTagName("head")[0].appendChild(styleElement);
+    var styleSheet = eGc.doc.styleSheets[eGc.doc.styleSheets.length - 1];
+    styleSheet.insertRule(":link, :link img { outline: dashed medium white !important; }", 0);
+    styleSheet.insertRule(":visited, :visited img { outline-color: red !important; }", 1);
+  }, true, null)
 };
 
 function eG_canGoUp() {

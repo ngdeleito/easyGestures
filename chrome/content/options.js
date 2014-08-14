@@ -32,28 +32,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-var eG_PopupImages = [
-  "empty", "more", "firstPage", "lastPage", "backSite", "forwardSite", "back",
-  "forward", "reload", "up", "root", "pageTop", "pageBottom", "autoscrolling",
-  "newTab", "duplicateTab", "prevTab", "nextTab", "closeTab", "closeOtherTabs",
-  "undoCloseTab", "newWindow", "duplicateWindow", "closeOtherWindows", "quit",
-  "minimizeWindow", "fullscreen", "openLink", "openLinkNewWindow", "copyLink",
-  "newBlankWindow", "copyImageLocation", "saveLinkAs", "saveImageAs",
-  "savePageAs", "hideImages", "copyImage", "homepage", "dailyReadings",
-  "searchWeb", "restart", "openLinkInNewPrivateWindow", "loadURLScript1",
-  "loadURLScript2", "loadURLScript3", "loadURLScript4", "loadURLScript5",
-  "loadURLScript6", "loadURLScript7", "loadURLScript8", "loadURLScript9",
-  "loadURLScript10", "loadURLScript11", "loadURLScript12",
-  "loadURLScript13", "loadURLScript14", "loadURLScript15",
-  "loadURLScript16", "loadURLScript17", "loadURLScript18",
-  "loadURLScript19", "loadURLScript20", "markVisitedLinks",
-  "bookmarkThisLink", "bookmarkPage", "bookmarkOpenTabs", "bookmarks",
-  "bookmarksToolbar", "history", "viewPageSource", "viewPageInfo",
-  "showOnlyThisFrame", "printPage", "focusLocationBar", "newPrivateWindow",
-  "cut", "copy", "paste", "undo", "selectAll", "toggleFindBar", "zoomIn",
-  "zoomOut", "zoomReset"
-];
-
 function setLabels() {
   for (var i=1; i <= 20; i++) {
     // loadURLScript 1 to 20
@@ -466,9 +444,10 @@ function createActionsPopupList() {
   var popupNode = document.createElement("menupopup");
   popupNode.setAttribute("maxheight", "500px");
   
-  for (var i=0; i<eG_PopupImages.length; i++) {
-    var itemNode;
-    if (i==1 || i==2 || i==14 || i==21 || i==27 || i==37 || i==71 || i==85) {
+  var currentAction = "empty"; // the EmptyAction is the first action
+  while (currentAction !== null) {
+    let itemNode;
+    if (eGActions[currentAction].startsNewGroup) {
       itemNode = document.createElement("menuseparator");
       popupNode.appendChild(itemNode);
     }
@@ -480,16 +459,18 @@ function createActionsPopupList() {
     itemNode.appendChild(imageNode);
     itemNode.appendChild(subItemNode);
     
-    itemNode.setAttribute("actionName", eG_PopupImages[i]);
+    itemNode.setAttribute("actionName", currentAction);
     // for some reason addEventListener does not work on the next line
     itemNode.setAttribute("oncommand", "actionClick(this); updateUI();");
     itemNode.setAttribute("crop", "end");
-    itemNode.setAttribute("label", eGActions[eG_PopupImages[i]].getXULLabel());
+    itemNode.setAttribute("label", eGActions[currentAction].getXULLabel());
     itemNode.style.paddingRight = "20px";
-    imageNode.setAttribute("class", "small_" + eG_PopupImages[i]);
+    imageNode.setAttribute("class", "small_" + currentAction);
     
-    subItemNode.setAttribute("value", eGActions[eG_PopupImages[i]].getXULLabel());
+    subItemNode.setAttribute("value", eGActions[currentAction].getXULLabel());
     popupNode.appendChild(itemNode);
+    
+    currentAction = eGActions[currentAction].nextAction;
   }
   
   return popupNode;
