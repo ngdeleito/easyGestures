@@ -203,14 +203,8 @@ function ReloadAction() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var stop_bcaster = window.document.getElementById("Browser:Stop");
     eGc.loading = !stop_bcaster.hasAttribute("disabled");
-    
-    var actionClass = anHTMLElement.getAttribute("class");
-    if (!eGc.loading) {
-      anHTMLElement.setAttribute("class", actionClass.replace("stop", "reload"));
-    }
-    else {
-      anHTMLElement.setAttribute("class", actionClass.replace("reload", "stop"));
-    }
+    anHTMLElement.classList.toggle("stop", eGc.loading);
+    anHTMLElement.classList.toggle("reload", !eGc.loading);
   };
 }
 
