@@ -36,29 +36,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* global eGActions */
+
 function eG_menuLayout(menu, name, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
   this.isExtraMenu = name.search("extra") != -1;
   this.isLarge = menu.largeMenu && !this.isExtraMenu; // extra menus are never large
   this.actions = [];
   this.labels = [];
-  this.update = { // contains all actions positions that need to be updated according to context
-    firstPage:         -1,
-    backSite:          -1,
-    back:              -1,
-    lastPage:          -1,
-    forwardSite:       -1,
-    forward:           -1,
-    nextTab:           -1,
-    prevTab:           -1,
-    closeOtherTabs:    -1,
-    closeOtherWindows: -1,
-    reload:            -1,
-    up:                -1,
-    root:              -1,
-    undoCloseTab:      -1
-  };
-
+  
   //////////////////////////////////////////////////////////////////////////////
   //  initializing layout's actions & labels arrays
   //////////////////////////////////////////////////////////////////////////////
@@ -75,17 +61,6 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   
   this.hasExtraMenuAction = eGActions[this.actions[0]].isExtraMenuAction;
   
-  //////////////////////////////////////////////////////////////////////////////
-  // initializing update object
-  //////////////////////////////////////////////////////////////////////////////
-
-  for (let i = 0; i<this.actions.length; i++) {
-    if (this.update[this.actions[i]] !== undefined &&
-        this.update[this.actions[i]] == -1) {
-      this.update[this.actions[i]] = i;
-    }
-  }
-
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	setting menu and tooltips images
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -823,8 +798,7 @@ eG_menu.prototype = {
     var contextMenuSign = specialNodes.childNodes[3];
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -836,117 +810,12 @@ eG_menu.prototype = {
     else {
       linkSign.style.visibility = "hidden";
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    // graying actions
-    ///////////////////////////////////////////////////////////////////////////////////////////////
     
-    var actionNode = null;
-    var actionName = "back";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!gBrowser.canGoBack).toString());
-    }
-    
-    actionName = "backSite";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!gBrowser.canGoBack).toString());
-    }
-    
-    actionName = "firstPage";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!gBrowser.canGoBack).toString());
-    }
-    
-    actionName = "forward";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!gBrowser.canGoForward).toString());
-    }
-    
-    actionName = "forwardSite";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!gBrowser.canGoForward).toString());
-    }
-    
-    actionName = "lastPage";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!gBrowser.canGoForward).toString());
-    }
-    
-    actionName = "nextTab";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      let disabled = gBrowser.mTabContainer.childNodes.length <= 1;
-      actionNode.setAttribute("grayed", disabled.toString());
-    }
-    
-    actionName = "prevTab";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      let disabled = gBrowser.mTabContainer.childNodes.length <= 1;
-      actionNode.setAttribute("grayed", disabled.toString());
-    }
-    
-    actionName = "closeOtherTabs";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      let disabled = gBrowser.mTabContainer.childNodes.length <= 1;
-      actionNode.setAttribute("grayed", disabled.toString());
-    }
-    
-    actionName = "undoCloseTab";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      let disabled = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                       .getService(Components.interfaces.nsISessionStore)
-                       .getClosedTabCount(window) <= 0;
-      actionNode.setAttribute("grayed", disabled.toString());
-    }
-    
-    actionName = "closeOtherWindows";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      
-      var winEnum = Services.wm.getZOrderDOMWindowEnumerator("navigator:browser", false);
-      if (winEnum.hasMoreElements()) {
-        winEnum.getNext(); //first window
-      }
-      let disabled = !winEnum.hasMoreElements();
-      actionNode.setAttribute("grayed", disabled.toString());
-    }
-
-    actionName = "reload";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-
-      var stop_bcaster = window.document.getElementById("Browser:Stop");
-      eGc.loading = !stop_bcaster.hasAttribute("disabled");
-
-      var actionClass = actionNode.getAttribute("class");
-      if (!eGc.loading) {
-        actionNode.setAttribute("class", actionClass.replace("stop","reload"));
-      }
-      else {
-        actionNode.setAttribute("class", actionClass.replace("reload","stop"));
-      }
-    }
-
-    actionName = "up";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!eG_canGoUp()).toString());
-    }
-    
-    actionName = "root";
-    if (layout.update[actionName] != -1) {
-      actionNode = layout_aNode.childNodes[layout.update[actionName]];
-      actionNode.setAttribute("grayed", (!eG_canGoUp()).toString());
-    }
+    // updating the status of the actions in the shown menu
+    layout.actions.forEach(function(actionName, index) {
+      let actionNode = layout_aNode.childNodes[index];
+      eGActions[actionName].displayStateOn(actionNode);
+    });
     
     ////////////////////////////////////////////////////////////////////////////
     // update context title and signs

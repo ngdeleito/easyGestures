@@ -34,6 +34,23 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+// This file provides the following hierarchy of Actions and the eGActions
+// object, containing the actions available in easyGestures N
+
+// Action
+//  ^
+//  |-- EmptyAction
+//  |-- ExtraMenuAction
+//  |-- ReloadAction
+//  |-- LoadURLScriptAction
+//  |-- DisableableAction
+//       ^
+//       |-- CanGoBackDisableableAction
+//       |-- CanGoForwardDisableableAction
+//       |-- OtherTabsExistDisableableAction
+
+/* exported eGActions */
+
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = action;
@@ -52,6 +69,8 @@ function Action(name, action, startsNewGroup, nextAction) {
   };
   
   this.isExtraMenuAction = false;
+  
+  this.displayStateOn = function() {};
   
   // helper functions
   
@@ -179,6 +198,20 @@ function ReloadAction() {
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
   };
+  
+  this.displayStateOn = function(anHTMLElement) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var stop_bcaster = window.document.getElementById("Browser:Stop");
+    eGc.loading = !stop_bcaster.hasAttribute("disabled");
+    
+    var actionClass = anHTMLElement.getAttribute("class");
+    if (!eGc.loading) {
+      anHTMLElement.setAttribute("class", actionClass.replace("stop", "reload"));
+    }
+    else {
+      anHTMLElement.setAttribute("class", actionClass.replace("reload", "stop"));
+    }
+  };
 }
 
 function LoadURLScriptAction(number, startsNewGroup, nextAction) {
@@ -241,17 +274,60 @@ function LoadURLScriptAction(number, startsNewGroup, nextAction) {
 }
 LoadURLScriptAction.prototype = new Action();
 
+function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
+  Action.call(this, name, action, startsNewGroup, nextAction);
+  
+  this._isDisabled = isDisabled;
+  
+  this.displayStateOn = function(anHTMLElement) {
+    anHTMLElement.setAttribute("grayed", this._isDisabled().toString());
+  };
+}
+DisableableAction.prototype = new Action();
+
+function CanGoBackDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    return !window.gBrowser.canGoBack;
+  }, startsNewGroup, nextAction);
+}
+CanGoBackDisableableAction.prototype = new DisableableAction();
+
+function CanGoForwardDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    return !window.gBrowser.canGoForward;
+  }, startsNewGroup, nextAction);
+}
+CanGoForwardDisableableAction.prototype = new DisableableAction();
+
+function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    return window.gBrowser.mTabContainer.childNodes.length <= 1;
+  }, startsNewGroup, nextAction);
+}
+OtherTabsExistDisableableAction.prototype = new DisableableAction();
+
+function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    var url = eGc.doc.URL;
+    return this._getRootURL(url) == url.replace("www.", "");
+  }, startsNewGroup, nextAction);
+}
+CanGoUpDisableableAction.prototype = new DisableableAction();
+
 var eGActions = {
   empty : new EmptyAction(),
   
   more : new ExtraMenuAction(),
   
-  back : new Action("back", function() {
+  back : new CanGoBackDisableableAction("back", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.goBack();
   }, true, "backSite"),
   
-  backSite : new Action("backSite", function() {
+  backSite : new CanGoBackDisableableAction("backSite", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index - 1;
@@ -269,17 +345,17 @@ var eGActions = {
     }
   }, false, "firstPage"),
   
-  firstPage : new Action("firstPage", function() {
+  firstPage : new CanGoBackDisableableAction("firstPage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.gotoIndex(0);
   }, false, "forward"),
   
-  forward : new Action("forward", function() {
+  forward : new CanGoForwardDisableableAction("forward", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.goForward();
   }, false, "forwardSite"),
   
-  forwardSite : new Action("forwardSite", function() {
+  forwardSite : new CanGoForwardDisableableAction("forwardSite", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index + 1;
@@ -297,7 +373,7 @@ var eGActions = {
     }
   }, false, "lastPage"),
   
-  lastPage : new Action("lastPage", function() {
+  lastPage : new CanGoForwardDisableableAction("lastPage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
   }, false, "reload"),
@@ -470,27 +546,32 @@ var eGActions = {
     }
   }, false, "closeOtherTabs"),
   
-  closeOtherTabs : new Action("closeOtherTabs", function() {
+  closeOtherTabs : new OtherTabsExistDisableableAction("closeOtherTabs", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     gBrowser.removeAllTabsBut(gBrowser.selectedTab);
   }, false, "undoCloseTab"),
   
-  undoCloseTab : new Action("undoCloseTab", function() {
+  undoCloseTab : new DisableableAction("undoCloseTab", function() {
     var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
                        .getService(Components.interfaces.nsISessionStore);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (ss.getClosedTabCount(window) > 0) {
       ss.undoCloseTab(window, 0);
     }
+  }, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    return Components.classes["@mozilla.org/browser/sessionstore;1"]
+                     .getService(Components.interfaces.nsISessionStore)
+                     .getClosedTabCount(window) <= 0;
   }, false, "prevTab"),
   
-  prevTab : new Action("prevTab", function() {
+  prevTab : new OtherTabsExistDisableableAction("prevTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.tabContainer.advanceSelectedTab(-1, true);
   }, false, "nextTab"),
   
-  nextTab : new Action("nextTab", function() {
+  nextTab : new OtherTabsExistDisableableAction("nextTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.tabContainer.advanceSelectedTab(1, true);
   }, false, "newWindow"),
@@ -539,7 +620,7 @@ var eGActions = {
     window.minimize();
   }, false, "closeOtherWindows"),
   
-  closeOtherWindows : new Action("closeOtherWindows", function() {
+  closeOtherWindows : new DisableableAction("closeOtherWindows", function() {
     var currentWindow = Services.wm.getMostRecentWindow("navigator:browser");
     var openWindows = Services.wm.getEnumerator("navigator:browser");
     
@@ -549,9 +630,15 @@ var eGActions = {
         window.close();
       }
     }
+  }, function() {
+    var winEnum = Services.wm.getZOrderDOMWindowEnumerator("navigator:browser", false);
+    if (winEnum.hasMoreElements()) {
+      winEnum.getNext(); //first window
+    }
+    return !winEnum.hasMoreElements();
   }, false, "up"),
   
-  up : new Action("up", function() {
+  up : new CanGoUpDisableableAction("up", function() {
     var url = eGc.doc.URL;
     // removing any trailing "/"
     url = url.replace(/\/$/, "");
@@ -565,7 +652,7 @@ var eGActions = {
     window.gBrowser.loadURI(upurl);
   }, true, "root"),
   
-  root : new Action("root", function() {
+  root : new CanGoUpDisableableAction("root", function() {
     var url = eGc.doc.URL;
     var rootURL = this._getRootURL(url);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -889,23 +976,3 @@ var eGActions = {
     styleSheet.insertRule(":visited, :visited img { outline-color: red !important; }", 1);
   }, true, null)
 };
-
-function eG_canGoUp() {
-  function getRootURL(url) {
-    // this should work correcly with http://jolt.co.uk or gouv.qc.ca domains.
-    var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"]
-                        .getService(Components.interfaces.nsIEffectiveTLDService);
-    var uri = Services.io.newURI(url, null, null);
-    var rootURL;
-    try {
-      rootURL = uri.scheme + "://" + tld.getBaseDomainFromHost(uri.host) + "/";
-    }
-    catch (ex) { // do something when NS_ERROR_HOST_IS_IP_ADDRES or other exception is thrown
-      rootURL = url;
-    }
-    return rootURL;
-  }
-  
-  var url = eGc.doc.URL;
-  return getRootURL(url) != url.replace("www.", "");
-}
