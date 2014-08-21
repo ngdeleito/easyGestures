@@ -55,6 +55,10 @@ function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = action;
   
+  this.isDisabled = function() {
+    return false;
+  };
+  
   // startsNewGroup and nextAction are used in options.js to display a sorted
   // list of available actions
   this.startsNewGroup = startsNewGroup;
@@ -271,10 +275,10 @@ LoadURLScriptAction.prototype = new Action();
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
   
-  this._isDisabled = isDisabled;
+  this.isDisabled = isDisabled;
   
   this.displayStateOn = function(anHTMLElement) {
-    anHTMLElement.setAttribute("grayed", this._isDisabled().toString());
+    anHTMLElement.setAttribute("grayed", this.isDisabled().toString());
   };
 }
 DisableableAction.prototype = new Action();
