@@ -90,8 +90,6 @@
 <!ENTITY move "Presunúť ponuku">
 <!ENTITY move.key "Stlačením klávesu Shift">
 <!ENTITY move.edge "Pomocou rohov ponuky">
-<!ENTITY closeTab "Prispôsobiť akciu &apos;Zavrieť kartu&apos;">
-<!ENTITY closeTab.closeBrowserOnLastTab "Zavrieť prehliadač, keď je zavretá posledná karta">
 <!ENTITY urlscript "Prispôsobiť akcie &apos;Načítať URL/Skript&apos;">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Skript">

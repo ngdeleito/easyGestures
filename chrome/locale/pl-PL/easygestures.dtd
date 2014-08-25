@@ -90,8 +90,6 @@
 <!ENTITY move "Przesuwaj menu Centrum">
 <!ENTITY move.key "naciskając klawisz [ Shift ]">
 <!ENTITY move.edge "łapiąc krawędź menu">
-<!ENTITY closeTab "Dostosuj działanie akcji &quot;Zamknij kartę&quot;">
-<!ENTITY closeTab.closeBrowserOnLastTab "Zamknij przeglądarkę po zamknięciu ostatniej karty">
 <!ENTITY urlscript "Dostosuj akcję &quot;Otwórz url/skrypt&quot; ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Skrypt">

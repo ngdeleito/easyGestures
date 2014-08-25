@@ -90,8 +90,6 @@
 <!ENTITY move "Kreismenü verschieben">
 <!ENTITY move.key "durch Halten der Umschalttaste">
 <!ENTITY move.edge "bei Berühren der Menüränder">
-<!ENTITY closeTab "Aktion &apos;Tab schließen&apos; anpassen">
-<!ENTITY closeTab.closeBrowserOnLastTab "Browser schließen, wenn der letzte Tab geschlossen wird">
 <!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
 <!ENTITY urlscript.url "Adresse">
 <!ENTITY urlscript.script "Skript">

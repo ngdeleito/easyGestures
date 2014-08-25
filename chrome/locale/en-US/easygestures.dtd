@@ -119,9 +119,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "By pressing Shift key">
 <!ENTITY move.edge "By reaching menu edge">
 
-<!ENTITY closeTab "Customize 'Close Tab' Action ">
-<!ENTITY closeTab.closeBrowserOnLastTab "Close browser when last tab is closed">
-
 <!ENTITY urlscript "Customize 'Load URL/Script' Actions ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">

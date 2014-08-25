@@ -120,9 +120,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "按住 Shift 鍵時">
 <!ENTITY move.edge "游標在選單邊緣時">
 
-<!ENTITY closeTab "自訂「關閉分頁」動作">
-<!ENTITY closeTab.closeBrowserOnLastTab "關閉最後一個分頁時關閉瀏覽器">
-
 <!ENTITY urlscript "自訂「載入網址／Script」動作">
 <!ENTITY urlscript.url "網址">
 <!ENTITY urlscript.script "Script">

@@ -92,8 +92,6 @@
 <!ENTITY move "Mover el menú circular">
 <!ENTITY move.key "Pulsando la tecla Mayús">
 <!ENTITY move.edge "Al llegar al borde del menú">
-<!ENTITY closeTab "Personalizar acción &apos;Cerrar pestaña&apos;">
-<!ENTITY closeTab.closeBrowserOnLastTab "Cerrar el navegador al cerrar la última pestaña">
 <!ENTITY urlscript "Personalizar acción &apos;Cargar dirección/Script&apos;">
 <!ENTITY urlscript.url "Dirección">
 <!ENTITY urlscript.script "Script">

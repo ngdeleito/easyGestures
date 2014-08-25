@@ -92,8 +92,6 @@
 <!ENTITY move "Köralakú menü mozgatása">
 <!ENTITY move.key "Shift billentyű lenyomásával">
 <!ENTITY move.edge "a menü szélének elérésekor">
-<!ENTITY closeTab "'Lap bezárása' művelet személyre szabása">
-<!ENTITY closeTab.closeBrowserOnLastTab "Böngésző bezárása az utolsó lap bezárásakor">
 <!ENTITY urlscript "'URL/szkript betöltése' művelet személyre szabása">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Szkript">

@@ -488,7 +488,6 @@
       <preference id="loadURLScript19" name="extensions.easygestures.customizations.loadURLScript19" type="unichar" />
       <preference id="loadURLScript20" name="extensions.easygestures.customizations.loadURLScript20" type="unichar" />
       <preference id="openLink" name="extensions.easygestures.customizations.openLink" type="string" />
-      <preference id="closeBrowserOnLastTab" name="extensions.easygestures.customizations.closeBrowserOnLastTab" type="bool" />
     </preferences>
     <tabbox id="customizationsTabboxes">
       <tabs>
@@ -658,17 +657,6 @@
               <radio label="&link.newTab;" value="newTab" />
               <radio label="&link.newWindow;" value="newWindow" />
             </radiogroup>
-            
-            <separator orient="horizontal" class="thin" />
-            <menuseparator />
-            
-            <hbox align="center">
-              <image class="small_closeTab" />
-              <label value="&closeTab;" class="header" />
-            </hbox>
-            <checkbox preference="closeBrowserOnLastTab"
-              label="&closeTab.closeBrowserOnLastTab;"
-              style="margin-left: 1em" />
           </vbox>
         </tabpanel>
       </tabpanels>

@@ -121,9 +121,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Premendo il tasto Shift">
 <!ENTITY move.edge "Arrivando al bordo del Menu">
 
-<!ENTITY closeTab "Personalizza l'Azione 'Chiudi Linguetta' ">
-<!ENTITY closeTab.closeBrowserOnLastTab "Chiudi il browser quando viene chiusa l'ultima linguetta">
-
 <!ENTITY urlscript "Personalizza l'azione 'Carica URL/Script' ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">

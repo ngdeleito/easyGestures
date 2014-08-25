@@ -118,9 +118,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "En appuyant sur touche Maj">
 <!ENTITY move.edge "En atteignant la bordure du menu">
 
-<!ENTITY closeTab "Personnaliser action 'Fermet onglet' ">
-<!ENTITY closeTab.closeBrowserOnLastTab "Fermer navigateur quand dernier onglet est fermé">
-
 <!ENTITY urlscript "Personnaliser action 'Charger URL/Script' ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">

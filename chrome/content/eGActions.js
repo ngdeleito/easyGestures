@@ -527,21 +527,12 @@ var eGActions = {
     gBrowser.selectedTab = ss.duplicateTab(window, gBrowser.selectedTab);
   }, false, "closeTab"),
   
-  closeTab : new Action("closeTab", function() {
+  closeTab : new DisableableAction("closeTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    
-    if (gBrowser.tabContainer.childNodes.length > 1 || !eGm.closeBrowserOnLastTab) {
-      if (gBrowser.tabContainer.childNodes.length == 1) {
-        gBrowser.loadURI("about:blank");
-      }
-      else {
-        gBrowser.removeCurrentTab();
-      }
-    }
-    else {
-      window.close();
-    }
+    window.gBrowser.removeCurrentTab();
+  }, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    return window.gBrowser.selectedTab.pinned;
   }, false, "closeOtherTabs"),
   
   closeOtherTabs : new OtherTabsExistDisableableAction("closeOtherTabs", function() {

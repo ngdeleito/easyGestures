@@ -121,9 +121,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "按 Shift 键">
 <!ENTITY move.edge "延伸菜单边缘">
 
-<!ENTITY closeTab "自定义“关闭标签页”手势">
-<!ENTITY closeTab.closeBrowserOnLastTab "关闭最后一个标签页时关闭浏览器">
-
 <!ENTITY urlscript "自定义“载入网址/脚本”手势">
 <!ENTITY urlscript.url "网址">
 <!ENTITY urlscript.script "脚本">

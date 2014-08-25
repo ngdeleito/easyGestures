@@ -120,9 +120,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Shift キーを押して">
 <!ENTITY move.edge "メニューの端から">
 
-<!ENTITY closeTab "'タブを閉じる'アクションの設定">
-<!ENTITY closeTab.closeBrowserOnLastTab "最後のタブを閉じたらブラウザも閉じる">
-
 <!ENTITY urlscript "'URL/スクリプトの読み込み'アクションの設定">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "スクリプト">

@@ -107,8 +107,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY move "원형 메뉴 이동">
 <!ENTITY move.key "Shift 키를 누를 경우">
 <!ENTITY move.edge "메뉴 모서리에 닿을 경우">
-<!ENTITY closeTab "'탭 닫기' 동작 사용자 지정">
-<!ENTITY closeTab.closeBrowserOnLastTab "마지막 탭이 닫혔을 때 브라우저 닫기">
 <!ENTITY urlscript "'URL/스크립트 불러오기' 동작 사용자 지정">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "스크립트">

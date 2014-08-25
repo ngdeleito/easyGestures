@@ -121,9 +121,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Stiskem klávesy Shift">
 <!ENTITY move.edge "Pomocí rohů nabídky">
 
-<!ENTITY closeTab "Přizpůsobit akci &apos;Zavřít panel&apos;">
-<!ENTITY closeTab.closeBrowserOnLastTab "Zavřít prohlížeč při zavření posledního panelu">
-
 <!ENTITY urlscript "Přizpůsobit akce &apos;Načíst URL/Skript&apos;">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Skript">

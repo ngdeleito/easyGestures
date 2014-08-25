@@ -120,9 +120,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Pressionando a tecla Shift">
 <!ENTITY move.edge "Chegando a borda do menu">
 
-<!ENTITY closeTab "Personalizar Ação 'Fechar Aba' ">
-<!ENTITY closeTab.closeBrowserOnLastTab "Fechar navegador quando última aba for fechada">
-
 <!ENTITY urlscript "Personalizar Ação 'Carregar URL/Script' ">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">

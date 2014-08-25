@@ -121,9 +121,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Shift tuşuna basarak">
 <!ENTITY move.edge "Menü köşesine giderek">
 
-<!ENTITY closeTab "&quot;Sekmeyi Kapat&quot; Eylemini Kişiselleştir">
-<!ENTITY closeTab.closeBrowserOnLastTab "Son sekme kapatılınca tarayıcıyı kapat">
-
 <!ENTITY urlscript "&quot;URL/Script Yükle&quot; Eylemini Kişiselleştir">
 <!ENTITY urlscript.url "URL">
 <!ENTITY urlscript.script "Script">

@@ -138,7 +138,6 @@ var eGPrefs = {
     }
     
     this._prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
-    this._prefs.setBoolPref("customizations.closeBrowserOnLastTab", true);
   },
 
   initializeStats : function() {
@@ -360,6 +359,10 @@ var eGPrefs = {
       }
     });
     this._prefs.setCharPref("stats.actions", JSON.stringify(newActionsStats));
+  },
+  
+  updateToV4_7 : function() {
+    this._prefs.deleteBranch("customizations.closeBrowserOnLastTab");
   }
 };
 
