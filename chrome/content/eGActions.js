@@ -535,10 +535,21 @@ var eGActions = {
     return window.gBrowser.selectedTab.pinned;
   }, false, "closeOtherTabs"),
   
-  closeOtherTabs : new OtherTabsExistDisableableAction("closeOtherTabs", function() {
+  closeOtherTabs : new DisableableAction("closeOtherTabs", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     gBrowser.removeAllTabsBut(gBrowser.selectedTab);
+  }, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    var numberOfTabs = gBrowser.tabs.length;
+    var numberOfPinnedTabs = 0;
+    for (let i=0; i < numberOfTabs; ++i) {
+      if (gBrowser.tabs[i].pinned) {
+        ++numberOfPinnedTabs;
+      }
+    }
+    return numberOfTabs - numberOfPinnedTabs < 2;
   }, false, "undoCloseTab"),
   
   undoCloseTab : new DisableableAction("undoCloseTab", function() {
