@@ -48,6 +48,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- CanGoBackDisableableAction
 //       |-- CanGoForwardDisableableAction
 //       |-- OtherTabsExistDisableableAction
+//       |-- DisableableCommandAction
 
 /* exported eGActions */
 
@@ -314,6 +315,20 @@ function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   }, startsNewGroup, nextAction);
 }
 CanGoUpDisableableAction.prototype = new DisableableAction();
+
+function DisableableCommandAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.goDoCommand("cmd_" + name);
+  }, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var controller = window.document.commandDispatcher
+                                    .getControllerForCommand("cmd_" + name);
+    return controller === null || !controller.isCommandEnabled("cmd_" + name);
+  }, startsNewGroup, nextAction);
+}
+DisableableCommandAction.prototype = new DisableableAction();
+
 
 var eGActions = {
   empty : new EmptyAction(),
@@ -919,30 +934,16 @@ var eGActions = {
     }
   }, false, "cut"),
   
-  cut : new Action("cut", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.goDoCommand('cmd_cut');
-  }, true, "copy"),
+  cut : new DisableableCommandAction("cut", true, "copy"),
   
-  copy : new Action("copy", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.goDoCommand('cmd_copy');
-  }, false, "paste"),
+  copy : new DisableableCommandAction("copy", false, "paste"),
   
-  paste : new Action("paste", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.goDoCommand('cmd_paste');
-  }, false, "undo"),
+  paste : new DisableableCommandAction("paste", false, "undo"),
   
-  undo : new Action("undo", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.goDoCommand('cmd_undo');
-  }, false, "selectAll"),
+  undo : new DisableableCommandAction("undo", false, "selectAll"),
   
-  selectAll : new Action("selectAll", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.goDoCommand('cmd_selectAll');
-  }, false, "markVisitedLinks"),
+  selectAll : new DisableableCommandAction("selectAll", false,
+    "markVisitedLinks"),
   
   markVisitedLinks : new Action("markVisitedLinks", function() {
     var styleElement = eGc.doc.createElement("style");
