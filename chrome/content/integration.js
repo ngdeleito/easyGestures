@@ -56,8 +56,6 @@ var eGc = {
   image: null,
   selection: null, //contains the text of the selected object
   selectionNode: null, //used for Textarea & Text Input
-  selectionStart: null, //used for Textarea & Text Input
-  selectionEnd: null, //used for Textarea & Text Input
   
   // used for drag movements in 'open when dragging' situations
   pageXDown: -1, // needed for to give a tolerance to 'open when dragging'
@@ -341,8 +339,6 @@ function eG_handleMousedown(evt) {
       if (node instanceof window.HTMLTextAreaElement) {
         eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
         eGc.selectionNode = node;
-        eGc.selectionStart = node.selectionStart;
-        eGc.selectionEnd = node.selectionEnd;
         continue;
       }
       
@@ -350,8 +346,6 @@ function eG_handleMousedown(evt) {
         if (node.type.toUpperCase() == "TEXT" || node.type.toUpperCase() == "PASSWORD") {
           eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
           eGc.selectionNode = node;
-          eGc.selectionStart = node.selectionStart;
-          eGc.selectionEnd = node.selectionEnd;
         }
         continue;
       }

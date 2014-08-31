@@ -921,42 +921,26 @@ var eGActions = {
   
   cut : new Action("cut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.selectionNode !== null) {
-      eGc.selectionNode.select();
-      eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
-    }
     window.goDoCommand('cmd_cut');
   }, true, "copy"),
   
   copy : new Action("copy", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.selectionNode !== null) {
-      eGc.selectionNode.select();
-      eGc.selectionNode.setSelectionRange(eGc.selectionStart,eGc.selectionEnd);
-    }
     window.goDoCommand('cmd_copy');
   }, false, "paste"),
   
   paste : new Action("paste", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    eGc.evtMouseDown.target.focus();
     window.goDoCommand('cmd_paste');
   }, false, "undo"),
   
   undo : new Action("undo", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    eGc.evtMouseDown.target.focus();
     window.goDoCommand('cmd_undo');
   }, false, "selectAll"),
   
   selectAll : new Action("selectAll", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.evtMouseDown.target instanceof window.HTMLInputElement || eGc.evtMouseDown.target instanceof window.HTMLTextAreaElement) {
-      eGc.evtMouseDown.target.focus();
-    }
-    else {
-      window.content.focus();
-    }
     window.goDoCommand('cmd_selectAll');
   }, false, "markVisitedLinks"),
   
