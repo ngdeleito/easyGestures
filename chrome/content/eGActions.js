@@ -329,18 +329,15 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index - 1;
+    var url = eGc.doc.URL;
+    var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
-    if (index >= 0) {
-      var url = eGc.doc.URL;
-      var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
-      
-      while ((this._getRootURL(url).replace("www.", "") == this._getRootURL(backurl).replace("www.", "")) && index > 0) {
-        index -= 1;
-        url = backurl;
-        backurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
-      }
-      gBrowser.gotoIndex(index);
+    while ((this._getRootURL(url).replace("www.", "") == this._getRootURL(backurl).replace("www.", "")) && index > 0) {
+      index -= 1;
+      url = backurl;
+      backurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
     }
+    gBrowser.gotoIndex(index);
   }, false, "firstPage"),
   
   firstPage : new CanGoBackDisableableAction("firstPage", function() {
@@ -357,18 +354,15 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index + 1;
+    var url = eGc.doc.URL;
+    var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
-    if (index <= gBrowser.sessionHistory.count - 1) {
-      var url = eGc.doc.URL;
-      var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
-      
-      while (this._getRootURL(url).replace("www.", "") == this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
-        index += 1;
-        url = forwardurl;
-        forwardurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
-      }
-      gBrowser.gotoIndex(index);
+    while (this._getRootURL(url).replace("www.", "") == this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
+      index += 1;
+      url = forwardurl;
+      forwardurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
     }
+    gBrowser.gotoIndex(index);
   }, false, "lastPage"),
   
   lastPage : new CanGoForwardDisableableAction("lastPage", function() {
@@ -553,12 +547,10 @@ var eGActions = {
   }, false, "undoCloseTab"),
   
   undoCloseTab : new DisableableAction("undoCloseTab", function() {
-    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                       .getService(Components.interfaces.nsISessionStore);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (ss.getClosedTabCount(window) > 0) {
-      ss.undoCloseTab(window, 0);
-    }
+    Components.classes["@mozilla.org/browser/sessionstore;1"]
+              .getService(Components.interfaces.nsISessionStore)
+              .undoCloseTab(window, 0);
   }, function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     return Components.classes["@mozilla.org/browser/sessionstore;1"]
