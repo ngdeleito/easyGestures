@@ -889,12 +889,12 @@ var eGActions = {
   
   loadURLScript20 : new LoadURLScriptAction(20, false, "copyImageLocation"),
   
-  copyImageLocation : new Action("copyImageLocation", function() {
-    var src = eGc.image.src;
-    if (src !== null) {
-      const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
-      cbhelper.copyString(src);
-    }
+  copyImageLocation : new DisableableAction("copyImageLocation", function() {
+    Components.classes["@mozilla.org/widget/clipboardhelper;1"]
+              .getService(Components.interfaces.nsIClipboardHelper)
+              .copyString(eGc.image.src);
+  }, function() {
+    return eGc.image.src === null;
   }, true, "copyImage"),
   
   copyImage : new Action("copyImage", function() {
