@@ -728,12 +728,12 @@ var eGActions = {
     window.open(url, "_blank", "toolbar,location,personalbar,resizable,scrollbars,private");
   }, false, "copyLink"),
   
-  copyLink : new Action("copyLink", function() { //write to clipboard the link url
-    var link = eGc.link;
-    if (link !== null) {
-      const cbhelper = Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);
-      cbhelper.copyString(link.href);
-    }
+  copyLink : new DisableableAction("copyLink", function() {
+    Components.classes["@mozilla.org/widget/clipboardhelper;1"]
+              .getService(Components.interfaces.nsIClipboardHelper)
+              .copyString(eGc.link.href);
+  }, function() {
+    return eGc.link === null;
   }, false, "saveLinkAs"),
   
   saveLinkAs : new Action("saveLinkAs", function() {
