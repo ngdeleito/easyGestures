@@ -393,9 +393,11 @@ var eGActions = {
     window.gBrowser.loadTabs(homepage.split("|"), true, false);
   }, false, "pageTop"),
   
-  pageTop : new Action("pageTop", function() {
+  pageTop : new DisableableAction("pageTop", function() {
     var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
-    frame.scroll(0,0);
+    frame.scroll(0, 0);
+  }, function() {
+    return eGc.evtMouseDown.originalTarget.ownerDocument.defaultView.scrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new Action("pageBottom", function() {
