@@ -400,11 +400,12 @@ var eGActions = {
     return eGc.evtMouseDown.originalTarget.ownerDocument.defaultView.scrollY === 0;
   }, true, "pageBottom"),
   
-  pageBottom : new Action("pageBottom", function() {
+  pageBottom : new DisableableAction("pageBottom", function() {
     var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
-    //var doc= eGc.evt.originalTarget.ownerDocument;
-    //frame.scroll(0,doc.getBoxObjectFor(doc.documentElement).height);
-    frame.scroll(0,2147483647);	// max Int value
+    frame.scroll(0, frame.scrollMaxY);
+  }, function() {
+    var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
+    return frame.scrollY === frame.scrollMaxY;
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
