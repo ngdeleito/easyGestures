@@ -162,7 +162,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "Puoi mantenere l'aspetto di default o passare a una modalità base con testo e senza icone se ti è più comodo. Puoi anche usare una modalità con icone piccole.|Change the pie menu display in &preferences;/&behavior;">
 <!ENTITY tip15 "Gli utenti esperti possono usare più azioni sul cerchio: 10 anziché 8 su ognuna delle 3 configurazioni del menu.|Change the number of options in &preferences;/&behavior;">
 <!ENTITY tip16 "L'opzione di Firefox 'Usa l'autoscorrimento' viene disattivata quando il tasto medio del mouse è usato per mostrare il menu circolare. L'autoscorrimento può però essere utilizzato tenedo premuto il tasto per un breve periodo di tempo.|Attiva l'autoscorrimento in &preferences;/&behavior;">
-<!ENTITY tip18 "L'azione 'Chiudi Linguetta' chiude la finestra se c'è una sola linguetta aperta.">
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
 <!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta. Se non viene puntato alvun collegamento, verà aperto quello nella clipboard, se presente.">

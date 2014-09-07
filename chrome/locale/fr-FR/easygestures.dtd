@@ -159,7 +159,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.|Changez l'affichage du menu dans &preferences;/&behavior;">
 <!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.|Changez le nombre d'actions dans &preferences;/&behavior;">
 <!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger.|Activatez défilement automatique dans &preferences;/&behavior;">
-<!ENTITY tip18 "L'action 'Fermer onglet' ferme la fenêtre s'il n'y a qu'un seul onglet ouvert.">
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
 <!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet. Si aucun lien n'est pointé, celui dans le presse-papier (s'il existe) sera ouvert.">

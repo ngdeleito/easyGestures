@@ -162,7 +162,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "Mevcut parlak görünümü koruyabilir ya da yalnızca metni önemsiyorsanız simgelerin olmadığı sade bir görüntüye geçiş yapabilirsiniz. Ayrıca görüntüyü küçük simgelere de çevirebilirsiniz.|Change the pie menu display in &preferences;/&behavior;">
 <!ENTITY tip15 "Yetkili kullanıcılar kolay menüde daha fazla eylem gerçekleştirebilirler: 3 ana görünümün her birinde 8 yerine 10 eylem.|Change the number of options in &preferences;/&behavior;">
 <!ENTITY tip16 "Kolay menüyü göstermek için orta fare tuşu kullanıldığında Firefox&apos;un &apos;Otomatik Kaydırma Kullan&apos; seçeneği devre dışı kalır. Bu durumda Otomatik Kaydırma özelliği kolay menü üzereinde hareketsiz kısa bir beklemeden sonra aşağıya doğru bir fare hareketi ile etkin olabilir.">
-<!ENTITY tip18 "YAlnızca tek bir sekme açıksa &apos;Sekmeyi Kapat&apos; eylemi pencereyi kapatır.">
 <!ENTITY tip20 "Bir resim üzerindeki yakınlaştırma eylemi yalnızca o resim üzerinde gerçekleştirilecektir.">
 <!ENTITY tip21 "&apos;Önceki Site&apos; ve &apos;Sonraki Site&apos; eylemleriyle, sayfa sayfa ileri ya da geri gitmek yerine bunu siteler arasında gerçekleştirebilirsiniz.">
 <!ENTITY tip22 "&apos;Bağlantıyı Aç&apos; eylemi seçilen bağlantıyı yeni bir sekmede açacaktır. Eğer bir bağlantı seçilmemişse, panoya yapıştırılmış bağlantı (eğer varsa) açılacaktır.">

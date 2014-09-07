@@ -129,7 +129,6 @@
 <!ENTITY tip14 "Megtarthatod a csillogó-villogó külsőt vagy átválthatsz egy ikonok nélküli, egyszerűbb megjelenítésre, ha inkább a szöveges kiírást szereted. De akár kis ikonokat is használhatsz.|Change the pie menu display in &preferences;/&behavior;">
 <!ENTITY tip15 "A haladó felhasználók több funkciót használhatnak, hiszen nyolc helyett akár tíz menüelem is megjeleníthető mindhárom kiosztáson.|Change the number of options in &preferences;/&behavior;">
 <!ENTITY tip16 "A Firefox &quot;Automatikus görgetés&quot; funkcióját kikapcsolja, ha a középső egérgomb jeleníti meg a köralakú menüt. Az automatikus görgetés elérhető úgy is, ha a köralakú menün keresztül kattintasz mozgatás nélkül.|Az automatikus görgetés a &preferences;/&behavior;/2. oldalon kapcsolható be és a késleltetését is itt lehet beállítani.">
-<!ENTITY tip18 "A &quot;Fül bezárása&quot; funkció bezárja az ablakot is, ha csak egy fül van megnyitva.">
 <!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
 <!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
 <!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket. Ha nincs kiválasztott hivatkozás, akkor a vágólapon lévő (amennyiben van ott) hivatkozás nyílik meg.">

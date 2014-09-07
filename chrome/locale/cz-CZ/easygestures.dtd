@@ -162,7 +162,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "Můžete si nechat předvolený nablýskaný vzhled, anebo přepnout do základního zobrazení bez ikon, pokud jste textově orientovaní. Můžete také přepnout zobrazení na malé ikony.">
 <!ENTITY tip15 "Pokročilý uživatelé mohou mít v kruhové nabídce více akcí: 10 místo 8 na každém ze 3 hlavních rozložení.">
 <!ENTITY tip16 "Nastavení Firefoxu &apos;Povolit automatický posun&apos; je vypnuté, pokud je použité prostřední tlačítko myši pro zobrazení nabídky. Funkce automatického posunu je potom dostupná přes nabídku easyGestures po krátkém zpoždění, pokud nedošlo k pohybu myší. Automatický posun aktivujete v Možnosti/Chování">
-<!ENTITY tip18 "Akce &apos;Zavřít panel&apos; zavře okno, pokud je to poslední panel v okně.">
 <!ENTITY tip20 "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">
 <!ENTITY tip21 "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
 <!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu. Pokud nejste myší na žádném odkazu, tak se otevře ten, který je (pokud nějaký je) ve schránce.">

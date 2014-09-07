@@ -101,8 +101,8 @@
   <script type="application/x-javascript">
     var tipLabels = ["&tip1;", "&tip2;", "&tip4;", "&tip6;", "&tip8;",
       "&tip13;", "&tip10;", "&tip21;", "&tip5;", "&tip7;", "&tip9;", "&tip11;",
-      "&tip12;", "&tip14;", "&tip15;", "&tip16;", "&tip18;", "&tip20;",
-      "&tip22;", "&tip26;"];
+      "&tip12;", "&tip14;", "&tip15;", "&tip16;", "&tip20;", "&tip22;",
+      "&tip26;"];
   </script>
   <script type="application/x-javascript" src="tips.js" />
 </window>

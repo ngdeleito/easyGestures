@@ -160,7 +160,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.|Change the pie menu display in &preferences;/&behavior;">
 <!ENTITY tip15 "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.|Change the number of options in &preferences;/&behavior;">
 <!ENTITY tip16 "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving.|Activate autoscrolling in &preferences;/&behavior;">
-<!ENTITY tip18 "The 'Close tab' action closes the window if there is only one tab open.">
 <!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
 <!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
 <!ENTITY tip22 "The 'Open Link' action will open the pointed link in a new tab. If no link is pointed, the one in the clipboard (if any) will be opened.">

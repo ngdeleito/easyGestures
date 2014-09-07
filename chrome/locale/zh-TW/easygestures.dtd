@@ -161,7 +161,6 @@ END OF INSTRUCTIONS
 <!ENTITY tip14 "你可以持續使用預設的圓餅圖示顯示，或以小型圖示取代顯示。如果你喜歡簡單的文字模式，也可以改用沒有圖示的基本顯示。|Change the pie menu display in &preferences;/&behavior;">
 <!ENTITY tip15 "重度使用者可以設定更多動作在你的圓餅選單上：在三個主要圓餅選單上都用十個動作取代預設的八個動作。|Change the number of options in &preferences;/&behavior;">
 <!ENTITY tip16 "在滑鼠中鍵被用來顯示圓餅選單時，Firefox 的選項「使用自動捲動(Autoscrolling)」會被設定成關閉。在圓餅選單中間不移動，停頓短暫的時間後可以轉換顯示「自動捲動」。|設定轉換自動捲動的停頓時間 &preferences;/&behavior;">
-<!ENTITY tip18 "只剩下一個分頁時，「關閉分頁」這個動作會把視窗也關閉。">
 <!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">
 <!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">
 <!ENTITY tip22 "「開啟鏈結」動作會把目標鏈結開在新分頁中。假如沒有目標鏈結，它會開啟在剪貼簿中的鏈結（如果是鏈結的話）">

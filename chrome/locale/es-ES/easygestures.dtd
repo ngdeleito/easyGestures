@@ -129,7 +129,6 @@
 <!ENTITY tip14 "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede cambiar para mostrar los iconos pequeños.|Cambie la aparencia del menú en &preferences;/&behavior;">
 <!ENTITY tip15 "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales.|Cambie el número de opciones en &preferences;/&behavior;">
 <!ENTITY tip16 "La opción de Firefox &apos;Usar autodesplazamiento&apos; está desmarcada cuando se usa el botón central para mostrar el menú circular. La opción puede habilitarse moviendo el cursor hacia abajo en el menú circular tras un corto tiempo sin movimientos.|Activar autodesplazamiento en &preferences;/&behavior;">
-<!ENTITY tip18 "La acción &apos;Cerrar pestaña&apos; cerrará la ventana si hay una única pestaña abierta.">
 <!ENTITY tip20 "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tip21 "En lugar de moverse adelante y atrás página por página, puede hacerlo con sitios usando las acciones &apos;Retroceder sitio&apos; y &apos;Avanzar sitio&apos;.">
 <!ENTITY tip22 "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña. Si no hay ningún enlace seleccionado, se abrirá la página cuya dirección esté en el portapapeles (si la hay).">
