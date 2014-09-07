@@ -610,19 +610,16 @@ var eGActions = {
   
   duplicateWindow : new Action("duplicateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var newWindow;
+    var tabs = window.gBrowser.tabs;
+    window.open();
+    var newWindow = Services.wm.getMostRecentWindow("navigator:browser");
+    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                       .getService(Components.interfaces.nsISessionStore);
     
-    for (let i = 0; i < gBrowser.browsers.length; i++) {
-      let url = gBrowser.browsers[i].currentURI.spec;
-      if (i === 0) {
-        window.open(url);
-        newWindow = Services.wm.getMostRecentWindow("navigator:browser");
-      }
-      else {
-        newWindow.gBrowser.addTab(url);
-      }
+    for (let i = 0; i < tabs.length; ++i) {
+      newWindow.gBrowser.selectedTab = ss.duplicateTab(newWindow, tabs[i]);
     }
+    newWindow.gBrowser.removeTab(newWindow.gBrowser.tabs[0]);
   }, false, "minimizeWindow"),
   
   minimizeWindow : new Action("minimizeWindow", function() {
