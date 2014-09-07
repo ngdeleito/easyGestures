@@ -912,12 +912,11 @@ var eGActions = {
   
   loadURLScript20 : new LoadURLScriptAction(20, false, "copyImageLocation"),
   
-  copyImageLocation : new DisableableAction("copyImageLocation", function() {
+  copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
+    function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
               .copyString(eGc.image.src);
-  }, function() {
-    return eGc.image.src === null;
   }, true, "copyImage"),
   
   copyImage : new ImageExistsDisableableAction("copyImage", function() {
