@@ -316,7 +316,7 @@ function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
 }
 CanGoUpDisableableAction.prototype = new DisableableAction();
 
-function DisableableCommandAction(name, action, startsNewGroup, nextAction) {
+function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.goDoCommand("cmd_" + name);
