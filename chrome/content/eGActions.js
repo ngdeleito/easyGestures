@@ -573,7 +573,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     return Components.classes["@mozilla.org/browser/sessionstore;1"]
                      .getService(Components.interfaces.nsISessionStore)
-                     .getClosedTabCount(window) <= 0;
+                     .getClosedTabCount(window) === 0;
   }, false, "prevTab"),
   
   prevTab : new OtherTabsExistDisableableAction("prevTab", function() {
