@@ -49,6 +49,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- CanGoForwardDisableableAction
 //       |-- OtherTabsExistDisableableAction
 //       |-- DisableableCommandAction
+//       |-- ImageExistsDisableableAction
 
 /* exported eGActions */
 
@@ -328,6 +329,13 @@ function DisableableCommandAction(name, startsNewGroup, nextAction) {
   }, startsNewGroup, nextAction);
 }
 DisableableCommandAction.prototype = new DisableableAction();
+
+function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return eGc.image === null;
+  }, startsNewGroup, nextAction);
+}
+ImageExistsDisableableAction.prototype = new DisableableAction();
 
 
 var eGActions = {
@@ -912,14 +920,15 @@ var eGActions = {
     return eGc.image.src === null;
   }, true, "copyImage"),
   
-  copyImage : new Action("copyImage", function() {
+  copyImage : new ImageExistsDisableableAction("copyImage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.document.popupNode = eGc.image;
-    window.goDoCommand('cmd_copyImageContents');
+    window.goDoCommand("cmd_copyImageContents");
   }, false, "saveImageAs"),
   
-  saveImageAs : new Action("saveImageAs", function() {
-    this._saveContentFromLink(eGc.image.src, Components.interfaces.nsIFilePicker.filterImages);
+  saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
+    this._saveContentFromLink(eGc.image.src,
+                              Components.interfaces.nsIFilePicker.filterImages);
   }, false, "hideImages"),
   
   hideImages : new Action("hideImages", function() {
