@@ -930,16 +930,13 @@ var eGActions = {
                               Components.interfaces.nsIFilePicker.filterImages);
   }, false, "hideImages"),
   
-  hideImages : new Action("hideImages", function() {
-    if (eGc.image !== null) {
-      eGc.image.style.display = "none";
+  hideImages : new DisableableAction("hideImages", function() {
+    var images = eGc.doc.querySelectorAll("img:not([id^='eG_'])");
+    for (var i=0; i < images.length; ++i) {
+      images[i].style.display = "none";
     }
-    else {
-      var imgs = eGc.doc.getElementsByTagName("img");
-      for (var i=0; i < imgs.length; i++) {
-        imgs[i].style.display = "none";
-      }
-    }
+  }, function() {
+    return eGc.document.querySelectorAll("img:not([id^='eG_'])").length === 0;
   }, false, "cut"),
   
   cut : new DisableableCommandAction("cut", true, "copy"),
