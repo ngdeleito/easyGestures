@@ -48,6 +48,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- CanGoBackDisableableAction
 //       |-- CanGoForwardDisableableAction
 //       |-- OtherTabsExistDisableableAction
+//       |-- LinkExistsDisableableAction
 //       |-- DisableableCommandAction
 //       |-- ImageExistsDisableableAction
 
@@ -283,6 +284,13 @@ function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   }, startsNewGroup, nextAction);
 }
 CanGoUpDisableableAction.prototype = new DisableableAction();
+
+function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return eGc.link === null;
+  }, startsNewGroup, nextAction);
+}
+LinkExistsDisableableAction.prototype = new DisableableAction();
 
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
@@ -666,7 +674,7 @@ var eGActions = {
                           Components.interfaces.nsIAppStartup.eRestart);
   }, false, "openLink"),
   
-  openLink : new Action("openLink", function() {
+  openLink : new LinkExistsDisableableAction("openLink", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var url = eGc.link.href;
@@ -684,12 +692,12 @@ var eGActions = {
     }
   }, true, "openLinkNewWindow"),
   
-  openLinkNewWindow : new Action("openLinkNewWindow", function() {
+  openLinkNewWindow : new LinkExistsDisableableAction("openLinkNewWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.open(eGc.link.href);
   }, false, "openLinkInNewPrivateWindow"),
   
-  openLinkInNewPrivateWindow : new Action("openLinkInNewPrivateWindow", function() {
+  openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.open(eGc.link.href, "_blank",
                 "toolbar,location,personalbar,resizable,scrollbars,private");
