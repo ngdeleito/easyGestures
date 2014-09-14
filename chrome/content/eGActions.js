@@ -48,6 +48,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- CanGoBackDisableableAction
 //       |-- CanGoForwardDisableableAction
 //       |-- OtherTabsExistDisableableAction
+//       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
 //       |-- DisableableCommandAction
 //       |-- ImageExistsDisableableAction
