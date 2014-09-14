@@ -131,5 +131,5 @@
 <!ENTITY tip16 "A Firefox &quot;Automatikus görgetés&quot; funkcióját kikapcsolja, ha a középső egérgomb jeleníti meg a köralakú menüt. Az automatikus görgetés elérhető úgy is, ha a köralakú menün keresztül kattintasz mozgatás nélkül.|Az automatikus görgetés a &preferences;/&behavior;/2. oldalon kapcsolható be és a késleltetését is itt lehet beállítani.">
 <!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
 <!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
-<!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket. Ha nincs kiválasztott hivatkozás, akkor a vágólapon lévő (amennyiben van ott) hivatkozás nyílik meg.">
+<!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket.">
 <!ENTITY tip26 "Amikor első alkalommal kattintasz a &quot;Napi olvasnivaló&quot; funkcióra, akkor egy &quot;easyGestures&quot; nevű mappa jön létre a Könyvjelző eszköztáron. A következő alkalmakkor az itt elhelyezett könyvjelzők nyílnak meg.">

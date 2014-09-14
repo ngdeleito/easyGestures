@@ -164,5 +164,5 @@ END OF INSTRUCTIONS
 <!ENTITY tip16 "L'opzione di Firefox 'Usa l'autoscorrimento' viene disattivata quando il tasto medio del mouse è usato per mostrare il menu circolare. L'autoscorrimento può però essere utilizzato tenedo premuto il tasto per un breve periodo di tempo.|Attiva l'autoscorrimento in &preferences;/&behavior;">
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
-<!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta. Se non viene puntato alvun collegamento, verà aperto quello nella clipboard, se presente.">
+<!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta.">
 <!ENTITY tip26 "Quando si esegue l'azione 'Letture Quotidiane', una cartella dei Segnalibri chiamata *easyGestuers* viene creata la prima volta nella Barra dei Segnalibri, e tutti i segnalibri in essa vengono aperti.">

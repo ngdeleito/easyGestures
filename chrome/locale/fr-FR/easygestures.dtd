@@ -161,5 +161,5 @@ END OF INSTRUCTIONS
 <!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger.|Activatez défilement automatique dans &preferences;/&behavior;">
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
-<!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet. Si aucun lien n'est pointé, celui dans le presse-papier (s'il existe) sera ouvert.">
+<!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet.">
 <!ENTITY tip26 "Quand l'action 'Lectures quotidiennes' est exécutée, un dossier de signets nommé *easyGestures* est créé la première fois dans la barre de signets et tous les signets qui y sont placés sont alors ouverts.">

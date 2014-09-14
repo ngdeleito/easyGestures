@@ -164,5 +164,5 @@ END OF INSTRUCTIONS
 <!ENTITY tip16 "Nastavení Firefoxu &apos;Povolit automatický posun&apos; je vypnuté, pokud je použité prostřední tlačítko myši pro zobrazení nabídky. Funkce automatického posunu je potom dostupná přes nabídku easyGestures po krátkém zpoždění, pokud nedošlo k pohybu myší. Automatický posun aktivujete v Možnosti/Chování">
 <!ENTITY tip20 "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">
 <!ENTITY tip21 "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
-<!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu. Pokud nejste myší na žádném odkazu, tak se otevře ten, který je (pokud nějaký je) ve schránce.">
+<!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu.">
 <!ENTITY tip26 "Pokud spustíte akci &apos;Denní čtení&apos; poprvé, vytvoří se složka v záložkách s názvem *easyGestures* a všechny záložky, které do této složky umístíte, budou následně otevřené.">

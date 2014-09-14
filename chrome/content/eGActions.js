@@ -95,39 +95,6 @@ function Action(name, action, startsNewGroup, nextAction) {
     return rootURL;
   };
   
-  this._readClipboard = function() {
-    var clipb = Components.classes["@mozilla.org/widget/clipboard;1"]
-                          .createInstance(Components.interfaces.nsIClipboard);
-    var transf = Components.classes["@mozilla.org/widget/transferable;1"]
-                           .createInstance(Components.interfaces.nsITransferable);
-    
-    transf.addDataFlavor("text/unicode");
-    clipb.getData(transf, clipb.kGlobalClipboard);
-    
-    var str = {};
-    var strLength = {};
-    
-    transf.getTransferData("text/unicode", str, strLength);
-    
-    if (str) {
-      if (Components.interfaces.nsISupportsWString) {
-        str = str.value.QueryInterface(Components.interfaces.nsISupportsWString);
-      }
-      else if (Components.interfaces.nsISupportsString) {
-        str = str.value.QueryInterface(Components.interfaces.nsISupportsString);
-      }
-      else {
-        str = null;
-      }
-    }
-    if (str) {
-      return str;
-    }
-    else {
-      return "";
-    }
-  };
-  
   this._getFileForSavingData = function(filter, defaultName) {
     const nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"]
@@ -700,16 +667,9 @@ var eGActions = {
   }, false, "openLink"),
   
   openLink : new Action("openLink", function() {
-    var link = eGc.link;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
-    var url;
-    if (link === null) {
-      url = this._readClipboard();
-    }
-    else {
-      url = link.href;
-    }
+    var url = eGc.link.href;
     
     switch (eGm.openLink) {
       case "curTab":
@@ -725,30 +685,14 @@ var eGActions = {
   }, true, "openLinkNewWindow"),
   
   openLinkNewWindow : new Action("openLinkNewWindow", function() {
-    var link = eGc.link;
-    var url;
-    if (link === null) {
-      url = this._readClipboard();
-    }
-    else {
-      url = link.href;
-    }
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(url);
+    window.open(eGc.link.href);
   }, false, "openLinkInNewPrivateWindow"),
   
   openLinkInNewPrivateWindow : new Action("openLinkInNewPrivateWindow", function() {
-    var link = eGc.link;
-    var url;
-    if (link === null) {
-      url = this._readClipboard();
-    }
-    else {
-      url = link.href;
-    }
-    
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(url, "_blank", "toolbar,location,personalbar,resizable,scrollbars,private");
+    window.open(eGc.link.href, "_blank",
+                "toolbar,location,personalbar,resizable,scrollbars,private");
   }, false, "copyLink"),
   
   copyLink : new DisableableAction("copyLink", function() {

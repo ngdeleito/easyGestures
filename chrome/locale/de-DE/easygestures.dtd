@@ -129,5 +129,5 @@
 <!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden.|Automatischen Bildlauf unter &preferences;/&behavior; aktivieren">
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
-<!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab. Ist kein Link gewählt, wird, falls vorhanden, ein Link aus der Zwischenablage geöffnet.">
+<!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab.">
 <!ENTITY tip26 "Beim Ausführen der Aktion &apos;Tägliche Lektüre&apos; wird beim ersten Mal ein Lesezeichenordner namens *easyGestures* in der Lesezeichen-Symbolleiste angelegt und alle darin enthaltenen Lesezeichen werden geöffnet.">
