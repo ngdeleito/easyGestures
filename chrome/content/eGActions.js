@@ -786,11 +786,16 @@ var eGActions = {
     // PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), name, PlacesUtils.getDescriptionFromDocument(doc));   // classic UI
   }, false, "bookmarkThisLink"),
   
-  bookmarkThisLink : new Action("bookmarkThisLink", function() {
+  bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
     var url = eGc.link;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.unfiledBookmarksFolderId, url.href, url.text);
-    //PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), url.text);    // classic UI
+    window.PlacesUIUtils.showBookmarkDialog({
+      action: "add",
+      type: "bookmark",
+      uri: Services.io.newURI(url, null, null),
+      title: url.text,
+      hiddenRows: ["location", "keyword", "description", "loadInSidebar"]
+    }, window);
   }, false, "bookmarkOpenTabs"),
   
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
