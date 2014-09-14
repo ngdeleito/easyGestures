@@ -703,12 +703,10 @@ var eGActions = {
                 "toolbar,location,personalbar,resizable,scrollbars,private");
   }, false, "copyLink"),
   
-  copyLink : new DisableableAction("copyLink", function() {
+  copyLink : new LinkExistsDisableableAction("copyLink", function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
               .copyString(eGc.link.href);
-  }, function() {
-    return eGc.link === null;
   }, false, "saveLinkAs"),
   
   saveLinkAs : new Action("saveLinkAs", function() {
