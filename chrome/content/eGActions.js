@@ -892,7 +892,7 @@ var eGActions = {
       images[i].style.display = "none";
     }
   }, function() {
-    return eGc.document.querySelectorAll("img:not([id^='eG_'])").length === 0;
+    return eGc.doc.querySelectorAll("img:not([id^='eG_'])").length === 0;
   }, false, "cut"),
   
   cut : new DisableableCommandAction("cut", true, "copy"),
