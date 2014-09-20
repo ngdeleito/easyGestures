@@ -779,11 +779,23 @@ var eGActions = {
     }
   }, true, "bookmarkPage"),
   
+  // useful links:
+  // http://mxr.mozilla.org/mozilla-central/source/browser/components/places/
+  // http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser-places.js
   bookmarkPage : new Action("bookmarkPage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.bookmarkPage(window.gBrowser.selectedBrowser, window.PlacesUtils.unfiledBookmarksFolderId, true);
-    // var url = eGc.doc.URL, name = eGc.doc.title, doc = eGc.doc;
-    // PlacesUIUtils.showMinimalAddBookmarkUI(PlacesUtils._uri(url), name, PlacesUtils.getDescriptionFromDocument(doc));   // classic UI
+    var bookmarksService =
+          Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
+                    .getService(Components.interfaces.nsINavBookmarksService);
+    var uri = Services.io.newURI(eGc.doc.URL, null, null);
+    if (bookmarksService.isBookmarked(uri)) {
+      window.PlacesCommandHook.bookmarkCurrentPage(true,
+          window.PlacesUtils.unfiledBookmarksFolderId);
+    }
+    else {
+      bookmarksService.insertBookmark(bookmarksService.unfiledBookmarksFolder,
+        uri, bookmarksService.DEFAULT_INDEX, eGc.doc.title);
+    }
   }, false, "bookmarkThisLink"),
   
   bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
