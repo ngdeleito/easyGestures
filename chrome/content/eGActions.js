@@ -789,13 +789,7 @@ var eGActions = {
   bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
     var url = eGc.link;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesUIUtils.showBookmarkDialog({
-      action: "add",
-      type: "bookmark",
-      uri: Services.io.newURI(url, null, null),
-      title: url.text,
-      hiddenRows: ["location", "keyword", "description", "loadInSidebar"]
-    }, window);
+    window.PlacesCommandHook.bookmarkLink(null, url, url.text);
   }, false, "bookmarkOpenTabs"),
   
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
