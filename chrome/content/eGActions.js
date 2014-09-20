@@ -801,7 +801,6 @@ var eGActions = {
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkCurrentPages();
-    //PlacesUIUtils.showMinimalAddMultiBookmarkUI(PlacesCommandHook._getUniqueTabInfo());
   }, false, "bookmarks"),
   
   bookmarks : new Action("bookmarks", function() {
@@ -820,7 +819,7 @@ var eGActions = {
       tb.setAttribute("collapsed", true);
     }
     // make it persistent
-    document.persist("PersonalToolbar", 'collapsed');
+    document.persist("PersonalToolbar", "collapsed");
   }, false, "history"),
   
   history : new Action("history", function() {
