@@ -494,12 +494,12 @@ div.selectAll[grayed="true"] { background-position: -128px -960px !important ; }
 div.selectAll { background-position: -128px -992px !important ; }
 div.selectAll[grayed="false"][active="true"] { background-position: -128px -1024px !important ; }
 
+
+/* NO LONGER USED REGULAR ICONS */
+
 div.markVisitedLinks[grayed="true"] { background-position: 0px -864px !important ; }
 div.markVisitedLinks { background-position: 0px -896px !important ; }
 div.markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -928px !important ; }
-
-
-/* NO LONGER USED REGULAR ICONS */
 
 div.sendLink[grayed="true"] { background-position: -96px -480px !important ; }
 div.sendLink { background-position: -96px -512px !important ; }
@@ -976,13 +976,13 @@ div.small_selectAll { background-position: -80px -620px !important ; }
 div.small_selectAll[grayed="false"][active="true"] { background-position: -80px -640px !important ; }
 image.small_selectAll { -moz-image-region: rect(620px 100px 640px 80px) !important ; }
 
+
+/* NO LONGER USED SMALL ICONS */
+
 div.small_markVisitedLinks[grayed="true"] { background-position: 0px -540px !important ; }
 div.small_markVisitedLinks { background-position: 0px -560px !important ; }
 div.small_markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -580px !important ; }
 image.small_markVisitedLinks { -moz-image-region: rect(560px 20px 580px 0px) !important ; }
-
-
-/* NO LONGER USED SMALL ICONS */
 
 div.small_sendLink[grayed="true"] { background-position: -60px -300px !important ; }
 div.small_sendLink { background-position: -60px -320px !important ; }

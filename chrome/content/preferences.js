@@ -363,6 +363,19 @@ var eGPrefs = {
   
   updateToV4_7 : function() {
     this._prefs.deleteBranch("customizations.closeBrowserOnLastTab");
+    
+    var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+      "extraAlt2", "contextLink", "contextImage", "contextSelection",
+      "contextTextbox"];
+    menuNames.forEach(function(menuName) {
+      let actions = this._prefs.getCharPref("menus." + menuName);
+      actions = actions.replace("markVisitedLinks", "empty");
+      this._prefs.setCharPref("menus." + menuName, actions);
+    });
+    
+    var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
+    delete actionsStats.markVisitedLinks;
+    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
   }
 };
 

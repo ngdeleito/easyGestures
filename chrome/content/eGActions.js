@@ -908,14 +908,6 @@ var eGActions = {
   
   undo : new DisableableCommandAction("undo", false, "selectAll"),
   
-  selectAll : new DisableableCommandAction("selectAll", false,
-    "markVisitedLinks"),
   
-  markVisitedLinks : new Action("markVisitedLinks", function() {
-    var styleElement = eGc.doc.createElement("style");
-    eGc.doc.getElementsByTagName("head")[0].appendChild(styleElement);
-    var styleSheet = eGc.doc.styleSheets[eGc.doc.styleSheets.length - 1];
-    styleSheet.insertRule(":link, :link img { outline: dashed medium white !important; }", 0);
-    styleSheet.insertRule(":visited, :visited img { outline-color: red !important; }", 1);
-  }, true, null)
+  selectAll : new DisableableCommandAction("selectAll", false, null)
 };
