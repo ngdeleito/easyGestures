@@ -62,16 +62,16 @@ var eGPrefs = {
   
   _setDefaultMenus : function() {
     var menus = {
-      main:             "more/pageTop/nextTab/newTab/backSite/firstPage/closeTab/quit/back/newTab",
-      mainAlt1:         "more/duplicateTab/forward/showOnlyThisFrame/forwardSite/lastPage/pageBottom/empty/prevTab/undoCloseTab",
+      main:             "more/pageTop/nextTab/bookmarkPage/backSite/firstPage/closeTab/reload/back/newTab",
+      mainAlt1:         "more/duplicateTab/forward/empty/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
       mainAlt2:         "more/loadURLScript1/loadURLScript2/loadURLScript8/loadURLScript3/loadURLScript4/loadURLScript5/loadURLScript9/loadURLScript6/loadURLScript7",
-      extra:            "searchWeb/toggleFindBar/dailyReadings/empty/empty/empty/empty/empty/homepage/reload",
-      extraAlt1:        "restart/undoCloseTab/markVisitedLinks/empty/empty/empty/empty/empty/root/up",
-      extraAlt2:        "zoomIn/history/bookmarkOpenTabs/empty/empty/empty/empty/empty/printPage/zoomReset",
-      contextLink:      "copyLink/bookmarkThisLink/saveLinkAs/empty/markVisitedLinks/empty/newBlankWindow/empty/openLinkNewWindow/openLink",
-      contextImage:     "copyImage/saveImageAs/zoomIn/empty/zoomOut/empty/empty/empty/hideImages/copyImageLocation",
-      contextSelection: "searchWeb/toggleFindBar/copy/empty/empty/empty/empty/empty/selectAll/restart",
-      contextTextbox:   "undo/cut/copy/empty/paste/empty/empty/empty/selectAll/empty"
+      extra:            "searchWeb/toggleFindBar/bookmarkPage/empty/empty/empty/empty/empty/homepage/reload",
+      extraAlt1:        "fullscreen/empty/newPrivateWindow/empty/empty/empty/empty/empty/quit/restart",
+      extraAlt2:        "zoomIn/zoomOut/zoomReset/empty/empty/empty/empty/empty/printPage/savePageAs",
+      contextLink:      "copyLink/saveLinkAs/bookmarkThisLink/empty/empty/empty/empty/empty/openLinkInNewPrivateWindow/openLink",
+      contextImage:     "copyImage/saveImageAs/empty/empty/empty/empty/empty/empty/hideImages/copyImageLocation",
+      contextSelection: "searchWeb/toggleFindBar/empty/empty/empty/empty/paste/empty/copy/cut",
+      contextTextbox:   "undo/empty/selectAll/empty/empty/empty/paste/empty/copy/cut"
     };
     
     for (let [menuName, actions] in Iterator(menus)) {
