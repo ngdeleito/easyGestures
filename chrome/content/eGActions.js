@@ -511,7 +511,7 @@ var eGActions = {
   newTab : new Action("newTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
-    gBrowser.selectedTab = gBrowser.addTab();
+    gBrowser.selectedTab = gBrowser.addTab("about:newtab");
     window.gURLBar.focus();
   }, true, "newBlankTab"),
   
