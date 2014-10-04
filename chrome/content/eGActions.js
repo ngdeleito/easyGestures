@@ -831,6 +831,11 @@ var eGActions = {
   history : new Action("history", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.toggleSidebar("viewHistorySidebar");
+  }, false, "showDownloads"),
+  
+  showDownloads : new Action("showDownloads", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.showPlacesOrganizer("Downloads");
   }, false, "loadURLScript1"),
   
   loadURLScript1 : new LoadURLScriptAction(1, true, "loadURLScript2"),

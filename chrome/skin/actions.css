@@ -378,6 +378,10 @@ div.history[grayed="true"] { background-position: -192px -864px !important ; }
 div.history { background-position: -192px -896px !important ; }
 div.history[grayed="false"][active="true"] { background-position: -192px -928px !important ; }
 
+div.showDownloads[grayed="true"] { background-position: -224px -576px !important ; }
+div.showDownloads { background-position: -224px -608px !important ; }
+div.showDownloads[grayed="false"][active="true"] { background-position: -224px -640px !important ; }
+
 div.loadURLScript1[grayed="true"] { background-position: 0px -672px !important ; }
 div.loadURLScript1 { background-position: 0px -704px !important ; }
 div.loadURLScript1[grayed="false"][active="true"] { background-position: 0px -736px !important ; }
@@ -834,6 +838,11 @@ div.small_history[grayed="true"] { background-position: -120px -540px !important
 div.small_history { background-position: -120px -560px !important ; }
 div.small_history[grayed="false"][active="true"] { background-position: -120px -580px !important ; }
 image.small_history { -moz-image-region: rect(560px 140px 580px 120px) !important ; }
+
+div.small_showDownloads[grayed="true"] { background-position: -140px -360px !important ; }
+div.small_showDownloads { background-position: -140px -380px !important ; }
+div.small_showDownloads[grayed="false"][active="true"] { background-position: -140px -400px !important ; }
+image.small_showDownloads { -moz-image-region: rect(380px 160px 400px 140px) !important ; }
 
 div.small_loadURLScript1[grayed="true"] { background-position: 0px -432px !important ; }
 div.small_loadURLScript1 { background-position: 0px -440px !important ; }
