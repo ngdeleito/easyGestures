@@ -826,6 +826,11 @@ var eGActions = {
     }
     // make it persistent
     document.persist("PersonalToolbar", "collapsed");
+  }, false, "showHistory"),
+  
+  showHistory : new Action("showHistory", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.showPlacesOrganizer("History");
   }, false, "history"),
   
   history : new Action("history", function() {
