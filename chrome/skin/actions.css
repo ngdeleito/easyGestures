@@ -254,6 +254,10 @@ div.newTab[grayed="true"] { background-position: 0px -288px !important ; }
 div.newTab { background-position: 0px -320px !important ; }
 div.newTab[grayed="false"][active="true"] { background-position: 0px -352px !important ; }
 
+div.newBlankTab[grayed="true"] { background-position: 0px -288px !important ; }
+div.newBlankTab { background-position: 0px -320px !important ; }
+div.newBlankTab[grayed="false"][active="true"] { background-position: 0px -352px !important ; }
+
 div.duplicateTab[grayed="true"] { background-position: -32px -288px !important ; }
 div.duplicateTab { background-position: -32px -320px !important ; }
 div.duplicateTab[grayed="false"][active="true"] { background-position: -32px -352px !important ; }
@@ -699,6 +703,11 @@ div.small_newTab[grayed="true"] { background-position: 0px -180px !important ; }
 div.small_newTab { background-position: 0px -200px !important ; }
 div.small_newTab[grayed="false"][active="true"] { background-position: 0px -220px !important ; }
 image.small_newTab { -moz-image-region: rect(200px 20px 220px 0px) !important ; }
+
+div.small_newBlankTab[grayed="true"] { background-position: 0px -180px !important ; }
+div.small_newBlankTab { background-position: 0px -200px !important ; }
+div.small_newBlankTab[grayed="false"][active="true"] { background-position: 0px -220px !important ; }
+image.small_newBlankTab { -moz-image-region: rect(200px 20px 220px 0px) !important ; }
 
 div.small_duplicateTab[grayed="true"] { background-position: -20px -180px !important ; }
 div.small_duplicateTab { background-position: -20px -200px !important ; }

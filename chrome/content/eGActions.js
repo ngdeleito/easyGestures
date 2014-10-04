@@ -513,7 +513,14 @@ var eGActions = {
     var gBrowser = window.gBrowser;
     gBrowser.selectedTab = gBrowser.addTab();
     window.gURLBar.focus();
-  }, true, "duplicateTab"),
+  }, true, "newBlankTab"),
+  
+  newBlankTab : new Action("newBlankTab", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    gBrowser.selectedTab = gBrowser.addTab("about:blank");
+    window.gURLBar.focus();
+  }, false, "duplicateTab"),
   
   duplicateTab : new Action("duplicateTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
