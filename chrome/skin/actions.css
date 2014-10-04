@@ -278,6 +278,10 @@ div.nextTab[grayed="true"] { background-position: -96px -288px !important ; }
 div.nextTab { background-position: -96px -320px !important ; }
 div.nextTab[grayed="false"][active="true"] { background-position: -96px -352px !important ; }
 
+div.pinUnpinTab[grayed="true"] { background-position: -320px -864px !important ; }
+div.pinUnpinTab { background-position: -320px -896px !important ; }
+div.pinUnpinTab[grayed="false"][active="true"] { background-position: -320px -928px !important ; }
+
 div.newWindow[grayed="true"] { background-position: 0px -384px !important ; }
 div.newWindow { background-position: 0px -416px !important ; }
 div.newWindow[grayed="false"][active="true"] { background-position: 0px -448px !important ; }
@@ -569,10 +573,6 @@ div.runProgramFile10[grayed="true"] { background-position: -416px -576px !import
 div.runProgramFile10 { background-position: -416px -608px !important ; }
 div.runProgramFile10[grayed="false"][active="true"] { background-position: -416px -640px !important ; }
 
-div.properties[grayed="true"] { background-position: -320px -864px !important ; }
-div.properties { background-position: -320px -896px !important ; }
-div.properties[grayed="false"][active="true"] { background-position: -320px -928px !important ; }
-
 
 /* SMALL ICONS */
 
@@ -729,6 +729,11 @@ div.small_nextTab[grayed="true"] { background-position: -60px -180px !important 
 div.small_nextTab { background-position: -60px -200px !important ; }
 div.small_nextTab[grayed="false"][active="true"] { background-position: -60px -220px !important ; }
 image.small_nextTab { -moz-image-region: rect(200px 80px 220px 60px) !important ; }
+
+div.small_pinUnpinTab[grayed="true"] { background-position: -200px -540px !important ; }
+div.small_pinUnpinTab { background-position: -200px -560px !important ; }
+div.small_pinUnpinTab[grayed="false"][active="true"] { background-position: -200px -580px !important ; }
+image.small_pinUnpinTab { -moz-image-region: rect(560px 220px 580px 200px) !important ; }
 
 div.small_newWindow[grayed="true"] { background-position: 0px -240px !important ; }
 div.small_newWindow { background-position: 0px -260px !important ; }
@@ -1092,8 +1097,3 @@ div.small_runProgramFile10[grayed="true"] { background-position: -260px -360px !
 div.small_runProgramFile10 { background-position: -260px -380px !important ; }
 div.small_runProgramFile10[grayed="false"][active="true"] { background-position: -260px -400px !important ; }
 image.small_runProgramFile10 { -moz-image-region: rect(380px 280px 400px 260px) !important ; }
-
-div.small_properties[grayed="true"] { background-position: -200px -540px !important ; }
-div.small_properties { background-position: -200px -560px !important ; }
-div.small_properties[grayed="false"][active="true"] { background-position: -200px -580px !important ; }
-image.small_properties { -moz-image-region: rect(560px 220px 580px 200px) !important ; }
