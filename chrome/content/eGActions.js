@@ -906,8 +906,9 @@ var eGActions = {
   
   paste : new DisableableCommandAction("paste", false, "undo"),
   
-  undo : new DisableableCommandAction("undo", false, "selectAll"),
+  undo : new DisableableCommandAction("undo", false, "redo"),
   
+  redo : new DisableableCommandAction("redo", false, "selectAll"),
   
   selectAll : new DisableableCommandAction("selectAll", false, null)
 };

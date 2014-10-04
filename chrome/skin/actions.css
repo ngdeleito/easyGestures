@@ -490,6 +490,10 @@ div.undo[grayed="true"] { background-position: -96px -960px !important ; }
 div.undo { background-position: -96px -992px !important ; }
 div.undo[grayed="false"][active="true"] { background-position: -96px -1024px !important ; }
 
+div.redo[grayed="true"] { background-position: -96px -960px !important ; transform: scalex(-1); }
+div.redo { background-position: -96px -992px !important ; transform: scalex(-1); }
+div.redo[grayed="false"][active="true"] { background-position: -96px -1024px !important ; transform: scalex(-1); }
+
 div.selectAll[grayed="true"] { background-position: -128px -960px !important ; }
 div.selectAll { background-position: -128px -992px !important ; }
 div.selectAll[grayed="false"][active="true"] { background-position: -128px -1024px !important ; }
@@ -970,6 +974,11 @@ div.small_undo[grayed="true"] { background-position: -60px -600px !important ; }
 div.small_undo { background-position: -60px -620px !important ; }
 div.small_undo[grayed="false"][active="true"] { background-position: -60px -640px !important ; }
 image.small_undo { -moz-image-region: rect(620px 80px 640px 60px) !important ; }
+
+div.small_redo[grayed="true"] { background-position: -60px -600px !important ; transform: scalex(-1); }
+div.small_redo { background-position: -60px -620px !important ; transform: scalex(-1); }
+div.small_redo[grayed="false"][active="true"] { background-position: -60px -640px !important ; transform: scalex(-1); }
+image.small_redo { -moz-image-region: rect(620px 80px 640px 60px) !important ; transform: scalex(-1); }
 
 div.small_selectAll[grayed="true"] { background-position: -80px -600px !important ; }
 div.small_selectAll { background-position: -80px -620px !important ; }
