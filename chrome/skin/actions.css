@@ -302,6 +302,10 @@ div.closeOtherWindows[grayed="true"] { background-position: -64px -384px !import
 div.closeOtherWindows { background-position: -64px -416px !important ; }
 div.closeOtherWindows[grayed="false"][active="true"] { background-position: -64px -448px !important ; }
 
+div.undoCloseWindow[grayed="true"] { background-position: -192px -576px !important ; }
+div.undoCloseWindow { background-position: -192px -608px !important ; }
+div.undoCloseWindow[grayed="false"][active="true"] { background-position: -192px -640px !important ; }
+
 div.up[grayed="true"] { background-position: -64px -192px !important ; }
 div.up { background-position: -64px -224px !important ; }
 div.up[grayed="false"][active="true"] { background-position: -64px -256px !important ; }
@@ -751,6 +755,11 @@ div.small_closeOtherWindows[grayed="true"] { background-position: -40px -240px !
 div.small_closeOtherWindows { background-position: -40px -260px !important ; }
 div.small_closeOtherWindows[grayed="false"][active="true"] { background-position: -40px -280px !important ; }
 image.small_closeOtherWindows { -moz-image-region: rect(260px 60px 280px 40px) !important ; }
+
+div.small_undoCloseWindow[grayed="true"] { background-position: -120px -360px !important ; }
+div.small_undoCloseWindow { background-position: -120px -380px !important ; }
+div.small_undoCloseWindow[grayed="false"][active="true"] { background-position: -120px -400px !important ; }
+image.small_undoCloseWindow { -moz-image-region: rect(380px 140px 400px 120px) !important ; }
 
 div.small_up[grayed="true"] { background-position: -40px -120px !important ; }
 div.small_up { background-position: -40px -140px !important ; }

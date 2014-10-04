@@ -627,6 +627,16 @@ var eGActions = {
       winEnum.getNext(); //first window
     }
     return !winEnum.hasMoreElements();
+  }, false, "undoCloseWindow"),
+  
+  undoCloseWindow : new DisableableAction("undoCloseWindow", function() {
+    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                       .getService(Components.interfaces.nsISessionStore);
+    ss.undoCloseWindow(0);
+  }, function() {
+    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
+                       .getService(Components.interfaces.nsISessionStore);
+    return ss.getClosedWindowCount() === 0;
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
