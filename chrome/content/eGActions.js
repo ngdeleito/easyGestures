@@ -609,6 +609,11 @@ var eGActions = {
   minimizeWindow : new Action("minimizeWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.minimize();
+  }, false, "closeWindow"),
+  
+  closeWindow : new Action("closeWindow", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.close();
   }, false, "closeOtherWindows"),
   
   closeOtherWindows : new DisableableAction("closeOtherWindows", function() {
