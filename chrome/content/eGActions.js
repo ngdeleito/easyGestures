@@ -807,6 +807,11 @@ var eGActions = {
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkCurrentPages();
+  }, false, "showBookmarks"),
+  
+  showBookmarks : new Action("showBookmarks", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.PlacesCommandHook.showPlacesOrganizer("AllBookmarks");
   }, false, "bookmarks"),
   
   bookmarks : new Action("bookmarks", function() {

@@ -366,6 +366,10 @@ div.bookmarkOpenTabs[grayed="true"] { background-position: -96px -864px !importa
 div.bookmarkOpenTabs { background-position: -96px -896px !important ; }
 div.bookmarkOpenTabs[grayed="false"][active="true"] { background-position: -96px -928px !important ; }
 
+div.showBookmarks[grayed="true"] { background-position: -160px -864px !important ; }
+div.showBookmarks { background-position: -160px -896px !important ; }
+div.showBookmarks[grayed="false"][active="true"] { background-position: -160px -928px !important ; }
+
 div.bookmarks[grayed="true"] { background-position: -128px -864px !important ; }
 div.bookmarks { background-position: -128px -896px !important ; }
 div.bookmarks[grayed="false"][active="true"] { background-position: -128px -928px !important ; }
@@ -827,6 +831,11 @@ div.small_bookmarkOpenTabs[grayed="true"] { background-position: -60px -540px !i
 div.small_bookmarkOpenTabs { background-position: -60px -560px !important ; }
 div.small_bookmarkOpenTabs[grayed="false"][active="true"] { background-position: -60px -580px !important ; }
 image.small_bookmarkOpenTabs { -moz-image-region: rect(560px 80px 580px 60px) !important ; }
+
+div.small_showBookmarks[grayed="true"] { background-position: -100px -540px !important ; }
+div.small_showBookmarks { background-position: -100px -560px !important ; }
+div.small_showBookmarks[grayed="false"][active="true"] { background-position: -100px -580px !important ; }
+image.small_showBookmarks { -moz-image-region: rect(560px 120px 580px 100px) !important ; }
 
 div.small_bookmarks[grayed="true"] { background-position: -80px -540px !important ; }
 div.small_bookmarks { background-position: -80px -560px !important ; }
