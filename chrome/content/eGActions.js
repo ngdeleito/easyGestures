@@ -843,9 +843,9 @@ var eGActions = {
   showBookmarks : new Action("showBookmarks", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.showPlacesOrganizer("AllBookmarks");
-  }, false, "bookmarks"),
+  }, false, "toggleBookmarksSidebar"),
   
-  bookmarks : new Action("bookmarks", function() {
+  toggleBookmarksSidebar : new Action("toggleBookmarksSidebar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.toggleSidebar("viewBookmarksSidebar");
   }, false, "toggleBookmarksToolbar"),
