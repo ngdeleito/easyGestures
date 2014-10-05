@@ -848,9 +848,9 @@ var eGActions = {
   bookmarks : new Action("bookmarks", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.toggleSidebar("viewBookmarksSidebar");
-  }, false, "bookmarksToolbar"),
+  }, false, "toggleBookmarksToolbar"),
   
-  bookmarksToolbar : new Action("bookmarksToolbar", function() {
+  toggleBookmarksToolbar : new Action("toggleBookmarksToolbar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var document = window.document;
     var tb = document.getElementById("PersonalToolbar");

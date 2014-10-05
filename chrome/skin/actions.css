@@ -390,9 +390,9 @@ div.bookmarks[grayed="true"] { background-position: -128px -864px !important ; }
 div.bookmarks { background-position: -128px -896px !important ; }
 div.bookmarks[grayed="false"][active="true"] { background-position: -128px -928px !important ; }
 
-div.bookmarksToolbar[grayed="true"] { background-position: -160px -864px !important ; }
-div.bookmarksToolbar { background-position: -160px -896px !important ; }
-div.bookmarksToolbar[grayed="false"][active="true"] { background-position: -160px -928px !important ; }
+div.toggleBookmarksToolbar[grayed="true"] { background-position: -160px -864px !important ; }
+div.toggleBookmarksToolbar { background-position: -160px -896px !important ; }
+div.toggleBookmarksToolbar[grayed="false"][active="true"] { background-position: -160px -928px !important ; }
 
 div.showHistory[grayed="true"] { background-position: -192px -864px !important ; }
 div.showHistory { background-position: -192px -896px !important ; }
@@ -874,10 +874,10 @@ div.small_bookmarks { background-position: -80px -560px !important ; }
 div.small_bookmarks[grayed="false"][active="true"] { background-position: -80px -580px !important ; }
 image.small_bookmarks { -moz-image-region: rect(560px 100px 580px 80px) !important ; }
 
-div.small_bookmarksToolbar[grayed="true"] { background-position: -100px -540px !important ; }
-div.small_bookmarksToolbar { background-position: -100px -560px !important ; }
-div.small_bookmarksToolbar[grayed="false"][active="true"] { background-position: -100px -580px !important ; }
-image.small_bookmarksToolbar { -moz-image-region: rect(560px 120px 580px 100px) !important ; }
+div.small_toggleBookmarksToolbar[grayed="true"] { background-position: -100px -540px !important ; }
+div.small_toggleBookmarksToolbar { background-position: -100px -560px !important ; }
+div.small_toggleBookmarksToolbar[grayed="false"][active="true"] { background-position: -100px -580px !important ; }
+image.small_toggleBookmarksToolbar { -moz-image-region: rect(560px 120px 580px 100px) !important ; }
 
 div.small_showHistory[grayed="true"] { background-position: -120px -540px !important ; }
 div.small_showHistory { background-position: -120px -560px !important ; }
