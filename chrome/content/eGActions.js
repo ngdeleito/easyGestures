@@ -589,15 +589,13 @@ var eGActions = {
   }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
-    var url = "";
-    if (Services.prefs.getIntPref("browser.startup.page") == 1) {
-      url = Services.prefs.getCharPref("browser.startup.homepage");
-      if (url.split('|')[1]) {
-        url = "about:blank";
-      }
-    }
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(url);
+    window.open("about:blank");
+    if (Services.prefs.getIntPref("browser.startup.page") !== 0) {
+      window = Services.wm.getMostRecentWindow("navigator:browser");
+      let homepage = Services.prefs.getCharPref("browser.startup.homepage");
+      window.gBrowser.loadTabs(homepage.split("|"), true, true);
+    }
   }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
