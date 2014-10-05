@@ -62,11 +62,11 @@ var eGPrefs = {
   
   _setDefaultMenus : function() {
     var menus = {
-      main:             "more/pageTop/nextTab/bookmarkPage/backSite/firstPage/closeTab/reload/back/newTab",
-      mainAlt1:         "more/duplicateTab/forward/empty/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
-      mainAlt2:         "more/loadURLScript1/loadURLScript2/loadURLScript8/loadURLScript3/loadURLScript4/loadURLScript5/loadURLScript9/loadURLScript6/loadURLScript7",
-      extra:            "searchWeb/toggleFindBar/bookmarkPage/empty/empty/empty/empty/empty/homepage/reload",
-      extraAlt1:        "fullscreen/empty/newPrivateWindow/empty/empty/empty/empty/empty/quit/restart",
+      main:             "showExtraMenu/pageTop/nextTab/bookmarkThisPage/backSite/firstPage/closeTab/reload/back/newTab",
+      mainAlt1:         "showExtraMenu/duplicateTab/forward/empty/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
+      mainAlt2:         "showExtraMenu/loadURLScript1/loadURLScript2/loadURLScript8/loadURLScript3/loadURLScript4/loadURLScript5/loadURLScript9/loadURLScript6/loadURLScript7",
+      extra:            "searchWeb/toggleFindBar/bookmarkThisPage/empty/empty/empty/empty/empty/homepage/reload",
+      extraAlt1:        "toggleFullscreen/empty/newPrivateWindow/empty/empty/empty/empty/empty/quit/restart",
       extraAlt2:        "zoomIn/zoomOut/zoomReset/empty/empty/empty/empty/empty/printPage/savePageAs",
       contextLink:      "copyLink/saveLinkAs/bookmarkThisLink/empty/empty/empty/empty/empty/openLinkInNewPrivateWindow/openLink",
       contextImage:     "copyImage/saveImageAs/empty/empty/empty/empty/empty/empty/hideImages/copyImageLocation",
@@ -367,14 +367,41 @@ var eGPrefs = {
     var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
       "extraAlt2", "contextLink", "contextImage", "contextSelection",
       "contextTextbox"];
+    var actionsToRename = [
+      ["more", "showExtraMenu"], ["fullscreen", "toggleFullscreen"],
+      ["openLinkNewWindow", "openLinkInNewWindow"],
+      ["bookmarkPage", "bookmarkThisPage"],
+      ["bookmarks", "toggleBookmarksSidebar"],
+      ["bookmarksToolbar", "toggleBookmarksToolbar"],
+      ["history", "toggleHistorySidebar"]
+    ];
+    
+    function renameActionsInMenu(anArray) {
+      actionsToRename.forEach(function(action) {
+        anArray = anArray.replace(action[0], action[1]);
+      });
+      return anArray;
+    }
+    
     menuNames.forEach(function(menuName) {
       let actions = this._prefs.getCharPref("menus." + menuName);
       actions = actions.replace("markVisitedLinks", "empty");
+      actions = renameActionsInMenu(actions);
       this._prefs.setCharPref("menus." + menuName, actions);
-    });
+    }, this);
     
     var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
     delete actionsStats.markVisitedLinks;
+    var newActions = ["newBlankTab", "pinUnpinTab", "closeWindow",
+                      "undoCloseWindow", "showBookmarks", "showHistory",
+                      "showDownloads", "redo"];
+    newActions.forEach(function(actionName) {
+      actionsStats[actionName] = 0;
+    });
+    actionsToRename.forEach(function(action) {
+      actionsStats[action[1]] = actionsStats[action[0]];
+      delete actionsStats[action[0]];
+    });
     this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
   }
 };
