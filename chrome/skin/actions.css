@@ -350,9 +350,9 @@ div.openLink[grayed="true"] { background-position: 0px -480px !important ; }
 div.openLink { background-position: 0px -512px !important ; }
 div.openLink[grayed="false"][active="true"] { background-position: 0px -544px !important ; }
 
-div.openLinkNewWindow[grayed="true"] { background-position: -32px -480px !important ; }
-div.openLinkNewWindow { background-position: -32px -512px !important ; }
-div.openLinkNewWindow[grayed="false"][active="true"] { background-position: -32px -544px !important ; }
+div.openLinkInNewWindow[grayed="true"] { background-position: -32px -480px !important ; }
+div.openLinkInNewWindow { background-position: -32px -512px !important ; }
+div.openLinkInNewWindow[grayed="false"][active="true"] { background-position: -32px -544px !important ; }
 
 div.openLinkInNewPrivateWindow[grayed="true"] { background-position: -32px -480px !important ; }
 div.openLinkInNewPrivateWindow { background-position: -32px -512px !important ; }
@@ -824,10 +824,10 @@ div.small_openLink { background-position: 0px -320px !important ; }
 div.small_openLink[grayed="false"][active="true"] { background-position: 0px -340px !important ; }
 image.small_openLink { -moz-image-region: rect(320px 20px 340px 0px) !important ; }
 
-div.small_openLinkNewWindow[grayed="true"] { background-position: -20px -300px !important ; }
-div.small_openLinkNewWindow { background-position: -20px -320px !important ; }
-div.small_openLinkNewWindow[grayed="false"][active="true"] { background-position: -20px -340px !important ; }
-image.small_openLinkNewWindow { -moz-image-region: rect(320px 40px 340px 20px) !important ; }
+div.small_openLinkInNewWindow[grayed="true"] { background-position: -20px -300px !important ; }
+div.small_openLinkInNewWindow { background-position: -20px -320px !important ; }
+div.small_openLinkInNewWindow[grayed="false"][active="true"] { background-position: -20px -340px !important ; }
+image.small_openLinkInNewWindow { -moz-image-region: rect(320px 40px 340px 20px) !important ; }
 
 div.small_openLinkInNewPrivateWindow[grayed="true"] { background-position: -20px -300px !important ; }
 div.small_openLinkInNewPrivateWindow { background-position: -20px -320px !important ; }

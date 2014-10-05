@@ -722,9 +722,9 @@ var eGActions = {
         window.open(url);
         break;
     }
-  }, true, "openLinkNewWindow"),
+  }, true, "openLinkInNewWindow"),
   
-  openLinkNewWindow : new LinkExistsDisableableAction("openLinkNewWindow", function() {
+  openLinkInNewWindow : new LinkExistsDisableableAction("openLinkInNewWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.open(eGc.link.href);
   }, false, "openLinkInNewPrivateWindow"),
