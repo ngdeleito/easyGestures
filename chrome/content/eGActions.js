@@ -808,12 +808,12 @@ var eGActions = {
       var window = Services.wm.getMostRecentWindow("navigator:browser");
       window.gBrowser.loadTabs(uris, true, false);
     }
-  }, true, "bookmarkPage"),
+  }, true, "bookmarkThisPage"),
   
   // useful links:
   // http://mxr.mozilla.org/mozilla-central/source/browser/components/places/
   // http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser-places.js
-  bookmarkPage : new Action("bookmarkPage", function() {
+  bookmarkThisPage : new Action("bookmarkThisPage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var bookmarksService =
           Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]

@@ -370,9 +370,9 @@ div.dailyReadings[grayed="true"] { background-position: -32px -576px !important 
 div.dailyReadings { background-position: -32px -608px !important ; }
 div.dailyReadings[grayed="false"][active="true"] { background-position: -32px -640px !important ; }
 
-div.bookmarkPage[grayed="true"] { background-position: -64px -864px !important ; }
-div.bookmarkPage { background-position: -64px -896px !important ; }
-div.bookmarkPage[grayed="false"][active="true"] { background-position: -64px -928px !important ; }
+div.bookmarkThisPage[grayed="true"] { background-position: -64px -864px !important ; }
+div.bookmarkThisPage { background-position: -64px -896px !important ; }
+div.bookmarkThisPage[grayed="false"][active="true"] { background-position: -64px -928px !important ; }
 
 div.bookmarkThisLink[grayed="true"] { background-position: -32px -864px !important ; }
 div.bookmarkThisLink { background-position: -32px -896px !important ; }
@@ -849,10 +849,10 @@ div.small_dailyReadings { background-position: -20px -380px !important ; }
 div.small_dailyReadings[grayed="false"][active="true"] { background-position: -20px -400px !important ; }
 image.small_dailyReadings { -moz-image-region: rect(380px 40px 400px 20px) !important ; }
 
-div.small_bookmarkPage[grayed="true"] { background-position: -40px -540px !important ; }
-div.small_bookmarkPage { background-position: -40px -560px !important ; }
-div.small_bookmarkPage[grayed="false"][active="true"] { background-position: -40px -580px !important ; }
-image.small_bookmarkPage { -moz-image-region: rect(560px 60px 580px 40px) !important ; }
+div.small_bookmarkThisPage[grayed="true"] { background-position: -40px -540px !important ; }
+div.small_bookmarkThisPage { background-position: -40px -560px !important ; }
+div.small_bookmarkThisPage[grayed="false"][active="true"] { background-position: -40px -580px !important ; }
+image.small_bookmarkThisPage { -moz-image-region: rect(560px 60px 580px 40px) !important ; }
 
 div.small_bookmarkThisLink[grayed="true"] { background-position: -20px -540px !important ; }
 div.small_bookmarkThisLink { background-position: -20px -560px !important ; }
