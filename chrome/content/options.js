@@ -503,7 +503,7 @@ function attachMenupopup(menulist) {
   clonedMenupopup.boxObject.firstChild.setAttribute("style", "overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
   
   if (clonedMenupopup.parentNode.id.search("Sector0") == -1) {
-    // remove more action
+    // remove showExtraMenu action
     clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
     clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
   }

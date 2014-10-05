@@ -40,7 +40,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 // Action
 //  ^
 //  |-- EmptyAction
-//  |-- ExtraMenuAction
+//  |-- ShowExtraMenuAction
 //  |-- ReloadAction
 //  |-- LoadURLScriptAction
 //  |-- DisableableAction
@@ -136,7 +136,7 @@ function Action(name, action, startsNewGroup, nextAction) {
 }
 
 function EmptyAction() {
-  Action.call(this, "empty", function() {}, false, "more");
+  Action.call(this, "empty", function() {}, false, "showExtraMenu");
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
@@ -144,8 +144,8 @@ function EmptyAction() {
 }
 EmptyAction.prototype = new Action();
 
-function ExtraMenuAction() {
-  Action.call(this, "more", function() {
+function ShowExtraMenuAction() {
+  Action.call(this, "showExtraMenu", function() {
     eGm.showExtraMenu();
   }, true, "back");
   
@@ -155,7 +155,7 @@ function ExtraMenuAction() {
   
   this.isExtraMenuAction = true;
 }
-ExtraMenuAction.prototype = new Action();
+ShowExtraMenuAction.prototype = new Action();
 
 function ReloadAction() {
   Action.call(this, "reload", function() { // reload or stop
@@ -317,7 +317,7 @@ ImageExistsDisableableAction.prototype = new DisableableAction();
 var eGActions = {
   empty : new EmptyAction(),
   
-  more : new ExtraMenuAction(),
+  showExtraMenu : new ShowExtraMenuAction(),
   
   back : new CanGoBackDisableableAction("back", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");

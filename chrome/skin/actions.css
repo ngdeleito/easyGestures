@@ -160,8 +160,8 @@ div[id^="eG_labels_"] {
 div.empty { background-position: 0px 0px !important ; }
 div.empty[active="true"] { background-position: 0px -64px !important ; }
 
-div.more { background-position: -32px -32px !important ; }
-div.more[active="true"], div.more[extraMenuShowing="true"] { background-position: -32px -64px !important ; }
+div.showExtraMenu { background-position: -32px -32px !important ; }
+div.showExtraMenu[active="true"], div.showExtraMenu[extraMenuShowing="true"] { background-position: -32px -64px !important ; }
 
 div.moreDropDownMenu { background-position: -64px -32px !important ; }
 div.moreDropDownMenu[active="true"], div.moreDropDownMenu[extraMenuShowing="true"] { background-position: -64px -64px !important ; }
@@ -586,9 +586,9 @@ div.small_empty { background-position: 0px 0px !important ; }
 div.small_empty[active="true"] { background-position: 0px -40px !important ; }
 image.small_empty { -moz-image-region: rect(0px 20px 20px 0px) !important ; }
 
-div.small_more { background-position: -20px -20px !important ; }
-div.small_more[active="true"], div.small_more[extraMenuShowing="true"] { background-position: -20px -40px !important ; }
-image.small_more { -moz-image-region: rect(20px 40px 40px 20px) !important ; }
+div.small_showExtraMenu { background-position: -20px -20px !important ; }
+div.small_showExtraMenu[active="true"], div.small_showExtraMenu[extraMenuShowing="true"] { background-position: -20px -40px !important ; }
+image.small_showExtraMenu { -moz-image-region: rect(20px 40px 40px 20px) !important ; }
 
 div.small_moreDropDownMenu { background-position: -40px -20px !important ; }
 div.small_moreDropDownMenu[active="true"], div.small_moreDropDownMenu[extraMenuShowing="true"] { background-position: -40px -40px !important ; }
