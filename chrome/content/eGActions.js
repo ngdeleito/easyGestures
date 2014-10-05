@@ -867,9 +867,9 @@ var eGActions = {
   showHistory : new Action("showHistory", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.showPlacesOrganizer("History");
-  }, false, "history"),
+  }, false, "toggleHistorySidebar"),
   
-  history : new Action("history", function() {
+  toggleHistorySidebar : new Action("toggleHistorySidebar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.toggleSidebar("viewHistorySidebar");
   }, false, "showDownloads"),
