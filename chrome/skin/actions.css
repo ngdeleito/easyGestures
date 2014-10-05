@@ -226,9 +226,9 @@ div.zoomReset[grayed="true"] { background-position: -256px -960px !important ; }
 div.zoomReset { background-position: -256px -992px !important ; }
 div.zoomReset[grayed="false"][active="true"] { background-position: -256px -1024px !important ; }
 
-div.fullscreen[grayed="true"] { background-position: -160px -384px !important ; }
-div.fullscreen { background-position: -160px -416px !important ; }
-div.fullscreen[grayed="false"][active="true"] { background-position: -160px -448px !important ; }
+div.toggleFullscreen[grayed="true"] { background-position: -160px -384px !important ; }
+div.toggleFullscreen { background-position: -160px -416px !important ; }
+div.toggleFullscreen[grayed="false"][active="true"] { background-position: -160px -448px !important ; }
 
 div.toggleFindBar[grayed="true"] { background-position: -160px -960px !important ; }
 div.toggleFindBar { background-position: -160px -992px !important ; }
@@ -669,10 +669,10 @@ div.small_zoomReset { background-position: -160px -620px !important ; }
 div.small_zoomReset[grayed="false"][active="true"] { background-position: -160px -640px !important ; }
 image.small_zoomReset { -moz-image-region: rect(620px 180px 640px 160px) !important ; }
 
-div.small_fullscreen[grayed="true"] { background-position: -100px -240px !important ; }
-div.small_fullscreen { background-position: -100px -260px !important ; }
-div.small_fullscreen[grayed="false"][active="true"] { background-position: -100px -280px !important ; }
-image.small_fullscreen { -moz-image-region: rect(260px 120px 280px 100px) !important ; }
+div.small_toggleFullscreen[grayed="true"] { background-position: -100px -240px !important ; }
+div.small_toggleFullscreen { background-position: -100px -260px !important ; }
+div.small_toggleFullscreen[grayed="false"][active="true"] { background-position: -100px -280px !important ; }
+image.small_toggleFullscreen { -moz-image-region: rect(260px 120px 280px 100px) !important ; }
 
 div.small_toggleFindBar[grayed="true"] { background-position: -100px -600px !important ; }
 div.small_toggleFindBar { background-position: -100px -620px !important ; }

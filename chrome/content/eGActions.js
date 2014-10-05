@@ -461,9 +461,9 @@ var eGActions = {
   zoomReset : new Action("zoomReset", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.ZoomManager.reset();
-  }, false, "fullscreen"),
+  }, false, "toggleFullscreen"),
   
-  fullscreen : new Action("fullscreen", function() {
+  toggleFullscreen : new Action("toggleFullscreen", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.fullScreen = !window.fullScreen;
   }, false, "toggleFindBar"),
