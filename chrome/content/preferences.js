@@ -63,7 +63,7 @@ var eGPrefs = {
   _setDefaultMenus : function() {
     var menus = {
       main:             "showExtraMenu/pageTop/nextTab/bookmarkThisPage/backSite/firstPage/closeTab/reload/back/newTab",
-      mainAlt1:         "showExtraMenu/duplicateTab/forward/empty/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
+      mainAlt1:         "showExtraMenu/duplicateTab/forward/pinUnpinTab/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
       mainAlt2:         "showExtraMenu/loadURLScript1/loadURLScript2/loadURLScript8/loadURLScript3/loadURLScript4/loadURLScript5/loadURLScript9/loadURLScript6/loadURLScript7",
       extra:            "searchWeb/toggleFindBar/bookmarkThisPage/empty/empty/empty/empty/empty/homepage/reload",
       extraAlt1:        "toggleFullscreen/empty/newPrivateWindow/empty/empty/empty/empty/empty/quit/restart",
@@ -71,14 +71,14 @@ var eGPrefs = {
       contextLink:      "copyLink/saveLinkAs/bookmarkThisLink/empty/empty/empty/empty/empty/openLinkInNewPrivateWindow/openLink",
       contextImage:     "copyImage/saveImageAs/empty/empty/empty/empty/empty/empty/hideImages/copyImageLocation",
       contextSelection: "searchWeb/toggleFindBar/empty/empty/empty/empty/paste/empty/copy/cut",
-      contextTextbox:   "undo/empty/selectAll/empty/empty/empty/paste/empty/copy/cut"
+      contextTextbox:   "undo/redo/selectAll/empty/empty/empty/paste/empty/copy/cut"
     };
     
     for (let [menuName, actions] in Iterator(menus)) {
       this._prefs.setCharPref("menus." + menuName, actions);
     }
   },
-
+  
   setDefaultSettings : function() {
     this._prefs.setBoolPref("general.startupTips", true);
     this._prefs.setIntPref("general.tipNumber", 0);
@@ -139,7 +139,7 @@ var eGPrefs = {
     
     this._prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
   },
-
+  
   initializeStats : function() {
     this._prefs.setIntPref("stats.clicks", 0); // clicks inside window excluding clicks inside menu
     this._prefs.setIntPref("stats.menuShown", 0); // calls for menu
