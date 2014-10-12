@@ -471,7 +471,7 @@ var eGActions = {
   toggleFindBar : new Action("toggleFindBar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (window.gFindBar.hidden) {
-      window.gFindBar.onFindCommand(eGc.selection);
+      window.gFindBar.onFindCommand();
     }
     else {
       window.gFindBar.close();
