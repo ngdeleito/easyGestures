@@ -135,8 +135,11 @@ function startup(data, reason) {
       if (Services.vc.compare(data.oldVersion, "4.5") < 0) {
         eGPrefs.updateToV4_5();
       }
-      else if (Services.vc.compare(data.oldVersion, "4.6") < 0) {
+      if (Services.vc.compare(data.oldVersion, "4.6") < 0) {
         eGPrefs.updateToV4_6();
+      }
+      if (Services.vc.compare(data.oldVersion, "4.7") < 0) {
+        eGPrefs.updateToV4_7();
       }
     }
     

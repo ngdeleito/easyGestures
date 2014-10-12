@@ -1,53 +1,75 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
+Version 4.7 (October 12, 2014)
+
+- reworked code allowing actions to be disabled
+- the following actions can now also appear as being disabled: "Page Top", "Page Bottom", "Close Tab", "Open Link", "Open Link in New Window", "Open Link in New Private Window", "Copy Link", "Bookmark This Link", "Copy Image Location", "Copy Image", "Save Image As", "Hide Images", "Cut", "Copy", "Paste", "Undo", "Select All"
+- changed actions:
+    - "New Tab", "Close Tab", "New Window" and "Bookmark This Page" mimic now Firefox's behavior
+    - "Close Tab" and "Close Other Tabs" take now into account pinned tabs
+    - "Duplicate Window" duplicates now all tabs
+    - "Open Link", "Open Link in New Window" and "Open Link in New Private Window" only work now on a link
+- new actions: "New Blank Tab", "Pin/Unpin Tab", "Close Window", "Undo Close Window", "Show Bookmarks", "Show History", "Show Downloads", "Redo"
+- removed action "Mark Visited Links"
+- new default menus
+
+
 Versions 4.6.1 and 4.6.2 (July 18, 2014)
+
 - fixed some warnings issued by AMO scripts
 
+
 Version 4.6 (July 16, 2014)
+
 - new CSS-based context and alternative menus indicators
 - new actions: "New Blank Window" and "Open Link in New Private Window" (suggested by Steve Beckwitt)
 - fixed: "Homepage" action could not be called
 - refactored code dealing with the execution and management of actions
 
+
 Version 4.5.3 (May 11, 2014)
+
 - fixed some issues
 
+
 Version 4.5.2 (April 27, 2014)
+
 - made internal changes to comply with AMO requirements
 
+
 Version 4.5.1 (April 25, 2014)
+
 - fixed: menu was not properly displayed when moved
 
+
 Version 4.5 (September 2012--April 2014)
+
 - made easyGestures work with recent versions of Firefox
 - made easyGestures a restartless extension
 - removed support for upgrading from versions prior to 4.3.2
 - moved preferences to the "extensions." branch
 - made several changes in the preferences dialog, among which:
-  - removed support for multiple skins
-  - removed popup menu to change language
-  - split the "Behavior" pane in two
-  - made use of XUL's preferences system
-  - made select boxes for actions non editable
+    - removed support for multiple skins
+    - removed popup menu to change language
+    - split the "Behavior" pane in two
+    - made use of XUL's preferences system
+    - made select boxes for actions non editable
 - removed features:
-  - input box for entering URLs
-  - linear menu
-  - red tag for links
-  - custom "About" dialog
-  - welcome page
-  - statusbar icon
-  - ability to open menu only on drag
-  - "omit tooltips delay" option
-  - popup for "Next Tab", "Previous Tab" and "Undo Close Tab" actions
-  - "Translate/Explain", "Run Program File", "Mail", "Properties" and "Send
-    Link" actions
+    - input box for entering URLs
+    - linear menu
+    - red tag for links
+    - custom "About" dialog
+    - welcome page
+    - statusbar icon
+    - ability to open menu only on drag
+    - "omit tooltips delay" option
+    - popup for "Next Tab", "Previous Tab" and "Undo Close Tab" actions
+    - "Translate/Explain", "Run Program File", "Mail", "Properties" and "Send Link" actions
 - changed features:
-  - "Search Web" action uses Firefox's search engines
-  - "Highlight/Clear" action toggles Firefox's find bar and was renamed to
-    "Toggle Find Bar"
-  - "Daily Readings" action no longer provides default bookmarks upon creation
-    of the daily readings folder and opens all bookmarks in new tabs
-  - "Private Browsing" action was changed to "New Private Window"
-  - "Close Browser" action was renamed to "Quit Firefox"
+    - "Search Web" action uses Firefox's search engines
+    - "Highlight/Clear" action toggles Firefox's find bar and was renamed to "Toggle Find Bar"
+    - "Daily Readings" action no longer provides default bookmarks upon creation of the daily readings folder and opens all bookmarks in new tabs
+    - "Private Browsing" action was changed to "New Private Window"
+    - "Close Browser" action was renamed to "Quit Firefox"
 - added features:
-  - "Restart Firefox" and "Focus Location Bar" actions
+    - "Restart Firefox" and "Focus Location Bar" actions
