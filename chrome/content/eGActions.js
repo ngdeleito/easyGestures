@@ -741,7 +741,7 @@ var eGActions = {
               .copyString(eGc.link.href);
   }, false, "saveLinkAs"),
   
-  saveLinkAs : new Action("saveLinkAs", function() {
+  saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
     this._saveContentFromLink(eGc.link, Components.interfaces.nsIFilePicker.filterHTML);
   }, false, "dailyReadings"),
   
