@@ -100,6 +100,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "Abrir link na Aba nova">
 <!ENTITY link.newWindow "Abrir link na Janela nova">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "Auto-rolagem através do centro do menu de torta">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso">
 
@@ -164,4 +167,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Uma ação de zoom sobre uma imagem vai realizar a ação apenas na imagem.">
 <!ENTITY tip21 "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
 <!ENTITY tip22 "A ação 'Abrir Link' abrirá o link apontado em uma aba nova.">
-<!ENTITY tip26 "Quando é feita a ação 'Leituras Diárias', uma pasta de favoritos chamada *easyGestures* é criada na primeira vez na Barra de Favoritos e todos os favoritos colocados nela são abertos.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

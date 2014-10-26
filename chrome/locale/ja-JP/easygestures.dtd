@@ -100,6 +100,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "リンクを新しいタブで開く">
 <!ENTITY link.newWindow "リンクを新しいウィンドウで開く">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "パイメニューの中心から自動スクロールする">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "遅延時間">
 
@@ -164,4 +167,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "画像への拡大縮小アクションは、その画像のみに適用されます。">
 <!ENTITY tip21 "ページ毎に戻ったり進んだりする替わりに、'サイトを戻る'や'サイトを進む'アクションでサイトごとに移動できます。">
 <!ENTITY tip22 "'リンクを開く'アクションは、ポイントしているリンクを新しいタブに開きます。">
-<!ENTITY tip26 "'デイリーリーディング'アクションが実行されると、はじめに *easyGestures* というフォルダがブックマークツールバーフォルダに作られます。そのフォルダにあるすべてのブックマークが、アクションの実行のたびに開かれます。">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

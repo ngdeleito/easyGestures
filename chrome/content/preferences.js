@@ -138,6 +138,7 @@ var eGPrefs = {
     }
     
     this._prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
+    this._prefs.setIntPref("customizations.dailyReadingsFolderID", -1);
   },
   
   initializeStats : function() {
@@ -175,13 +176,13 @@ var eGPrefs = {
     return !this._prefs.getBoolPref("behavior.largeMenu");
   },
   
-  setDailyReadingsFolderPref : function(aString) {
-    this._prefs.setCharPref("customizations.dailyReadingsFolder", aString);
-  },
-  
   getLoadURLScriptPref : function(anInteger) {
     return this._prefs.getComplexValue("customizations.loadURLScript" + anInteger,
       Components.interfaces.nsISupportsString).data.split("\u2022");
+  },
+  
+  getDailyReadingsFolderID : function() {
+    return this._prefs.getIntPref("customizations.dailyReadingsFolderID");
   },
   
   getStatsClicksPref : function() {
@@ -403,6 +404,11 @@ var eGPrefs = {
       delete actionsStats[action[0]];
     });
     this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+  },
+  
+  updateToV4_8: function() {
+    this._prefs.deleteBranch("customizations.dailyReadingsFolder");
+    this._prefs.setIntPref("customizations.dailyReadingsFolderID", -1);
   }
 };
 

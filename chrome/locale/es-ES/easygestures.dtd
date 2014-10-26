@@ -76,6 +76,8 @@
 <!ENTITY link.curTab "Abrir enlace en la pestaña actual">
 <!ENTITY link.newTab "Abrir enlace en una pestaña nueva">
 <!ENTITY link.newWindow "Abrir enlace en una ventana nueva">
+<!ENTITY customizations.dailyReadings "Personalizar la acción 'Lecturas diarias'">
+<!ENTITY customizations.dailyReadings.folderSelection "Carpeta utilizada por esta acción:">
 <!ENTITY autoscrolling "Autodezplazamiento a través del menú circular">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Retraso">
 <!ENTITY extras.menuType "Tipo de menú">
@@ -132,4 +134,4 @@
 <!ENTITY tip20 "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tip21 "En lugar de moverse adelante y atrás página por página, puede hacerlo con sitios usando las acciones &apos;Retroceder sitio&apos; y &apos;Avanzar sitio&apos;.">
 <!ENTITY tip22 "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña.">
-<!ENTITY tip26 "Cuando se ejecuta por primera vez la acción &apos;Lecturas diarias&apos;, se crea una carpeta en la barra de marcadores llamada *easyGestures*, y todos los marcadores incluidos en ella se abrirán.">
+<!ENTITY tip26 "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas.|Seleccione una carpeta en &customizations;/&customizations.otherActions;">

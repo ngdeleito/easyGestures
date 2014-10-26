@@ -74,6 +74,8 @@
 <!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
 <!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
 <!ENTITY link.newWindow "Otwórz odnośnik w nowym oknie">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 <!ENTITY autoscrolling "Automatyczne przewijanie">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia">
 <!ENTITY extras.menuType "Typ menu">
@@ -130,4 +132,4 @@
 <!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
 <!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
 <!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie.">
-<!ENTITY tip26 "Podczas pierwszego wywołania akcji \u0022Wiadomości dnia\u0022 na pasku narzędziowym zakładek zostanie utworzony folder o nazwie *easyGestures* i wszystkie umieszczone w nim zakładki zostaną otworzone.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

@@ -179,7 +179,6 @@ function eG_menu () {
   this.loadURLScript19 = prefs.getComplexValue("customizations.loadURLScript19", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.loadURLScript20 = prefs.getComplexValue("customizations.loadURLScript20", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-  this.dailyReadingsFolderURI = prefs.getCharPref("customizations.dailyReadingsFolder");
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	initializing properties

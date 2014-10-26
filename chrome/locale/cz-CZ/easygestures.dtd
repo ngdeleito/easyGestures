@@ -101,6 +101,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "Otevřít odkaz v novém panelu">
 <!ENTITY link.newWindow "Otevřít odkaz v novém okně">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "Automatický posun přes střed nabídky">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Zpoždění">
 
@@ -165,4 +168,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">
 <!ENTITY tip21 "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
 <!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu.">
-<!ENTITY tip26 "Pokud spustíte akci &apos;Denní čtení&apos; poprvé, vytvoří se složka v záložkách s názvem *easyGestures* a všechny záložky, které do této složky umístíte, budou následně otevřené.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

@@ -101,6 +101,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "Apri il collegamento in una nuova Linguetta">
 <!ENTITY link.newWindow "Apri il collegamento in una nuova Finestra">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Ritado">
 
@@ -165,4 +168,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
 <!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
 <!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta.">
-<!ENTITY tip26 "Quando si esegue l'azione 'Letture Quotidiane', una cartella dei Segnalibri chiamata *easyGestuers* viene creata la prima volta nella Barra dei Segnalibri, e tutti i segnalibri in essa vengono aperti.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

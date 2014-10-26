@@ -100,6 +100,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "在新的分頁開啟鏈結">
 <!ENTITY link.newWindow "在新的視窗開啟鏈結">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…">
 
@@ -164,4 +167,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "焦距拉近／焦距拉遠 的動作只能在圖片上動作。">
 <!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">
 <!ENTITY tip22 "「開啟鏈結」動作會把目標鏈結開在新分頁中。">
-<!ENTITY tip26 "當第一次執行「每日閱讀」這個動作時，將會自動產生一個叫做「easyGestures」的書籤資料夾在你的書籤工具列中，當中所有的書籤會同時被開啟。">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

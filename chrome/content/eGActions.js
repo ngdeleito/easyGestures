@@ -746,68 +746,34 @@ var eGActions = {
   }, false, "dailyReadings"),
   
   dailyReadings : new Action("dailyReadings", function() {
-    function _checkDailyReadingsFolder() {
-      var dailyReadingsFolderNode = null;
-      var folderName = "@easyGestures";
-      var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
-                                     .getService(Components.interfaces.nsINavHistoryService);
-      var bookmarksService = Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
-                                     .getService(Components.interfaces.nsINavBookmarksService);
-      
-      try {
-        // check if dailyReadings folder already exists in toolbarFolder
-        var options = historyService.getNewQueryOptions();
-        var query = historyService.getNewQuery();
-        options.excludeItems = false;
-        query.setFolders([bookmarksService.toolbarFolder], 1);
-        //query.setFolders([bookmarksService.placesRoot], 1);
-        var result = historyService.executeQuery(query, options);
-        
-        result.root.containerOpen = true;
-        for (var i = 0; i < result.root.childCount; i++) {
-          // iterate over the immediate children of this folder
-          if (result.root.getChild(i).itemId == eGm.dailyReadingsFolderURI && eGm.dailyReadingsFolderURI !== "" || result.root.getChild(i).title == folderName) {
-            dailyReadingsFolderNode = result.root.getChild(i);
-            if (eGm.dailyReadingsFolderURI === "") {
-              // update value if no value found
-              eGm.dailyReadingsFolderURI = result.root.getChild(i).itemId;
-              eGPrefs.setDailyReadingsFolderPref(eGm.dailyReadingsFolderURI);
-            }
-            break;
-          }
+    function pushURIsContainedInFolder(resultNode) {
+      resultNode.containerOpen = true;
+      for (let i=0; i < resultNode.childCount; ++i) {
+        if (resultNode.getChild(i).type === 6) {
+          // the current child is a folder
+          let node = resultNode.getChild(i).QueryInterface(
+            Components.interfaces.nsINavHistoryContainerResultNode);
+          pushURIsContainedInFolder(node);
         }
-        result.root.containerOpen = false; // close a container after using it!
+        else if (resultNode.getChild(i).type === 0) {
+          // the current child is a bookmark (i.e. no folder, no separator)
+          uris.push(resultNode.getChild(i).uri);
+        }
       }
-      catch (ex) {
-        alert("Exception: "+ ex.toString());
-        return false;
-      }
-      
-      if (eGm.dailyReadingsFolderURI === "" || dailyReadingsFolderNode === null) {
-        var menuFolder = bookmarksService.toolbarFolder;
-        var newFolderId = bookmarksService.createFolder(menuFolder, folderName, -1);
-        
-        eGm.dailyReadingsFolderURI = newFolderId;
-        eGPrefs.setDailyReadingsFolderPref(newFolderId);
-        
-        Services.prompt.alert(null, "", eGc.localizing.getString("dailyReadingsCreate"));
-      }
-      return dailyReadingsFolderNode;
+      resultNode.containerOpen = false;
     }
     
-    var dailyReadingsFolderNode = _checkDailyReadingsFolder();
+    var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
+                                   .getService(Components.interfaces.nsINavHistoryService);
+    var query = historyService.getNewQuery();
+    query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
+    var options = historyService.getNewQueryOptions();
+    var results = historyService.executeQuery(query, options);
     
-    if (dailyReadingsFolderNode !== null) {
-      dailyReadingsFolderNode.QueryInterface(Components.interfaces.nsINavHistoryContainerResultNode);
-      dailyReadingsFolderNode.containerOpen = true;
-      var uris = [];
-      for (let i=0; i < dailyReadingsFolderNode.childCount; ++i) {
-        uris.push(dailyReadingsFolderNode.getChild(i).uri);
-      }
-      dailyReadingsFolderNode.containerOpen = false;
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      window.gBrowser.loadTabs(uris, true, false);
-    }
+    var uris = [];
+    pushURIsContainedInFolder(results.root);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadTabs(uris, true, false);
   }, true, "bookmarkThisPage"),
   
   // useful links:

@@ -91,6 +91,8 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY link.curTab "현재 탭에 링크 열기">
 <!ENTITY link.newTab "새 탭으로 링크 열기">
 <!ENTITY link.newWindow "새 창으로 링크 열기">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 <!ENTITY autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "지연시간">
 <!ENTITY extras.menuType "메뉴 형식">
@@ -147,4 +149,4 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY tip20 "이미지에서의 배율조정 동작은 그 이미지에만 적용됩니다.">
 <!ENTITY tip21 "페이지를 &apos;뒤로&apos; 와 &apos;앞으로&apos;로 이동하는 대신, &apos;뒤 사이트&apos;와 &apos;앞 사이트&apos; 동작을 통해 사이트에 이동할수 있습니다.">
 <!ENTITY tip22 "&apos;링크를 열기&apos;동작은 지정된 링크를 새로운 탭으로 엽니다.">
-<!ENTITY tip26 "&apos;매일 읽기&apos;동작이 실행되면, 처음에 *easyGestures* 라고 하는 폴더가 북마크 도구막대 폴더에 만들어집니다. 그 폴더에 있는 모든 북마크가, 동작 실행때마다 열립니다.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

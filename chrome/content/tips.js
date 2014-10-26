@@ -58,7 +58,7 @@ var tips = [
   new tipEntry(15, "empty",               "behavior",       "0"),
   new tipEntry(16, "empty",               "",               "0"),
   new tipEntry(17, "empty",               "",               "0"),
-  new tipEntry(18, "empty",               "",               "0")
+  new tipEntry(18, "empty",               "customizations", "1")
 ];
 
 var tipNbr;

@@ -76,6 +76,8 @@
 <!ENTITY link.curTab "Hivatkozás megnyitása az aktuális lapon">
 <!ENTITY link.newTab "Hivatkozás megnyitása új lapon">
 <!ENTITY link.newWindow "Hivatkozás megnyitása új ablakban">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 <!ENTITY autoscrolling "Automatikus görgetés a köralakú menü közepén keresztül">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Késleltetés">
 <!ENTITY extras.menuType "Menü típusa">
@@ -132,4 +134,4 @@
 <!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
 <!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
 <!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket.">
-<!ENTITY tip26 "Amikor első alkalommal kattintasz a &quot;Napi olvasnivaló&quot; funkcióra, akkor egy &quot;easyGestures&quot; nevű mappa jön létre a Könyvjelző eszköztáron. A következő alkalmakkor az itt elhelyezett könyvjelzők nyílnak meg.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

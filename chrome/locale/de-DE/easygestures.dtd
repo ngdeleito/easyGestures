@@ -74,6 +74,8 @@
 <!ENTITY link.curTab "Link im aktiven Tab öffnen">
 <!ENTITY link.newTab "Link in neuem Tab öffnen">
 <!ENTITY link.newWindow "Link in neuem Fenster öffnen">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 <!ENTITY autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Verzögerung">
 <!ENTITY extras.menuType "Menü-Varianten">
@@ -130,4 +132,4 @@
 <!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
 <!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab.">
-<!ENTITY tip26 "Beim Ausführen der Aktion &apos;Tägliche Lektüre&apos; wird beim ersten Mal ein Lesezeichenordner namens *easyGestures* in der Lesezeichen-Symbolleiste angelegt und alle darin enthaltenen Lesezeichen werden geöffnet.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

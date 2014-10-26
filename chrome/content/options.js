@@ -648,6 +648,19 @@ function importPrefs() {
   }
 }
 
+function initializeDailyReadingsTree() {
+  var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
+                                 .getService(Components.interfaces.nsINavHistoryService);
+  var query = historyService.getNewQuery();
+  query.setFolders([PlacesUIUtils.allBookmarksFolderId], 1);
+  var options = historyService.getNewQueryOptions();
+  options.excludeItems = true;
+  
+  var tree = document.getElementById("dailyReadingsTree");
+  tree.load([query], options);
+  tree.selectItems([eGPrefs.getDailyReadingsFolderID()]);
+}
+
 function initMenuDialog() {
   window.setCursor('wait');
   
@@ -663,7 +676,10 @@ function initMenuDialog() {
         menulist.selectedIndex = menulist.itemCount - 1;
       }
       updateLabelAndTextboxFor(menulist);
-    });
+    }
+  );
+  
+  initializeDailyReadingsTree();
   
   updateUI();
   window.setCursor('auto');
@@ -752,6 +768,17 @@ function preparePreferenceValueForLoadURLScript(number) {
     "\u2022" + document.getElementById("loadURLScript_faviconCheck" + number).checked +
     "\u2022" + document.getElementById("loadURLScript_newIconCheck" + number).checked;
   return string;
+}
+
+function preparePreferenceValueForDailyReadings(aTreeElement) {
+  var currentTreeIndex = aTreeElement.view.selection.currentIndex;
+  if (currentTreeIndex === -1) {
+    // just return when there is no selection yet
+    return undefined;
+  }
+  else {
+    return aTreeElement.view.nodeForTreeIndex(currentTreeIndex).itemId;
+  }
 }
 
 function resetOnDuplicatedKeys(menulist, textbox) {

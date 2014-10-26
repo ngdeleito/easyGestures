@@ -74,6 +74,8 @@
 <!ENTITY link.curTab "Otvoriť odkaz na aktuálnej karte">
 <!ENTITY link.newTab "Otvoriť odkaz na novej karte">
 <!ENTITY link.newWindow "Otvoriť odkaz v novom okne">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 <!ENTITY autoscrolling "Automatický posun cez stred ponuky">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Oneskorenie">
 <!ENTITY extras.menuType "Typ ponuky">
@@ -130,4 +132,4 @@
 <!ENTITY tip20 "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">
 <!ENTITY tip21 "Namiesto pohybu &apos;Naspäť&apos; a &apos;Dopredu&apos; môžete prejsť na &apos;Predchádzajúcu stránku&apos; a &apos;Nasledujúcu stránku&apos;.">
 <!ENTITY tip22 "Akcia &apos;Otvoriť odkaz&apos; otvorí odkaz, na ktorý ukazujete, na novej karte.">
-<!ENTITY tip26 "Keď vykonáte akciu &apos;Denné čítanie&apos; po prvýkrát, vytvorí sa priečinok v záložkách s názvom *easyGestures* a všetky záložky, ktoré do tohto priečinka umiestnite, budú potom otvorené.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

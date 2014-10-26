@@ -99,6 +99,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "Open link in new Tab">
 <!ENTITY link.newWindow "Open link in new Window">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "Autoscrolling through pie menu center">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Delay">
 
@@ -163,4 +166,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
 <!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
 <!ENTITY tip22 "The 'Open Link' action will open the pointed link in a new tab.">
-<!ENTITY tip26 "When the 'Daily Readings' action is performed, a bookmarks folder named *easyGestures* is created the first time in the Bookmarks Toolbar and all bookmarks placed in it are then opened.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

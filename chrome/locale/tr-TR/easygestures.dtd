@@ -101,6 +101,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "Bağlantıyı Yeni Sekmede Aç">
 <!ENTITY link.newWindow "Bağlantıyı yeni pencerede aç">
 
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
+
 <!ENTITY autoscrolling "Kolay menü merkezi içinde otomatik kaydırma">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Gecikme">
 
@@ -165,4 +168,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Bir resim üzerindeki yakınlaştırma eylemi yalnızca o resim üzerinde gerçekleştirilecektir.">
 <!ENTITY tip21 "&apos;Önceki Site&apos; ve &apos;Sonraki Site&apos; eylemleriyle, sayfa sayfa ileri ya da geri gitmek yerine bunu siteler arasında gerçekleştirebilirsiniz.">
 <!ENTITY tip22 "&apos;Bağlantıyı Aç&apos; eylemi seçilen bağlantıyı yeni bir sekmede açacaktır.">
-<!ENTITY tip26 "&apos;Günlük Okumalar&apos; eylemi gerçekleştirildiğinde, Yer İmleri Araç Çubuğunda ilk seferinde *easyGestures* adında bir yer imi klasörü oluşturulur ve bunun içine yerleştirilmiş tüm yer imleri daha sonra açılır.">
+<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">

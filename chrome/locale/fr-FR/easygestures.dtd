@@ -98,6 +98,9 @@ END OF INSTRUCTIONS
 <!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
 <!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
 
+<!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
+<!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action :">
+
 <!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
 <!ENTITY autoscrolling.autoscrollingDelayLabel "Délai">
 
@@ -162,4 +165,4 @@ END OF INSTRUCTIONS
 <!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
 <!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet.">
-<!ENTITY tip26 "Quand l'action 'Lectures quotidiennes' est exécutée, un dossier de signets nommé *easyGestures* est créé la première fois dans la barre de signets et tous les signets qui y sont placés sont alors ouverts.">
+<!ENTITY tip26 "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets.|Choisissez un dossier dans &customizations;/&customizations.otherActions;">

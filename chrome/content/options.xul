@@ -35,6 +35,12 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
+
+<!-- the three lines below are used by the dailyReadings action -->
+<?xml-stylesheet href="chrome://browser/content/places/places.css" ?>
+<?xml-stylesheet href="chrome://browser/skin/places/places.css" ?>
+<?xul-overlay href="chrome://browser/content/places/placesOverlay.xul" ?>
+
 <!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
 <prefwindow
@@ -488,6 +494,7 @@
       <preference id="loadURLScript19" name="extensions.easygestures.customizations.loadURLScript19" type="unichar" />
       <preference id="loadURLScript20" name="extensions.easygestures.customizations.loadURLScript20" type="unichar" />
       <preference id="openLink" name="extensions.easygestures.customizations.openLink" type="string" />
+      <preference id="dailyReadingsFolderID" name="extensions.easygestures.customizations.dailyReadingsFolderID" type="int" />
     </preferences>
     <tabbox id="customizationsTabboxes">
       <tabs>
@@ -657,6 +664,25 @@
               <radio label="&link.newTab;" value="newTab" />
               <radio label="&link.newWindow;" value="newWindow" />
             </radiogroup>
+            
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            
+            <hbox align="center">
+              <image class="small_dailyReadings" />
+              <label value="&customizations.dailyReadings;" class="header" />
+            </hbox>
+            <label value="&customizations.dailyReadings.folderSelection;" />
+            <tree id="dailyReadingsTree" type="places" hidecolumnpicker="true"
+              rows="7" seltype="single" preference-editable="true"
+              preference="dailyReadingsFolderID"
+              onsynctopreference="return preparePreferenceValueForDailyReadings(this);"
+              onselect="fireChangeEventOn(this);">
+              <treecols>
+                <treecol id="title" flex="1" primary="true" hideheader="true" />
+              </treecols>
+              <treechildren />
+            </tree>
           </vbox>
         </tabpanel>
       </tabpanels>
