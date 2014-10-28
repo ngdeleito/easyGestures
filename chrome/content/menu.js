@@ -840,7 +840,7 @@ eG_menu.prototype = {
   },
   
   updateMenuSign : function(menuSign, layoutName, numberOfMenus) {
-    var layoutNumber = parseInt(layoutName.replace(/^\D*/, '0'), 10);
+    var layoutNumber = parseInt(layoutName.replace(/^\D*/, "0"), 10);
     layoutNumber = Math.min(layoutNumber, numberOfMenus - 1);
     var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
       numberOfMenus) % numberOfMenus;

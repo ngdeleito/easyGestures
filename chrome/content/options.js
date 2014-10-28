@@ -512,7 +512,7 @@ function attachMenupopup(menulist) {
 function browse(textboxid) {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
-  fp.init(window, 'easyGestures N', Components.interfaces.nsIFilePicker.modeOpen);
+  fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeOpen);
   //fp.appendFilter("Applications(*.exe,*.bat)","*.exe;*.bat");
   fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
   
@@ -526,7 +526,7 @@ function browse(textboxid) {
 function exportPrefs() {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
-  fp.init(window, 'easyGestures N', Components.interfaces.nsIFilePicker.modeSave);
+  fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeSave);
   fp.appendFilter("Preferences (*.ege)", "*.ege");
   var ret = fp.show();
   if (ret == Components.interfaces.nsIFilePicker.returnOK || ret == Components.interfaces.nsIFilePicker.returnReplace ) {
@@ -582,7 +582,7 @@ function exportPrefs() {
 function importPrefs() {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
-  fp.init(window, 'easyGestures N', Components.interfaces.nsIFilePicker.modeOpen);
+  fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeOpen);
   fp.appendFilter("Preferences (*.ege)","*.ege");
   
   var ret = fp.show();
@@ -662,7 +662,7 @@ function initializeDailyReadingsTree() {
 }
 
 function initMenuDialog() {
-  window.setCursor('wait');
+  window.setCursor("wait");
   
   eG_actionsPopupList = createActionsPopupList();
   createActions();
@@ -682,7 +682,7 @@ function initMenuDialog() {
   initializeDailyReadingsTree();
   
   updateUI();
-  window.setCursor('auto');
+  window.setCursor("auto");
 }
 
 function saveAllPreferences(element) {
@@ -805,8 +805,8 @@ function fireChangeEventOnLoadURLScript(number) {
 function fireChangeEventOn(element) {
   // firing a change event triggers XUL's preferences system to change the
   // value of the preference
-  var event = document.createEvent('Event');
-  event.initEvent('change', true, false);
+  var event = document.createEvent("Event");
+  event.initEvent("change", true, false);
   element.dispatchEvent(event);
 }
 
@@ -913,9 +913,9 @@ function updateUI() {
   //***************************************************
   
   for (i=1; i<=20; i++) { // loadURLScript 1 to 20
-    var collapse = ((document.getElementById('loadURLScript_type'+i).selectedItem == document.getElementById('URL'+i) ) ? true:false);
-    document.getElementById('loadURLScript_code'+i).collapsed = collapse;
-    document.getElementById('loadURLScript_host'+i).collapsed = !collapse;
+    var collapse = ((document.getElementById("loadURLScript_type"+i).selectedItem == document.getElementById("URL"+i) ) ? true:false);
+    document.getElementById("loadURLScript_code"+i).collapsed = collapse;
+    document.getElementById("loadURLScript_host"+i).collapsed = !collapse;
   }
   
   //***************************************************
@@ -923,8 +923,8 @@ function updateUI() {
   //***************************************************
   
   for (i=1; i<=20; i++) { // loadURLScript 1 to 20
-    var  checkbox = document.getElementById('loadURLScript_faviconCheck'+i);
-    if (document.getElementById('Script'+i).selected) {
+    var  checkbox = document.getElementById("loadURLScript_faviconCheck"+i);
+    if (document.getElementById("Script"+i).selected) {
       checkbox.checked = false;
       checkbox.collapsed = true;
     }
@@ -938,6 +938,6 @@ function updateUI() {
   //***************************************************
   
   for (i=1; i<=20; i++) { // loadURLScript 1 to 20
-    document.getElementById('loadURLScriptDisplay'+i).collapsed = !document.getElementById('loadURLScript_faviconCheck'+i).checked && !document.getElementById('loadURLScript_newIconCheck'+i).checked;
+    document.getElementById("loadURLScriptDisplay"+i).collapsed = !document.getElementById("loadURLScript_faviconCheck"+i).checked && !document.getElementById("loadURLScript_newIconCheck"+i).checked;
   }
 }

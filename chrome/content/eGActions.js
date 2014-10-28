@@ -123,7 +123,7 @@ function Action(name, action, startsNewGroup, nextAction) {
                  uri.path.substring(uri.path.lastIndexOf("/") + 1));
     
     if (file !== null) {
-      var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
+      var wbp = Components.classes["@mozilla.org/embedding/browser/nsWebBrowserPersist;1"]
                           .createInstance(Components.interfaces.nsIWebBrowserPersist);
       // don't save gzipped
       wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
@@ -530,7 +530,7 @@ var eGActions = {
                  document.title);
     
     if (file !== null) {
-      var wbp = Components.classes['@mozilla.org/embedding/browser/nsWebBrowserPersist;1']
+      var wbp = Components.classes["@mozilla.org/embedding/browser/nsWebBrowserPersist;1"]
                           .createInstance(Components.interfaces.nsIWebBrowserPersist);
       // don't save gzipped
       wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
