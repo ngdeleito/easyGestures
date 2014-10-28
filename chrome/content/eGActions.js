@@ -50,6 +50,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- OtherTabsExistDisableableAction
 //       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
+//       |-- DailyReadingsDisableableAction
 //       |-- DisableableCommandAction
 //       |-- ImageExistsDisableableAction
 
@@ -292,6 +293,50 @@ function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   }, startsNewGroup, nextAction);
 }
 LinkExistsDisableableAction.prototype = new DisableableAction();
+
+function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
+  var uris;
+  
+  function initializeURIsArrayWithContentsOfDailyReadingsFolder() {
+    function pushURIsContainedInFolder(resultNode) {
+      resultNode.containerOpen = true;
+      for (let i=0; i < resultNode.childCount; ++i) {
+        if (resultNode.getChild(i).type === 6) {
+          // the current child is a folder
+          let node = resultNode.getChild(i).QueryInterface(
+            Components.interfaces.nsINavHistoryContainerResultNode);
+          pushURIsContainedInFolder(node);
+        }
+        else if (resultNode.getChild(i).type === 0) {
+          // the current child is a bookmark (i.e. no folder, no separator)
+          uris.push(resultNode.getChild(i).uri);
+        }
+      }
+      resultNode.containerOpen = false;
+    }
+    
+    var historyService =
+      Components.classes["@mozilla.org/browser/nav-history-service;1"]
+                .getService(Components.interfaces.nsINavHistoryService);
+    var query = historyService.getNewQuery();
+    query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
+    var options = historyService.getNewQueryOptions();
+    var results = historyService.executeQuery(query, options);
+    
+    uris = [];
+    pushURIsContainedInFolder(results.root);
+  }
+  
+  DisableableAction.call(this, "dailyReadings", function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.loadTabs(uris, true, false);
+  }, function() {
+    var folderID = eGPrefs.getDailyReadingsFolderID();
+    initializeURIsArrayWithContentsOfDailyReadingsFolder();
+    return folderID === -1 || uris.length === 0;
+  }, startsNewGroup, nextAction);
+}
+DailyReadingsDisableableAction.prototype = new DisableableAction();
 
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
@@ -745,36 +790,7 @@ var eGActions = {
     this._saveContentFromLink(eGc.link, Components.interfaces.nsIFilePicker.filterHTML);
   }, false, "dailyReadings"),
   
-  dailyReadings : new Action("dailyReadings", function() {
-    function pushURIsContainedInFolder(resultNode) {
-      resultNode.containerOpen = true;
-      for (let i=0; i < resultNode.childCount; ++i) {
-        if (resultNode.getChild(i).type === 6) {
-          // the current child is a folder
-          let node = resultNode.getChild(i).QueryInterface(
-            Components.interfaces.nsINavHistoryContainerResultNode);
-          pushURIsContainedInFolder(node);
-        }
-        else if (resultNode.getChild(i).type === 0) {
-          // the current child is a bookmark (i.e. no folder, no separator)
-          uris.push(resultNode.getChild(i).uri);
-        }
-      }
-      resultNode.containerOpen = false;
-    }
-    
-    var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
-                                   .getService(Components.interfaces.nsINavHistoryService);
-    var query = historyService.getNewQuery();
-    query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
-    var options = historyService.getNewQueryOptions();
-    var results = historyService.executeQuery(query, options);
-    
-    var uris = [];
-    pushURIsContainedInFolder(results.root);
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadTabs(uris, true, false);
-  }, true, "bookmarkThisPage"),
+  dailyReadings : new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
   
   // useful links:
   // http://mxr.mozilla.org/mozilla-central/source/browser/components/places/
