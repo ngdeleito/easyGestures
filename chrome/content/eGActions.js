@@ -136,8 +136,8 @@ function Action(name, action, startsNewGroup, nextAction) {
   };
 }
 
-function EmptyAction() {
-  Action.call(this, "empty", function() {}, false, "showExtraMenu");
+function EmptyAction(startsNewGroup, nextAction) {
+  Action.call(this, "empty", function() {}, startsNewGroup, nextAction);
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
@@ -145,10 +145,10 @@ function EmptyAction() {
 }
 EmptyAction.prototype = new Action();
 
-function ShowExtraMenuAction() {
+function ShowExtraMenuAction(startsNewGroup, nextAction) {
   Action.call(this, "showExtraMenu", function() {
     eGm.showExtraMenu();
-  }, true, "back");
+  }, startsNewGroup, nextAction);
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("extraMenuActionName");
@@ -158,7 +158,7 @@ function ShowExtraMenuAction() {
 }
 ShowExtraMenuAction.prototype = new Action();
 
-function ReloadAction() {
+function ReloadAction(startsNewGroup, nextAction) {
   Action.call(this, "reload", function() { // reload or stop
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
@@ -169,7 +169,7 @@ function ReloadAction() {
     else {
       gBrowser.stop();
     }
-  }, false, "homepage");
+  }, startsNewGroup, nextAction);
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
@@ -360,9 +360,9 @@ ImageExistsDisableableAction.prototype = new DisableableAction();
 
 
 var eGActions = {
-  empty : new EmptyAction(),
+  empty : new EmptyAction(false, "showExtraMenu"),
   
-  showExtraMenu : new ShowExtraMenuAction(),
+  showExtraMenu : new ShowExtraMenuAction(true, "back"),
   
   back : new CanGoBackDisableableAction("back", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -414,7 +414,7 @@ var eGActions = {
     window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
   }, false, "reload"),
   
-  reload : new ReloadAction(),
+  reload : new ReloadAction(false, "homepage"),
   
   homepage : new Action("homepage", function() {
     var homepage = Services.prefs.getCharPref("browser.startup.homepage");
