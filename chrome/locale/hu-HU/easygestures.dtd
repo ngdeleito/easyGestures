@@ -23,7 +23,8 @@
 <!ENTITY contextmenu.image "Kép">
 <!ENTITY contextmenu.selection "Kijelölés">
 <!ENTITY contextmenu.textbox "Szövegdoboz">
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
@@ -95,18 +96,11 @@
 <!ENTITY move.key "Shift billentyű lenyomásával">
 <!ENTITY move.edge "a menü szélének elérésekor">
 <!ENTITY urlscript "'URL/szkript betöltése' művelet személyre szabása">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Szkript">
-<!ENTITY urlscript.name "Felbukkanó tipp">
-<!ENTITY urlscript.host "Kiszolgáló">
-<!ENTITY urlscript.code "Kód">
 <!ENTITY urlscript.load "URL-ek betöltése">
 <!ENTITY urlscript.curTab "az aktuális lapon">
 <!ENTITY urlscript.newTab "új lapon">
 <!ENTITY urlscript.newWindow "új ablakban">
-<!ENTITY urlscript.icon "Könyvjelzőikon használata">
 <!ENTITY urlscript.faviconNotFound "Könyvejelzőikon nincs meg. Keresés folytatása?">
-<!ENTITY changeIcon "Ikon megváltoztatása">
 <!ENTITY labelNewIcon "Új ikon">
 <!ENTITY duplicatekey.warning "Ez a billentyű már foglalt! Válassz egy másikat!">
 <!ENTITY tips "Tippek">
@@ -119,9 +113,9 @@
 <!ENTITY tip1 "Az alapbeállítások szerint a középső egérgomb nyitja meg a köralakú menüt (hacsak nem Mac felhasználó vagy). Az alapértelmezett egérgomb megváltoztatható.|Az egérgomb beállításai a &preferences;/&activation;/1. oldalon találhatóak.">
 <!ENTITY tip2 "A leggyorsabb módszer a menü használatára: nyomd le az egérgombot, húzd a kiválasztott funkció fölé, majd engedd fel a gombot. Vagyis ez valójában egy egérmozdulat, amelyhez grafikus felület tartozik.">
 <!ENTITY tip4 "Alapesetben ha nyitva van a menü és a jobb gombbal kattintasz, akkor megjelenik az alternatív funkciók listája: összesen három, teljesen személyre szabható beállítás között válthatsz így. Az alapértelmezett egérgomb megváltoztatható.|Az egérgomb beállításai a &preferences;/&activation;/1. oldalon találhatóak.">
-<!ENTITY tip5 "Az easyGestures megnyitja a kedvenc könyvjelzőidet, ha az &quot;URL/szkript betöltése&quot; funkcióknál beállítod őket, majd hozzáadod a köralakú menükhöz.|A beállításokat a &preferences;/&customizations;/&customizations.loadURLScriptActions; betöltése oldalon találod.">
+<!ENTITY tip5 "Az easyGestures megnyitja a kedvenc könyvjelzőidet, ha az &quot;URL betöltése&quot; funkcióknál beállítod őket, majd hozzáadod a köralakú menükhöz.|A beállításokat a &preferences;/&customizations;/&customizations.loadURLActions; betöltése oldalon találod.">
 <!ENTITY tip6 "Mindegyik menü kiosztását számos beépített funkcióval szabhatod személyre. A használati statisztikák segítenek a köralakú menü optimalizálásában.|Az egyes funkciók hozzáadásához vagy eltávolításához nyisd meg a &preferences;/&menus; oldalt.">
-<!ENTITY tip7 "Külső programokat vagy javascript kódot futtatthathatsz a &quot;Program futtatása&quot; és az &quot;URL/szkript betöltése&quot; funkciók segítségével. De például bármilyen Firefox API funkciót vagy egy másik kiegészítés egy funkcióját is meghívhatod ilyen módon.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Külső programokat vagy javascript kódot futtatthathatsz a &quot;Program futtatása&quot; és az &quot;szkript betöltése&quot; funkciók segítségével. De például bármilyen Firefox API funkciót vagy egy másik kiegészítés egy funkcióját is meghívhatod ilyen módon.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Ha elég gyorsan kattintasz a menü közepén keresztül egy hivatkozásra és közben nem mozdítod meg az egeret, akkor a hivatkozás megnyílik egy új lapon és egy piros jelet rak az oldalra a hivatkozás után.">
 <!ENTITY tip9 "A tartalomfüggő menü megjelenítéséhez nyomd le a Ctrl billentyűt mielőtt megnyitod a menüt. De akár állandósíthatod is a tartalomfüggő menü megjelenését.|A beállításokat keresd a &preferences;/&activation;/1. oldalon.">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

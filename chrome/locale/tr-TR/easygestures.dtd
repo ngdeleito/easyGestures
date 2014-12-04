@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Seçim">
 <!ENTITY contextmenu.textbox "Metin Kutusu">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Sıra yer tutucuları:&#37;s (seçim) ve &#37;u (mevcut URL)">
@@ -125,19 +126,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "Menü köşesine giderek">
 
 <!ENTITY urlscript "&quot;URL/Script Yükle&quot; Eylemini Kişiselleştir">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "Araç İpucu">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Kod">
 <!ENTITY urlscript.load "URL&apos;leri yükle">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "yeni Sekmede">
 <!ENTITY urlscript.newWindow "yeni Pencerede">
-<!ENTITY urlscript.icon "Sitenin Favori Simgesini Kullan">
 <!ENTITY urlscript.faviconNotFound "Favori simge henüz bulunamadı. Aramaya devam etmek ister misiniz?">
 
-<!ENTITY changeIcon "Simgeyi Değiştir">
 <!ENTITY labelNewIcon "Yeni Simge">
 
 <!ENTITY duplicatekey.warning "Bu tuş zaten kullanımda! Farklı bir tuş seçin.">
@@ -153,9 +147,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "Varsayılan olarak, kolay menüyü görüntüleyebilmek için farenizin orta tuşuna tıklamanız gerekir (Mac kullanıcısı değilseniz).|Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
 <!ENTITY tip2 "Kolay menüyü kullanmanın en hızlı yolu, fare tuşuna basılı tutup çalıştırılacak eylemin üzerine sürüklemek ve tuşu bırakmaktır. Bunu Grafik Kullanıcı Arayüzü ile yapılmış bir fare hareketi gibi düşünebilirsiniz.">
 <!ENTITY tip4 "Varsayılan olarak,kolay menü görüntülenirken sağ tıklamak alternatif eylemleri gösterecektir: tamamen kişiselleştirilebilir 3 farklı ekran görünümü arasında geçiş yapabilirsiniz. Varsayılan fare tuşu değiştirilebilir.|Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
-<!ENTITY tip5 "EasyGestures, &apos;URL/Script Yükle&apos; eylemlerini kişiselleştirerek ve sonra bunları kolay menü ekran görünümü içine ekleyerek sık kullandığınız yer imlerini açmak için kullanılabilir">
+<!ENTITY tip5 "EasyGestures, &apos;URL Yükle&apos; eylemlerini kişiselleştirerek ve sonra bunları kolay menü ekran görünümü içine ekleyerek sık kullandığınız yer imlerini açmak için kullanılabilir">
 <!ENTITY tip6 "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır.|Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
-<!ENTITY tip7 "&apos;Program Dosyasını Çalıştır&apos; ve &apos;URL/Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz. Örneğin, herhangi bir Firefox API işlevini ya da başka bir eklenti içindeki bir işlevi çalıştırabilirsiniz.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "&apos;Program Dosyasını Çalıştır&apos; ve &apos;Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz. Örneğin, herhangi bir Firefox API işlevini ya da başka bir eklenti içindeki bir işlevi çalıştırabilirsiniz.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Bir bağlantı üzerinde hareket etmeden yeterince hızlı bir kolay menü tıklaması, bağlantıyı yeni bir sekmede açacak ve sayfada bağlantının yanında kırmızı bir etiket görüntülenecektir.">
 <!ENTITY tip9 "İçerik hassasiyetini kolay menüyü açarken &apos;Ctrl&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

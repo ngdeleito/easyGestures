@@ -21,7 +21,8 @@
 <!ENTITY contextmenu.image "Grafik">
 <!ENTITY contextmenu.selection "Auswahl">
 <!ENTITY contextmenu.textbox "Textfeld">
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
@@ -93,18 +94,11 @@
 <!ENTITY move.key "durch Halten der Umschalttaste">
 <!ENTITY move.edge "bei Berühren der Menüränder">
 <!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
-<!ENTITY urlscript.url "Adresse">
-<!ENTITY urlscript.script "Skript">
-<!ENTITY urlscript.name "Tooltip">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Code">
 <!ENTITY urlscript.load "Adressen laden">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in neuem Tab">
 <!ENTITY urlscript.newWindow "in neuem Fenster">
-<!ENTITY urlscript.icon "Favicon der Website verwenden">
 <!ENTITY urlscript.faviconNotFound "Das Favicon wurde noch nicht gefunden. Suche fortsetzen?">
-<!ENTITY changeIcon "Symbol anpassen">
 <!ENTITY labelNewIcon "Neues Symbol">
 <!ENTITY duplicatekey.warning "Diese Taste ist bereits in Verwendung! Bitte eine andere Taste wählen.">
 <!ENTITY tips "Tipps">
@@ -117,9 +111,9 @@
 <!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden.|Maustaste unter &preferences;/&activation;">
 <!ENTITY tip2 "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
 <!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden.|Maustaste unter &preferences;/&activation;">
-<!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse/Skript laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen.|Aktion unter &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen.|Aktion unter &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren.|Aktionen unter &preferences;/&menus; hinzufügen oder entfernen">
-<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Adresse/Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab.">
 <!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren.|Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

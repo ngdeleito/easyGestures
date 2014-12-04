@@ -42,7 +42,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
 //  |-- ReloadAction
-//  |-- LoadURLScriptAction
+//  |-- LoadURLAction
+//  |-- RunScriptAction
 //  |-- DisableableAction
 //       ^
 //       |-- CanGoBackDisableableAction
@@ -184,43 +185,34 @@ function ReloadAction(startsNewGroup, nextAction) {
   };
 }
 
-function LoadURLScriptAction(number, startsNewGroup, nextAction) {
-  Action.call(this, "loadURLScript", function() {
-    var prefValue = eGPrefs.getLoadURLScriptPref(this._number);
-    var codetext = prefValue[1];
-    var isScript = prefValue[2];
-    var string = eGc.selection;
+function LoadURLAction(number, startsNewGroup, nextAction) {
+  Action.call(this, "loadURL", function() {
+    var prefValue = eGPrefs.getLoadURLPref(this._number);
+    var URL = prefValue[1];
+    var selection = eGc.selection;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
     
-    if (codetext !== "") {
-      if (string !== "") {
-        codetext = codetext.replace("%s", string);
+    if (URL !== "") {
+      if (selection !== "") {
+        URL = URL.replace("%s", selection);
       }
       var curURL = eGc.doc.URL; // get current URL
       if (curURL !== "") {
-        codetext = codetext.replace("%u", curURL);
+        URL = URL.replace("%u", curURL);
       }
     }
     
-    if (isScript === "true") {
-      var sandbox = Components.utils.Sandbox(window);
-      sandbox.window = window;
-      Components.utils.evalInSandbox(codetext, sandbox);
-    }
-    else {
-      var gBrowser = window.gBrowser;
-      
-      switch (eGm.loadURLin) {
-        case "curTab":
-          gBrowser.loadURI(codetext);
-          break;
-        case "newTab":
-          gBrowser.selectedTab = gBrowser.addTab(codetext);
-          break;
-        case "newWindow":
-          window.open(codetext);
-          break;
-      }
+    switch (eGm.loadURLin) {
+      case "curTab":
+        gBrowser.loadURI(URL);
+        break;
+      case "newTab":
+        gBrowser.selectedTab = gBrowser.addTab(URL);
+        break;
+      case "newWindow":
+        window.open(URL);
+        break;
     }
     return false; // avoid JavaScript Error
   }, startsNewGroup, nextAction);
@@ -228,21 +220,63 @@ function LoadURLScriptAction(number, startsNewGroup, nextAction) {
   this._number = number;
   
   this.getLabel = function() {
-    var prefValue = eGPrefs.getLoadURLScriptPref(this._number);
+    var prefValue = eGPrefs.getLoadURLPref(this._number);
     var label = prefValue[0];
     if (label !== "") {
       // if this action has already a label given by the user, then use it
       return label;
     }
     // otherwise use the default label
-    return eGc.localizing.getString(this._name) + " " + number;
+    return eGc.localizing.getString(this._name + this._number);
   };
   
   this.getXULLabel = function() {
     return document.getElementById("easyGesturesNStrings").getString(this._name + this._number);
   };
 }
-LoadURLScriptAction.prototype = new Action();
+LoadURLAction.prototype = new Action();
+
+function RunScriptAction(number, startsNewGroup, nextAction) {
+  Action.call(this, "runScript", function() {
+    var prefValue = eGPrefs.getRunScriptPref(this._number);
+    var script = prefValue[1];
+    var selection = eGc.selection;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    
+    if (script !== "") {
+      if (selection !== "") {
+        script = script.replace("%s", selection);
+      }
+      var curURL = eGc.doc.URL; // get current URL
+      if (curURL !== "") {
+        script = script.replace("%u", curURL);
+      }
+    }
+    
+    var sandbox = Components.utils.Sandbox(window);
+    sandbox.window = window;
+    Components.utils.evalInSandbox(script, sandbox);
+    return false; // avoid JavaScript Error
+  }, startsNewGroup, nextAction);
+  
+  this._number = number;
+  
+  this.getLabel = function() {
+    var prefValue = eGPrefs.getRunScriptPref(this._number);
+    var label = prefValue[0];
+    if (label !== "") {
+      // if this action has already a label given by the user, then use it
+      return label;
+    }
+    // otherwise use the default label
+    return eGc.localizing.getString(this._name + this._number);
+  };
+  
+  this.getXULLabel = function() {
+    return document.getElementById("easyGesturesNStrings").getString(this._name + this._number);
+  };
+}
+RunScriptAction.prototype = new Action();
 
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
@@ -859,47 +893,49 @@ var eGActions = {
   showDownloads : new Action("showDownloads", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.showPlacesOrganizer("Downloads");
-  }, false, "loadURLScript1"),
+  }, false, "loadURL1"),
   
-  loadURLScript1 : new LoadURLScriptAction(1, true, "loadURLScript2"),
+  loadURL1 : new LoadURLAction(1, true, "loadURL2"),
   
-  loadURLScript2 : new LoadURLScriptAction(2, false, "loadURLScript3"),
+  loadURL2 : new LoadURLAction(2, false, "loadURL3"),
   
-  loadURLScript3 : new LoadURLScriptAction(3, false, "loadURLScript4"),
+  loadURL3 : new LoadURLAction(3, false, "loadURL4"),
   
-  loadURLScript4 : new LoadURLScriptAction(4, false, "loadURLScript5"),
+  loadURL4 : new LoadURLAction(4, false, "loadURL5"),
   
-  loadURLScript5 : new LoadURLScriptAction(5, false, "loadURLScript6"),
+  loadURL5 : new LoadURLAction(5, false, "loadURL6"),
   
-  loadURLScript6 : new LoadURLScriptAction(6, false, "loadURLScript7"),
+  loadURL6 : new LoadURLAction(6, false, "loadURL7"),
   
-  loadURLScript7 : new LoadURLScriptAction(7, false, "loadURLScript8"),
+  loadURL7 : new LoadURLAction(7, false, "loadURL8"),
   
-  loadURLScript8 : new LoadURLScriptAction(8, false, "loadURLScript9"),
+  loadURL8 : new LoadURLAction(8, false, "loadURL9"),
   
-  loadURLScript9 : new LoadURLScriptAction(9, false, "loadURLScript10"),
+  loadURL9 : new LoadURLAction(9, false, "loadURL10"),
   
-  loadURLScript10 : new LoadURLScriptAction(10, false, "loadURLScript11"),
+  loadURL10 : new LoadURLAction(10, false, "runScript1"),
   
-  loadURLScript11 : new LoadURLScriptAction(11, false, "loadURLScript12"),
+  runScript1 : new RunScriptAction(1, false, "runScript2"),
   
-  loadURLScript12 : new LoadURLScriptAction(12, false, "loadURLScript13"),
+  runScript2 : new RunScriptAction(2, false, "runScript3"),
   
-  loadURLScript13 : new LoadURLScriptAction(13, false, "loadURLScript14"),
+  runScript3 : new RunScriptAction(3, false, "runScript4"),
   
-  loadURLScript14 : new LoadURLScriptAction(14, false, "loadURLScript15"),
+  runScript4 : new RunScriptAction(4, false, "runScript5"),
   
-  loadURLScript15 : new LoadURLScriptAction(15, false, "loadURLScript16"),
+  runScript5 : new RunScriptAction(5, false, "runScript6"),
   
-  loadURLScript16 : new LoadURLScriptAction(16, false, "loadURLScript17"),
+  runScript6 : new RunScriptAction(6, false, "runScript7"),
   
-  loadURLScript17 : new LoadURLScriptAction(17, false, "loadURLScript18"),
+  runScript7 : new RunScriptAction(7, false, "runScript8"),
   
-  loadURLScript18 : new LoadURLScriptAction(18, false, "loadURLScript19"),
+  runScript8 : new RunScriptAction(8, false, "runScript9"),
   
-  loadURLScript19 : new LoadURLScriptAction(19, false, "loadURLScript20"),
+  runScript9 : new RunScriptAction(9, false, "runScript10"),
   
-  loadURLScript20 : new LoadURLScriptAction(20, false, "copyImageLocation"),
+  runScript10 : new RunScriptAction(10, false, "copyImageLocation"),
+  
+  
   
   copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
     function() {

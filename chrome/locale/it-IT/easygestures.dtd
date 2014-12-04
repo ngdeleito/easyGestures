@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Selezione">
 <!ENTITY contextmenu.textbox "Riquadro di Testo">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Segnaposto per le Stringhe: &#37;s (selezione) e &#37;u (URL corrente).">
@@ -125,19 +126,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "Arrivando al bordo del Menu">
 
 <!ENTITY urlscript "Personalizza l'azione 'Carica URL/Script' ">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "Tooltip">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Codice">
 <!ENTITY urlscript.load "Carica URL">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in una nuova Linguetta">
 <!ENTITY urlscript.newWindow "in una nuova Finestra">
-<!ENTITY urlscript.icon "Usa la Favicon del Sito">
 <!ENTITY urlscript.faviconNotFound "Non ho ancora trovato la Favicon. Continuo la ricerca?">
 
-<!ENTITY changeIcon "Cambia Icona">
 <!ENTITY labelNewIcon "Nuova Icona">
 
 <!ENTITY duplicatekey.warning "Questo tasto è già in uso! Scegli un tasto diverso.">
@@ -153,9 +147,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "Per default, devi cliccare il tasto medio del mouse per mostrare il menu circolare (a meno che non sia un utente Mac). Il tasto di default può essere modificato.|Modifica il tasto del mouse in &preferences;/&activation;">
 <!ENTITY tip2 "Il modo più rapido di usare il menu circolare è di tenere premuto il tasto del mouse, trascinare sull'azione da eseguire, e lasciare il tasto. Puoi pensare a questo come a un gesto del mouse con una GUI.">
 <!ENTITY tip4 "Per default, cliccare il tasto destro del mouse mentre viene mostrato il menu mostrerà insiemi di azioni alternative: a rotazione, verranno mostrate 3 diverse configurazioni, completamente personalizzabili. Il tasto del mouse di default può essere modificato.|Modifica il tasto del mouse in &preferences;/&activation;">
-<!ENTITY tip5 "Puoi usare easyGestures per aprire i tuoi Segnalibri preferiti personalizzando le azioni 'Carica URL/Script' e poi aggiungendole al menu circolare.|Personalizza in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "Puoi usare easyGestures per aprire i tuoi Segnalibri preferiti personalizzando le azioni 'Carica URL' e poi aggiungendole al menu circolare.|Personalizza in &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Puoi personalizzare tutta la disposizione dei comandi del menu usando un gran numero di azioni predefinite. Ance le Statistiche d'uso aiutano ad ottimizzare il menu circolare.|Aggiungi o rimuovi azioni in &preferences;/&menus;">
-<!ENTITY tip7 "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica URL/Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Un click sufficientemente rapido del menu circolare su di un collegamento senza movimenti aprirà il collegamento in una nuova linguetta.">
 <!ENTITY tip9 "Puoi attivare la sensibilità al contesto premendo il tasto 'Ctrl' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva.|Modifica il comportamento in &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

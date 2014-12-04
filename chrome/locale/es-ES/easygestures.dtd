@@ -23,7 +23,8 @@
 <!ENTITY contextmenu.image "Imagen">
 <!ENTITY contextmenu.selection "Selección">
 <!ENTITY contextmenu.textbox "Cuadro de texto">
-<!ENTITY customizations.loadURLScriptActions "Acciones Cargar dirección/Script">
+<!ENTITY customizations.loadURLActions "Acciones Cargar dirección">
+<!ENTITY customizations.runScriptActions "Acciones ejectutar script">
 <!ENTITY customizations.otherActions "Otras acciones">
 <!ENTITY customizations.infoActions "Puede selecionar estas acciones en el panel '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
@@ -95,18 +96,11 @@
 <!ENTITY move.key "Pulsando la tecla Mayús">
 <!ENTITY move.edge "Al llegar al borde del menú">
 <!ENTITY urlscript "Personalizar acción &apos;Cargar dirección/Script&apos;">
-<!ENTITY urlscript.url "Dirección">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "Descripción">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Código">
 <!ENTITY urlscript.load "Cargar direcciones">
 <!ENTITY urlscript.curTab "en la pestaña actual">
 <!ENTITY urlscript.newTab "en una pestaña nueva">
 <!ENTITY urlscript.newWindow "en una ventana nueva">
-<!ENTITY urlscript.icon "Usar favicon del sitio">
 <!ENTITY urlscript.faviconNotFound "No se ha encontrado el favicon. ¿Continuar la búsqueda?">
-<!ENTITY changeIcon "Cambiar icono">
 <!ENTITY labelNewIcon "Icono nuevo">
 <!ENTITY duplicatekey.warning "Esta tecla ya está en uso. Elija otra diferente.">
 <!ENTITY tips "Consejos">
@@ -119,9 +113,9 @@
 <!ENTITY tip1 "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario Mac). Los botones por defecto del ratón pueden ser cambiados.|Cambie los botones a través de &preferences;/&activation;">
 <!ENTITY tip2 "La manera más rapida de usar el menú circular es mantener pulsado el ratón, moverse a la acción seleccionada y soltar el botón. Puede pensar en una especie de gesto del ratón con una interfaz gráfica.">
 <!ENTITY tip4 "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse.|Cambie los botones del ratón en &preferences;/&activation;">
-<!ENTITY tip5 "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección/Script&apos; y añadiéndolas en el menú circular.|Personalizar en &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección&apos; y añadiéndolas en el menú circular.|Personalizar en &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Puede personalizar todas las entradas del menú circular usando acciones pre-diseñadas. Las estadísticas de uso pueden ayudar a optimizar el menú circular.|Añada o elimine acciones desde &preferences;/&menus;">
-<!ENTITY tip7 "Puede ejecutar código Javascript usando las acciones &apos;Cargar Dirección/Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión.|Configure las acciones 'Cargar Dirección/Script' en &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Puede ejecutar código Javascript usando las acciones &apos;Ejecutar Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión.|Configure las acciones 'Ejecutar Script' en &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña.">
 <!ENTITY tip9 "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto.|Cambie el comportamiento en &preferences;/&activation;">
 <!ENTITY tip10 "Puede realizar una búsqueda con uno de sus motores de búsqueda con la acción 'Buscar en la Web'. Si hay texto seleccionado, la selección se copiará en el campo de búsquedas. Pulse 'Enter' para realizar la búsqueda.">

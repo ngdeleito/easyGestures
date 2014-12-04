@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Seleção">
 <!ENTITY contextmenu.textbox "Caixa de Texto">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Espaço reservado para strings: &#37;s (selection) and &#37;u (current URL).">
@@ -124,19 +125,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "Chegando a borda do menu">
 
 <!ENTITY urlscript "Personalizar Ação 'Carregar URL/Script' ">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "Dica">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Código">
 <!ENTITY urlscript.load "Carregar URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "em nova Aba">
 <!ENTITY urlscript.newWindow "em nova Janela">
-<!ENTITY urlscript.icon "Usar o Favicon do Site">
 <!ENTITY urlscript.faviconNotFound "Favicon ainda não encontrado. Continuar busca?">
 
-<!ENTITY changeIcon "Alterar Ícone">
 <!ENTITY labelNewIcon "Novo Ícone">
 
 <!ENTITY duplicatekey.warning "Esta tecla já está em uso! Escolha uma telca diferente.">
@@ -152,9 +146,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "Por padrão, você deve clicar o botão do meio do mouse para mostrar o menu de torta (a menos que você seja um usuário de Mac). O botão padrão do mouse pode ser alterado.|Altere o botão do mouse em &preferences;/&activation;">
 <!ENTITY tip2 "A maneira mais rápida de usar o menu de torta é pressionando o botão do mouse, arrastando até a ação a ser executada, e soltando o botão. Pense nele como se fosse um gesto do mouse com uma Interface Gráfica.">
 <!ENTITY tip4 "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado.|Altere o botão do mouse em &preferences;/&activation;">
-<!ENTITY tip5 "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL/Script' e então, adicionando-os nos leiautes do menu de torta.|Personalize em &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL' e então, adicionando-os nos leiautes do menu de torta.|Personalize em &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em &preferences;/&menus;">
-<!ENTITY tip7 "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar URL/Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba.">
 <!ENTITY tip9 "Você pode ativar senbilidade de contexto pressionando a tecla 'Ctrl' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada.|Altere o comportamento em &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

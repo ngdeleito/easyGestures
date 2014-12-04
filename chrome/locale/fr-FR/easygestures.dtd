@@ -39,7 +39,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Sélection">
 <!ENTITY contextmenu.textbox "Zone de texte">
 
-<!ENTITY customizations.loadURLScriptActions "Actions Charger URL/Script">
+<!ENTITY customizations.loadURLActions "Actions Charger URL">
+<!ENTITY customizations.runScriptActions "Actions exécuter script">
 <!ENTITY customizations.otherActions "Autres actions">
 <!ENTITY customizations.infoActions "Vous pouvez sélectionner ces actions dans le panneau '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
@@ -122,19 +123,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "En atteignant la bordure du menu">
 
 <!ENTITY urlscript "Personnaliser action 'Charger URL/Script' ">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "Infobulle">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Code">
 <!ENTITY urlscript.load "Charger les URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "dans nouvel onglet">
 <!ENTITY urlscript.newWindow "dans nouvelle fenêtre">
-<!ENTITY urlscript.icon "Utiliser favicône du site">
 <!ENTITY urlscript.faviconNotFound "Favicône non trouvée. Continuer recherche ?">
 
-<!ENTITY changeIcon "Changer icône">
 <!ENTITY labelNewIcon "Nouvelle icône">
 
 <!ENTITY duplicatekey.warning "Cette touche est déjà utilisée ! Choisissez une touche différente.">
@@ -150,9 +144,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé.|Changez bouton souris dans &preferences;/&activation;">
 <!ENTITY tip2 "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
 <!ENTITY tip4 "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé.|Changez bouton souris dans &preferences;/&activation;">
-<!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL/Script'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.|Ajoutez ou retirez actions dans &preferences;/&menus;">
-<!ENTITY tip7 "Vous pouvez exécuter du code Javascript avec les actions 'Charger URL/Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.|Personnalisez les actions 'Charger URL/Script' dans &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.|Personnalisez les actions 'Exécuter Script' dans &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
 <!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active.|Changez comportement dans &preferences;/&activation;">
 <!ENTITY tip10 "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">

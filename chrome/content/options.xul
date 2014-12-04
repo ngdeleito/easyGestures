@@ -473,32 +473,53 @@
     image="chrome://easygestures/content/customizations.png">
     <preferences>
       <preference id="loadURLin" name="extensions.easygestures.customizations.loadURLin" type="string" />
-      <preference id="loadURLScript1" name="extensions.easygestures.customizations.loadURLScript1" type="unichar" />
-      <preference id="loadURLScript2" name="extensions.easygestures.customizations.loadURLScript2" type="unichar" />
-      <preference id="loadURLScript3" name="extensions.easygestures.customizations.loadURLScript3" type="unichar" />
-      <preference id="loadURLScript4" name="extensions.easygestures.customizations.loadURLScript4" type="unichar" />
-      <preference id="loadURLScript5" name="extensions.easygestures.customizations.loadURLScript5" type="unichar" />
-      <preference id="loadURLScript6" name="extensions.easygestures.customizations.loadURLScript6" type="unichar" />
-      <preference id="loadURLScript7" name="extensions.easygestures.customizations.loadURLScript7" type="unichar" />
-      <preference id="loadURLScript8" name="extensions.easygestures.customizations.loadURLScript8" type="unichar" />
-      <preference id="loadURLScript9" name="extensions.easygestures.customizations.loadURLScript9" type="unichar" />
-      <preference id="loadURLScript10" name="extensions.easygestures.customizations.loadURLScript10" type="unichar" />
-      <preference id="loadURLScript11" name="extensions.easygestures.customizations.loadURLScript11" type="unichar" />
-      <preference id="loadURLScript12" name="extensions.easygestures.customizations.loadURLScript12" type="unichar" />
-      <preference id="loadURLScript13" name="extensions.easygestures.customizations.loadURLScript13" type="unichar" />
-      <preference id="loadURLScript14" name="extensions.easygestures.customizations.loadURLScript14" type="unichar" />
-      <preference id="loadURLScript15" name="extensions.easygestures.customizations.loadURLScript15" type="unichar" />
-      <preference id="loadURLScript16" name="extensions.easygestures.customizations.loadURLScript16" type="unichar" />
-      <preference id="loadURLScript17" name="extensions.easygestures.customizations.loadURLScript17" type="unichar" />
-      <preference id="loadURLScript18" name="extensions.easygestures.customizations.loadURLScript18" type="unichar" />
-      <preference id="loadURLScript19" name="extensions.easygestures.customizations.loadURLScript19" type="unichar" />
-      <preference id="loadURLScript20" name="extensions.easygestures.customizations.loadURLScript20" type="unichar" />
+      <preference type="unichar" id="loadURL1Pref"
+        name="extensions.easygestures.customizations.loadURL1" />
+      <preference type="unichar" id="loadURL2Pref"
+        name="extensions.easygestures.customizations.loadURL2" />
+      <preference type="unichar" id="loadURL3Pref"
+        name="extensions.easygestures.customizations.loadURL3" />
+      <preference type="unichar" id="loadURL4Pref"
+        name="extensions.easygestures.customizations.loadURL4" />
+      <preference type="unichar" id="loadURL5Pref"
+        name="extensions.easygestures.customizations.loadURL5" />
+      <preference type="unichar" id="loadURL6Pref"
+        name="extensions.easygestures.customizations.loadURL6" />
+      <preference type="unichar" id="loadURL7Pref"
+        name="extensions.easygestures.customizations.loadURL7" />
+      <preference type="unichar" id="loadURL8Pref"
+        name="extensions.easygestures.customizations.loadURL8" />
+      <preference type="unichar" id="loadURL9Pref"
+        name="extensions.easygestures.customizations.loadURL9" />
+      <preference type="unichar" id="loadURL10Pref"
+        name="extensions.easygestures.customizations.loadURL10" />
+      <preference type="unichar" id="runScript1Pref"
+        name="extensions.easygestures.customizations.runScript1" />
+      <preference type="unichar" id="runScript2Pref"
+        name="extensions.easygestures.customizations.runScript2" />
+      <preference type="unichar" id="runScript3Pref"
+        name="extensions.easygestures.customizations.runScript3" />
+      <preference type="unichar" id="runScript4Pref"
+        name="extensions.easygestures.customizations.runScript4" />
+      <preference type="unichar" id="runScript5Pref"
+        name="extensions.easygestures.customizations.runScript5" />
+      <preference type="unichar" id="runScript6Pref"
+        name="extensions.easygestures.customizations.runScript6" />
+      <preference type="unichar" id="runScript7Pref"
+        name="extensions.easygestures.customizations.runScript7" />
+      <preference type="unichar" id="runScript8Pref"
+        name="extensions.easygestures.customizations.runScript8" />
+      <preference type="unichar" id="runScript9Pref"
+        name="extensions.easygestures.customizations.runScript9" />
+      <preference type="unichar" id="runScript10Pref"
+        name="extensions.easygestures.customizations.runScript10" />
       <preference id="openLink" name="extensions.easygestures.customizations.openLink" type="string" />
       <preference id="dailyReadingsFolderID" name="extensions.easygestures.customizations.dailyReadingsFolderID" type="int" />
     </preferences>
     <tabbox id="customizationsTabboxes">
       <tabs>
-        <tab label="&customizations.loadURLScriptActions;" />
+        <tab label="&customizations.loadURLActions;" />
+        <tab label="&customizations.runScriptActions;" />
         <tab label="&customizations.otherActions;" id="otherActionsCustomizationsTab" />
       </tabs>
       <tabpanels>
@@ -527,121 +548,137 @@
             
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript1" preference-editable="true"
-              preference="loadURLScript1"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(1);">
+            <vbox id="loadURL1" preference-editable="true"
+              preference="loadURL1Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(1);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript2" preference-editable="true"
-              preference="loadURLScript2"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(2);">
+            <vbox id="loadURL2" preference-editable="true"
+              preference="loadURL2Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(2);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript3" preference-editable="true"
-              preference="loadURLScript3"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(3);">
+            <vbox id="loadURL3" preference-editable="true"
+              preference="loadURL3Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(3);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript4" preference-editable="true"
-              preference="loadURLScript4"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(4);">
-            </vbox>
-            <vbox id="gr_loadURLScript5" preference-editable="true"
-              preference="loadURLScript5"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(5);">
+            <vbox id="loadURL4" preference-editable="true"
+              preference="loadURL4Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(4);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript6" preference-editable="true"
-              preference="loadURLScript6"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(6);">
+            <vbox id="loadURL5" preference-editable="true"
+              preference="loadURL5Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(5);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript7" preference-editable="true"
-              preference="loadURLScript7"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(7);">
+            <vbox id="loadURL6" preference-editable="true"
+              preference="loadURL6Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(6);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript8" preference-editable="true"
-              preference="loadURLScript8"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(8);">
+            <vbox id="loadURL7" preference-editable="true"
+              preference="loadURL7Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(7);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript9" preference-editable="true"
-              preference="loadURLScript9"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(9);">
+            <vbox id="loadURL8" preference-editable="true"
+              preference="loadURL8Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(8);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript10" preference-editable="true"
-              preference="loadURLScript10"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(10);">
+            <vbox id="loadURL9" preference-editable="true"
+              preference="loadURL9Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(9);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript11" preference-editable="true"
-              preference="loadURLScript11"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(11);">
+            <vbox id="loadURL10" preference-editable="true"
+              preference="loadURL10Pref"
+              onsynctopreference="return preparePreferenceValueForLoadURL(10);">
+            </vbox>
+          </vbox>
+        </tabpanel>
+        <tabpanel>
+          <vbox flex="1" style="height: 480px; overflow: auto">
+            <hbox align="start">
+              <image class="message-icon" style="height: 1.5em; width: auto" />
+              <vbox>
+                <label value="&customizations.infoActions;" />
+                <label value="&customizations.infoPlaceholders;" />
+              </vbox>
+            </hbox>
+            
+            <separator orient="horizontal" style="height: 2em" />
+            
+            <separator orient="horizontal" class="thin" />
+            <menuseparator />
+            <vbox id="runScript1" preference-editable="true"
+              preference="runScript1Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(1);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript12" preference-editable="true"
-              preference="loadURLScript12"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(12);">
+            <vbox id="runScript2" preference-editable="true"
+              preference="runScript2Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(2);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript13" preference-editable="true"
-              preference="loadURLScript13"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(13);">
+            <vbox id="runScript3" preference-editable="true"
+              preference="runScript3Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(3);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript14" preference-editable="true"
-              preference="loadURLScript14"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(14);">
+            <vbox id="runScript4" preference-editable="true"
+              preference="runScript4Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(4);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript15" preference-editable="true"
-              preference="loadURLScript15"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(15);">
+            <vbox id="runScript5" preference-editable="true"
+              preference="runScript5Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(5);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript16" preference-editable="true"
-              preference="loadURLScript16"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(16);">
+            <vbox id="runScript6" preference-editable="true"
+              preference="runScript6Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(6);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript17" preference-editable="true"
-              preference="loadURLScript17"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(17);">
+            <vbox id="runScript7" preference-editable="true"
+              preference="runScript7Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(7);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript18" preference-editable="true"
-              preference="loadURLScript18"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(18);">
+            <vbox id="runScript8" preference-editable="true"
+              preference="runScript8Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(8);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript19" preference-editable="true"
-              preference="loadURLScript19"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(19);">
+            <vbox id="runScript9" preference-editable="true"
+              preference="runScript9Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(9);">
             </vbox>
             <separator orient="horizontal" class="thin" />
             <menuseparator />
-            <vbox id="gr_loadURLScript20" preference-editable="true"
-              preference="loadURLScript20"
-              onsynctopreference="return preparePreferenceValueForLoadURLScript(20);">
+            <vbox id="runScript10" preference-editable="true"
+              preference="runScript10Pref"
+              onsynctopreference="return preparePreferenceValueForRunScript(10);">
             </vbox>
           </vbox>
         </tabpanel>
@@ -708,15 +745,6 @@
   <script type="application/x-javascript">
     var eG_duplicateKeyMessage = "&duplicatekey.warning;";
     var eG_faviconNotFound = "&urlscript.faviconNotFound;";
-    var customizationsLabels = {
-      urlscriptCode: "&urlscript.code;",
-      urlscriptHost: "&urlscript.host;",
-      urlscriptURL: "&urlscript.url;",
-      urlscriptScript: "&urlscript.script;",
-      urlscriptName: "&urlscript.name;",
-      urlscriptIcon: "&urlscript.icon;",
-      changeIcon: "&changeIcon;"
-    };
   </script>
   <script type="application/x-javascript" src="options.js" />
 </prefwindow>

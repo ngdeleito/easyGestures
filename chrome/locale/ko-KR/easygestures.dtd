@@ -38,7 +38,8 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY contextmenu.image "이미지">
 <!ENTITY contextmenu.selection "선택">
 <!ENTITY contextmenu.textbox "문서상자">
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
@@ -110,18 +111,11 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY move.key "Shift 키를 누를 경우">
 <!ENTITY move.edge "메뉴 모서리에 닿을 경우">
 <!ENTITY urlscript "'URL/스크립트 불러오기' 동작 사용자 지정">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "스크립트">
-<!ENTITY urlscript.name "툴팁">
-<!ENTITY urlscript.host "호스트">
-<!ENTITY urlscript.code "코드">
 <!ENTITY urlscript.load "URL 불러오기">
 <!ENTITY urlscript.curTab "현재 탭으로">
 <!ENTITY urlscript.newTab "새 탭으로">
 <!ENTITY urlscript.newWindow "새 창으로">
-<!ENTITY urlscript.icon "사이트 파비콘 사용">
 <!ENTITY urlscript.faviconNotFound "파비콘을 찾을수 없습니다. 다시 검색할까요?">
-<!ENTITY changeIcon "아이콘 변경">
 <!ENTITY labelNewIcon "새 아이콘">
 <!ENTITY duplicatekey.warning "이 키는 이미 사용중입니다! 다른 키를 선택하세요.">
 <!ENTITY tips "팁">
@@ -134,9 +128,9 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY tip1 "기본값에선 마우스의 가운데 버튼을 클릭해 원형 메뉴를 표시하게 되어 있습니다(Mac 유저는 제외).|선택사항/행동/페이지 1 내 마우스 버튼 변경">
 <!ENTITY tip2 "원형 메뉴를 사용하는 가장 빠른 방법은 우선 마우스 버튼을 누른 후 실행하고 싶은 동작까지 드래그 하고 나서 놓으세요. GUI와 함께 마우스 동작을 생각할 수 있을 것입니다.">
 <!ENTITY tip4 "기본값으로, 원형 메뉴가 표시되어 있는 중에 오른쪽 클릭하면, 3가지의 자유롭게 설정 가능한 대체 메뉴로의 변경할 수 있게 되어 있습니다. 기본 마우스 버튼은 변경할 수가 있습니다.|선택사항/행동/페이지1 내에서 마우스 버튼 변경">
-<!ENTITY tip5 "&apos;URL/스크립트의 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다.|선택사항/사용자 최적화/URL/스크립트의 읽기 내에서 사용자 최적화">
+<!ENTITY tip5 "&apos;URL 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다.|선택사항/사용자 최적화/URL 읽기 내에서 사용자 최적화">
 <!ENTITY tip6 "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다.|선택사항/동작 내에서 동작 추가 또는 삭제">
-<!ENTITY tip7 "&apos;프로그램 파일 실행&apos;와&apos;URL/스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "&apos;프로그램 파일 실행&apos;와&apos;스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
 <!ENTITY tip9 "파이 메뉴를 열 때에 &apos;Ctrl&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

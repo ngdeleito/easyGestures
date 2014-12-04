@@ -49,7 +49,7 @@ var tips = [
   new tipEntry(6,  "empty",               "",               "0"),
   new tipEntry(7,  "empty",               "",               "0"),
   new tipEntry(8,  "bookmarksOnlyLayout", "customizations", "0"),
-  new tipEntry(9,  "programsAndScripts",  "customizations", "0"),
+  new tipEntry(9,  "programsAndScripts",  "customizations", "1"),
   new tipEntry(10, "contextual",          "activation",     "0"),
   new tipEntry(11, "suppressMenu",        "",               "0"),
   new tipEntry(12, "moveMenu",            "",               "0"),
@@ -58,7 +58,7 @@ var tips = [
   new tipEntry(15, "empty",               "behavior",       "0"),
   new tipEntry(16, "empty",               "",               "0"),
   new tipEntry(17, "empty",               "",               "0"),
-  new tipEntry(18, "empty",               "customizations", "1")
+  new tipEntry(18, "empty",               "customizations", "2")
 ];
 
 var tipNbr;

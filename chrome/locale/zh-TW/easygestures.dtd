@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "選取區">
 <!ENTITY contextmenu.textbox "文字區塊">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "字串 &#37;s（選取區）和 &#37;u（現在的網址）">
@@ -124,19 +125,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "游標在選單邊緣時">
 
 <!ENTITY urlscript "自訂「載入網址／Script」動作">
-<!ENTITY urlscript.url "網址">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "名稱">
-<!ENTITY urlscript.host "網址">
-<!ENTITY urlscript.code "程式碼">
 <!ENTITY urlscript.load "載入網址">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "在新分頁">
 <!ENTITY urlscript.newWindow "在新視窗">
-<!ENTITY urlscript.icon "使用網站圖示">
 <!ENTITY urlscript.faviconNotFound "沒有找到網站圖示。繼續搜尋？">
 
-<!ENTITY changeIcon "更換圖示">
 <!ENTITY labelNewIcon "新的圖示">
 
 <!ENTITY duplicatekey.warning "這個按鍵已經被使用，請選擇另一個不同的按鍵！">
@@ -152,9 +146,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "預設中你可以擊點滑鼠中鍵來開啟圓餅選單（除非你是Mac使用者）。這個預設鍵是可以更改的。|改變滑鼠按鍵 &preferences;/&activation;">
 <!ENTITY tip2 "使用圓餅選單最快速的方法是按著滑鼠按鍵，把游標拖曳到執行的動作圖示上後放開滑鼠按鍵。你可以想成是有圖形介面的滑鼠手勢。">
 <!ENTITY tip4 "預設在圓餅選單顯示時擊點滑鼠右鍵將會顯示替換動作，最多可有三組自訂圓餅選單循環切換。這個預設切換鍵是可以更改的。|改變滑鼠按鍵 &preferences;/&activation;">
-<!ENTITY tip5 "你可以使用 easyGestures ，設定「載入網址／Script」這個動作在你的圓餅選單上來開啟你喜愛的書籤。|設定動作 &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "你可以使用 easyGestures ，設定「載入網址」這個動作在你的圓餅選單上來開啟你喜愛的書籤。|設定動作 &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。|新增或移除動作 &preferences;/&menus;">
-<!ENTITY tip7 "你可以用「執行程式」和「載入網址／Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "你可以用「執行程式」和「載入Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。例如，你可以呼叫任何Firefox的API函數或另一個擴充套件內函數。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">
 <!ENTITY tip9 "你可以在開啟圓餅選單時，點選「Ctrl」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

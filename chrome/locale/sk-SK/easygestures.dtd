@@ -21,7 +21,8 @@
 <!ENTITY contextmenu.image "Obrázok">
 <!ENTITY contextmenu.selection "Výber">
 <!ENTITY contextmenu.textbox "Textové pole">
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Náhrady reťazcov: &#37;s (výber) a &#37;u (aktuálna URL).">
@@ -93,18 +94,11 @@
 <!ENTITY move.key "Stlačením klávesu Shift">
 <!ENTITY move.edge "Pomocou rohov ponuky">
 <!ENTITY urlscript "Prispôsobiť akcie &apos;Načítať URL/Skript&apos;">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Skript">
-<!ENTITY urlscript.name "Popis">
-<!ENTITY urlscript.host "Hostiteľ">
-<!ENTITY urlscript.code "Kód">
 <!ENTITY urlscript.load "Načítať URL adresy">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "na novej karte">
 <!ENTITY urlscript.newWindow "v novom okne">
-<!ENTITY urlscript.icon "Použiť ikonu stránky">
 <!ENTITY urlscript.faviconNotFound "Ikona stránky nebola nájdená. Pokračovať v hľadaní?">
-<!ENTITY changeIcon "Zmeniť ikonu">
 <!ENTITY labelNewIcon "Nová ikona">
 <!ENTITY duplicatekey.warning "Tento kláves je už použitý! Vyberte iný kláves.">
 <!ENTITY tips "Tipy">
@@ -117,9 +111,9 @@
 <!ENTITY tip1 "Prednastavené zobrazenie ponuky je pomocou stlačenia stredného tlačidla myši (pokiaľ nie ste používateľ Macu). Toto môže byť zmenené v ponuke &preferences;/&activation;">
 <!ENTITY tip2 "Najrýchlejší spôsob na použitie ponuky je stlačiť a podržať tlačidlo myši, ťahať kurzor na akciu, ktorú chcete vybrať a uvoľniť tlačidlo. Môžete to brať ako gesto myšou s GUI.">
 <!ENTITY tip4 "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v &preferences;/&activation;">
-<!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL/Skript&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v &preferences;/&menus;">
-<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať URL/Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
 <!ENTITY tip9 "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

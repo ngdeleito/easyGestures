@@ -64,7 +64,7 @@ var eGPrefs = {
     var menus = {
       main:             "showExtraMenu/pageTop/nextTab/bookmarkThisPage/backSite/firstPage/closeTab/reload/back/newTab",
       mainAlt1:         "showExtraMenu/duplicateTab/forward/pinUnpinTab/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
-      mainAlt2:         "showExtraMenu/loadURLScript1/loadURLScript2/loadURLScript8/loadURLScript3/loadURLScript4/loadURLScript5/loadURLScript9/loadURLScript6/loadURLScript7",
+      mainAlt2:         "showExtraMenu/loadURL1/loadURL2/runScript1/loadURL3/loadURL4/loadURL5/runScript2/loadURL6/loadURL7",
       extra:            "searchWeb/toggleFindBar/bookmarkThisPage/empty/empty/empty/empty/empty/homepage/reload",
       extraAlt1:        "toggleFullscreen/empty/newPrivateWindow/empty/empty/empty/empty/empty/quit/restart",
       extraAlt2:        "zoomIn/zoomOut/zoomReset/empty/empty/empty/empty/empty/printPage/savePageAs",
@@ -132,9 +132,14 @@ var eGPrefs = {
     
     var string = Components.classes["@mozilla.org/supports-string;1"]
                            .createInstance(Components.interfaces.nsISupportsString);
-    for (let i=1; i<=20; i++) {
-      string.data = "\u2022\u2022false\u2022\u2022false\u2022false"; // name, text, isScript, newIconPath, favicon, newIcon: '•' is the separator
-      this._prefs.setComplexValue("customizations.loadURLScript" + i, Components.interfaces.nsISupportsString, string); // complex value used here to support non-ascii characters
+    for (let i=1; i<=10; i++) {
+      string.data = "\u2022\u2022false";
+      this._prefs.setComplexValue("customizations.loadURL" + i,
+        Components.interfaces.nsISupportsString, string);
+      
+      string.data = "\u2022\u2022";
+      this._prefs.setComplexValue("customizations.runScript" + i,
+        Components.interfaces.nsISupportsString, string);
     }
     
     this._prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
@@ -176,8 +181,13 @@ var eGPrefs = {
     return !this._prefs.getBoolPref("behavior.largeMenu");
   },
   
-  getLoadURLScriptPref : function(anInteger) {
-    return this._prefs.getComplexValue("customizations.loadURLScript" + anInteger,
+  getLoadURLPref : function(anInteger) {
+    return this._prefs.getComplexValue("customizations.loadURL" + anInteger,
+      Components.interfaces.nsISupportsString).data.split("\u2022");
+  },
+  
+  getRunScriptPref : function(anInteger) {
+    return this._prefs.getComplexValue("customizations.runScript" + anInteger,
       Components.interfaces.nsISupportsString).data.split("\u2022");
   },
   
@@ -407,6 +417,90 @@ var eGPrefs = {
   },
   
   updateToV4_8: function() {
+    var numberOfLoadURLActions = 0;
+    var numberOfRunScriptActions = 0;
+    var nonMigratedActions = [];
+    
+    function writePref(prefs, actionName, prefArray) {
+      var string = Components.classes["@mozilla.org/supports-string;1"]
+                       .createInstance(Components.interfaces.nsISupportsString);
+      string.data = prefArray.join("\u2022");
+      prefs.setComplexValue("customizations." + actionName,
+                            Components.interfaces.nsISupportsString, string);
+    }
+    
+    function replaceActionInMenus(prefs, originalAction, newAction) {
+      var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+        "extraAlt2", "contextLink", "contextImage", "contextSelection",
+        "contextTextbox"];
+      
+      menuNames.forEach(function(menuName) {
+        let actionsString = prefs.getCharPref("menus." + menuName);
+        actionsString = actionsString.replace(originalAction, newAction);
+        prefs.setCharPref("menus." + menuName, actionsString);
+      });
+    }
+    
+    function replaceActionInStats(prefs, originalAction, newAction) {
+      var actionsStats = JSON.parse(prefs.getCharPref("stats.actions"));
+      if (newAction !== undefined) {
+        actionsStats[newAction] = actionsStats[originalAction];
+      }
+      delete actionsStats[originalAction];
+      prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+    }
+    
+    var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
+    for (let i=1; i <= 10; ++i) {
+      writePref(this._prefs, "loadURL" + i, ["", "", "false"]);
+      writePref(this._prefs, "runScript" + i, ["", "", ""]);
+      actionsStats["loadURL" + i] = 0;
+      actionsStats["runScript" + i] = 0;
+    }
+    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+    
+    for (let i=1; i <= 20; ++i) {
+      let originalAction = "loadURLScript" + i;
+      let pref = this._prefs.getComplexValue("customizations." + originalAction,
+                  Components.interfaces.nsISupportsString).data.split("\u2022");
+      if (pref[2] === "true") {
+        if (numberOfRunScriptActions < 10) {
+          ++numberOfRunScriptActions;
+          let newAction = "runScript" + numberOfRunScriptActions;
+          writePref(this._prefs, newAction, [pref[0], pref[1], pref[3]]);
+          replaceActionInMenus(this._prefs, originalAction, newAction);
+          replaceActionInStats(this._prefs, originalAction, newAction);
+        }
+        else {
+          nonMigratedActions.push(pref.join("\u2022"));
+          replaceActionInMenus(this._prefs, originalAction, "empty");
+          replaceActionInStats(this._prefs, originalAction);
+        }
+      }
+      else if (pref[2] === "false") {
+        if (numberOfLoadURLActions < 10) {
+          ++numberOfLoadURLActions;
+          let newAction = "loadURL" + numberOfLoadURLActions;
+          writePref(this._prefs, newAction, [pref[0], pref[1], pref[4]]);
+          replaceActionInMenus(this._prefs, originalAction, newAction);
+          replaceActionInStats(this._prefs, originalAction, newAction);
+        }
+        else {
+          nonMigratedActions.push(pref.join("\u2022"));
+          replaceActionInMenus(this._prefs, originalAction, "empty");
+          replaceActionInStats(this._prefs, originalAction);
+        }
+      }
+      this._prefs.deleteBranch("customizations." + originalAction);
+    }
+    if (nonMigratedActions.length > 0) {
+      let message = "The customizations below for the former loadURLScript " +
+        "actions could not be migrated to the new version of easyGestures N. " +
+        "Please copy/paste them now not to lose them.\n\n" +
+        nonMigratedActions.join("\n");
+      Services.prompt.alert(null, "easyGestures N v4.8", message);
+    }
+    
     this._prefs.deleteBranch("customizations.dailyReadingsFolder");
     this._prefs.setIntPref("customizations.dailyReadingsFolderID", -1);
   }

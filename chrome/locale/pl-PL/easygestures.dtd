@@ -21,7 +21,8 @@
 <!ENTITY contextmenu.image "Obrazek">
 <!ENTITY contextmenu.selection "Zaznaczenie">
 <!ENTITY contextmenu.textbox "Pole tekstowe">
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
@@ -93,18 +94,11 @@
 <!ENTITY move.key "naciskając klawisz [ Shift ]">
 <!ENTITY move.edge "łapiąc krawędź menu">
 <!ENTITY urlscript "Dostosuj akcję &quot;Otwórz url/skrypt&quot; ">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Skrypt">
-<!ENTITY urlscript.name "Nazwa">
-<!ENTITY urlscript.host "Serwer">
-<!ENTITY urlscript.code "Kod">
 <!ENTITY urlscript.load "Otwieraj witryny w:">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "nowej karcie">
 <!ENTITY urlscript.newWindow "nowym oknie">
-<!ENTITY urlscript.icon "Użyj favicony strony">
 <!ENTITY urlscript.faviconNotFound "Nie znaleziono favicony. Kontynuować szukanie?">
-<!ENTITY changeIcon "Zmień ikonę">
 <!ENTITY labelNewIcon "Nowa ikona">
 <!ENTITY duplicatekey.warning "Ten klawisz został już użyty! Wybierz inny.">
 <!ENTITY tips "Podpowiedzi">
@@ -117,9 +111,9 @@
 <!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia.|Zmień przycisk myszy w &preferences;/&activation;">
 <!ENTITY tip2 "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
 <!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane.|Zmień działanie przycisków myszy w &preferences;/&activation;">
-<!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL/Skrypt\u0022 do menu Centrum.|Dostosuj działanie menu w &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL\u0022 do menu Centrum.|Dostosuj działanie menu w &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum.|Dodaj lub usuń akcje w &preferences;/&menus;">
-<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz url/skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
 <!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum.|Zmień działanie w &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

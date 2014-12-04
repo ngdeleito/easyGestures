@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "選択範囲">
 <!ENTITY contextmenu.textbox "テキストボックス">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "書式指定子: &#37;s (選択文字列) と &#37;u (現在の URL).">
@@ -124,19 +125,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "メニューの端から">
 
 <!ENTITY urlscript "'URL/スクリプトの読み込み'アクションの設定">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "スクリプト">
-<!ENTITY urlscript.name "ツールチップでの表示名">
-<!ENTITY urlscript.host "ホスト">
-<!ENTITY urlscript.code "コード">
 <!ENTITY urlscript.load "次の場所で URL の読み込み">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "新しいタブに">
 <!ENTITY urlscript.newWindow "新しいウィンドウに">
-<!ENTITY urlscript.icon "サイトのファビコンを使う">
 <!ENTITY urlscript.faviconNotFound "ファビコンがまだ見つかりません。検索を続けますか？">
 
-<!ENTITY changeIcon "アイコンの変更">
 <!ENTITY labelNewIcon "新しいアイコン">
 
 <!ENTITY duplicatekey.warning "このキーは既に使っています！他のキーを選んでください。">
@@ -152,9 +146,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "初期設定では、マウスの中央ボタンをクリックして、パイメニューを表示するようになっています(Mac ユーザは除く)。|マウスボタンの設定を変更する &preferences;/&activation;">
 <!ENTITY tip2 "手早くパイメニューを使う方法もあります。まずマウスボタンを押し、実行したいアクションまでドラッグしてから、放してみてください。GUI の付いたマウスジェスチャとしても使えるということです。">
 <!ENTITY tip4 "初期設定では、パイメニューの表示中に右クリックすることで、3つの自由に設定可能な代替メニューを切り替えるようになっています。使うボタンは変更することができます。|マウスボタンの設定を変更する &preferences;/&activation;">
-<!ENTITY tip5 "'URL/スクリプトの読み込み' アクションに URL を設定してパイメニューに配置すると、easyGestures からお好きなブックマークを開くこともできます。|設定を変更する &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "'URL/スクリプトの読み込み' アクションに URL を設定してパイメニューに配置すると、easyGestures からお好きなブックマークを開くこともできます。|設定を変更する &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。|アクションを入れ替える &preferences;/&menus;">
-<!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。例えば、Firefox の API や他の拡張機能に含まれる、どんな関数でも呼び出すことができます。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
 <!ENTITY tip9 "パイメニューを開く時に Ctrl キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

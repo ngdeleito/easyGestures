@@ -32,226 +32,253 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-function setLabels() {
-  for (var i=1; i <= 20; i++) {
-    // loadURLScript 1 to 20
-    document.getElementById("loadURLScript_Label" + i).value =
-      (document.getElementById("loadURLScript_type"+i).selectedItem==document.getElementById("Script"+i))? customizationsLabels.urlscriptCode : customizationsLabels.urlscriptHost;
+function addEventListenerToTooltip(element, actionName) {
+  element.addEventListener("change", function(event) {
+    updateOtherLabels(actionName, this.value);
+    fireChangeEventOnElementWithID(actionName);
+  }, false);
+}
+
+function addEventListenerToLoadURLURL(element, actionName) {
+  element.addEventListener("change", function(event) {
+    if (document.getElementById(actionName + "_faviconCheckbox").checked) {
+      addFavicon(this.value, actionName);
+    }
+    fireChangeEventOnElementWithID(actionName);
+  }, false);
+}
+
+function addEventListenerToLoadURLFavicon(element, actionName) {
+  element.addEventListener("command", function(event) {
+    if (this.checked) {
+      addFavicon(document.getElementById(actionName + "_URL").value,
+                      actionName);
+    }
+    else {
+      document.getElementById(actionName + "_favicon").src = "";
+    }
+    fireChangeEventOnElementWithID(actionName);
+  }, false);
+}
+
+function addEventListenerToRunScriptCode(element, actionName) {
+  element.addEventListener("change", function(event) {
+    fireChangeEventOnElementWithID(actionName);
+  }, false);
+}
+
+function retrieveCustomIconFile(actionName) {
+  var fp = Components.classes["@mozilla.org/filepicker;1"]
+                     .createInstance(Components.interfaces.nsIFilePicker);
+  fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
+  fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
+  
+  var returnValue = fp.show();
+  var returnedOK = returnValue === Components.interfaces.nsIFilePicker.returnOK;
+  if (returnedOK) {
+    document.getElementById(actionName + "_newIcon").src = "file://" +
+      fp.file.path;
   }
+  return returnedOK;
 }
 
-function addEventListenerToLoadURLScriptName(element, actionNumber) {
-  element.addEventListener("change", function(event) {
-    updateOtherLabels("loadURLScript" + actionNumber, this.value);
-    fireChangeEventOnLoadURLScript(actionNumber);
-  }, false);
-}
-
-function addEventListenerToLoadURLScriptType(element, actionNumber) {
-  element.addEventListener("command", function(event) {
-    updateUI();
-    fireChangeEventOnLoadURLScript(actionNumber);
-  }, false);
-}
-
-function addEventListenerToLoadURLScriptHost(element, actionNumber) {
-  element.addEventListener("change", function(event) {
-    if (document.getElementById("loadURLScript_faviconCheck" + actionNumber).checked) {
-      retrieveFavicon(this.value, actionNumber);
-    }
-    fireChangeEventOnLoadURLScript(actionNumber);
-  }, false);
-}
-
-function addEventListenerToLoadURLScriptCode(element, actionNumber) {
-  element.addEventListener("change", function(event) {
-    fireChangeEventOnLoadURLScript(actionNumber);
-  }, false);
-}
-
-function addEventListenerToLoadURLScriptFavicon(element, actionNumber) {
+function addEventListenerToRunScriptNewIcon(element, actionName) {
   element.addEventListener("command", function(event) {
     if (this.checked) {
-      let faviconURL = document.getElementById("loadURLScript_host" + actionNumber).value;
-      retrieveFavicon(faviconURL, actionNumber);
-      document.getElementById("loadURLScript_newIconCheck" + actionNumber).checked = false;
+      this.checked = retrieveCustomIconFile(actionName);
     }
-    updateUI();
-    fireChangeEventOnLoadURLScript(actionNumber);
+    else {
+      document.getElementById(actionName + "_newIcon").src = "";
+    }
+    fireChangeEventOnElementWithID(actionName);
   }, false);
 }
 
-function addEventListenerToLoadURLScriptNewIcon(element, actionNumber) {
-  element.addEventListener("command", function(event) {
-    if (this.checked) {
-      document.getElementById("loadURLScript_faviconCheck" + actionNumber).checked = false;
-    }
-    updateUI();
-    fireChangeEventOnLoadURLScript(actionNumber);
-  }, false);
+function createHeaderForAction(actionName) {
+  var hbox = document.createElement("hbox");
+  hbox.setAttribute("align", "center");
+  
+  var image = document.createElement("image");
+  image.setAttribute("class", "small_" + actionName);
+  hbox.appendChild(image);
+  
+  var label = document.createElement("label");
+  label.setAttribute("value",
+    document.getElementById("easyGesturesNStrings").getString(actionName));
+  label.setAttribute("style", "font-weight: bold;");
+  hbox.appendChild(label);
+  
+  return hbox;
 }
 
-function addEventListenerToNewIconImage(element, actionNumber) {
-  element.addEventListener("click", function(event) {
-    if (document.getElementById("loadURLScript_newIconCheck" + actionNumber).checked) {
-      retrieveCustomIconFile(actionNumber);
-      fireChangeEventOnLoadURLScript(actionNumber);
-    }
-  }, false);
+function createTooltipRowForAction(actionName) {
+  var row = document.createElement("row");
+  row.setAttribute("align", "center");
+  
+  var label = document.createElement("label");
+  label.setAttribute("value", document.getElementById("easyGesturesNStrings")
+                                      .getString("customizations.tooltip"));
+  row.appendChild(label);
+  
+  var textbox = document.createElement("textbox");
+  textbox.setAttribute("id", actionName + "_tooltip");
+  textbox.setAttribute("maxlength", "20");
+  textbox.setAttribute("maxwidth", "220");
+  addEventListenerToTooltip(textbox, actionName);
+  row.appendChild(textbox);
+  
+  return row;
 }
 
-function createLoadURLScriptForCustomization() {
-  for (var i=1; i <= 20; i++) {
-    // loadURLScript 1 to 20
-    var groupbox = document.getElementById("gr_loadURLScript" + i);
-    
-    // empty groupbox if needed first
-    if (groupbox.hasChildNodes()) {
-      while (groupbox.lastChild !== null) {
-        groupbox.removeChild(groupbox.lastChild);
-      }
+function createLoadURLActions() {
+  for (var i=1; i <= 10; ++i) {
+    var actionName = "loadURL" + i;
+    var vbox = document.getElementById(actionName);
+    while (vbox.firstChild !== null) {
+      vbox.removeChild(vbox.firstChild);
     }
     
-    //////////////////////////////////////////////////////////
-    // header
-    //////////////////////////////////////////////////////////
+    vbox.appendChild(createHeaderForAction(actionName));
     
-    var titleNode = document.createElement("hbox");
-    titleNode.setAttribute("align", "center");
+    var separator = document.createElement("separator");
+    separator.setAttribute("class", "thin");
+    vbox.appendChild(separator);
     
-    var image = document.createElement("image");
-    image.setAttribute("id", "loadURLScriptImg");
-    image.setAttribute("class", "small_loadURLScript" + i);
-    titleNode.appendChild(image);
+    var grid = document.createElement("grid");
+    var columns = document.createElement("columns");
+    columns.appendChild(document.createElement("column"));
+    columns.appendChild(document.createElement("column"));
+    grid.appendChild(columns);
+    
+    var rows = document.createElement("rows");
+    rows.appendChild(createTooltipRowForAction(actionName));
+    
+    var row = document.createElement("row");
+    row.setAttribute("align", "center");
     
     var label = document.createElement("label");
-    label.setAttribute("value", customizationsLabels.urlscriptURL + "/" + customizationsLabels.urlscriptScript + " " + i);
-    label.setAttribute("style", "font-weight: bold;");
-    titleNode.appendChild(label);
+    label.setAttribute("value", document.getElementById("easyGesturesNStrings")
+                                        .getString("customizations.URL"));
+    row.appendChild(label);
+    
+    var textbox = document.createElement("textbox");
+    textbox.setAttribute("id", actionName + "_URL");
+    textbox.setAttribute("size", "50");
+    addEventListenerToLoadURLURL(textbox, actionName);
+    row.appendChild(textbox);
+    rows.appendChild(row);
+    
+    row = document.createElement("row");
+    row.setAttribute("align", "center");
+    
+    row.appendChild(document.createElement("hbox"));
     
     var hbox = document.createElement("hbox");
-    hbox.setAttribute("id", "loadURLScriptDisplay" + i);
     hbox.setAttribute("align", "center");
-    titleNode.appendChild(hbox);
     
-    label = document.createElement("label");
-    label.setAttribute("value", " - ");
-    hbox.appendChild(label);
+    var checkbox = document.createElement("checkbox");
+    checkbox.setAttribute("id", actionName + "_faviconCheckbox");
+    checkbox.setAttribute("label",
+      document.getElementById("easyGesturesNStrings")
+              .getString("customizations.useFavicon"));
+    addEventListenerToLoadURLFavicon(checkbox, actionName);
+    hbox.appendChild(checkbox);
     
-    image = document.createElement("image");
-    image.setAttribute("id", "loadURLScript_newIcon" + i);
+    separator = document.createElement("separator");
+    separator.setAttribute("orient", "vertical");
+    separator.setAttribute("class", "thin");
+    hbox.appendChild(separator);
+    
+    var image = document.createElement("image");
+    image.setAttribute("id", actionName + "_favicon");
     image.setAttribute("src", "");
     image.setAttribute("maxwidth", "20");
     image.setAttribute("maxheight", "20");
     hbox.appendChild(image);
     
-    groupbox.appendChild(titleNode);
+    row.appendChild(hbox);
+    rows.appendChild(row);
+    grid.appendChild(rows);
+    vbox.appendChild(grid);
+    
+    readLoadURLPreference(actionName);
+  }
+}
+
+function createRunScriptActions() {
+  for (var i=1; i <= 10; ++i) {
+    var actionName = "runScript" + i;
+    var vbox = document.getElementById(actionName);
+    while (vbox.firstChild !== null) {
+      vbox.removeChild(vbox.firstChild);
+    }
+    
+    vbox.appendChild(createHeaderForAction(actionName));
     
     var separator = document.createElement("separator");
     separator.setAttribute("class", "thin");
-    groupbox.appendChild(separator);
-    
-    //////////////////////////////////////////////////////////
-    // options
-    //////////////////////////////////////////////////////////
-    
-    hbox = document.createElement("hbox");
-    hbox.setAttribute("flex", "1");
-    groupbox.appendChild(hbox);
-    
-    var vbox = document.createElement("vbox");
-    hbox.appendChild(vbox);
-    
-    var spacer = document.createElement("spacer");
-    spacer.setAttribute("height", "3");
-    vbox.appendChild(spacer);
-    
-    label = document.createElement("label");
-    label.setAttribute("value", customizationsLabels.urlscriptName);
-    vbox.appendChild(label);
-    
-    spacer = document.createElement("spacer");
-    spacer.setAttribute("height", "10");
-    vbox.appendChild(spacer);
-    
-    label = document.createElement("label");
-    label.setAttribute("id", "loadURLScript_Label" + i);
-    label.setAttribute("value", "");
-    vbox.appendChild(label);
-    
-    vbox = document.createElement("vbox");
-    vbox.setAttribute("flex", "1");
-    hbox.appendChild(vbox);
-    
-    hbox = document.createElement("hbox");
-    vbox.appendChild(hbox);
-    
-    var textbox = document.createElement("textbox");
-    textbox.setAttribute("id", "loadURLScript_name" + i);
-    addEventListenerToLoadURLScriptName(textbox, i);
-    textbox.setAttribute("size", "21");
-    textbox.setAttribute("maxlength", "20");
-    hbox.appendChild(textbox);
-    
-    var radiogroup = document.createElement("radiogroup");
-    radiogroup.setAttribute("id", "loadURLScript_type" + i);
-    radiogroup.setAttribute("orient", "horizontal");
-    addEventListenerToLoadURLScriptType(radiogroup, i);
-    hbox.appendChild(radiogroup);
-    
-    var radio = document.createElement("radio");
-    radio.setAttribute("id", "URL" + i);
-    radio.setAttribute("label", customizationsLabels.urlscriptURL);
-    radiogroup.appendChild(radio);
-    
-    radio = document.createElement("radio");
-    radio.setAttribute("id", "Script" + i);
-    radio.setAttribute("label", customizationsLabels.urlscriptScript);
-    radiogroup.appendChild(radio);
-    
-    var stack = document.createElement("stack");
-    vbox.appendChild(stack);
-    
-    textbox = document.createElement("textbox");
-    textbox.setAttribute("id", "loadURLScript_host" + i);
-    textbox.setAttribute("size", "30");
-    addEventListenerToLoadURLScriptHost(textbox, i);
-    stack.appendChild(textbox);
-    
-    textbox = document.createElement("textbox");
-    textbox.setAttribute("id", "loadURLScript_code" + i);
-    textbox.setAttribute("size", "30");
-    textbox.setAttribute("multiline", "true");
-    textbox.setAttribute("rows", "6");
-    addEventListenerToLoadURLScriptCode(textbox, i);
-    stack.appendChild(textbox);
-    
-    separator = document.createElement("separator");
-    separator.setAttribute("class", "thin");
     vbox.appendChild(separator);
     
-    hbox = document.createElement("hbox");
+    var grid = document.createElement("grid");
+    var columns = document.createElement("columns");
+    columns.appendChild(document.createElement("column"));
+    columns.appendChild(document.createElement("column"));
+    grid.appendChild(columns);
+    
+    var rows = document.createElement("rows");
+    rows.appendChild(createTooltipRowForAction(actionName));
+    
+    var row = document.createElement("row");
+    row.setAttribute("align", "baseline");
+    
+    var label = document.createElement("label");
+    label.setAttribute("value", document.getElementById("easyGesturesNStrings")
+                                        .getString("customizations.code"));
+    row.appendChild(label);
+    
+    var textbox = document.createElement("textbox");
+    textbox.setAttribute("id", actionName + "_code");
+    textbox.setAttribute("multiline", "true");
+    textbox.setAttribute("cols", "50");
+    textbox.setAttribute("rows", "7");
+    addEventListenerToRunScriptCode(textbox, actionName);
+    row.appendChild(textbox);
+    rows.appendChild(row);
+    
+    row = document.createElement("row");
+    row.setAttribute("align", "center");
+    
+    row.appendChild(document.createElement("hbox"));
+    
+    var hbox = document.createElement("hbox");
     hbox.setAttribute("align", "center");
-    vbox.appendChild(hbox);
     
     var checkbox = document.createElement("checkbox");
-    checkbox.setAttribute("id", "loadURLScript_faviconCheck" + i);
-    checkbox.setAttribute("label", customizationsLabels.urlscriptIcon);
-    addEventListenerToLoadURLScriptFavicon(checkbox, i);
+    checkbox.setAttribute("id", actionName + "_newIconCheckbox");
+    checkbox.setAttribute("label",
+      document.getElementById("easyGesturesNStrings")
+              .getString("customizations.changeIcon"));
+    addEventListenerToRunScriptNewIcon(checkbox, actionName);
     hbox.appendChild(checkbox);
     
-    checkbox = document.createElement("checkbox");
-    checkbox.setAttribute("id", "loadURLScript_newIconCheck" + i);
-    checkbox.setAttribute("label", customizationsLabels.changeIcon);
-    addEventListenerToLoadURLScriptNewIcon(checkbox, i);
-    hbox.appendChild(checkbox);
+    separator = document.createElement("separator");
+    separator.setAttribute("orient", "vertical");
+    separator.setAttribute("class", "thin");
+    hbox.appendChild(separator);
     
-    image = document.createElement("image");
-    image.setAttribute("src", "chrome://easygestures/content/browse.png");
-    addEventListenerToNewIconImage(image, i);
+    var image = document.createElement("image");
+    image.setAttribute("id", actionName + "_newIcon");
+    image.setAttribute("src", "");
+    image.setAttribute("maxwidth", "20");
+    image.setAttribute("maxheight", "20");
     hbox.appendChild(image);
     
-    readLoadURLScriptPreference(i);
+    row.appendChild(hbox);
+    rows.appendChild(row);
+    grid.appendChild(rows);
+    vbox.appendChild(grid);
+    
+    readRunScriptPreference(actionName);
   }
 }
 
@@ -392,43 +419,11 @@ var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"]
                          .getBranch("extensions.easygestures.");
 var eG_actionsPopupList;
 
-function retrieveFavicon(url, actionNumber) {
-  if (url !== "") {
-    if (url.match(/\:\/\//i) === null) {
-      url = "http://" + url;
-    }
-    
-    var faviconService = Components
-                           .classes["@mozilla.org/browser/favicon-service;1"]
-                           .getService(Components.interfaces.mozIAsyncFavicons);
-    var ios = Components.classes["@mozilla.org/network/io-service;1"]
-                        .getService(Components.interfaces.nsIIOService);
-    var uri = ios.newURI(url, null, null).prePath;
-    
-    faviconService.getFaviconURLForPage(ios.newURI(uri, null, null), function(aURI) {
-      if (aURI !== null && aURI.spec !== "") {
-        document.getElementById("loadURLScript_newIcon" + actionNumber).src = aURI.spec;
-      }
-      else {
-        document.getElementById("loadURLScript_newIcon" + actionNumber).src = "";
-        document.getElementById("loadURLScriptDisplay" + actionNumber).collapsed = true;
-        document.getElementById("loadURLScript_faviconCheck" + actionNumber).checked = false;
-      }
-    });
-  }
-}
-
-function retrieveCustomIconFile(actionNumber) {
-  var fp = Components.classes["@mozilla.org/filepicker;1"]
-                     .createInstance(Components.interfaces.nsIFilePicker);
-  fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
-  fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
-  
-  var returnValue = fp.show();
-  if (returnValue == Components.interfaces.nsIFilePicker.returnOK) {
-    var img = document.getElementById("loadURLScript_newIcon" + actionNumber);
-    img.src = "file://" + fp.file.path;
-  }
+function addFavicon(url, actionName) {
+  retrieveFavicon(url, function(aURI) {
+    document.getElementById(actionName + "_favicon").src =
+      aURI !== null ? aURI.spec : "";
+  });
 }
 
 function preventCloseOnEnter(event) {
@@ -481,15 +476,6 @@ function actionClick(item) {
   item.parentNode.parentNode.setAttribute("actionName", actionName);
   if (actionName === "empty") {
     item.parentNode.parentNode.setAttribute("label", "");
-  }
-  
-  if (item.firstChild.getAttribute("class").search("loadURLScript") != -1) {
-    var n = item.firstChild.getAttribute("class").replace(/([^0-9])+/g,"");
-    var label = document.getElementById("loadURLScript_name" + n).value;
-    if (label === "") {
-      label = eGActions[actionName].getXULLabel();
-    }
-    item.parentNode.parentNode.setAttribute("label", label);
   }
 }
 
@@ -666,7 +652,8 @@ function initMenuDialog() {
   
   eG_actionsPopupList = createActionsPopupList();
   createActions();
-  createLoadURLScriptForCustomization();
+  createLoadURLActions();
+  createRunScriptActions();
   
   ["showButton", "showAltButton", "suppressKey", "contextKey"].forEach(
     function (element, index, array) {
@@ -736,37 +723,48 @@ function preparePreferenceValueForExtraMenu(name) {
   return result.join("/");
 }
 
-function readLoadURLScriptPreference(number) {
-  var preference = document.getElementById("loadURLScript" + number);
+function readLoadURLPreference(actionName) {
+  var preference = document.getElementById(actionName + "Pref");
   var string = preference.value.split("\u2022");
   
-  document.getElementById("loadURLScript_name" + number).value = string[0];
-  if (string[2] === "true") {
-    document.getElementById("loadURLScript_code" + number).value = string[1];
+  document.getElementById(actionName + "_tooltip").value = string[0];
+  document.getElementById(actionName + "_URL").value = string[1];
+  var isFaviconEnabled = string[2] === "true";
+  document.getElementById(actionName + "_faviconCheckbox").checked =
+    isFaviconEnabled;
+  if (isFaviconEnabled) {
+    addFavicon(string[1], actionName);
   }
-  else {
-    document.getElementById("loadURLScript_host" + number).value = string[1];
-  }
-  document.getElementById("loadURLScript_type" + number).selectedItem =
-    document.getElementById((string[2] === "true" ? "Script" : "URL") + number);
-  document.getElementById("loadURLScript_newIcon" + number).src = string[3];
-  document.getElementById("loadURLScript_faviconCheck" + number).checked =
-    string[4] === "true";
-  document.getElementById("loadURLScript_newIconCheck" + number).checked =
-    string[5] === "true";
 }
 
-function preparePreferenceValueForLoadURLScript(number) {
+function preparePreferenceValueForLoadURL(number) {
+  var actionName = "loadURL" + number;
   var string = Components.classes["@mozilla.org/supports-string;1"]
                        .createInstance(Components.interfaces.nsISupportsString);
-  string.data = document.getElementById("loadURLScript_name" + number).value +
-    "\u2022" + (document.getElementById("URL" + number).selected ?
-                 document.getElementById("loadURLScript_host" + number).value
-               : document.getElementById("loadURLScript_code" + number).value) +
-    "\u2022" + document.getElementById("Script" + number).selected +
-    "\u2022" + document.getElementById("loadURLScript_newIcon" + number).src +
-    "\u2022" + document.getElementById("loadURLScript_faviconCheck" + number).checked +
-    "\u2022" + document.getElementById("loadURLScript_newIconCheck" + number).checked;
+  string.data = document.getElementById(actionName + "_tooltip").value +
+    "\u2022" + document.getElementById(actionName + "_URL").value +
+    "\u2022" + document.getElementById(actionName + "_faviconCheckbox").checked;
+  return string;
+}
+
+function readRunScriptPreference(actionName) {
+  var preference = document.getElementById(actionName + "Pref");
+  var string = preference.value.split("\u2022");
+  
+  document.getElementById(actionName + "_tooltip").value = string[0];
+  document.getElementById(actionName + "_code").value = string[1];
+  document.getElementById(actionName + "_newIconCheckbox").checked =
+   string[2] !== "";
+  document.getElementById(actionName + "_newIcon").src = string[2];
+}
+
+function preparePreferenceValueForRunScript(number) {
+  var actionName = "runScript" + number;
+  var string = Components.classes["@mozilla.org/supports-string;1"]
+                       .createInstance(Components.interfaces.nsISupportsString);
+  string.data = document.getElementById(actionName + "_tooltip").value +
+    "\u2022" + document.getElementById(actionName + "_code").value +
+    "\u2022" + document.getElementById(actionName + "_newIcon").src;
   return string;
 }
 
@@ -797,8 +795,8 @@ function fireChangeEventOnActionsGroup(name) {
   fireChangeEventOn(element);
 }
 
-function fireChangeEventOnLoadURLScript(number) {
-  var element = document.getElementById("gr_loadURLScript" + number);
+function fireChangeEventOnElementWithID(id) {
+  var element = document.getElementById(id);
   fireChangeEventOn(element);
 }
 
@@ -901,43 +899,4 @@ function updateUI() {
   document.getElementById("autoscrollingDelayLabel").disabled = !checking;
   document.getElementById("autoscrollingDelayValue").disabled = !checking;
   document.getElementById("autoscrollingDelayUnit").disabled = !checking;
-  
-  //***************************************************
-  // displaying correct label for Load URL/Script
-  //***************************************************
-  
-  setLabels();
-  
-  //***************************************************
-  // displaying correct textarea for Load URL/Script
-  //***************************************************
-  
-  for (i=1; i<=20; i++) { // loadURLScript 1 to 20
-    var collapse = ((document.getElementById("loadURLScript_type"+i).selectedItem == document.getElementById("URL"+i) ) ? true:false);
-    document.getElementById("loadURLScript_code"+i).collapsed = collapse;
-    document.getElementById("loadURLScript_host"+i).collapsed = !collapse;
-  }
-  
-  //***************************************************
-  // Hiding/unhidding favicon check box for loadURLScript actions
-  //***************************************************
-  
-  for (i=1; i<=20; i++) { // loadURLScript 1 to 20
-    var  checkbox = document.getElementById("loadURLScript_faviconCheck"+i);
-    if (document.getElementById("Script"+i).selected) {
-      checkbox.checked = false;
-      checkbox.collapsed = true;
-    }
-    else {
-      checkbox.collapsed = false;
-    }
-  }
-  
-  //***************************************************
-  // Hiding New Icon
-  //***************************************************
-  
-  for (i=1; i<=20; i++) { // loadURLScript 1 to 20
-    document.getElementById("loadURLScriptDisplay"+i).collapsed = !document.getElementById("loadURLScript_faviconCheck"+i).checked && !document.getElementById("loadURLScript_newIconCheck"+i).checked;
-  }
 }

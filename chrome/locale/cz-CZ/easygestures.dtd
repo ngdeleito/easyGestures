@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Výběr">
 <!ENTITY contextmenu.textbox "Textové pole">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
@@ -125,19 +126,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "Pomocí rohů nabídky">
 
 <!ENTITY urlscript "Přizpůsobit akce &apos;Načíst URL/Skript&apos;">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Skript">
-<!ENTITY urlscript.name "Popis">
-<!ENTITY urlscript.host "Hostiteľ">
-<!ENTITY urlscript.code "Kód">
 <!ENTITY urlscript.load "Načíst URL adresy">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "v novém panelu">
 <!ENTITY urlscript.newWindow "v novém okně">
-<!ENTITY urlscript.icon "Použít ikonu stránky">
 <!ENTITY urlscript.faviconNotFound "Ikona stránky nebyla nalezena. Pokračovat v hledání?">
 
-<!ENTITY changeIcon "Změnit ikonu">
 <!ENTITY labelNewIcon "Nová ikona">
 
 <!ENTITY duplicatekey.warning "Tato klávesa je již použita! Vyberte jinou klávesu.">
@@ -153,9 +147,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "Přednastavené zobrazení nabídky je pomocí stisku prostředního tlačítka myši (pokud nejste uživatel Macu). Toto můžete změnit v nabídce Možnosti/Chování">
 <!ENTITY tip2 "Nejrychlejší způsob použití nabídky je stisknout a podržet tlačítko myši, přesunout kurzor na akci, kterou chcete vybrat a uvolnit tlačítko. Můžete to brát jako gesto myši s GUI.">
 <!ENTITY tip4 "Stiskněte pravé tlačítko myši, pokud je zobrazená nabídka a zobrazí se alternativní akce. Můžete přepínat mezi 3 různými plně upravitelnými rozloženími akcí. Předdefinované tlačítko si můžete změnit. Tlačítko myši změníte v Možnosti/Chování">
-<!ENTITY tip5 "Můžete použít easyGetures k otevření vašich oblíbených položek upravením akce &apos;Načíst URL/Skript&apos; a přidáním do rozložení v kruhové nabídce. Přizpůsobíte si to v Možnosti/Přizpůsobení/Načíst URL/Skript">
+<!ENTITY tip5 "Můžete použít easyGetures k otevření vašich oblíbených položek upravením akce &apos;Načíst URL&apos; a přidáním do rozložení v kruhové nabídce. Přizpůsobíte si to v Možnosti/Přizpůsobení/Načíst URL">
 <!ENTITY tip6 "Můžete si přizpůsobit kruhovou nabídku výběrem z mnoha předdefinovaných akcí. Statistika použití Vám pomůže optimalizovat kruhovou nabídku. Akce přidáte anebo odstraníte v Možnosti/Akce">
-<!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst URL/Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku.">
+<!ENTITY tip7 "Můžete spustit externí aplikaci a kód JavaScriptu pomocí akcí &apos;Spustit program&apos; a &apos;Načíst Skript&apos;. Můžete například zavolat libovolnou funkci Firefox API anebo funkci uvnitř jiného doplňku.">
 <!ENTITY tip8 "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
 <!ENTITY tip9 "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Ctrl&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

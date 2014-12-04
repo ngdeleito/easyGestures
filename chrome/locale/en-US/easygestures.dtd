@@ -39,7 +39,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "Selection">
 <!ENTITY contextmenu.textbox "Textbox">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "String placeholders: &#37;s (selection) and &#37;u (current URL)">
@@ -123,19 +124,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "By reaching menu edge">
 
 <!ENTITY urlscript "Customize 'Load URL/Script' Actions ">
-<!ENTITY urlscript.url "URL">
-<!ENTITY urlscript.script "Script">
-<!ENTITY urlscript.name "Tooltip">
-<!ENTITY urlscript.host "Host">
-<!ENTITY urlscript.code "Code">
 <!ENTITY urlscript.load "Load URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in new Tab">
 <!ENTITY urlscript.newWindow "in new Window">
-<!ENTITY urlscript.icon "Use Site Favicon">
 <!ENTITY urlscript.faviconNotFound "Favicon not found yet. Continue search?">
 
-<!ENTITY changeIcon "Change Icon">
 <!ENTITY labelNewIcon "New Icon">
 
 <!ENTITY duplicatekey.warning "This key is already in use ! Choose a different key.">
@@ -151,9 +145,9 @@ END OF INSTRUCTIONS
 <!ENTITY tip1 "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
 <!ENTITY tip2 "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
 <!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
-<!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL/Script' actions then adding them in the pie menu layouts.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL' actions then adding them in the pie menu layouts.|Customize the 'Load URL' actions in &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
-<!ENTITY tip7 "You can execute Javascript code with the 'Load URL/Script' actions. You can for example call any Firefox API function or a function inside another extension.|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "You can execute Javascript code with the 'Run Script' actions. You can for example call any Firefox API function or a function inside another extension.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab.">
 <!ENTITY tip9 "You can activate context sensitivity by pressing the 'Ctrl' key when opening the pie menu. You can also turn context sensitivity always on.|Change behavior in &preferences;/&activation;">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

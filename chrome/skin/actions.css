@@ -406,85 +406,45 @@ div.showDownloads[grayed="true"] { background-position: -224px -576px !important
 div.showDownloads { background-position: -224px -608px !important ; }
 div.showDownloads[grayed="false"][active="true"] { background-position: -224px -640px !important ; }
 
-div.loadURLScript1[grayed="true"] { background-position: 0px -672px !important ; }
-div.loadURLScript1 { background-position: 0px -704px !important ; }
-div.loadURLScript1[grayed="false"][active="true"] { background-position: 0px -736px !important ; }
+div.loadURL1[grayed="true"], div.runScript1[grayed="true"] { background-position: 0px -672px !important ; }
+div.loadURL1, div.runScript1 { background-position: 0px -704px !important ; }
+div.loadURL1[grayed="false"][active="true"], div.runScript1[grayed="false"][active="true"] { background-position: 0px -736px !important ; }
 
-div.loadURLScript2[grayed="true"] { background-position: -32px -672px !important ; }
-div.loadURLScript2 { background-position: -32px -704px !important ; }
-div.loadURLScript2[grayed="false"][active="true"] { background-position: -32px -736px !important ; }
+div.loadURL2[grayed="true"], div.runScript2[grayed="true"] { background-position: -32px -672px !important ; }
+div.loadURL2, div.runScript2 { background-position: -32px -704px !important ; }
+div.loadURL2[grayed="false"][active="true"], div.runScript2[grayed="false"][active="true"] { background-position: -32px -736px !important ; }
 
-div.loadURLScript3[grayed="true"] { background-position: -64px -672px !important ; }
-div.loadURLScript3 { background-position: -64px -704px !important ; }
-div.loadURLScript3[grayed="false"][active="true"] { background-position: -64px -736px !important ; }
+div.loadURL3[grayed="true"], div.runScript3[grayed="true"] { background-position: -64px -672px !important ; }
+div.loadURL3, div.runScript3 { background-position: -64px -704px !important ; }
+div.loadURL3[grayed="false"][active="true"], div.runScript3[grayed="false"][active="true"] { background-position: -64px -736px !important ; }
 
-div.loadURLScript4[grayed="true"] { background-position: -96px -672px !important ; }
-div.loadURLScript4 { background-position: -96px -704px !important ; }
-div.loadURLScript4[grayed="false"][active="true"] { background-position: -96px -736px !important ; }
+div.loadURL4[grayed="true"], div.runScript4[grayed="true"] { background-position: -96px -672px !important ; }
+div.loadURL4, div.runScript4 { background-position: -96px -704px !important ; }
+div.loadURL4[grayed="false"][active="true"], div.runScript4[grayed="false"][active="true"] { background-position: -96px -736px !important ; }
 
-div.loadURLScript5[grayed="true"] { background-position: -128px -672px !important ; }
-div.loadURLScript5 { background-position: -128px -704px !important ; }
-div.loadURLScript5[grayed="false"][active="true"] { background-position: -128px -736px !important ; }
+div.loadURL5[grayed="true"], div.runScript5[grayed="true"] { background-position: -128px -672px !important ; }
+div.loadURL5, div.runScript5 { background-position: -128px -704px !important ; }
+div.loadURL5[grayed="false"][active="true"], div.runScript5[grayed="false"][active="true"] { background-position: -128px -736px !important ; }
 
-div.loadURLScript6[grayed="true"] { background-position: -160px -672px !important ; }
-div.loadURLScript6 { background-position: -160px -704px !important ; }
-div.loadURLScript6[grayed="false"][active="true"] { background-position: -160px -736px !important ; }
+div.loadURL6[grayed="true"], div.runScript6[grayed="true"] { background-position: -160px -672px !important ; }
+div.loadURL6, div.runScript6 { background-position: -160px -704px !important ; }
+div.loadURL6[grayed="false"][active="true"], div.runScript6[grayed="false"][active="true"] { background-position: -160px -736px !important ; }
 
-div.loadURLScript7[grayed="true"] { background-position: -192px -672px !important ; }
-div.loadURLScript7 { background-position: -192px -704px !important ; }
-div.loadURLScript7[grayed="false"][active="true"] { background-position: -192px -736px !important ; }
+div.loadURL7[grayed="true"], div.runScript7[grayed="true"] { background-position: -192px -672px !important ; }
+div.loadURL7, div.runScript7 { background-position: -192px -704px !important ; }
+div.loadURL7[grayed="false"][active="true"], div.runScript7[grayed="false"][active="true"] { background-position: -192px -736px !important ; }
 
-div.loadURLScript8[grayed="true"] { background-position: -224px -672px !important ; }
-div.loadURLScript8 { background-position: -224px -704px !important ; }
-div.loadURLScript8[grayed="false"][active="true"] { background-position: -224px -736px !important ; }
+div.loadURL8[grayed="true"], div.runScript8[grayed="true"] { background-position: -224px -672px !important ; }
+div.loadURL8, div.runScript8 { background-position: -224px -704px !important ; }
+div.loadURL8[grayed="false"][active="true"], div.runScript8[grayed="false"][active="true"] { background-position: -224px -736px !important ; }
 
-div.loadURLScript9[grayed="true"] { background-position: -256px -672px !important ; }
-div.loadURLScript9 { background-position: -256px -704px !important ; }
-div.loadURLScript9[grayed="false"][active="true"] { background-position: -256px -736px !important ; }
+div.loadURL9[grayed="true"], div.runScript9[grayed="true"] { background-position: -256px -672px !important ; }
+div.loadURL9, div.runScript9 { background-position: -256px -704px !important ; }
+div.loadURL9[grayed="false"][active="true"], div.runScript9[grayed="false"][active="true"] { background-position: -256px -736px !important ; }
 
-div.loadURLScript10[grayed="true"] { background-position: -288px -672px !important ; }
-div.loadURLScript10 { background-position: -288px -704px !important ; }
-div.loadURLScript10[grayed="false"][active="true"] { background-position: -288px -736px !important ; }
-
-div.loadURLScript11[grayed="true"] { background-position: 0px -768px !important ; }
-div.loadURLScript11 { background-position: 0px -800px !important ; }
-div.loadURLScript11[grayed="false"][active="true"] { background-position: 0px -832px !important ; }
-
-div.loadURLScript12[grayed="true"] { background-position: -32px -768px !important ; }
-div.loadURLScript12 { background-position: -32px -800px !important ; }
-div.loadURLScript12[grayed="false"][active="true"] { background-position: -32px -832px !important ; }
-
-div.loadURLScript13[grayed="true"] { background-position: -64px -768px !important ; }
-div.loadURLScript13 { background-position: -64px -800px !important ; }
-div.loadURLScript13[grayed="false"][active="true"] { background-position: -64px -832px !important ; }
-
-div.loadURLScript14[grayed="true"] { background-position: -96px -768px !important ; }
-div.loadURLScript14 { background-position: -96px -800px !important ; }
-div.loadURLScript14[grayed="false"][active="true"] { background-position: -96px -832px !important ; }
-
-div.loadURLScript15[grayed="true"] { background-position: -128px -768px !important ; }
-div.loadURLScript15 { background-position: -128px -800px !important ; }
-div.loadURLScript15[grayed="false"][active="true"] { background-position: -128px -832px !important ; }
-
-div.loadURLScript16[grayed="true"] { background-position: -160px -768px !important ; }
-div.loadURLScript16 { background-position: -160px -800px !important ; }
-div.loadURLScript16[grayed="false"][active="true"] { background-position: -160px -832px !important ; }
-
-div.loadURLScript17[grayed="true"] { background-position: -192px -768px !important ; }
-div.loadURLScript17 { background-position: -192px -800px !important ; }
-div.loadURLScript17[grayed="false"][active="true"] { background-position: -192px -832px !important ; }
-
-div.loadURLScript18[grayed="true"] { background-position: -224px -768px !important ; }
-div.loadURLScript18 { background-position: -224px -800px !important ; }
-div.loadURLScript18[grayed="false"][active="true"] { background-position: -224px -832px !important ; }
-
-div.loadURLScript19[grayed="true"] { background-position: -256px -768px !important ; }
-div.loadURLScript19 { background-position: -256px -800px !important ; }
-div.loadURLScript19[grayed="false"][active="true"] { background-position: -256px -832px !important ; }
-
-div.loadURLScript20[grayed="true"] { background-position: -288px -768px !important ; }
-div.loadURLScript20 { background-position: -288px -800px !important ; }
-div.loadURLScript20[grayed="false"][active="true"] { background-position: -288px -832px !important ; }
+div.loadURL10[grayed="true"], div.runScript10[grayed="true"] { background-position: -288px -672px !important ; }
+div.loadURL10, div.runScript10 { background-position: -288px -704px !important ; }
+div.loadURL10[grayed="false"][active="true"], div.runScript10[grayed="false"][active="true"] { background-position: -288px -736px !important ; }
 
 div.copyImageLocation[grayed="true"] { background-position: -128px -480px !important ; }
 div.copyImageLocation { background-position: -128px -512px !important ; }
@@ -536,6 +496,46 @@ div.markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -
 div.sendLink[grayed="true"] { background-position: -96px -480px !important ; }
 div.sendLink { background-position: -96px -512px !important ; }
 div.sendLink[grayed="false"][active="true"] { background-position: -96px -544px !important ; }
+
+div.loadURLScript11[grayed="true"] { background-position: 0px -768px !important ; }
+div.loadURLScript11 { background-position: 0px -800px !important ; }
+div.loadURLScript11[grayed="false"][active="true"] { background-position: 0px -832px !important ; }
+
+div.loadURLScript12[grayed="true"] { background-position: -32px -768px !important ; }
+div.loadURLScript12 { background-position: -32px -800px !important ; }
+div.loadURLScript12[grayed="false"][active="true"] { background-position: -32px -832px !important ; }
+
+div.loadURLScript13[grayed="true"] { background-position: -64px -768px !important ; }
+div.loadURLScript13 { background-position: -64px -800px !important ; }
+div.loadURLScript13[grayed="false"][active="true"] { background-position: -64px -832px !important ; }
+
+div.loadURLScript14[grayed="true"] { background-position: -96px -768px !important ; }
+div.loadURLScript14 { background-position: -96px -800px !important ; }
+div.loadURLScript14[grayed="false"][active="true"] { background-position: -96px -832px !important ; }
+
+div.loadURLScript15[grayed="true"] { background-position: -128px -768px !important ; }
+div.loadURLScript15 { background-position: -128px -800px !important ; }
+div.loadURLScript15[grayed="false"][active="true"] { background-position: -128px -832px !important ; }
+
+div.loadURLScript16[grayed="true"] { background-position: -160px -768px !important ; }
+div.loadURLScript16 { background-position: -160px -800px !important ; }
+div.loadURLScript16[grayed="false"][active="true"] { background-position: -160px -832px !important ; }
+
+div.loadURLScript17[grayed="true"] { background-position: -192px -768px !important ; }
+div.loadURLScript17 { background-position: -192px -800px !important ; }
+div.loadURLScript17[grayed="false"][active="true"] { background-position: -192px -832px !important ; }
+
+div.loadURLScript18[grayed="true"] { background-position: -224px -768px !important ; }
+div.loadURLScript18 { background-position: -224px -800px !important ; }
+div.loadURLScript18[grayed="false"][active="true"] { background-position: -224px -832px !important ; }
+
+div.loadURLScript19[grayed="true"] { background-position: -256px -768px !important ; }
+div.loadURLScript19 { background-position: -256px -800px !important ; }
+div.loadURLScript19[grayed="false"][active="true"] { background-position: -256px -832px !important ; }
+
+div.loadURLScript20[grayed="true"] { background-position: -288px -768px !important ; }
+div.loadURLScript20 { background-position: -288px -800px !important ; }
+div.loadURLScript20[grayed="false"][active="true"] { background-position: -288px -832px !important ; }
 
 div.runProgramFile1[grayed="true"] { background-position: -128px -576px !important ; }
 div.runProgramFile1 { background-position: -128px -608px !important ; }
@@ -894,105 +894,55 @@ div.small_showDownloads { background-position: -140px -380px !important ; }
 div.small_showDownloads[grayed="false"][active="true"] { background-position: -140px -400px !important ; }
 image.small_showDownloads { -moz-image-region: rect(380px 160px 400px 140px) !important ; }
 
-div.small_loadURLScript1[grayed="true"] { background-position: 0px -432px !important ; }
-div.small_loadURLScript1 { background-position: 0px -440px !important ; }
-div.small_loadURLScript1[grayed="false"][active="true"] { background-position: 0px -460px !important ; }
-image.small_loadURLScript1 { -moz-image-region: rect(440px 20px 460px 0px) !important ; }
+div.small_loadURL1[grayed="true"], div.small_runScript1[grayed="true"] { background-position: 0px -432px !important ; }
+div.small_loadURL1, div.small_runScript1 { background-position: 0px -440px !important ; }
+div.small_loadURL1[grayed="false"][active="true"], div.small_runScript1[grayed="false"][active="true"] { background-position: 0px -460px !important ; }
+image.small_loadURL1, image.small_runScript1 { -moz-image-region: rect(440px 20px 460px 0px) !important ; }
 
-div.small_loadURLScript2[grayed="true"] { background-position: -20px -432px !important ; }
-div.small_loadURLScript2 { background-position: -20px -440px !important ; }
-div.small_loadURLScript2[grayed="false"][active="true"] { background-position: -20px -460px !important ; }
-image.small_loadURLScript2 { -moz-image-region: rect(440px 40px 460px 20px) !important ; }
+div.small_loadURL2[grayed="true"], div.small_runScript2[grayed="true"] { background-position: -20px -432px !important ; }
+div.small_loadURL2, div.small_runScript2 { background-position: -20px -440px !important ; }
+div.small_loadURL2[grayed="false"][active="true"], div.small_runScript2[grayed="false"][active="true"] { background-position: -20px -460px !important ; }
+image.small_loadURL2, image.small_runScript2 { -moz-image-region: rect(440px 40px 460px 20px) !important ; }
 
-div.small_loadURLScript3[grayed="true"] { background-position: -40px -432px !important ; }
-div.small_loadURLScript3 { background-position: -40px -440px !important ; }
-div.small_loadURLScript3[grayed="false"][active="true"] { background-position: -40px -460px !important ; }
-image.small_loadURLScript3 { -moz-image-region: rect(440px 60px 460px 40px) !important ; }
+div.small_loadURL3[grayed="true"], div.small_runScript3[grayed="true"] { background-position: -40px -432px !important ; }
+div.small_loadURL3, div.small_runScript3 { background-position: -40px -440px !important ; }
+div.small_loadURL3[grayed="false"][active="true"], div.small_runScript3[grayed="false"][active="true"] { background-position: -40px -460px !important ; }
+image.small_loadURL3, image.small_runScript3 { -moz-image-region: rect(440px 60px 460px 40px) !important ; }
 
-div.small_loadURLScript4[grayed="true"] { background-position: -60px -432px !important ; }
-div.small_loadURLScript4 { background-position: -60px -440px !important ; }
-div.small_loadURLScript4[grayed="false"][active="true"] { background-position: -60px -460px !important ; }
-image.small_loadURLScript4 { -moz-image-region: rect(440px 80px 460px 60px) !important ; }
+div.small_loadURL4[grayed="true"], div.small_runScript4[grayed="true"] { background-position: -60px -432px !important ; }
+div.small_loadURL4, div.small_runScript4 { background-position: -60px -440px !important ; }
+div.small_loadURL4[grayed="false"][active="true"], div.small_runScript4[grayed="false"][active="true"] { background-position: -60px -460px !important ; }
+image.small_loadURL4, image.small_runScript4 { -moz-image-region: rect(440px 80px 460px 60px) !important ; }
 
-div.small_loadURLScript5[grayed="true"] { background-position: -80px -432px !important ; }
-div.small_loadURLScript5 { background-position: -80px -440px !important ; }
-div.small_loadURLScript5[grayed="false"][active="true"] { background-position: -80px -460px !important ; }
-image.small_loadURLScript5 { -moz-image-region: rect(440px 100px 460px 80px) !important ; }
+div.small_loadURL5[grayed="true"], div.small_runScript5[grayed="true"] { background-position: -80px -432px !important ; }
+div.small_loadURL5, div.small_runScript5 { background-position: -80px -440px !important ; }
+div.small_loadURL5[grayed="false"][active="true"], div.small_runScript5[grayed="false"][active="true"] { background-position: -80px -460px !important ; }
+image.small_loadURL5, image.small_runScript5 { -moz-image-region: rect(440px 100px 460px 80px) !important ; }
 
-div.small_loadURLScript6[grayed="true"] { background-position: -100px -432px !important ; }
-div.small_loadURLScript6 { background-position: -100px -440px !important ; }
-div.small_loadURLScript6[grayed="false"][active="true"] { background-position: -100px -460px !important ; }
-image.small_loadURLScript6 { -moz-image-region: rect(440px 120px 460px 100px) !important ; }
+div.small_loadURL6[grayed="true"], div.small_runScript6[grayed="true"] { background-position: -100px -432px !important ; }
+div.small_loadURL6, div.small_runScript6 { background-position: -100px -440px !important ; }
+div.small_loadURL6[grayed="false"][active="true"], div.small_runScript6[grayed="false"][active="true"] { background-position: -100px -460px !important ; }
+image.small_loadURL6, image.small_runScript6 { -moz-image-region: rect(440px 120px 460px 100px) !important ; }
 
-div.small_loadURLScript7[grayed="true"] { background-position: -120px -432px !important ; }
-div.small_loadURLScript7 { background-position: -120px -440px !important ; }
-div.small_loadURLScript7[grayed="false"][active="true"] { background-position: -120px -460px !important ; }
-image.small_loadURLScript7 { -moz-image-region: rect(440px 140px 460px 120px) !important ; }
+div.small_loadURL7[grayed="true"], div.small_runScript7[grayed="true"] { background-position: -120px -432px !important ; }
+div.small_loadURL7, div.small_runScript7 { background-position: -120px -440px !important ; }
+div.small_loadURL7[grayed="false"][active="true"], div.small_runScript7[grayed="false"][active="true"] { background-position: -120px -460px !important ; }
+image.small_loadURL7, image.small_runScript7 { -moz-image-region: rect(440px 140px 460px 120px) !important ; }
 
-div.small_loadURLScript8[grayed="true"] { background-position: -140px -432px !important ; }
-div.small_loadURLScript8 { background-position: -140px -440px !important ; }
-div.small_loadURLScript8[grayed="false"][active="true"] { background-position: -140px -460px !important ; }
-image.small_loadURLScript8 { -moz-image-region: rect(440px 160px 460px 140px) !important ; }
+div.small_loadURL8[grayed="true"], div.small_runScript8[grayed="true"] { background-position: -140px -432px !important ; }
+div.small_loadURL8, div.small_runScript8 { background-position: -140px -440px !important ; }
+div.small_loadURL8[grayed="false"][active="true"], div.small_runScript8[grayed="false"][active="true"] { background-position: -140px -460px !important ; }
+image.small_loadURL8, image.small_runScript8 { -moz-image-region: rect(440px 160px 460px 140px) !important ; }
 
-div.small_loadURLScript9[grayed="true"] { background-position: -160px -432px !important ; }
-div.small_loadURLScript9 { background-position: -160px -440px !important ; }
-div.small_loadURLScript9[grayed="false"][active="true"] { background-position: -160px -460px !important ; }
-image.small_loadURLScript9 { -moz-image-region: rect(440px 180px 460px 160px) !important ; }
+div.small_loadURL9[grayed="true"], div.small_runScript9[grayed="true"] { background-position: -160px -432px !important ; }
+div.small_loadURL9, div.small_runScript9 { background-position: -160px -440px !important ; }
+div.small_loadURL9[grayed="false"][active="true"], div.small_runScript9[grayed="false"][active="true"] { background-position: -160px -460px !important ; }
+image.small_loadURL9, image.small_runScript9 { -moz-image-region: rect(440px 180px 460px 160px) !important ; }
 
-div.small_loadURLScript10[grayed="true"] { background-position: -180px -432px !important ; }
-div.small_loadURLScript10 { background-position: -180px -440px !important ; }
-div.small_loadURLScript10[grayed="false"][active="true"] { background-position: -180px -460px !important ; }
-image.small_loadURLScript10 { -moz-image-region: rect(440px 200px 460px 180px) !important ; }
-
-div.small_loadURLScript11[grayed="true"] { background-position: 0px -480px !important ; }
-div.small_loadURLScript11 { background-position: 0px -500px !important ; }
-div.small_loadURLScript11[grayed="false"][active="true"] { background-position: 0px -520px !important ; }
-image.small_loadURLScript11 { -moz-image-region: rect(500px 20px 520px 0px) !important ; }
-
-div.small_loadURLScript12[grayed="true"] { background-position: -20px -480px !important ; }
-div.small_loadURLScript12 { background-position: -20px -500px !important ; }
-div.small_loadURLScript12[grayed="false"][active="true"] { background-position: -20px -520px !important ; }
-image.small_loadURLScript12 { -moz-image-region: rect(500px 40px 520px 20px) !important ; }
-
-div.small_loadURLScript13[grayed="true"] { background-position: -40px -480px !important ; }
-div.small_loadURLScript13 { background-position: -40px -500px !important ; }
-div.small_loadURLScript13[grayed="false"][active="true"] { background-position: -40px -520px !important ; }
-image.small_loadURLScript13 { -moz-image-region: rect(500px 60px 520px 40px) !important ; }
-
-div.small_loadURLScript14[grayed="true"] { background-position: -60px -480px !important ; }
-div.small_loadURLScript14 { background-position: -60px -500px !important ; }
-div.small_loadURLScript14[grayed="false"][active="true"] { background-position: -60px -520px !important ; }
-image.small_loadURLScript14 { -moz-image-region: rect(500px 80px 520px 60px) !important ; }
-
-div.small_loadURLScript15[grayed="true"] { background-position: -80px -480px !important ; }
-div.small_loadURLScript15 { background-position: -80px -500px !important ; }
-div.small_loadURLScript15[grayed="false"][active="true"] { background-position: -80px -520px !important ; }
-image.small_loadURLScript15 { -moz-image-region: rect(500px 100px 520px 80px) !important ; }
-
-div.small_loadURLScript16[grayed="true"] { background-position: -100px -480px !important ; }
-div.small_loadURLScript16 { background-position: -100px -500px !important ; }
-div.small_loadURLScript16[grayed="false"][active="true"] { background-position: -100px -520px !important ; }
-image.small_loadURLScript16 { -moz-image-region: rect(500px 120px 520px 100px) !important ; }
-
-div.small_loadURLScript17[grayed="true"] { background-position: -120px -480px !important ; }
-div.small_loadURLScript17 { background-position: -120px -500px !important ; }
-div.small_loadURLScript17[grayed="false"][active="true"] { background-position: -120px -520px !important ; }
-image.small_loadURLScript17 { -moz-image-region: rect(500px 140px 520px 120px) !important ; }
-
-div.small_loadURLScript18[grayed="true"] { background-position: -140px -480px !important ; }
-div.small_loadURLScript18 { background-position: -140px -500px !important ; }
-div.small_loadURLScript18[grayed="false"][active="true"] { background-position: -140px -520px !important ; }
-image.small_loadURLScript18 { -moz-image-region: rect(500px 160px 520px 140px) !important ; }
-
-div.small_loadURLScript19[grayed="true"] { background-position: -160px -480px !important ; }
-div.small_loadURLScript19 { background-position: -160px -500px !important ; }
-div.small_loadURLScript19[grayed="false"][active="true"] { background-position: -160px -520px !important ; }
-image.small_loadURLScript19 { -moz-image-region: rect(500px 180px 520px 160px) !important ; }
-
-div.small_loadURLScript20[grayed="true"] { background-position: -180px -480px !important ; }
-div.small_loadURLScript20 { background-position: -180px -500px !important ; }
-div.small_loadURLScript20[grayed="false"][active="true"] { background-position: -180px -520px !important ; }
-image.small_loadURLScript20 { -moz-image-region: rect(500px 200px 520px 180px) !important ; }
+div.small_loadURL10[grayed="true"], div.small_runScript10[grayed="true"] { background-position: -180px -432px !important ; }
+div.small_loadURL10, div.small_runScript10 { background-position: -180px -440px !important ; }
+div.small_loadURL10[grayed="false"][active="true"], div.small_runScript10[grayed="false"][active="true"] { background-position: -180px -460px !important ; }
+image.small_loadURL10, image.small_runScript10 { -moz-image-region: rect(440px 200px 460px 180px) !important ; }
 
 div.small_copyImageLocation[grayed="true"] { background-position: -80px -300px !important ; }
 div.small_copyImageLocation { background-position: -80px -320px !important ; }
@@ -1056,6 +1006,56 @@ div.small_sendLink[grayed="true"] { background-position: -60px -300px !important
 div.small_sendLink { background-position: -60px -320px !important ; }
 div.small_sendLink[grayed="false"][active="true"] { background-position: -60px -340px !important ; }
 image.small_sendLink { -moz-image-region: rect(320px 80px 340px 60px) !important ; }
+
+div.small_loadURLScript11[grayed="true"] { background-position: 0px -480px !important ; }
+div.small_loadURLScript11 { background-position: 0px -500px !important ; }
+div.small_loadURLScript11[grayed="false"][active="true"] { background-position: 0px -520px !important ; }
+image.small_loadURLScript11 { -moz-image-region: rect(500px 20px 520px 0px) !important ; }
+
+div.small_loadURLScript12[grayed="true"] { background-position: -20px -480px !important ; }
+div.small_loadURLScript12 { background-position: -20px -500px !important ; }
+div.small_loadURLScript12[grayed="false"][active="true"] { background-position: -20px -520px !important ; }
+image.small_loadURLScript12 { -moz-image-region: rect(500px 40px 520px 20px) !important ; }
+
+div.small_loadURLScript13[grayed="true"] { background-position: -40px -480px !important ; }
+div.small_loadURLScript13 { background-position: -40px -500px !important ; }
+div.small_loadURLScript13[grayed="false"][active="true"] { background-position: -40px -520px !important ; }
+image.small_loadURLScript13 { -moz-image-region: rect(500px 60px 520px 40px) !important ; }
+
+div.small_loadURLScript14[grayed="true"] { background-position: -60px -480px !important ; }
+div.small_loadURLScript14 { background-position: -60px -500px !important ; }
+div.small_loadURLScript14[grayed="false"][active="true"] { background-position: -60px -520px !important ; }
+image.small_loadURLScript14 { -moz-image-region: rect(500px 80px 520px 60px) !important ; }
+
+div.small_loadURLScript15[grayed="true"] { background-position: -80px -480px !important ; }
+div.small_loadURLScript15 { background-position: -80px -500px !important ; }
+div.small_loadURLScript15[grayed="false"][active="true"] { background-position: -80px -520px !important ; }
+image.small_loadURLScript15 { -moz-image-region: rect(500px 100px 520px 80px) !important ; }
+
+div.small_loadURLScript16[grayed="true"] { background-position: -100px -480px !important ; }
+div.small_loadURLScript16 { background-position: -100px -500px !important ; }
+div.small_loadURLScript16[grayed="false"][active="true"] { background-position: -100px -520px !important ; }
+image.small_loadURLScript16 { -moz-image-region: rect(500px 120px 520px 100px) !important ; }
+
+div.small_loadURLScript17[grayed="true"] { background-position: -120px -480px !important ; }
+div.small_loadURLScript17 { background-position: -120px -500px !important ; }
+div.small_loadURLScript17[grayed="false"][active="true"] { background-position: -120px -520px !important ; }
+image.small_loadURLScript17 { -moz-image-region: rect(500px 140px 520px 120px) !important ; }
+
+div.small_loadURLScript18[grayed="true"] { background-position: -140px -480px !important ; }
+div.small_loadURLScript18 { background-position: -140px -500px !important ; }
+div.small_loadURLScript18[grayed="false"][active="true"] { background-position: -140px -520px !important ; }
+image.small_loadURLScript18 { -moz-image-region: rect(500px 160px 520px 140px) !important ; }
+
+div.small_loadURLScript19[grayed="true"] { background-position: -160px -480px !important ; }
+div.small_loadURLScript19 { background-position: -160px -500px !important ; }
+div.small_loadURLScript19[grayed="false"][active="true"] { background-position: -160px -520px !important ; }
+image.small_loadURLScript19 { -moz-image-region: rect(500px 180px 520px 160px) !important ; }
+
+div.small_loadURLScript20[grayed="true"] { background-position: -180px -480px !important ; }
+div.small_loadURLScript20 { background-position: -180px -500px !important ; }
+div.small_loadURLScript20[grayed="false"][active="true"] { background-position: -180px -520px !important ; }
+image.small_loadURLScript20 { -moz-image-region: rect(500px 200px 520px 180px) !important ; }
 
 div.small_runProgramFile1[grayed="true"] { background-position: -80px -360px !important ; }
 div.small_runProgramFile1 { background-position: -80px -380px !important ; }

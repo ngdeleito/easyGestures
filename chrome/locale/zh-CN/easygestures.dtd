@@ -41,7 +41,8 @@ END OF INSTRUCTIONS
 <!ENTITY contextmenu.selection "选择">
 <!ENTITY contextmenu.textbox "文本框">
 
-<!ENTITY customizations.loadURLScriptActions "Load URL/Script Actions">
+<!ENTITY customizations.loadURLActions "Load URL Actions">
+<!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
@@ -125,19 +126,12 @@ END OF INSTRUCTIONS
 <!ENTITY move.edge "延伸菜单边缘">
 
 <!ENTITY urlscript "自定义“载入网址/脚本”手势">
-<!ENTITY urlscript.url "网址">
-<!ENTITY urlscript.script "脚本">
-<!ENTITY urlscript.name "提示">
-<!ENTITY urlscript.host "主机">
-<!ENTITY urlscript.code "代码">
 <!ENTITY urlscript.load "载入网址">
 <!ENTITY urlscript.curTab "在当前标签页">
 <!ENTITY urlscript.newTab "在新标签页">
 <!ENTITY urlscript.newWindow "在新窗口">
-<!ENTITY urlscript.icon "使用网站图标">
 <!ENTITY urlscript.faviconNotFound "没有找到图标。继续搜索？">
 
-<!ENTITY changeIcon "更改图标">
 <!ENTITY labelNewIcon "创建图标">
 
 <!ENTITY duplicatekey.warning "这热键已在使用中！请选择其他热键。">
@@ -155,7 +149,7 @@ END OF INSTRUCTIONS
 <!ENTITY tip4 "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
 <!ENTITY tip5 "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。|自定义在 选项/自定义/载入网址/脚本">
 <!ENTITY tip6 "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。|添加或删除动作在 选项/动作">
-<!ENTITY tip7 "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。|Customize the 'Load URL/Script' actions in &preferences;/&customizations;/&customizations.loadURLScriptActions;">
+<!ENTITY tip7 "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tip8 "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
 <!ENTITY tip9 "你可以在圆饼菜单打开时点击“Ctrl”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
 <!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

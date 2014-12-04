@@ -158,26 +158,26 @@ function eG_menu () {
   this.contextTextboxFirst = prefs.getBoolPref("menus.contextTextboxFirst");
 
   this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-  this.loadURLScript1 = prefs.getComplexValue("customizations.loadURLScript1", Components.interfaces.nsISupportsString).data.split("\u2022"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
-  this.loadURLScript2 = prefs.getComplexValue("customizations.loadURLScript2", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript3 = prefs.getComplexValue("customizations.loadURLScript3", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript4 = prefs.getComplexValue("customizations.loadURLScript4", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript5 = prefs.getComplexValue("customizations.loadURLScript5", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript6 = prefs.getComplexValue("customizations.loadURLScript6", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript7 = prefs.getComplexValue("customizations.loadURLScript7", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript8 = prefs.getComplexValue("customizations.loadURLScript8", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript9 = prefs.getComplexValue("customizations.loadURLScript9", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript10 = prefs.getComplexValue("customizations.loadURLScript10", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript11 = prefs.getComplexValue("customizations.loadURLScript11", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript12 = prefs.getComplexValue("customizations.loadURLScript12", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript13 = prefs.getComplexValue("customizations.loadURLScript13", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript14 = prefs.getComplexValue("customizations.loadURLScript14", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript15 = prefs.getComplexValue("customizations.loadURLScript15", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript16 = prefs.getComplexValue("customizations.loadURLScript16", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript17 = prefs.getComplexValue("customizations.loadURLScript17", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript18 = prefs.getComplexValue("customizations.loadURLScript18", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript19 = prefs.getComplexValue("customizations.loadURLScript19", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURLScript20 = prefs.getComplexValue("customizations.loadURLScript20", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL1 = prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
+  this.loadURL2 = prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL3 = prefs.getComplexValue("customizations.loadURL3", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL4 = prefs.getComplexValue("customizations.loadURL4", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL5 = prefs.getComplexValue("customizations.loadURL5", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL6 = prefs.getComplexValue("customizations.loadURL6", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL7 = prefs.getComplexValue("customizations.loadURL7", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL8 = prefs.getComplexValue("customizations.loadURL8", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL9 = prefs.getComplexValue("customizations.loadURL9", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURL10 = prefs.getComplexValue("customizations.loadURL10", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript1 = prefs.getComplexValue("customizations.runScript1", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript2 = prefs.getComplexValue("customizations.runScript2", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript3 = prefs.getComplexValue("customizations.runScript3", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript4 = prefs.getComplexValue("customizations.runScript4", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript5 = prefs.getComplexValue("customizations.runScript5", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript6 = prefs.getComplexValue("customizations.runScript6", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript7 = prefs.getComplexValue("customizations.runScript7", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript8 = prefs.getComplexValue("customizations.runScript8", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript9 = prefs.getComplexValue("customizations.runScript9", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.runScript10 = prefs.getComplexValue("customizations.runScript10", Components.interfaces.nsISupportsString).data.split("\u2022");
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -325,7 +325,14 @@ eG_menu.prototype = {
     
     return node;
   },
-
+  
+  _addFavicon : function(aURL, anHTMLElement) {
+    retrieveFavicon(aURL, function(aURI) {
+      anHTMLElement.style.backgroundImage =
+        "url('" + (aURI !== null ? aURI.spec : "") + "')";
+    });
+  },
+  
   createActionsNodes : function(layoutName) { //creating DOM nodes
     var layout = this.menuSet[layoutName];
 
@@ -362,22 +369,35 @@ eG_menu.prototype = {
       timg.setAttribute("grayed", "false");
       timg.setAttribute("active", "false");
 
-      if (layout.actions[i].search("loadURLScript") == -1) {
+      if (layout.actions[i].search("loadURL") == -1 && layout.actions[i].search("runScript") == -1) {
         timg.setAttribute("class", (this.smallMenuTag +
                    (this.noIcons ? "empty" : layout.actions[i])));
         if (eGActions[layout.actions[i]].isExtraMenuAction) {
           this.extraMenuAction = i;
         }
       }
-      else { // new icon path for loadURLScript ?
-        if (this[layout.actions[i]][4] == "true" ||
-            this[layout.actions[i]][5] == "true") {
-          if (!this.smallIcons && this[layout.actions[i]][4] == "true") {
+      else if (layout.actions[i].search("runScript") == -1) { // new icon path for loadURL ?
+        if (this[layout.actions[i]][2] == "true") {
+          if (!this.smallIcons) {
             // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
             timg.style.backgroundPosition = "4px 4px";
             timg.style.backgroundSize = "26px 26px";
           }
-          timg.style.backgroundImage = "url('" + (this[layout.actions[i]][3]).replace(/\\/g , "\\\\") + "')";
+          this._addFavicon(this[layout.actions[i]][1], timg);
+          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
+        }
+        else {
+          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty" : layout.actions[i])));
+        }
+      }
+      else  { // new icon path for runScript ?
+        if (this[layout.actions[i]][2] !== "") {
+          if (!this.smallIcons) {
+            // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
+            timg.style.backgroundPosition = "4px 4px";
+            timg.style.backgroundSize = "26px 26px";
+          }
+          timg.style.backgroundImage = "url('" + (this[layout.actions[i]][2]).replace(/\\/g , "\\\\") + "')";
           timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
         }
         else {
@@ -708,24 +728,24 @@ eG_menu.prototype = {
     }
   },
 
-  rolloverExternalIcons : function(actionName, node, active) { // this is for loadURLScript actions icons which can be customized or imported from favicons or program's icons
+  rolloverExternalIcons : function(actionName, node, active) { // this is for loadURL and runScript actions icons which can be customized or imported from favicons or custom icons
     if (this[actionName] === undefined || actionName === "autoscrolling") {
       return;
     }
 
     if (active) {
-      if (this[actionName][4] == "true") {
+      if (actionName.startsWith("loadURL") && this[actionName][2] === "true") {
         node.style.backgroundPosition = (!this.smallIcons?"5px 5px":"1px 1px");
       }
-      else if (this[actionName][5] == "true") {
+      else if (actionName.startsWith("runScript") && this[actionName][2] !== "") {
         node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
       }
     }
     else {
-      if (this[actionName][4] == "true") {
+      if (actionName.startsWith("loadURL") && this[actionName][2] === "true") {
         node.style.backgroundPosition = (!this.smallIcons?"4px 4px":"0px 0px");
       }
-      else if (this[actionName][5] == "true") {
+      else if (actionName.startsWith("runScript") && this[actionName][2] !== "") {
         node.style.backgroundPosition = (!this.smallIcons?"0px 0px":"0px 0px");
       }
     }
