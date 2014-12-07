@@ -184,6 +184,7 @@ function ReloadAction(startsNewGroup, nextAction) {
     anHTMLElement.classList.toggle("reload", !eGc.loading);
   };
 }
+ReloadAction.prototype = new Action();
 
 function LoadURLAction(number, startsNewGroup, nextAction) {
   Action.call(this, "loadURL", function() {
