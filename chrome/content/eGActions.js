@@ -42,8 +42,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
 //  |-- ReloadAction
-//  |-- LoadURLAction
-//  |-- RunScriptAction
 //  |-- DisableableAction
 //       ^
 //       |-- CanGoBackDisableableAction
@@ -52,6 +50,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
 //       |-- DailyReadingsDisableableAction
+//       |-- NumberedAction
+//       |    ^
+//       |    |-- LoadURLAction
+//       |    |-- RunScriptAction
 //       |-- ImageExistsDisableableAction
 //       |-- DisableableCommandAction
 
@@ -186,59 +188,6 @@ function ReloadAction(startsNewGroup, nextAction) {
 }
 ReloadAction.prototype = new Action();
 
-function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
-  Action.call(this, namePrefix + number, function() {
-    var content = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1];
-    
-    content = content.replace("%s", eGc.selection);
-    content = content.replace("%u", eGc.doc.URL);
-    
-    action(content, Services.wm.getMostRecentWindow("navigator:browser"));
-  }, startsNewGroup, nextAction);
-  
-  this._number = number;
-  
-  this.getLabel = function() {
-    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
-    var label = prefValue[0];
-    if (label !== "") {
-      // if this action has already a label given by the user, then use it
-      return label;
-    }
-    // otherwise use the default label
-    return eGc.localizing.getString(this._name);
-  };
-}
-NumberedAction.prototype = new Action();
-
-function LoadURLAction(number, startsNewGroup, nextAction) {
-  NumberedAction.call(this, "loadURL", number, function(URL, window) {
-    var gBrowser = window.gBrowser;
-    
-    switch (eGm.loadURLin) {
-      case "curTab":
-        gBrowser.loadURI(URL);
-        break;
-      case "newTab":
-        gBrowser.selectedTab = gBrowser.addTab(URL);
-        break;
-      case "newWindow":
-        window.open(URL);
-        break;
-    }
-  }, startsNewGroup, nextAction);
-}
-LoadURLAction.prototype = new NumberedAction();
-
-function RunScriptAction(number, startsNewGroup, nextAction) {
-  NumberedAction.call(this, "runScript", number, function(script, window) {
-    var sandbox = Components.utils.Sandbox(window);
-    sandbox.window = window;
-    Components.utils.evalInSandbox(script, sandbox);
-  }, startsNewGroup, nextAction);
-}
-RunScriptAction.prototype = new NumberedAction();
-
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
   
@@ -332,6 +281,61 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
   }, startsNewGroup, nextAction);
 }
 DailyReadingsDisableableAction.prototype = new DisableableAction();
+
+function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, namePrefix + number, function() {
+    var content = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1];
+    
+    content = content.replace("%s", eGc.selection);
+    content = content.replace("%u", eGc.doc.URL);
+    
+    action(content, Services.wm.getMostRecentWindow("navigator:browser"));
+  }, function() {
+    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
+  }, startsNewGroup, nextAction);
+  
+  this._number = number;
+  
+  this.getLabel = function() {
+    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
+    var label = prefValue[0];
+    if (label !== "") {
+      // if this action has already a label given by the user, then use it
+      return label;
+    }
+    // otherwise use the default label
+    return eGc.localizing.getString(this._name);
+  };
+}
+NumberedAction.prototype = new DisableableAction();
+
+function LoadURLAction(number, startsNewGroup, nextAction) {
+  NumberedAction.call(this, "loadURL", number, function(URL, window) {
+    var gBrowser = window.gBrowser;
+    
+    switch (eGm.loadURLin) {
+      case "curTab":
+        gBrowser.loadURI(URL);
+        break;
+      case "newTab":
+        gBrowser.selectedTab = gBrowser.addTab(URL);
+        break;
+      case "newWindow":
+        window.open(URL);
+        break;
+    }
+  }, startsNewGroup, nextAction);
+}
+LoadURLAction.prototype = new NumberedAction();
+
+function RunScriptAction(number, startsNewGroup, nextAction) {
+  NumberedAction.call(this, "runScript", number, function(script, window) {
+    var sandbox = Components.utils.Sandbox(window);
+    sandbox.window = window;
+    Components.utils.evalInSandbox(script, sandbox);
+  }, startsNewGroup, nextAction);
+}
+RunScriptAction.prototype = new NumberedAction();
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
