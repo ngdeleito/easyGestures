@@ -52,8 +52,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
 //       |-- DailyReadingsDisableableAction
-//       |-- DisableableCommandAction
 //       |-- ImageExistsDisableableAction
+//       |-- DisableableCommandAction
 
 /* exported eGActions */
 
@@ -333,6 +333,13 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
 }
 DailyReadingsDisableableAction.prototype = new DisableableAction();
 
+function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return eGc.image === null;
+  }, startsNewGroup, nextAction);
+}
+ImageExistsDisableableAction.prototype = new DisableableAction();
+
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -345,13 +352,6 @@ function DisableableCommandAction(name, startsNewGroup, nextAction) {
   }, startsNewGroup, nextAction);
 }
 DisableableCommandAction.prototype = new DisableableAction();
-
-function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    return eGc.image === null;
-  }, startsNewGroup, nextAction);
-}
-ImageExistsDisableableAction.prototype = new DisableableAction();
 
 
 var eGActions = {
