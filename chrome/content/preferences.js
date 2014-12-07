@@ -181,13 +181,8 @@ var eGPrefs = {
     return !this._prefs.getBoolPref("behavior.largeMenu");
   },
   
-  getLoadURLPref : function(anInteger) {
-    return this._prefs.getComplexValue("customizations.loadURL" + anInteger,
-      Components.interfaces.nsISupportsString).data.split("\u2022");
-  },
-  
-  getRunScriptPref : function(anInteger) {
-    return this._prefs.getComplexValue("customizations.runScript" + anInteger,
+  getLoadURLOrRunScriptPrefValue : function(aPrefName) {
+    return this._prefs.getComplexValue("customizations." + aPrefName,
       Components.interfaces.nsISupportsString).data.split("\u2022");
   },
   

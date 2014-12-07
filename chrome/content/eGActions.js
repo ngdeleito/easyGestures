@@ -186,23 +186,34 @@ function ReloadAction(startsNewGroup, nextAction) {
 }
 ReloadAction.prototype = new Action();
 
-function LoadURLAction(number, startsNewGroup, nextAction) {
-  Action.call(this, "loadURL", function() {
-    var prefValue = eGPrefs.getLoadURLPref(this._number);
-    var URL = prefValue[1];
-    var selection = eGc.selection;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
+function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
+  Action.call(this, namePrefix + number, function() {
+    var content = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1];
     
-    if (URL !== "") {
-      if (selection !== "") {
-        URL = URL.replace("%s", selection);
-      }
-      var curURL = eGc.doc.URL; // get current URL
-      if (curURL !== "") {
-        URL = URL.replace("%u", curURL);
-      }
+    content = content.replace("%s", eGc.selection);
+    content = content.replace("%u", eGc.doc.URL);
+    
+    action(content, Services.wm.getMostRecentWindow("navigator:browser"));
+  }, startsNewGroup, nextAction);
+  
+  this._number = number;
+  
+  this.getLabel = function() {
+    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
+    var label = prefValue[0];
+    if (label !== "") {
+      // if this action has already a label given by the user, then use it
+      return label;
     }
+    // otherwise use the default label
+    return eGc.localizing.getString(this._name);
+  };
+}
+NumberedAction.prototype = new Action();
+
+function LoadURLAction(number, startsNewGroup, nextAction) {
+  NumberedAction.call(this, "loadURL", number, function(URL, window) {
+    var gBrowser = window.gBrowser;
     
     switch (eGm.loadURLin) {
       case "curTab":
@@ -215,69 +226,18 @@ function LoadURLAction(number, startsNewGroup, nextAction) {
         window.open(URL);
         break;
     }
-    return false; // avoid JavaScript Error
   }, startsNewGroup, nextAction);
-  
-  this._number = number;
-  
-  this.getLabel = function() {
-    var prefValue = eGPrefs.getLoadURLPref(this._number);
-    var label = prefValue[0];
-    if (label !== "") {
-      // if this action has already a label given by the user, then use it
-      return label;
-    }
-    // otherwise use the default label
-    return eGc.localizing.getString(this._name + this._number);
-  };
-  
-  this.getXULLabel = function() {
-    return document.getElementById("easyGesturesNStrings").getString(this._name + this._number);
-  };
 }
-LoadURLAction.prototype = new Action();
+LoadURLAction.prototype = new NumberedAction();
 
 function RunScriptAction(number, startsNewGroup, nextAction) {
-  Action.call(this, "runScript", function() {
-    var prefValue = eGPrefs.getRunScriptPref(this._number);
-    var script = prefValue[1];
-    var selection = eGc.selection;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    if (script !== "") {
-      if (selection !== "") {
-        script = script.replace("%s", selection);
-      }
-      var curURL = eGc.doc.URL; // get current URL
-      if (curURL !== "") {
-        script = script.replace("%u", curURL);
-      }
-    }
-    
+  NumberedAction.call(this, "runScript", number, function(script, window) {
     var sandbox = Components.utils.Sandbox(window);
     sandbox.window = window;
     Components.utils.evalInSandbox(script, sandbox);
-    return false; // avoid JavaScript Error
   }, startsNewGroup, nextAction);
-  
-  this._number = number;
-  
-  this.getLabel = function() {
-    var prefValue = eGPrefs.getRunScriptPref(this._number);
-    var label = prefValue[0];
-    if (label !== "") {
-      // if this action has already a label given by the user, then use it
-      return label;
-    }
-    // otherwise use the default label
-    return eGc.localizing.getString(this._name + this._number);
-  };
-  
-  this.getXULLabel = function() {
-    return document.getElementById("easyGesturesNStrings").getString(this._name + this._number);
-  };
 }
-RunScriptAction.prototype = new Action();
+RunScriptAction.prototype = new NumberedAction();
 
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
