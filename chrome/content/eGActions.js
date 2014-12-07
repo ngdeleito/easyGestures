@@ -915,7 +915,7 @@ var eGActions = {
   
   loadURL10 : new LoadURLAction(10, false, "runScript1"),
   
-  runScript1 : new RunScriptAction(1, false, "runScript2"),
+  runScript1 : new RunScriptAction(1, true, "runScript2"),
   
   runScript2 : new RunScriptAction(2, false, "runScript3"),
   
