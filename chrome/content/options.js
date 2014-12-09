@@ -420,10 +420,15 @@ var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"]
 var eG_actionsPopupList;
 
 function addFavicon(url, actionName) {
-  retrieveFavicon(url, function(aURI) {
-    document.getElementById(actionName + "_favicon").src =
-      aURI !== null ? aURI.spec : "";
-  });
+  if (url === "") {
+    document.getElementById(actionName + "_favicon").src = "";
+  }
+  else {
+    retrieveFavicon(url, function(aURI) {
+      document.getElementById(actionName + "_favicon").src =
+        aURI !== null ? aURI.spec : "";
+    });
+  }
 }
 
 function preventCloseOnEnter(event) {
