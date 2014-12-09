@@ -137,6 +137,11 @@ function Action(name, action, startsNewGroup, nextAction) {
       wbp.saveURI(uri, null, null, null, null, file, privacyContext);
     }
   };
+  
+  this._openInPrivateWindow = function(URL, window) {
+    window.open(URL, "_blank",
+                "toolbar,location,personalbar,resizable,scrollbars,private");
+  };
 }
 
 function EmptyAction(startsNewGroup, nextAction) {
@@ -284,12 +289,14 @@ DailyReadingsDisableableAction.prototype = new DisableableAction();
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, namePrefix + number, function() {
-    var content = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1];
+    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
+    var content = prefValue[1];
     
     content = content.replace("%s", eGc.selection);
     content = content.replace("%u", eGc.doc.URL);
     
-    action(content, Services.wm.getMostRecentWindow("navigator:browser"));
+    action(content, Services.wm.getMostRecentWindow("navigator:browser"), this,
+           prefValue[3]);
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
   }, startsNewGroup, nextAction);
@@ -310,21 +317,27 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
 NumberedAction.prototype = new DisableableAction();
 
 function LoadURLAction(number, startsNewGroup, nextAction) {
-  NumberedAction.call(this, "loadURL", number, function(URL, window) {
-    var gBrowser = window.gBrowser;
-    
-    switch (eGm.loadURLin) {
-      case "curTab":
-        gBrowser.loadURI(URL);
-        break;
-      case "newTab":
-        gBrowser.selectedTab = gBrowser.addTab(URL);
-        break;
-      case "newWindow":
-        window.open(URL);
-        break;
-    }
-  }, startsNewGroup, nextAction);
+  NumberedAction.call(this, "loadURL", number,
+    function(URL, window, thisObject, openInPrivateWindow) {
+      var gBrowser = window.gBrowser;
+      
+      if (openInPrivateWindow === "true") {
+        thisObject._openInPrivateWindow(URL, window);
+      }
+      else {
+        switch (eGm.loadURLin) {
+          case "curTab":
+            gBrowser.loadURI(URL);
+            break;
+          case "newTab":
+            gBrowser.selectedTab = gBrowser.addTab(URL);
+            break;
+          case "newWindow":
+            window.open(URL);
+            break;
+        }
+      }
+    }, startsNewGroup, nextAction);
 }
 LoadURLAction.prototype = new NumberedAction();
 
@@ -775,8 +788,7 @@ var eGActions = {
   
   openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(eGc.link.href, "_blank",
-                "toolbar,location,personalbar,resizable,scrollbars,private");
+    this._openInPrivateWindow(eGc.link.href, window);
   }, false, "copyLink"),
   
   copyLink : new LinkExistsDisableableAction("copyLink", function() {

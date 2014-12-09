@@ -133,7 +133,7 @@ var eGPrefs = {
     var string = Components.classes["@mozilla.org/supports-string;1"]
                            .createInstance(Components.interfaces.nsISupportsString);
     for (let i=1; i<=10; i++) {
-      string.data = "\u2022\u2022false";
+      string.data = "\u2022\u2022false\u2022false";
       this._prefs.setComplexValue("customizations.loadURL" + i,
         Components.interfaces.nsISupportsString, string);
       
@@ -447,7 +447,7 @@ var eGPrefs = {
     
     var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
     for (let i=1; i <= 10; ++i) {
-      writePref(this._prefs, "loadURL" + i, ["", "", "false"]);
+      writePref(this._prefs, "loadURL" + i, ["", "", "false", "false"]);
       writePref(this._prefs, "runScript" + i, ["", "", ""]);
       actionsStats["loadURL" + i] = 0;
       actionsStats["runScript" + i] = 0;
@@ -476,7 +476,7 @@ var eGPrefs = {
         if (numberOfLoadURLActions < 10) {
           ++numberOfLoadURLActions;
           let newAction = "loadURL" + numberOfLoadURLActions;
-          writePref(this._prefs, newAction, [pref[0], pref[1], pref[4]]);
+          writePref(this._prefs, newAction, [pref[0], pref[1], pref[4], "false"]);
           replaceActionInMenus(this._prefs, originalAction, newAction);
           replaceActionInStats(this._prefs, originalAction, newAction);
         }

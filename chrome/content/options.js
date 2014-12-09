@@ -61,6 +61,12 @@ function addEventListenerToLoadURLFavicon(element, actionName) {
   }, false);
 }
 
+function addEventListenerToLoadURLOpenInPrivateWindow(element, actionName) {
+  element.addEventListener("command", function(event) {
+    fireChangeEventOnElementWithID(actionName);
+  });
+}
+
 function addEventListenerToRunScriptCode(element, actionName) {
   element.addEventListener("change", function(event) {
     fireChangeEventOnElementWithID(actionName);
@@ -195,6 +201,23 @@ function createLoadURLActions() {
     image.setAttribute("maxwidth", "20");
     image.setAttribute("maxheight", "20");
     hbox.appendChild(image);
+    row.appendChild(hbox);
+    rows.appendChild(row);
+    
+    row = document.createElement("row");
+    row.setAttribute("align", "center");
+    
+    row.appendChild(document.createElement("hbox"));
+    
+    hbox = document.createElement("hbox");
+    
+    checkbox = document.createElement("checkbox");
+    checkbox.setAttribute("id", actionName + "_openInPrivateWindowCheckbox");
+    checkbox.setAttribute("label",
+      document.getElementById("easyGesturesNStrings")
+              .getString("customizations.openInPrivateWindow"));
+    addEventListenerToLoadURLOpenInPrivateWindow(checkbox, actionName);
+    hbox.appendChild(checkbox);
     
     row.appendChild(hbox);
     rows.appendChild(row);
@@ -740,6 +763,8 @@ function readLoadURLPreference(actionName) {
   if (isFaviconEnabled) {
     addFavicon(string[1], actionName);
   }
+  document.getElementById(actionName + "_openInPrivateWindowCheckbox").checked =
+    string[3] === "true";
 }
 
 function preparePreferenceValueForLoadURL(number) {
@@ -748,7 +773,9 @@ function preparePreferenceValueForLoadURL(number) {
                        .createInstance(Components.interfaces.nsISupportsString);
   string.data = document.getElementById(actionName + "_tooltip").value +
     "\u2022" + document.getElementById(actionName + "_URL").value +
-    "\u2022" + document.getElementById(actionName + "_faviconCheckbox").checked;
+    "\u2022" + document.getElementById(actionName + "_faviconCheckbox").checked +
+    "\u2022" + 
+    document.getElementById(actionName + "_openInPrivateWindowCheckbox").checked;
   return string;
 }
 
