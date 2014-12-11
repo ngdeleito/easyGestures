@@ -317,6 +317,7 @@ function createActionsMenulistWithSectorID(name, sectorNumber) {
   menulist.setAttribute("sizetopopup", "false");
   menulist.setAttribute("actionName", "");
   menulist.addEventListener("command", function(event) {
+    this.setAttribute("actionName", this.selectedItem.getAttribute("actionName"));
     updateUI();
     updateOtherLabels(this.getAttribute("actionName"), this.label);
     fireChangeEventOnActionsGroup(name);
@@ -483,8 +484,6 @@ function createActionsPopupList() {
     itemNode.appendChild(subItemNode);
     
     itemNode.setAttribute("actionName", currentAction);
-    // for some reason addEventListener does not work on the next line
-    itemNode.setAttribute("oncommand", "actionClick(this); updateUI();");
     itemNode.setAttribute("crop", "end");
     itemNode.setAttribute("label", eGActions[currentAction].getXULLabel());
     itemNode.style.paddingRight = "20px";
@@ -497,11 +496,6 @@ function createActionsPopupList() {
   }
   
   return popupNode;
-}
-
-function actionClick(item) {
-  var actionName = item.getAttribute("actionName");
-  item.parentNode.parentNode.setAttribute("actionName", actionName);
 }
 
 function attachMenupopup(menulist) {
