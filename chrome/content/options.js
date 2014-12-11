@@ -502,9 +502,6 @@ function createActionsPopupList() {
 function actionClick(item) {
   var actionName = item.getAttribute("actionName");
   item.parentNode.parentNode.setAttribute("actionName", actionName);
-  if (actionName === "empty") {
-    item.parentNode.parentNode.setAttribute("label", "");
-  }
 }
 
 function attachMenupopup(menulist) {
