@@ -514,20 +514,6 @@ function attachMenupopup(menulist) {
   }
 }
 
-function browse(textboxid) {
-  var fp = Components.classes["@mozilla.org/filepicker;1"]
-                     .createInstance(Components.interfaces.nsIFilePicker);
-  fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeOpen);
-  //fp.appendFilter("Applications(*.exe,*.bat)","*.exe;*.bat");
-  fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
-  
-  var ret = fp.show();
-  if (ret == Components.interfaces.nsIFilePicker.returnOK) {
-    var textbox = document.getElementById(textboxid);
-    textbox.value = fp.file.path;
-  }
-}
-
 function exportPrefs() {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
