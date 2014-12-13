@@ -34,7 +34,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 function addEventListenerToTooltip(element, actionName) {
   element.addEventListener("change", function(event) {
-    updateOtherLabels(actionName, this.value);
     fireChangeEventOnElementWithID(actionName);
   }, false);
 }
@@ -318,8 +317,6 @@ function createActionsMenulistWithSectorID(name, sectorNumber) {
   menulist.setAttribute("actionName", "");
   menulist.addEventListener("command", function(event) {
     this.setAttribute("actionName", this.selectedItem.getAttribute("actionName"));
-    updateUI();
-    updateOtherLabels(this.getAttribute("actionName"), this.label);
     fireChangeEventOnActionsGroup(name);
   }, false);
   menulist.addEventListener("mousedown", function(event) {
@@ -815,26 +812,6 @@ function fireChangeEventOn(element) {
   var event = document.createEvent("Event");
   event.initEvent("change", true, false);
   element.dispatchEvent(event);
-}
-
-function updateOtherLabels(actionName, label) {
-  var groupboxes = new Array(
-    "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
-    "contextLink", "contextImage", "contextSelection", "contextTextbox"
-  );
-  
-  for (var i=0; i<groupboxes.length; i++) {
-    for (var sector=0; sector<10; sector++) {
-      if (groupboxes[i].search("extra")!=-1 && sector>2 && sector<8) {
-        continue;
-      }
-      
-      var element = document.getElementById(groupboxes[i] + "Sector" + sector);
-      if (element.getAttribute("actionName") == actionName) {
-        element.setAttribute("label", label);
-      }
-    }
-  }
 }
 
 function updateLabelAndTextboxFor(menulist) {
