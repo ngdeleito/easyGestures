@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGActions */
+/* global eGActions, eGPrefs */
 
 function eG_menuLayout(menu, name, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
@@ -1033,7 +1033,7 @@ eG_menu.prototype = {
   },
   
   removeExistingMenusFromPages : function() {
-    var removeMenus = function(element, index, array) {
+    var removeMenus = function(element) {
       var document = this.gBrowser.getBrowserForTab(element).contentDocument;
       var easyGesturesNode = document.getElementById(eGc.easyGesturesID);
       if (easyGesturesNode !== null) {

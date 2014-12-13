@@ -32,6 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+
+/* exported eGPrefs, eGPrefsObserver */
+/* global eGActions */
+
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
   
@@ -39,7 +43,7 @@ var eGPrefs = {
     var prefsNames = this._prefs.getChildList("");
     var result = "";
     
-    prefsNames.forEach(function(prefName, index, array) {
+    prefsNames.forEach(function(prefName) {
       result += prefName + "\n";
       let prefType = this._prefs.getPrefType(prefName);
       result +=  prefType + "\n";
@@ -302,7 +306,7 @@ var eGPrefs = {
     prefsToUpdate.push(new PrefUpdate("Char", "profile.statsExtra", "stats.extraMenu"));
     prefsToUpdate.push(new PrefUpdate("Char", "profile.statsActions", "stats.actions"));
     
-    prefsToUpdate.forEach(function (prefToUpdate, index, array) {
+    prefsToUpdate.forEach(function (prefToUpdate) {
       this._prefs["set" + prefToUpdate.type + "Pref"](prefToUpdate.newPref,
         oldBranch["get" + prefToUpdate.type + "Pref"](prefToUpdate.oldPref));
     }, this);
@@ -517,7 +521,7 @@ var eGPrefsObserver = {
     this._branch.removeObserver("customizations.", this);
   },
 
-  observe: function(aSubject, aTopic, aData) {
+  observe: function() {
     // removing existing easyGestures menus from open web pages
     eGm.removeExistingMenusFromPages();
     

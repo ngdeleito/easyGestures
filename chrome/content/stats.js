@@ -30,6 +30,8 @@ GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* global eGPrefs */
+
 function createRow1(id) {
   var row = document.createElement("hbox");
   row.setAttribute("pack", "center");

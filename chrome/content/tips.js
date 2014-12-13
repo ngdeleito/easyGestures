@@ -32,6 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* global eGPrefs */
+
 function tipEntry(tipLabelIndex, imageClass, paneName, tabNumber) {
   this.description = tipLabels[tipLabelIndex];
   this.imageClass = imageClass; // image source
@@ -106,7 +108,7 @@ function openPreferencesWith(paneName, tabNumber) {
   }
 }
 
-function tipLinkClick(anEvent) {
+function tipLinkClick() {
   var paneName = tips[tipNbr].paneName;
   var tabNumber = tips[tipNbr].tabNumber;
   openPreferencesWith(paneName, tabNumber);

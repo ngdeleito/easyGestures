@@ -31,6 +31,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+
+/* global eGPrefs, eGPrefsObserver */
+
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
@@ -100,7 +103,7 @@ function loadEasyGesturesOnExistingWindow(window) {
   }
 }
 
-function loadEasyGesturesOnNewWindow(aSubject, aTopic, aData) {
+function loadEasyGesturesOnNewWindow(aSubject, aTopic) {
   if (aTopic == "domwindowopened") {
     loadEasyGesturesOnExistingWindow(aSubject);
   }
@@ -189,7 +192,7 @@ function startup(data, reason) {
   });
 }
 
-function shutdown(data, reason) {
+function shutdown() {
   // flushing because a string bundle was created
   Services.strings.flushBundles();
   
@@ -217,7 +220,7 @@ function shutdown(data, reason) {
   Services.ww.unregisterNotification(loadEasyGesturesOnNewWindow);
 }
 
-function install(data, reason) {
+function install() {
 }
 
 function uninstall(data, reason) {

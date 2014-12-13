@@ -32,14 +32,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* global eGActions, eGPrefs */
+
 function addEventListenerToTooltip(element, actionName) {
-  element.addEventListener("change", function(event) {
+  element.addEventListener("change", function() {
     fireChangeEventOnElementWithID(actionName);
   }, false);
 }
 
 function addEventListenerToLoadURLURL(element, actionName) {
-  element.addEventListener("change", function(event) {
+  element.addEventListener("change", function() {
     if (document.getElementById(actionName + "_faviconCheckbox").checked) {
       addFavicon(this.value, actionName);
     }
@@ -48,7 +50,7 @@ function addEventListenerToLoadURLURL(element, actionName) {
 }
 
 function addEventListenerToLoadURLFavicon(element, actionName) {
-  element.addEventListener("command", function(event) {
+  element.addEventListener("command", function() {
     if (this.checked) {
       addFavicon(document.getElementById(actionName + "_URL").value,
                       actionName);
@@ -61,13 +63,13 @@ function addEventListenerToLoadURLFavicon(element, actionName) {
 }
 
 function addEventListenerToLoadURLOpenInPrivateWindow(element, actionName) {
-  element.addEventListener("command", function(event) {
+  element.addEventListener("command", function() {
     fireChangeEventOnElementWithID(actionName);
   });
 }
 
 function addEventListenerToRunScriptCode(element, actionName) {
-  element.addEventListener("change", function(event) {
+  element.addEventListener("change", function() {
     fireChangeEventOnElementWithID(actionName);
   }, false);
 }
@@ -88,7 +90,7 @@ function retrieveCustomIconFile(actionName) {
 }
 
 function addEventListenerToRunScriptNewIcon(element, actionName) {
-  element.addEventListener("command", function(event) {
+  element.addEventListener("command", function() {
     if (this.checked) {
       this.checked = retrieveCustomIconFile(actionName);
     }
@@ -315,11 +317,11 @@ function createActionsMenulistWithSectorID(name, sectorNumber) {
   menulist.setAttribute("crop", "end");
   menulist.setAttribute("sizetopopup", "false");
   menulist.setAttribute("actionName", "");
-  menulist.addEventListener("command", function(event) {
+  menulist.addEventListener("command", function() {
     this.setAttribute("actionName", this.selectedItem.getAttribute("actionName"));
     fireChangeEventOnActionsGroup(name);
   }, false);
-  menulist.addEventListener("mousedown", function(event) {
+  menulist.addEventListener("mousedown", function() {
     attachMenupopup(this);
   }, false);
 
@@ -658,7 +660,7 @@ function initMenuDialog() {
   createRunScriptActions();
   
   ["showButton", "showAltButton", "suppressKey", "contextKey"].forEach(
-    function (element, index, array) {
+    function (element) {
       var menulist = document.getElementById(element + "Menulist");
       menulist.value = eG_prefs.getIntPref("activation." + element);
       if (menulist.selectedIndex == -1) {
