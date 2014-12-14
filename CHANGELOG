@@ -1,5 +1,16 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
+
+Version 4.8 (December 14, 2014)
+
+- changed actions:
+    - "Daily Readings" works now on the bookmarks folder of your choice
+    - The 20 "Load URL/Script" actions became 10 "Load URL" actions and 10 "Run Script" actions
+    - "Load URL" actions can now open a link in a private window
+    - The "Save Link As", "Daily Readings", "Load URL" and "Run Script" actions can now appear as being disabled
+- minor improvements in the backend of the preferences dialog
+
+
 Version 4.7 (October 12, 2014)
 
 - reworked code allowing actions to be disabled
