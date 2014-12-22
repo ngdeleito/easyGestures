@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Sıra yer tutucuları:&#37;s (seçim) ve &#37;u (mevcut URL)">
 
-<!ENTITY about.languageInfo "Dil">
 <!ENTITY about.stats "İstatistikler">
 <!ENTITY about.statsDisplay "İstatistikleri Göster">
 <!ENTITY about.statsReset "İstatistikleri Sıfırla">
@@ -125,7 +124,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Shift tuşuna basarak">
 <!ENTITY move.edge "Menü köşesine giderek">
 
-<!ENTITY urlscript "&quot;URL/Script Yükle&quot; Eylemini Kişiselleştir">
 <!ENTITY urlscript.load "URL&apos;leri yükle">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "yeni Sekmede">

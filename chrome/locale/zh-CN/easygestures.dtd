@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
 
-<!ENTITY about.languageInfo "语言">
 <!ENTITY about.stats "统计">
 <!ENTITY about.statsDisplay "显示统计">
 <!ENTITY about.statsReset "重置统计">
@@ -125,7 +124,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "按 Shift 键">
 <!ENTITY move.edge "延伸菜单边缘">
 
-<!ENTITY urlscript "自定义“载入网址/脚本”手势">
 <!ENTITY urlscript.load "载入网址">
 <!ENTITY urlscript.curTab "在当前标签页">
 <!ENTITY urlscript.newTab "在新标签页">

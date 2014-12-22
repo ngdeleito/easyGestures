@@ -26,7 +26,6 @@
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
-<!ENTITY about.languageInfo "Język">
 <!ENTITY about.stats "Statystyki">
 <!ENTITY about.statsDisplay "Wyświetl statystyki">
 <!ENTITY about.statsReset "Wyczyść statystyki">
@@ -93,7 +92,6 @@
 <!ENTITY move "Przesuwaj menu Centrum">
 <!ENTITY move.key "naciskając klawisz [ Shift ]">
 <!ENTITY move.edge "łapiąc krawędź menu">
-<!ENTITY urlscript "Dostosuj akcję &quot;Otwórz url/skrypt&quot; ">
 <!ENTITY urlscript.load "Otwieraj witryny w:">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "nowej karcie">

@@ -43,7 +43,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
-<!ENTITY about.languageInfo "언어">
 <!ENTITY about.stats "통계">
 <!ENTITY about.statsDisplay "통계 표시">
 <!ENTITY about.statsReset "통계 초기화">
@@ -110,7 +109,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY move "원형 메뉴 이동">
 <!ENTITY move.key "Shift 키를 누를 경우">
 <!ENTITY move.edge "메뉴 모서리에 닿을 경우">
-<!ENTITY urlscript "'URL/스크립트 불러오기' 동작 사용자 지정">
 <!ENTITY urlscript.load "URL 불러오기">
 <!ENTITY urlscript.curTab "현재 탭으로">
 <!ENTITY urlscript.newTab "새 탭으로">

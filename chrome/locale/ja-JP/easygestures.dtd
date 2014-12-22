@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "書式指定子: &#37;s (選択文字列) と &#37;u (現在の URL).">
 
-<!ENTITY about.languageInfo "言語">
 <!ENTITY about.stats "使用統計">
 <!ENTITY about.statsDisplay "使用統計を表示する">
 <!ENTITY about.statsReset "使用統計をリセット">
@@ -124,7 +123,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Shift キーを押して">
 <!ENTITY move.edge "メニューの端から">
 
-<!ENTITY urlscript "'URL/スクリプトの読み込み'アクションの設定">
 <!ENTITY urlscript.load "次の場所で URL の読み込み">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "新しいタブに">

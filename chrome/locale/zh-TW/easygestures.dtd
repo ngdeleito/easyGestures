@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "字串 &#37;s（選取區）和 &#37;u（現在的網址）">
 
-<!ENTITY about.languageInfo "語">
 <!ENTITY about.stats "次數統計">
 <!ENTITY about.statsDisplay "顯示次數統計">
 <!ENTITY about.statsReset "重新統計次數">
@@ -124,7 +123,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "按住 Shift 鍵時">
 <!ENTITY move.edge "游標在選單邊緣時">
 
-<!ENTITY urlscript "自訂「載入網址／Script」動作">
 <!ENTITY urlscript.load "載入網址">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "在新分頁">

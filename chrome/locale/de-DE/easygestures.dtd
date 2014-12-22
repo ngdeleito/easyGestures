@@ -26,7 +26,6 @@
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
-<!ENTITY about.languageInfo "Sprache">
 <!ENTITY about.stats "Statistiken">
 <!ENTITY about.statsDisplay "Statistiken anzeigen">
 <!ENTITY about.statsReset "Statistiken zurücksetzen">
@@ -93,7 +92,6 @@
 <!ENTITY move "Kreismenü verschieben">
 <!ENTITY move.key "durch Halten der Umschalttaste">
 <!ENTITY move.edge "bei Berühren der Menüränder">
-<!ENTITY urlscript "Aktion &apos;Adresse/Skript laden&apos; anpassen">
 <!ENTITY urlscript.load "Adressen laden">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in neuem Tab">

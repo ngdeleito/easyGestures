@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Segnaposto per le Stringhe: &#37;s (selezione) e &#37;u (URL corrente).">
 
-<!ENTITY about.languageInfo "Lingua">
 <!ENTITY about.stats "Statistiche">
 <!ENTITY about.statsDisplay "Mostra Statistiche">
 <!ENTITY about.statsReset "Azzera Statistiche">
@@ -125,7 +124,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Premendo il tasto Shift">
 <!ENTITY move.edge "Arrivando al bordo del Menu">
 
-<!ENTITY urlscript "Personalizza l'azione 'Carica URL/Script' ">
 <!ENTITY urlscript.load "Carica URL">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in una nuova Linguetta">

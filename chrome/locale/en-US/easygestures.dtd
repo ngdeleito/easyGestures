@@ -45,7 +45,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "String placeholders: &#37;s (selection) and &#37;u (current URL)">
 
-<!ENTITY about.languageInfo "Language">
 <!ENTITY about.stats "Statistics">
 <!ENTITY about.statsDisplay "Display Statistics">
 <!ENTITY about.statsReset "Reset Statistics">
@@ -123,7 +122,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "By pressing Shift key">
 <!ENTITY move.edge "By reaching menu edge">
 
-<!ENTITY urlscript "Customize 'Load URL/Script' Actions ">
 <!ENTITY urlscript.load "Load URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in new Tab">

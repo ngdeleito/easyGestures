@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
 
-<!ENTITY about.languageInfo "Jazyk">
 <!ENTITY about.stats "Statistiky">
 <!ENTITY about.statsDisplay "Zobrazit statistiky">
 <!ENTITY about.statsReset "Vynulovat statistiky">
@@ -125,7 +124,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Stiskem klávesy Shift">
 <!ENTITY move.edge "Pomocí rohů nabídky">
 
-<!ENTITY urlscript "Přizpůsobit akce &apos;Načíst URL/Skript&apos;">
 <!ENTITY urlscript.load "Načíst URL adresy">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "v novém panelu">

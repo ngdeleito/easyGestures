@@ -45,7 +45,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "Vous pouvez sélectionner ces actions dans le panneau '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
 
-<!ENTITY about.languageInfo "Langue">
 <!ENTITY about.stats "Statistiques">
 <!ENTITY about.statsDisplay "Afficher statistiques">
 <!ENTITY about.statsReset "Réinitialiser statistiques">
@@ -122,7 +121,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "En appuyant sur touche Maj">
 <!ENTITY move.edge "En atteignant la bordure du menu">
 
-<!ENTITY urlscript "Personnaliser action 'Charger URL/Script' ">
 <!ENTITY urlscript.load "Charger les URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "dans nouvel onglet">

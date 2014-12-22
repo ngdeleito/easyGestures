@@ -28,7 +28,6 @@
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
-<!ENTITY about.languageInfo "Nyelv">
 <!ENTITY about.stats "Statisztikák">
 <!ENTITY about.statsDisplay "Statisztikák megjelenítése">
 <!ENTITY about.statsReset "Statisztikák nullázása">
@@ -95,7 +94,6 @@
 <!ENTITY move "Köralakú menü mozgatása">
 <!ENTITY move.key "Shift billentyű lenyomásával">
 <!ENTITY move.edge "a menü szélének elérésekor">
-<!ENTITY urlscript "'URL/szkript betöltése' művelet személyre szabása">
 <!ENTITY urlscript.load "URL-ek betöltése">
 <!ENTITY urlscript.curTab "az aktuális lapon">
 <!ENTITY urlscript.newTab "új lapon">

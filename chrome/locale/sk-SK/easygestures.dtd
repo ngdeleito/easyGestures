@@ -26,7 +26,6 @@
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Náhrady reťazcov: &#37;s (výber) a &#37;u (aktuálna URL).">
-<!ENTITY about.languageInfo "Jazyk">
 <!ENTITY about.stats "Štatistiky">
 <!ENTITY about.statsDisplay "Zobraziť štatistiky">
 <!ENTITY about.statsReset "Vynulovať štatistiky">
@@ -93,7 +92,6 @@
 <!ENTITY move "Presunúť ponuku">
 <!ENTITY move.key "Stlačením klávesu Shift">
 <!ENTITY move.edge "Pomocou rohov ponuky">
-<!ENTITY urlscript "Prispôsobiť akcie &apos;Načítať URL/Skript&apos;">
 <!ENTITY urlscript.load "Načítať URL adresy">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "na novej karte">

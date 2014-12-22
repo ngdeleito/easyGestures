@@ -47,7 +47,6 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Espaço reservado para strings: &#37;s (selection) and &#37;u (current URL).">
 
-<!ENTITY about.languageInfo "Linguagem">
 <!ENTITY about.stats "Estatísticas">
 <!ENTITY about.statsDisplay "Mostrar Estatísticas">
 <!ENTITY about.statsReset "Reiniciar Estatísticas">
@@ -124,7 +123,6 @@ END OF INSTRUCTIONS
 <!ENTITY move.key "Pressionando a tecla Shift">
 <!ENTITY move.edge "Chegando a borda do menu">
 
-<!ENTITY urlscript "Personalizar Ação 'Carregar URL/Script' ">
 <!ENTITY urlscript.load "Carregar URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "em nova Aba">

@@ -28,7 +28,6 @@
 <!ENTITY customizations.otherActions "Otras acciones">
 <!ENTITY customizations.infoActions "Puede selecionar estas acciones en el panel '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
-<!ENTITY about.languageInfo "Idioma">
 <!ENTITY about.stats "Estadísticas">
 <!ENTITY about.statsDisplay "Mostrar estadísticas">
 <!ENTITY about.statsReset "Reiniciar estadisticas">
@@ -95,7 +94,6 @@
 <!ENTITY move "Mover el menú circular">
 <!ENTITY move.key "Pulsando la tecla Mayús">
 <!ENTITY move.edge "Al llegar al borde del menú">
-<!ENTITY urlscript "Personalizar acción &apos;Cargar dirección/Script&apos;">
 <!ENTITY urlscript.load "Cargar direcciones">
 <!ENTITY urlscript.curTab "en la pestaña actual">
 <!ENTITY urlscript.newTab "en una pestaña nueva">
