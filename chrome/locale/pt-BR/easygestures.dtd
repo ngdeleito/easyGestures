@@ -129,9 +129,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "em nova Aba">
 <!ENTITY urlscript.newWindow "em nova Janela">
-<!ENTITY urlscript.faviconNotFound "Favicon ainda não encontrado. Continuar busca?">
-
-<!ENTITY labelNewIcon "Novo Ícone">
 
 <!ENTITY tips "Dicas">
 <!ENTITY previousTip "Anterior">

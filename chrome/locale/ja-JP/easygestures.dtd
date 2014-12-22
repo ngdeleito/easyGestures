@@ -129,9 +129,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "新しいタブに">
 <!ENTITY urlscript.newWindow "新しいウィンドウに">
-<!ENTITY urlscript.faviconNotFound "ファビコンがまだ見つかりません。検索を続けますか？">
-
-<!ENTITY labelNewIcon "新しいアイコン">
 
 <!ENTITY tips "ヒント">
 <!ENTITY previousTip "前へ">

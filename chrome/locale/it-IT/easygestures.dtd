@@ -130,9 +130,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in una nuova Linguetta">
 <!ENTITY urlscript.newWindow "in una nuova Finestra">
-<!ENTITY urlscript.faviconNotFound "Non ho ancora trovato la Favicon. Continuo la ricerca?">
-
-<!ENTITY labelNewIcon "Nuova Icona">
 
 <!ENTITY tips "Suggerimenti">
 <!ENTITY previousTip "Precedente">

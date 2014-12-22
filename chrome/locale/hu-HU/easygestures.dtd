@@ -100,8 +100,6 @@
 <!ENTITY urlscript.curTab "az aktuális lapon">
 <!ENTITY urlscript.newTab "új lapon">
 <!ENTITY urlscript.newWindow "új ablakban">
-<!ENTITY urlscript.faviconNotFound "Könyvejelzőikon nincs meg. Keresés folytatása?">
-<!ENTITY labelNewIcon "Új ikon">
 <!ENTITY tips "Tippek">
 <!ENTITY previousTip "Előző">
 <!ENTITY nextTip "Következő">

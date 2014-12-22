@@ -130,9 +130,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "yeni Sekmede">
 <!ENTITY urlscript.newWindow "yeni Pencerede">
-<!ENTITY urlscript.faviconNotFound "Favori simge henüz bulunamadı. Aramaya devam etmek ister misiniz?">
-
-<!ENTITY labelNewIcon "Yeni Simge">
 
 <!ENTITY tips "İpuçları">
 <!ENTITY previousTip "Önceki">

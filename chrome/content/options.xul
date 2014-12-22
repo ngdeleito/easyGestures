@@ -742,8 +742,5 @@
   <!-- getting access to eGActions (also needed to reset statistics) -->
   <script src="chrome://easygestures/content/eGActions.js" />
   
-  <script type="application/x-javascript">
-    var eG_faviconNotFound = "&urlscript.faviconNotFound;";
-  </script>
   <script type="application/x-javascript" src="options.js" />
 </prefwindow>

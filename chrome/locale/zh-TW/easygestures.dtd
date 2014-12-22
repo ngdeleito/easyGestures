@@ -129,9 +129,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "在新分頁">
 <!ENTITY urlscript.newWindow "在新視窗">
-<!ENTITY urlscript.faviconNotFound "沒有找到網站圖示。繼續搜尋？">
-
-<!ENTITY labelNewIcon "新的圖示">
 
 <!ENTITY tips "小提示">
 <!ENTITY previousTip "上一個">

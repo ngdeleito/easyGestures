@@ -98,8 +98,6 @@
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "in neuem Tab">
 <!ENTITY urlscript.newWindow "in neuem Fenster">
-<!ENTITY urlscript.faviconNotFound "Das Favicon wurde noch nicht gefunden. Suche fortsetzen?">
-<!ENTITY labelNewIcon "Neues Symbol">
 <!ENTITY tips "Tipps">
 <!ENTITY previousTip "Vorheriger">
 <!ENTITY nextTip "Nächster">

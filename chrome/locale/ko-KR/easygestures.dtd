@@ -115,8 +115,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY urlscript.curTab "현재 탭으로">
 <!ENTITY urlscript.newTab "새 탭으로">
 <!ENTITY urlscript.newWindow "새 창으로">
-<!ENTITY urlscript.faviconNotFound "파비콘을 찾을수 없습니다. 다시 검색할까요?">
-<!ENTITY labelNewIcon "새 아이콘">
 <!ENTITY tips "팁">
 <!ENTITY previousTip "이전">
 <!ENTITY nextTip "다음">

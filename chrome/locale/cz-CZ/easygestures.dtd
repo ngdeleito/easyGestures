@@ -130,9 +130,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "v novém panelu">
 <!ENTITY urlscript.newWindow "v novém okně">
-<!ENTITY urlscript.faviconNotFound "Ikona stránky nebyla nalezena. Pokračovat v hledání?">
-
-<!ENTITY labelNewIcon "Nová ikona">
 
 <!ENTITY tips "Tipy">
 <!ENTITY previousTip "Předcházející">

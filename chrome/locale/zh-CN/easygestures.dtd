@@ -130,9 +130,6 @@ END OF INSTRUCTIONS
 <!ENTITY urlscript.curTab "在当前标签页">
 <!ENTITY urlscript.newTab "在新标签页">
 <!ENTITY urlscript.newWindow "在新窗口">
-<!ENTITY urlscript.faviconNotFound "没有找到图标。继续搜索？">
-
-<!ENTITY labelNewIcon "创建图标">
 
 <!ENTITY tips "提示">
 <!ENTITY previousTip "上一个">
