@@ -132,8 +132,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "New Icon">
 
-<!ENTITY duplicatekey.warning "This key is already in use ! Choose a different key.">
-
 <!ENTITY tips "Tips">
 <!ENTITY previousTip "Previous">
 <!ENTITY nextTip "Next">

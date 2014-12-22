@@ -117,7 +117,6 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY urlscript.newWindow "새 창으로">
 <!ENTITY urlscript.faviconNotFound "파비콘을 찾을수 없습니다. 다시 검색할까요?">
 <!ENTITY labelNewIcon "새 아이콘">
-<!ENTITY duplicatekey.warning "이 키는 이미 사용중입니다! 다른 키를 선택하세요.">
 <!ENTITY tips "팁">
 <!ENTITY previousTip "이전">
 <!ENTITY nextTip "다음">

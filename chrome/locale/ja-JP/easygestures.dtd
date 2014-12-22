@@ -133,8 +133,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "新しいアイコン">
 
-<!ENTITY duplicatekey.warning "このキーは既に使っています！他のキーを選んでください。">
-
 <!ENTITY tips "ヒント">
 <!ENTITY previousTip "前へ">
 <!ENTITY nextTip "次へ">

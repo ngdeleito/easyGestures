@@ -131,8 +131,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "Nouvelle icône">
 
-<!ENTITY duplicatekey.warning "Cette touche est déjà utilisée ! Choisissez une touche différente.">
-
 <!ENTITY tips "Astuces">
 <!ENTITY previousTip "Précédente">
 <!ENTITY nextTip "Suivante">

@@ -102,7 +102,6 @@
 <!ENTITY urlscript.newWindow "új ablakban">
 <!ENTITY urlscript.faviconNotFound "Könyvejelzőikon nincs meg. Keresés folytatása?">
 <!ENTITY labelNewIcon "Új ikon">
-<!ENTITY duplicatekey.warning "Ez a billentyű már foglalt! Válassz egy másikat!">
 <!ENTITY tips "Tippek">
 <!ENTITY previousTip "Előző">
 <!ENTITY nextTip "Következő">

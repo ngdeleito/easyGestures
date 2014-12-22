@@ -134,8 +134,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "Nuova Icona">
 
-<!ENTITY duplicatekey.warning "Questo tasto è già in uso! Scegli un tasto diverso.">
-
 <!ENTITY tips "Suggerimenti">
 <!ENTITY previousTip "Precedente">
 <!ENTITY nextTip "Successivo">

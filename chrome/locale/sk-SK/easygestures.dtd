@@ -100,7 +100,6 @@
 <!ENTITY urlscript.newWindow "v novom okne">
 <!ENTITY urlscript.faviconNotFound "Ikona stránky nebola nájdená. Pokračovať v hľadaní?">
 <!ENTITY labelNewIcon "Nová ikona">
-<!ENTITY duplicatekey.warning "Tento kláves je už použitý! Vyberte iný kláves.">
 <!ENTITY tips "Tipy">
 <!ENTITY previousTip "Predchádzajúci">
 <!ENTITY nextTip "Nasledujúci">

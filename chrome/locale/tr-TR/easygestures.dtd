@@ -134,8 +134,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "Yeni Simge">
 
-<!ENTITY duplicatekey.warning "Bu tuş zaten kullanımda! Farklı bir tuş seçin.">
-
 <!ENTITY tips "İpuçları">
 <!ENTITY previousTip "Önceki">
 <!ENTITY nextTip "Sonraki">

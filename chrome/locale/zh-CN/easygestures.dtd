@@ -134,8 +134,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "创建图标">
 
-<!ENTITY duplicatekey.warning "这热键已在使用中！请选择其他热键。">
-
 <!ENTITY tips "提示">
 <!ENTITY previousTip "上一个">
 <!ENTITY nextTip "下一个">

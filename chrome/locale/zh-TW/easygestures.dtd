@@ -133,8 +133,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "新的圖示">
 
-<!ENTITY duplicatekey.warning "這個按鍵已經被使用，請選擇另一個不同的按鍵！">
-
 <!ENTITY tips "小提示">
 <!ENTITY previousTip "上一個">
 <!ENTITY nextTip "下一個">

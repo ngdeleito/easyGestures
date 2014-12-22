@@ -794,7 +794,8 @@ function resetOnDuplicatedKeys(menulist, textbox) {
   if ((contextKeyCode == supprKeyCode) && contextKeyCode !== 0) {
     menulist.value = 0;
     textbox.value = 0;
-    alert(eG_duplicateKeyMessage);
+    alert(document.getElementById("easyGesturesNStrings")
+                  .getString("activation.duplicateKey"));
   }
 }
 

@@ -134,8 +134,6 @@ END OF INSTRUCTIONS
 
 <!ENTITY labelNewIcon "Nová ikona">
 
-<!ENTITY duplicatekey.warning "Tato klávesa je již použita! Vyberte jinou klávesu.">
-
 <!ENTITY tips "Tipy">
 <!ENTITY previousTip "Předcházející">
 <!ENTITY nextTip "Následující">

@@ -100,7 +100,6 @@
 <!ENTITY urlscript.newWindow "nowym oknie">
 <!ENTITY urlscript.faviconNotFound "Nie znaleziono favicony. Kontynuować szukanie?">
 <!ENTITY labelNewIcon "Nowa ikona">
-<!ENTITY duplicatekey.warning "Ten klawisz został już użyty! Wybierz inny.">
 <!ENTITY tips "Podpowiedzi">
 <!ENTITY previousTip "Poprzednia">
 <!ENTITY nextTip "Następna">
