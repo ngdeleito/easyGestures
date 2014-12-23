@@ -17,14 +17,65 @@ END OF INSTRUCTIONS
 
 <!-- Chinese localization (zh-CN): yfdyh000 from Babelzilla -->
 
-<!ENTITY close "关闭">
 
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "情况">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "自定义">
+
+<!ENTITY about.startupTips "启动时显示提示">
+<!ENTITY about.manage "管理设置">
+<!ENTITY about.import "导入设置...">
+<!ENTITY about.export "导出设置...">
+<!ENTITY about.reset "恢复默认设置">
+<!ENTITY about.stats "统计">
+<!ENTITY about.statsDisplay "显示统计">
+<!ENTITY about.statsReset "重置统计">
+
+<!ENTITY use "打开菜单">
+<!ENTITY use.button.left "鼠标左键">
+<!ENTITY use.button.middle "鼠标中键">
+<!ENTITY use.button.right "鼠标右键">
+<!ENTITY use.button.custom "自定义鼠标按钮">
+<!ENTITY use.buttoncode "按钮代码">
+<!ENTITY use.and "和">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "Shift">
+<!ENTITY use.ctrl "Ctrl">
+<!ENTITY use.afterDelay "在打开延迟">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "延迟时间">
+<!ENTITY use.alternative "显示替代菜单">
+<!ENTITY use.also "(您也可以使用 右 Alt 键)">
+<!ENTITY suppress "禁止圆饼菜单优先鼠标按钮">
+<!ENTITY suppress.ins "Insert">
+<!ENTITY suppress.alt "Alt">
+<!ENTITY suppress.ctrl "Ctrl">
+<!ENTITY suppress.custom "自定义键">
+<!ENTITY suppress.keycode "按键代码">
+<!ENTITY contextmenu "激活上下文敏感">
+<!ENTITY contextmenu.showAuto "始终激活。使用相同的密钥抑制敏感度。">
+
+<!ENTITY extras.menuType "菜单类型">
+<!ENTITY extras.menu "标准(8 动作)">
+<!ENTITY extras.largeMenu "大量(10 动作)">
+<!ENTITY extras.display "显示">
+<!ENTITY extras.noIcons "基本显示(不显示图标)">
+<!ENTITY extras.smallIcons "使用小图标">
+<!ENTITY extras.menuOpacity "圆饼菜单不透明">
+<!ENTITY extras.ttip "启用悬停提示">
+<!ENTITY extras.ttipDelayLabel "提示延时">
+<!ENTITY move "移动圆饼菜单">
+<!ENTITY move.key "按 Shift 键">
+<!ENTITY move.edge "延伸菜单边缘">
+<!ENTITY link.through "启用自动点击链接通过圆饼菜单中心">
+<!ENTITY link.delay "最大点击延迟">
+<!ENTITY link.throughAsAction "使用“打开链接”行动手势">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "使用浏览器动作">
+<!ENTITY autoscrolling "自动卷轴通过圆饼菜单中心">
 
 <!ENTITY actions.main "主菜单">
 <!ENTITY actions.extra "延伸菜单">
@@ -46,96 +97,24 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "字符串占位符：&#37;s（选中的）和&#37;u（当前的网址）。">
-
-<!ENTITY about.stats "统计">
-<!ENTITY about.statsDisplay "显示统计">
-<!ENTITY about.statsReset "重置统计">
-<!ENTITY about.manage "管理设置">
-<!ENTITY about.import "导入设置...">
-<!ENTITY about.export "导出设置...">
-<!ENTITY about.reset "恢复默认设置">
-<!ENTITY about.startupTips "启动时显示提示">
-
-<!ENTITY stats.use "使用弹出菜单">
-<!ENTITY stats.novice "初学者">
-<!ENTITY stats.coolUser "略懂">
-<!ENTITY stats.addicted "痴迷者">
-<!ENTITY stats.master "精通者">
-<!ENTITY stats.lastReset "最后重启">
-<!ENTITY stats.actions "点击手势">
-<!ENTITY stats.directions "点击方向">
-<!ENTITY stats.main "主菜单">
-<!ENTITY stats.extra "延伸菜单">
-<!ENTITY stats.total "全部">
-<!ENTITY stats.all "全部手势">
-
-<!ENTITY use "打开菜单">
-<!ENTITY use.button.left "鼠标左键">
-<!ENTITY use.button.middle "鼠标中键">
-<!ENTITY use.button.right "鼠标右键">
-<!ENTITY use.button.custom "自定义鼠标按钮">
-<!ENTITY use.buttoncode "按钮代码">
-
-<!ENTITY use.and "和">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Shift">
-<!ENTITY use.ctrl "Ctrl">
-<!ENTITY use.afterDelay "在打开延迟">
-<!ENTITY use.alternative "显示替代菜单">
-<!ENTITY use.also "(您也可以使用 右 Alt 键)">
-
-<!ENTITY suppress "禁止圆饼菜单优先鼠标按钮">
-<!ENTITY suppress.ins "Insert">
-<!ENTITY suppress.alt "Alt">
-<!ENTITY suppress.ctrl "Ctrl">
-<!ENTITY suppress.custom "自定义键">
-<!ENTITY suppress.keycode "按键代码">
-
-<!ENTITY link "自定义“打开链接”手势">
-<!ENTITY link.through "启用自动点击链接通过圆饼菜单中心">
-<!ENTITY link.delay "最大点击延迟">
-<!ENTITY link.throughAsAction "使用“打开链接”行动手势">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "使用浏览器动作">
-<!ENTITY link.curTab "在当前标签页打开链接">
-<!ENTITY link.newTab "在新标签页打开链接">
-<!ENTITY link.newWindow "在新窗口打开链接">
-
-<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
-<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-
-<!ENTITY autoscrolling "自动卷轴通过圆饼菜单中心">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "延迟时间">
-
-<!ENTITY extras.menuType "菜单类型">
-<!ENTITY extras.menu "标准(8 动作)">
-<!ENTITY extras.largeMenu "大量(10 动作)">
-<!ENTITY extras.display "显示">
-<!ENTITY extras.noIcons "基本显示(不显示图标)">
-<!ENTITY extras.smallIcons "使用小图标">
-<!ENTITY extras.menuOpacity "圆饼菜单不透明">
-<!ENTITY extras.ttip "启用悬停提示">
-<!ENTITY extras.ttipDelayLabel "提示延时">
-
-<!ENTITY contextmenu "激活上下文敏感">
-<!ENTITY contextmenu.showAuto "始终激活。使用相同的密钥抑制敏感度。">
-
-<!ENTITY move "移动圆饼菜单">
-<!ENTITY move.key "按 Shift 键">
-<!ENTITY move.edge "延伸菜单边缘">
-
 <!ENTITY urlscript.load "载入网址">
 <!ENTITY urlscript.curTab "在当前标签页">
 <!ENTITY urlscript.newTab "在新标签页">
 <!ENTITY urlscript.newWindow "在新窗口">
+<!ENTITY link "自定义“打开链接”手势">
+<!ENTITY link.curTab "在当前标签页打开链接">
+<!ENTITY link.newTab "在新标签页打开链接">
+<!ENTITY link.newWindow "在新窗口打开链接">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "提示">
+<!ENTITY intro "你知道么...">
+<!ENTITY copyText "复制文本到剪贴板">
+<!ENTITY showTips "在启动时显示提示">
 <!ENTITY previousTip "上一个">
 <!ENTITY nextTip "下一个">
 <!ENTITY closeTip "关闭">
-<!ENTITY intro "你知道么...">
-<!ENTITY showTips "在启动时显示提示">
-<!ENTITY copyText "复制文本到剪贴板">
 
 <!ENTITY tip1 "默认情况下，你必须按一下鼠标中键来显示圆饼菜单（除非你是 Mac 用户）。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
 <!ENTITY tip2 "最快捷的使用圆饼菜单的方式是按住鼠标按钮，拖拽来执行，并松开按钮。你可以把它作为一个鼠标手势。">
@@ -156,3 +135,17 @@ END OF INSTRUCTIONS
 <!ENTITY tip21 "除了可以在页面间进行 上一页/下一页 的移动外，你也可以用“上一个网站”和“下一个网站”进行网站和网站间的移动。">
 <!ENTITY tip22 "“打开链接”动作会在新标签页打开链接。">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "最后重启">
+<!ENTITY stats.use "使用弹出菜单">
+<!ENTITY stats.novice "初学者">
+<!ENTITY stats.coolUser "略懂">
+<!ENTITY stats.addicted "痴迷者">
+<!ENTITY stats.master "精通者">
+<!ENTITY stats.actions "点击手势">
+<!ENTITY stats.directions "点击方向">
+<!ENTITY stats.main "主菜单">
+<!ENTITY stats.extra "延伸菜单">
+<!ENTITY stats.total "全部">
+<!ENTITY stats.all "全部手势">
+<!ENTITY close "关闭">

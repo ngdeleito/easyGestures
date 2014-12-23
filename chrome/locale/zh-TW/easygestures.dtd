@@ -17,14 +17,65 @@ END OF INSTRUCTIONS
 
 <!-- Chinese Traditional localization (zh-TW): wechuan 濰泉 -->
 
-<!ENTITY close "關閉">
 
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "設定">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "自訂">
+
+<!ENTITY about.startupTips "啟動時顯示小提示">
+<!ENTITY about.manage "管理設定">
+<!ENTITY about.import "匯入設定">
+<!ENTITY about.export "匯出設定">
+<!ENTITY about.reset "還原設定">
+<!ENTITY about.stats "次數統計">
+<!ENTITY about.statsDisplay "顯示次數統計">
+<!ENTITY about.statsReset "重新統計次數">
+
+<!ENTITY use "開啟圓餅選單：用">
+<!ENTITY use.button.left "滑鼠左鍵">
+<!ENTITY use.button.middle "滑鼠中鍵">
+<!ENTITY use.button.right "滑鼠右鍵">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "加上">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "Shift 鍵">
+<!ENTITY use.ctrl "Ctrl 鍵">
+<!ENTITY use.afterDelay "在停頓時開啟">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…">
+<!ENTITY use.alternative "顯示替換選單：用">
+<!ENTITY use.also "（你也可以使用右邊的 Alt 鍵）">
+<!ENTITY suppress "封鎖圓餅選單當擊點滑鼠按鍵和">
+<!ENTITY suppress.ins "Insert 鍵">
+<!ENTITY suppress.alt "Alt 鍵">
+<!ENTITY suppress.ctrl "Ctrl 鍵">
+<!ENTITY suppress.custom "自訂按鍵">
+<!ENTITY suppress.keycode "按鍵代碼">
+<!ENTITY contextmenu "顯示情境選單：用">
+<!ENTITY contextmenu.showAuto "保持情境動作自動啟用。使用上述按鍵時轉換回基本選單。">
+
+<!ENTITY extras.menuType "選單樣式">
+<!ENTITY extras.menu "標準（八個動作）">
+<!ENTITY extras.largeMenu "大型（十個動作）">
+<!ENTITY extras.display "顯示">
+<!ENTITY extras.noIcons "基本顯示（不顯示圖示）">
+<!ENTITY extras.smallIcons "使用小型圖示">
+<!ENTITY extras.menuOpacity "圓餅選單透明度">
+<!ENTITY extras.ttip "圓餅動作提示">
+<!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…">
+<!ENTITY move "移動圓餅選單">
+<!ENTITY move.key "按住 Shift 鍵時">
+<!ENTITY move.edge "游標在選單邊緣時">
+<!ENTITY link.through "允許穿過圓餅選單中間點選鏈結">
+<!ENTITY link.delay "擊點的最大延遲時間">
+<!ENTITY link.throughAsAction "使用「開啟鏈結」動作設定">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "使用瀏覽器設定">
+<!ENTITY autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
 
 <!ENTITY actions.main "主要選單">
 <!ENTITY actions.extra "延伸選單">
@@ -46,95 +97,24 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "字串 &#37;s（選取區）和 &#37;u（現在的網址）">
-
-<!ENTITY about.stats "次數統計">
-<!ENTITY about.statsDisplay "顯示次數統計">
-<!ENTITY about.statsReset "重新統計次數">
-<!ENTITY about.manage "管理設定">
-<!ENTITY about.import "匯入設定">
-<!ENTITY about.export "匯出設定">
-<!ENTITY about.reset "還原設定">
-<!ENTITY about.startupTips "啟動時顯示小提示">
-
-<!ENTITY stats.use "圓餅手勢使用率">
-<!ENTITY stats.novice "初學者">
-<!ENTITY stats.coolUser "Cool User">
-<!ENTITY stats.addicted "上癮者">
-<!ENTITY stats.master "專家級">
-<!ENTITY stats.lastReset "最後重置時間">
-<!ENTITY stats.actions "動作使用統計">
-<!ENTITY stats.directions "方向使用統計">
-<!ENTITY stats.main "主要選單">
-<!ENTITY stats.extra "延伸選單">
-<!ENTITY stats.total "總計">
-<!ENTITY stats.all "全部動作">
-
-<!ENTITY use "開啟圓餅選單：用">
-<!ENTITY use.button.left "滑鼠左鍵">
-<!ENTITY use.button.middle "滑鼠中鍵">
-<!ENTITY use.button.right "滑鼠右鍵">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "加上">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Shift 鍵">
-<!ENTITY use.ctrl "Ctrl 鍵">
-<!ENTITY use.afterDelay "在停頓時開啟">
-<!ENTITY use.alternative "顯示替換選單：用">
-<!ENTITY use.also "（你也可以使用右邊的 Alt 鍵）">
-
-<!ENTITY suppress "封鎖圓餅選單當擊點滑鼠按鍵和">
-<!ENTITY suppress.ins "Insert 鍵">
-<!ENTITY suppress.alt "Alt 鍵">
-<!ENTITY suppress.ctrl "Ctrl 鍵">
-<!ENTITY suppress.custom "自訂按鍵">
-<!ENTITY suppress.keycode "按鍵代碼">
-
-<!ENTITY link "自訂「開啟鏈結」動作">
-<!ENTITY link.through "允許穿過圓餅選單中間點選鏈結">
-<!ENTITY link.delay "擊點的最大延遲時間">
-<!ENTITY link.throughAsAction "使用「開啟鏈結」動作設定">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "使用瀏覽器設定">
-<!ENTITY link.curTab "在現在的分頁開啟鏈結">
-<!ENTITY link.newTab "在新的分頁開啟鏈結">
-<!ENTITY link.newWindow "在新的視窗開啟鏈結">
-
-<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
-<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-
-<!ENTITY autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "停頓…">
-
-<!ENTITY extras.menuType "選單樣式">
-<!ENTITY extras.menu "標準（八個動作）">
-<!ENTITY extras.largeMenu "大型（十個動作）">
-<!ENTITY extras.display "顯示">
-<!ENTITY extras.noIcons "基本顯示（不顯示圖示）">
-<!ENTITY extras.smallIcons "使用小型圖示">
-<!ENTITY extras.menuOpacity "圓餅選單透明度">
-<!ENTITY extras.ttip "圓餅動作提示">
-<!ENTITY extras.ttipDelayLabel "顯示動作提示在停頓…">
-
-<!ENTITY contextmenu "顯示情境選單：用">
-<!ENTITY contextmenu.showAuto "保持情境動作自動啟用。使用上述按鍵時轉換回基本選單。">
-
-<!ENTITY move "移動圓餅選單">
-<!ENTITY move.key "按住 Shift 鍵時">
-<!ENTITY move.edge "游標在選單邊緣時">
-
 <!ENTITY urlscript.load "載入網址">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "在新分頁">
 <!ENTITY urlscript.newWindow "在新視窗">
+<!ENTITY link "自訂「開啟鏈結」動作">
+<!ENTITY link.curTab "在現在的分頁開啟鏈結">
+<!ENTITY link.newTab "在新的分頁開啟鏈結">
+<!ENTITY link.newWindow "在新的視窗開啟鏈結">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "小提示">
+<!ENTITY intro "你知不知道...">
+<!ENTITY copyText "複製文字到剪貼簿">
+<!ENTITY showTips "啟動時顯示小提示">
 <!ENTITY previousTip "上一個">
 <!ENTITY nextTip "下一個">
 <!ENTITY closeTip "關閉">
-<!ENTITY intro "你知不知道...">
-<!ENTITY showTips "啟動時顯示小提示">
-<!ENTITY copyText "複製文字到剪貼簿">
 
 <!ENTITY tip1 "預設中你可以擊點滑鼠中鍵來開啟圓餅選單（除非你是Mac使用者）。這個預設鍵是可以更改的。|改變滑鼠按鍵 &preferences;/&activation;">
 <!ENTITY tip2 "使用圓餅選單最快速的方法是按著滑鼠按鍵，把游標拖曳到執行的動作圖示上後放開滑鼠按鍵。你可以想成是有圖形介面的滑鼠手勢。">
@@ -155,3 +135,17 @@ END OF INSTRUCTIONS
 <!ENTITY tip21 "除了可以在頁面間進行 上一頁／下一頁 的移動外，你也可以用「上個網站」和「下個網站」進行網站和網站間的移動。">
 <!ENTITY tip22 "「開啟鏈結」動作會把目標鏈結開在新分頁中。">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "最後重置時間">
+<!ENTITY stats.use "圓餅手勢使用率">
+<!ENTITY stats.novice "初學者">
+<!ENTITY stats.coolUser "Cool User">
+<!ENTITY stats.addicted "上癮者">
+<!ENTITY stats.master "專家級">
+<!ENTITY stats.actions "動作使用統計">
+<!ENTITY stats.directions "方向使用統計">
+<!ENTITY stats.main "主要選單">
+<!ENTITY stats.extra "延伸選單">
+<!ENTITY stats.total "總計">
+<!ENTITY stats.all "全部動作">
+<!ENTITY close "關閉">

@@ -17,14 +17,65 @@ END OF INSTRUCTIONS
 
 <!-- Czech localization (cz-CZ): Pavel Endrst -->
 
-<!ENTITY close "Zavřít">
 
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Chování">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Přizpůsobení">
+
+<!ENTITY about.startupTips "Zobrazit tipy při startu">
+<!ENTITY about.manage "Změny nastavení">
+<!ENTITY about.import "Importovat nastavení...">
+<!ENTITY about.export "Exportovat nastavení...">
+<!ENTITY about.reset "Obnovit nastavení">
+<!ENTITY about.stats "Statistiky">
+<!ENTITY about.statsDisplay "Zobrazit statistiky">
+<!ENTITY about.statsReset "Vynulovat statistiky">
+
+<!ENTITY use "Otevřít nabídku menu">
+<!ENTITY use.button.left "levým tlačítkem myši">
+<!ENTITY use.button.middle "prostředním tlačítkem myši">
+<!ENTITY use.button.right "pravým tlačítkem myši">
+<!ENTITY use.button.custom "uživatelským tlačítkem myši">
+<!ENTITY use.buttoncode "kód tlačítka">
+<!ENTITY use.and "a">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "klávesou Shift">
+<!ENTITY use.ctrl "klávesou Ctrl">
+<!ENTITY use.afterDelay "jen po zpoždění">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Zpoždění">
+<!ENTITY use.alternative "Zobrazit alternativní nabídku s">
+<!ENTITY use.also "(Kromě toho můžete použít i pravý Alt)">
+<!ENTITY suppress "Potlačit zobrazení nabídky s">
+<!ENTITY suppress.ins "klávesou Insert">
+<!ENTITY suppress.alt "klávesou Alt">
+<!ENTITY suppress.ctrl "klávesou Ctrl">
+<!ENTITY suppress.custom "definovanou klávesou">
+<!ENTITY suppress.keycode "Kód klávesy">
+<!ENTITY contextmenu "Zobrazit kontextovou nabídku">
+<!ENTITY contextmenu.showAuto "Vždy aktivované. Používá stejnou klávesu na potlačení citlivosti.">
+
+<!ENTITY extras.menuType "Typ nabídky">
+<!ENTITY extras.menu "Standardní (8 akcí)">
+<!ENTITY extras.largeMenu "Velká (10 akcí)">
+<!ENTITY extras.display "Zobrazení">
+<!ENTITY extras.noIcons "Základní zobrazení (nezobrazuje ikony)">
+<!ENTITY extras.smallIcons "Použít malé ikony">
+<!ENTITY extras.menuOpacity "Průhlednost nabídky">
+<!ENTITY extras.ttip "Aktivovat popisky">
+<!ENTITY extras.ttipDelayLabel "Zpoždění">
+<!ENTITY move "Přesunout nabídku">
+<!ENTITY move.key "Stiskem klávesy Shift">
+<!ENTITY move.edge "Pomocí rohů nabídky">
+<!ENTITY link.through "Povolit kliknutí na odkaz přes střed nabídky">
+<!ENTITY link.delay "Maximální zpoždění pro kliknutí">
+<!ENTITY link.throughAsAction "Použít chování akce &apos;Otevřít odkaz&apos;">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "Použít chování prohlížeče">
+<!ENTITY autoscrolling "Automatický posun přes střed nabídky">
 
 <!ENTITY actions.main "Hlavní nabídka">
 <!ENTITY actions.extra "Extra nabídka">
@@ -46,96 +97,24 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Náhrady řetězců: &#37;s (výběr) a &#37;u (aktuální URL).">
-
-<!ENTITY about.stats "Statistiky">
-<!ENTITY about.statsDisplay "Zobrazit statistiky">
-<!ENTITY about.statsReset "Vynulovat statistiky">
-<!ENTITY about.manage "Změny nastavení">
-<!ENTITY about.import "Importovat nastavení...">
-<!ENTITY about.export "Exportovat nastavení...">
-<!ENTITY about.reset "Obnovit nastavení">
-<!ENTITY about.startupTips "Zobrazit tipy při startu">
-
-<!ENTITY stats.use "Využití nabídky">
-<!ENTITY stats.novice "Začátečník">
-<!ENTITY stats.coolUser "Pohodový uživatel">
-<!ENTITY stats.addicted "Nadšenec">
-<!ENTITY stats.master "Zkušený uživatel">
-<!ENTITY stats.lastReset "Poslední vynulování">
-<!ENTITY stats.actions "Kliknutí podle akce">
-<!ENTITY stats.directions "Kliknutí podle směru">
-<!ENTITY stats.main "Hlavní nabídka">
-<!ENTITY stats.extra "Rozšířená nabídka">
-<!ENTITY stats.total "Celkově">
-<!ENTITY stats.all "Všechny akce">
-
-<!ENTITY use "Otevřít nabídku menu">
-<!ENTITY use.button.left "levým tlačítkem myši">
-<!ENTITY use.button.middle "prostředním tlačítkem myši">
-<!ENTITY use.button.right "pravým tlačítkem myši">
-<!ENTITY use.button.custom "uživatelským tlačítkem myši">
-<!ENTITY use.buttoncode "kód tlačítka">
-
-<!ENTITY use.and "a">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "klávesou Shift">
-<!ENTITY use.ctrl "klávesou Ctrl">
-<!ENTITY use.afterDelay "jen po zpoždění">
-<!ENTITY use.alternative "Zobrazit alternativní nabídku s">
-<!ENTITY use.also "(Kromě toho můžete použít i pravý Alt)">
-
-<!ENTITY suppress "Potlačit zobrazení nabídky s">
-<!ENTITY suppress.ins "klávesou Insert">
-<!ENTITY suppress.alt "klávesou Alt">
-<!ENTITY suppress.ctrl "klávesou Ctrl">
-<!ENTITY suppress.custom "definovanou klávesou">
-<!ENTITY suppress.keycode "Kód klávesy">
-
-<!ENTITY link "Přizpůsobit akci &apos;Otevřít odkaz&apos;">
-<!ENTITY link.through "Povolit kliknutí na odkaz přes střed nabídky">
-<!ENTITY link.delay "Maximální zpoždění pro kliknutí">
-<!ENTITY link.throughAsAction "Použít chování akce &apos;Otevřít odkaz&apos;">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Použít chování prohlížeče">
-<!ENTITY link.curTab "Otevřít odkaz v aktuálním panelu">
-<!ENTITY link.newTab "Otevřít odkaz v novém panelu">
-<!ENTITY link.newWindow "Otevřít odkaz v novém okně">
-
-<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
-<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-
-<!ENTITY autoscrolling "Automatický posun přes střed nabídky">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Zpoždění">
-
-<!ENTITY extras.menuType "Typ nabídky">
-<!ENTITY extras.menu "Standardní (8 akcí)">
-<!ENTITY extras.largeMenu "Velká (10 akcí)">
-<!ENTITY extras.display "Zobrazení">
-<!ENTITY extras.noIcons "Základní zobrazení (nezobrazuje ikony)">
-<!ENTITY extras.smallIcons "Použít malé ikony">
-<!ENTITY extras.menuOpacity "Průhlednost nabídky">
-<!ENTITY extras.ttip "Aktivovat popisky">
-<!ENTITY extras.ttipDelayLabel "Zpoždění">
-
-<!ENTITY contextmenu "Zobrazit kontextovou nabídku">
-<!ENTITY contextmenu.showAuto "Vždy aktivované. Používá stejnou klávesu na potlačení citlivosti.">
-
-<!ENTITY move "Přesunout nabídku">
-<!ENTITY move.key "Stiskem klávesy Shift">
-<!ENTITY move.edge "Pomocí rohů nabídky">
-
 <!ENTITY urlscript.load "Načíst URL adresy">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "v novém panelu">
 <!ENTITY urlscript.newWindow "v novém okně">
+<!ENTITY link "Přizpůsobit akci &apos;Otevřít odkaz&apos;">
+<!ENTITY link.curTab "Otevřít odkaz v aktuálním panelu">
+<!ENTITY link.newTab "Otevřít odkaz v novém panelu">
+<!ENTITY link.newWindow "Otevřít odkaz v novém okně">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tipy">
+<!ENTITY intro "Věděli jste že ...">
+<!ENTITY copyText "Zkopírovat text do schránky">
+<!ENTITY showTips "Zobrazit tipy při startu">
 <!ENTITY previousTip "Předcházející">
 <!ENTITY nextTip "Následující">
 <!ENTITY closeTip "Zavřít">
-<!ENTITY intro "Věděli jste že ...">
-<!ENTITY showTips "Zobrazit tipy při startu">
-<!ENTITY copyText "Zkopírovat text do schránky">
 
 <!ENTITY tip1 "Přednastavené zobrazení nabídky je pomocí stisku prostředního tlačítka myši (pokud nejste uživatel Macu). Toto můžete změnit v nabídce Možnosti/Chování">
 <!ENTITY tip2 "Nejrychlejší způsob použití nabídky je stisknout a podržet tlačítko myši, přesunout kurzor na akci, kterou chcete vybrat a uvolnit tlačítko. Můžete to brát jako gesto myši s GUI.">
@@ -156,3 +135,17 @@ END OF INSTRUCTIONS
 <!ENTITY tip21 "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
 <!ENTITY tip22 "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu.">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "Poslední vynulování">
+<!ENTITY stats.use "Využití nabídky">
+<!ENTITY stats.novice "Začátečník">
+<!ENTITY stats.coolUser "Pohodový uživatel">
+<!ENTITY stats.addicted "Nadšenec">
+<!ENTITY stats.master "Zkušený uživatel">
+<!ENTITY stats.actions "Kliknutí podle akce">
+<!ENTITY stats.directions "Kliknutí podle směru">
+<!ENTITY stats.main "Hlavní nabídka">
+<!ENTITY stats.extra "Rozšířená nabídka">
+<!ENTITY stats.total "Celkově">
+<!ENTITY stats.all "Všechny akce">
+<!ENTITY close "Zavřít">

@@ -2,13 +2,66 @@
 
 <!-- Spanish localization (es-ES): chuzo from Babelzilla -->
 
-<!ENTITY close "Cerrar">
+
 <!ENTITY preferences "Preferencias">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activación">
 <!ENTITY behavior "Comportamiento">
 <!ENTITY menus "Menús">
 <!ENTITY customizations "Personalizar">
+
+<!ENTITY about.startupTips "Mostrar consejos al iniciar">
+<!ENTITY about.manage "Gestionar opciones">
+<!ENTITY about.import "Importar opciones...">
+<!ENTITY about.export "Exportar opciones...">
+<!ENTITY about.reset "Reiniciar opciones">
+<!ENTITY about.stats "Estadísticas">
+<!ENTITY about.statsDisplay "Mostrar estadísticas">
+<!ENTITY about.statsReset "Reiniciar estadisticas">
+
+<!ENTITY use "Abrir menú circular con">
+<!ENTITY use.button.left "botón izquierdo">
+<!ENTITY use.button.middle "botón central">
+<!ENTITY use.button.right "botón derecho">
+<!ENTITY use.button.custom "botón personalizado del ratón">
+<!ENTITY use.buttoncode "código del botón">
+<!ENTITY use.and "y">
+<!ENTITY use.noKey "Ninguna tecla">
+<!ENTITY use.shift "Tecla mayúsculas">
+<!ENTITY use.ctrl "Tecla Ctrl">
+<!ENTITY use.afterDelay "Abrir tras un retardo">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Retraso">
+<!ENTITY use.alternative "Mostrar menú alternativo con">
+<!ENTITY use.also "(Puede usar también la tecla Alt derecha)">
+<!ENTITY suppress "Suprimir prioridad del menú circular con">
+<!ENTITY suppress.ins "Tecla Insert">
+<!ENTITY suppress.alt "Tecla Alt">
+<!ENTITY suppress.ctrl "Tecla Ctrl">
+<!ENTITY suppress.custom "Tecla personalizada">
+<!ENTITY suppress.keycode "Código de la tecla">
+<!ENTITY contextmenu "Activar sensibilidad al contexto con">
+<!ENTITY contextmenu.showAuto "Siempre activado. Usar la misma tecla para desactivar la sensibilidad.">
+
+<!ENTITY extras.menuType "Tipo de menú">
+<!ENTITY extras.menu "Estándar (8 acciones)">
+<!ENTITY extras.largeMenu "Ampliado (10 acciones)">
+<!ENTITY extras.display "Visualización">
+<!ENTITY extras.noIcons "Básico (no mostrar iconos)">
+<!ENTITY extras.smallIcons "Usar iconos pequeños">
+<!ENTITY extras.menuOpacity "Opacidad del menú circular">
+<!ENTITY extras.ttip "Activar tooltips">
+<!ENTITY extras.ttipDelayLabel "Retardo en tooltips">
+<!ENTITY move "Mover el menú circular">
+<!ENTITY move.key "Pulsando la tecla Mayús">
+<!ENTITY move.edge "Al llegar al borde del menú">
+<!ENTITY link.through "Habilitar pulsar enlaces a través del menú circular">
+<!ENTITY link.delay "Máximo retraso para las pulsaciones">
+<!ENTITY link.throughAsAction "Usar comportamiento de la acción &apos;Abrir enlace&apos;">
+<!ENTITY configureAction "Configurar esta acción">
+<!ENTITY link.throughAsBrowser "Usar comportamiento del navegador">
+<!ENTITY autoscrolling "Autodezplazamiento a través del menú circular">
+
 <!ENTITY actions.main "Menú principal">
 <!ENTITY actions.extra "Menú extra">
 <!ENTITY actions.contextual "Menús contextuales">
@@ -23,88 +76,32 @@
 <!ENTITY contextmenu.image "Imagen">
 <!ENTITY contextmenu.selection "Selección">
 <!ENTITY contextmenu.textbox "Cuadro de texto">
+
 <!ENTITY customizations.loadURLActions "Acciones Cargar dirección">
 <!ENTITY customizations.runScriptActions "Acciones ejectutar script">
 <!ENTITY customizations.otherActions "Otras acciones">
 <!ENTITY customizations.infoActions "Puede selecionar estas acciones en el panel '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Parámetros: &#37;s (selección) y &#37;u (dirección actual).">
-<!ENTITY about.stats "Estadísticas">
-<!ENTITY about.statsDisplay "Mostrar estadísticas">
-<!ENTITY about.statsReset "Reiniciar estadisticas">
-<!ENTITY about.manage "Gestionar opciones">
-<!ENTITY about.import "Importar opciones...">
-<!ENTITY about.export "Exportar opciones...">
-<!ENTITY about.reset "Reiniciar opciones">
-<!ENTITY about.startupTips "Mostrar consejos al iniciar">
-<!ENTITY stats.use "Uso del menú circular">
-<!ENTITY stats.novice "Novato">
-<!ENTITY stats.coolUser "Usuario total">
-<!ENTITY stats.addicted "Adicto">
-<!ENTITY stats.master "Maestro">
-<!ENTITY stats.lastReset "Último reinicio">
-<!ENTITY stats.actions "Uso por acciones">
-<!ENTITY stats.directions "Uso por direcciones">
-<!ENTITY stats.main "Principal">
-<!ENTITY stats.extra "Extra">
-<!ENTITY stats.total "Total">
-<!ENTITY stats.all "Todas las acciones">
-<!ENTITY use "Abrir menú circular con">
-<!ENTITY use.button.left "botón izquierdo">
-<!ENTITY use.button.middle "botón central">
-<!ENTITY use.button.right "botón derecho">
-<!ENTITY use.button.custom "botón personalizado del ratón">
-<!ENTITY use.buttoncode "código del botón">
-<!ENTITY use.and "y">
-<!ENTITY use.noKey "Ninguna tecla">
-<!ENTITY use.shift "Tecla mayúsculas">
-<!ENTITY use.ctrl "Tecla Ctrl">
-<!ENTITY use.afterDelay "Abrir tras un retardo">
-<!ENTITY use.alternative "Mostrar menú alternativo con">
-<!ENTITY use.also "(Puede usar también la tecla Alt derecha)">
-<!ENTITY suppress "Suprimir prioridad del menú circular con">
-<!ENTITY suppress.ins "Tecla Insert">
-<!ENTITY suppress.alt "Tecla Alt">
-<!ENTITY suppress.ctrl "Tecla Ctrl">
-<!ENTITY suppress.custom "Tecla personalizada">
-<!ENTITY suppress.keycode "Código de la tecla">
+
+<!ENTITY urlscript.load "Cargar direcciones">
+<!ENTITY urlscript.curTab "en la pestaña actual">
+<!ENTITY urlscript.newTab "en una pestaña nueva">
+<!ENTITY urlscript.newWindow "en una ventana nueva">
 <!ENTITY link "Personalizar acción &apos;Abrir enlace&apos;">
-<!ENTITY link.through "Habilitar pulsar enlaces a través del menú circular">
-<!ENTITY link.delay "Máximo retraso para las pulsaciones">
-<!ENTITY link.throughAsAction "Usar comportamiento de la acción &apos;Abrir enlace&apos;">
-<!ENTITY configureAction "Configurar esta acción">
-<!ENTITY link.throughAsBrowser "Usar comportamiento del navegador">
 <!ENTITY link.curTab "Abrir enlace en la pestaña actual">
 <!ENTITY link.newTab "Abrir enlace en una pestaña nueva">
 <!ENTITY link.newWindow "Abrir enlace en una ventana nueva">
 <!ENTITY customizations.dailyReadings "Personalizar la acción 'Lecturas diarias'">
 <!ENTITY customizations.dailyReadings.folderSelection "Carpeta utilizada por esta acción:">
-<!ENTITY autoscrolling "Autodezplazamiento a través del menú circular">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Retraso">
-<!ENTITY extras.menuType "Tipo de menú">
-<!ENTITY extras.menu "Estándar (8 acciones)">
-<!ENTITY extras.largeMenu "Ampliado (10 acciones)">
-<!ENTITY extras.display "Visualización">
-<!ENTITY extras.noIcons "Básico (no mostrar iconos)">
-<!ENTITY extras.smallIcons "Usar iconos pequeños">
-<!ENTITY extras.menuOpacity "Opacidad del menú circular">
-<!ENTITY extras.ttip "Activar tooltips">
-<!ENTITY extras.ttipDelayLabel "Retardo en tooltips">
-<!ENTITY contextmenu "Activar sensibilidad al contexto con">
-<!ENTITY contextmenu.showAuto "Siempre activado. Usar la misma tecla para desactivar la sensibilidad.">
-<!ENTITY move "Mover el menú circular">
-<!ENTITY move.key "Pulsando la tecla Mayús">
-<!ENTITY move.edge "Al llegar al borde del menú">
-<!ENTITY urlscript.load "Cargar direcciones">
-<!ENTITY urlscript.curTab "en la pestaña actual">
-<!ENTITY urlscript.newTab "en una pestaña nueva">
-<!ENTITY urlscript.newWindow "en una ventana nueva">
+
 <!ENTITY tips "Consejos">
+<!ENTITY intro "¿Sabía que...?">
+<!ENTITY copyText "Copiar texto al portapapeles">
+<!ENTITY showTips "Mostrar consejos al iniciar">
 <!ENTITY previousTip "Anterior">
 <!ENTITY nextTip "Siguiente">
 <!ENTITY closeTip "Cerrar">
-<!ENTITY intro "¿Sabía que...?">
-<!ENTITY showTips "Mostrar consejos al iniciar">
-<!ENTITY copyText "Copiar texto al portapapeles">
+
 <!ENTITY tip1 "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario Mac). Los botones por defecto del ratón pueden ser cambiados.|Cambie los botones a través de &preferences;/&activation;">
 <!ENTITY tip2 "La manera más rapida de usar el menú circular es mantener pulsado el ratón, moverse a la acción seleccionada y soltar el botón. Puede pensar en una especie de gesto del ratón con una interfaz gráfica.">
 <!ENTITY tip4 "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse.|Cambie los botones del ratón en &preferences;/&activation;">
@@ -124,3 +121,17 @@
 <!ENTITY tip21 "En lugar de moverse adelante y atrás página por página, puede hacerlo con sitios usando las acciones &apos;Retroceder sitio&apos; y &apos;Avanzar sitio&apos;.">
 <!ENTITY tip22 "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña.">
 <!ENTITY tip26 "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas.|Seleccione una carpeta en &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "Último reinicio">
+<!ENTITY stats.use "Uso del menú circular">
+<!ENTITY stats.novice "Novato">
+<!ENTITY stats.coolUser "Usuario total">
+<!ENTITY stats.addicted "Adicto">
+<!ENTITY stats.master "Maestro">
+<!ENTITY stats.actions "Uso por acciones">
+<!ENTITY stats.directions "Uso por direcciones">
+<!ENTITY stats.main "Principal">
+<!ENTITY stats.extra "Extra">
+<!ENTITY stats.total "Total">
+<!ENTITY stats.all "Todas las acciones">
+<!ENTITY close "Cerrar">

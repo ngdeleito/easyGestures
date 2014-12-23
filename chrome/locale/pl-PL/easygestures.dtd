@@ -1,12 +1,65 @@
 <!-- Polish localization (pl-PL): teo from Babelzilla.org -->
 
-<!ENTITY close "Zamknij">
+
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Ustawienia">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Dostosuj">
+
+<!ENTITY about.startupTips "Pokazuj podpowiedzi po uruchomieniu">
+<!ENTITY about.manage "Zarządzanie ustawieniami">
+<!ENTITY about.import "Importuj ustawienia">
+<!ENTITY about.export "Eksportuj ustawienia">
+<!ENTITY about.reset "Ustawienia domyślne">
+<!ENTITY about.stats "Statystyki">
+<!ENTITY about.statsDisplay "Wyświetl statystyki">
+<!ENTITY about.statsReset "Wyczyść statystyki">
+
+<!ENTITY use "Otwórz Centrum nawigacyjne klikając:">
+<!ENTITY use.button.left "lewym przyciskiem myszy">
+<!ENTITY use.button.middle "środkowym przyciskiem myszy">
+<!ENTITY use.button.right "prawym przyciskiem myszy">
+<!ENTITY use.button.custom "ustawionym przyciskiem myszy">
+<!ENTITY use.buttoncode "przyciskiem kodowanym">
+<!ENTITY use.and "+">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "klawisz [ Shift ]">
+<!ENTITY use.ctrl "klawisz [ Ctrl ]">
+<!ENTITY use.afterDelay "Otwórz z opóźnieniem">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia">
+<!ENTITY use.alternative "Wyświetlaj alternatywne menu klikając:">
+<!ENTITY use.also "(Można użyć także prawego klawisza [ Alt ])">
+<!ENTITY suppress "Wstrzymaj uruchamianie Centrum myszą używając:">
+<!ENTITY suppress.ins "klawisza [ Insert ]">
+<!ENTITY suppress.alt "klawisza [ Alt ]">
+<!ENTITY suppress.ctrl "klawisza [ Ctrl ]">
+<!ENTITY suppress.custom "klawisza zdefiniowanego przez użytkownika">
+<!ENTITY suppress.keycode "Kod klawisza">
+<!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
+<!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
+
+<!ENTITY extras.menuType "Typ menu">
+<!ENTITY extras.menu "Standardowe (8 akcji)">
+<!ENTITY extras.largeMenu "Duże (10 akcji)">
+<!ENTITY extras.display "Wygląd menu Centrum nawigacyjnego">
+<!ENTITY extras.noIcons "Wygląd podstawowy (nie wyświetla ikon)">
+<!ENTITY extras.smallIcons "Użyj małych ikon">
+<!ENTITY extras.menuOpacity "Przeźroczystość Centrum nawigacyjnego">
+<!ENTITY extras.ttip "Wyświetlanie opisów przycisków">
+<!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania">
+<!ENTITY move "Przesuwaj menu Centrum">
+<!ENTITY move.key "naciskając klawisz [ Shift ]">
+<!ENTITY move.edge "łapiąc krawędź menu">
+<!ENTITY link.through "Uruchamianie odnośników przez Centrum nawigacyjne">
+<!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia">
+<!ENTITY link.throughAsAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "Użyj ustawień przeglądarki">
+<!ENTITY autoscrolling "Automatyczne przewijanie">
+
 <!ENTITY actions.main "Menu główne">
 <!ENTITY actions.extra "Menu dodatkowe">
 <!ENTITY actions.contextual "Contextual Menus">
@@ -21,88 +74,31 @@
 <!ENTITY contextmenu.image "Obrazek">
 <!ENTITY contextmenu.selection "Zaznaczenie">
 <!ENTITY contextmenu.textbox "Pole tekstowe">
+
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
-<!ENTITY about.stats "Statystyki">
-<!ENTITY about.statsDisplay "Wyświetl statystyki">
-<!ENTITY about.statsReset "Wyczyść statystyki">
-<!ENTITY about.manage "Zarządzanie ustawieniami">
-<!ENTITY about.import "Importuj ustawienia">
-<!ENTITY about.export "Eksportuj ustawienia">
-<!ENTITY about.reset "Ustawienia domyślne">
-<!ENTITY about.startupTips "Pokazuj podpowiedzi po uruchomieniu">
-<!ENTITY stats.use "Użycie Centrum">
-<!ENTITY stats.novice "Początkujący">
-<!ENTITY stats.coolUser "Zaawansowany">
-<!ENTITY stats.addicted "Nałogowiec">
-<!ENTITY stats.master "Mistrz">
-<!ENTITY stats.lastReset "Ostatnie czyszczenie">
-<!ENTITY stats.actions "Uruchomienia wg akcji">
-<!ENTITY stats.directions "Uruchomienia wg kierunków">
-<!ENTITY stats.main "Menu główne Centrum">
-<!ENTITY stats.extra "Menu dodatkowe Centrum">
-<!ENTITY stats.total "Razem">
-<!ENTITY stats.all "Wszystkie akcje">
-<!ENTITY use "Otwórz Centrum nawigacyjne klikając:">
-<!ENTITY use.button.left "lewym przyciskiem myszy">
-<!ENTITY use.button.middle "środkowym przyciskiem myszy">
-<!ENTITY use.button.right "prawym przyciskiem myszy">
-<!ENTITY use.button.custom "ustawionym przyciskiem myszy">
-<!ENTITY use.buttoncode "przyciskiem kodowanym">
-<!ENTITY use.and "+">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "klawisz [ Shift ]">
-<!ENTITY use.ctrl "klawisz [ Ctrl ]">
-<!ENTITY use.afterDelay "Otwórz z opóźnieniem">
-<!ENTITY use.alternative "Wyświetlaj alternatywne menu klikając:">
-<!ENTITY use.also "(Można użyć także prawego klawisza [ Alt ])">
-<!ENTITY suppress "Wstrzymaj uruchamianie Centrum myszą używając:">
-<!ENTITY suppress.ins "klawisza [ Insert ]">
-<!ENTITY suppress.alt "klawisza [ Alt ]">
-<!ENTITY suppress.ctrl "klawisza [ Ctrl ]">
-<!ENTITY suppress.custom "klawisza zdefiniowanego przez użytkownika">
-<!ENTITY suppress.keycode "Kod klawisza">
+<!ENTITY urlscript.load "Otwieraj witryny w:">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "nowej karcie">
+<!ENTITY urlscript.newWindow "nowym oknie">
 <!ENTITY link "Dostosuj działanie akcji &quot;Otwórz odnośnik&quot;">
-<!ENTITY link.through "Uruchamianie odnośników przez Centrum nawigacyjne">
-<!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia">
-<!ENTITY link.throughAsAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Użyj ustawień przeglądarki">
 <!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
 <!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
 <!ENTITY link.newWindow "Otwórz odnośnik w nowym oknie">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-<!ENTITY autoscrolling "Automatyczne przewijanie">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia">
-<!ENTITY extras.menuType "Typ menu">
-<!ENTITY extras.menu "Standardowe (8 akcji)">
-<!ENTITY extras.largeMenu "Duże (10 akcji)">
-<!ENTITY extras.display "Wygląd menu Centrum nawigacyjnego">
-<!ENTITY extras.noIcons "Wygląd podstawowy (nie wyświetla ikon)">
-<!ENTITY extras.smallIcons "Użyj małych ikon">
-<!ENTITY extras.menuOpacity "Przeźroczystość Centrum nawigacyjnego">
-<!ENTITY extras.ttip "Wyświetlanie opisów przycisków">
-<!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania">
-<!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
-<!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
-<!ENTITY move "Przesuwaj menu Centrum">
-<!ENTITY move.key "naciskając klawisz [ Shift ]">
-<!ENTITY move.edge "łapiąc krawędź menu">
-<!ENTITY urlscript.load "Otwieraj witryny w:">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "nowej karcie">
-<!ENTITY urlscript.newWindow "nowym oknie">
+
 <!ENTITY tips "Podpowiedzi">
+<!ENTITY intro "Czy wiesz że...">
+<!ENTITY copyText "Kopiuj tekst do schowka">
+<!ENTITY showTips "Pokazuj podpowiedzi przy starcie">
 <!ENTITY previousTip "Poprzednia">
 <!ENTITY nextTip "Następna">
 <!ENTITY closeTip "Zamknij">
-<!ENTITY intro "Czy wiesz że...">
-<!ENTITY showTips "Pokazuj podpowiedzi przy starcie">
-<!ENTITY copyText "Kopiuj tekst do schowka">
+
 <!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia.|Zmień przycisk myszy w &preferences;/&activation;">
 <!ENTITY tip2 "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
 <!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane.|Zmień działanie przycisków myszy w &preferences;/&activation;">
@@ -122,3 +118,17 @@
 <!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
 <!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie.">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "Ostatnie czyszczenie">
+<!ENTITY stats.use "Użycie Centrum">
+<!ENTITY stats.novice "Początkujący">
+<!ENTITY stats.coolUser "Zaawansowany">
+<!ENTITY stats.addicted "Nałogowiec">
+<!ENTITY stats.master "Mistrz">
+<!ENTITY stats.actions "Uruchomienia wg akcji">
+<!ENTITY stats.directions "Uruchomienia wg kierunków">
+<!ENTITY stats.main "Menu główne Centrum">
+<!ENTITY stats.extra "Menu dodatkowe Centrum">
+<!ENTITY stats.total "Razem">
+<!ENTITY stats.all "Wszystkie akcje">
+<!ENTITY close "Zamknij">

@@ -1,12 +1,64 @@
 <!-- Team erweiterungen.de and ReinekeFux from Babelzilla.org -->
 
-<!ENTITY close "Schließen">
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Verhalten">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Anpassungen">
+
+<!ENTITY about.startupTips "Tipps beim Start anzeigen">
+<!ENTITY about.manage "Einstellungen verwalten">
+<!ENTITY about.import "Einstellungen importieren...">
+<!ENTITY about.export "Einstellungen exportieren...">
+<!ENTITY about.reset "Einstellungen zurücksetzen">
+<!ENTITY about.stats "Statistiken">
+<!ENTITY about.statsDisplay "Statistiken anzeigen">
+<!ENTITY about.statsReset "Statistiken zurücksetzen">
+
+<!ENTITY use "Kreismenü öffnen mit">
+<!ENTITY use.button.left "linker Maustaste">
+<!ENTITY use.button.middle "mittlerer Maustaste">
+<!ENTITY use.button.right "rechter Maustaste">
+<!ENTITY use.button.custom "benutzerdefinierter Maustaste">
+<!ENTITY use.buttoncode "Tasten-Code">
+<!ENTITY use.and "und">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "Umschalttaste">
+<!ENTITY use.ctrl "Strg-Taste">
+<!ENTITY use.afterDelay "Mit Verzögerung öffnen">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Verzögerung">
+<!ENTITY use.alternative "Alternative Menüs anzeigen mit">
+<!ENTITY use.also "(auch über Alt-Taste auswählbar)">
+<!ENTITY suppress "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
+<!ENTITY suppress.ins "Einfügen-Taste">
+<!ENTITY suppress.alt "Alt-Taste">
+<!ENTITY suppress.ctrl "Strg-Taste">
+<!ENTITY suppress.custom "Eigener Taste">
+<!ENTITY suppress.keycode "Tastencode">
+<!ENTITY contextmenu "Kontextabhängige Menüreaktion aktivieren mit">
+<!ENTITY contextmenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
+
+<!ENTITY extras.menuType "Menü-Varianten">
+<!ENTITY extras.menu "Standard (8 Aktionen)">
+<!ENTITY extras.largeMenu "Erweitert (10 Aktionen)">
+<!ENTITY extras.display "Anzeige">
+<!ENTITY extras.noIcons "Einfache Anzeige (ohne Symbole) verwenden">
+<!ENTITY extras.smallIcons "Kleine Symbole verwenden">
+<!ENTITY extras.menuOpacity "Kreismenü-Deckkraft">
+<!ENTITY extras.ttip "Tooltips aktivieren">
+<!ENTITY extras.ttipDelayLabel "Tooltip-Verzögerung">
+<!ENTITY move "Kreismenü verschieben">
+<!ENTITY move.key "durch Halten der Umschalttaste">
+<!ENTITY move.edge "bei Berühren der Menüränder">
+<!ENTITY link.through "Klicks auf Links durch Kreismenü-Mitte aktivieren">
+<!ENTITY link.delay "Maximale Verzögerung für Klicks">
+<!ENTITY link.throughAsAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "Verhalten des Browsers verwenden">
+<!ENTITY autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
+
 <!ENTITY actions.main "Haupt-Kreismenü">
 <!ENTITY actions.extra "Zusatz-Kreismenü">
 <!ENTITY actions.contextual "Contextual Menus">
@@ -21,88 +73,31 @@
 <!ENTITY contextmenu.image "Grafik">
 <!ENTITY contextmenu.selection "Auswahl">
 <!ENTITY contextmenu.textbox "Textfeld">
+
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
-<!ENTITY about.stats "Statistiken">
-<!ENTITY about.statsDisplay "Statistiken anzeigen">
-<!ENTITY about.statsReset "Statistiken zurücksetzen">
-<!ENTITY about.manage "Einstellungen verwalten">
-<!ENTITY about.import "Einstellungen importieren...">
-<!ENTITY about.export "Einstellungen exportieren...">
-<!ENTITY about.reset "Einstellungen zurücksetzen">
-<!ENTITY about.startupTips "Tipps beim Start anzeigen">
-<!ENTITY stats.use "Kreismenü-Nutzung">
-<!ENTITY stats.novice "Anfänger">
-<!ENTITY stats.coolUser "Fortgeschritten">
-<!ENTITY stats.addicted "Süchtig">
-<!ENTITY stats.master "Meister">
-<!ENTITY stats.lastReset "Zuletzt zurückgesetzt">
-<!ENTITY stats.actions "Klicks nach Aktionen">
-<!ENTITY stats.directions "Klicks nach Richtungen">
-<!ENTITY stats.main "Hauptmenü">
-<!ENTITY stats.extra "Zusatzmenü">
-<!ENTITY stats.total "Gesamt">
-<!ENTITY stats.all "Alle Aktionen">
-<!ENTITY use "Kreismenü öffnen mit">
-<!ENTITY use.button.left "linker Maustaste">
-<!ENTITY use.button.middle "mittlerer Maustaste">
-<!ENTITY use.button.right "rechter Maustaste">
-<!ENTITY use.button.custom "benutzerdefinierter Maustaste">
-<!ENTITY use.buttoncode "Tasten-Code">
-<!ENTITY use.and "und">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Umschalttaste">
-<!ENTITY use.ctrl "Strg-Taste">
-<!ENTITY use.afterDelay "Mit Verzögerung öffnen">
-<!ENTITY use.alternative "Alternative Menüs anzeigen mit">
-<!ENTITY use.also "(auch über Alt-Taste auswählbar)">
-<!ENTITY suppress "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
-<!ENTITY suppress.ins "Einfügen-Taste">
-<!ENTITY suppress.alt "Alt-Taste">
-<!ENTITY suppress.ctrl "Strg-Taste">
-<!ENTITY suppress.custom "Eigener Taste">
-<!ENTITY suppress.keycode "Tastencode">
+<!ENTITY urlscript.load "Adressen laden">
+<!ENTITY urlscript.curTab "in current Tab">
+<!ENTITY urlscript.newTab "in neuem Tab">
+<!ENTITY urlscript.newWindow "in neuem Fenster">
 <!ENTITY link "Aktion &apos;Link öffnen&apos; anpassen">
-<!ENTITY link.through "Klicks auf Links durch Kreismenü-Mitte aktivieren">
-<!ENTITY link.delay "Maximale Verzögerung für Klicks">
-<!ENTITY link.throughAsAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Verhalten des Browsers verwenden">
 <!ENTITY link.curTab "Link im aktiven Tab öffnen">
 <!ENTITY link.newTab "Link in neuem Tab öffnen">
 <!ENTITY link.newWindow "Link in neuem Fenster öffnen">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-<!ENTITY autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Verzögerung">
-<!ENTITY extras.menuType "Menü-Varianten">
-<!ENTITY extras.menu "Standard (8 Aktionen)">
-<!ENTITY extras.largeMenu "Erweitert (10 Aktionen)">
-<!ENTITY extras.display "Anzeige">
-<!ENTITY extras.noIcons "Einfache Anzeige (ohne Symbole) verwenden">
-<!ENTITY extras.smallIcons "Kleine Symbole verwenden">
-<!ENTITY extras.menuOpacity "Kreismenü-Deckkraft">
-<!ENTITY extras.ttip "Tooltips aktivieren">
-<!ENTITY extras.ttipDelayLabel "Tooltip-Verzögerung">
-<!ENTITY contextmenu "Kontextabhängige Menüreaktion aktivieren mit">
-<!ENTITY contextmenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
-<!ENTITY move "Kreismenü verschieben">
-<!ENTITY move.key "durch Halten der Umschalttaste">
-<!ENTITY move.edge "bei Berühren der Menüränder">
-<!ENTITY urlscript.load "Adressen laden">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "in neuem Tab">
-<!ENTITY urlscript.newWindow "in neuem Fenster">
+
 <!ENTITY tips "Tipps">
+<!ENTITY intro "Wussten Sie schon...">
+<!ENTITY copyText "Text in Zwischenablage kopieren">
+<!ENTITY showTips "Tipps beim Start anzeigen">
 <!ENTITY previousTip "Vorheriger">
 <!ENTITY nextTip "Nächster">
 <!ENTITY closeTip "Schließen">
-<!ENTITY intro "Wussten Sie schon...">
-<!ENTITY showTips "Tipps beim Start anzeigen">
-<!ENTITY copyText "Text in Zwischenablage kopieren">
+
 <!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden.|Maustaste unter &preferences;/&activation;">
 <!ENTITY tip2 "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
 <!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden.|Maustaste unter &preferences;/&activation;">
@@ -122,3 +117,17 @@
 <!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
 <!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab.">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "Zuletzt zurückgesetzt">
+<!ENTITY stats.use "Kreismenü-Nutzung">
+<!ENTITY stats.novice "Anfänger">
+<!ENTITY stats.coolUser "Fortgeschritten">
+<!ENTITY stats.addicted "Süchtig">
+<!ENTITY stats.master "Meister">
+<!ENTITY stats.actions "Klicks nach Aktionen">
+<!ENTITY stats.directions "Klicks nach Richtungen">
+<!ENTITY stats.main "Hauptmenü">
+<!ENTITY stats.extra "Zusatzmenü">
+<!ENTITY stats.total "Gesamt">
+<!ENTITY stats.all "Alle Aktionen">
+<!ENTITY close "Schließen">

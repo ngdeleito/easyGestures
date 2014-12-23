@@ -17,14 +17,65 @@ END OF INSTRUCTIONS
 
 <!-- Japanese localization (ja-JP): nekodaisky -->
 
-<!ENTITY close "閉じる">
 
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "動作">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "カスタマイズ">
+
+<!ENTITY about.startupTips "起動時にヒントを表示する">
+<!ENTITY about.manage "設定の管理">
+<!ENTITY about.import "設定をインポート...">
+<!ENTITY about.export "設定をエクスポート...">
+<!ENTITY about.reset "設定をリセットする">
+<!ENTITY about.stats "使用統計">
+<!ENTITY about.statsDisplay "使用統計を表示する">
+<!ENTITY about.statsReset "使用統計をリセット">
+
+<!ENTITY use "パイメニューの開き方">
+<!ENTITY use.button.left "マウスの左ボタン">
+<!ENTITY use.button.middle "マウスの中央ボタン">
+<!ENTITY use.button.right "マウスの右ボタン">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "＋">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "Shift キー">
+<!ENTITY use.ctrl "Ctrl キー">
+<!ENTITY use.afterDelay "時間が経ったら開く">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "遅延時間">
+<!ENTITY use.alternative "代替メニューの表示法">
+<!ENTITY use.also "(右 Alt キーでも表示できます)">
+<!ENTITY suppress "次のキーを押している時にはパイメニューを非表示">
+<!ENTITY suppress.ins "Insert キー">
+<!ENTITY suppress.alt "Alt キー">
+<!ENTITY suppress.ctrl "Ctrl キー">
+<!ENTITY suppress.custom "カスタムキー">
+<!ENTITY suppress.keycode "キーコード">
+<!ENTITY contextmenu "次のキーで状況依存メニューを有効化">
+<!ENTITY contextmenu.showAuto "常に有効にする。状況依存メニューの無効化にも同じキーを使います。">
+
+<!ENTITY extras.menuType "メニューの種類">
+<!ENTITY extras.menu "標準サイズ (8 アクション)">
+<!ENTITY extras.largeMenu "大きめサイズ (10 アクション)">
+<!ENTITY extras.display "表示方法">
+<!ENTITY extras.noIcons "基本タイプ (アイコンを表示しない)">
+<!ENTITY extras.smallIcons "小さいアイコンを使う">
+<!ENTITY extras.menuOpacity "パイメニューの透明度">
+<!ENTITY extras.ttip "アクション名をツールチップで表示する">
+<!ENTITY extras.ttipDelayLabel " 表示までの遅延時間">
+<!ENTITY move "パイメニューの移動法">
+<!ENTITY move.key "Shift キーを押して">
+<!ENTITY move.edge "メニューの端から">
+<!ENTITY link.through "パイメニューの中心からリンクをクリックできるようにする">
+<!ENTITY link.delay "クリックの最大遅延時間">
+<!ENTITY link.throughAsAction "'リンクを開く'アクションの動作を使う">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "ブラウザの動作を使う">
+<!ENTITY autoscrolling "パイメニューの中心から自動スクロールする">
 
 <!ENTITY actions.main "メインメニュー">
 <!ENTITY actions.extra "拡張メニュー">
@@ -46,95 +97,24 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "書式指定子: &#37;s (選択文字列) と &#37;u (現在の URL).">
-
-<!ENTITY about.stats "使用統計">
-<!ENTITY about.statsDisplay "使用統計を表示する">
-<!ENTITY about.statsReset "使用統計をリセット">
-<!ENTITY about.manage "設定の管理">
-<!ENTITY about.import "設定をインポート...">
-<!ENTITY about.export "設定をエクスポート...">
-<!ENTITY about.reset "設定をリセットする">
-<!ENTITY about.startupTips "起動時にヒントを表示する">
-
-<!ENTITY stats.use "パイメニューの使用率">
-<!ENTITY stats.novice "ひよっこ">
-<!ENTITY stats.coolUser "デキるヒト">
-<!ENTITY stats.addicted "ジェスチャ中毒">
-<!ENTITY stats.master "ジェスチャ神">
-<!ENTITY stats.lastReset "最終リセット">
-<!ENTITY stats.actions "アクション毎の使用率">
-<!ENTITY stats.directions "方向毎の使用率">
-<!ENTITY stats.main "メインメニュー">
-<!ENTITY stats.extra "拡張メニュー">
-<!ENTITY stats.total "合計">
-<!ENTITY stats.all "すべてのアクション">
-
-<!ENTITY use "パイメニューの開き方">
-<!ENTITY use.button.left "マウスの左ボタン">
-<!ENTITY use.button.middle "マウスの中央ボタン">
-<!ENTITY use.button.right "マウスの右ボタン">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "＋">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Shift キー">
-<!ENTITY use.ctrl "Ctrl キー">
-<!ENTITY use.afterDelay "時間が経ったら開く">
-<!ENTITY use.alternative "代替メニューの表示法">
-<!ENTITY use.also "(右 Alt キーでも表示できます)">
-
-<!ENTITY suppress "次のキーを押している時にはパイメニューを非表示">
-<!ENTITY suppress.ins "Insert キー">
-<!ENTITY suppress.alt "Alt キー">
-<!ENTITY suppress.ctrl "Ctrl キー">
-<!ENTITY suppress.custom "カスタムキー">
-<!ENTITY suppress.keycode "キーコード">
-
-<!ENTITY link "'リンクを開く'アクションの設定">
-<!ENTITY link.through "パイメニューの中心からリンクをクリックできるようにする">
-<!ENTITY link.delay "クリックの最大遅延時間">
-<!ENTITY link.throughAsAction "'リンクを開く'アクションの動作を使う">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "ブラウザの動作を使う">
-<!ENTITY link.curTab "リンクの現在のタブで開く">
-<!ENTITY link.newTab "リンクを新しいタブで開く">
-<!ENTITY link.newWindow "リンクを新しいウィンドウで開く">
-
-<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
-<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-
-<!ENTITY autoscrolling "パイメニューの中心から自動スクロールする">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "遅延時間">
-
-<!ENTITY extras.menuType "メニューの種類">
-<!ENTITY extras.menu "標準サイズ (8 アクション)">
-<!ENTITY extras.largeMenu "大きめサイズ (10 アクション)">
-<!ENTITY extras.display "表示方法">
-<!ENTITY extras.noIcons "基本タイプ (アイコンを表示しない)">
-<!ENTITY extras.smallIcons "小さいアイコンを使う">
-<!ENTITY extras.menuOpacity "パイメニューの透明度">
-<!ENTITY extras.ttip "アクション名をツールチップで表示する">
-<!ENTITY extras.ttipDelayLabel " 表示までの遅延時間">
-
-<!ENTITY contextmenu "次のキーで状況依存メニューを有効化">
-<!ENTITY contextmenu.showAuto "常に有効にする。状況依存メニューの無効化にも同じキーを使います。">
-
-<!ENTITY move "パイメニューの移動法">
-<!ENTITY move.key "Shift キーを押して">
-<!ENTITY move.edge "メニューの端から">
-
 <!ENTITY urlscript.load "次の場所で URL の読み込み">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "新しいタブに">
 <!ENTITY urlscript.newWindow "新しいウィンドウに">
+<!ENTITY link "'リンクを開く'アクションの設定">
+<!ENTITY link.curTab "リンクの現在のタブで開く">
+<!ENTITY link.newTab "リンクを新しいタブで開く">
+<!ENTITY link.newWindow "リンクを新しいウィンドウで開く">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "ヒント">
+<!ENTITY intro "ご存知ですか...">
+<!ENTITY copyText "クリップボードに文章をコピーする">
+<!ENTITY showTips "起動時にヒントを見る">
 <!ENTITY previousTip "前へ">
 <!ENTITY nextTip "次へ">
 <!ENTITY closeTip "閉じる">
-<!ENTITY intro "ご存知ですか...">
-<!ENTITY showTips "起動時にヒントを見る">
-<!ENTITY copyText "クリップボードに文章をコピーする">
 
 <!ENTITY tip1 "初期設定では、マウスの中央ボタンをクリックして、パイメニューを表示するようになっています(Mac ユーザは除く)。|マウスボタンの設定を変更する &preferences;/&activation;">
 <!ENTITY tip2 "手早くパイメニューを使う方法もあります。まずマウスボタンを押し、実行したいアクションまでドラッグしてから、放してみてください。GUI の付いたマウスジェスチャとしても使えるということです。">
@@ -155,3 +135,17 @@ END OF INSTRUCTIONS
 <!ENTITY tip21 "ページ毎に戻ったり進んだりする替わりに、'サイトを戻る'や'サイトを進む'アクションでサイトごとに移動できます。">
 <!ENTITY tip22 "'リンクを開く'アクションは、ポイントしているリンクを新しいタブに開きます。">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "最終リセット">
+<!ENTITY stats.use "パイメニューの使用率">
+<!ENTITY stats.novice "ひよっこ">
+<!ENTITY stats.coolUser "デキるヒト">
+<!ENTITY stats.addicted "ジェスチャ中毒">
+<!ENTITY stats.master "ジェスチャ神">
+<!ENTITY stats.actions "アクション毎の使用率">
+<!ENTITY stats.directions "方向毎の使用率">
+<!ENTITY stats.main "メインメニュー">
+<!ENTITY stats.extra "拡張メニュー">
+<!ENTITY stats.total "合計">
+<!ENTITY stats.all "すべてのアクション">
+<!ENTITY close "閉じる">

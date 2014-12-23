@@ -15,14 +15,65 @@ Contains options dialog strings and pie menu tips.
 END OF INSTRUCTIONS
 -->
 
-<!ENTITY close "Fermer">
 
 <!ENTITY preferences "Préférences">
+
 <!ENTITY general "Général">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Comportement">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Personnalisations">
+
+<!ENTITY about.startupTips "Afficher astuces au démarrage">
+<!ENTITY about.manage "Gérer préférences">
+<!ENTITY about.import "Importer préférences...">
+<!ENTITY about.export "Exporter préférences...">
+<!ENTITY about.reset "Réinitialiser préférences">
+<!ENTITY about.stats "Statistiques">
+<!ENTITY about.statsDisplay "Afficher statistiques">
+<!ENTITY about.statsReset "Réinitialiser statistiques">
+
+<!ENTITY use "Ouvrir menu circulaire avec">
+<!ENTITY use.button.left "bouton gauche souris">
+<!ENTITY use.button.middle "bouton central souris">
+<!ENTITY use.button.right "bouton droit souris">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "et">
+<!ENTITY use.noKey "aucune touche">
+<!ENTITY use.shift "touche Maj">
+<!ENTITY use.ctrl "touche Ctrl">
+<!ENTITY use.afterDelay "Après délai seulement">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Délai">
+<!ENTITY use.alternative "Afficher menu circulaire alternatif avec">
+<!ENTITY use.also "(la touche Alt aussi est utilisable)">
+<!ENTITY suppress "Supprimer priorité menu circulaire sur bouton souris avec">
+<!ENTITY suppress.ins "touche Insert">
+<!ENTITY suppress.alt "touche Alt">
+<!ENTITY suppress.ctrl "touche Ctrl">
+<!ENTITY suppress.custom "touche personnalisée">
+<!ENTITY suppress.keycode "Keycode">
+<!ENTITY contextmenu "Activer sensibilité contextuelle avec">
+<!ENTITY contextmenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
+
+<!ENTITY extras.menuType "Type de menu">
+<!ENTITY extras.menu "Standard (8 actions)">
+<!ENTITY extras.largeMenu "Large (10 actions)">
+<!ENTITY extras.display "Affichage">
+<!ENTITY extras.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
+<!ENTITY extras.smallIcons "Utiliser des petites icônes">
+<!ENTITY extras.menuOpacity "Opacité du menu circulaire">
+<!ENTITY extras.ttip "Activer infobulles">
+<!ENTITY extras.ttipDelayLabel "Délai infobulles">
+<!ENTITY move "Déplacer menu circulaire">
+<!ENTITY move.key "En appuyant sur touche Maj">
+<!ENTITY move.edge "En atteignant la bordure du menu">
+<!ENTITY link.through "Activer clics sur liens par le centre du menu circulaire">
+<!ENTITY link.delay "Délai maximum pour cliquer">
+<!ENTITY link.throughAsAction "Suivre comportement action 'Ouvrir lien'">
+<!ENTITY configureAction "Configurer cette action">
+<!ENTITY link.throughAsBrowser "Suivre comportement du navigateur">
+<!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
 
 <!ENTITY actions.main "Menu principal">
 <!ENTITY actions.extra "Menu supplémentaire">
@@ -44,95 +95,24 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.otherActions "Autres actions">
 <!ENTITY customizations.infoActions "Vous pouvez sélectionner ces actions dans le panneau '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
-
-<!ENTITY about.stats "Statistiques">
-<!ENTITY about.statsDisplay "Afficher statistiques">
-<!ENTITY about.statsReset "Réinitialiser statistiques">
-<!ENTITY about.manage "Gérer préférences">
-<!ENTITY about.import "Importer préférences...">
-<!ENTITY about.export "Exporter préférences...">
-<!ENTITY about.reset "Réinitialiser préférences">
-<!ENTITY about.startupTips "Afficher astuces au démarrage">
-
-<!ENTITY stats.use "Utilisation du menu circulaire">
-<!ENTITY stats.novice "Novice">
-<!ENTITY stats.coolUser "Utilisateur cool">
-<!ENTITY stats.addicted "Mordu">
-<!ENTITY stats.master "Maître">
-<!ENTITY stats.lastReset "Dernière réinitialisation">
-<!ENTITY stats.actions "Clics par actions">
-<!ENTITY stats.directions "Clics par directions">
-<!ENTITY stats.main "Menu principal">
-<!ENTITY stats.extra "Menu supplémentaire">
-<!ENTITY stats.total "Total">
-<!ENTITY stats.all "Toutes actions">
-
-<!ENTITY use "Ouvrir menu circulaire avec">
-<!ENTITY use.button.left "bouton gauche souris">
-<!ENTITY use.button.middle "bouton central souris">
-<!ENTITY use.button.right "bouton droit souris">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "et">
-<!ENTITY use.noKey "aucune touche">
-<!ENTITY use.shift "touche Maj">
-<!ENTITY use.ctrl "touche Ctrl">
-<!ENTITY use.afterDelay "Après délai seulement">
-<!ENTITY use.alternative "Afficher menu circulaire alternatif avec">
-<!ENTITY use.also "(la touche Alt aussi est utilisable)">
-
-<!ENTITY suppress "Supprimer priorité menu circulaire sur bouton souris avec">
-<!ENTITY suppress.ins "touche Insert">
-<!ENTITY suppress.alt "touche Alt">
-<!ENTITY suppress.ctrl "touche Ctrl">
-<!ENTITY suppress.custom "touche personnalisée">
-<!ENTITY suppress.keycode "Keycode">
-
-<!ENTITY link "Personnaliser action 'Ouvrir lien'">
-<!ENTITY link.through "Activer clics sur liens par le centre du menu circulaire">
-<!ENTITY link.delay "Délai maximum pour cliquer">
-<!ENTITY link.throughAsAction "Suivre comportement action 'Ouvrir lien'">
-<!ENTITY configureAction "Configurer cette action">
-<!ENTITY link.throughAsBrowser "Suivre comportement du navigateur">
-<!ENTITY link.curTab "Ouvrir lien dans onglet courant">
-<!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
-<!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
-
-<!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
-<!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action :">
-
-<!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Délai">
-
-<!ENTITY extras.menuType "Type de menu">
-<!ENTITY extras.menu "Standard (8 actions)">
-<!ENTITY extras.largeMenu "Large (10 actions)">
-<!ENTITY extras.display "Affichage">
-<!ENTITY extras.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
-<!ENTITY extras.smallIcons "Utiliser des petites icônes">
-<!ENTITY extras.menuOpacity "Opacité du menu circulaire">
-<!ENTITY extras.ttip "Activer infobulles">
-<!ENTITY extras.ttipDelayLabel "Délai infobulles">
-
-<!ENTITY contextmenu "Activer sensibilité contextuelle avec">
-<!ENTITY contextmenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
-
-<!ENTITY move "Déplacer menu circulaire">
-<!ENTITY move.key "En appuyant sur touche Maj">
-<!ENTITY move.edge "En atteignant la bordure du menu">
-
 <!ENTITY urlscript.load "Charger les URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "dans nouvel onglet">
 <!ENTITY urlscript.newWindow "dans nouvelle fenêtre">
+<!ENTITY link "Personnaliser action 'Ouvrir lien'">
+<!ENTITY link.curTab "Ouvrir lien dans onglet courant">
+<!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
+<!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
+<!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
+<!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action :">
 
 <!ENTITY tips "Astuces">
+<!ENTITY intro "Saviez-vous...">
+<!ENTITY copyText "Copier texte dans le presse-papier">
+<!ENTITY showTips "Montrer astuces au démarrage">
 <!ENTITY previousTip "Précédente">
 <!ENTITY nextTip "Suivante">
 <!ENTITY closeTip "Fermer">
-<!ENTITY intro "Saviez-vous...">
-<!ENTITY showTips "Montrer astuces au démarrage">
-<!ENTITY copyText "Copier texte dans le presse-papier">
 
 <!ENTITY tip1 "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé.|Changez bouton souris dans &preferences;/&activation;">
 <!ENTITY tip2 "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
@@ -153,3 +133,17 @@ END OF INSTRUCTIONS
 <!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
 <!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet.">
 <!ENTITY tip26 "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets.|Choisissez un dossier dans &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "Dernière réinitialisation">
+<!ENTITY stats.use "Utilisation du menu circulaire">
+<!ENTITY stats.novice "Novice">
+<!ENTITY stats.coolUser "Utilisateur cool">
+<!ENTITY stats.addicted "Mordu">
+<!ENTITY stats.master "Maître">
+<!ENTITY stats.actions "Clics par actions">
+<!ENTITY stats.directions "Clics par directions">
+<!ENTITY stats.main "Menu principal">
+<!ENTITY stats.extra "Menu supplémentaire">
+<!ENTITY stats.total "Total">
+<!ENTITY stats.all "Toutes actions">
+<!ENTITY close "Fermer">

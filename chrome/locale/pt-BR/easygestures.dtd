@@ -17,14 +17,65 @@ END OF INSTRUCTIONS
 
 <!-- Portuguese localization (pt-BR): Wenderson Teixeira -->
 
-<!ENTITY close "Fechar">
 
 <!ENTITY preferences "Preferences">
+
 <!ENTITY general "General">
 <!ENTITY activation "Activation">
 <!ENTITY behavior "Comportamento">
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Personalizações">
+
+<!ENTITY about.startupTips "Mostrar Dicas ao iniciar">
+<!ENTITY about.manage "Gerenciar Preferências">
+<!ENTITY about.import "Importar Preferências...">
+<!ENTITY about.export "Exportar Preferências...">
+<!ENTITY about.reset "Reiniciar Preferências">
+<!ENTITY about.stats "Estatísticas">
+<!ENTITY about.statsDisplay "Mostrar Estatísticas">
+<!ENTITY about.statsReset "Reiniciar Estatísticas">
+
+<!ENTITY use "Abrir menu de torta com">
+<!ENTITY use.button.left "botão esquerdo do mouse">
+<!ENTITY use.button.middle "botão do meio do mouse">
+<!ENTITY use.button.right "botão direito do mouse">
+<!ENTITY use.button.custom "custom mouse button">
+<!ENTITY use.buttoncode "button code">
+<!ENTITY use.and "e">
+<!ENTITY use.noKey "No key">
+<!ENTITY use.shift "Tecla Shift">
+<!ENTITY use.ctrl "Tecla Ctrl">
+<!ENTITY use.afterDelay "Abrir após atraso">
+<!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso">
+<!ENTITY use.alternative "Mostrar menu alternativo com">
+<!ENTITY use.also "(Você também pode usar a tecla Alt direita)">
+<!ENTITY suppress "Suprimir a prioridade do menu de torta no botão do mouse com">
+<!ENTITY suppress.ins "Tecla Insert">
+<!ENTITY suppress.alt "Tecla Alt">
+<!ENTITY suppress.ctrl "Tecla Ctrl">
+<!ENTITY suppress.custom "Tecla Personalizada">
+<!ENTITY suppress.keycode "Código da tecla">
+<!ENTITY contextmenu "Ativar sensibilidade contextual com">
+<!ENTITY contextmenu.showAuto "Sempre ativada. Usar a mesma tecla para suprimir sensibilidade.">
+
+<!ENTITY extras.menuType "Tipo de Menu">
+<!ENTITY extras.menu "Padrão (8 ações)">
+<!ENTITY extras.largeMenu "Grande (10 ações)">
+<!ENTITY extras.display "Mostrar">
+<!ENTITY extras.noIcons "Mostrar Básico (não mostra ícones)">
+<!ENTITY extras.smallIcons "Usar Ícones Pequenos">
+<!ENTITY extras.menuOpacity "Opacidade do Menu de Torta">
+<!ENTITY extras.ttip "Ativar Dicas">
+<!ENTITY extras.ttipDelayLabel "Atraso das Dicas">
+<!ENTITY move "Mover menu de torta">
+<!ENTITY move.key "Pressionando a tecla Shift">
+<!ENTITY move.edge "Chegando a borda do menu">
+<!ENTITY link.through "Habilitar clicar em links através do centro do menu de torta">
+<!ENTITY link.delay "Atraso máximo para clicar">
+<!ENTITY link.throughAsAction "Usar Comportamento da Ação 'Abrir Link'">
+<!ENTITY configureAction "Configure this action">
+<!ENTITY link.throughAsBrowser "Usar Comportamento do Navegador">
+<!ENTITY autoscrolling "Auto-rolagem através do centro do menu de torta">
 
 <!ENTITY actions.main "Menu Principal">
 <!ENTITY actions.extra "Menu Extra">
@@ -46,95 +97,24 @@ END OF INSTRUCTIONS
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Espaço reservado para strings: &#37;s (selection) and &#37;u (current URL).">
-
-<!ENTITY about.stats "Estatísticas">
-<!ENTITY about.statsDisplay "Mostrar Estatísticas">
-<!ENTITY about.statsReset "Reiniciar Estatísticas">
-<!ENTITY about.manage "Gerenciar Preferências">
-<!ENTITY about.import "Importar Preferências...">
-<!ENTITY about.export "Exportar Preferências...">
-<!ENTITY about.reset "Reiniciar Preferências">
-<!ENTITY about.startupTips "Mostrar Dicas ao iniciar">
-
-<!ENTITY stats.use "Uso do Menu de Torta">
-<!ENTITY stats.novice "Novato">
-<!ENTITY stats.coolUser "Usário Descolado">
-<!ENTITY stats.addicted "Viciado">
-<!ENTITY stats.master "Mestre">
-<!ENTITY stats.lastReset "Último Reinício">
-<!ENTITY stats.actions "Cliques por Ações">
-<!ENTITY stats.directions "Cliques por Direções">
-<!ENTITY stats.main "Menu Principal">
-<!ENTITY stats.extra "Menu Extra">
-<!ENTITY stats.total "Total">
-<!ENTITY stats.all "Todas as Ações">
-
-<!ENTITY use "Abrir menu de torta com">
-<!ENTITY use.button.left "botão esquerdo do mouse">
-<!ENTITY use.button.middle "botão do meio do mouse">
-<!ENTITY use.button.right "botão direito do mouse">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "e">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Tecla Shift">
-<!ENTITY use.ctrl "Tecla Ctrl">
-<!ENTITY use.afterDelay "Abrir após atraso">
-<!ENTITY use.alternative "Mostrar menu alternativo com">
-<!ENTITY use.also "(Você também pode usar a tecla Alt direita)">
-
-<!ENTITY suppress "Suprimir a prioridade do menu de torta no botão do mouse com">
-<!ENTITY suppress.ins "Tecla Insert">
-<!ENTITY suppress.alt "Tecla Alt">
-<!ENTITY suppress.ctrl "Tecla Ctrl">
-<!ENTITY suppress.custom "Tecla Personalizada">
-<!ENTITY suppress.keycode "Código da tecla">
-
-<!ENTITY link "Personalizar Ação 'Abrir Link'">
-<!ENTITY link.through "Habilitar clicar em links através do centro do menu de torta">
-<!ENTITY link.delay "Atraso máximo para clicar">
-<!ENTITY link.throughAsAction "Usar Comportamento da Ação 'Abrir Link'">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Usar Comportamento do Navegador">
-<!ENTITY link.curTab "Abrir link na Aba corrente">
-<!ENTITY link.newTab "Abrir link na Aba nova">
-<!ENTITY link.newWindow "Abrir link na Janela nova">
-
-<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
-<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-
-<!ENTITY autoscrolling "Auto-rolagem através do centro do menu de torta">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Atraso">
-
-<!ENTITY extras.menuType "Tipo de Menu">
-<!ENTITY extras.menu "Padrão (8 ações)">
-<!ENTITY extras.largeMenu "Grande (10 ações)">
-<!ENTITY extras.display "Mostrar">
-<!ENTITY extras.noIcons "Mostrar Básico (não mostra ícones)">
-<!ENTITY extras.smallIcons "Usar Ícones Pequenos">
-<!ENTITY extras.menuOpacity "Opacidade do Menu de Torta">
-<!ENTITY extras.ttip "Ativar Dicas">
-<!ENTITY extras.ttipDelayLabel "Atraso das Dicas">
-
-<!ENTITY contextmenu "Ativar sensibilidade contextual com">
-<!ENTITY contextmenu.showAuto "Sempre ativada. Usar a mesma tecla para suprimir sensibilidade.">
-
-<!ENTITY move "Mover menu de torta">
-<!ENTITY move.key "Pressionando a tecla Shift">
-<!ENTITY move.edge "Chegando a borda do menu">
-
 <!ENTITY urlscript.load "Carregar URLs">
 <!ENTITY urlscript.curTab "in current Tab">
 <!ENTITY urlscript.newTab "em nova Aba">
 <!ENTITY urlscript.newWindow "em nova Janela">
+<!ENTITY link "Personalizar Ação 'Abrir Link'">
+<!ENTITY link.curTab "Abrir link na Aba corrente">
+<!ENTITY link.newTab "Abrir link na Aba nova">
+<!ENTITY link.newWindow "Abrir link na Janela nova">
+<!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
+<!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Dicas">
+<!ENTITY intro "Você sabia...">
+<!ENTITY copyText "Copiar texto para a área de transferência">
+<!ENTITY showTips "Mostrar dicas ao iniciar">
 <!ENTITY previousTip "Anterior">
 <!ENTITY nextTip "Próxima">
 <!ENTITY closeTip "Fechar">
-<!ENTITY intro "Você sabia...">
-<!ENTITY showTips "Mostrar dicas ao iniciar">
-<!ENTITY copyText "Copiar texto para a área de transferência">
 
 <!ENTITY tip1 "Por padrão, você deve clicar o botão do meio do mouse para mostrar o menu de torta (a menos que você seja um usuário de Mac). O botão padrão do mouse pode ser alterado.|Altere o botão do mouse em &preferences;/&activation;">
 <!ENTITY tip2 "A maneira mais rápida de usar o menu de torta é pressionando o botão do mouse, arrastando até a ação a ser executada, e soltando o botão. Pense nele como se fosse um gesto do mouse com uma Interface Gráfica.">
@@ -155,3 +135,17 @@ END OF INSTRUCTIONS
 <!ENTITY tip21 "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
 <!ENTITY tip22 "A ação 'Abrir Link' abrirá o link apontado em uma aba nova.">
 <!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+
+<!ENTITY stats.lastReset "Último Reinício">
+<!ENTITY stats.use "Uso do Menu de Torta">
+<!ENTITY stats.novice "Novato">
+<!ENTITY stats.coolUser "Usário Descolado">
+<!ENTITY stats.addicted "Viciado">
+<!ENTITY stats.master "Mestre">
+<!ENTITY stats.actions "Cliques por Ações">
+<!ENTITY stats.directions "Cliques por Direções">
+<!ENTITY stats.main "Menu Principal">
+<!ENTITY stats.extra "Menu Extra">
+<!ENTITY stats.total "Total">
+<!ENTITY stats.all "Todas as Ações">
+<!ENTITY close "Fechar">
