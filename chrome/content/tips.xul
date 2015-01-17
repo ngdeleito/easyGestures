@@ -55,7 +55,7 @@
   
   <groupbox flex="1" style="background-color:white;">
     <hbox>
-      <description value="&intro;" class="header" />
+      <description value="&tips.intro;" class="header" />
       <spring flex="1" />
       <description id="tipNbrDisplay" value="xx / nn" />
     </hbox>
@@ -76,7 +76,7 @@
           </description>
           <spacer flex="1" />
           <image src="chrome://easygestures/content/copyToClipboard.png"
-            tooltiptext="&copyText;" onclick="copyDescriptionToClipboard();"
+            tooltiptext="&tips.copyText;" onclick="copyDescriptionToClipboard();"
             onmousedown="this.style.opacity=0.5;"
             onmouseup="this.style.opacity=1;" />
         </hbox>
@@ -84,14 +84,14 @@
     </hbox>
   </groupbox>
   <hbox>
-    <checkbox id="showTips" checked="true" label="&showTips;"
+    <checkbox id="showTips" checked="true" label="&general.startupTips;"
       oncommand="eGPrefs.toggleStartupTips();" />
     <spring flex="1" />
     <vbox>
       <hbox>
-        <button label="&previousTip;" oncommand="updateTipNbr(-1);" />
-        <button label="&nextTip;" oncommand="updateTipNbr(+1);" />
-        <button label="&closeTip;" oncommand="close();" />
+        <button label="&tips.previous;" oncommand="updateTipNbr(-1);" />
+        <button label="&tips.next;" oncommand="updateTipNbr(+1);" />
+        <button label="&close;" oncommand="close();" />
       </hbox>
       <spacer height="4"/>
     </vbox>
@@ -99,10 +99,14 @@
   </hbox>
   
   <script type="application/x-javascript">
-    var tipLabels = ["&tip1;", "&tip2;", "&tip4;", "&tip6;", "&tip8;",
-      "&tip13;", "&tip10;", "&tip21;", "&tip5;", "&tip7;", "&tip9;", "&tip11;",
-      "&tip12;", "&tip14;", "&tip15;", "&tip16;", "&tip20;", "&tip22;",
-      "&tip26;"];
+    var tipLabels = ["&tips.openButton;", "&tips.dragToAction;",
+      "&tips.openAltMenu;", "&tips.menusCustomization;", "&tips.clickOnLink;",
+      "&tips.tooltips;", "&tips.searchWebAction;",
+      "&tips.backAndForwardSiteActions;", "&tips.loadURLActions;",
+      "&tips.runScriptActions;", "&tips.contextualMenus;",
+      "&tips.suppressPriority;", "&tips.moveMenu;", "&tips.smallIcons;",
+      "&tips.largeMenu;", "&tips.autoscrolling;", "&tips.zoomOnImage;",
+      "&tips.openLinkAction;", "&tips.dailyReadingsAction;"];
   </script>
   <script type="application/x-javascript" src="tips.js" />
 </window>

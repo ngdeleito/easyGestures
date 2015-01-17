@@ -41,7 +41,7 @@
   id="eG_statsWindow"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
-  title="&about.stats; - easyGestures N"
+  title="&stats; - easyGestures N"
   onload="initDialog();">
 
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
@@ -91,20 +91,20 @@
       </tabpanel>
       <tabpanel pack="center">
         <vbox>
-          <label value="&actions.main;" class="header" />
+          <label value="&menus.main;" class="header" />
           <hbox>
             <groupbox id="gr_MainPrimary" align="center">
-              <label value="&actions.primary;" class="header" />
+              <label value="&menus.primary;" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_MainAlternative1" align="center">
-              <label value="&actions.alternative; 1" class="header" />
+              <label value="&menus.alternative1;" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_MainAlternative2" align="center">
-              <label value="&actions.alternative; 2" class="header" />
+              <label value="&menus.alternative2;" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
@@ -116,20 +116,20 @@
           
           <spacer style="height: 2em" />
           
-          <label value="&actions.extra;" class="header" />
+          <label value="&menus.extra;" class="header" />
           <hbox>
             <groupbox id="gr_ExtraPrimary" align="center">
-              <label value="&actions.primary;" class="header" />
+              <label value="&menus.primary;" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_ExtraAlternative1" align="center">
-              <label value="&actions.alternative; 1" class="header" />
+              <label value="&menus.alternative1;" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_ExtraAlternative2" align="center">
-              <label value="&actions.alternative; 2" class="header" />
+              <label value="&menus.alternative2;" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />

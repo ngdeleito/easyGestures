@@ -24,115 +24,115 @@ END OF INSTRUCTIONS
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Personnalisations">
 
-<!ENTITY about.startupTips "Afficher astuces au démarrage">
-<!ENTITY about.manage "Gérer préférences">
-<!ENTITY about.import "Importer préférences...">
-<!ENTITY about.export "Exporter préférences...">
-<!ENTITY about.reset "Réinitialiser préférences">
-<!ENTITY about.stats "Statistiques">
-<!ENTITY about.statsDisplay "Afficher statistiques">
-<!ENTITY about.statsReset "Réinitialiser statistiques">
+<!ENTITY general.startupTips "Afficher astuces au démarrage">
+<!ENTITY general.prefs.manage "Gérer préférences">
+<!ENTITY general.prefs.import "Importer préférences...">
+<!ENTITY general.prefs.export "Exporter préférences...">
+<!ENTITY general.prefs.reset "Réinitialiser préférences">
+<!ENTITY stats "Statistiques">
+<!ENTITY general.stats.display "Afficher statistiques">
+<!ENTITY general.stats.reset "Réinitialiser statistiques">
 
-<!ENTITY use "Ouvrir menu circulaire avec">
-<!ENTITY use.button.left "bouton gauche souris">
-<!ENTITY use.button.middle "bouton central souris">
-<!ENTITY use.button.right "bouton droit souris">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "et">
-<!ENTITY use.noKey "aucune touche">
-<!ENTITY use.shift "touche Maj">
-<!ENTITY use.ctrl "touche Ctrl">
-<!ENTITY use.afterDelay "Après délai seulement">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Délai">
-<!ENTITY use.alternative "Afficher menu circulaire alternatif avec">
-<!ENTITY use.also "(la touche Alt aussi est utilisable)">
-<!ENTITY suppress "Supprimer priorité menu circulaire sur bouton souris avec">
-<!ENTITY suppress.ins "touche Insert">
-<!ENTITY suppress.alt "touche Alt">
-<!ENTITY suppress.ctrl "touche Ctrl">
-<!ENTITY suppress.custom "touche personnalisée">
-<!ENTITY suppress.keycode "Keycode">
-<!ENTITY contextmenu "Activer sensibilité contextuelle avec">
-<!ENTITY contextmenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
+<!ENTITY activation.open.with "Ouvrir menu circulaire avec">
+<!ENTITY activation.open.with.button.left "bouton gauche souris">
+<!ENTITY activation.open.with.button.middle "bouton central souris">
+<!ENTITY activation.open.with.button.right "bouton droit souris">
+<!ENTITY activation.open.with.button.custom "custom mouse button">
+<!ENTITY activation.open.with.buttoncode "button code">
+<!ENTITY activation.open.with.and "et">
+<!ENTITY activation.noKey "aucune touche">
+<!ENTITY activation.shiftKey "touche Maj">
+<!ENTITY activation.ctrlKey "touche Ctrl">
+<!ENTITY activation.open.afterDelay "Après délai seulement">
+<!ENTITY activation.open.afterDelay.delay "Délai">
+<!ENTITY activation.openAltMenu "Afficher menu circulaire alternatif avec">
+<!ENTITY activation.openAltMenu.altKey "(la touche Alt aussi est utilisable)">
+<!ENTITY activation.suppressPriority "Supprimer priorité menu circulaire sur bouton souris avec">
+<!ENTITY activation.insertKey "touche Insert">
+<!ENTITY activation.altKey "touche Alt">
+<!ENTITY activation.customKey "touche personnalisée">
+<!ENTITY activation.keycode "Keycode">
+<!ENTITY activation.contextualMenu "Activer sensibilité contextuelle avec">
+<!ENTITY activation.contextualMenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
 
-<!ENTITY extras.menuType "Type de menu">
-<!ENTITY extras.menu "Standard (8 actions)">
-<!ENTITY extras.largeMenu "Large (10 actions)">
-<!ENTITY extras.display "Affichage">
-<!ENTITY extras.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
-<!ENTITY extras.smallIcons "Utiliser des petites icônes">
-<!ENTITY extras.menuOpacity "Opacité du menu circulaire">
-<!ENTITY extras.ttip "Activer infobulles">
-<!ENTITY extras.ttipDelayLabel "Délai infobulles">
-<!ENTITY move "Déplacer menu circulaire">
-<!ENTITY move.key "En appuyant sur touche Maj">
-<!ENTITY move.edge "En atteignant la bordure du menu">
-<!ENTITY link.through "Activer clics sur liens par le centre du menu circulaire">
-<!ENTITY link.delay "Délai maximum pour cliquer">
-<!ENTITY link.throughAsAction "Suivre comportement action 'Ouvrir lien'">
-<!ENTITY configureAction "Configurer cette action">
-<!ENTITY link.throughAsBrowser "Suivre comportement du navigateur">
-<!ENTITY autoscrolling "Défilement automatique par le centre du menu circulaire">
+<!ENTITY behavior.menuType "Type de menu">
+<!ENTITY behavior.menuType.standard "Standard (8 actions)">
+<!ENTITY behavior.menuType.large "Large (10 actions)">
+<!ENTITY behavior.display "Affichage">
+<!ENTITY behavior.display.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
+<!ENTITY behavior.display.smallIcons "Utiliser des petites icônes">
+<!ENTITY behavior.display.opacity "Opacité du menu circulaire">
+<!ENTITY behavior.tooltips "Activer infobulles">
+<!ENTITY behavior.tooltips.delay "Délai infobulles">
+<!ENTITY behavior.move "Déplacer menu circulaire">
+<!ENTITY behavior.move.shiftKey "En appuyant sur touche Maj">
+<!ENTITY behavior.move.menuEdge "En atteignant la bordure du menu">
+<!ENTITY behavior.links "Activer clics sur liens par le centre du menu circulaire">
+<!ENTITY behavior.links.delay "Délai maximum pour cliquer">
+<!ENTITY behavior.links.openLinkAction "Suivre comportement action 'Ouvrir lien'">
+<!ENTITY behavior.links.configureAction "Configurer cette action">
+<!ENTITY behavior.links.browser "Suivre comportement du navigateur">
+<!ENTITY behavior.autoscrolling "Défilement automatique par le centre du menu circulaire">
+<!ENTITY behavior.autoscrolling.delay "Délai">
 
-<!ENTITY actions.main "Menu principal">
-<!ENTITY actions.extra "Menu supplémentaire">
-<!ENTITY actions.contextual "Menus contextuels">
-<!ENTITY actions.primary "Primaire">
-<!ENTITY actions.alternative "Alternatif">
-<!ENTITY actions.enabled "Activé">
-<!ENTITY actions.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante">
-<!ENTITY contextmenu.order "Régler ordre des menu">
-<!ENTITY contextmenu.imageFirst "Afficher le menu image en premier">
-<!ENTITY contextmenu.textboxFirst "Afficher le menu zone de texte en premier">
-<!ENTITY contextmenu.link "Lien">
-<!ENTITY contextmenu.image "Image">
-<!ENTITY contextmenu.selection "Sélection">
-<!ENTITY contextmenu.textbox "Zone de texte">
+<!ENTITY menus.main "Menu principal">
+<!ENTITY menus.extra "Menu supplémentaire">
+<!ENTITY menus.contextual "Menus contextuels">
+<!ENTITY menus.primary "Primaire">
+<!ENTITY menus.alternative1 "Alternatif 1">
+<!ENTITY menus.alternative2 "Alternatif 2">
+<!ENTITY menus.enabled "Activé">
+<!ENTITY menus.extra.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante">
+<!ENTITY menus.contextual.order "Régler ordre des menu">
+<!ENTITY menus.contextual.imageFirst "Afficher le menu image en premier">
+<!ENTITY menus.contextual.textboxFirst "Afficher le menu zone de texte en premier">
+<!ENTITY menus.contextual.link "Lien">
+<!ENTITY menus.contextual.image "Image">
+<!ENTITY menus.contextual.selection "Sélection">
+<!ENTITY menus.contextual.textbox "Zone de texte">
 
 <!ENTITY customizations.loadURLActions "Actions Charger URL">
 <!ENTITY customizations.runScriptActions "Actions exécuter script">
 <!ENTITY customizations.otherActions "Autres actions">
 <!ENTITY customizations.infoActions "Vous pouvez sélectionner ces actions dans le panneau '&menus;'">
 <!ENTITY customizations.infoPlaceholders "Chaînes de remplacement: &#37;s (sélection) et &#37;u (URL courant).">
-<!ENTITY urlscript.load "Charger les URLs">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "dans nouvel onglet">
-<!ENTITY urlscript.newWindow "dans nouvelle fenêtre">
-<!ENTITY link "Personnaliser action 'Ouvrir lien'">
-<!ENTITY link.curTab "Ouvrir lien dans onglet courant">
-<!ENTITY link.newTab "Ouvrir lien dans nouvel onglet">
-<!ENTITY link.newWindow "Ouvrir lien dans nouvelle fenêtre">
+<!ENTITY customizations.loadURLActions.load "Charger les URLs">
+<!ENTITY customizations.loadURLActions.currentTab "in current Tab">
+<!ENTITY customizations.loadURLActions.newTab "dans nouvel onglet">
+<!ENTITY customizations.loadURLActions.newWindow "dans nouvelle fenêtre">
+<!ENTITY customizations.openLink "Personnaliser action 'Ouvrir lien'">
+<!ENTITY customizations.openLink.currentTab "Ouvrir lien dans onglet courant">
+<!ENTITY customizations.openLink.newTab "Ouvrir lien dans nouvel onglet">
+<!ENTITY customizations.openLink.newWindow "Ouvrir lien dans nouvelle fenêtre">
 <!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
 <!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action :">
 
 <!ENTITY tips "Astuces">
-<!ENTITY intro "Saviez-vous...">
-<!ENTITY copyText "Copier texte dans le presse-papier">
-<!ENTITY showTips "Montrer astuces au démarrage">
-<!ENTITY previousTip "Précédente">
-<!ENTITY nextTip "Suivante">
-<!ENTITY closeTip "Fermer">
+<!ENTITY tips.intro "Saviez-vous...">
+<!ENTITY tips.copyText "Copier texte dans le presse-papier">
+<!ENTITY tips.previous "Précédente">
+<!ENTITY tips.next "Suivante">
+<!ENTITY close "Fermer">
 
-<!ENTITY tip1 "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé.|Changez bouton souris dans &preferences;/&activation;">
-<!ENTITY tip2 "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
-<!ENTITY tip4 "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé.|Changez bouton souris dans &preferences;/&activation;">
-<!ENTITY tip5 "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tip6 "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.|Ajoutez ou retirez actions dans &preferences;/&menus;">
-<!ENTITY tip7 "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.|Personnalisez les actions 'Exécuter Script' dans &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
-<!ENTITY tip9 "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active.|Changez comportement dans &preferences;/&activation;">
-<!ENTITY tip10 "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
-<!ENTITY tip11 "En maintenant la touche Insert appuyée sur un clic du bouton droit, vous pouvez supprimer le menu circulaire et accéder au menu contextuel standard.">
-<!ENTITY tip12 "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">
-<!ENTITY tip13 "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin.|Arrêtez l'affichage dans &preferences;/&behavior;">
-<!ENTITY tip14 "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.|Changez l'affichage du menu dans &preferences;/&behavior;">
-<!ENTITY tip15 "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.|Changez le nombre d'actions dans &preferences;/&behavior;">
-<!ENTITY tip16 "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger.|Activatez défilement automatique dans &preferences;/&behavior;">
-<!ENTITY tip20 "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
-<!ENTITY tip21 "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
-<!ENTITY tip22 "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet.">
-<!ENTITY tip26 "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets.|Choisissez un dossier dans &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "Par defaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé.|Changez bouton souris dans &preferences;/&activation;">
+<!ENTITY tips.dragToAction "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
+<!ENTITY tips.openAltMenu "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé.|Changez bouton souris dans &preferences;/&activation;">
+<!ENTITY tips.loadURLActions "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.menusCustomization "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.|Ajoutez ou retirez actions dans &preferences;/&menus;">
+<!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.|Personnalisez les actions 'Exécuter Script' dans &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
+<!ENTITY tips.contextualMenus "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active.|Changez comportement dans &preferences;/&activation;">
+<!ENTITY tips.searchWebAction "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
+<!ENTITY tips.suppressPriority "En maintenant la touche Insert appuyée sur un clic du bouton droit, vous pouvez supprimer le menu circulaire et accéder au menu contextuel standard.">
+<!ENTITY tips.moveMenu "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">
+<!ENTITY tips.tooltips "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin.|Arrêtez l'affichage dans &preferences;/&behavior;">
+<!ENTITY tips.smallIcons "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un exprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.|Changez l'affichage du menu dans &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle: 10 au lieu de 8 sur chacun des 3 plans principaux.|Changez le nombre d'actions dans &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du mileu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger.|Activatez défilement automatique dans &preferences;/&behavior;">
+<!ENTITY tips.zoomOnImage "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
+<!ENTITY tips.backAndForwardSiteActions "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant.">
+<!ENTITY tips.openLinkAction "L'action 'Ouvrir lien' ouvre le lien pointé dans un nouvel onglet.">
+<!ENTITY tips.dailyReadingsAction "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets.|Choisissez un dossier dans &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Dernière réinitialisation">
 <!ENTITY stats.use "Utilisation du menu circulaire">
@@ -142,8 +142,4 @@ END OF INSTRUCTIONS
 <!ENTITY stats.master "Maître">
 <!ENTITY stats.actions "Clics par actions">
 <!ENTITY stats.directions "Clics par directions">
-<!ENTITY stats.main "Menu principal">
-<!ENTITY stats.extra "Menu supplémentaire">
-<!ENTITY stats.total "Total">
 <!ENTITY stats.all "Toutes actions">
-<!ENTITY close "Fermer">

@@ -9,115 +9,115 @@
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Dostosuj">
 
-<!ENTITY about.startupTips "Pokazuj podpowiedzi po uruchomieniu">
-<!ENTITY about.manage "Zarządzanie ustawieniami">
-<!ENTITY about.import "Importuj ustawienia">
-<!ENTITY about.export "Eksportuj ustawienia">
-<!ENTITY about.reset "Ustawienia domyślne">
-<!ENTITY about.stats "Statystyki">
-<!ENTITY about.statsDisplay "Wyświetl statystyki">
-<!ENTITY about.statsReset "Wyczyść statystyki">
+<!ENTITY general.startupTips "Pokazuj podpowiedzi po uruchomieniu">
+<!ENTITY general.prefs.manage "Zarządzanie ustawieniami">
+<!ENTITY general.prefs.import "Importuj ustawienia">
+<!ENTITY general.prefs.export "Eksportuj ustawienia">
+<!ENTITY general.prefs.reset "Ustawienia domyślne">
+<!ENTITY stats "Statystyki">
+<!ENTITY general.stats.display "Wyświetl statystyki">
+<!ENTITY general.stats.reset "Wyczyść statystyki">
 
-<!ENTITY use "Otwórz Centrum nawigacyjne klikając:">
-<!ENTITY use.button.left "lewym przyciskiem myszy">
-<!ENTITY use.button.middle "środkowym przyciskiem myszy">
-<!ENTITY use.button.right "prawym przyciskiem myszy">
-<!ENTITY use.button.custom "ustawionym przyciskiem myszy">
-<!ENTITY use.buttoncode "przyciskiem kodowanym">
-<!ENTITY use.and "+">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "klawisz [ Shift ]">
-<!ENTITY use.ctrl "klawisz [ Ctrl ]">
-<!ENTITY use.afterDelay "Otwórz z opóźnieniem">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Czas opóźnienia">
-<!ENTITY use.alternative "Wyświetlaj alternatywne menu klikając:">
-<!ENTITY use.also "(Można użyć także prawego klawisza [ Alt ])">
-<!ENTITY suppress "Wstrzymaj uruchamianie Centrum myszą używając:">
-<!ENTITY suppress.ins "klawisza [ Insert ]">
-<!ENTITY suppress.alt "klawisza [ Alt ]">
-<!ENTITY suppress.ctrl "klawisza [ Ctrl ]">
-<!ENTITY suppress.custom "klawisza zdefiniowanego przez użytkownika">
-<!ENTITY suppress.keycode "Kod klawisza">
-<!ENTITY contextmenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
-<!ENTITY contextmenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
+<!ENTITY activation.open.with "Otwórz Centrum nawigacyjne klikając:">
+<!ENTITY activation.open.with.button.left "lewym przyciskiem myszy">
+<!ENTITY activation.open.with.button.middle "środkowym przyciskiem myszy">
+<!ENTITY activation.open.with.button.right "prawym przyciskiem myszy">
+<!ENTITY activation.open.with.button.custom "ustawionym przyciskiem myszy">
+<!ENTITY activation.open.with.buttoncode "przyciskiem kodowanym">
+<!ENTITY activation.open.with.and "+">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "klawisz [ Shift ]">
+<!ENTITY activation.ctrlKey "klawisz [ Ctrl ]">
+<!ENTITY activation.open.afterDelay "Otwórz z opóźnieniem">
+<!ENTITY activation.open.afterDelay.delay "Czas opóźnienia">
+<!ENTITY activation.openAltMenu "Wyświetlaj alternatywne menu klikając:">
+<!ENTITY activation.openAltMenu.altKey "(Można użyć także prawego klawisza [ Alt ])">
+<!ENTITY activation.suppressPriority "Wstrzymaj uruchamianie Centrum myszą używając:">
+<!ENTITY activation.insertKey "klawisza [ Insert ]">
+<!ENTITY activation.altKey "klawisza [ Alt ]">
+<!ENTITY activation.customKey "klawisza zdefiniowanego przez użytkownika">
+<!ENTITY activation.keycode "Kod klawisza">
+<!ENTITY activation.contextualMenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
+<!ENTITY activation.contextualMenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
 
-<!ENTITY extras.menuType "Typ menu">
-<!ENTITY extras.menu "Standardowe (8 akcji)">
-<!ENTITY extras.largeMenu "Duże (10 akcji)">
-<!ENTITY extras.display "Wygląd menu Centrum nawigacyjnego">
-<!ENTITY extras.noIcons "Wygląd podstawowy (nie wyświetla ikon)">
-<!ENTITY extras.smallIcons "Użyj małych ikon">
-<!ENTITY extras.menuOpacity "Przeźroczystość Centrum nawigacyjnego">
-<!ENTITY extras.ttip "Wyświetlanie opisów przycisków">
-<!ENTITY extras.ttipDelayLabel "Czas opóźnienia wyświetlania">
-<!ENTITY move "Przesuwaj menu Centrum">
-<!ENTITY move.key "naciskając klawisz [ Shift ]">
-<!ENTITY move.edge "łapiąc krawędź menu">
-<!ENTITY link.through "Uruchamianie odnośników przez Centrum nawigacyjne">
-<!ENTITY link.delay "Maksymalny czas opóźnienia kliknięcia">
-<!ENTITY link.throughAsAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Użyj ustawień przeglądarki">
-<!ENTITY autoscrolling "Automatyczne przewijanie">
+<!ENTITY behavior.menuType "Typ menu">
+<!ENTITY behavior.menuType.standard "Standardowe (8 akcji)">
+<!ENTITY behavior.menuType.large "Duże (10 akcji)">
+<!ENTITY behavior.display "Wygląd menu Centrum nawigacyjnego">
+<!ENTITY behavior.display.noIcons "Wygląd podstawowy (nie wyświetla ikon)">
+<!ENTITY behavior.display.smallIcons "Użyj małych ikon">
+<!ENTITY behavior.display.opacity "Przeźroczystość Centrum nawigacyjnego">
+<!ENTITY behavior.tooltips "Wyświetlanie opisów przycisków">
+<!ENTITY behavior.tooltips.delay "Czas opóźnienia wyświetlania">
+<!ENTITY behavior.move "Przesuwaj menu Centrum">
+<!ENTITY behavior.move.shiftKey "naciskając klawisz [ Shift ]">
+<!ENTITY behavior.move.menuEdge "łapiąc krawędź menu">
+<!ENTITY behavior.links "Uruchamianie odnośników przez Centrum nawigacyjne">
+<!ENTITY behavior.links.delay "Maksymalny czas opóźnienia kliknięcia">
+<!ENTITY behavior.links.openLinkAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
+<!ENTITY behavior.links.configureAction "Configure this action">
+<!ENTITY behavior.links.browser "Użyj ustawień przeglądarki">
+<!ENTITY behavior.autoscrolling "Automatyczne przewijanie">
+<!ENTITY behavior.autoscrolling.delay "Czas opóźnienia">
 
-<!ENTITY actions.main "Menu główne">
-<!ENTITY actions.extra "Menu dodatkowe">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "Menu główne">
-<!ENTITY actions.alternative "Menu alternatywne">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "Menu dodatkowe jest wyświetlane po wykonaniu właściwej dla niego akcji">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "Odnośnik">
-<!ENTITY contextmenu.image "Obrazek">
-<!ENTITY contextmenu.selection "Zaznaczenie">
-<!ENTITY contextmenu.textbox "Pole tekstowe">
+<!ENTITY menus.main "Menu główne">
+<!ENTITY menus.extra "Menu dodatkowe">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "Menu główne">
+<!ENTITY menus.alternative1 "Menu alternatywne 1">
+<!ENTITY menus.alternative2 "Menu alternatywne 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "Menu dodatkowe jest wyświetlane po wykonaniu właściwej dla niego akcji">
+<!ENTITY menus.contextual.order "Set menus order">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "Odnośnik">
+<!ENTITY menus.contextual.image "Obrazek">
+<!ENTITY menus.contextual.selection "Zaznaczenie">
+<!ENTITY menus.contextual.textbox "Pole tekstowe">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zamienniki ciągu znaków: &#37;s (wybór) i &#37;u (aktualny URL).">
-<!ENTITY urlscript.load "Otwieraj witryny w:">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "nowej karcie">
-<!ENTITY urlscript.newWindow "nowym oknie">
-<!ENTITY link "Dostosuj działanie akcji &quot;Otwórz odnośnik&quot;">
-<!ENTITY link.curTab "Otwórz odnośnik w aktywnej karcie">
-<!ENTITY link.newTab "Otwórz odnośnik w nowej karcie">
-<!ENTITY link.newWindow "Otwórz odnośnik w nowym oknie">
+<!ENTITY customizations.loadURLActions.load "Otwieraj witryny w:">
+<!ENTITY customizations.loadURLActions.currentTab "in current Tab">
+<!ENTITY customizations.loadURLActions.newTab "nowej karcie">
+<!ENTITY customizations.loadURLActions.newWindow "nowym oknie">
+<!ENTITY customizations.openLink "Dostosuj działanie akcji &quot;Otwórz odnośnik&quot;">
+<!ENTITY customizations.openLink.currentTab "Otwórz odnośnik w aktywnej karcie">
+<!ENTITY customizations.openLink.newTab "Otwórz odnośnik w nowej karcie">
+<!ENTITY customizations.openLink.newWindow "Otwórz odnośnik w nowym oknie">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Podpowiedzi">
-<!ENTITY intro "Czy wiesz że...">
-<!ENTITY copyText "Kopiuj tekst do schowka">
-<!ENTITY showTips "Pokazuj podpowiedzi przy starcie">
-<!ENTITY previousTip "Poprzednia">
-<!ENTITY nextTip "Następna">
-<!ENTITY closeTip "Zamknij">
+<!ENTITY tips.intro "Czy wiesz że...">
+<!ENTITY tips.copyText "Kopiuj tekst do schowka">
+<!ENTITY tips.previous "Poprzednia">
+<!ENTITY tips.next "Następna">
+<!ENTITY close "Zamknij">
 
-<!ENTITY tip1 "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia.|Zmień przycisk myszy w &preferences;/&activation;">
-<!ENTITY tip2 "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
-<!ENTITY tip4 "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane.|Zmień działanie przycisków myszy w &preferences;/&activation;">
-<!ENTITY tip5 "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL\u0022 do menu Centrum.|Dostosuj działanie menu w &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tip6 "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum.|Dodaj lub usuń akcje w &preferences;/&menus;">
-<!ENTITY tip7 "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
-<!ENTITY tip9 "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum.|Zmień działanie w &preferences;/&activation;">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "Przytrzymując klawisz [ Insert ] można wyłączyć działanie menu Centrum i używać standardowego menu kontekstowego.">
-<!ENTITY tip12 "Przytrzymując klawisz [ Shift ], gdy menu jest otwarte można przemieszczać je w dowolne miejsce na ekranie bez używania przycisków myszy. Menu będzie podążało za kursorem myszy.">
-<!ENTITY tip13 "Można wyłączyć wyświetlanie opisów przycisków, a także zmieniać ich treść dla każdej akcji.|Wyłącz wyświetlanie podpowiedzi w &preferences;/&behavior;">
-<!ENTITY tip14 "Zamiast domyślnego wyglądu menu można używać menu podstawowego opartego na opisie tekstowym bez ikon. Można także w menu Centrum wyświetlać małe ikony.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu.|Włącz automatyczne przewijanie w menu &preferences;/&behavior;">
-<!ENTITY tip20 "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
-<!ENTITY tip21 "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
-<!ENTITY tip22 "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "Domyślnie, aby uruchomić Centrum nawigacyjne należy kliknąć środkowym przyciskiem myszy na pulpicie otwartej witryny (nie dotyczy użytkowników komputerów Mac). Można zmienić te ustawienia w opcjach rozszerzenia.|Zmień przycisk myszy w &preferences;/&activation;">
+<!ENTITY tips.dragToAction "Najszybszą metodą użycia menu Centrum jest przyciśnięcie przycisku myszy w celu uruchomienia Centrum, przesunięcie kursora nad ikonę akcji i kliknięcie na niej.">
+<!ENTITY tips.openAltMenu "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane.|Zmień działanie przycisków myszy w &preferences;/&activation;">
+<!ENTITY tips.loadURLActions "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL\u0022 do menu Centrum.|Dostosuj działanie menu w &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.menusCustomization "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum.|Dodaj lub usuń akcje w &preferences;/&menus;">
+<!ENTITY tips.runScriptActions "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
+<!ENTITY tips.contextualMenus "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum.|Zmień działanie w &preferences;/&activation;">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "Przytrzymując klawisz [ Insert ] można wyłączyć działanie menu Centrum i używać standardowego menu kontekstowego.">
+<!ENTITY tips.moveMenu "Przytrzymując klawisz [ Shift ], gdy menu jest otwarte można przemieszczać je w dowolne miejsce na ekranie bez używania przycisków myszy. Menu będzie podążało za kursorem myszy.">
+<!ENTITY tips.tooltips "Można wyłączyć wyświetlanie opisów przycisków, a także zmieniać ich treść dla każdej akcji.|Wyłącz wyświetlanie podpowiedzi w &preferences;/&behavior;">
+<!ENTITY tips.smallIcons "Zamiast domyślnego wyglądu menu można używać menu podstawowego opartego na opisie tekstowym bez ikon. Można także w menu Centrum wyświetlać małe ikony.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "Można używać dużego menu zawierającego po 10 akcji w każdym z 3 głównych zestawów.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "Gdy środkowy przycisk myszy jest używany do otwierania menu Centrum, opcja Firefoksa \u0022Używaj automatycznego przewijania\u0022 jest wyłączona. Automatyczne przewijanie jest wówczas dostępne w Centrum po wykonaniu ruchu myszą w dół przez menu i krótkim odczekaniu bez ruchu.|Włącz automatyczne przewijanie w menu &preferences;/&behavior;">
+<!ENTITY tips.zoomOnImage "Gdy menu zostanie umieszczone nad obrazkiem akcja \u0022Powiększ/Zmniejsz\u0022 będzie powiększała/zmniejszała tylko ten obrazek.">
+<!ENTITY tips.backAndForwardSiteActions "Zamiast poruszać się do przodu i wstecz strona po stronie można to realizować witryna po witrynie używając akcji \u0022Poprzednia witryna\u0022 i \u0022Następna witryna\u0022.">
+<!ENTITY tips.openLinkAction "Akcja \u0022Otwórz odnośnik\u0022 otwiera wskazany odnośnik w nowej karcie.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Ostatnie czyszczenie">
 <!ENTITY stats.use "Użycie Centrum">
@@ -127,8 +127,4 @@
 <!ENTITY stats.master "Mistrz">
 <!ENTITY stats.actions "Uruchomienia wg akcji">
 <!ENTITY stats.directions "Uruchomienia wg kierunków">
-<!ENTITY stats.main "Menu główne Centrum">
-<!ENTITY stats.extra "Menu dodatkowe Centrum">
-<!ENTITY stats.total "Razem">
 <!ENTITY stats.all "Wszystkie akcje">
-<!ENTITY close "Zamknij">

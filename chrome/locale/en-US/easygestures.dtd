@@ -24,115 +24,115 @@ END OF INSTRUCTIONS
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Customizations">
 
-<!ENTITY about.startupTips "Show Tips at startup">
-<!ENTITY about.manage "Manage Preferences">
-<!ENTITY about.import "Import Preferences...">
-<!ENTITY about.export "Export Preferences...">
-<!ENTITY about.reset "Reset Preferences">
-<!ENTITY about.stats "Statistics">
-<!ENTITY about.statsDisplay "Display Statistics">
-<!ENTITY about.statsReset "Reset Statistics">
+<!ENTITY general.startupTips "Show Tips at startup">
+<!ENTITY general.prefs.manage "Manage Preferences">
+<!ENTITY general.prefs.import "Import Preferences...">
+<!ENTITY general.prefs.export "Export Preferences...">
+<!ENTITY general.prefs.reset "Reset Preferences">
+<!ENTITY stats "Statistics">
+<!ENTITY general.stats.display "Display Statistics">
+<!ENTITY general.stats.reset "Reset Statistics">
 
-<!ENTITY use "Open pie menu with">
-<!ENTITY use.button.left "left mouse button">
-<!ENTITY use.button.middle "middle mouse button">
-<!ENTITY use.button.right "right mouse button">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "and">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Shift key">
-<!ENTITY use.ctrl "Ctrl key">
-<!ENTITY use.afterDelay "Open after delay">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Delay">
-<!ENTITY use.alternative "Display alternative menu with">
-<!ENTITY use.also "(You can also use right Alt key)">
-<!ENTITY suppress "Suppress pie menu priority on mouse button with">
-<!ENTITY suppress.ins "Insert key">
-<!ENTITY suppress.alt "Alt key">
-<!ENTITY suppress.ctrl "Ctrl key">
-<!ENTITY suppress.custom "Custom key">
-<!ENTITY suppress.keycode "Keycode">
-<!ENTITY contextmenu "Activate contextual sensitivity with">
-<!ENTITY contextmenu.showAuto "Always activated. Use same key for suppressing sensitivity.">
+<!ENTITY activation.open.with "Open pie menu with">
+<!ENTITY activation.open.with.button.left "left mouse button">
+<!ENTITY activation.open.with.button.middle "middle mouse button">
+<!ENTITY activation.open.with.button.right "right mouse button">
+<!ENTITY activation.open.with.button.custom "custom mouse button">
+<!ENTITY activation.open.with.buttoncode "button code">
+<!ENTITY activation.open.with.and "and">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "Shift key">
+<!ENTITY activation.ctrlKey "Ctrl key">
+<!ENTITY activation.open.afterDelay "Open after delay">
+<!ENTITY activation.open.afterDelay.delay "Delay">
+<!ENTITY activation.openAltMenu "Display alternative menu with">
+<!ENTITY activation.openAltMenu.altKey "(You can also use right Alt key)">
+<!ENTITY activation.suppressPriority "Suppress pie menu priority on mouse button with">
+<!ENTITY activation.insertKey "Insert key">
+<!ENTITY activation.altKey "Alt key">
+<!ENTITY activation.customKey "Custom key">
+<!ENTITY activation.keycode "Keycode">
+<!ENTITY activation.contextualMenu "Activate contextual sensitivity with">
+<!ENTITY activation.contextualMenu.showAuto "Always activated. Use same key for suppressing sensitivity.">
 
-<!ENTITY extras.menuType "Menu type">
-<!ENTITY extras.menu "Standard (8 actions)">
-<!ENTITY extras.largeMenu "Large (10 actions)">
-<!ENTITY extras.display "Display">
-<!ENTITY extras.noIcons "Basic display (don't display icons)">
-<!ENTITY extras.smallIcons "Use Small Icons">
-<!ENTITY extras.menuOpacity "Pie Menu Opacity">
-<!ENTITY extras.ttip "Activate Tooltips">
-<!ENTITY extras.ttipDelayLabel "Tooltips delay">
-<!ENTITY move "Move pie menu">
-<!ENTITY move.key "By pressing Shift key">
-<!ENTITY move.edge "By reaching menu edge">
-<!ENTITY link.through "Enable clicking on links through pie menu center">
-<!ENTITY link.delay "Maximum delay for clicking">
-<!ENTITY link.throughAsAction "Use 'Open Link' Action Behavior">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Use Browser Behavior">
-<!ENTITY autoscrolling "Autoscrolling through pie menu center">
+<!ENTITY behavior.menuType "Menu type">
+<!ENTITY behavior.menuType.standard "Standard (8 actions)">
+<!ENTITY behavior.menuType.large "Large (10 actions)">
+<!ENTITY behavior.display "Display">
+<!ENTITY behavior.display.noIcons "Basic display (don't display icons)">
+<!ENTITY behavior.display.smallIcons "Use Small Icons">
+<!ENTITY behavior.display.opacity "Pie Menu Opacity">
+<!ENTITY behavior.tooltips "Activate Tooltips">
+<!ENTITY behavior.tooltips.delay "Tooltips delay">
+<!ENTITY behavior.move "Move pie menu">
+<!ENTITY behavior.move.shiftKey "By pressing Shift key">
+<!ENTITY behavior.move.menuEdge "By reaching menu edge">
+<!ENTITY behavior.links "Enable clicking on links through pie menu center">
+<!ENTITY behavior.links.delay "Maximum delay for clicking">
+<!ENTITY behavior.links.openLinkAction "Use 'Open Link' Action Behavior">
+<!ENTITY behavior.links.configureAction "Configure this action">
+<!ENTITY behavior.links.browser "Use Browser Behavior">
+<!ENTITY behavior.autoscrolling "Autoscrolling through pie menu center">
+<!ENTITY behavior.autoscrolling.delay "Delay">
 
-<!ENTITY actions.main "Main Menu">
-<!ENTITY actions.extra "Extra Menu">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "Primary">
-<!ENTITY actions.alternative "Alternative">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "Extra menu is displayed using the corresponding action">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "Link">
-<!ENTITY contextmenu.image "Image">
-<!ENTITY contextmenu.selection "Selection">
-<!ENTITY contextmenu.textbox "Textbox">
+<!ENTITY menus.main "Main Menu">
+<!ENTITY menus.extra "Extra Menu">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "Primary">
+<!ENTITY menus.alternative1 "Alternative 1">
+<!ENTITY menus.alternative2 "Alternative 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "Extra menu is displayed using the corresponding action">
+<!ENTITY menus.contextual.order "Set menus order">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "Link">
+<!ENTITY menus.contextual.image "Image">
+<!ENTITY menus.contextual.selection "Selection">
+<!ENTITY menus.contextual.textbox "Textbox">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "String placeholders: &#37;s (selection) and &#37;u (current URL)">
-<!ENTITY urlscript.load "Load URLs">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "in new Tab">
-<!ENTITY urlscript.newWindow "in new Window">
-<!ENTITY link "Customize 'Open Link' Action">
-<!ENTITY link.curTab "Open link in current Tab">
-<!ENTITY link.newTab "Open link in new Tab">
-<!ENTITY link.newWindow "Open link in new Window">
+<!ENTITY customizations.loadURLActions.load "Load URLs">
+<!ENTITY customizations.loadURLActions.currentTab "in current Tab">
+<!ENTITY customizations.loadURLActions.newTab "in new Tab">
+<!ENTITY customizations.loadURLActions.newWindow "in new Window">
+<!ENTITY customizations.openLink "Customize 'Open Link' Action">
+<!ENTITY customizations.openLink.currentTab "Open link in current Tab">
+<!ENTITY customizations.openLink.newTab "Open link in new Tab">
+<!ENTITY customizations.openLink.newWindow "Open link in new Window">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tips">
-<!ENTITY intro "Did you know...">
-<!ENTITY copyText "Copy text to clipboard">
-<!ENTITY showTips "Show Tips at startup">
-<!ENTITY previousTip "Previous">
-<!ENTITY nextTip "Next">
-<!ENTITY closeTip "Close">
+<!ENTITY tips.intro "Did you know...">
+<!ENTITY tips.copyText "Copy text to clipboard">
+<!ENTITY tips.previous "Previous">
+<!ENTITY tips.next "Next">
+<!ENTITY close "Close">
 
-<!ENTITY tip1 "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
-<!ENTITY tip2 "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
-<!ENTITY tip4 "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
-<!ENTITY tip5 "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL' actions then adding them in the pie menu layouts.|Customize the 'Load URL' actions in &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tip6 "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
-<!ENTITY tip7 "You can execute Javascript code with the 'Run Script' actions. You can for example call any Firefox API function or a function inside another extension.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "A fast enough pie menu click on a link without moving will open the link in a new tab.">
-<!ENTITY tip9 "You can activate context sensitivity by pressing the 'Ctrl' key when opening the pie menu. You can also turn context sensitivity always on.|Change behavior in &preferences;/&activation;">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
-<!ENTITY tip12 "You can move around the pie menu by holding 'Shift' key while moving the mouse.">
-<!ENTITY tip13 "You can switch off the tooltips display if you don't need it.|Switch off tooltips display in &preferences;/&behavior;">
-<!ENTITY tip14 "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving.|Activate autoscrolling in &preferences;/&behavior;">
-<!ENTITY tip20 "A zoom action over an image will perform the action on the image only.">
-<!ENTITY tip21 "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
-<!ENTITY tip22 "The 'Open Link' action will open the pointed link in a new tab.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
+<!ENTITY tips.dragToAction "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
+<!ENTITY tips.openAltMenu "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
+<!ENTITY tips.loadURLActions "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL' actions then adding them in the pie menu layouts.|Customize the 'Load URL' actions in &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.menusCustomization "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
+<!ENTITY tips.runScriptActions "You can execute Javascript code with the 'Run Script' actions. You can for example call any Firefox API function or a function inside another extension.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "A fast enough pie menu click on a link without moving will open the link in a new tab.">
+<!ENTITY tips.contextualMenus "You can activate context sensitivity by pressing the 'Ctrl' key when opening the pie menu. You can also turn context sensitivity always on.|Change behavior in &preferences;/&activation;">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
+<!ENTITY tips.moveMenu "You can move around the pie menu by holding 'Shift' key while moving the mouse.">
+<!ENTITY tips.tooltips "You can switch off the tooltips display if you don't need it.|Switch off tooltips display in &preferences;/&behavior;">
+<!ENTITY tips.smallIcons "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "Power users can have more actions on the pie: 10 instead of 8 on each of the 3 main layouts.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "Firefox option 'Use autoscrolling' is unchecked when middle mouse button is used to show the pie menu. The Autoscrolling feature can then be available with a mouse down through pie menu after a short delay without moving.|Activate autoscrolling in &preferences;/&behavior;">
+<!ENTITY tips.zoomOnImage "A zoom action over an image will perform the action on the image only.">
+<!ENTITY tips.backAndForwardSiteActions "Instead of moving back and forward page by page, you can do it site by site with 'Back site' and 'Forward site' actions.">
+<!ENTITY tips.openLinkAction "The 'Open Link' action will open the pointed link in a new tab.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Last Reset">
 <!ENTITY stats.use "Pie Menu Use">
@@ -142,8 +142,4 @@ END OF INSTRUCTIONS
 <!ENTITY stats.master "Master">
 <!ENTITY stats.actions "Clicks by Actions">
 <!ENTITY stats.directions "Clicks by Directions">
-<!ENTITY stats.main "Main Menu">
-<!ENTITY stats.extra "Extra Menu">
-<!ENTITY stats.total "Total">
 <!ENTITY stats.all "All Actions">
-<!ENTITY close "Close">

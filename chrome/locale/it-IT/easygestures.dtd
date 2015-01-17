@@ -26,115 +26,115 @@ END OF INSTRUCTIONS
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Personalizzazioni">
 
-<!ENTITY about.startupTips "Mostra i Consigli all'avvio">
-<!ENTITY about.manage "Gestisci le Preferenze">
-<!ENTITY about.import "Importa le Preferenze...">
-<!ENTITY about.export "Esporta le Preferenze...">
-<!ENTITY about.reset "Ripristina le Preferenze">
-<!ENTITY about.stats "Statistiche">
-<!ENTITY about.statsDisplay "Mostra Statistiche">
-<!ENTITY about.statsReset "Azzera Statistiche">
+<!ENTITY general.startupTips "Mostra i Consigli all'avvio">
+<!ENTITY general.prefs.manage "Gestisci le Preferenze">
+<!ENTITY general.prefs.import "Importa le Preferenze...">
+<!ENTITY general.prefs.export "Esporta le Preferenze...">
+<!ENTITY general.prefs.reset "Ripristina le Preferenze">
+<!ENTITY stats "Statistiche">
+<!ENTITY general.stats.display "Mostra Statistiche">
+<!ENTITY general.stats.reset "Azzera Statistiche">
 
-<!ENTITY use "Apri il menu circolare con">
-<!ENTITY use.button.left "tasto sinistro del mouse">
-<!ENTITY use.button.middle "tasto centrale del mouse">
-<!ENTITY use.button.right "tasto destro del mouse">
-<!ENTITY use.button.custom "tasto del mouse a scelta">
-<!ENTITY use.buttoncode "codice del tasto">
-<!ENTITY use.and "e">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Tasto Shift">
-<!ENTITY use.ctrl "Tasto Ctrl">
-<!ENTITY use.afterDelay "Solo dopo un intervallo di tempo">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Ritado">
-<!ENTITY use.alternative "Mostra il menu alternativo con">
-<!ENTITY use.also "(Puoi anche usare il tasto Alt destro)">
-<!ENTITY suppress "Annulla la priorità del menu circolare se il tasto del mouse è premuto con">
-<!ENTITY suppress.ins "Tasto Insert">
-<!ENTITY suppress.alt "Tasto Alt">
-<!ENTITY suppress.ctrl "Tasto Ctrl">
-<!ENTITY suppress.custom "Tasto a scelta">
-<!ENTITY suppress.keycode "Codice del tasto">
-<!ENTITY contextmenu "Attiva la sensibilità contestuale con">
-<!ENTITY contextmenu.showAuto "Sempre attiva. Usa lo stesso tasto per disattivarla.">
+<!ENTITY activation.open.with "Apri il menu circolare con">
+<!ENTITY activation.open.with.button.left "tasto sinistro del mouse">
+<!ENTITY activation.open.with.button.middle "tasto centrale del mouse">
+<!ENTITY activation.open.with.button.right "tasto destro del mouse">
+<!ENTITY activation.open.with.button.custom "tasto del mouse a scelta">
+<!ENTITY activation.open.with.buttoncode "codice del tasto">
+<!ENTITY activation.open.with.and "e">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "Tasto Shift">
+<!ENTITY activation.ctrlKey "Tasto Ctrl">
+<!ENTITY activation.open.afterDelay "Solo dopo un intervallo di tempo">
+<!ENTITY activation.open.afterDelay.delay "Ritado">
+<!ENTITY activation.openAltMenu "Mostra il menu alternativo con">
+<!ENTITY activation.openAltMenu.altKey "(Puoi anche usare il tasto Alt destro)">
+<!ENTITY activation.suppressPriority "Annulla la priorità del menu circolare se il tasto del mouse è premuto con">
+<!ENTITY activation.insertKey "Tasto Insert">
+<!ENTITY activation.altKey "Tasto Alt">
+<!ENTITY activation.customKey "Tasto a scelta">
+<!ENTITY activation.keycode "Codice del tasto">
+<!ENTITY activation.contextualMenu "Attiva la sensibilità contestuale con">
+<!ENTITY activation.contextualMenu.showAuto "Sempre attiva. Usa lo stesso tasto per disattivarla.">
 
-<!ENTITY extras.menuType "Tipo di Menu">
-<!ENTITY extras.menu "Standard (8 azioni)">
-<!ENTITY extras.largeMenu "Grande (10 azioni)">
-<!ENTITY extras.display "Display">
-<!ENTITY extras.noIcons "Display di base (senza icone)">
-<!ENTITY extras.smallIcons "Usa Icone piccole">
-<!ENTITY extras.menuOpacity "Opacità del Menu Circolare">
-<!ENTITY extras.ttip "Attiva i Tooltips">
-<!ENTITY extras.ttipDelayLabel "Ritardo dei Tooltips">
-<!ENTITY move "Muovi il menu circolare">
-<!ENTITY move.key "Premendo il tasto Shift">
-<!ENTITY move.edge "Arrivando al bordo del Menu">
-<!ENTITY link.through "Abilita il click ai collegamenti attraverso il centro del menu circolare">
-<!ENTITY link.delay "Ritardo massimo per cliccare">
-<!ENTITY link.throughAsAction "Apri secondo l'azione 'Apri Collegamento'">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Segui il comportamento del Browser">
-<!ENTITY autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
+<!ENTITY behavior.menuType "Tipo di Menu">
+<!ENTITY behavior.menuType.standard "Standard (8 azioni)">
+<!ENTITY behavior.menuType.large "Grande (10 azioni)">
+<!ENTITY behavior.display "Display">
+<!ENTITY behavior.display.noIcons "Display di base (senza icone)">
+<!ENTITY behavior.display.smallIcons "Usa Icone piccole">
+<!ENTITY behavior.display.opacity "Opacità del Menu Circolare">
+<!ENTITY behavior.tooltips "Attiva i Tooltips">
+<!ENTITY behavior.tooltips.delay "Ritardo dei Tooltips">
+<!ENTITY behavior.move "Muovi il menu circolare">
+<!ENTITY behavior.move.shiftKey "Premendo il tasto Shift">
+<!ENTITY behavior.move.menuEdge "Arrivando al bordo del Menu">
+<!ENTITY behavior.links "Abilita il click ai collegamenti attraverso il centro del menu circolare">
+<!ENTITY behavior.links.delay "Ritardo massimo per cliccare">
+<!ENTITY behavior.links.openLinkAction "Apri secondo l'azione 'Apri Collegamento'">
+<!ENTITY behavior.linksconfigureAction "Configure this action">
+<!ENTITY behavior.links.browser "Segui il comportamento del Browser">
+<!ENTITY behavior.autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
+<!ENTITY behavior.autoscrolling.delay "Ritado">
 
-<!ENTITY actions.main "Menu Principale">
-<!ENTITY actions.extra "Menu Extra">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "Primario">
-<!ENTITY actions.alternative "Alternativo">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "Il menu Extra viene mostrato usando l'azione corrspondente">
-<!ENTITY contextmenu.order "Imposta l'Ordine dei Menu">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "Collegamento">
-<!ENTITY contextmenu.image "Immagine">
-<!ENTITY contextmenu.selection "Selezione">
-<!ENTITY contextmenu.textbox "Riquadro di Testo">
+<!ENTITY menus.main "Menu Principale">
+<!ENTITY menus.extra "Menu Extra">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "Primario">
+<!ENTITY menus.alternative1 "Alternativo 1">
+<!ENTITY menus.alternative2 "Alternativo 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "Il menu Extra viene mostrato usando l'azione corrspondente">
+<!ENTITY menus.contextual.order "Imposta l'Ordine dei Menu">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "Collegamento">
+<!ENTITY menus.contextual.image "Immagine">
+<!ENTITY menus.contextual.selection "Selezione">
+<!ENTITY menus.contextual.textbox "Riquadro di Testo">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Segnaposto per le Stringhe: &#37;s (selezione) e &#37;u (URL corrente).">
-<!ENTITY urlscript.load "Carica URL">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "in una nuova Linguetta">
-<!ENTITY urlscript.newWindow "in una nuova Finestra">
-<!ENTITY link "Personalizza l'azione 'Apri Collegamento'">
-<!ENTITY link.curTab "Apri il collegamento nella Linguetta corrente">
-<!ENTITY link.newTab "Apri il collegamento in una nuova Linguetta">
-<!ENTITY link.newWindow "Apri il collegamento in una nuova Finestra">
+<!ENTITY customizations.loadURLActions.load "Carica URL">
+<!ENTITY customizations.loadURLActions.currentTab "in current Tab">
+<!ENTITY customizations.loadURLActions.newTab "in una nuova Linguetta">
+<!ENTITY customizations.loadURLActions.newWindow "in una nuova Finestra">
+<!ENTITY customizations.openLink "Personalizza l'azione 'Apri Collegamento'">
+<!ENTITY customizations.openLink.currentTab "Apri il collegamento nella Linguetta corrente">
+<!ENTITY customizations.openLink.newTab "Apri il collegamento in una nuova Linguetta">
+<!ENTITY customizations.openLink.newWindow "Apri il collegamento in una nuova Finestra">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Suggerimenti">
-<!ENTITY intro "Lo sapevi che...">
-<!ENTITY copyText "Copia il testo nella clipboard">
-<!ENTITY showTips "Mostra suggeriemnti all'avvio">
-<!ENTITY previousTip "Precedente">
-<!ENTITY nextTip "Successivo">
-<!ENTITY closeTip "Chiudi">
+<!ENTITY tips.intro "Lo sapevi che...">
+<!ENTITY tips.copyText "Copia il testo nella clipboard">
+<!ENTITY tips.previous "Precedente">
+<!ENTITY tips.next "Successivo">
+<!ENTITY close "Chiudi">
 
-<!ENTITY tip1 "Per default, devi cliccare il tasto medio del mouse per mostrare il menu circolare (a meno che non sia un utente Mac). Il tasto di default può essere modificato.|Modifica il tasto del mouse in &preferences;/&activation;">
-<!ENTITY tip2 "Il modo più rapido di usare il menu circolare è di tenere premuto il tasto del mouse, trascinare sull'azione da eseguire, e lasciare il tasto. Puoi pensare a questo come a un gesto del mouse con una GUI.">
-<!ENTITY tip4 "Per default, cliccare il tasto destro del mouse mentre viene mostrato il menu mostrerà insiemi di azioni alternative: a rotazione, verranno mostrate 3 diverse configurazioni, completamente personalizzabili. Il tasto del mouse di default può essere modificato.|Modifica il tasto del mouse in &preferences;/&activation;">
-<!ENTITY tip5 "Puoi usare easyGestures per aprire i tuoi Segnalibri preferiti personalizzando le azioni 'Carica URL' e poi aggiungendole al menu circolare.|Personalizza in &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tip6 "Puoi personalizzare tutta la disposizione dei comandi del menu usando un gran numero di azioni predefinite. Ance le Statistiche d'uso aiutano ad ottimizzare il menu circolare.|Aggiungi o rimuovi azioni in &preferences;/&menus;">
-<!ENTITY tip7 "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "Un click sufficientemente rapido del menu circolare su di un collegamento senza movimenti aprirà il collegamento in una nuova linguetta.">
-<!ENTITY tip9 "Puoi attivare la sensibilità al contesto premendo il tasto 'Ctrl' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva.|Modifica il comportamento in &preferences;/&activation;">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "Tenendo premuto il tasto 'Insert' mentre si preme il tasto destro del mouse, puoi sopprimere il menu circolare e accedere al menu contestuale standard.">
-<!ENTITY tip12 "Puoi muovere il menu circolare tenendo premuto il tasto 'Shift' mentre si muove il mouse.">
-<!ENTITY tip13 "Puoi disattivare i tooltips se non ti servono.|Disattiva in &preferences;/&behavior;">
-<!ENTITY tip14 "Puoi mantenere l'aspetto di default o passare a una modalità base con testo e senza icone se ti è più comodo. Puoi anche usare una modalità con icone piccole.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "Gli utenti esperti possono usare più azioni sul cerchio: 10 anziché 8 su ognuna delle 3 configurazioni del menu.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "L'opzione di Firefox 'Usa l'autoscorrimento' viene disattivata quando il tasto medio del mouse è usato per mostrare il menu circolare. L'autoscorrimento può però essere utilizzato tenedo premuto il tasto per un breve periodo di tempo.|Attiva l'autoscorrimento in &preferences;/&behavior;">
-<!ENTITY tip20 "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
-<!ENTITY tip21 "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
-<!ENTITY tip22 "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "Per default, devi cliccare il tasto medio del mouse per mostrare il menu circolare (a meno che non sia un utente Mac). Il tasto di default può essere modificato.|Modifica il tasto del mouse in &preferences;/&activation;">
+<!ENTITY tips.dragToAction "Il modo più rapido di usare il menu circolare è di tenere premuto il tasto del mouse, trascinare sull'azione da eseguire, e lasciare il tasto. Puoi pensare a questo come a un gesto del mouse con una GUI.">
+<!ENTITY tips.openAltMenu "Per default, cliccare il tasto destro del mouse mentre viene mostrato il menu mostrerà insiemi di azioni alternative: a rotazione, verranno mostrate 3 diverse configurazioni, completamente personalizzabili. Il tasto del mouse di default può essere modificato.|Modifica il tasto del mouse in &preferences;/&activation;">
+<!ENTITY tips.loadURLActions "Puoi usare easyGestures per aprire i tuoi Segnalibri preferiti personalizzando le azioni 'Carica URL' e poi aggiungendole al menu circolare.|Personalizza in &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.menusCustomization "Puoi personalizzare tutta la disposizione dei comandi del menu usando un gran numero di azioni predefinite. Ance le Statistiche d'uso aiutano ad ottimizzare il menu circolare.|Aggiungi o rimuovi azioni in &preferences;/&menus;">
+<!ENTITY tips.runScriptActions "Puoi lanciare applicazioni esterne ed eseguire codice javascript con le azioni 'Esegui File di Programma' e 'Carica Script'. Per esempio, puoi chiamare una qualunque funzione della API di Firefox o una funzione di un'altra extensione.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "Un click sufficientemente rapido del menu circolare su di un collegamento senza movimenti aprirà il collegamento in una nuova linguetta.">
+<!ENTITY tips.contextualMenus "Puoi attivare la sensibilità al contesto premendo il tasto 'Ctrl' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva.|Modifica il comportamento in &preferences;/&activation;">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "Tenendo premuto il tasto 'Insert' mentre si preme il tasto destro del mouse, puoi sopprimere il menu circolare e accedere al menu contestuale standard.">
+<!ENTITY tips.moveMenu "Puoi muovere il menu circolare tenendo premuto il tasto 'Shift' mentre si muove il mouse.">
+<!ENTITY tips.tooltips "Puoi disattivare i tooltips se non ti servono.|Disattiva in &preferences;/&behavior;">
+<!ENTITY tips.smallIcons "Puoi mantenere l'aspetto di default o passare a una modalità base con testo e senza icone se ti è più comodo. Puoi anche usare una modalità con icone piccole.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "Gli utenti esperti possono usare più azioni sul cerchio: 10 anziché 8 su ognuna delle 3 configurazioni del menu.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "L'opzione di Firefox 'Usa l'autoscorrimento' viene disattivata quando il tasto medio del mouse è usato per mostrare il menu circolare. L'autoscorrimento può però essere utilizzato tenedo premuto il tasto per un breve periodo di tempo.|Attiva l'autoscorrimento in &preferences;/&behavior;">
+<!ENTITY tips.zoomOnImage "Un'azione di zoom su un'immagine eseguirà l'azione su quell'immagine solamente.">
+<!ENTITY tips.backAndForwardSiteActions "Anzichè muoverti avanti e indietro pagina per pagina, puoi farlo sito per site con le azioni 'Indietro di un Sito' e 'Avati di un Sito'.">
+<!ENTITY tips.openLinkAction "L'azione 'Apri Collegamento' aprirà il collegamento che è stato puntato in una nuova linguetta.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Ultimo Azzeramento">
 <!ENTITY stats.use "Utilizzo del Menu Circolare">
@@ -144,8 +144,4 @@ END OF INSTRUCTIONS
 <!ENTITY stats.master "Maestro">
 <!ENTITY stats.actions "Click per Azione">
 <!ENTITY stats.directions "Click per Direzione">
-<!ENTITY stats.main "Menu Principale">
-<!ENTITY stats.extra "Menu Extra">
-<!ENTITY stats.total "Totale">
 <!ENTITY stats.all "Tutte le Azioni">
-<!ENTITY close "Chiudi">

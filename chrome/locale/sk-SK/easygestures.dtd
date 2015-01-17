@@ -9,115 +9,115 @@
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Prispôsobenie">
 
-<!ENTITY about.startupTips "Zobraziť tipy pri štarte">
-<!ENTITY about.manage "Spravovať nastavenia">
-<!ENTITY about.import "Importovať nastavenia...">
-<!ENTITY about.export "Exportovať nastavenia...">
-<!ENTITY about.reset "Obnoviť nastavenia">
-<!ENTITY about.stats "Štatistiky">
-<!ENTITY about.statsDisplay "Zobraziť štatistiky">
-<!ENTITY about.statsReset "Vynulovať štatistiky">
+<!ENTITY general.startupTips "Zobraziť tipy pri štarte">
+<!ENTITY general.prefs.manage "Spravovať nastavenia">
+<!ENTITY general.prefs.import "Importovať nastavenia...">
+<!ENTITY general.prefs.export "Exportovať nastavenia...">
+<!ENTITY general.prefs.reset "Obnoviť nastavenia">
+<!ENTITY stats "Štatistiky">
+<!ENTITY general.stats.display "Zobraziť štatistiky">
+<!ENTITY general.stats.reset "Vynulovať štatistiky">
 
-<!ENTITY use "Ponuku otvoriť">
-<!ENTITY use.button.left "ľavým tlačidlom myši">
-<!ENTITY use.button.middle "stredným tlačidlom myši">
-<!ENTITY use.button.right "pravým tlačidlom myši">
-<!ENTITY use.button.custom "custom mouse button">
-<!ENTITY use.buttoncode "button code">
-<!ENTITY use.and "a">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "klávesom Shift">
-<!ENTITY use.ctrl "klávesom Ctrl">
-<!ENTITY use.afterDelay "Len po oneskorení">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Oneskorenie">
-<!ENTITY use.alternative "Zobraziť alternatívnu ponuku s">
-<!ENTITY use.also "(Okrem toho môžete použiť pravý Alt)">
-<!ENTITY suppress "Potlačiť zobrazenie ponuky s">
-<!ENTITY suppress.ins "klávesom Insert">
-<!ENTITY suppress.alt "klávesom Alt">
-<!ENTITY suppress.ctrl "klávesom Ctrl">
-<!ENTITY suppress.custom "definovaným klávesom">
-<!ENTITY suppress.keycode "Kód klávesu">
-<!ENTITY contextmenu "Zobraziť kontextovú ponuku">
-<!ENTITY contextmenu.showAuto "Vždy aktivované. Používa rovnaký kláves na potlačenie citlivosti.">
+<!ENTITY activation.open.with "Ponuku otvoriť">
+<!ENTITY activation.open.with.button.left "ľavým tlačidlom myši">
+<!ENTITY activation.open.with.button.middle "stredným tlačidlom myši">
+<!ENTITY activation.open.with.button.right "pravým tlačidlom myši">
+<!ENTITY activation.open.with.button.custom "custom mouse button">
+<!ENTITY activation.open.with.buttoncode "button code">
+<!ENTITY activation.open.with.and "a">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "klávesom Shift">
+<!ENTITY activation.ctrlKey "klávesom Ctrl">
+<!ENTITY activation.open.afterDelay "Len po oneskorení">
+<!ENTITY activation.open.afterDelay.delay "Oneskorenie">
+<!ENTITY activation.openAltMenu "Zobraziť alternatívnu ponuku s">
+<!ENTITY activation.openAltMenu.altKey "(Okrem toho môžete použiť pravý Alt)">
+<!ENTITY activation.suppressPriority "Potlačiť zobrazenie ponuky s">
+<!ENTITY activation.insertKey "klávesom Insert">
+<!ENTITY activation.altKey "klávesom Alt">
+<!ENTITY activation.customKey "definovaným klávesom">
+<!ENTITY activation.keycode "Kód klávesu">
+<!ENTITY activation.contextualMenu "Zobraziť kontextovú ponuku">
+<!ENTITY activation.contextualMenu.showAuto "Vždy aktivované. Používa rovnaký kláves na potlačenie citlivosti.">
 
-<!ENTITY extras.menuType "Typ ponuky">
-<!ENTITY extras.menu "Štandardná (8 akcií)">
-<!ENTITY extras.largeMenu "Veľká (10 akcií)">
-<!ENTITY extras.display "Zobrazenie">
-<!ENTITY extras.noIcons "Základné zobrazenie (nezobrazuje ikony)">
-<!ENTITY extras.smallIcons "Použiť malé ikony">
-<!ENTITY extras.menuOpacity "Priehľadnosť ponuky">
-<!ENTITY extras.ttip "Aktivovať popisy">
-<!ENTITY extras.ttipDelayLabel "Oneskorenie">
-<!ENTITY move "Presunúť ponuku">
-<!ENTITY move.key "Stlačením klávesu Shift">
-<!ENTITY move.edge "Pomocou rohov ponuky">
-<!ENTITY link.through "Povoliť kliknutie na odkaz cez stred ponuky">
-<!ENTITY link.delay "Maximálne oneskorenie pre kliknutie">
-<!ENTITY link.throughAsAction "Použiť správanie akcie &apos;Otvoriť odkaz&apos;">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Použiť správanie prehliadača">
-<!ENTITY autoscrolling "Automatický posun cez stred ponuky">
+<!ENTITY behavior.menuType "Typ ponuky">
+<!ENTITY behavior.menuType.standard "Štandardná (8 akcií)">
+<!ENTITY behavior.menuType.large "Veľká (10 akcií)">
+<!ENTITY behavior.display "Zobrazenie">
+<!ENTITY behavior.display.noIcons "Základné zobrazenie (nezobrazuje ikony)">
+<!ENTITY behavior.display.smallIcons "Použiť malé ikony">
+<!ENTITY behavior.display.opacity "Priehľadnosť ponuky">
+<!ENTITY behavior.tooltips "Aktivovať popisy">
+<!ENTITY behavior.tooltips.delay "Oneskorenie">
+<!ENTITY behavior.move "Presunúť ponuku">
+<!ENTITY behavior.move.shiftKey "Stlačením klávesu Shift">
+<!ENTITY behavior.move.menuEdge "Pomocou rohov ponuky">
+<!ENTITY behavior.links "Povoliť kliknutie na odkaz cez stred ponuky">
+<!ENTITY behavior.links.delay "Maximálne oneskorenie pre kliknutie">
+<!ENTITY behavior.links.openLinkAction "Použiť správanie akcie &apos;Otvoriť odkaz&apos;">
+<!ENTITY behavior.links.configureAction "Configure this action">
+<!ENTITY behavior.links.browser "Použiť správanie prehliadača">
+<!ENTITY behavior.autoscrolling "Automatický posun cez stred ponuky">
+<!ENTITY behavior.autoscrolling.delay "Oneskorenie">
 
-<!ENTITY actions.main "Hlavná ponuka">
-<!ENTITY actions.extra "Extra ponuka">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "Primárny">
-<!ENTITY actions.alternative "Alternatívny">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "Extra ponuka je zobrazená použitím korešpondujúcej akcie">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "Odkaz">
-<!ENTITY contextmenu.image "Obrázok">
-<!ENTITY contextmenu.selection "Výber">
-<!ENTITY contextmenu.textbox "Textové pole">
+<!ENTITY menus.main "Hlavná ponuka">
+<!ENTITY menus.extra "Extra ponuka">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "Primárny">
+<!ENTITY menus.alternative1 "Alternatívny 1">
+<!ENTITY menus.alternative2 "Alternatívny 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "Extra ponuka je zobrazená použitím korešpondujúcej akcie">
+<!ENTITY menus.contextual.order "Set menus order">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "Odkaz">
+<!ENTITY menus.contextual.image "Obrázok">
+<!ENTITY menus.contextual.selection "Výber">
+<!ENTITY menus.contextual.textbox "Textové pole">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Náhrady reťazcov: &#37;s (výber) a &#37;u (aktuálna URL).">
-<!ENTITY urlscript.load "Načítať URL adresy">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "na novej karte">
-<!ENTITY urlscript.newWindow "v novom okne">
-<!ENTITY link "Prispôsobiť akciu &apos;Otvoriť odkaz&apos;">
-<!ENTITY link.curTab "Otvoriť odkaz na aktuálnej karte">
-<!ENTITY link.newTab "Otvoriť odkaz na novej karte">
-<!ENTITY link.newWindow "Otvoriť odkaz v novom okne">
+<!ENTITY customizations.loadURLActions.load "Načítať URL adresy">
+<!ENTITY customizations.loadURLActions.currentTab "in current Tab">
+<!ENTITY customizations.loadURLActions.newTab "na novej karte">
+<!ENTITY customizations.loadURLActions.newWindow "v novom okne">
+<!ENTITY customizations.openLink "Prispôsobiť akciu &apos;Otvoriť odkaz&apos;">
+<!ENTITY customizations.openLink.currentTab "Otvoriť odkaz na aktuálnej karte">
+<!ENTITY customizations.openLink.newTab "Otvoriť odkaz na novej karte">
+<!ENTITY customizations.openLink.newWindow "Otvoriť odkaz v novom okne">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tipy">
-<!ENTITY intro "Vedeli ste...">
-<!ENTITY copyText "Skopírovať text do schránky">
-<!ENTITY showTips "Zobraziť tipy pri štarte">
-<!ENTITY previousTip "Predchádzajúci">
-<!ENTITY nextTip "Nasledujúci">
-<!ENTITY closeTip "Zavrieť">
+<!ENTITY tips.intro "Vedeli ste...">
+<!ENTITY tips.copyText "Skopírovať text do schránky">
+<!ENTITY tips.previous "Predchádzajúci">
+<!ENTITY tips.next "Nasledujúci">
+<!ENTITY close "Zavrieť">
 
-<!ENTITY tip1 "Prednastavené zobrazenie ponuky je pomocou stlačenia stredného tlačidla myši (pokiaľ nie ste používateľ Macu). Toto môže byť zmenené v ponuke &preferences;/&activation;">
-<!ENTITY tip2 "Najrýchlejší spôsob na použitie ponuky je stlačiť a podržať tlačidlo myši, ťahať kurzor na akciu, ktorú chcete vybrať a uvoľniť tlačidlo. Môžete to brať ako gesto myšou s GUI.">
-<!ENTITY tip4 "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v &preferences;/&activation;">
-<!ENTITY tip5 "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tip6 "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v &preferences;/&menus;">
-<!ENTITY tip7 "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
-<!ENTITY tip9 "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "Podržaním klávesu &apos;Insert&apos; môžete potlačiť zobrazenie koláčovej ponuky a pristúpiť k štandardnej kontextovej ponuke.">
-<!ENTITY tip12 "Môžete hýbať s koláčovou ponukou stlačením klávesu &apos;Shift&apos; pri pohybe myšou.">
-<!ENTITY tip13 "Môžete vypnúť zobrazovanie popisov, ak ich nepotrebujete.|Zobrazenie vypnete v &preferences;/&behavior;">
-<!ENTITY tip14 "Môžete si nechať predvolený nablýskaný vzhľad, alebo prepnúť do základného zobrazenia bez ikon, ak ste textovo orientovaný. Môžete tiež prepnúť zobrazenie na malé ikony.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "Pokročilý používatelia môžu mať v koláčovej ponuke viac akcií: 10 namiesto 8 na každom z 3 hlavných rozložení.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "Nastavenie Firefoxu &apos;Povoliť automatický posun&apos; je vypnuté, keď je použité stredné tlačidlo myši na zobrazenie ponuky. Funkcia automatického posunu je potom dostupná cez ponuku easyGestures, po malom oneskorení, ak nedošlo k pohybu. Automatický posun aktivujte v &preferences;/&behavior;">
-<!ENTITY tip20 "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">
-<!ENTITY tip21 "Namiesto pohybu &apos;Naspäť&apos; a &apos;Dopredu&apos; môžete prejsť na &apos;Predchádzajúcu stránku&apos; a &apos;Nasledujúcu stránku&apos;.">
-<!ENTITY tip22 "Akcia &apos;Otvoriť odkaz&apos; otvorí odkaz, na ktorý ukazujete, na novej karte.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "Prednastavené zobrazenie ponuky je pomocou stlačenia stredného tlačidla myši (pokiaľ nie ste používateľ Macu). Toto môže byť zmenené v ponuke &preferences;/&activation;">
+<!ENTITY tips.dragToAction "Najrýchlejší spôsob na použitie ponuky je stlačiť a podržať tlačidlo myši, ťahať kurzor na akciu, ktorú chcete vybrať a uvoľniť tlačidlo. Môžete to brať ako gesto myšou s GUI.">
+<!ENTITY tips.openAltMenu "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v &preferences;/&activation;">
+<!ENTITY tips.loadURLActions "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.menusCustomization "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v &preferences;/&menus;">
+<!ENTITY tips.runScriptActions "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
+<!ENTITY tips.contextualMenus "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "Podržaním klávesu &apos;Insert&apos; môžete potlačiť zobrazenie koláčovej ponuky a pristúpiť k štandardnej kontextovej ponuke.">
+<!ENTITY tips.moveMenu "Môžete hýbať s koláčovou ponukou stlačením klávesu &apos;Shift&apos; pri pohybe myšou.">
+<!ENTITY tips.tooltips "Môžete vypnúť zobrazovanie popisov, ak ich nepotrebujete.|Zobrazenie vypnete v &preferences;/&behavior;">
+<!ENTITY tips.smallIcons "Môžete si nechať predvolený nablýskaný vzhľad, alebo prepnúť do základného zobrazenia bez ikon, ak ste textovo orientovaný. Môžete tiež prepnúť zobrazenie na malé ikony.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "Pokročilý používatelia môžu mať v koláčovej ponuke viac akcií: 10 namiesto 8 na každom z 3 hlavných rozložení.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "Nastavenie Firefoxu &apos;Povoliť automatický posun&apos; je vypnuté, keď je použité stredné tlačidlo myši na zobrazenie ponuky. Funkcia automatického posunu je potom dostupná cez ponuku easyGestures, po malom oneskorení, ak nedošlo k pohybu. Automatický posun aktivujte v &preferences;/&behavior;">
+<!ENTITY tips.zoomOnImage "Akcia &apos;Priblížiť&apos; nad obrázkom vykoná túto akciu len na tomto obrázku.">
+<!ENTITY tips.backAndForwardSiteActions "Namiesto pohybu &apos;Naspäť&apos; a &apos;Dopredu&apos; môžete prejsť na &apos;Predchádzajúcu stránku&apos; a &apos;Nasledujúcu stránku&apos;.">
+<!ENTITY tips.openLinkAction "Akcia &apos;Otvoriť odkaz&apos; otvorí odkaz, na ktorý ukazujete, na novej karte.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Posledné vynulovanie">
 <!ENTITY stats.use "Využitie ponuky">
@@ -127,8 +127,4 @@
 <!ENTITY stats.master "Skúsený používateľ">
 <!ENTITY stats.actions "Kliknutia podľa akcie">
 <!ENTITY stats.directions "Kliknutia podľa smeru">
-<!ENTITY stats.main "Hlavná ponuka">
-<!ENTITY stats.extra "Rozšírená ponuka">
-<!ENTITY stats.total "Celkovo">
 <!ENTITY stats.all "Všetky akcie">
-<!ENTITY close "Zavrieť">

@@ -8,115 +8,115 @@
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Anpassungen">
 
-<!ENTITY about.startupTips "Tipps beim Start anzeigen">
-<!ENTITY about.manage "Einstellungen verwalten">
-<!ENTITY about.import "Einstellungen importieren...">
-<!ENTITY about.export "Einstellungen exportieren...">
-<!ENTITY about.reset "Einstellungen zurücksetzen">
-<!ENTITY about.stats "Statistiken">
-<!ENTITY about.statsDisplay "Statistiken anzeigen">
-<!ENTITY about.statsReset "Statistiken zurücksetzen">
+<!ENTITY general.startupTips "Tipps beim Start anzeigen">
+<!ENTITY general.prefs.manage "Einstellungen verwalten">
+<!ENTITY general.prefs.import "Einstellungen importieren...">
+<!ENTITY general.prefs.export "Einstellungen exportieren...">
+<!ENTITY general.prefs.reset "Einstellungen zurücksetzen">
+<!ENTITY stats "Statistiken">
+<!ENTITY general.stats.display "Statistiken anzeigen">
+<!ENTITY general.stats.reset "Statistiken zurücksetzen">
 
-<!ENTITY use "Kreismenü öffnen mit">
-<!ENTITY use.button.left "linker Maustaste">
-<!ENTITY use.button.middle "mittlerer Maustaste">
-<!ENTITY use.button.right "rechter Maustaste">
-<!ENTITY use.button.custom "benutzerdefinierter Maustaste">
-<!ENTITY use.buttoncode "Tasten-Code">
-<!ENTITY use.and "und">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Umschalttaste">
-<!ENTITY use.ctrl "Strg-Taste">
-<!ENTITY use.afterDelay "Mit Verzögerung öffnen">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Verzögerung">
-<!ENTITY use.alternative "Alternative Menüs anzeigen mit">
-<!ENTITY use.also "(auch über Alt-Taste auswählbar)">
-<!ENTITY suppress "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
-<!ENTITY suppress.ins "Einfügen-Taste">
-<!ENTITY suppress.alt "Alt-Taste">
-<!ENTITY suppress.ctrl "Strg-Taste">
-<!ENTITY suppress.custom "Eigener Taste">
-<!ENTITY suppress.keycode "Tastencode">
-<!ENTITY contextmenu "Kontextabhängige Menüreaktion aktivieren mit">
-<!ENTITY contextmenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
+<!ENTITY activation.open.with "Kreismenü öffnen mit">
+<!ENTITY activation.open.with.button.left "linker Maustaste">
+<!ENTITY activation.open.with.button.middle "mittlerer Maustaste">
+<!ENTITY activation.open.with.button.right "rechter Maustaste">
+<!ENTITY activation.open.with.button.custom "benutzerdefinierter Maustaste">
+<!ENTITY activation.open.with.buttoncode "Tasten-Code">
+<!ENTITY activation.open.with.and "und">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "Umschalttaste">
+<!ENTITY activation.ctrlKey "Strg-Taste">
+<!ENTITY activation.open.afterDelay "Mit Verzögerung öffnen">
+<!ENTITY activation.open.afterDelay.delay "Verzögerung">
+<!ENTITY activation.openAltMenu "Alternative Menüs anzeigen mit">
+<!ENTITY activation.openAltMenu.altKey "(auch über Alt-Taste auswählbar)">
+<!ENTITY activation.suppressPriority "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
+<!ENTITY activation.insertKey "Einfügen-Taste">
+<!ENTITY activation.altKey "Alt-Taste">
+<!ENTITY activation.customKey "Eigener Taste">
+<!ENTITY activation.keycode "Tastencode">
+<!ENTITY activation.contextualMenu "Kontextabhängige Menüreaktion aktivieren mit">
+<!ENTITY activation.contextualMenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
 
-<!ENTITY extras.menuType "Menü-Varianten">
-<!ENTITY extras.menu "Standard (8 Aktionen)">
-<!ENTITY extras.largeMenu "Erweitert (10 Aktionen)">
-<!ENTITY extras.display "Anzeige">
-<!ENTITY extras.noIcons "Einfache Anzeige (ohne Symbole) verwenden">
-<!ENTITY extras.smallIcons "Kleine Symbole verwenden">
-<!ENTITY extras.menuOpacity "Kreismenü-Deckkraft">
-<!ENTITY extras.ttip "Tooltips aktivieren">
-<!ENTITY extras.ttipDelayLabel "Tooltip-Verzögerung">
-<!ENTITY move "Kreismenü verschieben">
-<!ENTITY move.key "durch Halten der Umschalttaste">
-<!ENTITY move.edge "bei Berühren der Menüränder">
-<!ENTITY link.through "Klicks auf Links durch Kreismenü-Mitte aktivieren">
-<!ENTITY link.delay "Maximale Verzögerung für Klicks">
-<!ENTITY link.throughAsAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Verhalten des Browsers verwenden">
-<!ENTITY autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
+<!ENTITY behavior.menuType "Menü-Varianten">
+<!ENTITY behavior.menuType.standard "Standard (8 Aktionen)">
+<!ENTITY behavior.menuType.large "Erweitert (10 Aktionen)">
+<!ENTITY behavior.display "Anzeige">
+<!ENTITY behavior.display.noIcons "Einfache Anzeige (ohne Symbole) verwenden">
+<!ENTITY behavior.display.smallIcons "Kleine Symbole verwenden">
+<!ENTITY behavior.display.opacity "Kreismenü-Deckkraft">
+<!ENTITY behavior.tooltips "Tooltips aktivieren">
+<!ENTITY behavior.tooltips.delay "Tooltip-Verzögerung">
+<!ENTITY behavior.move "Kreismenü verschieben">
+<!ENTITY behavior.move.shiftKey "durch Halten der Umschalttaste">
+<!ENTITY behavior.move.menuEdge "bei Berühren der Menüränder">
+<!ENTITY behavior.links "Klicks auf Links durch Kreismenü-Mitte aktivieren">
+<!ENTITY behavior.links.delay "Maximale Verzögerung für Klicks">
+<!ENTITY behavior.links.openLinkAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
+<!ENTITY behavior.links.configureAction "Configure this action">
+<!ENTITY behavior.links.browser "Verhalten des Browsers verwenden">
+<!ENTITY behavior.autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
+<!ENTITY behavior.autoscrolling.delay "Verzögerung">
 
-<!ENTITY actions.main "Haupt-Kreismenü">
-<!ENTITY actions.extra "Zusatz-Kreismenü">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "Primär">
-<!ENTITY actions.alternative "Alternativ">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "Link">
-<!ENTITY contextmenu.image "Grafik">
-<!ENTITY contextmenu.selection "Auswahl">
-<!ENTITY contextmenu.textbox "Textfeld">
+<!ENTITY menus.main "Haupt-Kreismenü">
+<!ENTITY menus.extra "Zusatz-Kreismenü">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "Primär">
+<!ENTITY menus.alternative1 "Alternativ 1">
+<!ENTITY menus.alternative2 "Alternativ 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt">
+<!ENTITY menus.contextual.order "Set menus order">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "Link">
+<!ENTITY menus.contextual.image "Grafik">
+<!ENTITY menus.contextual.selection "Auswahl">
+<!ENTITY menus.contextual.textbox "Textfeld">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Zeichenplatzhalter: &#37;s (Auswahl) und &#37;u (aktuelle Adresse).">
-<!ENTITY urlscript.load "Adressen laden">
-<!ENTITY urlscript.curTab "in current Tab">
-<!ENTITY urlscript.newTab "in neuem Tab">
-<!ENTITY urlscript.newWindow "in neuem Fenster">
-<!ENTITY link "Aktion &apos;Link öffnen&apos; anpassen">
-<!ENTITY link.curTab "Link im aktiven Tab öffnen">
-<!ENTITY link.newTab "Link in neuem Tab öffnen">
-<!ENTITY link.newWindow "Link in neuem Fenster öffnen">
+<!ENTITY customizations.loadURLActions.load "Adressen laden">
+<!ENTITY customizations.loadURLActions.currentTab "in current Tab">
+<!ENTITY customizations.loadURLActions.newTab "in neuem Tab">
+<!ENTITY customizations.loadURLActions.newWindow "in neuem Fenster">
+<!ENTITY customizations.openLink "Aktion &apos;Link öffnen&apos; anpassen">
+<!ENTITY customizations.openLink.currentTab "Link im aktiven Tab öffnen">
+<!ENTITY customizations.openLink.newTab "Link in neuem Tab öffnen">
+<!ENTITY customizations.openLink.newWindow "Link in neuem Fenster öffnen">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tipps">
-<!ENTITY intro "Wussten Sie schon...">
-<!ENTITY copyText "Text in Zwischenablage kopieren">
-<!ENTITY showTips "Tipps beim Start anzeigen">
-<!ENTITY previousTip "Vorheriger">
-<!ENTITY nextTip "Nächster">
-<!ENTITY closeTip "Schließen">
+<!ENTITY tips.intro "Wussten Sie schon...">
+<!ENTITY tips.copyText "Text in Zwischenablage kopieren">
+<!ENTITY tips.previous "Vorheriger">
+<!ENTITY tips.next "Nächster">
+<!ENTITY close "Schließen">
 
-<!ENTITY tip1 "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden.|Maustaste unter &preferences;/&activation;">
-<!ENTITY tip2 "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
-<!ENTITY tip4 "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden.|Maustaste unter &preferences;/&activation;">
-<!ENTITY tip5 "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen.|Aktion unter &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tip6 "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren.|Aktionen unter &preferences;/&menus; hinzufügen oder entfernen">
-<!ENTITY tip7 "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab.">
-<!ENTITY tip9 "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren.|Verhalten unter Einstellungen/Verhalten anpassen">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
-<!ENTITY tip12 "Das Kreismenü kann bei gedrückter Umschalttaste mit der Maus verschoben werden.">
-<!ENTITY tip13 "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt.|Tooltips unter &preferences;/&behavior;">
-<!ENTITY tip14 "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden.|Automatischen Bildlauf unter &preferences;/&behavior; aktivieren">
-<!ENTITY tip20 "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
-<!ENTITY tip21 "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
-<!ENTITY tip22 "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "Standardmäßig muss die mittlere Maustaste gedrückt werden, um das Kreismenü anzuzeigen (außer, man benutzt einen Mac). Die auslösende Maustaste kann aber angepasst werden.|Maustaste unter &preferences;/&activation;">
+<!ENTITY tips.dragToAction "Der schnellste Weg zur Benutzung des Kreismenüs ist, die Maustaste zu drücken, sie über das Symbol der auszuführenden Aktion zu ziehen und wieder loszulassen. Man kann dies als eine Art Mausgesten mit grafischer Oberfläche betrachten.">
+<!ENTITY tips.openAltMenu "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden.|Maustaste unter &preferences;/&activation;">
+<!ENTITY tips.loadURLActions "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen.|Aktion unter &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.menusCustomization "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren.|Aktionen unter &preferences;/&menus; hinzufügen oder entfernen">
+<!ENTITY tips.runScriptActions "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab.">
+<!ENTITY tips.contextualMenus "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren.|Verhalten unter Einstellungen/Verhalten anpassen">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
+<!ENTITY tips.moveMenu "Das Kreismenü kann bei gedrückter Umschalttaste mit der Maus verschoben werden.">
+<!ENTITY tips.tooltips "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt.|Tooltips unter &preferences;/&behavior;">
+<!ENTITY tips.smallIcons "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "Intensivnutzer können auch mehr Funktionen in einem Menü anzeigen lassen: 10 anstelle von 8 in jedem der drei Hauptmenüs.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "Die Firefox-Funktion &apos;Automatischer Bildlauf&apos; wird deaktiviert, wenn die mittlere Maustaste zum Aufruf des Kreismenüs benutzt wird. Die Funktion kann aber durch Drücken der Taste durch die Mitte des Kreismenüs nach einer kurzen Wartezeit, in der die Maus nicht bewegt wird, genutzt werden.|Automatischen Bildlauf unter &preferences;/&behavior; aktivieren">
+<!ENTITY tips.zoomOnImage "Die Aktionen zum Vergrößern oder Verkleinern direkt über einer Grafik wirken sich nur auf diese Grafik aus.">
+<!ENTITY tips.backAndForwardSiteActions "Anstatt sich nur Seite für Seite vor oder zurück zu bewegen, kann dies über die Aktionen &apos;Vorherige Website&apos; und &apos;Nächste Website&apos; auch über Websites hinweg erfolgen.">
+<!ENTITY tips.openLinkAction "Die Aktion &apos;Link öffnen&apos; öffnet einen gewählten Link in einem neuen Tab.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Zuletzt zurückgesetzt">
 <!ENTITY stats.use "Kreismenü-Nutzung">
@@ -126,8 +126,4 @@
 <!ENTITY stats.master "Meister">
 <!ENTITY stats.actions "Klicks nach Aktionen">
 <!ENTITY stats.directions "Klicks nach Richtungen">
-<!ENTITY stats.main "Hauptmenü">
-<!ENTITY stats.extra "Zusatzmenü">
-<!ENTITY stats.total "Gesamt">
 <!ENTITY stats.all "Alle Aktionen">
-<!ENTITY close "Schließen">

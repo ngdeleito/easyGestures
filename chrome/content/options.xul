@@ -67,30 +67,30 @@
     <preferences>
       <preference id="startupTips" name="extensions.easygestures.general.startupTips" type="bool" />
     </preferences>
-    <checkbox preference="startupTips" label="&about.startupTips;" />
+    <checkbox preference="startupTips" label="&general.startupTips;" />
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&about.manage;" class="header" />
+    <label value="&general.prefs.manage;" class="header" />
     <hbox>
-      <button disabled="true" label="&about.import;"
+      <button disabled="true" label="&general.prefs.import;"
               oncommand="importPrefs(); initMenuDialog();" />
-      <button disabled="true" label="&about.export;"
+      <button disabled="true" label="&general.prefs.export;"
               oncommand="saveAllPreferences(this); exportPrefs();" />
-      <button label="&about.reset;"
-              oncommand="if (confirm('&about.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
+      <button label="&general.prefs.reset;"
+              oncommand="if (confirm('&general.prefs.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
     </hbox>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
 
-    <label value="&about.stats;" class="header" />
+    <label value="&stats;" class="header" />
     <hbox>
-      <button label="&about.statsDisplay;"
+      <button label="&general.stats.display;"
               oncommand="window.openDialog('chrome://easygestures/content/stats.xul', '', 'chrome,alwaysRaised,centerscreen');" />
-      <button label="&about.statsReset;"
-              oncommand="if (confirm('&about.statsReset;')) { eGPrefs.initializeStats(); }" />
+      <button label="&general.stats.reset;"
+              oncommand="if (confirm('&general.stats.reset;')) { eGPrefs.initializeStats(); }" />
     </hbox>
   </prefpane>
   
@@ -108,34 +108,34 @@
       <preference id="contextKey" name="extensions.easygestures.activation.contextKey" type="int" />
       <preference id="contextShowAuto" name="extensions.easygestures.activation.contextShowAuto" type="bool" />
     </preferences>
-    <label value="&use;" class="header" />
+    <label value="&activation.open.with;" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="showButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem label="&use.button.left;" value="0" />
-          <menuitem label="&use.button.middle;" value="1" />
-          <menuitem label="&use.button.right;" value="2" />
-          <menuitem label="&use.button.custom;" />
+          <menuitem label="&activation.open.with.button.left;" value="0" />
+          <menuitem label="&activation.open.with.button.middle;" value="1" />
+          <menuitem label="&activation.open.with.button.right;" value="2" />
+          <menuitem label="&activation.open.with.button.custom;" />
         </menupopup>
       </menulist>
-      <label value="&use.buttoncode;" />
+      <label value="&activation.open.with.buttoncode;" />
       <textbox preference="showButton" size="2"
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
-    <label value="&use.and;" class="header" />
+    <label value="&activation.open.with.and;" class="header" />
     <radiogroup preference="showKey" style="margin-left: 1em">
-      <radio label="&use.noKey;" value="0" />
-      <radio label="&use.shift;" value="16" />
-      <radio label="&use.ctrl;" value="17" />
+      <radio label="&activation.noKey;" value="0" />
+      <radio label="&activation.shiftKey;" value="16" />
+      <radio label="&activation.ctrlKey;" value="17" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     
     <checkbox id="showAfterDelayCheckbox" preference="showAfterDelay"
-      label="&use.afterDelay;" oncommand="updateUI();" />
+      label="&activation.open.afterDelay;" oncommand="updateUI();" />
     <hbox align="center" style="margin-left: 1em">
       <label id="showAfterDelayDelayLabel"
-        value="&autoscrolling.autoscrollingDelayLabel;" />
+        value="&activation.open.afterDelay.delay;" />
       <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayValue"
         size="3" style="text-align: right" />
       <label value="ms" />
@@ -144,38 +144,38 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&use.alternative;" class="header" />
+    <label value="&activation.openAltMenu;" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="showAltButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem label="&use.button.left;" value="0" />
-          <menuitem label="&use.button.middle;" value="1" />
-          <menuitem label="&use.button.right;" value="2" />
-          <menuitem label="&use.button.custom;" />
+          <menuitem label="&activation.open.with.button.left;" value="0" />
+          <menuitem label="&activation.open.with.button.middle;" value="1" />
+          <menuitem label="&activation.open.with.button.right;" value="2" />
+          <menuitem label="&activation.open.with.button.custom;" />
         </menupopup>
       </menulist>
-      <label value="&use.buttoncode;" />
+      <label value="&activation.open.with.buttoncode;" />
       <textbox preference="showAltButton" size="2"
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
-    <label value="&use.also;" />
+    <label value="&activation.openAltMenu.altKey;" />
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&suppress;" class="header" />
+    <label value="&activation.suppressPriority;" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="suppressKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem label="&use.noKey;" value="0" />
-          <menuitem label="&suppress.ins;" value="45" />
-          <menuitem label="&suppress.alt;" value="18" />
-          <menuitem label="&suppress.ctrl;" value="17" />
-          <menuitem label="&suppress.custom;" />
+          <menuitem label="&activation.noKey;" value="0" />
+          <menuitem label="&activation.insertKey;" value="45" />
+          <menuitem label="&activation.altKey;" value="18" />
+          <menuitem label="&activation.ctrlKey;" value="17" />
+          <menuitem label="&activation.customKey;" />
         </menupopup>
       </menulist>
-      <label value="&suppress.keycode;" />
+      <label value="&activation.keycode;" />
       <textbox id="customSupprKeyCode" preference="suppressKey" size="4"
         onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
@@ -183,23 +183,23 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&contextmenu;" class="header" />
+    <label value="&activation.contextualMenu;" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="contextKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem label="&use.noKey;" value="0" />
-          <menuitem label="&suppress.ins;" value="45" />
-          <menuitem label="&suppress.alt;" value="18" />
-          <menuitem label="&suppress.ctrl;" value="17" />
-          <menuitem label="&suppress.custom;" />
+          <menuitem label="&activation.noKey;" value="0" />
+          <menuitem label="&activation.insertKey;" value="45" />
+          <menuitem label="&activation.altKey;" value="18" />
+          <menuitem label="&activation.ctrlKey;" value="17" />
+          <menuitem label="&activation.customKey;" />
         </menupopup>
       </menulist>
-      <label value="&suppress.keycode;" />
+      <label value="&activation.keycode;" />
       <textbox id="customContextKeyCode" preference="contextKey" size="4"
         onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
-    <checkbox preference="contextShowAuto" label="&contextmenu.showAuto;" />
+    <checkbox preference="contextShowAuto" label="&activation.contextualMenu.showAuto;" />
   </prefpane>
   
   <prefpane
@@ -220,22 +220,22 @@
       <preference id="autoscrollingOn" name="extensions.easygestures.behavior.autoscrollingOn" type="bool" />
       <preference id="autoscrollingDelay" name="extensions.easygestures.behavior.autoscrollingDelay" type="int" />
     </preferences>
-    <label value="&extras.menuType;" class="header" />
+    <label value="&behavior.menuType;" class="header" />
     <radiogroup id="menuType" preference="largeMenu" oncommand="updateUI();"
       style="margin-left: 1em">
-      <radio label="&extras.menu;" value="false" />
-      <radio label="&extras.largeMenu;" value="true" />
+      <radio label="&behavior.menuType.standard;" value="false" />
+      <radio label="&behavior.menuType.large;" value="true" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&extras.display;" class="header" />
+    <label value="&behavior.display;" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="noIcons" label="&extras.noIcons;" />
-      <checkbox preference="smallIcons" label="&extras.smallIcons;" />
+      <checkbox preference="noIcons" label="&behavior.display.noIcons;" />
+      <checkbox preference="smallIcons" label="&behavior.display.smallIcons;" />
       <hbox align="center">
-        <label value="&extras.menuOpacity;" />
+        <label value="&behavior.display.opacity;" />
         <textbox preference="menuOpacity" type="number" min="0" max="100"
           size="3" />
         <label value="%" />
@@ -246,9 +246,9 @@
     <menuseparator />
     
     <checkbox id="showTooltipsCheckbox" preference="showTooltips"
-      label="&extras.ttip;" oncommand="updateUI();" class="header" />
+      label="&behavior.tooltips;" oncommand="updateUI();" class="header" />
     <hbox align="center" style="margin-left: 1em">
-      <label id="tooltipsDelayLabel" value="&extras.ttipDelayLabel;" />
+      <label id="tooltipsDelayLabel" value="&behavior.tooltips;" />
       <textbox id="tooltipsDelayValue" preference="tooltipsDelay" size="3"
         style="text-align: right" />
       <label id="tooltipsDelayUnit" value="ms" />
@@ -257,29 +257,29 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&move;" class="header" />
+    <label value="&behavior.move;" class="header" />
     <radiogroup preference="moveAuto" style="margin-left: 1em">
-      <radio label="&move.key;" value="false" />
-      <radio label="&move.edge;" value="true" />
+      <radio label="&behavior.move.shiftKey;" value="false" />
+      <radio label="&behavior.move.menuEdge;" value="true" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <checkbox preference="handleLinks" label="&link.through;" class="header" />
+    <checkbox preference="handleLinks" label="&behavior.links;" class="header" />
     <hbox align="center" style="margin-left: 1em">
-      <label id="linksDelayLabel" value="&link.delay;" />
+      <label id="linksDelayLabel" value="&behavior.links.delay;" />
       <textbox preference="linksDelay" size="3" style="text-align: right" />
       <label value="ms" />
     </hbox>
     <hbox style="margin-left: 1em">
       <radiogroup preference="handleLinksAsOpenLink">
         <hbox align="center">
-          <radio label="&link.throughAsAction;" value="true" />
+          <radio label="&behavior.links.openLinkAction;" value="true" />
           <separator orient="vertical" />
-          <label class="text-link" value="&configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
+          <label class="text-link" value="&behavior.links.configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
         </hbox>
-        <radio label="&link.throughAsBrowser;" value="false" />
+        <radio label="&behavior.links.browser;" value="false" />
       </radiogroup>
     </hbox>
     
@@ -287,10 +287,10 @@
     <menuseparator />
     
     <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
-      label="&autoscrolling;" oncommand="updateUI();" class="header" />
+      label="&behavior.autoscrolling;" oncommand="updateUI();" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <label id="autoscrollingDelayLabel"
-        value="&autoscrolling.autoscrollingDelayLabel;" />
+        value="&behavior.autoscrolling.delay;" />
       <textbox id="autoscrollingDelayValue" preference="autoscrollingDelay"
         size="3" style="text-align: right" />
       <label id="autoscrollingDelayUnit" value="ms" />
@@ -321,22 +321,22 @@
     </preferences>
     <tabbox id="actionsTabboxes">
       <tabs>
-        <tab label="&actions.main;" />
-        <tab label="&actions.extra;" />
-        <tab label="&actions.contextual;" />
+        <tab label="&menus.main;" />
+        <tab label="&menus.extra;" />
+        <tab label="&menus.contextual;" />
       </tabs>
       <tabpanels>
         <tabpanel pack="center">
           <tabbox>
             <tabs>
-              <tab label="&actions.primary;" />
-              <tab label="&actions.alternative; 1" />
-              <tab label="&actions.alternative; 2" />
+              <tab label="&menus.primary;" />
+              <tab label="&menus.alternative1;" />
+              <tab label="&menus.alternative2;" />
             </tabs>
             <tabpanels>
               <tabpanel>
                 <vbox>
-                  <checkbox label="&actions.enabled;"
+                  <checkbox label="&menus.enabled;"
                     style="visibility: hidden" />
                   <vbox id="gr_main" preference-editable="true"
                     preference="mainMenu"
@@ -347,7 +347,7 @@
               <tabpanel>
                 <vbox>
                   <checkbox id="mainAlternative1Checkbox"
-                    preference="mainAlt1Enabled" label="&actions.enabled;"
+                    preference="mainAlt1Enabled" label="&menus.enabled;"
                     oncommand="updateUI();" />
                   <vbox id="gr_mainAlt1" preference-editable="true"
                     preference="mainAlt1Menu"
@@ -358,7 +358,7 @@
               <tabpanel>
                 <vbox>
                   <checkbox id="mainAlternative2Checkbox"
-                    preference="mainAlt2Enabled" label="&actions.enabled;"
+                    preference="mainAlt2Enabled" label="&menus.enabled;"
                     oncommand="updateUI();" />
                   <vbox id="gr_mainAlt2" preference-editable="true"
                     preference="mainAlt2Menu"
@@ -373,19 +373,19 @@
           <vbox>
             <hbox align="center">
               <image class="message-icon" style="height: 1.5em; width: auto" />
-              <label value="&actions.info;" />
+              <label value="&menus.extra.info;" />
             </hbox>
             <separator orient="horizontal" style="height: 2em" />
             <tabbox>
               <tabs>
-                <tab label="&actions.primary;" />
-                <tab label="&actions.alternative; 1" />
-                <tab label="&actions.alternative; 2" />
+                <tab label="&menus.primary;" />
+                <tab label="&menus.alternative1;" />
+                <tab label="&menus.alternative2;" />
               </tabs>
               <tabpanels>
                 <tabpanel>
                   <vbox>
-                  <checkbox label="&actions.enabled;"
+                  <checkbox label="&menus.enabled;"
                     style="visibility: hidden" />
                     <vbox id="gr_extra" preference-editable="true"
                       preference="extraMenu"
@@ -396,7 +396,7 @@
                 <tabpanel>
                   <vbox>
                     <checkbox id="extraAlternative1Checkbox"
-                      preference="extraAlt1Enabled" label="&actions.enabled;"
+                      preference="extraAlt1Enabled" label="&menus.enabled;"
                       oncommand="updateUI();" />
                     <vbox id="gr_extraAlt1" preference-editable="true"
                       preference="extraAlt1Menu"
@@ -407,7 +407,7 @@
                 <tabpanel>
                   <vbox>
                     <checkbox id="extraAlternative2Checkbox"
-                      preference="extraAlt2Enabled" label="&actions.enabled;"
+                      preference="extraAlt2Enabled" label="&menus.enabled;"
                       oncommand="updateUI();" />
                     <vbox id="gr_extraAlt2" preference-editable="true"
                       preference="extraAlt2Menu"
@@ -421,18 +421,18 @@
         </tabpanel>
         <tabpanel pack="center">
           <vbox>
-            <label value="&contextmenu.order;" class="header" />
+            <label value="&menus.contextual.order;" class="header" />
             <vbox style="margin-left: 1em">
-              <checkbox preference="contextImageFirst" label="&contextmenu.imageFirst;" />
-              <checkbox preference="contextTextboxFirst" label="&contextmenu.textboxFirst;" />
+              <checkbox preference="contextImageFirst" label="&menus.contextual.imageFirst;" />
+              <checkbox preference="contextTextboxFirst" label="&menus.contextual.textboxFirst;" />
             </vbox>
             <separator orient="horizontal" style="height: 2em" />
             <tabbox>
               <tabs>
-                <tab label="&contextmenu.link;" />
-                <tab label="&contextmenu.image;" />
-                <tab label="&contextmenu.selection;" />
-                <tab label="&contextmenu.textbox;" />
+                <tab label="&menus.contextual.link;" />
+                <tab label="&menus.contextual.image;" />
+                <tab label="&menus.contextual.selection;" />
+                <tab label="&menus.contextual.textbox;" />
               </tabs>
               <tabpanels>
                 <tabpanel>
@@ -535,13 +535,13 @@
             
             <separator orient="horizontal" style="height: 2em" />
             
-            <label value="&urlscript.load;" class="header" />
+            <label value="&customizations.loadURLActions.load;" class="header" />
             <hbox>
               <menulist preference="loadURLin" style="margin-left: 1em">
                 <menupopup>
-                  <menuitem label="&urlscript.curTab;" value="curTab" />
-                  <menuitem label="&urlscript.newTab;" value="newTab" />
-                  <menuitem label="&urlscript.newWindow;" value="newWindow" />
+                  <menuitem label="&customizations.loadURLActions.currentTab;" value="curTab" />
+                  <menuitem label="&customizations.loadURLActions.newTab;" value="newTab" />
+                  <menuitem label="&customizations.loadURLActions.newWindow;" value="newWindow" />
                 </menupopup>
               </menulist>
             </hbox>
@@ -693,13 +693,13 @@
             
             <hbox align="center">
               <image class="small_openLink" />
-              <label value="&link;" class="header" />
+              <label value="&customizations.openLink;" class="header" />
             </hbox>
             <radiogroup preference="openLink" oncommand="updateUI();"
               style="margin-left: 1em">
-              <radio label="&link.curTab;" value="curTab" />
-              <radio label="&link.newTab;" value="newTab" />
-              <radio label="&link.newWindow;" value="newWindow" />
+              <radio label="&customizations.openLink.currentTab;" value="curTab" />
+              <radio label="&customizations.openLink.newTab;" value="newTab" />
+              <radio label="&customizations.openLink.newWindow;" value="newWindow" />
             </radiogroup>
             
             <separator orient="horizontal" class="thin" />

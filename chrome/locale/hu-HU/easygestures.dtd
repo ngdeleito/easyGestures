@@ -11,115 +11,115 @@
 <!ENTITY menus "Menus">
 <!ENTITY customizations "Személyre szabás">
 
-<!ENTITY about.startupTips "Tippek megjelenítése induláskor">
-<!ENTITY about.manage "Beállítások kezelése">
-<!ENTITY about.import "Beállítások betöltése">
-<!ENTITY about.export "Beállítások kimentése">
-<!ENTITY about.reset "Beállítások alaphelyzetbe állítása">
-<!ENTITY about.stats "Statisztikák">
-<!ENTITY about.statsDisplay "Statisztikák megjelenítése">
-<!ENTITY about.statsReset "Statisztikák nullázása">
+<!ENTITY general.startupTips "Tippek megjelenítése induláskor">
+<!ENTITY general.prefs.manage "Beállítások kezelése">
+<!ENTITY general.prefs.import "Beállítások betöltése">
+<!ENTITY general.prefs.export "Beállítások kimentése">
+<!ENTITY general.prefs.reset "Beállítások alaphelyzetbe állítása">
+<!ENTITY stats "Statisztikák">
+<!ENTITY general.stats.display "Statisztikák megjelenítése">
+<!ENTITY general.stats.reset "Statisztikák nullázása">
 
-<!ENTITY use "Köralakú menü megnyitása">
-<!ENTITY use.button.left "a bal egérgombbal">
-<!ENTITY use.button.middle "a középső egérgombbal">
-<!ENTITY use.button.right "a jobb egérgombbal">
-<!ENTITY use.button.custom "egyéb egérgombbal">
-<!ENTITY use.buttoncode "gomb kódja">
-<!ENTITY use.and "és">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Shíft billentyűvel">
-<!ENTITY use.ctrl "Ctrl billentyűvel">
-<!ENTITY use.afterDelay "Késleltetett megnyitás">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "Késleltetés">
-<!ENTITY use.alternative "Alternatív menü megjelenítése">
-<!ENTITY use.also "(A jobb oldali Alt billentyű is használható)">
-<!ENTITY suppress "Egérgombbal előhívott köralakú menü prioritásának elnyomása">
-<!ENTITY suppress.ins "az Insert billentyűvel">
-<!ENTITY suppress.alt "az Alt billentyűvel">
-<!ENTITY suppress.ctrl "a Ctrl billentyűvel">
-<!ENTITY suppress.custom "egyéb billentyűvel">
-<!ENTITY suppress.keycode "Billentyűkód">
-<!ENTITY contextmenu "Környezetfüggő működés aktiválása">
-<!ENTITY contextmenu.showAuto "Mindig aktív, ez a billentyű a környezetfüggő menü mellőzésére szolgál.">
+<!ENTITY activation.open.with "Köralakú menü megnyitása">
+<!ENTITY activation.open.with.button.left "a bal egérgombbal">
+<!ENTITY activation.open.with.button.middle "a középső egérgombbal">
+<!ENTITY activation.open.with.button.right "a jobb egérgombbal">
+<!ENTITY activation.open.with.button.custom "egyéb egérgombbal">
+<!ENTITY activation.open.with.buttoncode "gomb kódja">
+<!ENTITY activation.open.with.and "és">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "Shíft billentyűvel">
+<!ENTITY activation.ctrlKey "Ctrl billentyűvel">
+<!ENTITY activation.open.afterDelay "Késleltetett megnyitás">
+<!ENTITY activation.open.afterDelay.delay "Késleltetés">
+<!ENTITY activation.openAltMenu "Alternatív menü megjelenítése">
+<!ENTITY activation.openAltMenu.altKey "(A jobb oldali Alt billentyű is használható)">
+<!ENTITY activation.suppressPriority "Egérgombbal előhívott köralakú menü prioritásának elnyomása">
+<!ENTITY activation.insertKey "az Insert billentyűvel">
+<!ENTITY activation.altKey "az Alt billentyűvel">
+<!ENTITY activation.customKey "egyéb billentyűvel">
+<!ENTITY activation.keycode "Billentyűkód">
+<!ENTITY activation.contextualMenu "Környezetfüggő működés aktiválása">
+<!ENTITY activation.contextualMenu.showAuto "Mindig aktív, ez a billentyű a környezetfüggő menü mellőzésére szolgál.">
 
-<!ENTITY extras.menuType "Menü típusa">
-<!ENTITY extras.menu "Normál (8 művelet)">
-<!ENTITY extras.largeMenu "Nagy (10 művelet)">
-<!ENTITY extras.display "Megjelenés">
-<!ENTITY extras.noIcons "Egyszerű megjelenés (ikonok elrejtése)">
-<!ENTITY extras.smallIcons "Kis ikonok használata">
-<!ENTITY extras.menuOpacity "Köralakú menü áttetszősége">
-<!ENTITY extras.ttip "Felbukkanó tippek megjelenítése">
-<!ENTITY extras.ttipDelayLabel "Felbukkanó tippek késleltetése">
-<!ENTITY move "Köralakú menü mozgatása">
-<!ENTITY move.key "Shift billentyű lenyomásával">
-<!ENTITY move.edge "a menü szélének elérésekor">
-<!ENTITY link.through "Hivatkozásra kattintás a köralakú menü közepén keresztül">
-<!ENTITY link.delay "Késleltetés legfeljebb">
-<!ENTITY link.throughAsAction "'Hivatkozás megnyitása' művelet viselkedésének használata">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "Böngésző viselkedésének átvétele">
-<!ENTITY autoscrolling "Automatikus görgetés a köralakú menü közepén keresztül">
+<!ENTITY behavior.menuType "Menü típusa">
+<!ENTITY behavior.menuType.standard "Normál (8 művelet)">
+<!ENTITY behavior.menuType.large "Nagy (10 művelet)">
+<!ENTITY behavior.display "Megjelenés">
+<!ENTITY behavior.display.noIcons "Egyszerű megjelenés (ikonok elrejtése)">
+<!ENTITY behavior.display.smallIcons "Kis ikonok használata">
+<!ENTITY behavior.display.opacity "Köralakú menü áttetszősége">
+<!ENTITY behavior.tooltips "Felbukkanó tippek megjelenítése">
+<!ENTITY behavior.tooltips.delay "Felbukkanó tippek késleltetése">
+<!ENTITY behavior.move "Köralakú menü mozgatása">
+<!ENTITY behavior.move.shiftKey "Shift billentyű lenyomásával">
+<!ENTITY behavior.move.menuEdge "a menü szélének elérésekor">
+<!ENTITY behavior.links "Hivatkozásra kattintás a köralakú menü közepén keresztül">
+<!ENTITY behavior.links.delay "Késleltetés legfeljebb">
+<!ENTITY behavior.links.openLinkAction "'Hivatkozás megnyitása' művelet viselkedésének használata">
+<!ENTITY behavior.links.configureAction "Configure this action">
+<!ENTITY behavior.links.browser "Böngésző viselkedésének átvétele">
+<!ENTITY behavior.autoscrolling "Automatikus görgetés a köralakú menü közepén keresztül">
+<!ENTITY behavior.autoscrolling.delay "Késleltetés">
 
-<!ENTITY actions.main "Főmenü">
-<!ENTITY actions.extra "Kiegészítő menü">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "Elsődleges">
-<!ENTITY actions.alternative "Alternatív">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg">
-<!ENTITY contextmenu.order "Menük sorrendjének beállítása">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "Hivatkozás">
-<!ENTITY contextmenu.image "Kép">
-<!ENTITY contextmenu.selection "Kijelölés">
-<!ENTITY contextmenu.textbox "Szövegdoboz">
+<!ENTITY menus.main "Főmenü">
+<!ENTITY menus.extra "Kiegészítő menü">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "Elsődleges">
+<!ENTITY menus.alternative1 "Alternatív 1">
+<!ENTITY menus.alternative2 "Alternatív 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg">
+<!ENTITY menus.contextual.order "Menük sorrendjének beállítása">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "Hivatkozás">
+<!ENTITY menus.contextual.image "Kép">
+<!ENTITY menus.contextual.selection "Kijelölés">
+<!ENTITY menus.contextual.textbox "Szövegdoboz">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "Paraméterek: &#37;s (kijelölés) és &#37;u (aktuális URL).">
-<!ENTITY urlscript.load "URL-ek betöltése">
-<!ENTITY urlscript.curTab "az aktuális lapon">
-<!ENTITY urlscript.newTab "új lapon">
-<!ENTITY urlscript.newWindow "új ablakban">
-<!ENTITY link "'Hivatkozás megnyitása' művelet személyre szabása">
-<!ENTITY link.curTab "Hivatkozás megnyitása az aktuális lapon">
-<!ENTITY link.newTab "Hivatkozás megnyitása új lapon">
-<!ENTITY link.newWindow "Hivatkozás megnyitása új ablakban">
+<!ENTITY customizations.loadURLActions.load "URL-ek betöltése">
+<!ENTITY customizations.loadURLActions.currentTab "az aktuális lapon">
+<!ENTITY customizations.loadURLActions.newTab "új lapon">
+<!ENTITY customizations.loadURLActions.newWindow "új ablakban">
+<!ENTITY customizations.openLink "'Hivatkozás megnyitása' művelet személyre szabása">
+<!ENTITY customizations.openLink.currentTab "Hivatkozás megnyitása az aktuális lapon">
+<!ENTITY customizations.openLink.newTab "Hivatkozás megnyitása új lapon">
+<!ENTITY customizations.openLink.newWindow "Hivatkozás megnyitása új ablakban">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tippek">
-<!ENTITY intro "Tudtad-e...">
-<!ENTITY copyText "Szöveg másolása a vágólapra">
-<!ENTITY showTips "Tippek megjelenítése indításkor">
-<!ENTITY previousTip "Előző">
-<!ENTITY nextTip "Következő">
-<!ENTITY closeTip "Bezárás">
+<!ENTITY tips.intro "Tudtad-e...">
+<!ENTITY tips.copyText "Szöveg másolása a vágólapra">
+<!ENTITY tips.previous "Előző">
+<!ENTITY tips.next "Következő">
+<!ENTITY close "Bezárás">
 
-<!ENTITY tip1 "Az alapbeállítások szerint a középső egérgomb nyitja meg a köralakú menüt (hacsak nem Mac felhasználó vagy). Az alapértelmezett egérgomb megváltoztatható.|Az egérgomb beállításai a &preferences;/&activation;/1. oldalon találhatóak.">
-<!ENTITY tip2 "A leggyorsabb módszer a menü használatára: nyomd le az egérgombot, húzd a kiválasztott funkció fölé, majd engedd fel a gombot. Vagyis ez valójában egy egérmozdulat, amelyhez grafikus felület tartozik.">
-<!ENTITY tip4 "Alapesetben ha nyitva van a menü és a jobb gombbal kattintasz, akkor megjelenik az alternatív funkciók listája: összesen három, teljesen személyre szabható beállítás között válthatsz így. Az alapértelmezett egérgomb megváltoztatható.|Az egérgomb beállításai a &preferences;/&activation;/1. oldalon találhatóak.">
-<!ENTITY tip5 "Az easyGestures megnyitja a kedvenc könyvjelzőidet, ha az &quot;URL betöltése&quot; funkcióknál beállítod őket, majd hozzáadod a köralakú menükhöz.|A beállításokat a &preferences;/&customizations;/&customizations.loadURLActions; betöltése oldalon találod.">
-<!ENTITY tip6 "Mindegyik menü kiosztását számos beépített funkcióval szabhatod személyre. A használati statisztikák segítenek a köralakú menü optimalizálásában.|Az egyes funkciók hozzáadásához vagy eltávolításához nyisd meg a &preferences;/&menus; oldalt.">
-<!ENTITY tip7 "Külső programokat vagy javascript kódot futtatthathatsz a &quot;Program futtatása&quot; és az &quot;szkript betöltése&quot; funkciók segítségével. De például bármilyen Firefox API funkciót vagy egy másik kiegészítés egy funkcióját is meghívhatod ilyen módon.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "Ha elég gyorsan kattintasz a menü közepén keresztül egy hivatkozásra és közben nem mozdítod meg az egeret, akkor a hivatkozás megnyílik egy új lapon és egy piros jelet rak az oldalra a hivatkozás után.">
-<!ENTITY tip9 "A tartalomfüggő menü megjelenítéséhez nyomd le a Ctrl billentyűt mielőtt megnyitod a menüt. De akár állandósíthatod is a tartalomfüggő menü megjelenését.|A beállításokat keresd a &preferences;/&activation;/1. oldalon.">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "Ha nyomva tartod az Insert gombot, miközben a jobb egérgombbal kattintasz, akkor megakadályozhatod, hogy a köralakú menü felbukkanjon, így a hagyományos helyi menü jelenik meg helyette.">
-<!ENTITY tip12 "Mozgathatod a menüt, ha lenyomva tartod a Shift billentyűt miközben mozgatod az egeret.">
-<!ENTITY tip13 "A súgószövegek megjelenítését kikapcsolhatod, ha nincs szükséged rájuk.|A &preferences;/&behavior;/2. oldalon tudod őket kikapcsolni.">
-<!ENTITY tip14 "Megtarthatod a csillogó-villogó külsőt vagy átválthatsz egy ikonok nélküli, egyszerűbb megjelenítésre, ha inkább a szöveges kiírást szereted. De akár kis ikonokat is használhatsz.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "A haladó felhasználók több funkciót használhatnak, hiszen nyolc helyett akár tíz menüelem is megjeleníthető mindhárom kiosztáson.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "A Firefox &quot;Automatikus görgetés&quot; funkcióját kikapcsolja, ha a középső egérgomb jeleníti meg a köralakú menüt. Az automatikus görgetés elérhető úgy is, ha a köralakú menün keresztül kattintasz mozgatás nélkül.|Az automatikus görgetés a &preferences;/&behavior;/2. oldalon kapcsolható be és a késleltetését is itt lehet beállítani.">
-<!ENTITY tip20 "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
-<!ENTITY tip21 "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
-<!ENTITY tip22 "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "Az alapbeállítások szerint a középső egérgomb nyitja meg a köralakú menüt (hacsak nem Mac felhasználó vagy). Az alapértelmezett egérgomb megváltoztatható.|Az egérgomb beállításai a &preferences;/&activation;/1. oldalon találhatóak.">
+<!ENTITY tips.dragToAction "A leggyorsabb módszer a menü használatára: nyomd le az egérgombot, húzd a kiválasztott funkció fölé, majd engedd fel a gombot. Vagyis ez valójában egy egérmozdulat, amelyhez grafikus felület tartozik.">
+<!ENTITY tips.openAltMenu "Alapesetben ha nyitva van a menü és a jobb gombbal kattintasz, akkor megjelenik az alternatív funkciók listája: összesen három, teljesen személyre szabható beállítás között válthatsz így. Az alapértelmezett egérgomb megváltoztatható.|Az egérgomb beállításai a &preferences;/&activation;/1. oldalon találhatóak.">
+<!ENTITY tips.loadURLActions "Az easyGestures megnyitja a kedvenc könyvjelzőidet, ha az &quot;URL betöltése&quot; funkcióknál beállítod őket, majd hozzáadod a köralakú menükhöz.|A beállításokat a &preferences;/&customizations;/&customizations.loadURLActions; betöltése oldalon találod.">
+<!ENTITY tips.menusCustomization "Mindegyik menü kiosztását számos beépített funkcióval szabhatod személyre. A használati statisztikák segítenek a köralakú menü optimalizálásában.|Az egyes funkciók hozzáadásához vagy eltávolításához nyisd meg a &preferences;/&menus; oldalt.">
+<!ENTITY tips.runScriptActions "Külső programokat vagy javascript kódot futtatthathatsz a &quot;Program futtatása&quot; és az &quot;szkript betöltése&quot; funkciók segítségével. De például bármilyen Firefox API funkciót vagy egy másik kiegészítés egy funkcióját is meghívhatod ilyen módon.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "Ha elég gyorsan kattintasz a menü közepén keresztül egy hivatkozásra és közben nem mozdítod meg az egeret, akkor a hivatkozás megnyílik egy új lapon és egy piros jelet rak az oldalra a hivatkozás után.">
+<!ENTITY tips.contextualMenus "A tartalomfüggő menü megjelenítéséhez nyomd le a Ctrl billentyűt mielőtt megnyitod a menüt. De akár állandósíthatod is a tartalomfüggő menü megjelenését.|A beállításokat keresd a &preferences;/&activation;/1. oldalon.">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "Ha nyomva tartod az Insert gombot, miközben a jobb egérgombbal kattintasz, akkor megakadályozhatod, hogy a köralakú menü felbukkanjon, így a hagyományos helyi menü jelenik meg helyette.">
+<!ENTITY tips.moveMenu "Mozgathatod a menüt, ha lenyomva tartod a Shift billentyűt miközben mozgatod az egeret.">
+<!ENTITY tips.tooltips "A súgószövegek megjelenítését kikapcsolhatod, ha nincs szükséged rájuk.|A &preferences;/&behavior;/2. oldalon tudod őket kikapcsolni.">
+<!ENTITY tips.smallIcons "Megtarthatod a csillogó-villogó külsőt vagy átválthatsz egy ikonok nélküli, egyszerűbb megjelenítésre, ha inkább a szöveges kiírást szereted. De akár kis ikonokat is használhatsz.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "A haladó felhasználók több funkciót használhatnak, hiszen nyolc helyett akár tíz menüelem is megjeleníthető mindhárom kiosztáson.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "A Firefox &quot;Automatikus görgetés&quot; funkcióját kikapcsolja, ha a középső egérgomb jeleníti meg a köralakú menüt. Az automatikus görgetés elérhető úgy is, ha a köralakú menün keresztül kattintasz mozgatás nélkül.|Az automatikus görgetés a &preferences;/&behavior;/2. oldalon kapcsolható be és a késleltetését is itt lehet beállítani.">
+<!ENTITY tips.zoomOnImage "Ha egy kép fölött végzed el a nagyítást, akkor csak a kép nagyítódik.">
+<!ENTITY tips.backAndForwardSiteActions "Nemcsak oldalanként tudsz előre vagy vissza ugrani, hanem akár kiszolgálónként is az &quot;Előző kiszolgáló&quot; és &quot;Következő kiszolgáló&quot; funkciókkal.">
+<!ENTITY tips.openLinkAction "A &quot;Hivatkozás megnyitása&quot; funkció új lapon nyitja meg a kijelölt linket.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Legutóbbi nullázás">
 <!ENTITY stats.use "Körlakú menü használata">
@@ -129,8 +129,4 @@
 <!ENTITY stats.master "Mester">
 <!ENTITY stats.actions "Kattintások műveletek szerint">
 <!ENTITY stats.directions "Kattintások irány szerint">
-<!ENTITY stats.main "Főmenü">
-<!ENTITY stats.extra "Kiegészítő menü">
-<!ENTITY stats.total "Összesen">
 <!ENTITY stats.all "Összes művelet">
-<!ENTITY close "Bezárás">

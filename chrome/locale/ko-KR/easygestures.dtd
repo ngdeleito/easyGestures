@@ -26,115 +26,115 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY menus "Menus">
 <!ENTITY customizations "사용자 최적화">
 
-<!ENTITY about.startupTips "시작시 팁 표시">
-<!ENTITY about.manage "속성 관리">
-<!ENTITY about.import "속성 불러오기">
-<!ENTITY about.export "속성 내보내기">
-<!ENTITY about.reset "속성 초기화">
-<!ENTITY about.stats "통계">
-<!ENTITY about.statsDisplay "통계 표시">
-<!ENTITY about.statsReset "통계 초기화">
+<!ENTITY general.startupTips "시작시 팁 표시">
+<!ENTITY general.prefs.manage "속성 관리">
+<!ENTITY general.prefs.import "속성 불러오기">
+<!ENTITY general.prefs.export "속성 내보내기">
+<!ENTITY general.prefs.reset "속성 초기화">
+<!ENTITY stats "통계">
+<!ENTITY general.stats.display "통계 표시">
+<!ENTITY general.stats.reset "통계 초기화">
 
-<!ENTITY use "다음과 함께 원형 메뉴 열기">
-<!ENTITY use.button.left "왼쪽 마우스 버튼">
-<!ENTITY use.button.middle "가운데 마우스 버튼">
-<!ENTITY use.button.right "오른쪽 마우스 버튼">
-<!ENTITY use.button.custom "사용자 지정 마우스 버튼">
-<!ENTITY use.buttoncode "버튼 코드">
-<!ENTITY use.and "와(과)">
-<!ENTITY use.noKey "No key">
-<!ENTITY use.shift "Shift 키">
-<!ENTITY use.ctrl "Ctrl 키">
-<!ENTITY use.afterDelay "시간이 지나면 엽니다">
-<!ENTITY autoscrolling.autoscrollingDelayLabel "지연시간">
-<!ENTITY use.alternative "대체 메뉴 표시 방법">
-<!ENTITY use.also "(또한 오른쪽 Alt 키를 사용할수 있습니다)">
-<!ENTITY suppress "다음 키과 마우스 버튼으로 원형 메뉴 우선권을 제한시킵니다">
-<!ENTITY suppress.ins "Insert 키">
-<!ENTITY suppress.alt "Alt 키">
-<!ENTITY suppress.ctrl "Ctrl 키">
-<!ENTITY suppress.custom "사용자 지정 키">
-<!ENTITY suppress.keycode "키코드">
-<!ENTITY contextmenu "다음의 키로 상황 감지를 활성화">
-<!ENTITY contextmenu.showAuto "항시 활성화. 상황 감지의 무효화에도 같은 키를 사용합니다.">
+<!ENTITY activation.open.with "다음과 함께 원형 메뉴 열기">
+<!ENTITY activation.open.with.button.left "왼쪽 마우스 버튼">
+<!ENTITY activation.open.with.button.middle "가운데 마우스 버튼">
+<!ENTITY activation.open.with.button.right "오른쪽 마우스 버튼">
+<!ENTITY activation.open.with.button.custom "사용자 지정 마우스 버튼">
+<!ENTITY activation.open.with.buttoncode "버튼 코드">
+<!ENTITY activation.open.with.and "와(과)">
+<!ENTITY activation.noKey "No key">
+<!ENTITY activation.shiftKey "Shift 키">
+<!ENTITY activation.ctrlKey "Ctrl 키">
+<!ENTITY activation.open.afterDelay "시간이 지나면 엽니다">
+<!ENTITY activation.open.afterDelay.delay "지연시간">
+<!ENTITY activation.openAltMenu "대체 메뉴 표시 방법">
+<!ENTITY activation.openAltMenu.altKey "(또한 오른쪽 Alt 키를 사용할수 있습니다)">
+<!ENTITY activation.suppressPriority "다음 키과 마우스 버튼으로 원형 메뉴 우선권을 제한시킵니다">
+<!ENTITY activation.insertKey "Insert 키">
+<!ENTITY activation.altKey "Alt 키">
+<!ENTITY activation.customKey "사용자 지정 키">
+<!ENTITY activation.keycode "키코드">
+<!ENTITY activation.contextualMenu "다음의 키로 상황 감지를 활성화">
+<!ENTITY activation.contextualMenu.showAuto "항시 활성화. 상황 감지의 무효화에도 같은 키를 사용합니다.">
 
-<!ENTITY extras.menuType "메뉴 형식">
-<!ENTITY extras.menu "표준(8 동작)">
-<!ENTITY extras.largeMenu "대형(10 동작)">
-<!ENTITY extras.display "표시">
-<!ENTITY extras.noIcons "기본 표시(아이콘 표시하지 않음)">
-<!ENTITY extras.smallIcons "작은 아이콘 사용">
-<!ENTITY extras.menuOpacity "원형 메뉴 투명도">
-<!ENTITY extras.ttip "툴팁 작동">
-<!ENTITY extras.ttipDelayLabel "툴팁 지연">
-<!ENTITY move "원형 메뉴 이동">
-<!ENTITY move.key "Shift 키를 누를 경우">
-<!ENTITY move.edge "메뉴 모서리에 닿을 경우">
-<!ENTITY link.through "원형 메뉴 중앙을 통해 링크 누르기가 가능하게 하기">
-<!ENTITY link.delay "클릭시 최대 지연시간">
-<!ENTITY link.throughAsAction "&apos;링크 열기&apos; 동작 행동 사용">
-<!ENTITY configureAction "Configure this action">
-<!ENTITY link.throughAsBrowser "브라우저 행동 사용">
-<!ENTITY autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
+<!ENTITY behavior.menuType "메뉴 형식">
+<!ENTITY behavior.menuType.standard "표준(8 동작)">
+<!ENTITY behavior.menuType.large "대형(10 동작)">
+<!ENTITY behavior.display "표시">
+<!ENTITY behavior.display.noIcons "기본 표시(아이콘 표시하지 않음)">
+<!ENTITY behavior.display.smallIcons "작은 아이콘 사용">
+<!ENTITY behavior.display.opacity "원형 메뉴 투명도">
+<!ENTITY behavior.tooltips "툴팁 작동">
+<!ENTITY behavior.tooltips.delay "툴팁 지연">
+<!ENTITY behavior.move "원형 메뉴 이동">
+<!ENTITY behavior.move.shiftKey "Shift 키를 누를 경우">
+<!ENTITY behavior.move.menuEdge "메뉴 모서리에 닿을 경우">
+<!ENTITY behavior.links "원형 메뉴 중앙을 통해 링크 누르기가 가능하게 하기">
+<!ENTITY behavior.links.delay "클릭시 최대 지연시간">
+<!ENTITY behavior.links.openLinkAction "&apos;링크 열기&apos; 동작 행동 사용">
+<!ENTITY behavior.links.configureAction "Configure this action">
+<!ENTITY behavior.links.browser "브라우저 행동 사용">
+<!ENTITY behavior.autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
+<!ENTITY behavior.autoscrolling.delay "지연시간">
 
-<!ENTITY actions.main "주 메뉴">
-<!ENTITY actions.extra "부가 메뉴">
-<!ENTITY actions.contextual "Contextual Menus">
-<!ENTITY actions.primary "우선">
-<!ENTITY actions.alternative "대안">
-<!ENTITY actions.enabled "Enabled">
-<!ENTITY actions.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다">
-<!ENTITY contextmenu.order "Set menus order">
-<!ENTITY contextmenu.imageFirst "Show Image menu first">
-<!ENTITY contextmenu.textboxFirst "Show Textbox menu first">
-<!ENTITY contextmenu.link "링크">
-<!ENTITY contextmenu.image "이미지">
-<!ENTITY contextmenu.selection "선택">
-<!ENTITY contextmenu.textbox "문서상자">
+<!ENTITY menus.main "주 메뉴">
+<!ENTITY menus.extra "부가 메뉴">
+<!ENTITY menus.contextual "Contextual Menus">
+<!ENTITY menus.primary "우선">
+<!ENTITY menus.alternative1 "대안 1">
+<!ENTITY menus.alternative2 "대안 2">
+<!ENTITY menus.enabled "Enabled">
+<!ENTITY menus.extra.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다">
+<!ENTITY menus.contextual.order "Set menus order">
+<!ENTITY menus.contextual.imageFirst "Show Image menu first">
+<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
+<!ENTITY menus.contextual.link "링크">
+<!ENTITY menus.contextual.image "이미지">
+<!ENTITY menus.contextual.selection "선택">
+<!ENTITY menus.contextual.textbox "문서상자">
 
 <!ENTITY customizations.loadURLActions "Load URL Actions">
 <!ENTITY customizations.runScriptActions "Run Script Actions">
 <!ENTITY customizations.otherActions "Other Actions">
 <!ENTITY customizations.infoActions "You can select these actions in the '&menus;' pane">
 <!ENTITY customizations.infoPlaceholders "서식 지정자: &#37;s (선택)과 &#37;u (현재 URL).">
-<!ENTITY urlscript.load "URL 불러오기">
-<!ENTITY urlscript.curTab "현재 탭으로">
-<!ENTITY urlscript.newTab "새 탭으로">
-<!ENTITY urlscript.newWindow "새 창으로">
-<!ENTITY link "&apos;링크 열기&apos; 동작 지정">
-<!ENTITY link.curTab "현재 탭에 링크 열기">
-<!ENTITY link.newTab "새 탭으로 링크 열기">
-<!ENTITY link.newWindow "새 창으로 링크 열기">
+<!ENTITY customizations.loadURLActions.load "URL 불러오기">
+<!ENTITY customizations.loadURLActions.currentTab "현재 탭으로">
+<!ENTITY customizations.loadURLActions.newTab "새 탭으로">
+<!ENTITY customizations.loadURLActions.newWindow "새 창으로">
+<!ENTITY customizations.openLink "&apos;링크 열기&apos; 동작 지정">
+<!ENTITY customizations.openLink.currentTab "현재 탭에 링크 열기">
+<!ENTITY customizations.openLink.newTab "새 탭으로 링크 열기">
+<!ENTITY customizations.openLink.newWindow "새 창으로 링크 열기">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily Readings' Action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "팁">
-<!ENTITY intro "알고 있나요...">
-<!ENTITY copyText "클립보드에 문서 복사">
-<!ENTITY showTips "시작시 팁 표시">
-<!ENTITY previousTip "이전">
-<!ENTITY nextTip "다음">
-<!ENTITY closeTip "닫기">
+<!ENTITY tips.intro "알고 있나요...">
+<!ENTITY tips.copyText "클립보드에 문서 복사">
+<!ENTITY tips.previous "이전">
+<!ENTITY tips.next "다음">
+<!ENTITY close "닫기">
 
-<!ENTITY tip1 "기본값에선 마우스의 가운데 버튼을 클릭해 원형 메뉴를 표시하게 되어 있습니다(Mac 유저는 제외).|선택사항/행동/페이지 1 내 마우스 버튼 변경">
-<!ENTITY tip2 "원형 메뉴를 사용하는 가장 빠른 방법은 우선 마우스 버튼을 누른 후 실행하고 싶은 동작까지 드래그 하고 나서 놓으세요. GUI와 함께 마우스 동작을 생각할 수 있을 것입니다.">
-<!ENTITY tip4 "기본값으로, 원형 메뉴가 표시되어 있는 중에 오른쪽 클릭하면, 3가지의 자유롭게 설정 가능한 대체 메뉴로의 변경할 수 있게 되어 있습니다. 기본 마우스 버튼은 변경할 수가 있습니다.|선택사항/행동/페이지1 내에서 마우스 버튼 변경">
-<!ENTITY tip5 "&apos;URL 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다.|선택사항/사용자 최적화/URL 읽기 내에서 사용자 최적화">
-<!ENTITY tip6 "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다.|선택사항/동작 내에서 동작 추가 또는 삭제">
-<!ENTITY tip7 "&apos;프로그램 파일 실행&apos;와&apos;스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
-<!ENTITY tip8 "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
-<!ENTITY tip9 "파이 메뉴를 열 때에 &apos;Ctrl&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
-<!ENTITY tip10 "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tip11 "오른쪽 클릭할 때 &apos;Insert&apos;키를 누르고 있으면, 원형 메뉴가 아닌 통상의 문맥메뉴가 표시됩니다.">
-<!ENTITY tip12 "마우스를 이동하고 있는 동안 &apos;Shift&apos; 키를 누르고 있으면, 원형 메뉴를 자유롭게 이동시킬 수가 있습니다.">
-<!ENTITY tip13 "만약 필요하지 않으면 툴 팁을 꺼 버릴수 있습니다. 툴 팁에 표시되는 각 동작이름을 변경하는 것도 가능합니다.|선택사항/행위/페이지2 내에서 표시끄기">
-<!ENTITY tip14 "반짝이는 표현을 유지하거나, 만약 글자 기반 취향인 경우 아이콘 없는 기본 표현으로 전환 할 수 있습니다. 작은 아이콘으로도 전환할 수 있습니다.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tip15 "익숙한 사용자의 경우 하나의 원형 메뉴에 표시하는 동작의 수를 원래의 8개에서 10개로 늘릴 수 있을 겁니다.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tip16 "표시된 원형 메뉴에 마우스의 가운데 버튼을 사용하면, Firefox의 &apos;자동 스크롤 사용&apos; 선택사항이 해제 됩니다. 원형 메뉴가 표시되고 나서 잠시동안 커서를 움직이지 않으면, 자동 스크롤 기능을 사용할 수 있도록 할 수 있습니다.|선택사항/행위/페이지2 내에서 자동 스크롤 활성화">
-<!ENTITY tip20 "이미지에서의 배율조정 동작은 그 이미지에만 적용됩니다.">
-<!ENTITY tip21 "페이지를 &apos;뒤로&apos; 와 &apos;앞으로&apos;로 이동하는 대신, &apos;뒤 사이트&apos;와 &apos;앞 사이트&apos; 동작을 통해 사이트에 이동할수 있습니다.">
-<!ENTITY tip22 "&apos;링크를 열기&apos;동작은 지정된 링크를 새로운 탭으로 엽니다.">
-<!ENTITY tip26 "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.openButton "기본값에선 마우스의 가운데 버튼을 클릭해 원형 메뉴를 표시하게 되어 있습니다(Mac 유저는 제외).|선택사항/행동/페이지 1 내 마우스 버튼 변경">
+<!ENTITY tips.dragToAction "원형 메뉴를 사용하는 가장 빠른 방법은 우선 마우스 버튼을 누른 후 실행하고 싶은 동작까지 드래그 하고 나서 놓으세요. GUI와 함께 마우스 동작을 생각할 수 있을 것입니다.">
+<!ENTITY tips.openAltMenu "기본값으로, 원형 메뉴가 표시되어 있는 중에 오른쪽 클릭하면, 3가지의 자유롭게 설정 가능한 대체 메뉴로의 변경할 수 있게 되어 있습니다. 기본 마우스 버튼은 변경할 수가 있습니다.|선택사항/행동/페이지1 내에서 마우스 버튼 변경">
+<!ENTITY tips.loadURLActions "&apos;URL 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다.|선택사항/사용자 최적화/URL 읽기 내에서 사용자 최적화">
+<!ENTITY tips.menusCustomization "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다.|선택사항/동작 내에서 동작 추가 또는 삭제">
+<!ENTITY tips.runScriptActions "&apos;프로그램 파일 실행&apos;와&apos;스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. 예를 들면, Firefox의 API함수 나 다른 확장 기능에 포함된 어떤 함수라도 호출할 수가 있습니다.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.clickOnLink "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
+<!ENTITY tips.contextualMenus "파이 메뉴를 열 때에 &apos;Ctrl&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
+<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
+<!ENTITY tips.suppressPriority "오른쪽 클릭할 때 &apos;Insert&apos;키를 누르고 있으면, 원형 메뉴가 아닌 통상의 문맥메뉴가 표시됩니다.">
+<!ENTITY tips.moveMenu "마우스를 이동하고 있는 동안 &apos;Shift&apos; 키를 누르고 있으면, 원형 메뉴를 자유롭게 이동시킬 수가 있습니다.">
+<!ENTITY tips.tooltips "만약 필요하지 않으면 툴 팁을 꺼 버릴수 있습니다. 툴 팁에 표시되는 각 동작이름을 변경하는 것도 가능합니다.|선택사항/행위/페이지2 내에서 표시끄기">
+<!ENTITY tips.smallIcons "반짝이는 표현을 유지하거나, 만약 글자 기반 취향인 경우 아이콘 없는 기본 표현으로 전환 할 수 있습니다. 작은 아이콘으로도 전환할 수 있습니다.|Change the pie menu display in &preferences;/&behavior;">
+<!ENTITY tips.largeMenu "익숙한 사용자의 경우 하나의 원형 메뉴에 표시하는 동작의 수를 원래의 8개에서 10개로 늘릴 수 있을 겁니다.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "표시된 원형 메뉴에 마우스의 가운데 버튼을 사용하면, Firefox의 &apos;자동 스크롤 사용&apos; 선택사항이 해제 됩니다. 원형 메뉴가 표시되고 나서 잠시동안 커서를 움직이지 않으면, 자동 스크롤 기능을 사용할 수 있도록 할 수 있습니다.|선택사항/행위/페이지2 내에서 자동 스크롤 활성화">
+<!ENTITY tips.zoomOnImage "이미지에서의 배율조정 동작은 그 이미지에만 적용됩니다.">
+<!ENTITY tips.backAndForwardSiteActions "페이지를 &apos;뒤로&apos; 와 &apos;앞으로&apos;로 이동하는 대신, &apos;뒤 사이트&apos;와 &apos;앞 사이트&apos; 동작을 통해 사이트에 이동할수 있습니다.">
+<!ENTITY tips.openLinkAction "&apos;링크를 열기&apos;동작은 지정된 링크를 새로운 탭으로 엽니다.">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "최종 초기화">
 <!ENTITY stats.use "원형 메뉴 사용">
@@ -144,8 +144,4 @@ Contains options dialog strings and pie menu tips.
 <!ENTITY stats.master "달인">
 <!ENTITY stats.actions "동작으로 클릭">
 <!ENTITY stats.directions "방향으로 클릭">
-<!ENTITY stats.main "주 메뉴">
-<!ENTITY stats.extra "부가 메뉴">
-<!ENTITY stats.total "전체">
 <!ENTITY stats.all "모든 동작">
-<!ENTITY close "닫기">
