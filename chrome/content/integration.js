@@ -215,14 +215,14 @@ function eG_handleMouseup(evt) {
           // middle click
           var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("browser.");
           if (prefs.getBoolPref("tabs.opentabfor.middleclick")) {
-            window.gBrowser.addTab(eGc.link);
+            window.gBrowser.addTab(eGc.link.href);
           }
           else {
-            window.open(eGc.link);
+            window.open(eGc.link.href);
           }
         }
         else {
-          window.gBrowser.loadURI(eGc.link);
+          window.gBrowser.loadURI(eGc.link.href);
         }
       }
       eGm.close();
