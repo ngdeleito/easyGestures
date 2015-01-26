@@ -248,7 +248,7 @@
     <checkbox id="showTooltipsCheckbox" preference="showTooltips"
       label="&behavior.tooltips;" oncommand="updateUI();" class="header" />
     <hbox align="center" style="margin-left: 1em">
-      <label id="tooltipsDelayLabel" value="&behavior.tooltips;" />
+      <label id="tooltipsDelayLabel" value="&behavior.tooltips.delay;" />
       <textbox id="tooltipsDelayValue" preference="tooltipsDelay" size="3"
         style="text-align: right" />
       <label id="tooltipsDelayUnit" value="ms" />
