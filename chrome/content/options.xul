@@ -334,7 +334,7 @@
               <tab label="&menus.alternative2;" />
             </tabs>
             <tabpanels>
-              <tabpanel>
+              <tabpanel pack="center">
                 <vbox>
                   <checkbox label="&menus.enabled;"
                     style="visibility: hidden" />
@@ -344,7 +344,7 @@
                   </vbox>
                 </vbox>
               </tabpanel>
-              <tabpanel>
+              <tabpanel pack="center">
                 <vbox>
                   <checkbox id="mainAlternative1Checkbox"
                     preference="mainAlt1Enabled" label="&menus.enabled;"
@@ -355,7 +355,7 @@
                   </vbox>
                 </vbox>
               </tabpanel>
-              <tabpanel>
+              <tabpanel pack="center">
                 <vbox>
                   <checkbox id="mainAlternative2Checkbox"
                     preference="mainAlt2Enabled" label="&menus.enabled;"
@@ -383,7 +383,7 @@
                 <tab label="&menus.alternative2;" />
               </tabs>
               <tabpanels>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox>
                   <checkbox label="&menus.enabled;"
                     style="visibility: hidden" />
@@ -393,7 +393,7 @@
                     </vbox>
                   </vbox>
                 </tabpanel>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox>
                     <checkbox id="extraAlternative1Checkbox"
                       preference="extraAlt1Enabled" label="&menus.enabled;"
@@ -404,7 +404,7 @@
                     </vbox>
                   </vbox>
                 </tabpanel>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox>
                     <checkbox id="extraAlternative2Checkbox"
                       preference="extraAlt2Enabled" label="&menus.enabled;"
@@ -435,25 +435,25 @@
                 <tab label="&menus.contextual.textbox;" />
               </tabs>
               <tabpanels>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox id="gr_contextLink" preference-editable="true"
                     preference="contextLinkMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextLink');">
                   </vbox>
                 </tabpanel>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox id="gr_contextImage" preference-editable="true"
                     preference="contextImageMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextImage');">
                   </vbox>
                 </tabpanel>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox id="gr_contextSelection" preference-editable="true"
                     preference="contextSelectionMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextSelection');">
                   </vbox>
                 </tabpanel>
-                <tabpanel>
+                <tabpanel pack="center">
                   <vbox id="gr_contextTextbox" preference-editable="true"
                     preference="contextTextboxMenu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('contextTextbox');">
