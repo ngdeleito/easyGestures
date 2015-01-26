@@ -385,8 +385,8 @@
               <tabpanels>
                 <tabpanel pack="center">
                   <vbox>
-                  <checkbox label="&menus.enabled;"
-                    style="visibility: hidden" />
+                    <checkbox label="&menus.enabled;"
+                      style="visibility: hidden" />
                     <vbox id="gr_extra" preference-editable="true"
                       preference="extraMenu"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extra');">
