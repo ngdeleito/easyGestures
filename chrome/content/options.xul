@@ -527,9 +527,9 @@
           <vbox flex="1" style="height: 480px; overflow: auto">
             <hbox align="start">
               <image class="message-icon" style="height: 1.5em; width: auto" />
-              <vbox>
-                <label value="&customizations.infoActions;" />
-                <label value="&customizations.infoPlaceholders;" />
+              <vbox flex="1">
+                <label>&customizations.infoActions;</label>
+                <label>&customizations.infoPlaceholders;</label>
               </vbox>
             </hbox>
             
@@ -612,9 +612,9 @@
           <vbox flex="1" style="height: 480px; overflow: auto">
             <hbox align="start">
               <image class="message-icon" style="height: 1.5em; width: auto" />
-              <vbox>
-                <label value="&customizations.infoActions;" />
-                <label value="&customizations.infoPlaceholders;" />
+              <vbox flex="1">
+                <label>&customizations.infoActions;</label>
+                <label>&customizations.infoPlaceholders;</label>
               </vbox>
             </hbox>
             
@@ -686,7 +686,9 @@
           <vbox flex="1">
             <hbox align="center">
               <image class="message-icon" style="height: 1.5em; width: auto" />
-              <label value="&customizations.infoActions;" />
+              <vbox flex="1">
+                <label>&customizations.infoActions;</label>
+              </vbox>
             </hbox>
             
             <separator orient="horizontal" style="height: 2em" />
