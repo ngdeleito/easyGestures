@@ -13,10 +13,10 @@
 <!ENTITY general.prefs.manage "Spravovať nastavenia">
 <!ENTITY general.prefs.import "Importovať nastavenia...">
 <!ENTITY general.prefs.export "Exportovať nastavenia...">
-<!ENTITY general.prefs.reset "Obnoviť nastavenia">
+<!ENTITY general.prefs.reset "Obnoviť nastavenia...">
 <!ENTITY stats "Štatistiky">
-<!ENTITY general.stats.display "Zobraziť štatistiky">
-<!ENTITY general.stats.reset "Vynulovať štatistiky">
+<!ENTITY general.stats.display "Zobraziť štatistiky...">
+<!ENTITY general.stats.reset "Vynulovať štatistiky...">
 
 <!ENTITY activation.open.with "Ponuku otvoriť">
 <!ENTITY activation.open.with.button.left "ľavým tlačidlom myši">
@@ -104,7 +104,7 @@
 <!ENTITY tips.openAltMenu "Stlačte pravé tlačidlo myši, pokiaľ je zobrazená ponuka a zobrazia sa alternatívne akcie. Môžete prepínať medzi 3 rôznymi plne upravovateľnými rozloženiami akcií. Preddefinované tlačidlo môže byť zmenené. Tlačidlo myši zmeníte v &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Môžete použiť easyGetures na otvorenie vašich obľúbených položiek upravením akcie &apos;Načítať URL&apos; a pridaním do rozloženia v koláčovej ponuke. Prispôsobíte si to v &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Môžete spustiť externú aplikáciu a kód JavaScriptu pomocou akcií &apos;Spustiť program&apos; a &apos;Načítať Skript&apos;. Môžete napríklad zavolať ľubovoľnú funkciu Firefox API alebo funkciu vo vnútri iného doplnku.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "Môžete spustiť kód JavaScriptu pomocou akcií &apos;Načítať Skript&apos;.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
 <!ENTITY tips.contextualMenus "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

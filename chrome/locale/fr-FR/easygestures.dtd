@@ -28,10 +28,10 @@ END OF INSTRUCTIONS
 <!ENTITY general.prefs.manage "Gérer préférences">
 <!ENTITY general.prefs.import "Importer préférences...">
 <!ENTITY general.prefs.export "Exporter préférences...">
-<!ENTITY general.prefs.reset "Réinitialiser préférences">
+<!ENTITY general.prefs.reset "Réinitialiser préférences...">
 <!ENTITY stats "Statistiques">
-<!ENTITY general.stats.display "Afficher statistiques">
-<!ENTITY general.stats.reset "Réinitialiser statistiques">
+<!ENTITY general.stats.display "Afficher statistiques...">
+<!ENTITY general.stats.reset "Réinitialiser statistiques...">
 
 <!ENTITY activation.open.with "Ouvrir menu circulaire avec">
 <!ENTITY activation.open.with.button.left "bouton gauche souris">
@@ -119,7 +119,7 @@ END OF INSTRUCTIONS
 <!ENTITY tips.openAltMenu "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé.|Changez bouton souris dans &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "Vous pouvez personnalier tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.|Ajoutez ou retirez actions dans &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter Script'. Vous pouvez par exemple appeler n'importe quelle fonction API de Firefox ou une fonction dans une autre extension.|Personnalisez les actions 'Exécuter Script' dans &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter Script'.|Personnalisez les actions 'Exécuter Script' dans &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "En cliquant suffisemment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
 <!ENTITY tips.contextualMenus "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active.|Changez comportement dans &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">

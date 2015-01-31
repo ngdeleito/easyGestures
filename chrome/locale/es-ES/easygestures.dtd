@@ -15,10 +15,10 @@
 <!ENTITY general.prefs.manage "Gestionar opciones">
 <!ENTITY general.prefs.import "Importar opciones...">
 <!ENTITY general.prefs.export "Exportar opciones...">
-<!ENTITY general.prefs.reset "Reiniciar opciones">
+<!ENTITY general.prefs.reset "Reiniciar opciones...">
 <!ENTITY stats "Estadísticas">
-<!ENTITY general.stats.display "Mostrar estadísticas">
-<!ENTITY general.stats.reset "Reiniciar estadisticas">
+<!ENTITY general.stats.display "Mostrar estadísticas...">
+<!ENTITY general.stats.reset "Reiniciar estadisticas...">
 
 <!ENTITY activation.open.with "Abrir menú circular con">
 <!ENTITY activation.open.with.button.left "botón izquierdo">
@@ -107,7 +107,7 @@
 <!ENTITY tips.openAltMenu "Por defecto, al pulsar con el botón derecho mientras se está mostrando el menú circular, mostrará alternativamente conjuntos de acciones: entonces podrá alternar entre 3 capas totalmente configuralmente. Los botones por defecto del ratón pueden cambiarse.|Cambie los botones del ratón en &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Puede usar easyGestures para abrir sus marcadores preferidos personalizando la acción &apos;Cargar Dirección&apos; y añadiéndolas en el menú circular.|Personalizar en &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "Puede personalizar todas las entradas del menú circular usando acciones pre-diseñadas. Las estadísticas de uso pueden ayudar a optimizar el menú circular.|Añada o elimine acciones desde &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Puede ejecutar código Javascript usando las acciones &apos;Ejecutar Script&apos;. Puede llamar por ejemplo a cualquier función de la API de Firefox o a alguna función de alguna extensión.|Configure las acciones 'Ejecutar Script' en &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "Puede ejecutar código Javascript usando las acciones &apos;Ejecutar Script&apos;.|Configure las acciones 'Ejecutar Script' en &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña.">
 <!ENTITY tips.contextualMenus "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto.|Cambie el comportamiento en &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "Puede realizar una búsqueda con uno de sus motores de búsqueda con la acción 'Buscar en la Web'. Si hay texto seleccionado, la selección se copiará en el campo de búsquedas. Pulse 'Enter' para realizar la búsqueda.">

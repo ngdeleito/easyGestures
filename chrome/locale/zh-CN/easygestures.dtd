@@ -30,10 +30,10 @@ END OF INSTRUCTIONS
 <!ENTITY general.prefs.manage "管理设置">
 <!ENTITY general.prefs.import "导入设置...">
 <!ENTITY general.prefs.export "导出设置...">
-<!ENTITY general.prefs.reset "恢复默认设置">
+<!ENTITY general.prefs.reset "恢复默认设置...">
 <!ENTITY stats "统计">
-<!ENTITY general.stats.display "显示统计">
-<!ENTITY general.stats.reset "重置统计">
+<!ENTITY general.stats.display "显示统计...">
+<!ENTITY general.stats.reset "重置统计...">
 
 <!ENTITY activation.open.with "打开菜单">
 <!ENTITY activation.open.with.button.left "鼠标左键">
@@ -121,7 +121,7 @@ END OF INSTRUCTIONS
 <!ENTITY tips.openAltMenu "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
 <!ENTITY tips.loadURLActions "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。|自定义在 选项/自定义/载入网址/脚本">
 <!ENTITY tips.menusCustomization "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。|添加或删除动作在 选项/动作">
-<!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。例如，你可以调用任何Firefox的API函数和扩展的内部函数。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
 <!ENTITY tips.contextualMenus "你可以在圆饼菜单打开时点击“Ctrl”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

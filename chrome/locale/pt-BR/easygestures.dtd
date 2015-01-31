@@ -30,10 +30,10 @@ END OF INSTRUCTIONS
 <!ENTITY general.prefs.manage "Gerenciar Preferências">
 <!ENTITY general.prefs.import "Importar Preferências...">
 <!ENTITY general.prefs.export "Exportar Preferências...">
-<!ENTITY general.prefs.reset "Reiniciar Preferências">
+<!ENTITY general.prefs.reset "Reiniciar Preferências...">
 <!ENTITY stats "Estatísticas">
-<!ENTITY general.stats.display "Mostrar Estatísticas">
-<!ENTITY general.stats.reset "Reiniciar Estatísticas">
+<!ENTITY general.stats.display "Mostrar Estatísticas...">
+<!ENTITY general.stats.reset "Reiniciar Estatísticas...">
 
 <!ENTITY activation.open.with "Abrir menu de torta com">
 <!ENTITY activation.open.with.button.left "botão esquerdo do mouse">
@@ -121,7 +121,7 @@ END OF INSTRUCTIONS
 <!ENTITY tips.openAltMenu "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado.|Altere o botão do mouse em &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL' e então, adicionando-os nos leiautes do menu de torta.|Personalize em &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Você pode executar aplicações externas e código javascript com as ações 'Executar Arquivo de Programa' e 'Carregar Script'. Você pode, por exemplo, chamar qualquer função da API do Firefox ou uma função dentro de outra extensão.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "Você pode executar código javascript com as ações 'Carregar Script'.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba.">
 <!ENTITY tips.contextualMenus "Você pode ativar senbilidade de contexto pressionando a tecla 'Ctrl' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada.|Altere o comportamento em &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

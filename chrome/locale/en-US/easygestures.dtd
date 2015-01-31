@@ -28,10 +28,10 @@ END OF INSTRUCTIONS
 <!ENTITY general.prefs.manage "Manage Preferences">
 <!ENTITY general.prefs.import "Import Preferences...">
 <!ENTITY general.prefs.export "Export Preferences...">
-<!ENTITY general.prefs.reset "Reset Preferences">
+<!ENTITY general.prefs.reset "Reset Preferences...">
 <!ENTITY stats "Statistics">
-<!ENTITY general.stats.display "Display Statistics">
-<!ENTITY general.stats.reset "Reset Statistics">
+<!ENTITY general.stats.display "Display Statistics...">
+<!ENTITY general.stats.reset "Reset Statistics...">
 
 <!ENTITY activation.open.with "Open pie menu with">
 <!ENTITY activation.open.with.button.left "left mouse button">
@@ -119,7 +119,7 @@ END OF INSTRUCTIONS
 <!ENTITY tips.openAltMenu "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL' actions then adding them in the pie menu layouts.|Customize the 'Load URL' actions in &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "You can execute Javascript code with the 'Run Script' actions. You can for example call any Firefox API function or a function inside another extension.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "You can execute Javascript code with the 'Run Script' actions.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "A fast enough pie menu click on a link without moving will open the link in a new tab.">
 <!ENTITY tips.contextualMenus "You can activate context sensitivity by pressing the 'Ctrl' key when opening the pie menu. You can also turn context sensitivity always on.|Change behavior in &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -12,10 +12,10 @@
 <!ENTITY general.prefs.manage "Einstellungen verwalten">
 <!ENTITY general.prefs.import "Einstellungen importieren...">
 <!ENTITY general.prefs.export "Einstellungen exportieren...">
-<!ENTITY general.prefs.reset "Einstellungen zurücksetzen">
+<!ENTITY general.prefs.reset "Einstellungen zurücksetzen...">
 <!ENTITY stats "Statistiken">
-<!ENTITY general.stats.display "Statistiken anzeigen">
-<!ENTITY general.stats.reset "Statistiken zurücksetzen">
+<!ENTITY general.stats.display "Statistiken anzeigen...">
+<!ENTITY general.stats.reset "Statistiken zurücksetzen...">
 
 <!ENTITY activation.open.with "Kreismenü öffnen mit">
 <!ENTITY activation.open.with.button.left "linker Maustaste">
@@ -103,7 +103,7 @@
 <!ENTITY tips.openAltMenu "Standardmäßig werden durch einen Rechtsklick bei geöffnetem Kreismenü alternative Gruppen von Aktionen angezeigt: Es kann so zwischen drei komplett anpassbaren Oberflächen gewechselt werden. Die Standardmaustaste kann angepasst werden.|Maustaste unter &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "easyGestures kann dazu benutzt werden, durch Anpassen der Aktionen &apos;Adresse laden&apos; und anschließendem Hinzufügen zur Menüoberfläche schnell auf bevorzugte Lesezeichen zuzugreifen.|Aktion unter &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "Alle Kreismenü-Oberflächen können mit zahlreichen mitgelieferten Aktionen angepasst werden. Nutzungsstatistiken helfen ebenfalls dabei, das Kreismenü zu optimieren.|Aktionen unter &preferences;/&menus; hinzufügen oder entfernen">
-<!ENTITY tips.runScriptActions "Externe Anwendungen oder JavaScripts können mit den Aktionen &apos;Anwendung starten&apos; bzw. &apos;Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden. So kann z.B. auf beliebige Firefox-API-Funktionen oder eine Funktion innerhalb einer anderen Erweiterung zugegriffen werden.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "JavaScripts können mit den Aktionen &apos;Skript laden&apos; aus dem Kreismenü heraus aufgerufen werden.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab.">
 <!ENTITY tips.contextualMenus "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren.|Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

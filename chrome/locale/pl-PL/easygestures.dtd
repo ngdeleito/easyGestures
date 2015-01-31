@@ -11,12 +11,12 @@
 
 <!ENTITY general.startupTips "Pokazuj podpowiedzi po uruchomieniu">
 <!ENTITY general.prefs.manage "Zarządzanie ustawieniami">
-<!ENTITY general.prefs.import "Importuj ustawienia">
-<!ENTITY general.prefs.export "Eksportuj ustawienia">
-<!ENTITY general.prefs.reset "Ustawienia domyślne">
+<!ENTITY general.prefs.import "Importuj ustawienia...">
+<!ENTITY general.prefs.export "Eksportuj ustawienia...">
+<!ENTITY general.prefs.reset "Ustawienia domyślne...">
 <!ENTITY stats "Statystyki">
-<!ENTITY general.stats.display "Wyświetl statystyki">
-<!ENTITY general.stats.reset "Wyczyść statystyki">
+<!ENTITY general.stats.display "Wyświetl statystyki...">
+<!ENTITY general.stats.reset "Wyczyść statystyki...">
 
 <!ENTITY activation.open.with "Otwórz Centrum nawigacyjne klikając:">
 <!ENTITY activation.open.with.button.left "lewym przyciskiem myszy">
@@ -104,7 +104,7 @@
 <!ENTITY tips.openAltMenu "Kliknięcie prawym przyciskiem myszy, gdy menu Centrum jest wyświetlane powoduje wyświetlenie alternatywnych zestawów akcji. Można wybierać pomiędzy 3-ma, w pełni konfigurowalnymi zestawami. Domyślne działanie przycisków myszy może być zmieniane.|Zmień działanie przycisków myszy w &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Centrum można używać do otwierania ulubionych zakładek dodając odpowiednie akcje w \u0022Otwórz URL\u0022 do menu Centrum.|Dostosuj działanie menu w &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "Można dostosować wygląd wszystkich menu Centrum używając wiele wbudowanych akcji. Statystyki będą pomocnym narzędziem w optymalizowaniu menu Centrum.|Dodaj lub usuń akcje w &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Można uruchamiać zewnętrzne aplikacje i wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Uruchom program\u0022 i \u0022Otwórz skrypt\u0022. Na przykład można wywoływać dowolną funkcję interfejsu Firefoksa lub funkcję wewnątrz dowolnego rozszerzenia.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "Można uruchamiać wykonywać skrypty JavaScript ustawiając odpowiednie opcje w akcjach \u0022Otwórz skrypt\u0022.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Kliknięcie odnośnika, gdy jest nad nim umieszczone menu Centrum otwiera odnośnik w nowej karcie oraz wyświetla na macierzystej karcie odnośnika, za odnośnikiem, czerwony znacznik.">
 <!ENTITY tips.contextualMenus "Naciskając klawisz [ Ctrl ] podczas uruchamiania menu Centrum włącza się podpowiedzi kontekstowe informujące o rodzaju wskazanego elementu. Opcję tę można na stałe włączyć w ustawieniach Centrum.|Zmień działanie w &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

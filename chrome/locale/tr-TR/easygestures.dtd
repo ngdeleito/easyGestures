@@ -30,10 +30,10 @@ END OF INSTRUCTIONS
 <!ENTITY general.prefs.manage "Tercühleri Yönet">
 <!ENTITY general.prefs.import "Tercihleri Al...">
 <!ENTITY general.prefs.export "Tercihleri Aktar...">
-<!ENTITY general.prefs.reset "Tercihleri Sıfırla">
+<!ENTITY general.prefs.reset "Tercihleri Sıfırla...">
 <!ENTITY stats "İstatistikler">
-<!ENTITY general.stats.display "İstatistikleri Göster">
-<!ENTITY general.stats.reset "İstatistikleri Sıfırla">
+<!ENTITY general.stats.display "İstatistikleri Göster...">
+<!ENTITY general.stats.reset "İstatistikleri Sıfırla...">
 
 <!ENTITY activation.open.with "Kolay menüyü şununla aç:">
 <!ENTITY activation.open.with.button.left "sol fare tuşu">
@@ -121,7 +121,7 @@ END OF INSTRUCTIONS
 <!ENTITY tips.openAltMenu "Varsayılan olarak,kolay menü görüntülenirken sağ tıklamak alternatif eylemleri gösterecektir: tamamen kişiselleştirilebilir 3 farklı ekran görünümü arasında geçiş yapabilirsiniz. Varsayılan fare tuşu değiştirilebilir.|Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
 <!ENTITY tips.loadURLActions "EasyGestures, &apos;URL Yükle&apos; eylemlerini kişiselleştirerek ve sonra bunları kolay menü ekran görünümü içine ekleyerek sık kullandığınız yer imlerini açmak için kullanılabilir">
 <!ENTITY tips.menusCustomization "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır.|Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
-<!ENTITY tips.runScriptActions "&apos;Program Dosyasını Çalıştır&apos; ve &apos;Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz. Örneğin, herhangi bir Firefox API işlevini ya da başka bir eklenti içindeki bir işlevi çalıştırabilirsiniz.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "&apos;Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Bir bağlantı üzerinde hareket etmeden yeterince hızlı bir kolay menü tıklaması, bağlantıyı yeni bir sekmede açacak ve sayfada bağlantının yanında kırmızı bir etiket görüntülenecektir.">
 <!ENTITY tips.contextualMenus "İçerik hassasiyetini kolay menüyü açarken &apos;Ctrl&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
