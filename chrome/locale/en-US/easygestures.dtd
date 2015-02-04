@@ -39,7 +39,7 @@
 <!ENTITY activation.insertKey "Insert key">
 <!ENTITY activation.altKey "Alt key">
 <!ENTITY activation.customKey "Custom key">
-<!ENTITY activation.keycode "keycode">
+<!ENTITY activation.keycode "key code">
 <!ENTITY activation.contextualMenu "Activate contextual sensitivity with">
 <!ENTITY activation.contextualMenu.showAuto "Always activated. Use same key for suppressing sensitivity.">
 
@@ -105,7 +105,7 @@
 <!ENTITY tips.openButton "By default, you must click the middle mouse button to display the pie menu (unless you are a Mac user). Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
 <!ENTITY tips.dragToAction "The fastest way to use the pie menu is to hold down the mouse button, drag over the action to execute, and release the button. You can think of it as a mouse gesture with a GUI.">
 <!ENTITY tips.openAltMenu "By default, right clicking while the pie menu is displayed will show alternative sets of actions: you will then be able to cycle between 3 different layouts fully customizable. Default mouse button can be changed.|Change mouse button in &preferences;/&activation;">
-<!ENTITY tips.loadURLActions "You can use easyGestures to open your favorite boormarks by customizing the 'Load URL' actions then adding them in the pie menu layouts.|Customize the 'Load URL' actions in &preferences;/&customizations;/&customizations.loadURLActions;">
+<!ENTITY tips.loadURLActions "You can use easyGestures to open your favorite bookmarks by customizing the 'Load URL' actions then adding them in the pie menu layouts.|Customize the 'Load URL' actions in &preferences;/&customizations;/&customizations.loadURLActions;">
 <!ENTITY tips.menusCustomization "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "You can execute a piece of Javascript code with the 'Run script' actions.|Customize the 'Run script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "A fast enough pie menu click on a link without moving will open the link in a new tab.">
