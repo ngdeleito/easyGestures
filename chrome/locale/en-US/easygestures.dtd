@@ -1,7 +1,7 @@
 <!--
-  This file is part of the reference locale for the easyGestures N extension.
-  Use these strings to update existing locales or translate this extension to
-  other languages.
+  This file is part of the reference locale (en-US) for the easyGestures N
+  extension. Use these strings to update existing locales or translate this
+  extension to other languages.
 -->
 
 <!ENTITY preferences "Preferences">

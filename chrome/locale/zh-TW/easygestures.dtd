@@ -1,22 +1,20 @@
-﻿<!-- UTF-8 check strings (DONT'REMOVE): Français (fr) / Español (es) / Русский (ru) / 日本語 (ja) / عربي (ar) / 繁體中文 (zh)
-
-INSTRUCTIONS
-
-Contains options dialog strings and pie menu tips.
-
-- save file with UTF-8 encoding otherwise non ASCII characters will be garbled.
-- make sure there is no BOM (Byte Order Mark) at the begining of the file.
-
-- only translate expressions between ""
-- all terms that are still displayed in english need to be translated or re-translated.
-- double quotes (") character should be coded &#34; or &quot; except in the tips entities at the end of the file:
-  use \u0022 code in these strings because of parsing.
-
-END OF INSTRUCTIONS
+﻿<!--
+  This file is part of the zh-TW locale for the easyGestures N extension.
+  
+  INSTRUCTIONS
+    - translate all strings between "" (use the en-US locale as the reference
+      locale)
+    - double quotes (") character should be coded &#34; or &quot; except in the
+      tips entities at the end of the file because of parsing: use \u0022 in
+      those strings
+    - make sure to save this file with UTF-8 encoding
+    - make sure there is no BOM (Byte Order Mark) at the begining of the file
+  
+  Current translator:
+  
+  Previous translators:
+    - wechuan 濰泉
 -->
-
-<!-- Chinese Traditional localization (zh-TW): wechuan 濰泉 -->
-
 
 <!ENTITY preferences "Preferences">
 
