@@ -42,22 +42,16 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
   this.isExtraMenu = name.search("extra") != -1;
   this.isLarge = menu.largeMenu && !this.isExtraMenu; // extra menus are never large
-  this.actions = [];
-  this.labels = [];
   
-  //////////////////////////////////////////////////////////////////////////////
-  //  initializing layout's actions & labels arrays
-  //////////////////////////////////////////////////////////////////////////////
-
-  for (let i=0; i<actionsPrefs.length; i++) {
-    if ( !this.isLarge && (i==3 || i==7) ) {} // don't push actions that are intended for large menus
-    else {
-      var actionName = actionsPrefs[i];
-      this.actions.push(actionName);
-      var label = eGActions[actionName].getLabel();
-      this.labels.push(this.isExtraMenu && i>2 && i<8 ? "" : label);
-    }
+  if (!this.isLarge) {
+    // removing actions intended for large menus
+    actionsPrefs.splice(7, 1);
+    actionsPrefs.splice(3, 1);
   }
+  this.actions = actionsPrefs;
+  this.labels = actionsPrefs.map(function(actionName) {
+    return eGActions[actionName].getLabel();
+  });
   
   this.hasExtraMenuAction = eGActions[this.actions[0]].isExtraMenuAction;
   
