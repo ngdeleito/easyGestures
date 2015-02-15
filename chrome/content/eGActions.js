@@ -64,30 +64,33 @@ function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = action;
   
-  this.isDisabled = function() {
-    return false;
-  };
-  
   // startsNewGroup and nextAction are used in options.js to display a sorted
   // list of available actions
   this.startsNewGroup = startsNewGroup;
   this.nextAction = nextAction;
   
-  this.getLabel = function() {
-    return eGc.localizing.getString(this._name);
-  };
-  
-  this.getXULLabel = function() {
-    return document.getElementById("easyGesturesNStrings").getString(this._name);
-  };
-  
   this.isExtraMenuAction = false;
+}
+Action.prototype = {
+  constructor: Action,
   
-  this.displayStateOn = function() {};
+  isDisabled: function() {
+    return false;
+  },
+  
+  getLabel: function() {
+    return eGc.localizing.getString(this._name);
+  },
+  
+  getXULLabel: function() {
+    return document.getElementById("easyGesturesNStrings").getString(this._name);
+  },
+  
+  displayStateOn: function() {},
   
   // helper functions
   
-  this._getRootURL = function(url) {
+  _getRootURL: function(url) {
     // this should work correcly with http://jolt.co.uk or gouv.qc.ca domains.
     var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"]
                         .getService(Components.interfaces.nsIEffectiveTLDService);
@@ -100,9 +103,9 @@ function Action(name, action, startsNewGroup, nextAction) {
       rootURL = url;
     }
     return rootURL;
-  };
+  },
   
-  this._getFileForSavingData = function(filter, defaultName) {
+  _getFileForSavingData: function(filter, defaultName) {
     const nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"]
                        .createInstance(nsIFilePicker);
@@ -118,9 +121,9 @@ function Action(name, action, startsNewGroup, nextAction) {
     else {
       return null;
     }
-  };
+  },
   
-  this._saveContentFromLink = function(link, filter) {
+  _saveContentFromLink: function(link, filter) {
     var uri = Services.io.newURI(link, null, null);
     var file = this._getFileForSavingData(
                  filter,
@@ -137,35 +140,35 @@ function Action(name, action, startsNewGroup, nextAction) {
                                  .QueryInterface(Components.interfaces.nsILoadContext);
       wbp.saveURI(uri, null, null, null, null, file, privacyContext);
     }
-  };
+  },
   
-  this._openInPrivateWindow = function(URL, window) {
+  _openInPrivateWindow: function(URL, window) {
     window.open(URL, "_blank",
                 "toolbar,location,personalbar,resizable,scrollbars,private");
-  };
-}
+  }
+};
 
 function EmptyAction(startsNewGroup, nextAction) {
   Action.call(this, "empty", function() {}, startsNewGroup, nextAction);
-  
-  this.getXULLabel = function() {
-    return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
-  };
 }
-EmptyAction.prototype = new Action();
+EmptyAction.prototype = Object.create(Action.prototype);
+EmptyAction.prototype.constructor = EmptyAction;
+EmptyAction.prototype.getXULLabel = function() {
+  return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
+};
 
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
   Action.call(this, "showExtraMenu", function() {
     eGm.showExtraMenu();
   }, startsNewGroup, nextAction);
   
-  this.getXULLabel = function() {
-    return document.getElementById("easyGesturesNStrings").getString("extraMenuActionName");
-  };
-  
   this.isExtraMenuAction = true;
 }
-ShowExtraMenuAction.prototype = new Action();
+ShowExtraMenuAction.prototype = Object.create(Action.prototype);
+ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
+ShowExtraMenuAction.prototype.getXULLabel = function() {
+  return document.getElementById("easyGesturesNStrings").getString("extraMenuActionName");
+};
 
 function ReloadAction(startsNewGroup, nextAction) {
   Action.call(this, "reload", function() { // reload or stop
@@ -179,31 +182,30 @@ function ReloadAction(startsNewGroup, nextAction) {
       gBrowser.stop();
     }
   }, startsNewGroup, nextAction);
-  
-  this.getXULLabel = function() {
-    return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
-  };
-  
-  this.displayStateOn = function(anHTMLElement) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var stop_bcaster = window.document.getElementById("Browser:Stop");
-    eGc.loading = !stop_bcaster.hasAttribute("disabled");
-    anHTMLElement.classList.toggle("stop", eGc.loading);
-    anHTMLElement.classList.toggle("reload", !eGc.loading);
-  };
 }
-ReloadAction.prototype = new Action();
+ReloadAction.prototype = Object.create(Action.prototype);
+ReloadAction.prototype.constructor = ReloadAction;
+ReloadAction.prototype.getXULLabel = function() {
+  return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
+};
+ReloadAction.prototype.displayStateOn = function(anHTMLElement) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  var stop_bcaster = window.document.getElementById("Browser:Stop");
+  eGc.loading = !stop_bcaster.hasAttribute("disabled");
+  anHTMLElement.classList.toggle("stop", eGc.loading);
+  anHTMLElement.classList.toggle("reload", !eGc.loading);
+};
 
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
   
   this.isDisabled = isDisabled;
-  
-  this.displayStateOn = function(anHTMLElement) {
-    anHTMLElement.setAttribute("grayed", this.isDisabled().toString());
-  };
 }
-DisableableAction.prototype = new Action();
+DisableableAction.prototype = Object.create(Action.prototype);
+DisableableAction.prototype.constructor = DisableableAction;
+DisableableAction.prototype.displayStateOn = function(anHTMLElement) {
+  anHTMLElement.setAttribute("grayed", this.isDisabled().toString());
+};
 
 function CanGoBackDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -211,7 +213,8 @@ function CanGoBackDisableableAction(name, action, startsNewGroup, nextAction) {
     return !window.gBrowser.canGoBack;
   }, startsNewGroup, nextAction);
 }
-CanGoBackDisableableAction.prototype = new DisableableAction();
+CanGoBackDisableableAction.prototype = Object.create(DisableableAction.prototype);
+CanGoBackDisableableAction.prototype.constructor = CanGoBackDisableableAction;
 
 function CanGoForwardDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -219,7 +222,8 @@ function CanGoForwardDisableableAction(name, action, startsNewGroup, nextAction)
     return !window.gBrowser.canGoForward;
   }, startsNewGroup, nextAction);
 }
-CanGoForwardDisableableAction.prototype = new DisableableAction();
+CanGoForwardDisableableAction.prototype = Object.create(DisableableAction.prototype);
+CanGoForwardDisableableAction.prototype.constructor = CanGoForwardDisableableAction;
 
 function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -227,7 +231,8 @@ function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextActio
     return window.gBrowser.mTabContainer.childNodes.length <= 1;
   }, startsNewGroup, nextAction);
 }
-OtherTabsExistDisableableAction.prototype = new DisableableAction();
+OtherTabsExistDisableableAction.prototype = Object.create(DisableableAction.prototype);
+OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableableAction;
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -235,58 +240,58 @@ function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
     return this._getRootURL(url) == url.replace("www.", "");
   }, startsNewGroup, nextAction);
 }
-CanGoUpDisableableAction.prototype = new DisableableAction();
+CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
+CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
     return eGc.link === null;
   }, startsNewGroup, nextAction);
 }
-LinkExistsDisableableAction.prototype = new DisableableAction();
+LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
+LinkExistsDisableableAction.prototype.constructor = LinkExistsDisableableAction;
 
 function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
-  var uris;
-  
-  function initializeURIsArrayWithContentsOfDailyReadingsFolder() {
-    function pushURIsContainedInFolder(resultNode) {
-      resultNode.containerOpen = true;
-      for (let i=0; i < resultNode.childCount; ++i) {
-        if (resultNode.getChild(i).type === 6) {
-          // the current child is a folder
-          let node = resultNode.getChild(i).QueryInterface(
-            Components.interfaces.nsINavHistoryContainerResultNode);
-          pushURIsContainedInFolder(node);
-        }
-        else if (resultNode.getChild(i).type === 0) {
-          // the current child is a bookmark (i.e. no folder, no separator)
-          uris.push(resultNode.getChild(i).uri);
-        }
-      }
-      resultNode.containerOpen = false;
-    }
-    
-    var historyService =
-      Components.classes["@mozilla.org/browser/nav-history-service;1"]
-                .getService(Components.interfaces.nsINavHistoryService);
-    var query = historyService.getNewQuery();
-    query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
-    var options = historyService.getNewQueryOptions();
-    var results = historyService.executeQuery(query, options);
-    
-    uris = [];
-    pushURIsContainedInFolder(results.root);
-  }
-  
   DisableableAction.call(this, "dailyReadings", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadTabs(uris, true, false);
+    window.gBrowser.loadTabs(this.uris, true, false);
   }, function() {
     var folderID = eGPrefs.getDailyReadingsFolderID();
     initializeURIsArrayWithContentsOfDailyReadingsFolder();
-    return folderID === -1 || uris.length === 0;
+    return folderID === -1 || this.uris.length === 0;
   }, startsNewGroup, nextAction);
 }
-DailyReadingsDisableableAction.prototype = new DisableableAction();
+DailyReadingsDisableableAction.prototype = Object.create(DisableableAction.prototype);
+DailyReadingsDisableableAction.prototype.constructor = DailyReadingsDisableableAction;
+DailyReadingsDisableableAction.prototype.initializeURIsArrayWithContentsOfDailyReadingsFolder = function() {
+  function pushURIsContainedInFolder(resultNode) {
+    resultNode.containerOpen = true;
+    for (let i=0; i < resultNode.childCount; ++i) {
+      if (resultNode.getChild(i).type === 6) {
+        // the current child is a folder
+        let node = resultNode.getChild(i).QueryInterface(
+          Components.interfaces.nsINavHistoryContainerResultNode);
+        pushURIsContainedInFolder(node);
+      }
+      else if (resultNode.getChild(i).type === 0) {
+        // the current child is a bookmark (i.e. no folder, no separator)
+        this.uris.push(resultNode.getChild(i).uri);
+      }
+    }
+    resultNode.containerOpen = false;
+  }
+  
+  var historyService =
+    Components.classes["@mozilla.org/browser/nav-history-service;1"]
+              .getService(Components.interfaces.nsINavHistoryService);
+  var query = historyService.getNewQuery();
+  query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
+  var options = historyService.getNewQueryOptions();
+  var results = historyService.executeQuery(query, options);
+  
+  this.uris = [];
+  pushURIsContainedInFolder(results.root);
+};
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, namePrefix + number, function() {
@@ -303,19 +308,19 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
   }, startsNewGroup, nextAction);
   
   this._number = number;
-  
-  this.getLabel = function() {
-    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
-    var label = prefValue[0];
-    if (label !== "") {
-      // if this action has already a label given by the user, then use it
-      return label;
-    }
-    // otherwise use the default label
-    return eGc.localizing.getString(this._name);
-  };
 }
-NumberedAction.prototype = new DisableableAction();
+NumberedAction.prototype = Object.create(DisableableAction.prototype);
+NumberedAction.prototype.constructor = NumberedAction;
+NumberedAction.prototype.getLabel = function() {
+  var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
+  var label = prefValue[0];
+  if (label !== "") {
+    // if this action has already a label given by the user, then use it
+    return label;
+  }
+  // otherwise use the default label
+  return eGc.localizing.getString(this._name);
+};
 
 function LoadURLAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "loadURL", number,
@@ -340,7 +345,8 @@ function LoadURLAction(number, startsNewGroup, nextAction) {
       }
     }, startsNewGroup, nextAction);
 }
-LoadURLAction.prototype = new NumberedAction();
+LoadURLAction.prototype = Object.create(NumberedAction.prototype);
+LoadURLAction.prototype.constructor = LoadURLAction;
 
 function RunScriptAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "runScript", number, function(script, window) {
@@ -349,14 +355,16 @@ function RunScriptAction(number, startsNewGroup, nextAction) {
     Components.utils.evalInSandbox(script, sandbox);
   }, startsNewGroup, nextAction);
 }
-RunScriptAction.prototype = new NumberedAction();
+RunScriptAction.prototype = Object.create(NumberedAction.prototype);
+RunScriptAction.prototype.constructor = RunScriptAction;
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
     return eGc.image === null;
   }, startsNewGroup, nextAction);
 }
-ImageExistsDisableableAction.prototype = new DisableableAction();
+ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
+ImageExistsDisableableAction.prototype.constructor = ImageExistsDisableableAction;
 
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
@@ -369,7 +377,8 @@ function DisableableCommandAction(name, startsNewGroup, nextAction) {
     return controller === null || !controller.isCommandEnabled("cmd_" + name);
   }, startsNewGroup, nextAction);
 }
-DisableableCommandAction.prototype = new DisableableAction();
+DisableableCommandAction.prototype = Object.create(DisableableAction.prototype);
+DisableableCommandAction.prototype.constructor = DisableableCommandAction;
 
 
 var eGActions = {
