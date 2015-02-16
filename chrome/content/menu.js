@@ -38,10 +38,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global eGActions, eGPrefs */
 
-function eG_menuLayout(menu, name, actionsPrefs) {
+function MenuLayout(menu, name, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
-  this.isExtraMenu = name.search("extra") != -1;
-  this.isLarge = menu.largeMenu && !this.isExtraMenu; // extra menus are never large
+  this.isExtraMenu = false;
+  this.isLarge = menu.largeMenu;
   
   if (!this.isLarge) {
     // removing actions intended for large menus
@@ -55,21 +55,15 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   
   this.hasExtraMenuAction = eGActions[this.actions[0]].isExtraMenuAction;
   
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //	setting menu and tooltips images
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-
-  this.menuImage = menu.skinPath + menu.smallMenuTag + (menu.noIcons ? "basic_":"");
-  this.tooltipsImage = menu.skinPath;
-  if (!this.isExtraMenu) {
-    this.menuImage += menu.largeMenu ? "largeMenu.png": "menu.png";
-    this.tooltipsImage += (this.hasExtraMenuAction ? "other_": "") + (menu.largeMenu ? "largeLabels.png":"labels.png");
-  }
-  else {
-    this.menuImage += "extraMenu.png"; // extra menus are never large
-    this.tooltipsImage += "extraLabels.png";
-  }
-
+  // setting menu and tooltips images
+  
+  this.menuImage = menu.skinPath + menu.smallMenuTag +
+                   (menu.noIcons ? "basic_" : "") +
+                   (menu.largeMenu ? "largeMenu.png" : "menu.png");
+  this.tooltipsImage = menu.skinPath +
+                       (this.hasExtraMenuAction ? "other_" : "") +
+                       (menu.largeMenu ? "largeLabels.png" : "labels.png");
+  
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	setting dimensions and positioning
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -82,8 +76,8 @@ function eG_menuLayout(menu, name, actionsPrefs) {
   this.actionR = this.innerR; // minimum action radius on pie
   this.width = Math.round((this.isLarge ? 440 : 394) * zoomTooltips);
   this.height = Math.round((this.isLarge ? 180:146)*zoom);
-  this.zIndex = ( !this.isExtraMenu) ? eGc.maxzIndex-1:eGc.maxzIndex-2;	// extra menus are displayed below main menu level
-
+  this.zIndex = eGc.maxzIndex - 1;
+  
   this.aNodeXOff = -this.outerR; // offset of menu image
   this.aNodeYOff = -this.outerR;
   this.lNodeXOff = -this.width/2; // offset of tooltips image
@@ -105,6 +99,22 @@ function eG_menuLayout(menu, name, actionsPrefs) {
                         [ 6, 23, 41,  60,  77, 58, 42, 25]
                       : [10, 40, 70, 100, 125, 95, 68, 40]);
 }
+
+function ExtraMenuLayout(menu, name, actionsPrefs) {
+  MenuLayout.call(this, menu, name, actionsPrefs);
+  
+  this.isExtraMenu = true;
+  this.isLarge = false; // extra menus are never large
+  
+  this.menuImage = menu.skinPath + menu.smallMenuTag +
+                   (menu.noIcons ? "basic_" : "") + "extraMenu.png";
+  this.tooltipsImage = menu.skinPath + "extraLabels.png";
+  
+  // extra menus are displayed below main menu level
+  this.zIndex = eGc.maxzIndex - 2;
+}
+ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
+ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
 
 // menu Constructor
 function eG_menu () {
@@ -212,35 +222,35 @@ function eG_menu () {
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
-    main: new eG_menuLayout(this, "main",
-                            prefs.getCharPref("menus.main").split("/")),
+    main: new MenuLayout(this, "main",
+                         prefs.getCharPref("menus.main").split("/")),
 
-    mainAlt1: new eG_menuLayout(this, "mainAlt1",
-                                prefs.getCharPref("menus.mainAlt1").split("/")),
+    mainAlt1: new MenuLayout(this, "mainAlt1",
+                             prefs.getCharPref("menus.mainAlt1").split("/")),
 
-    mainAlt2: new eG_menuLayout(this, "mainAlt2",
-                                prefs.getCharPref("menus.mainAlt2").split("/")),
+    mainAlt2: new MenuLayout(this, "mainAlt2",
+                             prefs.getCharPref("menus.mainAlt2").split("/")),
 
-    extra: new eG_menuLayout(this, "extra",
-                             prefs.getCharPref("menus.extra").split("/")),
+    extra: new ExtraMenuLayout(this, "extra",
+                               prefs.getCharPref("menus.extra").split("/")),
 
-    extraAlt1: new eG_menuLayout(this, "extraAlt1",
-                                 prefs.getCharPref("menus.extraAlt1").split("/")),
+    extraAlt1: new ExtraMenuLayout(this, "extraAlt1",
+                                   prefs.getCharPref("menus.extraAlt1").split("/")),
 
-    extraAlt2: new eG_menuLayout(this, "extraAlt2",
-                                 prefs.getCharPref("menus.extraAlt2").split("/")),
+    extraAlt2: new ExtraMenuLayout(this, "extraAlt2",
+                                   prefs.getCharPref("menus.extraAlt2").split("/")),
 
-    contextLink: new eG_menuLayout(this, "contextLink",
-                                   prefs.getCharPref("menus.contextLink").split("/")),
+    contextLink: new MenuLayout(this, "contextLink",
+                                prefs.getCharPref("menus.contextLink").split("/")),
 
-    contextImage: new eG_menuLayout(this, "contextImage",
-                                    prefs.getCharPref("menus.contextImage").split("/")),
+    contextImage: new MenuLayout(this, "contextImage",
+                                 prefs.getCharPref("menus.contextImage").split("/")),
 
-    contextSelection: new eG_menuLayout(this, "contextSelection",
-                                        prefs.getCharPref("menus.contextSelection").split("/")),
+    contextSelection: new MenuLayout(this, "contextSelection",
+                                     prefs.getCharPref("menus.contextSelection").split("/")),
 
-    contextTextbox: new eG_menuLayout(this, "contextTextbox",
-                                      prefs.getCharPref("menus.contextTextbox").split("/"))
+    contextTextbox: new MenuLayout(this, "contextTextbox",
+                                   prefs.getCharPref("menus.contextTextbox").split("/"))
   };
 }
 
