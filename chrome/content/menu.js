@@ -255,6 +255,8 @@ function eG_menu () {
 }
 
 eG_menu.prototype = {
+  constructor: eG_menu,
+  
   isMenuHidden : function() {
     return this.menuState === 0;
   },
