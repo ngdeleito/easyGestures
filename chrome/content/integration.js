@@ -41,7 +41,7 @@ var eGc = {
   _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
-  contextType: "", // link/, image/, selection/ or textbox/
+  contextType: "", // contextLink/, contextImage/, contextSelection/ or contextTextbox/
   evtMouseDown: null,
   doc: null,
   body: null,
@@ -355,18 +355,28 @@ function eG_handleMousedown(evt) {
   // set eGc.contextType property for contextual menu displaying
   eGc.contextType = "";
   if (eGc.link != null) {
-    eGc.contextType += "link/";
+    eGc.contextType += "contextLink/";
   }
   if (eGc.image != null) {
-    eGc.contextType += "image/";
+    if (eGm.contextImageFirst) {
+      eGc.contextType = "contextImage/" + eGc.contextType;
+    }
+    else {
+      eGc.contextType += "contextImage/";
+    }
   }
   if (eGc.contextType == "") {
     // no need to go further if already link or image
     if (eGc.selection != null && eGc.selection != "") {
-      eGc.contextType += "selection/";
+      eGc.contextType += "contextSelection/";
     }
     if (eGc.selectionNode != null) {
-      eGc.contextType += "textbox/";
+      if (eGm.contextTextboxFirst) {
+        eGc.contextType = "contextTextbox/" + eGc.contextType;
+      }
+      else {
+        eGc.contextType += "contextTextbox/";
+      }
     }
   }
   
@@ -435,36 +445,8 @@ function eG_openMenu() {
   }
   
   if ((eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
-    switch (eGc.contextType) {
-      case "link/":
-        eGm.show("contextLink");
-        break;
-      case "image/":
-        eGm.show("contextImage");
-        break;
-      case "link/image/":
-        if (eGm.contextImageFirst) {
-          eGm.show("contextImage");
-        }
-        else {
-          eGm.show("contextLink");
-        }
-        break;
-      case "selection/":
-        eGm.show("contextSelection");
-        break;
-      case "textbox/":
-        eGm.show("contextTextbox");
-        break;
-      case "selection/textbox/":
-        if (eGm.contextTextboxFirst) {
-          eGm.show("contextTextbox");
-        }
-        else {
-          eGm.show("contextSelection");
-        }
-        break;
-    }
+    var firstMenuLayout = eGc.contextType.split("/")[0];
+    eGm.show(firstMenuLayout);
     var contextMenuSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[3];
     contextMenuSign.style.visibility = "visible";
   }

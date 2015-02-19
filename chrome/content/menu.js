@@ -909,7 +909,7 @@ eG_menu.prototype = {
     else { // switch to other contextual layouts
       if (eGc.contextType.split("/").length>2) {
         this.hide(layout);
-        if (eGc.contextType == "link/image/") {
+        if (eGc.contextType == "contextLink/contextImage/") {
           nextLayoutName = (this.curLayoutName=="contextLink" ? "contextImage" : "contextLink" );
         }
         else {
