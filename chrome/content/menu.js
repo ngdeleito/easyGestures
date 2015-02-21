@@ -126,8 +126,8 @@ function ContextualMenuLayout(menu, name, actionsPrefs) {
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
 ContextualMenuLayout.prototype.getNextLayout = function() {
-  var possibleLayouts = eGc.contextType.split("/");
-  if (possibleLayouts.length === 2) {
+  var possibleLayouts = eGc.contextType;
+  if (possibleLayouts.length === 1) {
     return possibleLayouts[0];
   }
   else {
@@ -874,7 +874,7 @@ eG_menu.prototype = {
     if (layout.name.search("context") != -1) {
       contextMenuSign.textContent = eGc.localizing.getString(layout.name);
       contextMenuSign.style.visibility = "visible";
-      if (eGc.contextType.split("/").length > 2) {
+      if (eGc.contextType.length > 1) {
         contextMenuSign.className = "withAltSign";
       }
       else {

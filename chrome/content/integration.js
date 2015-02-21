@@ -41,7 +41,7 @@ var eGc = {
   _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
-  contextType: "", // contextLink/, contextImage/, contextSelection/ or contextTextbox/
+  contextType: [], // contextLink, contextImage, contextSelection or contextTextbox
   evtMouseDown: null,
   doc: null,
   body: null,
@@ -353,29 +353,29 @@ function eG_handleMousedown(evt) {
   }
   
   // set eGc.contextType property for contextual menu displaying
-  eGc.contextType = "";
-  if (eGc.link != null) {
-    eGc.contextType += "contextLink/";
+  eGc.contextType = [];
+  if (eGc.link !== null) {
+    eGc.contextType.push("contextLink");
   }
-  if (eGc.image != null) {
+  if (eGc.image !== null) {
     if (eGm.contextImageFirst) {
-      eGc.contextType = "contextImage/" + eGc.contextType;
+      eGc.contextType.unshift("contextImage");
     }
     else {
-      eGc.contextType += "contextImage/";
+      eGc.contextType.push("contextImage");
     }
   }
-  if (eGc.contextType == "") {
+  if (eGc.contextType.length === 0) {
     // no need to go further if already link or image
-    if (eGc.selection != null && eGc.selection != "") {
-      eGc.contextType += "contextSelection/";
+    if (eGc.selection !== null && eGc.selection !== "") {
+      eGc.contextType.push("contextSelection");
     }
-    if (eGc.selectionNode != null) {
+    if (eGc.selectionNode !== null) {
       if (eGm.contextTextboxFirst) {
-        eGc.contextType = "contextTextbox/" + eGc.contextType;
+        eGc.contextType.unshift("contextTextbox");
       }
       else {
-        eGc.contextType += "contextTextbox/";
+        eGc.contextType.push("contextTextbox");
       }
     }
   }
@@ -444,9 +444,8 @@ function eG_openMenu() {
     }
   }
   
-  if ((eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
-    var firstMenuLayout = eGc.contextType.split("/")[0];
-    eGm.show(firstMenuLayout);
+  if ((eGm.contextShowAuto && eGc.contextType.length !== 0 && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextShowAuto && eGc.contextType.length !== 0 && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
+    eGm.show(eGc.contextType[0]);
   }
   else {
     eGm.show("main");
