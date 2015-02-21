@@ -447,8 +447,6 @@ function eG_openMenu() {
   if ((eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextShowAuto && eGc.contextType != "" && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
     var firstMenuLayout = eGc.contextType.split("/")[0];
     eGm.show(firstMenuLayout);
-    var contextMenuSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[3];
-    contextMenuSign.style.visibility = "visible";
   }
   else {
     eGm.show("main");

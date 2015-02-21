@@ -38,8 +38,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global eGActions, eGPrefs */
 
-function MenuLayout(menu, name, actionsPrefs) {
+function MenuLayout(menu, name, nextMenuLayout, actionsPrefs) {
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
+  this._nextMenuLayout = nextMenuLayout;
   this.isExtraMenu = false;
   this.isLarge = menu.largeMenu;
   
@@ -99,9 +100,12 @@ function MenuLayout(menu, name, actionsPrefs) {
                         [ 6, 23, 41,  60,  77, 58, 42, 25]
                       : [10, 40, 70, 100, 125, 95, 68, 40]);
 }
+MenuLayout.prototype.getNextLayout = function() {
+  return this._nextMenuLayout;
+};
 
-function ExtraMenuLayout(menu, name, actionsPrefs) {
-  MenuLayout.call(this, menu, name, actionsPrefs);
+function ExtraMenuLayout(menu, name, nextMenuLayout, actionsPrefs) {
+  MenuLayout.call(this, menu, name, nextMenuLayout, actionsPrefs);
   
   this.isExtraMenu = true;
   this.isLarge = false; // extra menus are never large
@@ -115,6 +119,22 @@ function ExtraMenuLayout(menu, name, actionsPrefs) {
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
+
+function ContextualMenuLayout(menu, name, actionsPrefs) {
+  MenuLayout.call(this, menu, name, null, actionsPrefs);
+}
+ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
+ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
+ContextualMenuLayout.prototype.getNextLayout = function() {
+  var possibleLayouts = eGc.contextType.split("/");
+  if (possibleLayouts.length === 2) {
+    return possibleLayouts[0];
+  }
+  else {
+    return possibleLayouts[0] === this.name ? possibleLayouts[1]
+                                            : possibleLayouts[0];
+  }
+};
 
 // menu Constructor
 function eG_menu () {
@@ -223,34 +243,40 @@ function eG_menu () {
 
   this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
     main: new MenuLayout(this, "main",
+                         this.mainAlt1MenuEnabled ? "mainAlt1" :
+                           (this.mainAlt2MenuEnabled ? "mainAlt2": "main"),
                          prefs.getCharPref("menus.main").split("/")),
 
     mainAlt1: new MenuLayout(this, "mainAlt1",
+                             this.mainAlt2MenuEnabled ? "mainAlt2" : "main",
                              prefs.getCharPref("menus.mainAlt1").split("/")),
 
-    mainAlt2: new MenuLayout(this, "mainAlt2",
+    mainAlt2: new MenuLayout(this, "mainAlt2", "main",
                              prefs.getCharPref("menus.mainAlt2").split("/")),
 
     extra: new ExtraMenuLayout(this, "extra",
+                               this.extraAlt1MenuEnabled ? "extraAlt1" :
+                                 (this.extraAlt2MenuEnabled ? "extraAlt2": "extra"),
                                prefs.getCharPref("menus.extra").split("/")),
 
     extraAlt1: new ExtraMenuLayout(this, "extraAlt1",
+                                   this.extraAlt2MenuEnabled ? "extraAlt2" : "extra",
                                    prefs.getCharPref("menus.extraAlt1").split("/")),
 
-    extraAlt2: new ExtraMenuLayout(this, "extraAlt2",
+    extraAlt2: new ExtraMenuLayout(this, "extraAlt2", "extra",
                                    prefs.getCharPref("menus.extraAlt2").split("/")),
 
-    contextLink: new MenuLayout(this, "contextLink",
-                                prefs.getCharPref("menus.contextLink").split("/")),
+    contextLink: new ContextualMenuLayout(this, "contextLink",
+                                          prefs.getCharPref("menus.contextLink").split("/")),
 
-    contextImage: new MenuLayout(this, "contextImage",
-                                 prefs.getCharPref("menus.contextImage").split("/")),
+    contextImage: new ContextualMenuLayout(this, "contextImage",
+                                           prefs.getCharPref("menus.contextImage").split("/")),
 
-    contextSelection: new MenuLayout(this, "contextSelection",
-                                     prefs.getCharPref("menus.contextSelection").split("/")),
+    contextSelection: new ContextualMenuLayout(this, "contextSelection",
+                                               prefs.getCharPref("menus.contextSelection").split("/")),
 
-    contextTextbox: new MenuLayout(this, "contextTextbox",
-                                   prefs.getCharPref("menus.contextTextbox").split("/"))
+    contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
+                                             prefs.getCharPref("menus.contextTextbox").split("/"))
   };
 }
 
@@ -847,6 +873,7 @@ eG_menu.prototype = {
     
     if (layout.name.search("context") != -1) {
       contextMenuSign.textContent = eGc.localizing.getString(layout.name);
+      contextMenuSign.style.visibility = "visible";
       if (eGc.contextType.split("/").length > 2) {
         contextMenuSign.className = "withAltSign";
       }
@@ -877,49 +904,8 @@ eG_menu.prototype = {
 
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-    var nextLayoutName = "";
-    
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
-    var contextMenuSign = specialNodes.childNodes[3];
-    
-    if (this.curLayoutName.search("context") == -1) { // switch to alternative layouts
-      this.hide(layout);
-
-      if (!layout.isExtraMenu) {
-        nextLayoutName = "main";
-        if (this.curLayoutName == "main" && this.mainAlt1MenuEnabled) {
-          nextLayoutName = "mainAlt1";
-        }
-        else if (this.curLayoutName == "mainAlt1" && this.mainAlt2MenuEnabled || this.curLayoutName == "main" && !this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled) {
-          nextLayoutName = "mainAlt2";
-        }
-      }
-      else {
-        nextLayoutName = "extra";
-        if (this.curLayoutName == "extra" && this.extraAlt1MenuEnabled) {
-          nextLayoutName = "extraAlt1";
-        }
-        else if (this.curLayoutName == "extraAlt1" && this.extraAlt2MenuEnabled || this.curLayoutName == "extra" && !this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) {
-          nextLayoutName = "extraAlt2";
-        }
-      }
-
-      this.show(nextLayoutName);
-    }
-    else { // switch to other contextual layouts
-      if (eGc.contextType.split("/").length>2) {
-        this.hide(layout);
-        if (eGc.contextType == "contextLink/contextImage/") {
-          nextLayoutName = (this.curLayoutName=="contextLink" ? "contextImage" : "contextLink" );
-        }
-        else {
-          nextLayoutName = (this.curLayoutName=="contextSelection" ? "contextTextbox" : "contextSelection" );
-        }
-
-        this.show(nextLayoutName);
-        contextMenuSign.style.visibility = "visible";
-      }
-    }
+    this.hide(layout);
+    this.show(layout.getNextLayout());
   },
 
   close : function() {
