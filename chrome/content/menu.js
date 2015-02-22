@@ -231,7 +231,7 @@ function eG_menu () {
   this.autoscrollingTrigger = null; // trigger to display autoscrolling
   this.autoscrolling = false; // used for automatic delayed autoscrolling on mouse down
 
-  this.extraMenuAction = null; // position of extra menu action in base menu from which extra menu is called
+  this.extraMenuAction = 0; // position of extra menu action in base menu from which extra menu is called
 
   this.iconSize = this.smallIcons? 20 : 32;
 
@@ -404,9 +404,6 @@ eG_menu.prototype = {
       if (layout.actions[i].search("loadURL") == -1 && layout.actions[i].search("runScript") == -1) {
         timg.setAttribute("class", (this.smallMenuTag +
                    (this.noIcons ? "empty" : layout.actions[i])));
-        if (eGActions[layout.actions[i]].isExtraMenuAction) {
-          this.extraMenuAction = i;
-        }
       }
       else if (layout.actions[i].search("runScript") == -1) { // new icon path for loadURL ?
         if (this[layout.actions[i]][2] == "true") {
