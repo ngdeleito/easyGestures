@@ -400,12 +400,10 @@ eG_menu.prototype = {
       timg.style.top = Math.round(ypos) + "px";
       timg.setAttribute("grayed", "false");
       timg.setAttribute("active", "false");
-
-      if (layout.actions[i].search("loadURL") == -1 && layout.actions[i].search("runScript") == -1) {
-        timg.setAttribute("class", (this.smallMenuTag +
-                   (this.noIcons ? "empty" : layout.actions[i])));
-      }
-      else if (layout.actions[i].search("runScript") == -1) { // new icon path for loadURL ?
+      
+      var iconName = layout.actions[i];
+      
+      if (layout.actions[i].startsWith("loadURL")) { // new icon path for loadURL ?
         if (this[layout.actions[i]][2] == "true") {
           if (!this.smallIcons) {
             // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
@@ -413,13 +411,10 @@ eG_menu.prototype = {
             timg.style.backgroundSize = "26px 26px";
           }
           this._addFavicon(this[layout.actions[i]][1], timg);
-          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
-        }
-        else {
-          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty" : layout.actions[i])));
+          iconName = "customIcon";
         }
       }
-      else  { // new icon path for runScript ?
+      else if (layout.actions[i].startsWith("runScript")) { // new icon path for runScript ?
         if (this[layout.actions[i]][2] !== "") {
           if (!this.smallIcons) {
             // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
@@ -427,13 +422,13 @@ eG_menu.prototype = {
             timg.style.backgroundSize = "26px 26px";
           }
           timg.style.backgroundImage = "url('" + (this[layout.actions[i]][2]).replace(/\\/g , "\\\\") + "')";
-          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty": "customIcon")));
-        }
-        else {
-          timg.setAttribute("class", (this.smallMenuTag + (this.noIcons ? "empty" : layout.actions[i])));
+          iconName = "customIcon";
         }
       }
-
+      
+      timg.setAttribute("class", (this.smallMenuTag +
+                                 (this.noIcons ? "empty" : iconName)));
+      
       timg.alt = "";
       node.appendChild(timg);
     }
