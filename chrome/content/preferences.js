@@ -220,16 +220,20 @@ var eGPrefs = {
     return JSON.parse(this._prefs.getCharPref("stats.mainMenu"));
   },
   
-  setStatsMainMenuPref : function(aString) {
-    this._prefs.setCharPref("stats.mainMenu", aString);
+  incrementStatsMainMenuPref : function(anIndex) {
+    var anArray = this.getStatsMainMenuPref();
+    ++anArray[anIndex];
+    this._prefs.setCharPref("stats.mainMenu", JSON.stringify(anArray));
   },
   
   getStatsExtraMenuPref : function() {
     return JSON.parse(this._prefs.getCharPref("stats.extraMenu"));
   },
   
-  setStatsExtraMenuPref : function(aString) {
-    this._prefs.setCharPref("stats.extraMenu", aString);
+  incrementStatsExtraMenuPref : function(anIndex) {
+    var anArray = this.getStatsExtraMenuPref();
+    ++anArray[anIndex];
+    this._prefs.setCharPref("stats.extraMenu", JSON.stringify(anArray));
   },
   
   updateStatsForAction : function(anActionName) {

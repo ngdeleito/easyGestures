@@ -790,8 +790,6 @@ eG_menu.prototype = {
       }
 
       if (layout.name.search("extra") == -1) { // main
-        var statsMainArray = eGPrefs.getStatsMainMenuPref();
-
         var sector8To10 = this.sector;
         if (!layout.isLarge) {
           if (this.sector > 2) {
@@ -801,13 +799,10 @@ eG_menu.prototype = {
             sector8To10++;
           }
         }
-        statsMainArray[index*10+sector8To10]++;
-        eGPrefs.setStatsMainMenuPref(statsMainArray.toSource());
+        eGPrefs.incrementStatsMainMenuPref(index*10+sector8To10);
       }
       else { // extra
-        var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
-        statsExtraArray[index*8+this.sector]++;
-        eGPrefs.setStatsExtraMenuPref(statsExtraArray.toSource());
+        eGPrefs.incrementStatsExtraMenuPref(index*8+this.sector);
       }
       
       eGPrefs.updateStatsForAction(layout.actions[this.sector]);
