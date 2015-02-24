@@ -38,8 +38,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global eGActions, eGPrefs */
 
-function MenuLayout(menu, name, nextMenuLayout, actionsPrefs) {
+function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
+  this._pieMenu = menu;
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
+  this._layoutNumber = number;
   this._nextMenuLayout = nextMenuLayout;
   this.isExtraMenu = false;
   this.isLarge = menu.largeMenu;
@@ -103,9 +105,23 @@ function MenuLayout(menu, name, nextMenuLayout, actionsPrefs) {
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
 };
+MenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
+  var sector = this._pieMenu.sector;
+  var sector8To10 = sector;
+  if (!this.isLarge) {
+    if (sector > 2) {
+      sector8To10++;
+    }
+    if (sector >= 6) {
+      sector8To10++;
+    }
+  }
+  eGPrefs.incrementStatsMainMenuPref(this._layoutNumber * 10 + sector8To10);
+  eGPrefs.updateStatsForAction(this.actions[sector]);
+};
 
-function ExtraMenuLayout(menu, name, nextMenuLayout, actionsPrefs) {
-  MenuLayout.call(this, menu, name, nextMenuLayout, actionsPrefs);
+function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
+  MenuLayout.call(this, menu, name, number, nextMenuLayout, actionsPrefs);
   
   this.isExtraMenu = true;
   this.isLarge = false; // extra menus are never large
@@ -119,9 +135,14 @@ function ExtraMenuLayout(menu, name, nextMenuLayout, actionsPrefs) {
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
+ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
+  var sector = this._pieMenu.sector;
+  eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 8 + sector);
+  eGPrefs.updateStatsForAction(this.actions[sector]);
+};
 
 function ContextualMenuLayout(menu, name, actionsPrefs) {
-  MenuLayout.call(this, menu, name, null, actionsPrefs);
+  MenuLayout.call(this, menu, name, 0, null, actionsPrefs);
 }
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
@@ -242,28 +263,28 @@ function eG_menu () {
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
-    main: new MenuLayout(this, "main",
+    main: new MenuLayout(this, "main", 0,
                          this.mainAlt1MenuEnabled ? "mainAlt1" :
                            (this.mainAlt2MenuEnabled ? "mainAlt2": "main"),
                          prefs.getCharPref("menus.main").split("/")),
 
-    mainAlt1: new MenuLayout(this, "mainAlt1",
+    mainAlt1: new MenuLayout(this, "mainAlt1", 1,
                              this.mainAlt2MenuEnabled ? "mainAlt2" : "main",
                              prefs.getCharPref("menus.mainAlt1").split("/")),
 
-    mainAlt2: new MenuLayout(this, "mainAlt2", "main",
+    mainAlt2: new MenuLayout(this, "mainAlt2", 2, "main",
                              prefs.getCharPref("menus.mainAlt2").split("/")),
 
-    extra: new ExtraMenuLayout(this, "extra",
+    extra: new ExtraMenuLayout(this, "extra", 0,
                                this.extraAlt1MenuEnabled ? "extraAlt1" :
                                  (this.extraAlt2MenuEnabled ? "extraAlt2": "extra"),
                                prefs.getCharPref("menus.extra").split("/")),
 
-    extraAlt1: new ExtraMenuLayout(this, "extraAlt1",
+    extraAlt1: new ExtraMenuLayout(this, "extraAlt1", 1,
                                    this.extraAlt2MenuEnabled ? "extraAlt2" : "extra",
                                    prefs.getCharPref("menus.extraAlt1").split("/")),
 
-    extraAlt2: new ExtraMenuLayout(this, "extraAlt2", "extra",
+    extraAlt2: new ExtraMenuLayout(this, "extraAlt2", 2, "extra",
                                    prefs.getCharPref("menus.extraAlt2").split("/")),
 
     contextLink: new ContextualMenuLayout(this, "contextLink",
@@ -779,34 +800,8 @@ eG_menu.prototype = {
     var layout = this.menuSet[this.curLayoutName];
 
     if (this.sector >= 0 && !eGActions[layout.actions[this.sector]].isDisabled()) {
+      layout.updateStatsForActionToBeExecuted();
 
-      ///////////////////////////////////////////////////////////////////////////////////////////////
-      // updatel stats
-      ///////////////////////////////////////////////////////////////////////////////////////////////
-
-      var index = layout.name.match (/\d+/);
-      if (index === null) {
-        index = 0;
-      }
-
-      if (layout.name.search("extra") == -1) { // main
-        var sector8To10 = this.sector;
-        if (!layout.isLarge) {
-          if (this.sector > 2) {
-            sector8To10++;
-          }
-          if (this.sector >= 6) {
-            sector8To10++;
-          }
-        }
-        eGPrefs.incrementStatsMainMenuPref(index*10+sector8To10);
-      }
-      else { // extra
-        eGPrefs.incrementStatsExtraMenuPref(index*8+this.sector);
-      }
-      
-      eGPrefs.updateStatsForAction(layout.actions[this.sector]);
-      
       try {
         eGActions[layout.actions[this.sector]].run();
       }
