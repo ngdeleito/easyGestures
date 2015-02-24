@@ -156,6 +156,9 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
                                             : possibleLayouts[0];
   }
 };
+ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
+  eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
+};
 
 // menu Constructor
 function eG_menu () {
