@@ -560,6 +560,8 @@ eG_menu.prototype = {
     //this.specialNodes.style.top=this.clientX + layout.aNodeYOff+ "px";
     if (!layout.isExtraMenu) {
       specialNodes.style.top = this.clientY + layout.aNodeYOff + "px";
+      var mainMenusSign = specialNodes.childNodes[1];
+      mainMenusSign.style.visibility = "visible";
     }
     
     if (this.isMenuHidden()) {
@@ -869,7 +871,6 @@ eG_menu.prototype = {
     
     // update main or extra menu sign
     if (layout.name.startsWith("main")) {
-      mainMenusSign.style.visibility = "visible";
       this.updateMenuSign(mainMenusSign, layout.name, this.numberOfMainMenus);
     }
     else {
