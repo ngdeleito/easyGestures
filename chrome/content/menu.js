@@ -119,6 +119,20 @@ MenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.incrementStatsMainMenuPref(this._layoutNumber * 10 + sector8To10);
   eGPrefs.updateStatsForAction(this.actions[sector]);
 };
+MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
+    var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
+    var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
+      numberOfMenus) % numberOfMenus;
+    previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
+    menuSign.childNodes[previousLayoutNumber].removeAttribute("class");
+    menuSign.childNodes[layoutNumber].className = "active";
+};
+MenuLayout.prototype.updateMenuSign = function() {
+  var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+  var mainMenusSign = specialNodes.childNodes[1];
+  
+  this._updateMenuSign(mainMenusSign, this._pieMenu.numberOfMainMenus);
+};
 
 function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   MenuLayout.call(this, menu, name, number, nextMenuLayout, actionsPrefs);
@@ -140,6 +154,12 @@ ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 8 + sector);
   eGPrefs.updateStatsForAction(this.actions[sector]);
 };
+ExtraMenuLayout.prototype.updateMenuSign = function() {
+  var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+  var extraMenusSign = specialNodes.childNodes[2];
+  
+  this._updateMenuSign(extraMenusSign, this._pieMenu.numberOfExtraMenus);
+};
 
 function ContextualMenuLayout(menu, name, actionsPrefs) {
   MenuLayout.call(this, menu, name, 0, null, actionsPrefs);
@@ -158,6 +178,19 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
+};
+ContextualMenuLayout.prototype.updateMenuSign = function() {
+  var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+  var contextMenuSign = specialNodes.childNodes[3];
+  
+  contextMenuSign.textContent = eGc.localizing.getString(this.name);
+  contextMenuSign.style.visibility = "visible";
+  if (eGc.contextType.length > 1) {
+    contextMenuSign.className = "withAltSign";
+  }
+  else {
+    contextMenuSign.removeAttribute("class");
+  }
 };
 
 // menu Constructor
@@ -830,9 +863,6 @@ eG_menu.prototype = {
     var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
-    var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
-    var contextMenuSign = specialNodes.childNodes[3];
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     
@@ -854,40 +884,9 @@ eG_menu.prototype = {
       eGActions[actionName].displayStateOn(actionNode);
     });
     
-    ////////////////////////////////////////////////////////////////////////////
-    // update context title and signs
-    ////////////////////////////////////////////////////////////////////////////
-    
-    if (layout.name.search("context") != -1) {
-      contextMenuSign.textContent = eGc.localizing.getString(layout.name);
-      contextMenuSign.style.visibility = "visible";
-      if (eGc.contextType.length > 1) {
-        contextMenuSign.className = "withAltSign";
-      }
-      else {
-        contextMenuSign.removeAttribute("class");
-      }
-    }
-    
-    // update main or extra menu sign
-    if (layout.name.startsWith("main")) {
-      this.updateMenuSign(mainMenusSign, layout.name, this.numberOfMainMenus);
-    }
-    else {
-      this.updateMenuSign(extraMenusSign, layout.name, this.numberOfExtraMenus);
-    }
+    layout.updateMenuSign();
   },
   
-  updateMenuSign : function(menuSign, layoutName, numberOfMenus) {
-    var layoutNumber = parseInt(layoutName.replace(/^\D*/, "0"), 10);
-    layoutNumber = Math.min(layoutNumber, numberOfMenus - 1);
-    var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
-      numberOfMenus) % numberOfMenus;
-    previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
-    menuSign.childNodes[previousLayoutNumber].removeAttribute("class");
-    menuSign.childNodes[layoutNumber].className = "active";
-  },
-
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
     this.hide(layout);
