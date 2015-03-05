@@ -315,6 +315,11 @@ function eG_handleMousedown(evt) {
   eGc.evtMouseDown.target=evt.target;
   eGc.evtMouseDown.view=evt.view;
   
+  eGc.image = null; // removes the pointed image if any
+  eGc.link = null; // removes the pointed link if any
+  eGc.selection = null; // removes the selected text if any
+  eGc.selectionNode = null; // removes the selected node if any
+  
   // identify context, find body etc
   eGc.doc = evt.target.ownerDocument;
   eGc.frame_doc = evt.originalTarget.ownerDocument;

@@ -906,37 +906,27 @@ eG_menu.prototype = {
       extraMenusSign.style.visibility = "hidden";
     }
     mainMenusSign.style.visibility = "hidden";
-
-    this.reset();
-
-    eGPrefs.incrementStatsMenuShownPref();
-
-    // re-enable counting clicks inside window
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.addEventListener("mousedown", eG_countClicks, false);
-  },
-
-  reset : function() {
+    
     this.menuState = 0; // menu is not showing
     this.sector = -1;
     this.baseMenu = "";
     this.showingTooltips = false;
-
+    
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.removeEventListener("mousemove", eG_handleMousemove, true);
-
-    eGc.image = null; // removes the pointed image if any
-    eGc.link = null; // removes the pointed link if any
-    eGc.selection = null; // removes the selected text if any
-    eGc.selectionNode = null; // removes the selected node if any
-
+    
     // enabling selection when left mouse button is used because selection is turned off in that case
     if (this.showButton === 0) { // left mouse button
       var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
       selCon.setDisplaySelection(2); // SELECTION_ON
     }
-  },
+    
+    eGPrefs.incrementStatsMenuShownPref();
 
+    // re-enable counting clicks inside window
+    window.addEventListener("mousedown", eG_countClicks, false);
+  },
+  
   resetTooltipsTimeout : function() { // setting and resetting tooltips timeout
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     
