@@ -62,7 +62,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = action;
+  this.run = function() {
+    eGm.close();
+    action.call(this);
+  };
   
   // startsNewGroup and nextAction are used in options.js to display a sorted
   // list of available actions
@@ -158,9 +161,11 @@ EmptyAction.prototype.getXULLabel = function() {
 };
 
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
-  Action.call(this, "showExtraMenu", function() {
+  Action.call(this, "showExtraMenu", null, startsNewGroup, nextAction);
+  
+  this.run = function() {
     eGm.showExtraMenu();
-  }, startsNewGroup, nextAction);
+  };
   
   this.isExtraMenuAction = true;
 }

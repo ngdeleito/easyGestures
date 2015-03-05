@@ -836,11 +836,13 @@ eG_menu.prototype = {
 
   runAction : function() {
     var layout = this.menuSet[this.curLayoutName];
-
+    
     if (this.sector >= 0 && !eGActions[layout.actions[this.sector]].isDisabled()) {
       layout.updateStatsForActionToBeExecuted();
-
+      
       try {
+        // upon calling run, the pie menu is closed first (except for the
+        // showExtraMenu action)
         eGActions[layout.actions[this.sector]].run();
       }
       catch(ex) {
@@ -850,10 +852,8 @@ eG_menu.prototype = {
         Services.console.logMessage(error);
       }
     }
-
-    if (this.sector == -1 ||
-        !eGActions[layout.actions[this.sector]].isExtraMenuAction) {
-      this.close(); // close menu if no extra menu is called from action or no action
+    else {
+      this.close();
     }
   },
 
