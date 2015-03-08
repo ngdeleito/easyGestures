@@ -306,9 +306,9 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     content = content.replace("%s", eGc.selection);
     content = content.replace("%u", eGc.doc.URL);
     
-           prefValue[3]);
     action.call(this, content,
       Services.wm.getMostRecentWindow("navigator:browser"),
+      3 in prefValue ? prefValue[3] : undefined);
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
   }, startsNewGroup, nextAction);
