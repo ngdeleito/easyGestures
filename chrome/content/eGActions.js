@@ -118,7 +118,7 @@ Action.prototype = {
     fp.appendFilters(filter);
     fp.defaultString = defaultName;
     var returnValue = fp.show();
-    if (returnValue == nsIFilePicker.returnOK || returnValue == nsIFilePicker.returnReplace) {
+    if (returnValue === nsIFilePicker.returnOK || returnValue === nsIFilePicker.returnReplace) {
       return fp.file;
     }
     else {
@@ -242,7 +242,7 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
     var url = eGc.doc.URL;
-    return this._getRootURL(url) == url.replace("www.", "");
+    return this._getRootURL(url) === url.replace("www.", "");
   }, startsNewGroup, nextAction);
 }
 CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -404,7 +404,7 @@ var eGActions = {
     var url = eGc.doc.URL;
     var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
-    while ((this._getRootURL(url).replace("www.", "") == this._getRootURL(backurl).replace("www.", "")) && index > 0) {
+    while ((this._getRootURL(url).replace("www.", "") === this._getRootURL(backurl).replace("www.", "")) && index > 0) {
       index -= 1;
       url = backurl;
       backurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
@@ -429,7 +429,7 @@ var eGActions = {
     var url = eGc.doc.URL;
     var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
-    while (this._getRootURL(url).replace("www.", "") == this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
+    while (this._getRootURL(url).replace("www.", "") === this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
       index += 1;
       url = forwardurl;
       forwardurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
@@ -711,7 +711,7 @@ var eGActions = {
     
     while (openWindows.hasMoreElements()) {
       let window = openWindows.getNext();
-      if (window != currentWindow) {
+      if (window !== currentWindow) {
         window.close();
       }
     }
