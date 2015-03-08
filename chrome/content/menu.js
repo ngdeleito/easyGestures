@@ -593,8 +593,10 @@ eG_menu.prototype = {
     //this.specialNodes.style.top=this.clientX + layout.aNodeYOff+ "px";
     if (!layout.isExtraMenu) {
       specialNodes.style.top = this.clientY + layout.aNodeYOff + "px";
-      var mainMenusSign = specialNodes.childNodes[1];
-      mainMenusSign.style.visibility = "visible";
+      if (layout.name.startsWith("main")) {
+        var mainMenusSign = specialNodes.childNodes[1];
+        mainMenusSign.style.visibility = "visible";
+      }
     }
     
     if (this.isMenuHidden()) {
