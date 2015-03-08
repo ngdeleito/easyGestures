@@ -306,8 +306,9 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     content = content.replace("%s", eGc.selection);
     content = content.replace("%u", eGc.doc.URL);
     
-    action(content, Services.wm.getMostRecentWindow("navigator:browser"), this,
            prefValue[3]);
+    action.call(this, content,
+      Services.wm.getMostRecentWindow("navigator:browser"),
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
   }, startsNewGroup, nextAction);
@@ -329,11 +330,11 @@ NumberedAction.prototype.getLabel = function() {
 
 function LoadURLAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "loadURL", number,
-    function(URL, window, thisObject, openInPrivateWindow) {
+    function(URL, window, openInPrivateWindow) {
       var gBrowser = window.gBrowser;
       
       if (openInPrivateWindow === "true") {
-        thisObject._openInPrivateWindow(URL, window);
+        this._openInPrivateWindow(URL, window);
       }
       else {
         switch (eGm.loadURLin) {
