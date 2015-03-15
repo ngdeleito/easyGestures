@@ -58,7 +58,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported eGActions */
-/* global eGPrefs */
+/* global eGPrefs, Downloads */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -133,15 +133,8 @@ Action.prototype = {
                  uri.path.substring(uri.path.lastIndexOf("/") + 1));
     
     if (file !== null) {
-      var wbp = Components.classes["@mozilla.org/embedding/browser/nsWebBrowserPersist;1"]
-                          .createInstance(Components.interfaces.nsIWebBrowserPersist);
-      // don't save gzipped
-      wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      var privacyContext = window.QueryInterface(Components.interfaces.nsIInterfaceRequestor)
-                                 .getInterface(Components.interfaces.nsIWebNavigation)
-                                 .QueryInterface(Components.interfaces.nsILoadContext);
-      wbp.saveURI(uri, null, null, null, null, file, privacyContext);
+      Components.utils.import("resource://gre/modules/Downloads.jsm");
+      Downloads.fetch(uri, file);
     }
   },
   
