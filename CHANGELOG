@@ -1,6 +1,18 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 4.9 (March 15, 2015)
+
+- revised and updated the en-US, es-ES and fr-FR locales
+- fixed issues:
+    - the "Extra menu" action is no longer available in extra menus
+    - the pie menu is now closed before an action is run (and it no longer remains open when e.g. the action opens a new window)
+- internal improvements mainly in the code managing the pie menu
+
+- This version of easyGestures N deprecates the following items (which might be removed in future versions of the extension):
+    - cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW locales
+    - iconless menus
+
 Version 4.8 (December 14, 2014)
 
 - changed actions:
