@@ -70,7 +70,7 @@
 <!ENTITY behavior.links "Abilita il click ai collegamenti attraverso il centro del menu circolare">
 <!ENTITY behavior.links.delay "Ritardo massimo per cliccare">
 <!ENTITY behavior.links.openLinkAction "Apri secondo l'azione 'Apri Collegamento'">
-<!ENTITY behavior.linksconfigureAction "Configure this action">
+<!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Segui il comportamento del Browser">
 <!ENTITY behavior.autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
 <!ENTITY behavior.autoscrolling.delay "Ritado">
