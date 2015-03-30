@@ -333,26 +333,19 @@ function eG_handleMousedown(evt) {
         if (node.href != null && node.href != "") {
           eGc.link = node;
         }
-        continue;
       }
-      
-      if (node instanceof window.HTMLImageElement) {
+      else if (node instanceof window.HTMLImageElement) {
         eGc.image = node;
-        continue;
       }
-      
-      if (node instanceof window.HTMLTextAreaElement) {
+      else if (node instanceof window.HTMLTextAreaElement) {
         eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
         eGc.selectionNode = node;
-        continue;
       }
-      
-      if (node instanceof window.HTMLInputElement) {
+      else if (node instanceof window.HTMLInputElement) {
         if (node.type.toUpperCase() == "TEXT" || node.type.toUpperCase() == "PASSWORD") {
           eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
           eGc.selectionNode = node;
         }
-        continue;
       }
     }
   }
