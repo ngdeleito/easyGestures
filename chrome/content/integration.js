@@ -91,8 +91,8 @@ function eG_activateMenu(window) {
   // setting events handlers
   window.gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
   window.gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
-  window.gBrowser.addEventListener("keydown", eG_handleKeys, true);
-  window.gBrowser.addEventListener("keyup", eG_handleKeys, true);
+  window.gBrowser.addEventListener("keydown", eG_handleKeydown, true);
+  window.gBrowser.addEventListener("keyup", eG_handleKeyup, true);
   var contextMenu = window.document.getElementById("contentAreaContextMenu");
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
@@ -103,8 +103,8 @@ function eG_deactivateMenu(window) {
   // removing event handlers
   window.gBrowser.removeEventListener("mousedown", eG_handleMousedown, true);
   window.gBrowser.removeEventListener("mouseup", eG_handleMouseup, true);
-  window.gBrowser.removeEventListener("keydown", eG_handleKeys, true);
-  window.gBrowser.removeEventListener("keyup", eG_handleKeys, true);
+  window.gBrowser.removeEventListener("keydown", eG_handleKeydown, true);
+  window.gBrowser.removeEventListener("keyup", eG_handleKeyup, true);
   var contextMenu = window.document.getElementById("contentAreaContextMenu");
   if (contextMenu) {
     contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
@@ -128,11 +128,13 @@ function eG_getSelection() { // find text selection in current HTML document
   sel = sel.replace(/(\n|\r|\t)+/g, " "); // replace all Linefeed, Carriage return & Tab with a space
   sel = sel.replace(/\s+$/,"");           // remove all spaces at the end of the string
   return sel;
+function eG_handleKeyup(event) {
+  eGc.keyPressed = 0;
 }
 
-function eG_handleKeys(evt) {
-  var window = evt.target.ownerDocument.defaultView;
-
+function eG_handleKeydown(event) {
+  var window = event.target.ownerDocument.defaultView;
+  
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
@@ -141,31 +143,15 @@ function eG_handleKeys(evt) {
     window.clearTimeout(eGm.tooltipsTrigger);
   }
   
-  if (evt.type == "keyup") {
-    eGc.keyPressed = 0;
-  }
-  else {
-    eGc.keyPressed = evt.keyCode;
-  }
+  eGc.keyPressed = event.keyCode;
   
-  if (evt.keyCode == 18 && eGm.isMenuDisplayed() && evt.type == "keydown") {
-    // <Alt> key is pressed (use right key)
-    eGm.switchLayout();
-    return;
-  }
-  
-  // show textarea for typing and retrieve typed text as selected text
-  if (eGm.isMenuDisplayed() && evt.keyCode != eGm.contextKey && evt.keyCode != eGm.showKey && evt.keyCode != eGm.suppressKey) {
-    // all keys except keys to control display of pie
-    if (evt.keyCode == 27) {
-      evt.preventDefault();
+  if (eGm.isMenuDisplayed()) {
+    if (event.keyCode === 18) { // Alt key
+      eGm.switchLayout();
     }
-    
-    if (evt.type == "keydown") {
-      if (evt.keyCode == 27) { // ESC key pressed
-        eGm.sector = -1;
-        eGm.runAction();
-      }
+    else if (event.keyCode === 27) { // ESC key
+      event.preventDefault();
+      eGm.close();
     }
   }
 }
