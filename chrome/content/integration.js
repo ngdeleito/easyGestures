@@ -218,8 +218,11 @@ function eG_handleMouseup(evt) {
       evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
     }
     else {
-      if (eGm.sector != -1 || eGm.sector == -1 && (eGm.menuState != 2 || eGm.menuState == 2 && (evt.button != eGm.showButton))) {
+      if (eGm.sector !== -1) {
         eGm.runAction();
+      }
+      else if (eGm.menuState != 2 || eGm.menuState == 2 && (evt.button != eGm.showButton)) {
+        eGm.close();
       }
       else {
         eGm.menuState = 3;

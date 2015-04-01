@@ -837,7 +837,7 @@ eG_menu.prototype = {
   runAction : function() {
     var layout = this.menuSet[this.curLayoutName];
     
-    if (this.sector >= 0 && !eGActions[layout.actions[this.sector]].isDisabled()) {
+    if (!eGActions[layout.actions[this.sector]].isDisabled()) {
       layout.updateStatsForActionToBeExecuted();
       
       try {
