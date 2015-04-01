@@ -58,11 +58,9 @@ var eGc = {
   selectionNode: null, //used for Textarea & Text Input
   
   // used for drag movements in 'open when dragging' situations
-  pageXDown: -1, // needed for to give a tolerance to 'open when dragging'
   pageYDown: -1,
   clientXDown: -1,
   clientYDown: -1,
-  screenXDown: -1,
   screenYDown: -1,
   showAfterDelayTimer: null, // trigger to display menu after delay
   showAfterDelayPassed: false, // used to display menu after delay
@@ -292,14 +290,7 @@ function eG_handleMousedown(evt) {
   
   // copying parts of evt object
   eGc.evtMouseDown = {}; // don't just keep a reference to evt because evt will change before it can be used properly
-  eGc.evtMouseDown.clientX = evt.clientX;
-  eGc.evtMouseDown.clientY = evt.clientY;
-  eGc.evtMouseDown.screenX = evt.screenX;
-  eGc.evtMouseDown.screenY = evt.screenY;
-  eGc.evtMouseDown.pageX = evt.pageX;
-  eGc.evtMouseDown.pageY = evt.pageY;
   eGc.evtMouseDown.originalTarget = evt.originalTarget;
-  eGc.evtMouseDown.target=evt.target;
   eGc.evtMouseDown.view=evt.view;
   
   eGc.image = null; // removes the pointed image if any
@@ -365,11 +356,9 @@ function eG_handleMousedown(evt) {
     }
   }
   
-  eGc.pageXDown = evt.pageX;
   eGc.pageYDown = evt.pageY;
   eGc.clientXDown = evt.clientX;
   eGc.clientYDown = evt.clientY;
-  eGc.screenXDown = evt.screenX;
   eGc.screenYDown = evt.screenY;
   
   window.addEventListener("mousemove", eG_handleMousemove, true);
@@ -412,11 +401,9 @@ function eG_openMenu() {
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
   
-  eGm.pageX = eGc.pageXDown;
   eGm.pageY = eGc.pageYDown;
   eGm.clientX = eGc.clientXDown;
   eGm.clientY = eGc.clientYDown;
-  eGm.screenX = eGc.screenXDown;
   eGm.screenY = eGc.screenYDown;
   
   // offset to put mouse cursor just above the middle in case of large pie menu

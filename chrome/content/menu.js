@@ -275,12 +275,10 @@ function eG_menu () {
   this.menuState = 0; // 0: not shown; 1: showing; 2: showing & mouse moved; 3: staying open
 
   // Coordonnées
-  this.pageX = 0; // page x coordinate of pie menu center
-  this.pageY = 0;
+  this.pageY = 0; // page y coordinate of pie menu center
   this.clientX = 0; // client x coordinate of pie menu center
   this.clientY = 0;
-  this.screenX = 0; // screen x coordinate of pie menu center
-  this.screenY = 0;
+  this.screenY = 0; // screen y coordinate of pie menu center
 
   this.sector = -1; // index of item under mouse
 
