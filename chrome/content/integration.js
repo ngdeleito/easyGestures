@@ -63,7 +63,6 @@ var eGc = {
   clientYDown: -1,
   screenYDown: -1,
   showAfterDelayTimer: null, // trigger to display menu after delay
-  showAfterDelayPassed: false, // used to display menu after delay
   
   maxzIndex: 2147483647, // Max Int. Same value as the one used for displaying autoscrolling image
   
@@ -160,7 +159,6 @@ function eG_handleMouseup(evt) {
   
   window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
-  eGc.showAfterDelayPassed = false;
   
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
@@ -238,25 +236,18 @@ function eG_handleMousemove(evt) {
     return;
   }
   
-  if (eGm.isMenuHidden()) {
-    if (eGc.showAfterDelayPassed) {
-      return;
-    }
+  // clear automatic delayed autoscrolling
+  window.clearTimeout(eGm.autoscrollingTrigger);
+  
+  if (!eGm.showingTooltips) {
+    eGm.resetTooltipsTimeout(); // reset tooltips timeout
   }
-  else {
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGm.autoscrollingTrigger);
-    
-    if (!eGm.showingTooltips) {
-      eGm.resetTooltipsTimeout(); // reset tooltips timeout
-    }
-    
-    // hide center icon if mouse moved
-    var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
-    linkSign.style.visibility = "hidden";
-    
-    eGm.handleMousemove(evt);
-  }
+  
+  // hide center icon if mouse moved
+  var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
+  linkSign.style.visibility = "hidden";
+  
+  eGm.handleMousemove(evt);
 }
 
 function eG_handleMousedown(evt) {
@@ -287,7 +278,6 @@ function eG_handleMousedown(evt) {
   
   // start timer for delayed show up
   if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay) {
-    eGc.showAfterDelayPassed = true;
     eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayValue);
   }
   
@@ -364,8 +354,6 @@ function eG_handleMousedown(evt) {
   eGc.clientYDown = evt.clientY;
   eGc.screenYDown = evt.screenY;
   
-  window.addEventListener("mousemove", eG_handleMousemove, true);
-  
   if (!eGm.showAfterDelay) {
     //evt.preventDefault();
     eG_openMenu();
@@ -390,16 +378,17 @@ function eG_handleMousedown(evt) {
 
 function eG_showAfterDelay() {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
-  eGc.showAfterDelayPassed = false;
   window.clearTimeout(eGc.showAfterDelayTimer);
   eGc.showAfterDelayTimer = null;
   eG_openMenu();
 }
 
 function eG_openMenu() {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  window.addEventListener("mousemove", eG_handleMousemove, true);
+  
   // disabling selection when left mouse button is used until mouseup is done or menu is closed
   if (eGm.showButton == 0) { // left mouse button
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
     var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
