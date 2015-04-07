@@ -399,7 +399,9 @@ function eG_openMenu() {
     }
   }
   
-  if ((eGm.contextShowAuto && eGc.contextType.length !== 0 && (eGc.keyPressed != eGm.contextKey || eGm.contextKey == 0)) || (!eGm.contextShowAuto && eGc.contextType.length !== 0 && (eGc.keyPressed == eGm.contextKey) && eGm.contextKey != 0)) {
+  if (eGc.contextType.length !== 0 &&
+      (!eGm.contextShowAuto && eGc.keyPressed === eGm.contextKey && eGm.contextKey !== 0) ||
+      (eGm.contextShowAuto && (eGc.keyPressed !== eGm.contextKey || eGm.contextKey === 0))) {
     eGm.show(eGc.contextType[0]);
   }
   else {
