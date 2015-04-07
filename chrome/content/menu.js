@@ -79,7 +79,8 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.actionR = this.innerR; // minimum action radius on pie
   this.width = Math.round((this.isLarge ? 440 : 394) * zoomTooltips);
   this.height = Math.round((this.isLarge ? 180:146)*zoom);
-  this.zIndex = eGc.maxzIndex - 1;
+  this.maxzIndex = 2147483647; // Max Int. Same value as the one used for displaying autoscrolling image
+  this.zIndex = this.maxzIndex - 1;
   
   this.aNodeXOff = -this.outerR; // offset of menu image
   this.aNodeYOff = -this.outerR;
@@ -145,7 +146,7 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.tooltipsImage = menu.skinPath + "extraLabels.png";
   
   // extra menus are displayed below main menu level
-  this.zIndex = eGc.maxzIndex - 2;
+  this.zIndex = this.maxzIndex - 2;
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
@@ -195,6 +196,12 @@ ContextualMenuLayout.prototype.updateMenuSign = function() {
 
 // menu Constructor
 function eG_menu () {
+  this.moving = false; // used when menu is moved
+  this.xMoving = -1; // last mouse x position when menu is moving
+  this.yMoving = -1;
+  this.HTMLNamespace = "http://www.w3.org/1999/xhtml";
+  this.easyGesturesID = "easyGesturesPieMenu";
+  
   var prefs = Services.prefs.getBranch("extensions.easygestures.");
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -347,8 +354,8 @@ eG_menu.prototype = {
   },
   
   createEasyGesturesNode : function(aDocument) {
-    var aDiv = aDocument.createElementNS(eGc.HTMLNamespace, "div");
-    aDiv.setAttribute("id", eGc.easyGesturesID);
+    var aDiv = aDocument.createElementNS(this.HTMLNamespace, "div");
+    aDiv.setAttribute("id", this.easyGesturesID);
     return aDiv;
   },
   
@@ -359,14 +366,14 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+    var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_SpecialNodes"); // used to know if menu has already been displayed in the current document
 
     ////////////////////////////////////////////////////////////////////////////
     // creating link sign
     ///////////////////////////////////////////////////////////////////////////
 
-    var img = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
+    var img = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     img.setAttribute("id", "eG_linkSign_" + this.smallMenuTag);
     img.style.left = Math.round(layout.outerR - this.iconSize/2) + "px";
     img.style.top = Math.round(layout.outerR - this.iconSize/2) + "px";
@@ -376,13 +383,13 @@ eG_menu.prototype = {
     node.appendChild(img);
     
     // adding the main menus sign
-    var div = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+    var div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesMainMenusSign");
     div.style.left = layout.outerR + this.iconSize + "px";
     
     var i = this.numberOfMainMenus;
     while (i > 0) {
-      let span = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "span");
+      let span = eGc.frame_doc.createElementNS(this.HTMLNamespace, "span");
       div.appendChild(span);
       --i;
     }
@@ -390,14 +397,14 @@ eG_menu.prototype = {
     node.appendChild(div);
     
     // adding the extra menus sign
-    div = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+    div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesExtraMenusSign");
     div.style.left = layout.outerR + this.iconSize + "px";
     div.style.top = "calc(" + -2 * this.iconSize + "px - 1em)";
     
     i = this.numberOfExtraMenus;
     while (i > 0) {
-      let span = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "span");
+      let span = eGc.frame_doc.createElementNS(this.HTMLNamespace, "span");
       div.appendChild(span);
       --i;
     }
@@ -405,7 +412,7 @@ eG_menu.prototype = {
     node.appendChild(div);
     
     // adding the contextual menu sign
-    div = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+    div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesContextMenuSign");
     div.style.left = layout.outerR + this.iconSize + "px";
     node.appendChild(div);
@@ -427,7 +434,7 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+    var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
     node.style.width = 2*layout.outerR + "px";
     node.style.height = 2*layout.outerR + "px";
@@ -448,7 +455,7 @@ eG_menu.prototype = {
       var xpos = imageR* Math.cos(angle)+ xofs;
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
-      timg = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
+      timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
       timg.setAttribute("id", "eG_action_" + this.smallMenuTag + layoutName + "_" + i);
       timg.style.zIndex = layout.zIndex;
       timg.style.left = Math.round(xpos) + "px";
@@ -492,7 +499,7 @@ eG_menu.prototype = {
     // creating menu image
     ///////////////////////////////////////////////////////////////////////////
 
-    var timg = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
+    var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
     timg.style.zIndex = layout.zIndex-1;
     timg.src = layout.menuImage;
@@ -514,7 +521,7 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+    var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
     node.style.height = layout.height + "px";
     node.style.width = layout.width + "px";
@@ -533,7 +540,7 @@ eG_menu.prototype = {
       var xpos = layout.xLabelsPos[i] + xofs;
       var ypos = layout.yLabelsPos[i] + yofs;
 
-      var tdiv = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "div");
+      var tdiv = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
       tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
       tdiv.style.zIndex = layout.zIndex - 1;
       tdiv.style.left = Math.round(xpos) + "px";
@@ -546,7 +553,7 @@ eG_menu.prototype = {
     // creating tooltips image
     ///////////////////////////////////////////////////////////////////////////
 
-    var timg = eGc.frame_doc.createElementNS(eGc.HTMLNamespace, "img");
+    var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
     timg.style.zIndex = layout.zIndex - 2;
     timg.src = layout.tooltipsImage;
@@ -563,7 +570,7 @@ eG_menu.prototype = {
     var layout = this.menuSet[layoutName];
     
     // create resources if necessary
-    var easyGesturesNode = eGc.frame_doc.getElementById(eGc.easyGesturesID);
+    var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
     if (easyGesturesNode === null) {
       easyGesturesNode = this.createEasyGesturesNode(eGc.frame_doc);
       eGc.body.insertBefore(easyGesturesNode, eGc.body.firstChild);
@@ -649,9 +656,9 @@ eG_menu.prototype = {
                            !eGActions[layout.actions[sector]].isExtraMenuAction);
     
     if (event.shiftKey && !this.moveAuto || this.moveAuto && moveAutoTrigger ) {
-      if (eGc.moving) {
-        var dx = (event.clientX - eGc.xMoving);
-        var dy = (event.clientY - eGc.yMoving);
+      if (this.moving) {
+        var dx = (event.clientX - this.xMoving);
+        var dy = (event.clientY - this.yMoving);
 
         this.clientX += dx;
         this.clientY += dy;
@@ -676,16 +683,16 @@ eG_menu.prototype = {
         }
       }
       else {
-        eGc.moving = true;
+        this.moving = true;
       }
 
-      eGc.xMoving = event.clientX;
-      eGc.yMoving = event.clientY;
+      this.xMoving = event.clientX;
+      this.yMoving = event.clientY;
 
       return;
     }
     else {
-      eGc.moving = false;
+      this.moving = false;
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -943,7 +950,7 @@ eG_menu.prototype = {
 
   showMenuTooltips : function() { // displaying tooltips
     var layout = this.menuSet[this.curLayoutName];
-    var easyGesturesNode = eGc.frame_doc.getElementById(eGc.easyGesturesID);
+    var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
     
     // create resources if necessary
     var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
@@ -1002,7 +1009,7 @@ eG_menu.prototype = {
   removeExistingMenusFromPages : function() {
     var removeMenus = function(element) {
       var document = this.gBrowser.getBrowserForTab(element).contentDocument;
-      var easyGesturesNode = document.getElementById(eGc.easyGesturesID);
+      var easyGesturesNode = document.getElementById(this.easyGesturesID);
       if (easyGesturesNode !== null) {
         easyGesturesNode.parentNode.removeChild(easyGesturesNode);
       }

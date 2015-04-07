@@ -48,10 +48,6 @@ var eGc = {
   frame_doc: null,
   loading: false, // used for reload/stop action
   
-  moving: false, // used when menu is moved
-  xMoving: -1, // last mouse x position when menu is moving
-  yMoving: -1,
-  
   link: null, // the whole node link
   image: null,
   selection: null, //contains the text of the selected object
@@ -63,11 +59,6 @@ var eGc = {
   clientYDown: -1,
   screenYDown: -1,
   showAfterDelayTimer: null, // trigger to display menu after delay
-  
-  maxzIndex: 2147483647, // Max Int. Same value as the one used for displaying autoscrolling image
-  
-  HTMLNamespace: "http://www.w3.org/1999/xhtml",
-  easyGesturesID: "easyGesturesPieMenu",
   
   isStdContextMenuBlocked : function() {
     return this._blockStdContextMenu;
