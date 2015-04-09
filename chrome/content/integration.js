@@ -119,11 +119,6 @@ function eG_handleKeydown(event) {
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
-  // clear tooltips timeout
-  if (eGm.showTooltips && !eGm.showingTooltips) {
-    window.clearTimeout(eGm.tooltipsTrigger);
-  }
-  
   eGc.keyPressed = event.keyCode;
   
   if (eGm.isMenuDisplayed()) {
@@ -229,10 +224,6 @@ function eG_handleMousemove(evt) {
   
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
-  
-  if (!eGm.showingTooltips) {
-    eGm.resetTooltipsTimeout(); // reset tooltips timeout
-  }
   
   // hide center icon if mouse moved
   var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
