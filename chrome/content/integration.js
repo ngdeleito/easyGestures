@@ -195,19 +195,25 @@ function eG_handleMouseup(evt) {
       eGm.close();
     }
   }
+  else if (eGm.menuState === 2) {
+    if (eGm.sector !== -1) {
+      eGm.runAction();
+    }
+    else {
+      evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
+      eGm.menuState = 3;
+    }
+  }
   else {
-    if (evt.button == eGm.showAltButton && ((eGm.menuState != 2 || eGm.menuState == 2 && eGm.sector == -1) && eGm.showAltButton == eGm.showButton || eGm.showAltButton != eGm.showButton)) {
+    if (evt.button === eGm.showAltButton) {
       evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
     }
     else {
       if (eGm.sector !== -1) {
         eGm.runAction();
       }
-      else if (eGm.menuState != 2) {
-        eGm.close();
-      }
       else {
-        eGm.menuState = 3;
+        eGm.close();
       }
     }
   }
