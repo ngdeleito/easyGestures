@@ -166,9 +166,7 @@ function eG_handleMouseup(evt) {
     }
   }
   else if (eGm.menuState == 1) {
-    if (evt.button == eGm.showButton) {
-      eGm.menuState = 3;
-    }
+    eGm.menuState = 3;
     
     var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
     if (linkSign.style.visibility == "visible" && eGc.link != null && eGm.handleLinks && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
