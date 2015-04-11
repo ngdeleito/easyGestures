@@ -203,7 +203,7 @@ function eG_handleMouseup(evt) {
       if (eGm.sector !== -1) {
         eGm.runAction();
       }
-      else if (eGm.menuState != 2 || eGm.menuState == 2 && (evt.button != eGm.showButton)) {
+      else if (eGm.menuState != 2) {
         eGm.close();
       }
       else {
