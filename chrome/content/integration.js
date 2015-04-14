@@ -103,7 +103,7 @@ function eG_countClicks(anEvent) {
   eGPrefs.incrementStatsClicksPref();
   
   // disabling counting clicks inside window if menu is displayed
-  if (eGm.isMenuDisplayed()) {
+  if (eGm.isShown()) {
     let window = anEvent.currentTarget;
     window.removeEventListener("mousedown", eG_countClicks, false);
   }
@@ -121,7 +121,7 @@ function eG_handleKeydown(event) {
   
   eGc.keyPressed = event.keyCode;
   
-  if (eGm.isMenuDisplayed()) {
+  if (eGm.isShown()) {
     if (event.keyCode === 18) { // Alt key
       eGm.switchLayout();
     }
@@ -151,22 +151,21 @@ function eG_handleMouseup(evt) {
   if (window.document.getElementById("content").mCurrentBrowser._scrollingView == null) {
     if (eGm.autoscrolling) {
       eGm.autoscrolling = false;
-      if (eGm.isMenuHidden()) {
+      if (eGm.isHidden()) {
         return; // avoid contextual menu when autoscrolling ends (this would be triggered below)
       }
     }
   }
   
-  // menuState:    0-> not shown    1-> showing   2-> showing & mouse moved    3-> staying open
-  if (eGm.isMenuHidden()) {
+  if (eGm.isHidden()) {
     if (!eGm.autoscrolling) {
       // avoid enabling contextual menu when autoscrolling
       eGc.unblockStdContextMenu();
       window.removeEventListener("mousemove", eG_handleMousemove, true);
     }
   }
-  else if (eGm.menuState == 1) {
-    eGm.menuState = 3;
+  else if (eGm.isJustOpened()) {
+    eGm.setOpen();
     
     var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
     if (linkSign.style.visibility == "visible" && eGc.link != null && eGm.handleLinks && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
@@ -195,13 +194,13 @@ function eG_handleMouseup(evt) {
       eGm.close();
     }
   }
-  else if (eGm.menuState === 2) {
+  else if (eGm.isJustOpenedAndMouseMoved()) {
     if (eGm.sector !== -1) {
       eGm.runAction();
     }
     else {
       evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
-      eGm.menuState = 3;
+      eGm.setOpen();
     }
   }
   else {
@@ -242,7 +241,7 @@ function eG_handleMousedown(evt) {
   eGc.blockStdContextMenu();
   
   // check whether pie menu should change layout or hide (later)
-  if (eGm.isMenuDisplayed() || eGm.autoscrollingState) {
+  if (eGm.isShown() || eGm.autoscrollingState) {
     // toggle primitive/alternative pie menu
     eGm.autoscrollingState = false; // disable autoscrolling if any
     

@@ -279,8 +279,8 @@ function eG_menu () {
 
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
-  this.menuState = 0; // 0: not shown; 1: showing; 2: showing & mouse moved; 3: staying open
-
+  this.setHidden();
+  
   // Coordonnées
   this.pageY = 0; // page y coordinate of pie menu center
   this.clientX = 0; // client x coordinate of pie menu center
@@ -345,12 +345,36 @@ function eG_menu () {
 eG_menu.prototype = {
   constructor: eG_menu,
   
-  isMenuHidden : function() {
-    return this.menuState === 0;
+  isHidden : function() {
+    return this._menuState === 0;
   },
   
-  isMenuDisplayed : function() {
-    return this.menuState !== 0;
+  isShown : function() {
+    return this._menuState !== 0;
+  },
+  
+  setHidden : function() {
+    this._menuState = 0;
+  },
+  
+  isJustOpened : function() {
+    return this._menuState === 1;
+  },
+  
+  setJustOpened : function() {
+    this._menuState = 1;
+  },
+  
+  isJustOpenedAndMouseMoved : function() {
+    return this._menuState === 2;
+  },
+  
+  setJustOpenedAndMouseMoved : function() {
+    this._menuState = 2;
+  },
+  
+  setOpen : function() {
+    this._menuState = 3;
   },
   
   createEasyGesturesNode : function(aDocument) {
@@ -604,8 +628,8 @@ eG_menu.prototype = {
       }
     }
     
-    if (this.isMenuHidden()) {
-      this.menuState = 1; // menu is showing
+    if (this.isHidden()) {
+      this.setJustOpened();
     }
     this.curLayoutName = layoutName;
     this.update();
@@ -624,8 +648,8 @@ eG_menu.prototype = {
     var extraMenusSign = specialNodes.childNodes[2];
     
     // state change if was dragged
-    if (this.menuState == 1 && (Math.abs(event.clientX- this.clientX)> 1 || Math.abs(event.clientY- this.clientY)> 1)) {
-      this.menuState = 2;
+    if (this.isJustOpened() && (Math.abs(event.clientX- this.clientX)> 1 || Math.abs(event.clientY- this.clientY)> 1)) {
+      this.setJustOpenedAndMouseMoved();
     }
 
     var movDir = event.clientY - eGc.clientYDown; // used to control extra menu opening/closing from an action
@@ -718,7 +742,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
     if (radius > 3*layout.outerR) {
-      if (this.menuState != 2) {
+      if (!this.isJustOpenedAndMouseMoved()) {
         this.close();
       }
     }
@@ -877,7 +901,7 @@ eG_menu.prototype = {
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (eGc.link !== null && this.handleLinks && this.menuState === 1 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
+    if (eGc.link !== null && this.handleLinks && this.isJustOpened() && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
       linkSign.style.visibility = "visible";
       this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }
@@ -914,7 +938,7 @@ eG_menu.prototype = {
     }
     mainMenusSign.style.visibility = "hidden";
     
-    this.menuState = 0; // menu is not showing
+    this.setHidden();
     this.sector = -1;
     this.baseMenu = "";
     this.showingTooltips = false;
