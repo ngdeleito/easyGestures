@@ -877,7 +877,7 @@ eG_menu.prototype = {
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (eGc.link !== null && this.handleLinks && this.menuState!=2 && this.menuState!=3 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
+    if (eGc.link !== null && this.handleLinks && this.menuState === 1 && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
       linkSign.style.visibility = "visible";
       this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }
