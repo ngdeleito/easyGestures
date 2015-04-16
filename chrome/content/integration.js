@@ -228,10 +228,6 @@ function eG_handleMousemove(evt) {
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
-  // hide center icon if mouse moved
-  var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
-  linkSign.style.visibility = "hidden";
-  
   eGm.handleMousemove(evt);
 }
 

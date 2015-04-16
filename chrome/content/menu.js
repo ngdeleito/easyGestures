@@ -644,8 +644,12 @@ eG_menu.prototype = {
     var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
     var baseLayout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.baseMenu);
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var linkSign = specialNodes.childNodes[0];
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
+    
+    // hide center icon if mouse moved
+    linkSign.style.visibility = "hidden";
     
     // state change if was dragged
     if (this.isJustOpened() && (Math.abs(event.clientX- this.clientX)> 1 || Math.abs(event.clientY- this.clientY)> 1)) {
