@@ -279,25 +279,23 @@ function eG_handleMousedown(evt) {
   
   eGc.selection = eG_getSelection();
   
-  for (var node = evt.originalTarget; node != null; node = node.parentNode) {
-    if (node.nodeType == window.Node.ELEMENT_NODE) {
-      if ((node instanceof window.HTMLAreaElement) || (node instanceof window.HTMLAnchorElement)) {
-        if (node.href != null && node.href != "") {
-          eGc.link = node;
-        }
+  for (var node = evt.originalTarget; node != null; node = node.parentElement) {
+    if ((node instanceof window.HTMLAreaElement) || (node instanceof window.HTMLAnchorElement)) {
+      if (node.href != null && node.href != "") {
+        eGc.link = node;
       }
-      else if (node instanceof window.HTMLImageElement) {
-        eGc.image = node;
-      }
-      else if (node instanceof window.HTMLTextAreaElement) {
+    }
+    else if (node instanceof window.HTMLImageElement) {
+      eGc.image = node;
+    }
+    else if (node instanceof window.HTMLTextAreaElement) {
+      eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
+      eGc.selectionNode = node;
+    }
+    else if (node instanceof window.HTMLInputElement) {
+      if (node.type.toUpperCase() == "TEXT" || node.type.toUpperCase() == "PASSWORD") {
         eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
         eGc.selectionNode = node;
-      }
-      else if (node instanceof window.HTMLInputElement) {
-        if (node.type.toUpperCase() == "TEXT" || node.type.toUpperCase() == "PASSWORD") {
-          eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
-          eGc.selectionNode = node;
-        }
       }
     }
   }
