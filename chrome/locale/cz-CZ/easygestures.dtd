@@ -83,9 +83,6 @@
 <!ENTITY menus.alternative2 "Alternativní 2">
 <!ENTITY menus.enabled "Enabled">
 <!ENTITY menus.extra.info "Extra nabídka je zobrazená při použití odpovídající akce">
-<!ENTITY menus.contextual.order "Set menus order">
-<!ENTITY menus.contextual.imageFirst "Show Image menu first">
-<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
 <!ENTITY menus.contextual.link "Odkaz">
 <!ENTITY menus.contextual.image "Obrázek">
 <!ENTITY menus.contextual.selection "Výběr">

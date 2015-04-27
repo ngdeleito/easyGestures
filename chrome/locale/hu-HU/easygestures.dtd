@@ -83,9 +83,6 @@
 <!ENTITY menus.alternative2 "Alternatív 2">
 <!ENTITY menus.enabled "Enabled">
 <!ENTITY menus.extra.info "A kiegészítő menü a megfelelő művelet hatására jelenik meg">
-<!ENTITY menus.contextual.order "Menük sorrendjének beállítása">
-<!ENTITY menus.contextual.imageFirst "Show Image menu first">
-<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
 <!ENTITY menus.contextual.link "Hivatkozás">
 <!ENTITY menus.contextual.image "Kép">
 <!ENTITY menus.contextual.selection "Kijelölés">

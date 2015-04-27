@@ -83,9 +83,6 @@
 <!ENTITY menus.alternative2 "대안 2">
 <!ENTITY menus.enabled "Enabled">
 <!ENTITY menus.extra.info "부가 메뉴는 부합하는 동작을 사용하는 중에 표시됩니다">
-<!ENTITY menus.contextual.order "Set menus order">
-<!ENTITY menus.contextual.imageFirst "Show Image menu first">
-<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
 <!ENTITY menus.contextual.link "링크">
 <!ENTITY menus.contextual.image "이미지">
 <!ENTITY menus.contextual.selection "선택">

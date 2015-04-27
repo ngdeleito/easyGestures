@@ -71,9 +71,6 @@
 <!ENTITY menus.alternative2 "Alternative 2">
 <!ENTITY menus.enabled "Enabled">
 <!ENTITY menus.extra.info "The Extra menu is displayed using the corresponding action">
-<!ENTITY menus.contextual.order "Set menus order">
-<!ENTITY menus.contextual.imageFirst "Show the Image menu first">
-<!ENTITY menus.contextual.textboxFirst "Show the Textbox menu first">
 <!ENTITY menus.contextual.link "Link Menu">
 <!ENTITY menus.contextual.image "Image Menu">
 <!ENTITY menus.contextual.selection "Selection Menu">

@@ -277,55 +277,49 @@ function eG_handleMousedown(evt) {
   eGc.frame_doc = evt.originalTarget.ownerDocument;
   eGc.body = eGc.frame_doc.documentElement;
   
+  }
+  
   eGc.selection = eG_getSelection();
   
-  for (var node = evt.originalTarget; node != null; node = node.parentElement) {
-    if ((node instanceof window.HTMLAreaElement) || (node instanceof window.HTMLAnchorElement)) {
-      if (node.href != null && node.href != "") {
-        eGc.link = node;
-      }
-    }
-    else if (node instanceof window.HTMLImageElement) {
-      eGc.image = node;
-    }
-    else if (node instanceof window.HTMLTextAreaElement) {
-      eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
-      eGc.selectionNode = node;
-    }
-    else if (node instanceof window.HTMLInputElement) {
-      if (node.type.toUpperCase() == "TEXT" || node.type.toUpperCase() == "PASSWORD") {
-        eGc.selection = node.value.substring(node.selectionStart,node.selectionEnd);
-        eGc.selectionNode = node;
-      }
-    }
-  }
-  
-  // set eGc.contextType property for contextual menu displaying
+  // <a> elements cannot be nested
+  // <a> elements cannot have <input> and <textarea> elements as descendants
+  // <area>, <img> and <input> elements cannot have children
+  // <textarea> cannot have other elements as children, only character data
   eGc.contextType = [];
-  if (eGc.link !== null) {
+  var node = evt.target;
+  if (node instanceof window.HTMLInputElement &&
+      (node.type.toUpperCase() === "TEXT" ||
+       node.type.toUpperCase() === "PASSWORD")) {
+    eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
+    eGc.selectionNode = node;
+    eGc.contextType.push("contextTextbox");
+  }
+  else if (node instanceof window.HTMLTextAreaElement) {
+    eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
+    eGc.selectionNode = node;
+    eGc.contextType.push("contextTextbox");
+  }
+  else if (node instanceof window.HTMLAreaElement &&
+           node.href !== null && node.href !== "") {
+    eGc.link = node;
     eGc.contextType.push("contextLink");
   }
-  if (eGc.image !== null) {
-    if (eGm.contextImageFirst) {
-      eGc.contextType.unshift("contextImage");
-    }
-    else {
+  else {
+    if (node instanceof window.HTMLImageElement) {
+      eGc.image = node;
       eGc.contextType.push("contextImage");
     }
+    
+    while (node !== null && !(node instanceof window.HTMLAnchorElement)) {
+      node = node.parentElement;
+    }
+    if (node !== null && node.href !== null && node.href !== "") {
+      eGc.link = node;
+      eGc.contextType.push("contextLink");
+    }
   }
-  if (eGc.contextType.length === 0) {
-    // no need to go further if already link or image
-    if (eGc.selection !== null && eGc.selection !== "") {
-      eGc.contextType.push("contextSelection");
-    }
-    if (eGc.selectionNode !== null) {
-      if (eGm.contextTextboxFirst) {
-        eGc.contextType.unshift("contextTextbox");
-      }
-      else {
-        eGc.contextType.push("contextTextbox");
-      }
-    }
+  if (eGc.selection !== "") {
+    eGc.contextType.push("contextSelection");
   }
   
   eGc.pageYDown = evt.pageY;

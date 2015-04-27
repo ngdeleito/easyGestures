@@ -312,8 +312,6 @@
       <preference id="extraAlt1Menu" name="extensions.easygestures.menus.extraAlt1" type="string" />
       <preference id="extraAlt2Enabled" name="extensions.easygestures.menus.extraAlt2Enabled" type="bool" />
       <preference id="extraAlt2Menu" name="extensions.easygestures.menus.extraAlt2" type="string" />
-      <preference id="contextImageFirst" name="extensions.easygestures.menus.contextImageFirst" type="bool" />
-      <preference id="contextTextboxFirst" name="extensions.easygestures.menus.contextTextboxFirst" type="bool" />
       <preference id="contextLinkMenu" name="extensions.easygestures.menus.contextLink" type="string" />
       <preference id="contextImageMenu" name="extensions.easygestures.menus.contextImage" type="string" />
       <preference id="contextSelectionMenu" name="extensions.easygestures.menus.contextSelection" type="string" />
@@ -420,48 +418,40 @@
           </vbox>
         </tabpanel>
         <tabpanel pack="center">
-          <vbox>
-            <label value="&menus.contextual.order;" class="header" />
-            <vbox style="margin-left: 1em">
-              <checkbox preference="contextImageFirst" label="&menus.contextual.imageFirst;" />
-              <checkbox preference="contextTextboxFirst" label="&menus.contextual.textboxFirst;" />
-            </vbox>
-            <separator orient="horizontal" style="height: 2em" />
-            <tabbox>
-              <tabs>
-                <tab label="&menus.contextual.link;" />
-                <tab label="&menus.contextual.image;" />
-                <tab label="&menus.contextual.selection;" />
-                <tab label="&menus.contextual.textbox;" />
-              </tabs>
-              <tabpanels>
-                <tabpanel pack="center">
-                  <vbox id="gr_contextLink" preference-editable="true"
-                    preference="contextLinkMenu"
-                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextLink');">
-                  </vbox>
-                </tabpanel>
-                <tabpanel pack="center">
-                  <vbox id="gr_contextImage" preference-editable="true"
-                    preference="contextImageMenu"
-                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextImage');">
-                  </vbox>
-                </tabpanel>
-                <tabpanel pack="center">
-                  <vbox id="gr_contextSelection" preference-editable="true"
-                    preference="contextSelectionMenu"
-                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextSelection');">
-                  </vbox>
-                </tabpanel>
-                <tabpanel pack="center">
-                  <vbox id="gr_contextTextbox" preference-editable="true"
-                    preference="contextTextboxMenu"
-                    onsynctopreference="return preparePreferenceValueForNormalMenu('contextTextbox');">
-                  </vbox>
-                </tabpanel>
-              </tabpanels>
-            </tabbox>
-          </vbox>
+          <tabbox>
+            <tabs>
+              <tab label="&menus.contextual.link;" />
+              <tab label="&menus.contextual.image;" />
+              <tab label="&menus.contextual.selection;" />
+              <tab label="&menus.contextual.textbox;" />
+            </tabs>
+            <tabpanels>
+              <tabpanel pack="center">
+                <vbox id="gr_contextLink" preference-editable="true"
+                  preference="contextLinkMenu"
+                  onsynctopreference="return preparePreferenceValueForNormalMenu('contextLink');">
+                </vbox>
+              </tabpanel>
+              <tabpanel pack="center">
+                <vbox id="gr_contextImage" preference-editable="true"
+                  preference="contextImageMenu"
+                  onsynctopreference="return preparePreferenceValueForNormalMenu('contextImage');">
+                </vbox>
+              </tabpanel>
+              <tabpanel pack="center">
+                <vbox id="gr_contextSelection" preference-editable="true"
+                  preference="contextSelectionMenu"
+                  onsynctopreference="return preparePreferenceValueForNormalMenu('contextSelection');">
+                </vbox>
+              </tabpanel>
+              <tabpanel pack="center">
+                <vbox id="gr_contextTextbox" preference-editable="true"
+                  preference="contextTextboxMenu"
+                  onsynctopreference="return preparePreferenceValueForNormalMenu('contextTextbox');">
+                </vbox>
+              </tabpanel>
+            </tabpanels>
+          </tabbox>
         </tabpanel>
       </tabpanels>
     </tabbox>

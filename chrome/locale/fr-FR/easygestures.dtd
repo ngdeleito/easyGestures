@@ -82,9 +82,6 @@
 <!ENTITY menus.alternative2 "Alternatif 2">
 <!ENTITY menus.enabled "Activé">
 <!ENTITY menus.extra.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante">
-<!ENTITY menus.contextual.order "Régler l'ordre des menus">
-<!ENTITY menus.contextual.imageFirst "Afficher le Menu image en premier">
-<!ENTITY menus.contextual.textboxFirst "Afficher le Menu zone de texte en premier">
 <!ENTITY menus.contextual.link "Menu lien">
 <!ENTITY menus.contextual.image "Menu image">
 <!ENTITY menus.contextual.selection "Menu sélection">

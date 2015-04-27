@@ -128,8 +128,6 @@ var eGPrefs = {
     this._prefs.setBoolPref("menus.mainAlt2Enabled", false);
     this._prefs.setBoolPref("menus.extraAlt1Enabled", true);
     this._prefs.setBoolPref("menus.extraAlt2Enabled", false);
-    this._prefs.setBoolPref("menus.contextImageFirst", false);
-    this._prefs.setBoolPref("menus.contextTextboxFirst", true);
     this._setDefaultMenus();
     
     this._prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
@@ -506,6 +504,11 @@ var eGPrefs = {
     
     this._prefs.deleteBranch("customizations.dailyReadingsFolder");
     this._prefs.setIntPref("customizations.dailyReadingsFolderID", -1);
+  },
+  
+  updateToV4_10: function() {
+    this._prefs.deleteBranch("menus.contextImageFirst");
+    this._prefs.deleteBranch("menus.contextTextboxFirst");
   }
 };
 

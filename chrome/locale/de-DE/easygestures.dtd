@@ -84,9 +84,6 @@
 <!ENTITY menus.alternative2 "Alternativ 2">
 <!ENTITY menus.enabled "Enabled">
 <!ENTITY menus.extra.info "Das Zusatz-Kreismenüs wird über die entsprechende Aktion angezeigt">
-<!ENTITY menus.contextual.order "Set menus order">
-<!ENTITY menus.contextual.imageFirst "Show Image menu first">
-<!ENTITY menus.contextual.textboxFirst "Show Textbox menu first">
 <!ENTITY menus.contextual.link "Link">
 <!ENTITY menus.contextual.image "Grafik">
 <!ENTITY menus.contextual.selection "Auswahl">

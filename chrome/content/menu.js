@@ -168,14 +168,8 @@ function ContextualMenuLayout(menu, name, actionsPrefs) {
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
 ContextualMenuLayout.prototype.getNextLayout = function() {
-  var possibleLayouts = eGc.contextType;
-  if (possibleLayouts.length === 1) {
-    return possibleLayouts[0];
-  }
-  else {
-    return possibleLayouts[0] === this.name ? possibleLayouts[1]
-                                            : possibleLayouts[0];
-  }
+  return eGc.contextType[(eGc.contextType.indexOf(this.name) + 1) %
+                         eGc.contextType.length];
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
@@ -242,9 +236,6 @@ function eG_menu () {
     ((this.extraAlt1MenuEnabled || this.extraAlt2MenuEnabled) ? 1 : 0) +
     ((this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) ? 1 : 0);
   
-  this.contextImageFirst = prefs.getBoolPref("menus.contextImageFirst");
-  this.contextTextboxFirst = prefs.getBoolPref("menus.contextTextboxFirst");
-
   this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
   this.loadURL1 = prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
   this.loadURL2 = prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022");

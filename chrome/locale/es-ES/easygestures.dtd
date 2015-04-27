@@ -83,9 +83,6 @@
 <!ENTITY menus.alternative2 "Alternativo 2">
 <!ENTITY menus.enabled "Habilitado">
 <!ENTITY menus.extra.info "El Menú extra se muestra al usar la acción correspondiente">
-<!ENTITY menus.contextual.order "Establecer el orden de los menús">
-<!ENTITY menus.contextual.imageFirst "Ver primero el Menú imagen">
-<!ENTITY menus.contextual.textboxFirst "Ver primero el Menú cuadro de texto">
 <!ENTITY menus.contextual.link "Menú enlace">
 <!ENTITY menus.contextual.image "Menú imagen">
 <!ENTITY menus.contextual.selection "Menú selección">
