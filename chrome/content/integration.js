@@ -277,8 +277,6 @@ function eG_handleMousedown(evt) {
   eGc.frame_doc = evt.originalTarget.ownerDocument;
   eGc.body = eGc.frame_doc.documentElement;
   
-  }
-  
   eGc.selection = eG_getSelection();
   
   // <a> elements cannot be nested
