@@ -51,7 +51,6 @@ var eGc = {
   link: null, // the whole node link
   image: null,
   selection: null, //contains the text of the selected object
-  selectionNode: null, //used for Textarea & Text Input
   
   // used for drag movements in 'open when dragging' situations
   pageYDown: -1,
@@ -270,7 +269,6 @@ function eG_handleMousedown(evt) {
   eGc.image = null; // removes the pointed image if any
   eGc.link = null; // removes the pointed link if any
   eGc.selection = null; // removes the selected text if any
-  eGc.selectionNode = null; // removes the selected node if any
   
   // identify context, find body etc
   eGc.doc = evt.target.ownerDocument;
@@ -289,12 +287,10 @@ function eG_handleMousedown(evt) {
       (node.type.toUpperCase() === "TEXT" ||
        node.type.toUpperCase() === "PASSWORD")) {
     eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
-    eGc.selectionNode = node;
     eGc.contextType.push("contextTextbox");
   }
   else if (node instanceof window.HTMLTextAreaElement) {
     eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
-    eGc.selectionNode = node;
     eGc.contextType.push("contextTextbox");
   }
   else if (node instanceof window.HTMLAreaElement &&
