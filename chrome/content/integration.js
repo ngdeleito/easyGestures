@@ -284,8 +284,13 @@ function eG_handleMousedown(evt) {
   eGc.contextType = [];
   var node = evt.target;
   if (node instanceof window.HTMLInputElement &&
-      (node.type.toUpperCase() === "TEXT" ||
-       node.type.toUpperCase() === "PASSWORD")) {
+      (node.type.toUpperCase() === "EMAIL" ||
+       node.type.toUpperCase() === "NUMBER" ||
+       node.type.toUpperCase() === "PASSWORD" || 
+       node.type.toUpperCase() === "SEARCH" ||
+       node.type.toUpperCase() === "TEL" ||
+       node.type.toUpperCase() === "TEXT" ||
+       node.type.toUpperCase() === "URL")) {
     eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
     eGc.contextType.push("contextTextbox");
   }
