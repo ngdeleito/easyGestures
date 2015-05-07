@@ -168,8 +168,9 @@ function ContextualMenuLayout(menu, name, actionsPrefs) {
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
 ContextualMenuLayout.prototype.getNextLayout = function() {
-  return eGc.contextType[(eGc.contextType.indexOf(this.name) + 1) %
-                         eGc.contextType.length];
+  return this._pieMenu.contextualMenus[
+    (this._pieMenu.contextualMenus.indexOf(this.name) + 1) %
+      this._pieMenu.contextualMenus.length];
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
@@ -180,7 +181,7 @@ ContextualMenuLayout.prototype.updateMenuSign = function() {
   
   contextMenuSign.textContent = eGc.localizing.getString(this.name);
   contextMenuSign.style.visibility = "visible";
-  if (eGc.contextType.length > 1) {
+  if (this._pieMenu.contextualMenus.length > 1) {
     contextMenuSign.className = "withAltSign";
   }
   else {
@@ -195,6 +196,11 @@ function eG_menu () {
   this.yMoving = -1;
   this.HTMLNamespace = "http://www.w3.org/1999/xhtml";
   this.easyGesturesID = "easyGesturesPieMenu";
+  
+  this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
+  this.anchorElement = null;
+  this.imageElement = null;
+  this.selection = null;
   
   var prefs = Services.prefs.getBranch("extensions.easygestures.");
 
@@ -896,7 +902,7 @@ eG_menu.prototype = {
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (eGc.link !== null && this.handleLinks && this.isJustOpened() && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
+    if (this.anchorElement !== null && this.handleLinks && this.isJustOpened() && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
       linkSign.style.visibility = "visible";
       this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }
@@ -1022,6 +1028,60 @@ eG_menu.prototype = {
         case 22:   lNode.style.fontSize = "28pt"; break;
         default:   lNode.style.fontSize = "8pt"; break;
       }
+    }
+  },
+  
+  determinePossibleContextualMenus : function(anHTMLElement, window, selection) {
+    // <a> elements cannot be nested
+    // <a> elements cannot have <input> and <textarea> elements as descendants
+    // <area>, <img> and <input> elements cannot have children
+    // <textarea> cannot have other elements as children, only character data
+    this.contextualMenus = [];
+    this.selection = selection;
+    this.anchorElement = null;
+    this.imageElement = null;
+    if (anHTMLElement instanceof window.HTMLInputElement &&
+        (anHTMLElement.type.toUpperCase() === "EMAIL" ||
+         anHTMLElement.type.toUpperCase() === "NUMBER" ||
+         anHTMLElement.type.toUpperCase() === "PASSWORD" ||
+         anHTMLElement.type.toUpperCase() === "SEARCH" ||
+         anHTMLElement.type.toUpperCase() === "TEL" ||
+         anHTMLElement.type.toUpperCase() === "TEXT" ||
+         anHTMLElement.type.toUpperCase() === "URL")) {
+      this.selection =
+        anHTMLElement.value.substring(anHTMLElement.selectionStart,
+                                      anHTMLElement.selectionEnd);
+      this.contextualMenus.push("contextTextbox");
+    }
+    else if (anHTMLElement instanceof window.HTMLTextAreaElement) {
+      this.selection =
+        anHTMLElement.value.substring(anHTMLElement.selectionStart,
+                                      anHTMLElement.selectionEnd);
+      this.contextualMenus.push("contextTextbox");
+    }
+    else if (anHTMLElement instanceof window.HTMLAreaElement &&
+             anHTMLElement.href !== null && anHTMLElement.href !== "") {
+      this.anchorElement = anHTMLElement;
+      this.contextualMenus.push("contextLink");
+    }
+    else {
+      if (anHTMLElement instanceof window.HTMLImageElement) {
+        this.imageElement = anHTMLElement;
+        this.contextualMenus.push("contextImage");
+      }
+      
+      while (anHTMLElement !== null &&
+             !(anHTMLElement instanceof window.HTMLAnchorElement)) {
+        anHTMLElement = anHTMLElement.parentElement;
+      }
+      if (anHTMLElement !== null && anHTMLElement.href !== null &&
+          anHTMLElement.href !== "") {
+        this.anchorElement = anHTMLElement;
+        this.contextualMenus.push("contextLink");
+      }
+    }
+    if (this.selection !== "") {
+      this.contextualMenus.push("contextSelection");
     }
   },
   

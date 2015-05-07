@@ -243,7 +243,7 @@ CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return eGc.link === null;
+    return eGm.anchorElement === null;
   }, startsNewGroup, nextAction);
 }
 LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -296,7 +296,7 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
     var content = prefValue[1];
     
-    content = content.replace("%s", eGc.selection);
+    content = content.replace("%s", eGm.selection);
     content = content.replace("%u", eGc.doc.URL);
     
     action.call(this, content,
@@ -359,7 +359,7 @@ RunScriptAction.prototype.constructor = RunScriptAction;
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return eGc.image === null;
+    return eGm.imageElement === null;
   }, startsNewGroup, nextAction);
 }
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -466,7 +466,7 @@ var eGActions = {
   
   zoomIn : new Action("zoomIn", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.image === null) {
+    if (eGm.imageElement === null) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.enlarge();
     }
@@ -475,28 +475,28 @@ var eGActions = {
       var width;
       var height;
       
-      if (eGc.image.style.width === "") {
-        width = eGc.image.width * 2 + "px";
+      if (eGm.imageElement.style.width === "") {
+        width = eGm.imageElement.width * 2 + "px";
       }
       else {
-        width = parseInt(eGc.image.style.width, 10) * 2 + "px";
+        width = parseInt(eGm.imageElement.style.width, 10) * 2 + "px";
       }
       
-      if (eGc.image.style.height === "") {
-        height = eGc.image.height * 2 + "px";
+      if (eGm.imageElement.style.height === "") {
+        height = eGm.imageElement.height * 2 + "px";
       }
       else {
-        height = parseInt(eGc.image.style.height, 10) * 2 + "px";
+        height = parseInt(eGm.imageElement.style.height, 10) * 2 + "px";
       }
       
-      eGc.image.style.width = width;
-      eGc.image.style.height = height;
+      eGm.imageElement.style.width = width;
+      eGm.imageElement.style.height = height;
     }
   }, false, "zoomOut"),
   
   zoomOut : new Action("zoomOut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGc.image === null) {
+    if (eGm.imageElement === null) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.reduce();
     }
@@ -505,22 +505,22 @@ var eGActions = {
       var width;
       var height;
       
-      if (eGc.image.style.width === "") {
-        width = eGc.image.width * 0.5 + "px";
+      if (eGm.imageElement.style.width === "") {
+        width = eGm.imageElement.width * 0.5 + "px";
       }
       else {
-        width = parseInt(eGc.image.style.width, 10) * 0.5 + "px";
+        width = parseInt(eGm.imageElement.style.width, 10) * 0.5 + "px";
       }
       
-      if (eGc.image.style.height === "") {
-        height = eGc.image.height * 0.5 + "px";
+      if (eGm.imageElement.style.height === "") {
+        height = eGm.imageElement.height * 0.5 + "px";
       }
       else {
-        height = parseInt(eGc.image.style.height, 10) * 0.5 + "px";
+        height = parseInt(eGm.imageElement.style.height, 10) * 0.5 + "px";
       }
       
-      eGc.image.style.width = width;
-      eGc.image.style.height = height;
+      eGm.imageElement.style.width = width;
+      eGm.imageElement.style.height = height;
     }
   }, false, "zoomReset"),
   
@@ -759,7 +759,7 @@ var eGActions = {
   
   searchWeb : new Action("searchWeb", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserSearch.searchBar.value = eGc.selection;
+    window.BrowserSearch.searchBar.value = eGm.selection;
     window.BrowserSearch.webSearch();
   }, false, "quit"),
   
@@ -775,7 +775,7 @@ var eGActions = {
   openLink : new LinkExistsDisableableAction("openLink", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
-    var url = eGc.link.href;
+    var url = eGm.anchorElement.href;
     
     switch (eGm.openLink) {
       case "curTab":
@@ -792,22 +792,23 @@ var eGActions = {
   
   openLinkInNewWindow : new LinkExistsDisableableAction("openLinkInNewWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(eGc.link.href);
+    window.open(eGm.anchorElement.href);
   }, false, "openLinkInNewPrivateWindow"),
   
   openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    this._openInPrivateWindow(eGc.link.href, window);
+    this._openInPrivateWindow(eGm.anchorElement.href, window);
   }, false, "copyLink"),
   
   copyLink : new LinkExistsDisableableAction("copyLink", function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGc.link.href);
+              .copyString(eGm.anchorElement.href);
   }, false, "saveLinkAs"),
   
   saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
-    this._saveContentFromLink(eGc.link, Components.interfaces.nsIFilePicker.filterHTML);
+    this._saveContentFromLink(eGm.anchorElement,
+                              Components.interfaces.nsIFilePicker.filterHTML);
   }, false, "dailyReadings"),
   
   dailyReadings : new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
@@ -832,7 +833,7 @@ var eGActions = {
   }, false, "bookmarkThisLink"),
   
   bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
-    var url = eGc.link;
+    var url = eGm.anchorElement;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkLink(null, url, url.text);
   }, false, "bookmarkOpenTabs"),
@@ -927,17 +928,17 @@ var eGActions = {
     function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGc.image.src);
+              .copyString(eGm.imageElement.src);
   }, true, "copyImage"),
   
   copyImage : new ImageExistsDisableableAction("copyImage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.document.popupNode = eGc.image;
+    window.document.popupNode = eGm.imageElement;
     window.goDoCommand("cmd_copyImageContents");
   }, false, "saveImageAs"),
   
   saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
-    this._saveContentFromLink(eGc.image.src,
+    this._saveContentFromLink(eGm.imageElement.src,
                               Components.interfaces.nsIFilePicker.filterImages);
   }, false, "hideImages"),
   

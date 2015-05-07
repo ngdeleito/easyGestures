@@ -41,16 +41,11 @@ var eGc = {
   _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
-  contextType: [], // contextLink, contextImage, contextSelection or contextTextbox
   evtMouseDown: null,
   doc: null,
   body: null,
   frame_doc: null,
   loading: false, // used for reload/stop action
-  
-  link: null, // the whole node link
-  image: null,
-  selection: null, //contains the text of the selected object
   
   // used for drag movements in 'open when dragging' situations
   pageYDown: -1,
@@ -167,7 +162,7 @@ function eG_handleMouseup(evt) {
     eGm.setOpen();
     
     var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
-    if (linkSign.style.visibility == "visible" && eGc.link != null && eGm.handleLinks && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
+    if (linkSign.style.visibility == "visible" && eGm.anchorElement != null && eGm.handleLinks && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
       // if a link is clicked without dragging and related option is checked
       // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (eGm.handleLinksAsOpenLink) {
@@ -180,14 +175,14 @@ function eG_handleMouseup(evt) {
           // middle click
           var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("browser.");
           if (prefs.getBoolPref("tabs.opentabfor.middleclick")) {
-            window.gBrowser.addTab(eGc.link.href);
+            window.gBrowser.addTab(eGm.anchorElement.href);
           }
           else {
-            window.open(eGc.link.href);
+            window.open(eGm.anchorElement.href);
           }
         }
         else {
-          window.gBrowser.loadURI(eGc.link.href);
+          window.gBrowser.loadURI(eGm.anchorElement.href);
         }
       }
       eGm.close();
@@ -266,60 +261,12 @@ function eG_handleMousedown(evt) {
   eGc.evtMouseDown.originalTarget = evt.originalTarget;
   eGc.evtMouseDown.view=evt.view;
   
-  eGc.image = null; // removes the pointed image if any
-  eGc.link = null; // removes the pointed link if any
-  eGc.selection = null; // removes the selected text if any
-  
   // identify context, find body etc
   eGc.doc = evt.target.ownerDocument;
   eGc.frame_doc = evt.originalTarget.ownerDocument;
   eGc.body = eGc.frame_doc.documentElement;
   
-  eGc.selection = eG_getSelection();
-  
-  // <a> elements cannot be nested
-  // <a> elements cannot have <input> and <textarea> elements as descendants
-  // <area>, <img> and <input> elements cannot have children
-  // <textarea> cannot have other elements as children, only character data
-  eGc.contextType = [];
-  var node = evt.target;
-  if (node instanceof window.HTMLInputElement &&
-      (node.type.toUpperCase() === "EMAIL" ||
-       node.type.toUpperCase() === "NUMBER" ||
-       node.type.toUpperCase() === "PASSWORD" || 
-       node.type.toUpperCase() === "SEARCH" ||
-       node.type.toUpperCase() === "TEL" ||
-       node.type.toUpperCase() === "TEXT" ||
-       node.type.toUpperCase() === "URL")) {
-    eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
-    eGc.contextType.push("contextTextbox");
-  }
-  else if (node instanceof window.HTMLTextAreaElement) {
-    eGc.selection = node.value.substring(node.selectionStart, node.selectionEnd);
-    eGc.contextType.push("contextTextbox");
-  }
-  else if (node instanceof window.HTMLAreaElement &&
-           node.href !== null && node.href !== "") {
-    eGc.link = node;
-    eGc.contextType.push("contextLink");
-  }
-  else {
-    if (node instanceof window.HTMLImageElement) {
-      eGc.image = node;
-      eGc.contextType.push("contextImage");
-    }
-    
-    while (node !== null && !(node instanceof window.HTMLAnchorElement)) {
-      node = node.parentElement;
-    }
-    if (node !== null && node.href !== null && node.href !== "") {
-      eGc.link = node;
-      eGc.contextType.push("contextLink");
-    }
-  }
-  if (eGc.selection !== "") {
-    eGc.contextType.push("contextSelection");
-  }
+  eGm.determinePossibleContextualMenus(evt.target, window, eG_getSelection());
   
   eGc.pageYDown = evt.pageY;
   eGc.clientXDown = evt.clientX;
@@ -380,10 +327,10 @@ function eG_openMenu() {
     }
   }
   
-  if (eGc.contextType.length !== 0 &&
+  if (eGm.contextualMenus.length !== 0 &&
       (!eGm.contextShowAuto && eGc.keyPressed === eGm.contextKey && eGm.contextKey !== 0) ||
       (eGm.contextShowAuto && (eGc.keyPressed !== eGm.contextKey || eGm.contextKey === 0))) {
-    eGm.show(eGc.contextType[0]);
+    eGm.show(eGm.contextualMenus[0]);
   }
   else {
     eGm.show("main");
