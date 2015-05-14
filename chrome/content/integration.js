@@ -266,7 +266,7 @@ function eG_handleMousedown(evt) {
   eGc.frame_doc = evt.originalTarget.ownerDocument;
   eGc.body = eGc.frame_doc.documentElement;
   
-  eGm.determinePossibleContextualMenus(evt.target, window, eG_getSelection());
+  eGm.setContext(evt.target, window, eG_getSelection());
   
   eGc.pageYDown = evt.pageY;
   eGc.clientXDown = evt.clientX;

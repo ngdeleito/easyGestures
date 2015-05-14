@@ -1037,7 +1037,7 @@ eG_menu.prototype = {
            (this.contextShowAuto && !rightKey);
   },
   
-  determinePossibleContextualMenus : function(anHTMLElement, window, selection) {
+  setContext : function(anHTMLElement, window, selection) {
     // <a> elements cannot be nested
     // <a> elements cannot have <input> and <textarea> elements as descendants
     // <area>, <img> and <input> elements cannot have children
