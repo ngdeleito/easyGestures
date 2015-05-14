@@ -1031,6 +1031,12 @@ eG_menu.prototype = {
     }
   },
   
+  canContextualMenuBeOpened : function(aKeyPressed) {
+    var rightKey = this.contextKey !== 0 && aKeyPressed === this.contextKey;
+    return (!this.contextShowAuto && rightKey) ||
+           (this.contextShowAuto && !rightKey);
+  },
+  
   determinePossibleContextualMenus : function(anHTMLElement, window, selection) {
     // <a> elements cannot be nested
     // <a> elements cannot have <input> and <textarea> elements as descendants

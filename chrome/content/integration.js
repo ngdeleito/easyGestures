@@ -328,8 +328,7 @@ function eG_openMenu() {
   }
   
   if (eGm.contextualMenus.length !== 0 &&
-      (!eGm.contextShowAuto && eGc.keyPressed === eGm.contextKey && eGm.contextKey !== 0) ||
-      (eGm.contextShowAuto && (eGc.keyPressed !== eGm.contextKey || eGm.contextKey === 0))) {
+      eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
     eGm.show(eGm.contextualMenus[0]);
   }
   else {
