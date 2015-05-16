@@ -40,8 +40,8 @@
 <!ENTITY activation.altKey "Alt key">
 <!ENTITY activation.customKey "Custom key">
 <!ENTITY activation.keycode "key code">
-<!ENTITY activation.contextualMenu "Activate contextual sensitivity with">
-<!ENTITY activation.contextualMenu.showAuto "Always activated. Use same key for suppressing sensitivity.">
+<!ENTITY activation.contextualMenu "Activate contextual menu with">
+<!ENTITY activation.contextualMenu.showAuto "Activate it automatically (and use the above key to show the main pie menu)">
 
 <!ENTITY behavior.menuType "Menu type">
 <!ENTITY behavior.menuType.standard "Standard (8 actions)">
@@ -106,7 +106,7 @@
 <!ENTITY tips.menusCustomization "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "You can execute a piece of Javascript code with the 'Run script' actions.|Customize the 'Run script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "A fast enough pie menu click on a link without moving will open the link in a new tab.">
-<!ENTITY tips.contextualMenus "You can activate context sensitivity by pressing the 'Ctrl' key when opening the pie menu. You can also turn context sensitivity always on.|Change behavior in &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "By default, you can activate the contextual menu by pressing the 'Ctrl' key while opening the pie menu. You can change this key and turn on the automatic activation of the contextual menu.|Change behavior in &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tips.suppressPriority "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
 <!ENTITY tips.moveMenu "You can move around the pie menu by holding 'Shift' key while moving the mouse.">

@@ -51,8 +51,8 @@
 <!ENTITY activation.altKey "La touche Alt">
 <!ENTITY activation.customKey "Une autre touche">
 <!ENTITY activation.keycode "code de la touche">
-<!ENTITY activation.contextualMenu "Activer sensibilité contextuelle avec">
-<!ENTITY activation.contextualMenu.showAuto "Toujours activée. Utiliser la même touche pour supprimer sensibilité.">
+<!ENTITY activation.contextualMenu "Activer le menu contextuel avec">
+<!ENTITY activation.contextualMenu.showAuto "L'activer automatiquement (et utiliser la touche ci-dessus pour montrer le menu principal)">
 
 <!ENTITY behavior.menuType "Type de menu">
 <!ENTITY behavior.menuType.standard "Standard (8 actions)">
@@ -117,7 +117,7 @@
 <!ENTITY tips.menusCustomization "Vous pouvez personnaliser tous les plans du menu circulaire avec plusieurs actions prédéfinies. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.|Ajoutez ou retirez actions dans &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter script'.|Personnalisez les actions 'Exécuter script' dans &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "En cliquant suffisamment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
-<!ENTITY tips.contextualMenus "Vous pouvez activer la sensibilité contextuelle en appuyant sur la touche 'Ctrl' pour ouvrir le menu circulaire. Vous pouvez aussi rendre la sensibilité contextuelle toujours active.|Changez le comportement dans &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Par défault, vous pouvez activer le menu contextuel en appuyant sur la touche 'Ctrl' lors de l'ouverture du menu circulaire. Vous pouvez changer cette touche et activer l'activation automatique du menu contextuel.|Changez le comportement dans &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
 <!ENTITY tips.suppressPriority "En maintenant la touche Insert appuyée sur un clic du bouton droit, vous pouvez supprimer le menu circulaire et accéder au menu contextuel standard.">
 <!ENTITY tips.moveMenu "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">

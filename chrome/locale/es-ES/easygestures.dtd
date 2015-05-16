@@ -52,8 +52,8 @@
 <!ENTITY activation.altKey "La tecla Alt">
 <!ENTITY activation.customKey "Otra tecla">
 <!ENTITY activation.keycode "código de la tecla">
-<!ENTITY activation.contextualMenu "Activar sensibilidad al contexto con">
-<!ENTITY activation.contextualMenu.showAuto "Siempre activado. Usar la misma tecla para desactivar la sensibilidad.">
+<!ENTITY activation.contextualMenu "Activar el menú contextual con">
+<!ENTITY activation.contextualMenu.showAuto "Activarlo automáticamente (y usar esta tecla para mostrar el menú principal)">
 
 <!ENTITY behavior.menuType "Tipo de menú">
 <!ENTITY behavior.menuType.standard "Estándar (8 acciones)">
@@ -118,7 +118,7 @@
 <!ENTITY tips.menusCustomization "Puede personalizar todas las entradas del menú circular usando las acciones disponibles. Las estadísticas de uso pueden ayudarle a optimizar el menú circular.|Añada o elimine acciones desde &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "Puede ejecutar código Javascript usando las acciones &apos;Ejecutar script&apos;.|Configure las acciones 'Ejecutar script' en &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña.">
-<!ENTITY tips.contextualMenus "Puede activar la sensibilidad al contexto pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. También puede activar permanentemente la sensibilidad al contexto.|Cambie el comportamiento en &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Por defecto, puede activar el menú contextual pulsando la tecla &apos;Ctrl&apos; al abrir el menú circular. Puede cambiar esta tecla y activar la activación automática del menú contextual.|Cambie el comportamiento en &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "Puede realizar una búsqueda con uno de sus motores de búsqueda con la acción 'Buscar en la web'. Si hay texto seleccionado, la selección se copiará en el campo de búsquedas. Pulse 'Enter' para realizar la búsqueda.">
 <!ENTITY tips.suppressPriority "Pulsando la tecla Insert puede suprimir el menú circular y acceder al menú contextual estándar.">
 <!ENTITY tips.moveMenu "Puede desplazar el menú circular manteniendo pulsada la tecla mayúsculas mientras mueve el ratón.">
