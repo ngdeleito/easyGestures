@@ -162,7 +162,7 @@ function eG_handleMouseup(evt) {
     eGm.setOpen();
     
     var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
-    if (linkSign.style.visibility == "visible" && (evt.button != eGm.showAltButton && eGm.showButton != eGm.showAltButton || eGm.showButton == eGm.showAltButton)) {
+    if (linkSign.style.visibility == "visible") {
       // if a link is clicked without dragging and related option is checked
       // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (eGm.handleLinksAsOpenLink) {
