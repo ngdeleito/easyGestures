@@ -1091,6 +1091,36 @@ eG_menu.prototype = {
     }
   },
   
+  openLinkThroughPieMenuCenter : function(clickedButton) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
+    
+    if (linkSign.style.visibility === "visible") {
+      // if a link is clicked without dragging and related option is checked
+      // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
+      if (this.handleLinksAsOpenLink) {
+        eGActions.openLink.run();
+      }
+      else {
+        // when option "use browser behavior" is checked to open links
+        // middle clicking on a link through eG must display the link in a new tab or new window according to corresponding Firefox pref.
+        if (clickedButton === 1) {
+          // middle click
+          if (Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick")) {
+            window.gBrowser.addTab(this.anchorElement.href);
+          }
+          else {
+            window.open(this.anchorElement.href);
+          }
+        }
+        else {
+          window.gBrowser.loadURI(this.anchorElement.href);
+        }
+      }
+      this.close();
+    }
+  },
+  
   removeExistingMenusFromPages : function() {
     var removeMenus = function(element) {
       var document = this.gBrowser.getBrowserForTab(element).contentDocument;

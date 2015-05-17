@@ -160,33 +160,7 @@ function eG_handleMouseup(evt) {
   }
   else if (eGm.isJustOpened()) {
     eGm.setOpen();
-    
-    var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
-    if (linkSign.style.visibility == "visible") {
-      // if a link is clicked without dragging and related option is checked
-      // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
-      if (eGm.handleLinksAsOpenLink) {
-        eGActions.openLink.run();
-      }
-      else {
-        // when option "use browser behavior" is checked to open links
-        // middle clicking on a link through eG must display the link in a new tab or new window according to corresponding Firefox pref.
-        if (evt.button == 1) {
-          // middle click
-          var prefs = Components.classes["@mozilla.org/preferences-service;1"].getService(Components.interfaces.nsIPrefService).getBranch("browser.");
-          if (prefs.getBoolPref("tabs.opentabfor.middleclick")) {
-            window.gBrowser.addTab(eGm.anchorElement.href);
-          }
-          else {
-            window.open(eGm.anchorElement.href);
-          }
-        }
-        else {
-          window.gBrowser.loadURI(eGm.anchorElement.href);
-        }
-      }
-      eGm.close();
-    }
+    eGm.openLinkThroughPieMenuCenter(evt.button);
   }
   else if (eGm.isJustOpenedAndMouseMoved()) {
     if (eGm.sector !== -1) {
