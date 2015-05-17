@@ -103,7 +103,7 @@ function eG_countClicks(anEvent) {
   }
 }
 
-function eG_handleKeyup(event) {
+function eG_handleKeyup() {
   eGc.keyPressed = 0;
 }
 
