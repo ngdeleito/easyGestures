@@ -946,9 +946,24 @@ var eGActions = {
   
   addOns : new Action("addOns", function() {
     this._showOrOpenTab("about:addons");
+  }, false, "easyGesturesNPreferences"),
+  
+  easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
+    var openWindows = Services.wm.getEnumerator(null);
+    var found = false;
+    var window;
+    
+    while (openWindows.hasMoreElements() && !found) {
+      window = openWindows.getNext();
+      found = window.location.href === "chrome://easygestures/content/options.xul";
+    }
+    if (found) {
+      window.focus();
+    }
+    else {
+      window.openDialog("chrome://easygestures/content/options.xul", "", "");
+    }
   }, false, "copyImageLocation"),
-  
-  
   
   copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
     function() {
