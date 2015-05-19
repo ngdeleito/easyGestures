@@ -141,6 +141,24 @@ Action.prototype = {
   _openInPrivateWindow: function(URL, window) {
     window.open(URL, "_blank",
                 "toolbar,location,personalbar,resizable,scrollbars,private");
+  },
+  
+  _showOrOpenTab: function(aURL) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var gBrowser = window.gBrowser;
+    var i;
+    var found = false;
+    
+    for (i = 0; i < gBrowser.tabs.length && !found; i++) {
+      let browser = gBrowser.getBrowserForTab(gBrowser.tabs[i]);
+      found = browser.currentURI.spec === aURL;
+    }
+    if (found) {
+      gBrowser.selectedTab = gBrowser.tabs[--i];
+    }
+    else {
+      gBrowser.selectedTab = gBrowser.addTab(aURL);
+    }
   }
 };
 
@@ -920,7 +938,11 @@ var eGActions = {
   
   runScript9 : new RunScriptAction(9, false, "runScript10"),
   
-  runScript10 : new RunScriptAction(10, false, "copyImageLocation"),
+  runScript10 : new RunScriptAction(10, false, "firefoxPreferences"),
+  
+  firefoxPreferences : new Action("firefoxPreferences", function() {
+    this._showOrOpenTab("about:preferences");
+  }, false, "copyImageLocation"),
   
   
   
