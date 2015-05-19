@@ -942,6 +942,10 @@ var eGActions = {
   
   firefoxPreferences : new Action("firefoxPreferences", function() {
     this._showOrOpenTab("about:preferences");
+  }, true, "addOns"),
+  
+  addOns : new Action("addOns", function() {
+    this._showOrOpenTab("about:addons");
   }, false, "copyImageLocation"),
   
   

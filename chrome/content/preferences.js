@@ -511,7 +511,7 @@ var eGPrefs = {
     this._prefs.deleteBranch("menus.contextTextboxFirst");
     
     var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
-    var newActions = ["firefoxPreferences"];
+    var newActions = ["firefoxPreferences", "addOns"];
     newActions.forEach(function(actionName) {
       actionsStats[actionName] = 0;
     });

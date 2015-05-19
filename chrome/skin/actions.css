@@ -450,6 +450,10 @@ div.firefoxPreferences[grayed="true"] { background-position: -256px -576px !impo
 div.firefoxPreferences { background-position: -256px -608px !important ; }
 div.firefoxPreferences[grayed="false"][active="true"] { background-position: -256px -640px !important ; }
 
+div.addOns[grayed="true"] { background-position: -288px -576px !important ; }
+div.addOns { background-position: -288px -608px !important ; }
+div.addOns[grayed="false"][active="true"] { background-position: -288px -640px !important ; }
+
 div.copyImageLocation[grayed="true"] { background-position: -128px -480px !important ; }
 div.copyImageLocation { background-position: -128px -512px !important ; }
 div.copyImageLocation[grayed="false"][active="true"] { background-position: -128px -544px !important ; }
@@ -952,6 +956,11 @@ div.small_firefoxPreferences[grayed="true"] { background-position: -160px -360px
 div.small_firefoxPreferences { background-position: -160px -380px !important ; }
 div.small_firefoxPreferences[grayed="false"][active="true"] { background-position: -160px -400px !important ; }
 image.small_firefoxPreferences { -moz-image-region: rect(380px 180px 400px 160px) !important ; }
+
+div.small_addOns[grayed="true"] { background-position: -180px -360px !important ; }
+div.small_addOns { background-position: -180px -380px !important ; }
+div.small_addOns[grayed="false"][active="true"] { background-position: -180px -400px !important ; }
+image.small_addOns { -moz-image-region: rect(380px 200px 400px 180px) !important ; }
 
 div.small_copyImageLocation[grayed="true"] { background-position: -80px -300px !important ; }
 div.small_copyImageLocation { background-position: -80px -320px !important ; }
