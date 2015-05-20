@@ -1124,7 +1124,7 @@ eG_menu.prototype = {
   removeExistingMenusFromPages : function() {
     var removeMenus = function(element) {
       var document = this.gBrowser.getBrowserForTab(element).contentDocument;
-      var easyGesturesNode = document.getElementById(this.easyGesturesID);
+      var easyGesturesNode = document.getElementById(eGm.easyGesturesID);
       if (easyGesturesNode !== null) {
         easyGesturesNode.parentNode.removeChild(easyGesturesNode);
       }
