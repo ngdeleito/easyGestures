@@ -538,7 +538,7 @@ var eGPrefsObserver = {
 
   observe: function() {
     // removing existing easyGestures menus from open web pages
-    eGm.removeExistingMenusFromPages();
+    eGm.removeFromAllPages();
     
     // rebulding the menu
     eGm = new eG_menu();

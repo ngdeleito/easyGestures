@@ -203,7 +203,7 @@ function shutdown() {
   eGPrefsObserver.unregister();
   
   // removing existing easyGestures menus from open web pages
-  eGm.removeExistingMenusFromPages();
+  eGm.removeFromAllPages();
   
   // unregistering style sheet
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]

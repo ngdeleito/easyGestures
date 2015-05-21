@@ -1133,7 +1133,7 @@ eG_menu.prototype = {
     }
   },
   
-  removeExistingMenusFromPages : function() {
+  removeFromAllPages : function() {
     var removeMenus = function(element) {
       var document = this.gBrowser.getBrowserForTab(element).contentDocument;
       var easyGesturesNode = document.getElementById(eGm.easyGesturesID);
