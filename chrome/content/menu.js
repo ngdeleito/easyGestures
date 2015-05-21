@@ -377,6 +377,11 @@ eG_menu.prototype = {
   createEasyGesturesNode : function(aDocument) {
     var aDiv = aDocument.createElementNS(this.HTMLNamespace, "div");
     aDiv.setAttribute("id", this.easyGesturesID);
+    
+    aDocument.defaultView.addEventListener("unload", function() {
+      eGm.removeFromDocument(aDocument);
+    }, true);
+    
     return aDiv;
   },
   
@@ -1118,6 +1123,13 @@ eG_menu.prototype = {
         }
       }
       this.close();
+    }
+  },
+  
+  removeFromDocument : function(document) {
+    var easyGesturesNode = document.getElementById(this.easyGesturesID);
+    if (easyGesturesNode !== null) {
+      easyGesturesNode.parentNode.removeChild(easyGesturesNode);
     }
   },
   
