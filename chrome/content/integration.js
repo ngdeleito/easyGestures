@@ -67,8 +67,6 @@ var eGc = {
   }
 };
 
-var eGm = null;
-
 function eG_activateMenu(window) {
   // setting events handlers
   window.gBrowser.addEventListener("mousedown", eG_handleMousedown, true);

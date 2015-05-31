@@ -34,7 +34,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported eGPrefs, eGPrefsObserver */
-/* global eGActions */
+/* global eGActions, eGm */
 
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),

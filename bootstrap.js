@@ -32,6 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* exported eGm */
 /* global eGPrefs, eGPrefsObserver */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
@@ -78,6 +79,8 @@ stringBundle.prototype = {
     return this.stringBundle.GetStringFromName(stringName);
   }
 };
+
+var eGm = null;
 
 function loadEasyGesturesOn(window) {
   // making sure that easyGestures is only loaded on navigator windows and not

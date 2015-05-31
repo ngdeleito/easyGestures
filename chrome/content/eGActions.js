@@ -58,7 +58,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported eGActions */
-/* global eGPrefs, Downloads */
+/* global eGm, eGPrefs, Downloads */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
