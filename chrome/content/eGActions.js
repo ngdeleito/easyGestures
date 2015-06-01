@@ -58,7 +58,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported eGActions */
-/* global eGm, eGPrefs, Downloads */
+/* global eGm, eGPrefs, eGStrings, Downloads */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -82,7 +82,7 @@ Action.prototype = {
   },
   
   getLabel: function() {
-    return eGc.localizing.getString(this._name);
+    return eGStrings.getString(this._name);
   },
   
   getXULLabel: function() {
@@ -336,7 +336,7 @@ NumberedAction.prototype.getLabel = function() {
     return label;
   }
   // otherwise use the default label
-  return eGc.localizing.getString(this._name);
+  return eGStrings.getString(this._name);
 };
 
 function LoadURLAction(number, startsNewGroup, nextAction) {

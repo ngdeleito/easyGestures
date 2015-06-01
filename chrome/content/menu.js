@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGActions, eGm, eGPrefs */
+/* global eGActions, eGm, eGPrefs, eGStrings */
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -179,7 +179,7 @@ ContextualMenuLayout.prototype.updateMenuSign = function() {
   var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
   var contextMenuSign = specialNodes.childNodes[3];
   
-  contextMenuSign.textContent = eGc.localizing.getString(this.name);
+  contextMenuSign.textContent = eGStrings.getString(this.name);
   contextMenuSign.style.visibility = "visible";
   if (this._pieMenu.contextualMenus.length > 1) {
     contextMenuSign.className = "withAltSign";

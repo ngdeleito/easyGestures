@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eGm */
+/* exported eGm, eGStrings */
 /* global eGPrefs, eGPrefsObserver */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
@@ -80,6 +80,7 @@ stringBundle.prototype = {
   }
 };
 
+var eGStrings = null;
 var eGm = null;
 
 function loadEasyGesturesOn(window) {
@@ -153,7 +154,7 @@ function startup(data, reason) {
     }
     
     // getting access to localization strings
-    eGc.localizing = new stringBundle(addon);
+    eGStrings = new stringBundle(addon);
     
     // start listening to changes in preferences that could require rebuilding
     // the menus
