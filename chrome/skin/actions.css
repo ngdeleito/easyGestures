@@ -46,13 +46,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   position: absolute;
 }
 
-#easyGesturesPieMenu [id^="eG_"] {
-  display: block;
-  border-width: 0;
-  color: black;
-  line-height: 0.8;
-}
-
 #eG_SpecialNodes {
   z-index: 2147483647;
 }
@@ -135,7 +128,10 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu [id^="eG_label_"] {
   width: 250px;
+  height: 1em;
+  color: black;
   font-family: sans-serif;
+  font-size: 1em;
 }
 
 
