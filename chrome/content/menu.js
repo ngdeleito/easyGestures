@@ -1036,6 +1036,12 @@ eG_menu.prototype = {
     }
   },
   
+  canLayoutBeSwitched : function(aButtonPressed) {
+    return aButtonPressed === this.showAltButton &&
+           (this.showAltButton !== this.showButton ||
+            this.showAltButton === this.showButton && this.sector === -1);
+  },
+  
   canContextualMenuBeOpened : function(aKeyPressed) {
     var rightKey = this.contextKey !== 0 && aKeyPressed === this.contextKey;
     return (!this.contextShowAuto && rightKey) ||

@@ -205,7 +205,7 @@ function eG_handleMousedown(evt) {
     // toggle primitive/alternative pie menu
     eGm.autoscrollingState = false; // disable autoscrolling if any
     
-    if (evt.button == eGm.showAltButton && (eGm.showAltButton != eGm.showButton || eGm.sector == -1 && eGm.showAltButton == eGm.showButton)) {
+    if (eGm.canLayoutBeSwitched(evt.button)) {
       eGm.switchLayout();
     }
     evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
