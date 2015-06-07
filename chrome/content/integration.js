@@ -215,7 +215,6 @@ function eG_handleMousedown(evt) {
   // check if menu should not be displayed
   if (!eGm.canBeOpened(evt)) {
     eGc.unblockStdContextMenu();
-    eGc.keyPressed = 0;
     return;
   }
   
