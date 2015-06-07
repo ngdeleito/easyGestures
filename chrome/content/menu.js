@@ -1036,6 +1036,14 @@ eG_menu.prototype = {
     }
   },
   
+  canBeOpened : function(aMouseEvent) {
+    return aMouseEvent.button === this.showButton &&
+           (this.showKey === 0 ||
+            (this.showKey === 16 && aMouseEvent.shiftKey) ||
+            (this.showKey === 17 && aMouseEvent.ctrlKey)) &&
+           (this.suppressKey === 0 || eGc.keyPressed !== this.suppressKey);
+  },
+  
   canLayoutBeSwitched : function(aButtonPressed) {
     return aButtonPressed === this.showAltButton &&
            (this.showAltButton !== this.showButton ||
