@@ -789,12 +789,12 @@ function preparePreferenceValueForDailyReadings(aTreeElement) {
 }
 
 function resetOnDuplicatedKeys(menulist, textbox) {
-  var contextKeyCode = document.getElementById("customContextKeyCode").value;
-  var supprKeyCode = document.getElementById("customSupprKeyCode").value;
+  var supprKey = document.getElementById("customSupprKeyCode").value;
+  var contextKey = document.getElementById("customContextKeyCode").value;
   
-  if ((contextKeyCode == supprKeyCode) && contextKeyCode !== 0) {
-    menulist.value = 0;
-    textbox.value = 0;
+  if (contextKey !== "0" && supprKey === contextKey) {
+    menulist.value = "0";
+    textbox.value = "0";
     alert(document.getElementById("easyGesturesNStrings")
                   .getString("activation.duplicateKey"));
   }
