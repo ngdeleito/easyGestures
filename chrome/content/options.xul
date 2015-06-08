@@ -123,7 +123,7 @@
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
     <label value="&activation.open.with.and;" class="header" />
-    <radiogroup preference="showKey" style="margin-left: 1em">
+    <radiogroup id="showKeyRadiogroup" preference="showKey" style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this, this);">
       <radio label="&activation.noKey;" value="0" />
       <radio label="&activation.shiftKey;" value="16" />
       <radio label="&activation.ctrlKey;" value="17" />

@@ -789,10 +789,12 @@ function preparePreferenceValueForDailyReadings(aTreeElement) {
 }
 
 function resetOnDuplicatedKeys(menulist, textbox) {
+  var showKey = document.getElementById("showKeyRadiogroup").value;
   var supprKey = document.getElementById("customSupprKeyCode").value;
   var contextKey = document.getElementById("customContextKeyCode").value;
   
-  if (contextKey !== "0" && supprKey === contextKey) {
+  if ((showKey !== "0" && (showKey === supprKey || showKey === contextKey)) ||
+      (supprKey !== "0" && (supprKey === contextKey))) {
     menulist.value = "0";
     textbox.value = "0";
     alert(document.getElementById("easyGesturesNStrings")
