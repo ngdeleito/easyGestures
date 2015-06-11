@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。|アクションを入れ替える &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
-<!ENTITY tips.contextualMenus "パイメニューを開く時に Ctrl キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "パイメニューを開く時に Alt キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。|挙動を変更する &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "右クリックするときに Insert キーを押していると、パイメニューではなく通常のコンテキストメニューが表示されます。">
+<!ENTITY tips.preventOpen "右クリックするときに Insert キーを押していると、パイメニューではなく通常のコンテキストメニューが表示されます。">
 <!ENTITY tips.moveMenu "Shift キーを押している間、パイメニューを自由に移動させることができます。">
 <!ENTITY tips.tooltips "ツールチップに表示されるアクション名を変更したり、もし必要でないならツールチップを無効にすることもできます。|表示設定を変更する &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "ぴかぴかの初期スキンのまま使うこともできますし、もしテキスト志向の強い方でしたら、アイコンなしの基本表示にもできます。小さいアイコンに切り替えることもできます。|Change the pie menu display in &preferences;/&behavior;">

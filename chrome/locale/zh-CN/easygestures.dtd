@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。|添加或删除动作在 选项/动作">
 <!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
-<!ENTITY tips.contextualMenus "你可以在圆饼菜单打开时点击“Ctrl”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
+<!ENTITY tips.contextualMenus "你可以在圆饼菜单打开时点击“Alt”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "你可以按住“Insert”键来临时禁止圆饼菜单，使用标准的页面右键菜单。">
+<!ENTITY tips.preventOpen "你可以按住“Insert”键来临时禁止圆饼菜单，使用标准的页面右键菜单。">
 <!ENTITY tips.moveMenu "您可以拖动圆饼菜单，按住“Shift”拖动。">
 <!ENTITY tips.tooltips "如果你不需要显示工具提示，你可以关掉它。还可以重命名每个动作提示。|选择关掉提示在 选项/动作">
 <!ENTITY tips.smallIcons "你可以使用默认的圆形图标显示，或者使用小型图标取代，如果你喜欢简单的文字模式，也可以改用没有图标的基本显示。|Change the pie menu display in &preferences;/&behavior;">

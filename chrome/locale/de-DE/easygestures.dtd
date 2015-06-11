@@ -121,7 +121,7 @@
 <!ENTITY tips.clickOnLink "Ein ausreichend schneller Kreismenü-Klick auf einen Link ohne Bewegung der Maus öffnet diesen in einem neuen Tab.">
 <!ENTITY tips.contextualMenus "Kontextabhängige Menüreaktionen (für Links, Grafiken, Auswahl und Textfelder) können durch Drücken der Strg-Taste während des Öffnens des Kreismenüs aufgerufen werden, lassen sich aber auch dauerhaft aktivieren.|Verhalten unter Einstellungen/Verhalten anpassen">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
+<!ENTITY tips.preventOpen "Durch Drücken der Einfügen-Taste kann das Kreismenü unterdrückt und stattdessen das normale Kontextmenü aufgerufen werden.">
 <!ENTITY tips.moveMenu "Das Kreismenü kann bei gedrückter Umschalttaste mit der Maus verschoben werden.">
 <!ENTITY tips.tooltips "Die Anzeige der Tooltips (Aktionsbeschreibungen) kann deaktiviert werden, wenn man sie nicht benötigt.|Tooltips unter &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "Es kann von der standardmäßigen Anzeige mit Symbolen zu einer Basisanzeige ohne Symbole gewechselt werden, falls man eher textorientiert arbeitet. Es kann außerdem eine Anzeige mit kleinen Symbolen gewählt werden.|Change the pie menu display in &preferences;/&behavior;">

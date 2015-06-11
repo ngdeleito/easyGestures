@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "Můžete si přizpůsobit kruhovou nabídku výběrem z mnoha předdefinovaných akcí. Statistika použití Vám pomůže optimalizovat kruhovou nabídku. Akce přidáte anebo odstraníte v Možnosti/Akce">
 <!ENTITY tips.runScriptActions "Můžete spustit kód JavaScriptu pomocí akcí &apos;Načíst Skript&apos;.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
-<!ENTITY tips.contextualMenus "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Ctrl&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
+<!ENTITY tips.contextualMenus "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Alt&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "Podržením klávesy &apos;Insert&apos; můžete potlačit zobrazení kruhové nabídky a přistoupit k standardní kontextové nabídce.">
+<!ENTITY tips.preventOpen "Podržením klávesy &apos;Insert&apos; můžete potlačit zobrazení kruhové nabídky a přistoupit k standardní kontextové nabídce.">
 <!ENTITY tips.moveMenu "Můžete hýbat s kruhovou nabídkou stiskem klávesy &apos;Shift&apos; při pohybu myší.">
 <!ENTITY tips.tooltips "Můžete vypnout zobrazování popisků, pokud je nepotřebujete. Také je možné změnit popis každé akce. Zobrazení vypnete v Možnosti/Chování">
 <!ENTITY tips.smallIcons "Můžete si nechat předvolený nablýskaný vzhled, anebo přepnout do základního zobrazení bez ikon, pokud jste textově orientovaní. Můžete také přepnout zobrazení na malé ikony.">

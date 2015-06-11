@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "Puoi personalizzare tutta la disposizione dei comandi del menu usando un gran numero di azioni predefinite. Ance le Statistiche d'uso aiutano ad ottimizzare il menu circolare.|Aggiungi o rimuovi azioni in &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "Puoi eseguire codice javascript con le azioni 'Carica Script'.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Un click sufficientemente rapido del menu circolare su di un collegamento senza movimenti aprirà il collegamento in una nuova linguetta.">
-<!ENTITY tips.contextualMenus "Puoi attivare la sensibilità al contesto premendo il tasto 'Ctrl' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva.|Modifica il comportamento in &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Puoi attivare la sensibilità al contesto premendo il tasto 'Alt' mentre apri il menu circolare. Puoi anche far sì che la sensibilità al contesto rimanga sempre attiva.|Modifica il comportamento in &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "Tenendo premuto il tasto 'Insert' mentre si preme il tasto destro del mouse, puoi sopprimere il menu circolare e accedere al menu contestuale standard.">
+<!ENTITY tips.preventOpen "Tenendo premuto il tasto 'Insert' mentre si preme il tasto destro del mouse, puoi sopprimere il menu circolare e accedere al menu contestuale standard.">
 <!ENTITY tips.moveMenu "Puoi muovere il menu circolare tenendo premuto il tasto 'Shift' mentre si muove il mouse.">
 <!ENTITY tips.tooltips "Puoi disattivare i tooltips se non ti servono.|Disattiva in &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "Puoi mantenere l'aspetto di default o passare a una modalità base con testo e senza icone se ti è più comodo. Puoi anche usare una modalità con icone piccole.|Change the pie menu display in &preferences;/&behavior;">

@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "Môžete si prispôsobiť koláčovú ponuku výberom z mnohých preddefinovaných akcií. Štatistika použitia vám pomôže optimalizovať koláčovú ponuku. Akcie pridáte alebo odstránite v &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "Môžete spustiť kód JavaScriptu pomocou akcií &apos;Načítať Skript&apos;.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Stlačením tlačidla (na zobrazenie ponuky) bez ťahania sa otvorí odkaz na novej karte a zobrazí sa červená značka na stránke, kde je tento odkaz.">
-<!ENTITY tips.contextualMenus "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Ctrl&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Môžete aktivovať kontextovú citlivosť stlačením klávesu &apos;Alt&apos; pri otváraní koláčovej ponuky. Kontextová citlivosť môže byť aj vždy zapnutá. Správanie zmeníte v &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "Podržaním klávesu &apos;Insert&apos; môžete potlačiť zobrazenie koláčovej ponuky a pristúpiť k štandardnej kontextovej ponuke.">
+<!ENTITY tips.preventOpen "Podržaním klávesu &apos;Insert&apos; môžete potlačiť zobrazenie koláčovej ponuky a pristúpiť k štandardnej kontextovej ponuke.">
 <!ENTITY tips.moveMenu "Môžete hýbať s koláčovou ponukou stlačením klávesu &apos;Shift&apos; pri pohybe myšou.">
 <!ENTITY tips.tooltips "Môžete vypnúť zobrazovanie popisov, ak ich nepotrebujete.|Zobrazenie vypnete v &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "Môžete si nechať predvolený nablýskaný vzhľad, alebo prepnúť do základného zobrazenia bez ikon, ak ste textovo orientovaný. Môžete tiež prepnúť zobrazenie na malé ikony.|Change the pie menu display in &preferences;/&behavior;">

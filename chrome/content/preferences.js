@@ -91,23 +91,19 @@ var eGPrefs = {
     if (window.navigator.userAgent.indexOf("Mac") == -1) {
       this._prefs.setIntPref("activation.showButton", 1); // middle button
       this._prefs.setIntPref("activation.showKey", 0); // 0=none 16=shift 17=ctrl
-      this._prefs.setIntPref("activation.showAltButton", 2); // right button
-      this._prefs.setIntPref("activation.suppressKey", 45); // 18=alt 45=insert
-      this._prefs.setIntPref("activation.contextKey", 17);
-      this._prefs.setBoolPref("behavior.handleLinksAsOpenLink", true);
+      this._prefs.setIntPref("activation.suppressKey", 17); // ctrl key
     }
     else {
       // mac users need different defaults
       this._prefs.setIntPref("activation.showButton", 0);
       this._prefs.setIntPref("activation.showKey", 16);
-      this._prefs.setIntPref("activation.showAltButton", 2); // a shift-right click on Mac gives a right mouse click
-      this._prefs.setIntPref("activation.suppressKey", 17);
-      this._prefs.setIntPref("activation.contextKey", 0);
-      this._prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
+      this._prefs.setIntPref("activation.suppressKey", 0);
     }
     
     this._prefs.setBoolPref("activation.showAfterDelay", false);
     this._prefs.setIntPref("activation.showAfterDelayValue", 200);
+    this._prefs.setIntPref("activation.showAltButton", 2); // right button
+    this._prefs.setIntPref("activation.contextKey", 18); // alt key
     this._prefs.setBoolPref("activation.contextShowAuto", false); // Show contextual pie menu automatically
     
     this._prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
@@ -119,6 +115,7 @@ var eGPrefs = {
     this._prefs.setIntPref("behavior.tooltipsDelay", 1000);
     this._prefs.setBoolPref("behavior.handleLinks", true);
     this._prefs.setIntPref("behavior.linksDelay", 300);
+    this._prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
     this._prefs.setBoolPref("behavior.autoscrollingOn", false);
     this._prefs.setIntPref("behavior.autoscrollingDelay", 750);
     

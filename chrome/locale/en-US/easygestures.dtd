@@ -106,9 +106,9 @@
 <!ENTITY tips.menusCustomization "You can customize all the pie menu layouts with many built-in actions. Usage statistics will also help you optimize the pie menu.|Add or remove actions in &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "You can execute a piece of Javascript code with the 'Run script' actions.|Customize the 'Run script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "A fast enough pie menu click on a link without moving will open the link in a new tab.">
-<!ENTITY tips.contextualMenus "By default, you can activate the contextual menu by pressing the 'Ctrl' key while opening the pie menu. You can change this key and turn on the automatic activation of the contextual menu.|Change behavior in &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "By default, you can activate the contextual menu by pressing the 'Alt' key while opening the pie menu. You can change this key and turn on the automatic activation of the contextual menu.|Change behavior in &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "By holding 'Insert' key on a right click, you can suppress the pie menu and access the standard contextual menu.">
+<!ENTITY tips.preventOpen "By default, you can prevent the pie menu from opening by holding the 'Ctrl' key. You can change this key in &preferences;/&activation;.">
 <!ENTITY tips.moveMenu "You can move around the pie menu by holding 'Shift' key while moving the mouse.">
 <!ENTITY tips.tooltips "You can switch off the tooltips display if you don't need it.|Switch off tooltips display in &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "You can keep the default shiny display or switch to a basic display without icons if you're a text oriented mind. You can also turn the display to small icons.|Change the pie menu display in &preferences;/&behavior;">

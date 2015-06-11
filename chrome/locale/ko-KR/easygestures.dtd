@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다.|선택사항/동작 내에서 동작 추가 또는 삭제">
 <!ENTITY tips.runScriptActions "&apos;프로그램 파일 실행&apos;와&apos;스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
-<!ENTITY tips.contextualMenus "파이 메뉴를 열 때에 &apos;Ctrl&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
+<!ENTITY tips.contextualMenus "파이 메뉴를 열 때에 &apos;Alt&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다|선택사항/행위/페이지1 내에서 행위 변경">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "오른쪽 클릭할 때 &apos;Insert&apos;키를 누르고 있으면, 원형 메뉴가 아닌 통상의 문맥메뉴가 표시됩니다.">
+<!ENTITY tips.preventOpen "오른쪽 클릭할 때 &apos;Insert&apos;키를 누르고 있으면, 원형 메뉴가 아닌 통상의 문맥메뉴가 표시됩니다.">
 <!ENTITY tips.moveMenu "마우스를 이동하고 있는 동안 &apos;Shift&apos; 키를 누르고 있으면, 원형 메뉴를 자유롭게 이동시킬 수가 있습니다.">
 <!ENTITY tips.tooltips "만약 필요하지 않으면 툴 팁을 꺼 버릴수 있습니다. 툴 팁에 표시되는 각 동작이름을 변경하는 것도 가능합니다.|선택사항/행위/페이지2 내에서 표시끄기">
 <!ENTITY tips.smallIcons "반짝이는 표현을 유지하거나, 만약 글자 기반 취향인 경우 아이콘 없는 기본 표현으로 전환 할 수 있습니다. 작은 아이콘으로도 전환할 수 있습니다.|Change the pie menu display in &preferences;/&behavior;">

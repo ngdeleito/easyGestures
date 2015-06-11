@@ -53,7 +53,7 @@ var tips = [
   new tipEntry(8,  "bookmarksOnlyLayout", "customizations", "0"),
   new tipEntry(9,  "programsAndScripts",  "customizations", "1"),
   new tipEntry(10, "contextual",          "activation",     "0"),
-  new tipEntry(11, "suppressMenu",        "",               "0"),
+  new tipEntry(11, "empty",               "",               "0"),
   new tipEntry(12, "moveMenu",            "",               "0"),
   new tipEntry(13, "noIcons",             "behavior",       "0"),
   new tipEntry(14, "largeMenu",           "behavior",       "0"),

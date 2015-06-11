@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "Você pode executar código javascript com as ações 'Carregar Script'.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba.">
-<!ENTITY tips.contextualMenus "Você pode ativar senbilidade de contexto pressionando a tecla 'Ctrl' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada.|Altere o comportamento em &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Você pode ativar senbilidade de contexto pressionando a tecla 'Alt' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada.|Altere o comportamento em &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "Pressionando a tecla 'Insert' durante um clique com o botão direito, você pode suprimir o menu de torta e acessar o menu de contexto padrão.">
+<!ENTITY tips.preventOpen "Pressionando a tecla 'Insert' durante um clique com o botão direito, você pode suprimir o menu de torta e acessar o menu de contexto padrão.">
 <!ENTITY tips.moveMenu "Você pode mover o menu de torta, segurando a tecla 'Shift' enquanto move o mouse.">
 <!ENTITY tips.tooltips "Você pode desligar a visualização das dicas se você não precisa delas.|Desligue a visualização em &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "Você pode manter a reluzente visualização padrão ou mudar para uma visualização básica sem ícones se você é uma mente orientada ao texto. Você pode também mudar a visualização para ícones pequenos.|Change the pie menu display in &preferences;/&behavior;">

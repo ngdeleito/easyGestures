@@ -104,7 +104,7 @@
       "&tips.tooltips;", "&tips.searchWebAction;",
       "&tips.backAndForwardSiteActions;", "&tips.loadURLActions;",
       "&tips.runScriptActions;", "&tips.contextualMenus;",
-      "&tips.suppressPriority;", "&tips.moveMenu;", "&tips.smallIcons;",
+      "&tips.preventOpen;", "&tips.moveMenu;", "&tips.smallIcons;",
       "&tips.largeMenu;", "&tips.autoscrolling;", "&tips.zoomOnImage;",
       "&tips.openLinkAction;", "&tips.dailyReadingsAction;"];
   </script>

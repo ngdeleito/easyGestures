@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。|新增或移除動作 &preferences;/&menus;">
 <!ENTITY tips.runScriptActions "你可以用「執行程式」和「載入Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">
-<!ENTITY tips.contextualMenus "你可以在開啟圓餅選單時，點選「Ctrl」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "你可以在開啟圓餅選單時，點選「Alt」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。|更改設定 &preferences;/&activation;">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "你可以按住「Insert」鍵來封鎖設在右鍵的圓餅選單，改使用預設的標準快速選單。">
+<!ENTITY tips.preventOpen "你可以按住「Insert」鍵來封鎖設在右鍵的圓餅選單，改使用預設的標準快速選單。">
 <!ENTITY tips.moveMenu "你可以按住「Shift」鍵來移動已顯示的圓餅選單。">
 <!ENTITY tips.tooltips "假如你不需要圓餅動作提示，你可以關閉它。你也可以修改每個圓餅動作提示文字。|關閉提示顯示 &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "你可以持續使用預設的圓餅圖示顯示，或以小型圖示取代顯示。如果你喜歡簡單的文字模式，也可以改用沒有圖示的基本顯示。|Change the pie menu display in &preferences;/&behavior;">

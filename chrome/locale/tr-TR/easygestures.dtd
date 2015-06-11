@@ -118,9 +118,9 @@
 <!ENTITY tips.menusCustomization "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır.|Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
 <!ENTITY tips.runScriptActions "&apos;Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
 <!ENTITY tips.clickOnLink "Bir bağlantı üzerinde hareket etmeden yeterince hızlı bir kolay menü tıklaması, bağlantıyı yeni bir sekmede açacak ve sayfada bağlantının yanında kırmızı bir etiket görüntülenecektir.">
-<!ENTITY tips.contextualMenus "İçerik hassasiyetini kolay menüyü açarken &apos;Ctrl&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
+<!ENTITY tips.contextualMenus "İçerik hassasiyetini kolay menüyü açarken &apos;Alt&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.suppressPriority "&apos;Insert&apos; tuşuna basılı tutarak, kolay menüyü saklayıp standart içerik menüsüne ulaşabilirsiniz.">
+<!ENTITY tips.preventOpen "&apos;Insert&apos; tuşuna basılı tutarak, kolay menüyü saklayıp standart içerik menüsüne ulaşabilirsiniz.">
 <!ENTITY tips.moveMenu "Kolay menü etrafında fareyi hareket ettirirken &apos;Shift&apos; tuşuna basılı tutarak dolaşabilirsiniz.">
 <!ENTITY tips.tooltips "Eğer ihtiyacınız yoksa araç ipuçlarını görüntülemeyi kapatabilirsiniz. Her eylemin araç ipucunu yeniden adlandırmak da mümkündür.|Görüntülemeyi Seçenekler/Tepki/Sayfa 2&apos;den durdurabilirsiniz.">
 <!ENTITY tips.smallIcons "Mevcut parlak görünümü koruyabilir ya da yalnızca metni önemsiyorsanız simgelerin olmadığı sade bir görüntüye geçiş yapabilirsiniz. Ayrıca görüntüyü küçük simgelere de çevirebilirsiniz.|Change the pie menu display in &preferences;/&behavior;">
