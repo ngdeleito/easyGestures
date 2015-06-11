@@ -111,7 +111,7 @@
 <!ENTITY tips.next "Siguiente">
 <!ENTITY close "Cerrar">
 
-<!ENTITY tips.openButton "Por defecto, tiene que pulsar el botón central para mostrar el menú circular (a menos que sea un usuario de Mac). Los botones por defecto del ratón pueden ser cambiados.|Cambie los botones a través de &preferences;/&activation;">
+<!ENTITY tips.openButton "Por defecto, pulse el botón central del ratón para mostrar el menú circular; en un Mac, pulse el botón izquierdo del ratón mientras mantiene pulsada la tecla mayúsculas. Los botones por defecto del ratón pueden ser cambiados.|Cambie los botones a través de &preferences;/&activation;">
 <!ENTITY tips.dragToAction "La manera más rápida de usar el menú circular es mantener pulsado el ratón, moverse a la acción seleccionada y soltar el botón. Puede pensar en una especie de gesto del ratón con una interfaz gráfica.">
 <!ENTITY tips.openAltMenu "Por defecto, al pulsar el botón derecho del ratón mientras se está mostrando el menú circular, se irán mostrando menús alternativos, con los que podrá alternar entre un máximo de tres menús totalmente personalizables. El botón por defecto puede cambiarse.|Cambie el botón del ratón en &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Puede usar easyGestures N para abrir sus marcadores preferidos personalizando las acciones &apos;Cargar dirección&apos; y añadiéndolas a los distintos menús.|Personalizar en &preferences;/&customizations;/&customizations.loadURLActions;">

@@ -110,7 +110,7 @@
 <!ENTITY tips.next "Suivante">
 <!ENTITY close "Fermer">
 
-<!ENTITY tips.openButton "Par défaut, vous devez cliquer sur le bouton central de la souris pour afficher le menu circulaire (à moins d'être un utilisateur Mac). Le bouton par défaut peut-être changé.|Changez le bouton de la souris dans &preferences;/&activation;">
+<!ENTITY tips.openButton "Par défaut, cliquez sur le bouton central de la souris pour afficher le menu circulaire ; sur un Mac, cliquez sur le bouton gauche de la souris tout en appuyant Maj. Le bouton par défaut peut être changé.|Changez le bouton de la souris dans &preferences;/&activation;">
 <!ENTITY tips.dragToAction "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
 <!ENTITY tips.openAltMenu "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs: vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Le bouton de souris par défaut peut être changé.|Changez le bouton de la souris dans &preferences;/&activation;">
 <!ENTITY tips.loadURLActions "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL'  et en les ajoutant ensuite dans les plans du menu circulaire.|Personnalisez dans &preferences;/&customizations;/&customizations.loadURLActions;">
