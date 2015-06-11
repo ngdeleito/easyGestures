@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "Periodo">
 <!ENTITY activation.openAltMenu "Mostrar el menú alternativo con">
 <!ENTITY activation.openAltMenu.altKey "(Puede usar también la tecla Alt derecha)">
-<!ENTITY activation.suppressPriority "Suprimir prioridad del menú circular con">
+<!ENTITY activation.preventOpen "Impedir la apertura del menú circular con">
 <!ENTITY activation.insertKey "La tecla Insert">
 <!ENTITY activation.altKey "La tecla Alt">
 <!ENTITY activation.customKey "Otra tecla">

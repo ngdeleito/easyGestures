@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "延迟时间">
 <!ENTITY activation.openAltMenu "显示替代菜单">
 <!ENTITY activation.openAltMenu.altKey "(您也可以使用 右 Alt 键)">
-<!ENTITY activation.suppressPriority "禁止圆饼菜单优先鼠标按钮">
+<!ENTITY activation.preventOpen "禁止圆饼菜单优先鼠标按钮">
 <!ENTITY activation.insertKey "Insert">
 <!ENTITY activation.altKey "Alt">
 <!ENTITY activation.customKey "自定义键">

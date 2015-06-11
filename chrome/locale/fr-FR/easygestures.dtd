@@ -46,7 +46,7 @@
 <!ENTITY activation.open.afterDelay.delay "Délai">
 <!ENTITY activation.openAltMenu "Afficher le menu alternatif avec">
 <!ENTITY activation.openAltMenu.altKey "(Vous pouvez aussi utiliser la touche Alt droite)">
-<!ENTITY activation.suppressPriority "Supprimer priorité menu circulaire sur bouton souris avec">
+<!ENTITY activation.preventOpen "Empêcher l'ouverture du menu circulaire avec">
 <!ENTITY activation.insertKey "La touche Insert">
 <!ENTITY activation.altKey "La touche Alt">
 <!ENTITY activation.customKey "Une autre touche">

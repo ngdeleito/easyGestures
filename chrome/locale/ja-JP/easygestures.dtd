@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "遅延時間">
 <!ENTITY activation.openAltMenu "代替メニューの表示法">
 <!ENTITY activation.openAltMenu.altKey "(右 Alt キーでも表示できます)">
-<!ENTITY activation.suppressPriority "次のキーを押している時にはパイメニューを非表示">
+<!ENTITY activation.preventOpen "次のキーを押している時にはパイメニューを非表示">
 <!ENTITY activation.insertKey "Insert キー">
 <!ENTITY activation.altKey "Alt キー">
 <!ENTITY activation.customKey "カスタムキー">

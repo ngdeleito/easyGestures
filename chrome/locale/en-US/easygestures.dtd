@@ -35,7 +35,7 @@
 <!ENTITY activation.open.afterDelay.delay "Delay">
 <!ENTITY activation.openAltMenu "Display alternative menu with">
 <!ENTITY activation.openAltMenu.altKey "(You can also use the right Alt key)">
-<!ENTITY activation.suppressPriority "Suppress pie menu priority on mouse button with">
+<!ENTITY activation.preventOpen "Prevent pie menu from opening with">
 <!ENTITY activation.insertKey "Insert key">
 <!ENTITY activation.altKey "Alt key">
 <!ENTITY activation.customKey "Custom key">

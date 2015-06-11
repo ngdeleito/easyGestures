@@ -163,7 +163,7 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&activation.suppressPriority;" class="header" />
+    <label value="&activation.preventOpen;" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="suppressKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">

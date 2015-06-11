@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "Zpoždění">
 <!ENTITY activation.openAltMenu "Zobrazit alternativní nabídku s">
 <!ENTITY activation.openAltMenu.altKey "(Kromě toho můžete použít i pravý Alt)">
-<!ENTITY activation.suppressPriority "Potlačit zobrazení nabídky s">
+<!ENTITY activation.preventOpen "Potlačit zobrazení nabídky s">
 <!ENTITY activation.insertKey "klávesou Insert">
 <!ENTITY activation.altKey "klávesou Alt">
 <!ENTITY activation.customKey "definovanou klávesou">

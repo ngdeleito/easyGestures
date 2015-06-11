@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "Ritado">
 <!ENTITY activation.openAltMenu "Mostra il menu alternativo con">
 <!ENTITY activation.openAltMenu.altKey "(Puoi anche usare il tasto Alt destro)">
-<!ENTITY activation.suppressPriority "Annulla la priorità del menu circolare se il tasto del mouse è premuto con">
+<!ENTITY activation.preventOpen "Annulla la priorità del menu circolare se il tasto del mouse è premuto con">
 <!ENTITY activation.insertKey "Tasto Insert">
 <!ENTITY activation.altKey "Tasto Alt">
 <!ENTITY activation.customKey "Tasto a scelta">

@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "Oneskorenie">
 <!ENTITY activation.openAltMenu "Zobraziť alternatívnu ponuku s">
 <!ENTITY activation.openAltMenu.altKey "(Okrem toho môžete použiť pravý Alt)">
-<!ENTITY activation.suppressPriority "Potlačiť zobrazenie ponuky s">
+<!ENTITY activation.preventOpen "Potlačiť zobrazenie ponuky s">
 <!ENTITY activation.insertKey "klávesom Insert">
 <!ENTITY activation.altKey "klávesom Alt">
 <!ENTITY activation.customKey "definovaným klávesom">

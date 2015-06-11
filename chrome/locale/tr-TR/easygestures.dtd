@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "Gecikme">
 <!ENTITY activation.openAltMenu "Alternatif menüyü şununla aç:">
 <!ENTITY activation.openAltMenu.altKey "(sol Alt tuşunu da kullanabilirsiniz)">
-<!ENTITY activation.suppressPriority "Fare tuşunda kolay menü önceliğini şununla durdur:">
+<!ENTITY activation.preventOpen "Fare tuşunda kolay menü önceliğini şununla durdur:">
 <!ENTITY activation.insertKey "Insert tuşu">
 <!ENTITY activation.altKey "Alt tuşu">
 <!ENTITY activation.customKey "Varsayılan tuş">

@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "Atraso">
 <!ENTITY activation.openAltMenu "Mostrar menu alternativo com">
 <!ENTITY activation.openAltMenu.altKey "(Você também pode usar a tecla Alt direita)">
-<!ENTITY activation.suppressPriority "Suprimir a prioridade do menu de torta no botão do mouse com">
+<!ENTITY activation.preventOpen "Suprimir a prioridade do menu de torta no botão do mouse com">
 <!ENTITY activation.insertKey "Tecla Insert">
 <!ENTITY activation.altKey "Tecla Alt">
 <!ENTITY activation.customKey "Tecla Personalizada">

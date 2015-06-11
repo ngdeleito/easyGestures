@@ -47,7 +47,7 @@
 <!ENTITY activation.open.afterDelay.delay "停頓…">
 <!ENTITY activation.openAltMenu "顯示替換選單：用">
 <!ENTITY activation.openAltMenu.altKey "（你也可以使用右邊的 Alt 鍵）">
-<!ENTITY activation.suppressPriority "封鎖圓餅選單當擊點滑鼠按鍵和">
+<!ENTITY activation.preventOpen "封鎖圓餅選單當擊點滑鼠按鍵和">
 <!ENTITY activation.insertKey "Insert 鍵">
 <!ENTITY activation.altKey "Alt 鍵">
 <!ENTITY activation.customKey "自訂按鍵">

@@ -48,7 +48,7 @@
 <!ENTITY activation.open.afterDelay.delay "Verzögerung">
 <!ENTITY activation.openAltMenu "Alternative Menüs anzeigen mit">
 <!ENTITY activation.openAltMenu.altKey "(auch über Alt-Taste auswählbar)">
-<!ENTITY activation.suppressPriority "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
+<!ENTITY activation.preventOpen "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
 <!ENTITY activation.insertKey "Einfügen-Taste">
 <!ENTITY activation.altKey "Alt-Taste">
 <!ENTITY activation.customKey "Eigener Taste">
