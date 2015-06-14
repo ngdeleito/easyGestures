@@ -90,13 +90,13 @@ var eGPrefs = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (window.navigator.userAgent.indexOf("Mac") == -1) {
       this._prefs.setIntPref("activation.showButton", 1); // middle button
-      this._prefs.setIntPref("activation.showKey", 0); // 0=none 16=shift 17=ctrl
+      this._prefs.setIntPref("activation.showKey", 0); // no key
       this._prefs.setIntPref("activation.suppressKey", 17); // ctrl key
     }
     else {
       // mac users need different defaults
-      this._prefs.setIntPref("activation.showButton", 0);
-      this._prefs.setIntPref("activation.showKey", 16);
+      this._prefs.setIntPref("activation.showButton", 0); // left button
+      this._prefs.setIntPref("activation.showKey", 16); // shift key
       this._prefs.setIntPref("activation.suppressKey", 0);
     }
     
