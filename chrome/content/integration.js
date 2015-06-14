@@ -35,6 +35,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+
+/* global eGActions, eGm, eGPrefs */
+
 var eGc = {
   _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu

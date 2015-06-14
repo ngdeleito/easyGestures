@@ -88,7 +88,7 @@ var eGPrefs = {
     this._prefs.setIntPref("general.tipNumber", 0);
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (window.navigator.userAgent.indexOf("Mac") == -1) {
+    if (window.navigator.userAgent.indexOf("Mac") === -1) {
       this._prefs.setIntPref("activation.showButton", 1); // middle button
       this._prefs.setIntPref("activation.showKey", 0); // no key
       this._prefs.setIntPref("activation.suppressKey", 17); // ctrl key
