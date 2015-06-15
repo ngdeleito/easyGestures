@@ -1,6 +1,29 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 4.10 (June 15, 2015)
+
+- new actions: "Firefox Preferences", "Add-ons", "easyGestures N Preferences"
+- better shielded the display of the pie menu from host page specific CSS rules
+- reworked code determining possible contextual menus to display
+    - fixed some combinations that were not properly addressed
+    - contextual menus are now also shown on top of new HTML5 input element types
+    - contextual menus are now ordered from the most specific one to the least specific one
+- fixed pie menu opening problems when two keys are involved
+- fixed duplicated key warning in preferences dialog
+- internal improvements and fixes mainly in the code dealing with event listeners
+
+This version of easyGestures N deprecates the following items (which might be removed in future versions of the extension):
+
+- opening the pie menu after a delay
+- autoscrolling (which is currently broken)
+
+The following items remain deprecated:
+
+- cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW locales
+- iconless menus
+
+
 Version 4.9 (March 15, 2015)
 
 - revised and updated the en-US, es-ES and fr-FR locales
@@ -9,9 +32,6 @@ Version 4.9 (March 15, 2015)
     - the pie menu is now closed before an action is run (and it no longer remains open when e.g. the action opens a new window)
 - internal improvements mainly in the code managing the pie menu
 
-- This version of easyGestures N deprecates the following items (which might be removed in future versions of the extension):
-    - cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW locales
-    - iconless menus
 
 Version 4.8 (December 14, 2014)
 
