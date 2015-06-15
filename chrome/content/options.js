@@ -660,7 +660,7 @@ function initMenuDialog() {
   createLoadURLActions();
   createRunScriptActions();
   
-  ["showButton", "showAltButton", "suppressKey", "contextKey"].forEach(
+  ["showButton", "showAltButton", "preventOpenKey", "contextKey"].forEach(
     function (element) {
       var menulist = document.getElementById(element + "Menulist");
       menulist.value = eG_prefs.getIntPref("activation." + element);
@@ -790,11 +790,11 @@ function preparePreferenceValueForDailyReadings(aTreeElement) {
 
 function resetOnDuplicatedKeys(menulist, textbox) {
   var showKey = document.getElementById("showKeyRadiogroup").value;
-  var supprKey = document.getElementById("customSupprKeyCode").value;
+  var preventOpenKey = document.getElementById("preventOpenKeyCode").value;
   var contextKey = document.getElementById("customContextKeyCode").value;
   
-  if ((showKey !== "0" && (showKey === supprKey || showKey === contextKey)) ||
-      (supprKey !== "0" && (supprKey === contextKey))) {
+  if ((showKey !== "0" && (showKey === preventOpenKey || showKey === contextKey)) ||
+      (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
     menulist.value = "0";
     textbox.value = "0";
     alert(document.getElementById("easyGesturesNStrings")

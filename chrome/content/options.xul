@@ -104,7 +104,7 @@
       <preference id="showAfterDelay" name="extensions.easygestures.activation.showAfterDelay" type="bool" />
       <preference id="showAfterDelayValue" name="extensions.easygestures.activation.showAfterDelayValue" type="int" />
       <preference id="showAltButton" name="extensions.easygestures.activation.showAltButton" type="int" />
-      <preference id="suppressKey" name="extensions.easygestures.activation.suppressKey" type="int" />
+      <preference id="preventOpenKey" name="extensions.easygestures.activation.preventOpenKey" type="int" />
       <preference id="contextKey" name="extensions.easygestures.activation.contextKey" type="int" />
       <preference id="contextShowAuto" name="extensions.easygestures.activation.contextShowAuto" type="bool" />
     </preferences>
@@ -165,7 +165,7 @@
     
     <label value="&activation.preventOpen;" class="header" />
     <hbox align="center" style="margin-left: 1em">
-      <menulist id="suppressKeyMenulist"
+      <menulist id="preventOpenKeyMenulist"
         oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
           <menuitem label="&activation.noKey;" value="0" />
@@ -176,7 +176,7 @@
         </menupopup>
       </menulist>
       <label value="&activation.keycode;" />
-      <textbox id="customSupprKeyCode" preference="suppressKey" size="4"
+      <textbox id="preventOpenKeyCode" preference="preventOpenKey" size="4"
         onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
     </hbox>
     

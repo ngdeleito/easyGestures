@@ -213,7 +213,7 @@ function eG_menu () {
   this.showAfterDelay = prefs.getBoolPref("activation.showAfterDelay"); // enabling display pie menu after delay before dragging
   this.showAfterDelayValue = prefs.getIntPref("activation.showAfterDelayValue"); // delay to display pie menu after delay before dragging
   this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
-  this.suppressKey = prefs.getIntPref("activation.suppressKey"); // key for suppressing the pie menu
+  this.preventOpenKey = prefs.getIntPref("activation.preventOpenKey");
   this.contextKey = prefs.getIntPref("activation.contextKey"); // key for forcing non contextual or contextual pie menu
   this.contextShowAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
 
@@ -1041,7 +1041,7 @@ eG_menu.prototype = {
            (this.showKey === 0 ||
             (this.showKey === 16 && aMouseEvent.shiftKey) ||
             (this.showKey === 17 && aMouseEvent.ctrlKey)) &&
-           (this.suppressKey === 0 || eGc.keyPressed !== this.suppressKey);
+           (this.preventOpenKey === 0 || eGc.keyPressed !== this.preventOpenKey);
   },
   
   canLayoutBeSwitched : function(aButtonPressed) {

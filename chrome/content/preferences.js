@@ -91,13 +91,13 @@ var eGPrefs = {
     if (window.navigator.userAgent.indexOf("Mac") === -1) {
       this._prefs.setIntPref("activation.showButton", 1); // middle button
       this._prefs.setIntPref("activation.showKey", 0); // no key
-      this._prefs.setIntPref("activation.suppressKey", 17); // ctrl key
+      this._prefs.setIntPref("activation.preventOpenKey", 17); // ctrl key
     }
     else {
       // mac users need different defaults
       this._prefs.setIntPref("activation.showButton", 0); // left button
       this._prefs.setIntPref("activation.showKey", 16); // shift key
-      this._prefs.setIntPref("activation.suppressKey", 0);
+      this._prefs.setIntPref("activation.preventOpenKey", 0);
     }
     
     this._prefs.setBoolPref("activation.showAfterDelay", false);
@@ -514,6 +514,10 @@ var eGPrefs = {
       actionsStats[actionName] = 0;
     });
     this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+    
+    this._prefs.setIntPref("activation.preventOpenKey",
+      this._prefs.getIntPref("activation.suppressKey"));
+    this._prefs.deleteBranch("activation.suppressKey");
   }
 };
 
