@@ -287,16 +287,6 @@ function eG_openMenu() {
   eGm.clientY = eGc.clientYDown;
   eGm.screenY = eGc.screenYDown;
   
-  // offset to put mouse cursor just above the middle in case of large pie menu
-  if (eGm.largeMenu) {
-    if (eGm.smallIcons) {
-      eGm.clientY += 9;
-    }
-    else {
-      eGm.clientY += 15;
-    }
-  }
-  
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
     eGm.show(eGm.contextualMenus[0]);
