@@ -279,7 +279,6 @@ function eG_menu () {
   this.setHidden();
   
   // Coordonnées
-  this.pageY = 0; // page y coordinate of pie menu center
   this.clientX = 0; // client x coordinate of pie menu center
   this.clientY = 0;
   this.screenY = 0; // screen y coordinate of pie menu center
@@ -766,7 +765,6 @@ eG_menu.prototype = {
       mainMenusSign.style.visibility = "visible";
       extraMenusSign.style.visibility = "hidden";
       
-      this.pageY = this.pageY+baseLayout.outerR*1.2;
       this.clientY = this.clientY+baseLayout.outerR*1.2;
       this.screenY = this.screenY+baseLayout.outerR*1.2;
 
@@ -786,7 +784,6 @@ eG_menu.prototype = {
     
     layout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","true");
 
-    this.pageY = this.pageY-layout.outerR*1.2;
     this.clientY = this.clientY-layout.outerR*1.2;
     this.screenY = this.screenY-layout.outerR*1.2;
 

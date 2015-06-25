@@ -49,7 +49,6 @@ var eGc = {
   loading: false, // used for reload/stop action
   
   // used for drag movements in 'open when dragging' situations
-  pageYDown: -1,
   clientXDown: -1,
   clientYDown: -1,
   screenYDown: -1,
@@ -238,7 +237,6 @@ function eG_handleMousedown(evt) {
   
   eGm.setContext(evt.target, window, eG_getSelection());
   
-  eGc.pageYDown = evt.pageY;
   eGc.clientXDown = evt.clientX;
   eGc.clientYDown = evt.clientY;
   eGc.screenYDown = evt.screenY;
@@ -282,7 +280,6 @@ function eG_openMenu() {
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
   
-  eGm.pageY = eGc.pageYDown;
   eGm.clientX = eGc.clientXDown;
   eGm.clientY = eGc.clientYDown;
   eGm.screenY = eGc.screenYDown;
