@@ -281,8 +281,7 @@ function eG_menu () {
   // Coordonnées
   this.clientX = 0; // client x coordinate of pie menu center
   this.clientY = 0;
-  this.screenY = 0; // screen y coordinate of pie menu center
-
+  
   this.sector = -1; // index of item under mouse
 
   this.tooltipsTrigger = null; // trigger to display pie menu labels
@@ -766,7 +765,6 @@ eG_menu.prototype = {
       extraMenusSign.style.visibility = "hidden";
       
       this.clientY = this.clientY+baseLayout.outerR*1.2;
-      this.screenY = this.screenY+baseLayout.outerR*1.2;
 
       this.curLayoutName = this.baseMenu;
       this.resetTooltipsTimeout();
@@ -785,7 +783,6 @@ eG_menu.prototype = {
     layout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","true");
 
     this.clientY = this.clientY-layout.outerR*1.2;
-    this.screenY = this.screenY-layout.outerR*1.2;
 
     this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
     this.show("extra");

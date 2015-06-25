@@ -51,7 +51,6 @@ var eGc = {
   // used for drag movements in 'open when dragging' situations
   clientXDown: -1,
   clientYDown: -1,
-  screenYDown: -1,
   showAfterDelayTimer: null, // trigger to display menu after delay
   
   isStdContextMenuBlocked : function() {
@@ -239,7 +238,6 @@ function eG_handleMousedown(evt) {
   
   eGc.clientXDown = evt.clientX;
   eGc.clientYDown = evt.clientY;
-  eGc.screenYDown = evt.screenY;
   
   if (!eGm.showAfterDelay) {
     //evt.preventDefault();
@@ -282,7 +280,6 @@ function eG_openMenu() {
   
   eGm.clientX = eGc.clientXDown;
   eGm.clientY = eGc.clientYDown;
-  eGm.screenY = eGc.screenYDown;
   
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
