@@ -123,12 +123,11 @@ function eG_handleKeydown(event) {
   }
 }
 
-function eG_getSelection() { // find text selection in current HTML document
-  var sel = eGc.evtMouseDown.view.getSelection();
-  sel = sel.toString();
-  sel = sel.trim();
-  sel = sel.replace(/(\n|\r|\t)+/g, " "); // replace all Linefeed, Carriage return & Tab with a space
-  return sel;
+function eG_cleanSelection(selection) {
+  var result = selection.toString();
+  result = result.trim();
+  result = result.replace(/(\n|\r|\t)+/g, " "); // replace all Linefeed, Carriage return & Tab with a space
+  return result;
 }
 
 function eG_handleMouseup(evt) {
@@ -227,14 +226,13 @@ function eG_handleMousedown(evt) {
   // copying parts of evt object
   eGc.evtMouseDown = {}; // don't just keep a reference to evt because evt will change before it can be used properly
   eGc.evtMouseDown.originalTarget = evt.originalTarget;
-  eGc.evtMouseDown.view=evt.view;
   
   // identify context, find body etc
   eGc.doc = evt.target.ownerDocument;
   eGc.frame_doc = evt.originalTarget.ownerDocument;
   eGc.body = eGc.frame_doc.documentElement;
   
-  eGm.setContext(evt.target, window, eG_getSelection());
+  eGm.setContext(evt.target, window, eG_cleanSelection(evt.view.getSelection()));
   
   eGc.clientXDown = evt.clientX;
   eGc.clientYDown = evt.clientY;
