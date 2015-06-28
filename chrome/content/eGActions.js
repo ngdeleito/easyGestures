@@ -462,24 +462,24 @@ var eGActions = {
   }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
-    var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
+    var frame = eGc.frame_doc.defaultView;
     frame.scroll(0, 0);
   }, function() {
-    return eGc.evtMouseDown.originalTarget.ownerDocument.defaultView.scrollY === 0;
+    return eGc.frame_doc.defaultView.scrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
-    var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
+    var frame = eGc.frame_doc.defaultView;
     frame.scroll(0, frame.scrollMaxY);
   }, function() {
-    var frame = eGc.evtMouseDown.originalTarget.ownerDocument.defaultView;
+    var frame = eGc.frame_doc.defaultView;
     return frame.scrollY === frame.scrollMaxY;
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
-    var evt = eGc.evtMouseDown;
+    var evt = eGc.mouseupEvent;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.document.getElementById("content").mCurrentBrowser.startScroll(evt);
+    window.gBrowser.selectedBrowser.startScroll("NSEW", evt.screenX, evt.screenY);
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {

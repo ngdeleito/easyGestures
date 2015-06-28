@@ -42,7 +42,7 @@ var eGc = {
   _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
-  evtMouseDown: null,
+  mouseupEvent: null,
   doc: null,
   body: null,
   frame_doc: null,
@@ -160,6 +160,7 @@ function eG_handleMouseup(evt) {
   }
   else if (eGm.isJustOpenedAndMouseMoved()) {
     if (eGm.sector !== -1) {
+      eGc.mouseupEvent = evt;
       eGm.runAction();
     }
     else {
@@ -173,6 +174,7 @@ function eG_handleMouseup(evt) {
     }
     else {
       if (eGm.sector !== -1) {
+        eGc.mouseupEvent = evt;
         eGm.runAction();
       }
       else {
@@ -222,11 +224,7 @@ function eG_handleMousedown(evt) {
   if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay) {
     eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayValue);
   }
-  
-  // copying parts of evt object
-  eGc.evtMouseDown = {}; // don't just keep a reference to evt because evt will change before it can be used properly
-  eGc.evtMouseDown.originalTarget = evt.originalTarget;
-  
+    
   // identify context, find body etc
   eGc.doc = evt.target.ownerDocument;
   eGc.frame_doc = evt.originalTarget.ownerDocument;
