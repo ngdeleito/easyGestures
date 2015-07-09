@@ -29,20 +29,25 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-#easyGesturesPieMenu {
+#easyGesturesPieMenu_nn, #easyGesturesPieMenu_ns,
+#easyGesturesPieMenu_ln, #easyGesturesPieMenu_ls {
   all: initial;
+  position: fixed;
 }
 
-#easyGesturesPieMenu * {
+#easyGesturesPieMenu_nn *, #easyGesturesPieMenu_ns *,
+#easyGesturesPieMenu_ln *, #easyGesturesPieMenu_ls * {
   all: initial;
   visibility: inherit;
 }
 
-#easyGesturesPieMenu > div {
-  position: fixed;
+#easyGesturesPieMenu_nn > div, #easyGesturesPieMenu_ns > div,
+#easyGesturesPieMenu_ln > div, #easyGesturesPieMenu_ls > div {
+  position: absolute;
 }
 
-#easyGesturesPieMenu > div > * {
+#easyGesturesPieMenu_nn > div > *, #easyGesturesPieMenu_ns > div > *,
+#easyGesturesPieMenu_ln > div > *, #easyGesturesPieMenu_ls > div > * {
   position: absolute;
 }
 
@@ -50,25 +55,69 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647;
 }
 
-[id^="eG_linkSign_"] {
+#eG_linkSign_ {
   visibility: hidden;
+  left: -16px;
+  top: -16px;
   width: 32px;
   height: 32px;
 }
 
 #eG_linkSign_small_ {
+  visibility: hidden;
+  left: -10px;
+  top: -10px;
   width: 20px;
   height: 20px;
 }
 
 #easyGesturesMainMenusSign {
-  top: -0.5em; /* height/2 of a child */
   width: 3.1em; /* border-width and width for 3 children + space between 2 children */
+}
+
+#easyGesturesPieMenu_nn #easyGesturesMainMenusSign {
+  left: 41px;
+  top: calc(-61px - 0.5em); /* 0.5em = height/2 of a child */
+}
+
+#easyGesturesPieMenu_ns #easyGesturesMainMenusSign {
+  left: 22px;
+  top: calc(-38px - 0.5em);
+}
+
+#easyGesturesPieMenu_ln #easyGesturesMainMenusSign {
+  left: 41px;
+  top: calc(-71px - 0.5em);
+}
+
+#easyGesturesPieMenu_ls #easyGesturesMainMenusSign {
+  left: 24px;
+  top: calc(-44px - 1em); /* + extra correction */
 }
 
 #easyGesturesExtraMenusSign {
   visibility: hidden;
   width: 3.1em;
+}
+
+#easyGesturesPieMenu_nn #easyGesturesExtraMenusSign {
+  left: 41px;
+  top: calc(-61px - 82px);
+}
+
+#easyGesturesPieMenu_ns #easyGesturesExtraMenusSign {
+  left: 22px;
+  top: calc(-38px - 55px);
+}
+
+#easyGesturesPieMenu_ln #easyGesturesExtraMenusSign {
+  left: 41px;
+  top: calc(-71px - 82px);
+}
+
+#easyGesturesPieMenu_ls #easyGesturesExtraMenusSign {
+  left: 24px;
+  top: calc(-44px - 69px);
 }
 
 #easyGesturesMainMenusSign span:only-child,
@@ -98,7 +147,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesContextMenuSign {
   visibility: hidden;
-  top: -1em; /* line-height/2 + padding-bottom + border-bottom + shadow offset */
   background-color: hsl(0, 0%, 80%);
   color: hsl(0, 0%, 50%);
   border: solid 0.1em hsl(0, 0%, 50%);
@@ -109,24 +157,49 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   font-family: sans-serif;
 }
 
+#easyGesturesPieMenu_nn #easyGesturesContextMenuSign {
+  left: 41px;
+  top: calc(-61px - 1em); /* 1em = line-height/2 + padding-bottom + border-bottom + shadow offset of content */
+}
+
+#easyGesturesPieMenu_ns #easyGesturesContextMenuSign {
+  left: 22px;
+  top: calc(-38px - 1em);
+}
+
+#easyGesturesPieMenu_ln #easyGesturesContextMenuSign {
+  left: 41px;
+  top: calc(-71px - 1em);
+}
+
+#easyGesturesPieMenu_ls #easyGesturesContextMenuSign {
+  left: 24px;
+  top: calc(-44px - 1.5em); /* + extra correction */
+}
+
 #easyGesturesContextMenuSign.withAltSign {
   box-shadow: 0.1em 0.1em hsl(0, 0%, 80%), 0.2em 0.2em hsl(0, 0%, 50%);
 }
 
-#easyGesturesPieMenu [id^="eG_action_"] {
+#easyGesturesPieMenu_nn [id^="eG_action_"],
+#easyGesturesPieMenu_ln [id^="eG_action_"] {
   background-repeat: no-repeat;
   background-image: url("actions.png");
   width: 32px;
   height: 32px;
 }
 
-#easyGesturesPieMenu [id^="eG_action_small_"] {
+#easyGesturesPieMenu_ns [id^="eG_action_small_"],
+#easyGesturesPieMenu_ls [id^="eG_action_small_"] {
   background-image: url("small_actions.png");
   width: 20px;
   height: 20px;
 }
 
-#easyGesturesPieMenu [id^="eG_label_"] {
+#easyGesturesPieMenu_nn [id^="eG_label_"],
+#easyGesturesPieMenu_ns [id^="eG_label_"],
+#easyGesturesPieMenu_ln [id^="eG_label_"],
+#easyGesturesPieMenu_ls [id^="eG_label_"] {
   width: 250px;
   height: 1em;
   color: black;
@@ -134,6 +207,82 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   font-size: 1em;
 }
 
+
+#easyGesturesPieMenu_nn div[id^="eG_actions"] {
+  left: -61px;
+  top: -61px;
+}
+
+#easyGesturesPieMenu_ns div[id^="eG_actions"] {
+  left: -38px;
+  top: -38px;
+}
+
+#easyGesturesPieMenu_ln div[id^="eG_actions"] {
+  left: -71px;
+  top: -71px;
+}
+
+#easyGesturesPieMenu_ls div[id^="eG_actions"] {
+  left: -44px;
+  top: -44px;
+}
+
+#easyGesturesPieMenu_nn div[id^="eG_actions_extra"] {
+  top: -135px;
+}
+
+#easyGesturesPieMenu_ns div[id^="eG_actions_extra"] {
+  top: -83px;
+}
+
+#easyGesturesPieMenu_ln div[id^="eG_actions_extra"] {
+  top: -151px;
+}
+
+#easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
+  top: -97px;
+}
+
+#easyGesturesPieMenu_nn div[id^="eG_labels"] {
+  left: -197px;
+  top: -73px;
+}
+
+#easyGesturesPieMenu_ns div[id^="eG_labels"] {
+  left: -148px;
+  top: -46px;
+}
+
+#easyGesturesPieMenu_ln div[id^="eG_labels"] {
+  left: -220px;
+  top: -90px;
+}
+
+#easyGesturesPieMenu_ls div[id^="eG_labels"] {
+  left: -165px;
+  top: -57px;
+}
+
+#easyGesturesPieMenu_nn div[id^="eG_labels_extra"] {
+  left: -197px;
+  top: -147px;
+}
+
+#easyGesturesPieMenu_ns div[id^="eG_labels_extra"] {
+  left: -148px;
+  top: -91px;
+}
+
+#easyGesturesPieMenu_ln div[id^="eG_labels_extra"] {
+  left: -220px;
+  top: -164px;
+}
+
+#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] {
+  left: -165px;
+  top: -111px;
+}
 
 /* REGULAR ICONS */
 

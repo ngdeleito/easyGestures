@@ -82,11 +82,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.maxzIndex = 2147483647; // Max Int. Same value as the one used for displaying autoscrolling image
   this.zIndex = this.maxzIndex - 1;
   
-  this.aNodeXOff = -this.outerR; // offset of menu image
-  this.aNodeYOff = -this.outerR;
-  this.lNodeXOff = -this.width/2; // offset of tooltips image
-  this.lNodeYOff = -this.height/2;
-
   // labels positioning
   this.xLabelsPos = this.isLarge ?
                       (menu.smallIcons ?
@@ -195,7 +190,6 @@ function eG_menu () {
   this.xMoving = -1; // last mouse x position when menu is moving
   this.yMoving = -1;
   this.HTMLNamespace = "http://www.w3.org/1999/xhtml";
-  this.easyGesturesID = "easyGesturesPieMenu";
   
   this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
   this.anchorElement = null;
@@ -269,6 +263,9 @@ function eG_menu () {
   //	initializing properties
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
+  this.easyGesturesID = "easyGesturesPieMenu_" +
+                        (this.largeMenu ? "l" : "n") +
+                        (this.smallIcons ? "s": "n");
   this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
   
   this.smallMenuTag = this.smallIcons ? "small_" : "";
@@ -383,9 +380,7 @@ eG_menu.prototype = {
     return aDiv;
   },
   
-  createSpecialNodes : function (layoutName) { //creating DOM nodes
-    var layout = this.menuSet[layoutName];
-
+  createSpecialNodes : function() { //creating DOM nodes
     ////////////////////////////////////////////////////////////////////////////
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
@@ -399,8 +394,6 @@ eG_menu.prototype = {
 
     var img = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     img.setAttribute("id", "eG_linkSign_" + this.smallMenuTag);
-    img.style.left = Math.round(layout.outerR - this.iconSize/2) + "px";
-    img.style.top = Math.round(layout.outerR - this.iconSize/2) + "px";
     img.src = this.linkSignPath;
     img.alt = "";
 
@@ -409,7 +402,6 @@ eG_menu.prototype = {
     // adding the main menus sign
     var div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesMainMenusSign");
-    div.style.left = layout.outerR + this.iconSize + "px";
     
     var i = this.numberOfMainMenus;
     while (i > 0) {
@@ -423,8 +415,6 @@ eG_menu.prototype = {
     // adding the extra menus sign
     div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesExtraMenusSign");
-    div.style.left = layout.outerR + this.iconSize + "px";
-    div.style.top = "calc(" + -2 * this.iconSize + "px - 1em)";
     
     i = this.numberOfExtraMenus;
     while (i > 0) {
@@ -438,7 +428,6 @@ eG_menu.prototype = {
     // adding the contextual menu sign
     div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesContextMenuSign");
-    div.style.left = layout.outerR + this.iconSize + "px";
     node.appendChild(div);
     
     return node;
@@ -599,10 +588,12 @@ eG_menu.prototype = {
       easyGesturesNode = this.createEasyGesturesNode(eGc.frame_doc);
       eGc.body.insertBefore(easyGesturesNode, eGc.body.firstChild);
     }
+    easyGesturesNode.style.left = this.clientX + "px";
+    easyGesturesNode.style.top = this.clientY + "px";
     
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
     if (specialNodes === null) {
-      specialNodes = this.createSpecialNodes("main");
+      specialNodes = this.createSpecialNodes();
       easyGesturesNode.appendChild(specialNodes);
     }
     
@@ -613,15 +604,9 @@ eG_menu.prototype = {
       easyGesturesNode.appendChild(layout_aNode);
     }
 
-    // recalculate positions
-    layout_aNode.style.left = this.clientX + layout.aNodeXOff + "px";
-    layout_aNode.style.top = this.clientY + layout.aNodeYOff+ "px";
     layout_aNode.style.display = "block";
 
-    specialNodes.style.left = this.clientX + layout.aNodeXOff + "px";
-    //this.specialNodes.style.top=this.clientX + layout.aNodeYOff+ "px";
     if (!layout.isExtraMenu) {
-      specialNodes.style.top = this.clientY + layout.aNodeYOff + "px";
       if (layout.name.startsWith("main")) {
         var mainMenusSign = specialNodes.childNodes[1];
         mainMenusSign.style.visibility = "visible";
@@ -639,10 +624,10 @@ eG_menu.prototype = {
   handleMousemove : function(event) { // handle rollover effects and switch to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
     
+    var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
     var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
     var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
     var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
-    var baseLayout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.baseMenu);
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     var mainMenusSign = specialNodes.childNodes[1];
@@ -666,10 +651,15 @@ eG_menu.prototype = {
     var nbItems = layout.actions.length; // number of items to be displayed
 
     var sector = -1;
-    var radius = Math.sqrt((event.clientX-this.clientX)* (event.clientX-this.clientX) + (event.clientY-this.clientY)* (event.clientY-this.clientY));
+    var refX = this.clientX;
+    var refY = this.clientY;
+    if (layout.isExtraMenu) {
+      refY -= this.menuSet[this.baseMenu].outerR*1.2;
+    }
+    var radius = Math.sqrt((event.clientX-refX)* (event.clientX-refX) + (event.clientY-refY)* (event.clientY-refY));
 
     if (radius > layout.innerR) {
-      var angle = Math.atan2(event.clientX-this.clientX, this.clientY-event.clientY) + Math.PI/nbItems;
+      var angle = Math.atan2(event.clientX-refX, refY-event.clientY) + Math.PI/nbItems;
       if (angle < 0) {
         angle += 2* Math.PI;
       }
@@ -690,25 +680,11 @@ eG_menu.prototype = {
 
         this.clientX += dx;
         this.clientY += dy;
-
-        layout_aNode.style.left = parseFloat(layout_aNode.style.left)+dx+ "px"; // parseFloat !!!
-        layout_aNode.style.top = parseFloat(layout_aNode.style.top)+dy+ "px";
-        if (layout_lNode !== null) {
-          layout_lNode.style.left = parseFloat(layout_lNode.style.left)+dx+ "px";
-          layout_lNode.style.top = parseFloat(layout_lNode.style.top)+dy+ "px";
-        }
-
-        specialNodes.style.left = parseFloat(specialNodes.style.left)+dx+ "px";
-        specialNodes.style.top = parseFloat(specialNodes.style.top)+dy+ "px";
-
-        if (layout.isExtraMenu) { // extra menu is displayed: move base menu too
-          baseLayout_aNode.style.left = parseFloat(baseLayout_aNode.style.left)+dx+ "px"; // parseFloat !!!
-          baseLayout_aNode.style.top = parseFloat(baseLayout_aNode.style.top)+dy+ "px";
-          if (baseLayout_lNode !== null) {
-            baseLayout_lNode.style.left = parseFloat(baseLayout_lNode.style.left)+dx+ "px";
-            baseLayout_lNode.style.top = parseFloat(baseLayout_lNode.style.top)+dy+ "px";
-          }
-        }
+        
+        easyGesturesNode.style.left = parseFloat(easyGesturesNode.style.left) +
+                                      dx + "px";
+        easyGesturesNode.style.top = parseFloat(easyGesturesNode.style.top) +
+                                     dy + "px";
       }
       else {
         this.moving = true;
@@ -756,7 +732,6 @@ eG_menu.prototype = {
       }
     }
     else if (radius>layout.innerR && sector>2 && sector <6 && layout.isExtraMenu && movDir>0) { // hide extra menu
-      var baseLayout = this.menuSet[this.baseMenu];
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
 
       this.hide(layout);
@@ -764,16 +739,12 @@ eG_menu.prototype = {
       mainMenusSign.style.visibility = "visible";
       extraMenusSign.style.visibility = "hidden";
       
-      this.clientY = this.clientY+baseLayout.outerR*1.2;
-
       this.curLayoutName = this.baseMenu;
       this.resetTooltipsTimeout();
     }
   },
 
   showExtraMenu : function() {
-    var layout = this.menuSet[this.curLayoutName];
-    
     var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
     var baseLayout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.baseMenu);
     var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
@@ -781,8 +752,6 @@ eG_menu.prototype = {
     var extraMenusSign = specialNodes.childNodes[2];
     
     layout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","true");
-
-    this.clientY = this.clientY-layout.outerR*1.2;
 
     this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
     this.show("extra");
@@ -973,7 +942,6 @@ eG_menu.prototype = {
   },
 
   showMenuTooltips : function() { // displaying tooltips
-    var layout = this.menuSet[this.curLayoutName];
     var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
     
     // create resources if necessary
@@ -983,8 +951,6 @@ eG_menu.prototype = {
       easyGesturesNode.appendChild(layout_lNode);
     }
 
-    layout_lNode.style.left = this.clientX + layout.lNodeXOff + "px";
-    layout_lNode.style.top = this.clientY + layout.lNodeYOff + "px";
     this.compensateTextZoom(layout_lNode);
     layout_lNode.style.display = "block";
     
