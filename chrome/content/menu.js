@@ -76,7 +76,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
 
   this.outerR = Math.round((this.isLarge ? 70:61)*zoom); // outer radius of pie
   this.innerR = Math.round((this.isLarge ? 36:26)*zoom); // inner radius of pie
-  this.actionR = this.innerR; // minimum action radius on pie
   this.width = Math.round((this.isLarge ? 440 : 394) * zoomTooltips);
   this.height = Math.round((this.isLarge ? 180:146)*zoom);
   this.maxzIndex = 2147483647; // Max Int. Same value as the one used for displaying autoscrolling image
