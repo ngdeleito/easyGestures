@@ -393,7 +393,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var img = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
-    img.setAttribute("id", "eG_linkSign_" + this.smallMenuTag);
+    img.setAttribute("id", "eG_linkSign");
     img.src = this.linkSignPath;
     img.alt = "";
 

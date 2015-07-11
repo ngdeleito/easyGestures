@@ -55,16 +55,20 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647;
 }
 
-#eG_linkSign_ {
+#eG_linkSign {
   visibility: hidden;
+}
+
+#easyGesturesPieMenu_nn #eG_linkSign,
+#easyGesturesPieMenu_ln #eG_linkSign {
   left: -16px;
   top: -16px;
   width: 32px;
   height: 32px;
 }
 
-#eG_linkSign_small_ {
-  visibility: hidden;
+#easyGesturesPieMenu_ns #eG_linkSign,
+#easyGesturesPieMenu_ls #eG_linkSign {
   left: -10px;
   top: -10px;
   width: 20px;
