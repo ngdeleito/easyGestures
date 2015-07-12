@@ -78,8 +78,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.innerR = Math.round((this.isLarge ? 36:26)*zoom); // inner radius of pie
   this.width = Math.round((this.isLarge ? 440 : 394) * zoomTooltips);
   this.height = Math.round((this.isLarge ? 180:146)*zoom);
-  this.maxzIndex = 2147483647; // Max Int. Same value as the one used for displaying autoscrolling image
-  this.zIndex = this.maxzIndex - 1;
   
   // labels positioning
   this.xLabelsPos = this.isLarge ?
@@ -138,9 +136,6 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.menuImage = menu.skinPath + menu.smallMenuTag +
                    (menu.noIcons ? "basic_" : "") + "extraMenu.png";
   this.tooltipsImage = menu.skinPath + "extraLabels.png";
-  
-  // extra menus are displayed below main menu level
-  this.zIndex = this.maxzIndex - 2;
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
@@ -450,7 +445,6 @@ eG_menu.prototype = {
     node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
     node.style.width = 2*layout.outerR + "px";
     node.style.height = 2*layout.outerR + "px";
-    node.style.zIndex = layout.zIndex;
 
     ////////////////////////////////////////////////////////////////////////////
     // creating actions images
@@ -469,7 +463,6 @@ eG_menu.prototype = {
 
       timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
       timg.setAttribute("id", "eG_action_" + this.smallMenuTag + layoutName + "_" + i);
-      timg.style.zIndex = layout.zIndex;
       timg.style.left = Math.round(xpos) + "px";
       timg.style.top = Math.round(ypos) + "px";
       timg.setAttribute("grayed", "false");
@@ -513,7 +506,6 @@ eG_menu.prototype = {
 
     var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
-    timg.style.zIndex = layout.zIndex-1;
     timg.src = layout.menuImage;
     timg.style.width = 2*layout.outerR + "px";
     timg.style.height = 2*layout.outerR + "px";
@@ -537,7 +529,6 @@ eG_menu.prototype = {
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
     node.style.height = layout.height + "px";
     node.style.width = layout.width + "px";
-    node.style.zIndex =  layout.zIndex - 1; // labels are displayed below menu level
 
     ////////////////////////////////////////////////////////////////////////////
     // creating labels and adjusting labels position
@@ -554,7 +545,6 @@ eG_menu.prototype = {
 
       var tdiv = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
       tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
-      tdiv.style.zIndex = layout.zIndex - 1;
       tdiv.style.left = Math.round(xpos) + "px";
       tdiv.style.top = Math.round(ypos) + "px";
       tdiv.appendChild(eGc.frame_doc.createTextNode(layout.labels[i]) );
@@ -567,7 +557,6 @@ eG_menu.prototype = {
 
     var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
-    timg.style.zIndex = layout.zIndex - 2;
     timg.src = layout.tooltipsImage;
     timg.style.width = layout.width + "px";
     timg.style.height = layout.height + "px";
