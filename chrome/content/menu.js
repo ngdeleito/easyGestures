@@ -495,8 +495,6 @@ eG_menu.prototype = {
       
       timg.setAttribute("class", (this.smallMenuTag +
                                  (this.noIcons ? "empty" : iconName)));
-      
-      timg.alt = "";
       node.appendChild(timg);
     }
 
