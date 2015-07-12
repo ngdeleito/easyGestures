@@ -263,7 +263,6 @@ function eG_menu () {
   this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
   
   this.smallMenuTag = this.smallIcons ? "small_" : "";
-  this.linkSignPath = this.skinPath + this.smallMenuTag + "link.png";
 
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
@@ -386,11 +385,8 @@ eG_menu.prototype = {
     // creating link sign
     ///////////////////////////////////////////////////////////////////////////
 
-    var img = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
+    var img = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     img.setAttribute("id", "eG_linkSign");
-    img.src = this.linkSignPath;
-    img.alt = "";
-
     node.appendChild(img);
     
     // adding the main menus sign

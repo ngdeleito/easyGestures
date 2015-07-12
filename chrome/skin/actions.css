@@ -64,6 +64,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ln #eG_linkSign {
   left: -16px;
   top: -16px;
+  background-image: url("link.png");
   width: 32px;
   height: 32px;
 }
@@ -72,6 +73,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ls #eG_linkSign {
   left: -10px;
   top: -10px;
+  background-image: url("small_link.png");
   width: 20px;
   height: 20px;
 }
