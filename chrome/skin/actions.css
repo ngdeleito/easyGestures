@@ -190,7 +190,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_nn [id^="eG_action_"],
 #easyGesturesPieMenu_ln [id^="eG_action_"] {
-  background-repeat: no-repeat;
   background-image: url("actions.png");
   width: 32px;
   height: 32px;
