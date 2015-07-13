@@ -657,16 +657,11 @@ eG_menu.prototype = {
     
     if (event.shiftKey && !this.moveAuto || this.moveAuto && moveAutoTrigger ) {
       if (this.moving) {
-        var dx = (event.clientX - this.xMoving);
-        var dy = (event.clientY - this.yMoving);
-
-        this.clientX += dx;
-        this.clientY += dy;
+        this.clientX += (event.clientX - this.xMoving);
+        this.clientY += (event.clientY - this.yMoving);
         
-        easyGesturesNode.style.left = parseFloat(easyGesturesNode.style.left) +
-                                      dx + "px";
-        easyGesturesNode.style.top = parseFloat(easyGesturesNode.style.top) +
-                                     dy + "px";
+        easyGesturesNode.style.left = this.clientX + "px";
+        easyGesturesNode.style.top = this.clientY + "px";
       }
       else {
         this.moving = true;
