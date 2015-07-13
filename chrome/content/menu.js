@@ -439,8 +439,6 @@ eG_menu.prototype = {
 
     var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
-    node.style.width = 2*layout.outerR + "px";
-    node.style.height = 2*layout.outerR + "px";
 
     ////////////////////////////////////////////////////////////////////////////
     // creating actions images
