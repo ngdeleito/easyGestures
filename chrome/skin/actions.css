@@ -196,8 +196,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647; /* max-z-index */
 }
 
-#easyGesturesPieMenu_ns [id^="eG_action_small_"],
-#easyGesturesPieMenu_ls [id^="eG_action_small_"] {
+#easyGesturesPieMenu_ns [id^="eG_action_"],
+#easyGesturesPieMenu_ls [id^="eG_action_"] {
   background-image: url("small_actions.png");
   width: 20px;
   height: 20px;

@@ -456,7 +456,7 @@ eG_menu.prototype = {
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
       timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
-      timg.setAttribute("id", "eG_action_" + this.smallMenuTag + layoutName + "_" + i);
+      timg.setAttribute("id", "eG_action_" + layoutName + "_" + i);
       timg.style.left = Math.round(xpos) + "px";
       timg.style.top = Math.round(ypos) + "px";
       timg.setAttribute("grayed", "false");
