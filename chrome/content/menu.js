@@ -72,12 +72,9 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   ///////////////////////////////////////////////////////////////////////////////////////////////
 
   var zoom = menu.smallIcons ? 0.625:1;
-  var zoomTooltips = menu.smallIcons ? 0.75:1;
 
   this.outerR = Math.round((this.isLarge ? 70:61)*zoom); // outer radius of pie
   this.innerR = Math.round((this.isLarge ? 36:26)*zoom); // inner radius of pie
-  this.width = Math.round((this.isLarge ? 440 : 394) * zoomTooltips);
-  this.height = Math.round((this.isLarge ? 180:146)*zoom);
   
   // labels positioning
   this.xLabelsPos = this.isLarge ?
@@ -499,8 +496,6 @@ eG_menu.prototype = {
     var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
     timg.src = layout.menuImage;
-    timg.style.width = 2*layout.outerR + "px";
-    timg.style.height = 2*layout.outerR + "px";
     timg.style.opacity = this.menuOpacity;
     timg.alt = "";
     node.appendChild(timg);
@@ -519,9 +514,7 @@ eG_menu.prototype = {
 
     var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
-    node.style.height = layout.height + "px";
-    node.style.width = layout.width + "px";
-
+    
     ////////////////////////////////////////////////////////////////////////////
     // creating labels and adjusting labels position
     ///////////////////////////////////////////////////////////////////////////
@@ -550,8 +543,6 @@ eG_menu.prototype = {
     var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
     timg.src = layout.tooltipsImage;
-    timg.style.width = layout.width + "px";
-    timg.style.height = layout.height + "px";
     node.appendChild(timg);
 
     // save node and hide it

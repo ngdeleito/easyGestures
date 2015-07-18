@@ -266,6 +266,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   top: -97px;
 }
 
+#easyGesturesPieMenu_nn img[id^="eG_actions"],
+#easyGesturesPieMenu_ln img[id^="eG_actions_extra"] {
+  width: 122px;
+  height: 122px;
+}
+
+#easyGesturesPieMenu_ns img[id^="eG_actions"],
+#easyGesturesPieMenu_ls img[id^="eG_actions_extra"] {
+  width: 76px;
+  height: 76px;
+}
+
+#easyGesturesPieMenu_ln img[id^="eG_actions"] {
+  width: 140px;
+  height: 140px;
+}
+
+#easyGesturesPieMenu_ls img[id^="eG_actions"] {
+  width: 88px;
+  height: 88px;
+}
+
 #easyGesturesPieMenu_nn div[id^="eG_labels"],
 #easyGesturesPieMenu_ns div[id^="eG_labels"],
 #easyGesturesPieMenu_ln div[id^="eG_labels"],
@@ -319,6 +341,31 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: -165px;
   top: -111px;
 }
+
+#easyGesturesPieMenu_nn div[id^="eG_labels"],
+#easyGesturesPieMenu_nn img[id^="eG_labels"] {
+  width: 394px;
+  height: 146px;
+}
+
+#easyGesturesPieMenu_ns div[id^="eG_labels"],
+#easyGesturesPieMenu_ns img[id^="eG_labels"] {
+  width: 296px;
+  height: 91px;
+}
+
+#easyGesturesPieMenu_ln div[id^="eG_labels"],
+#easyGesturesPieMenu_ln img[id^="eG_labels"] {
+  width: 440px;
+  height: 180px;
+}
+
+#easyGesturesPieMenu_ls div[id^="eG_labels"],
+#easyGesturesPieMenu_ls img[id^="eG_labels"] {
+  width: 330px;
+  height: 113px;
+}
+
 
 /* REGULAR ICONS */
 
