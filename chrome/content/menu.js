@@ -676,7 +676,7 @@ eG_menu.prototype = {
         layout_aNode.childNodes[sector].setAttribute("active", "true");
         this.rolloverExternalIcons(layout.actions[sector], layout_aNode.childNodes[sector], true);
         if (layout_lNode !== null) {
-          layout_lNode.childNodes[sector].style.fontWeight = "bold";
+          layout_lNode.childNodes[sector].classList.add("selected");
         }
       }
     }
@@ -765,7 +765,7 @@ eG_menu.prototype = {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
       this.rolloverExternalIcons(layout.actions[this.sector], layout_aNode.childNodes[this.sector], false);
       if (layout_lNode !== null) {
-        layout_lNode.childNodes[this.sector].style.fontWeight = "normal";
+        layout_lNode.childNodes[this.sector].classList.remove("selected");
       }
     }
 

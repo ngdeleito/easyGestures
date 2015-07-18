@@ -375,6 +375,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647; /* max-z-index */
 }
 
+#easyGesturesPieMenu_nn [id^="eG_label_"].selected,
+#easyGesturesPieMenu_ns [id^="eG_label_"].selected,
+#easyGesturesPieMenu_ln [id^="eG_label_"].selected,
+#easyGesturesPieMenu_ls [id^="eG_label_"].selected {
+  font-weight: bold;
+}
+
+
 
 /* REGULAR ICONS */
 
