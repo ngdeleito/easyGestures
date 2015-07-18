@@ -52,6 +52,9 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   position: absolute;
 }
 
+
+/* Special nodes */
+
 #eG_SpecialNodes {
   z-index: 2147483647; /* max-z-index */
 }
@@ -188,33 +191,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   box-shadow: 0.1em 0.1em hsl(0, 0%, 80%), 0.2em 0.2em hsl(0, 0%, 50%);
 }
 
-#easyGesturesPieMenu_nn [id^="eG_action_"],
-#easyGesturesPieMenu_ln [id^="eG_action_"] {
-  background-image: url("actions.png");
-  width: 32px;
-  height: 32px;
-  z-index: 2147483647; /* max-z-index */
-}
 
-#easyGesturesPieMenu_ns [id^="eG_action_"],
-#easyGesturesPieMenu_ls [id^="eG_action_"] {
-  background-image: url("small_actions.png");
-  width: 20px;
-  height: 20px;
-  z-index: 2147483647; /* max-z-index */
-}
-
-#easyGesturesPieMenu_nn [id^="eG_label_"],
-#easyGesturesPieMenu_ns [id^="eG_label_"],
-#easyGesturesPieMenu_ln [id^="eG_label_"],
-#easyGesturesPieMenu_ls [id^="eG_label_"] {
-  width: 250px;
-  height: 1em;
-  color: black;
-  font-family: sans-serif;
-  font-size: 1em;
-  z-index: 2147483647; /* max-z-index */
-}
+/* Actions */
 
 #easyGesturesPieMenu_nn div[id^="eG_actions"],
 #easyGesturesPieMenu_ns div[id^="eG_actions"],
@@ -287,6 +265,25 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 88px;
   height: 88px;
 }
+
+#easyGesturesPieMenu_nn [id^="eG_action_"],
+#easyGesturesPieMenu_ln [id^="eG_action_"] {
+  background-image: url("actions.png");
+  width: 32px;
+  height: 32px;
+  z-index: 2147483647; /* max-z-index */
+}
+
+#easyGesturesPieMenu_ns [id^="eG_action_"],
+#easyGesturesPieMenu_ls [id^="eG_action_"] {
+  background-image: url("small_actions.png");
+  width: 20px;
+  height: 20px;
+  z-index: 2147483647; /* max-z-index */
+}
+
+
+/* Labels */
 
 #easyGesturesPieMenu_nn div[id^="eG_labels"],
 #easyGesturesPieMenu_ns div[id^="eG_labels"],
@@ -364,6 +361,18 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ls img[id^="eG_labels"] {
   width: 330px;
   height: 113px;
+}
+
+#easyGesturesPieMenu_nn [id^="eG_label_"],
+#easyGesturesPieMenu_ns [id^="eG_label_"],
+#easyGesturesPieMenu_ln [id^="eG_label_"],
+#easyGesturesPieMenu_ls [id^="eG_label_"] {
+  width: 250px;
+  height: 1em;
+  color: black;
+  font-family: sans-serif;
+  font-size: 1em;
+  z-index: 2147483647; /* max-z-index */
 }
 
 
