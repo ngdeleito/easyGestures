@@ -198,6 +198,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ns div[id^="eG_actions"],
 #easyGesturesPieMenu_ln div[id^="eG_actions"],
 #easyGesturesPieMenu_ls div[id^="eG_actions"] {
+  visibility: hidden;
   z-index: 2147483646; /* max-z-index - 1 */
 }
 

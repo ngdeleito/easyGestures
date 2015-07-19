@@ -499,9 +499,7 @@ eG_menu.prototype = {
     timg.style.opacity = this.menuOpacity;
     timg.alt = "";
     node.appendChild(timg);
-
-    // save node and hide it
-    node.style.display = "none";
+    
     return node;
   },
 
@@ -575,7 +573,7 @@ eG_menu.prototype = {
       easyGesturesNode.appendChild(layout_aNode);
     }
 
-    layout_aNode.style.display = "block";
+    layout_aNode.style.visibility = "visible";
 
     if (!layout.isExtraMenu) {
       if (layout.name.startsWith("main")) {
@@ -739,7 +737,7 @@ eG_menu.prototype = {
     var contextMenuSign = specialNodes.childNodes[3];
   
     if (layout_aNode !== null) {
-      layout_aNode.style.display = "none";
+      layout_aNode.style.visibility = "hidden";
     }
     if (layout_lNode !== null) {
       layout_lNode.style.display = "none";
