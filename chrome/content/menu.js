@@ -542,9 +542,7 @@ eG_menu.prototype = {
     timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
     timg.src = layout.tooltipsImage;
     node.appendChild(timg);
-
-    // save node and hide it
-    node.style.display = "none";
+    
     return node;
   },
 
@@ -725,7 +723,7 @@ eG_menu.prototype = {
     
     // hide main menu tooltips after extra menu showed
     if (baseLayout_lNode !== null) {
-      baseLayout_lNode.style.display = "none";
+      baseLayout_lNode.style.visibility = "hidden";
     }
   },
 
@@ -740,7 +738,7 @@ eG_menu.prototype = {
       layout_aNode.style.visibility = "hidden";
     }
     if (layout_lNode !== null) {
-      layout_lNode.style.display = "none";
+      layout_lNode.style.visibility = "hidden";
     }
 
     linkSign.style.visibility = "hidden";
@@ -914,7 +912,7 @@ eG_menu.prototype = {
       layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
       easyGesturesNode.appendChild(layout_lNode);
     }
-    layout_lNode.style.display = "block";
+    layout_lNode.style.visibility = "visible";
     
     this.showingTooltips = true;
   },
