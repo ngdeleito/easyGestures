@@ -371,7 +371,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 1em;
   color: black;
   font-family: sans-serif;
-  font-size: 1em;
+  font-size: smaller;
   z-index: 2147483647; /* max-z-index */
 }
 

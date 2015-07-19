@@ -916,50 +916,9 @@ eG_menu.prototype = {
       layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
       easyGesturesNode.appendChild(layout_lNode);
     }
-
-    this.compensateTextZoom(layout_lNode);
     layout_lNode.style.display = "block";
     
     this.showingTooltips = true;
-  },
-
-  compensateTextZoom : function(lNode) { // adjust labels font size to compensate for zoom changes
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var currentZoom = window.gBrowser.selectedBrowser.markupDocumentViewer.textZoom;
-    //lNode.style.fontSize = Math.round(10*100/currentZoom)+"pt";
-
-    if (!this.smallIcons) {
-      switch (currentZoom) {
-        case 450:  lNode.style.fontSize = "2pt"; break;
-        case 300:  lNode.style.fontSize = "3pt"; break;
-        case 200:  lNode.style.fontSize = "5pt"; break;
-        case 150:  lNode.style.fontSize = "6pt"; break;
-        case 120:  lNode.style.fontSize = "8pt"; break;
-        case 100:  lNode.style.fontSize = "10pt"; break;
-        case 90:   lNode.style.fontSize = "12pt"; break;
-        case 75:   lNode.style.fontSize = "13pt"; break;
-        case 50:   lNode.style.fontSize = "19pt"; break;
-        case 33:   lNode.style.fontSize = "28pt"; break;
-        case 22:   lNode.style.fontSize = "40pt"; break;
-        default:   lNode.style.fontSize = "10pt"; break;
-      }
-    }
-    else {
-      switch (currentZoom) {
-        case 450:  lNode.style.fontSize = "2pt"; break;
-        case 300:  lNode.style.fontSize = "3pt"; break;
-        case 200:  lNode.style.fontSize = "4pt"; break;
-        case 150:  lNode.style.fontSize = "5pt"; break;
-        case 120:  lNode.style.fontSize = "7pt"; break;
-        case 100:  lNode.style.fontSize = "8pt"; break;
-        case 90:   lNode.style.fontSize = "10pt"; break;
-        case 75:   lNode.style.fontSize = "12pt"; break;
-        case 50:   lNode.style.fontSize = "13pt"; break;
-        case 33:   lNode.style.fontSize = "19pt"; break;
-        case 22:   lNode.style.fontSize = "28pt"; break;
-        default:   lNode.style.fontSize = "8pt"; break;
-      }
-    }
   },
   
   canBeOpened : function(aMouseEvent) {
