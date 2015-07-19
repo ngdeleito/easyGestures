@@ -75,22 +75,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
 
   this.outerR = Math.round((this.isLarge ? 70:61)*zoom); // outer radius of pie
   this.innerR = Math.round((this.isLarge ? 36:26)*zoom); // inner radius of pie
-  
-  // labels positioning
-  this.xLabelsPos = this.isLarge ?
-                      (menu.smallIcons ?
-                        [10, 212, 219, 219, 211, 186, 10, 10, 10, 10]
-                      : [10, 290, 300, 300, 285, 230, 10, 10, 10, 10])
-                    : (menu.smallIcons ?
-                        [10, 190, 195, 190, 167, 10, 10, 10]
-                      : [10, 265, 270, 260, 230, 10, 10, 10]);
-  this.yLabelsPos = this.isLarge ?
-                      (menu.smallIcons ?
-                        [ 6, 23, 41,  60,  79,  97,  80,  62, 42, 25]
-                      : [10, 40, 70, 100, 130, 162, 130, 100, 70, 40])
-                    : (menu.smallIcons ?
-                        [ 6, 23, 41,  60,  77, 58, 42, 25]
-                      : [10, 40, 70, 100, 125, 95, 68, 40]);
 }
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
@@ -518,18 +502,10 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////
 
     var nbItems = layout.labels.length; // number of items to be displayed
-
-    var xofs = 0;
-    var yofs = 0;
-
     for (var i = 0; i<nbItems; i++) {
-      var xpos = layout.xLabelsPos[i] + xofs;
-      var ypos = layout.yLabelsPos[i] + yofs;
-
       var tdiv = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
       tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
-      tdiv.style.left = Math.round(xpos) + "px";
-      tdiv.style.top = Math.round(ypos) + "px";
+      tdiv.classList.add("label" + i);
       tdiv.appendChild(eGc.frame_doc.createTextNode(layout.labels[i]) );
       node.appendChild(tdiv);
     }

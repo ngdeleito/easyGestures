@@ -377,6 +377,154 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647; /* max-z-index */
 }
 
+#easyGesturesPieMenu_nn .label0 {
+  left: 10px;
+  top: 10px;
+}
+#easyGesturesPieMenu_nn .label1 {
+  left: 265px;
+  top: 40px;
+}
+#easyGesturesPieMenu_nn .label2 {
+  left: 270px;
+  top: 70px;
+}
+#easyGesturesPieMenu_nn .label3 {
+  left: 260px;
+  top: 100px;
+}
+#easyGesturesPieMenu_nn .label4 {
+  left: 230px;
+  top: 125px;
+}
+#easyGesturesPieMenu_nn .label5 {
+  left: 10px;
+  top: 95px;
+}
+#easyGesturesPieMenu_nn .label6 {
+  left: 10px;
+  top: 68px;
+}
+#easyGesturesPieMenu_nn .label7 {
+  left: 10px;
+  top: 40px;
+}
+
+#easyGesturesPieMenu_ns .label0 {
+  left: 10px;
+  top: 6px;
+}
+#easyGesturesPieMenu_ns .label1 {
+  left: 190px;
+  top: 23px;
+}
+#easyGesturesPieMenu_ns .label2 {
+  left: 195px;
+  top: 41px;
+}
+#easyGesturesPieMenu_ns .label3 {
+  left: 190px;
+  top: 60px;
+}
+#easyGesturesPieMenu_ns .label4 {
+  left: 167px;
+  top: 77px;
+}
+#easyGesturesPieMenu_ns .label5 {
+  left: 10px;
+  top: 58px;
+}
+#easyGesturesPieMenu_ns .label6 {
+  left: 10px;
+  top: 42px;
+}
+#easyGesturesPieMenu_ns .label7 {
+  left: 10px;
+  top: 25px;
+}
+
+#easyGesturesPieMenu_ln .label0 {
+  left: 10px;
+  top: 10px;
+}
+#easyGesturesPieMenu_ln .label1 {
+  left: 290px;
+  top: 40px;
+}
+#easyGesturesPieMenu_ln .label2 {
+  left: 300px;
+  top: 70px;
+}
+#easyGesturesPieMenu_ln .label3 {
+  left: 300px;
+  top: 100px;
+}
+#easyGesturesPieMenu_ln .label4 {
+  left: 285px;
+  top: 130px;
+}
+#easyGesturesPieMenu_ln .label5 {
+  left: 230px;
+  top: 162px;
+}
+#easyGesturesPieMenu_ln .label6 {
+  left: 10px;
+  top: 130px;
+}
+#easyGesturesPieMenu_ln .label7 {
+  left: 10px;
+  top: 100px;
+}
+#easyGesturesPieMenu_ln .label8 {
+  left: 10px;
+  top: 70px;
+}
+#easyGesturesPieMenu_ln .label9 {
+  left: 10px;
+  top: 40px;
+}
+
+#easyGesturesPieMenu_ls .label0 {
+  left: 10px;
+  top: 6px;
+}
+#easyGesturesPieMenu_ls .label1 {
+  left: 212px;
+  top: 23px;
+}
+#easyGesturesPieMenu_ls .label2 {
+  left: 219px;
+  top: 41px;
+}
+#easyGesturesPieMenu_ls .label3 {
+  left: 219px;
+  top: 60px;
+}
+#easyGesturesPieMenu_ls .label4 {
+  left: 211px;
+  top: 79px;
+}
+#easyGesturesPieMenu_ls .label5 {
+  left: 186px;
+  top: 97px;
+}
+#easyGesturesPieMenu_ls .label6 {
+  left: 10px;
+  top: 80px;
+}
+#easyGesturesPieMenu_ls .label7 {
+  left: 10px;
+  top: 62px;
+}
+#easyGesturesPieMenu_ls .label8 {
+  left: 10px;
+  top: 42px;
+}
+#easyGesturesPieMenu_ls .label9 {
+  left: 10px;
+  top: 25px;
+}
+
 #easyGesturesPieMenu_nn [id^="eG_label_"].selected,
 #easyGesturesPieMenu_ns [id^="eG_label_"].selected,
 #easyGesturesPieMenu_ln [id^="eG_label_"].selected,
