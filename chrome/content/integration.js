@@ -302,11 +302,7 @@ function retrieveFavicon(url, callback) {
     var faviconService = Components
                            .classes["@mozilla.org/browser/favicon-service;1"]
                            .getService(Components.interfaces.mozIAsyncFavicons);
-    var ios = Components.classes["@mozilla.org/network/io-service;1"]
-                        .getService(Components.interfaces.nsIIOService);
-    var uri = ios.newURI(url, null, null).prePath;
-    
-    faviconService.getFaviconURLForPage(ios.newURI(uri, null, null), function(aURI) {
+    faviconService.getFaviconURLForPage(Services.io.newURI(url, null, null), function(aURI) {
       callback(aURI);
     });
   }
