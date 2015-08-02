@@ -447,22 +447,12 @@ eG_menu.prototype = {
       
       if (layout.actions[i].startsWith("loadURL")) { // new icon path for loadURL ?
         if (this[layout.actions[i]][2] == "true") {
-          if (!this.smallIcons) {
-            // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
-            timg.style.backgroundPosition = "4px 4px";
-            timg.style.backgroundSize = "26px 26px";
-          }
           this._addFavicon(this[layout.actions[i]][1], timg);
           iconName = "customIcon";
         }
       }
       else if (layout.actions[i].startsWith("runScript")) { // new icon path for runScript ?
         if (this[layout.actions[i]][2] !== "") {
-          if (!this.smallIcons) {
-            // adjusting icons for better presentation because favicons are 16x16 size and look small in the pie
-            timg.style.backgroundPosition = "4px 4px";
-            timg.style.backgroundSize = "26px 26px";
-          }
           timg.style.backgroundImage = "url('" + (this[layout.actions[i]][2]).replace(/\\/g , "\\\\") + "')";
           iconName = "customIcon";
         }
@@ -646,7 +636,6 @@ eG_menu.prototype = {
 
       if (sector >= 0) { // sector targetted exists: highlighting icons and labels
         layout_aNode.childNodes[sector].setAttribute("active", "true");
-        this.rolloverExternalIcons(layout.actions[sector], layout_aNode.childNodes[sector], true);
         if (layout_lNode !== null) {
           layout_lNode.childNodes[sector].classList.add("selected");
         }
@@ -735,7 +724,6 @@ eG_menu.prototype = {
   
     if (this.sector >= 0) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
-      this.rolloverExternalIcons(layout.actions[this.sector], layout_aNode.childNodes[this.sector], false);
       if (layout_lNode !== null) {
         layout_lNode.childNodes[this.sector].classList.remove("selected");
       }
@@ -748,30 +736,7 @@ eG_menu.prototype = {
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
     }
   },
-
-  rolloverExternalIcons : function(actionName, node, active) { // this is for loadURL and runScript actions icons which can be customized or imported from favicons or custom icons
-    if (this[actionName] === undefined || actionName === "autoscrolling") {
-      return;
-    }
-
-    if (active) {
-      if (actionName.startsWith("loadURL") && this[actionName][2] === "true") {
-        node.style.backgroundPosition = (!this.smallIcons?"5px 5px":"1px 1px");
-      }
-      else if (actionName.startsWith("runScript") && this[actionName][2] !== "") {
-        node.style.backgroundPosition = (!this.smallIcons?"1px 1px":"1px 1px");
-      }
-    }
-    else {
-      if (actionName.startsWith("loadURL") && this[actionName][2] === "true") {
-        node.style.backgroundPosition = (!this.smallIcons?"4px 4px":"0px 0px");
-      }
-      else if (actionName.startsWith("runScript") && this[actionName][2] !== "") {
-        node.style.backgroundPosition = (!this.smallIcons?"0px 0px":"0px 0px");
-      }
-    }
-  },
-
+  
   runAction : function() {
     var layout = this.menuSet[this.curLayoutName];
     
