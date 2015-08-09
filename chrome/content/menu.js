@@ -731,7 +731,7 @@ eG_menu.prototype = {
 
     // reset rollover for extra menu in base menu if needed
     var baseLayout = this.menuSet[this.baseMenu];
-    if (baseLayout !== undefined && baseLayout.hasExtraMenuAction && hidding) {
+    if (baseLayout !== undefined && hidding) {
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
     }
