@@ -102,7 +102,7 @@ MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
     menuSign.childNodes[layoutNumber].className = "active";
 };
 MenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+  var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
   var mainMenusSign = specialNodes.childNodes[1];
   
   this._updateMenuSign(mainMenusSign, this._pieMenu.numberOfMainMenus);
@@ -126,7 +126,7 @@ ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[sector]);
 };
 ExtraMenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+  var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
   var extraMenusSign = specialNodes.childNodes[2];
   
   this._updateMenuSign(extraMenusSign, this._pieMenu.numberOfExtraMenus);
@@ -146,7 +146,7 @@ ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
 };
 ContextualMenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+  var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
   var contextMenuSign = specialNodes.childNodes[3];
   
   contextMenuSign.textContent = eGStrings.getString(this.name);
@@ -359,24 +359,24 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    var node = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_SpecialNodes"); // used to know if menu has already been displayed in the current document
 
     ////////////////////////////////////////////////////////////////////////////
     // creating link sign
     ///////////////////////////////////////////////////////////////////////////
 
-    var img = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    var img = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     img.setAttribute("id", "eG_linkSign");
     node.appendChild(img);
     
     // adding the main menus sign
-    var div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    var div = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesMainMenusSign");
     
     var i = this.numberOfMainMenus;
     while (i > 0) {
-      let span = eGc.frame_doc.createElementNS(this.HTMLNamespace, "span");
+      let span = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "span");
       div.appendChild(span);
       --i;
     }
@@ -384,12 +384,12 @@ eG_menu.prototype = {
     node.appendChild(div);
     
     // adding the extra menus sign
-    div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    div = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesExtraMenusSign");
     
     i = this.numberOfExtraMenus;
     while (i > 0) {
-      let span = eGc.frame_doc.createElementNS(this.HTMLNamespace, "span");
+      let span = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "span");
       div.appendChild(span);
       --i;
     }
@@ -397,7 +397,7 @@ eG_menu.prototype = {
     node.appendChild(div);
     
     // adding the contextual menu sign
-    div = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    div = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     div.setAttribute("id", "easyGesturesContextMenuSign");
     node.appendChild(div);
     
@@ -418,7 +418,7 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    var node = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
 
     ////////////////////////////////////////////////////////////////////////////
@@ -436,7 +436,7 @@ eG_menu.prototype = {
       var xpos = imageR* Math.cos(angle)+ xofs;
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
-      timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
+      timg = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
       timg.setAttribute("id", "eG_action_" + layoutName + "_" + i);
       timg.style.left = Math.round(xpos) + "px";
       timg.style.top = Math.round(ypos) + "px";
@@ -467,7 +467,7 @@ eG_menu.prototype = {
     // creating menu image
     ///////////////////////////////////////////////////////////////////////////
 
-    var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
+    var timg = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
     timg.src = layout.menuImage;
     timg.style.opacity = this.menuOpacity;
@@ -484,7 +484,7 @@ eG_menu.prototype = {
     // creating a div to contain all the items
     ///////////////////////////////////////////////////////////////////////////
 
-    var node = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+    var node = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
     node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
     
     ////////////////////////////////////////////////////////////////////////////
@@ -493,10 +493,10 @@ eG_menu.prototype = {
 
     var nbItems = layout.labels.length; // number of items to be displayed
     for (var i = 0; i<nbItems; i++) {
-      var tdiv = eGc.frame_doc.createElementNS(this.HTMLNamespace, "div");
+      var tdiv = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
       tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
       tdiv.classList.add("label" + i);
-      tdiv.appendChild(eGc.frame_doc.createTextNode(layout.labels[i]) );
+      tdiv.appendChild(eGc.topmostDocument.createTextNode(layout.labels[i]) );
       node.appendChild(tdiv);
     }
 
@@ -504,7 +504,7 @@ eG_menu.prototype = {
     // creating tooltips image
     ///////////////////////////////////////////////////////////////////////////
 
-    var timg = eGc.frame_doc.createElementNS(this.HTMLNamespace, "img");
+    var timg = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "img");
     timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
     timg.src = layout.tooltipsImage;
     node.appendChild(timg);
@@ -516,22 +516,22 @@ eG_menu.prototype = {
     var layout = this.menuSet[layoutName];
     
     // create resources if necessary
-    var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
+    var easyGesturesNode = eGc.topmostDocument.getElementById(this.easyGesturesID);
     if (easyGesturesNode === null) {
-      easyGesturesNode = this.createEasyGesturesNode(eGc.frame_doc);
+      easyGesturesNode = this.createEasyGesturesNode(eGc.topmostDocument);
       eGc.body.insertBefore(easyGesturesNode, eGc.body.firstChild);
     }
     easyGesturesNode.style.left = this.clientX + "px";
     easyGesturesNode.style.top = this.clientY + "px";
     
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     if (specialNodes === null) {
       specialNodes = this.createSpecialNodes();
       easyGesturesNode.appendChild(specialNodes);
     }
     
     // create resources if necessary
-    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layoutName);
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layoutName);
     if (layout_aNode === null) {
       layout_aNode = this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
       easyGesturesNode.appendChild(layout_aNode);
@@ -557,11 +557,11 @@ eG_menu.prototype = {
   handleMousemove : function(event) { // handle rollover effects and switch to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
     
-    var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
-    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
-    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
-    var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var easyGesturesNode = eGc.topmostDocument.getElementById(this.easyGesturesID);
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
+    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
+    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
@@ -672,9 +672,9 @@ eG_menu.prototype = {
   },
 
   showExtraMenu : function() {
-    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
-    var baseLayout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.baseMenu);
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
+    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
     
@@ -693,9 +693,9 @@ eG_menu.prototype = {
   },
 
   hide : function(layout) { // makes menu invisible
-    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layout.name);
-    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + layout.name);
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
+    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     var contextMenuSign = specialNodes.childNodes[3];
   
@@ -718,9 +718,9 @@ eG_menu.prototype = {
   },
 
   clearRollover : function(layout, hidding) { // clear rollover effect
-    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + layout.name);
-    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + layout.name);
-    var baseLayout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.baseMenu);
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
+    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
+    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
   
     if (this.sector >= 0) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
@@ -763,8 +763,8 @@ eG_menu.prototype = {
   update : function() { // update menu content (gray actions, display special signs etc.)
     var layout = this.menuSet[this.curLayoutName];
     
-    var layout_aNode = eGc.frame_doc.getElementById("eG_actions_" + this.curLayoutName);
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -799,7 +799,7 @@ eG_menu.prototype = {
   close : function() {
     var layout = this.menuSet[this.curLayoutName];
     var baseLayout = this.menuSet[this.baseMenu];
-    var specialNodes = eGc.frame_doc.getElementById("eG_SpecialNodes");
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
     
@@ -845,10 +845,10 @@ eG_menu.prototype = {
   },
 
   showMenuTooltips : function() { // displaying tooltips
-    var easyGesturesNode = eGc.frame_doc.getElementById(this.easyGesturesID);
+    var easyGesturesNode = eGc.topmostDocument.getElementById(this.easyGesturesID);
     
     // create resources if necessary
-    var layout_lNode = eGc.frame_doc.getElementById("eG_labels_" + this.curLayoutName);
+    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
     if (layout_lNode === null) {
       layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
       easyGesturesNode.appendChild(layout_lNode);
@@ -934,7 +934,7 @@ eG_menu.prototype = {
   
   openLinkThroughPieMenuCenter : function(clickedButton) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var linkSign = eGc.frame_doc.getElementById("eG_SpecialNodes").childNodes[0];
+    var linkSign = eGc.topmostDocument.getElementById("eG_SpecialNodes").childNodes[0];
     
     if (linkSign.style.visibility === "visible") {
       // if a link is clicked without dragging and related option is checked

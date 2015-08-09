@@ -252,7 +252,7 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    var url = eGc.doc.URL;
+    var url = eGc.topmostDocument.URL;
     return this._getRootURL(url) === url.replace("www.", "");
   }, startsNewGroup, nextAction);
 }
@@ -315,7 +315,7 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     var content = prefValue[1];
     
     content = content.replace("%s", eGm.selection);
-    content = content.replace("%u", eGc.doc.URL);
+    content = content.replace("%u", eGc.topmostDocument.URL);
     
     action.call(this, content,
       Services.wm.getMostRecentWindow("navigator:browser"),
@@ -412,7 +412,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index - 1;
-    var url = eGc.doc.URL;
+    var url = eGc.topmostDocument.URL;
     var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
     while ((this._getRootURL(url).replace("www.", "") === this._getRootURL(backurl).replace("www.", "")) && index > 0) {
@@ -437,7 +437,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index + 1;
-    var url = eGc.doc.URL;
+    var url = eGc.topmostDocument.URL;
     var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
     while (this._getRootURL(url).replace("www.", "") === this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
@@ -462,18 +462,26 @@ var eGActions = {
   }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
-    var frame = eGc.frame_doc.defaultView;
-    frame.scroll(0, 0);
+    if (eGc.targetWindow.scrollY !== 0) {
+      eGc.targetWindow.scroll(0, 0);
+    }
+    else {
+      eGc.topmostWindow.scroll(0, 0);
+    }
   }, function() {
-    return eGc.frame_doc.defaultView.scrollY === 0;
+    return eGc.targetWindow.scrollY === 0 && eGc.topmostWindow.scrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
-    var frame = eGc.frame_doc.defaultView;
-    frame.scroll(0, frame.scrollMaxY);
+    if (eGc.targetWindow.scrollY !== eGc.targetWindow.scrollMaxY) {
+      eGc.targetWindow.scroll(0, eGc.targetWindow.scrollMaxY);
+    }
+    else {
+      eGc.topmostWindow.scroll(0, eGc.topmostWindow.scrollMaxY);
+    }
   }, function() {
-    var frame = eGc.frame_doc.defaultView;
-    return frame.scrollY === frame.scrollMaxY;
+    return eGc.targetWindow.scrollY === eGc.targetWindow.scrollMaxY &&
+           eGc.topmostWindow.scrollY === eGc.topmostWindow.scrollMaxY;
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
@@ -563,7 +571,7 @@ var eGActions = {
   }, false, "savePageAs"),
   
   savePageAs : new Action("savePageAs", function() {
-    var document = eGc.doc;
+    var document = eGc.topmostDocument;
     var file = this._getFileForSavingData(
                  Components.interfaces.nsIFilePicker.filterHTML,
                  document.title);
@@ -584,12 +592,12 @@ var eGActions = {
   
   viewPageSource : new Action("viewPageSource", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserViewSourceOfDocument(eGc.doc);
+    window.BrowserViewSourceOfDocument(eGc.topmostDocument);
   }, false, "viewPageInfo"),
   
   viewPageInfo : new Action("viewPageInfo", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserPageInfo(eGc.doc, null);
+    window.BrowserPageInfo(eGc.topmostDocument, null);
   }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
@@ -745,7 +753,7 @@ var eGActions = {
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
-    var url = eGc.doc.URL;
+    var url = eGc.topmostDocument.URL;
     // removing any trailing "/"
     url = url.replace(/\/$/, "");
     // creating a nsIURI and removing the last "/"-separated item from its path
@@ -759,7 +767,7 @@ var eGActions = {
   }, true, "root"),
   
   root : new CanGoUpDisableableAction("root", function() {
-    var url = eGc.doc.URL;
+    var url = eGc.topmostDocument.URL;
     var rootURL = this._getRootURL(url);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.loadURI(rootURL);
@@ -767,7 +775,7 @@ var eGActions = {
   
   showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.loadURI(eGc.frame_doc.location.href);
+    window.loadURI(eGc.targetDocument.URL);
   }, false, "focusLocationBar"),
   
   focusLocationBar : new Action("focusLocationBar", function() {
@@ -839,14 +847,14 @@ var eGActions = {
     var bookmarksService =
           Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
                     .getService(Components.interfaces.nsINavBookmarksService);
-    var uri = Services.io.newURI(eGc.doc.URL, null, null);
+    var uri = Services.io.newURI(eGc.topmostDocument.URL, null, null);
     if (bookmarksService.isBookmarked(uri)) {
       window.PlacesCommandHook.bookmarkCurrentPage(true,
           window.PlacesUtils.unfiledBookmarksFolderId);
     }
     else {
       bookmarksService.insertBookmark(bookmarksService.unfiledBookmarksFolder,
-        uri, bookmarksService.DEFAULT_INDEX, eGc.doc.title);
+        uri, bookmarksService.DEFAULT_INDEX, eGc.topmostDocument.title);
     }
   }, false, "bookmarkThisLink"),
   
@@ -984,12 +992,12 @@ var eGActions = {
   }, false, "hideImages"),
   
   hideImages : new DisableableAction("hideImages", function() {
-    var images = eGc.doc.querySelectorAll("img:not([id^='eG_'])");
+    var images = eGc.topmostDocument.querySelectorAll("img:not([id^='eG_'])");
     for (var i=0; i < images.length; ++i) {
       images[i].style.display = "none";
     }
   }, function() {
-    return eGc.doc.querySelectorAll("img:not([id^='eG_'])").length === 0;
+    return eGc.topmostDocument.querySelectorAll("img:not([id^='eG_'])").length === 0;
   }, false, "cut"),
   
   cut : new DisableableCommandAction("cut", true, "copy"),

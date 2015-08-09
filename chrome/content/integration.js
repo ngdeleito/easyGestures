@@ -43,9 +43,13 @@ var eGc = {
   keyPressed: 0, // used to control display of pie menu
   
   mouseupEvent: null,
-  doc: null,
+  
+  targetDocument: null,
+  targetWindow: null,
+  topmostDocument: null,
+  topmostWindow: null,
   body: null,
-  frame_doc: null,
+  
   loading: false, // used for reload/stop action
   
   // used for drag movements in 'open when dragging' situations
@@ -187,10 +191,6 @@ function eG_handleMouseup(evt) {
 function eG_handleMousemove(evt) {
   var window = evt.target.ownerDocument.defaultView;
   
-  if (evt.originalTarget.ownerDocument != eGc.frame_doc) {
-    return;
-  }
-  
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
@@ -226,14 +226,19 @@ function eG_handleMousedown(evt) {
   }
     
   // identify context, find body etc
-  eGc.doc = evt.target.ownerDocument;
-  eGc.frame_doc = evt.originalTarget.ownerDocument;
-  eGc.body = eGc.frame_doc.documentElement;
+  eGc.targetDocument = evt.target.ownerDocument;
+  eGc.targetWindow = eGc.targetDocument.defaultView;
+  eGc.topmostWindow = eGc.targetWindow.top;
+  eGc.topmostDocument = eGc.topmostWindow.document;
+  
+  eGc.body = eGc.topmostDocument.body ? eGc.topmostDocument.body : eGc.topmostDocument.documentElement;
   
   eGm.setContext(evt.target, window, eG_cleanSelection(evt.view.getSelection()));
   
-  eGc.clientXDown = evt.clientX;
-  eGc.clientYDown = evt.clientY;
+  eGc.clientXDown = evt.clientX + eGc.targetWindow.mozInnerScreenX
+                                - eGc.topmostWindow.mozInnerScreenX;
+  eGc.clientYDown = evt.clientY + eGc.targetWindow.mozInnerScreenY
+                                - eGc.topmostWindow.mozInnerScreenY;
   
   if (!eGm.showAfterDelay) {
     //evt.preventDefault();
