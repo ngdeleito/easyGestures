@@ -347,9 +347,7 @@ eG_menu.prototype = {
     var aDiv = aDocument.createElementNS(this.HTMLNamespace, "div");
     aDiv.setAttribute("id", this.easyGesturesID);
     
-    aDocument.defaultView.addEventListener("unload", function() {
-      eGm.removeFromDocument(aDocument);
-    }, true);
+    aDocument.defaultView.addEventListener("unload", removeMenu, true);
     
     return aDiv;
   },
@@ -962,16 +960,10 @@ eG_menu.prototype = {
     }
   },
   
-  removeFromDocument : function(document) {
-    var easyGesturesNode = document.getElementById(this.easyGesturesID);
-    if (easyGesturesNode !== null) {
-      easyGesturesNode.parentNode.removeChild(easyGesturesNode);
-    }
-  },
-  
   removeFromAllPages : function() {
     var removeMenus = function(element) {
       var document = this.gBrowser.getBrowserForTab(element).contentDocument;
+      document.defaultView.removeEventListener("unload", removeMenu, true);
       var easyGesturesNode = document.getElementById(eGm.easyGesturesID);
       if (easyGesturesNode !== null) {
         easyGesturesNode.parentNode.removeChild(easyGesturesNode);
@@ -988,3 +980,8 @@ eG_menu.prototype = {
     }
   }
 };
+
+function removeMenu(event) {
+  var easyGesturesNode = event.target.getElementById(eGm.easyGesturesID);
+  easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+}
