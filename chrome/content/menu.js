@@ -444,7 +444,7 @@ eG_menu.prototype = {
       var iconName = layout.actions[i];
       
       if (layout.actions[i].startsWith("loadURL")) { // new icon path for loadURL ?
-        if (this[layout.actions[i]][2] == "true") {
+        if (this[layout.actions[i]][2] === "true") {
           this._addFavicon(this[layout.actions[i]][1], timg);
           iconName = "customIcon";
         }
@@ -628,7 +628,7 @@ eG_menu.prototype = {
     // rollover effects
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (this.sector != sector) { // moved to new sector
+    if (this.sector !== sector) { // moved to new sector
       this.clearRollover(layout, false);
 
       if (sector >= 0) { // sector targetted exists: highlighting icons and labels
@@ -770,7 +770,7 @@ eG_menu.prototype = {
     // showing center icon
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    if (this.anchorElement !== null && this.handleLinks && this.isJustOpened() && this.curLayoutName =="main") { //if a link is pointed and mouse not dragged
+    if (this.anchorElement !== null && this.handleLinks && this.isJustOpened() && this.curLayoutName === "main") { //if a link is pointed and mouse not dragged
       linkSign.style.visibility = "visible";
       this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
     }

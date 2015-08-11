@@ -235,10 +235,10 @@ function eG_handleMousedown(evt) {
   
   eGm.setContext(evt.target, window, eG_cleanSelection(evt.view.getSelection()));
   
-  eGc.clientXDown = evt.clientX + eGc.targetWindow.mozInnerScreenX
-                                - eGc.topmostWindow.mozInnerScreenX;
-  eGc.clientYDown = evt.clientY + eGc.targetWindow.mozInnerScreenY
-                                - eGc.topmostWindow.mozInnerScreenY;
+  eGc.clientXDown = evt.clientX + eGc.targetWindow.mozInnerScreenX -
+                                  eGc.topmostWindow.mozInnerScreenX;
+  eGc.clientYDown = evt.clientY + eGc.targetWindow.mozInnerScreenY -
+                                  eGc.topmostWindow.mozInnerScreenY;
   
   if (!eGm.showAfterDelay) {
     //evt.preventDefault();
