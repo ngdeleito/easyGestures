@@ -249,9 +249,9 @@ function eG_menu () {
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.setHidden();
   
-  // Coordonnées
-  this.clientX = 0; // client x coordinate of pie menu center
-  this.clientY = 0;
+  // coordinates of the pie menu center (relative to the viewport)
+  this.centerX = 0;
+  this.centerY = 0;
   
   this.sector = -1; // index of item under mouse
 
@@ -519,8 +519,8 @@ eG_menu.prototype = {
       easyGesturesNode = this.createEasyGesturesNode(eGc.topmostDocument);
       eGc.body.insertBefore(easyGesturesNode, eGc.body.firstChild);
     }
-    easyGesturesNode.style.left = this.clientX + "px";
-    easyGesturesNode.style.top = this.clientY + "px";
+    easyGesturesNode.style.left = this.centerX + "px";
+    easyGesturesNode.style.top = this.centerY + "px";
     
     var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     if (specialNodes === null) {
@@ -568,7 +568,7 @@ eG_menu.prototype = {
     linkSign.style.visibility = "hidden";
     
     // state change if was dragged
-    if (this.isJustOpened() && (Math.abs(event.clientX- this.clientX)> 1 || Math.abs(event.clientY- this.clientY)> 1)) {
+    if (this.isJustOpened() && (Math.abs(event.clientX- this.centerX)> 1 || Math.abs(event.clientY- this.centerY)> 1)) {
       this.setJustOpenedAndMouseMoved();
     }
 
@@ -582,8 +582,8 @@ eG_menu.prototype = {
     var nbItems = layout.actions.length; // number of items to be displayed
 
     var sector = -1;
-    var refX = this.clientX;
-    var refY = this.clientY;
+    var refX = this.centerX;
+    var refY = this.centerY;
     if (layout.isExtraMenu) {
       refY -= this.menuSet[this.baseMenu].outerR*1.2;
     }
@@ -605,11 +605,11 @@ eG_menu.prototype = {
         this.moveAuto && radius >= layout.outerR &&
                          !eGActions[layout.actions[sector]].isExtraMenuAction) {
       if (this.moving) {
-        this.clientX += (event.clientX - this.xMoving);
-        this.clientY += (event.clientY - this.yMoving);
+        this.centerX += (event.clientX - this.xMoving);
+        this.centerY += (event.clientY - this.yMoving);
         
-        easyGesturesNode.style.left = this.clientX + "px";
-        easyGesturesNode.style.top = this.clientY + "px";
+        easyGesturesNode.style.left = this.centerX + "px";
+        easyGesturesNode.style.top = this.centerY + "px";
       }
       else {
         this.moving = true;

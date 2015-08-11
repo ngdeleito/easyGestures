@@ -279,8 +279,8 @@ function eG_openMenu() {
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
   
-  eGm.clientX = eGc.clientXDown;
-  eGm.clientY = eGc.clientYDown;
+  eGm.centerX = eGc.clientXDown;
+  eGm.centerY = eGc.clientYDown;
   
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
