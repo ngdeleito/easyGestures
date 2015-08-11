@@ -600,11 +600,10 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // moving menu when shift key is down
     ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    var moveAutoTrigger = (radius >= layout.outerR &&
-                           !eGActions[layout.actions[sector]].isExtraMenuAction);
     
-    if (event.shiftKey && !this.moveAuto || this.moveAuto && moveAutoTrigger ) {
+    if (!this.moveAuto && event.shiftKey ||
+        this.moveAuto && radius >= layout.outerR &&
+                         !eGActions[layout.actions[sector]].isExtraMenuAction) {
       if (this.moving) {
         this.clientX += (event.clientX - this.xMoving);
         this.clientY += (event.clientY - this.yMoving);
