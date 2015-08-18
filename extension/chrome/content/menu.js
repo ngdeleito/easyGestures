@@ -718,6 +718,7 @@ eG_menu.prototype = {
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
     var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
     var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
+    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
   
     if (this.sector >= 0) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
@@ -731,6 +732,9 @@ eG_menu.prototype = {
     if (baseLayout !== undefined && hidding) {
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
+      if (baseLayout_lNode !== null) {
+        baseLayout_lNode.childNodes[this.extraMenuAction].classList.remove("selected");
+      }
     }
   },
   
