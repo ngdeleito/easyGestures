@@ -66,16 +66,16 @@ var eGPrefs = {
   
   _setDefaultMenus : function() {
     var menus = {
-      main:             "showExtraMenu/pageTop/nextTab/bookmarkThisPage/backSite/firstPage/closeTab/reload/back/newTab",
-      mainAlt1:         "showExtraMenu/duplicateTab/forward/pinUnpinTab/forwardSite/lastPage/pageBottom/homepage/prevTab/undoCloseTab",
-      mainAlt2:         "showExtraMenu/loadURL1/loadURL2/runScript1/loadURL3/loadURL4/loadURL5/runScript2/loadURL6/loadURL7",
-      extra:            "searchWeb/toggleFindBar/bookmarkThisPage/empty/empty/empty/empty/empty/homepage/reload",
-      extraAlt1:        "toggleFullscreen/empty/newPrivateWindow/empty/empty/empty/empty/empty/quit/restart",
-      extraAlt2:        "zoomIn/zoomOut/zoomReset/empty/empty/empty/empty/empty/printPage/savePageAs",
-      contextLink:      "copyLink/saveLinkAs/bookmarkThisLink/empty/empty/empty/empty/empty/openLinkInNewPrivateWindow/openLink",
-      contextImage:     "copyImage/saveImageAs/empty/empty/empty/empty/empty/empty/hideImages/copyImageLocation",
-      contextSelection: "searchWeb/toggleFindBar/empty/empty/empty/empty/paste/empty/copy/cut",
-      contextTextbox:   "undo/redo/selectAll/empty/empty/empty/paste/empty/copy/cut"
+      main:             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage",
+      mainAlt1:         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab",
+      mainAlt2:         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1",
+      extra:            "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage",
+      extraAlt1:        "newPrivateWindow/empty/toggleFullscreen/restart/quit",
+      extraAlt2:        "zoomReset/zoomOut/zoomIn/savePageAs/printPage",
+      contextLink:      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty",
+      contextImage:     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty",
+      contextSelection: "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty",
+      contextTextbox:   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"
     };
     
     for (let [menuName, actions] in Iterator(menus)) {
@@ -518,6 +518,58 @@ var eGPrefs = {
     this._prefs.setIntPref("activation.preventOpenKey",
       this._prefs.getIntPref("activation.suppressKey"));
     this._prefs.deleteBranch("activation.suppressKey");
+  },
+  
+  updateToV4_11: function() {
+    var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+      "extraAlt2", "contextLink", "contextImage", "contextSelection",
+      "contextTextbox"];
+    var extraMenuNames = ["extra", "extraAlt1", "extraAlt2"];
+    
+    menuNames.forEach(function(menuName) {
+      let actions = this._prefs.getCharPref("menus." + menuName).split("/");
+      [actions[0], actions[2]] = [actions[2], actions[0]];
+      [actions[9], actions[3]] = [actions[3], actions[9]];
+      [actions[8], actions[4]] = [actions[4], actions[8]];
+      [actions[7], actions[5]] = [actions[5], actions[7]];
+      this._prefs.setCharPref("menus." + menuName, actions.join("/"));
+    }, this);
+    
+    extraMenuNames.forEach(function(menuName) {
+      let actions = this._prefs.getCharPref("menus." + menuName).split("/");
+      actions.splice(5, 5);
+      this._prefs.setCharPref("menus." + menuName, actions.join("/"));
+    }, this);
+    
+    var mainMenuStats = JSON.parse(this._prefs.getCharPref("stats.mainMenu"));
+    [mainMenuStats[0], mainMenuStats[2]] = [mainMenuStats[2], mainMenuStats[0]];
+    [mainMenuStats[9], mainMenuStats[3]] = [mainMenuStats[3], mainMenuStats[9]];
+    [mainMenuStats[8], mainMenuStats[4]] = [mainMenuStats[4], mainMenuStats[8]];
+    [mainMenuStats[7], mainMenuStats[5]] = [mainMenuStats[5], mainMenuStats[7]];
+    [mainMenuStats[10], mainMenuStats[12]] = [mainMenuStats[12], mainMenuStats[10]];
+    [mainMenuStats[19], mainMenuStats[13]] = [mainMenuStats[13], mainMenuStats[19]];
+    [mainMenuStats[18], mainMenuStats[14]] = [mainMenuStats[14], mainMenuStats[18]];
+    [mainMenuStats[17], mainMenuStats[15]] = [mainMenuStats[15], mainMenuStats[17]];
+    [mainMenuStats[20], mainMenuStats[22]] = [mainMenuStats[22], mainMenuStats[20]];
+    [mainMenuStats[29], mainMenuStats[23]] = [mainMenuStats[23], mainMenuStats[29]];
+    [mainMenuStats[28], mainMenuStats[24]] = [mainMenuStats[24], mainMenuStats[28]];
+    [mainMenuStats[27], mainMenuStats[25]] = [mainMenuStats[25], mainMenuStats[27]];
+    this._prefs.setCharPref("stats.mainMenu", JSON.stringify(mainMenuStats));
+    
+    var extraMenuStats = JSON.parse(this._prefs.getCharPref("stats.extraMenu"));
+    [extraMenuStats[0], extraMenuStats[2]] = [extraMenuStats[2], extraMenuStats[0]];
+    [extraMenuStats[7], extraMenuStats[3]] = [extraMenuStats[3], extraMenuStats[7]];
+    [extraMenuStats[6], extraMenuStats[4]] = [extraMenuStats[4], extraMenuStats[6]];
+    [extraMenuStats[8], extraMenuStats[10]] = [extraMenuStats[10], extraMenuStats[8]];
+    [extraMenuStats[15], extraMenuStats[11]] = [extraMenuStats[11], extraMenuStats[15]];
+    [extraMenuStats[14], extraMenuStats[12]] = [extraMenuStats[12], extraMenuStats[14]];
+    [extraMenuStats[16], extraMenuStats[18]] = [extraMenuStats[18], extraMenuStats[16]];
+    [extraMenuStats[22], extraMenuStats[19]] = [extraMenuStats[19], extraMenuStats[22]];
+    [extraMenuStats[23], extraMenuStats[20]] = [extraMenuStats[20], extraMenuStats[23]];
+    extraMenuStats.splice(5, 3);
+    extraMenuStats.splice(10, 3);
+    extraMenuStats.splice(15, 3);
+    this._prefs.setCharPref("stats.extraMenu", JSON.stringify(extraMenuStats));
   }
 };
 

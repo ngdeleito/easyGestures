@@ -345,14 +345,14 @@ function createActions() {
       }
     }
     
-    // sector 0
-    box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector0"));
+    // sector 2
+    box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector2"));
     
-    // sectors 9 and 1
+    // sectors 3 and 1
     var hbox = document.createElement("hbox");
     hbox.setAttribute("pack", "center");
     
-    hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector9"));
+    hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector3"));
     
     var spacer = document.createElement("spacer");
     spacer.setAttribute("height", "0");
@@ -362,7 +362,7 @@ function createActions() {
     hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector1"));
     box.appendChild(hbox);
     
-    // sectors 8,7 and 2,3
+    // sectors 4,5 and 0,9
     hbox = document.createElement("hbox");
     hbox.setAttribute("pack", "center");
     box.appendChild(hbox);
@@ -371,10 +371,10 @@ function createActions() {
     vbox.setAttribute("pack", "center");
     hbox.appendChild(vbox);
     
-    vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector8"));
+    vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector4"));
     
     if (!boxes[i].startsWith("extra")) {
-      vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector7"));
+      vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector5"));
     }
     
     ///////////////////////////////
@@ -406,14 +406,14 @@ function createActions() {
     vbox.setAttribute("pack", "center");
     hbox.appendChild(vbox);
     
-    vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector2"));
+    vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector0"));
     
     if (!boxes[i].startsWith("extra")) {
-      vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector3"));
+      vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector9"));
     }
     
     if (!boxes[i].startsWith("extra")) {
-      // sectors 6 and 4
+      // sectors 6 and 8
       hbox = document.createElement("hbox");
       hbox.setAttribute("pack", "center");
       
@@ -424,11 +424,11 @@ function createActions() {
       spacer.setAttribute("width", "11px");
       hbox.appendChild(spacer);
       
-      hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector4"));
+      hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector8"));
       box.appendChild(hbox);
       
-      // sector 5
-      box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector5"));
+      // sector 7
+      box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector7"));
     }
     
     readActionsGroupPreference(boxes[i]);
@@ -506,7 +506,7 @@ function attachMenupopup(menulist) {
   menulist.appendChild(clonedMenupopup);
   clonedMenupopup.boxObject.firstChild.setAttribute("style", "overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
   
-  if (clonedMenupopup.parentNode.id.search("Sector0") == -1 ||
+  if (clonedMenupopup.parentNode.id.search("Sector2") == -1 ||
       menulist.id.startsWith("extra")) {
     // remove showExtraMenu action
     clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
@@ -693,15 +693,10 @@ function readActionsGroupPreference(name) {
   var preference = document.getElementById(name + "Menu");
   var actionNames = preference.value.split("/");
   
-  var indexes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  if (name.startsWith("extra")) {
-    indexes = [0, 1, 2, 8, 9];
-  }
-  
-  indexes.forEach(function(value) {
-    var element = document.getElementById(name + "Sector" + value);
-    element.setAttribute("actionName", actionNames[value]);
-    element.setAttribute("label", eGActions[actionNames[value]].getXULLabel());
+  actionNames.forEach(function(value, index) {
+    var element = document.getElementById(name + "Sector" + index);
+    element.setAttribute("actionName", value);
+    element.setAttribute("label", eGActions[value].getXULLabel());
   });
 }
 
@@ -717,13 +712,8 @@ function preparePreferenceValueForNormalMenu(name) {
 function preparePreferenceValueForExtraMenu(name) {
   var result = [];
   
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(value) {
-    if (value >= 3 && value <= 7) {
-      result.push("empty");
-    }
-    else {
-      result.push(document.getElementById(name + "Sector" + value).getAttribute("actionName"));
-    }
+  [0, 1, 2, 3, 4].forEach(function(value) {
+    result.push(document.getElementById(name + "Sector" + value).getAttribute("actionName"));
   });
   return result.join("/");
 }
@@ -847,7 +837,7 @@ function updateUI() {
   var boxes = new Array("main","extra");
   for (var i=0; i<2; i++) {
     for (var sector=0; sector<10; sector++) {
-      if (boxes[i].search("extra")!=-1 && sector>2 && sector<8) {
+      if (boxes[i].search("extra")!=-1 && sector>4) {
         continue;
       }
       document.getElementById(boxes[i] + "Alt1Sector" + sector).disabled =
@@ -862,21 +852,21 @@ function updateUI() {
   //***************************************************
   var menuIsLarge = (document.getElementById("menuType").selectedItem.value == "true");
   
-  document.getElementById("mainSector3").hidden = !menuIsLarge;
-  document.getElementById("mainSector7").hidden = !menuIsLarge;
-  document.getElementById("mainAlt1Sector3").hidden = !menuIsLarge;
-  document.getElementById("mainAlt1Sector7").hidden = !menuIsLarge;
-  document.getElementById("mainAlt2Sector3").hidden = !menuIsLarge;
-  document.getElementById("mainAlt2Sector7").hidden = !menuIsLarge;
+  document.getElementById("mainSector5").hidden = !menuIsLarge;
+  document.getElementById("mainSector9").hidden = !menuIsLarge;
+  document.getElementById("mainAlt1Sector5").hidden = !menuIsLarge;
+  document.getElementById("mainAlt1Sector9").hidden = !menuIsLarge;
+  document.getElementById("mainAlt2Sector5").hidden = !menuIsLarge;
+  document.getElementById("mainAlt2Sector9").hidden = !menuIsLarge;
   
-  document.getElementById("contextLinkSector3").hidden = !menuIsLarge;
-  document.getElementById("contextLinkSector7").hidden = !menuIsLarge;
-  document.getElementById("contextImageSector3").hidden = !menuIsLarge;
-  document.getElementById("contextImageSector7").hidden = !menuIsLarge;
-  document.getElementById("contextSelectionSector3").hidden = !menuIsLarge;
-  document.getElementById("contextSelectionSector7").hidden = !menuIsLarge;
-  document.getElementById("contextTextboxSector3").hidden = !menuIsLarge;
-  document.getElementById("contextTextboxSector7").hidden = !menuIsLarge;
+  document.getElementById("contextLinkSector5").hidden = !menuIsLarge;
+  document.getElementById("contextLinkSector9").hidden = !menuIsLarge;
+  document.getElementById("contextImageSector5").hidden = !menuIsLarge;
+  document.getElementById("contextImageSector9").hidden = !menuIsLarge;
+  document.getElementById("contextSelectionSector5").hidden = !menuIsLarge;
+  document.getElementById("contextSelectionSector9").hidden = !menuIsLarge;
+  document.getElementById("contextTextboxSector5").hidden = !menuIsLarge;
+  document.getElementById("contextTextboxSector9").hidden = !menuIsLarge;
   
   //***************************************************
   

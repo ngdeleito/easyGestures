@@ -48,15 +48,20 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   if (!this.isLarge) {
     // removing actions intended for large menus
-    actionsPrefs.splice(7, 1);
-    actionsPrefs.splice(3, 1);
+    actionsPrefs.splice(9, 1);
+    actionsPrefs.splice(5, 1);
   }
   this.actions = actionsPrefs;
   this.labels = actionsPrefs.map(function(actionName) {
     return eGActions[actionName].getLabel();
   });
   
-  this.hasExtraMenuAction = eGActions[this.actions[0]].isExtraMenuAction;
+  // half the angle reserved for a sector (in radians)
+  this.halfAngleForSector = Math.PI / this.actions.length;
+  this.startingAngle = this.isLarge ? this.halfAngleForSector : 0;
+  this.sectorOffset = this.isLarge ? 0 : this.halfAngleForSector;
+  
+  this.hasExtraMenuAction = eGActions[this.actions[menu.extraMenuAction]].isExtraMenuAction;
   
   // setting menu and tooltips images
   
@@ -82,13 +87,8 @@ MenuLayout.prototype.getNextLayout = function() {
 MenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   var sector = this._pieMenu.sector;
   var sector8To10 = sector;
-  if (!this.isLarge) {
-    if (sector > 2) {
-      sector8To10++;
-    }
-    if (sector >= 6) {
-      sector8To10++;
-    }
+  if (!this.isLarge && sector > 4) {
+    sector8To10++;
   }
   eGPrefs.incrementStatsMainMenuPref(this._layoutNumber * 10 + sector8To10);
   eGPrefs.updateStatsForAction(this.actions[sector]);
@@ -114,6 +114,10 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.isExtraMenu = true;
   this.isLarge = false; // extra menus are never large
   
+  this.halfAngleForSector = Math.PI / 8;
+  this.startingAngle = 0;
+  this.sectorOffset = this.halfAngleForSector;
+  
   this.menuImage = menu.skinPath + menu.smallMenuTag +
                    (menu.noIcons ? "basic_" : "") + "extraMenu.png";
   this.tooltipsImage = menu.skinPath + "extraLabels.png";
@@ -122,7 +126,7 @@ ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
 ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   var sector = this._pieMenu.sector;
-  eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 8 + sector);
+  eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 5 + sector);
   eGPrefs.updateStatsForAction(this.actions[sector]);
 };
 ExtraMenuLayout.prototype.updateMenuSign = function() {
@@ -259,7 +263,7 @@ function eG_menu () {
   this.autoscrollingTrigger = null; // trigger to display autoscrolling
   this.autoscrolling = false; // used for automatic delayed autoscrolling on mouse down
 
-  this.extraMenuAction = 0; // position of extra menu action in base menu from which extra menu is called
+  this.extraMenuAction = 2; // position of extra menu action in base menu from which extra menu is called
 
   this.iconSize = this.smallIcons? 20 : 32;
 
@@ -428,9 +432,8 @@ eG_menu.prototype = {
     var imageR = (layout.outerR+layout.innerR)/2;
 
     var nbItems = layout.actions.length; // number of items to be displayed
+    var angle = layout.startingAngle;
     for(var i = 0; i<nbItems; i++) {
-      var angle = Math.PI/2 - i*2*Math.PI/nbItems;
-
       var xpos = imageR* Math.cos(angle)+ xofs;
       var ypos = -imageR* Math.sin(angle)+ yofs;
 
@@ -459,6 +462,7 @@ eG_menu.prototype = {
       timg.setAttribute("class", (this.smallMenuTag +
                                  (this.noIcons ? "empty" : iconName)));
       node.appendChild(timg);
+      angle += 2 * layout.halfAngleForSector;
     }
 
     ////////////////////////////////////////////////////////////////////////////
@@ -579,8 +583,6 @@ eG_menu.prototype = {
     //	identifying current sector
     ///////////////////////////////////////////////////////////////////////////////////////////////
 
-    var nbItems = layout.actions.length; // number of items to be displayed
-
     var sector = -1;
     var refX = this.centerX;
     var refY = this.centerY;
@@ -590,11 +592,11 @@ eG_menu.prototype = {
     var radius = Math.sqrt((event.clientX-refX)* (event.clientX-refX) + (event.clientY-refY)* (event.clientY-refY));
 
     if (radius > layout.innerR) {
-      var angle = Math.atan2(event.clientX-refX, refY-event.clientY) + Math.PI/nbItems;
+      var angle = Math.atan2(refY - event.clientY, event.clientX - refX) + layout.sectorOffset;
       if (angle < 0) {
-        angle += 2* Math.PI;
+        angle += 2 * Math.PI;
       }
-      sector = Math.floor( nbItems*angle/ (2* Math.PI) );
+      sector = Math.floor(angle / (2 * layout.halfAngleForSector));
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -631,7 +633,7 @@ eG_menu.prototype = {
     if (this.sector !== sector) { // moved to new sector
       this.clearRollover(layout, false);
 
-      if (sector >= 0) { // sector targetted exists: highlighting icons and labels
+      if (sector >= 0 && sector < layout.actions.length) { // sector targetted exists: highlighting icons and labels
         layout_aNode.childNodes[sector].setAttribute("active", "true");
         if (layout_lNode !== null) {
           layout_lNode.childNodes[sector].classList.add("selected");
@@ -655,7 +657,7 @@ eG_menu.prototype = {
         this.showExtraMenu();
       }
     }
-    else if (radius>layout.innerR && sector>2 && sector <6 && layout.isExtraMenu && movDir>0) { // hide extra menu
+    else if (radius>layout.innerR && sector > 4 && layout.isExtraMenu && movDir>0) { // hide extra menu
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
 
       this.hide(layout);
@@ -720,7 +722,7 @@ eG_menu.prototype = {
     var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
     var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
   
-    if (this.sector >= 0) {
+    if (this.sector >= 0 && this.sector < layout.actions.length) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
       if (layout_lNode !== null) {
         layout_lNode.childNodes[this.sector].classList.remove("selected");

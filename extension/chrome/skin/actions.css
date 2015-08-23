@@ -377,7 +377,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647; /* max-z-index */
 }
 
-#easyGesturesPieMenu_nn .label0 {
+#easyGesturesPieMenu_nn .label2 {
   left: 10px;
   top: 10px;
 }
@@ -385,15 +385,15 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 265px;
   top: 40px;
 }
-#easyGesturesPieMenu_nn .label2 {
+#easyGesturesPieMenu_nn .label0 {
   left: 270px;
   top: 70px;
 }
-#easyGesturesPieMenu_nn .label3 {
+#easyGesturesPieMenu_nn .label7 {
   left: 260px;
   top: 100px;
 }
-#easyGesturesPieMenu_nn .label4 {
+#easyGesturesPieMenu_nn .label6 {
   left: 230px;
   top: 125px;
 }
@@ -401,16 +401,16 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 10px;
   top: 95px;
 }
-#easyGesturesPieMenu_nn .label6 {
+#easyGesturesPieMenu_nn .label4 {
   left: 10px;
   top: 68px;
 }
-#easyGesturesPieMenu_nn .label7 {
+#easyGesturesPieMenu_nn .label3 {
   left: 10px;
   top: 40px;
 }
 
-#easyGesturesPieMenu_ns .label0 {
+#easyGesturesPieMenu_ns .label2 {
   left: 10px;
   top: 6px;
 }
@@ -418,15 +418,15 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 190px;
   top: 23px;
 }
-#easyGesturesPieMenu_ns .label2 {
+#easyGesturesPieMenu_ns .label0 {
   left: 195px;
   top: 41px;
 }
-#easyGesturesPieMenu_ns .label3 {
+#easyGesturesPieMenu_ns .label7 {
   left: 190px;
   top: 60px;
 }
-#easyGesturesPieMenu_ns .label4 {
+#easyGesturesPieMenu_ns .label6 {
   left: 167px;
   top: 77px;
 }
@@ -434,16 +434,16 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 10px;
   top: 58px;
 }
-#easyGesturesPieMenu_ns .label6 {
+#easyGesturesPieMenu_ns .label4 {
   left: 10px;
   top: 42px;
 }
-#easyGesturesPieMenu_ns .label7 {
+#easyGesturesPieMenu_ns .label3 {
   left: 10px;
   top: 25px;
 }
 
-#easyGesturesPieMenu_ln .label0 {
+#easyGesturesPieMenu_ln .label2 {
   left: 10px;
   top: 10px;
 }
@@ -451,19 +451,19 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 290px;
   top: 40px;
 }
-#easyGesturesPieMenu_ln .label2 {
+#easyGesturesPieMenu_ln .label0 {
   left: 300px;
   top: 70px;
 }
-#easyGesturesPieMenu_ln .label3 {
+#easyGesturesPieMenu_ln .label9 {
   left: 300px;
   top: 100px;
 }
-#easyGesturesPieMenu_ln .label4 {
+#easyGesturesPieMenu_ln .label8 {
   left: 285px;
   top: 130px;
 }
-#easyGesturesPieMenu_ln .label5 {
+#easyGesturesPieMenu_ln .label7 {
   left: 230px;
   top: 162px;
 }
@@ -471,20 +471,20 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 10px;
   top: 130px;
 }
-#easyGesturesPieMenu_ln .label7 {
+#easyGesturesPieMenu_ln .label5 {
   left: 10px;
   top: 100px;
 }
-#easyGesturesPieMenu_ln .label8 {
+#easyGesturesPieMenu_ln .label4 {
   left: 10px;
   top: 70px;
 }
-#easyGesturesPieMenu_ln .label9 {
+#easyGesturesPieMenu_ln .label3 {
   left: 10px;
   top: 40px;
 }
 
-#easyGesturesPieMenu_ls .label0 {
+#easyGesturesPieMenu_ls .label2 {
   left: 10px;
   top: 6px;
 }
@@ -492,19 +492,19 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 212px;
   top: 23px;
 }
-#easyGesturesPieMenu_ls .label2 {
+#easyGesturesPieMenu_ls .label0 {
   left: 219px;
   top: 41px;
 }
-#easyGesturesPieMenu_ls .label3 {
+#easyGesturesPieMenu_ls .label9 {
   left: 219px;
   top: 60px;
 }
-#easyGesturesPieMenu_ls .label4 {
+#easyGesturesPieMenu_ls .label8 {
   left: 211px;
   top: 79px;
 }
-#easyGesturesPieMenu_ls .label5 {
+#easyGesturesPieMenu_ls .label7 {
   left: 186px;
   top: 97px;
 }
@@ -512,15 +512,15 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   left: 10px;
   top: 80px;
 }
-#easyGesturesPieMenu_ls .label7 {
+#easyGesturesPieMenu_ls .label5 {
   left: 10px;
   top: 62px;
 }
-#easyGesturesPieMenu_ls .label8 {
+#easyGesturesPieMenu_ls .label4 {
   left: 10px;
   top: 42px;
 }
-#easyGesturesPieMenu_ls .label9 {
+#easyGesturesPieMenu_ls .label3 {
   left: 10px;
   top: 25px;
 }

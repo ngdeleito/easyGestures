@@ -111,16 +111,16 @@ function fillMainMenuDirections(layout) {
   var vbox = document.createElement("vbox");
   target.appendChild(vbox);
   
-  vbox.appendChild(createRow1("main" + layout + "Sector0"));
-  vbox.appendChild(createRow2("main" + layout + "Sector9",
+  vbox.appendChild(createRow1("main" + layout + "Sector2"));
+  vbox.appendChild(createRow2("main" + layout + "Sector3",
                               "main" + layout + "Sector1"));
   
   var row = document.createElement("hbox");
   row.setAttribute("pack", "center");
   vbox.appendChild(row);
   
-  row.appendChild(createLabelsforMiddleRow("main" + layout + "Sector8",
-                                           "main" + layout + "Sector7"));
+  row.appendChild(createLabelsforMiddleRow("main" + layout + "Sector4",
+                                           "main" + layout + "Sector5"));
   
   var image = document.createElement("image");
   image.setAttribute("tooltiptext", "&menus.main;");
@@ -129,12 +129,12 @@ function fillMainMenuDirections(layout) {
   image.setAttribute("height", "41");
   row.appendChild(image);
   
-  row.appendChild(createLabelsforMiddleRow("main" + layout + "Sector2",
-                                           "main" + layout + "Sector3"));
+  row.appendChild(createLabelsforMiddleRow("main" + layout + "Sector0",
+                                           "main" + layout + "Sector9"));
   
   vbox.appendChild(createRow2("main" + layout + "Sector6",
-                              "main" + layout + "Sector4"));
-  vbox.appendChild(createRow1("main" + layout + "Sector5"));
+                              "main" + layout + "Sector8"));
+  vbox.appendChild(createRow1("main" + layout + "Sector7"));
   
   var separator = document.createElement("separator");
   separator.setAttribute("style", "height: 1em");
@@ -149,8 +149,8 @@ function fillExtraMenuDirections(layout) {
   var vbox = document.createElement("vbox");
   target.appendChild(vbox);
   
-  vbox.appendChild(createRow1("extra" + layout + "Sector0"));
-  vbox.appendChild(createRow2("extra" + layout + "Sector7",
+  vbox.appendChild(createRow1("extra" + layout + "Sector2"));
+  vbox.appendChild(createRow2("extra" + layout + "Sector3",
                               "extra" + layout + "Sector1"));
   
   var hbox = document.createElement("hbox");
@@ -158,7 +158,7 @@ function fillExtraMenuDirections(layout) {
   vbox.appendChild(hbox);
   
   var label = document.createElement("label");
-  label.setAttribute("id", "extra" + layout + "Sector6");
+  label.setAttribute("id", "extra" + layout + "Sector4");
   label.setAttribute("value", "0%");
   hbox.appendChild(label);
   
@@ -170,7 +170,7 @@ function fillExtraMenuDirections(layout) {
   hbox.appendChild(image);
   
   label = document.createElement("label");
-  label.setAttribute("id", "extra" + layout + "Sector2");
+  label.setAttribute("id", "extra" + layout + "Sector0");
   label.setAttribute("value", "0%");
   hbox.appendChild(label);
   
@@ -351,14 +351,14 @@ function initDialog() {
     totalMP+=statsMainArray[i];
     totalMA1+=statsMainArray[10+i];
     totalMA2+=statsMainArray[20+i];
-    if (i<8 && (i<2 || i>5)) {
+    if (i < 5) {
       document.getElementById("extraPrimarySector"+String(i)).value=Math.round(statsExtraArray[i]/statsClicksOnActions*100)+"%";
-      document.getElementById("extraAlternative1Sector"+String(i)).value=Math.round(statsExtraArray[8+i]/statsClicksOnActions*100)+"%";
-      document.getElementById("extraAlternative2Sector"+String(i)).value=Math.round(statsExtraArray[16+i]/statsClicksOnActions*100)+"%";
-      document.getElementById("extraTotalSector"+String(i)).value=Math.round((statsExtraArray[i]+statsExtraArray[8+i]+statsExtraArray[16+i])/statsClicksOnActions*100)+"%";
+      document.getElementById("extraAlternative1Sector"+String(i)).value=Math.round(statsExtraArray[5+i]/statsClicksOnActions*100)+"%";
+      document.getElementById("extraAlternative2Sector"+String(i)).value=Math.round(statsExtraArray[10+i]/statsClicksOnActions*100)+"%";
+      document.getElementById("extraTotalSector"+String(i)).value=Math.round((statsExtraArray[i]+statsExtraArray[5+i]+statsExtraArray[10+i])/statsClicksOnActions*100)+"%";
       totalEP+=statsExtraArray[i];
-      totalEA1+=statsExtraArray[8+i];
-      totalEA2+=statsExtraArray[16+i];
+      totalEA1+=statsExtraArray[5+i];
+      totalEA2+=statsExtraArray[10+i];
     }
   }
   
