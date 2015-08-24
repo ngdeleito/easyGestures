@@ -701,19 +701,15 @@ function readActionsGroupPreference(name) {
 }
 
 function preparePreferenceValueForNormalMenu(name) {
-  var result = [];
-  
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(value) {
-    result.push(document.getElementById(name + "Sector" + value).getAttribute("actionName"));
+  var result = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(value) {
+    return document.getElementById(name + "Sector" + value).getAttribute("actionName");
   });
   return result.join("/");
 }
 
 function preparePreferenceValueForExtraMenu(name) {
-  var result = [];
-  
-  [0, 1, 2, 3, 4].forEach(function(value) {
-    result.push(document.getElementById(name + "Sector" + value).getAttribute("actionName"));
+  var result = [0, 1, 2, 3, 4].map(function(value) {
+    return document.getElementById(name + "Sector" + value).getAttribute("actionName");
   });
   return result.join("/");
 }
