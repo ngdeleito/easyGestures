@@ -68,9 +68,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.menuImage = menu.skinPath + menu.smallMenuTag +
                    (menu.noIcons ? "basic_" : "") +
                    (menu.largeMenu ? "largeMenu.png" : "menu.png");
-  this.tooltipsImage = menu.skinPath +
-                       (this.hasExtraMenuAction ? "other_" : "") +
-                       (menu.largeMenu ? "largeLabels.png" : "labels.png");
   
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	setting dimensions and positioning
@@ -120,7 +117,6 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   this.menuImage = menu.skinPath + menu.smallMenuTag +
                    (menu.noIcons ? "basic_" : "") + "extraMenu.png";
-  this.tooltipsImage = menu.skinPath + "extraLabels.png";
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
@@ -501,15 +497,9 @@ eG_menu.prototype = {
       tdiv.appendChild(eGc.topmostDocument.createTextNode(layout.labels[i]) );
       node.appendChild(tdiv);
     }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // creating tooltips image
-    ///////////////////////////////////////////////////////////////////////////
-
-    var timg = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "img");
-    timg.setAttribute("id", "eG_labels_" + layoutName + "_background");
-    timg.src = layout.tooltipsImage;
-    node.appendChild(timg);
+    if (layout.hasExtraMenuAction) {
+      node.childNodes[this.extraMenuAction].classList.add("extra");
+    }
     
     return node;
   },

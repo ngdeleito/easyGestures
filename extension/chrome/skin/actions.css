@@ -203,22 +203,22 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions"] {
-  left: -61px;
+  left: -61px; /* menu radius */
   top: -61px;
 }
 
 #easyGesturesPieMenu_ns div[id^="eG_actions"] {
-  left: -38px;
+  left: -38px; /* menu radius */
   top: -38px;
 }
 
 #easyGesturesPieMenu_ln div[id^="eG_actions"] {
-  left: -71px;
+  left: -71px; /* menu radius */
   top: -71px;
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_actions"] {
-  left: -44px;
+  left: -44px; /* menu radius */
   top: -44px;
 }
 
@@ -230,19 +230,19 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions_extra"] {
-  top: -135px;
+  top: -135px; /* extra menu y-offset */
 }
 
 #easyGesturesPieMenu_ns div[id^="eG_actions_extra"] {
-  top: -83px;
+  top: -83px; /* extra menu y-offset */
 }
 
 #easyGesturesPieMenu_ln div[id^="eG_actions_extra"] {
-  top: -151px;
+  top: -151px; /* extra menu y-offset */
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
-  top: -97px;
+  top: -97px; /* extra menu y-offset */
 }
 
 #easyGesturesPieMenu_nn img[id^="eG_actions"],
@@ -270,7 +270,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn [id^="eG_action_"],
 #easyGesturesPieMenu_ln [id^="eG_action_"] {
   background-image: url("actions.png");
-  width: 32px;
+  width: 32px; /* icon size */
   height: 32px;
   z-index: 2147483647; /* max-z-index */
 }
@@ -278,7 +278,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ns [id^="eG_action_"],
 #easyGesturesPieMenu_ls [id^="eG_action_"] {
   background-image: url("small_actions.png");
-  width: 20px;
+  width: 20px; /* icon size */
   height: 20px;
   z-index: 2147483647; /* max-z-index */
 }
@@ -295,23 +295,23 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_labels"] {
-  left: -197px;
-  top: -73px;
+  left: -200px; /* labels x-offset */
+  top: -75px; /* -(menu radius + 0,5 * height of a label) */
 }
 
 #easyGesturesPieMenu_ns div[id^="eG_labels"] {
-  left: -148px;
-  top: -46px;
+  left: -150px; /* labels x-offset */ /* 75% of non small */
+  top: -46px; /* -(menu radius + 0,5 * height of a label) */
 }
 
 #easyGesturesPieMenu_ln div[id^="eG_labels"] {
-  left: -220px;
-  top: -90px;
+  left: -220px; /* labels x-offset */
+  top: -92px; /* -(menu radius + 0,75 * height of a label) */
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_labels"] {
-  left: -165px;
-  top: -57px;
+  left: -165px; /* labels x-offset */ /* 75% of non small */
+  top: -54px; /* -(menu radius + 0,5 * height of a label + 2) */
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_labels_extra"],
@@ -322,207 +322,313 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_labels_extra"] {
-  left: -197px;
-  top: -147px;
+  top: -149px; /* -(extra menu y-offset + 0,5 * height of a label) */
 }
 
 #easyGesturesPieMenu_ns div[id^="eG_labels_extra"] {
-  left: -148px;
-  top: -91px;
+  top: -91px; /* -(extra menu y-offset + 0,5 * height of a label) */
 }
 
 #easyGesturesPieMenu_ln div[id^="eG_labels_extra"] {
-  left: -220px;
-  top: -164px;
+  top: -165px; /* -(extra menu y-offset + 0,5 * height of a label) */
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_labels_extra"] {
-  left: -165px;
-  top: -111px;
-}
-
-#easyGesturesPieMenu_nn div[id^="eG_labels"],
-#easyGesturesPieMenu_nn img[id^="eG_labels"] {
-  width: 394px;
-  height: 146px;
-}
-
-#easyGesturesPieMenu_ns div[id^="eG_labels"],
-#easyGesturesPieMenu_ns img[id^="eG_labels"] {
-  width: 296px;
-  height: 91px;
-}
-
-#easyGesturesPieMenu_ln div[id^="eG_labels"],
-#easyGesturesPieMenu_ln img[id^="eG_labels"] {
-  width: 440px;
-  height: 180px;
-}
-
-#easyGesturesPieMenu_ls div[id^="eG_labels"],
-#easyGesturesPieMenu_ls img[id^="eG_labels"] {
-  width: 330px;
-  height: 113px;
+  top: -105px; /* -(extra menu y-offset + 0,5 * height of a label) */
 }
 
 #easyGesturesPieMenu_nn [id^="eG_label_"],
 #easyGesturesPieMenu_ns [id^="eG_label_"],
 #easyGesturesPieMenu_ln [id^="eG_label_"],
 #easyGesturesPieMenu_ls [id^="eG_label_"] {
-  width: 250px;
-  height: 1em;
+  z-index: 2147483647; /* max-z-index */
+  border-style: solid;
+  border-width: 2px;
+  border-color: hsl(60, 40%, 83%) hsl(0, 0%, 60%);
+  padding: 0px 6px;
+  background-color: hsl(60, 100%, 93%);
   color: black;
   font-family: sans-serif;
-  font-size: smaller;
-  z-index: 2147483647; /* max-z-index */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#easyGesturesPieMenu_nn [id^="eG_label_"],
+#easyGesturesPieMenu_ln [id^="eG_label_"] {
+  height: 28px; /* label height */
+  line-height: 28px;
+  font-size: 14px;
+}
+
+#easyGesturesPieMenu_ns [id^="eG_label_"],
+#easyGesturesPieMenu_ls [id^="eG_label_"] {
+  height: 16px; /* label height */
+  line-height: 16px;
+  font-size: 10px;
+}
+
+#easyGesturesPieMenu_nn .label1,
+#easyGesturesPieMenu_ns .label1,
+#easyGesturesPieMenu_ln .label1,
+#easyGesturesPieMenu_ls .label1 {
+  border-top-color: hsl(0, 0%, 60%);
+  border-top-right-radius: 5px 5px;
+}
+
+#easyGesturesPieMenu_nn .label2,
+#easyGesturesPieMenu_ns .label2,
+#easyGesturesPieMenu_ln .label2,
+#easyGesturesPieMenu_ls .label2 {
+  top: 0px;
+  left: 0px;
+  border-top-color: hsl(0, 0%, 60%);
+  border-top-left-radius: 5px 5px;
+  border-top-right-radius: 5px 5px;
+}
+
+#easyGesturesPieMenu_nn .label2.extra,
+#easyGesturesPieMenu_ns .label2.extra,
+#easyGesturesPieMenu_ln .label2.extra,
+#easyGesturesPieMenu_ls .label2.extra {
+  background-color: hsl(0, 100%, 90%);
+}
+
+#easyGesturesPieMenu_nn .label5,
+#easyGesturesPieMenu_nn div[id^="eG_labels_extra"] .label4,
+#easyGesturesPieMenu_ns .label5,
+#easyGesturesPieMenu_ns div[id^="eG_labels_extra"] .label4,
+#easyGesturesPieMenu_ln .label6,
+#easyGesturesPieMenu_ln div[id^="eG_labels_extra"] .label4,
+#easyGesturesPieMenu_ls .label6,
+#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] .label4 {
+  border-bottom-color: hsl(0, 0%, 60%);
+  border-bottom-left-radius: 5px 5px;
+}
+
+#easyGesturesPieMenu_nn .label6,
+#easyGesturesPieMenu_nn div[id^="eG_labels_extra"] .label0,
+#easyGesturesPieMenu_ns .label6,
+#easyGesturesPieMenu_ns div[id^="eG_labels_extra"] .label0,
+#easyGesturesPieMenu_ln .label7,
+#easyGesturesPieMenu_ln div[id^="eG_labels_extra"] .label0,
+#easyGesturesPieMenu_ls .label7,
+#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] .label0 {
+  border-bottom-color: hsl(0, 0%, 60%);
+  border-bottom-left-radius: 5px 5px;
+  border-bottom-right-radius: 5px 5px;
 }
 
 #easyGesturesPieMenu_nn .label2 {
-  left: 10px;
-  top: 10px;
-}
-#easyGesturesPieMenu_nn .label1 {
-  left: 265px;
-  top: 40px;
-}
-#easyGesturesPieMenu_nn .label0 {
-  left: 270px;
-  top: 70px;
-}
-#easyGesturesPieMenu_nn .label7 {
-  left: 260px;
-  top: 100px;
+  padding-right: 54px; /* default padding-right + 1,5 * icon size */
+  width: 152px; /* (labels x-offset + 0,5 * icon size) - border-left - padding-left - padding-right - border-right */
 }
 #easyGesturesPieMenu_nn .label6 {
-  left: 230px;
-  top: 125px;
-}
-#easyGesturesPieMenu_nn .label5 {
-  left: 10px;
-  top: 95px;
-}
-#easyGesturesPieMenu_nn .label4 {
-  left: 10px;
-  top: 68px;
+  left: 184px; /* labels x-offset - 0,5 * icon size) */
+  top: 120px;  /* 4 * (label height + 2px) */
+  padding-left: 54px; /* see label2 padding-right */
+  width: 152px; /* see label2 */
 }
 #easyGesturesPieMenu_nn .label3 {
-  left: 10px;
-  top: 40px;
+  left: 0px;
+  top: 30px; /* label height + 2px */
+  padding-right: 32px; /* see label1 padding-left */
+  width: 130px; /* labels x-offset - 2 * icon size - 6 */
+}
+#easyGesturesPieMenu_nn .label1 {
+  left: 228px; /* 2 * labels x-offset - border-right - padding-right - width - padding-left - border-left */
+  top: 30px; /* see label3 */
+  padding-left: 32px; /* icon size */
+  width: 130px; /* see label3 */
+}
+#easyGesturesPieMenu_nn .label4 {
+  left: 0px;
+  top: 60px; /* 2 * (label height + 2px) */
+  padding-right: 32px; /* see label0 padding-left */
+  width: 120px; /* label x-offset - 2,5 * icon size */
+}
+#easyGesturesPieMenu_nn .label0 {
+  left: 238px; /* 2 * labels x-offset - border-right - padding-right - width - padding-left - border-left */
+  top: 60px; /* see label4 */
+  padding-left: 32px; /* icon size */
+  width: 120px; /* see label4 */
+}
+#easyGesturesPieMenu_nn .label5 {
+  left: 0px;
+  top: 90px; /* 3 * (label height + 2px) */
+  padding-right: 32px; /* see label3 */
+  width: 130px; /* see label3 */
+}
+#easyGesturesPieMenu_nn .label7 {
+  left: 228px; /* see label1 */
+  top: 90px; /* see label5 */
+  padding-left: 32px; /* see label1 */
+  width: 130px; /* see label1 */
 }
 
 #easyGesturesPieMenu_ns .label2 {
-  left: 10px;
-  top: 6px;
-}
-#easyGesturesPieMenu_ns .label1 {
-  left: 190px;
-  top: 23px;
-}
-#easyGesturesPieMenu_ns .label0 {
-  left: 195px;
-  top: 41px;
-}
-#easyGesturesPieMenu_ns .label7 {
-  left: 190px;
-  top: 60px;
+  padding-right: 36px;
+  width: 114px;
 }
 #easyGesturesPieMenu_ns .label6 {
-  left: 167px;
-  top: 77px;
-}
-#easyGesturesPieMenu_ns .label5 {
-  left: 10px;
-  top: 58px;
-}
-#easyGesturesPieMenu_ns .label4 {
-  left: 10px;
-  top: 42px;
+  left: 140px;
+  top: 72px;
+  padding-left: 36px;
+  width: 114px;
 }
 #easyGesturesPieMenu_ns .label3 {
-  left: 10px;
-  top: 25px;
+  left: 0px;
+  top: 18px;
+  padding-right: 20px;
+  width: 104px;
+}
+#easyGesturesPieMenu_ns .label1 {
+  left: 166px;
+  top: 18px;
+  padding-left: 20px;
+  width: 104px;
+}
+#easyGesturesPieMenu_ns .label4 {
+  left: 0px;
+  top: 36px;
+  padding-right: 20px;
+  width: 100px;
+}
+#easyGesturesPieMenu_ns .label0 {
+  left: 170px;
+  top: 36px;
+  padding-left: 20px;
+  width: 100px;
+}
+#easyGesturesPieMenu_ns .label5 {
+  left: 0px;
+  top: 54px;
+  padding-right: 20px;
+  width: 104px;
+}
+#easyGesturesPieMenu_ns .label7 {
+  left: 166px;
+  top: 54px;
+  padding-left: 20px;
+  width: 104px;
 }
 
 #easyGesturesPieMenu_ln .label2 {
-  left: 10px;
-  top: 10px;
-}
-#easyGesturesPieMenu_ln .label1 {
-  left: 290px;
-  top: 40px;
-}
-#easyGesturesPieMenu_ln .label0 {
-  left: 300px;
-  top: 70px;
-}
-#easyGesturesPieMenu_ln .label9 {
-  left: 300px;
-  top: 100px;
-}
-#easyGesturesPieMenu_ln .label8 {
-  left: 285px;
-  top: 130px;
+  padding-right: 54px;
+  width: 172px;
 }
 #easyGesturesPieMenu_ln .label7 {
-  left: 230px;
-  top: 162px;
-}
-#easyGesturesPieMenu_ln .label6 {
-  left: 10px;
-  top: 130px;
-}
-#easyGesturesPieMenu_ln .label5 {
-  left: 10px;
-  top: 100px;
-}
-#easyGesturesPieMenu_ln .label4 {
-  left: 10px;
-  top: 70px;
+  left: 204px;
+  top: 150px; /* 5 * (label height + 2px) */
+  padding-left: 54px;
+  width: 172px;
 }
 #easyGesturesPieMenu_ln .label3 {
-  left: 10px;
-  top: 40px;
+  left: 0px;
+  top: 30px;
+  padding-right: 32px;
+  width: 150px;
+}
+#easyGesturesPieMenu_ln .label1 {
+  left: 248px;
+  top: 30px;
+  padding-left: 32px;
+  width: 150px;
+}
+#easyGesturesPieMenu_ln .label4 {
+  left: 0px;
+  top: 60px;
+  padding-right: 32px;
+  width: 140px;
+}
+#easyGesturesPieMenu_ln .label0 {
+  left: 258px;
+  top: 60px;
+  padding-left: 32px;
+  width: 140px;
+}
+#easyGesturesPieMenu_ln .label5 { /* see label4 */
+  left: 0px;
+  top: 90px;
+  padding-right: 32px;
+  width: 140px;
+}
+#easyGesturesPieMenu_ln .label9 { /* see label0 */
+  left: 258px;
+  top: 90px;
+  padding-left: 32px;
+  width: 140px;
+}
+#easyGesturesPieMenu_ln .label6 { /* see label3 */
+  left: 0px;
+  top: 120px;
+  padding-right: 32px;
+  width: 150px;
+}
+#easyGesturesPieMenu_ln .label8 { /* see label1 */
+  left: 248px;
+  top: 120px;
+  padding-left: 32px;
+  width: 150px;
 }
 
 #easyGesturesPieMenu_ls .label2 {
-  left: 10px;
-  top: 6px;
-}
-#easyGesturesPieMenu_ls .label1 {
-  left: 212px;
-  top: 23px;
-}
-#easyGesturesPieMenu_ls .label0 {
-  left: 219px;
-  top: 41px;
-}
-#easyGesturesPieMenu_ls .label9 {
-  left: 219px;
-  top: 60px;
-}
-#easyGesturesPieMenu_ls .label8 {
-  left: 211px;
-  top: 79px;
+  padding-right: 36px;
+  width: 129px;
 }
 #easyGesturesPieMenu_ls .label7 {
-  left: 186px;
-  top: 97px;
-}
-#easyGesturesPieMenu_ls .label6 {
-  left: 10px;
-  top: 80px;
-}
-#easyGesturesPieMenu_ls .label5 {
-  left: 10px;
-  top: 62px;
-}
-#easyGesturesPieMenu_ls .label4 {
-  left: 10px;
-  top: 42px;
+  left: 155px;
+  top: 90px;
+  padding-left: 36px;
+  width: 129px;
 }
 #easyGesturesPieMenu_ls .label3 {
-  left: 10px;
-  top: 25px;
+  left: 0px;
+  top: 18px;
+  padding-right: 20px;
+  width: 119px;
+}
+#easyGesturesPieMenu_ls .label1 {
+  left: 181px;
+  top: 18px;
+  padding-left: 20px;
+  width: 119px;
+}
+#easyGesturesPieMenu_ls .label4 {
+  left: 0px;
+  top: 36px;
+  padding-right: 20px;
+  width: 115px;
+}
+#easyGesturesPieMenu_ls .label0 {
+  left: 185px;
+  top: 36px;
+  padding-left: 20px;
+  width: 115px;
+}
+#easyGesturesPieMenu_ls .label5 {
+  left: 0px;
+  top: 54px;
+  padding-right: 20px;
+  width: 115px;
+}
+#easyGesturesPieMenu_ls .label9 {
+  left: 185px;
+  top: 54px;
+  padding-left: 20px;
+  width: 115px;
+}
+#easyGesturesPieMenu_ls .label6 {
+  left: 0px;
+  top: 72px;
+  padding-right: 20px;
+  width: 119px;
+}
+#easyGesturesPieMenu_ls .label8 {
+  left: 181px;
+  top: 72px;
+  padding-left: 20px;
+  width: 119px;
 }
 
 #easyGesturesPieMenu_nn [id^="eG_label_"].selected,
