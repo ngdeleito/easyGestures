@@ -566,7 +566,6 @@ eG_menu.prototype = {
       this.setJustOpenedAndMouseMoved();
     }
 
-    var movDir = event.clientY - eGc.clientYDown; // used to control extra menu opening/closing from an action
     eGc.clientYDown = event.clientY;
 
     ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -647,7 +646,7 @@ eG_menu.prototype = {
         this.showExtraMenu();
       }
     }
-    else if (radius>layout.innerR && sector > 4 && layout.isExtraMenu && movDir>0) { // hide extra menu
+    else if (layout.isExtraMenu && sector > 4) { // hide extra menu
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
 
       this.hide(layout);
