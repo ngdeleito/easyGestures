@@ -82,52 +82,68 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesMainMenusSign {
-  width: 3.1em; /* border-width and width for 3 children + space between 2 children */
+  width: 3.85em; /* border-width and width for 3 children + space between 2 children */
 }
 
 #easyGesturesPieMenu_nn #easyGesturesMainMenusSign {
-  left: 41px;
-  top: calc(-61px - 0.5em); /* 0.5em = height/2 of a child */
+  left: 32px; /* icon size */
+  top: -75px; /* labels y-offset */
+  line-height: 32px;
+  font-size: 14px;
 }
 
 #easyGesturesPieMenu_ns #easyGesturesMainMenusSign {
-  left: 22px;
-  top: calc(-38px - 0.5em);
+  left: 20px; /* icon size */
+  top: -46px; /* labels y-offset */
+  line-height: 20px;
+  font-size: 10px;
 }
 
 #easyGesturesPieMenu_ln #easyGesturesMainMenusSign {
-  left: 41px;
-  top: calc(-71px - 0.5em);
+  left: 32px; /* icon size */
+  top: -92px; /* labels y-offset */
+  line-height: 32px;
+  font-size: 14px;
 }
 
 #easyGesturesPieMenu_ls #easyGesturesMainMenusSign {
-  left: 24px;
-  top: calc(-44px - 1em); /* + extra correction */
+  left: 20px; /* icon size */
+  top: -54px; /* labels y-offset */
+  line-height: 20px;
+  font-size: 10px;
 }
 
 #easyGesturesExtraMenusSign {
   visibility: hidden;
-  width: 3.1em;
+  width: 3.85em;
 }
 
 #easyGesturesPieMenu_nn #easyGesturesExtraMenusSign {
-  left: 41px;
-  top: calc(-61px - 82px);
+  left: 32px; /* icon size */
+  top: -149px; /* extra labels y-offset */
+  line-height: 32px;
+  font-size: 14px;
 }
 
 #easyGesturesPieMenu_ns #easyGesturesExtraMenusSign {
-  left: 22px;
-  top: calc(-38px - 55px);
+  left: 20px; /* icon size */
+  top: -91px; /* extra labels y-offset */
+  line-height: 20px;
+  font-size: 10px;
 }
 
 #easyGesturesPieMenu_ln #easyGesturesExtraMenusSign {
-  left: 41px;
-  top: calc(-71px - 82px);
+  left: 32px; /* icon size */
+  top: -165px; /* extra labels y-offset */
+  line-height: 32px;
+  font-size: 14px;
 }
 
 #easyGesturesPieMenu_ls #easyGesturesExtraMenusSign {
-  left: 24px;
-  top: calc(-44px - 69px);
+  left: 20px; /* icon size */
+  top: -105px; /* extra labels y-offset */
+  line-height: 20px;
+  font-size: 10px;
 }
 
 #easyGesturesMainMenusSign span:only-child,
@@ -138,11 +154,12 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesMainMenusSign span,
 #easyGesturesExtraMenusSign span {
   display: inline-block;
-  width: 0.5em;
-  height: 0.5em;
+  width: 0.75em;
+  height: 0.75em;
   background-color: hsl(0, 0%, 80%);
   border: solid 0.1em hsl(0, 0%, 50%);
   border-radius: 50%;
+  font-size: inherit;
 }
 
 #easyGesturesMainMenusSign span + span,
@@ -159,36 +176,42 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   visibility: hidden;
   background-color: hsl(0, 0%, 80%);
   color: hsl(0, 0%, 50%);
-  border: solid 0.1em hsl(0, 0%, 50%);
-  border-radius: 0.4em;
-  padding: 0.2em;
-  line-height: 1em;
-  font-size: smaller;
+  border: solid 1px hsl(0, 0%, 50%);
+  border-radius: 4px 4px;
+  padding: 2px;
   font-family: sans-serif;
 }
 
 #easyGesturesPieMenu_nn #easyGesturesContextMenuSign {
-  left: 41px;
-  top: calc(-61px - 1em); /* 1em = line-height/2 + padding-bottom + border-bottom + shadow offset of content */
+  left: 32px; /* icon size */
+  top: -75px; /* labels y-offset */
+  line-height: 14px;
+  font-size: 14px;
 }
 
 #easyGesturesPieMenu_ns #easyGesturesContextMenuSign {
-  left: 22px;
-  top: calc(-38px - 1em);
+  left: 20px; /* icon size */
+  top: -46px; /* labels y-offset */
+  line-height: 9px;
+  font-size: 9px;
 }
 
 #easyGesturesPieMenu_ln #easyGesturesContextMenuSign {
-  left: 41px;
-  top: calc(-71px - 1em);
+  left: 32px; /* icon size */
+  top: -92px; /* labels y-offset */
+  line-height: 14px;
+  font-size: 14px;
 }
 
 #easyGesturesPieMenu_ls #easyGesturesContextMenuSign {
-  left: 24px;
-  top: calc(-44px - 1.5em); /* + extra correction */
+  left: 20px; /* icon size */
+  top: -54px; /* labels y-offset */
+  line-height: 9px;
+  font-size: 9px;
 }
 
 #easyGesturesContextMenuSign.withAltSign {
-  box-shadow: 0.1em 0.1em hsl(0, 0%, 80%), 0.2em 0.2em hsl(0, 0%, 50%);
+  box-shadow: 1px 1px hsl(0, 0%, 80%), 2px 2px hsl(0, 0%, 50%);
 }
 
 
