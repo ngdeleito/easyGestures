@@ -641,10 +641,9 @@ eG_menu.prototype = {
         this.close();
       }
     }
-    else if (radius > layout.outerR) {
-      if (eGActions[layout.actions[sector]].isExtraMenuAction) {
-        this.showExtraMenu();
-      }
+    else if (radius > layout.outerR && sector === this.extraMenuAction &&
+             eGActions[layout.actions[sector]].isExtraMenuAction) {
+      this.showExtraMenu();
     }
     else if (layout.isExtraMenu && sector > 4) { // hide extra menu
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
