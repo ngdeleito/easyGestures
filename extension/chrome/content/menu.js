@@ -593,7 +593,7 @@ eG_menu.prototype = {
     ///////////////////////////////////////////////////////////////////////////////////////////////
     
     if (!this.moveAuto && event.shiftKey ||
-        this.moveAuto && radius >= layout.outerR &&
+        this.moveAuto && radius >= layout.outerR && sector < layout.actions.length &&
                          !eGActions[layout.actions[sector]].isExtraMenuAction) {
       if (this.moving) {
         this.centerX += (event.clientX - this.xMoving);
