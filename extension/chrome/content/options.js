@@ -447,7 +447,13 @@ function addFavicon(url, actionName) {
     document.getElementById(actionName + "_favicon").src = "";
   }
   else {
-    retrieveFavicon(url, function(aURI) {
+    if (url.match(/\:\/\//i) === null) {
+      url = "http://" + url;
+    }
+    var faviconService = Components
+                           .classes["@mozilla.org/browser/favicon-service;1"]
+                           .getService(Components.interfaces.mozIAsyncFavicons);
+    faviconService.getFaviconURLForPage(Services.io.newURI(url, null, null), function(aURI) {
       document.getElementById(actionName + "_favicon").src =
         aURI !== null ? aURI.spec : "";
     });

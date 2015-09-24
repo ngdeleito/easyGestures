@@ -294,18 +294,3 @@ function eG_handlePopup(evt) {
   }
   eGc.unblockStdContextMenu();
 }
-
-function retrieveFavicon(url, callback) {
-  if (url !== "") {
-    if (url.match(/\:\/\//i) === null) {
-      url = "http://" + url;
-    }
-    
-    var faviconService = Components
-                           .classes["@mozilla.org/browser/favicon-service;1"]
-                           .getService(Components.interfaces.mozIAsyncFavicons);
-    faviconService.getFaviconURLForPage(Services.io.newURI(url, null, null), function(aURI) {
-      callback(aURI);
-    });
-  }
-}
