@@ -48,7 +48,6 @@ var eGc = {
   targetWindow: null,
   topmostDocument: null,
   topmostWindow: null,
-  body: null,
   
   loading: false, // used for reload/stop action
   
@@ -225,13 +224,11 @@ function eG_handleMousedown(evt) {
     eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayValue);
   }
     
-  // identify context, find body etc
+  // identify context, etc.
   eGc.targetDocument = evt.target.ownerDocument;
   eGc.targetWindow = eGc.targetDocument.defaultView;
   eGc.topmostWindow = eGc.targetWindow.top;
   eGc.topmostDocument = eGc.topmostWindow.document;
-  
-  eGc.body = eGc.topmostDocument.body ? eGc.topmostDocument.body : eGc.topmostDocument.documentElement;
   
   eGm.setContext(evt.target, window, eG_cleanSelection(evt.view.getSelection()));
   

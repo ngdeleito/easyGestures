@@ -212,26 +212,30 @@ function eG_menu () {
     ((this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) ? 1 : 0);
   
   this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-  this.loadURL1 = prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"); // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
-  this.loadURL2 = prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL3 = prefs.getComplexValue("customizations.loadURL3", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL4 = prefs.getComplexValue("customizations.loadURL4", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL5 = prefs.getComplexValue("customizations.loadURL5", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL6 = prefs.getComplexValue("customizations.loadURL6", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL7 = prefs.getComplexValue("customizations.loadURL7", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL8 = prefs.getComplexValue("customizations.loadURL8", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL9 = prefs.getComplexValue("customizations.loadURL9", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.loadURL10 = prefs.getComplexValue("customizations.loadURL10", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript1 = prefs.getComplexValue("customizations.runScript1", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript2 = prefs.getComplexValue("customizations.runScript2", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript3 = prefs.getComplexValue("customizations.runScript3", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript4 = prefs.getComplexValue("customizations.runScript4", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript5 = prefs.getComplexValue("customizations.runScript5", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript6 = prefs.getComplexValue("customizations.runScript6", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript7 = prefs.getComplexValue("customizations.runScript7", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript8 = prefs.getComplexValue("customizations.runScript8", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript9 = prefs.getComplexValue("customizations.runScript9", Components.interfaces.nsISupportsString).data.split("\u2022");
-  this.runScript10 = prefs.getComplexValue("customizations.runScript10", Components.interfaces.nsISupportsString).data.split("\u2022");
+  this.loadURLActionPrefs = {
+    loadURL1: prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"), // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
+    loadURL2: prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL3: prefs.getComplexValue("customizations.loadURL3", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL4: prefs.getComplexValue("customizations.loadURL4", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL5: prefs.getComplexValue("customizations.loadURL5", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL6: prefs.getComplexValue("customizations.loadURL6", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL7: prefs.getComplexValue("customizations.loadURL7", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL8: prefs.getComplexValue("customizations.loadURL8", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL9: prefs.getComplexValue("customizations.loadURL9", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    loadURL10: prefs.getComplexValue("customizations.loadURL10", Components.interfaces.nsISupportsString).data.split("\u2022")
+  };
+  this.runScriptActionPrefs = {
+    runScript1: prefs.getComplexValue("customizations.runScript1", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript2: prefs.getComplexValue("customizations.runScript2", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript3: prefs.getComplexValue("customizations.runScript3", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript4: prefs.getComplexValue("customizations.runScript4", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript5: prefs.getComplexValue("customizations.runScript5", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript6: prefs.getComplexValue("customizations.runScript6", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript7: prefs.getComplexValue("customizations.runScript7", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript8: prefs.getComplexValue("customizations.runScript8", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript9: prefs.getComplexValue("customizations.runScript9", Components.interfaces.nsISupportsString).data.split("\u2022"),
+    runScript10: prefs.getComplexValue("customizations.runScript10", Components.interfaces.nsISupportsString).data.split("\u2022")
+  };
   this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
 
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -343,138 +347,6 @@ eG_menu.prototype = {
     this._menuState = 3;
   },
   
-  createEasyGesturesNode : function(aDocument) {
-    var aDiv = aDocument.createElementNS(this.HTMLNamespace, "div");
-    aDiv.setAttribute("id", this.easyGesturesID);
-    
-    aDocument.defaultView.addEventListener("unload", removeMenu, true);
-    
-    return aDiv;
-  },
-  
-  createSpecialNodes : function() { //creating DOM nodes
-    ////////////////////////////////////////////////////////////////////////////
-    // creating a div to contain all the items
-    ///////////////////////////////////////////////////////////////////////////
-
-    var node = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    node.setAttribute("id", "eG_SpecialNodes"); // used to know if menu has already been displayed in the current document
-
-    ////////////////////////////////////////////////////////////////////////////
-    // creating link sign
-    ///////////////////////////////////////////////////////////////////////////
-
-    var img = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    img.setAttribute("id", "eG_linkSign");
-    node.appendChild(img);
-    
-    // adding the main menus sign
-    var div = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    div.setAttribute("id", "easyGesturesMainMenusSign");
-    
-    var i = this.numberOfMainMenus;
-    while (i > 0) {
-      let span = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "span");
-      div.appendChild(span);
-      --i;
-    }
-    
-    node.appendChild(div);
-    
-    // adding the extra menus sign
-    div = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    div.setAttribute("id", "easyGesturesExtraMenusSign");
-    
-    i = this.numberOfExtraMenus;
-    while (i > 0) {
-      let span = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "span");
-      div.appendChild(span);
-      --i;
-    }
-    
-    node.appendChild(div);
-    
-    // adding the contextual menu sign
-    div = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    div.setAttribute("id", "easyGesturesContextMenuSign");
-    node.appendChild(div);
-    
-    return node;
-  },
-  
-  _addFavicon : function(aURL, anHTMLElement) {
-    retrieveFavicon(aURL, function(aURI) {
-      anHTMLElement.style.backgroundImage =
-        "url('" + (aURI !== null ? aURI.spec : "") + "')";
-    });
-  },
-  
-  createActionsNodes : function(layoutName) { //creating DOM nodes
-    var layout = this.menuSet[layoutName];
-
-    ////////////////////////////////////////////////////////////////////////////
-    // creating a div to contain all the items
-    ///////////////////////////////////////////////////////////////////////////
-
-    var node = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    node.setAttribute("id", "eG_actions_" + layoutName); // used to know if menu has already been displayed in the current document
-
-    ////////////////////////////////////////////////////////////////////////////
-    // creating actions images
-    ///////////////////////////////////////////////////////////////////////////
-
-    var xofs =  layout.outerR - this.iconSize/2;
-    var yofs = layout.outerR - this.iconSize/2;
-    var imageR = (layout.outerR+layout.innerR)/2;
-
-    var nbItems = layout.actions.length; // number of items to be displayed
-    var angle = layout.startingAngle;
-    for(var i = 0; i<nbItems; i++) {
-      var xpos = imageR* Math.cos(angle)+ xofs;
-      var ypos = -imageR* Math.sin(angle)+ yofs;
-
-      timg = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div"); // was img tag. Changed to div tag to use compound image
-      timg.setAttribute("id", "eG_action_" + layoutName + "_" + i);
-      timg.style.left = Math.round(xpos) + "px";
-      timg.style.top = Math.round(ypos) + "px";
-      timg.setAttribute("grayed", "false");
-      timg.setAttribute("active", "false");
-      
-      var iconName = layout.actions[i];
-      
-      if (layout.actions[i].startsWith("loadURL")) { // new icon path for loadURL ?
-        if (this[layout.actions[i]][2] === "true") {
-          this._addFavicon(this[layout.actions[i]][1], timg);
-          iconName = "customIcon";
-        }
-      }
-      else if (layout.actions[i].startsWith("runScript")) { // new icon path for runScript ?
-        if (this[layout.actions[i]][2] !== "") {
-          timg.style.backgroundImage = "url('" + (this[layout.actions[i]][2]).replace(/\\/g , "\\\\") + "')";
-          iconName = "customIcon";
-        }
-      }
-      
-      timg.setAttribute("class", (this.smallMenuTag +
-                                 (this.noIcons ? "empty" : iconName)));
-      node.appendChild(timg);
-      angle += 2 * layout.halfAngleForSector;
-    }
-
-    ////////////////////////////////////////////////////////////////////////////
-    // creating menu image
-    ///////////////////////////////////////////////////////////////////////////
-
-    var timg = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "img");
-    timg.setAttribute("id", "eG_actions_" + layoutName + "_menu");
-    timg.src = layout.menuImage;
-    timg.style.opacity = this.menuOpacity;
-    timg.alt = "";
-    node.appendChild(timg);
-    
-    return node;
-  },
-
   createLabelsNodes : function(layoutName) { //creating DOM nodes
     var layout = this.menuSet[layoutName];
 
@@ -507,40 +379,36 @@ eG_menu.prototype = {
   show : function(layoutName) { // makes menu visible
     var layout = this.menuSet[layoutName];
     
-    // create resources if necessary
-    var easyGesturesNode = eGc.topmostDocument.getElementById(this.easyGesturesID);
-    if (easyGesturesNode === null) {
-      easyGesturesNode = this.createEasyGesturesNode(eGc.topmostDocument);
-      eGc.body.insertBefore(easyGesturesNode, eGc.body.firstChild);
-    }
-    easyGesturesNode.style.left = this.centerX + "px";
-    easyGesturesNode.style.top = this.centerY + "px";
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var browserMM = window.gBrowser.selectedBrowser.messageManager;
+    browserMM.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
     
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    if (specialNodes === null) {
-      specialNodes = this.createSpecialNodes();
-      easyGesturesNode.appendChild(specialNodes);
-    }
-    
-    // create resources if necessary
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layoutName);
-    if (layout_aNode === null) {
-      layout_aNode = this.createActionsNodes(layoutName); // checking if menu has already been displayed in the current document
-      easyGesturesNode.appendChild(layout_aNode);
-    }
-
-    layout_aNode.style.visibility = "visible";
-
-    if (!layout.isExtraMenu) {
-      if (layout.name.startsWith("main")) {
-        var mainMenusSign = specialNodes.childNodes[1];
-        mainMenusSign.style.visibility = "visible";
-      }
-    }
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:showMenu", {
+      easyGesturesID: this.easyGesturesID,
+      centerX: this.centerX,
+      centerY: this.centerY,
+      numberOfMainMenus: this.numberOfMainMenus,
+      numberOfExtraMenus: this.numberOfExtraMenus,
+      isExtraMenu: layout.isExtraMenu,
+      layoutName: layoutName,
+      iconSize: this.iconSize,
+      outerRadius: layout.outerR,
+      innerRadius: layout.innerR,
+      actions: layout.actions,
+      startingAngle: layout.startingAngle,
+      loadURLActionPrefs: this.loadURLActionPrefs,
+      runScriptActionPrefs: this.runScriptActionPrefs,
+      smallMenuTag: this.smallMenuTag,
+      noIcons: this.noIcons,
+      halfAngleForSector: layout.halfAngleForSector,
+      menuImage: layout.menuImage,
+      menuOpacity: this.menuOpacity
+    });
     
     if (this.isHidden()) {
       this.setJustOpened();
     }
+    
     this.curLayoutName = layoutName;
     this.update();
     this.resetTooltipsTimeout();
