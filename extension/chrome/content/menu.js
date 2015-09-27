@@ -347,35 +347,6 @@ eG_menu.prototype = {
     this._menuState = 3;
   },
   
-  createLabelsNodes : function(layoutName) { //creating DOM nodes
-    var layout = this.menuSet[layoutName];
-
-    ////////////////////////////////////////////////////////////////////////////
-    // creating a div to contain all the items
-    ///////////////////////////////////////////////////////////////////////////
-
-    var node = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-    node.setAttribute("id", "eG_labels_" + layoutName); // used to know if labels have already been displayed in the current document
-    
-    ////////////////////////////////////////////////////////////////////////////
-    // creating labels and adjusting labels position
-    ///////////////////////////////////////////////////////////////////////////
-
-    var nbItems = layout.labels.length; // number of items to be displayed
-    for (var i = 0; i<nbItems; i++) {
-      var tdiv = eGc.topmostDocument.createElementNS(this.HTMLNamespace, "div");
-      tdiv.setAttribute("id", "eG_label_" + layoutName + "_" + i);
-      tdiv.classList.add("label" + i);
-      tdiv.appendChild(eGc.topmostDocument.createTextNode(layout.labels[i]) );
-      node.appendChild(tdiv);
-    }
-    if (layout.hasExtraMenuAction) {
-      node.childNodes[this.extraMenuAction].classList.add("extra");
-    }
-    
-    return node;
-  },
-
   show : function(layoutName) { // makes menu visible
     var layout = this.menuSet[layoutName];
     
@@ -412,6 +383,19 @@ eG_menu.prototype = {
     this.curLayoutName = layoutName;
     this.update();
     this.resetTooltipsTimeout();
+  },
+  
+  showMenuTooltips : function() {
+    var layout = this.menuSet[this.curLayoutName];
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var browserMM = window.gBrowser.selectedBrowser.messageManager;
+    
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:showMenuTooltips", {
+      layoutName: layout.layoutName,
+      tooltips: layout.labels,
+      hasExtraMenuAction: layout.hasExtraMenuAction
+    });
+    this.showingTooltips = true;
   },
 
   handleMousemove : function(event) { // handle rollover effects and switch to/from extra menu
@@ -701,20 +685,6 @@ eG_menu.prototype = {
         this.tooltipsTrigger = window.setTimeout(this.showMenuTooltips.bind(eGm), this.tooltipsDelay);
       }
     }
-  },
-
-  showMenuTooltips : function() { // displaying tooltips
-    var easyGesturesNode = eGc.topmostDocument.getElementById(this.easyGesturesID);
-    
-    // create resources if necessary
-    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
-    if (layout_lNode === null) {
-      layout_lNode = this.createLabelsNodes(this.curLayoutName); // checking if labels have already been displayed in the current document
-      easyGesturesNode.appendChild(layout_lNode);
-    }
-    layout_lNode.style.visibility = "visible";
-    
-    this.showingTooltips = true;
   },
   
   canBeOpened : function(aMouseEvent) {

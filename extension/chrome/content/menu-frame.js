@@ -38,8 +38,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
+var extraMenuAction = 2;
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
+addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
 
 function removeMenu(anEvent) {
   var easyGesturesNode = anEvent.target.getElementById(easyGesturesID);
@@ -201,4 +203,32 @@ function showMenu(aMessage) {
     easyGesturesNode.appendChild(actionsNode);
   }
   actionsNode.style.visibility = "visible";
+}
+
+function createTooltipsNodes(aDocument, aMessageData) {
+  var aTooltipsNode = aDocument.createElementNS(HTMLNamespace, "div");
+  aTooltipsNode.id = "eG_labels_" + aMessageData.layoutName;
+  
+  aMessageData.tooltips.forEach(function(tooltip, index) {
+    let aTooltipNode = aDocument.createElementNS(HTMLNamespace, "div");
+    aTooltipNode.id = "eG_label_" + aMessageData.layoutName + "_" + index;
+    aTooltipNode.classList.add("label" + index);
+    aTooltipNode.appendChild(aDocument.createTextNode(tooltip));
+    aTooltipsNode.appendChild(aTooltipNode);
+  });
+  if (aMessageData.hasExtraMenuAction) {
+    aTooltipsNode.childNodes[extraMenuAction].classList.add("extra");
+  }
+  
+  return aTooltipsNode;
+}
+
+function showMenuTooltips(aMessage) {
+  var easyGesturesNode = content.document.getElementById(easyGesturesID);
+  var tooltipsNode = content.document.getElementById("eG_labels_" + aMessage.data.layoutName);
+  if (tooltipsNode === null) {
+    tooltipsNode = createTooltipsNodes(content.document, aMessage.data);
+    easyGesturesNode.appendChild(tooltipsNode);
+  }
+  tooltipsNode.style.visibility = "visible";
 }
