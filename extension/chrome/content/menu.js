@@ -397,8 +397,9 @@ eG_menu.prototype = {
 
   handleMousemove : function(event) { // handle rollover effects and switch to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var browserMM = window.gBrowser.selectedBrowser.messageManager;
     
-    var easyGesturesNode = eGc.topmostDocument.getElementById(this.easyGesturesID);
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
     var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
     var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
@@ -444,8 +445,10 @@ eG_menu.prototype = {
       this.centerX += event.movementX;
       this.centerY += event.movementY;
       
-      easyGesturesNode.style.left = this.centerX + "px";
-      easyGesturesNode.style.top = this.centerY + "px";
+      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:updateMenuPosition", {
+        centerX: this.centerX,
+        centerY: this.centerY
+      });
       
       return;
     }
