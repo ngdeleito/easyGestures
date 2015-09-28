@@ -161,9 +161,6 @@ ContextualMenuLayout.prototype.updateMenuSign = function() {
 
 // menu Constructor
 function eG_menu () {
-  this.moving = false; // used when menu is moved
-  this.xMoving = -1; // last mouse x position when menu is moving
-  this.yMoving = -1;
   this.HTMLNamespace = "http://www.w3.org/1999/xhtml";
   
   this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
@@ -414,7 +411,7 @@ eG_menu.prototype = {
     linkSign.style.visibility = "hidden";
     
     // state change if was dragged
-    if (this.isJustOpened() && (Math.abs(event.clientX- this.centerX)> 1 || Math.abs(event.clientY- this.centerY)> 1)) {
+    if (this.isJustOpened() && (event.movementX !== 0 || event.movementY !== 0)) {
       this.setJustOpenedAndMouseMoved();
     }
 
@@ -439,34 +436,20 @@ eG_menu.prototype = {
       }
       sector = Math.floor(angle / (2 * layout.halfAngleForSector));
     }
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    // moving menu when shift key is down
-    ///////////////////////////////////////////////////////////////////////////////////////////////
     
+    // moving menu when shift key is down
     if (!this.moveAuto && event.shiftKey ||
         this.moveAuto && radius >= layout.outerR && sector < layout.actions.length &&
                          !eGActions[layout.actions[sector]].isExtraMenuAction) {
-      if (this.moving) {
-        this.centerX += (event.clientX - this.xMoving);
-        this.centerY += (event.clientY - this.yMoving);
-        
-        easyGesturesNode.style.left = this.centerX + "px";
-        easyGesturesNode.style.top = this.centerY + "px";
-      }
-      else {
-        this.moving = true;
-      }
-
-      this.xMoving = event.clientX;
-      this.yMoving = event.clientY;
-
+      this.centerX += event.movementX;
+      this.centerY += event.movementY;
+      
+      easyGesturesNode.style.left = this.centerX + "px";
+      easyGesturesNode.style.top = this.centerY + "px";
+      
       return;
     }
-    else {
-      this.moving = false;
-    }
-
+    
     ///////////////////////////////////////////////////////////////////////////////////////////////
     // rollover effects
     ///////////////////////////////////////////////////////////////////////////////////////////////
