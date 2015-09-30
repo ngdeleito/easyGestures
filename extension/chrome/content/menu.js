@@ -402,11 +402,8 @@ eG_menu.prototype = {
     
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
     var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
-    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
     var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
-    var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
     
     // hide center icon if mouse moved
     linkSign.style.visibility = "hidden";
@@ -483,16 +480,8 @@ eG_menu.prototype = {
              eGActions[layout.actions[sector]].isExtraMenuAction) {
       this.showExtraMenu();
     }
-    else if (layout.isExtraMenu && sector > 4) { // hide extra menu
-      baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false"); // reset rollover of extra menu action icon in main menu
-
-      this.hide(layout);
-      
-      mainMenusSign.style.visibility = "visible";
-      extraMenusSign.style.visibility = "hidden";
-      
-      this.curLayoutName = this.baseMenu;
-      this.resetTooltipsTimeout();
+    else if (layout.isExtraMenu && sector > 4) {
+      this.hideExtraMenu();
     }
   },
 
@@ -516,7 +505,26 @@ eG_menu.prototype = {
       baseLayout_lNode.style.visibility = "hidden";
     }
   },
-
+  
+  hideExtraMenu : function() {
+    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
+    var layout = this.menuSet[this.curLayoutName];
+    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
+    var mainMenusSign = specialNodes.childNodes[1];
+    var extraMenusSign = specialNodes.childNodes[2];
+    
+    // reset rollover of extra menu action icon in main menu
+    baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing", "false");
+    
+    this.hide(layout);
+    
+    mainMenusSign.style.visibility = "visible";
+    extraMenusSign.style.visibility = "hidden";
+    
+    this.curLayoutName = this.baseMenu;
+    this.resetTooltipsTimeout();
+  },
+  
   hide : function(layout) { // makes menu invisible
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
     var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
