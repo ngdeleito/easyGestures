@@ -388,7 +388,7 @@ eG_menu.prototype = {
     var browserMM = window.gBrowser.selectedBrowser.messageManager;
     
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:showMenuTooltips", {
-      layoutName: layout.layoutName,
+      layoutName: layout.name,
       tooltips: layout.labels,
       hasExtraMenuAction: layout.hasExtraMenuAction
     });
