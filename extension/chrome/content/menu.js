@@ -402,11 +402,9 @@ eG_menu.prototype = {
     
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
     var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    var linkSign = specialNodes.childNodes[0];
     
     // hide center icon if mouse moved
-    linkSign.style.visibility = "hidden";
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:hideLinkSign");
     
     // state change if was dragged
     if (this.isJustOpened() && (event.movementX !== 0 || event.movementY !== 0)) {

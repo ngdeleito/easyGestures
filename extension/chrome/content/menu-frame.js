@@ -43,6 +43,7 @@ var extraMenuAction = 2;
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuPosition", updateMenuPosition);
+addMessageListener("easyGesturesN@ngdeleito.eu:hideLinkSign", hideLinkSign);
 
 function removeMenu(anEvent) {
   var easyGesturesNode = anEvent.target.getElementById(easyGesturesID);
@@ -232,6 +233,12 @@ function showMenuTooltips(aMessage) {
     easyGesturesNode.appendChild(tooltipsNode);
   }
   tooltipsNode.style.visibility = "visible";
+}
+
+function hideLinkSign() {
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var linkSign = specialNodes.childNodes[0];
+  linkSign.style.visibility = "hidden";
 }
 
 function updateMenuPosition(aMessage) {
