@@ -79,6 +79,10 @@ function eG_activateMenu(window) {
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
   }
+  
+  var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
+               .getService(Components.interfaces.nsIMessageListenerManager);
+  globalMM.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
 }
 
 function eG_deactivateMenu(window) {
@@ -91,6 +95,10 @@ function eG_deactivateMenu(window) {
   if (contextMenu) {
     contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
   }
+  
+  var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
+               .getService(Components.interfaces.nsIMessageListenerManager);
+  globalMM.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMessageListeners");
 }
 
 function eG_countClicks(anEvent) {

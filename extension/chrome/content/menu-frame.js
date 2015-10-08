@@ -34,16 +34,26 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global addMessageListener, content */
+/* global addMessageListener, removeMessageListener, content */
 
 var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
 var extraMenuAction = 2;
 
+addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
+
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuPosition", updateMenuPosition);
 addMessageListener("easyGesturesN@ngdeleito.eu:hideLinkSign", hideLinkSign);
+
+function removeMessageListeners() {
+  removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:updateMenuPosition", updateMenuPosition);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:hideLinkSign", hideLinkSign);
+}
 
 function removeMenu(anEvent) {
   var easyGesturesNode = anEvent.target.getElementById(easyGesturesID);

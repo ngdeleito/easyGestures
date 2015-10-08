@@ -349,8 +349,6 @@ eG_menu.prototype = {
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var browserMM = window.gBrowser.selectedBrowser.messageManager;
-    browserMM.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
-    
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:showMenu", {
       easyGesturesID: this.easyGesturesID,
       centerX: this.centerX,
