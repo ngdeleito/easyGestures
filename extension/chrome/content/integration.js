@@ -83,6 +83,7 @@ function eG_activateMenu(window) {
   var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
                .getService(Components.interfaces.nsIMessageListenerManager);
   globalMM.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
+  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
 }
 
 function eG_deactivateMenu(window) {
@@ -99,6 +100,7 @@ function eG_deactivateMenu(window) {
   var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
                .getService(Components.interfaces.nsIMessageListenerManager);
   globalMM.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMessageListeners");
+  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
 }
 
 function eG_countClicks(anEvent) {
@@ -162,7 +164,8 @@ function eG_handleMouseup(evt) {
     if (!eGm.autoscrolling) {
       // avoid enabling contextual menu when autoscrolling
       eGc.unblockStdContextMenu();
-      window.removeEventListener("mousemove", eG_handleMousemove, true);
+      let browserMM = window.gBrowser.selectedBrowser.messageManager;
+      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
     }
   }
   else if (eGm.isJustOpened()) {
@@ -195,13 +198,13 @@ function eG_handleMouseup(evt) {
   }
 }
 
-function eG_handleMousemove(evt) {
-  var window = evt.target.ownerDocument.defaultView;
+function eG_handleMousemove(aMessage) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
-  eGm.handleMousemove(evt);
+  return eGm.handleMousemove(aMessage.data);
 }
 
 function eG_handleMousedown(evt) {
@@ -276,7 +279,8 @@ function eG_showAfterDelay() {
 
 function eG_openMenu() {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
-  window.addEventListener("mousemove", eG_handleMousemove, true);
+  var browserMM = window.gBrowser.selectedBrowser.messageManager;
+  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addMousemoveListener");
   
   // disabling selection when left mouse button is used until mouseup is done or menu is closed
   if (eGm.showButton == 0) { // left mouse button

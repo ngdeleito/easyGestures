@@ -34,7 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global addMessageListener, removeMessageListener, content */
+/* global addMessageListener, removeMessageListener, content, addEventListener,
+          removeEventListener, sendSyncMessage */
 
 var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
@@ -44,15 +45,15 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMe
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
-addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuPosition", updateMenuPosition);
-addMessageListener("easyGesturesN@ngdeleito.eu:hideLinkSign", hideLinkSign);
+addMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
+addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
 
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
-  removeMessageListener("easyGesturesN@ngdeleito.eu:updateMenuPosition", updateMenuPosition);
-  removeMessageListener("easyGesturesN@ngdeleito.eu:hideLinkSign", hideLinkSign);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
 }
 
 function removeMenu(anEvent) {
@@ -245,14 +246,64 @@ function showMenuTooltips(aMessage) {
   tooltipsNode.style.visibility = "visible";
 }
 
+function addMousemoveListener() {
+  addEventListener("mousemove", handleMousemove, true);
+}
+
+function removeMousemoveListener() {
+  removeEventListener("mousemove", handleMousemove, true);
+}
+
 function hideLinkSign() {
   var specialNodes = content.document.getElementById("eG_SpecialNodes");
   var linkSign = specialNodes.childNodes[0];
   linkSign.style.visibility = "hidden";
 }
 
-function updateMenuPosition(aMessage) {
+function updateMenuPosition(centerX, centerY) {
   var easyGesturesNode = content.document.getElementById(easyGesturesID);
-  easyGesturesNode.style.left = aMessage.data.centerX + "px";
-  easyGesturesNode.style.top = aMessage.data.centerY + "px";
+  easyGesturesNode.style.left = centerX + "px";
+  easyGesturesNode.style.top = centerY + "px";
+}
+
+function clearHoverEffect(sector, layoutName, actionsLength) {
+  var actionsNode = content.document.getElementById("eG_actions_" + layoutName);
+  var tooltipsNode = content.document.getElementById("eG_labels_" + layoutName);
+  
+  if (sector >= 0 && sector < actionsLength) {
+    actionsNode.childNodes[sector].setAttribute("active", "false");
+    if (tooltipsNode !== null) {
+      tooltipsNode.childNodes[sector].classList.remove("selected");
+    }
+  }
+}
+
+function setHoverEffect(sector, layoutName, actionsLength) {
+  var actionsNode = content.document.getElementById("eG_actions_" + layoutName);
+  var tooltipsNode = content.document.getElementById("eG_labels_" + layoutName);
+  
+  if (sector >= 0 && sector < actionsLength) {
+    actionsNode.childNodes[sector].setAttribute("active", "true");
+    if (tooltipsNode !== null) {
+      tooltipsNode.childNodes[sector].classList.add("selected");
+    }
+  }
+}
+
+function handleMousemove(anEvent) {
+  hideLinkSign();
+  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousemove", {
+    clientX: anEvent.clientX,
+    clientY: anEvent.clientY,
+    shiftKey: anEvent.shiftKey,
+    movementX: anEvent.movementX,
+    movementY: anEvent.movementY
+  });
+  if (result[0].centerX !== undefined) {
+    updateMenuPosition(result[0].centerX, result[0].centerY);
+  }
+  else if (result[0].oldSector !== result[0].newSector) {
+    clearHoverEffect(result[0].oldSector, result[0].layoutName, result[0].actionsLength);
+    setHoverEffect(result[0].newSector, result[0].layoutName, result[0].actionsLength);
+  }
 }

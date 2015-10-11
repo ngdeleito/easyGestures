@@ -392,39 +392,29 @@ eG_menu.prototype = {
     });
     this.showingTooltips = true;
   },
-
-  handleMousemove : function(event) { // handle rollover effects and switch to/from extra menu
+  
+  handleMousemove : function(aMessageData) {
     var layout = this.menuSet[this.curLayoutName];
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var browserMM = window.gBrowser.selectedBrowser.messageManager;
-    
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
-    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
-    
-    // hide center icon if mouse moved
-    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:hideLinkSign");
     
     // state change if was dragged
-    if (this.isJustOpened() && (event.movementX !== 0 || event.movementY !== 0)) {
+    if (this.isJustOpened() && (aMessageData.movementX !== 0 || aMessageData.movementY !== 0)) {
       this.setJustOpenedAndMouseMoved();
     }
-
-    eGc.clientYDown = event.clientY;
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    //	identifying current sector
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
+    
+    eGc.clientYDown = aMessageData.clientY;
+    
+    // identifying current sector
     var sector = -1;
     var refX = this.centerX;
     var refY = this.centerY;
     if (layout.isExtraMenu) {
-      refY -= this.menuSet[this.baseMenu].outerR*1.2;
+      refY -= this.menuSet[this.baseMenu].outerR * 1.2;
     }
-    var radius = Math.sqrt((event.clientX-refX)* (event.clientX-refX) + (event.clientY-refY)* (event.clientY-refY));
-
+    var radius = Math.sqrt((aMessageData.clientX - refX) * (aMessageData.clientX - refX) +
+                           (aMessageData.clientY - refY) * (aMessageData.clientY - refY));
+    
     if (radius > layout.innerR) {
-      var angle = Math.atan2(refY - event.clientY, event.clientX - refX) + layout.sectorOffset;
+      var angle = Math.atan2(refY - aMessageData.clientY, aMessageData.clientX - refX) + layout.sectorOffset;
       if (angle < 0) {
         angle += 2 * Math.PI;
       }
@@ -432,41 +422,27 @@ eG_menu.prototype = {
     }
     
     // moving menu when shift key is down
-    if (!this.moveAuto && event.shiftKey ||
+    if (!this.moveAuto && aMessageData.shiftKey ||
         this.moveAuto && radius >= layout.outerR && sector < layout.actions.length &&
                          !eGActions[layout.actions[sector]].isExtraMenuAction) {
-      this.centerX += event.movementX;
-      this.centerY += event.movementY;
+      this.centerX += aMessageData.movementX;
+      this.centerY += aMessageData.movementY;
       
-      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:updateMenuPosition", {
+      return {
         centerX: this.centerX,
         centerY: this.centerY
-      });
-      
-      return;
+      };
     }
     
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    // rollover effects
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    if (this.sector !== sector) { // moved to new sector
-      this.clearRollover(layout, false);
-
-      if (sector >= 0 && sector < layout.actions.length) { // sector targetted exists: highlighting icons and labels
-        layout_aNode.childNodes[sector].setAttribute("active", "true");
-        if (layout_lNode !== null) {
-          layout_lNode.childNodes[sector].classList.add("selected");
-        }
-      }
-    }
-
+    var result = {
+      oldSector: this.sector,
+      newSector: sector,
+      layoutName: layout.name,
+      actionsLength: layout.actions.length
+    };
     this.sector = sector;
-
-    ///////////////////////////////////////////////////////////////////////////////////////////////
+    
     // switching to/from extra menu
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
     if (radius > 3*layout.outerR) {
       if (!this.isJustOpenedAndMouseMoved()) {
         this.close();
@@ -479,8 +455,10 @@ eG_menu.prototype = {
     else if (layout.isExtraMenu && sector > 4) {
       this.hideExtraMenu();
     }
+    
+    return result;
   },
-
+  
   showExtraMenu : function() {
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
     var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
@@ -649,7 +627,9 @@ eG_menu.prototype = {
     this.showingTooltips = false;
     
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.removeEventListener("mousemove", eG_handleMousemove, true);
+    let browserMM = window.gBrowser.selectedBrowser.messageManager;
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
+    
     
     // enabling selection when left mouse button is used because selection is turned off in that case
     if (this.showButton === 0) { // left mouse button
