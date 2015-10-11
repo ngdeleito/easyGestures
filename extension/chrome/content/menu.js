@@ -516,7 +516,7 @@ eG_menu.prototype = {
     linkSign.style.visibility = "hidden";
     contextMenuSign.style.visibility = "hidden";
 
-    this.clearRollover(layout, true);
+    this.clearRollover(layout);
 
     if (this.showTooltips) {
       var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -524,7 +524,7 @@ eG_menu.prototype = {
     }
   },
 
-  clearRollover : function(layout, hidding) { // clear rollover effect
+  clearRollover : function(layout) { // clear rollover effect
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
     var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
     var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
@@ -539,7 +539,7 @@ eG_menu.prototype = {
 
     // reset rollover for extra menu in base menu if needed
     var baseLayout = this.menuSet[this.baseMenu];
-    if (baseLayout !== undefined && hidding) {
+    if (baseLayout !== undefined) {
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
       if (baseLayout_lNode !== null) {
