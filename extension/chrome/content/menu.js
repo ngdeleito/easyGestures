@@ -461,7 +461,7 @@ eG_menu.prototype = {
   
   showExtraMenu : function() {
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
-    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
+    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
     var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
