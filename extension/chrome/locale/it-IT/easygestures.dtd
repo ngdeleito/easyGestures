@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Tasto Shift">
 <!ENTITY activation.ctrlKey "Tasto Ctrl">
-<!ENTITY activation.open.afterDelay "Solo dopo un intervallo di tempo">
-<!ENTITY activation.open.afterDelay.delay "Ritado">
 <!ENTITY activation.openAltMenu "Mostra il menu alternativo con">
 <!ENTITY activation.openAltMenu.altKey "(Puoi anche usare il tasto Alt destro)">
 <!ENTITY activation.preventOpen "Annulla la priorità del menu circolare se il tasto del mouse è premuto con">

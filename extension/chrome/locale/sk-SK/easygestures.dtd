@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "klávesom Shift">
 <!ENTITY activation.ctrlKey "klávesom Ctrl">
-<!ENTITY activation.open.afterDelay "Len po oneskorení">
-<!ENTITY activation.open.afterDelay.delay "Oneskorenie">
 <!ENTITY activation.openAltMenu "Zobraziť alternatívnu ponuku s">
 <!ENTITY activation.openAltMenu.altKey "(Okrem toho môžete použiť pravý Alt)">
 <!ENTITY activation.preventOpen "Potlačiť zobrazenie ponuky s">

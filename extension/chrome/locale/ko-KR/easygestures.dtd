@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift 키">
 <!ENTITY activation.ctrlKey "Ctrl 키">
-<!ENTITY activation.open.afterDelay "시간이 지나면 엽니다">
-<!ENTITY activation.open.afterDelay.delay "지연시간">
 <!ENTITY activation.openAltMenu "대체 메뉴 표시 방법">
 <!ENTITY activation.openAltMenu.altKey "(또한 오른쪽 Alt 키를 사용할수 있습니다)">
 <!ENTITY activation.preventOpen "다음 키과 마우스 버튼으로 원형 메뉴 우선권을 제한시킵니다">

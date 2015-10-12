@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift">
 <!ENTITY activation.ctrlKey "Ctrl">
-<!ENTITY activation.open.afterDelay "在打开延迟">
-<!ENTITY activation.open.afterDelay.delay "延迟时间">
 <!ENTITY activation.openAltMenu "显示替代菜单">
 <!ENTITY activation.openAltMenu.altKey "(您也可以使用 右 Alt 键)">
 <!ENTITY activation.preventOpen "禁止圆饼菜单优先鼠标按钮">

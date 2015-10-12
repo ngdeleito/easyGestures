@@ -31,8 +31,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift key">
 <!ENTITY activation.ctrlKey "Ctrl key">
-<!ENTITY activation.open.afterDelay "Open after delay">
-<!ENTITY activation.open.afterDelay.delay "Delay">
 <!ENTITY activation.openAltMenu "Display alternative menu with">
 <!ENTITY activation.openAltMenu.altKey "(You can also use the right Alt key)">
 <!ENTITY activation.preventOpen "Prevent pie menu from opening with">

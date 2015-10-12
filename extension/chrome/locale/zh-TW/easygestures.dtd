@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift 鍵">
 <!ENTITY activation.ctrlKey "Ctrl 鍵">
-<!ENTITY activation.open.afterDelay "在停頓時開啟">
-<!ENTITY activation.open.afterDelay.delay "停頓…">
 <!ENTITY activation.openAltMenu "顯示替換選單：用">
 <!ENTITY activation.openAltMenu.altKey "（你也可以使用右邊的 Alt 鍵）">
 <!ENTITY activation.preventOpen "封鎖圓餅選單當擊點滑鼠按鍵和">

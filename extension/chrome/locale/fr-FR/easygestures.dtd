@@ -42,8 +42,6 @@
 <!ENTITY activation.noKey "Aucune touche">
 <!ENTITY activation.shiftKey "La touche Maj">
 <!ENTITY activation.ctrlKey "La touche Ctrl">
-<!ENTITY activation.open.afterDelay "Ouvrir après un délai">
-<!ENTITY activation.open.afterDelay.delay "Délai">
 <!ENTITY activation.openAltMenu "Afficher le menu alternatif avec">
 <!ENTITY activation.openAltMenu.altKey "(Vous pouvez aussi utiliser la touche Alt droite)">
 <!ENTITY activation.preventOpen "Empêcher l'ouverture du menu circulaire avec">

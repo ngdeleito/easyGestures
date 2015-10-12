@@ -871,11 +871,6 @@ function updateUI() {
   document.getElementById("contextTextboxSector9").hidden = !menuIsLarge;
   
   //***************************************************
-  
-  document.getElementById("showAfterDelayDelayLabel").disabled = !document.getElementById("showAfterDelayCheckbox").checked;
-  document.getElementById("showAfterDelayDelayTextbox").disabled = !document.getElementById("showAfterDelayCheckbox").checked;
-  
-  //***************************************************
   // disabling autoscrolling sub-options
   //***************************************************
   

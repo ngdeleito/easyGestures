@@ -101,8 +101,6 @@
     <preferences>
       <preference id="showButton" name="extensions.easygestures.activation.showButton" type="int" />
       <preference id="showKey" name="extensions.easygestures.activation.showKey" type="int" />
-      <preference id="showAfterDelay" name="extensions.easygestures.activation.showAfterDelay" type="bool" />
-      <preference id="showAfterDelayValue" name="extensions.easygestures.activation.showAfterDelayValue" type="int" />
       <preference id="showAltButton" name="extensions.easygestures.activation.showAltButton" type="int" />
       <preference id="preventOpenKey" name="extensions.easygestures.activation.preventOpenKey" type="int" />
       <preference id="contextKey" name="extensions.easygestures.activation.contextKey" type="int" />
@@ -128,18 +126,6 @@
       <radio label="&activation.shiftKey;" value="16" />
       <radio label="&activation.ctrlKey;" value="17" />
     </radiogroup>
-    
-    <separator orient="horizontal" class="thin" />
-    
-    <checkbox id="showAfterDelayCheckbox" preference="showAfterDelay"
-      label="&activation.open.afterDelay;" oncommand="updateUI();" />
-    <hbox align="center" style="margin-left: 1em">
-      <label id="showAfterDelayDelayLabel"
-        value="&activation.open.afterDelay.delay;" />
-      <textbox id="showAfterDelayDelayTextbox" preference="showAfterDelayValue"
-        size="3" style="text-align: right" />
-      <label value="ms" />
-    </hbox>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />

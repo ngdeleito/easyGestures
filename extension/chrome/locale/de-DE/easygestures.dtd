@@ -44,8 +44,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Umschalttaste">
 <!ENTITY activation.ctrlKey "Strg-Taste">
-<!ENTITY activation.open.afterDelay "Mit Verzögerung öffnen">
-<!ENTITY activation.open.afterDelay.delay "Verzögerung">
 <!ENTITY activation.openAltMenu "Alternative Menüs anzeigen mit">
 <!ENTITY activation.openAltMenu.altKey "(auch über Alt-Taste auswählbar)">
 <!ENTITY activation.preventOpen "Anzeige des Kreismenüs über Maustaste unterdrücken mit">

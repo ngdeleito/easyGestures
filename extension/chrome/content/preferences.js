@@ -570,6 +570,11 @@ var eGPrefs = {
     extraMenuStats.splice(10, 3);
     extraMenuStats.splice(15, 3);
     this._prefs.setCharPref("stats.extraMenu", JSON.stringify(extraMenuStats));
+  },
+  
+  updateToV4_12: function() {
+    this._prefs.deleteBranch("activation.showAfterDelay");
+    this._prefs.deleteBranch("activation.showAfterDelayValue");
   }
 };
 

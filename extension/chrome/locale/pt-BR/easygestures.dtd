@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Tecla Shift">
 <!ENTITY activation.ctrlKey "Tecla Ctrl">
-<!ENTITY activation.open.afterDelay "Abrir após atraso">
-<!ENTITY activation.open.afterDelay.delay "Atraso">
 <!ENTITY activation.openAltMenu "Mostrar menu alternativo com">
 <!ENTITY activation.openAltMenu.altKey "(Você também pode usar a tecla Alt direita)">
 <!ENTITY activation.preventOpen "Suprimir a prioridade do menu de torta no botão do mouse com">

@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "klawisz [ Shift ]">
 <!ENTITY activation.ctrlKey "klawisz [ Ctrl ]">
-<!ENTITY activation.open.afterDelay "Otwórz z opóźnieniem">
-<!ENTITY activation.open.afterDelay.delay "Czas opóźnienia">
 <!ENTITY activation.openAltMenu "Wyświetlaj alternatywne menu klikając:">
 <!ENTITY activation.openAltMenu.altKey "(Można użyć także prawego klawisza [ Alt ])">
 <!ENTITY activation.preventOpen "Wstrzymaj uruchamianie Centrum myszą używając:">

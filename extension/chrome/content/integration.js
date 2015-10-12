@@ -54,7 +54,6 @@ var eGc = {
   // used for drag movements in 'open when dragging' situations
   clientXDown: -1,
   clientYDown: -1,
-  showAfterDelayTimer: null, // trigger to display menu after delay
   
   isStdContextMenuBlocked : function() {
     return this._blockStdContextMenu;
@@ -146,9 +145,6 @@ function eG_cleanSelection(selection) {
 function eG_handleMouseup(evt) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
-  window.clearTimeout(eGc.showAfterDelayTimer);
-  eGc.showAfterDelayTimer = null;
-  
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   if (window.document.getElementById("content").mCurrentBrowser._scrollingView == null) {
@@ -230,11 +226,6 @@ function eG_handleMousedown(evt) {
     return;
   }
   
-  // start timer for delayed show up
-  if (eGc.showAfterDelayTimer == null && eGm.showAfterDelay) {
-    eGc.showAfterDelayTimer = window.setTimeout(eG_showAfterDelay, eGm.showAfterDelayValue);
-  }
-    
   // identify context, etc.
   eGc.targetDocument = evt.target.ownerDocument;
   eGc.targetWindow = eGc.targetDocument.defaultView;
@@ -248,10 +239,7 @@ function eG_handleMousedown(evt) {
   eGc.clientYDown = evt.clientY + eGc.targetWindow.mozInnerScreenY -
                                   eGc.topmostWindow.mozInnerScreenY;
   
-  if (!eGm.showAfterDelay) {
-    //evt.preventDefault();
-    eG_openMenu();
-  }
+  eG_openMenu();
   
   // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
   var mainWindow = Services.wm.getMostRecentWindow("navigator:browser");
@@ -268,13 +256,6 @@ function eG_handleMousedown(evt) {
       eGActions.autoscrolling.run();
     }, eGm.autoscrollingDelay);
   }
-}
-
-function eG_showAfterDelay() {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  window.clearTimeout(eGc.showAfterDelayTimer);
-  eGc.showAfterDelayTimer = null;
-  eG_openMenu();
 }
 
 function eG_openMenu() {

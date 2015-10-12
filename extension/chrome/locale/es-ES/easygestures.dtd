@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "Ninguna tecla">
 <!ENTITY activation.shiftKey "La tecla mayúsculas">
 <!ENTITY activation.ctrlKey "La tecla Ctrl">
-<!ENTITY activation.open.afterDelay "Abrir tras un periodo">
-<!ENTITY activation.open.afterDelay.delay "Periodo">
 <!ENTITY activation.openAltMenu "Mostrar el menú alternativo con">
 <!ENTITY activation.openAltMenu.altKey "(Puede usar también la tecla Alt derecha)">
 <!ENTITY activation.preventOpen "Impedir la apertura del menú circular con">

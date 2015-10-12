@@ -43,8 +43,6 @@
 <!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift tuşu">
 <!ENTITY activation.ctrlKey "Ctrl tuşu">
-<!ENTITY activation.open.afterDelay "Gecikmeden sonra aç">
-<!ENTITY activation.open.afterDelay.delay "Gecikme">
 <!ENTITY activation.openAltMenu "Alternatif menüyü şununla aç:">
 <!ENTITY activation.openAltMenu.altKey "(sol Alt tuşunu da kullanabilirsiniz)">
 <!ENTITY activation.preventOpen "Fare tuşunda kolay menü önceliğini şununla durdur:">

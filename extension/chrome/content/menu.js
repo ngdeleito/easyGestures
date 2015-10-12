@@ -176,8 +176,6 @@ function eG_menu () {
 
   this.showButton = prefs.getIntPref("activation.showButton"); // mouse button for opening the pie menu
   this.showKey = prefs.getIntPref("activation.showKey"); // key for showing the pie menu with mouse button clicked
-  this.showAfterDelay = prefs.getBoolPref("activation.showAfterDelay"); // enabling display pie menu after delay before dragging
-  this.showAfterDelayValue = prefs.getIntPref("activation.showAfterDelayValue"); // delay to display pie menu after delay before dragging
   this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
   this.preventOpenKey = prefs.getIntPref("activation.preventOpenKey");
   this.contextKey = prefs.getIntPref("activation.contextKey"); // key for forcing non contextual or contextual pie menu
