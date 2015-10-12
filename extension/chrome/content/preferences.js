@@ -100,8 +100,6 @@ var eGPrefs = {
       this._prefs.setIntPref("activation.preventOpenKey", 0);
     }
     
-    this._prefs.setBoolPref("activation.showAfterDelay", false);
-    this._prefs.setIntPref("activation.showAfterDelayValue", 200);
     this._prefs.setIntPref("activation.showAltButton", 2); // right button
     this._prefs.setIntPref("activation.contextKey", 18); // alt key
     this._prefs.setBoolPref("activation.contextShowAuto", false); // Show contextual pie menu automatically
