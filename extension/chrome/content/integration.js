@@ -51,10 +51,6 @@ var eGc = {
   
   loading: false, // used for reload/stop action
   
-  // used for drag movements in 'open when dragging' situations
-  clientXDown: -1,
-  clientYDown: -1,
-  
   isStdContextMenuBlocked : function() {
     return this._blockStdContextMenu;
   },
@@ -234,10 +230,10 @@ function eG_handleMousedown(evt) {
   
   eGm.setContext(evt.target, window, eG_cleanSelection(evt.view.getSelection()));
   
-  eGc.clientXDown = evt.clientX + eGc.targetWindow.mozInnerScreenX -
-                                  eGc.topmostWindow.mozInnerScreenX;
-  eGc.clientYDown = evt.clientY + eGc.targetWindow.mozInnerScreenY -
-                                  eGc.topmostWindow.mozInnerScreenY;
+  eGm.centerX = evt.clientX + eGc.targetWindow.mozInnerScreenX -
+                              eGc.topmostWindow.mozInnerScreenX;
+  eGm.centerY = evt.clientY + eGc.targetWindow.mozInnerScreenY -
+                              eGc.topmostWindow.mozInnerScreenY;
   
   eG_openMenu();
   
@@ -268,9 +264,6 @@ function eG_openMenu() {
     var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
     selCon.setDisplaySelection(0); // SELECTION_OFF
   }
-  
-  eGm.centerX = eGc.clientXDown;
-  eGm.centerY = eGc.clientYDown;
   
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(eGc.keyPressed)) {

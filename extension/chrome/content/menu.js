@@ -399,8 +399,6 @@ eG_menu.prototype = {
       this.setJustOpenedAndMouseMoved();
     }
     
-    eGc.clientYDown = aMessageData.clientY;
-    
     // identifying current sector
     var sector = -1;
     var refX = this.centerX;
