@@ -486,7 +486,7 @@ eG_menu.prototype = {
     // reset rollover of extra menu action icon in main menu
     baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing", "false");
     
-    this.hide(layout);
+    this.hide(layout.name, layout.actions.length);
     
     mainMenusSign.style.visibility = "visible";
     extraMenusSign.style.visibility = "hidden";
@@ -495,9 +495,9 @@ eG_menu.prototype = {
     this.resetTooltipsTimeout();
   },
   
-  hide : function(layout) { // makes menu invisible
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
-    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
+  hide : function(layoutName, layoutActionsLength) { // makes menu invisible
+    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layoutName);
+    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layoutName);
     var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     var contextMenuSign = specialNodes.childNodes[3];
@@ -512,7 +512,7 @@ eG_menu.prototype = {
     linkSign.style.visibility = "hidden";
     contextMenuSign.style.visibility = "hidden";
 
-    if (this.sector >= 0 && this.sector < layout.actions.length) {
+    if (this.sector >= 0 && this.sector < layoutActionsLength) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
       if (layout_lNode !== null) {
         layout_lNode.childNodes[this.sector].classList.remove("selected");
@@ -592,7 +592,7 @@ eG_menu.prototype = {
   
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-    this.hide(layout);
+    this.hide(layout.name, layout.actions.length);
     this.show(layout.getNextLayout());
   },
 
@@ -603,9 +603,9 @@ eG_menu.prototype = {
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
     
-    this.hide(layout);
+    this.hide(layout.name, layout.actions.length);
     if (layout.isExtraMenu) {
-      this.hide(baseLayout); // hide base menu too if closing is done from extra menu
+      this.hide(baseLayout.name, baseLayout.actions.length); // hide base menu too if closing is done from extra menu
       extraMenusSign.style.visibility = "hidden";
     }
     mainMenusSign.style.visibility = "hidden";
