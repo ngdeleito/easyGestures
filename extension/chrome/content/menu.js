@@ -512,20 +512,6 @@ eG_menu.prototype = {
     linkSign.style.visibility = "hidden";
     contextMenuSign.style.visibility = "hidden";
 
-    this.clearRollover(layout);
-
-    if (this.showTooltips) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      window.clearTimeout(this.tooltipsTrigger);
-    }
-  },
-
-  clearRollover : function(layout) { // clear rollover effect
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layout.name);
-    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layout.name);
-    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
-    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
-  
     if (this.sector >= 0 && this.sector < layout.actions.length) {
       layout_aNode.childNodes[this.sector].setAttribute("active", "false");
       if (layout_lNode !== null) {
@@ -535,12 +521,19 @@ eG_menu.prototype = {
 
     // reset rollover for extra menu in base menu if needed
     var baseLayout = this.menuSet[this.baseMenu];
+    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
+    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
     if (baseLayout !== undefined) {
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
       baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
       if (baseLayout_lNode !== null) {
         baseLayout_lNode.childNodes[this.extraMenuAction].classList.remove("selected");
       }
+    }
+
+    if (this.showTooltips) {
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      window.clearTimeout(this.tooltipsTrigger);
     }
   },
   
