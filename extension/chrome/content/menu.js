@@ -90,19 +90,20 @@ MenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.incrementStatsMainMenuPref(this._layoutNumber * 10 + sector8To10);
   eGPrefs.updateStatsForAction(this.actions[sector]);
 };
-MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
-    var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
-    var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
-      numberOfMenus) % numberOfMenus;
-    previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
-    menuSign.childNodes[previousLayoutNumber].removeAttribute("class");
-    menuSign.childNodes[layoutNumber].className = "active";
-};
-MenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-  var mainMenusSign = specialNodes.childNodes[1];
+MenuLayout.prototype._updateMenuSign = function(browserMM, menuSign, numberOfMenus) {
+  var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
+  var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
+                              numberOfMenus) % numberOfMenus;
+  previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
   
-  this._updateMenuSign(mainMenusSign, this._pieMenu.numberOfMainMenus);
+  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:updateMenuSign", {
+    menuSign: menuSign,
+    layoutNumber: layoutNumber,
+    previousLayoutNumber: previousLayoutNumber
+  });
+};
+MenuLayout.prototype.updateMenuSign = function(browserMM) {
+  this._updateMenuSign(browserMM, 1, this._pieMenu.numberOfMainMenus);
 };
 
 function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
@@ -125,11 +126,8 @@ ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 5 + sector);
   eGPrefs.updateStatsForAction(this.actions[sector]);
 };
-ExtraMenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-  var extraMenusSign = specialNodes.childNodes[2];
-  
-  this._updateMenuSign(extraMenusSign, this._pieMenu.numberOfExtraMenus);
+ExtraMenuLayout.prototype.updateMenuSign = function(browserMM) {
+  this._updateMenuSign(browserMM, 2, this._pieMenu.numberOfExtraMenus);
 };
 
 function ContextualMenuLayout(menu, name, actionsPrefs) {
@@ -145,18 +143,11 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
 };
-ContextualMenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-  var contextMenuSign = specialNodes.childNodes[3];
-  
-  contextMenuSign.textContent = eGStrings.getString(this.name);
-  contextMenuSign.style.visibility = "visible";
-  if (this._pieMenu.contextualMenus.length > 1) {
-    contextMenuSign.className = "withAltSign";
-  }
-  else {
-    contextMenuSign.removeAttribute("class");
-  }
+ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
+  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", {
+    layoutLabel: eGStrings.getString(this.name),
+    moreThanOneLayout: this._pieMenu.contextualMenus.length > 1
+  });
 };
 
 // menu Constructor
@@ -375,6 +366,7 @@ eG_menu.prototype = {
     
     this.curLayoutName = layoutName;
     this.update();
+    layout.updateMenuSign(browserMM);
     this.resetTooltipsTimeout();
   },
   
@@ -586,8 +578,6 @@ eG_menu.prototype = {
       let actionNode = layout_aNode.childNodes[index];
       eGActions[actionName].displayStateOn(actionNode);
     });
-    
-    layout.updateMenuSign();
   },
   
   switchLayout : function() { // this is not about switching to/from extra menu

@@ -44,6 +44,8 @@ var extraMenuAction = 2;
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
+addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
+addMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
 addMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
@@ -51,6 +53,8 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeM
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
   removeMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
@@ -216,6 +220,27 @@ function showMenu(aMessage) {
     easyGesturesNode.appendChild(actionsNode);
   }
   actionsNode.style.visibility = "visible";
+
+function updateMenuSign(aMessage) {
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var menusSign = specialNodes.childNodes[aMessage.data.menuSign];
+  
+  menusSign.childNodes[aMessage.data.previousLayoutNumber].removeAttribute("class");
+  menusSign.childNodes[aMessage.data.layoutNumber].className = "active";
+}
+
+function updateContextualMenuSign(aMessage) {
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var contextMenuSign = specialNodes.childNodes[3];
+  
+  contextMenuSign.textContent = aMessage.data.layoutLabel;
+  contextMenuSign.style.visibility = "visible";
+  if (aMessage.data.moreThanOneLayout) {
+    contextMenuSign.className = "withAltSign";
+  }
+  else {
+    contextMenuSign.removeAttribute("class");
+  }
 }
 
 function createTooltipsNodes(aDocument, aMessageData) {
