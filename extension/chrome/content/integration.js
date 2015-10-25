@@ -42,12 +42,16 @@ var eGc = {
   _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
-  mouseupEvent: null,
+  mouseupEventScreenX: null,
+  mouseupEventScreenY: null,
   
-  targetDocument: null,
-  targetWindow: null,
-  topmostDocument: null,
-  topmostWindow: null,
+  targetDocumentURL: null,
+  targetWindowScrollY: null,
+  targetWindowScrollMaxY: null,
+  topmostWindowScrollY: null,
+  topmostWindowScrollMaxY: null,
+  topmostDocumentURL: null,
+  topmostDocumentTitle: null,
   
   loading: false, // used for reload/stop action
   
@@ -66,8 +70,6 @@ var eGc = {
 
 function eG_activateMenu(window) {
   // setting events handlers
-  window.gBrowser.addEventListener("mousedown", eG_handleMousedown, true);
-  window.gBrowser.addEventListener("mouseup", eG_handleMouseup, true);
   window.gBrowser.addEventListener("keydown", eG_handleKeydown, true);
   window.gBrowser.addEventListener("keyup", eG_handleKeyup, true);
   var contextMenu = window.document.getElementById("contentAreaContextMenu");
@@ -78,13 +80,14 @@ function eG_activateMenu(window) {
   var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
                .getService(Components.interfaces.nsIMessageListenerManager);
   globalMM.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
+  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
+  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
+  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
   globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
 }
 
 function eG_deactivateMenu(window) {
   // removing event handlers
-  window.gBrowser.removeEventListener("mousedown", eG_handleMousedown, true);
-  window.gBrowser.removeEventListener("mouseup", eG_handleMouseup, true);
   window.gBrowser.removeEventListener("keydown", eG_handleKeydown, true);
   window.gBrowser.removeEventListener("keyup", eG_handleKeyup, true);
   var contextMenu = window.document.getElementById("contentAreaContextMenu");
@@ -95,6 +98,9 @@ function eG_deactivateMenu(window) {
   var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
                .getService(Components.interfaces.nsIMessageListenerManager);
   globalMM.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMessageListeners");
+  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
+  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
+  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
   globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
 }
 
@@ -131,14 +137,7 @@ function eG_handleKeydown(event) {
   }
 }
 
-function eG_cleanSelection(selection) {
-  var result = selection.toString();
-  result = result.trim();
-  result = result.replace(/(\n|\r|\t)+/g, " "); // replace all Linefeed, Carriage return & Tab with a space
-  return result;
-}
-
-function eG_handleMouseup(evt) {
+function eG_handleMouseup(aMessage) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
@@ -162,25 +161,28 @@ function eG_handleMouseup(evt) {
   }
   else if (eGm.isJustOpened()) {
     eGm.setOpen();
-    eGm.openLinkThroughPieMenuCenter(evt.button);
+    eGm.openLinkThroughPieMenuCenter(aMessage.data.linkSignIsVisible,
+                                     aMessage.data.button);
   }
   else if (eGm.isJustOpenedAndMouseMoved()) {
     if (eGm.sector !== -1) {
-      eGc.mouseupEvent = evt;
+      eGc.mouseupEventScreenX = aMessage.data.screenX;
+      eGc.mouseupEventScreenY = aMessage.data.screenY;
       eGm.runAction();
     }
     else {
-      evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
       eGm.setOpen();
+      return 1;
     }
   }
   else {
-    if (evt.button === eGm.showAltButton) {
-      evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
+    if (aMessage.data.button === eGm.showAltButton) {
+      return 1;
     }
     else {
       if (eGm.sector !== -1) {
-        eGc.mouseupEvent = evt;
+        eGc.mouseupEventScreenX = aMessage.data.screenX;
+        eGc.mouseupEventScreenY = aMessage.data.screenY;
         eGm.runAction();
       }
       else {
@@ -199,8 +201,10 @@ function eG_handleMousemove(aMessage) {
   return eGm.handleMousemove(aMessage.data);
 }
 
-function eG_handleMousedown(evt) {
-  var window = evt.target.ownerDocument.defaultView;
+function eG_performOpenMenuChecks(aMessage) {
+  const MENU_IS_OPENED = 2;
+  const MENU_CANT_BE_OPENED = 1;
+  const MENU_SHOULD_BE_OPENED = 0;
   
   eGc.blockStdContextMenu();
   
@@ -209,31 +213,42 @@ function eG_handleMousedown(evt) {
     // toggle primitive/alternative pie menu
     eGm.autoscrollingState = false; // disable autoscrolling if any
     
-    if (eGm.canLayoutBeSwitched(evt.button)) {
+    if (eGm.canLayoutBeSwitched(aMessage.data.button)) {
       eGm.switchLayout();
     }
-    evt.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
-    return;
+    return MENU_IS_OPENED;
   }
   
   // check if menu should not be displayed
-  if (!eGm.canBeOpened(evt)) {
+  if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey, aMessage.data.ctrlKey)) {
     eGc.unblockStdContextMenu();
-    return;
+    return MENU_CANT_BE_OPENED;
   }
   
-  // identify context, etc.
-  eGc.targetDocument = evt.target.ownerDocument;
-  eGc.targetWindow = eGc.targetDocument.defaultView;
-  eGc.topmostWindow = eGc.targetWindow.top;
-  eGc.topmostDocument = eGc.topmostWindow.document;
+  return MENU_SHOULD_BE_OPENED;
+}
+
+function eG_handleMousedown(aMessage) {
+  eGm.contextualMenus = aMessage.data.contextualMenus;
+  eGm.selection = aMessage.data.selection;
+  eGm.anchorElementExists = aMessage.data.anchorElementExists;
+  eGm.anchorElementHREF = aMessage.data.anchorElementHREF;
+  eGm.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
+  eGm.imageElementStyleWidth = aMessage.data.imageElementStyleWidth;
+  eGm.imageElementWidth = aMessage.data.imageElementWidth;
+  eGm.imageElementStyleHeight = aMessage.data.imageElementStyleHeight;
+  eGm.imageElementHeight = aMessage.data.imageElementHeight;
+  eGm.imageElementSRC = aMessage.data.imageElementSRC;
+  eGm.centerX = aMessage.data.centerX;
+  eGm.centerY = aMessage.data.centerY;
+  eGc.targetDocumentURL = aMessage.data.targetDocumentURL;
+  eGc.targetWindowScrollY = aMessage.data.targetWindowScrollY;
+  eGc.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
+  eGc.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
+  eGc.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
+  eGc.topmostDocumentURL = aMessage.data.topmostDocumentURL;
+  eGc.topmostDocumentTitle = aMessage.data.topmostDocumentTitle;
   
-  eGm.setContext(evt.target, window, eG_cleanSelection(evt.view.getSelection()));
-  
-  eGm.centerX = evt.clientX + eGc.targetWindow.mozInnerScreenX -
-                              eGc.topmostWindow.mozInnerScreenX;
-  eGm.centerY = evt.clientY + eGc.targetWindow.mozInnerScreenY -
-                              eGc.topmostWindow.mozInnerScreenY;
   
   eG_openMenu();
   
@@ -246,7 +261,7 @@ function eG_handleMousedown(evt) {
     
     // making a partial clone of current evt for setTimeout because object will be lost
     // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
-    eGm.autoscrollingTrigger = window.setTimeout(function() {
+    eGm.autoscrollingTrigger = mainWindow.setTimeout(function() {
       eGm.autoscrolling = true;
       eGm.close();
       eGActions.autoscrolling.run();

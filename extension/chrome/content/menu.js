@@ -155,8 +155,14 @@ function eG_menu () {
   this.HTMLNamespace = "http://www.w3.org/1999/xhtml";
   
   this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
-  this.anchorElement = null;
-  this.imageElement = null;
+  this.anchorElementExists = false;
+  this.anchorElementHREF = null;
+  this.imageElementDoesntExist = true;
+  this.imageElementStyleWidth = null;
+  this.imageElementWidth = null;
+  this.imageElementStyleHeight = null;
+  this.imageElementHeight = null;
+  this.imageElementSRC = "";
   this.selection = null;
   
   var prefs = Services.prefs.getBranch("extensions.easygestures.");
@@ -336,6 +342,10 @@ eG_menu.prototype = {
   show : function(layoutName) { // makes menu visible
     var layout = this.menuSet[layoutName];
     
+    if (this.isHidden()) {
+      this.setJustOpened();
+    }
+    
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var browserMM = window.gBrowser.selectedBrowser.messageManager;
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:showMenu", {
@@ -357,12 +367,11 @@ eG_menu.prototype = {
       noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
       menuImage: layout.menuImage,
-      menuOpacity: this.menuOpacity
+      menuOpacity: this.menuOpacity,
+      showLinkSign: this.handleLinks && this.anchorElementExists &&
+                    this.isJustOpened() && layoutName === "main",
+      linksDelay: this.linksDelay
     });
-    
-    if (this.isHidden()) {
-      this.setJustOpened();
-    }
     
     this.curLayoutName = layoutName;
     this.update();
@@ -426,7 +435,9 @@ eG_menu.prototype = {
       oldSector: this.sector,
       newSector: sector,
       layoutName: layout.name,
-      actionsLength: layout.actions.length
+      actionsLength: layout.actions.length,
+      showExtraMenu: false,
+      hideExtraMenu: false
     };
     this.sector = sector;
     
@@ -438,95 +449,18 @@ eG_menu.prototype = {
     }
     else if (radius > layout.outerR && sector === this.extraMenuAction &&
              eGActions[layout.actions[sector]].isExtraMenuAction) {
-      this.showExtraMenu();
+      result.showExtraMenu = true;
+      this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
+      this.show("extra");
     }
     else if (layout.isExtraMenu && sector > 4) {
-      this.hideExtraMenu();
+      result.hideExtraMenu = true;
+      result.baseLayoutName = this.baseMenu;
+      this.curLayoutName = this.baseMenu;
+      this.resetTooltipsTimeout();
     }
     
     return result;
-  },
-  
-  showExtraMenu : function() {
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
-    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.curLayoutName);
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
-    
-    layout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","true");
-
-    this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
-    this.show("extra");
-    
-    mainMenusSign.style.visibility = "hidden";
-    extraMenusSign.style.visibility = "visible";
-    
-    // hide main menu tooltips after extra menu showed
-    if (baseLayout_lNode !== null) {
-      baseLayout_lNode.style.visibility = "hidden";
-    }
-  },
-  
-  hideExtraMenu : function() {
-    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
-    var layout = this.menuSet[this.curLayoutName];
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
-    
-    // reset rollover of extra menu action icon in main menu
-    baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing", "false");
-    
-    this.hide(layout.name, layout.actions.length);
-    
-    mainMenusSign.style.visibility = "visible";
-    extraMenusSign.style.visibility = "hidden";
-    
-    this.curLayoutName = this.baseMenu;
-    this.resetTooltipsTimeout();
-  },
-  
-  hide : function(layoutName, layoutActionsLength) { // makes menu invisible
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + layoutName);
-    var layout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + layoutName);
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    var linkSign = specialNodes.childNodes[0];
-    var contextMenuSign = specialNodes.childNodes[3];
-  
-    if (layout_aNode !== null) {
-      layout_aNode.style.visibility = "hidden";
-    }
-    if (layout_lNode !== null) {
-      layout_lNode.style.visibility = "hidden";
-    }
-
-    linkSign.style.visibility = "hidden";
-    contextMenuSign.style.visibility = "hidden";
-
-    if (this.sector >= 0 && this.sector < layoutActionsLength) {
-      layout_aNode.childNodes[this.sector].setAttribute("active", "false");
-      if (layout_lNode !== null) {
-        layout_lNode.childNodes[this.sector].classList.remove("selected");
-      }
-    }
-
-    // reset rollover for extra menu in base menu if needed
-    var baseLayout = this.menuSet[this.baseMenu];
-    var baseLayout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.baseMenu);
-    var baseLayout_lNode = eGc.topmostDocument.getElementById("eG_labels_" + this.baseMenu);
-    if (baseLayout !== undefined) {
-      baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("extraMenuShowing","false");
-      baseLayout_aNode.childNodes[this.extraMenuAction].setAttribute("active","false");
-      if (baseLayout_lNode !== null) {
-        baseLayout_lNode.childNodes[this.extraMenuAction].classList.remove("selected");
-      }
-    }
-
-    if (this.showTooltips) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      window.clearTimeout(this.tooltipsTrigger);
-    }
   },
   
   runAction : function() {
@@ -556,22 +490,6 @@ eG_menu.prototype = {
     var layout = this.menuSet[this.curLayoutName];
     
     var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    var linkSign = specialNodes.childNodes[0];
-    
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-    // showing center icon
-    ///////////////////////////////////////////////////////////////////////////////////////////////
-
-    if (this.anchorElement !== null && this.handleLinks && this.isJustOpened() && this.curLayoutName === "main") { //if a link is pointed and mouse not dragged
-      linkSign.style.visibility = "visible";
-      this.linkTrigger = window.setTimeout(function() { linkSign.style.visibility = "hidden"; }, this.linksDelay);
-    }
-    else {
-      linkSign.style.visibility = "hidden";
-    }
     
     // updating the status of the actions in the shown menu
     layout.actions.forEach(function(actionName, index) {
@@ -582,33 +500,43 @@ eG_menu.prototype = {
   
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-    this.hide(layout.name, layout.actions.length);
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var browserMM = window.gBrowser.selectedBrowser.messageManager;
+    
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:handleHideLayout", {
+      layoutName: layout.name,
+      sector: this.sector,
+      layoutActionsLength: layout.actions.length,
+      baseLayoutName: this.baseMenu
+    });
     this.show(layout.getNextLayout());
   },
 
   close : function() {
     var layout = this.menuSet[this.curLayoutName];
     var baseLayout = this.menuSet[this.baseMenu];
-    var specialNodes = eGc.topmostDocument.getElementById("eG_SpecialNodes");
-    var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var browserMM = window.gBrowser.selectedBrowser.messageManager;
     
-    this.hide(layout.name, layout.actions.length);
-    if (layout.isExtraMenu) {
-      this.hide(baseLayout.name, baseLayout.actions.length); // hide base menu too if closing is done from extra menu
-      extraMenusSign.style.visibility = "hidden";
-    }
-    mainMenusSign.style.visibility = "hidden";
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:close", {
+      layoutName: layout.name,
+      sector: this.sector,
+      layoutActionsLength: layout.actions.length,
+      baseLayoutName: this.baseMenu,
+      layoutIsExtraMenu: layout.isExtraMenu,
+      baseLayoutActionsLength: baseLayout !== undefined ? baseLayout.actions.length : 0
+    });
     
     this.setHidden();
     this.sector = -1;
     this.baseMenu = "";
-    this.showingTooltips = false;
     
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    let browserMM = window.gBrowser.selectedBrowser.messageManager;
+    if (this.showTooltips) {
+      window.clearTimeout(this.tooltipsTrigger);
+      this.showingTooltips = false;
+    }
+    
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
-    
     
     // enabling selection when left mouse button is used because selection is turned off in that case
     if (this.showButton === 0) { // left mouse button
@@ -636,11 +564,11 @@ eG_menu.prototype = {
     }
   },
   
-  canBeOpened : function(aMouseEvent) {
-    return aMouseEvent.button === this.showButton &&
+  canBeOpened : function(button, shiftKey, ctrlKey) {
+    return button === this.showButton &&
            (this.showKey === 0 ||
-            (this.showKey === 16 && aMouseEvent.shiftKey) ||
-            (this.showKey === 17 && aMouseEvent.ctrlKey)) &&
+            (this.showKey === 16 && shiftKey) ||
+            (this.showKey === 17 && ctrlKey)) &&
            (this.preventOpenKey === 0 || eGc.keyPressed !== this.preventOpenKey);
   },
   
@@ -656,65 +584,10 @@ eG_menu.prototype = {
            (this.contextShowAuto && !rightKey);
   },
   
-  setContext : function(anHTMLElement, window, selection) {
-    // <a> elements cannot be nested
-    // <a> elements cannot have <input> and <textarea> elements as descendants
-    // <area>, <img> and <input> elements cannot have children
-    // <textarea> cannot have other elements as children, only character data
-    this.contextualMenus = [];
-    this.selection = selection;
-    this.anchorElement = null;
-    this.imageElement = null;
-    if (anHTMLElement instanceof window.HTMLInputElement &&
-        (anHTMLElement.type.toUpperCase() === "EMAIL" ||
-         anHTMLElement.type.toUpperCase() === "NUMBER" ||
-         anHTMLElement.type.toUpperCase() === "PASSWORD" ||
-         anHTMLElement.type.toUpperCase() === "SEARCH" ||
-         anHTMLElement.type.toUpperCase() === "TEL" ||
-         anHTMLElement.type.toUpperCase() === "TEXT" ||
-         anHTMLElement.type.toUpperCase() === "URL")) {
-      this.selection =
-        anHTMLElement.value.substring(anHTMLElement.selectionStart,
-                                      anHTMLElement.selectionEnd);
-      this.contextualMenus.push("contextTextbox");
-    }
-    else if (anHTMLElement instanceof window.HTMLTextAreaElement) {
-      this.selection =
-        anHTMLElement.value.substring(anHTMLElement.selectionStart,
-                                      anHTMLElement.selectionEnd);
-      this.contextualMenus.push("contextTextbox");
-    }
-    else if (anHTMLElement instanceof window.HTMLAreaElement &&
-             anHTMLElement.href !== null && anHTMLElement.href !== "") {
-      this.anchorElement = anHTMLElement;
-      this.contextualMenus.push("contextLink");
-    }
-    else {
-      if (anHTMLElement instanceof window.HTMLImageElement) {
-        this.imageElement = anHTMLElement;
-        this.contextualMenus.push("contextImage");
-      }
-      
-      while (anHTMLElement !== null &&
-             !(anHTMLElement instanceof window.HTMLAnchorElement)) {
-        anHTMLElement = anHTMLElement.parentElement;
-      }
-      if (anHTMLElement !== null && anHTMLElement.href !== null &&
-          anHTMLElement.href !== "") {
-        this.anchorElement = anHTMLElement;
-        this.contextualMenus.push("contextLink");
-      }
-    }
-    if (this.selection !== "") {
-      this.contextualMenus.push("contextSelection");
-    }
-  },
-  
-  openLinkThroughPieMenuCenter : function(clickedButton) {
+  openLinkThroughPieMenuCenter : function(linkSignIsVisible, clickedButton) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var linkSign = eGc.topmostDocument.getElementById("eG_SpecialNodes").childNodes[0];
     
-    if (linkSign.style.visibility === "visible") {
+    if (linkSignIsVisible) {
       // if a link is clicked without dragging and related option is checked
       // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (this.handleLinksAsOpenLink) {
@@ -726,14 +599,14 @@ eG_menu.prototype = {
         if (clickedButton === 1) {
           // middle click
           if (Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick")) {
-            window.gBrowser.addTab(this.anchorElement.href);
+            window.gBrowser.addTab(this.anchorElementHREF);
           }
           else {
-            window.open(this.anchorElement.href);
+            window.open(this.anchorElementHREF);
           }
         }
         else {
-          window.gBrowser.loadURI(this.anchorElement.href);
+          window.gBrowser.loadURI(this.anchorElementHREF);
         }
       }
       this.close();

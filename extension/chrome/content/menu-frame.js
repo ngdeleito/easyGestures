@@ -41,7 +41,15 @@ var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
 var extraMenuAction = 2;
 
+var contextualMenus;
+var selection;
+var anchorElement;
+var imageElement;
+
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
+
+addEventListener("mousedown", handleMousedown, true);
+addEventListener("mouseup", handleMouseup, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
@@ -49,15 +57,153 @@ addMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", update
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
 addMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
+addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
+addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
 
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
+  
+  removeEventListener("mousedown", handleMousedown, true);
+  removeEventListener("mouseup", handleMouseup, true);
+  
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
   removeMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
   removeMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
+}
+
+function cleanSelection(selection) {
+  var result = selection.toString();
+  result = result.trim();
+  // replace all linefeed, carriage return and tab characters with a space
+  result = result.replace(/(\n|\r|\t)+/g, " ");
+  return result;
+}
+
+function setContext(anHTMLElement, window, selection) {
+  // <a> elements cannot be nested
+  // <a> elements cannot have <input> and <textarea> elements as descendants
+  // <area>, <img> and <input> elements cannot have children
+  // <textarea> cannot have other elements as children, only character data
+  contextualMenus = [];
+  selection = selection;
+  anchorElement = null;
+  imageElement = null;
+  if (anHTMLElement instanceof window.HTMLInputElement &&
+      (anHTMLElement.type.toUpperCase() === "EMAIL" ||
+       anHTMLElement.type.toUpperCase() === "NUMBER" ||
+       anHTMLElement.type.toUpperCase() === "PASSWORD" ||
+       anHTMLElement.type.toUpperCase() === "SEARCH" ||
+       anHTMLElement.type.toUpperCase() === "TEL" ||
+       anHTMLElement.type.toUpperCase() === "TEXT" ||
+       anHTMLElement.type.toUpperCase() === "URL")) {
+    selection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
+                                              anHTMLElement.selectionEnd);
+    contextualMenus.push("contextTextbox");
+  }
+  else if (anHTMLElement instanceof window.HTMLTextAreaElement) {
+    selection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
+                                              anHTMLElement.selectionEnd);
+    contextualMenus.push("contextTextbox");
+  }
+  else if (anHTMLElement instanceof window.HTMLAreaElement &&
+           anHTMLElement.href !== null && anHTMLElement.href !== "") {
+    anchorElement = anHTMLElement;
+    contextualMenus.push("contextLink");
+  }
+  else {
+    if (anHTMLElement instanceof window.HTMLImageElement) {
+      imageElement = anHTMLElement;
+      contextualMenus.push("contextImage");
+    }
+    
+    while (anHTMLElement !== null &&
+           !(anHTMLElement instanceof window.HTMLAnchorElement)) {
+      anHTMLElement = anHTMLElement.parentElement;
+    }
+    if (anHTMLElement !== null && anHTMLElement.href !== null &&
+        anHTMLElement.href !== "") {
+      anchorElement = anHTMLElement;
+      contextualMenus.push("contextLink");
+    }
+  }
+  if (selection !== "") {
+    contextualMenus.push("contextSelection");
+  }
+}
+
+function handleMousedown(anEvent) {
+  const MENU_IS_OPENED = 2;
+  const MENU_CANT_BE_OPENED = 1;
+  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
+    button: anEvent.button,
+    shiftKey: anEvent.shiftKey,
+    ctrlKey: anEvent.ctrlKey
+  });
+  if (result[0] === MENU_IS_OPENED) {
+    anEvent.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
+    return ;
+  }
+  else if (result[0] === MENU_CANT_BE_OPENED) {
+    return ;
+  }
+  
+  var targetDocument = anEvent.target.ownerDocument;
+  var targetWindow = targetDocument.defaultView;
+  var topmostWindow = targetWindow.top;
+  var topmostDocument = topmostWindow.document;
+  
+  setContext(anEvent.target, targetWindow, cleanSelection(anEvent.view.getSelection()));
+  
+  var centerX = anEvent.clientX + targetWindow.mozInnerScreenX -
+                                  topmostWindow.mozInnerScreenX;
+  var centerY = anEvent.clientY + targetWindow.mozInnerScreenY -
+                                  topmostWindow.mozInnerScreenY;
+  
+  result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousedown", {
+    contextualMenus: contextualMenus,
+    selection: selection,
+    anchorElementExists: anchorElement !== null,
+    anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
+    imageElementDoesntExist: imageElement === null,
+    imageElementStyleWidth: imageElement !== null ? imageElement.style.width : null,
+    imageElementWidth: imageElement !== null ? imageElement.width : null,
+    imageElementStyleHeight: imageElement !== null ? imageElement.style.height : null,
+    imageElementHeight: imageElement !== null ? imageElement.height : null,
+    imageElementSRC: imageElement !== null ? imageElement.src : null,
+    centerX: centerX,
+    centerY: centerY,
+    targetDocumentURL: targetDocument.URL,
+    targetWindowScrollY: targetWindow.scrollY,
+    targetWindowScrollMaxY: targetWindow.scrollMaxY,
+    topmostWindowScrollY: topmostWindow.scrollY,
+    topmostWindowScrollMaxY: topmostWindow.scrollMaxY,
+    topmostDocumentURL: topmostDocument.URL,
+    topmostDocumentTitle: topmostDocument.title
+  });
+}
+
+function handleMouseup(anEvent) {
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var linkSignIsVisible = false;
+  if (specialNodes !== null) {
+    var linkSign = specialNodes.childNodes[0];
+    linkSignIsVisible = linkSign.style.visibility === "visible";
+  }
+  
+  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMouseup", {
+    button: anEvent.button,
+    linkSignIsVisible: linkSignIsVisible,
+    screenX: anEvent.screenX,
+    screenY: anEvent.screenY
+  });
+  if (result[0] !== undefined) {
+    anEvent.preventDefault();
+  }
 }
 
 function removeMenu(anEvent) {
@@ -220,6 +366,19 @@ function showMenu(aMessage) {
     easyGesturesNode.appendChild(actionsNode);
   }
   actionsNode.style.visibility = "visible";
+  
+  // showing link sign
+  var linkSign = specialNodes.childNodes[0];
+  if (aMessage.data.showLinkSign) {
+    linkSign.style.visibility = "visible";
+    content.setTimeout(function() {
+      linkSign.style.visibility = "hidden";
+    }, aMessage.data.linksDelay);
+  }
+  else {
+    linkSign.style.visibility = "hidden";
+  }
+}
 
 function updateMenuSign(aMessage) {
   var specialNodes = content.document.getElementById("eG_SpecialNodes");
@@ -315,6 +474,39 @@ function setHoverEffect(sector, layoutName, actionsLength) {
   }
 }
 
+function showExtraMenu(layoutName) {
+  var actionsNode = content.document.getElementById("eG_actions_" + layoutName);
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var mainMenusSign = specialNodes.childNodes[1];
+  var extraMenusSign = specialNodes.childNodes[2];
+  var tooltipsNode = content.document.getElementById("eG_labels_" + layoutName);
+  
+  actionsNode.childNodes[extraMenuAction].setAttribute("extraMenuShowing", "true");
+  
+  mainMenusSign.style.visibility = "hidden";
+  extraMenusSign.style.visibility = "visible";
+  
+  // hide main menu tooltips after extra menu showed
+  if (tooltipsNode !== null) {
+    tooltipsNode.style.visibility = "hidden";
+  }
+}
+
+function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) {
+  var baseActionsNode = content.document.getElementById("eG_actions_" + baseLayoutName);
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var mainMenusSign = specialNodes.childNodes[1];
+  var extraMenusSign = specialNodes.childNodes[2];
+  
+  // reset rollover of extra menu action icon in main menu
+  baseActionsNode.childNodes[extraMenuAction].setAttribute("extraMenuShowing", "false");
+  
+  hide(layoutName, sector, layoutActionsLength, baseLayoutName);
+  
+  mainMenusSign.style.visibility = "visible";
+  extraMenusSign.style.visibility = "hidden";
+}
+
 function handleMousemove(anEvent) {
   hideLinkSign();
   var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousemove", {
@@ -327,8 +519,74 @@ function handleMousemove(anEvent) {
   if (result[0].centerX !== undefined) {
     updateMenuPosition(result[0].centerX, result[0].centerY);
   }
-  else if (result[0].oldSector !== result[0].newSector) {
-    clearHoverEffect(result[0].oldSector, result[0].layoutName, result[0].actionsLength);
-    setHoverEffect(result[0].newSector, result[0].layoutName, result[0].actionsLength);
+  else {
+    if (result[0].oldSector !== result[0].newSector) {
+      clearHoverEffect(result[0].oldSector, result[0].layoutName, result[0].actionsLength);
+      setHoverEffect(result[0].newSector, result[0].layoutName, result[0].actionsLength);
+    }
+    if (result[0].showExtraMenu) {
+      showExtraMenu(result[0].layoutName);
+    }
+    else if (result[0].hideExtraMenu) {
+      hideExtraMenu(result[0].layoutName, result[0].newSector, result[0].actionsLength, result[0].baseLayoutName);
+    }
   }
+}
+
+function hide(layoutName, sector, layoutActionsLength, baseLayoutName) { // makes menu invisible
+  var actionsNode = content.document.getElementById("eG_actions_" + layoutName);
+  var tooltipsNode = content.document.getElementById("eG_labels_" + layoutName);
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var linkSign = specialNodes.childNodes[0];
+  var contextMenuSign = specialNodes.childNodes[3];
+  
+  if (actionsNode !== null) {
+    actionsNode.style.visibility = "hidden";
+  }
+  if (tooltipsNode !== null) {
+    tooltipsNode.style.visibility = "hidden";
+  }
+  
+  linkSign.style.visibility = "hidden";
+  contextMenuSign.style.visibility = "hidden";
+  
+  if (sector >= 0 && sector < layoutActionsLength) {
+    actionsNode.childNodes[sector].setAttribute("active", "false");
+    if (tooltipsNode !== null) {
+      tooltipsNode.childNodes[sector].classList.remove("selected");
+    }
+  }
+  
+  // reset rollover for extra menu in base menu if needed
+  if (baseLayoutName !== "") {
+    var baseActionsNode = content.document.getElementById("eG_actions_" + baseLayoutName);
+    var baseTooltipsNode = content.document.getElementById("eG_labels_" + baseLayoutName);
+    baseActionsNode.childNodes[extraMenuAction].setAttribute("extraMenuShowing", "false");
+    baseActionsNode.childNodes[extraMenuAction].setAttribute("active", "false");
+    if (baseTooltipsNode !== null) {
+      baseTooltipsNode.childNodes[extraMenuAction].classList.remove("selected");
+    }
+  }
+}
+
+function handleHideLayout(aMessage) {
+  hide(aMessage.data.layoutName, aMessage.data.sector,
+       aMessage.data.layoutActionsLength, aMessage.data.baseLayoutName);
+}
+
+function close(aMessage) {
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var mainMenusSign = specialNodes.childNodes[1];
+  var extraMenusSign = specialNodes.childNodes[2];
+  
+  hide(aMessage.data.layoutName, aMessage.data.sector,
+       aMessage.data.layoutActionsLength, aMessage.data.baseLayoutName);
+  if (aMessage.data.layoutIsExtraMenu) {
+    // hide base menu too if closing is done from extra menu
+    hide(aMessage.data.baseLayoutName, aMessage.data.sector,
+         aMessage.data.baseLayoutActionsLength, aMessage.data.baseLayoutName);
+    
+    extraMenusSign.style.visibility = "hidden";
+  }
+  mainMenusSign.style.visibility = "hidden";
 }

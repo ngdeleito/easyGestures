@@ -252,7 +252,7 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    var url = eGc.topmostDocument.URL;
+    var url = eGc.topmostDocumentURL;
     return this._getRootURL(url) === url.replace("www.", "");
   }, startsNewGroup, nextAction);
 }
@@ -261,7 +261,7 @@ CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return eGm.anchorElement === null;
+    return !eGm.anchorElementExists;
   }, startsNewGroup, nextAction);
 }
 LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -315,7 +315,7 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     var content = prefValue[1];
     
     content = content.replace("%s", eGm.selection);
-    content = content.replace("%u", eGc.topmostDocument.URL);
+    content = content.replace("%u", eGc.topmostDocumentURL);
     
     action.call(this, content,
       Services.wm.getMostRecentWindow("navigator:browser"),
@@ -377,7 +377,7 @@ RunScriptAction.prototype.constructor = RunScriptAction;
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return eGm.imageElement === null;
+    return eGm.imageElementDoesntExist;
   }, startsNewGroup, nextAction);
 }
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -412,7 +412,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index - 1;
-    var url = eGc.topmostDocument.URL;
+    var url = eGc.topmostDocumentURL;
     var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
     while ((this._getRootURL(url).replace("www.", "") === this._getRootURL(backurl).replace("www.", "")) && index > 0) {
@@ -437,7 +437,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index + 1;
-    var url = eGc.topmostDocument.URL;
+    var url = eGc.topmostDocumentURL;
     var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
     while (this._getRootURL(url).replace("www.", "") === this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
@@ -462,37 +462,36 @@ var eGActions = {
   }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
-    if (eGc.targetWindow.scrollY !== 0) {
+    if (eGc.targetWindowScrollY !== 0) {
       eGc.targetWindow.scroll(0, 0);
     }
     else {
       eGc.topmostWindow.scroll(0, 0);
     }
   }, function() {
-    return eGc.targetWindow.scrollY === 0 && eGc.topmostWindow.scrollY === 0;
+    return eGc.targetWindowScrollY === 0 && eGc.topmostWindowScrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
-    if (eGc.targetWindow.scrollY !== eGc.targetWindow.scrollMaxY) {
-      eGc.targetWindow.scroll(0, eGc.targetWindow.scrollMaxY);
+    if (eGc.targetWindowScrollY !== eGc.targetWindowScrollMaxY) {
+      eGc.targetWindow.scroll(0, eGc.targetWindowScrollMaxY);
     }
     else {
-      eGc.topmostWindow.scroll(0, eGc.topmostWindow.scrollMaxY);
+      eGc.topmostWindow.scroll(0, eGc.topmostWindowScrollMaxY);
     }
   }, function() {
-    return eGc.targetWindow.scrollY === eGc.targetWindow.scrollMaxY &&
-           eGc.topmostWindow.scrollY === eGc.topmostWindow.scrollMaxY;
+    return eGc.targetWindowScrollY === eGc.targetWindowScrollMaxY &&
+           eGc.topmostWindowScrollY === eGc.topmostWindowScrollMaxY;
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
-    var evt = eGc.mouseupEvent;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.startScroll("NSEW", evt.screenX, evt.screenY);
+    window.gBrowser.selectedBrowser.startScroll("NSEW", eGc.mouseupEventScreenX, eGc.mouseupEventScreenY);
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGm.imageElement === null) {
+    if (eGm.imageElementDoesntExist) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.enlarge();
     }
@@ -501,18 +500,18 @@ var eGActions = {
       var width;
       var height;
       
-      if (eGm.imageElement.style.width === "") {
-        width = eGm.imageElement.width * 2 + "px";
+      if (eGm.imageElementStyleWidth === "") {
+        width = eGm.imageElementWidth * 2 + "px";
       }
       else {
-        width = parseInt(eGm.imageElement.style.width, 10) * 2 + "px";
+        width = parseInt(eGm.imageElementStyleWidth, 10) * 2 + "px";
       }
       
-      if (eGm.imageElement.style.height === "") {
-        height = eGm.imageElement.height * 2 + "px";
+      if (eGm.imageElementStyleHeight === "") {
+        height = eGm.imageElementHeight * 2 + "px";
       }
       else {
-        height = parseInt(eGm.imageElement.style.height, 10) * 2 + "px";
+        height = parseInt(eGm.imageElementStyleHeight, 10) * 2 + "px";
       }
       
       eGm.imageElement.style.width = width;
@@ -522,7 +521,7 @@ var eGActions = {
   
   zoomOut : new Action("zoomOut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGm.imageElement === null) {
+    if (eGm.imageElementDoesntExist) {
       window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.reduce();
     }
@@ -531,18 +530,18 @@ var eGActions = {
       var width;
       var height;
       
-      if (eGm.imageElement.style.width === "") {
-        width = eGm.imageElement.width * 0.5 + "px";
+      if (eGm.imageElementStyleWidth === "") {
+        width = eGm.imageElementWidth * 0.5 + "px";
       }
       else {
-        width = parseInt(eGm.imageElement.style.width, 10) * 0.5 + "px";
+        width = parseInt(eGm.imageElementStyleWidth, 10) * 0.5 + "px";
       }
       
-      if (eGm.imageElement.style.height === "") {
-        height = eGm.imageElement.height * 0.5 + "px";
+      if (eGm.imageElementStyleHeight === "") {
+        height = eGm.imageElementHeight * 0.5 + "px";
       }
       else {
-        height = parseInt(eGm.imageElement.style.height, 10) * 0.5 + "px";
+        height = parseInt(eGm.imageElementStyleHeight, 10) * 0.5 + "px";
       }
       
       eGm.imageElement.style.width = width;
@@ -753,7 +752,7 @@ var eGActions = {
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
-    var url = eGc.topmostDocument.URL;
+    var url = eGc.topmostDocumentURL;
     // removing any trailing "/"
     url = url.replace(/\/$/, "");
     // creating a nsIURI and removing the last "/"-separated item from its path
@@ -767,7 +766,7 @@ var eGActions = {
   }, true, "root"),
   
   root : new CanGoUpDisableableAction("root", function() {
-    var url = eGc.topmostDocument.URL;
+    var url = eGc.topmostDocumentURL;
     var rootURL = this._getRootURL(url);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.loadURI(rootURL);
@@ -775,7 +774,7 @@ var eGActions = {
   
   showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.loadURI(eGc.targetDocument.URL);
+    window.loadURI(eGc.targetDocumentURL);
   }, false, "focusLocationBar"),
   
   focusLocationBar : new Action("focusLocationBar", function() {
@@ -801,7 +800,7 @@ var eGActions = {
   openLink : new LinkExistsDisableableAction("openLink", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
-    var url = eGm.anchorElement.href;
+    var url = eGm.anchorElementHREF;
     
     switch (eGm.openLink) {
       case "curTab":
@@ -818,18 +817,18 @@ var eGActions = {
   
   openLinkInNewWindow : new LinkExistsDisableableAction("openLinkInNewWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(eGm.anchorElement.href);
+    window.open(eGm.anchorElementHREF);
   }, false, "openLinkInNewPrivateWindow"),
   
   openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    this._openInPrivateWindow(eGm.anchorElement.href, window);
+    this._openInPrivateWindow(eGm.anchorElementHREF, window);
   }, false, "copyLink"),
   
   copyLink : new LinkExistsDisableableAction("copyLink", function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGm.anchorElement.href);
+              .copyString(eGm.anchorElementHREF);
   }, false, "saveLinkAs"),
   
   saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
@@ -847,14 +846,14 @@ var eGActions = {
     var bookmarksService =
           Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
                     .getService(Components.interfaces.nsINavBookmarksService);
-    var uri = Services.io.newURI(eGc.topmostDocument.URL, null, null);
+    var uri = Services.io.newURI(eGc.topmostDocumentURL, null, null);
     if (bookmarksService.isBookmarked(uri)) {
       window.PlacesCommandHook.bookmarkCurrentPage(true,
           window.PlacesUtils.unfiledBookmarksFolderId);
     }
     else {
       bookmarksService.insertBookmark(bookmarksService.unfiledBookmarksFolder,
-        uri, bookmarksService.DEFAULT_INDEX, eGc.topmostDocument.title);
+        uri, bookmarksService.DEFAULT_INDEX, eGc.topmostDocumentTitle);
     }
   }, false, "bookmarkThisLink"),
   
@@ -977,7 +976,7 @@ var eGActions = {
     function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGm.imageElement.src);
+              .copyString(eGm.imageElementSRC);
   }, true, "copyImage"),
   
   copyImage : new ImageExistsDisableableAction("copyImage", function() {
@@ -987,7 +986,7 @@ var eGActions = {
   }, false, "saveImageAs"),
   
   saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
-    this._saveContentFromLink(eGm.imageElement.src,
+    this._saveContentFromLink(eGm.imageElementSRC,
                               Components.interfaces.nsIFilePicker.filterImages);
   }, false, "hideImages"),
   
