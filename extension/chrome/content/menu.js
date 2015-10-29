@@ -374,7 +374,9 @@ eG_menu.prototype = {
     });
     
     this.curLayoutName = layoutName;
-    this.update();
+    layout.actions.forEach(function(actionName, actionSector) {
+      eGActions[actionName].setActionStatusOn(layoutName, actionSector);
+    });
     layout.updateMenuSign(browserMM);
     this.resetTooltipsTimeout();
   },
@@ -485,18 +487,6 @@ eG_menu.prototype = {
       this.close();
     }
   },
-
-  update : function() { // update menu content (gray actions, display special signs etc.)
-    var layout = this.menuSet[this.curLayoutName];
-    
-    var layout_aNode = eGc.topmostDocument.getElementById("eG_actions_" + this.curLayoutName);
-    
-    // updating the status of the actions in the shown menu
-    layout.actions.forEach(function(actionName, index) {
-      let actionNode = layout_aNode.childNodes[index];
-      eGActions[actionName].displayStateOn(actionNode);
-    });
-  },
   
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
@@ -589,7 +579,7 @@ eG_menu.prototype = {
     
     if (linkSignIsVisible) {
       // if a link is clicked without dragging and related option is checked
-      // note: after a short delay linkSign is hidden in update() function to cancel opening of link and keep menu open after a short wait on link without moving mouse
+      // note: after a short delay linkSign is hidden to cancel opening of link and keep menu open after a short wait on link without moving mouse
       if (this.handleLinksAsOpenLink) {
         eGActions.openLink.run();
       }

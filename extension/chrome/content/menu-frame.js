@@ -52,6 +52,8 @@ addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
+addMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
+addMessageListener("easyGesturesN@ngdeleito.eu:setReloadActionStatus", setReloadActionStatus);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
@@ -67,6 +69,8 @@ function removeMessageListeners() {
   removeEventListener("mouseup", handleMouseup, true);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:setReloadActionStatus", setReloadActionStatus);
   removeMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
@@ -378,6 +382,19 @@ function showMenu(aMessage) {
   else {
     linkSign.style.visibility = "hidden";
   }
+}
+
+function setActionStatus(aMessage) {
+  var actionsNode = content.document.getElementById("eG_actions_" + aMessage.data.layoutName);
+  var actionNode = actionsNode.childNodes[aMessage.data.actionSector];
+  actionNode.setAttribute("grayed", aMessage.data.status.toString());
+}
+
+function setReloadActionStatus(aMessage) {
+  var actionsNode = content.document.getElementById("eG_actions_" + aMessage.data.layoutName);
+  var actionNode = actionsNode.childNodes[aMessage.data.actionSector];
+  actionNode.classList.toggle("stop", aMessage.data.status);
+  actionNode.classList.toggle("reload", !aMessage.data.status);
 }
 
 function updateMenuSign(aMessage) {

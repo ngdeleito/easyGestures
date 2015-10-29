@@ -89,7 +89,7 @@ Action.prototype = {
     return document.getElementById("easyGesturesNStrings").getString(this._name);
   },
   
-  displayStateOn: function() {},
+  setActionStatusOn: function() {},
   
   // helper functions
   
@@ -204,12 +204,16 @@ ReloadAction.prototype.constructor = ReloadAction;
 ReloadAction.prototype.getXULLabel = function() {
   return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
 };
-ReloadAction.prototype.displayStateOn = function(anHTMLElement) {
+ReloadAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
+  var browserMM = window.gBrowser.selectedBrowser.messageManager;
   var stop_bcaster = window.document.getElementById("Browser:Stop");
   eGc.loading = !stop_bcaster.hasAttribute("disabled");
-  anHTMLElement.classList.toggle("stop", eGc.loading);
-  anHTMLElement.classList.toggle("reload", !eGc.loading);
+  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setReloadActionStatus", {
+    layoutName: layoutName,
+    actionSector: actionSector,
+    status: eGc.loading
+  });
 };
 
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
@@ -219,8 +223,14 @@ function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction)
 }
 DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
-DisableableAction.prototype.displayStateOn = function(anHTMLElement) {
-  anHTMLElement.setAttribute("grayed", this.isDisabled().toString());
+DisableableAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  var browserMM = window.gBrowser.selectedBrowser.messageManager;
+  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setActionStatus", {
+    layoutName: layoutName,
+    actionSector: actionSector,
+    status: this.isDisabled()
+  });
 };
 
 function CanGoBackDisableableAction(name, action, startsNewGroup, nextAction) {
