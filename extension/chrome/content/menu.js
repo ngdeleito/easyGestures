@@ -604,27 +604,6 @@ eG_menu.prototype = {
   },
   
   removeFromAllPages : function() {
-    var removeMenus = function(element) {
-      var document = this.gBrowser.getBrowserForTab(element).contentDocument;
-      document.defaultView.removeEventListener("unload", removeMenu, true);
-      var easyGesturesNode = document.getElementById(eGm.easyGesturesID);
-      if (easyGesturesNode !== null) {
-        easyGesturesNode.parentNode.removeChild(easyGesturesNode);
-      }
-    };
-    
-    // iterating over all windows and over all tabs in each window, in order to
-    // remove any previously inserted easyGestures menus
-    var openWindows = Services.wm.getEnumerator("navigator:browser");
-    while (openWindows.hasMoreElements()) {
-      let window = openWindows.getNext();
-      let tabs = window.gBrowser.tabs;
-      Array.forEach(tabs, removeMenus, window); // window is this in removeMenus
-    }
+    Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMenu");
   }
 };
-
-function removeMenu(event) {
-  var easyGesturesNode = event.target.getElementById(eGm.easyGesturesID);
-  easyGesturesNode.parentNode.removeChild(easyGesturesNode);
-}

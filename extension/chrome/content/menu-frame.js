@@ -61,6 +61,7 @@ addMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemo
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
 addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
 addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
+addMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
 
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
@@ -78,6 +79,7 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
   removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
 }
 
 function cleanSelection(selection) {
@@ -210,7 +212,7 @@ function handleMouseup(anEvent) {
   }
 }
 
-function removeMenu(anEvent) {
+function removeMenuEventHandler(anEvent) {
   var easyGesturesNode = anEvent.target.getElementById(easyGesturesID);
   easyGesturesNode.parentNode.removeChild(easyGesturesNode);
 }
@@ -219,7 +221,7 @@ function createEasyGesturesNode(aDocument) {
   var easyGesturesNode = aDocument.createElementNS(HTMLNamespace, "div");
   easyGesturesNode.id = easyGesturesID;
   
-  aDocument.defaultView.addEventListener("unload", removeMenu, true);
+  addEventListener("unload", removeMenuEventHandler, true);
   
   return easyGesturesNode;
 }
@@ -606,4 +608,12 @@ function close(aMessage) {
     extraMenusSign.style.visibility = "hidden";
   }
   mainMenusSign.style.visibility = "hidden";
+}
+
+function removeMenu() {
+  removeEventListener("unload", removeMenuEventHandler, true);
+  var easyGesturesNode = content.document.getElementById(easyGesturesID);
+  if (easyGesturesNode !== null) {
+    easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+  }
 }
