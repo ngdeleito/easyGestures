@@ -35,7 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* global addMessageListener, removeMessageListener, content, addEventListener,
-          removeEventListener, sendSyncMessage */
+          removeEventListener, sendSyncMessage, sendAsyncMessage */
 
 var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
@@ -50,6 +50,8 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMe
 
 addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
+addEventListener("keydown", handleKeydown, true);
+addEventListener("keyup", handleKeyup, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
@@ -68,6 +70,8 @@ function removeMessageListeners() {
   
   removeEventListener("mousedown", handleMousedown, true);
   removeEventListener("mouseup", handleMouseup, true);
+  removeEventListener("keydown", handleKeydown, true);
+  removeEventListener("keyup", handleKeyup, true);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
   removeMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
@@ -210,6 +214,20 @@ function handleMouseup(anEvent) {
   if (result[0] !== undefined) {
     anEvent.preventDefault();
   }
+}
+
+function handleKeydown(anEvent) {
+  var keyPressed = anEvent.keyCode;
+  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleKeydown", {
+    keyPressed: keyPressed
+  });
+  if (result[0]) {
+    anEvent.preventDefault();
+  }
+}
+
+function handleKeyup() {
+  sendAsyncMessage("easyGesturesN@ngdeleito.eu:handleKeyup");
 }
 
 function removeMenuEventHandler(anEvent) {

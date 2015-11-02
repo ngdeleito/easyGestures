@@ -70,8 +70,6 @@ var eGc = {
 
 function eG_activateMenu(window) {
   // setting events handlers
-  window.gBrowser.addEventListener("keydown", eG_handleKeydown, true);
-  window.gBrowser.addEventListener("keyup", eG_handleKeyup, true);
   var contextMenu = window.document.getElementById("contentAreaContextMenu");
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
@@ -84,12 +82,12 @@ function eG_enableMenu() {
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
 }
 
 function eG_deactivateMenu(window) {
   // removing event handlers
-  window.gBrowser.removeEventListener("keydown", eG_handleKeydown, true);
-  window.gBrowser.removeEventListener("keyup", eG_handleKeyup, true);
   var contextMenu = window.document.getElementById("contentAreaContextMenu");
   if (contextMenu) {
     contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
@@ -102,6 +100,8 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
 }
 
 function eG_countClicks(anEvent) {
@@ -118,23 +118,24 @@ function eG_handleKeyup() {
   eGc.keyPressed = 0;
 }
 
-function eG_handleKeydown(event) {
-  var window = event.target.ownerDocument.defaultView;
+function eG_handleKeydown(aMessage) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
-  eGc.keyPressed = event.keyCode;
+  eGc.keyPressed = aMessage.data.keyPressed;
   
   if (eGm.isShown()) {
-    if (event.keyCode === 18) { // Alt key
+    if (eGc.keyPressed === 18) { // Alt key
       eGm.switchLayout();
     }
-    else if (event.keyCode === 27) { // ESC key
-      event.preventDefault();
+    else if (eGc.keyPressed === 27) { // ESC key
       eGm.close();
+      return true;
     }
   }
+  return false;
 }
 
 function eG_handleMouseup(aMessage) {
