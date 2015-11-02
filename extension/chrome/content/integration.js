@@ -76,14 +76,14 @@ function eG_activateMenu(window) {
   if (contextMenu) {
     contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
   }
-  
-  var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
-               .getService(Components.interfaces.nsIMessageListenerManager);
-  globalMM.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
-  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
-  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
-  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
-  globalMM.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
+}
+
+function eG_enableMenu() {
+  Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
 }
 
 function eG_deactivateMenu(window) {
@@ -94,14 +94,14 @@ function eG_deactivateMenu(window) {
   if (contextMenu) {
     contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
   }
-  
-  var globalMM = Components.classes["@mozilla.org/globalmessagemanager;1"]
-               .getService(Components.interfaces.nsIMessageListenerManager);
-  globalMM.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMessageListeners");
-  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
-  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
-  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
-  globalMM.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
+}
+
+function eG_disableMenu() {
+  Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMessageListeners");
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
 }
 
 function eG_countClicks(anEvent) {

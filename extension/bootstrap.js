@@ -187,6 +187,8 @@ function startup(data, reason) {
     // such windows
     Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
     
+    eG_enableMenu();
+    
     // displaying startup tips
     if (eGPrefs.areStartupTipsOn()) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -231,6 +233,8 @@ function shutdown() {
   
   // stop listening to new window events
   Services.ww.unregisterNotification(loadEasyGesturesOnNewWindow);
+  
+  eG_disableMenu();
 }
 
 function install() {
