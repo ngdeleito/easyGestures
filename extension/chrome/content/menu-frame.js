@@ -87,20 +87,19 @@ function removeMessageListeners() {
 }
 
 function cleanSelection(selection) {
-  var result = selection.toString();
-  result = result.trim();
+  var result = selection.trim();
   // replace all linefeed, carriage return and tab characters with a space
   result = result.replace(/(\n|\r|\t)+/g, " ");
   return result;
 }
 
-function setContext(anHTMLElement, window, selection) {
+function setContext(anHTMLElement, window) {
   // <a> elements cannot be nested
   // <a> elements cannot have <input> and <textarea> elements as descendants
   // <area>, <img> and <input> elements cannot have children
   // <textarea> cannot have other elements as children, only character data
+  var inputBoxSelection = "";
   contextualMenus = [];
-  selection = selection;
   anchorElement = null;
   imageElement = null;
   if (anHTMLElement instanceof window.HTMLInputElement &&
@@ -111,13 +110,13 @@ function setContext(anHTMLElement, window, selection) {
        anHTMLElement.type.toUpperCase() === "TEL" ||
        anHTMLElement.type.toUpperCase() === "TEXT" ||
        anHTMLElement.type.toUpperCase() === "URL")) {
-    selection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
-                                              anHTMLElement.selectionEnd);
+    inputBoxSelection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
+                                                      anHTMLElement.selectionEnd);
     contextualMenus.push("contextTextbox");
   }
   else if (anHTMLElement instanceof window.HTMLTextAreaElement) {
-    selection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
-                                              anHTMLElement.selectionEnd);
+    inputBoxSelection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
+                                                      anHTMLElement.selectionEnd);
     contextualMenus.push("contextTextbox");
   }
   else if (anHTMLElement instanceof window.HTMLAreaElement &&
@@ -141,33 +140,33 @@ function setContext(anHTMLElement, window, selection) {
       contextualMenus.push("contextLink");
     }
   }
+  if (inputBoxSelection !== "") {
+    selection = inputBoxSelection;
+  }
   if (selection !== "") {
     contextualMenus.push("contextSelection");
   }
 }
 
 function handleMousedown(anEvent) {
-  const MENU_IS_OPENED = 2;
-  const MENU_CANT_BE_OPENED = 1;
   var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
     button: anEvent.button,
     shiftKey: anEvent.shiftKey,
     ctrlKey: anEvent.ctrlKey
   });
-  if (result[0] === MENU_IS_OPENED) {
-    anEvent.preventDefault(); // prevent current selection (if any) from being flushed by the click being processed
+  if (result[0]) {
     return ;
   }
-  else if (result[0] === MENU_CANT_BE_OPENED) {
-    return ;
-  }
+  
+  anEvent.preventDefault();
   
   var targetDocument = anEvent.target.ownerDocument;
   var targetWindow = targetDocument.defaultView;
   var topmostWindow = targetWindow.top;
   var topmostDocument = topmostWindow.document;
   
-  setContext(anEvent.target, targetWindow, cleanSelection(anEvent.view.getSelection()));
+  selection = cleanSelection(targetWindow.getSelection().toString());
+  setContext(anEvent.target, targetWindow);
   
   var centerX = anEvent.clientX + targetWindow.mozInnerScreenX -
                                   topmostWindow.mozInnerScreenX;

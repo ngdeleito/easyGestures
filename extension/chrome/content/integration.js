@@ -203,10 +203,6 @@ function eG_handleMousemove(aMessage) {
 }
 
 function eG_performOpenMenuChecks(aMessage) {
-  const MENU_IS_OPENED = 2;
-  const MENU_CANT_BE_OPENED = 1;
-  const MENU_SHOULD_BE_OPENED = 0;
-  
   eGc.blockStdContextMenu();
   
   // check whether pie menu should change layout or hide (later)
@@ -217,16 +213,16 @@ function eG_performOpenMenuChecks(aMessage) {
     if (eGm.canLayoutBeSwitched(aMessage.data.button)) {
       eGm.switchLayout();
     }
-    return MENU_IS_OPENED;
+    return true;
   }
   
   // check if menu should not be displayed
   if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey, aMessage.data.ctrlKey)) {
     eGc.unblockStdContextMenu();
-    return MENU_CANT_BE_OPENED;
+    return true;
   }
   
-  return MENU_SHOULD_BE_OPENED;
+  return false;
 }
 
 function eG_handleMousedown(aMessage) {
