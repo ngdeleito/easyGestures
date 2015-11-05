@@ -528,12 +528,6 @@ eG_menu.prototype = {
     
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
     
-    // enabling selection when left mouse button is used because selection is turned off in that case
-    if (this.showButton === 0) { // left mouse button
-      var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
-      selCon.setDisplaySelection(2); // SELECTION_ON
-    }
-    
     eGPrefs.incrementStatsMenuShownPref();
 
     // re-enable counting clicks inside window

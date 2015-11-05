@@ -275,12 +275,6 @@ function eG_openMenu() {
   var browserMM = window.gBrowser.selectedBrowser.messageManager;
   browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addMousemoveListener");
   
-  // disabling selection when left mouse button is used until mouseup is done or menu is closed
-  if (eGm.showButton == 0) { // left mouse button
-    var selCon = window.gBrowser.docShell.QueryInterface(Components.interfaces.nsIInterfaceRequestor).getInterface(Components.interfaces.nsISelectionDisplay).QueryInterface(Components.interfaces.nsISelectionController);
-    selCon.setDisplaySelection(0); // SELECTION_OFF
-  }
-  
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
     eGm.show(eGm.contextualMenus[0]);
