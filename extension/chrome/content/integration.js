@@ -247,26 +247,6 @@ function eG_handleMousedown(aMessage) {
   eGc.topmostDocumentTitle = aMessage.data.topmostDocumentTitle;
   
   
-  eG_openMenu();
-  
-  // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
-  var mainWindow = Services.wm.getMostRecentWindow("navigator:browser");
-  mainWindow.gBrowser.focus();
-  
-  if (eGm.autoscrollingOn) {
-    // automatic delayed autoscrolling on mouse down
-    
-    // making a partial clone of current evt for setTimeout because object will be lost
-    // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
-    eGm.autoscrollingTrigger = mainWindow.setTimeout(function() {
-      eGm.autoscrolling = true;
-      eGm.close();
-      eGActions.autoscrolling.run();
-    }, eGm.autoscrollingDelay);
-  }
-}
-
-function eG_openMenu() {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   var browserMM = window.gBrowser.selectedBrowser.messageManager;
   browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addMousemoveListener");
@@ -277,6 +257,21 @@ function eG_openMenu() {
   }
   else {
     eGm.show("main");
+  }
+  
+  // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
+  window.gBrowser.focus();
+  
+  if (eGm.autoscrollingOn) {
+    // automatic delayed autoscrolling on mouse down
+    
+    // making a partial clone of current evt for setTimeout because object will be lost
+    // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
+    eGm.autoscrollingTrigger = window.setTimeout(function() {
+      eGm.autoscrolling = true;
+      eGm.close();
+      eGActions.autoscrolling.run();
+    }, eGm.autoscrollingDelay);
   }
 }
 
