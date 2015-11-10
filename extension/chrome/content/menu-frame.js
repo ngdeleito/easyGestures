@@ -230,6 +230,7 @@ function handleKeyup() {
 }
 
 function removeMenuEventHandler(anEvent) {
+  removeEventListener("pagehide", removeMenuEventHandler, true);
   var easyGesturesNode = anEvent.target.getElementById(easyGesturesID);
   easyGesturesNode.parentNode.removeChild(easyGesturesNode);
 }
@@ -238,7 +239,7 @@ function createEasyGesturesNode(aDocument) {
   var easyGesturesNode = aDocument.createElementNS(HTMLNamespace, "div");
   easyGesturesNode.id = easyGesturesID;
   
-  addEventListener("unload", removeMenuEventHandler, true);
+  addEventListener("pagehide", removeMenuEventHandler, true);
   
   return easyGesturesNode;
 }
@@ -628,7 +629,7 @@ function close(aMessage) {
 }
 
 function removeMenu() {
-  removeEventListener("unload", removeMenuEventHandler, true);
+  removeEventListener("pagehide", removeMenuEventHandler, true);
   var easyGesturesNode = content.document.getElementById(easyGesturesID);
   if (easyGesturesNode !== null) {
     easyGesturesNode.parentNode.removeChild(easyGesturesNode);
