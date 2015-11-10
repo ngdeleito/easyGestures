@@ -612,6 +612,10 @@ function handleHideLayout(aMessage) {
 }
 
 function close(aMessage) {
+  if (content === null) {
+    return ;
+  }
+  
   var specialNodes = content.document.getElementById("eG_SpecialNodes");
   var mainMenusSign = specialNodes.childNodes[1];
   var extraMenusSign = specialNodes.childNodes[2];
