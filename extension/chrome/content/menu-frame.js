@@ -52,6 +52,7 @@ addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
 addEventListener("keydown", handleKeydown, true);
 addEventListener("keyup", handleKeyup, true);
+addEventListener("contextmenu", handleContextmenu, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
@@ -72,6 +73,7 @@ function removeMessageListeners() {
   removeEventListener("mouseup", handleMouseup, true);
   removeEventListener("keydown", handleKeydown, true);
   removeEventListener("keyup", handleKeyup, true);
+  removeEventListener("contextmenu", handleContextmenu, true);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
   removeMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
@@ -84,6 +86,16 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
+}
+
+function handleContextmenu(anEvent) {
+  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleContextmenu", {
+    shiftKey: anEvent.shiftKey,
+    ctrlKey: anEvent.ctrlKey
+  });
+  if (result[0]) {
+    anEvent.preventDefault();
+  }
 }
 
 function cleanSelection(selection) {

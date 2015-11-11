@@ -39,7 +39,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global eGActions, eGm, eGPrefs */
 
 var eGc = {
-  _blockStdContextMenu: false, // whether the std context menu should be suppressed
   keyPressed: 0, // used to control display of pie menu
   
   mouseupEventScreenX: null,
@@ -53,28 +52,8 @@ var eGc = {
   topmostDocumentURL: null,
   topmostDocumentTitle: null,
   
-  loading: false, // used for reload/stop action
-  
-  isStdContextMenuBlocked : function() {
-    return this._blockStdContextMenu;
-  },
-  
-  blockStdContextMenu : function() {
-    this._blockStdContextMenu = true;
-  },
-  
-  unblockStdContextMenu : function() {
-    this._blockStdContextMenu = false;
-  }
+  loading: false // used for reload/stop action
 };
-
-function eG_activateMenu(window) {
-  // setting events handlers
-  var contextMenu = window.document.getElementById("contentAreaContextMenu");
-  if (contextMenu) {
-    contextMenu.addEventListener("popupshowing", eG_handlePopup, true);
-  }
-}
 
 function eG_enableMenu() {
   Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
@@ -84,14 +63,7 @@ function eG_enableMenu() {
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
-}
-
-function eG_deactivateMenu(window) {
-  // removing event handlers
-  var contextMenu = window.document.getElementById("contentAreaContextMenu");
-  if (contextMenu) {
-    contextMenu.removeEventListener("popupshowing", eG_handlePopup, true);
-  }
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
 }
 
 function eG_disableMenu() {
@@ -102,6 +74,7 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
 }
 
 function eG_countClicks(anEvent) {
@@ -154,8 +127,6 @@ function eG_handleMouseup(aMessage) {
   
   if (eGm.isHidden()) {
     if (!eGm.autoscrolling) {
-      // avoid enabling contextual menu when autoscrolling
-      eGc.unblockStdContextMenu();
       let browserMM = window.gBrowser.selectedBrowser.messageManager;
       browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
     }
@@ -203,8 +174,6 @@ function eG_handleMousemove(aMessage) {
 }
 
 function eG_performOpenMenuChecks(aMessage) {
-  eGc.blockStdContextMenu();
-  
   // check whether pie menu should change layout or hide (later)
   if (eGm.isShown() || eGm.autoscrollingState) {
     // toggle primitive/alternative pie menu
@@ -218,7 +187,6 @@ function eG_performOpenMenuChecks(aMessage) {
   
   // check if menu should not be displayed
   if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey, aMessage.data.ctrlKey)) {
-    eGc.unblockStdContextMenu();
     return true;
   }
   
@@ -275,9 +243,9 @@ function eG_handleMousedown(aMessage) {
   }
 }
 
-function eG_handlePopup(evt) {
-  if (eGc.isStdContextMenuBlocked()) {
-    evt.preventDefault();
-  }
-  eGc.unblockStdContextMenu();
+function eG_handleContextmenu(aMessage) {
+  return eGm.showButton === 2 /* right click */ &&
+         ((eGm.showKey === 0 && eGc.keyPressed === 0) ||
+          (eGm.showKey === 16 && aMessage.data.shiftKey) ||
+          (eGm.showKey === 17 && aMessage.data.ctrlKey));
 }

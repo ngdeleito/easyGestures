@@ -91,7 +91,6 @@ function loadEasyGesturesOn(window) {
     return;
   }
   
-  eG_activateMenu(window);
   window.addEventListener("mousedown", eG_countClicks, false);
 }
 
@@ -117,7 +116,6 @@ function unloadEasyGesturesOn(window) {
   // this function is only called for navigator windows (no need thus for an
   // additional test)
   
-  eG_deactivateMenu(window);
   window.removeEventListener("mousedown", eG_countClicks, false);
 }
 
