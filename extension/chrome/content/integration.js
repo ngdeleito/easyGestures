@@ -175,10 +175,7 @@ function eG_handleMousemove(aMessage) {
 
 function eG_performOpenMenuChecks(aMessage) {
   // check whether pie menu should change layout or hide (later)
-  if (eGm.isShown() || eGm.autoscrollingState) {
-    // toggle primitive/alternative pie menu
-    eGm.autoscrollingState = false; // disable autoscrolling if any
-    
+  if (eGm.isShown()) {
     if (eGm.canLayoutBeSwitched(aMessage.data.button)) {
       eGm.switchLayout();
     }
