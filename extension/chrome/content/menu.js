@@ -550,6 +550,7 @@ eG_menu.prototype = {
   canBeOpened : function(button, shiftKey, ctrlKey) {
     return button === this.showButton &&
            ((this.showKey === 0 && eGc.keyPressed === 0) ||
+            (this.showKey === 0 && eGc.keyPressed === this.contextKey) ||
             (this.showKey === 16 && shiftKey) ||
             (this.showKey === 17 && ctrlKey)) &&
            (this.preventOpenKey === 0 || eGc.keyPressed !== this.preventOpenKey);

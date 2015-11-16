@@ -226,6 +226,7 @@ function eG_handleMousedown(aMessage) {
 function eG_handleContextmenu(aMessage) {
   return eGm.showButton === 2 /* right click */ &&
          ((eGm.showKey === 0 && eGc.keyPressed === 0) ||
+          (eGm.showKey === 0 && eGc.keyPressed === eGm.contextKey) ||
           (eGm.showKey === 16 && aMessage.data.shiftKey) ||
           (eGm.showKey === 17 && aMessage.data.ctrlKey));
 }
