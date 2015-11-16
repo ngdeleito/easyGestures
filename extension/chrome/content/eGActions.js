@@ -496,7 +496,7 @@ var eGActions = {
   
   autoscrolling : new Action("autoscrolling", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.startScroll("NSEW", eGc.mouseupEventScreenX, eGc.mouseupEventScreenY);
+    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:autoscrolling");
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {

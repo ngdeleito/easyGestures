@@ -253,8 +253,7 @@ function eG_menu () {
 
   this.tooltipsTrigger = null; // trigger to display pie menu labels
   this.autoscrollingTrigger = null; // trigger to display autoscrolling
-  this.autoscrolling = false; // used for automatic delayed autoscrolling on mouse down
-
+  
   this.extraMenuAction = 2; // position of extra menu action in base menu from which extra menu is called
 
   this.iconSize = this.smallIcons? 20 : 32;

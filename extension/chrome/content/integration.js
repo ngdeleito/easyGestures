@@ -41,9 +41,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 var eGc = {
   keyPressed: 0, // used to control display of pie menu
   
-  mouseupEventScreenX: null,
-  mouseupEventScreenY: null,
-  
   targetDocumentURL: null,
   targetWindowScrollY: null,
   targetWindowScrollMaxY: null,
@@ -114,22 +111,9 @@ function eG_handleKeydown(aMessage) {
 function eG_handleMouseup(aMessage) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(eGm.autoscrollingTrigger);
-  if (window.document.getElementById("content").mCurrentBrowser._scrollingView == null) {
-    if (eGm.autoscrolling) {
-      eGm.autoscrolling = false;
-      if (eGm.isHidden()) {
-        return; // avoid contextual menu when autoscrolling ends (this would be triggered below)
-      }
-    }
-  }
-  
   if (eGm.isHidden()) {
-    if (!eGm.autoscrolling) {
-      let browserMM = window.gBrowser.selectedBrowser.messageManager;
-      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
-    }
+    let browserMM = window.gBrowser.selectedBrowser.messageManager;
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
   }
   else if (eGm.isJustOpened()) {
     eGm.setOpen();
@@ -138,8 +122,6 @@ function eG_handleMouseup(aMessage) {
   }
   else if (eGm.isJustOpenedAndMouseMoved()) {
     if (eGm.sector !== -1) {
-      eGc.mouseupEventScreenX = aMessage.data.screenX;
-      eGc.mouseupEventScreenY = aMessage.data.screenY;
       eGm.runAction();
     }
     else {
@@ -153,8 +135,6 @@ function eG_handleMouseup(aMessage) {
     }
     else {
       if (eGm.sector !== -1) {
-        eGc.mouseupEventScreenX = aMessage.data.screenX;
-        eGc.mouseupEventScreenY = aMessage.data.screenY;
         eGm.runAction();
       }
       else {
@@ -174,20 +154,28 @@ function eG_handleMousemove(aMessage) {
 }
 
 function eG_performOpenMenuChecks(aMessage) {
+  const PREVENT_DEFAULT_AND_OPEN_MENU = 0;
+  const PREVENT_DEFAULT_AND_RETURN = 1;
+  const LET_DEFAULT_AND_RETURN = 2;
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  
+  // clear automatic delayed autoscrolling
+  window.clearTimeout(eGm.autoscrollingTrigger);
+  
   // check whether pie menu should change layout or hide (later)
   if (eGm.isShown()) {
     if (eGm.canLayoutBeSwitched(aMessage.data.button)) {
       eGm.switchLayout();
     }
-    return true;
+    return PREVENT_DEFAULT_AND_RETURN;
   }
   
   // check if menu should not be displayed
   if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey, aMessage.data.ctrlKey)) {
-    return true;
+    return LET_DEFAULT_AND_RETURN;
   }
   
-  return false;
+  return PREVENT_DEFAULT_AND_OPEN_MENU;
 }
 
 function eG_handleMousedown(aMessage) {
@@ -228,12 +216,7 @@ function eG_handleMousedown(aMessage) {
   window.gBrowser.focus();
   
   if (eGm.autoscrollingOn) {
-    // automatic delayed autoscrolling on mouse down
-    
-    // making a partial clone of current evt for setTimeout because object will be lost
-    // don't use autoscrollingEvent[i]=evt[i] because will cause selection pb on dragging with left mouse button
     eGm.autoscrollingTrigger = window.setTimeout(function() {
-      eGm.autoscrolling = true;
       eGm.close();
       eGActions.autoscrolling.run();
     }, eGm.autoscrollingDelay);

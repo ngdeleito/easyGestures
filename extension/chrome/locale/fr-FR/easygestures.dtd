@@ -69,7 +69,7 @@
 <!ENTITY behavior.links.openLinkAction "Suivre le comportement de l'action 'Ouvrir le lien'">
 <!ENTITY behavior.links.configureAction "Configurer cette action">
 <!ENTITY behavior.links.browser "Suivre le comportement du navigateur">
-<!ENTITY behavior.autoscrolling "Défilement automatique par le centre du menu circulaire">
+<!ENTITY behavior.autoscrolling "Activer le défilement automatique par le centre du menu circulaire">
 <!ENTITY behavior.autoscrolling.delay "Délai">
 
 <!ENTITY menus.main "Menu principal">
@@ -122,7 +122,7 @@
 <!ENTITY tips.tooltips "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin.|Arrêtez l'affichage dans &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un esprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes.|Changez l'affichage du menu dans &preferences;/&behavior;">
 <!ENTITY tips.largeMenu "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle : 10 au lieu de 8 sur chacun des 3 plans principaux.|Changez le nombre d'actions dans &preferences;/&behavior;">
-<!ENTITY tips.autoscrolling "L'option de Firefox 'Utiliser le défilement automatique' n'est pas cochée lorsque le bouton de souris du milieu est utilisé pour afficher le menu circulaire. La fonction de défilement automatique pourra alors être disponible par un clic et maintient du bouton du menu circulaire après un court délai sans bouger.|Activez le défilement automatique dans &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "Lorsque le bouton central de la souris est utilisé pour ouvrir le menu circulaire, le défilement automatique n'est plus disponible. En l'activant dans &preferences;/&behavior;, il deviendra disponible après un délai (configurable) sans utiliser ni la souris ni le clavier. Vous pouvez aussi activer le défilement automatique lorsque d'autres boutons et/ou touches sont utilisés pour ouvrir le menu.|Activez le défilement automatique dans &preferences;/&behavior;">
 <!ENTITY tips.zoomOnImage "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
 <!ENTITY tips.backAndForwardSiteActions "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant'.">
 <!ENTITY tips.openLinkAction "L'action 'Ouvrir le lien' ouvre le lien pointé dans un nouvel onglet.">

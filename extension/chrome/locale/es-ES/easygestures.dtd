@@ -70,7 +70,7 @@
 <!ENTITY behavior.links.openLinkAction "Usar el comportamiento de la acción &apos;Abrir enlace&apos;">
 <!ENTITY behavior.links.configureAction "Configurar esta acción">
 <!ENTITY behavior.links.browser "Usar el comportamiento del navegador">
-<!ENTITY behavior.autoscrolling "Desplazamiento automático a través del menú circular">
+<!ENTITY behavior.autoscrolling "Habilitar el desplazamiento automático a través del menú circular">
 <!ENTITY behavior.autoscrolling.delay "Periodo">
 
 <!ENTITY menus.main "Menú principal">
@@ -123,7 +123,7 @@
 <!ENTITY tips.tooltips "Puede desactivar las descripciones emergentes (tooltips) si no los necesita.|Desactivar la visualización en &preferences;/&behavior;">
 <!ENTITY tips.smallIcons "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede utilizar iconos más pequeños.|Cambie la apariencia del menú en &preferences;/&behavior;">
 <!ENTITY tips.largeMenu "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales.|Cambie el número de opciones en &preferences;/&behavior;">
-<!ENTITY tips.autoscrolling "La opción de Firefox &apos;Usar desplazamiento automático&apos; está desmarcada cuando se usa el botón central para mostrar el menú circular. La opción puede habilitarse moviendo el cursor hacia abajo en el menú circular tras un corto tiempo sin movimientos.|Activar el desplazamiento automático en &preferences;/&behavior;">
+<!ENTITY tips.autoscrolling "Si utiliza el botón central del ratón para abrir el menú circular, el desplazamiento automático quedará inhabilitado. Habilitándolo en &preferences;/&behavior;, éste aparecerá de nuevo después de un periodo de tiempo (configurable) sin utilizar el ratón ni el teclado. Puede también habilitar el desplazamiento automático cuando otros botones y/o teclas son utilizados para abrir el menú.|Habilitar el desplazamiento automático en &preferences;/&behavior;">
 <!ENTITY tips.zoomOnImage "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tips.backAndForwardSiteActions "En lugar de moverse adelante y atrás página por página, puede hacerlo entre sitios distintos usando las acciones &apos;Sitio anterior&apos; y &apos;Sitio siguiente&apos;.">
 <!ENTITY tips.openLinkAction "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña.">

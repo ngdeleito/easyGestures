@@ -45,6 +45,7 @@ var contextualMenus;
 var selection;
 var anchorElement;
 var imageElement;
+var mouseupScreenX, mouseupScreenY;
 
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
 
@@ -65,6 +66,7 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeM
 addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
 addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
+addMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", handleAutoscrolling);
 
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
@@ -86,6 +88,7 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", handleAutoscrolling);
 }
 
 function handleContextmenu(anEvent) {
@@ -161,12 +164,25 @@ function setContext(anHTMLElement, window) {
 }
 
 function handleMousedown(anEvent) {
+  const PREVENT_DEFAULT_AND_RETURN = 1;
+  const LET_DEFAULT_AND_RETURN = 2;
+  
+  // we ignore non cancelable mousedown events like those issued for triggering
+  // Firefox's autoscrolling
+  if (!anEvent.cancelable) {
+    return ;
+  }
   var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
     button: anEvent.button,
     shiftKey: anEvent.shiftKey,
     ctrlKey: anEvent.ctrlKey
   });
-  if (result[0]) {
+  
+  if (result[0] === PREVENT_DEFAULT_AND_RETURN) {
+    anEvent.preventDefault();
+    return ;
+  }
+  else if (result[0] === LET_DEFAULT_AND_RETURN) {
     return ;
   }
   
@@ -216,11 +232,12 @@ function handleMouseup(anEvent) {
     linkSignIsVisible = linkSign.style.visibility === "visible";
   }
   
+  mouseupScreenX = anEvent.screenX;
+  mouseupScreenY = anEvent.screenY;
+  
   var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMouseup", {
     button: anEvent.button,
-    linkSignIsVisible: linkSignIsVisible,
-    screenX: anEvent.screenX,
-    screenY: anEvent.screenY
+    linkSignIsVisible: linkSignIsVisible
   });
   if (result[0] !== undefined) {
     anEvent.preventDefault();
@@ -650,4 +667,16 @@ function removeMenu() {
   if (easyGesturesNode !== null) {
     easyGesturesNode.parentNode.removeChild(easyGesturesNode);
   }
+}
+
+function handleAutoscrolling() {
+  // see chrome://global/content/browser-content.js: we simulate a middle
+  // button (non cancelable) mousedown event to trigger Firefox's autoscrolling
+  content.document.documentElement.dispatchEvent(new content.MouseEvent("mousedown", {
+    view: content,
+    bubbles: true,
+    button: 1,
+    screenX: mouseupScreenX,
+    screenY: mouseupScreenY
+  }));
 }
