@@ -41,6 +41,8 @@ var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
 var extraMenuAction = 2;
 
+var targetDocument, targetWindow, topmostWindow, topmostDocument;
+
 var contextualMenus;
 var selection;
 var anchorElement;
@@ -67,7 +69,10 @@ addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayo
 addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
 
+addMessageListener("easyGesturesN@ngdeleito.eu:action:pageTop", runPageTopAction);
+addMessageListener("easyGesturesN@ngdeleito.eu:action:pageBottom", runPageBottomAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
+
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
   
@@ -88,6 +93,9 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
+  
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:pageTop", runPageTopAction);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:pageBottom", runPageBottomAction);
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
 }
 
@@ -188,10 +196,10 @@ function handleMousedown(anEvent) {
   
   anEvent.preventDefault();
   
-  var targetDocument = anEvent.target.ownerDocument;
-  var targetWindow = targetDocument.defaultView;
-  var topmostWindow = targetWindow.top;
-  var topmostDocument = topmostWindow.document;
+  targetDocument = anEvent.target.ownerDocument;
+  targetWindow = targetDocument.defaultView;
+  topmostWindow = targetWindow.top;
+  topmostDocument = topmostWindow.document;
   
   selection = cleanSelection(targetWindow.getSelection().toString());
   setContext(anEvent.target, targetWindow);
@@ -666,6 +674,24 @@ function removeMenu() {
   var easyGesturesNode = content.document.getElementById(easyGesturesID);
   if (easyGesturesNode !== null) {
     easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+  }
+}
+
+function runPageTopAction() {
+  if (targetWindow.scrollY !== 0) {
+    targetWindow.scroll(0, 0);
+  }
+  else {
+    topmostWindow.scroll(0, 0);
+  }
+}
+
+function runPageBottomAction() {
+  if (targetWindow.scrollY !== targetWindow.scrollMaxY) {
+    targetWindow.scroll(0, targetWindow.scrollMaxY);
+  }
+  else {
+    topmostWindow.scroll(0, topmostWindow.scrollMaxY);
   }
 }
 

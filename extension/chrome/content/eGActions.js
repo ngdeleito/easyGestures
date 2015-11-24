@@ -472,23 +472,15 @@ var eGActions = {
   }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
-    if (eGc.targetWindowScrollY !== 0) {
-      eGc.targetWindow.scroll(0, 0);
-    }
-    else {
-      eGc.topmostWindow.scroll(0, 0);
-    }
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:pageTop");
   }, function() {
     return eGc.targetWindowScrollY === 0 && eGc.topmostWindowScrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
-    if (eGc.targetWindowScrollY !== eGc.targetWindowScrollMaxY) {
-      eGc.targetWindow.scroll(0, eGc.targetWindowScrollMaxY);
-    }
-    else {
-      eGc.topmostWindow.scroll(0, eGc.topmostWindowScrollMaxY);
-    }
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:pageBottom");
   }, function() {
     return eGc.targetWindowScrollY === eGc.targetWindowScrollMaxY &&
            eGc.topmostWindowScrollY === eGc.topmostWindowScrollMaxY;
