@@ -66,8 +66,8 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeM
 addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
 addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
-addMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", handleAutoscrolling);
 
+addMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
   
@@ -88,7 +88,7 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
-  removeMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", handleAutoscrolling);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
 }
 
 function handleContextmenu(anEvent) {
@@ -669,7 +669,7 @@ function removeMenu() {
   }
 }
 
-function handleAutoscrolling() {
+function runAutoscrollingAction() {
   // see chrome://global/content/browser-content.js: we simulate a middle
   // button (non cancelable) mousedown event to trigger Firefox's autoscrolling
   content.document.documentElement.dispatchEvent(new content.MouseEvent("mousedown", {
