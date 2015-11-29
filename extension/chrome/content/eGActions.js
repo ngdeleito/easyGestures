@@ -108,6 +108,11 @@ Action.prototype = {
     return rootURL;
   },
   
+  _sendPerformActionMessage: function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:" + this._name);
+  },
+  
   _getFileForSavingData: function(filter, defaultName) {
     const nsIFilePicker = Components.interfaces.nsIFilePicker;
     var fp = Components.classes["@mozilla.org/filepicker;1"]
@@ -472,23 +477,20 @@ var eGActions = {
   }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:pageTop");
+    this._sendPerformActionMessage();
   }, function() {
     return eGc.targetWindowScrollY === 0 && eGc.topmostWindowScrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:pageBottom");
+    this._sendPerformActionMessage();
   }, function() {
     return eGc.targetWindowScrollY === eGc.targetWindowScrollMaxY &&
            eGc.topmostWindowScrollY === eGc.topmostWindowScrollMaxY;
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:autoscrolling");
+    this._sendPerformActionMessage();
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
