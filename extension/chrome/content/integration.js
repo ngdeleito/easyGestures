@@ -184,10 +184,6 @@ function eG_handleMousedown(aMessage) {
   eGm.anchorElementExists = aMessage.data.anchorElementExists;
   eGm.anchorElementHREF = aMessage.data.anchorElementHREF;
   eGm.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
-  eGm.imageElementStyleWidth = aMessage.data.imageElementStyleWidth;
-  eGm.imageElementWidth = aMessage.data.imageElementWidth;
-  eGm.imageElementStyleHeight = aMessage.data.imageElementStyleHeight;
-  eGm.imageElementHeight = aMessage.data.imageElementHeight;
   eGm.imageElementSRC = aMessage.data.imageElementSRC;
   eGm.centerX = aMessage.data.centerX;
   eGm.centerY = aMessage.data.centerY;

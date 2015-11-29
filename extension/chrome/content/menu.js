@@ -158,10 +158,6 @@ function eG_menu () {
   this.anchorElementExists = false;
   this.anchorElementHREF = null;
   this.imageElementDoesntExist = true;
-  this.imageElementStyleWidth = null;
-  this.imageElementWidth = null;
-  this.imageElementStyleHeight = null;
-  this.imageElementHeight = null;
   this.imageElementSRC = "";
   this.selection = null;
   

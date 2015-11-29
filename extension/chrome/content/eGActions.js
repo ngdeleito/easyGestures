@@ -499,26 +499,7 @@ var eGActions = {
       window.ZoomManager.enlarge();
     }
     else {
-      // double image size only
-      var width;
-      var height;
-      
-      if (eGm.imageElementStyleWidth === "") {
-        width = eGm.imageElementWidth * 2 + "px";
-      }
-      else {
-        width = parseInt(eGm.imageElementStyleWidth, 10) * 2 + "px";
-      }
-      
-      if (eGm.imageElementStyleHeight === "") {
-        height = eGm.imageElementHeight * 2 + "px";
-      }
-      else {
-        height = parseInt(eGm.imageElementStyleHeight, 10) * 2 + "px";
-      }
-      
-      eGm.imageElement.style.width = width;
-      eGm.imageElement.style.height = height;
+      this._sendPerformActionMessage();
     }
   }, false, "zoomOut"),
   
@@ -528,26 +509,7 @@ var eGActions = {
       window.ZoomManager.reduce();
     }
     else {
-      // halve image size only
-      var width;
-      var height;
-      
-      if (eGm.imageElementStyleWidth === "") {
-        width = eGm.imageElementWidth * 0.5 + "px";
-      }
-      else {
-        width = parseInt(eGm.imageElementStyleWidth, 10) * 0.5 + "px";
-      }
-      
-      if (eGm.imageElementStyleHeight === "") {
-        height = eGm.imageElementHeight * 0.5 + "px";
-      }
-      else {
-        height = parseInt(eGm.imageElementStyleHeight, 10) * 0.5 + "px";
-      }
-      
-      eGm.imageElement.style.width = width;
-      eGm.imageElement.style.height = height;
+      this._sendPerformActionMessage();
     }
   }, false, "zoomReset"),
   

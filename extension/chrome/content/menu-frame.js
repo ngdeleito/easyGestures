@@ -72,6 +72,8 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:pageTop", runPageTopAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:pageBottom", runPageBottomAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
+addMessageListener("easyGesturesN@ngdeleito.eu:action:zoomIn", runZoomInAction);
+addMessageListener("easyGesturesN@ngdeleito.eu:action:zoomOut", runZoomOutAction);
 
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
@@ -97,6 +99,8 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:pageTop", runPageTopAction);
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:pageBottom", runPageBottomAction);
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:zoomIn", runZoomInAction);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:zoomOut", runZoomOutAction);
 }
 
 function handleContextmenu(anEvent) {
@@ -215,10 +219,6 @@ function handleMousedown(anEvent) {
     anchorElementExists: anchorElement !== null,
     anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
     imageElementDoesntExist: imageElement === null,
-    imageElementStyleWidth: imageElement !== null ? imageElement.style.width : null,
-    imageElementWidth: imageElement !== null ? imageElement.width : null,
-    imageElementStyleHeight: imageElement !== null ? imageElement.style.height : null,
-    imageElementHeight: imageElement !== null ? imageElement.height : null,
     imageElementSRC: imageElement !== null ? imageElement.src : null,
     centerX: centerX,
     centerY: centerY,
@@ -705,4 +705,32 @@ function runAutoscrollingAction() {
     screenX: mouseupScreenX,
     screenY: mouseupScreenY
   }));
+}
+
+function runZoomInAction() {
+  // double image size only
+  var width = imageElement.style.width === "" ?
+    imageElement.width * 2 + "px" :
+    parseInt(imageElement.style.width, 10) * 2 + "px";
+  
+  var height = imageElement.style.height === "" ?
+    imageElement.height * 2 + "px" :
+    parseInt(imageElement.style.height, 10) * 2 + "px";
+  
+  imageElement.style.width = width;
+  imageElement.style.height = height;
+}
+
+function runZoomOutAction() {
+  // halve image size only
+  var width = imageElement.style.width === "" ?
+    imageElement.width * 0.5 + "px" :
+    parseInt(imageElement.style.width, 10) * 0.5 + "px";
+  
+  var height = imageElement.style.height === "" ?
+    imageElement.height * 0.5 + "px" :
+    parseInt(imageElement.style.height, 10) * 0.5 + "px";
+  
+  imageElement.style.width = width;
+  imageElement.style.height = height;
 }
