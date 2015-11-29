@@ -496,7 +496,6 @@ var eGActions = {
   zoomIn : new Action("zoomIn", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (eGm.imageElementDoesntExist) {
-      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.enlarge();
     }
     else {
@@ -526,7 +525,6 @@ var eGActions = {
   zoomOut : new Action("zoomOut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (eGm.imageElementDoesntExist) {
-      window.ZoomManager.useFullZoom = false; //zoom text only because eG's actions images look ugly when scaled
       window.ZoomManager.reduce();
     }
     else {
