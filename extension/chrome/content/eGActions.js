@@ -786,7 +786,7 @@ var eGActions = {
   }, false, "saveLinkAs"),
   
   saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
-    this._saveContentFromLink(eGm.anchorElement,
+    this._saveContentFromLink(eGm.anchorElementHREF,
                               Components.interfaces.nsIFilePicker.filterHTML);
   }, false, "dailyReadings"),
   
