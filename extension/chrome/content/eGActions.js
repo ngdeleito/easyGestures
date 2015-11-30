@@ -545,12 +545,12 @@ var eGActions = {
   
   viewPageSource : new Action("viewPageSource", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserViewSourceOfDocument(eGc.topmostDocument);
+    window.BrowserViewSource(window.gBrowser.selectedBrowser);
   }, false, "viewPageInfo"),
   
   viewPageInfo : new Action("viewPageInfo", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserPageInfo(eGc.topmostDocument, null);
+    window.BrowserPageInfo();
   }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
