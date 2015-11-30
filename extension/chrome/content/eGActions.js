@@ -534,18 +534,8 @@ var eGActions = {
   }, false, "savePageAs"),
   
   savePageAs : new Action("savePageAs", function() {
-    var document = eGc.topmostDocument;
-    var file = this._getFileForSavingData(
-                 Components.interfaces.nsIFilePicker.filterHTML,
-                 document.title);
-    
-    if (file !== null) {
-      var wbp = Components.classes["@mozilla.org/embedding/browser/nsWebBrowserPersist;1"]
-                          .createInstance(Components.interfaces.nsIWebBrowserPersist);
-      // don't save gzipped
-      wbp.persistFlags &= ~Components.interfaces.nsIWebBrowserPersist.PERSIST_FLAGS_NO_CONVERSION;
-      wbp.saveDocument(document, file, null, null, null, null);
-    }
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.saveBrowser(window.gBrowser.selectedBrowser);
   }, false, "printPage"),
   
   printPage : new Action("printPage", function() {
