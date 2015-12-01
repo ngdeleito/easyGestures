@@ -157,6 +157,7 @@ function eG_menu () {
   this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
   this.anchorElementExists = false;
   this.anchorElementHREF = null;
+  this.anchorElementText = null;
   this.imageElementDoesntExist = true;
   this.imageElementSRC = "";
   this.selection = null;

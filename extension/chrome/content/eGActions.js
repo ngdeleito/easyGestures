@@ -812,9 +812,10 @@ var eGActions = {
   }, false, "bookmarkThisLink"),
   
   bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
-    var url = eGm.anchorElement;
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.bookmarkLink(null, url, url.text);
+    window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.bookmarksMenuFolderId,
+                                          eGm.anchorElementHREF,
+                                          eGm.anchorElementText);
   }, false, "bookmarkOpenTabs"),
   
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {

@@ -183,6 +183,7 @@ function eG_handleMousedown(aMessage) {
   eGm.selection = aMessage.data.selection;
   eGm.anchorElementExists = aMessage.data.anchorElementExists;
   eGm.anchorElementHREF = aMessage.data.anchorElementHREF;
+  eGm.anchorElementText = aMessage.data.anchorElementText;
   eGm.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
   eGm.imageElementSRC = aMessage.data.imageElementSRC;
   eGm.centerX = aMessage.data.centerX;

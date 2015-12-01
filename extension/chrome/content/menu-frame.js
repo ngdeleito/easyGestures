@@ -218,6 +218,7 @@ function handleMousedown(anEvent) {
     selection: selection,
     anchorElementExists: anchorElement !== null,
     anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
+    anchorElementText: anchorElement !== null ? anchorElement.text : null,
     imageElementDoesntExist: imageElement === null,
     imageElementSRC: imageElement !== null ? imageElement.src : null,
     centerX: centerX,
