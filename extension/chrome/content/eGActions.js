@@ -830,7 +830,7 @@ var eGActions = {
   
   toggleBookmarksSidebar : new Action("toggleBookmarksSidebar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.toggleSidebar("viewBookmarksSidebar");
+    window.SidebarUI.toggle("viewBookmarksSidebar");
   }, false, "toggleBookmarksToolbar"),
   
   toggleBookmarksToolbar : new Action("toggleBookmarksToolbar", function() {
@@ -854,7 +854,7 @@ var eGActions = {
   
   toggleHistorySidebar : new Action("toggleHistorySidebar", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.toggleSidebar("viewHistorySidebar");
+    window.SidebarUI.toggle("viewHistorySidebar");
   }, false, "showDownloads"),
   
   showDownloads : new Action("showDownloads", function() {
