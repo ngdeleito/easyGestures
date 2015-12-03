@@ -57,6 +57,7 @@ addEventListener("keydown", handleKeydown, true);
 addEventListener("keyup", handleKeyup, true);
 addEventListener("contextmenu", handleContextmenu, true);
 
+addMessageListener("easyGesturesN@ngdeleito.eu:addFavicon", addFavicon);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
 addMessageListener("easyGesturesN@ngdeleito.eu:setReloadActionStatus", setReloadActionStatus);
@@ -84,6 +85,7 @@ function removeMessageListeners() {
   removeEventListener("keyup", handleKeyup, true);
   removeEventListener("contextmenu", handleContextmenu, true);
   
+  removeMessageListener("easyGesturesN@ngdeleito.eu:addFavicon", addFavicon);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
   removeMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
   removeMessageListener("easyGesturesN@ngdeleito.eu:setReloadActionStatus", setReloadActionStatus);
@@ -321,22 +323,9 @@ function createSpecialNodes(aDocument, numberOfMainMenus, numberOfExtraMenus) {
   return specialNodesNode;
 }
 
-function addFavicon(aURL, anHTMLElement) {
-  if (aURL === "") {
-    return ;
-  }
-  
-  if (aURL.match(/\:\/\//i) === null) {
-    aURL = "http://" + aURL;
-  }
-  
-  var faviconService = Components
-                         .classes["@mozilla.org/browser/favicon-service;1"]
-                         .getService(Components.interfaces.mozIAsyncFavicons);
-  faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
-    anHTMLElement.style.backgroundImage =
-      "url('" + (aURI !== null ? aURI.spec : "") + "')";
-  });
+function addFavicon(aMessage) {
+  var anActionNode = content.document.getElementById(aMessage.data.anActionNodeID);
+  anActionNode.style.backgroundImage = "url('" + aMessage.data.aURL + "')";
 }
 
 function createActionsNodes(aDocument, aMessageData) {
@@ -364,7 +353,10 @@ function createActionsNodes(aDocument, aMessageData) {
     
     if (action.startsWith("loadURL")) { // new icon path for loadURL ?
       if (aMessageData.loadURLActionPrefs[action][2] === "true") {
-        addFavicon(aMessageData.loadURLActionPrefs[action][1], anActionNode);
+        sendAsyncMessage("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", {
+          aURL: aMessageData.loadURLActionPrefs[action][1],
+          anActionNodeID: anActionNode.id
+        });
         iconName = "customIcon";
       }
     }

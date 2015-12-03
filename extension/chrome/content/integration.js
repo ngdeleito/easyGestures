@@ -61,6 +61,7 @@ function eG_enableMenu() {
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
 
 function eG_disableMenu() {
@@ -72,6 +73,7 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
 
 function eG_countClicks(anEvent) {
@@ -226,4 +228,27 @@ function eG_handleContextmenu(aMessage) {
           (eGm.showKey === 0 && eGc.keyPressed === eGm.contextKey) ||
           (eGm.showKey === 16 && aMessage.data.shiftKey) ||
           (eGm.showKey === 17 && aMessage.data.ctrlKey));
+}
+
+function eG_retrieveAndAddFavicon(aMessage) {
+  var aURL = aMessage.data.aURL;
+  if (aURL === "") {
+    return ;
+  }
+  
+  if (aURL.match(/\:\/\//i) === null) {
+    aURL = "http://" + aURL;
+  }
+  
+  var faviconService = Components
+                         .classes["@mozilla.org/browser/favicon-service;1"]
+                         .getService(Components.interfaces.mozIAsyncFavicons);
+  faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var browserMM = window.gBrowser.selectedBrowser.messageManager;
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addFavicon", {
+      anActionNodeID: aMessage.data.anActionNodeID,
+      aURL: aURI !== null ? aURI.spec : ""
+    });
+  });
 }
