@@ -936,7 +936,7 @@ var eGActions = {
   
   copyImage : new ImageExistsDisableableAction("copyImage", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.document.popupNode = eGm.imageElement;
+    // window.document.popupNode = eGm.imageElement;
     window.goDoCommand("cmd_copyImageContents");
   }, false, "saveImageAs"),
   
