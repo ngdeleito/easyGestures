@@ -268,7 +268,8 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    var url = eGc.topmostDocumentURL;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var url = window.gBrowser.selectedBrowser.currentURI.spec;
     return this._getRootURL(url) === url.replace("www.", "");
   }, startsNewGroup, nextAction);
 }
@@ -327,14 +328,14 @@ DailyReadingsDisableableAction.prototype.initializeURIsArrayWithContentsOfDailyR
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, namePrefix + number, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
     var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
     var content = prefValue[1];
     
     content = content.replace("%s", eGm.selection);
-    content = content.replace("%u", eGc.topmostDocumentURL);
+    content = content.replace("%u", window.gBrowser.selectedBrowser.currentURI.spec);
     
-    action.call(this, content,
-      Services.wm.getMostRecentWindow("navigator:browser"),
+    action.call(this, content, window,
       3 in prefValue ? prefValue[3] : undefined);
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
@@ -444,7 +445,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index - 1;
-    var url = eGc.topmostDocumentURL;
+    var url = gBrowser.selectedBrowser.currentURI.spec;
     var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
     while ((this._getRootURL(url).replace("www.", "") === this._getRootURL(backurl).replace("www.", "")) && index > 0) {
@@ -469,7 +470,7 @@ var eGActions = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var index = gBrowser.sessionHistory.index + 1;
-    var url = eGc.topmostDocumentURL;
+    var url = gBrowser.selectedBrowser.currentURI.spec;
     var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
     
     while (this._getRootURL(url).replace("www.", "") === this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
@@ -723,7 +724,8 @@ var eGActions = {
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
-    var url = eGc.topmostDocumentURL;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var url = window.gBrowser.selectedBrowser.currentURI.spec;
     // removing any trailing "/"
     url = url.replace(/\/$/, "");
     // creating a nsIURI and removing the last "/"-separated item from its path
@@ -732,14 +734,13 @@ var eGActions = {
     path.pop();
     var upurl = uri.prePath + path.join("/");
     
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.loadURI(upurl);
   }, true, "root"),
   
   root : new CanGoUpDisableableAction("root", function() {
-    var url = eGc.topmostDocumentURL;
-    var rootURL = this._getRootURL(url);
     var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var url = window.gBrowser.selectedBrowser.currentURI.spec;
+    var rootURL = this._getRootURL(url);
     window.gBrowser.loadURI(rootURL);
   }, false, "showOnlyThisFrame"),
   
@@ -817,14 +818,15 @@ var eGActions = {
     var bookmarksService =
           Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
                     .getService(Components.interfaces.nsINavBookmarksService);
-    var uri = Services.io.newURI(eGc.topmostDocumentURL, null, null);
+    var uri = window.gBrowser.selectedBrowser.currentURI;
     if (bookmarksService.isBookmarked(uri)) {
       window.PlacesCommandHook.bookmarkCurrentPage(true,
           window.PlacesUtils.unfiledBookmarksFolderId);
     }
     else {
       bookmarksService.insertBookmark(bookmarksService.unfiledBookmarksFolder,
-        uri, bookmarksService.DEFAULT_INDEX, eGc.topmostDocumentTitle);
+                                      uri, bookmarksService.DEFAULT_INDEX,
+                                      window.gBrowser.selectedBrowser.contentTitle);
     }
   }, false, "bookmarkThisLink"),
   

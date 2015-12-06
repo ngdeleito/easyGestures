@@ -46,8 +46,6 @@ var eGc = {
   targetWindowScrollMaxY: null,
   topmostWindowScrollY: null,
   topmostWindowScrollMaxY: null,
-  topmostDocumentURL: null,
-  topmostDocumentTitle: null,
   
   loading: false // used for reload/stop action
 };
@@ -195,9 +193,6 @@ function eG_handleMousedown(aMessage) {
   eGc.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
   eGc.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
   eGc.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
-  eGc.topmostDocumentURL = aMessage.data.topmostDocumentURL;
-  eGc.topmostDocumentTitle = aMessage.data.topmostDocumentTitle;
-  
   
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   var browserMM = window.gBrowser.selectedBrowser.messageManager;

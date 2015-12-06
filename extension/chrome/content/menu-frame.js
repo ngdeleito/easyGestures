@@ -233,9 +233,7 @@ function handleMousedown(anEvent) {
     targetWindowScrollY: targetWindow.scrollY,
     targetWindowScrollMaxY: targetWindow.scrollMaxY,
     topmostWindowScrollY: topmostWindow.scrollY,
-    topmostWindowScrollMaxY: topmostWindow.scrollMaxY,
-    topmostDocumentURL: topmostDocument.URL,
-    topmostDocumentTitle: topmostDocument.title
+    topmostWindowScrollMaxY: topmostWindow.scrollMaxY
   });
 }
 
