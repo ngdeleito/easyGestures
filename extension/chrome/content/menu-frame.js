@@ -61,6 +61,7 @@ addMessageListener("easyGesturesN@ngdeleito.eu:addFavicon", addFavicon);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
 addMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
 addMessageListener("easyGesturesN@ngdeleito.eu:setReloadActionStatus", setReloadActionStatus);
+addMessageListener("easyGesturesN@ngdeleito.eu:setHideImagesActionStatus", setHideImagesStatus);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
 addMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
@@ -75,6 +76,7 @@ addMessageListener("easyGesturesN@ngdeleito.eu:action:pageBottom", runPageBottom
 addMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:zoomIn", runZoomInAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:zoomOut", runZoomOutAction);
+addMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 
 function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
@@ -89,6 +91,7 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
   removeMessageListener("easyGesturesN@ngdeleito.eu:setActionStatus", setActionStatus);
   removeMessageListener("easyGesturesN@ngdeleito.eu:setReloadActionStatus", setReloadActionStatus);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:setHideImagesActionStatus", setHideImagesStatus);
   removeMessageListener("easyGesturesN@ngdeleito.eu:updateMenuSign", updateMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
@@ -103,6 +106,7 @@ function removeMessageListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:autoscrolling", runAutoscrollingAction);
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:zoomIn", runZoomInAction);
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:zoomOut", runZoomOutAction);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 }
 
 function handleContextmenu(anEvent) {
@@ -434,10 +438,15 @@ function showMenu(aMessage) {
   }
 }
 
+function setActionStatusHelper(layoutName, actionSector, disabled) {
+  var actionsNode = content.document.getElementById("eG_actions_" + layoutName);
+  var actionNode = actionsNode.childNodes[actionSector];
+  actionNode.setAttribute("grayed", disabled.toString());
+}
+
 function setActionStatus(aMessage) {
-  var actionsNode = content.document.getElementById("eG_actions_" + aMessage.data.layoutName);
-  var actionNode = actionsNode.childNodes[aMessage.data.actionSector];
-  actionNode.setAttribute("grayed", aMessage.data.status.toString());
+  setActionStatusHelper(aMessage.data.layoutName, aMessage.data.actionSector,
+                                                  aMessage.data.status);
 }
 
 function setReloadActionStatus(aMessage) {
@@ -445,6 +454,12 @@ function setReloadActionStatus(aMessage) {
   var actionNode = actionsNode.childNodes[aMessage.data.actionSector];
   actionNode.classList.toggle("stop", aMessage.data.status);
   actionNode.classList.toggle("reload", !aMessage.data.status);
+}
+
+function setHideImagesStatus(aMessage) {
+  var disabled = content.document.querySelectorAll("img:not([id^='eG_'])").length === 0;
+  setActionStatusHelper(aMessage.data.layoutName, aMessage.data.actionSector,
+                                                  disabled);
 }
 
 function updateMenuSign(aMessage) {
@@ -726,4 +741,11 @@ function runZoomOutAction() {
   
   imageElement.style.width = width;
   imageElement.style.height = height;
+}
+
+function runHideImagesAction() {
+  var images = content.document.querySelectorAll("img:not([id^='eG_'])");
+  for (var i=0; i < images.length; ++i) {
+    images[i].style.display = "none";
+  }
 }

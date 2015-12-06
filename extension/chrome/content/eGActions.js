@@ -42,6 +42,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
 //  |-- ReloadAction
+//  |-- DocumentContainsImagesDisableableAction
 //  |-- DisableableAction
 //       ^
 //       |-- CanGoBackDisableableAction
@@ -397,6 +398,22 @@ function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) 
 }
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
 ImageExistsDisableableAction.prototype.constructor = ImageExistsDisableableAction;
+
+function DocumentContainsImagesDisableableAction(name, startsNewGroup, nextAction) {
+  Action.call(this, name, function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:hideImages");
+  }, startsNewGroup, nextAction);
+}
+DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototype);
+DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
+DocumentContainsImagesDisableableAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setHideImagesActionStatus", {
+    layoutName: layoutName,
+    actionSector: actionSector
+  });
+};
 
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
@@ -945,14 +962,7 @@ var eGActions = {
                               Components.interfaces.nsIFilePicker.filterImages);
   }, false, "hideImages"),
   
-  hideImages : new DisableableAction("hideImages", function() {
-    var images = eGc.topmostDocument.querySelectorAll("img:not([id^='eG_'])");
-    for (var i=0; i < images.length; ++i) {
-      images[i].style.display = "none";
-    }
-  }, function() {
-    return eGc.topmostDocument.querySelectorAll("img:not([id^='eG_'])").length === 0;
-  }, false, "cut"),
+  hideImages : new DocumentContainsImagesDisableableAction("hideImages", false, "cut"),
   
   cut : new DisableableCommandAction("cut", true, "copy"),
   
