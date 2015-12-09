@@ -33,13 +33,13 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ln, #easyGesturesPieMenu_ls {
   all: initial;
   position: fixed;
+  z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
 }
 
 #easyGesturesPieMenu_nn *, #easyGesturesPieMenu_ns *,
 #easyGesturesPieMenu_ln *, #easyGesturesPieMenu_ls * {
   all: initial;
   visibility: inherit;
-  z-index: inherit; /* convention: max-z-index = 2^31 - 1 */
 }
 
 #easyGesturesPieMenu_nn > div, #easyGesturesPieMenu_ns > div,
@@ -54,10 +54,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* Special nodes */
-
-#eG_SpecialNodes {
-  z-index: 2147483647; /* max-z-index */
-}
 
 #eG_linkSign {
   visibility: hidden;
@@ -222,7 +218,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ln div[id^="eG_actions"],
 #easyGesturesPieMenu_ls div[id^="eG_actions"] {
   visibility: hidden;
-  z-index: 2147483646; /* max-z-index - 1 */
+  z-index: -1;
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions"] {
@@ -249,7 +245,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ns div[id^="eG_actions_extra"],
 #easyGesturesPieMenu_ln div[id^="eG_actions_extra"],
 #easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
-  z-index: 2147483645; /* max-z-index - 2 */
+  z-index: -2;
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions_extra"] {
@@ -295,7 +291,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   background-image: url("actions.png");
   width: 32px; /* icon size */
   height: 32px;
-  z-index: 2147483647; /* max-z-index */
+  z-index: 1;
 }
 
 #easyGesturesPieMenu_ns [id^="eG_action_"],
@@ -303,7 +299,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   background-image: url("small_actions.png");
   width: 20px; /* icon size */
   height: 20px;
-  z-index: 2147483647; /* max-z-index */
+  z-index: 1;
 }
 
 
@@ -314,7 +310,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ln div[id^="eG_labels"],
 #easyGesturesPieMenu_ls div[id^="eG_labels"] {
   visibility: hidden;
-  z-index: 2147483645; /* max-z-index - 2, labels are displayed below menu level */
+  z-index: -2; /* labels are displayed below menu level */
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_labels"] {
@@ -341,7 +337,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ns div[id^="eG_labels_extra"],
 #easyGesturesPieMenu_ln div[id^="eG_labels_extra"],
 #easyGesturesPieMenu_ls div[id^="eG_labels_extra"] {
-  z-index: 2147483644; /* max-z-index - 3, labels are displayed below menu level */
+  z-index: -3; /* labels are displayed below menu level */
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_labels_extra"] {
@@ -364,7 +360,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ns [id^="eG_label_"],
 #easyGesturesPieMenu_ln [id^="eG_label_"],
 #easyGesturesPieMenu_ls [id^="eG_label_"] {
-  z-index: 2147483647; /* max-z-index */
+  z-index: 1;
   border-style: solid;
   border-width: 2px;
   border-color: hsl(60, 40%, 83%) hsl(0, 0%, 60%);
