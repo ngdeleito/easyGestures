@@ -589,9 +589,21 @@ function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) 
 
 function handleMousemove(anEvent) {
   hideLinkSign();
+  
+  // anEvent.target differs depending on whether the mouse button is pressed or
+  // not; if pressed we reuse the original targetWindow value, if not we
+  // reconstruct it
+  var localTargetWindow = anEvent.target.ownerDocument === null ?
+                            targetWindow :
+                            anEvent.target.ownerDocument.defaultView;
+  var localTopmostWindow = localTargetWindow.top;
+  var positionX = anEvent.clientX + localTargetWindow.mozInnerScreenX -
+                                    localTopmostWindow.mozInnerScreenX;
+  var positionY = anEvent.clientY + localTargetWindow.mozInnerScreenY -
+                                    localTopmostWindow.mozInnerScreenY;
   var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousemove", {
-    clientX: anEvent.clientX,
-    clientY: anEvent.clientY,
+    positionX: positionX,
+    positionY: positionY,
     shiftKey: anEvent.shiftKey,
     movementX: anEvent.movementX,
     movementY: anEvent.movementY

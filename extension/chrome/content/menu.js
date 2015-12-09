@@ -405,11 +405,11 @@ eG_menu.prototype = {
     if (layout.isExtraMenu) {
       refY -= this.menuSet[this.baseMenu].outerR * 1.2;
     }
-    var radius = Math.sqrt((aMessageData.clientX - refX) * (aMessageData.clientX - refX) +
-                           (aMessageData.clientY - refY) * (aMessageData.clientY - refY));
+    var radius = Math.sqrt((aMessageData.positionX - refX) * (aMessageData.positionX - refX) +
+                           (aMessageData.positionY - refY) * (aMessageData.positionY - refY));
     
     if (radius > layout.innerR) {
-      var angle = Math.atan2(refY - aMessageData.clientY, aMessageData.clientX - refX) + layout.sectorOffset;
+      var angle = Math.atan2(refY - aMessageData.positionY, aMessageData.positionX - refX) + layout.sectorOffset;
       if (angle < 0) {
         angle += 2 * Math.PI;
       }
