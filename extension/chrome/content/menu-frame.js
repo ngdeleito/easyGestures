@@ -41,7 +41,7 @@ var HTMLNamespace = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
 var extraMenuAction = 2;
 
-var targetDocument, targetWindow, topmostWindow, topmostDocument;
+var targetDocument, targetWindow, topmostWindow;
 
 var contextualMenus;
 var selection;
@@ -209,7 +209,6 @@ function handleMousedown(anEvent) {
   targetDocument = anEvent.target.ownerDocument;
   targetWindow = targetDocument.defaultView;
   topmostWindow = targetWindow.top;
-  topmostDocument = topmostWindow.document;
   
   selection = cleanSelection(targetWindow.getSelection().toString());
   setContext(anEvent.target, targetWindow);
