@@ -56,8 +56,6 @@ function eG_enableMenu() {
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
@@ -69,8 +67,6 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeyup", eG_handleKeyup);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
@@ -89,13 +85,13 @@ function eG_handleKeyup() {
   eGc.keyPressed = 0;
 }
 
-function eG_handleKeydown(aMessage) {
+function eG_handleKeydown(anEvent) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
-  eGc.keyPressed = aMessage.data.keyPressed;
+  eGc.keyPressed = anEvent.keyCode;
   
   if (eGm.isShown()) {
     if (eGc.keyPressed === 18) { // Alt key
@@ -103,10 +99,9 @@ function eG_handleKeydown(aMessage) {
     }
     else if (eGc.keyPressed === 27) { // ESC key
       eGm.close();
-      return true;
+      anEvent.preventDefault();
     }
   }
-  return false;
 }
 
 function eG_handleMouseup(aMessage) {

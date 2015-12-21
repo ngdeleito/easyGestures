@@ -53,8 +53,6 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMe
 
 addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
-addEventListener("keydown", handleKeydown, true);
-addEventListener("keyup", handleKeyup, true);
 addEventListener("contextmenu", handleContextmenu, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:addFavicon", addFavicon);
@@ -83,8 +81,6 @@ function removeMessageListeners() {
   
   removeEventListener("mousedown", handleMousedown, true);
   removeEventListener("mouseup", handleMouseup, true);
-  removeEventListener("keydown", handleKeydown, true);
-  removeEventListener("keyup", handleKeyup, true);
   removeEventListener("contextmenu", handleContextmenu, true);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:addFavicon", addFavicon);
@@ -254,20 +250,6 @@ function handleMouseup(anEvent) {
   if (result[0] !== undefined) {
     anEvent.preventDefault();
   }
-}
-
-function handleKeydown(anEvent) {
-  var keyPressed = anEvent.keyCode;
-  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleKeydown", {
-    keyPressed: keyPressed
-  });
-  if (result[0]) {
-    anEvent.preventDefault();
-  }
-}
-
-function handleKeyup() {
-  sendAsyncMessage("easyGesturesN@ngdeleito.eu:handleKeyup");
 }
 
 function removeMenuEventHandler(anEvent) {

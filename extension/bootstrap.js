@@ -92,6 +92,8 @@ function loadEasyGesturesOn(window) {
   }
   
   window.addEventListener("mousedown", eG_countClicks, false);
+  window.addEventListener("keydown", eG_handleKeydown, true);
+  window.addEventListener("keyup", eG_handleKeyup, true);
 }
 
 function loadEasyGesturesOnExistingWindow(window) {
@@ -117,6 +119,8 @@ function unloadEasyGesturesOn(window) {
   // additional test)
   
   window.removeEventListener("mousedown", eG_countClicks, false);
+  window.removeEventListener("keydown", eG_handleKeydown, true);
+  window.removeEventListener("keyup", eG_handleKeyup, true);
 }
 
 function startup(data, reason) {
