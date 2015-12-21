@@ -647,6 +647,12 @@ function handleHideLayout(aMessage) {
        aMessage.data.layoutActionsLength, aMessage.data.baseLayoutName);
 }
 
+function clearMenuSign(menuSign) {
+  for (let i=0; i < menuSign.childNodes.length; ++i) {
+    menuSign.childNodes[i].removeAttribute("class");
+  }
+}
+
 function close(aMessage) {
   if (content === null) {
     return ;
@@ -666,6 +672,9 @@ function close(aMessage) {
     extraMenusSign.style.visibility = "hidden";
   }
   mainMenusSign.style.visibility = "hidden";
+  
+  clearMenuSign(mainMenusSign);
+  clearMenuSign(extraMenusSign);
 }
 
 function removeMenu() {
