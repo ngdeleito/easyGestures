@@ -130,11 +130,6 @@
 <!ENTITY tips.dailyReadingsAction "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas.|Seleccione una carpeta en &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Último reinicio">
-<!ENTITY stats.use "Uso del menú circular">
-<!ENTITY stats.novice "Novato">
-<!ENTITY stats.coolUser "Usuario total">
-<!ENTITY stats.addicted "Adicto">
-<!ENTITY stats.master "Maestro">
 <!ENTITY stats.actions "Uso por acciones">
 <!ENTITY stats.directions "Uso por direcciones">
 <!ENTITY stats.all "Todas las acciones">

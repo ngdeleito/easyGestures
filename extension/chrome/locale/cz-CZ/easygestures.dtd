@@ -130,11 +130,6 @@
 <!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Poslední vynulování">
-<!ENTITY stats.use "Využití nabídky">
-<!ENTITY stats.novice "Začátečník">
-<!ENTITY stats.coolUser "Pohodový uživatel">
-<!ENTITY stats.addicted "Nadšenec">
-<!ENTITY stats.master "Zkušený uživatel">
 <!ENTITY stats.actions "Kliknutí podle akce">
 <!ENTITY stats.directions "Kliknutí podle směru">
 <!ENTITY stats.all "Všechny akce">

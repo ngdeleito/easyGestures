@@ -144,8 +144,6 @@ var eGPrefs = {
   },
   
   initializeStats : function() {
-    this._prefs.setIntPref("stats.clicks", 0); // clicks inside window excluding clicks inside menu
-    this._prefs.setIntPref("stats.menuShown", 0); // calls for menu
     var d = new Date(); // date of last reset
     this._prefs.setCharPref("stats.lastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
     this._prefs.setCharPref("stats.mainMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
@@ -185,24 +183,6 @@ var eGPrefs = {
   
   getDailyReadingsFolderID : function() {
     return this._prefs.getIntPref("customizations.dailyReadingsFolderID");
-  },
-  
-  getStatsClicksPref : function() {
-    return this._prefs.getIntPref("stats.clicks");
-  },
-  
-  incrementStatsClicksPref : function() {
-    var value = this._prefs.getIntPref("stats.clicks");
-    this._prefs.setIntPref("stats.clicks", ++value);
-  },
-  
-  getStatsMenuShownPref : function() {
-    return this._prefs.getIntPref("stats.menuShown");
-  },
-  
-  incrementStatsMenuShownPref : function() {
-    var value = this._prefs.getIntPref("stats.menuShown");
-    this._prefs.setIntPref("stats.menuShown", ++value);
   },
   
   getStatsLastResetPref : function() {
@@ -573,6 +553,8 @@ var eGPrefs = {
   updateToV4_12: function() {
     this._prefs.deleteBranch("activation.showAfterDelay");
     this._prefs.deleteBranch("activation.showAfterDelayValue");
+    this._prefs.deleteBranch("stats.clicks");
+    this._prefs.deleteBranch("stats.menuShown");
   }
 };
 

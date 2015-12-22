@@ -129,11 +129,6 @@
 <!ENTITY tips.dailyReadingsAction "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets.|Choisissez un dossier dans &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "Dernière réinitialisation">
-<!ENTITY stats.use "Utilisation du menu circulaire">
-<!ENTITY stats.novice "Novice">
-<!ENTITY stats.coolUser "Utilisateur cool">
-<!ENTITY stats.addicted "Mordu">
-<!ENTITY stats.master "Maître">
 <!ENTITY stats.actions "Clics par actions">
 <!ENTITY stats.directions "Clics par directions">
 <!ENTITY stats.all "Toutes les actions">

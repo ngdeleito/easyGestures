@@ -130,11 +130,6 @@
 <!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "最後重置時間">
-<!ENTITY stats.use "圓餅手勢使用率">
-<!ENTITY stats.novice "初學者">
-<!ENTITY stats.coolUser "Cool User">
-<!ENTITY stats.addicted "上癮者">
-<!ENTITY stats.master "專家級">
 <!ENTITY stats.actions "動作使用統計">
 <!ENTITY stats.directions "方向使用統計">
 <!ENTITY stats.all "全部動作">

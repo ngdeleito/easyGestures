@@ -274,45 +274,9 @@ function initDialog() {
   var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
   var statsActions = eGPrefs.getStatsActionsPref();
   
-  var statsClicks = eGPrefs.getStatsClicksPref();
-  var statsMenuShown = eGPrefs.getStatsMenuShownPref();
   var statsLastReset = eGPrefs.getStatsLastResetPref();
   
-  if (statsClicks === 0) {
-    statsClicks = 1; //just avoiding division by 0 to prevent displaying NaN
-  }
-  
-  var use = statsMenuShown / statsClicks * 100;
-  document.getElementById("eG_statsUse").value = Math.round(use) + "%";
-  if (use < 10) {
-    document.getElementById("eG_statsUseStars").width = "0px";
-  }
-  else if (use < 30) {
-    document.getElementById("eG_statsUseStars").width = 20 + "px";
-  }
-  else if (use < 60) {
-    document.getElementById("eG_statsUseStars").width = 20*2 + "px";
-  }
-  else {
-    document.getElementById("eG_statsUseStars").width = 20*3 + "px";
-  }
-  
   document.getElementById("eG_statsLastReset").value = statsLastReset;
-  
-  var useComment = "";
-  if (use < 10) {
-    useComment = document.getElementById("eG_statsNovice").value;
-  }
-  else if (use < 30) {
-    useComment = document.getElementById("eG_statsCoolUser").value;
-  }
-  else if (use < 60) {
-    useComment = document.getElementById("eG_statsAddicted").value;
-  }
-  else {
-    useComment = document.getElementById("eG_statsMaster").value;
-  }
-  document.getElementById("eG_statsUseComment").value = useComment;
   
   for (let action in statsActions) {
     statsClicksOnActions += statsActions[action];

@@ -91,7 +91,6 @@ function loadEasyGesturesOn(window) {
     return;
   }
   
-  window.addEventListener("mousedown", eG_countClicks, false);
   window.addEventListener("keydown", eG_handleKeydown, true);
   window.addEventListener("keyup", eG_handleKeyup, true);
 }
@@ -118,7 +117,6 @@ function unloadEasyGesturesOn(window) {
   // this function is only called for navigator windows (no need thus for an
   // additional test)
   
-  window.removeEventListener("mousedown", eG_countClicks, false);
   window.removeEventListener("keydown", eG_handleKeydown, true);
   window.removeEventListener("keyup", eG_handleKeyup, true);
 }

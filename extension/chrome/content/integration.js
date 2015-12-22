@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGActions, eGm, eGPrefs */
+/* global eGActions, eGm */
 
 var eGc = {
   keyPressed: 0, // used to control display of pie menu
@@ -69,16 +69,6 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
-}
-
-function eG_countClicks(anEvent) {
-  eGPrefs.incrementStatsClicksPref();
-  
-  // disabling counting clicks inside window if menu is displayed
-  if (eGm.isShown()) {
-    let window = anEvent.currentTarget;
-    window.removeEventListener("mousedown", eG_countClicks, false);
-  }
 }
 
 function eG_handleKeyup() {

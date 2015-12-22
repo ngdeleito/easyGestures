@@ -130,11 +130,6 @@
 <!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "最后重启">
-<!ENTITY stats.use "使用弹出菜单">
-<!ENTITY stats.novice "初学者">
-<!ENTITY stats.coolUser "略懂">
-<!ENTITY stats.addicted "痴迷者">
-<!ENTITY stats.master "精通者">
 <!ENTITY stats.actions "点击手势">
 <!ENTITY stats.directions "点击方向">
 <!ENTITY stats.all "全部手势">

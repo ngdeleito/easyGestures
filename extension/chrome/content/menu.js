@@ -523,11 +523,6 @@ eG_menu.prototype = {
     }
     
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
-    
-    eGPrefs.incrementStatsMenuShownPref();
-
-    // re-enable counting clicks inside window
-    window.addEventListener("mousedown", eG_countClicks, false);
   },
   
   resetTooltipsTimeout : function() { // setting and resetting tooltips timeout

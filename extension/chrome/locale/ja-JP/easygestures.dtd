@@ -130,11 +130,6 @@
 <!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
 
 <!ENTITY stats.lastReset "最終リセット">
-<!ENTITY stats.use "パイメニューの使用率">
-<!ENTITY stats.novice "ひよっこ">
-<!ENTITY stats.coolUser "デキるヒト">
-<!ENTITY stats.addicted "ジェスチャ中毒">
-<!ENTITY stats.master "ジェスチャ神">
 <!ENTITY stats.actions "アクション毎の使用率">
 <!ENTITY stats.directions "方向毎の使用率">
 <!ENTITY stats.all "すべてのアクション">
