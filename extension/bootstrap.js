@@ -83,41 +83,29 @@ stringBundle.prototype = {
 var eGStrings = null;
 var eGm = null;
 
-function loadEasyGesturesOn(window) {
-  // making sure that easyGestures is only loaded on navigator windows and not
-  // on e.g. preferences and console windows
-  var wintype = window.document.documentElement.getAttribute("windowtype");
-  if (wintype != "navigator:browser") {
-    return;
-  }
-  
-  window.addEventListener("keydown", eG_handleKeydown, true);
+function loadKeyupListenerOn(window) {
   window.addEventListener("keyup", eG_handleKeyup, true);
 }
 
-function loadEasyGesturesOnExistingWindow(window) {
+function loadKeyupListenerOnExistingWindow(window) {
   if (window.document.readyState == "complete") {
-    loadEasyGesturesOn(window);
+    loadKeyupListenerOn(window);
   }
   else {
     window.addEventListener("load", function runOnLoad() {
       window.removeEventListener("load", runOnLoad, false);
-      loadEasyGesturesOn(window);
+      loadKeyupListenerOn(window);
     }, false);
   }
 }
 
-function loadEasyGesturesOnNewWindow(aSubject, aTopic) {
+function loadKeyupListenerOnNewWindow(aSubject, aTopic) {
   if (aTopic == "domwindowopened") {
-    loadEasyGesturesOnExistingWindow(aSubject);
+    loadKeyupListenerOnExistingWindow(aSubject);
   }
 }
 
-function unloadEasyGesturesOn(window) {
-  // this function is only called for navigator windows (no need thus for an
-  // additional test)
-  
-  window.removeEventListener("keydown", eG_handleKeydown, true);
+function unloadKeyupListenerOn(window) {
   window.removeEventListener("keyup", eG_handleKeyup, true);
 }
 
@@ -177,15 +165,15 @@ function startup(data, reason) {
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
     
-    // activating easyGestures on current windows
-    var currentWindows = Services.wm.getEnumerator("navigator:browser");
+    // loading the keyup listener on current windows
+    var currentWindows = Services.wm.getEnumerator(null);
     while (currentWindows.hasMoreElements()) {
-      loadEasyGesturesOnExistingWindow(currentWindows.getNext());
+      loadKeyupListenerOnExistingWindow(currentWindows.getNext());
     }
     
-    // start listening to new window events in order to activate easyGestures on
-    // such windows
-    Services.ww.registerNotification(loadEasyGesturesOnNewWindow);
+    // start listening to new window events in order to load the keyup listener
+    // on such windows
+    Services.ww.registerNotification(loadKeyupListenerOnNewWindow);
     
     eG_enableMenu();
     
@@ -225,14 +213,14 @@ function shutdown() {
     sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
   }
   
-  // disabling easyGestures on current windows
-  var currentWindows = Services.wm.getEnumerator("navigator:browser");
+  // unloading the keyup listener on current windows
+  var currentWindows = Services.wm.getEnumerator(null);
   while (currentWindows.hasMoreElements()) {
-    unloadEasyGesturesOn(currentWindows.getNext());
+    unloadKeyupListenerOn(currentWindows.getNext());
   }
   
   // stop listening to new window events
-  Services.ww.unregisterNotification(loadEasyGesturesOnNewWindow);
+  Services.ww.unregisterNotification(loadKeyupListenerOnNewWindow);
   
   eG_disableMenu();
 }
