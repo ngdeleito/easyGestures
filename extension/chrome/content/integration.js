@@ -63,7 +63,7 @@ function eG_enableMenu() {
 
 function eG_disableMenu() {
   Services.mm.removeDelayedFrameScript("chrome://easygestures/content/menu-frame.js");
-  Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMessageListeners");
+  Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeListeners");
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);

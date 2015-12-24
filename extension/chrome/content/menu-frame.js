@@ -49,7 +49,7 @@ var anchorElement;
 var imageElement;
 var mouseupScreenX, mouseupScreenY;
 
-addMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
+addMessageListener("easyGesturesN@ngdeleito.eu:removeListeners", removeListeners);
 
 addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
@@ -77,8 +77,8 @@ addMessageListener("easyGesturesN@ngdeleito.eu:action:zoomIn", runZoomInAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:zoomOut", runZoomOutAction);
 addMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 
-function removeMessageListeners() {
-  removeMessageListener("easyGesturesN@ngdeleito.eu:removeMessageListeners", removeMessageListeners);
+function removeListeners() {
+  removeMessageListener("easyGesturesN@ngdeleito.eu:removeListeners", removeListeners);
   
   removeEventListener("mousedown", handleMousedown, true);
   removeEventListener("mouseup", handleMouseup, true);
