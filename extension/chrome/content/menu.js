@@ -152,8 +152,6 @@ ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
 
 // menu Constructor
 function eG_menu () {
-  this.HTMLNamespace = "http://www.w3.org/1999/xhtml";
-  
   this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
   this.anchorElementExists = false;
   this.anchorElementHREF = null;

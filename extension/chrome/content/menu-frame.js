@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global addMessageListener, removeMessageListener, content, addEventListener,
           removeEventListener, sendSyncMessage, sendAsyncMessage */
 
-var HTMLNamespace = "http://www.w3.org/1999/xhtml";
+const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
 var extraMenuAction = 2;
 
@@ -267,7 +267,7 @@ function removeMenuEventHandler(anEvent) {
 }
 
 function createEasyGesturesNode(aDocument) {
-  var easyGesturesNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var easyGesturesNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   easyGesturesNode.id = easyGesturesID;
   
   addEventListener("pagehide", removeMenuEventHandler, true);
@@ -276,38 +276,38 @@ function createEasyGesturesNode(aDocument) {
 }
 
 function createSpecialNodes(aDocument, numberOfMainMenus, numberOfExtraMenus) {
-  var specialNodesNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var specialNodesNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   specialNodesNode.id = "eG_SpecialNodes";
   
-  var linkSignNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var linkSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   linkSignNode.id = "eG_linkSign";
   specialNodesNode.appendChild(linkSignNode);
   
-  var mainMenusSignNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var mainMenusSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   mainMenusSignNode.id = "easyGesturesMainMenusSign";
   
   var i = numberOfMainMenus;
   while (i > 0) {
-    let span = aDocument.createElementNS(HTMLNamespace, "span");
+    let span = aDocument.createElementNS(HTML_NAMESPACE, "span");
     mainMenusSignNode.appendChild(span);
     --i;
   }
   
   specialNodesNode.appendChild(mainMenusSignNode);
   
-  var extraMenusSignNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var extraMenusSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   extraMenusSignNode.id = "easyGesturesExtraMenusSign";
   
   i = numberOfExtraMenus;
   while (i > 0) {
-    let span = aDocument.createElementNS(HTMLNamespace, "span");
+    let span = aDocument.createElementNS(HTML_NAMESPACE, "span");
     extraMenusSignNode.appendChild(span);
     --i;
   }
   
   specialNodesNode.appendChild(extraMenusSignNode);
   
-  var contextMenuSignNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var contextMenuSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   contextMenuSignNode.id = "easyGesturesContextMenuSign";
   specialNodesNode.appendChild(contextMenuSignNode);
   
@@ -320,7 +320,7 @@ function addFavicon(aMessage) {
 }
 
 function createActionsNodes(aDocument, aMessageData) {
-  var anActionsNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var anActionsNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   anActionsNode.id = "eG_actions_" + aMessageData.layoutName;
   
   // creating actions images
@@ -333,7 +333,7 @@ function createActionsNodes(aDocument, aMessageData) {
     let xpos = imageR * Math.cos(angle) + offset;
     let ypos = -imageR * Math.sin(angle) + offset;
     
-    let anActionNode = aDocument.createElementNS(HTMLNamespace, "div");
+    let anActionNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
     anActionNode.id = "eG_action_" + aMessageData.layoutName + "_" + index;
     anActionNode.style.left = Math.round(xpos) + "px";
     anActionNode.style.top = Math.round(ypos) + "px";
@@ -367,7 +367,7 @@ function createActionsNodes(aDocument, aMessageData) {
   
   // creating menu image
   
-  var menuImageNode = aDocument.createElementNS(HTMLNamespace, "img");
+  var menuImageNode = aDocument.createElementNS(HTML_NAMESPACE, "img");
   menuImageNode.id = "eG_actions_" + aMessageData.layoutName + "_menu";
   menuImageNode.src = aMessageData.menuImage;
   menuImageNode.style.opacity = aMessageData.menuOpacity;
@@ -472,11 +472,11 @@ function updateContextualMenuSign(aMessage) {
 }
 
 function createTooltipsNodes(aDocument, aMessageData) {
-  var aTooltipsNode = aDocument.createElementNS(HTMLNamespace, "div");
+  var aTooltipsNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   aTooltipsNode.id = "eG_labels_" + aMessageData.layoutName;
   
   aMessageData.tooltips.forEach(function(tooltip, index) {
-    let aTooltipNode = aDocument.createElementNS(HTMLNamespace, "div");
+    let aTooltipNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
     aTooltipNode.id = "eG_label_" + aMessageData.layoutName + "_" + index;
     aTooltipNode.classList.add("label" + index);
     aTooltipNode.appendChild(aDocument.createTextNode(tooltip));
