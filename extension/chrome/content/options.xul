@@ -670,7 +670,7 @@
             <separator orient="horizontal" style="height: 2em" />
             
             <hbox align="center">
-              <image class="small_openLink" />
+              <image class="eG_openLink" />
               <label value="&customizations.openLink;" class="header" />
             </hbox>
             <radiogroup preference="openLink" oncommand="updateUI();"
@@ -684,7 +684,7 @@
             <menuseparator />
             
             <hbox align="center">
-              <image class="small_dailyReadings" />
+              <image class="eG_dailyReadings" />
               <label value="&customizations.dailyReadings;" class="header" />
             </hbox>
             <label value="&customizations.dailyReadings.folderSelection;" />

@@ -106,7 +106,7 @@ function createHeaderForAction(actionName) {
   hbox.setAttribute("align", "center");
   
   var image = document.createElement("image");
-  image.setAttribute("class", "small_" + actionName);
+  image.setAttribute("class", "eG_" + actionName);
   hbox.appendChild(image);
   
   var label = document.createElement("label");
@@ -492,7 +492,7 @@ function createActionsPopupList() {
     itemNode.setAttribute("crop", "end");
     itemNode.setAttribute("label", eGActions[currentAction].getXULLabel());
     itemNode.style.paddingRight = "20px";
-    imageNode.setAttribute("class", "small_" + currentAction);
+    imageNode.setAttribute("class", "eG_" + currentAction);
     
     subItemNode.setAttribute("value", eGActions[currentAction].getXULLabel());
     popupNode.appendChild(itemNode);
