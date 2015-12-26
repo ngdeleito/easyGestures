@@ -39,7 +39,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 var easyGesturesID;
-var extraMenuAction = 2;
+const EXTRA_MENU_ACTION = 2;
 
 var targetDocument, targetWindow, topmostWindow;
 
@@ -483,7 +483,7 @@ function createTooltipsNodes(aDocument, aMessageData) {
     aTooltipsNode.appendChild(aTooltipNode);
   });
   if (aMessageData.hasExtraMenuAction) {
-    aTooltipsNode.childNodes[extraMenuAction].classList.add("extra");
+    aTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.add("extra");
   }
   
   return aTooltipsNode;
@@ -550,7 +550,7 @@ function showExtraMenu(layoutName) {
   var extraMenusSign = specialNodes.childNodes[2];
   var tooltipsNode = content.document.getElementById("eG_labels_" + layoutName);
   
-  actionsNode.childNodes[extraMenuAction].setAttribute("extraMenuShowing", "true");
+  actionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("extraMenuShowing", "true");
   
   mainMenusSign.style.visibility = "hidden";
   extraMenusSign.style.visibility = "visible";
@@ -568,7 +568,7 @@ function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) 
   var extraMenusSign = specialNodes.childNodes[2];
   
   // reset rollover of extra menu action icon in main menu
-  baseActionsNode.childNodes[extraMenuAction].setAttribute("extraMenuShowing", "false");
+  baseActionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("extraMenuShowing", "false");
   
   hide(layoutName, sector, layoutActionsLength, baseLayoutName);
   
@@ -642,10 +642,10 @@ function hide(layoutName, sector, layoutActionsLength, baseLayoutName) { // make
   if (baseLayoutName !== "") {
     var baseActionsNode = content.document.getElementById("eG_actions_" + baseLayoutName);
     var baseTooltipsNode = content.document.getElementById("eG_labels_" + baseLayoutName);
-    baseActionsNode.childNodes[extraMenuAction].setAttribute("extraMenuShowing", "false");
-    baseActionsNode.childNodes[extraMenuAction].setAttribute("active", "false");
+    baseActionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("extraMenuShowing", "false");
+    baseActionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("active", "false");
     if (baseTooltipsNode !== null) {
-      baseTooltipsNode.childNodes[extraMenuAction].classList.remove("selected");
+      baseTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
     }
   }
 }
