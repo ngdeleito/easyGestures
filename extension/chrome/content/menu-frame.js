@@ -38,15 +38,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
           removeEventListener, sendSyncMessage, sendAsyncMessage */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
-var easyGesturesID;
 const EXTRA_MENU_ACTION = 2;
 
+var easyGesturesID;
 var targetDocument, targetWindow, topmostWindow;
-
-var contextualMenus;
-var selection;
-var anchorElement;
-var imageElement;
+var selection, contextualMenus, anchorElement, imageElement;
 var mouseupScreenX, mouseupScreenY;
 
 addMessageListener("easyGesturesN@ngdeleito.eu:removeListeners", removeListeners);
