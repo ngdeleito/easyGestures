@@ -20,6 +20,7 @@
 
     <!-- Front End MetaData -->
     <em:bootstrap>true</em:bootstrap>
+    <em:multiprocessCompatible>true</em:multiprocessCompatible>
     
     <em:name>easyGestures N</em:name>
     <em:description>A fully customizable pie menu for browsing the Web from where your cursor is located; a fork of easyGestures 4.3.2.</em:description>
