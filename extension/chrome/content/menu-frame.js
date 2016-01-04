@@ -91,16 +91,6 @@ function removeListeners() {
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:zoomOut", runZoomOutAction);
 }
 
-function handleContextmenu(anEvent) {
-  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleContextmenu", {
-    shiftKey: anEvent.shiftKey,
-    ctrlKey: anEvent.ctrlKey
-  });
-  if (result[0]) {
-    anEvent.preventDefault();
-  }
-}
-
 function handleMousedown(anEvent) {
   const PREVENT_DEFAULT_AND_RETURN = 1;
   const LET_DEFAULT_AND_RETURN = 2;
@@ -110,17 +100,17 @@ function handleMousedown(anEvent) {
   if (!anEvent.cancelable) {
     return ;
   }
-  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
+  var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
     button: anEvent.button,
     shiftKey: anEvent.shiftKey,
     ctrlKey: anEvent.ctrlKey
   });
   
-  if (result[0] === PREVENT_DEFAULT_AND_RETURN) {
+  if (result === PREVENT_DEFAULT_AND_RETURN) {
     anEvent.preventDefault();
     return ;
   }
-  else if (result[0] === LET_DEFAULT_AND_RETURN) {
+  else if (result === LET_DEFAULT_AND_RETURN) {
     return ;
   }
   
@@ -139,7 +129,9 @@ function handleMousedown(anEvent) {
   var centerY = anEvent.clientY + targetWindow.mozInnerScreenY -
                                   topmostWindow.mozInnerScreenY;
   
-  result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousedown", {
+  // sending a synchronous message to make sure that the menu is opened upon
+  // return
+  sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousedown", {
     contextualMenus: contextualMenus,
     selection: selection,
     anchorElementExists: anchorElement !== null,
@@ -168,11 +160,11 @@ function handleMouseup(anEvent) {
   mouseupScreenX = anEvent.screenX;
   mouseupScreenY = anEvent.screenY;
   
-  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMouseup", {
+  var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMouseup", {
     button: anEvent.button,
     linkSignIsVisible: linkSignIsVisible
   });
-  if (result[0] !== undefined) {
+  if (result) {
     anEvent.preventDefault();
   }
 }
@@ -181,6 +173,16 @@ function handleKeydown(anEvent) {
   sendAsyncMessage("easyGesturesN@ngdeleito.eu:handleKeydown", {
     keyPressed: anEvent.keyCode
   });
+}
+
+function handleContextmenu(anEvent) {
+  var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleContextmenu", {
+    shiftKey: anEvent.shiftKey,
+    ctrlKey: anEvent.ctrlKey
+  });
+  if (result) {
+    anEvent.preventDefault();
+  }
 }
 
 function removeMenuEventHandler(anEvent) {
@@ -268,27 +270,27 @@ function handleMousemove(anEvent) {
                                     localTopmostWindow.mozInnerScreenX;
   var positionY = anEvent.clientY + localTargetWindow.mozInnerScreenY -
                                     localTopmostWindow.mozInnerScreenY;
-  var result = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousemove", {
+  var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousemove", {
     positionX: positionX,
     positionY: positionY,
     shiftKey: anEvent.shiftKey,
     movementX: anEvent.movementX,
     movementY: anEvent.movementY
   });
-  if (result[0].centerX !== undefined) {
+  if (result.centerX !== undefined) {
     let easyGesturesNode = content.document.getElementById(easyGesturesID);
-    updateMenuPosition(easyGesturesNode, result[0].centerX, result[0].centerY);
+    updateMenuPosition(easyGesturesNode, result.centerX, result.centerY);
   }
   else {
-    if (result[0].oldSector !== result[0].newSector) {
-      clearHoverEffect(content.document, result[0].oldSector, result[0].layoutName, result[0].actionsLength);
-      setHoverEffect(content.document, result[0].newSector, result[0].layoutName, result[0].actionsLength);
+    if (result.oldSector !== result.newSector) {
+      clearHoverEffect(content.document, result.oldSector, result.layoutName, result.actionsLength);
+      setHoverEffect(content.document, result.newSector, result.layoutName, result.actionsLength);
     }
-    if (result[0].showExtraMenu) {
-      showExtraMenu(content.document, result[0].layoutName);
+    if (result.showExtraMenu) {
+      showExtraMenu(content.document, result.layoutName);
     }
-    else if (result[0].hideExtraMenu) {
-      hideExtraMenu(content.document, result[0].layoutName, result[0].newSector, result[0].actionsLength, result[0].baseLayoutName);
+    else if (result.hideExtraMenu) {
+      hideExtraMenu(content.document, result.layoutName, result.newSector, result.actionsLength, result.baseLayoutName);
     }
   }
 }

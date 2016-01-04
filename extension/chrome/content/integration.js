@@ -36,6 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* exported eG_enableMenu, eG_disableMenu, eG_handleKeyup */
 /* global eGActions, eGm */
 
 var eGc = {
@@ -55,9 +56,9 @@ function eG_enableMenu() {
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
 
@@ -67,77 +68,14 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
 
 function eG_handleKeyup() {
   eGc.keyPressed = 0;
-}
-
-function eG_handleKeydown(aMessage) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(eGm.autoscrollingTrigger);
-  
-  eGc.keyPressed = aMessage.data.keyPressed;
-  
-  if (eGm.isShown()) {
-    if (eGc.keyPressed === 18) { // Alt key
-      eGm.switchLayout();
-    }
-    else if (eGc.keyPressed === 27) { // ESC key
-      eGm.close();
-    }
-  }
-}
-
-function eG_handleMouseup(aMessage) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  
-  if (eGm.isHidden()) {
-    let browserMM = window.gBrowser.selectedBrowser.messageManager;
-    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
-  }
-  else if (eGm.isJustOpened()) {
-    eGm.setOpen();
-    eGm.openLinkThroughPieMenuCenter(aMessage.data.linkSignIsVisible,
-                                     aMessage.data.button);
-  }
-  else if (eGm.isJustOpenedAndMouseMoved()) {
-    if (eGm.sector !== -1) {
-      eGm.runAction();
-    }
-    else {
-      eGm.setOpen();
-      return 1;
-    }
-  }
-  else {
-    if (aMessage.data.button === eGm.showAltButton) {
-      return 1;
-    }
-    else {
-      if (eGm.sector !== -1) {
-        eGm.runAction();
-      }
-      else {
-        eGm.close();
-      }
-    }
-  }
-}
-
-function eG_handleMousemove(aMessage) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(eGm.autoscrollingTrigger);
-  
-  return eGm.handleMousemove(aMessage.data);
 }
 
 function eG_performOpenMenuChecks(aMessage) {
@@ -204,12 +142,78 @@ function eG_handleMousedown(aMessage) {
   }
 }
 
+function eG_handleMouseup(aMessage) {
+  var preventDefaultUponReturn = false;
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  
+  if (eGm.isHidden()) {
+    let browserMM = window.gBrowser.selectedBrowser.messageManager;
+    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
+  }
+  else if (eGm.isJustOpened()) {
+    eGm.setOpen();
+    eGm.openLinkThroughPieMenuCenter(aMessage.data.linkSignIsVisible,
+                                     aMessage.data.button);
+  }
+  else if (eGm.isJustOpenedAndMouseMoved()) {
+    if (eGm.sector !== -1) {
+      eGm.runAction();
+    }
+    else {
+      eGm.setOpen();
+      preventDefaultUponReturn = true;
+    }
+  }
+  else {
+    if (aMessage.data.button === eGm.showAltButton) {
+      preventDefaultUponReturn = true;
+    }
+    else {
+      if (eGm.sector !== -1) {
+        eGm.runAction();
+      }
+      else {
+        eGm.close();
+      }
+    }
+  }
+  
+  return preventDefaultUponReturn;
+}
+
+function eG_handleKeydown(aMessage) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  
+  // clear automatic delayed autoscrolling
+  window.clearTimeout(eGm.autoscrollingTrigger);
+  
+  eGc.keyPressed = aMessage.data.keyPressed;
+  
+  if (eGm.isShown()) {
+    if (eGc.keyPressed === 18) { // Alt key
+      eGm.switchLayout();
+    }
+    else if (eGc.keyPressed === 27) { // ESC key
+      eGm.close();
+    }
+  }
+}
+
 function eG_handleContextmenu(aMessage) {
   return eGm.showButton === 2 /* right click */ &&
          ((eGm.showKey === 0 && eGc.keyPressed === 0) ||
           (eGm.showKey === 0 && eGc.keyPressed === eGm.contextKey) ||
           (eGm.showKey === 16 && aMessage.data.shiftKey) ||
           (eGm.showKey === 17 && aMessage.data.ctrlKey));
+}
+
+function eG_handleMousemove(aMessage) {
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  
+  // clear automatic delayed autoscrolling
+  window.clearTimeout(eGm.autoscrollingTrigger);
+  
+  return eGm.handleMousemove(aMessage.data);
 }
 
 function eG_retrieveAndAddFavicon(aMessage) {
