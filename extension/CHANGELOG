@@ -1,6 +1,28 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 4.12 (January 7, 2015)
+
+- easyGestures N is now compatible with multiprocess Firefox
+    - copyImage action does not work though unless Firefox's context menu is opened first
+- the display of the pie menu correctly works now with the upcoming changes in Firefox 44
+- removed the ability to open the pie menu after a delay
+- removed the (inaccurate) statistics about overall extension usage
+- zoomIn and zoomOut actions no longer modify your zoom settings
+- opening the menu with _no key_ pressed means now opening the menu with _no key_ pressed
+- fixed issues:
+    - autoscrolling
+        - note that for it to work now, autoscrolling needs to be activated in Firefox preferences
+        - autoscrolling no longer interferes with the pie menu if the middle mouse button is used to open the menu
+    - main menu tooltips were not hidden when showing the extra menu for the first time
+    - menu indicators showed sometimes two active layouts when the pie menu was opened
+
+The following items remain deprecated (and might be removed in future versions of the extension):
+
+- iconless menus
+- cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW locales
+
+
 Version 4.11 (September 12, 2015)
 
 - large menus are no longer vertically offset w.r.t. the position where the pie menu is opened
@@ -12,13 +34,6 @@ Version 4.11 (September 12, 2015)
     - label backgrounds and menu signs are now more consistently positioned
     - label backgrounds and are now entirely rendered through CSS
     - misc improvements in the code dealing with event listeners and in the code dealing with the rendering of the pie menu
-
-The following items remain deprecated (and might be removed in future versions of the extension):
-
-- iconless menus
-- opening the pie menu after a delay
-- autoscrolling (which is currently broken)
-- cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW locales
 
 
 Version 4.10 (June 15, 2015)

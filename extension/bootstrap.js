@@ -145,6 +145,9 @@ function startup(data, reason) {
       if (Services.vc.compare(data.oldVersion, "4.11") < 0) {
         eGPrefs.updateToV4_11();
       }
+      if (Services.vc.compare(data.oldVersion, "4.12") < 0) {
+        eGPrefs.updateToV4_12();
+      }
     }
     
     // getting access to localization strings
