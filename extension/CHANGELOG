@@ -1,7 +1,7 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
-Version 4.12 (January 7, 2015)
+Version 4.12 (January 7, 2016)
 
 - easyGestures N is now compatible with multiprocess Firefox
     - copyImage action does not work though unless Firefox's context menu is opened first
