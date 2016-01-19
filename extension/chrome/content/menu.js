@@ -559,33 +559,28 @@ eG_menu.prototype = {
            (this.contextShowAuto && !rightKey);
   },
   
-  openLinkThroughPieMenuCenter : function(linkSignIsVisible, clickedButton) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    if (linkSignIsVisible) {
-      // if a link is clicked without dragging and related option is checked
-      // note: after a short delay linkSign is hidden to cancel opening of link and keep menu open after a short wait on link without moving mouse
-      if (this.handleLinksAsOpenLink) {
-        eGActions.openLink.run();
-      }
-      else {
-        // when option "use browser behavior" is checked to open links
-        // middle clicking on a link through eG must display the link in a new tab or new window according to corresponding Firefox pref.
-        if (clickedButton === 1) {
-          // middle click
-          if (Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick")) {
-            window.gBrowser.addTab(this.anchorElementHREF);
-          }
-          else {
-            window.open(this.anchorElementHREF);
-          }
+  openLinkThroughPieMenuCenter : function(clickedButton) {
+    if (this.handleLinksAsOpenLink) {
+      eGActions.openLink.run();
+    }
+    else {
+      // when option "use browser behavior" is checked to open links
+      // middle clicking on a link through eG must display the link in a new tab or new window according to corresponding Firefox pref.
+      let window = Services.wm.getMostRecentWindow("navigator:browser");
+      if (clickedButton === 1) {
+        // middle click
+        if (Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick")) {
+          window.gBrowser.addTab(this.anchorElementHREF);
         }
         else {
-          window.gBrowser.loadURI(this.anchorElementHREF);
+          window.open(this.anchorElementHREF);
         }
       }
-      this.close();
+      else {
+        window.gBrowser.loadURI(this.anchorElementHREF);
+      }
     }
+    this.close();
   },
   
   removeFromAllPages : function() {

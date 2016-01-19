@@ -151,8 +151,10 @@ function eG_handleMouseup(aMessage) {
   }
   else if (eGm.isJustOpened()) {
     eGm.setOpen();
-    eGm.openLinkThroughPieMenuCenter(aMessage.data.linkSignIsVisible,
-                                     aMessage.data.button);
+    if (aMessage.data.linkSignIsVisible) {
+      window.clearTimeout(eGm.autoscrollingTrigger);
+      eGm.openLinkThroughPieMenuCenter(aMessage.data.button);
+    }
   }
   else if (eGm.isJustOpenedAndMouseMoved()) {
     if (eGm.sector !== -1) {
