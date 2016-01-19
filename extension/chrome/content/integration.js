@@ -136,7 +136,6 @@ function eG_handleMousedown(aMessage) {
   
   if (eGm.autoscrollingOn) {
     eGm.autoscrollingTrigger = window.setTimeout(function() {
-      eGm.close();
       eGActions.autoscrolling.run();
     }, eGm.autoscrollingDelay);
   }
