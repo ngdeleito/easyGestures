@@ -520,8 +520,6 @@ eG_menu.prototype = {
       window.clearTimeout(this.tooltipsTrigger);
       this.showingTooltips = false;
     }
-    
-    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
   },
   
   resetTooltipsTimeout : function() { // setting and resetting tooltips timeout

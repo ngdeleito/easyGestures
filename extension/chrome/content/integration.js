@@ -119,10 +119,6 @@ function eG_handleMousedown(aMessage) {
   eGc.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
   eGc.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
   
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  var browserMM = window.gBrowser.selectedBrowser.messageManager;
-  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addMousemoveListener");
-  
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
     eGm.show(eGm.contextualMenus[0]);
@@ -132,6 +128,7 @@ function eG_handleMousedown(aMessage) {
   }
   
   // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
+  var window = Services.wm.getMostRecentWindow("navigator:browser");
   window.gBrowser.focus();
   
   if (eGm.autoscrollingOn) {
@@ -145,11 +142,7 @@ function eG_handleMouseup(aMessage) {
   var preventDefaultUponReturn = false;
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
-  if (eGm.isHidden()) {
-    let browserMM = window.gBrowser.selectedBrowser.messageManager;
-    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:removeMousemoveListener");
-  }
-  else if (eGm.isJustOpened()) {
+  if (eGm.isJustOpened()) {
     eGm.setOpen();
     if (aMessage.data.linkSignIsVisible) {
       window.clearTimeout(eGm.autoscrollingTrigger);
@@ -165,7 +158,7 @@ function eG_handleMouseup(aMessage) {
       preventDefaultUponReturn = true;
     }
   }
-  else {
+  else if (eGm.isShown()) {
     if (aMessage.data.button === eGm.showAltButton) {
       preventDefaultUponReturn = true;
     }

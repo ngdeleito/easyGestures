@@ -37,15 +37,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported EXPORTED_SYMBOLS, HTML_NAMESPACE, EXTRA_MENU_ACTION,
             addStatelessListeners, removeStatelessListeners, cleanSelection,
             setContext, createSpecialNodes, createActionsNodes, hideLinkSign,
-            updateMenuPosition, clearHoverEffect, setHoverEffect, showExtraMenu,
-            hideExtraMenu */
+            updateMenuPosition, clearHoverEffect, setHoverEffect, hide,
+            showExtraMenu, hideExtraMenu, clearMenuSign */
 
 const EXPORTED_SYMBOLS = ["HTML_NAMESPACE", "EXTRA_MENU_ACTION",
                           "addStatelessListeners", "removeStatelessListeners",
                           "cleanSelection", "setContext", "createSpecialNodes",
                           "createActionsNodes", "hideLinkSign",
                           "updateMenuPosition", "clearHoverEffect",
-                          "setHoverEffect", "showExtraMenu", "hideExtraMenu"];
+                          "setHoverEffect", "hide", "showExtraMenu",
+                          "hideExtraMenu", "clearMenuSign"];
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 const EXTRA_MENU_ACTION = 2;
 
@@ -58,7 +59,6 @@ function addStatelessListeners(frame) {
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
-  frame.addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 }
@@ -72,7 +72,6 @@ function removeStatelessListeners(frame) {
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", updateContextualMenuSign);
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
-  frame.removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 }
@@ -435,31 +434,6 @@ function clearMenuSign(menuSign) {
   for (let i=0; i < menuSign.childNodes.length; ++i) {
     menuSign.childNodes[i].removeAttribute("class");
   }
-}
-
-function close(aMessage) {
-  var content = aMessage.target.content;
-  if (content === null) {
-    return ;
-  }
-  
-  var specialNodes = content.document.getElementById("eG_SpecialNodes");
-  var mainMenusSign = specialNodes.childNodes[1];
-  var extraMenusSign = specialNodes.childNodes[2];
-  
-  hide(content.document, aMessage.data.layoutName, aMessage.data.sector,
-       aMessage.data.layoutActionsLength, aMessage.data.baseLayoutName);
-  if (aMessage.data.layoutIsExtraMenu) {
-    // hide base menu too if closing is done from extra menu
-    hide(content.document, aMessage.data.baseLayoutName, aMessage.data.sector,
-         aMessage.data.baseLayoutActionsLength, aMessage.data.baseLayoutName);
-    
-    extraMenusSign.style.visibility = "hidden";
-  }
-  mainMenusSign.style.visibility = "hidden";
-  
-  clearMenuSign(mainMenusSign);
-  clearMenuSign(extraMenusSign);
 }
 
 function runHideImagesAction(aMessage) {

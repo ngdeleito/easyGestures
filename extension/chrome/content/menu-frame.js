@@ -39,7 +39,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
           sendSyncMessage, sendAsyncMessage, content, HTML_NAMESPACE,
           cleanSelection, setContext, createSpecialNodes, createActionsNodes,
           hideLinkSign, updateMenuPosition, clearHoverEffect, setHoverEffect,
-          showExtraMenu, hideExtraMenu */
+          showExtraMenu, hideExtraMenu, hide, clearMenuSign */
 
 var easyGesturesID;
 var targetDocument, targetWindow, topmostWindow;
@@ -57,8 +57,7 @@ addEventListener("keydown", handleKeydown, true);
 addEventListener("contextmenu", handleContextmenu, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
-addMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
-addMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
+addMessageListener("easyGesturesN@ngdeleito.eu:close", close);
 addMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:action:pageTop", runPageTopAction);
@@ -80,8 +79,7 @@ function removeListeners() {
   removeEventListener("contextmenu", handleContextmenu, true);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
-  removeMessageListener("easyGesturesN@ngdeleito.eu:addMousemoveListener", addMousemoveListener);
-  removeMessageListener("easyGesturesN@ngdeleito.eu:removeMousemoveListener", removeMousemoveListener);
+  removeMessageListener("easyGesturesN@ngdeleito.eu:close", close);
   removeMessageListener("easyGesturesN@ngdeleito.eu:removeMenu", removeMenu);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:action:pageTop", runPageTopAction);
@@ -128,6 +126,8 @@ function handleMousedown(anEvent) {
                                   topmostWindow.mozInnerScreenX;
   var centerY = anEvent.clientY + targetWindow.mozInnerScreenY -
                                   topmostWindow.mozInnerScreenY;
+  
+  addEventListener("mousemove", handleMousemove, true);
   
   // sending a synchronous message to make sure that the menu is opened upon
   // return
@@ -248,14 +248,6 @@ function showMenu(aMessage) {
   }
 }
 
-function addMousemoveListener() {
-  addEventListener("mousemove", handleMousemove, true);
-}
-
-function removeMousemoveListener() {
-  removeEventListener("mousemove", handleMousemove, true);
-}
-
 function handleMousemove(anEvent) {
   hideLinkSign(content.document);
   
@@ -293,6 +285,32 @@ function handleMousemove(anEvent) {
       hideExtraMenu(content.document, result.layoutName, result.newSector, result.actionsLength, result.baseLayoutName);
     }
   }
+}
+
+function close(aMessage) {
+  if (content === null) {
+    return ;
+  }
+  
+  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var mainMenusSign = specialNodes.childNodes[1];
+  var extraMenusSign = specialNodes.childNodes[2];
+  
+  hide(content.document, aMessage.data.layoutName, aMessage.data.sector,
+       aMessage.data.layoutActionsLength, aMessage.data.baseLayoutName);
+  if (aMessage.data.layoutIsExtraMenu) {
+    // hide base menu too if closing is done from extra menu
+    hide(content.document, aMessage.data.baseLayoutName, aMessage.data.sector,
+         aMessage.data.baseLayoutActionsLength, aMessage.data.baseLayoutName);
+    
+    extraMenusSign.style.visibility = "hidden";
+  }
+  mainMenusSign.style.visibility = "hidden";
+  
+  clearMenuSign(mainMenusSign);
+  clearMenuSign(extraMenusSign);
+  
+  removeEventListener("mousemove", handleMousemove, true);
 }
 
 function removeMenu() {
