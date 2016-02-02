@@ -234,8 +234,8 @@ function createActionsNodes(frame, aDocument, aMessageData) {
   // creating menu image
   
   var menuImageNode = aDocument.createElementNS(HTML_NAMESPACE, "img");
-  menuImageNode.id = "eG_actions_" + aMessageData.layoutName + "_menu";
-  menuImageNode.src = aMessageData.menuImage;
+  menuImageNode.className = aMessageData.isExtraMenu ? "extraMenu" : "menu";
+  menuImageNode.src = "chrome://easygestures/skin/" + menuImageNode.className + ".svg";
   menuImageNode.style.opacity = aMessageData.menuOpacity;
   menuImageNode.alt = "";
   anActionsNode.appendChild(menuImageNode);

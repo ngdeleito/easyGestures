@@ -264,26 +264,44 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   top: -97px; /* extra menu y-offset */
 }
 
-#easyGesturesPieMenu_nn img[id^="eG_actions"],
-#easyGesturesPieMenu_ln img[id^="eG_actions_extra"] {
+#easyGesturesPieMenu_nn img.menu {
   width: 122px;
   height: 122px;
 }
 
-#easyGesturesPieMenu_ns img[id^="eG_actions"],
-#easyGesturesPieMenu_ls img[id^="eG_actions_extra"] {
+#easyGesturesPieMenu_ns img.menu {
   width: 76px;
   height: 76px;
 }
 
-#easyGesturesPieMenu_ln img[id^="eG_actions"] {
+#easyGesturesPieMenu_ln img.menu {
   width: 140px;
   height: 140px;
 }
 
-#easyGesturesPieMenu_ls img[id^="eG_actions"] {
+#easyGesturesPieMenu_ls img.menu {
   width: 88px;
   height: 88px;
+}
+
+#easyGesturesPieMenu_nn img.extraMenu {
+  width: 122px;
+  height: 82px;
+}
+
+#easyGesturesPieMenu_ns img.extraMenu {
+  width: 76px;
+  height: 51px;
+}
+
+#easyGesturesPieMenu_ln img.extraMenu {
+  width: 140px;
+  height: 94px;
+}
+
+#easyGesturesPieMenu_ls img.extraMenu {
+  width: 88px;
+  height: 59px;
 }
 
 #easyGesturesPieMenu_nn [id^="eG_action_"],

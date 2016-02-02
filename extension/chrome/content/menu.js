@@ -63,12 +63,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   this.hasExtraMenuAction = eGActions[this.actions[menu.extraMenuAction]].isExtraMenuAction;
   
-  // setting menu and tooltips images
-  
-  this.menuImage = menu.skinPath + menu.smallMenuTag +
-                   (menu.noIcons ? "basic_" : "") +
-                   (menu.largeMenu ? "largeMenu.png" : "menu.png");
-  
   ///////////////////////////////////////////////////////////////////////////////////////////////
   //	setting dimensions and positioning
   ///////////////////////////////////////////////////////////////////////////////////////////////
@@ -115,9 +109,6 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this.halfAngleForSector = Math.PI / 8;
   this.startingAngle = 0;
   this.sectorOffset = this.halfAngleForSector;
-  
-  this.menuImage = menu.skinPath + menu.smallMenuTag +
-                   (menu.noIcons ? "basic_" : "") + "extraMenu.png";
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
@@ -232,7 +223,6 @@ function eG_menu () {
   this.easyGesturesID = "easyGesturesPieMenu_" +
                         (this.largeMenu ? "l" : "n") +
                         (this.smallIcons ? "s": "n");
-  this.skinPath = "chrome://easygestures/skin/"; // path to skin containing icons and images
   
   this.smallMenuTag = this.smallIcons ? "small_" : "";
 
@@ -360,7 +350,6 @@ eG_menu.prototype = {
       smallMenuTag: this.smallMenuTag,
       noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
-      menuImage: layout.menuImage,
       menuOpacity: this.menuOpacity,
       showLinkSign: this.handleLinks && this.anchorElementExists &&
                     this.isJustOpened() && layoutName === "main",

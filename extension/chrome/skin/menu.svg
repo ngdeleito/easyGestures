@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+  International License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by-sa/4.0/.
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+     width="122" height="122">
+  <g>
+    <path d="M1,60   A61,61 0 0 1 60,1
+                     A61,61 0 0 1 121,60
+                     A61,61 0 0 1 60,121
+             M60,89  A29,29 0 0 0 89,60
+                     A29,29 0 0 0 60,33
+                     A29,29 0 0 0 33,60
+                     A29,29 0 0 0 60,89
+             M60,121 A61,61 0 0 1 1,60" fill="hsl(0, 0%, 80%)"
+          stroke="hsl(0, 0%, 60%)" stroke-width="2" />
+  </g>
+</svg>
