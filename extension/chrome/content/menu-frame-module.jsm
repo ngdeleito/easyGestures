@@ -188,7 +188,6 @@ function addFavicon(aMessage) {
 function createActionsNodes(frame, aDocument, aMessageData) {
   var anActionsNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   anActionsNode.id = "eG_actions_" + aMessageData.layoutName;
-  anActionsNode.style.opacity = aMessageData.menuOpacity;
   
   // creating actions images
   

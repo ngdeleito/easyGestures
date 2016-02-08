@@ -334,6 +334,7 @@ eG_menu.prototype = {
     var browserMM = window.gBrowser.selectedBrowser.messageManager;
     browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:showMenu", {
       easyGesturesID: this.easyGesturesID,
+      menuOpacity: this.menuOpacity,
       centerX: this.centerX,
       centerY: this.centerY,
       numberOfMainMenus: this.numberOfMainMenus,
@@ -350,7 +351,6 @@ eG_menu.prototype = {
       smallMenuTag: this.smallMenuTag,
       noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
-      menuOpacity: this.menuOpacity,
       showLinkSign: this.handleLinks && this.anchorElementExists &&
                     this.isJustOpened() && layoutName === "main",
       linksDelay: this.linksDelay

@@ -191,9 +191,10 @@ function removeMenuEventHandler(anEvent) {
   easyGesturesNode.parentNode.removeChild(easyGesturesNode);
 }
 
-function createEasyGesturesNode(aDocument) {
+function createEasyGesturesNode(aDocument, menuOpacity) {
   var easyGesturesNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   easyGesturesNode.id = easyGesturesID;
+  easyGesturesNode.style.opacity = menuOpacity;
   
   addEventListener("pagehide", removeMenuEventHandler, true);
   
@@ -206,7 +207,7 @@ function showMenu(aMessage) {
                                          content.document.documentElement;
   var easyGesturesNode = content.document.getElementById(easyGesturesID);
   if (easyGesturesNode === null) {
-    easyGesturesNode = createEasyGesturesNode(content.document);
+    easyGesturesNode = createEasyGesturesNode(content.document, aMessage.data.menuOpacity);
     bodyNode.insertBefore(easyGesturesNode, bodyNode.firstChild);
   }
   
