@@ -219,26 +219,36 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ls div[id^="eG_actions"] {
   visibility: hidden;
   z-index: -1;
+  background-image: url("menu.svg");
+  background-size: cover;
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions"] {
   left: -61px; /* menu radius */
   top: -61px;
+  width: 122px;
+  height: 122px;
 }
 
 #easyGesturesPieMenu_ns div[id^="eG_actions"] {
   left: -38px; /* menu radius */
   top: -38px;
+  width: 76px;
+  height: 76px;
 }
 
 #easyGesturesPieMenu_ln div[id^="eG_actions"] {
-  left: -71px; /* menu radius */
-  top: -71px;
+  left: -70px; /* menu radius */
+  top: -70px;
+  width: 140px;
+  height: 140px;
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_actions"] {
   left: -44px; /* menu radius */
   top: -44px;
+  width: 88px;
+  height: 88px;
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions_extra"],
@@ -246,60 +256,29 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ln div[id^="eG_actions_extra"],
 #easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
   z-index: -2;
+  background-image: url("extraMenu.svg");
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_actions_extra"] {
   top: -135px; /* extra menu y-offset */
-}
-
-#easyGesturesPieMenu_ns div[id^="eG_actions_extra"] {
-  top: -83px; /* extra menu y-offset */
-}
-
-#easyGesturesPieMenu_ln div[id^="eG_actions_extra"] {
-  top: -151px; /* extra menu y-offset */
-}
-
-#easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
-  top: -97px; /* extra menu y-offset */
-}
-
-#easyGesturesPieMenu_nn img.menu {
-  width: 122px;
-  height: 122px;
-}
-
-#easyGesturesPieMenu_ns img.menu {
-  width: 76px;
-  height: 76px;
-}
-
-#easyGesturesPieMenu_ln img.menu {
-  width: 140px;
-  height: 140px;
-}
-
-#easyGesturesPieMenu_ls img.menu {
-  width: 88px;
-  height: 88px;
-}
-
-#easyGesturesPieMenu_nn img.extraMenu {
   width: 122px;
   height: 82px;
 }
 
-#easyGesturesPieMenu_ns img.extraMenu {
+#easyGesturesPieMenu_ns div[id^="eG_actions_extra"] {
+  top: -83px; /* extra menu y-offset */
   width: 76px;
   height: 51px;
 }
 
-#easyGesturesPieMenu_ln img.extraMenu {
+#easyGesturesPieMenu_ln div[id^="eG_actions_extra"] {
+  top: -151px; /* extra menu y-offset */
   width: 140px;
   height: 94px;
 }
 
-#easyGesturesPieMenu_ls img.extraMenu {
+#easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
+  top: -97px; /* extra menu y-offset */
   width: 88px;
   height: 59px;
 }
@@ -343,7 +322,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_ln div[id^="eG_labels"] {
   left: -220px; /* labels x-offset */
-  top: -92px; /* -(menu radius + 0,75 * height of a label) */
+  top: -91px; /* -(menu radius + 0,75 * height of a label) */
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_labels"] {

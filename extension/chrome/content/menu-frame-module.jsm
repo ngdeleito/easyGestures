@@ -188,6 +188,7 @@ function addFavicon(aMessage) {
 function createActionsNodes(frame, aDocument, aMessageData) {
   var anActionsNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
   anActionsNode.id = "eG_actions_" + aMessageData.layoutName;
+  anActionsNode.style.opacity = aMessageData.menuOpacity;
   
   // creating actions images
   
@@ -231,15 +232,6 @@ function createActionsNodes(frame, aDocument, aMessageData) {
     angle += 2 * aMessageData.halfAngleForSector;
   });
   
-  // creating menu image
-  
-  var menuImageNode = aDocument.createElementNS(HTML_NAMESPACE, "img");
-  menuImageNode.className = aMessageData.isExtraMenu ? "extraMenu" : "menu";
-  menuImageNode.src = "chrome://easygestures/skin/" + menuImageNode.className + ".svg";
-  menuImageNode.style.opacity = aMessageData.menuOpacity;
-  menuImageNode.alt = "";
-  anActionsNode.appendChild(menuImageNode);
-  
   return anActionsNode;
 }
 
@@ -264,7 +256,7 @@ function setReloadActionStatus(aMessage) {
 
 function setHideImagesActionStatus(aMessage) {
   var document = aMessage.target.content.document;
-  var disabled = document.querySelectorAll("img:not([id^='eG_'])").length === 0;
+  var disabled = document.querySelectorAll("img").length === 0;
   setActionStatusHelper(document, aMessage.data.layoutName,
                         aMessage.data.actionSector, disabled);
 }
@@ -437,7 +429,7 @@ function clearMenuSign(menuSign) {
 }
 
 function runHideImagesAction(aMessage) {
-  var images = aMessage.target.content.document.querySelectorAll("img:not([id^='eG_'])");
+  var images = aMessage.target.content.document.querySelectorAll("img");
   for (var i=0; i < images.length; ++i) {
     images[i].style.display = "none";
   }
