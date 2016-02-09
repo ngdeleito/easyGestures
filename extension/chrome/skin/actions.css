@@ -57,24 +57,25 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #eG_linkSign {
   visibility: hidden;
+  background-image: url("linkSign.svg");
 }
 
 #easyGesturesPieMenu_nn #eG_linkSign,
 #easyGesturesPieMenu_ln #eG_linkSign {
-  left: -16px;
-  top: -16px;
-  background-image: url("link.png");
-  width: 32px;
-  height: 32px;
+  left: -10px;
+  top: -10px;
+  background-size: 20px 20px;
+  width: 20px;
+  height: 20px;
 }
 
 #easyGesturesPieMenu_ns #eG_linkSign,
 #easyGesturesPieMenu_ls #eG_linkSign {
-  left: -10px;
-  top: -10px;
-  background-image: url("small_link.png");
-  width: 20px;
-  height: 20px;
+  left: -7px;
+  top: -7px;
+  background-size: 14px 14px;
+  width: 14px;
+  height: 14px;
 }
 
 #easyGesturesMainMenusSign {
