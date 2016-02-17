@@ -1012,7 +1012,7 @@ div.selectAll { background-position: -128px -992px !important ; }
 div.selectAll[grayed="false"][active="true"] { background-position: -128px -1024px !important ; }
 
 
-/* NO LONGER USED REGULAR ICONS */
+/* NO LONGER USED REGULAR ICONS
 
 div.markVisitedLinks[grayed="true"] { background-position: 0px -864px !important ; }
 div.markVisitedLinks { background-position: 0px -896px !important ; }
@@ -1101,6 +1101,7 @@ div.runProgramFile9[grayed="false"][active="true"] { background-position: -384px
 div.runProgramFile10[grayed="true"] { background-position: -416px -576px !important ; }
 div.runProgramFile10 { background-position: -416px -608px !important ; }
 div.runProgramFile10[grayed="false"][active="true"] { background-position: -416px -640px !important ; }
+*/
 
 
 /* SMALL ICONS */
@@ -1547,7 +1548,7 @@ div.small_selectAll[grayed="false"][active="true"] { background-position: -80px 
 image.eG_selectAll { -moz-image-region: rect(620px 100px 640px 80px); }
 
 
-/* NO LONGER USED SMALL ICONS */
+/* NO LONGER USED SMALL ICONS
 
 div.small_markVisitedLinks[grayed="true"] { background-position: 0px -540px !important ; }
 div.small_markVisitedLinks { background-position: 0px -560px !important ; }
@@ -1658,3 +1659,4 @@ div.small_runProgramFile10[grayed="true"] { background-position: -260px -360px !
 div.small_runProgramFile10 { background-position: -260px -380px !important ; }
 div.small_runProgramFile10[grayed="false"][active="true"] { background-position: -260px -400px !important ; }
 image.eG_runProgramFile10 { -moz-image-region: rect(380px 280px 400px 260px); }
+*/
