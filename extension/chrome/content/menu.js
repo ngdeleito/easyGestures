@@ -224,8 +224,6 @@ function eG_menu () {
                         (this.largeMenu ? "l" : "n") +
                         (this.smallIcons ? "s": "n");
   
-  this.smallMenuTag = this.smallIcons ? "small_" : "";
-
   this.curLayoutName = "main";
   this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
   this.setHidden();
@@ -348,7 +346,6 @@ eG_menu.prototype = {
       startingAngle: layout.startingAngle,
       loadURLActionPrefs: this.loadURLActionPrefs,
       runScriptActionPrefs: this.runScriptActionPrefs,
-      smallMenuTag: this.smallMenuTag,
       noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
       showLinkSign: this.handleLinks && this.anchorElementExists &&
