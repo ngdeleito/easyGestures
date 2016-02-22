@@ -1944,7 +1944,7 @@ image.eG_showDownloads { -moz-image-region: rect(380px 160px 400px 140px); }
 #easyGesturesPieMenu_ns .loadURL1[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL1[grayed="true"],
 #easyGesturesPieMenu_ns .runScript1[grayed="true"],
-#easyGesturesPieMenu_ls .runScript1[grayed="true"] { background-position: 0px -432px; }
+#easyGesturesPieMenu_ls .runScript1[grayed="true"] { background-position: 0px -420px; }
 #easyGesturesPieMenu_ns .loadURL1,
 #easyGesturesPieMenu_ls .loadURL1,
 #easyGesturesPieMenu_ns .runScript1,
@@ -1958,7 +1958,7 @@ image.eG_loadURL1, image.eG_runScript1 { -moz-image-region: rect(440px 20px 460p
 #easyGesturesPieMenu_ns .loadURL2[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL2[grayed="true"],
 #easyGesturesPieMenu_ns .runScript2[grayed="true"],
-#easyGesturesPieMenu_ls .runScript2[grayed="true"] { background-position: -20px -432px; }
+#easyGesturesPieMenu_ls .runScript2[grayed="true"] { background-position: -20px -420px; }
 #easyGesturesPieMenu_ns .loadURL2,
 #easyGesturesPieMenu_ls .loadURL2,
 #easyGesturesPieMenu_ns .runScript2,
@@ -1972,7 +1972,7 @@ image.eG_loadURL2, image.eG_runScript2 { -moz-image-region: rect(440px 40px 460p
 #easyGesturesPieMenu_ns .loadURL3[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL3[grayed="true"],
 #easyGesturesPieMenu_ns .runScript3[grayed="true"],
-#easyGesturesPieMenu_ls .runScript3[grayed="true"] { background-position: -40px -432px; }
+#easyGesturesPieMenu_ls .runScript3[grayed="true"] { background-position: -40px -420px; }
 #easyGesturesPieMenu_ns .loadURL3,
 #easyGesturesPieMenu_ls .loadURL3,
 #easyGesturesPieMenu_ns .runScript3,
@@ -1986,7 +1986,7 @@ image.eG_loadURL3, image.eG_runScript3 { -moz-image-region: rect(440px 60px 460p
 #easyGesturesPieMenu_ns .loadURL4[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL4[grayed="true"],
 #easyGesturesPieMenu_ns .runScript4[grayed="true"],
-#easyGesturesPieMenu_ls .runScript4[grayed="true"] { background-position: -60px -432px; }
+#easyGesturesPieMenu_ls .runScript4[grayed="true"] { background-position: -60px -420px; }
 #easyGesturesPieMenu_ns .loadURL4,
 #easyGesturesPieMenu_ls .loadURL4,
 #easyGesturesPieMenu_ns .runScript4,
@@ -2000,7 +2000,7 @@ image.eG_loadURL4, image.eG_runScript4 { -moz-image-region: rect(440px 80px 460p
 #easyGesturesPieMenu_ns .loadURL5[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL5[grayed="true"],
 #easyGesturesPieMenu_ns .runScript5[grayed="true"],
-#easyGesturesPieMenu_ls .runScript5[grayed="true"] { background-position: -80px -432px; }
+#easyGesturesPieMenu_ls .runScript5[grayed="true"] { background-position: -80px -420px; }
 #easyGesturesPieMenu_ns .loadURL5,
 #easyGesturesPieMenu_ls .loadURL5,
 #easyGesturesPieMenu_ns .runScript5,
@@ -2014,7 +2014,7 @@ image.eG_loadURL5, image.eG_runScript5 { -moz-image-region: rect(440px 100px 460
 #easyGesturesPieMenu_ns .loadURL6[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL6[grayed="true"],
 #easyGesturesPieMenu_ns .runScript6[grayed="true"],
-#easyGesturesPieMenu_ls .runScript6[grayed="true"] { background-position: -100px -432px; }
+#easyGesturesPieMenu_ls .runScript6[grayed="true"] { background-position: -100px -420px; }
 #easyGesturesPieMenu_ns .loadURL6,
 #easyGesturesPieMenu_ls .loadURL6,
 #easyGesturesPieMenu_ns .runScript6,
@@ -2028,7 +2028,7 @@ image.eG_loadURL6, image.eG_runScript6 { -moz-image-region: rect(440px 120px 460
 #easyGesturesPieMenu_ns .loadURL7[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL7[grayed="true"],
 #easyGesturesPieMenu_ns .runScript7[grayed="true"],
-#easyGesturesPieMenu_ls .runScript7[grayed="true"] { background-position: -120px -432px; }
+#easyGesturesPieMenu_ls .runScript7[grayed="true"] { background-position: -120px -420px; }
 #easyGesturesPieMenu_ns .loadURL7,
 #easyGesturesPieMenu_ls .loadURL7,
 #easyGesturesPieMenu_ns .runScript7,
@@ -2042,7 +2042,7 @@ image.eG_loadURL7, image.eG_runScript7 { -moz-image-region: rect(440px 140px 460
 #easyGesturesPieMenu_ns .loadURL8[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL8[grayed="true"],
 #easyGesturesPieMenu_ns .runScript8[grayed="true"],
-#easyGesturesPieMenu_ls .runScript8[grayed="true"] { background-position: -140px -432px; }
+#easyGesturesPieMenu_ls .runScript8[grayed="true"] { background-position: -140px -420px; }
 #easyGesturesPieMenu_ns .loadURL8,
 #easyGesturesPieMenu_ls .loadURL8,
 #easyGesturesPieMenu_ns .runScript8,
@@ -2056,7 +2056,7 @@ image.eG_loadURL8, image.eG_runScript8 { -moz-image-region: rect(440px 160px 460
 #easyGesturesPieMenu_ns .loadURL9[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL9[grayed="true"],
 #easyGesturesPieMenu_ns .runScript9[grayed="true"],
-#easyGesturesPieMenu_ls .runScript9[grayed="true"] { background-position: -160px -432px; }
+#easyGesturesPieMenu_ls .runScript9[grayed="true"] { background-position: -160px -420px; }
 #easyGesturesPieMenu_ns .loadURL9,
 #easyGesturesPieMenu_ls .loadURL9,
 #easyGesturesPieMenu_ns .runScript9,
@@ -2070,7 +2070,7 @@ image.eG_loadURL9, image.eG_runScript9 { -moz-image-region: rect(440px 180px 460
 #easyGesturesPieMenu_ns .loadURL10[grayed="true"],
 #easyGesturesPieMenu_ls .loadURL10[grayed="true"],
 #easyGesturesPieMenu_ns .runScript10[grayed="true"],
-#easyGesturesPieMenu_ls .runScript10[grayed="true"] { background-position: -180px -432px; }
+#easyGesturesPieMenu_ls .runScript10[grayed="true"] { background-position: -180px -420px; }
 #easyGesturesPieMenu_ns .loadURL10,
 #easyGesturesPieMenu_ls .loadURL10,
 #easyGesturesPieMenu_ns .runScript10,
