@@ -682,13 +682,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .showExtraMenu[extraMenuShowing="true"],
 #easyGesturesPieMenu_ln .showExtraMenu[extraMenuShowing="true"] { background-position: -32px -64px; }
 
-#easyGesturesPieMenu_nn .moreDropDownMenu,
-#easyGesturesPieMenu_ln .moreDropDownMenu { background-position: -64px -32px; }
-#easyGesturesPieMenu_nn .moreDropDownMenu[active="true"],
-#easyGesturesPieMenu_ln .moreDropDownMenu[active="true"],
-#easyGesturesPieMenu_nn .moreDropDownMenu[extraMenuShowing="true"],
-#easyGesturesPieMenu_ln .moreDropDownMenu[extraMenuShowing="true"] { background-position: -64px -64px; }
-
 #easyGesturesPieMenu_nn .back[grayed="true"],
 #easyGesturesPieMenu_ln .back[grayed="true"] { background-position: -128px -96px; }
 #easyGesturesPieMenu_nn .back,
@@ -1333,6 +1326,13 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 /* NO LONGER USED REGULAR ICONS
 
+#easyGesturesPieMenu_nn .moreDropDownMenu,
+#easyGesturesPieMenu_ln .moreDropDownMenu { background-position: -64px -32px; }
+#easyGesturesPieMenu_nn .moreDropDownMenu[active="true"],
+#easyGesturesPieMenu_ln .moreDropDownMenu[active="true"],
+#easyGesturesPieMenu_nn .moreDropDownMenu[extraMenuShowing="true"],
+#easyGesturesPieMenu_ln .moreDropDownMenu[extraMenuShowing="true"] { background-position: -64px -64px; }
+
 div.markVisitedLinks[grayed="true"] { background-position: 0px -864px; }
 div.markVisitedLinks { background-position: 0px -896px; }
 div.markVisitedLinks[grayed="false"][active="true"] { background-position: 0px -928px; }
@@ -1452,14 +1452,6 @@ image.eG_empty { -moz-image-region: rect(0px 20px 20px 0px); }
 #easyGesturesPieMenu_ns .showExtraMenu[extraMenuShowing="true"],
 #easyGesturesPieMenu_ls .showExtraMenu[extraMenuShowing="true"] { background-position: -20px -40px; }
 image.eG_showExtraMenu { -moz-image-region: rect(20px 40px 40px 20px); }
-
-#easyGesturesPieMenu_ns .moreDropDownMenu,
-#easyGesturesPieMenu_ls .moreDropDownMenu { background-position: -40px -20px; }
-#easyGesturesPieMenu_ns .moreDropDownMenu[active="true"],
-#easyGesturesPieMenu_ls .moreDropDownMenu[active="true"],
-#easyGesturesPieMenu_ns .moreDropDownMenu[extraMenuShowing="true"],
-#easyGesturesPieMenu_ls .moreDropDownMenu[extraMenuShowing="true"] { background-position: -40px -40px; }
-image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
 
 #easyGesturesPieMenu_ns .back[grayed="true"],
 #easyGesturesPieMenu_ls .back[grayed="true"] { background-position: -80px -60px; }
@@ -2187,6 +2179,14 @@ image.eG_selectAll { -moz-image-region: rect(620px 100px 640px 80px); }
 
 
 /* NO LONGER USED SMALL ICONS
+
+#easyGesturesPieMenu_ns .moreDropDownMenu,
+#easyGesturesPieMenu_ls .moreDropDownMenu { background-position: -40px -20px; }
+#easyGesturesPieMenu_ns .moreDropDownMenu[active="true"],
+#easyGesturesPieMenu_ls .moreDropDownMenu[active="true"],
+#easyGesturesPieMenu_ns .moreDropDownMenu[extraMenuShowing="true"],
+#easyGesturesPieMenu_ls .moreDropDownMenu[extraMenuShowing="true"] { background-position: -40px -40px; }
+image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
 
 div.markVisitedLinks[grayed="true"] { background-position: 0px -540px; }
 div.markVisitedLinks { background-position: 0px -560px; }
