@@ -223,7 +223,7 @@ function createActionsNodes(frame, aDocument, aMessageData) {
       }
     }
     
-    anActionNode.setAttribute("class", aMessageData.noIcons ? "empty" : iconName);
+    anActionNode.className = aMessageData.noIcons ? "empty" : iconName;
     anActionsNode.appendChild(anActionNode);
     angle += 2 * aMessageData.halfAngleForSector;
   });
