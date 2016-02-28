@@ -203,8 +203,6 @@ function createActionsNodes(frame, aDocument, aMessageData) {
     anActionNode.id = "eG_action_" + aMessageData.layoutName + "_" + index;
     anActionNode.style.left = Math.round(xpos) + "px";
     anActionNode.style.top = Math.round(ypos) + "px";
-    anActionNode.setAttribute("grayed", "false");
-    anActionNode.setAttribute("active", "false");
     
     let iconName = action;
     
@@ -236,7 +234,12 @@ function createActionsNodes(frame, aDocument, aMessageData) {
 function setActionStatusHelper(document, layoutName, actionSector, disabled) {
   var actionsNode = document.getElementById("eG_actions_" + layoutName);
   var actionNode = actionsNode.childNodes[actionSector];
-  actionNode.setAttribute("grayed", disabled.toString());
+  if (disabled) {
+    actionNode.classList.add("disabled");
+  }
+  else {
+    actionNode.classList.remove("disabled");
+  }
 }
 
 function setActionStatus(aMessage) {
@@ -326,7 +329,7 @@ function clearHoverEffect(aDocument, sector, layoutName, actionsLength) {
   var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
   
   if (sector >= 0 && sector < actionsLength) {
-    actionsNode.childNodes[sector].setAttribute("active", "false");
+    actionsNode.childNodes[sector].classList.remove("selected");
     if (tooltipsNode !== null) {
       tooltipsNode.childNodes[sector].classList.remove("selected");
     }
@@ -338,7 +341,7 @@ function setHoverEffect(aDocument, sector, layoutName, actionsLength) {
   var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
   
   if (sector >= 0 && sector < actionsLength) {
-    actionsNode.childNodes[sector].setAttribute("active", "true");
+    actionsNode.childNodes[sector].classList.add("selected");
     if (tooltipsNode !== null) {
       tooltipsNode.childNodes[sector].classList.add("selected");
     }
@@ -363,7 +366,7 @@ function hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName
   contextMenuSign.style.visibility = "hidden";
   
   if (sector >= 0 && sector < layoutActionsLength) {
-    actionsNode.childNodes[sector].setAttribute("active", "false");
+    actionsNode.childNodes[sector].classList.remove("selected");
     if (tooltipsNode !== null) {
       tooltipsNode.childNodes[sector].classList.remove("selected");
     }
@@ -373,8 +376,8 @@ function hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName
   if (baseLayoutName !== "") {
     var baseActionsNode = aDocument.getElementById("eG_actions_" + baseLayoutName);
     var baseTooltipsNode = aDocument.getElementById("eG_labels_" + baseLayoutName);
-    baseActionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("extraMenuShowing", "false");
-    baseActionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("active", "false");
+    baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
+    baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
     if (baseTooltipsNode !== null) {
       baseTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
     }
@@ -388,7 +391,7 @@ function showExtraMenu(aDocument, layoutName) {
   var extraMenusSign = specialNodes.childNodes[2];
   var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
   
-  actionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("extraMenuShowing", "true");
+  actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
   
   mainMenusSign.style.visibility = "hidden";
   extraMenusSign.style.visibility = "visible";
@@ -406,7 +409,7 @@ function hideExtraMenu(aDocument, layoutName, sector, layoutActionsLength, baseL
   var extraMenusSign = specialNodes.childNodes[2];
   
   // reset rollover of extra menu action icon in main menu
-  baseActionsNode.childNodes[EXTRA_MENU_ACTION].setAttribute("extraMenuShowing", "false");
+  baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
   
   hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName);
   
