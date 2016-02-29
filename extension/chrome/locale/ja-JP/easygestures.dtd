@@ -61,6 +61,7 @@
 <!ENTITY behavior.display.smallIcons "小さいアイコンを使う">
 <!ENTITY behavior.display.opacity "パイメニューの透明度">
 <!ENTITY behavior.tooltips "アクション名をツールチップで表示する">
+<!ENTITY behavior.tooltips.activate "アクション名をツールチップで表示する">
 <!ENTITY behavior.tooltips.delay " 表示までの遅延時間">
 <!ENTITY behavior.move "パイメニューの移動法">
 <!ENTITY behavior.move.shiftKey "Shift キーを押して">

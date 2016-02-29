@@ -60,7 +60,8 @@
 <!ENTITY behavior.display.noIcons "Display di base (senza icone)">
 <!ENTITY behavior.display.smallIcons "Usa Icone piccole">
 <!ENTITY behavior.display.opacity "Opacità del Menu Circolare">
-<!ENTITY behavior.tooltips "Attiva i Tooltips">
+<!ENTITY behavior.tooltips "Tooltips">
+<!ENTITY behavior.tooltips.activate "Attiva i Tooltips">
 <!ENTITY behavior.tooltips.delay "Ritardo dei Tooltips">
 <!ENTITY behavior.move "Muovi il menu circolare">
 <!ENTITY behavior.move.shiftKey "Premendo il tasto Shift">

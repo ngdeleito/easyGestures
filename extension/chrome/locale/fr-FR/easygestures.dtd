@@ -59,7 +59,8 @@
 <!ENTITY behavior.display.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
 <!ENTITY behavior.display.smallIcons "Utiliser des petites icônes">
 <!ENTITY behavior.display.opacity "Opacité du menu circulaire :">
-<!ENTITY behavior.tooltips "Activer les infobulles">
+<!ENTITY behavior.tooltips "Infobulles">
+<!ENTITY behavior.tooltips.activate "Activer les infobulles">
 <!ENTITY behavior.tooltips.delay "Activer après un délai de">
 <!ENTITY behavior.move "Déplacer le menu circulaire">
 <!ENTITY behavior.move.shiftKey "En appuyant sur une touche Maj">

@@ -60,7 +60,8 @@
 <!ENTITY behavior.display.noIcons "Temel Görünüm (simgeleri gösterme)">
 <!ENTITY behavior.display.smallIcons "Küçük Simgeler Kullan">
 <!ENTITY behavior.display.opacity "Kolay Menü Saydamlığı">
-<!ENTITY behavior.tooltips "Araç İpuçlarını Etkinleştir">
+<!ENTITY behavior.tooltips "Araç İpuçlarını">
+<!ENTITY behavior.tooltips.activate "Araç İpuçlarını Etkinleştir">
 <!ENTITY behavior.tooltips.delay "Araç İpuçları Gecikmesi">
 <!ENTITY behavior.move "Kolay menüyü taşı">
 <!ENTITY behavior.move.shiftKey "Shift tuşuna basarak">

@@ -61,6 +61,7 @@
 <!ENTITY behavior.display.smallIcons "使用小图标">
 <!ENTITY behavior.display.opacity "圆饼菜单不透明">
 <!ENTITY behavior.tooltips "启用悬停提示">
+<!ENTITY behavior.tooltips.activate "启用悬停提示">
 <!ENTITY behavior.tooltips.delay "提示延时">
 <!ENTITY behavior.move "移动圆饼菜单">
 <!ENTITY behavior.move.shiftKey "按 Shift 键">

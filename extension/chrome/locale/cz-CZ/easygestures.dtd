@@ -60,7 +60,8 @@
 <!ENTITY behavior.display.noIcons "Základní zobrazení (nezobrazuje ikony)">
 <!ENTITY behavior.display.smallIcons "Použít malé ikony">
 <!ENTITY behavior.display.opacity "Průhlednost nabídky">
-<!ENTITY behavior.tooltips "Aktivovat popisky">
+<!ENTITY behavior.tooltips "Popisky">
+<!ENTITY behavior.tooltips.activate "Aktivovat popisky">
 <!ENTITY behavior.tooltips.delay "Zpoždění">
 <!ENTITY behavior.move "Přesunout nabídku">
 <!ENTITY behavior.move.shiftKey "Stiskem klávesy Shift">

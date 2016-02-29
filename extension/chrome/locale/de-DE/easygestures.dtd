@@ -61,7 +61,8 @@
 <!ENTITY behavior.display.noIcons "Einfache Anzeige (ohne Symbole) verwenden">
 <!ENTITY behavior.display.smallIcons "Kleine Symbole verwenden">
 <!ENTITY behavior.display.opacity "Kreismenü-Deckkraft">
-<!ENTITY behavior.tooltips "Tooltips aktivieren">
+<!ENTITY behavior.tooltips "Tooltips">
+<!ENTITY behavior.tooltips.activate "Tooltips aktivieren">
 <!ENTITY behavior.tooltips.delay "Tooltip-Verzögerung">
 <!ENTITY behavior.move "Kreismenü verschieben">
 <!ENTITY behavior.move.shiftKey "durch Halten der Umschalttaste">

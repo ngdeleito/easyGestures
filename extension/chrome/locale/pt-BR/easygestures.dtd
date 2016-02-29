@@ -60,7 +60,8 @@
 <!ENTITY behavior.display.noIcons "Mostrar Básico (não mostra ícones)">
 <!ENTITY behavior.display.smallIcons "Usar Ícones Pequenos">
 <!ENTITY behavior.display.opacity "Opacidade do Menu de Torta">
-<!ENTITY behavior.tooltips "Ativar Dicas">
+<!ENTITY behavior.tooltips "Dicas">
+<!ENTITY behavior.tooltips.activate "Ativar Dicas">
 <!ENTITY behavior.tooltips.delay "Atraso das Dicas">
 <!ENTITY behavior.move "Mover menu de torta">
 <!ENTITY behavior.move.shiftKey "Pressionando a tecla Shift">

@@ -60,7 +60,8 @@
 <!ENTITY behavior.display.noIcons "Egyszerű megjelenés (ikonok elrejtése)">
 <!ENTITY behavior.display.smallIcons "Kis ikonok használata">
 <!ENTITY behavior.display.opacity "Köralakú menü áttetszősége">
-<!ENTITY behavior.tooltips "Felbukkanó tippek megjelenítése">
+<!ENTITY behavior.tooltips "Felbukkanó tippek">
+<!ENTITY behavior.tooltips.activate "Felbukkanó tippek megjelenítése">
 <!ENTITY behavior.tooltips.delay "Felbukkanó tippek késleltetése">
 <!ENTITY behavior.move "Köralakú menü mozgatása">
 <!ENTITY behavior.move.shiftKey "Shift billentyű lenyomásával">

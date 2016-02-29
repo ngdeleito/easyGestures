@@ -61,6 +61,7 @@
 <!ENTITY behavior.display.smallIcons "Użyj małych ikon">
 <!ENTITY behavior.display.opacity "Przeźroczystość Centrum nawigacyjnego">
 <!ENTITY behavior.tooltips "Wyświetlanie opisów przycisków">
+<!ENTITY behavior.tooltips.activate "Wyświetlanie opisów przycisków">
 <!ENTITY behavior.tooltips.delay "Czas opóźnienia wyświetlania">
 <!ENTITY behavior.move "Przesuwaj menu Centrum">
 <!ENTITY behavior.move.shiftKey "naciskając klawisz [ Shift ]">

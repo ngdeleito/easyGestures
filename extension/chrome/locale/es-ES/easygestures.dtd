@@ -60,7 +60,8 @@
 <!ENTITY behavior.display.noIcons "Básica (sin iconos)">
 <!ENTITY behavior.display.smallIcons "Usar iconos pequeños">
 <!ENTITY behavior.display.opacity "Opacidad del menú circular:">
-<!ENTITY behavior.tooltips "Activar las descripciones emergentes">
+<!ENTITY behavior.tooltips "Descripciones emergentes">
+<!ENTITY behavior.tooltips.activate "Activar las descripciones emergentes">
 <!ENTITY behavior.tooltips.delay "Activar tras un periodo de">
 <!ENTITY behavior.move "Desplazar el menú circular">
 <!ENTITY behavior.move.shiftKey "Pulsando la tecla mayúsculas">

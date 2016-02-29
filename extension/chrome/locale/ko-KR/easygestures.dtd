@@ -61,6 +61,7 @@
 <!ENTITY behavior.display.smallIcons "작은 아이콘 사용">
 <!ENTITY behavior.display.opacity "원형 메뉴 투명도">
 <!ENTITY behavior.tooltips "툴팁 작동">
+<!ENTITY behavior.tooltips.activate "툴팁 작동">
 <!ENTITY behavior.tooltips.delay "툴팁 지연">
 <!ENTITY behavior.move "원형 메뉴 이동">
 <!ENTITY behavior.move.shiftKey "Shift 키를 누를 경우">

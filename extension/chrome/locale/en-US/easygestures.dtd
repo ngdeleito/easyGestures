@@ -48,8 +48,9 @@
 <!ENTITY behavior.display.noIcons "Basic display (don't display icons)">
 <!ENTITY behavior.display.smallIcons "Use small icons">
 <!ENTITY behavior.display.opacity "Pie menu opacity:">
-<!ENTITY behavior.tooltips "Activate tooltips">
-<!ENTITY behavior.tooltips.delay "Tooltips activation delay">
+<!ENTITY behavior.tooltips "Tooltips">
+<!ENTITY behavior.tooltips.activate "Activate tooltips">
+<!ENTITY behavior.tooltips.delay "Activation delay:">
 <!ENTITY behavior.move "Move pie menu">
 <!ENTITY behavior.move.shiftKey "By pressing a Shift key">
 <!ENTITY behavior.move.menuEdge "By reaching the menu edge">

@@ -61,6 +61,7 @@
 <!ENTITY behavior.display.smallIcons "使用小型圖示">
 <!ENTITY behavior.display.opacity "圓餅選單透明度">
 <!ENTITY behavior.tooltips "圓餅動作提示">
+<!ENTITY behavior.tooltips.activate "圓餅動作提示">
 <!ENTITY behavior.tooltips.delay "顯示動作提示在停頓…">
 <!ENTITY behavior.move "移動圓餅選單">
 <!ENTITY behavior.move.shiftKey "按住 Shift 鍵時">
