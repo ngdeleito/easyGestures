@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "使用瀏覽器設定">
 <!ENTITY behavior.autoscrolling "轉換成「自動捲動」：在圓餅選單中間">
+<!ENTITY behavior.autoscrolling.activate "轉換成「自動捲動」：在圓餅選單中間">
 <!ENTITY behavior.autoscrolling.delay "停頓…">
 
 <!ENTITY menus.main "主要選單">

@@ -59,8 +59,9 @@
 <!ENTITY behavior.links.openLinkAction "Use 'Open link' action behavior">
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Use browser behavior">
-<!ENTITY behavior.autoscrolling "Enable autoscrolling through the pie menu center">
-<!ENTITY behavior.autoscrolling.delay "Delay">
+<!ENTITY behavior.autoscrolling "Autoscrolling through the pie menu center">
+<!ENTITY behavior.autoscrolling.activate "Activate autoscrolling">
+<!ENTITY behavior.autoscrolling.delay "Activation delay:">
 
 <!ENTITY menus.main "Main Menu">
 <!ENTITY menus.extra "Extra Menu">

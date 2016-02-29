@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Użyj ustawień przeglądarki">
 <!ENTITY behavior.autoscrolling "Automatyczne przewijanie">
+<!ENTITY behavior.autoscrolling.activate "Automatyczne przewijanie">
 <!ENTITY behavior.autoscrolling.delay "Czas opóźnienia">
 
 <!ENTITY menus.main "Menu główne">

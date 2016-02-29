@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "ブラウザの動作を使う">
 <!ENTITY behavior.autoscrolling "パイメニューの中心から自動スクロールする">
+<!ENTITY behavior.autoscrolling.activate "パイメニューの中心から自動スクロールする">
 <!ENTITY behavior.autoscrolling.delay "遅延時間">
 
 <!ENTITY menus.main "メインメニュー">

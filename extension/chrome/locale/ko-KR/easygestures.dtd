@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "브라우저 행동 사용">
 <!ENTITY behavior.autoscrolling "원형 메뉴 중앙 통해 자동 스크롤">
+<!ENTITY behavior.autoscrolling.activate "원형 메뉴 중앙 통해 자동 스크롤">
 <!ENTITY behavior.autoscrolling.delay "지연시간">
 
 <!ENTITY menus.main "주 메뉴">

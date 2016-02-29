@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Tarayıcı Tepkisini Kullan">
 <!ENTITY behavior.autoscrolling "Kolay menü merkezi içinde otomatik kaydırma">
+<!ENTITY behavior.autoscrolling.activate "Kolay menü merkezi içinde otomatik kaydırma">
 <!ENTITY behavior.autoscrolling.delay "Gecikme">
 
 <!ENTITY menus.main "Ana Menü">

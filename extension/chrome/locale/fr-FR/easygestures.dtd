@@ -70,8 +70,9 @@
 <!ENTITY behavior.links.openLinkAction "Suivre le comportement de l'action 'Ouvrir le lien'">
 <!ENTITY behavior.links.configureAction "Configurer cette action">
 <!ENTITY behavior.links.browser "Suivre le comportement du navigateur">
-<!ENTITY behavior.autoscrolling "Activer le défilement automatique par le centre du menu circulaire">
-<!ENTITY behavior.autoscrolling.delay "Délai">
+<!ENTITY behavior.autoscrolling "Défilement automatique par le centre du menu circulaire">
+<!ENTITY behavior.autoscrolling.activate "Activer le défilement automatique">
+<!ENTITY behavior.autoscrolling.delay "Activer après un délai de">
 
 <!ENTITY menus.main "Menu principal">
 <!ENTITY menus.extra "Menu supplémentaire">

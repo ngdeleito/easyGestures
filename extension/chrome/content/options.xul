@@ -275,15 +275,18 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
-      label="&behavior.autoscrolling;" oncommand="updateUI();" class="header" />
-    <hbox align="center" style="margin-left: 1em">
-      <label id="autoscrollingDelayLabel"
-        value="&behavior.autoscrolling.delay;" />
-      <textbox id="autoscrollingDelayValue" preference="autoscrollingDelay"
-        size="3" style="text-align: right" />
-      <label id="autoscrollingDelayUnit" value="ms" />
-    </hbox>
+    <label value="&behavior.autoscrolling;" class="header" />
+    <vbox style="margin-left: 1em">
+      <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
+        label="&behavior.autoscrolling.activate;" oncommand="updateUI();" />
+      <hbox align="center">
+        <label id="autoscrollingDelayLabel"
+          value="&behavior.autoscrolling.delay;" />
+        <textbox id="autoscrollingDelayValue" preference="autoscrollingDelay"
+          size="3" style="text-align: right" />
+        <label id="autoscrollingDelayUnit" value="ms" />
+      </hbox>
+    </vbox>
   </prefpane>
   
   <prefpane

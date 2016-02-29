@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Böngésző viselkedésének átvétele">
 <!ENTITY behavior.autoscrolling "Automatikus görgetés a köralakú menü közepén keresztül">
+<!ENTITY behavior.autoscrolling.activate "Automatikus görgetés a köralakú menü közepén keresztül">
 <!ENTITY behavior.autoscrolling.delay "Késleltetés">
 
 <!ENTITY menus.main "Főmenü">

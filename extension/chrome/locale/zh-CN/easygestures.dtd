@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "使用浏览器动作">
 <!ENTITY behavior.autoscrolling "自动卷轴通过圆饼菜单中心">
+<!ENTITY behavior.autoscrolling.activate "自动卷轴通过圆饼菜单中心">
 <!ENTITY behavior.autoscrolling.delay "延迟时间">
 
 <!ENTITY menus.main "主菜单">

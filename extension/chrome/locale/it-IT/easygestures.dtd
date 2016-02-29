@@ -72,7 +72,8 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Segui il comportamento del Browser">
 <!ENTITY behavior.autoscrolling "Autoscorrimento attraverso il centro del menu circolare">
-<!ENTITY behavior.autoscrolling.delay "Ritado">
+<!ENTITY behavior.autoscrolling.activate "Attiva i Autoscorrimento">
+<!ENTITY behavior.autoscrolling.delay "Ritardo">
 
 <!ENTITY menus.main "Menu Principale">
 <!ENTITY menus.extra "Menu Extra">

@@ -72,7 +72,8 @@
 <!ENTITY behavior.links.openLinkAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Verhalten des Browsers verwenden">
-<!ENTITY behavior.autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte aktivieren">
+<!ENTITY behavior.autoscrolling "Automatischen Bildlauf durch Kreismenü-Mitte">
+<!ENTITY behavior.autoscrolling.activate "Automatischen Bildlauf aktivieren">
 <!ENTITY behavior.autoscrolling.delay "Verzögerung">
 
 <!ENTITY menus.main "Haupt-Kreismenü">

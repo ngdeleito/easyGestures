@@ -71,8 +71,9 @@
 <!ENTITY behavior.links.openLinkAction "Usar el comportamiento de la acción &apos;Abrir enlace&apos;">
 <!ENTITY behavior.links.configureAction "Configurar esta acción">
 <!ENTITY behavior.links.browser "Usar el comportamiento del navegador">
-<!ENTITY behavior.autoscrolling "Habilitar el desplazamiento automático a través del menú circular">
-<!ENTITY behavior.autoscrolling.delay "Periodo">
+<!ENTITY behavior.autoscrolling "Desplazamiento automático a través del menú circular">
+<!ENTITY behavior.autoscrolling.activate "Activar el desplazamiento automático">
+<!ENTITY behavior.autoscrolling.delay "Activar tras un periodo de">
 
 <!ENTITY menus.main "Menú principal">
 <!ENTITY menus.extra "Menú extra">

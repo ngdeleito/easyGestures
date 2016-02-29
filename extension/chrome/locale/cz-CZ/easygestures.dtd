@@ -72,6 +72,7 @@
 <!ENTITY behavior.links.configureAction "Configure this action">
 <!ENTITY behavior.links.browser "Použít chování prohlížeče">
 <!ENTITY behavior.autoscrolling "Automatický posun přes střed nabídky">
+<!ENTITY behavior.autoscrolling.activate "Automatický posun přes střed nabídky">
 <!ENTITY behavior.autoscrolling.delay "Zpoždění">
 
 <!ENTITY menus.main "Hlavní nabídka">
