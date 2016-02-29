@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "Shift billentyű lenyomásával">
 <!ENTITY behavior.move.menuEdge "a menü szélének elérésekor">
 <!ENTITY behavior.links "Hivatkozásra kattintás a köralakú menü közepén keresztül">
+<!ENTITY behavior.links.activate "Hivatkozásra kattintás a köralakú menü közepén keresztül">
 <!ENTITY behavior.links.delay "Késleltetés legfeljebb">
 <!ENTITY behavior.links.openLinkAction "'Hivatkozás megnyitása' művelet viselkedésének használata">
 <!ENTITY behavior.links.configureAction "Configure this action">

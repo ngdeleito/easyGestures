@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "按住 Shift 鍵時">
 <!ENTITY behavior.move.menuEdge "游標在選單邊緣時">
 <!ENTITY behavior.links "允許穿過圓餅選單中間點選鏈結">
+<!ENTITY behavior.links.activate "允許穿過圓餅選單中間點選鏈結">
 <!ENTITY behavior.links.delay "擊點的最大延遲時間">
 <!ENTITY behavior.links.openLinkAction "使用「開啟鏈結」動作設定">
 <!ENTITY behavior.links.configureAction "Configure this action">

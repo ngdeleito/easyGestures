@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "按 Shift 键">
 <!ENTITY behavior.move.menuEdge "延伸菜单边缘">
 <!ENTITY behavior.links "启用自动点击链接通过圆饼菜单中心">
+<!ENTITY behavior.links.activate "启用自动点击链接通过圆饼菜单中心">
 <!ENTITY behavior.links.delay "最大点击延迟">
 <!ENTITY behavior.links.openLinkAction "使用“打开链接”行动手势">
 <!ENTITY behavior.links.configureAction "Configure this action">

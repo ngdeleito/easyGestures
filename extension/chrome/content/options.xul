@@ -255,22 +255,25 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <checkbox preference="handleLinks" label="&behavior.links;" class="header" />
-    <hbox align="center" style="margin-left: 1em">
-      <label id="linksDelayLabel" value="&behavior.links.delay;" />
-      <textbox preference="linksDelay" size="3" style="text-align: right" />
-      <label value="ms" />
-    </hbox>
-    <hbox style="margin-left: 1em">
-      <radiogroup preference="handleLinksAsOpenLink">
-        <hbox align="center">
-          <radio label="&behavior.links.openLinkAction;" value="true" />
-          <separator orient="vertical" />
-          <label class="text-link" value="&behavior.links.configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
-        </hbox>
-        <radio label="&behavior.links.browser;" value="false" />
-      </radiogroup>
-    </hbox>
+    <label value="&behavior.links;" class="header" />
+    <vbox style="margin-left: 1em">
+      <checkbox preference="handleLinks" label="&behavior.links.activate;" />
+      <hbox align="center">
+        <label id="linksDelayLabel" value="&behavior.links.delay;" />
+        <textbox preference="linksDelay" size="3" style="text-align: right" />
+        <label value="ms" />
+      </hbox>
+      <hbox>
+        <radiogroup preference="handleLinksAsOpenLink">
+          <hbox align="center">
+            <radio label="&behavior.links.openLinkAction;" value="true" />
+            <separator orient="vertical" />
+            <label class="text-link" value="&behavior.links.configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
+          </hbox>
+          <radio label="&behavior.links.browser;" value="false" />
+        </radiogroup>
+      </hbox>
+    </vbox>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />

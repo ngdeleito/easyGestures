@@ -66,7 +66,8 @@
 <!ENTITY behavior.move "Muovi il menu circolare">
 <!ENTITY behavior.move.shiftKey "Premendo il tasto Shift">
 <!ENTITY behavior.move.menuEdge "Arrivando al bordo del Menu">
-<!ENTITY behavior.links "Abilita il click ai collegamenti attraverso il centro del menu circolare">
+<!ENTITY behavior.links "Click ai collegamenti attraverso il centro del menu circolare">
+<!ENTITY behavior.links.activate "Abilita il click ai collegamenti">
 <!ENTITY behavior.links.delay "Ritardo massimo per cliccare">
 <!ENTITY behavior.links.openLinkAction "Apri secondo l'azione 'Apri Collegamento'">
 <!ENTITY behavior.links.configureAction "Configure this action">

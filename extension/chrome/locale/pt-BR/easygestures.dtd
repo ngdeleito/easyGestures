@@ -66,7 +66,8 @@
 <!ENTITY behavior.move "Mover menu de torta">
 <!ENTITY behavior.move.shiftKey "Pressionando a tecla Shift">
 <!ENTITY behavior.move.menuEdge "Chegando a borda do menu">
-<!ENTITY behavior.links "Habilitar clicar em links através do centro do menu de torta">
+<!ENTITY behavior.links "Clicar em links através do centro do menu de torta">
+<!ENTITY behavior.links.activate "Habilitar clicar em links">
 <!ENTITY behavior.links.delay "Atraso máximo para clicar">
 <!ENTITY behavior.links.openLinkAction "Usar Comportamento da Ação 'Abrir Link'">
 <!ENTITY behavior.links.configureAction "Configure this action">

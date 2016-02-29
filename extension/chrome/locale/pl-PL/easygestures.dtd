@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "naciskając klawisz [ Shift ]">
 <!ENTITY behavior.move.menuEdge "łapiąc krawędź menu">
 <!ENTITY behavior.links "Uruchamianie odnośników przez Centrum nawigacyjne">
+<!ENTITY behavior.links.activate "Uruchamianie odnośników przez Centrum nawigacyjne">
 <!ENTITY behavior.links.delay "Maksymalny czas opóźnienia kliknięcia">
 <!ENTITY behavior.links.openLinkAction "Użyj ustawień &quot;Otwórz odnośnik&quot;">
 <!ENTITY behavior.links.configureAction "Configure this action">

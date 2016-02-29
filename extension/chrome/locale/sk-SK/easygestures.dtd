@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "Stlačením klávesu Shift">
 <!ENTITY behavior.move.menuEdge "Pomocou rohov ponuky">
 <!ENTITY behavior.links "Povoliť kliknutie na odkaz cez stred ponuky">
+<!ENTITY behavior.links.activate "Povoliť kliknutie na odkaz cez stred ponuky">
 <!ENTITY behavior.links.delay "Maximálne oneskorenie pre kliknutie">
 <!ENTITY behavior.links.openLinkAction "Použiť správanie akcie &apos;Otvoriť odkaz&apos;">
 <!ENTITY behavior.links.configureAction "Configure this action">

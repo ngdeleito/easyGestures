@@ -67,7 +67,8 @@
 <!ENTITY behavior.move "Kreismenü verschieben">
 <!ENTITY behavior.move.shiftKey "durch Halten der Umschalttaste">
 <!ENTITY behavior.move.menuEdge "bei Berühren der Menüränder">
-<!ENTITY behavior.links "Klicks auf Links durch Kreismenü-Mitte aktivieren">
+<!ENTITY behavior.links "Klicks auf Links durch Kreismenü-Mitte">
+<!ENTITY behavior.links.activate "Klicks auf Links aktivieren">
 <!ENTITY behavior.links.delay "Maximale Verzögerung für Klicks">
 <!ENTITY behavior.links.openLinkAction "Verhalten der Aktion &apos;Link öffnen&apos; verwenden">
 <!ENTITY behavior.links.configureAction "Configure this action">

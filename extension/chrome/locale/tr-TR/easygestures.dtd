@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "Shift tuşuna basarak">
 <!ENTITY behavior.move.menuEdge "Menü köşesine giderek">
 <!ENTITY behavior.links "Kolay menü merkezi aracılığıyla bağlantılara tıklamayı etkinleştir.">
+<!ENTITY behavior.links.activate "Kolay menü merkezi aracılığıyla bağlantılara tıklamayı etkinleştir.">
 <!ENTITY behavior.links.delay "Tıklama için en fazla gecikme">
 <!ENTITY behavior.links.openLinkAction "&apos;Bağlantıyı Aç&apos; Eylemi Tepkisini Kullan">
 <!ENTITY behavior.links.configureAction "Configure this action">

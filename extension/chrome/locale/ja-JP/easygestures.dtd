@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "Shift キーを押して">
 <!ENTITY behavior.move.menuEdge "メニューの端から">
 <!ENTITY behavior.links "パイメニューの中心からリンクをクリックできるようにする">
+<!ENTITY behavior.links.activate "パイメニューの中心からリンクをクリックできるようにする">
 <!ENTITY behavior.links.delay "クリックの最大遅延時間">
 <!ENTITY behavior.links.openLinkAction "'リンクを開く'アクションの動作を使う">
 <!ENTITY behavior.links.configureAction "Configure this action">

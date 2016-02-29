@@ -67,6 +67,7 @@
 <!ENTITY behavior.move.shiftKey "Shift 키를 누를 경우">
 <!ENTITY behavior.move.menuEdge "메뉴 모서리에 닿을 경우">
 <!ENTITY behavior.links "원형 메뉴 중앙을 통해 링크 누르기가 가능하게 하기">
+<!ENTITY behavior.links.activate "원형 메뉴 중앙을 통해 링크 누르기가 가능하게 하기">
 <!ENTITY behavior.links.delay "클릭시 최대 지연시간">
 <!ENTITY behavior.links.openLinkAction "&apos;링크 열기&apos; 동작 행동 사용">
 <!ENTITY behavior.links.configureAction "Configure this action">

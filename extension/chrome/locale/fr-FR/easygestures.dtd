@@ -65,7 +65,8 @@
 <!ENTITY behavior.move "Déplacer le menu circulaire">
 <!ENTITY behavior.move.shiftKey "En appuyant sur une touche Maj">
 <!ENTITY behavior.move.menuEdge "En atteignant le bord du menu">
-<!ENTITY behavior.links "Activer clics sur liens par le centre du menu circulaire">
+<!ENTITY behavior.links "Ouvrir des liens en cliquant par le centre du menu circulaire">
+<!ENTITY behavior.links.activate "Activer l'ouverture de liens">
 <!ENTITY behavior.links.delay "Délai maximum pour cliquer :">
 <!ENTITY behavior.links.openLinkAction "Suivre le comportement de l'action 'Ouvrir le lien'">
 <!ENTITY behavior.links.configureAction "Configurer cette action">

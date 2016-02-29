@@ -54,7 +54,8 @@
 <!ENTITY behavior.move "Move pie menu">
 <!ENTITY behavior.move.shiftKey "By pressing a Shift key">
 <!ENTITY behavior.move.menuEdge "By reaching the menu edge">
-<!ENTITY behavior.links "Enable clicking on links through the pie menu center">
+<!ENTITY behavior.links "Open links by clicking through the pie menu center">
+<!ENTITY behavior.links.activate "Activate clicking on links">
 <!ENTITY behavior.links.delay "Maximum delay for clicking:">
 <!ENTITY behavior.links.openLinkAction "Use 'Open link' action behavior">
 <!ENTITY behavior.links.configureAction "Configure this action">

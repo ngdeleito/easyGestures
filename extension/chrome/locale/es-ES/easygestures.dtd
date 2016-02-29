@@ -66,8 +66,9 @@
 <!ENTITY behavior.move "Desplazar el menú circular">
 <!ENTITY behavior.move.shiftKey "Pulsando la tecla mayúsculas">
 <!ENTITY behavior.move.menuEdge "Al llegar al borde del menú">
-<!ENTITY behavior.links "Habilitar pulsar enlaces a través del menú circular">
-<!ENTITY behavior.links.delay "Máximo periodo para las pulsaciones:">
+<!ENTITY behavior.links "Abrir enlaces haciendo clic a través del centro del menú circular">
+<!ENTITY behavior.links.activate "Activar la apertura de enlaces">
+<!ENTITY behavior.links.delay "Periodo máximo para hacer clic:">
 <!ENTITY behavior.links.openLinkAction "Usar el comportamiento de la acción &apos;Abrir enlace&apos;">
 <!ENTITY behavior.links.configureAction "Configurar esta acción">
 <!ENTITY behavior.links.browser "Usar el comportamiento del navegador">
