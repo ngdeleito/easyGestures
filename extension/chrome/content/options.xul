@@ -346,7 +346,7 @@
                 <vbox>
                   <checkbox id="mainAlternative1Checkbox"
                     preference="mainAlt1Enabled" label="&menus.enabled;"
-                    oncommand="updateUI();" />
+                    oncommand="setDisabledStatusForMainMenu('Alt1', this.checked);" />
                   <vbox id="gr_mainAlt1" preference-editable="true"
                     preference="mainAlt1Menu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt1');">
@@ -357,7 +357,7 @@
                 <vbox>
                   <checkbox id="mainAlternative2Checkbox"
                     preference="mainAlt2Enabled" label="&menus.enabled;"
-                    oncommand="updateUI();" />
+                    oncommand="setDisabledStatusForMainMenu('Alt2', this.checked);" />
                   <vbox id="gr_mainAlt2" preference-editable="true"
                     preference="mainAlt2Menu"
                     onsynctopreference="return preparePreferenceValueForNormalMenu('mainAlt2');">
@@ -395,7 +395,7 @@
                   <vbox>
                     <checkbox id="extraAlternative1Checkbox"
                       preference="extraAlt1Enabled" label="&menus.enabled;"
-                      oncommand="updateUI();" />
+                      oncommand="setDisabledStatusForExtraMenu('Alt1', this.checked);" />
                     <vbox id="gr_extraAlt1" preference-editable="true"
                       preference="extraAlt1Menu"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt1');">
@@ -406,7 +406,7 @@
                   <vbox>
                     <checkbox id="extraAlternative2Checkbox"
                       preference="extraAlt2Enabled" label="&menus.enabled;"
-                      oncommand="updateUI();" />
+                      oncommand="setDisabledStatusForExtraMenu('Alt2', this.checked);" />
                     <vbox id="gr_extraAlt2" preference-editable="true"
                       preference="extraAlt2Menu"
                       onsynctopreference="return preparePreferenceValueForExtraMenu('extraAlt2');">

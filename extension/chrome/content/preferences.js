@@ -188,6 +188,22 @@ var eGPrefs = {
     return this._prefs.getBoolPref("behavior.autoscrollingOn");
   },
   
+  isMainAlt1MenuEnabled : function() {
+    return this._prefs.getBoolPref("menus.mainAlt1Enabled");
+  },
+  
+  isMainAlt2MenuEnabled : function() {
+    return this._prefs.getBoolPref("menus.mainAlt2Enabled");
+  },
+  
+  isExtraAlt1MenuEnabled : function() {
+    return this._prefs.getBoolPref("menus.extraAlt1Enabled");
+  },
+  
+  isExtraAlt2MenuEnabled : function() {
+    return this._prefs.getBoolPref("menus.extraAlt2Enabled");
+  },
+  
   getLoadURLOrRunScriptPrefValue : function(aPrefName) {
     return this._prefs.getComplexValue("customizations." + aPrefName,
       Components.interfaces.nsISupportsString).data.split("\u2022");

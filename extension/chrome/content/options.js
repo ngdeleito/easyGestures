@@ -677,6 +677,20 @@ function setBehaviorAutoscrollingDisabledStatus(disabled) {
     "BehaviorAutoscrollingTextbox", "BehaviorAutoscrollingUnit"], disabled);
 }
 
+function setDisabledStatusForMainMenu(menu, disabled) {
+  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(sector) {
+    document.getElementById("main" + menu + "Sector" + sector).disabled =
+      !disabled;
+  });
+}
+
+function setDisabledStatusForExtraMenu(menu, disabled) {
+  [0, 1, 2, 3, 4].forEach(function(sector) {
+    document.getElementById("extra" + menu + "Sector" + sector).disabled =
+      !disabled;
+  });
+}
+
 function initializeDailyReadingsTree() {
   var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
                                  .getService(Components.interfaces.nsINavHistoryService);
@@ -714,9 +728,13 @@ function initMenuDialog() {
   setBehaviorLinksDisabledStatus(eGPrefs.isHandleLinksOn());
   setBehaviorAutoscrollingDisabledStatus(eGPrefs.isAutoscrollingOn());
   
+  setDisabledStatusForMainMenu("Alt1", eGPrefs.isMainAlt1MenuEnabled());
+  setDisabledStatusForMainMenu("Alt2", eGPrefs.isMainAlt2MenuEnabled());
+  setDisabledStatusForExtraMenu("Alt1", eGPrefs.isExtraAlt1MenuEnabled());
+  setDisabledStatusForExtraMenu("Alt2", eGPrefs.isExtraAlt2MenuEnabled());
+  
   initializeDailyReadingsTree();
   
-  updateUI();
   window.setCursor("auto");
 }
 
@@ -858,23 +876,5 @@ function updateLabelAndTextboxFor(menulist) {
   textbox.disabled = shouldBeDisabled;
   if (shouldBeDisabled) {
     textbox.value = menulist.value;
-  }
-}
-
-function updateUI() {
-  //***************************************************
-  // enabling/disabling alternative boxes
-  //***************************************************
-  var boxes = new Array("main","extra");
-  for (var i=0; i<2; i++) {
-    for (var sector=0; sector<10; sector++) {
-      if (boxes[i].search("extra")!=-1 && sector>4) {
-        continue;
-      }
-      document.getElementById(boxes[i] + "Alt1Sector" + sector).disabled =
-        !document.getElementById(boxes[i] + "Alternative1Checkbox").checked;
-      document.getElementById(boxes[i] + "Alt2Sector" + sector).disabled =
-        !document.getElementById(boxes[i] + "Alternative2Checkbox").checked;
-    }
   }
 }
