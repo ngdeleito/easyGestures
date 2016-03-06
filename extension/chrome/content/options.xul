@@ -233,13 +233,13 @@
     
     <label value="&behavior.tooltips;" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox id="showTooltipsCheckbox" preference="showTooltips"
-        label="&behavior.tooltips.activate;" oncommand="updateUI();" />
+      <checkbox preference="showTooltips" label="&behavior.tooltips.activate;"
+        oncommand="setBehaviorTooltipsDisabledStatus(this.checked);" />
       <hbox align="center">
-        <label id="tooltipsDelayLabel" value="&behavior.tooltips.delay;" />
-        <textbox id="tooltipsDelayValue" preference="tooltipsDelay" size="3"
-          style="text-align: right" />
-        <label id="tooltipsDelayUnit" value="ms" />
+        <label id="BehaviorTooltipsLabel" value="&behavior.tooltips.delay;" />
+        <textbox id="BehaviorTooltipsTextbox" preference="tooltipsDelay"
+          size="3" style="text-align: right" />
+        <label id="BehaviorTooltipsUnit" value="ms" />
       </hbox>
     </vbox>
     

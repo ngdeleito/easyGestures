@@ -176,6 +176,10 @@ var eGPrefs = {
     return !this._prefs.getBoolPref("behavior.largeMenu");
   },
   
+  areTooltipsOn : function() {
+    return this._prefs.getBoolPref("behavior.showTooltips");
+  },
+  
   isHandleLinksOn : function() {
     return this._prefs.getBoolPref("behavior.handleLinks");
   },

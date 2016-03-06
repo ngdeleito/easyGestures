@@ -651,6 +651,11 @@ function toggleDisabledStatusOnElementsById(ids, disabled) {
   });
 }
 
+function setBehaviorTooltipsDisabledStatus(disabled) {
+  toggleDisabledStatusOnElementsById(["BehaviorTooltipsLabel",
+    "BehaviorTooltipsTextbox", "BehaviorTooltipsUnit"], disabled);
+}
+
 function setBehaviorLinksDisabledStatus(disabled) {
   toggleDisabledStatusOnElementsById(["BehaviorLinksLabel",
     "BehaviorLinksTextbox", "BehaviorLinksUnit", "BehaviorLinksRadiogroup"],
@@ -689,6 +694,7 @@ function initMenuDialog() {
     }
   );
   
+  setBehaviorTooltipsDisabledStatus(eGPrefs.areTooltipsOn());
   setBehaviorLinksDisabledStatus(eGPrefs.isHandleLinksOn());
   initializeDailyReadingsTree();
   
@@ -838,14 +844,6 @@ function updateLabelAndTextboxFor(menulist) {
 }
 
 function updateUI() {
-  //***************************************************
-  // disabling tooltip sub-options
-  //***************************************************
-  var checking = document.getElementById("showTooltipsCheckbox").checked;
-  document.getElementById("tooltipsDelayLabel").disabled = !checking;
-  document.getElementById("tooltipsDelayValue").disabled = !checking;
-  document.getElementById("tooltipsDelayUnit").disabled = !checking;
-  
   //***************************************************
   // enabling/disabling alternative boxes
   //***************************************************
