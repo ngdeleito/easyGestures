@@ -645,6 +645,18 @@ function importPrefs() {
   }
 }
 
+function toggleDisabledStatusOnElementsById(ids, disabled) {
+  ids.forEach(function(id) {
+    document.getElementById(id).disabled = !disabled;
+  });
+}
+
+function setBehaviorLinksDisabledStatus(disabled) {
+  toggleDisabledStatusOnElementsById(["BehaviorLinksLabel",
+    "BehaviorLinksTextbox", "BehaviorLinksUnit", "BehaviorLinksRadiogroup"],
+    disabled);
+}
+
 function initializeDailyReadingsTree() {
   var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
                                  .getService(Components.interfaces.nsINavHistoryService);
@@ -677,6 +689,7 @@ function initMenuDialog() {
     }
   );
   
+  setBehaviorLinksDisabledStatus(eGPrefs.isHandleLinksOn());
   initializeDailyReadingsTree();
   
   updateUI();

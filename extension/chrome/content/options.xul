@@ -257,14 +257,17 @@
     
     <label value="&behavior.links;" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="handleLinks" label="&behavior.links.activate;" />
+      <checkbox preference="handleLinks" label="&behavior.links.activate;"
+        oncommand="setBehaviorLinksDisabledStatus(this.checked);" />
       <hbox align="center">
-        <label id="linksDelayLabel" value="&behavior.links.delay;" />
-        <textbox preference="linksDelay" size="3" style="text-align: right" />
-        <label value="ms" />
+        <label id="BehaviorLinksLabel" value="&behavior.links.delay;" />
+        <textbox id="BehaviorLinksTextbox" preference="linksDelay" size="3"
+          style="text-align: right" />
+        <label id="BehaviorLinksUnit" value="ms" />
       </hbox>
       <hbox>
-        <radiogroup preference="handleLinksAsOpenLink">
+        <radiogroup id="BehaviorLinksRadiogroup"
+          preference="handleLinksAsOpenLink">
           <hbox align="center">
             <radio label="&behavior.links.openLinkAction;" value="true" />
             <separator orient="vertical" />
