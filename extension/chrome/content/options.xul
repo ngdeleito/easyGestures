@@ -207,7 +207,8 @@
       <preference id="autoscrollingDelay" name="extensions.easygestures.behavior.autoscrollingDelay" type="int" />
     </preferences>
     <label value="&behavior.menuType;" class="header" />
-    <radiogroup id="menuType" preference="largeMenu" oncommand="updateUI();"
+    <radiogroup preference="largeMenu"
+      oncommand="setMenuType(this.selectedItem.value === 'false');"
       style="margin-left: 1em">
       <radio label="&behavior.menuType.standard;" value="false" />
       <radio label="&behavior.menuType.large;" value="true" />

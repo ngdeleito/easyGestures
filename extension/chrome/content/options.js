@@ -645,6 +645,16 @@ function importPrefs() {
   }
 }
 
+function setMenuType(menuTypeIsStandard) {
+  ["mainSector5", "mainSector9", "mainAlt1Sector5", "mainAlt1Sector9",
+   "mainAlt2Sector5", "mainAlt2Sector9", "contextLinkSector5",
+   "contextLinkSector9", "contextImageSector5", "contextImageSector9",
+   "contextSelectionSector5", "contextSelectionSector9",
+   "contextTextboxSector5", "contextTextboxSector9"].forEach(function(id) {
+    document.getElementById(id).hidden = menuTypeIsStandard;
+  });
+}
+
 function toggleDisabledStatusOnElementsById(ids, disabled) {
   ids.forEach(function(id) {
     document.getElementById(id).disabled = !disabled;
@@ -699,6 +709,7 @@ function initMenuDialog() {
     }
   );
   
+  setMenuType(eGPrefs.isLargeMenuOff());
   setBehaviorTooltipsDisabledStatus(eGPrefs.areTooltipsOn());
   setBehaviorLinksDisabledStatus(eGPrefs.isHandleLinksOn());
   setBehaviorAutoscrollingDisabledStatus(eGPrefs.isAutoscrollingOn());
@@ -866,25 +877,4 @@ function updateUI() {
         !document.getElementById(boxes[i] + "Alternative2Checkbox").checked;
     }
   }
-  
-  //***************************************************
-  // checking if menu is standard or large
-  //***************************************************
-  var menuIsLarge = (document.getElementById("menuType").selectedItem.value == "true");
-  
-  document.getElementById("mainSector5").hidden = !menuIsLarge;
-  document.getElementById("mainSector9").hidden = !menuIsLarge;
-  document.getElementById("mainAlt1Sector5").hidden = !menuIsLarge;
-  document.getElementById("mainAlt1Sector9").hidden = !menuIsLarge;
-  document.getElementById("mainAlt2Sector5").hidden = !menuIsLarge;
-  document.getElementById("mainAlt2Sector9").hidden = !menuIsLarge;
-  
-  document.getElementById("contextLinkSector5").hidden = !menuIsLarge;
-  document.getElementById("contextLinkSector9").hidden = !menuIsLarge;
-  document.getElementById("contextImageSector5").hidden = !menuIsLarge;
-  document.getElementById("contextImageSector9").hidden = !menuIsLarge;
-  document.getElementById("contextSelectionSector5").hidden = !menuIsLarge;
-  document.getElementById("contextSelectionSector9").hidden = !menuIsLarge;
-  document.getElementById("contextTextboxSector5").hidden = !menuIsLarge;
-  document.getElementById("contextTextboxSector9").hidden = !menuIsLarge;
 }
