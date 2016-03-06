@@ -662,6 +662,11 @@ function setBehaviorLinksDisabledStatus(disabled) {
     disabled);
 }
 
+function setBehaviorAutoscrollingDisabledStatus(disabled) {
+  toggleDisabledStatusOnElementsById(["BehaviorAutoscrollingLabel",
+    "BehaviorAutoscrollingTextbox", "BehaviorAutoscrollingUnit"], disabled);
+}
+
 function initializeDailyReadingsTree() {
   var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
                                  .getService(Components.interfaces.nsINavHistoryService);
@@ -696,6 +701,8 @@ function initMenuDialog() {
   
   setBehaviorTooltipsDisabledStatus(eGPrefs.areTooltipsOn());
   setBehaviorLinksDisabledStatus(eGPrefs.isHandleLinksOn());
+  setBehaviorAutoscrollingDisabledStatus(eGPrefs.isAutoscrollingOn());
+  
   initializeDailyReadingsTree();
   
   updateUI();
@@ -880,13 +887,4 @@ function updateUI() {
   document.getElementById("contextSelectionSector9").hidden = !menuIsLarge;
   document.getElementById("contextTextboxSector5").hidden = !menuIsLarge;
   document.getElementById("contextTextboxSector9").hidden = !menuIsLarge;
-  
-  //***************************************************
-  // disabling autoscrolling sub-options
-  //***************************************************
-  
-  checking = document.getElementById("autoscrollingOnCheckbox").checked;
-  document.getElementById("autoscrollingDelayLabel").disabled = !checking;
-  document.getElementById("autoscrollingDelayValue").disabled = !checking;
-  document.getElementById("autoscrollingDelayUnit").disabled = !checking;
 }

@@ -283,14 +283,15 @@
     
     <label value="&behavior.autoscrolling;" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox id="autoscrollingOnCheckbox" preference="autoscrollingOn"
-        label="&behavior.autoscrolling.activate;" oncommand="updateUI();" />
+      <checkbox preference="autoscrollingOn"
+        label="&behavior.autoscrolling.activate;"
+        oncommand="setBehaviorAutoscrollingDisabledStatus(this.checked);" />
       <hbox align="center">
-        <label id="autoscrollingDelayLabel"
+        <label id="BehaviorAutoscrollingLabel"
           value="&behavior.autoscrolling.delay;" />
-        <textbox id="autoscrollingDelayValue" preference="autoscrollingDelay"
-          size="3" style="text-align: right" />
-        <label id="autoscrollingDelayUnit" value="ms" />
+        <textbox id="BehaviorAutoscrollingTextbox"
+          preference="autoscrollingDelay" size="3" style="text-align: right" />
+        <label id="BehaviorAutoscrollingUnit" value="ms" />
       </hbox>
     </vbox>
   </prefpane>

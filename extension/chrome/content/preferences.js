@@ -184,6 +184,10 @@ var eGPrefs = {
     return this._prefs.getBoolPref("behavior.handleLinks");
   },
   
+  isAutoscrollingOn : function() {
+    return this._prefs.getBoolPref("behavior.autoscrollingOn");
+  },
+  
   getLoadURLOrRunScriptPrefValue : function(aPrefName) {
     return this._prefs.getComplexValue("customizations." + aPrefName,
       Components.interfaces.nsISupportsString).data.split("\u2022");
