@@ -685,8 +685,7 @@
               <image class="eG_openLink" />
               <label value="&customizations.openLink;" class="header" />
             </hbox>
-            <radiogroup preference="openLink" oncommand="updateUI();"
-              style="margin-left: 1em">
+            <radiogroup preference="openLink" style="margin-left: 1em">
               <radio label="&customizations.openLink.currentTab;" value="curTab" />
               <radio label="&customizations.openLink.newTab;" value="newTab" />
               <radio label="&customizations.openLink.newWindow;" value="newWindow" />
