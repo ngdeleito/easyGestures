@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "custom mouse button">
 <!ENTITY activation.open.with.buttoncode "button code">
 <!ENTITY activation.open.with.and "a">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "klávesom Shift">
 <!ENTITY activation.ctrlKey "klávesom Ctrl">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Zobraziť alternatívnu ponuku s">
 <!ENTITY activation.openAltMenu.altKey "(Okrem toho môžete použiť pravý Alt)">
 <!ENTITY activation.preventOpen "Potlačiť zobrazenie ponuky s">
-<!ENTITY activation.insertKey "klávesom Insert">
 <!ENTITY activation.altKey "klávesom Alt">
-<!ENTITY activation.customKey "definovaným klávesom">
-<!ENTITY activation.keycode "Kód klávesu">
 <!ENTITY activation.contextualMenu "Zobraziť kontextovú ponuku">
 <!ENTITY activation.contextualMenu.showAuto "Vždy aktivované. Používa rovnaký kláves na potlačenie citlivosti.">
 

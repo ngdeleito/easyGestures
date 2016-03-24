@@ -101,7 +101,8 @@ function handleMousedown(anEvent) {
   var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
     button: anEvent.button,
     shiftKey: anEvent.shiftKey,
-    ctrlKey: anEvent.ctrlKey
+    ctrlKey: anEvent.ctrlKey,
+    altKey: anEvent.altKey
   });
   
   if (result === PREVENT_DEFAULT_AND_RETURN) {
@@ -133,6 +134,8 @@ function handleMousedown(anEvent) {
   // return
   sendSyncMessage("easyGesturesN@ngdeleito.eu:handleMousedown", {
     contextualMenus: contextualMenus,
+    ctrlKey: anEvent.ctrlKey,
+    altKey: anEvent.altKey,
     selection: selection,
     anchorElementExists: anchorElement !== null,
     anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
@@ -171,14 +174,16 @@ function handleMouseup(anEvent) {
 
 function handleKeydown(anEvent) {
   sendAsyncMessage("easyGesturesN@ngdeleito.eu:handleKeydown", {
-    keyPressed: anEvent.keyCode
+    altKey: anEvent.keyCode === 18,
+    escKey: anEvent.keyCode === 27
   });
 }
 
 function handleContextmenu(anEvent) {
   var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleContextmenu", {
     shiftKey: anEvent.shiftKey,
-    ctrlKey: anEvent.ctrlKey
+    ctrlKey: anEvent.ctrlKey,
+    altKey: anEvent.altKey
   });
   if (result) {
     anEvent.preventDefault();

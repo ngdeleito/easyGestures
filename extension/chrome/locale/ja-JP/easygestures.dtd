@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "custom mouse button">
 <!ENTITY activation.open.with.buttoncode "button code">
 <!ENTITY activation.open.with.and "＋">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift キー">
 <!ENTITY activation.ctrlKey "Ctrl キー">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "代替メニューの表示法">
 <!ENTITY activation.openAltMenu.altKey "(右 Alt キーでも表示できます)">
 <!ENTITY activation.preventOpen "次のキーを押している時にはパイメニューを非表示">
-<!ENTITY activation.insertKey "Insert キー">
 <!ENTITY activation.altKey "Alt キー">
-<!ENTITY activation.customKey "カスタムキー">
-<!ENTITY activation.keycode "キーコード">
 <!ENTITY activation.contextualMenu "次のキーで状況依存メニューを有効化">
 <!ENTITY activation.contextualMenu.showAuto "常に有効にする。状況依存メニューの無効化にも同じキーを使います。">
 

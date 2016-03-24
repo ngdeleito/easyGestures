@@ -28,16 +28,13 @@
 <!ENTITY activation.open.with.button.custom "Custom mouse button">
 <!ENTITY activation.open.with.buttoncode "button code">
 <!ENTITY activation.open.with.and "and">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift key">
 <!ENTITY activation.ctrlKey "Ctrl key">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Display alternative menu with">
 <!ENTITY activation.openAltMenu.altKey "(You can also use the right Alt key)">
 <!ENTITY activation.preventOpen "Prevent pie menu from opening with">
-<!ENTITY activation.insertKey "Insert key">
 <!ENTITY activation.altKey "Alt key">
-<!ENTITY activation.customKey "Custom key">
-<!ENTITY activation.keycode "key code">
 <!ENTITY activation.contextualMenu "Activate contextual menu with">
 <!ENTITY activation.contextualMenu.showAuto "Activate it automatically (and use the above key to show the main pie menu)">
 

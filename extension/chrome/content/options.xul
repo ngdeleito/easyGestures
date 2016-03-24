@@ -121,10 +121,11 @@
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
     <label value="&activation.open.with.and;" class="header" />
-    <radiogroup id="showKeyRadiogroup" preference="showKey" style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this, this);">
-      <radio label="&activation.noKey;" value="0" />
+    <radiogroup id="showKeyRadiogroup" preference="showKey"
+      style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this);">
       <radio label="&activation.shiftKey;" value="16" />
       <radio label="&activation.ctrlKey;" value="17" />
+      <radio label="&activation.noKey;" value="0" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
@@ -150,41 +151,23 @@
     <menuseparator />
     
     <label value="&activation.preventOpen;" class="header" />
-    <hbox align="center" style="margin-left: 1em">
-      <menulist id="preventOpenKeyMenulist"
-        oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
-        <menupopup>
-          <menuitem label="&activation.noKey;" value="0" />
-          <menuitem label="&activation.insertKey;" value="45" />
-          <menuitem label="&activation.altKey;" value="18" />
-          <menuitem label="&activation.ctrlKey;" value="17" />
-          <menuitem label="&activation.customKey;" />
-        </menupopup>
-      </menulist>
-      <label value="&activation.keycode;" />
-      <textbox id="preventOpenKeyCode" preference="preventOpenKey" size="4"
-        onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
-    </hbox>
+    <radiogroup id="preventOpenKeyRadiogroup" preference="preventOpenKey"
+      style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this);">
+      <radio label="&activation.ctrlKey;" value="17" />
+      <radio label="&activation.altKey;" value="18" />
+      <radio label="&activation.noKey;" value="0" />
+    </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
     <label value="&activation.contextualMenu;" class="header" />
-    <hbox align="center" style="margin-left: 1em">
-      <menulist id="contextKeyMenulist"
-        oncommand="updateLabelAndTextboxFor(this); resetOnDuplicatedKeys(this, this.parentNode.lastElementChild); fireChangeEventOn(this.parentNode.lastElementChild);">
-        <menupopup>
-          <menuitem label="&activation.noKey;" value="0" />
-          <menuitem label="&activation.insertKey;" value="45" />
-          <menuitem label="&activation.altKey;" value="18" />
-          <menuitem label="&activation.ctrlKey;" value="17" />
-          <menuitem label="&activation.customKey;" />
-        </menupopup>
-      </menulist>
-      <label value="&activation.keycode;" />
-      <textbox id="customContextKeyCode" preference="contextKey" size="4"
-        onkeyup="this.value = event.keyCode; resetOnDuplicatedKeys(this.parentNode.firstElementChild, this); fireChangeEventOn(this);" />
-    </hbox>
+    <radiogroup id="contextKeyRadiogroup" preference="contextKey"
+      style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this);">
+      <radio label="&activation.ctrlKey;" value="17" />
+      <radio label="&activation.altKey;" value="18" />
+      <radio label="&activation.noKey;" value="0" />
+    </radiogroup>
     <checkbox preference="contextShowAuto" label="&activation.contextualMenu.showAuto;" />
   </prefpane>
   

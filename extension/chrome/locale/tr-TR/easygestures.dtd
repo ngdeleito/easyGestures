@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "varsayılan fare tuşu">
 <!ENTITY activation.open.with.buttoncode "tuş kodu">
 <!ENTITY activation.open.with.and "ve">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift tuşu">
 <!ENTITY activation.ctrlKey "Ctrl tuşu">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Alternatif menüyü şununla aç:">
 <!ENTITY activation.openAltMenu.altKey "(sol Alt tuşunu da kullanabilirsiniz)">
 <!ENTITY activation.preventOpen "Fare tuşunda kolay menü önceliğini şununla durdur:">
-<!ENTITY activation.insertKey "Insert tuşu">
 <!ENTITY activation.altKey "Alt tuşu">
-<!ENTITY activation.customKey "Varsayılan tuş">
-<!ENTITY activation.keycode "Tuş Kodu">
 <!ENTITY activation.contextualMenu "İçerik Hassasiyetini bununla etkinleştir:">
 <!ENTITY activation.contextualMenu.showAuto "Her zaman etkin. Hassaslığı durdurmak için aynı tuşu kullanın.">
 

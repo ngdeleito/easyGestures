@@ -39,16 +39,13 @@
 <!ENTITY activation.open.with.button.custom "Un autre bouton de la souris">
 <!ENTITY activation.open.with.buttoncode "code du bouton">
 <!ENTITY activation.open.with.and "et">
-<!ENTITY activation.noKey "Aucune touche">
 <!ENTITY activation.shiftKey "La touche Maj">
 <!ENTITY activation.ctrlKey "La touche Ctrl">
+<!ENTITY activation.noKey "Aucune de ces touches">
 <!ENTITY activation.openAltMenu "Afficher le menu alternatif avec">
 <!ENTITY activation.openAltMenu.altKey "(Vous pouvez aussi utiliser la touche Alt droite)">
 <!ENTITY activation.preventOpen "Empêcher l'ouverture du menu circulaire avec">
-<!ENTITY activation.insertKey "La touche Insert">
 <!ENTITY activation.altKey "La touche Alt">
-<!ENTITY activation.customKey "Une autre touche">
-<!ENTITY activation.keycode "code de la touche">
 <!ENTITY activation.contextualMenu "Activer le menu contextuel avec">
 <!ENTITY activation.contextualMenu.showAuto "L'activer automatiquement (et utiliser la touche ci-dessus pour montrer le menu principal)">
 

@@ -36,12 +36,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eG_enableMenu, eG_disableMenu, eG_handleKeyup */
+/* exported eG_enableMenu, eG_disableMenu */
 /* global eGActions, eGm */
 
 var eGc = {
-  keyPressed: 0, // used to control display of pie menu
-  
   targetDocumentURL: null,
   targetWindowScrollY: null,
   targetWindowScrollMaxY: null,
@@ -74,10 +72,6 @@ function eG_disableMenu() {
   Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
 }
 
-function eG_handleKeyup() {
-  eGc.keyPressed = 0;
-}
-
 function eG_performOpenMenuChecks(aMessage) {
   const PREVENT_DEFAULT_AND_OPEN_MENU = 0;
   const PREVENT_DEFAULT_AND_RETURN = 1;
@@ -96,7 +90,8 @@ function eG_performOpenMenuChecks(aMessage) {
   }
   
   // check if menu should not be displayed
-  if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey, aMessage.data.ctrlKey)) {
+  if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
+                       aMessage.data.ctrlKey, aMessage.data.altKey)) {
     return LET_DEFAULT_AND_RETURN;
   }
   
@@ -120,7 +115,7 @@ function eG_handleMousedown(aMessage) {
   eGc.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
   
   if (eGm.contextualMenus.length !== 0 &&
-      eGm.canContextualMenuBeOpened(eGc.keyPressed)) {
+      eGm.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
     eGm.show(eGm.contextualMenus[0]);
   }
   else {
@@ -181,24 +176,27 @@ function eG_handleKeydown(aMessage) {
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGm.autoscrollingTrigger);
   
-  eGc.keyPressed = aMessage.data.keyPressed;
-  
   if (eGm.isShown()) {
-    if (eGc.keyPressed === 18) { // Alt key
+    if (aMessage.data.altKey) {
       eGm.switchLayout();
     }
-    else if (eGc.keyPressed === 27) { // ESC key
+    else if (aMessage.data.escKey) {
       eGm.close();
     }
   }
 }
 
 function eG_handleContextmenu(aMessage) {
+  var shiftKey = aMessage.data.shiftKey;
+  var ctrlKey = aMessage.data.ctrlKey;
+  var altKey = aMessage.data.altKey;
   return eGm.showButton === 2 /* right click */ &&
-         ((eGm.showKey === 0 && eGc.keyPressed === 0) ||
-          (eGm.showKey === 0 && eGc.keyPressed === eGm.contextKey) ||
-          (eGm.showKey === 16 && aMessage.data.shiftKey) ||
-          (eGm.showKey === 17 && aMessage.data.ctrlKey));
+         ((eGm.showKey === 0 && !shiftKey && !ctrlKey) ||
+          (eGm.showKey === 0 && eGm.contextKey === 17 && ctrlKey && !shiftKey) ||
+          (eGm.showKey === 0 && eGm.contextKey === 18 && altKey && !shiftKey && !ctrlKey) ||
+          (eGm.showKey === 16 && shiftKey && !ctrlKey) ||
+          (eGm.showKey === 16 && shiftKey && eGm.contextKey === 17 && ctrlKey) ||
+          (eGm.showKey === 17 && !shiftKey && ctrlKey));
 }
 
 function eG_handleMousemove(aMessage) {

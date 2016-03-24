@@ -522,13 +522,17 @@ eG_menu.prototype = {
     }
   },
   
-  canBeOpened : function(button, shiftKey, ctrlKey) {
+  canBeOpened : function(button, shiftKey, ctrlKey, altKey) {
     return button === this.showButton &&
-           ((this.showKey === 0 && eGc.keyPressed === 0) ||
-            (this.showKey === 0 && eGc.keyPressed === this.contextKey) ||
-            (this.showKey === 16 && shiftKey) ||
-            (this.showKey === 17 && ctrlKey)) &&
-           (this.preventOpenKey === 0 || eGc.keyPressed !== this.preventOpenKey);
+           ((this.showKey === 0 && !shiftKey && !ctrlKey) ||
+            (this.showKey === 0 && this.contextKey === 17 && ctrlKey && !shiftKey) ||
+            (this.showKey === 0 && this.contextKey === 18 && altKey && !shiftKey && !ctrlKey) ||
+            (this.showKey === 16 && shiftKey && !ctrlKey) ||
+            (this.showKey === 16 && shiftKey && this.contextKey === 17 && ctrlKey) ||
+            (this.showKey === 17 && !shiftKey && ctrlKey)) &&
+           (this.preventOpenKey === 0 ||
+            (this.preventOpenKey === 17 && !ctrlKey) ||
+            (this.preventOpenKey === 18 && !altKey));
   },
   
   canLayoutBeSwitched : function(aButtonPressed) {
@@ -537,8 +541,10 @@ eG_menu.prototype = {
             this.showAltButton === this.showButton && this.sector === -1);
   },
   
-  canContextualMenuBeOpened : function(aKeyPressed) {
-    var rightKey = this.contextKey !== 0 && aKeyPressed === this.contextKey;
+  canContextualMenuBeOpened : function(ctrlKey, altKey) {
+    var rightKey = this.contextKey !== 0 &&
+                   ((this.contextKey === 17 && ctrlKey) ||
+                    (this.contextKey === 18 && altKey));
     return (!this.contextShowAuto && rightKey) ||
            (this.contextShowAuto && !rightKey);
   },

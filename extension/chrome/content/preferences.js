@@ -583,6 +583,28 @@ var eGPrefs = {
     this._prefs.deleteBranch("activation.showAfterDelayValue");
     this._prefs.deleteBranch("stats.clicks");
     this._prefs.deleteBranch("stats.menuShown");
+  },
+  
+  updateToV4_13: function() {
+    var preventOpenKey = this._prefs.getIntPref("activation.preventOpenKey");
+    var contextKey = this._prefs.getIntPref("activation.contextKey");
+    var message = "Your previous key choices for the preferences listed below " +
+      "are no longer supported and have been reset. You can select other keys " +
+      "under the \"Activation\" tab in the easyGestures N preferences dialog.\n";
+    var showMessage = false;
+    if (preventOpenKey !== 0 && preventOpenKey !== 17 && preventOpenKey !== 18) {
+      this._prefs.setIntPref("activation.preventOpenKey", 0);
+      message += "  - key used to prevent the pie menu from opening\n";
+      showMessage = true;
+    }
+    if (contextKey !== 0 && contextKey !== 17 && contextKey !== 18) {
+      this._prefs.setIntPref("activation.contextKey", 18);
+      message += "  - key used to activate the contextual menu";
+      showMessage = true;
+    }
+    if (showMessage) {
+      Services.prompt.alert(null, "easyGestures N v4.13", message);
+    }
   }
 };
 

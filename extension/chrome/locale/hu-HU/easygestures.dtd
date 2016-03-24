@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "egyéb egérgombbal">
 <!ENTITY activation.open.with.buttoncode "gomb kódja">
 <!ENTITY activation.open.with.and "és">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shíft billentyűvel">
 <!ENTITY activation.ctrlKey "Ctrl billentyűvel">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Alternatív menü megjelenítése">
 <!ENTITY activation.openAltMenu.altKey "(A jobb oldali Alt billentyű is használható)">
 <!ENTITY activation.preventOpen "Egérgombbal előhívott köralakú menü prioritásának elnyomása">
-<!ENTITY activation.insertKey "az Insert billentyűvel">
 <!ENTITY activation.altKey "az Alt billentyűvel">
-<!ENTITY activation.customKey "egyéb billentyűvel">
-<!ENTITY activation.keycode "Billentyűkód">
 <!ENTITY activation.contextualMenu "Környezetfüggő működés aktiválása">
 <!ENTITY activation.contextualMenu.showAuto "Mindig aktív, ez a billentyű a környezetfüggő menü mellőzésére szolgál.">
 

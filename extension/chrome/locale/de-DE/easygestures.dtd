@@ -41,16 +41,13 @@
 <!ENTITY activation.open.with.button.custom "benutzerdefinierter Maustaste">
 <!ENTITY activation.open.with.buttoncode "Tasten-Code">
 <!ENTITY activation.open.with.and "und">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Umschalttaste">
 <!ENTITY activation.ctrlKey "Strg-Taste">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Alternative Menüs anzeigen mit">
 <!ENTITY activation.openAltMenu.altKey "(auch über Alt-Taste auswählbar)">
 <!ENTITY activation.preventOpen "Anzeige des Kreismenüs über Maustaste unterdrücken mit">
-<!ENTITY activation.insertKey "Einfügen-Taste">
 <!ENTITY activation.altKey "Alt-Taste">
-<!ENTITY activation.customKey "Eigener Taste">
-<!ENTITY activation.keycode "Tastencode">
 <!ENTITY activation.contextualMenu "Kontextabhängige Menüreaktion aktivieren mit">
 <!ENTITY activation.contextualMenu.showAuto "Dauerhaft aktivieren (obige Taste zum Unterdrücken der Reaktion verwenden)">
 

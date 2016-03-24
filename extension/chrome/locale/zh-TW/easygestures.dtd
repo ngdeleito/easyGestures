@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "custom mouse button">
 <!ENTITY activation.open.with.buttoncode "button code">
 <!ENTITY activation.open.with.and "加上">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift 鍵">
 <!ENTITY activation.ctrlKey "Ctrl 鍵">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "顯示替換選單：用">
 <!ENTITY activation.openAltMenu.altKey "（你也可以使用右邊的 Alt 鍵）">
 <!ENTITY activation.preventOpen "封鎖圓餅選單當擊點滑鼠按鍵和">
-<!ENTITY activation.insertKey "Insert 鍵">
 <!ENTITY activation.altKey "Alt 鍵">
-<!ENTITY activation.customKey "自訂按鍵">
-<!ENTITY activation.keycode "按鍵代碼">
 <!ENTITY activation.contextualMenu "顯示情境選單：用">
 <!ENTITY activation.contextualMenu.showAuto "保持情境動作自動啟用。使用上述按鍵時轉換回基本選單。">
 

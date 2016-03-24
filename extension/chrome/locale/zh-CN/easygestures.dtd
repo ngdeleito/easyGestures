@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "自定义鼠标按钮">
 <!ENTITY activation.open.with.buttoncode "按钮代码">
 <!ENTITY activation.open.with.and "和">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift">
 <!ENTITY activation.ctrlKey "Ctrl">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "显示替代菜单">
 <!ENTITY activation.openAltMenu.altKey "(您也可以使用 右 Alt 键)">
 <!ENTITY activation.preventOpen "禁止圆饼菜单优先鼠标按钮">
-<!ENTITY activation.insertKey "Insert">
 <!ENTITY activation.altKey "Alt">
-<!ENTITY activation.customKey "自定义键">
-<!ENTITY activation.keycode "按键代码">
 <!ENTITY activation.contextualMenu "激活上下文敏感">
 <!ENTITY activation.contextualMenu.showAuto "始终激活。使用相同的密钥抑制敏感度。">
 

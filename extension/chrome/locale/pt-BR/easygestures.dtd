@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "custom mouse button">
 <!ENTITY activation.open.with.buttoncode "button code">
 <!ENTITY activation.open.with.and "e">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Tecla Shift">
 <!ENTITY activation.ctrlKey "Tecla Ctrl">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Mostrar menu alternativo com">
 <!ENTITY activation.openAltMenu.altKey "(Você também pode usar a tecla Alt direita)">
 <!ENTITY activation.preventOpen "Suprimir a prioridade do menu de torta no botão do mouse com">
-<!ENTITY activation.insertKey "Tecla Insert">
 <!ENTITY activation.altKey "Tecla Alt">
-<!ENTITY activation.customKey "Tecla Personalizada">
-<!ENTITY activation.keycode "Código da tecla">
 <!ENTITY activation.contextualMenu "Ativar sensibilidade contextual com">
 <!ENTITY activation.contextualMenu.showAuto "Sempre ativada. Usar a mesma tecla para suprimir sensibilidade.">
 

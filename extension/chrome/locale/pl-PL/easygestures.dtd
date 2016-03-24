@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "ustawionym przyciskiem myszy">
 <!ENTITY activation.open.with.buttoncode "przyciskiem kodowanym">
 <!ENTITY activation.open.with.and "+">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "klawisz [ Shift ]">
 <!ENTITY activation.ctrlKey "klawisz [ Ctrl ]">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "Wyświetlaj alternatywne menu klikając:">
 <!ENTITY activation.openAltMenu.altKey "(Można użyć także prawego klawisza [ Alt ])">
 <!ENTITY activation.preventOpen "Wstrzymaj uruchamianie Centrum myszą używając:">
-<!ENTITY activation.insertKey "klawisza [ Insert ]">
 <!ENTITY activation.altKey "klawisza [ Alt ]">
-<!ENTITY activation.customKey "klawisza zdefiniowanego przez użytkownika">
-<!ENTITY activation.keycode "Kod klawisza">
 <!ENTITY activation.contextualMenu "Uaktywnij podpowiedzi kontekstowe za pomocą:">
 <!ENTITY activation.contextualMenu.showAuto "Zawsze aktywne. Użyj tego samego klawisza, aby wyłączyć podpowiedzi.">
 

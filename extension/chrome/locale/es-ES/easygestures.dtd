@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "Otro botón del ratón">
 <!ENTITY activation.open.with.buttoncode "código del botón">
 <!ENTITY activation.open.with.and "y">
-<!ENTITY activation.noKey "Ninguna tecla">
 <!ENTITY activation.shiftKey "La tecla mayúsculas">
 <!ENTITY activation.ctrlKey "La tecla Ctrl">
+<!ENTITY activation.noKey "Ninguna de estas teclas">
 <!ENTITY activation.openAltMenu "Mostrar el menú alternativo con">
 <!ENTITY activation.openAltMenu.altKey "(Puede usar también la tecla Alt derecha)">
 <!ENTITY activation.preventOpen "Impedir la apertura del menú circular con">
-<!ENTITY activation.insertKey "La tecla Insert">
 <!ENTITY activation.altKey "La tecla Alt">
-<!ENTITY activation.customKey "Otra tecla">
-<!ENTITY activation.keycode "código de la tecla">
 <!ENTITY activation.contextualMenu "Activar el menú contextual con">
 <!ENTITY activation.contextualMenu.showAuto "Activarlo automáticamente (y usar esta tecla para mostrar el menú principal)">
 

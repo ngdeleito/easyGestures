@@ -40,16 +40,13 @@
 <!ENTITY activation.open.with.button.custom "사용자 지정 마우스 버튼">
 <!ENTITY activation.open.with.buttoncode "버튼 코드">
 <!ENTITY activation.open.with.and "와(과)">
-<!ENTITY activation.noKey "No key">
 <!ENTITY activation.shiftKey "Shift 키">
 <!ENTITY activation.ctrlKey "Ctrl 키">
+<!ENTITY activation.noKey "None of these keys">
 <!ENTITY activation.openAltMenu "대체 메뉴 표시 방법">
 <!ENTITY activation.openAltMenu.altKey "(또한 오른쪽 Alt 키를 사용할수 있습니다)">
 <!ENTITY activation.preventOpen "다음 키과 마우스 버튼으로 원형 메뉴 우선권을 제한시킵니다">
-<!ENTITY activation.insertKey "Insert 키">
 <!ENTITY activation.altKey "Alt 키">
-<!ENTITY activation.customKey "사용자 지정 키">
-<!ENTITY activation.keycode "키코드">
 <!ENTITY activation.contextualMenu "다음의 키로 상황 감지를 활성화">
 <!ENTITY activation.contextualMenu.showAuto "항시 활성화. 상황 감지의 무효화에도 같은 키를 사용합니다.">
 
