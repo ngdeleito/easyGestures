@@ -109,25 +109,25 @@
 <!ENTITY tips.next "下一个">
 <!ENTITY close "关闭">
 
-<!ENTITY tips.openButton "默认情况下，你必须按一下鼠标中键来显示圆饼菜单（除非你是 Mac 用户）。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
+<!ENTITY tips.openButton "默认情况下，你必须按一下鼠标中键来显示圆饼菜单（除非你是 Mac 用户）。默认情况下鼠标按钮可以更改。 更改鼠标按钮在 选项/行为">
 <!ENTITY tips.dragToAction "最快捷的使用圆饼菜单的方式是按住鼠标按钮，拖拽来执行，并松开按钮。你可以把它作为一个鼠标手势。">
-<!ENTITY tips.openAltMenu "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。|更改鼠标按钮在 选项/行为">
-<!ENTITY tips.loadURLActions "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。|自定义在 选项/自定义/载入网址/脚本">
-<!ENTITY tips.menusCustomization "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。|添加或删除动作在 选项/动作">
-<!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.openAltMenu "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。 更改鼠标按钮在 选项/行为">
+<!ENTITY tips.loadURLActions "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。 自定义在 选项/自定义/载入网址/脚本">
+<!ENTITY tips.menusCustomization "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。 添加或删除动作在 选项/动作">
+<!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
 <!ENTITY tips.contextualMenus "你可以在圆饼菜单打开时点击“Alt”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tips.preventOpen "你可以按住“Insert”键来临时禁止圆饼菜单，使用标准的页面右键菜单。">
 <!ENTITY tips.moveMenu "您可以拖动圆饼菜单，按住“Shift”拖动。">
-<!ENTITY tips.tooltips "如果你不需要显示工具提示，你可以关掉它。还可以重命名每个动作提示。|选择关掉提示在 选项/动作">
-<!ENTITY tips.smallIcons "你可以使用默认的圆形图标显示，或者使用小型图标取代，如果你喜欢简单的文字模式，也可以改用没有图标的基本显示。|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tips.largeMenu "重度使用者可以设置更多的动作在你的圆饼菜单上：在3个主要圆饼菜单上都用10个动作替代默认的8个动作。|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tips.autoscrolling "Firefox选项“使用自动滚动”未选中时，使用鼠标中键是用来显示圆饼菜单的。在圆饼菜单中间停顿短暂时间后可以转换显示“自动滚动”。|激活自动滚动在 选项/动作">
+<!ENTITY tips.tooltips "如果你不需要显示工具提示，你可以关掉它。还可以重命名每个动作提示。 选择关掉提示在 选项/动作">
+<!ENTITY tips.smallIcons "你可以使用默认的圆形图标显示，或者使用小型图标取代，如果你喜欢简单的文字模式，也可以改用没有图标的基本显示。 You can change the pie menu display in [&preferences;/&behavior;].">
+<!ENTITY tips.largeMenu "重度使用者可以设置更多的动作在你的圆饼菜单上：在3个主要圆饼菜单上都用10个动作替代默认的8个动作。 You can change the number of options in [&preferences;/&behavior;].">
+<!ENTITY tips.autoscrolling "Firefox选项“使用自动滚动”未选中时，使用鼠标中键是用来显示圆饼菜单的。在圆饼菜单中间停顿短暂时间后可以转换显示“自动滚动”。 激活自动滚动在 选项/动作">
 <!ENTITY tips.zoomOnImage "放大/缩小这些动作只能在图片上使用。">
 <!ENTITY tips.backAndForwardSiteActions "除了可以在页面间进行 上一页/下一页 的移动外，你也可以用“上一个网站”和“下一个网站”进行网站和网站间的移动。">
 <!ENTITY tips.openLinkAction "“打开链接”动作会在新标签页打开链接。">
-<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs. You can select that folder in [&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "最后重启">
 <!ENTITY stats.actions "点击手势">

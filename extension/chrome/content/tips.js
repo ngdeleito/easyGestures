@@ -115,20 +115,20 @@ function tipLinkClick() {
 }
 
 function updateContent(tipNbr) {
+  // we extract a potential link from the description; links are contained
+  // inside square brackets (with no space after the opening bracket and no
+  // space before the closing bracket): "text1 [link] text2"
+  var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
+  
   document.getElementById("tipNbrDisplay").value = (tipNbr + 1) + " / " + tips.length;
-  
-  var text = tips[tipNbr].description.split("|")[0];
-  var linkText = (tips[tipNbr].description.split("|").length > 1 ?
-                    tips[tipNbr].description.split("|")[1]
-                  : "");
-  
-  document.getElementById("tipText").textContent = text;
+  document.getElementById("tipTextBeforeLink").textContent = text[0];
+  document.getElementById("tipTextLink").textContent = text[1];
+  document.getElementById("tipTextAfterLink").textContent = text[2];
   document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
-  document.getElementById("tipLink").textContent = linkText;
   sizeToContent();
 }
 
 function copyDescriptionToClipboard() {
-  var description = tips[tipNbr].description.split("|")[0];
+  var description = tips[tipNbr].description;
   Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper).copyString(description);
 }

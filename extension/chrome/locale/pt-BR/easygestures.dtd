@@ -109,25 +109,25 @@
 <!ENTITY tips.next "Próxima">
 <!ENTITY close "Fechar">
 
-<!ENTITY tips.openButton "Por padrão, você deve clicar o botão do meio do mouse para mostrar o menu de torta (a menos que você seja um usuário de Mac). O botão padrão do mouse pode ser alterado.|Altere o botão do mouse em &preferences;/&activation;">
+<!ENTITY tips.openButton "Por padrão, você deve clicar o botão do meio do mouse para mostrar o menu de torta (a menos que você seja um usuário de Mac). O botão padrão do mouse pode ser alterado em [&preferences;/&activation;].">
 <!ENTITY tips.dragToAction "A maneira mais rápida de usar o menu de torta é pressionando o botão do mouse, arrastando até a ação a ser executada, e soltando o botão. Pense nele como se fosse um gesto do mouse com uma Interface Gráfica.">
-<!ENTITY tips.openAltMenu "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado.|Altere o botão do mouse em &preferences;/&activation;">
-<!ENTITY tips.loadURLActions "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL' e então, adicionando-os nos leiautes do menu de torta.|Personalize em &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tips.menusCustomization "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas. Estatísticas de uso podem te ajudar a otimizar o menu de torta.|Adicione ou remova ações em &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Você pode executar código javascript com as ações 'Carregar Script'.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.openAltMenu "Por padrão, clicar com o botão direito enquanto o menu de torta está visível mostrará um conjunto de ações alternativas: você poderá então, alternar entre 3 leiautes totalmente personalizáveis. O botão padrão do mouse pode ser alterado em [&preferences;/&activation;].">
+<!ENTITY tips.loadURLActions "Você pode usar easyGestures para abrir seus favoritos personalizando a ação 'Carregar URL' (em [&preferences;/&customizations;/&customizations.loadURLActions;]) e então, adicionando-os nos leiautes do menu de torta.">
+<!ENTITY tips.menusCustomization "Você pode personalizar todos os leiautes do menu de torta com várias ações embutidas em [&preferences;/&menus;]. Estatísticas de uso podem te ajudar a otimizar o menu de torta.">
+<!ENTITY tips.runScriptActions "Você pode executar código javascript com as ações 'Carregar Script'. You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "Um clique rápido do menu de torta em um link sem mover, abrirá o link em uma nova aba.">
-<!ENTITY tips.contextualMenus "Você pode ativar senbilidade de contexto pressionando a tecla 'Alt' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada.|Altere o comportamento em &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Você pode ativar senbilidade de contexto pressionando a tecla 'Alt' quando estiver abrindo o menu de torta. Você pode também deixar a sensibilidade de contexto sempre ligada. Altere o comportamento em [&preferences;/&activation;].">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tips.preventOpen "Pressionando a tecla 'Insert' durante um clique com o botão direito, você pode suprimir o menu de torta e acessar o menu de contexto padrão.">
 <!ENTITY tips.moveMenu "Você pode mover o menu de torta, segurando a tecla 'Shift' enquanto move o mouse.">
-<!ENTITY tips.tooltips "Você pode desligar a visualização das dicas se você não precisa delas.|Desligue a visualização em &preferences;/&behavior;">
-<!ENTITY tips.smallIcons "Você pode manter a reluzente visualização padrão ou mudar para uma visualização básica sem ícones se você é uma mente orientada ao texto. Você pode também mudar a visualização para ícones pequenos.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tips.largeMenu "Usuários avançados podem ter mais ações na torta: 10 ao invés de 8 em cada um dos 3 leiautes principais.|Change the number of options in &preferences;/&behavior;">
-<!ENTITY tips.autoscrolling "A opção 'Usar auto-rolagem' do Firefox está desmarcada quando o botão do meio do mouse é usado para mostrar o menu de torta. O recurso Auto-rolagem pode ser disponibilizado com um pressionamento do mouse através do menu de torta após um curto atraso sem se mover.|Ative auto-rolagem em &preferences;/&behavior;">
+<!ENTITY tips.tooltips "Você pode desligar a visualização das dicas se você não precisa delas em [&preferences;/&behavior;].">
+<!ENTITY tips.smallIcons "Você pode manter a reluzente visualização padrão ou mudar para uma visualização básica sem ícones se você é uma mente orientada ao texto. Você pode também mudar a visualização para ícones pequenos em [&preferences;/&behavior;].">
+<!ENTITY tips.largeMenu "Usuários avançados podem ter mais ações na torta: 10 ao invés de 8 em cada um dos 3 leiautes principais. You can change the number of options in [&preferences;/&behavior;].">
+<!ENTITY tips.autoscrolling "A opção 'Usar auto-rolagem' do Firefox está desmarcada quando o botão do meio do mouse é usado para mostrar o menu de torta. O recurso Auto-rolagem pode ser disponibilizado com um pressionamento do mouse através do menu de torta após um curto atraso sem se mover. Ative auto-rolagem em [&preferences;/&behavior;].">
 <!ENTITY tips.zoomOnImage "Uma ação de zoom sobre uma imagem vai realizar a ação apenas na imagem.">
 <!ENTITY tips.backAndForwardSiteActions "Ao invés de mover-se para frente e para trás, página por página, você pode fazê-lo site a site com as ações 'Voltar site' e 'Avançar site'.">
 <!ENTITY tips.openLinkAction "A ação 'Abrir Link' abrirá o link apontado em uma aba nova.">
-<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs. You can select that folder in [&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Último Reinício">
 <!ENTITY stats.actions "Cliques por Ações">

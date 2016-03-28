@@ -114,7 +114,7 @@
 <!ENTITY tips.openAltMenu "Stiskněte pravé tlačítko myši, pokud je zobrazená nabídka a zobrazí se alternativní akce. Můžete přepínat mezi 3 různými plně upravitelnými rozloženími akcí. Předdefinované tlačítko si můžete změnit. Tlačítko myši změníte v Možnosti/Chování">
 <!ENTITY tips.loadURLActions "Můžete použít easyGetures k otevření vašich oblíbených položek upravením akce &apos;Načíst URL&apos; a přidáním do rozložení v kruhové nabídce. Přizpůsobíte si to v Možnosti/Přizpůsobení/Načíst URL">
 <!ENTITY tips.menusCustomization "Můžete si přizpůsobit kruhovou nabídku výběrem z mnoha předdefinovaných akcí. Statistika použití Vám pomůže optimalizovat kruhovou nabídku. Akce přidáte anebo odstraníte v Možnosti/Akce">
-<!ENTITY tips.runScriptActions "Můžete spustit kód JavaScriptu pomocí akcí &apos;Načíst Skript&apos;.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.runScriptActions "Můžete spustit kód JavaScriptu pomocí akcí &apos;Načíst Skript&apos;. Customize the 'Run Script' actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "Stiskem tlačítka (při zobrazení nabídky) bez tažení se otevře odkaz v novém panelu a zobrazí se červená značka na stránce, kde je tento odkaz.">
 <!ENTITY tips.contextualMenus "Můžete aktivovat kontextovou citlivost stiskem klávesy &apos;Alt&apos; při otevíraní kruhové nabídky. Kontextová citlivost může být také vždy zapnutá. Chování změníte v Možnosti/Chování">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
@@ -127,7 +127,7 @@
 <!ENTITY tips.zoomOnImage "Akce &apos;Přiblížit&apos; nad obrázkem vykoná tuto akci jen na tomto obrázku.">
 <!ENTITY tips.backAndForwardSiteActions "Namísto pohybu &apos;Zpět&apos; a &apos;Vpřed&apos; můžete přejít na &apos;Předcházející stránku&apos; a &apos;Následující stránku&apos;.">
 <!ENTITY tips.openLinkAction "Akce &apos;Otevřít odkaz&apos; otevře odkaz, na kterém je kurzor myši, v novém panelu.">
-<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs. You can select that folder in [&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Poslední vynulování">
 <!ENTITY stats.actions "Kliknutí podle akce">

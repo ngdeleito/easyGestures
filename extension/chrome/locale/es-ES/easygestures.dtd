@@ -109,25 +109,25 @@
 <!ENTITY tips.next "Siguiente">
 <!ENTITY close "Cerrar">
 
-<!ENTITY tips.openButton "Por defecto, pulse el botón central del ratón para mostrar el menú circular; en un Mac, pulse el botón izquierdo del ratón mientras mantiene pulsada la tecla mayúsculas. Los botones por defecto del ratón pueden ser cambiados.|Cambie los botones a través de &preferences;/&activation;">
+<!ENTITY tips.openButton "Por defecto, pulse el botón central del ratón para mostrar el menú circular; en un Mac, pulse el botón izquierdo del ratón mientras mantiene pulsada la tecla mayúsculas. El botón del ratón y la tecla por defecto pueden ser cambiados en [&preferences;/&activation;].">
 <!ENTITY tips.dragToAction "La manera más rápida de usar el menú circular es mantener pulsado el ratón, moverse a la acción seleccionada y soltar el botón. Puede pensar en una especie de gesto del ratón con una interfaz gráfica.">
-<!ENTITY tips.openAltMenu "Por defecto, al pulsar el botón derecho del ratón mientras se está mostrando el menú circular, se irán mostrando menús alternativos, con los que podrá alternar entre un máximo de tres menús totalmente personalizables. El botón por defecto puede cambiarse.|Cambie el botón del ratón en &preferences;/&activation;">
-<!ENTITY tips.loadURLActions "Puede usar easyGestures N para abrir sus marcadores preferidos personalizando las acciones &apos;Cargar dirección&apos; y añadiéndolas a los distintos menús.|Personalizar en &preferences;/&customizations;/&customizations.loadURLActions;">
-<!ENTITY tips.menusCustomization "Puede personalizar todas las entradas del menú circular usando las acciones disponibles. Las estadísticas de uso pueden ayudarle a optimizar el menú circular.|Añada o elimine acciones desde &preferences;/&menus;">
-<!ENTITY tips.runScriptActions "Puede ejecutar código Javascript usando las acciones &apos;Ejecutar script&apos;.|Configure las acciones 'Ejecutar script' en &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.openAltMenu "Por defecto, al pulsar el botón derecho del ratón mientras se está mostrando el menú circular, se irán mostrando menús alternativos, con los que podrá alternar entre un máximo de tres menús totalmente personalizables. El botón por defecto puede cambiarse en [&preferences;/&activation;].">
+<!ENTITY tips.loadURLActions "Puede usar easyGestures N para abrir sus marcadores preferidos personalizando las acciones &apos;Cargar dirección&apos; (en [&preferences;/&customizations;/&customizations.loadURLActions;]) y añadiéndolas a los distintos menús.">
+<!ENTITY tips.menusCustomization "Puede personalizar todas las entradas del menú circular usando las acciones disponibles en [&preferences;/&menus;]. Las estadísticas de uso pueden ayudarle a optimizar el menú circular.">
+<!ENTITY tips.runScriptActions "Puede ejecutar código Javascript usando las acciones &apos;Ejecutar script&apos;. Puede configurar estas acciones en [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "Una pulsación rápida sobre un enlace sin ningún movimiento, abrirá el enlace en una nueva pestaña.">
-<!ENTITY tips.contextualMenus "Por defecto, puede activar el menú contextual pulsando la tecla &apos;Alt&apos; al abrir el menú circular. Puede cambiar esta tecla y activar la activación automática del menú contextual.|Cambie el comportamiento en &preferences;/&activation;">
+<!ENTITY tips.contextualMenus "Por defecto, puede activar el menú contextual pulsando la tecla &apos;Alt&apos; al abrir el menú circular. Puede cambiar esta tecla y activar la activación automática del menú contextual en [&preferences;/&activation;].">
 <!ENTITY tips.searchWebAction "Puede realizar una búsqueda con uno de sus motores de búsqueda con la acción 'Buscar en la web'. Si hay texto seleccionado, la selección se copiará en el campo de búsquedas. Pulse 'Enter' para realizar la búsqueda.">
-<!ENTITY tips.preventOpen "Por defecto, puede impedir la apertura del menú circular pulsando la tecla &apos;Alt&apos;. Puede cambiar de tecla en &preferences;/&activation;.">
+<!ENTITY tips.preventOpen "Por defecto, puede impedir la apertura del menú circular pulsando la tecla &apos;Alt&apos;. Puede cambiar de tecla en [&preferences;/&activation;].">
 <!ENTITY tips.moveMenu "Puede desplazar el menú circular manteniendo pulsada la tecla mayúsculas mientras mueve el ratón.">
-<!ENTITY tips.tooltips "Puede desactivar las descripciones emergentes (tooltips) si no los necesita.|Desactivar la visualización en &preferences;/&behavior;">
-<!ENTITY tips.smallIcons "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede utilizar iconos más pequeños.|Cambie la apariencia del menú en &preferences;/&behavior;">
-<!ENTITY tips.largeMenu "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales.|Cambie el número de opciones en &preferences;/&behavior;">
-<!ENTITY tips.autoscrolling "Si utiliza el botón central del ratón para abrir el menú circular, el desplazamiento automático quedará inhabilitado. Habilitándolo en &preferences;/&behavior;, éste aparecerá de nuevo después de un periodo de tiempo (configurable) sin utilizar el ratón ni el teclado. Puede también habilitar el desplazamiento automático cuando otros botones y/o teclas son utilizados para abrir el menú.|Habilitar el desplazamiento automático en &preferences;/&behavior;">
+<!ENTITY tips.tooltips "Puede desactivar las descripciones emergentes (tooltips) si no las necesita en [&preferences;/&behavior;].">
+<!ENTITY tips.smallIcons "Puede mantener la apariencia normal o cambiar a una visualización más básica sin iconos si lo prefiere. También puede utilizar iconos más pequeños en [&preferences;/&behavior;].">
+<!ENTITY tips.largeMenu "Los usuarios avanzados pueden tener más acciones en el menú circular: 10 en lugar de 8 en cada una de las 3 capas principales. Puede cambiar el número de opciones en [&preferences;/&behavior;].">
+<!ENTITY tips.autoscrolling "Si utiliza el botón central del ratón para abrir el menú circular, el desplazamiento automático quedará inhabilitado. Habilitándolo en [&preferences;/&behavior;], éste aparecerá de nuevo después de un periodo de tiempo (configurable) sin utilizar el ratón ni el teclado. Puede también habilitar el desplazamiento automático cuando otros botones y/o teclas son utilizados para abrir el menú.">
 <!ENTITY tips.zoomOnImage "Una acción de zoom sobre una imagen realizará la acción solamente en la imagen.">
 <!ENTITY tips.backAndForwardSiteActions "En lugar de moverse adelante y atrás página por página, puede hacerlo entre sitios distintos usando las acciones &apos;Sitio anterior&apos; y &apos;Sitio siguiente&apos;.">
 <!ENTITY tips.openLinkAction "La acción &apos;Abrir enlace&apos; abrirá el enlace señalado en una nueva pestaña.">
-<!ENTITY tips.dailyReadingsAction "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas.|Seleccione una carpeta en &customizations;/&customizations.otherActions;">
+<!ENTITY tips.dailyReadingsAction "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas. Puede seleccionar esta carpeta en [&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Último reinicio">
 <!ENTITY stats.actions "Uso por acciones">

@@ -109,25 +109,25 @@
 <!ENTITY tips.next "Sonraki">
 <!ENTITY close "Kapat">
 
-<!ENTITY tips.openButton "Varsayılan olarak, kolay menüyü görüntüleyebilmek için farenizin orta tuşuna tıklamanız gerekir (Mac kullanıcısı değilseniz).|Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
+<!ENTITY tips.openButton "Varsayılan olarak, kolay menüyü görüntüleyebilmek için farenizin orta tuşuna tıklamanız gerekir (Mac kullanıcısı değilseniz). Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
 <!ENTITY tips.dragToAction "Kolay menüyü kullanmanın en hızlı yolu, fare tuşuna basılı tutup çalıştırılacak eylemin üzerine sürüklemek ve tuşu bırakmaktır. Bunu Grafik Kullanıcı Arayüzü ile yapılmış bir fare hareketi gibi düşünebilirsiniz.">
-<!ENTITY tips.openAltMenu "Varsayılan olarak,kolay menü görüntülenirken sağ tıklamak alternatif eylemleri gösterecektir: tamamen kişiselleştirilebilir 3 farklı ekran görünümü arasında geçiş yapabilirsiniz. Varsayılan fare tuşu değiştirilebilir.|Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
+<!ENTITY tips.openAltMenu "Varsayılan olarak,kolay menü görüntülenirken sağ tıklamak alternatif eylemleri gösterecektir: tamamen kişiselleştirilebilir 3 farklı ekran görünümü arasında geçiş yapabilirsiniz. Varsayılan fare tuşu değiştirilebilir. Fare tuşunu Seçenekler/Tepki/Sayfa 1&apos;den değiştirin.">
 <!ENTITY tips.loadURLActions "EasyGestures, &apos;URL Yükle&apos; eylemlerini kişiselleştirerek ve sonra bunları kolay menü ekran görünümü içine ekleyerek sık kullandığınız yer imlerini açmak için kullanılabilir">
-<!ENTITY tips.menusCustomization "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır.|Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
-<!ENTITY tips.runScriptActions "&apos;Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz.|Customize the 'Run Script' actions in &preferences;/&customizations;/&customizations.runScriptActions;">
+<!ENTITY tips.menusCustomization "Tüm kolay menü ekran görünümlerini birçok yerleşik eylemle kişiselleştirebilirsiniz. Kullanım istatistikleri de kolay menüyü kişiselleştirmenize yazrdımcı olacaktır. Seçenekler/Eylemler&apos;den eylem ekleyip çıkarın.">
+<!ENTITY tips.runScriptActions "&apos;Script Yükle&apos; eylemleriyle harici uygulamaları ve javascriptleri çalıştırabilirsiniz. You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "Bir bağlantı üzerinde hareket etmeden yeterince hızlı bir kolay menü tıklaması, bağlantıyı yeni bir sekmede açacak ve sayfada bağlantının yanında kırmızı bir etiket görüntülenecektir.">
 <!ENTITY tips.contextualMenus "İçerik hassasiyetini kolay menüyü açarken &apos;Alt&apos; tuşuna basarak etkinleştirebilirsiniz. İçerik hassasiyeetini her zaman açık konuma da getirebilirsiniz. Seçenekler/Tepki/Sayfa 1&apos;den tepkiyi değiştirin.">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
 <!ENTITY tips.preventOpen "&apos;Insert&apos; tuşuna basılı tutarak, kolay menüyü saklayıp standart içerik menüsüne ulaşabilirsiniz.">
 <!ENTITY tips.moveMenu "Kolay menü etrafında fareyi hareket ettirirken &apos;Shift&apos; tuşuna basılı tutarak dolaşabilirsiniz.">
-<!ENTITY tips.tooltips "Eğer ihtiyacınız yoksa araç ipuçlarını görüntülemeyi kapatabilirsiniz. Her eylemin araç ipucunu yeniden adlandırmak da mümkündür.|Görüntülemeyi Seçenekler/Tepki/Sayfa 2&apos;den durdurabilirsiniz.">
-<!ENTITY tips.smallIcons "Mevcut parlak görünümü koruyabilir ya da yalnızca metni önemsiyorsanız simgelerin olmadığı sade bir görüntüye geçiş yapabilirsiniz. Ayrıca görüntüyü küçük simgelere de çevirebilirsiniz.|Change the pie menu display in &preferences;/&behavior;">
-<!ENTITY tips.largeMenu "Yetkili kullanıcılar kolay menüde daha fazla eylem gerçekleştirebilirler: 3 ana görünümün her birinde 8 yerine 10 eylem.|Change the number of options in &preferences;/&behavior;">
+<!ENTITY tips.tooltips "Eğer ihtiyacınız yoksa araç ipuçlarını görüntülemeyi kapatabilirsiniz. Her eylemin araç ipucunu yeniden adlandırmak da mümkündür. Görüntülemeyi Seçenekler/Tepki/Sayfa 2&apos;den durdurabilirsiniz.">
+<!ENTITY tips.smallIcons "Mevcut parlak görünümü koruyabilir ya da yalnızca metni önemsiyorsanız simgelerin olmadığı sade bir görüntüye geçiş yapabilirsiniz. Ayrıca görüntüyü küçük simgelere de çevirebilirsiniz. You can change the pie menu display in [&preferences;/&behavior;].">
+<!ENTITY tips.largeMenu "Yetkili kullanıcılar kolay menüde daha fazla eylem gerçekleştirebilirler: 3 ana görünümün her birinde 8 yerine 10 eylem. You can change the number of options in [&preferences;/&behavior;].">
 <!ENTITY tips.autoscrolling "Kolay menüyü göstermek için orta fare tuşu kullanıldığında Firefox&apos;un &apos;Otomatik Kaydırma Kullan&apos; seçeneği devre dışı kalır. Bu durumda Otomatik Kaydırma özelliği kolay menü üzereinde hareketsiz kısa bir beklemeden sonra aşağıya doğru bir fare hareketi ile etkin olabilir.">
 <!ENTITY tips.zoomOnImage "Bir resim üzerindeki yakınlaştırma eylemi yalnızca o resim üzerinde gerçekleştirilecektir.">
 <!ENTITY tips.backAndForwardSiteActions "&apos;Önceki Site&apos; ve &apos;Sonraki Site&apos; eylemleriyle, sayfa sayfa ileri ya da geri gitmek yerine bunu siteler arasında gerçekleştirebilirsiniz.">
 <!ENTITY tips.openLinkAction "&apos;Bağlantıyı Aç&apos; eylemi seçilen bağlantıyı yeni bir sekmede açacaktır.">
-<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs.|Select a folder in &customizations;/&customizations.otherActions;">
+<!ENTITY tips.dailyReadingsAction "The 'Daily Readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs. You can select that folder in [&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Son Sıfırlama">
 <!ENTITY stats.actions "Eylemlere Göre Tıklamalar">
