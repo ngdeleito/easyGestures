@@ -31,34 +31,42 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+#tip {
+  margin-top: 0px;
+  font-size: larger;
+}
+
 #tipTextLink {
   color: -moz-nativehyperlinktext;
   cursor: pointer;
 }
+
 #tipTextLink:hover {
   text-decoration: underline;
 }
 
-/*/////////////////////////////////////////////////////////////////////////////////////////////
-						TIPS IMAGES
-//////////////////////////////////////////////////////////////////////////////////////////////*/
+#tipImage {
+  background-image: url("chrome://easygestures/content/tips.png");
+  width: 460px;
+  height: 130px;
+}
 
-div.empty {	visibility: hidden  !important ; }
+#tipImage.empty { visibility: hidden; }
 
-div.triggerBySelection {	background-position: 0px 0px  !important ; }
-div.triggerByStroke {	background-position: -460px 0px  !important ; }
+#tipImage.triggerBySelection { background-position: 0px 0px; }
+#tipImage.triggerByStroke { background-position: -460px 0px; }
 
-div.alternativeMenus {	background-position: 0px -130px  !important ; }
-div.bookmarksOnlyLayout {	background-position: -460px -130px  !important ; }
-div.builtInAction {	background-position: -920px -130px  !important ; }
+#tipImage.alternativeMenus { background-position: 0px -130px; }
+#tipImage.bookmarksOnlyLayout { background-position: -460px -130px; }
+#tipImage.builtInAction { background-position: -920px -130px; }
 
-div.programsAndScripts {	background-position: 0px -260px  !important ; }
-div.clickOnLink {	background-position: -460px -260px  !important ; }
-div.contextual {	background-position: -920px -260px  !important ; }
+#tipImage.programsAndScripts { background-position: 0px -260px; }
+#tipImage.clickOnLink { background-position: -460px -260px; }
+#tipImage.contextual { background-position: -920px -260px; }
 
-div.suppressMenu {	background-position: -460px -390px  !important ; }
-div.moveMenu {	background-position: -920px -390px  !important ; }
+#tipImage.suppressMenu { background-position: -460px -390px; }
+#tipImage.moveMenu { background-position: -920px -390px; }
 
-div.noTooltips {	background-position: 0px -520px  !important ; }
-div.noIcons {	background-position: -460px -520px  !important ; }
-div.largeMenu {	background-position: -920px -520px  !important ; }
+#tipImage.noTooltips { background-position: 0px -520px; }
+#tipImage.noIcons { background-position: -460px -520px; }
+#tipImage.largeMenu { background-position: -920px -520px; }

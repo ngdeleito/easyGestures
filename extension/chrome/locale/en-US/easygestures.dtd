@@ -91,8 +91,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tips">
-<!ENTITY tips.intro "Did you know...">
-<!ENTITY tips.copyText "Copy text to clipboard">
 <!ENTITY tips.previous "Previous">
 <!ENTITY tips.next "Next">
 <!ENTITY close "Close">

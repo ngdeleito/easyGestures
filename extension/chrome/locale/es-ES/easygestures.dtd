@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Carpeta utilizada por esta acción:">
 
 <!ENTITY tips "Consejos">
-<!ENTITY tips.intro "¿Sabía que...?">
-<!ENTITY tips.copyText "Copiar texto al portapapeles">
 <!ENTITY tips.previous "Anterior">
 <!ENTITY tips.next "Siguiente">
 <!ENTITY close "Cerrar">

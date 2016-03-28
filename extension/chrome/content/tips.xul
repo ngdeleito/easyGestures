@@ -53,36 +53,23 @@
   </script>
   <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
   
-  <groupbox flex="1" style="background-color:white;">
+  <groupbox flex="1" style="padding: 8px;">
+    <html:p id="tip">
+      <html:span id="tipTextBeforeLink">
+      </html:span><html:a id="tipTextLink" onclick="tipLinkClick();">
+      </html:a><html:span id="tipTextAfterLink"></html:span>
+    </html:p>
+    <spacer flex="1" />
+    <hbox pack="center">
+      <html:div id="tipImage"></html:div>
+    </hbox>
+    <spacer flex="1" />
     <hbox>
-      <description value="&tips.intro;" class="header" />
-      <spring flex="1" />
+      <spacer flex="1" />
       <description id="tipNbrDisplay" value="xx / nn" />
     </hbox>
-    <hbox flex="1" style="border: solid lightgray 1pt;margin-bottom: 8px;">
-      <vbox style="font-size:larger;background-color: #FFFFE1;border: none;"
-        flex="1">
-        <html:p style="margin: 8px; padding: 0px;">
-          <html:span id="tipTextBeforeLink">
-          </html:span><html:a id="tipTextLink" onclick="tipLinkClick();">
-          </html:a><html:span id="tipTextAfterLink"></html:span>
-        </html:p>
-        <spacer flex="1" />
-        <hbox pack="center">
-          <html:div id="tipImage" style="background-image:url('chrome://easygestures/content/tips.png');width:460px;height:130px;"></html:div>
-        </hbox>
-        <spacer flex="1" />
-        <hbox align="center" style="margin: 8px; padding: 0px;">
-          <spacer flex="1" />
-          <image src="chrome://easygestures/content/copyToClipboard.png"
-            tooltiptext="&tips.copyText;" onclick="copyDescriptionToClipboard();"
-            onmousedown="this.style.opacity=0.5;"
-            onmouseup="this.style.opacity=1;" />
-        </hbox>
-      </vbox>
-    </hbox>
   </groupbox>
-  <hbox>
+  <hbox align="center">
     <checkbox id="showTips" checked="true" label="&general.startupTips;"
       oncommand="eGPrefs.toggleStartupTips();" />
     <spring flex="1" />

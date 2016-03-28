@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "İpuçları">
-<!ENTITY tips.intro "Biliyor muydunuz...">
-<!ENTITY tips.copyText "Metni panoya kopyala">
 <!ENTITY tips.previous "Önceki">
 <!ENTITY tips.next "Sonraki">
 <!ENTITY close "Kapat">

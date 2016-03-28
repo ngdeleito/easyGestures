@@ -102,8 +102,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action :">
 
 <!ENTITY tips "Astuces">
-<!ENTITY tips.intro "Saviez-vous ... ?">
-<!ENTITY tips.copyText "Copier texte dans le presse-papier">
 <!ENTITY tips.previous "Précédente">
 <!ENTITY tips.next "Suivante">
 <!ENTITY close "Fermer">

@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tipy">
-<!ENTITY tips.intro "Vedeli ste...">
-<!ENTITY tips.copyText "Skopírovať text do schránky">
 <!ENTITY tips.previous "Predchádzajúci">
 <!ENTITY tips.next "Nasledujúci">
 <!ENTITY close "Zavrieť">

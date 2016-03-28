@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "小提示">
-<!ENTITY tips.intro "你知不知道...">
-<!ENTITY tips.copyText "複製文字到剪貼簿">
 <!ENTITY tips.previous "上一個">
 <!ENTITY tips.next "下一個">
 <!ENTITY close "關閉">

@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "ヒント">
-<!ENTITY tips.intro "ご存知ですか...">
-<!ENTITY tips.copyText "クリップボードに文章をコピーする">
 <!ENTITY tips.previous "前へ">
 <!ENTITY tips.next "次へ">
 <!ENTITY close "閉じる">

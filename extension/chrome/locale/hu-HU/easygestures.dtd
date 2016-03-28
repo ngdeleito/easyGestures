@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Tippek">
-<!ENTITY tips.intro "Tudtad-e...">
-<!ENTITY tips.copyText "Szöveg másolása a vágólapra">
 <!ENTITY tips.previous "Előző">
 <!ENTITY tips.next "Következő">
 <!ENTITY close "Bezárás">

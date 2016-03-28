@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "팁">
-<!ENTITY tips.intro "알고 있나요...">
-<!ENTITY tips.copyText "클립보드에 문서 복사">
 <!ENTITY tips.previous "이전">
 <!ENTITY tips.next "다음">
 <!ENTITY close "닫기">

@@ -103,8 +103,6 @@
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
 <!ENTITY tips "Podpowiedzi">
-<!ENTITY tips.intro "Czy wiesz że...">
-<!ENTITY tips.copyText "Kopiuj tekst do schowka">
 <!ENTITY tips.previous "Poprzednia">
 <!ENTITY tips.next "Następna">
 <!ENTITY close "Zamknij">

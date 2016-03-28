@@ -127,8 +127,3 @@ function updateContent(tipNbr) {
   document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
   sizeToContent();
 }
-
-function copyDescriptionToClipboard() {
-  var description = tips[tipNbr].description;
-  Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper).copyString(description);
-}
