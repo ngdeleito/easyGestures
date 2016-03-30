@@ -34,6 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global eGPrefs */
 
+var tipLabels = JSON.parse(document.getElementById("tips").textContent);
+
 function tipEntry(tipLabelIndex, imageClass, paneName, tabNumber) {
   this.description = tipLabels[tipLabelIndex];
   this.imageClass = imageClass; // image source

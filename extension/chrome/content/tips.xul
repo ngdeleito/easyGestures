@@ -54,6 +54,16 @@
   <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
   
   <groupbox flex="1" style="padding: 8px;">
+    <html:div id="tips">
+      ["&tips.openButton;", "&tips.dragToAction;", "&tips.openAltMenu;",
+       "&tips.menusCustomization;", "&tips.clickOnLink;", "&tips.tooltips;",
+       "&tips.searchWebAction;", "&tips.backAndForwardSiteActions;",
+       "&tips.loadURLActions;", "&tips.runScriptActions;",
+       "&tips.contextualMenus;", "&tips.preventOpen;", "&tips.moveMenu;",
+       "&tips.smallIcons;", "&tips.largeMenu;", "&tips.autoscrolling;",
+       "&tips.zoomOnImage;", "&tips.openLinkAction;",
+       "&tips.dailyReadingsAction;"]
+    </html:div>
     <html:p id="tip">
       <html:span id="tipTextBeforeLink">
       </html:span><html:a id="tipTextLink" onclick="tipLinkClick();">
@@ -84,15 +94,5 @@
     <resizer dir="bottomright"></resizer>
   </hbox>
   
-  <script type="application/x-javascript">
-    var tipLabels = ["&tips.openButton;", "&tips.dragToAction;",
-      "&tips.openAltMenu;", "&tips.menusCustomization;", "&tips.clickOnLink;",
-      "&tips.tooltips;", "&tips.searchWebAction;",
-      "&tips.backAndForwardSiteActions;", "&tips.loadURLActions;",
-      "&tips.runScriptActions;", "&tips.contextualMenus;",
-      "&tips.preventOpen;", "&tips.moveMenu;", "&tips.smallIcons;",
-      "&tips.largeMenu;", "&tips.autoscrolling;", "&tips.zoomOnImage;",
-      "&tips.openLinkAction;", "&tips.dailyReadingsAction;"];
-  </script>
   <script type="application/x-javascript" src="tips.js" />
 </window>
