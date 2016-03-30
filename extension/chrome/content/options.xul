@@ -300,7 +300,7 @@
       <preference id="contextSelectionMenu" name="extensions.easygestures.menus.contextSelection" type="string" />
       <preference id="contextTextboxMenu" name="extensions.easygestures.menus.contextTextbox" type="string" />
     </preferences>
-    <tabbox id="actionsTabboxes">
+    <tabbox id="menusTabboxes">
       <tabs>
         <tab label="&menus.main;" />
         <tab label="&menus.extra;" />

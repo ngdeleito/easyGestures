@@ -45,24 +45,24 @@ function tipEntry(tipLabelIndex, imageClass, paneName, tabNumber) {
 }
 
 var tips = [
-  new tipEntry(0,  "triggerBySelection",  "activation",     "0"),
-  new tipEntry(1,  "triggerByStroke",     ""          ,     "0"),
-  new tipEntry(2,  "alternativeMenus",    "activation",     "0"),
+  new tipEntry(0,  "triggerBySelection",  "activation",     undefined),
+  new tipEntry(1,  "triggerByStroke",     ""          ,     undefined),
+  new tipEntry(2,  "alternativeMenus",    "activation",     undefined),
   new tipEntry(3,  "builtInAction",       "menus",          "0"),
-  new tipEntry(4,  "clickOnLink",         "",               "0"),
-  new tipEntry(5,  "noTooltips",          "behavior",       "0"),
-  new tipEntry(6,  "empty",               "",               "0"),
-  new tipEntry(7,  "empty",               "",               "0"),
+  new tipEntry(4,  "clickOnLink",         "",               undefined),
+  new tipEntry(5,  "noTooltips",          "behavior",       undefined),
+  new tipEntry(6,  "empty",               "",               undefined),
+  new tipEntry(7,  "empty",               "",               undefined),
   new tipEntry(8,  "bookmarksOnlyLayout", "customizations", "0"),
   new tipEntry(9,  "programsAndScripts",  "customizations", "1"),
-  new tipEntry(10, "contextual",          "activation",     "0"),
-  new tipEntry(11, "empty",               "",               "0"),
-  new tipEntry(12, "moveMenu",            "",               "0"),
-  new tipEntry(13, "noIcons",             "behavior",       "0"),
-  new tipEntry(14, "largeMenu",           "behavior",       "0"),
-  new tipEntry(15, "empty",               "behavior",       "0"),
-  new tipEntry(16, "empty",               "",               "0"),
-  new tipEntry(17, "empty",               "",               "0"),
+  new tipEntry(10, "contextual",          "activation",     undefined),
+  new tipEntry(11, "empty",               "",               undefined),
+  new tipEntry(12, "moveMenu",            "",               undefined),
+  new tipEntry(13, "noIcons",             "behavior",       undefined),
+  new tipEntry(14, "largeMenu",           "behavior",       undefined),
+  new tipEntry(15, "empty",               "behavior",       undefined),
+  new tipEntry(16, "empty",               "",               undefined),
+  new tipEntry(17, "empty",               "",               undefined),
   new tipEntry(18, "empty",               "customizations", "2")
 ];
 
@@ -84,7 +84,7 @@ function updateTipNbr(step) {
 function showPaneAndTabOn(paneName, tabNumber, doc) {
   var pane = doc.getElementById(paneName + "Pane");
   doc.getElementById("eG_optionsWindow").showPane(pane);
-  if (tabNumber > 0) {
+  if (tabNumber !== undefined) {
     var tabbox = doc.getElementById(paneName + "Tabboxes");
     tabbox.selectedIndex = tabNumber;
   }
