@@ -32,7 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGPrefs */
+/* exported updateTipNbr, tipLinkClick */
+/* global document, eGPrefs, window, removeEventListener, sizeToContent */
 
 var tipLabels = JSON.parse(document.getElementById("tips").textContent);
 
@@ -95,7 +96,7 @@ function openPreferencesWith(paneName, tabNumber) {
   var win;
   while (winenum.hasMoreElements() && !found) {
     win = winenum.getNext();
-    found = win.location == "chrome://easygestures/content/options.xul";
+    found = win.location.toString() === "chrome://easygestures/content/options.xul";
   }
   if (!found) {
     win = window.openDialog("chrome://easygestures/content/options.xul", "", "");
