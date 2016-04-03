@@ -37,34 +37,36 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 var tipLabels = JSON.parse(document.getElementById("tips").textContent);
 
-function tipEntry(tipLabelIndex, imageClass, paneName, tabNumber) {
-  this.description = tipLabels[tipLabelIndex];
+function tipEntry(imageClass, paneName, tabNumber) {
   this.imageClass = imageClass; // image source
   this.paneName = paneName;
   this.tabNumber = tabNumber;
 }
 
 var tips = [
-  new tipEntry(0,  "triggerBySelection",  "activation",     undefined),
-  new tipEntry(1,  "triggerByStroke",     ""          ,     undefined),
-  new tipEntry(2,  "alternativeMenus",    "activation",     undefined),
-  new tipEntry(3,  "builtInAction",       "menus",          "0"),
-  new tipEntry(4,  "clickOnLink",         "",               undefined),
-  new tipEntry(5,  "noTooltips",          "behavior",       undefined),
-  new tipEntry(6,  "empty",               "",               undefined),
-  new tipEntry(7,  "empty",               "",               undefined),
-  new tipEntry(8,  "bookmarksOnlyLayout", "customizations", "0"),
-  new tipEntry(9,  "programsAndScripts",  "customizations", "1"),
-  new tipEntry(10, "contextual",          "activation",     undefined),
-  new tipEntry(11, "empty",               "",               undefined),
-  new tipEntry(12, "moveMenu",            "",               undefined),
-  new tipEntry(13, "noIcons",             "behavior",       undefined),
-  new tipEntry(14, "largeMenu",           "behavior",       undefined),
-  new tipEntry(15, "empty",               "behavior",       undefined),
-  new tipEntry(16, "empty",               "",               undefined),
-  new tipEntry(17, "empty",               "",               undefined),
-  new tipEntry(18, "empty",               "customizations", "2")
+  new tipEntry("triggerBySelection",  "activation",     undefined),
+  new tipEntry("triggerByStroke",     ""          ,     undefined),
+  new tipEntry("alternativeMenus",    "activation",     undefined),
+  new tipEntry("builtInAction",       "menus",          "0"),
+  new tipEntry("clickOnLink",         "behavior",       undefined),
+  new tipEntry("noTooltips",          "behavior",       undefined),
+  new tipEntry("empty",               "",               undefined),
+  new tipEntry("empty",               "",               undefined),
+  new tipEntry("bookmarksOnlyLayout", "customizations", "0"),
+  new tipEntry("programsAndScripts",  "customizations", "1"),
+  new tipEntry("contextual",          "activation",     undefined),
+  new tipEntry("empty",               "",               undefined),
+  new tipEntry("moveMenu",            "",               undefined),
+  new tipEntry("noIcons",             "behavior",       undefined),
+  new tipEntry("largeMenu",           "behavior",       undefined),
+  new tipEntry("empty",               "behavior",       undefined),
+  new tipEntry("empty",               "",               undefined),
+  new tipEntry("empty",               "",               undefined),
+  new tipEntry("empty",               "customizations", "2")
 ];
+tips.forEach(function(tip, index) {
+  tip.description = tipLabels[index];
+});
 
 var tipNbr;
 document.getElementById("showTips").checked = eGPrefs.areStartupTipsOn();
