@@ -39,13 +39,13 @@
 <!ENTITY activation.open.with.button.custom "Un autre bouton de la souris">
 <!ENTITY activation.open.with.buttoncode "code du bouton">
 <!ENTITY activation.open.with.and "et">
-<!ENTITY activation.shiftKey "La touche Maj">
-<!ENTITY activation.ctrlKey "La touche Ctrl">
+<!ENTITY activation.shiftKey "Une touche 'Maj'">
+<!ENTITY activation.ctrlKey "Une touche 'Ctrl'">
 <!ENTITY activation.noKey "Aucune de ces touches">
 <!ENTITY activation.openAltMenu "Afficher le menu alternatif avec">
-<!ENTITY activation.openAltMenu.altKey "(Vous pouvez aussi utiliser la touche Alt droite)">
+<!ENTITY activation.openAltMenu.altKey "(Vous pouvez aussi utiliser une des touches 'Alt')">
 <!ENTITY activation.preventOpen "Empêcher l'ouverture du menu circulaire avec">
-<!ENTITY activation.altKey "La touche Alt">
+<!ENTITY activation.altKey "Une touche 'Alt'">
 <!ENTITY activation.contextualMenu "Activer le menu contextuel avec">
 <!ENTITY activation.contextualMenu.showAuto "L'activer automatiquement (et utiliser la touche ci-dessus pour montrer le menu principal)">
 
@@ -55,16 +55,16 @@
 <!ENTITY behavior.display "Affichage">
 <!ENTITY behavior.display.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
 <!ENTITY behavior.display.smallIcons "Utiliser des petites icônes">
-<!ENTITY behavior.display.opacity "Opacité du menu circulaire :">
+<!ENTITY behavior.display.opacity "Opacité du menu circulaire&#160;:">
 <!ENTITY behavior.tooltips "Infobulles">
 <!ENTITY behavior.tooltips.activate "Activer les infobulles">
 <!ENTITY behavior.tooltips.delay "Activer après un délai de">
 <!ENTITY behavior.move "Déplacer le menu circulaire">
-<!ENTITY behavior.move.shiftKey "En appuyant sur une touche Maj">
+<!ENTITY behavior.move.shiftKey "En appuyant sur une des touches 'Maj'">
 <!ENTITY behavior.move.menuEdge "En atteignant le bord du menu">
 <!ENTITY behavior.links "Ouvrir des liens en cliquant par le centre du menu circulaire">
 <!ENTITY behavior.links.activate "Activer l'ouverture de liens">
-<!ENTITY behavior.links.delay "Délai maximum pour cliquer :">
+<!ENTITY behavior.links.delay "Délai maximum pour cliquer&#160;:">
 <!ENTITY behavior.links.openLinkAction "Suivre le comportement de l'action 'Ouvrir le lien'">
 <!ENTITY behavior.links.configureAction "Configurer cette action">
 <!ENTITY behavior.links.browser "Suivre le comportement du navigateur">
@@ -79,52 +79,52 @@
 <!ENTITY menus.alternative1 "Alternatif 1">
 <!ENTITY menus.alternative2 "Alternatif 2">
 <!ENTITY menus.enabled "Activé">
-<!ENTITY menus.extra.info "Le menu supplémentaire s'affiche en utilisant l'action correspondante">
+<!ENTITY menus.extra.info "Le Menu supplémentaire s'affiche en utilisant l'action correspondante">
 <!ENTITY menus.contextual.link "Menu lien">
 <!ENTITY menus.contextual.image "Menu image">
 <!ENTITY menus.contextual.selection "Menu sélection">
-<!ENTITY menus.contextual.textbox "Menu zone de texte">
+<!ENTITY menus.contextual.textbox "Menu champ de saisie">
 
-<!ENTITY customizations.loadURLActions "Actions Charger URL">
-<!ENTITY customizations.runScriptActions "Actions Exécuter script">
+<!ENTITY customizations.loadURLActions "Actions 'Charger URL'">
+<!ENTITY customizations.runScriptActions "Actions 'Exécuter script'">
 <!ENTITY customizations.otherActions "Autres actions">
 <!ENTITY customizations.infoActions "Vous pouvez sélectionner ces actions dans le panneau '&menus;'">
-<!ENTITY customizations.infoPlaceholders "Les symboles &#37;s et &#37;u sont remplacés respectivement par la sélection et l'URL courants">
+<!ENTITY customizations.infoPlaceholders "Les symboles '&#37;s' et '&#37;u' sont remplacés respectivement par la sélection et l'URL courants">
 <!ENTITY customizations.loadURLActions.load "Charger les URLs">
 <!ENTITY customizations.loadURLActions.currentTab "Dans l'onglet courant">
 <!ENTITY customizations.loadURLActions.newTab "Dans un nouvel onglet">
 <!ENTITY customizations.loadURLActions.newWindow "Dans une nouvelle fenêtre">
-<!ENTITY customizations.openLink "Personnaliser l'action 'Ouvrir lien'">
+<!ENTITY customizations.openLink "Personnaliser l'action 'Ouvrir le lien'">
 <!ENTITY customizations.openLink.currentTab "Ouvrir le lien dans l'onglet courant">
 <!ENTITY customizations.openLink.newTab "Ouvrir le lien dans un nouvel onglet">
 <!ENTITY customizations.openLink.newWindow "Ouvrir le lien dans une nouvelle fenêtre">
 <!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
-<!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action :">
+<!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action&#160;:">
 
 <!ENTITY tips "Astuces">
 <!ENTITY tips.previous "Précédente">
 <!ENTITY tips.next "Suivante">
 <!ENTITY close "Fermer">
 
-<!ENTITY tips.openButton "Par défaut, cliquez sur le bouton central de la souris pour afficher le menu circulaire ; sur un Mac, cliquez sur le bouton gauche de la souris tout en appuyant Maj. Le bouton ainsi que la touche par défaut peuvent être changés dans [&preferences;/&activation;].">
-<!ENTITY tips.dragToAction "Le moyen le plus rapide d'utiliser le menu circulaire est de maintenir appuyé le bouton de la souris, glisser sur l'action à exécuter, et relâcher le bouton. Pensez à un geste de souris avec une interface graphique.">
-<!ENTITY tips.openAltMenu "Par défaut, cliquer avec le bouton droit lorsque le menu circulaire s'affiche fera apparaître les ensembles d'actions alternatifs : vous pourrez ainsi parcourir 3 différentes plans entièrement personnalisables. Vous pouvez changer le bouton par défaut de la souris dans [&preferences;/&activation;].">
-<!ENTITY tips.loadURLActions "Vous pouvez utiliser easyGestures pour ouvrir vos signets favoris en personnalisant les actions 'Charger URL' (dans [&preferences;/&customizations;/&customizations.loadURLActions;]) et en les ajoutant ensuite dans les plans du menu circulaire.">
-<!ENTITY tips.menusCustomization "Vous pouvez personnaliser tous les plans du menu circulaire avec plusieurs actions prédéfinies dans [&preferences;/&menus;]. Les statistiques d'utilisation vous aideront aussi à optimiser le menu circulaire.">
-<!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript avec les actions 'Exécuter script'. Vous pouvez personnaliser ces actions dans [&preferences;/&customizations;/&customizations.runScriptActions;].">
-<!ENTITY tips.clickOnLink "En cliquant suffisamment rapidement avec le menu circulaire sur un lien sans bouger, le lien s'ouvrira dans un nouvel onglet.">
-<!ENTITY tips.contextualMenus "Par défaut, vous pouvez activer le menu contextuel en appuyant sur la touche 'Alt' lors de l'ouverture du menu circulaire. Vous pouvez changer cette touche et activer l'activation automatique du menu contextuel dans [&preferences;/&activation;].">
-<!ENTITY tips.searchWebAction "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le Web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
-<!ENTITY tips.preventOpen "Par défaut, vous pouvez empêcher l'ouverture du menu circulaire en maintenant la touche 'Alt' enfoncée. Vous pouvez changer cette touche dans [&preferences;/&activation;].">
-<!ENTITY tips.moveMenu "Vous pouvez déplacer le menu circulaire en maintenant la touche 'Maj' enfoncée tout en bougeant la souris.">
-<!ENTITY tips.tooltips "Vous pouvez arrêter l'affichage des infobulles si vous n'en avez pas besoin dans [&preferences;/&behavior;].">
-<!ENTITY tips.smallIcons "Vous pouvez garder l'élégant affichage par défaut ou basculer vers un affichage de base sans icônes si vous êtes un esprit axé sur le texte. Vous pouvez aussi changer l'affichage en petites icônes dans [&preferences;/&behavior;].">
-<!ENTITY tips.largeMenu "Les grands utilisateurs peuvent avoir plus d'actions sur le cercle : 10 au lieu de 8 sur chacun des 3 plans principaux. Vous pouvez changer le nombre d'actions dans [&preferences;/&behavior;].">
-<!ENTITY tips.autoscrolling "Lorsque le bouton central de la souris est utilisé pour ouvrir le menu circulaire, le défilement automatique n'est plus disponible. En l'activant dans [&preferences;/&behavior;], il deviendra disponible après un délai (configurable) sans utiliser ni la souris ni le clavier. Vous pouvez aussi activer le défilement automatique lorsque d'autres boutons et/ou touches sont utilisés pour ouvrir le menu.">
-<!ENTITY tips.zoomOnImage "Une action de zoom sur une image exécutera l'action sur l'image uniquement.">
-<!ENTITY tips.backAndForwardSiteActions "Plutôt que d'avancer et reculer page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant'.">
-<!ENTITY tips.openLinkAction "L'action 'Ouvrir le lien' ouvre le lien pointé dans un nouvel onglet.">
-<!ENTITY tips.dailyReadingsAction "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets. Vous pouvez choisir ce dossier dans [&customizations;/&customizations.otherActions;].">
+<!ENTITY tips.openButton "Par défaut, cliquez sur le bouton central de la souris pour ouvrir le menu circulaire&#160;; sur un Mac, cliquez sur le bouton gauche de la souris tout en appuyant 'Maj'. Vous pouvez changer le bouton de la souris ainsi que la touche par défaut dans [&preferences;/&activation;].">
+<!ENTITY tips.dragToAction "Le moyen le plus rapide d'utiliser le menu circulaire est de l'ouvrir tout en maintenant appuyé le bouton de la souris, puis de glisser la souris sur l'action à exécuter, et enfin de relâcher le bouton de la souris. Pensez à un geste de la souris avec une interface graphique.">
+<!ENTITY tips.openAltMenu "Par défaut, cliquer avec le bouton droit de la souris lorsque le menu circulaire est ouvert fera apparaître successivement jusqu'à trois menus alternatifs. Vous pouvez changer le bouton par défaut de la souris dans [&preferences;/&activation;]. Vous pouvez aussi utiliser une des touches 'Alt' pour faire apparaître le menu alternatif suivant.">
+<!ENTITY tips.menusCustomization "Vous pouvez personnaliser dans [&preferences;/&menus;] les différents menus disponibles avec un large éventail d'actions prédéfinies. Les statistiques d'utilisation peuvent vous être utiles pour placer ces actions au bon endroit au sein du menu circulaire.">
+<!ENTITY tips.clickOnLink "Par défaut, en ouvrant le menu circulaire sur un lien, ce dernier sera ouvert et le menu circulaire sera fermé pourvu qu'aucune activité ne soit détectée pendant un court laps de temps. Vous pouvez désactiver cette fonctionnalité, modifier ce laps de temps et contrôler comment les liens doivent être ouverts dans [&preferences;/&behavior;].">
+<!ENTITY tips.tooltips "Vous pouvez désactiver les infobulles dans [&preferences;/&behavior;].">
+<!ENTITY tips.searchWebAction "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
+<!ENTITY tips.backAndForwardSiteActions "Plutôt que d'avancer et de reculer dans l'historique page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant'.">
+<!ENTITY tips.loadURLActions "Vous pouvez ouvrir vos pages web préférées en personnalisant les actions 'Charger URL' dans [&preferences;/&customizations;/&customizations.loadURLActions;] et en ajoutant ensuite ces actions dans le menu circulaire.">
+<!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript en personnalisant les actions 'Exécuter script' dans [&preferences;/&customizations;/&customizations.runScriptActions;] et en ajoutant ensuite ces actions dans le menu circulaire.">
+<!ENTITY tips.contextualMenus "Par défaut, vous pouvez afficher le menu contextuel tout en appuyant sur une touche 'Alt' lors de l'ouverture du menu circulaire sur un lien, une image ou un champ de saisie de texte, ou lors de l'ouverture du menu circulaire lorsque du contenu est sélectionné. Vous pouvez changer la touche par défaut et activer l'activation automatique du menu contextuel dans [&preferences;/&activation;].">
+<!ENTITY tips.preventOpen "Par défaut, vous pouvez empêcher l'ouverture du menu circulaire en maintenant une touche 'Ctrl' enfoncée&#160;; aucune touche par défaut n'est définie sur un Mac. Vous pouvez changer la touche par défaut dans [&preferences;/&activation;].">
+<!ENTITY tips.moveMenu "Vous pouvez déplacer le menu circulaire en maintenant une touche 'Maj' enfoncée tout en bougeant la souris.">
+<!ENTITY tips.smallIcons "Vous pouvez changer les icônes du menu circulaire en petites icônes dans [&preferences;/&behavior;].">
+<!ENTITY tips.largeMenu "Par défaut, les menus sont composés de 8 actions. Vous pouvez passer à 10 actions par menu dans [&preferences;/&behavior;].">
+<!ENTITY tips.autoscrolling "Lorsque le bouton central de la souris est utilisé pour ouvrir le menu circulaire, le défilement automatique n'est plus disponible. En l'activant dans [&preferences;/&behavior;], il deviendra disponible après un délai configurable d'inactivité. Vous pouvez aussi activer le défilement automatique lorsque d'autres boutons et/ou touches sont utilisés pour ouvrir le menu circulaire.">
+<!ENTITY tips.zoomOnImage "Une action de zoom sur une image exécute cette action uniquement sur cette image.">
+<!ENTITY tips.openLinkAction "Par défaut, l'action 'Ouvrir le lien' ouvre le lien sous le menu circulaire dans un nouvel onglet. Vous pouvez changer ce comportement par défaut dans [&preferences;/&customizations;/&customizations.otherActions;].">
+<!ENTITY tips.dailyReadingsAction "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets. Vous pouvez choisir ce dossier dans [&preferences;/&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Dernière réinitialisation">
 <!ENTITY stats.actions "Clics par actions">
