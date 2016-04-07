@@ -177,6 +177,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   border-radius: 4px 4px;
   padding: 2px;
   font-family: sans-serif;
+  white-space: nowrap;
 }
 
 #easyGesturesPieMenu_nn #easyGesturesContextMenuSign {

@@ -61,7 +61,7 @@ var tips = [
   new tipEntry("largeMenu",           "behavior",       undefined),
   new tipEntry("empty",               "behavior",       undefined),
   new tipEntry("empty",               "",               undefined),
-  new tipEntry("empty",               "",               undefined),
+  new tipEntry("empty",               "customizations", "2"),
   new tipEntry("empty",               "customizations", "2")
 ];
 tips.forEach(function(tip, index) {
