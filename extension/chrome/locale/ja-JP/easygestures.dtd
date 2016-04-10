@@ -114,6 +114,7 @@
 <!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。 アクションを入れ替える [&preferences;/&menus;]。">
 <!ENTITY tips.runScriptActions "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;]。">
+<!ENTITY tips.openExtraMenu "To display the extra menu, just move the mouse pointer over this action's icon.">
 <!ENTITY tips.clickOnLink "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
 <!ENTITY tips.contextualMenus "パイメニューを開く時に Alt キーを押していると、状況依存メニューが有効になります。常に有効になるように変更することもできます。 挙動を変更する [&preferences;/&activation;]。">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

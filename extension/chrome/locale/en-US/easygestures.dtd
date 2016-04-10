@@ -99,6 +99,7 @@
 <!ENTITY tips.dragToAction "The fastest way to use the pie menu is to open it while holding down the mouse button, then drag over the action to execute, and finally release the button. You can think of it as a mouse gesture with a GUI.">
 <!ENTITY tips.openAltMenu "By default, right clicking while the pie menu is open will successively display up to three alternative menus. You can change the default mouse button in [&preferences;/&activation;]. You can also use an 'Alt' key to switch to the following alternative menu.">
 <!ENTITY tips.menusCustomization "You can customize in [&preferences;/&menus;] all the different menus with many built-in actions. Usage statistics might help you place these actions at an optimal location on the pie menu.">
+<!ENTITY tips.openExtraMenu "To display the extra menu, just move the mouse pointer over this action's icon.">
 <!ENTITY tips.clickOnLink "By default, opening the pie menu on top of a link will open the link and close the pie menu for as long as no activity is detected for a brief amount of time. You can disable this feature, modify this amount of time and control how links should be opened in [&preferences;/&behavior;].">
 <!ENTITY tips.tooltips "You can disable the tooltips in [&preferences;/&behavior;].">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

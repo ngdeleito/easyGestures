@@ -114,6 +114,7 @@
 <!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。 新增或移除動作 [&preferences;/&menus;]。">
 <!ENTITY tips.runScriptActions "你可以用「執行程式」和「載入Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
+<!ENTITY tips.openExtraMenu "To display the extra menu, just move the mouse pointer over this action's icon.">
 <!ENTITY tips.clickOnLink "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">
 <!ENTITY tips.contextualMenus "你可以在開啟圓餅選單時，點選「Alt」鍵來顯示情境選單。你也可以使情境選單永遠自動顯示。 更改設定 [&preferences;/&activation;]。">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

@@ -114,6 +114,7 @@
 <!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다. 선택사항/동작 내에서 동작 추가 또는 삭제">
 <!ENTITY tips.runScriptActions "&apos;프로그램 파일 실행&apos;와&apos;스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
+<!ENTITY tips.openExtraMenu "To display the extra menu, just move the mouse pointer over this action's icon.">
 <!ENTITY tips.clickOnLink "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">
 <!ENTITY tips.contextualMenus "파이 메뉴를 열 때에 &apos;Alt&apos;키를 누르고 있으면, 상황 감지 메뉴가 동작하게 됩니다. 상황 감지를 항상 작동하도록 변경할 수도 있습니다. 선택사항/행위/페이지1 내에서 행위 변경.">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">

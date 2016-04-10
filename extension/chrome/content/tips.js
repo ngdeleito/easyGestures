@@ -48,6 +48,7 @@ var tips = [
   new tipEntry("triggerByStroke",     ""          ,     undefined),
   new tipEntry("alternativeMenus",    "activation",     undefined),
   new tipEntry("builtInAction",       "menus",          "0"),
+  new tipEntry("empty",               "",               undefined),
   new tipEntry("clickOnLink",         "behavior",       undefined),
   new tipEntry("noTooltips",          "behavior",       undefined),
   new tipEntry("empty",               "",               undefined),

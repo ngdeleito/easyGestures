@@ -114,6 +114,7 @@
 <!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。 添加或删除动作在 选项/动作">
 <!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
+<!ENTITY tips.openExtraMenu "To display the extra menu, just move the mouse pointer over this action's icon.">
 <!ENTITY tips.clickOnLink "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">
 <!ENTITY tips.contextualMenus "你可以在圆饼菜单打开时点击“Alt”键来激活菜单敏感性。你也可以设置菜单永远敏感。更改行为在 选项/行为">
 <!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search Web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
