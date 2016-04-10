@@ -188,9 +188,6 @@ function ShowExtraMenuAction(startsNewGroup, nextAction) {
 }
 ShowExtraMenuAction.prototype = Object.create(Action.prototype);
 ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
-ShowExtraMenuAction.prototype.getXULLabel = function() {
-  return document.getElementById("easyGesturesNStrings").getString("extraMenuActionName");
-};
 
 function ReloadAction(startsNewGroup, nextAction) {
   Action.call(this, "reload", function() { // reload or stop
