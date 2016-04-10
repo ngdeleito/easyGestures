@@ -53,6 +53,7 @@ var tips = [
   new tipEntry("empty",               "",               undefined),
   new tipEntry("empty",               "",               undefined),
   new tipEntry("bookmarksOnlyLayout", "customizations", "0"),
+  new tipEntry("empty",               "customizations", "0"),
   new tipEntry("programsAndScripts",  "customizations", "1"),
   new tipEntry("contextual",          "activation",     undefined),
   new tipEntry("empty",               "",               undefined),

@@ -111,6 +111,7 @@
 <!ENTITY tips.dragToAction "원형 메뉴를 사용하는 가장 빠른 방법은 우선 마우스 버튼을 누른 후 실행하고 싶은 동작까지 드래그 하고 나서 놓으세요. GUI와 함께 마우스 동작을 생각할 수 있을 것입니다.">
 <!ENTITY tips.openAltMenu "기본값으로, 원형 메뉴가 표시되어 있는 중에 오른쪽 클릭하면, 3가지의 자유롭게 설정 가능한 대체 메뉴로의 변경할 수 있게 되어 있습니다. 기본 마우스 버튼은 변경할 수가 있습니다. 선택사항/행동/페이지1 내에서 마우스 버튼 변경">
 <!ENTITY tips.loadURLActions "&apos;URL 읽기&apos;동작에 URL를 설정해 원형 메뉴에 배치하면, easyGestures를 통해 자주 사용하는 북마크를 열 수도 있습니다. 선택사항/사용자 최적화/URL 읽기 내에서 사용자 최적화">
+<!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "내장된 많은 동작을 사용해, 원형 메뉴의 구성을 여러가지로 변경할 수가 있습니다. 사용 통계가 원형 메뉴를 최적화하는데 도움을 줄 겁니다. 선택사항/동작 내에서 동작 추가 또는 삭제">
 <!ENTITY tips.runScriptActions "&apos;프로그램 파일 실행&apos;와&apos;스크립트의 읽기&apos;동작으로, 외부 응용 프로그램과 자바스크립트를 실행할 수가 있습니다. You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "링크 후에 원형 메뉴를 이동없이 재빠르게 클릭하면, 그 링크를 새로운 탭으로 표시합니다. 그 링크에는 붉은 태그가 표시됩니다.">

@@ -58,17 +58,16 @@
       ["&tips.openButton;", "&tips.dragToAction;", "&tips.openAltMenu;",
        "&tips.menusCustomization;", "&tips.clickOnLink;", "&tips.tooltips;",
        "&tips.searchWebAction;", "&tips.backAndForwardSiteActions;",
-       "&tips.loadURLActions;", "&tips.runScriptActions;",
-       "&tips.contextualMenus;", "&tips.preventOpen;", "&tips.moveMenu;",
-       "&tips.smallIcons;", "&tips.largeMenu;", "&tips.autoscrolling;",
-       "&tips.zoomOnImage;", "&tips.openLinkAction;",
-       "&tips.dailyReadingsAction;"]
+       "&tips.loadURLActions;", "&tips.advancedLoadURLActions;",
+       "&tips.runScriptActions;", "&tips.contextualMenus;",
+       "&tips.preventOpen;", "&tips.moveMenu;", "&tips.smallIcons;",
+       "&tips.largeMenu;", "&tips.autoscrolling;", "&tips.zoomOnImage;",
+       "&tips.openLinkAction;", "&tips.dailyReadingsAction;"]
     </html:div>
-    <html:p id="tip">
-      <html:span id="tipTextBeforeLink">
+    <html:p id="tip"><html:span id="tipTextBeforeLink">
       </html:span><html:a id="tipTextLink" onclick="tipLinkClick();">
-      </html:a><html:span id="tipTextAfterLink"></html:span>
-    </html:p>
+      </html:a><html:span id="tipTextAfterLink">
+    </html:span></html:p>
     <spacer flex="1" />
     <hbox pack="center">
       <html:div id="tipImage"></html:div>

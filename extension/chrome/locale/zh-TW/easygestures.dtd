@@ -111,6 +111,7 @@
 <!ENTITY tips.dragToAction "使用圓餅選單最快速的方法是按著滑鼠按鍵，把游標拖曳到執行的動作圖示上後放開滑鼠按鍵。你可以想成是有圖形介面的滑鼠手勢。">
 <!ENTITY tips.openAltMenu "預設在圓餅選單顯示時擊點滑鼠右鍵將會顯示替換動作，最多可有三組自訂圓餅選單循環切換。這個預設切換鍵是可以更改的。 改變滑鼠按鍵 [&preferences;/&activation;]。">
 <!ENTITY tips.loadURLActions "你可以使用 easyGestures ，設定「載入網址」這個動作在你的圓餅選單上來開啟你喜愛的書籤。 設定動作 [&preferences;/&customizations;/&customizations.loadURLActions;]。">
+<!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "你可以完全自訂各種內建動作在你的圓餅選單上。使用習慣統計也將能協助你自訂你的圓餅選單。 新增或移除動作 [&preferences;/&menus;]。">
 <!ENTITY tips.runScriptActions "你可以用「執行程式」和「載入Script」這兩個動作來呼叫外部應用程式和執行JavaScript程式碼。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "無需移動即可透過圓餅選單快速擊點鏈結，鏈結將開啟在新分頁，並在鏈結後顯示已讀取標籤。">

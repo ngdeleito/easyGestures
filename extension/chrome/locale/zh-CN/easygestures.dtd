@@ -111,6 +111,7 @@
 <!ENTITY tips.dragToAction "最快捷的使用圆饼菜单的方式是按住鼠标按钮，拖拽来执行，并松开按钮。你可以把它作为一个鼠标手势。">
 <!ENTITY tips.openAltMenu "默认情况下，右击圆饼菜单将显示设定的动作：您能在3个不同的布局之间完全自定义。默认情况下鼠标按钮可以更改。 更改鼠标按钮在 选项/行为">
 <!ENTITY tips.loadURLActions "您可以通过自定义的“载入网址/脚本”动作用easyGestures打开您喜欢的书签，然后将其添加在圆饼菜单布局中。 自定义在 选项/自定义/载入网址/脚本">
+<!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "您可以自定义所有的圆饼菜单的布局和许多自带的动作。使用统计资料也能帮助您优化圆饼菜单。 添加或删除动作在 选项/动作">
 <!ENTITY tips.runScriptActions "你可以用“运行程序文件”和“载入网址/脚本”动作来运行程序文件和网址/脚本代码。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;].">
 <!ENTITY tips.clickOnLink "无需移动即可穿透圆饼菜单快速点击链接，链接将在新标签页打开，并在链接后标记红色已读取标志。">

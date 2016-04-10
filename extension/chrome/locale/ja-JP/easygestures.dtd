@@ -111,6 +111,7 @@
 <!ENTITY tips.dragToAction "手早くパイメニューを使う方法もあります。まずマウスボタンを押し、実行したいアクションまでドラッグしてから、放してみてください。GUI の付いたマウスジェスチャとしても使えるということです。">
 <!ENTITY tips.openAltMenu "初期設定では、パイメニューの表示中に右クリックすることで、3つの自由に設定可能な代替メニューを切り替えるようになっています。使うボタンは変更することができます。 マウスボタンの設定を変更する [&preferences;/&activation;]。">
 <!ENTITY tips.loadURLActions "'URL/スクリプトの読み込み' アクションに URL を設定してパイメニューに配置すると、easyGestures からお好きなブックマークを開くこともできます。 設定を変更する [&preferences;/&customizations;/&customizations.loadURLActions;]。">
+<!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
 <!ENTITY tips.menusCustomization "内蔵された多くのアクションを使って、パイメニューの構成をいろいろと変更することができます。良い構成を考える時には、使用統計が役に立つでしょう。 アクションを入れ替える [&preferences;/&menus;]。">
 <!ENTITY tips.runScriptActions "'プログラムの実行'と'URL/スクリプトの読み込み'アクションで、外部アプリケーションや javascript を実行することができます。 You can customize these actions in [&preferences;/&customizations;/&customizations.runScriptActions;]。">
 <!ENTITY tips.clickOnLink "リンクの上でパイメニューをドラッグしないように素早くクリックすると、そのリンクを新しいタブで表示します。そのリンクには赤い目印が表示されます。">
