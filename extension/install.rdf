@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>easyGesturesN@ngdeleito.eu</em:id>
-    <em:version>4.13</em:version>
+    <em:version>4.14dev1</em:version>
     <em:type>2</em:type>
 
     <!-- Target Application this extension can install into,
