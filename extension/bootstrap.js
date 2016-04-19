@@ -33,7 +33,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported eGm, eGStrings */
-/* global eGPrefs, eGPrefsObserver */
+/* global eGPrefs */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -82,6 +82,31 @@ stringBundle.prototype = {
 
 var eGStrings = null;
 var eGm = null;
+
+var eGPrefsObserver = {
+  register: function() {
+    this._branch = Services.prefs.getBranch("extensions.easygestures.");
+    this._branch.addObserver("activation.", this, false);
+    this._branch.addObserver("behavior.", this, false);
+    this._branch.addObserver("menus.", this, false);
+    this._branch.addObserver("customizations.", this, false);
+  },
+
+  unregister: function() {
+    this._branch.removeObserver("activation.", this);
+    this._branch.removeObserver("behavior.", this);
+    this._branch.removeObserver("menus.", this);
+    this._branch.removeObserver("customizations.", this);
+  },
+
+  observe: function() {
+    // removing existing easyGestures menus from open web pages
+    eGm.removeFromAllPages();
+    
+    // rebulding the menu
+    eGm = new eG_menu();
+  }
+};
 
 function startup(data, reason) {
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
