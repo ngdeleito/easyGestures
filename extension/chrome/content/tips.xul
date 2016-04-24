@@ -47,12 +47,6 @@
   width="520"
   height="360">
   
-  <!-- getting access to eGPrefs -->
-  <script type="application/x-javascript">
-    Components.utils.import('resource://gre/modules/Services.jsm');
-  </script>
-  <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
-  
   <groupbox flex="1" style="padding: 8px;">
     <html:div id="tips">
       ["&tips.openButton;", "&tips.dragToAction;", "&tips.openAltMenu;",

@@ -47,12 +47,6 @@
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   
-  <!-- getting access to eGPrefs -->
-  <script type="application/x-javascript">
-    Components.utils.import('resource://gre/modules/Services.jsm');
-  </script>
-  <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
-
   <hbox align="center">
     <label value="&stats.lastReset;:" />
     <label id="eG_statsLastReset" value="0" style="font-weight: bold;" />

@@ -710,8 +710,6 @@
   <script type="application/x-javascript">
     Components.utils.import('resource://gre/modules/Services.jsm');
   </script>
-  <!-- getting access to eGPrefs -->
-  <script type="application/javascript;version=1.7" src="chrome://easygestures/content/preferences.js" />
   <!-- getting access to eGActions (also needed to reset statistics) -->
   <script src="chrome://easygestures/content/eGActions.js" />
   

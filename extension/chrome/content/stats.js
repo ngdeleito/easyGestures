@@ -30,7 +30,9 @@ GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGPrefs */
+/* global Components, eGPrefs */
+
+Components.utils.import("chrome://easygestures/content/preferences.js");
 
 function createRow1(id) {
   var row = document.createElement("hbox");

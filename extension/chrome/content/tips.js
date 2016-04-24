@@ -33,7 +33,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported updateTipNbr, tipLinkClick */
-/* global document, eGPrefs, window, removeEventListener, sizeToContent */
+/* global Components, document, eGPrefs, Services, window, removeEventListener,
+          sizeToContent */
+
+Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/preferences.js");
 
 var tipLabels = JSON.parse(document.getElementById("tips").textContent);
 

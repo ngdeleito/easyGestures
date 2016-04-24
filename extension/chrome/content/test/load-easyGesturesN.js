@@ -33,11 +33,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported eGStrings, eGm */
-/* global eG_menu */
+/* global Components, Services, eG_menu */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/preferences.js");
 Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
-Services.scriptloader.loadSubScript("chrome://easygestures/content/preferences.js");
 Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
 Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js");
 var eGStrings = {

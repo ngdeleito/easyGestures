@@ -32,7 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGActions, eGPrefs */
+/* global Components, Services, eGActions, eGPrefs */
+
+Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/preferences.js");
 
 function addEventListenerToTooltip(element, actionName) {
   element.addEventListener("change", function() {

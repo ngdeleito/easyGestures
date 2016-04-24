@@ -33,7 +33,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported eGm, eGStrings */
-/* global eGPrefs */
+/* global Components, Services, eGPrefs */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -109,8 +109,8 @@ var eGPrefsObserver = {
 };
 
 function startup(data, reason) {
+  Components.utils.import("chrome://easygestures/content/preferences.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
-  Services.scriptloader.loadSubScript("chrome://easygestures/content/preferences.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js");
   
@@ -209,6 +209,8 @@ function shutdown() {
   }
   
   eG_disableMenu();
+  
+  Components.utils.unload("chrome://easygestures/content/preferences.js");
 }
 
 function install() {

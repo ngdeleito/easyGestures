@@ -58,8 +58,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- ImageExistsDisableableAction
 //       |-- DisableableCommandAction
 
-/* exported eGActions */
 /* global eGm, eGPrefs, eGStrings, Downloads */
+/* exported EXPORTED_SYMBOLS, eGActions */
+
+var EXPORTED_SYMBOLS = ["eGActions"];
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;

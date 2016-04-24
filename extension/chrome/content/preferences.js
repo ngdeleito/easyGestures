@@ -33,8 +33,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eGPrefs */
-/* global eGActions */
+/* exported EXPORTED_SYMBOLS, eGPrefs */
+/* global Components, Services, eGActions */
+
+var EXPORTED_SYMBOLS = ["eGPrefs"];
+
+Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/eGActions.js");
 
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
