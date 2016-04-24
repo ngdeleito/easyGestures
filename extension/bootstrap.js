@@ -32,8 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eGm, eGStrings */
-/* global Components, Services, eGPrefs */
+/* exported eGStrings */
+/* global Components, Services, eGm, eGPrefs */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -81,7 +81,6 @@ stringBundle.prototype = {
 };
 
 var eGStrings = null;
-var eGm = null;
 
 var eGPrefsObserver = {
   register: function() {
@@ -104,7 +103,7 @@ var eGPrefsObserver = {
     eGm.removeFromAllPages();
     
     // rebulding the menu
-    eGm = new eG_menu();
+    eGm.init();
   }
 };
 
@@ -160,7 +159,7 @@ function startup(data, reason) {
     eGPrefsObserver.register();
     
     // creating menu
-    eGm = new eG_menu();
+    eGm.init();
     
     // registering style sheet
     var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]

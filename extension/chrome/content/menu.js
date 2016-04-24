@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGActions, eGm, eGPrefs, eGStrings */
+/* global eGActions, eGPrefs, eGStrings, Services, Components */
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -141,153 +141,142 @@ ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
   });
 };
 
-// menu Constructor
-function eG_menu () {
-  this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
-  this.anchorElementExists = false;
-  this.anchorElementHREF = null;
-  this.anchorElementText = null;
-  this.imageElementDoesntExist = true;
-  this.imageElementSRC = "";
-  this.selection = null;
+var eGm = {
+  init : function() {
+    this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
+    this.anchorElementExists = false;
+    this.anchorElementHREF = null;
+    this.anchorElementText = null;
+    this.imageElementDoesntExist = true;
+    this.imageElementSRC = "";
+    this.selection = null;
+    
+    var prefs = Services.prefs.getBranch("extensions.easygestures.");
+    
+    // loading preferences first
+    this.showButton = prefs.getIntPref("activation.showButton"); // mouse button for opening the pie menu
+    this.showKey = prefs.getIntPref("activation.showKey"); // key for showing the pie menu with mouse button clicked
+    this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
+    this.preventOpenKey = prefs.getIntPref("activation.preventOpenKey");
+    this.contextKey = prefs.getIntPref("activation.contextKey"); // key for forcing non contextual or contextual pie menu
+    this.contextShowAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
+    
+    this.largeMenu = prefs.getBoolPref("behavior.largeMenu"); // use larger pie menu with 10 actions instead of 8
+    this.noIcons = prefs.getBoolPref("behavior.noIcons");
+    this.smallIcons = prefs.getBoolPref("behavior.smallIcons");
+    this.menuOpacity = prefs.getIntPref("behavior.menuOpacity")/100; // because menuopacity is set in % in preferences dialog
+    this.showTooltips = prefs.getBoolPref("behavior.showTooltips"); // tooltip showing
+    this.tooltipsDelay = prefs.getIntPref("behavior.tooltipsDelay"); // tooltip delay
+    this.moveAuto = prefs.getBoolPref("behavior.moveAuto"); // true: menu moves when reaching edge. false: memu moves by pressing <Shift> key
+    this.handleLinks = prefs.getBoolPref("behavior.handleLinks"); // handle clicking on links through pie menu button
+    this.linksDelay = prefs.getIntPref("behavior.linksDelay"); // max delay to click on a link. If delay is passed, a keyup will just keep menu open
+    this.handleLinksAsOpenLink = prefs.getBoolPref("behavior.handleLinksAsOpenLink");
+    this.autoscrollingOn = prefs.getBoolPref("behavior.autoscrollingOn");	// autoscrolling enabling
+    this.autoscrollingDelay = prefs.getIntPref("behavior.autoscrollingDelay"); // autoscrolling delay
+    
+    this.mainAlt1MenuEnabled = prefs.getBoolPref("menus.mainAlt1Enabled");
+    this.mainAlt2MenuEnabled = prefs.getBoolPref("menus.mainAlt2Enabled");
+    this.numberOfMainMenus = 1 +
+      ((this.mainAlt1MenuEnabled || this.mainAlt2MenuEnabled) ? 1 : 0) +
+      ((this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled) ? 1 : 0);
+    
+    this.extraAlt1MenuEnabled = prefs.getBoolPref("menus.extraAlt1Enabled");
+    this.extraAlt2MenuEnabled = prefs.getBoolPref("menus.extraAlt2Enabled");
+    this.numberOfExtraMenus = 1 +
+      ((this.extraAlt1MenuEnabled || this.extraAlt2MenuEnabled) ? 1 : 0) +
+      ((this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) ? 1 : 0);
+    
+    this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
+    this.loadURLActionPrefs = {
+      loadURL1: prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"), // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
+      loadURL2: prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL3: prefs.getComplexValue("customizations.loadURL3", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL4: prefs.getComplexValue("customizations.loadURL4", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL5: prefs.getComplexValue("customizations.loadURL5", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL6: prefs.getComplexValue("customizations.loadURL6", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL7: prefs.getComplexValue("customizations.loadURL7", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL8: prefs.getComplexValue("customizations.loadURL8", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL9: prefs.getComplexValue("customizations.loadURL9", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      loadURL10: prefs.getComplexValue("customizations.loadURL10", Components.interfaces.nsISupportsString).data.split("\u2022")
+    };
+    this.runScriptActionPrefs = {
+      runScript1: prefs.getComplexValue("customizations.runScript1", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript2: prefs.getComplexValue("customizations.runScript2", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript3: prefs.getComplexValue("customizations.runScript3", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript4: prefs.getComplexValue("customizations.runScript4", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript5: prefs.getComplexValue("customizations.runScript5", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript6: prefs.getComplexValue("customizations.runScript6", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript7: prefs.getComplexValue("customizations.runScript7", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript8: prefs.getComplexValue("customizations.runScript8", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript9: prefs.getComplexValue("customizations.runScript9", Components.interfaces.nsISupportsString).data.split("\u2022"),
+      runScript10: prefs.getComplexValue("customizations.runScript10", Components.interfaces.nsISupportsString).data.split("\u2022")
+    };
+    this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
+    
+    // initializing properties
+    this.easyGesturesID = "easyGesturesPieMenu_" +
+                          (this.largeMenu ? "l" : "n") +
+                          (this.smallIcons ? "s": "n");
+    
+    this.curLayoutName = "main";
+    this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
+    this.setHidden();
+    
+    // coordinates of the pie menu center (relative to the viewport)
+    this.centerX = 0;
+    this.centerY = 0;
+    
+    this.sector = -1; // index of item under mouse
+    
+    this.tooltipsTrigger = null; // trigger to display pie menu labels
+    this.autoscrollingTrigger = null; // trigger to display autoscrolling
+    
+    this.extraMenuAction = 2; // position of extra menu action in base menu from which extra menu is called
+    
+    this.iconSize = this.smallIcons? 20 : 32;
+    
+    this.showingTooltips = false; // tooltips are showing or hidden
+    
+    // final initializations
+    
+    this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
+      main: new MenuLayout(this, "main", 0,
+                           this.mainAlt1MenuEnabled ? "mainAlt1" :
+                             (this.mainAlt2MenuEnabled ? "mainAlt2": "main"),
+                           prefs.getCharPref("menus.main").split("/")),
+      
+      mainAlt1: new MenuLayout(this, "mainAlt1", 1,
+                               this.mainAlt2MenuEnabled ? "mainAlt2" : "main",
+                               prefs.getCharPref("menus.mainAlt1").split("/")),
+      
+      mainAlt2: new MenuLayout(this, "mainAlt2", 2, "main",
+                               prefs.getCharPref("menus.mainAlt2").split("/")),
+      
+      extra: new ExtraMenuLayout(this, "extra", 0,
+                                 this.extraAlt1MenuEnabled ? "extraAlt1" :
+                                   (this.extraAlt2MenuEnabled ? "extraAlt2": "extra"),
+                                 prefs.getCharPref("menus.extra").split("/")),
+      
+      extraAlt1: new ExtraMenuLayout(this, "extraAlt1", 1,
+                                     this.extraAlt2MenuEnabled ? "extraAlt2" : "extra",
+                                     prefs.getCharPref("menus.extraAlt1").split("/")),
+      
+      extraAlt2: new ExtraMenuLayout(this, "extraAlt2", 2, "extra",
+                                     prefs.getCharPref("menus.extraAlt2").split("/")),
+      
+      contextLink: new ContextualMenuLayout(this, "contextLink",
+                                            prefs.getCharPref("menus.contextLink").split("/")),
+      
+      contextImage: new ContextualMenuLayout(this, "contextImage",
+                                             prefs.getCharPref("menus.contextImage").split("/")),
+      
+      contextSelection: new ContextualMenuLayout(this, "contextSelection",
+                                                 prefs.getCharPref("menus.contextSelection").split("/")),
+      
+      contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
+                                               prefs.getCharPref("menus.contextTextbox").split("/"))
+    };
   
-  var prefs = Services.prefs.getBranch("extensions.easygestures.");
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  // loading preferences first
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-
-  this.showButton = prefs.getIntPref("activation.showButton"); // mouse button for opening the pie menu
-  this.showKey = prefs.getIntPref("activation.showKey"); // key for showing the pie menu with mouse button clicked
-  this.showAltButton = prefs.getIntPref("activation.showAltButton"); // mouse button for switching between primary and alternative pie menu
-  this.preventOpenKey = prefs.getIntPref("activation.preventOpenKey");
-  this.contextKey = prefs.getIntPref("activation.contextKey"); // key for forcing non contextual or contextual pie menu
-  this.contextShowAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
-
-  this.largeMenu = prefs.getBoolPref("behavior.largeMenu"); // use larger pie menu with 10 actions instead of 8
-  this.noIcons = prefs.getBoolPref("behavior.noIcons");
-  this.smallIcons = prefs.getBoolPref("behavior.smallIcons");
-  this.menuOpacity = prefs.getIntPref("behavior.menuOpacity")/100; // because menuopacity is set in % in preferences dialog
-  this.showTooltips = prefs.getBoolPref("behavior.showTooltips"); // tooltip showing
-  this.tooltipsDelay = prefs.getIntPref("behavior.tooltipsDelay"); // tooltip delay
-  this.moveAuto = prefs.getBoolPref("behavior.moveAuto"); // true: menu moves when reaching edge. false: memu moves by pressing <Shift> key
-  this.handleLinks = prefs.getBoolPref("behavior.handleLinks"); // handle clicking on links through pie menu button
-  this.linksDelay = prefs.getIntPref("behavior.linksDelay"); // max delay to click on a link. If delay is passed, a keyup will just keep menu open
-  this.handleLinksAsOpenLink = prefs.getBoolPref("behavior.handleLinksAsOpenLink");
-  this.autoscrollingOn = prefs.getBoolPref("behavior.autoscrollingOn");	// autoscrolling enabling
-  this.autoscrollingDelay = prefs.getIntPref("behavior.autoscrollingDelay"); // autoscrolling delay
-
-  this.mainAlt1MenuEnabled = prefs.getBoolPref("menus.mainAlt1Enabled");
-  this.mainAlt2MenuEnabled = prefs.getBoolPref("menus.mainAlt2Enabled");
-  this.numberOfMainMenus = 1 +
-    ((this.mainAlt1MenuEnabled || this.mainAlt2MenuEnabled) ? 1 : 0) +
-    ((this.mainAlt1MenuEnabled && this.mainAlt2MenuEnabled) ? 1 : 0);
-  
-  this.extraAlt1MenuEnabled = prefs.getBoolPref("menus.extraAlt1Enabled");
-  this.extraAlt2MenuEnabled = prefs.getBoolPref("menus.extraAlt2Enabled");
-  this.numberOfExtraMenus = 1 +
-    ((this.extraAlt1MenuEnabled || this.extraAlt2MenuEnabled) ? 1 : 0) +
-    ((this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) ? 1 : 0);
-  
-  this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-  this.loadURLActionPrefs = {
-    loadURL1: prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"), // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
-    loadURL2: prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL3: prefs.getComplexValue("customizations.loadURL3", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL4: prefs.getComplexValue("customizations.loadURL4", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL5: prefs.getComplexValue("customizations.loadURL5", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL6: prefs.getComplexValue("customizations.loadURL6", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL7: prefs.getComplexValue("customizations.loadURL7", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL8: prefs.getComplexValue("customizations.loadURL8", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL9: prefs.getComplexValue("customizations.loadURL9", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    loadURL10: prefs.getComplexValue("customizations.loadURL10", Components.interfaces.nsISupportsString).data.split("\u2022")
-  };
-  this.runScriptActionPrefs = {
-    runScript1: prefs.getComplexValue("customizations.runScript1", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript2: prefs.getComplexValue("customizations.runScript2", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript3: prefs.getComplexValue("customizations.runScript3", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript4: prefs.getComplexValue("customizations.runScript4", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript5: prefs.getComplexValue("customizations.runScript5", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript6: prefs.getComplexValue("customizations.runScript6", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript7: prefs.getComplexValue("customizations.runScript7", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript8: prefs.getComplexValue("customizations.runScript8", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript9: prefs.getComplexValue("customizations.runScript9", Components.interfaces.nsISupportsString).data.split("\u2022"),
-    runScript10: prefs.getComplexValue("customizations.runScript10", Components.interfaces.nsISupportsString).data.split("\u2022")
-  };
-  this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //	initializing properties
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-
-  this.easyGesturesID = "easyGesturesPieMenu_" +
-                        (this.largeMenu ? "l" : "n") +
-                        (this.smallIcons ? "s": "n");
-  
-  this.curLayoutName = "main";
-  this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
-  this.setHidden();
-  
-  // coordinates of the pie menu center (relative to the viewport)
-  this.centerX = 0;
-  this.centerY = 0;
-  
-  this.sector = -1; // index of item under mouse
-
-  this.tooltipsTrigger = null; // trigger to display pie menu labels
-  this.autoscrollingTrigger = null; // trigger to display autoscrolling
-  
-  this.extraMenuAction = 2; // position of extra menu action in base menu from which extra menu is called
-
-  this.iconSize = this.smallIcons? 20 : 32;
-
-  this.showingTooltips = false; // tooltips are showing or hidden
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  // final initializations
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-
-  this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
-    main: new MenuLayout(this, "main", 0,
-                         this.mainAlt1MenuEnabled ? "mainAlt1" :
-                           (this.mainAlt2MenuEnabled ? "mainAlt2": "main"),
-                         prefs.getCharPref("menus.main").split("/")),
-
-    mainAlt1: new MenuLayout(this, "mainAlt1", 1,
-                             this.mainAlt2MenuEnabled ? "mainAlt2" : "main",
-                             prefs.getCharPref("menus.mainAlt1").split("/")),
-
-    mainAlt2: new MenuLayout(this, "mainAlt2", 2, "main",
-                             prefs.getCharPref("menus.mainAlt2").split("/")),
-
-    extra: new ExtraMenuLayout(this, "extra", 0,
-                               this.extraAlt1MenuEnabled ? "extraAlt1" :
-                                 (this.extraAlt2MenuEnabled ? "extraAlt2": "extra"),
-                               prefs.getCharPref("menus.extra").split("/")),
-
-    extraAlt1: new ExtraMenuLayout(this, "extraAlt1", 1,
-                                   this.extraAlt2MenuEnabled ? "extraAlt2" : "extra",
-                                   prefs.getCharPref("menus.extraAlt1").split("/")),
-
-    extraAlt2: new ExtraMenuLayout(this, "extraAlt2", 2, "extra",
-                                   prefs.getCharPref("menus.extraAlt2").split("/")),
-
-    contextLink: new ContextualMenuLayout(this, "contextLink",
-                                          prefs.getCharPref("menus.contextLink").split("/")),
-
-    contextImage: new ContextualMenuLayout(this, "contextImage",
-                                           prefs.getCharPref("menus.contextImage").split("/")),
-
-    contextSelection: new ContextualMenuLayout(this, "contextSelection",
-                                               prefs.getCharPref("menus.contextSelection").split("/")),
-
-    contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
-                                             prefs.getCharPref("menus.contextTextbox").split("/"))
-  };
-}
-
-eG_menu.prototype = {
-  constructor: eG_menu,
   
   isHidden : function() {
     return this._menuState === 0;

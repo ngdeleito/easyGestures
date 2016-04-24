@@ -32,8 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eGStrings, eGm */
-/* global Components, Services, eG_menu */
+/* exported eGStrings */
+/* global Components, Services */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/preferences.js");
@@ -43,5 +43,3 @@ Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js"
 var eGStrings = {
   getString: function() {}
 };
-
-var eGm = new eG_menu();
