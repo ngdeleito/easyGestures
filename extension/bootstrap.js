@@ -73,6 +73,7 @@ function stringBundle(addon) {
 }
 
 stringBundle.prototype = {
+  constructor: stringBundle,
   stringBundle : null,
   
   getString : function(stringName) {
