@@ -276,7 +276,7 @@ var eGm = {
       contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
                                                prefs.getCharPref("menus.contextTextbox").split("/"))
     };
-  
+  },
   
   isHidden : function() {
     return this._menuState === 0;
