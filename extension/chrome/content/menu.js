@@ -36,7 +36,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGActions, eGPrefs, eGStrings, Services, Components */
+/* global Components, eGActions, eGPrefs, eGStrings, Services */
+
+Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;

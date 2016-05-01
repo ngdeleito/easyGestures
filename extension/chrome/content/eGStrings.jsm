@@ -32,10 +32,54 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* exported EXPORTED_SYMBOLS, eGStrings */
 /* global Components, Services */
 
+var EXPORTED_SYMBOLS = ["eGStrings"];
+
+Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/preferences.js");
-Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
-Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
-Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js");
+
+var eGStrings = {
+  _stringBundle : null,
+  
+  init : function(addon) {
+    function getLocaleThatFitsBest() {
+      var browserLocale =
+            Services.prefs.getCharPref("general.useragent.locale");
+      var eGLocales =
+            Components.classes["@mozilla.org/chrome/chrome-registry;1"]
+              .getService(Components.interfaces.nsIToolkitChromeRegistry)
+              .getLocalesForPackage("easygestures");
+      var perfectMatch = false;
+      var selectedLocale = "en-US"; // default locale
+      
+      while (eGLocales.hasMore() && !perfectMatch) {
+        var locale = eGLocales.getNext();
+        if (locale === browserLocale) {
+          perfectMatch = true;
+          selectedLocale = locale;
+        }
+        else if (locale.startsWith(browserLocale)) {
+          // example: fr-FR startsWith fr
+          selectedLocale = locale;
+        }
+      }
+      return selectedLocale;
+    }
+    
+    function getStringBundle(locale) {
+      var path = "chrome/locale/" + locale + "/easygestures.properties";
+      var propertiesFile = addon.getResourceURI(path);
+      return Services.strings.createBundle(propertiesFile.spec);
+    }
+    
+    var locale = getLocaleThatFitsBest();
+    this._stringBundle = getStringBundle(locale);
+    this._stringBundle.getSimpleEnumeration();
+  },
+  
+  getString : function(stringName) {
+    return this._stringBundle.GetStringFromName(stringName);
+  }
+};

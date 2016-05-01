@@ -32,56 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eGStrings */
-/* global Components, Services, eGm, eGPrefs */
+/* global Components, Services, eGm, eGPrefs, eGStrings */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
-
-function stringBundle(addon) {
-  function getLocaleThatFitsBest() {
-    var browserLocale = Services.prefs.getCharPref("general.useragent.locale");
-    var eGLocales = Components.classes["@mozilla.org/chrome/chrome-registry;1"]
-                              .getService(Components.interfaces.nsIToolkitChromeRegistry)
-                              .getLocalesForPackage("easygestures");
-    var perfectMatch = false;
-    var selectedLocale = "en-US"; // default locale
-    
-    while (eGLocales.hasMore() && !perfectMatch) {
-      var locale = eGLocales.getNext();
-      if (locale == browserLocale) {
-        perfectMatch = true;
-        selectedLocale = locale;
-      }
-      else if (locale.startsWith(browserLocale)) {
-        // example: fr-FR startsWith fr
-        selectedLocale = locale;
-      }
-    }
-    return selectedLocale;
-  }
-  
-  function getStringBundle(locale) {
-    var path = "chrome/locale/" + locale + "/easygestures.properties";
-    var propertiesFile = addon.getResourceURI(path);
-    return Services.strings.createBundle(propertiesFile.spec);
-  }
-  
-  var locale = getLocaleThatFitsBest();
-  this.stringBundle = getStringBundle(locale);
-  this.stringBundle.getSimpleEnumeration();
-}
-
-stringBundle.prototype = {
-  constructor: stringBundle,
-  stringBundle : null,
-  
-  getString : function(stringName) {
-    return this.stringBundle.GetStringFromName(stringName);
-  }
-};
-
-var eGStrings = null;
 
 var eGPrefsObserver = {
   register: function() {
@@ -110,6 +64,7 @@ var eGPrefsObserver = {
 
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/preferences.js");
+  Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js");
@@ -153,7 +108,7 @@ function startup(data, reason) {
     }
     
     // getting access to localization strings
-    eGStrings = new stringBundle(addon);
+    eGStrings.init(addon);
     
     // start listening to changes in preferences that could require rebuilding
     // the menus
@@ -210,6 +165,7 @@ function shutdown() {
   
   eG_disableMenu();
   
+  Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.unload("chrome://easygestures/content/preferences.js");
 }
 

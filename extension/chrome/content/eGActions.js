@@ -58,10 +58,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- ImageExistsDisableableAction
 //       |-- DisableableCommandAction
 
-/* global eGm, eGPrefs, eGStrings, Downloads */
 /* exported EXPORTED_SYMBOLS, eGActions */
+/* global Components, eGm, eGStrings, document, Services, eGPrefs, Downloads */
 
 var EXPORTED_SYMBOLS = ["eGActions"];
+
+Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
