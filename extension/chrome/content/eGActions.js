@@ -34,8 +34,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-// This file provides the following hierarchy of Actions and the eGActions
-// object, containing the actions available in easyGestures N
+// This file provides the following hierarchy of Actions and the eGActionsState
+// and eGActions objects, the latter containing the actions available in
+// easyGestures N
 
 // Action
 //  ^
@@ -61,9 +62,19 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported EXPORTED_SYMBOLS, eGActions */
 /* global Components, eGm, eGStrings, document, Services, eGPrefs, Downloads */
 
-var EXPORTED_SYMBOLS = ["eGActions"];
+var EXPORTED_SYMBOLS = ["eGActionsState", "eGActions"];
 
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
+
+var eGActionsState = {
+  targetDocumentURL: null,
+  targetWindowScrollY: null,
+  targetWindowScrollMaxY: null,
+  topmostWindowScrollY: null,
+  topmostWindowScrollMaxY: null,
+  
+  loading: false // used for reload/stop action
+};
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -198,7 +209,7 @@ function ReloadAction(startsNewGroup, nextAction) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     
-    if (!eGc.loading) {
+    if (!eGActionsState.loading) {
       gBrowser.reload();
     }
     else {
@@ -215,11 +226,11 @@ ReloadAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   var browserMM = window.gBrowser.selectedBrowser.messageManager;
   var stop_bcaster = window.document.getElementById("Browser:Stop");
-  eGc.loading = !stop_bcaster.hasAttribute("disabled");
+  eGActionsState.loading = !stop_bcaster.hasAttribute("disabled");
   browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setReloadActionStatus", {
     layoutName: layoutName,
     actionSector: actionSector,
-    status: eGc.loading
+    status: eGActionsState.loading
   });
 };
 
@@ -498,14 +509,15 @@ var eGActions = {
   pageTop : new DisableableAction("pageTop", function() {
     this._sendPerformActionMessage();
   }, function() {
-    return eGc.targetWindowScrollY === 0 && eGc.topmostWindowScrollY === 0;
+    return eGActionsState.targetWindowScrollY === 0 &&
+           eGActionsState.topmostWindowScrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
     this._sendPerformActionMessage();
   }, function() {
-    return eGc.targetWindowScrollY === eGc.targetWindowScrollMaxY &&
-           eGc.topmostWindowScrollY === eGc.topmostWindowScrollMaxY;
+    return eGActionsState.targetWindowScrollY === eGActionsState.targetWindowScrollMaxY &&
+           eGActionsState.topmostWindowScrollY === eGActionsState.topmostWindowScrollMaxY;
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
@@ -747,7 +759,7 @@ var eGActions = {
   
   showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.loadURI(eGc.targetDocumentURL);
+    window.loadURI(eGActionsState.targetDocumentURL);
   }, false, "focusLocationBar"),
   
   focusLocationBar : new Action("focusLocationBar", function() {

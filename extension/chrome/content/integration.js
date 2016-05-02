@@ -37,17 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported eG_enableMenu, eG_disableMenu */
-/* global eGActions, eGm */
-
-var eGc = {
-  targetDocumentURL: null,
-  targetWindowScrollY: null,
-  targetWindowScrollMaxY: null,
-  topmostWindowScrollY: null,
-  topmostWindowScrollMaxY: null,
-  
-  loading: false // used for reload/stop action
-};
+/* global eGActions, eGm, eGActionsState */
 
 function eG_enableMenu() {
   Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
@@ -108,11 +98,11 @@ function eG_handleMousedown(aMessage) {
   eGm.imageElementSRC = aMessage.data.imageElementSRC;
   eGm.centerX = aMessage.data.centerX;
   eGm.centerY = aMessage.data.centerY;
-  eGc.targetDocumentURL = aMessage.data.targetDocumentURL;
-  eGc.targetWindowScrollY = aMessage.data.targetWindowScrollY;
-  eGc.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
-  eGc.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
-  eGc.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
+  eGActionsState.targetDocumentURL = aMessage.data.targetDocumentURL;
+  eGActionsState.targetWindowScrollY = aMessage.data.targetWindowScrollY;
+  eGActionsState.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
+  eGActionsState.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
+  eGActionsState.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
   
   if (eGm.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
