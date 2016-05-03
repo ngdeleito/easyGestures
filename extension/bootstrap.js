@@ -65,9 +65,9 @@ var eGPrefsObserver = {
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/preferences.js");
   Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
+  Components.utils.import("chrome://easygestures/content/menu.js");
+  Components.utils.import("chrome://easygestures/content/eGActions.js");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
-  Services.scriptloader.loadSubScript("chrome://easygestures/content/menu.js");
-  Services.scriptloader.loadSubScript("chrome://easygestures/content/eGActions.js");
   
   AddonManager.getAddonByID(data.id, function(addon) {
     // installing or upgrading preferences
@@ -165,6 +165,8 @@ function shutdown() {
   
   eG_disableMenu();
   
+  Components.utils.unload("chrome://easygestures/content/eGActions.js");
+  Components.utils.unload("chrome://easygestures/content/menu.js");
   Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.unload("chrome://easygestures/content/preferences.js");
 }

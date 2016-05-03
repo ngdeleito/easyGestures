@@ -39,7 +39,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 var EXPORTED_SYMBOLS = ["eGPrefs"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/eGActions.js");
 
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
@@ -149,6 +148,8 @@ var eGPrefs = {
   },
   
   initializeStats : function() {
+    Components.utils.import("chrome://easygestures/content/eGActions.js");
+    
     var d = new Date(); // date of last reset
     this._prefs.setCharPref("stats.lastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
     this._prefs.setCharPref("stats.mainMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array

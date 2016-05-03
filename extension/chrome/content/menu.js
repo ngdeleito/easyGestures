@@ -36,9 +36,14 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
+/* exported EXPORTED_SYMBOLS */
 /* global Components, eGActions, eGPrefs, eGStrings, Services */
 
+var EXPORTED_SYMBOLS = ["eGm"];
+
+Components.utils.import("chrome://easygestures/content/preferences.js");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
+Components.utils.import("resource://gre/modules/Services.jsm");
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -145,6 +150,8 @@ ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
 
 var eGm = {
   init : function() {
+    Components.utils.import("chrome://easygestures/content/eGActions.js");
+    
     this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
     this.anchorElementExists = false;
     this.anchorElementHREF = null;
