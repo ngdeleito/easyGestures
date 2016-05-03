@@ -32,25 +32,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGm, QUnit, eG_handleContextmenu */
+/* global eGm, QUnit */
 
-function initHandleContextmenu(showKey, contextKey) {
+function initCanContextmenuBeOpened(showKey, contextKey) {
   eGm.showButton = 2;
   eGm.showKey = showKey;
   eGm.contextKey = contextKey;
 }
 
-function initHandleContextmenuMessage(shiftKey, ctrlKey, altKey) {
-  return {
-    data: {
-      shiftKey: shiftKey,
-      ctrlKey: ctrlKey,
-      altKey: altKey
-    }
-  };
-}
-
-// All possible combinations for initHandleContextmenu are:
+// All possible combinations for initCanContextmenuBeOpened are:
 //   0  0
 //   0  18
 //   0  17
@@ -61,108 +51,108 @@ function initHandleContextmenuMessage(shiftKey, ctrlKey, altKey) {
 //   17 18
 //   17 17 -> not tested, not allowed
 
-QUnit.test("test eG_handleContextmenu with left button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with left button", function(assert) {
   eGm.showButton = 0;
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
 });
 
-QUnit.test("test eG_handleContextmenu with middle button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with middle button", function(assert) {
   eGm.showButton = 1;
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
 });
 
-QUnit.test("test eG_handleContextmenu with right button", function(assert) {
-  initHandleContextmenu(0, 0);
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button", function(assert) {
+  initCanContextmenuBeOpened(0, 0);
+  assert.ok(eGm.canContextmenuBeOpened(false, false, false));
+  assert.ok(eGm.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button, context with alt key", function(assert) {
-  initHandleContextmenu(0, 18);
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button, context with alt key", function(assert) {
+  initCanContextmenuBeOpened(0, 18);
+  assert.ok(eGm.canContextmenuBeOpened(false, false, false));
+  assert.ok(eGm.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button, context with ctrl key", function(assert) {
-  initHandleContextmenu(0, 17);
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button, context with ctrl key", function(assert) {
+  initCanContextmenuBeOpened(0, 17);
+  assert.ok(eGm.canContextmenuBeOpened(false, false, false));
+  assert.ok(eGm.canContextmenuBeOpened(false, false, true));
+  assert.ok(eGm.canContextmenuBeOpened(false, true, false));
+  assert.ok(eGm.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button and shift key", function(assert) {
-  initHandleContextmenu(16, 0);
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button and shift key", function(assert) {
+  initCanContextmenuBeOpened(16, 0);
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
+  assert.ok(eGm.canContextmenuBeOpened(true, false, false));
+  assert.ok(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button and shift key, context with alt key", function(assert) {
-  initHandleContextmenu(16, 18);
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button and shift key, context with alt key", function(assert) {
+  initCanContextmenuBeOpened(16, 18);
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
+  assert.ok(eGm.canContextmenuBeOpened(true, false, false));
+  assert.ok(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button and shift key, context with ctrl key", function(assert) {
-  initHandleContextmenu(16, 17);
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button and shift key, context with ctrl key", function(assert) {
+  initCanContextmenuBeOpened(16, 17);
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
+  assert.ok(eGm.canContextmenuBeOpened(true, false, false));
+  assert.ok(eGm.canContextmenuBeOpened(true, false, true));
+  assert.ok(eGm.canContextmenuBeOpened(true, true, false));
+  assert.ok(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button and ctrl key", function(assert) {
-  initHandleContextmenu(17, 0);
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button and ctrl key", function(assert) {
+  initCanContextmenuBeOpened(17, 0);
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
+  assert.ok(eGm.canContextmenuBeOpened(false, true, false));
+  assert.ok(eGm.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test eG_handleContextmenu with right button and ctrl key, context with alt key", function(assert) {
-  initHandleContextmenu(17, 18);
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(false, false, true)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, true, false)));
-  assert.ok(eG_handleContextmenu(initHandleContextmenuMessage(false, true, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, false, true)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, false)));
-  assert.notOk(eG_handleContextmenu(initHandleContextmenuMessage(true, true, true)));
+QUnit.test("test canContextmenuBeOpened with right button and ctrl key, context with alt key", function(assert) {
+  initCanContextmenuBeOpened(17, 18);
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
+  assert.ok(eGm.canContextmenuBeOpened(false, true, false));
+  assert.ok(eGm.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
 });

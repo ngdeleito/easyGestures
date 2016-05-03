@@ -177,16 +177,9 @@ function eG_handleKeydown(aMessage) {
 }
 
 function eG_handleContextmenu(aMessage) {
-  var shiftKey = aMessage.data.shiftKey;
-  var ctrlKey = aMessage.data.ctrlKey;
-  var altKey = aMessage.data.altKey;
-  return eGm.showButton === 2 /* right click */ &&
-         ((eGm.showKey === 0 && !shiftKey && !ctrlKey) ||
-          (eGm.showKey === 0 && eGm.contextKey === 17 && ctrlKey && !shiftKey) ||
-          (eGm.showKey === 0 && eGm.contextKey === 18 && altKey && !shiftKey && !ctrlKey) ||
-          (eGm.showKey === 16 && shiftKey && !ctrlKey) ||
-          (eGm.showKey === 16 && shiftKey && eGm.contextKey === 17 && ctrlKey) ||
-          (eGm.showKey === 17 && !shiftKey && ctrlKey));
+  return eGm.canContextmenuBeOpened(aMessage.data.shiftKey,
+                                    aMessage.data.ctrlKey,
+                                    aMessage.data.altKey);
 }
 
 function eG_handleMousemove(aMessage) {

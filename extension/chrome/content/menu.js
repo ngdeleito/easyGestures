@@ -547,6 +547,16 @@ var eGm = {
            (this.contextShowAuto && !rightKey);
   },
   
+  canContextmenuBeOpened : function(shiftKey, ctrlKey, altKey) {
+    return this.showButton === 2 /* right click */ &&
+           ((this.showKey === 0 && !shiftKey && !ctrlKey) ||
+            (this.showKey === 0 && this.contextKey === 17 && ctrlKey && !shiftKey) ||
+            (this.showKey === 0 && this.contextKey === 18 && altKey && !shiftKey && !ctrlKey) ||
+            (this.showKey === 16 && shiftKey && !ctrlKey) ||
+            (this.showKey === 16 && shiftKey && this.contextKey === 17 && ctrlKey) ||
+            (this.showKey === 17 && !shiftKey && ctrlKey));
+  },
+  
   openLinkThroughPieMenuCenter : function(clickedButton) {
     if (this.handleLinksAsOpenLink) {
       eGActions.openLink.run();

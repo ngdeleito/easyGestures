@@ -32,11 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global Components, Services, QUnit, eGm */
+/* global Components, QUnit, eGm */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/menu.js");
-Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
 
 QUnit.done(function() {
   eGm.init();
