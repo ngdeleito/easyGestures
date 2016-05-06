@@ -30,9 +30,10 @@ GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global Components, eGPrefs */
+/* global Components, eGPrefs, eGActions */
 
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 
 function createRow1(id) {
   var row = document.createElement("hbox");
@@ -207,7 +208,7 @@ function fillActions() {
     var rows = document.createElement("rows");
     grid.appendChild(rows);
     
-    var actionNames = Object.getOwnPropertyNames(window.opener.eGActions);
+    var actionNames = Object.getOwnPropertyNames(eGActions);
     // excluding "empty" action from the actionNames array
     actionNames.splice(actionNames.indexOf("empty"), 1);
     for (var i=n*19; i<(n+1)*19 && i < actionNames.length; i++) {
@@ -225,7 +226,7 @@ function fillActions() {
       var image = document.createElement("image");
       image.setAttribute("id", "eG_image" + actionNames[i]);
       image.setAttribute("tooltiptext",
-        window.opener.eGActions[actionNames[i]].getXULLabel(document));
+        eGActions[actionNames[i]].getXULLabel(document));
       image.setAttribute("class", "eG_" + actionNames[i]);
       hbox.appendChild(image);
       
