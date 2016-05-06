@@ -707,11 +707,5 @@
   <script type="application/x-javascript" src="chrome://global/content/globalOverlay.js" />
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   
-  <script type="application/x-javascript">
-    Components.utils.import('resource://gre/modules/Services.jsm');
-  </script>
-  <!-- getting access to eGActions (also needed to reset statistics) -->
-  <script src="chrome://easygestures/content/eGActions.jsm" />
-  
   <script type="application/x-javascript" src="options.js" />
 </prefwindow>

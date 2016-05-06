@@ -35,6 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global Components, Services, eGActions, eGPrefs */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 function addEventListenerToTooltip(element, actionName) {
@@ -493,11 +494,11 @@ function createActionsPopupList() {
     
     itemNode.setAttribute("actionName", currentAction);
     itemNode.setAttribute("crop", "end");
-    itemNode.setAttribute("label", eGActions[currentAction].getXULLabel());
+    itemNode.setAttribute("label", eGActions[currentAction].getXULLabel(document));
     itemNode.style.paddingRight = "20px";
     imageNode.setAttribute("class", "eG_" + currentAction);
     
-    subItemNode.setAttribute("value", eGActions[currentAction].getXULLabel());
+    subItemNode.setAttribute("value", eGActions[currentAction].getXULLabel(document));
     popupNode.appendChild(itemNode);
     
     currentAction = eGActions[currentAction].nextAction;
@@ -760,7 +761,7 @@ function readActionsGroupPreference(name) {
   actionNames.forEach(function(value, index) {
     var element = document.getElementById(name + "Sector" + index);
     element.setAttribute("actionName", value);
-    element.setAttribute("label", eGActions[value].getXULLabel());
+    element.setAttribute("label", eGActions[value].getXULLabel(document));
   });
 }
 

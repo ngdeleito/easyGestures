@@ -60,7 +60,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported EXPORTED_SYMBOLS, eGActions */
-/* global Components, eGm, eGStrings, document, Services, eGPrefs, Downloads */
+/* global Components, eGm, eGStrings, Services, eGPrefs, Downloads */
 
 var EXPORTED_SYMBOLS = ["eGActionsState", "eGActions"];
 
@@ -104,7 +104,7 @@ Action.prototype = {
     return eGStrings.getString(this._name);
   },
   
-  getXULLabel: function() {
+  getXULLabel: function(document) {
     return document.getElementById("easyGesturesNStrings").getString(this._name);
   },
   
@@ -191,7 +191,7 @@ function EmptyAction(startsNewGroup, nextAction) {
 }
 EmptyAction.prototype = Object.create(Action.prototype);
 EmptyAction.prototype.constructor = EmptyAction;
-EmptyAction.prototype.getXULLabel = function() {
+EmptyAction.prototype.getXULLabel = function(document) {
   return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
 };
 
@@ -222,7 +222,7 @@ function ReloadAction(startsNewGroup, nextAction) {
 }
 ReloadAction.prototype = Object.create(Action.prototype);
 ReloadAction.prototype.constructor = ReloadAction;
-ReloadAction.prototype.getXULLabel = function() {
+ReloadAction.prototype.getXULLabel = function(document) {
   return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
 };
 ReloadAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
