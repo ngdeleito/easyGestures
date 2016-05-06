@@ -150,7 +150,7 @@ ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
 
 var eGm = {
   init : function() {
-    Components.utils.import("chrome://easygestures/content/eGActions.js");
+    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
     
     this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
     this.anchorElementExists = false;

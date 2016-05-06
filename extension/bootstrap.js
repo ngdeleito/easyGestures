@@ -66,7 +66,7 @@ function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
   Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.import("chrome://easygestures/content/menu.js");
-  Components.utils.import("chrome://easygestures/content/eGActions.js");
+  Components.utils.import("chrome://easygestures/content/eGActions.jsm");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
   
   AddonManager.getAddonByID(data.id, function(addon) {
@@ -165,7 +165,7 @@ function shutdown() {
   
   eG_disableMenu();
   
-  Components.utils.unload("chrome://easygestures/content/eGActions.js");
+  Components.utils.unload("chrome://easygestures/content/eGActions.jsm");
   Components.utils.unload("chrome://easygestures/content/menu.js");
   Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");

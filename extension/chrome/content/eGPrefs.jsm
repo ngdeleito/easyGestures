@@ -148,7 +148,7 @@ var eGPrefs = {
   },
   
   initializeStats : function() {
-    Components.utils.import("chrome://easygestures/content/eGActions.js");
+    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
     
     var d = new Date(); // date of last reset
     this._prefs.setCharPref("stats.lastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
