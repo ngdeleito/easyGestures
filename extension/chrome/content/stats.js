@@ -32,7 +32,7 @@ GPL or the LGPL.
 
 /* global Components, eGPrefs */
 
-Components.utils.import("chrome://easygestures/content/preferences.js");
+Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 function createRow1(id) {
   var row = document.createElement("hbox");

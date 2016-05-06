@@ -67,7 +67,7 @@ var EXPORTED_SYMBOLS = ["eGActionsState", "eGActions"];
 Components.utils.import("chrome://easygestures/content/menu.js");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/preferences.js");
+Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 var eGActionsState = {
   targetDocumentURL: null,

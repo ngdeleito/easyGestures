@@ -63,7 +63,7 @@ var eGPrefsObserver = {
 };
 
 function startup(data, reason) {
-  Components.utils.import("chrome://easygestures/content/preferences.js");
+  Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
   Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.import("chrome://easygestures/content/menu.js");
   Components.utils.import("chrome://easygestures/content/eGActions.js");
@@ -168,7 +168,7 @@ function shutdown() {
   Components.utils.unload("chrome://easygestures/content/eGActions.js");
   Components.utils.unload("chrome://easygestures/content/menu.js");
   Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
-  Components.utils.unload("chrome://easygestures/content/preferences.js");
+  Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");
 }
 
 function install() {

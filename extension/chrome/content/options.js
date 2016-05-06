@@ -35,7 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global Components, Services, eGActions, eGPrefs */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/preferences.js");
+Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 function addEventListenerToTooltip(element, actionName) {
   element.addEventListener("change", function() {

@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
           sizeToContent */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/preferences.js");
+Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 var tipLabels = JSON.parse(document.getElementById("tips").textContent);
 
