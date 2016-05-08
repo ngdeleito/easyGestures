@@ -69,7 +69,7 @@ function eG_performOpenMenuChecks(aMessage) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
-  window.clearTimeout(eGm.autoscrollingTrigger);
+  window.clearTimeout(eGActionsState.autoscrollingTrigger);
   
   // check whether pie menu should change layout or hide (later)
   if (eGm.isShown()) {
@@ -89,13 +89,13 @@ function eG_performOpenMenuChecks(aMessage) {
 }
 
 function eG_handleMousedown(aMessage) {
-  eGm.contextualMenus = aMessage.data.contextualMenus;
-  eGm.selection = aMessage.data.selection;
-  eGm.anchorElementExists = aMessage.data.anchorElementExists;
-  eGm.anchorElementHREF = aMessage.data.anchorElementHREF;
-  eGm.anchorElementText = aMessage.data.anchorElementText;
-  eGm.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
-  eGm.imageElementSRC = aMessage.data.imageElementSRC;
+  eGActionsState.contextualMenus = aMessage.data.contextualMenus;
+  eGActionsState.selection = aMessage.data.selection;
+  eGActionsState.anchorElementExists = aMessage.data.anchorElementExists;
+  eGActionsState.anchorElementHREF = aMessage.data.anchorElementHREF;
+  eGActionsState.anchorElementText = aMessage.data.anchorElementText;
+  eGActionsState.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
+  eGActionsState.imageElementSRC = aMessage.data.imageElementSRC;
   eGm.centerX = aMessage.data.centerX;
   eGm.centerY = aMessage.data.centerY;
   eGActionsState.targetDocumentURL = aMessage.data.targetDocumentURL;
@@ -104,9 +104,9 @@ function eG_handleMousedown(aMessage) {
   eGActionsState.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
   eGActionsState.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
   
-  if (eGm.contextualMenus.length !== 0 &&
+  if (eGActionsState.contextualMenus.length !== 0 &&
       eGm.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
-    eGm.show(eGm.contextualMenus[0]);
+    eGm.show(eGActionsState.contextualMenus[0]);
   }
   else {
     eGm.show("main");
@@ -117,7 +117,7 @@ function eG_handleMousedown(aMessage) {
   window.gBrowser.focus();
   
   if (eGm.autoscrollingOn) {
-    eGm.autoscrollingTrigger = window.setTimeout(function() {
+    eGActionsState.autoscrollingTrigger = window.setTimeout(function() {
       eGActions.autoscrolling.run();
     }, eGm.autoscrollingDelay);
   }
@@ -130,7 +130,7 @@ function eG_handleMouseup(aMessage) {
   if (eGm.isJustOpened()) {
     eGm.setOpen();
     if (aMessage.data.linkSignIsVisible) {
-      window.clearTimeout(eGm.autoscrollingTrigger);
+      window.clearTimeout(eGActionsState.autoscrollingTrigger);
       eGm.openLinkThroughPieMenuCenter(aMessage.data.button);
     }
   }
@@ -164,7 +164,7 @@ function eG_handleKeydown(aMessage) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
-  window.clearTimeout(eGm.autoscrollingTrigger);
+  window.clearTimeout(eGActionsState.autoscrollingTrigger);
   
   if (eGm.isShown()) {
     if (aMessage.data.altKey) {
@@ -186,7 +186,7 @@ function eG_handleMousemove(aMessage) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
   // clear automatic delayed autoscrolling
-  window.clearTimeout(eGm.autoscrollingTrigger);
+  window.clearTimeout(eGActionsState.autoscrollingTrigger);
   
   return eGm.handleMousemove(aMessage.data);
 }

@@ -134,9 +134,9 @@ function ContextualMenuLayout(menu, name, actionsPrefs) {
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
 ContextualMenuLayout.prototype.getNextLayout = function() {
-  return this._pieMenu.contextualMenus[
-    (this._pieMenu.contextualMenus.indexOf(this.name) + 1) %
-      this._pieMenu.contextualMenus.length];
+  return eGActionsState.contextualMenus[
+    (eGActionsState.contextualMenus.indexOf(this.name) + 1) %
+      eGActionsState.contextualMenus.length];
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
@@ -144,21 +144,13 @@ ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
 ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
   browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", {
     layoutLabel: eGStrings.getString(this.name),
-    moreThanOneLayout: this._pieMenu.contextualMenus.length > 1
+    moreThanOneLayout: eGActionsState.contextualMenus.length > 1
   });
 };
 
 var eGm = {
   init : function() {
     Components.utils.import("chrome://easygestures/content/eGActions.jsm");
-    
-    this.contextualMenus = []; // possible values: contextLink, contextImage, contextSelection or contextTextbox
-    this.anchorElementExists = false;
-    this.anchorElementHREF = null;
-    this.anchorElementText = null;
-    this.imageElementDoesntExist = true;
-    this.imageElementSRC = "";
-    this.selection = null;
     
     var prefs = Services.prefs.getBranch("extensions.easygestures.");
     
@@ -238,7 +230,6 @@ var eGm = {
     this.sector = -1; // index of item under mouse
     
     this.tooltipsTrigger = null; // trigger to display pie menu labels
-    this.autoscrollingTrigger = null; // trigger to display autoscrolling
     
     this.extraMenuAction = 2; // position of extra menu action in base menu from which extra menu is called
     
@@ -346,7 +337,7 @@ var eGm = {
       runScriptActionPrefs: this.runScriptActionPrefs,
       noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
-      showLinkSign: this.handleLinks && this.anchorElementExists &&
+      showLinkSign: this.handleLinks && eGActionsState.anchorElementExists &&
                     this.isJustOpened() && layoutName === "main",
       linksDelay: this.linksDelay
     });
@@ -568,14 +559,14 @@ var eGm = {
       if (clickedButton === 1) {
         // middle click
         if (Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick")) {
-          window.gBrowser.addTab(this.anchorElementHREF);
+          window.gBrowser.addTab(eGActionsState.anchorElementHREF);
         }
         else {
-          window.open(this.anchorElementHREF);
+          window.open(eGActionsState.anchorElementHREF);
         }
       }
       else {
-        window.gBrowser.loadURI(this.anchorElementHREF);
+        window.gBrowser.loadURI(eGActionsState.anchorElementHREF);
       }
     }
     this.close();

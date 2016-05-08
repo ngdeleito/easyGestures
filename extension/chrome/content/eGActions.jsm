@@ -70,11 +70,21 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 var eGActionsState = {
+  contextualMenus: [], // possible values: contextLink, contextImage, contextSelection or contextTextbox
+  selection: null,
+  anchorElementExists: false,
+  anchorElementHREF: null,
+  anchorElementText: null,
+  imageElementDoesntExist: true,
+  imageElementSRC: "",
+  
   targetDocumentURL: null,
   targetWindowScrollY: null,
   targetWindowScrollMaxY: null,
   topmostWindowScrollY: null,
   topmostWindowScrollMaxY: null,
+  
+  autoscrollingTrigger: null,
   
   loading: false // used for reload/stop action
 };
@@ -293,7 +303,7 @@ CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return !eGm.anchorElementExists;
+    return !eGActionsState.anchorElementExists;
   }, startsNewGroup, nextAction);
 }
 LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -347,7 +357,7 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
     var content = prefValue[1];
     
-    content = content.replace("%s", eGm.selection);
+    content = content.replace("%s", eGActionsState.selection);
     content = content.replace("%u", window.gBrowser.selectedBrowser.currentURI.spec);
     
     action.call(this, content, window,
@@ -409,7 +419,7 @@ RunScriptAction.prototype.constructor = RunScriptAction;
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return eGm.imageElementDoesntExist;
+    return eGActionsState.imageElementDoesntExist;
   }, startsNewGroup, nextAction);
 }
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -529,7 +539,7 @@ var eGActions = {
   
   zoomIn : new Action("zoomIn", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGm.imageElementDoesntExist) {
+    if (eGActionsState.imageElementDoesntExist) {
       window.ZoomManager.enlarge();
     }
     else {
@@ -539,7 +549,7 @@ var eGActions = {
   
   zoomOut : new Action("zoomOut", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (eGm.imageElementDoesntExist) {
+    if (eGActionsState.imageElementDoesntExist) {
       window.ZoomManager.reduce();
     }
     else {
@@ -772,7 +782,7 @@ var eGActions = {
   
   searchWeb : new Action("searchWeb", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserSearch.searchBar.value = eGm.selection;
+    window.BrowserSearch.searchBar.value = eGActionsState.selection;
     window.BrowserSearch.webSearch();
   }, false, "quit"),
   
@@ -788,7 +798,7 @@ var eGActions = {
   openLink : new LinkExistsDisableableAction("openLink", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
-    var url = eGm.anchorElementHREF;
+    var url = eGActionsState.anchorElementHREF;
     
     switch (eGm.openLink) {
       case "curTab":
@@ -805,22 +815,22 @@ var eGActions = {
   
   openLinkInNewWindow : new LinkExistsDisableableAction("openLinkInNewWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(eGm.anchorElementHREF);
+    window.open(eGActionsState.anchorElementHREF);
   }, false, "openLinkInNewPrivateWindow"),
   
   openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    this._openInPrivateWindow(eGm.anchorElementHREF, window);
+    this._openInPrivateWindow(eGActionsState.anchorElementHREF, window);
   }, false, "copyLink"),
   
   copyLink : new LinkExistsDisableableAction("copyLink", function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGm.anchorElementHREF);
+              .copyString(eGActionsState.anchorElementHREF);
   }, false, "saveLinkAs"),
   
   saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
-    this._saveContentFromLink(eGm.anchorElementHREF,
+    this._saveContentFromLink(eGActionsState.anchorElementHREF,
                               Components.interfaces.nsIFilePicker.filterHTML);
   }, false, "dailyReadings"),
   
@@ -849,8 +859,8 @@ var eGActions = {
   bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.bookmarksMenuFolderId,
-                                          eGm.anchorElementHREF,
-                                          eGm.anchorElementText);
+                                          eGActionsState.anchorElementHREF,
+                                          eGActionsState.anchorElementText);
   }, false, "bookmarkOpenTabs"),
   
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
@@ -966,7 +976,7 @@ var eGActions = {
     function() {
     Components.classes["@mozilla.org/widget/clipboardhelper;1"]
               .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGm.imageElementSRC);
+              .copyString(eGActionsState.imageElementSRC);
   }, true, "copyImage"),
   
   copyImage : new ImageExistsDisableableAction("copyImage", function() {
@@ -976,7 +986,7 @@ var eGActions = {
   }, false, "saveImageAs"),
   
   saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
-    this._saveContentFromLink(eGm.imageElementSRC,
+    this._saveContentFromLink(eGActionsState.imageElementSRC,
                               Components.interfaces.nsIFilePicker.filterImages);
   }, false, "hideImages"),
   
