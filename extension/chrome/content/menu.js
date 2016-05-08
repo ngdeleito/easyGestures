@@ -37,11 +37,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported EXPORTED_SYMBOLS */
-/* global Components, eGActions, eGPrefs, eGStrings, Services */
+/* global Components, eGActions, eGPrefs, eGContext, eGStrings, Services */
 
 var EXPORTED_SYMBOLS = ["eGm"];
 
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGContext.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
@@ -134,9 +135,9 @@ function ContextualMenuLayout(menu, name, actionsPrefs) {
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
 ContextualMenuLayout.prototype.getNextLayout = function() {
-  return eGActionsState.contextualMenus[
-    (eGActionsState.contextualMenus.indexOf(this.name) + 1) %
-      eGActionsState.contextualMenus.length];
+  return eGContext.contextualMenus[
+    (eGContext.contextualMenus.indexOf(this.name) + 1) %
+      eGContext.contextualMenus.length];
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
@@ -144,7 +145,7 @@ ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
 ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
   browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:updateContextualMenuSign", {
     layoutLabel: eGStrings.getString(this.name),
-    moreThanOneLayout: eGActionsState.contextualMenus.length > 1
+    moreThanOneLayout: eGContext.contextualMenus.length > 1
   });
 };
 
@@ -337,7 +338,7 @@ var eGm = {
       runScriptActionPrefs: this.runScriptActionPrefs,
       noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
-      showLinkSign: this.handleLinks && eGActionsState.anchorElementExists &&
+      showLinkSign: this.handleLinks && eGContext.anchorElementExists &&
                     this.isJustOpened() && layoutName === "main",
       linksDelay: this.linksDelay
     });
@@ -559,14 +560,14 @@ var eGm = {
       if (clickedButton === 1) {
         // middle click
         if (Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick")) {
-          window.gBrowser.addTab(eGActionsState.anchorElementHREF);
+          window.gBrowser.addTab(eGContext.anchorElementHREF);
         }
         else {
-          window.open(eGActionsState.anchorElementHREF);
+          window.open(eGContext.anchorElementHREF);
         }
       }
       else {
-        window.gBrowser.loadURI(eGActionsState.anchorElementHREF);
+        window.gBrowser.loadURI(eGContext.anchorElementHREF);
       }
     }
     this.close();
