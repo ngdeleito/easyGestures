@@ -59,11 +59,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported EXPORTED_SYMBOLS, eGActions */
-/* global Components, eGm, eGStrings, Services, eGContext, eGPrefs, Downloads */
+/* global Components, eGStrings, Services, eGContext, eGPrefs, Downloads */
 
 var EXPORTED_SYMBOLS = ["eGActions"];
 
-Components.utils.import("chrome://easygestures/content/menu.js");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGContext.jsm");
@@ -71,8 +70,8 @@ Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function() {
-    eGm.close();
+  this.run = function(pieMenu) {
+    pieMenu.close();
     action.call(this);
   };
   
@@ -188,8 +187,8 @@ EmptyAction.prototype.getXULLabel = function(document) {
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
   Action.call(this, "showExtraMenu", null, startsNewGroup, nextAction);
   
-  this.run = function() {
-    eGm.showExtraMenu();
+  this.run = function(pieMenu) {
+    pieMenu.showExtraMenu();
   };
   
   this.isExtraMenuAction = true;
@@ -370,7 +369,7 @@ function LoadURLAction(number, startsNewGroup, nextAction) {
         this._openInPrivateWindow(URL, window);
       }
       else {
-        switch (eGm.loadURLin) {
+        switch (eGPrefs.getLoadURLInPref()) {
           case "curTab":
             gBrowser.loadURI(URL);
             break;
@@ -780,7 +779,7 @@ var eGActions = {
     var gBrowser = window.gBrowser;
     var url = eGContext.anchorElementHREF;
     
-    switch (eGm.openLink) {
+    switch (eGPrefs.getOpenLinkPref()) {
       case "curTab":
         gBrowser.loadURI(url);
         break;

@@ -210,9 +210,18 @@ var eGPrefs = {
     return this._prefs.getBoolPref("menus.extraAlt2Enabled");
   },
   
+  getLoadURLInPref : function() {
+    // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
+    return this._prefs.getCharPref("customizations.loadURLin");
+  },
+  
   getLoadURLOrRunScriptPrefValue : function(aPrefName) {
     return this._prefs.getComplexValue("customizations." + aPrefName,
       Components.interfaces.nsISupportsString).data.split("\u2022");
+  },
+  
+  getOpenLinkPref : function() {
+    return this._prefs.getCharPref("customizations.openLink");
   },
   
   getDailyReadingsFolderID : function() {

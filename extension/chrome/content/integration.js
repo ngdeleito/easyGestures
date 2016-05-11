@@ -118,7 +118,7 @@ function eG_handleMousedown(aMessage) {
   
   if (eGm.autoscrollingOn) {
     eGContext.autoscrollingTrigger = window.setTimeout(function() {
-      eGActions.autoscrolling.run();
+      eGActions.autoscrolling.run(eGm);
     }, eGm.autoscrollingDelay);
   }
 }

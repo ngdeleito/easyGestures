@@ -41,6 +41,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 var EXPORTED_SYMBOLS = ["eGm"];
 
+Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 Components.utils.import("chrome://easygestures/content/eGContext.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
@@ -151,8 +152,6 @@ ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
 
 var eGm = {
   init : function() {
-    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
-    
     var prefs = Services.prefs.getBranch("extensions.easygestures.");
     
     // loading preferences first
@@ -188,7 +187,6 @@ var eGm = {
       ((this.extraAlt1MenuEnabled || this.extraAlt2MenuEnabled) ? 1 : 0) +
       ((this.extraAlt1MenuEnabled && this.extraAlt2MenuEnabled) ? 1 : 0);
     
-    this.loadURLin = prefs.getCharPref("customizations.loadURLin"); // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
     this.loadURLActionPrefs = {
       loadURL1: prefs.getComplexValue("customizations.loadURL1", Components.interfaces.nsISupportsString).data.split("\u2022"), // [0]: name, [1]: text, [2]:isScript, [3]: newIconPath, [4]: favicon, [5]: newIcon // previous separator "•" no longer works
       loadURL2: prefs.getComplexValue("customizations.loadURL2", Components.interfaces.nsISupportsString).data.split("\u2022"),
@@ -213,7 +211,6 @@ var eGm = {
       runScript9: prefs.getComplexValue("customizations.runScript9", Components.interfaces.nsISupportsString).data.split("\u2022"),
       runScript10: prefs.getComplexValue("customizations.runScript10", Components.interfaces.nsISupportsString).data.split("\u2022")
     };
-    this.openLink = prefs.getCharPref("customizations.openLink"); // display link in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
     
     // initializing properties
     this.easyGesturesID = "easyGesturesPieMenu_" +
@@ -445,7 +442,7 @@ var eGm = {
       try {
         // upon calling run, the pie menu is closed first (except for the
         // showExtraMenu action)
-        eGActions[layout.actions[this.sector]].run();
+        eGActions[layout.actions[this.sector]].run(this);
       }
       catch(ex) {
         var error = Components.classes["@mozilla.org/scripterror;1"]
@@ -551,7 +548,7 @@ var eGm = {
   
   openLinkThroughPieMenuCenter : function(clickedButton) {
     if (this.handleLinksAsOpenLink) {
-      eGActions.openLink.run();
+      eGActions.openLink.run(this);
     }
     else {
       // when option "use browser behavior" is checked to open links
