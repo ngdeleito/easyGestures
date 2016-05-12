@@ -274,7 +274,21 @@ var eGPieMenu = {
       contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
                                                prefs.getCharPref("menus.contextTextbox").split("/"))
     };
+    //
+    // Components.utils.import("resource://gre/modules/Timer.jsm");
+    // setTimeout(function() {
+    //   eGPieMenu.init();
+    // }, 2000);
   },
+  
+  // init : function() {
+  //   Services.console.logStringMessage("easyy init");
+  //   var prefs = Services.prefs.getBranch("extensions.easygestures.");
+  //   Services.ppmm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:initMenu", {
+  //     autoscrollingOn: prefs.getBoolPref("behavior.autoscrollingOn"),
+  //     autoscrollingDelay: prefs.getIntPref("behavior.autoscrollingDelay")
+  //   });
+  // },
   
   isHidden : function() {
     return this._menuState === 0;

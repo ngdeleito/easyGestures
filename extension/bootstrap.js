@@ -65,7 +65,7 @@ var eGPrefsObserver = {
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
   Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
-  Components.utils.import("chrome://easygestures/content/menu.js");
+  Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
   Components.utils.import("chrome://easygestures/content/eGActions.jsm");
   Components.utils.import("chrome://easygestures/content/eGContext.jsm");
   Services.scriptloader.loadSubScript("chrome://easygestures/content/integration.js");
@@ -168,7 +168,7 @@ function shutdown() {
   
   Components.utils.unload("chrome://easygestures/content/eGContext.jsm");
   Components.utils.unload("chrome://easygestures/content/eGActions.jsm");
-  Components.utils.unload("chrome://easygestures/content/menu.js");
+  Components.utils.unload("chrome://easygestures/content/eGPieMenu.jsm");
   Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");
 }

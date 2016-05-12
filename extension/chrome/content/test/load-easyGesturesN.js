@@ -35,7 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global Components, QUnit, eGPieMenu */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/menu.js");
+Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
 
 QUnit.done(function() {
   eGPieMenu.init();
