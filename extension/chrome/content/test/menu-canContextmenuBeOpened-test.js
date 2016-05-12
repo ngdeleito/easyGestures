@@ -32,12 +32,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGm, QUnit */
+/* global eGPieMenu, QUnit */
 
 function initCanContextmenuBeOpened(showKey, contextKey) {
-  eGm.showButton = 2;
-  eGm.showKey = showKey;
-  eGm.contextKey = contextKey;
+  eGPieMenu.showButton = 2;
+  eGPieMenu.showKey = showKey;
+  eGPieMenu.contextKey = contextKey;
 }
 
 // All possible combinations for initCanContextmenuBeOpened are:
@@ -52,107 +52,107 @@ function initCanContextmenuBeOpened(showKey, contextKey) {
 //   17 17 -> not tested, not allowed
 
 QUnit.test("test canContextmenuBeOpened with left button", function(assert) {
-  eGm.showButton = 0;
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.showButton = 0;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
 });
 
 QUnit.test("test canContextmenuBeOpened with middle button", function(assert) {
-  eGm.showButton = 1;
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.showButton = 1;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button", function(assert) {
   initCanContextmenuBeOpened(0, 0);
-  assert.ok(eGm.canContextmenuBeOpened(false, false, false));
-  assert.ok(eGm.canContextmenuBeOpened(false, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button, context with alt key", function(assert) {
   initCanContextmenuBeOpened(0, 18);
-  assert.ok(eGm.canContextmenuBeOpened(false, false, false));
-  assert.ok(eGm.canContextmenuBeOpened(false, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button, context with ctrl key", function(assert) {
   initCanContextmenuBeOpened(0, 17);
-  assert.ok(eGm.canContextmenuBeOpened(false, false, false));
-  assert.ok(eGm.canContextmenuBeOpened(false, false, true));
-  assert.ok(eGm.canContextmenuBeOpened(false, true, false));
-  assert.ok(eGm.canContextmenuBeOpened(false, true, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button and shift key", function(assert) {
   initCanContextmenuBeOpened(16, 0);
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
-  assert.ok(eGm.canContextmenuBeOpened(true, false, false));
-  assert.ok(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button and shift key, context with alt key", function(assert) {
   initCanContextmenuBeOpened(16, 18);
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
-  assert.ok(eGm.canContextmenuBeOpened(true, false, false));
-  assert.ok(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button and shift key, context with ctrl key", function(assert) {
   initCanContextmenuBeOpened(16, 17);
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, true, true));
-  assert.ok(eGm.canContextmenuBeOpened(true, false, false));
-  assert.ok(eGm.canContextmenuBeOpened(true, false, true));
-  assert.ok(eGm.canContextmenuBeOpened(true, true, false));
-  assert.ok(eGm.canContextmenuBeOpened(true, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button and ctrl key", function(assert) {
   initCanContextmenuBeOpened(17, 0);
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
-  assert.ok(eGm.canContextmenuBeOpened(false, true, false));
-  assert.ok(eGm.canContextmenuBeOpened(false, true, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
 QUnit.test("test canContextmenuBeOpened with right button and ctrl key, context with alt key", function(assert) {
   initCanContextmenuBeOpened(17, 18);
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(false, false, true));
-  assert.ok(eGm.canContextmenuBeOpened(false, true, false));
-  assert.ok(eGm.canContextmenuBeOpened(false, true, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, false, true));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, false));
-  assert.notOk(eGm.canContextmenuBeOpened(true, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, true, false));
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, true, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, true));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });

@@ -39,7 +39,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported EXPORTED_SYMBOLS */
 /* global Components, eGActions, eGPrefs, eGContext, eGStrings, Services */
 
-var EXPORTED_SYMBOLS = ["eGm"];
+var EXPORTED_SYMBOLS = ["eGPieMenu"];
 
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
@@ -150,7 +150,7 @@ ContextualMenuLayout.prototype.updateMenuSign = function(browserMM) {
   });
 };
 
-var eGm = {
+var eGPieMenu = {
   init : function() {
     var prefs = Services.prefs.getBranch("extensions.easygestures.");
     
@@ -504,7 +504,7 @@ var eGm = {
         this.showMenuTooltips();
       }
       else {
-        this.tooltipsTrigger = window.setTimeout(this.showMenuTooltips.bind(eGm), this.tooltipsDelay);
+        this.tooltipsTrigger = window.setTimeout(this.showMenuTooltips.bind(eGPieMenu), this.tooltipsDelay);
       }
     }
   },

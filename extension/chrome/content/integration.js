@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported eG_enableMenu, eG_disableMenu */
-/* global eGActions, eGm, eGContext */
+/* global eGActions, eGPieMenu, eGContext */
 
 function eG_enableMenu() {
   Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
@@ -72,16 +72,16 @@ function eG_performOpenMenuChecks(aMessage) {
   window.clearTimeout(eGContext.autoscrollingTrigger);
   
   // check whether pie menu should change layout or hide (later)
-  if (eGm.isShown()) {
-    if (eGm.canLayoutBeSwitched(aMessage.data.button)) {
-      eGm.switchLayout();
+  if (eGPieMenu.isShown()) {
+    if (eGPieMenu.canLayoutBeSwitched(aMessage.data.button)) {
+      eGPieMenu.switchLayout();
     }
     return PREVENT_DEFAULT_AND_RETURN;
   }
   
   // check if menu should not be displayed
-  if (!eGm.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
-                       aMessage.data.ctrlKey, aMessage.data.altKey)) {
+  if (!eGPieMenu.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
+                             aMessage.data.ctrlKey, aMessage.data.altKey)) {
     return LET_DEFAULT_AND_RETURN;
   }
   
@@ -96,8 +96,8 @@ function eG_handleMousedown(aMessage) {
   eGContext.anchorElementText = aMessage.data.anchorElementText;
   eGContext.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
   eGContext.imageElementSRC = aMessage.data.imageElementSRC;
-  eGm.centerX = aMessage.data.centerX;
-  eGm.centerY = aMessage.data.centerY;
+  eGPieMenu.centerX = aMessage.data.centerX;
+  eGPieMenu.centerY = aMessage.data.centerY;
   eGContext.targetDocumentURL = aMessage.data.targetDocumentURL;
   eGContext.targetWindowScrollY = aMessage.data.targetWindowScrollY;
   eGContext.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
@@ -105,21 +105,21 @@ function eG_handleMousedown(aMessage) {
   eGContext.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
   
   if (eGContext.contextualMenus.length !== 0 &&
-      eGm.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
-    eGm.show(eGContext.contextualMenus[0]);
+      eGPieMenu.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
+    eGPieMenu.show(eGContext.contextualMenus[0]);
   }
   else {
-    eGm.show("main");
+    eGPieMenu.show("main");
   }
   
   // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   window.gBrowser.focus();
   
-  if (eGm.autoscrollingOn) {
+  if (eGPieMenu.autoscrollingOn) {
     eGContext.autoscrollingTrigger = window.setTimeout(function() {
-      eGActions.autoscrolling.run(eGm);
-    }, eGm.autoscrollingDelay);
+      eGActions.autoscrolling.run(eGPieMenu);
+    }, eGPieMenu.autoscrollingDelay);
   }
 }
 
@@ -127,32 +127,32 @@ function eG_handleMouseup(aMessage) {
   var preventDefaultUponReturn = false;
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   
-  if (eGm.isJustOpened()) {
-    eGm.setOpen();
+  if (eGPieMenu.isJustOpened()) {
+    eGPieMenu.setOpen();
     if (aMessage.data.linkSignIsVisible) {
       window.clearTimeout(eGContext.autoscrollingTrigger);
-      eGm.openLinkThroughPieMenuCenter(aMessage.data.button);
+      eGPieMenu.openLinkThroughPieMenuCenter(aMessage.data.button);
     }
   }
-  else if (eGm.isJustOpenedAndMouseMoved()) {
-    if (eGm.sector !== -1) {
-      eGm.runAction();
+  else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
+    if (eGPieMenu.sector !== -1) {
+      eGPieMenu.runAction();
     }
     else {
-      eGm.setOpen();
+      eGPieMenu.setOpen();
       preventDefaultUponReturn = true;
     }
   }
-  else if (eGm.isShown()) {
-    if (aMessage.data.button === eGm.showAltButton) {
+  else if (eGPieMenu.isShown()) {
+    if (aMessage.data.button === eGPieMenu.showAltButton) {
       preventDefaultUponReturn = true;
     }
     else {
-      if (eGm.sector !== -1) {
-        eGm.runAction();
+      if (eGPieMenu.sector !== -1) {
+        eGPieMenu.runAction();
       }
       else {
-        eGm.close();
+        eGPieMenu.close();
       }
     }
   }
@@ -166,20 +166,20 @@ function eG_handleKeydown(aMessage) {
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGContext.autoscrollingTrigger);
   
-  if (eGm.isShown()) {
+  if (eGPieMenu.isShown()) {
     if (aMessage.data.altKey) {
-      eGm.switchLayout();
+      eGPieMenu.switchLayout();
     }
     else if (aMessage.data.escKey) {
-      eGm.close();
+      eGPieMenu.close();
     }
   }
 }
 
 function eG_handleContextmenu(aMessage) {
-  return eGm.canContextmenuBeOpened(aMessage.data.shiftKey,
-                                    aMessage.data.ctrlKey,
-                                    aMessage.data.altKey);
+  return eGPieMenu.canContextmenuBeOpened(aMessage.data.shiftKey,
+                                          aMessage.data.ctrlKey,
+                                          aMessage.data.altKey);
 }
 
 function eG_handleMousemove(aMessage) {
@@ -188,7 +188,7 @@ function eG_handleMousemove(aMessage) {
   // clear automatic delayed autoscrolling
   window.clearTimeout(eGContext.autoscrollingTrigger);
   
-  return eGm.handleMousemove(aMessage.data);
+  return eGPieMenu.handleMousemove(aMessage.data);
 }
 
 function eG_retrieveAndAddFavicon(aMessage) {

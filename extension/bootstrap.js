@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global Components, Services, eGm, eGPrefs, eGStrings */
+/* global Components, Services, eGPieMenu, eGPrefs, eGStrings */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -55,10 +55,10 @@ var eGPrefsObserver = {
 
   observe: function() {
     // removing existing easyGestures menus from open web pages
-    eGm.removeFromAllPages();
+    eGPieMenu.removeFromAllPages();
     
     // rebulding the menu
-    eGm.init();
+    eGPieMenu.init();
   }
 };
 
@@ -116,7 +116,7 @@ function startup(data, reason) {
     eGPrefsObserver.register();
     
     // creating menu
-    eGm.init();
+    eGPieMenu.init();
     
     // registering style sheet
     var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
@@ -154,7 +154,7 @@ function shutdown() {
   eGPrefsObserver.unregister();
   
   // removing existing easyGestures menus from open web pages
-  eGm.removeFromAllPages();
+  eGPieMenu.removeFromAllPages();
   
   // unregistering style sheet
   var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
