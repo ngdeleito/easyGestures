@@ -32,7 +32,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global Components, Services, eGPieMenu, eGPrefs, eGStrings */
+/* exported startup, shutdown, install, uninstall */
+/* global Components, Services, eGPieMenu, AddonManager, ADDON_INSTALL,
+          ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -74,14 +76,15 @@ function startup(data, reason) {
     // installing or upgrading preferences
     var count = {};
     Services.prefs.getChildList("extensions.easygestures.", count);
-    if (reason == ADDON_INSTALL || (reason == ADDON_ENABLE && count.value === 0)) {
+    if (reason === ADDON_INSTALL ||
+        (reason === ADDON_ENABLE && count.value === 0)) {
       // when installing an extension by copying it to the extensions folder
       // reason == ADDON_ENABLE, hence the test to see if there are already
       // preferences in the easygestures preferences branch
       eGPrefs.setDefaultSettings();
       eGPrefs.initializeStats();
     }
-    else if (reason == ADDON_UPGRADE) {
+    else if (reason === ADDON_UPGRADE) {
       if (Services.vc.compare(data.oldVersion, "4.5") < 0) {
         eGPrefs.updateToV4_5();
       }
@@ -131,7 +134,7 @@ function startup(data, reason) {
     // displaying startup tips
     if (eGPrefs.areStartupTipsOn()) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
-      if (window.document.readyState == "complete") {
+      if (window.document.readyState === "complete") {
         window.openDialog("chrome://easygestures/content/tips.xul", "",
                           "chrome,centerscreen,resizable");
       }
@@ -177,7 +180,7 @@ function install() {
 }
 
 function uninstall(data, reason) {
-  if (reason == ADDON_UNINSTALL) {
+  if (reason === ADDON_UNINSTALL) {
     var prefs = Services.prefs.getBranch("extensions.easygestures.");
     prefs.deleteBranch("");
   }

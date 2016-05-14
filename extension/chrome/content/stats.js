@@ -30,7 +30,8 @@ GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global Components, eGPrefs, eGActions */
+/* exported initDialog */
+/* global Components, document, eGPrefs, eGActions */
 
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");

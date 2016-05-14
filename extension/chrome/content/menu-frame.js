@@ -34,12 +34,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global addStatelessListeners, removeStatelessListeners, addMessageListener,
-          removeMessageListener, addEventListener, removeEventListener,
-          sendSyncMessage, sendAsyncMessage, content, HTML_NAMESPACE,
-          cleanSelection, setContext, createSpecialNodes, createActionsNodes,
-          hideLinkSign, updateMenuPosition, clearHoverEffect, setHoverEffect,
-          showExtraMenu, hideExtraMenu, hide, clearMenuSign */
+/* global Components, addStatelessListeners, removeStatelessListeners,
+          addMessageListener, removeMessageListener, addEventListener,
+          removeEventListener, sendSyncMessage, sendAsyncMessage, content,
+          HTML_NAMESPACE, cleanSelection, setContext, createSpecialNodes,
+          createActionsNodes, hideLinkSign, updateMenuPosition,
+          clearHoverEffect, setHoverEffect, showExtraMenu, hideExtraMenu, hide,
+          clearMenuSign */
 
 var easyGesturesID;
 var targetDocument, targetWindow, topmostWindow;
