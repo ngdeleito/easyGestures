@@ -51,14 +51,41 @@ function initCanContextmenuBeOpened(showKey, contextKey) {
 //   17 18
 //   17 17 -> not tested, not allowed
 
+function testWithShowAltButton(assert) {
+  eGPieMenu.showAltButton = 0;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.showAltButton = 1;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.showAltButton = 2;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.setOpen();
+  eGPieMenu.showAltButton = 0;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.showAltButton = 1;
+  assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.showAltButton = 2;
+  assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
+  eGPieMenu.setHidden();
+}
+
 QUnit.test("test canContextmenuBeOpened with left button", function(assert) {
   eGPieMenu.showButton = 0;
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
 });
 
+QUnit.test("test canContextmenuBeOpened with left button and alt button", function(assert) {
+  eGPieMenu.showButton = 0;
+  testWithShowAltButton(assert);
+});
+
 QUnit.test("test canContextmenuBeOpened with middle button", function(assert) {
   eGPieMenu.showButton = 1;
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
+});
+
+QUnit.test("test canContextmenuBeOpened with middle button and alt button", function(assert) {
+  eGPieMenu.showButton = 1;
+  testWithShowAltButton(assert);
 });
 
 QUnit.test("test canContextmenuBeOpened with right button", function(assert) {
@@ -155,4 +182,9 @@ QUnit.test("test canContextmenuBeOpened with right button and ctrl key, context 
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, false, true));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, false));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
+});
+
+QUnit.test("test canContextmenuBeOpened with right button and alt button", function(assert) {
+  eGPieMenu.showButton = 2;
+  testWithShowAltButton(assert);
 });
