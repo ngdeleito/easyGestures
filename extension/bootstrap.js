@@ -64,6 +64,35 @@ var eGPrefsObserver = {
   }
 };
 
+function eG_enableMenu() {
+  Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
+  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
+}
+
+function eG_disableMenu() {
+  Services.mm.removeDelayedFrameScript("chrome://easygestures/content/menu-frame.js");
+  Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeListeners");
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
+  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
+}
+
+function eG_handleContextmenu(aMessage) {
+  return eGPieMenu.canContextmenuBeOpened(aMessage.data.shiftKey,
+                                          aMessage.data.ctrlKey,
+                                          aMessage.data.altKey);
+}
+
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
   Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
