@@ -67,180 +67,186 @@ var eGPrefsObserver = {
   }
 };
 
-function eG_enableMenu() {
-  Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
-  Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
-}
-
-function eG_disableMenu() {
-  Services.mm.removeDelayedFrameScript("chrome://easygestures/content/menu-frame.js");
-  Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeListeners");
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", eG_performOpenMenuChecks);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", eG_handleMousedown);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", eG_handleMouseup);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", eG_handleKeydown);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", eG_handleContextmenu);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", eG_handleMousemove);
-  Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", eG_retrieveAndAddFavicon);
-}
-
-function eG_performOpenMenuChecks(aMessage) {
-  const PREVENT_DEFAULT_AND_OPEN_MENU = 0;
-  const PREVENT_DEFAULT_AND_RETURN = 1;
-  const LET_DEFAULT_AND_RETURN = 2;
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
+var eGMessageListeners = {
+  enable: function() {
+    Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", this);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", this);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", this);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", this);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", this);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", this);
+    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", this);
+  },
   
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(eGContext.autoscrollingTrigger);
+  disable: function() {
+    Services.mm.removeDelayedFrameScript("chrome://easygestures/content/menu-frame.js");
+    Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeListeners");
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", this);
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", this);
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", this);
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", this);
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", this);
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", this);
+    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", this);
+  },
   
-  // check whether pie menu should change layout or hide (later)
-  if (eGPieMenu.isShown()) {
-    if (eGPieMenu.canLayoutBeSwitched(aMessage.data.button)) {
-      eGPieMenu.switchLayout();
+  receiveMessage: function(aMessage) {
+    return this[aMessage.name.split(":")[1]](aMessage);
+  },
+  
+  performOpenMenuChecks: function(aMessage) {
+    const PREVENT_DEFAULT_AND_OPEN_MENU = 0;
+    const PREVENT_DEFAULT_AND_RETURN = 1;
+    const LET_DEFAULT_AND_RETURN = 2;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    
+    // clear automatic delayed autoscrolling
+    window.clearTimeout(eGContext.autoscrollingTrigger);
+    
+    // check whether pie menu should change layout or hide (later)
+    if (eGPieMenu.isShown()) {
+      if (eGPieMenu.canLayoutBeSwitched(aMessage.data.button)) {
+        eGPieMenu.switchLayout();
+      }
+      return PREVENT_DEFAULT_AND_RETURN;
     }
-    return PREVENT_DEFAULT_AND_RETURN;
-  }
-  
-  // check if menu should not be displayed
-  if (!eGPieMenu.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
-                             aMessage.data.ctrlKey, aMessage.data.altKey)) {
-    return LET_DEFAULT_AND_RETURN;
-  }
-  
-  return PREVENT_DEFAULT_AND_OPEN_MENU;
-}
-
-function eG_handleMousedown(aMessage) {
-  eGContext.contextualMenus = aMessage.data.contextualMenus;
-  eGContext.selection = aMessage.data.selection;
-  eGContext.anchorElementExists = aMessage.data.anchorElementExists;
-  eGContext.anchorElementHREF = aMessage.data.anchorElementHREF;
-  eGContext.anchorElementText = aMessage.data.anchorElementText;
-  eGContext.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
-  eGContext.imageElementSRC = aMessage.data.imageElementSRC;
-  eGPieMenu.centerX = aMessage.data.centerX;
-  eGPieMenu.centerY = aMessage.data.centerY;
-  eGContext.targetDocumentURL = aMessage.data.targetDocumentURL;
-  eGContext.targetWindowScrollY = aMessage.data.targetWindowScrollY;
-  eGContext.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
-  eGContext.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
-  eGContext.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
-  
-  if (eGContext.contextualMenus.length !== 0 &&
-      eGPieMenu.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
-    eGPieMenu.show(eGContext.contextualMenus[0]);
-  }
-  else {
-    eGPieMenu.show("main");
-  }
-  
-  // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  window.gBrowser.focus();
-  
-  if (eGPieMenu.autoscrollingOn) {
-    eGContext.autoscrollingTrigger = window.setTimeout(function() {
-      eGActions.autoscrolling.run(eGPieMenu);
-    }, eGPieMenu.autoscrollingDelay);
-  }
-}
-
-function eG_handleMouseup(aMessage) {
-  var preventDefaultUponReturn = false;
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  
-  if (eGPieMenu.isJustOpened()) {
-    eGPieMenu.setOpen();
-    if (aMessage.data.linkSignIsVisible) {
-      window.clearTimeout(eGContext.autoscrollingTrigger);
-      eGPieMenu.openLinkThroughPieMenuCenter(aMessage.data.button);
+    
+    // check if menu should not be displayed
+    if (!eGPieMenu.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
+                               aMessage.data.ctrlKey, aMessage.data.altKey)) {
+      return LET_DEFAULT_AND_RETURN;
     }
-  }
-  else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
-    if (eGPieMenu.sector !== -1) {
-      eGPieMenu.runAction();
+    
+    return PREVENT_DEFAULT_AND_OPEN_MENU;
+  },
+  
+  handleMousedown: function(aMessage) {
+    eGContext.contextualMenus = aMessage.data.contextualMenus;
+    eGContext.selection = aMessage.data.selection;
+    eGContext.anchorElementExists = aMessage.data.anchorElementExists;
+    eGContext.anchorElementHREF = aMessage.data.anchorElementHREF;
+    eGContext.anchorElementText = aMessage.data.anchorElementText;
+    eGContext.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
+    eGContext.imageElementSRC = aMessage.data.imageElementSRC;
+    eGPieMenu.centerX = aMessage.data.centerX;
+    eGPieMenu.centerY = aMessage.data.centerY;
+    eGContext.targetDocumentURL = aMessage.data.targetDocumentURL;
+    eGContext.targetWindowScrollY = aMessage.data.targetWindowScrollY;
+    eGContext.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
+    eGContext.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
+    eGContext.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
+    
+    if (eGContext.contextualMenus.length !== 0 &&
+        eGPieMenu.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
+      eGPieMenu.show(eGContext.contextualMenus[0]);
     }
     else {
+      eGPieMenu.show("main");
+    }
+    
+    // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    window.gBrowser.focus();
+    
+    if (eGPieMenu.autoscrollingOn) {
+      eGContext.autoscrollingTrigger = window.setTimeout(function() {
+        eGActions.autoscrolling.run(eGPieMenu);
+      }, eGPieMenu.autoscrollingDelay);
+    }
+  },
+  
+  handleMouseup: function(aMessage) {
+    var preventDefaultUponReturn = false;
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    
+    if (eGPieMenu.isJustOpened()) {
       eGPieMenu.setOpen();
-      preventDefaultUponReturn = true;
+      if (aMessage.data.linkSignIsVisible) {
+        window.clearTimeout(eGContext.autoscrollingTrigger);
+        eGPieMenu.openLinkThroughPieMenuCenter(aMessage.data.button);
+      }
     }
-  }
-  else if (eGPieMenu.isShown()) {
-    if (aMessage.data.button === eGPieMenu.showAltButton) {
-      preventDefaultUponReturn = true;
-    }
-    else {
+    else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
       if (eGPieMenu.sector !== -1) {
         eGPieMenu.runAction();
       }
       else {
+        eGPieMenu.setOpen();
+        preventDefaultUponReturn = true;
+      }
+    }
+    else if (eGPieMenu.isShown()) {
+      if (aMessage.data.button === eGPieMenu.showAltButton) {
+        preventDefaultUponReturn = true;
+      }
+      else {
+        if (eGPieMenu.sector !== -1) {
+          eGPieMenu.runAction();
+        }
+        else {
+          eGPieMenu.close();
+        }
+      }
+    }
+    
+    return preventDefaultUponReturn;
+  },
+  
+  handleKeydown: function(aMessage) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    
+    // clear automatic delayed autoscrolling
+    window.clearTimeout(eGContext.autoscrollingTrigger);
+    
+    if (eGPieMenu.isShown()) {
+      if (aMessage.data.altKey) {
+        eGPieMenu.switchLayout();
+      }
+      else if (aMessage.data.escKey) {
         eGPieMenu.close();
       }
     }
-  }
+  },
   
-  return preventDefaultUponReturn;
-}
-
-function eG_handleKeydown(aMessage) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
+  handleContextmenu: function(aMessage) {
+    return eGPieMenu.canContextmenuBeOpened(aMessage.data.shiftKey,
+                                            aMessage.data.ctrlKey,
+                                            aMessage.data.altKey);
+  },
   
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(eGContext.autoscrollingTrigger);
-  
-  if (eGPieMenu.isShown()) {
-    if (aMessage.data.altKey) {
-      eGPieMenu.switchLayout();
-    }
-    else if (aMessage.data.escKey) {
-      eGPieMenu.close();
-    }
-  }
-}
-
-function eG_handleContextmenu(aMessage) {
-  return eGPieMenu.canContextmenuBeOpened(aMessage.data.shiftKey,
-                                          aMessage.data.ctrlKey,
-                                          aMessage.data.altKey);
-}
-
-function eG_handleMousemove(aMessage) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(eGContext.autoscrollingTrigger);
-  
-  return eGPieMenu.handleMousemove(aMessage.data);
-}
-
-function eG_retrieveAndAddFavicon(aMessage) {
-  var aURL = aMessage.data.aURL;
-  if (aURL === "") {
-    return ;
-  }
-  
-  if (aURL.match(/\:\/\//i) === null) {
-    aURL = "http://" + aURL;
-  }
-  
-  var faviconService = Components
-                         .classes["@mozilla.org/browser/favicon-service;1"]
-                         .getService(Components.interfaces.mozIAsyncFavicons);
-  faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
+  handleMousemove: function(aMessage) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var browserMM = window.gBrowser.selectedBrowser.messageManager;
-    browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addFavicon", {
-      anActionNodeID: aMessage.data.anActionNodeID,
-      aURL: aURI !== null ? aURI.spec : ""
+    
+    // clear automatic delayed autoscrolling
+    window.clearTimeout(eGContext.autoscrollingTrigger);
+    
+    return eGPieMenu.handleMousemove(aMessage.data);
+  },
+  
+  retrieveAndAddFavicon: function(aMessage) {
+    var aURL = aMessage.data.aURL;
+    if (aURL === "") {
+      return ;
+    }
+    if (aURL.match(/\:\/\//i) === null) {
+      aURL = "http://" + aURL;
+    }
+    
+    var faviconService = Components
+                           .classes["@mozilla.org/browser/favicon-service;1"]
+                           .getService(Components.interfaces.mozIAsyncFavicons);
+    faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
+      var window = Services.wm.getMostRecentWindow("navigator:browser");
+      var browserMM = window.gBrowser.selectedBrowser.messageManager;
+      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addFavicon", {
+        anActionNodeID: aMessage.data.anActionNodeID,
+        aURL: aURI !== null ? aURI.spec : ""
+      });
     });
-  });
-}
+  }
+  
+};
 
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
@@ -306,7 +312,7 @@ function startup(data, reason) {
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
     
-    eG_enableMenu();
+    eGMessageListeners.enable();
     
     // displaying startup tips
     if (eGPrefs.areStartupTipsOn()) {
@@ -344,7 +350,7 @@ function shutdown() {
     sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
   }
   
-  eG_disableMenu();
+  eGMessageListeners.disable();
   
   Components.utils.unload("chrome://easygestures/content/eGContext.jsm");
   Components.utils.unload("chrome://easygestures/content/eGActions.jsm");
