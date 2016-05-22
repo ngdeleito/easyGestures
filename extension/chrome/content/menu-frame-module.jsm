@@ -181,8 +181,16 @@ function createSpecialNodes(aDocument, numberOfMainMenus, numberOfExtraMenus) {
 
 function addFavicon(aMessage) {
   var document = aMessage.target.content.document;
+  var faviconURL = aMessage.data.aURL;
   var anActionNode = document.getElementById(aMessage.data.anActionNodeID);
-  anActionNode.style.backgroundImage = "url('" + aMessage.data.aURL + "')";
+  if (faviconURL === "" || (document.documentURI.startsWith("https://") &&
+                            faviconURL.startsWith("http://"))) {
+    anActionNode.className = aMessage.data.fallbackIconName;
+  }
+  else {
+    anActionNode.style.backgroundImage = "url('" + faviconURL + "')";
+    anActionNode.className = aMessage.data.iconName;
+  }
 }
 
 function createActionsNodes(frame, aDocument, aMessageData) {
@@ -207,18 +215,21 @@ function createActionsNodes(frame, aDocument, aMessageData) {
     let iconName = action;
     
     if (action.startsWith("loadURL")) { // new icon path for loadURL ?
-      if (aMessageData.loadURLActionPrefs[action][2] === "true") {
+      if (aMessageData.loadURLActionPrefs[action][2] === "true" &&
+          aMessageData.loadURLActionPrefs[action][1] !== "") {
         frame.sendAsyncMessage("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", {
           aURL: aMessageData.loadURLActionPrefs[action][1],
-          anActionNodeID: anActionNode.id
+          anActionNodeID: anActionNode.id,
+          iconName: "customIcon",
+          fallbackIconName: action
         });
-        iconName = "customIcon";
       }
     }
     else if (action.startsWith("runScript")) { // new icon path for runScript ?
-      if (aMessageData.runScriptActionPrefs[action][2] !== "") {
+      let iconPath = aMessageData.runScriptActionPrefs[action][2];
+      if (iconPath !== "" && !aDocument.documentURI.startsWith("https://")) {
         anActionNode.style.backgroundImage =
-          "url('" + (aMessageData.runScriptActionPrefs[action][2]).replace(/\\/g , "\\\\") + "')";
+          "url('" + iconPath.replace(/\\/g , "\\\\") + "')";
         iconName = "customIcon";
       }
     }

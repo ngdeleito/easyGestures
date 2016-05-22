@@ -226,9 +226,6 @@ var eGMessageListeners = {
   
   retrieveAndAddFavicon: function(aMessage) {
     var aURL = aMessage.data.aURL;
-    if (aURL === "") {
-      return ;
-    }
     if (aURL.match(/\:\/\//i) === null) {
       aURL = "http://" + aURL;
     }
@@ -241,7 +238,9 @@ var eGMessageListeners = {
       var browserMM = window.gBrowser.selectedBrowser.messageManager;
       browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addFavicon", {
         anActionNodeID: aMessage.data.anActionNodeID,
-        aURL: aURI !== null ? aURI.spec : ""
+        aURL: aURI !== null ? aURI.spec : "",
+        iconName: aMessage.data.iconName,
+        fallbackIconName: aMessage.data.fallbackIconName
       });
     });
   }
