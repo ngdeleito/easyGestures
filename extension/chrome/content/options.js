@@ -31,8 +31,14 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-
-/* global Components, Services, eGActions, eGPrefs */
+/* exported preventCloseOnEnter, initMenuDialog,
+            preparePreferenceValueForNormalMenu,
+            preparePreferenceValueForExtraMenu,
+            preparePreferenceValueForLoadURL,
+            preparePreferenceValueForRunScript,
+            preparePreferenceValueForDailyReadings, resetOnDuplicatedKeys */
+/* global Components, document, window, Services, eGActions, eGPrefs,
+          PlacesUIUtils, alert */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
@@ -465,7 +471,7 @@ function addFavicon(url, actionName) {
 }
 
 function preventCloseOnEnter(event) {
-  if (event.keyCode == 13 && event.target.nodeName == "textbox") {
+  if (event.keyCode === 13 && event.target.nodeName === "textbox") {
     if (!event.target.hasAttribute("multiline")) {
       event.preventDefault();
       event.target.parentNode.focus();
@@ -516,7 +522,7 @@ function attachMenupopup(menulist) {
   menulist.appendChild(clonedMenupopup);
   clonedMenupopup.boxObject.firstChild.setAttribute("style", "overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
   
-  if (clonedMenupopup.parentNode.id.search("Sector2") == -1 ||
+  if (!clonedMenupopup.parentNode.id.endsWith("Sector2") ||
       menulist.id.startsWith("extra")) {
     // remove showExtraMenu action
     clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
@@ -720,7 +726,7 @@ function initMenuDialog() {
     function (element) {
       var menulist = document.getElementById(element + "Menulist");
       menulist.value = eG_prefs.getIntPref("activation." + element);
-      if (menulist.selectedIndex == -1) {
+      if (menulist.selectedIndex === -1) {
         menulist.selectedIndex = menulist.itemCount - 1;
       }
       updateLabelAndTextboxFor(menulist);
@@ -873,7 +879,7 @@ function fireChangeEventOn(element) {
 function updateLabelAndTextboxFor(menulist) {
   var label = menulist.nextElementSibling;
   var textbox = label.nextElementSibling;
-  var shouldBeDisabled = menulist.selectedIndex != menulist.itemCount - 1;
+  var shouldBeDisabled = menulist.selectedIndex !== menulist.itemCount - 1;
   
   label.disabled = shouldBeDisabled;
   textbox.disabled = shouldBeDisabled;
