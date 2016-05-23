@@ -69,22 +69,22 @@ var eGPrefs = {
   },
   
   _setDefaultMenus : function() {
-    var menus = {
-      main:             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage",
-      mainAlt1:         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab",
-      mainAlt2:         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1",
-      extra:            "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage",
-      extraAlt1:        "newPrivateWindow/empty/toggleFullscreen/restart/quit",
-      extraAlt2:        "zoomReset/zoomOut/zoomIn/savePageAs/printPage",
-      contextLink:      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty",
-      contextImage:     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty",
-      contextSelection: "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty",
-      contextTextbox:   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"
-    };
+    var menus = [
+      ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
+      ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
+      ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
+      ["extra",            "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
+      ["extraAlt1",        "newPrivateWindow/empty/toggleFullscreen/restart/quit"],
+      ["extraAlt2",        "zoomReset/zoomOut/zoomIn/savePageAs/printPage"],
+      ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
+      ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
+      ["contextSelection", "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
+      ["contextTextbox",   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"]
+    ];
     
-    for (let [menuName, actions] in Iterator(menus)) {
+    menus.forEach(function([menuName, actions]) {
       this._prefs.setCharPref("menus." + menuName, actions);
-    }
+    }, this);
   },
   
   setDefaultSettings : function() {
