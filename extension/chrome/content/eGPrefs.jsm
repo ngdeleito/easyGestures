@@ -121,8 +121,6 @@ var eGPrefs = {
     this._prefs.setBoolPref("behavior.autoscrollingOn", false);
     this._prefs.setIntPref("behavior.autoscrollingDelay", 750);
     
-    this._prefs.setCharPref("customizations.dailyReadingsFolder", "");
-    
     this._prefs.setBoolPref("menus.mainAlt1Enabled", true);
     this._prefs.setBoolPref("menus.mainAlt2Enabled", false);
     this._prefs.setBoolPref("menus.extraAlt1Enabled", true);
@@ -620,5 +618,9 @@ var eGPrefs = {
     if (showMessage) {
       Services.prompt.alert(null, "easyGestures N v4.13", message);
     }
+  },
+  
+  updateToV4_14: function() {
+    this._prefs.deleteBranch("customizations.dailyReadingsFolder");
   }
 };
