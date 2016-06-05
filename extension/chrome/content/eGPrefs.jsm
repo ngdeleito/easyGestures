@@ -40,8 +40,165 @@ var EXPORTED_SYMBOLS = ["eGPrefs"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 
+function Pref(name, value) {
+  this.name = name;
+  this.value = value;
+}
+
+function BoolPref(name, value) {
+  Pref.call(this, name, value);
+}
+BoolPref.prototype = Object.create(Pref.prototype);
+BoolPref.prototype.constructor = BoolPref;
+BoolPref.prototype.setPreference = function(prefsBranch) {
+  prefsBranch.setBoolPref(this.name, this.value);
+};
+
+function IntPref(name, value) {
+  Pref.call(this, name, value);
+}
+IntPref.prototype = Object.create(Pref.prototype);
+IntPref.prototype.constructor = IntPref;
+IntPref.prototype.setPreference = function(prefsBranch) {
+  prefsBranch.setIntPref(this.name, this.value);
+};
+
+function CharPref(name, value) {
+  Pref.call(this, name, value);
+}
+CharPref.prototype = Object.create(Pref.prototype);
+CharPref.prototype.constructor = CharPref;
+CharPref.prototype.setPreference = function(prefsBranch) {
+  prefsBranch.setCharPref(this.name, this.value);
+};
+
+function ComplexPref(name, value) {
+  Pref.call(this, name, value);
+}
+ComplexPref.prototype = Object.create(Pref.prototype);
+ComplexPref.prototype.constructor = ComplexPref;
+ComplexPref.prototype.setPreference = function(prefsBranch) {
+  prefsBranch.setComplexValue(this.name,
+                              Components.interfaces.nsISupportsString,
+                              this.value);
+};
+
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
+  
+  _setCharPref : function(defaultPrefsMap, prefName, prefValue) {
+    defaultPrefsMap.set(prefName, new CharPref(prefName, prefValue));
+  },
+  
+  _getDefaultPrefsMap : function() {
+    function setBoolPref(defaultPrefsMap, prefName, prefValue) {
+      defaultPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
+    }
+    function setIntPref(defaultPrefsMap, prefName, prefValue) {
+      defaultPrefsMap.set(prefName, new IntPref(prefName, prefValue));
+    }
+    function setComplexPref(defaultPrefsMap, prefName, prefValue) {
+      var string = Components.classes["@mozilla.org/supports-string;1"]
+                       .createInstance(Components.interfaces.nsISupportsString);
+      string.data = prefValue;
+      defaultPrefsMap.set(prefName, new ComplexPref(prefName, string));
+    }
+    
+    function setDefaultMenus(defaultPrefsMap) {
+      var menus = [
+        ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
+        ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
+        ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
+        ["extra",            "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
+        ["extraAlt1",        "newPrivateWindow/empty/toggleFullscreen/restart/quit"],
+        ["extraAlt2",        "zoomReset/zoomOut/zoomIn/savePageAs/printPage"],
+        ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
+        ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
+        ["contextSelection", "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
+        ["contextTextbox",   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"]
+      ];
+      
+      menus.forEach(function([menuName, actions]) {
+        eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions);
+      });
+    }
+    
+    var defaultPrefs = new Map();
+    setBoolPref(defaultPrefs, "general.startupTips", true);
+    setIntPref(defaultPrefs, "general.tipNumber", 0);
+    
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    if (window.navigator.userAgent.indexOf("Mac") === -1) {
+      setIntPref(defaultPrefs, "activation.showButton", 1); // middle button
+      setIntPref(defaultPrefs, "activation.showKey", 0); // no key
+      setIntPref(defaultPrefs, "activation.preventOpenKey", 17); // ctrl key
+    }
+    else {
+      // mac users need different defaults
+      setIntPref(defaultPrefs, "activation.showButton", 0); // left button
+      setIntPref(defaultPrefs, "activation.showKey", 16); // shift key
+      setIntPref(defaultPrefs, "activation.preventOpenKey", 0);
+    }
+    
+    setIntPref(defaultPrefs, "activation.showAltButton", 2); // right button
+    setIntPref(defaultPrefs, "activation.contextKey", 18); // alt key
+    setBoolPref(defaultPrefs, "activation.contextShowAuto", false);
+    
+    setBoolPref(defaultPrefs, "behavior.moveAuto", false);
+    setBoolPref(defaultPrefs, "behavior.largeMenu", false);
+    setIntPref(defaultPrefs, "behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
+    setBoolPref(defaultPrefs, "behavior.noIcons", false);
+    setBoolPref(defaultPrefs, "behavior.smallIcons", false);
+    setBoolPref(defaultPrefs, "behavior.showTooltips", true);
+    setIntPref(defaultPrefs, "behavior.tooltipsDelay", 1000);
+    setBoolPref(defaultPrefs, "behavior.handleLinks", true);
+    setIntPref(defaultPrefs, "behavior.linksDelay", 300);
+    setBoolPref(defaultPrefs, "behavior.handleLinksAsOpenLink", false);
+    setBoolPref(defaultPrefs, "behavior.autoscrollingOn", false);
+    setIntPref(defaultPrefs, "behavior.autoscrollingDelay", 750);
+    
+    setBoolPref(defaultPrefs, "menus.mainAlt1Enabled", true);
+    setBoolPref(defaultPrefs, "menus.mainAlt2Enabled", false);
+    setBoolPref(defaultPrefs, "menus.extraAlt1Enabled", true);
+    setBoolPref(defaultPrefs, "menus.extraAlt2Enabled", false);
+    setDefaultMenus(defaultPrefs);
+    
+    this._setCharPref(defaultPrefs, "customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
+    
+    for (let i=1; i<=10; i++) {
+      setComplexPref(defaultPrefs, "customizations.loadURL" + i,
+                     "\u2022\u2022false\u2022false");
+      setComplexPref(defaultPrefs, "customizations.runScript" + i,
+                     "\u2022\u2022");
+    }
+    
+    this._setCharPref(defaultPrefs, "customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
+    setIntPref(defaultPrefs, "customizations.dailyReadingsFolderID", -1);
+    
+    return defaultPrefs;
+  },
+  
+  _getDefaultStatsMap : function() {
+    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
+    var defaultStats = new Map();
+    
+    var d = new Date(); // date of last reset
+    this._setCharPref(defaultStats, "stats.lastReset",
+                      d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+    this._setCharPref(defaultStats, "stats.mainMenu",
+                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
+    this._setCharPref(defaultStats, "stats.extraMenu",
+                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
+    
+    var actionsStats = {};
+    for (let action in eGActions) {
+      actionsStats[action] = 0;
+    }
+    this._setCharPref(defaultStats, "stats.actions",
+                      JSON.stringify(actionsStats));
+    
+    return defaultStats;
+  },
   
   exportPrefsToString : function() {
     var prefsNames = this._prefs.getChildList("");
@@ -68,96 +225,18 @@ var eGPrefs = {
     return result;
   },
   
-  _setDefaultMenus : function() {
-    var menus = [
-      ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
-      ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
-      ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
-      ["extra",            "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
-      ["extraAlt1",        "newPrivateWindow/empty/toggleFullscreen/restart/quit"],
-      ["extraAlt2",        "zoomReset/zoomOut/zoomIn/savePageAs/printPage"],
-      ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
-      ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
-      ["contextSelection", "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
-      ["contextTextbox",   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"]
-    ];
-    
-    menus.forEach(function([menuName, actions]) {
-      this._prefs.setCharPref("menus." + menuName, actions);
+  setDefaultSettings : function() {
+    var defaultPrefsMap = this._getDefaultPrefsMap();
+    defaultPrefsMap.forEach(function(pref) {
+      pref.setPreference(this._prefs);
     }, this);
   },
   
-  setDefaultSettings : function() {
-    this._prefs.setBoolPref("general.startupTips", true);
-    this._prefs.setIntPref("general.tipNumber", 0);
-    
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (window.navigator.userAgent.indexOf("Mac") === -1) {
-      this._prefs.setIntPref("activation.showButton", 1); // middle button
-      this._prefs.setIntPref("activation.showKey", 0); // no key
-      this._prefs.setIntPref("activation.preventOpenKey", 17); // ctrl key
-    }
-    else {
-      // mac users need different defaults
-      this._prefs.setIntPref("activation.showButton", 0); // left button
-      this._prefs.setIntPref("activation.showKey", 16); // shift key
-      this._prefs.setIntPref("activation.preventOpenKey", 0);
-    }
-    
-    this._prefs.setIntPref("activation.showAltButton", 2); // right button
-    this._prefs.setIntPref("activation.contextKey", 18); // alt key
-    this._prefs.setBoolPref("activation.contextShowAuto", false); // Show contextual pie menu automatically
-    
-    this._prefs.setBoolPref("behavior.moveAuto", false); // must press <Shitf> key to move menu
-    this._prefs.setBoolPref("behavior.largeMenu", false);
-    this._prefs.setIntPref("behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
-    this._prefs.setBoolPref("behavior.noIcons", false);
-    this._prefs.setBoolPref("behavior.smallIcons", false);
-    this._prefs.setBoolPref("behavior.showTooltips", true);
-    this._prefs.setIntPref("behavior.tooltipsDelay", 1000);
-    this._prefs.setBoolPref("behavior.handleLinks", true);
-    this._prefs.setIntPref("behavior.linksDelay", 300);
-    this._prefs.setBoolPref("behavior.handleLinksAsOpenLink", false);
-    this._prefs.setBoolPref("behavior.autoscrollingOn", false);
-    this._prefs.setIntPref("behavior.autoscrollingDelay", 750);
-    
-    this._prefs.setBoolPref("menus.mainAlt1Enabled", true);
-    this._prefs.setBoolPref("menus.mainAlt2Enabled", false);
-    this._prefs.setBoolPref("menus.extraAlt1Enabled", true);
-    this._prefs.setBoolPref("menus.extraAlt2Enabled", false);
-    this._setDefaultMenus();
-    
-    this._prefs.setCharPref("customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
-    
-    var string = Components.classes["@mozilla.org/supports-string;1"]
-                           .createInstance(Components.interfaces.nsISupportsString);
-    for (let i=1; i<=10; i++) {
-      string.data = "\u2022\u2022false\u2022false";
-      this._prefs.setComplexValue("customizations.loadURL" + i,
-        Components.interfaces.nsISupportsString, string);
-      
-      string.data = "\u2022\u2022";
-      this._prefs.setComplexValue("customizations.runScript" + i,
-        Components.interfaces.nsISupportsString, string);
-    }
-    
-    this._prefs.setCharPref("customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
-    this._prefs.setIntPref("customizations.dailyReadingsFolderID", -1);
-  },
-  
   initializeStats : function() {
-    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
-    
-    var d = new Date(); // date of last reset
-    this._prefs.setCharPref("stats.lastReset", d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
-    this._prefs.setCharPref("stats.mainMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    this._prefs.setCharPref("stats.extraMenu", "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]"); // saved as source of an Array
-    
-    var actionsStats = {};
-    for (let action in eGActions) {
-      actionsStats[action] = 0;
-    }
-    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+    var defaultStats = this._getDefaultStatsMap();
+    defaultStats.forEach(function(pref) {
+      pref.setPreference(this._prefs);
+    }, this);
   },
   
   areStartupTipsOn : function() {
