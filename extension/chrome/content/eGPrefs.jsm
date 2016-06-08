@@ -182,9 +182,9 @@ var eGPrefs = {
     Components.utils.import("chrome://easygestures/content/eGActions.jsm");
     var defaultStats = new Map();
     
-    var d = new Date(); // date of last reset
+    var lastResetDate = new Date();
     this._setCharPref(defaultStats, "stats.lastReset",
-                      d.getFullYear() + "/" + (d.getMonth()+1) + "/"+d.getDate()+"  "+ d.getHours()+":"+(d.getMinutes()<10? "0":"")+d.getMinutes()+":"+(d.getSeconds()<10? "0":"")+d.getSeconds() );
+                      lastResetDate.toISOString());
     this._setCharPref(defaultStats, "stats.mainMenu",
                       "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
     this._setCharPref(defaultStats, "stats.extraMenu",
@@ -306,7 +306,8 @@ var eGPrefs = {
   },
   
   getStatsLastResetPref : function() {
-    return this._prefs.getCharPref("stats.lastReset");
+    return (new Date(this._prefs.getCharPref("stats.lastReset")))
+             .toLocaleString();
   },
   
   getStatsMainMenuPref : function() {
@@ -701,5 +702,11 @@ var eGPrefs = {
   
   updateToV4_14: function() {
     this._prefs.deleteBranch("customizations.dailyReadingsFolder");
+    var lastResetString = this._prefs.getCharPref("stats.lastReset");
+    var lastResetItems = lastResetString.split(/\/|\s{2}|:/);
+    var lastResetDate = new Date(lastResetItems[0], lastResetItems[1],
+                                 lastResetItems[2], lastResetItems[3],
+                                 lastResetItems[4], lastResetItems[5]);
+    this._prefs.setCharPref("stats.lastReset", lastResetDate.toISOString());
   }
 };
