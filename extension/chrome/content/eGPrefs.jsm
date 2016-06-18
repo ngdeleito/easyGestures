@@ -78,9 +78,11 @@ function ComplexPref(name, value) {
 ComplexPref.prototype = Object.create(Pref.prototype);
 ComplexPref.prototype.constructor = ComplexPref;
 ComplexPref.prototype.setPreference = function(prefsBranch) {
+  var string = Components.classes["@mozilla.org/supports-string;1"]
+                 .createInstance(Components.interfaces.nsISupportsString);
+  string.data = this.value;
   prefsBranch.setComplexValue(this.name,
-                              Components.interfaces.nsISupportsString,
-                              this.value);
+                              Components.interfaces.nsISupportsString, string);
 };
 
 var eGPrefs = {
@@ -98,10 +100,7 @@ var eGPrefs = {
       defaultPrefsMap.set(prefName, new IntPref(prefName, prefValue));
     }
     function setComplexPref(defaultPrefsMap, prefName, prefValue) {
-      var string = Components.classes["@mozilla.org/supports-string;1"]
-                       .createInstance(Components.interfaces.nsISupportsString);
-      string.data = prefValue;
-      defaultPrefsMap.set(prefName, new ComplexPref(prefName, string));
+      defaultPrefsMap.set(prefName, new ComplexPref(prefName, prefValue));
     }
     
     function setDefaultMenus(defaultPrefsMap) {
