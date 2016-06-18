@@ -188,7 +188,7 @@ var eGPrefs = {
     this._setCharPref(defaultStats, "stats.mainMenu",
                       "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
     this._setCharPref(defaultStats, "stats.extraMenu",
-                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
+                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
     
     var actionsStats = {};
     for (let action in eGActions) {
