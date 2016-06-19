@@ -31,8 +31,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-/* exported preventCloseOnEnter, initMenuDialog,
-            preparePreferenceValueForNormalMenu,
+/* exported preventCloseOnEnter, exportPrefs, initMenuDialog,
+            saveAllPreferences, preparePreferenceValueForNormalMenu,
             preparePreferenceValueForExtraMenu,
             preparePreferenceValueForLoadURL,
             preparePreferenceValueForRunScript,
@@ -534,55 +534,24 @@ function exportPrefs() {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
   fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeSave);
-  fp.appendFilter("Preferences (*.ege)", "*.ege");
-  var ret = fp.show();
-  if (ret == Components.interfaces.nsIFilePicker.returnOK || ret == Components.interfaces.nsIFilePicker.returnReplace ) {
-    //create file
-    var file = Components.classes["@mozilla.org/file/local;1"]
-                         .createInstance(Components.interfaces.nsILocalFile);
-    var filePath = fp.file.path;
-    if (filePath.substring(filePath.length-4,filePath.length)!=".ege") {
-      filePath = filePath + ".ege";
-    }
-    file.initWithPath(filePath);
-    if (!file.exists()) {
-      file.create(Components.interfaces.nsIFile.NORMAL_FILE_TYPE, 420);
-    }
-    
-    //write to file
+  fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+  fp.defaultString = "easyGesturesNPreferences-" + (new Date()).toISOString() +
+                     ".json";
+  var returnValue = fp.show();
+  if (returnValue === Components.interfaces.nsIFilePicker.returnOK ||
+      returnValue === Components.interfaces.nsIFilePicker.returnReplace) {
     var outputStream = Components
                      .classes[ "@mozilla.org/network/file-output-stream;1"]
                      .createInstance(Components.interfaces.nsIFileOutputStream);
-    outputStream.init(file, 0x04 | 0x08, 420, 0);
+    outputStream.init(fp.file, 0x04 | 0x08, 420, 0);
     
     var converterOutputStream = Components
                 .classes["@mozilla.org/intl/converter-output-stream;1"]
                 .createInstance(Components.interfaces.nsIConverterOutputStream);
     converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
-    
-    var prefCount = {value:0};
-    var prefArray = eG_prefs.getChildList("", prefCount);
-    if (!prefArray || (prefCount.value <= 0)) {
-      alert("Export aborted !");
-      converterOutputStream.close();
-      outputStream.close();
-      return;
-    }
-    
-    Components.utils.import("resource://gre/modules/AddonManager.jsm");
-    AddonManager.getAddonByID("easyGesturesN@ngdeleito.eu",
-    function(addon) {
-      var version = addon.version;
-      // add description at the begining of the file
-      var d = new Date();
-      var dateStr = d.toString();
-      converterOutputStream.writeString("//eG " + version + " (" + dateStr +
-        ")//\n");
-      
-      converterOutputStream.writeString(eGPrefs.exportPrefsToString());
-      converterOutputStream.close();
-      outputStream.close();
-    });
+    converterOutputStream.writeString(eGPrefs.exportPrefsToString());
+    converterOutputStream.close();
+    outputStream.close();
   }
 }
 

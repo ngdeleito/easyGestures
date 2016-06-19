@@ -201,27 +201,26 @@ var eGPrefs = {
   
   exportPrefsToString : function() {
     var prefsNames = this._prefs.getChildList("");
-    var result = "";
+    var result = [];
     
     prefsNames.forEach(function(prefName) {
-      result += prefName + "\n";
       let prefType = this._prefs.getPrefType(prefName);
-      result +=  prefType + "\n";
+      let prefValue;
       switch (prefType) {
         case Components.interfaces.nsIPrefBranch.PREF_STRING:
-          result += this._prefs.getComplexValue(prefName,
-                      Components.interfaces.nsISupportsString).data;
+          prefValue = this._prefs.getComplexValue(prefName,
+                        Components.interfaces.nsISupportsString).data;
           break;
         case Components.interfaces.nsIPrefBranch.PREF_INT:
-          result += this._prefs.getIntPref(prefName);
+          prefValue = this._prefs.getIntPref(prefName);
           break;
         case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-          result += this._prefs.getBoolPref(prefName);
+          prefValue = this._prefs.getBoolPref(prefName);
           break;
       }
-      result += "\n";
+      result.push([prefName, prefValue]);
     }, this);
-    return result;
+    return JSON.stringify(result);
   },
   
   setDefaultSettings : function() {
