@@ -74,7 +74,7 @@
     
     <label value="&general.prefs.manage;" class="header" />
     <hbox>
-      <button disabled="true" label="&general.prefs.import;"
+      <button label="&general.prefs.import;"
               oncommand="importPrefs(); initMenuDialog();" />
       <button label="&general.prefs.export;"
               oncommand="saveAllPreferences(this); exportPrefs();" />

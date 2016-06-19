@@ -53,27 +53,57 @@ BoolPref.prototype.constructor = BoolPref;
 BoolPref.prototype.setPreference = function(prefsBranch) {
   prefsBranch.setBoolPref(this.name, this.value);
 };
+BoolPref.prototype.updateTo = function(newPrefValue) {
+  if (typeof newPrefValue === "boolean") {
+    this.value = newPrefValue;
+  }
+  else {
+    throw "";
+  }
+};
 
-function IntPref(name, value) {
+function IntPref(name, value, possibleValuesArray) {
   Pref.call(this, name, value);
+  this.possibleValuesArray = possibleValuesArray;
 }
 IntPref.prototype = Object.create(Pref.prototype);
 IntPref.prototype.constructor = IntPref;
 IntPref.prototype.setPreference = function(prefsBranch) {
   prefsBranch.setIntPref(this.name, this.value);
 };
+IntPref.prototype.updateTo = function(newPrefValue) {
+  if (Number.isInteger(newPrefValue) &&
+      (this.possibleValuesArray === undefined ||
+       this.possibleValuesArray.indexOf(newPrefValue) !== -1)) {
+    this.value = newPrefValue;
+  }
+  else {
+    throw "";
+  }
+};
 
-function CharPref(name, value) {
+function CharPref(name, value, isPossibleValue) {
   Pref.call(this, name, value);
+  this.isPossibleValue = isPossibleValue;
 }
 CharPref.prototype = Object.create(Pref.prototype);
 CharPref.prototype.constructor = CharPref;
 CharPref.prototype.setPreference = function(prefsBranch) {
   prefsBranch.setCharPref(this.name, this.value);
 };
+CharPref.prototype.updateTo = function(newPrefValue) {
+  if (typeof newPrefValue === "string" &&
+      this.isPossibleValue(this.name, newPrefValue)) {
+    this.value = newPrefValue;
+  }
+  else {
+    throw "";
+  }
+};
 
-function ComplexPref(name, value) {
+function ComplexPref(name, value, isPossibleValue) {
   Pref.call(this, name, value);
+  this.isPossibleValue = isPossibleValue;
 }
 ComplexPref.prototype = Object.create(Pref.prototype);
 ComplexPref.prototype.constructor = ComplexPref;
@@ -84,23 +114,32 @@ ComplexPref.prototype.setPreference = function(prefsBranch) {
   prefsBranch.setComplexValue(this.name,
                               Components.interfaces.nsISupportsString, string);
 };
+ComplexPref.prototype.updateTo = function(newPrefValue) {
+  if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
+    this.value = newPrefValue;
+  }
+  else {
+    throw "";
+  }
+};
 
 var eGPrefs = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
   
-  _setCharPref : function(defaultPrefsMap, prefName, prefValue) {
-    defaultPrefsMap.set(prefName, new CharPref(prefName, prefValue));
+  _setCharPref : function(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
+    defaultPrefsMap.set(prefName, new CharPref(prefName, prefValue, isPossibleValue));
   },
   
   _getDefaultPrefsMap : function() {
     function setBoolPref(defaultPrefsMap, prefName, prefValue) {
       defaultPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
     }
-    function setIntPref(defaultPrefsMap, prefName, prefValue) {
-      defaultPrefsMap.set(prefName, new IntPref(prefName, prefValue));
+    function setIntPref(defaultPrefsMap, prefName, prefValue, possibleValues) {
+      defaultPrefsMap.set(prefName,
+                          new IntPref(prefName, prefValue, possibleValues));
     }
-    function setComplexPref(defaultPrefsMap, prefName, prefValue) {
-      defaultPrefsMap.set(prefName, new ComplexPref(prefName, prefValue));
+    function setComplexPref(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
+      defaultPrefsMap.set(prefName, new ComplexPref(prefName, prefValue, isPossibleValue));
     }
     
     function setDefaultMenus(defaultPrefsMap) {
@@ -118,10 +157,34 @@ var eGPrefs = {
       ];
       
       menus.forEach(function([menuName, actions]) {
-        eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions);
+        eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions,
+                             function(prefName, newPrefValue) {
+          var numberOfActions = prefName.startsWith("menus.extra") ? 5 : 10;
+          var actionsArray = newPrefValue.split("/");
+          if (actionsArray.length === numberOfActions) {
+            return actionsArray.every(function(element) {
+              return element in eGActions;
+            });
+          }
+          else {
+            return false;
+          }
+        });
       });
     }
     
+    function checkPossibleLoadURLValues(newPrefValue) {
+      var values = newPrefValue.split("\u2022");
+      return values.length === 4 &&
+             typeof JSON.parse(values[2]) === "boolean" &&
+             typeof JSON.parse(values[3]) === "boolean";
+    }
+    
+    function checkPossibleRunScriptValues(newPrefValue) {
+      return newPrefValue.split("\u2022").length === 3;
+    }
+    
+    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
     var defaultPrefs = new Map();
     setBoolPref(defaultPrefs, "general.startupTips", true);
     setIntPref(defaultPrefs, "general.tipNumber", 0);
@@ -129,18 +192,18 @@ var eGPrefs = {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (window.navigator.userAgent.indexOf("Mac") === -1) {
       setIntPref(defaultPrefs, "activation.showButton", 1); // middle button
-      setIntPref(defaultPrefs, "activation.showKey", 0); // no key
-      setIntPref(defaultPrefs, "activation.preventOpenKey", 17); // ctrl key
+      setIntPref(defaultPrefs, "activation.showKey", 0, [0, 16, 17]); // no key
+      setIntPref(defaultPrefs, "activation.preventOpenKey", 17, [0, 17, 18]); // ctrl key
     }
     else {
       // mac users need different defaults
       setIntPref(defaultPrefs, "activation.showButton", 0); // left button
-      setIntPref(defaultPrefs, "activation.showKey", 16); // shift key
-      setIntPref(defaultPrefs, "activation.preventOpenKey", 0);
+      setIntPref(defaultPrefs, "activation.showKey", 16, [0, 16, 17]); // shift key
+      setIntPref(defaultPrefs, "activation.preventOpenKey", 0, [0, 17, 18]);
     }
     
     setIntPref(defaultPrefs, "activation.showAltButton", 2); // right button
-    setIntPref(defaultPrefs, "activation.contextKey", 18); // alt key
+    setIntPref(defaultPrefs, "activation.contextKey", 18, [0, 17, 18]); // alt key
     setBoolPref(defaultPrefs, "activation.contextShowAuto", false);
     
     setBoolPref(defaultPrefs, "behavior.moveAuto", false);
@@ -162,16 +225,23 @@ var eGPrefs = {
     setBoolPref(defaultPrefs, "menus.extraAlt2Enabled", false);
     setDefaultMenus(defaultPrefs);
     
-    this._setCharPref(defaultPrefs, "customizations.loadURLin", "newTab"); // execute 'load URL' action in "curTab" or "newTab" or "newWindow"
+    this._setCharPref(defaultPrefs, "customizations.loadURLin", "newTab",
+                      function(prefName, newPrefValue) {
+      return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
+    });
     
     for (let i=1; i<=10; i++) {
       setComplexPref(defaultPrefs, "customizations.loadURL" + i,
-                     "\u2022\u2022false\u2022false");
+                     "\u2022\u2022false\u2022false",
+                     checkPossibleLoadURLValues);
       setComplexPref(defaultPrefs, "customizations.runScript" + i,
-                     "\u2022\u2022");
+                     "\u2022\u2022", checkPossibleRunScriptValues);
     }
     
-    this._setCharPref(defaultPrefs, "customizations.openLink", "newTab"); // "curTab"  or "newTab" or "newWindow"
+    this._setCharPref(defaultPrefs, "customizations.openLink", "newTab",
+                      function(prefName, newPrefValue) {
+      return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
+    });
     setIntPref(defaultPrefs, "customizations.dailyReadingsFolderID", -1);
     
     return defaultPrefs;
@@ -183,18 +253,52 @@ var eGPrefs = {
     
     var lastResetDate = new Date();
     this._setCharPref(defaultStats, "stats.lastReset",
-                      lastResetDate.toISOString());
+                      lastResetDate.toISOString(),
+                      function(prefName, newPrefValue) {
+      return !Number.isNaN(Date.parse(newPrefValue));
+    });
     this._setCharPref(defaultStats, "stats.mainMenu",
-                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
+                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+                      function(prefName, newPrefValue) {
+      var statsMainMenuArray = JSON.parse(newPrefValue);
+      return Array.isArray(statsMainMenuArray) &&
+             statsMainMenuArray.length === 30 &&
+             statsMainMenuArray.every(function(element) {
+               return Number.isInteger(element);
+             });
+    });
     this._setCharPref(defaultStats, "stats.extraMenu",
-                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]");
+                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+                      function(prefName, newPrefValue) {
+      var statsExtraMenuArray = JSON.parse(newPrefValue);
+      return Array.isArray(statsExtraMenuArray) &&
+             statsExtraMenuArray.length === 15 &&
+             statsExtraMenuArray.every(function(element) {
+               return Number.isInteger(element);
+             });
+    });
     
     var actionsStats = {};
     for (let action in eGActions) {
       actionsStats[action] = 0;
     }
     this._setCharPref(defaultStats, "stats.actions",
-                      JSON.stringify(actionsStats));
+                      JSON.stringify(actionsStats),
+                      function(prefName, newPrefValue) {
+      var statsActionsObject = JSON.parse(newPrefValue);
+      var result = statsActionsObject instanceof Object &&
+                   !(statsActionsObject instanceof Array);
+      var statsActions = Object.getOwnPropertyNames(statsActionsObject).sort();
+      var actions = Object.getOwnPropertyNames(eGActions).sort();
+      var i = 0;
+      result = result && statsActions.length === actions.length;
+      while (result && i < statsActions.length) {
+        result = result && statsActions[i] === actions[i] &&
+                 Number.isInteger(statsActionsObject[statsActions[i]]);
+        ++i;
+      }
+      return result;
+    });
     
     return defaultStats;
   },
@@ -221,6 +325,54 @@ var eGPrefs = {
       result.push([prefName, prefValue]);
     }, this);
     return JSON.stringify(result);
+  },
+  
+  importPrefsFromString : function(aString) {
+    var newPrefs;
+    try {
+      newPrefs = JSON.parse(aString);
+    }
+    catch (syntaxErrorException) {}
+    if (newPrefs === undefined || !Array.isArray(newPrefs)) {
+      throw { code: "invalidFileContent" };
+    }
+    var anArrayOfArrays = newPrefs.every(function(element) {
+      return Array.isArray(element) && element.length === 2;
+    });
+    if (newPrefs.length === 0 || !anArrayOfArrays) {
+      throw { code: "invalidFileContent" };
+    }
+    
+    var prefs = this._getDefaultPrefsMap();
+    var stats = this._getDefaultStatsMap();
+    var notImportedPrefs = [];
+    newPrefs.forEach(function([prefName, prefValue]) {
+      try {
+        if (prefs.has(prefName)) {
+          prefs.get(prefName).updateTo(prefValue);
+        }
+        else if (stats.has(prefName)) {
+          stats.get(prefName).updateTo(prefValue);
+        }
+        else {
+          notImportedPrefs.push(prefName);
+        }
+      }
+      catch (exception) {
+        notImportedPrefs.push(prefName);
+      }
+    });
+    
+    prefs.forEach(function(pref) {
+      pref.setPreference(this._prefs);
+    }, this);
+    stats.forEach(function(stat) {
+      stat.setPreference(this._prefs);
+    }, this);
+    
+    if (notImportedPrefs.length !== 0) {
+      throw { code: "nonImportedPrefs", prefs: notImportedPrefs.join(", ") };
+    }
   },
   
   setDefaultSettings : function() {

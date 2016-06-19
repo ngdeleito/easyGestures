@@ -559,65 +559,35 @@ function importPrefs() {
   var fp = Components.classes["@mozilla.org/filepicker;1"]
                      .createInstance(Components.interfaces.nsIFilePicker);
   fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeOpen);
-  fp.appendFilter("Preferences (*.ege)","*.ege");
-  
-  var ret = fp.show();
-  if (ret == Components.interfaces.nsIFilePicker.returnOK) {
-    var file = Components.classes["@mozilla.org/file/local;1"]
-                         .createInstance(Components.interfaces.nsILocalFile);
-    var filePath = fp.file.path;
-    if (filePath.substring(filePath.length-4,filePath.length)!=".ege") {
-      alert("This type of file can't be imported !");
-      return;
-    }
-    file.initWithPath(filePath);
-    
-    // read from file
+  fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+  var returnValue = fp.show();
+  if (returnValue === Components.interfaces.nsIFilePicker.returnOK) {
     var inputStream = Components
                       .classes["@mozilla.org/network/file-input-stream;1"]
                       .createInstance(Components.interfaces.nsIFileInputStream);
-    inputStream.init(file, 0x01, 444, 0);
+    inputStream.init(fp.file, 0x01, 444, 0);
     
     var converterInputStream = Components
                  .classes["@mozilla.org/intl/converter-input-stream;1"]
                  .createInstance(Components.interfaces.nsIConverterInputStream);
-    converterInputStream.init(inputStream, "UTF-8", 1024, 0xFFFD);
+    converterInputStream.init(inputStream, "UTF-8", 0, 0xFFFD);
+    var content = {};
+    var aString = "";
+    while (converterInputStream.readString(4096, content) !== 0) {
+      aString += content.value;
+    }
     
-    if (converterInputStream instanceof Components.interfaces.nsIUnicharLineInputStream) {
-      var line = {};
-      var cont = converterInputStream.readLine(line); // read first line containing description
-      do {
-        cont = converterInputStream.readLine(line); // read pref name
-        var pref = line.value;
-        
-        cont = converterInputStream.readLine(line); // read pref type
-        var type = JSON.parse(line.value);
-        
-        cont = converterInputStream.readLine(line); // read pref value
-        var value = Components.classes["@mozilla.org/supports-string;1"]
-                       .createInstance(Components.interfaces.nsISupportsString);
-        value.data = line.value;
-        
-        try {
-          switch (type) {
-            case Components.interfaces.nsIPrefBranch.PREF_STRING:
-              eG_prefs.setComplexValue(pref, Components.interfaces.nsISupportsString, value);
-              break;
-            
-            case Components.interfaces.nsIPrefBranch.PREF_INT:
-              eG_prefs.setIntPref(pref, JSON.parse(value.data));
-              break;
-            
-            case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-              eG_prefs.setBoolPref(pref, JSON.parse(value.data));
-              break;
-          }
-        }
-        catch (ex) {
-          alert("Exception: "+ ex.toString());
-          break;
-        }
-      } while (cont);
+    try {
+      eGPrefs.importPrefsFromString(aString);
+    }
+    catch (exception) {
+      let nonImportedPreferences = "";
+      if (exception.prefs !== undefined) {
+        nonImportedPreferences += " " + exception.prefs;
+      }
+      alert(document.getElementById("easyGesturesNStrings")
+                    .getString("general.prefs.import." + exception.code) +
+            nonImportedPreferences);
     }
     converterInputStream.close();
     inputStream.close();
