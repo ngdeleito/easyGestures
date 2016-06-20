@@ -447,9 +447,6 @@ function createActions() {
 
 ////
 
-var eG_prefs = Components.classes["@mozilla.org/preferences-service;1"]
-                         .getService(Components.interfaces.nsIPrefService)
-                         .getBranch("extensions.easygestures.");
 var eG_actionsPopupList;
 
 function addFavicon(url, actionName) {
@@ -661,10 +658,11 @@ function initMenuDialog() {
   createLoadURLActions();
   createRunScriptActions();
   
-  ["showButton", "showAltButton"].forEach(
-    function (element) {
-      var menulist = document.getElementById(element + "Menulist");
-      menulist.value = eG_prefs.getIntPref("activation." + element);
+  [["showButtonMenulist", eGPrefs.getShowButtonPref()],
+   ["showAltButtonMenulist", eGPrefs.getShowAltButtonPref()]].forEach(
+    function ([id, prefValue]) {
+      var menulist = document.getElementById(id);
+      menulist.value = prefValue;
       if (menulist.selectedIndex === -1) {
         menulist.selectedIndex = menulist.itemCount - 1;
       }

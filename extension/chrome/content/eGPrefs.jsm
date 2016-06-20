@@ -405,6 +405,14 @@ var eGPrefs = {
     return this._prefs.setIntPref("general.tipNumber", anInteger);
   },
   
+  getShowButtonPref : function() {
+    return this._prefs.getIntPref("activation.showButton");
+  },
+  
+  getShowAltButtonPref : function() {
+    return this._prefs.getIntPref("activation.showAltButton");
+  },
+  
   isLargeMenuOff : function() {
     return !this._prefs.getBoolPref("behavior.largeMenu");
   },
