@@ -445,10 +445,6 @@ function createActions() {
   }
 }
 
-////
-
-var eG_actionsPopupList;
-
 function addFavicon(url, actionName) {
   if (url === "") {
     document.getElementById(actionName + "_favicon").src = "";
@@ -515,7 +511,7 @@ function attachMenupopup(menulist) {
     return;
   }
   
-  var clonedMenupopup = eG_actionsPopupList.cloneNode(true);
+  var clonedMenupopup = createActionsPopupList();
   menulist.appendChild(clonedMenupopup);
   clonedMenupopup.boxObject.firstChild.setAttribute("style", "overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
   
@@ -653,7 +649,6 @@ function initializeDailyReadingsTree() {
 function initMenuDialog() {
   window.setCursor("wait");
   
-  eG_actionsPopupList = createActionsPopupList();
   createActions();
   createLoadURLActions();
   createRunScriptActions();
