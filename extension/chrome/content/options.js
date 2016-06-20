@@ -31,7 +31,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-/* exported preventCloseOnEnter, exportPrefs, initMenuDialog,
+/* exported preventCloseOnEnter, exportPrefs, importPrefs, initMenuDialog,
             saveAllPreferences, preparePreferenceValueForNormalMenu,
             preparePreferenceValueForExtraMenu,
             preparePreferenceValueForLoadURL,
