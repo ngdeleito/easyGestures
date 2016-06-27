@@ -388,9 +388,10 @@ LoadURLAction.prototype.constructor = LoadURLAction;
 
 function RunScriptAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "runScript", number, function(script, window) {
-    var sandbox = Components.utils.Sandbox(window);
-    sandbox.window = window;
-    Components.utils.evalInSandbox(script, sandbox);
+    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:runScript", {
+      script: script,
+      actionName: this._name
+    });
   }, startsNewGroup, nextAction);
 }
 RunScriptAction.prototype = Object.create(NumberedAction.prototype);

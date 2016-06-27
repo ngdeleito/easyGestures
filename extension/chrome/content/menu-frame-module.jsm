@@ -39,6 +39,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
             setContext, createSpecialNodes, createActionsNodes, hideLinkSign,
             updateMenuPosition, clearHoverEffect, setHoverEffect, hide,
             showExtraMenu, hideExtraMenu, clearMenuSign */
+/* global Components */
 
 const EXPORTED_SYMBOLS = ["HTML_NAMESPACE", "EXTRA_MENU_ACTION",
                           "addStatelessListeners", "removeStatelessListeners",
@@ -60,6 +61,7 @@ function addStatelessListeners(frame) {
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   
+  frame.addMessageListener("easyGesturesN@ngdeleito.eu:action:runScript", runRunScriptAction);
   frame.addMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 }
 
@@ -73,6 +75,7 @@ function removeStatelessListeners(frame) {
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:showMenuTooltips", showMenuTooltips);
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:handleHideLayout", handleHideLayout);
   
+  frame.removeMessageListener("easyGesturesN@ngdeleito.eu:action:runScript", runRunScriptAction);
   frame.removeMessageListener("easyGesturesN@ngdeleito.eu:action:hideImages", runHideImagesAction);
 }
 
@@ -438,6 +441,15 @@ function clearMenuSign(menuSign) {
   for (let i=0; i < menuSign.childNodes.length; ++i) {
     menuSign.childNodes[i].removeAttribute("class");
   }
+}
+
+function runRunScriptAction(aMessage) {
+  var sandbox = Components.utils.Sandbox(aMessage.target.content);
+  sandbox.window = aMessage.target.content;
+  // version number strings for evalInSandbox: http://hg.mozilla.org/mozilla-central/file/33031c875984/js/src/jsapi.cpp#l1072
+  Components.utils.evalInSandbox(aMessage.data.script, sandbox, "ECMAv5",
+                                 aMessage.data.actionName, 1);
+  Components.utils.nukeSandbox(sandbox);
 }
 
 function runHideImagesAction(aMessage) {
