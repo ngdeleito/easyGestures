@@ -77,7 +77,7 @@
       <button label="&general.prefs.import;"
               oncommand="importPrefs(); initMenuDialog();" />
       <button label="&general.prefs.export;"
-              oncommand="saveAllPreferences(this); exportPrefs();" />
+              oncommand="saveAllPreferences(); exportPrefs();" />
       <button label="&general.prefs.reset;"
               oncommand="if (confirm('&general.prefs.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
     </hbox>

@@ -680,15 +680,11 @@ function initMenuDialog() {
   window.setCursor("auto");
 }
 
-function saveAllPreferences(element) {
-  // we retrieve the associated prefwindow element
-  while (element.tagName !== "prefwindow") {
-    element = element.parentNode;
-  }
-  
-  // we save the preferences of each preference pane
-  for (var i=0; i < element.preferencePanes.length; ++i) {
-    element.preferencePanes[i].writePreferences();
+function saveAllPreferences() {
+  // saving the preferences of each preference pane
+  var prefwindow = document.getElementById("eG_optionsWindow");
+  for (var i=0; i < prefwindow.preferencePanes.length; ++i) {
+    prefwindow.preferencePanes[i].writePreferences();
   }
 }
 
