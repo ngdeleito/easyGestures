@@ -129,6 +129,7 @@ function handleMousedown(anEvent) {
   var centerY = anEvent.clientY + targetWindow.mozInnerScreenY -
                                   topmostWindow.mozInnerScreenY;
   
+  content.focus();
   addEventListener("mousemove", handleMousemove, true);
   
   // sending a synchronous message to make sure that the menu is opened upon

@@ -145,11 +145,8 @@ var eGMessageListeners = {
       eGPieMenu.show("main");
     }
     
-    // give focus to browser (blur any outside-browser selected object so that it won't respond to keypressed event)
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.focus();
-    
     if (eGPieMenu.autoscrollingOn) {
+      let window = Services.wm.getMostRecentWindow("navigator:browser");
       eGContext.autoscrollingTrigger = window.setTimeout(function() {
         eGActions.autoscrolling.run(eGPieMenu);
       }, eGPieMenu.autoscrollingDelay);
