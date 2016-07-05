@@ -209,7 +209,6 @@ var eGPrefs = {
     setBoolPref(defaultPrefs, "behavior.moveAuto", false);
     setBoolPref(defaultPrefs, "behavior.largeMenu", false);
     setIntPref(defaultPrefs, "behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
-    setBoolPref(defaultPrefs, "behavior.noIcons", false);
     setBoolPref(defaultPrefs, "behavior.smallIcons", false);
     setBoolPref(defaultPrefs, "behavior.showTooltips", true);
     setIntPref(defaultPrefs, "behavior.tooltipsDelay", 1000);
@@ -866,5 +865,6 @@ var eGPrefs = {
                                  lastResetItems[2], lastResetItems[3],
                                  lastResetItems[4], lastResetItems[5]);
     this._prefs.setCharPref("stats.lastReset", lastResetDate.toISOString());
+    this._prefs.deleteBranch("behavior.noIcons");
   }
 };

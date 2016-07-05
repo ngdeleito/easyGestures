@@ -163,7 +163,6 @@ var eGPieMenu = {
     this.contextShowAuto = prefs.getBoolPref("activation.contextShowAuto");	// enables context sensitivity
     
     this.largeMenu = prefs.getBoolPref("behavior.largeMenu"); // use larger pie menu with 10 actions instead of 8
-    this.noIcons = prefs.getBoolPref("behavior.noIcons");
     this.smallIcons = prefs.getBoolPref("behavior.smallIcons");
     this.menuOpacity = prefs.getIntPref("behavior.menuOpacity")/100; // because menuopacity is set in % in preferences dialog
     this.showTooltips = prefs.getBoolPref("behavior.showTooltips"); // tooltip showing
@@ -333,7 +332,6 @@ var eGPieMenu = {
       startingAngle: layout.startingAngle,
       loadURLActionPrefs: this.loadURLActionPrefs,
       runScriptActionPrefs: this.runScriptActionPrefs,
-      noIcons: this.noIcons,
       halfAngleForSector: layout.halfAngleForSector,
       showLinkSign: this.handleLinks && eGContext.anchorElementExists &&
                     this.isJustOpened() && layoutName === "main",

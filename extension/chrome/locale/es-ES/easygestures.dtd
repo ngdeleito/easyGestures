@@ -54,7 +54,6 @@
 <!ENTITY behavior.menuType.standard "Estándar (8 acciones)">
 <!ENTITY behavior.menuType.large "Ampliado (10 acciones)">
 <!ENTITY behavior.display "Visualización">
-<!ENTITY behavior.display.noIcons "Básica (sin iconos)">
 <!ENTITY behavior.display.smallIcons "Usar iconos pequeños">
 <!ENTITY behavior.display.opacity "Opacidad del menú circular:">
 <!ENTITY behavior.tooltips "Descripciones emergentes">

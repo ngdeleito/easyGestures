@@ -53,7 +53,6 @@
 <!ENTITY behavior.menuType.standard "Standard (8 actions)">
 <!ENTITY behavior.menuType.large "Large (10 actions)">
 <!ENTITY behavior.display "Affichage">
-<!ENTITY behavior.display.noIcons "Affichage rudimentaire (ne pas afficher les icônes)">
 <!ENTITY behavior.display.smallIcons "Utiliser des petites icônes">
 <!ENTITY behavior.display.opacity "Opacité du menu circulaire&#160;:">
 <!ENTITY behavior.tooltips "Infobulles">

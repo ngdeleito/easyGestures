@@ -42,7 +42,6 @@
 <!ENTITY behavior.menuType.standard "Standard (8 actions)">
 <!ENTITY behavior.menuType.large "Large (10 actions)">
 <!ENTITY behavior.display "Display">
-<!ENTITY behavior.display.noIcons "Basic display (don't display icons)">
 <!ENTITY behavior.display.smallIcons "Use small icons">
 <!ENTITY behavior.display.opacity "Pie menu opacity:">
 <!ENTITY behavior.tooltips "Tooltips">

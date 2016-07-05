@@ -177,7 +177,6 @@
     image="chrome://easygestures/content/behavior.png">
     <preferences>
       <preference id="largeMenu" name="extensions.easygestures.behavior.largeMenu" type="bool" />
-      <preference id="noIcons" name="extensions.easygestures.behavior.noIcons" type="bool" />
       <preference id="smallIcons" name="extensions.easygestures.behavior.smallIcons" type="bool" />
       <preference id="menuOpacity" name="extensions.easygestures.behavior.menuOpacity" type="int" />
       <preference id="showTooltips" name="extensions.easygestures.behavior.showTooltips" type="bool" />
@@ -202,7 +201,6 @@
     
     <label value="&behavior.display;" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="noIcons" label="&behavior.display.noIcons;" />
       <checkbox preference="smallIcons" label="&behavior.display.smallIcons;" />
       <hbox align="center">
         <label value="&behavior.display.opacity;" />
