@@ -63,7 +63,7 @@ var tips = [
   new tipEntry("contextual",          "activation",     undefined),
   new tipEntry("empty",               "activation",     undefined),
   new tipEntry("moveMenu",            "",               undefined),
-  new tipEntry("noIcons",             "behavior",       undefined),
+  new tipEntry("smallIcons",          "behavior",       undefined),
   new tipEntry("largeMenu",           "behavior",       undefined),
   new tipEntry("empty",               "behavior",       undefined),
   new tipEntry("empty",               "",               undefined),
