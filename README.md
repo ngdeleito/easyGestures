@@ -8,7 +8,7 @@ The deprecated locales are: cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-
 
 To install the latest development version:
 
-  - Uninstall any version of easyGestures prior to version 4.3.2
+  - Make sure to run version 4.8 or greater (or uninstall any previous version)
   - Click on the button labeled "Download ZIP"
   - Once the file downloaded, unzip it
   - Zip the content of the "easyGestures-development/extension" folder (and not the folder itself!)
