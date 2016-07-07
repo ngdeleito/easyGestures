@@ -2,9 +2,9 @@ easyGestures N is a Firefox extension that provides a fully customizable pie men
 
 It is a fork of the easyGestures extension created by Ons Besbes, who maintained it until Firefox 4. This extension worked fine with subsequent versions of Firefox, although it required changing the maxVersion value in its install manifest. However, with Firefox 14 easyGestures started behaving erratically and generating "TypeError: can't access dead object" errors.
 
-easyGestures N is an (ongoing) attempt to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of the extension. Help is very much welcome, especially for updating and maintaining both the visual appearance and the currently deprecated locales.
+easyGestures N is an (ongoing) attempt to bring easyGestures back to a usable and more maintainable state. This includes pruning those features that IMO fall outside the core concept of the extension. Help is very much welcome, especially for updating and maintaining both the visual appearance and the formerly supported locales.
 
-The deprecated locales are: cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW. They can be found under the [extension/chrome/locale](https://github.com/ngdeleito/easyGestures/tree/development/extension/chrome/locale) folder.
+The formerly supported locales are: cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW. They can be found under the [v4.13 extension/chrome/locale folder](https://github.com/ngdeleito/easyGestures/tree/v4.13/extension/chrome/locale).
 
 To install the latest development version:
 

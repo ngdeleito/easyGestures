@@ -1,19 +1,7 @@
 content easygestures chrome/content/     contentaccessible=yes
 
 locale easygestures en-US chrome/locale/en-US/
-locale easygestures fr-FR chrome/locale/fr-FR/
-locale easygestures de-DE chrome/locale/de-DE/
-locale easygestures pl-PL chrome/locale/pl-PL/
-locale easygestures zh-TW chrome/locale/zh-TW/
 locale easygestures es-ES chrome/locale/es-ES/
-locale easygestures pt-BR chrome/locale/pt-BR/
-locale easygestures ja-JP chrome/locale/ja-JP/
-locale easygestures sk-SK chrome/locale/sk-SK/
-locale easygestures ko-KR chrome/locale/ko-KR/
-locale easygestures it-IT chrome/locale/it-IT/
-locale easygestures hu-HU chrome/locale/hu-HU/
-locale easygestures tr-TR chrome/locale/tr-TR/
-locale easygestures cz-CZ chrome/locale/cz-CZ/
-locale easygestures zh-CN chrome/locale/zh-CN/
+locale easygestures fr-FR chrome/locale/fr-FR/
 
 skin easygestures default chrome/skin/
