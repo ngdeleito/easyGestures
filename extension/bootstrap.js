@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported startup, shutdown, install, uninstall */
 /* global Components, Services, eGPieMenu, eGContext, eGActions, AddonManager,
           ADDON_INSTALL, ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings,
-          ADDON_UNINSTALL */
+          setTimeout, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -308,7 +308,10 @@ function startup(data, reason) {
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
     
-    eGMessageListeners.enable();
+    // when upgrading: giving some time to the frame scripts from the previous
+    // version to remove their listeners before adding new ones
+    Components.utils.import("resource://gre/modules/Timer.jsm");
+    setTimeout(function() { eGMessageListeners.enable(); }, 200);
     
     // displaying startup tips
     if (eGPrefs.areStartupTipsOn()) {
