@@ -130,7 +130,6 @@ function handleMousedown(anEvent) {
                                   topmostWindow.mozInnerScreenY;
   
   content.focus();
-  addEventListener("mousemove", handleMousemove, true);
   
   // sending a synchronous message to make sure that the menu is opened upon
   // return
@@ -254,6 +253,8 @@ function showMenu(aMessage) {
   else {
     linkSign.style.visibility = "hidden";
   }
+  
+  addEventListener("mousemove", handleMousemove, true);
 }
 
 function handleMousemove(anEvent) {
