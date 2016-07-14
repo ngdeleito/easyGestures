@@ -1,9 +1,22 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
-Version 4.13 (April 16, 2016)
+Version 4.14 (July 14, 2016)
 
-The deprecated locales (see list below) will be removed at the next version of this extension (due early summer). If you rely on one of these, please consider updating it and requesting a pull request at https://github.com/ngdeleito/easyGestures.
+- exporting and importing preferences is again possible (importing is however backwards incompatible with the file format used by the original easyGestures)
+- removed items:
+    - iconless menus
+    - no longer supported locales (cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW)
+    - support for upgrading from versions prior to 4.8
+- fixed issues:
+    - Firefox's context menu was incorrectly shown when the right mouse button was used to display an alternative menu
+    - custom icons for the loadURL and runScript actions were displayed even if this led to mixed context
+    - upgrading required disabling and reenabling the extension
+- runScript actions are now run in a frame script with lower permissions
+- reorganized code into JavaScript modules
+
+
+Version 4.13 (April 16, 2016)
 
 - replaced menu background and link sign (PNG) images with scalable (SVG) versions
 - the opacity preference applies now to the whole pie menu (as stated in the preferences dialog)
@@ -15,11 +28,6 @@ The deprecated locales (see list below) will be removed at the next version of t
     - display of disabled loadURL and runScript icons in small menus
     - the pie menu could not always be opened because a key was incorrectly considered as being pressed (this results in a reduced number of key options both for preventing the opening of the pie menu and for opening the contextual menu)
     - when the autoscrolling and the opening of links through the pie menu center preferences were enabled, autoscrolling incorrectly became active when opening the pie menu over a link
-
-The following items remain deprecated (and will be removed at the next version of the extension):
-
-- iconless menus
-- cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl-PL, pt-BR, sk-SK, tr-TR, zh-CN and zh-TW locales
 
 
 Version 4.12 (January 7, 2016)

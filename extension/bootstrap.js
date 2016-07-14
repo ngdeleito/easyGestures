@@ -264,18 +264,6 @@ function startup(data, reason) {
       eGPrefs.initializeStats();
     }
     else if (reason === ADDON_UPGRADE) {
-      if (Services.vc.compare(data.oldVersion, "4.5") < 0) {
-        eGPrefs.updateToV4_5();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.6") < 0) {
-        eGPrefs.updateToV4_6();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.7") < 0) {
-        eGPrefs.updateToV4_7();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.8") < 0) {
-        eGPrefs.updateToV4_8();
-      }
       if (Services.vc.compare(data.oldVersion, "4.10") < 0) {
         eGPrefs.updateToV4_10();
       }
@@ -287,6 +275,9 @@ function startup(data, reason) {
       }
       if (Services.vc.compare(data.oldVersion, "4.13") < 0) {
         eGPrefs.updateToV4_13();
+      }
+      if (Services.vc.compare(data.oldVersion, "4.14") < 0) {
+        eGPrefs.updateToV4_14();
       }
     }
     
