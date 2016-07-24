@@ -52,22 +52,22 @@ the terms of any one of the MPL, the GPL or the LGPL.
   height: 130px;
 }
 
-#tipImage.empty { visibility: hidden; }
+#tipImage.openExtraMenu, #tipImage.searchWebAction,
+#tipImage.backAndForwardSiteActions, #tipImage.advancedLoadURLActions,
+#tipImage.preventOpen, #tipImage.autoscrolling, #tipImage.zoomOnImage,
+#tipImage.openLinkAction, #tipImage.dailyReadingsAction { visibility: hidden; }
 
-#tipImage.triggerBySelection { background-position: 0px 0px; }
-#tipImage.triggerByStroke { background-position: -460px 0px; }
-
-#tipImage.alternativeMenus { background-position: 0px -130px; }
-#tipImage.bookmarksOnlyLayout { background-position: -460px -130px; }
-#tipImage.builtInAction { background-position: -920px -130px; }
-
-#tipImage.programsAndScripts { background-position: 0px -260px; }
+#tipImage.openButton { background-position: 0px 0px; }
+#tipImage.dragToAction { background-position: -460px 0px; }
+#tipImage.openAltMenu { background-position: 0px -130px; }
+#tipImage.menusCustomization { background-position: -920px -130px; }
 #tipImage.clickOnLink { background-position: -460px -260px; }
-#tipImage.contextual { background-position: -920px -260px; }
-
-#tipImage.suppressMenu { background-position: -460px -390px; }
+#tipImage.tooltips { background-position: 0px -520px; }
+#tipImage.loadURLActions { background-position: -460px -130px; }
+#tipImage.runScriptActions { background-position: 0px -260px; }
+#tipImage.contextualMenus { background-position: -920px -260px; }
 #tipImage.moveMenu { background-position: -920px -390px; }
-
-#tipImage.noTooltips { background-position: 0px -520px; }
 #tipImage.smallIcons { background-position: -460px -520px; }
 #tipImage.largeMenu { background-position: -920px -520px; }
+
+/* #tipImage.suppressMenu { background-position: -460px -390px; } */

@@ -40,35 +40,35 @@ Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
-function tipEntry(label, imageClass, paneName, tabNumber) {
+function tipEntry(label, paneName, tabNumber) {
   this.label = label;
-  this.imageClass = imageClass; // image source
+  this.imageClass = label.slice("tips.".length);
   this.paneName = paneName;
   this.tabNumber = tabNumber;
 }
 
 var tips = [
-  new tipEntry("tips.openButton",                "triggerBySelection",  "activation",     undefined),
-  new tipEntry("tips.dragToAction",              "triggerByStroke",     ""          ,     undefined),
-  new tipEntry("tips.openAltMenu",               "alternativeMenus",    "activation",     undefined),
-  new tipEntry("tips.menusCustomization",        "builtInAction",       "menus",          "0"),
-  new tipEntry("tips.openExtraMenu",             "empty",               "",               undefined),
-  new tipEntry("tips.clickOnLink",               "clickOnLink",         "behavior",       undefined),
-  new tipEntry("tips.tooltips",                  "noTooltips",          "behavior",       undefined),
-  new tipEntry("tips.searchWebAction",           "empty",               "",               undefined),
-  new tipEntry("tips.backAndForwardSiteActions", "empty",               "",               undefined),
-  new tipEntry("tips.loadURLActions",            "bookmarksOnlyLayout", "customizations", "0"),
-  new tipEntry("tips.advancedLoadURLActions",    "empty",               "customizations", "0"),
-  new tipEntry("tips.runScriptActions",          "programsAndScripts",  "customizations", "1"),
-  new tipEntry("tips.contextualMenus",           "contextual",          "activation",     undefined),
-  new tipEntry("tips.preventOpen",               "empty",               "activation",     undefined),
-  new tipEntry("tips.moveMenu",                  "moveMenu",            "",               undefined),
-  new tipEntry("tips.smallIcons",                "smallIcons",          "behavior",       undefined),
-  new tipEntry("tips.largeMenu",                 "largeMenu",           "behavior",       undefined),
-  new tipEntry("tips.autoscrolling",             "empty",               "behavior",       undefined),
-  new tipEntry("tips.zoomOnImage",               "empty",               "",               undefined),
-  new tipEntry("tips.openLinkAction",            "empty",               "customizations", "2"),
-  new tipEntry("tips.dailyReadingsAction",       "empty",               "customizations", "2")
+  new tipEntry("tips.openButton",                "activation",     undefined),
+  new tipEntry("tips.dragToAction",              ""          ,     undefined),
+  new tipEntry("tips.openAltMenu",               "activation",     undefined),
+  new tipEntry("tips.menusCustomization",        "menus",          "0"),
+  new tipEntry("tips.openExtraMenu",             "",               undefined),
+  new tipEntry("tips.clickOnLink",               "behavior",       undefined),
+  new tipEntry("tips.tooltips",                  "behavior",       undefined),
+  new tipEntry("tips.searchWebAction",           "",               undefined),
+  new tipEntry("tips.backAndForwardSiteActions", "",               undefined),
+  new tipEntry("tips.loadURLActions",            "customizations", "0"),
+  new tipEntry("tips.advancedLoadURLActions",    "customizations", "0"),
+  new tipEntry("tips.runScriptActions",          "customizations", "1"),
+  new tipEntry("tips.contextualMenus",           "activation",     undefined),
+  new tipEntry("tips.preventOpen",               "activation",     undefined),
+  new tipEntry("tips.moveMenu",                  "",               undefined),
+  new tipEntry("tips.smallIcons",                "behavior",       undefined),
+  new tipEntry("tips.largeMenu",                 "behavior",       undefined),
+  new tipEntry("tips.autoscrolling",             "behavior",       undefined),
+  new tipEntry("tips.zoomOnImage",               "",               undefined),
+  new tipEntry("tips.openLinkAction",            "customizations", "2"),
+  new tipEntry("tips.dailyReadingsAction",       "customizations", "2")
 ];
 tips.forEach(function(tip) {
   tip.description = eGStrings.getString(tip.label);
