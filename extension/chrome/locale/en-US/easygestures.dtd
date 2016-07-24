@@ -89,32 +89,7 @@
 <!ENTITY customizations.dailyReadings "Customize the 'Daily readings' action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
 
-<!ENTITY tips "Tips">
-<!ENTITY tips.previous "Previous">
-<!ENTITY tips.next "Next">
 <!ENTITY close "Close">
-
-<!ENTITY tips.openButton "By default, click the middle mouse button to open the pie menu; on a Mac, click the left mouse button while holding 'Shift'. You can change the default mouse button and key in [&preferences;/&activation;].">
-<!ENTITY tips.dragToAction "The fastest way to use the pie menu is to open it while holding down the mouse button, then drag over the action to execute, and finally release the button. You can think of it as a mouse gesture with a GUI.">
-<!ENTITY tips.openAltMenu "By default, right clicking while the pie menu is open will successively display up to three alternative menus. You can change the default mouse button in [&preferences;/&activation;]. You can also use an 'Alt' key to switch to the following alternative menu.">
-<!ENTITY tips.menusCustomization "You can customize in [&preferences;/&menus;] all the different menus with many built-in actions. Usage statistics might help you place these actions at an optimal location on the pie menu.">
-<!ENTITY tips.openExtraMenu "To display the extra menu, just move the mouse pointer over this action's icon.">
-<!ENTITY tips.clickOnLink "By default, opening the pie menu on top of a link will open the link and close the pie menu for as long as no activity is detected for a brief amount of time. You can disable this feature, modify this amount of time and control how links should be opened in [&preferences;/&behavior;].">
-<!ENTITY tips.tooltips "You can disable the tooltips in [&preferences;/&behavior;].">
-<!ENTITY tips.searchWebAction "You can perform a search with one of your search engines with the 'Search web' action. If a piece of text is selected, the selection will be copied into the search box. Just press 'Enter' to perform the search.">
-<!ENTITY tips.backAndForwardSiteActions "Instead of moving back and forward page by page, you can do it site by site with the 'Back site' and 'Forward site' actions.">
-<!ENTITY tips.loadURLActions "You can open your favorite sites by customizing the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] and then adding these actions to the pie menu.">
-<!ENTITY tips.advancedLoadURLActions "When configuring the 'Load URL' actions in [&preferences;/&customizations;/&customizations.loadURLActions;] keep in mind that you can use the tokens '&#37;s' and '&#37;u' in an URL.\n\n'&#37;s' will be replaced with the current selection, which is useful to e.g. do a dictionary lookup with the URL https://en.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' will be replaced with the current URL, which is useful to e.g. translate the current page using the URL https://translate.google.com/translate?sl=auto&amp;tl=en&amp;u=&#37;u.">
-<!ENTITY tips.runScriptActions "You can execute a piece of Javascript code by customizing the 'Run script' actions in [&preferences;/&customizations;/&customizations.runScriptActions;] and then adding these actions to the pie menu.">
-<!ENTITY tips.contextualMenus "By default, you can display the contextual menu by pressing an 'Alt' key while opening the pie menu on top of a link, an image or a text box, or while opening the pie menu when there is some content selected. You can change the default key and turn on the automatic activation of the contextual menu in [&preferences;/&activation;].">
-<!ENTITY tips.preventOpen "By default, you can prevent the pie menu from opening by holding a 'Ctrl' key; no default key is set on a Mac. You can change the default key in [&preferences;/&activation;].">
-<!ENTITY tips.moveMenu "You can move around the pie menu by holding a 'Shift' key while moving the mouse.">
-<!ENTITY tips.smallIcons "You can switch to small icons in [&preferences;/&behavior;].">
-<!ENTITY tips.largeMenu "By default, menus are composed of 8 actions. You can switch to 10 actions menus in [&preferences;/&behavior;].">
-<!ENTITY tips.autoscrolling "If you use the middle mouse button to open the pie menu, autoscrolling will no longer be available. By enabling autoscrolling in [&preferences;/&behavior;], it will become available after a configurable delay of inactivity. You can also enable autoscrolling when other mouse buttons and/or keys are used to open the pie menu.">
-<!ENTITY tips.zoomOnImage "A zoom action over an image performs that action only on that image.">
-<!ENTITY tips.openLinkAction "By default, the 'Open link' action opens the link under the pie menu in a new tab. You can change this default behavior in [&preferences;/&customizations;/&customizations.otherActions;].">
-<!ENTITY tips.dailyReadingsAction "The 'Daily readings' action opens all bookmarks contained in a folder of your choice (and in its sub-folders) in new tabs. You can select that folder in [&preferences;/&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Last reset">
 <!ENTITY stats.actions "Clicks by Actions">

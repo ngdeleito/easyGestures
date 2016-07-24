@@ -35,30 +35,18 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://easygestures/content/tips.css" type="text/css"?>
-<!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
 <window
   id="eG_tipsWindow"
-  title="&tips; - easyGestures N"
+  title="- easyGestures N"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
-  onload="updateContent(tipNbr);"
+  onload="onloadHandler();"
   onunload="eGPrefs.setTipNumberPref((tipNbr+1) % tips.length);"
   width="520"
   height="360">
   
   <groupbox flex="1" style="padding: 8px;">
-    <html:div id="tips">
-      ["&tips.openButton;", "&tips.dragToAction;", "&tips.openAltMenu;",
-       "&tips.menusCustomization;", "&tips.openExtraMenu;",
-       "&tips.clickOnLink;", "&tips.tooltips;", "&tips.searchWebAction;",
-       "&tips.backAndForwardSiteActions;", "&tips.loadURLActions;",
-       "&tips.advancedLoadURLActions;", "&tips.runScriptActions;",
-       "&tips.contextualMenus;", "&tips.preventOpen;", "&tips.moveMenu;",
-       "&tips.smallIcons;", "&tips.largeMenu;", "&tips.autoscrolling;",
-       "&tips.zoomOnImage;", "&tips.openLinkAction;",
-       "&tips.dailyReadingsAction;"]
-    </html:div>
     <html:p id="tip"><html:span id="tipTextBeforeLink">
       </html:span><html:a id="tipTextLink" onclick="tipLinkClick();">
       </html:a><html:span id="tipTextAfterLink">
@@ -74,14 +62,14 @@
     </hbox>
   </groupbox>
   <hbox align="center">
-    <checkbox id="showTips" checked="true" label="&general.startupTips;"
+    <checkbox id="showTips" checked="true"
       oncommand="eGPrefs.toggleStartupTips();" />
     <spring flex="1" />
     <vbox>
       <hbox>
-        <button label="&tips.previous;" oncommand="updateTipNbr(-1);" />
-        <button label="&tips.next;" oncommand="updateTipNbr(+1);" />
-        <button label="&close;" oncommand="close();" />
+        <button id="previousButton" oncommand="updateTipNbr(-1);" />
+        <button id="nextButton" oncommand="updateTipNbr(+1);" />
+        <button id="closeButton" oncommand="close();" />
       </hbox>
       <spacer height="4"/>
     </vbox>

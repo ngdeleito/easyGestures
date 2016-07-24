@@ -100,32 +100,7 @@
 <!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
 <!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action&#160;:">
 
-<!ENTITY tips "Astuces">
-<!ENTITY tips.previous "Précédente">
-<!ENTITY tips.next "Suivante">
 <!ENTITY close "Fermer">
-
-<!ENTITY tips.openButton "Par défaut, cliquez sur le bouton central de la souris pour ouvrir le menu circulaire&#160;; sur un Mac, cliquez sur le bouton gauche de la souris tout en appuyant 'Maj'. Vous pouvez changer le bouton de la souris ainsi que la touche par défaut dans [&preferences;/&activation;].">
-<!ENTITY tips.dragToAction "Le moyen le plus rapide d'utiliser le menu circulaire est de l'ouvrir tout en maintenant appuyé le bouton de la souris, puis de glisser la souris sur l'action à exécuter, et enfin de relâcher le bouton de la souris. Pensez à un geste de la souris avec une interface graphique.">
-<!ENTITY tips.openAltMenu "Par défaut, cliquer avec le bouton droit de la souris lorsque le menu circulaire est ouvert fera apparaître successivement jusqu'à trois menus alternatifs. Vous pouvez changer le bouton par défaut de la souris dans [&preferences;/&activation;]. Vous pouvez aussi utiliser une des touches 'Alt' pour faire apparaître le menu alternatif suivant.">
-<!ENTITY tips.menusCustomization "Vous pouvez personnaliser dans [&preferences;/&menus;] les différents menus disponibles avec un large éventail d'actions prédéfinies. Les statistiques d'utilisation peuvent vous être utiles pour placer ces actions au bon endroit au sein du menu circulaire.">
-<!ENTITY tips.openExtraMenu "Pour faire apparaître le menu supplémentaire déplacez tout simplement la souris au-dessus de l'icône associée à cette action.">
-<!ENTITY tips.clickOnLink "Par défaut, en ouvrant le menu circulaire sur un lien, ce dernier sera ouvert et le menu circulaire sera fermé pourvu qu'aucune activité ne soit détectée pendant un court laps de temps. Vous pouvez désactiver cette fonctionnalité, modifier ce laps de temps et contrôler comment les liens doivent être ouverts dans [&preferences;/&behavior;].">
-<!ENTITY tips.tooltips "Vous pouvez désactiver les infobulles dans [&preferences;/&behavior;].">
-<!ENTITY tips.searchWebAction "Vous pouvez réaliser une recherche avec un de vos moteurs de recherche en utilisant l'action 'Rechercher sur le web'. Si du texte est sélectionné, la sélection sera copiée dans le champ de recherche. Appuyez la touche 'Entrée' pour lancer la recherche.">
-<!ENTITY tips.backAndForwardSiteActions "Plutôt que d'avancer et de reculer dans l'historique page par page, vous pouvez le faire site par site avec les actions 'Site précédent' et 'Site suivant'.">
-<!ENTITY tips.loadURLActions "Vous pouvez ouvrir vos pages web préférées en personnalisant les actions 'Charger URL' dans [&preferences;/&customizations;/&customizations.loadURLActions;] et en ajoutant ensuite ces actions dans le menu circulaire.">
-<!ENTITY tips.advancedLoadURLActions "Lorsque vous personnalisez les actions 'Charger URL' dans [&preferences;/&customizations;/&customizations.loadURLActions;] gardez à l'esprit que vous pouvez utiliser les symboles '&#37;s' et '&#37;u' au sein d'une URL.\n\n'&#37;s' sera remplacé par la sélection courante, ce qui est par exemple utile pour rechercher le mot sélectionné dans un dictionnaire à l'aide de l'URL https://fr.wiktionary.org/wiki/&#37;s.\n\n'&#37;u' sera remplacé par l'URL courante, ce qui est par exemple utile pour traduire la page courante à l'aide de l'URL https://translate.google.com/translate?sl=auto&amp;tl=fr&amp;u=&#37;u.">
-<!ENTITY tips.runScriptActions "Vous pouvez exécuter du code Javascript en personnalisant les actions 'Exécuter script' dans [&preferences;/&customizations;/&customizations.runScriptActions;] et en ajoutant ensuite ces actions dans le menu circulaire.">
-<!ENTITY tips.contextualMenus "Par défaut, vous pouvez afficher le menu contextuel tout en appuyant sur une touche 'Alt' lors de l'ouverture du menu circulaire sur un lien, une image ou un champ de saisie de texte, ou lors de l'ouverture du menu circulaire lorsque du contenu est sélectionné. Vous pouvez changer la touche par défaut et activer l'activation automatique du menu contextuel dans [&preferences;/&activation;].">
-<!ENTITY tips.preventOpen "Par défaut, vous pouvez empêcher l'ouverture du menu circulaire en maintenant une touche 'Ctrl' enfoncée&#160;; aucune touche par défaut n'est définie sur un Mac. Vous pouvez changer la touche par défaut dans [&preferences;/&activation;].">
-<!ENTITY tips.moveMenu "Vous pouvez déplacer le menu circulaire en maintenant une touche 'Maj' enfoncée tout en bougeant la souris.">
-<!ENTITY tips.smallIcons "Vous pouvez changer les icônes du menu circulaire en petites icônes dans [&preferences;/&behavior;].">
-<!ENTITY tips.largeMenu "Par défaut, les menus sont composés de 8 actions. Vous pouvez passer à 10 actions par menu dans [&preferences;/&behavior;].">
-<!ENTITY tips.autoscrolling "Lorsque le bouton central de la souris est utilisé pour ouvrir le menu circulaire, le défilement automatique n'est plus disponible. En l'activant dans [&preferences;/&behavior;], il deviendra disponible après un délai configurable d'inactivité. Vous pouvez aussi activer le défilement automatique lorsque d'autres boutons et/ou touches sont utilisés pour ouvrir le menu circulaire.">
-<!ENTITY tips.zoomOnImage "Une action de zoom sur une image exécute cette action uniquement sur cette image.">
-<!ENTITY tips.openLinkAction "Par défaut, l'action 'Ouvrir le lien' ouvre le lien sous le menu circulaire dans un nouvel onglet. Vous pouvez changer ce comportement par défaut dans [&preferences;/&customizations;/&customizations.otherActions;].">
-<!ENTITY tips.dailyReadingsAction "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets. Vous pouvez choisir ce dossier dans [&preferences;/&customizations;/&customizations.otherActions;].">
 
 <!ENTITY stats.lastReset "Dernière réinitialisation">
 <!ENTITY stats.actions "Clics par actions">

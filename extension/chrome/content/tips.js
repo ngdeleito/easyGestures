@@ -32,55 +32,65 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported updateTipNbr, tipLinkClick */
-/* global Components, document, eGPrefs, Services, window, removeEventListener,
-          sizeToContent */
+/* exported onloadHandler, tipLinkClick */
+/* global Components, eGStrings, document, eGPrefs, Services, window,
+          removeEventListener, sizeToContent */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 
-var tipLabels = JSON.parse(document.getElementById("tips").textContent);
-
-function tipEntry(imageClass, paneName, tabNumber) {
+function tipEntry(label, imageClass, paneName, tabNumber) {
+  this.label = label;
   this.imageClass = imageClass; // image source
   this.paneName = paneName;
   this.tabNumber = tabNumber;
 }
 
 var tips = [
-  new tipEntry("triggerBySelection",  "activation",     undefined),
-  new tipEntry("triggerByStroke",     ""          ,     undefined),
-  new tipEntry("alternativeMenus",    "activation",     undefined),
-  new tipEntry("builtInAction",       "menus",          "0"),
-  new tipEntry("empty",               "",               undefined),
-  new tipEntry("clickOnLink",         "behavior",       undefined),
-  new tipEntry("noTooltips",          "behavior",       undefined),
-  new tipEntry("empty",               "",               undefined),
-  new tipEntry("empty",               "",               undefined),
-  new tipEntry("bookmarksOnlyLayout", "customizations", "0"),
-  new tipEntry("empty",               "customizations", "0"),
-  new tipEntry("programsAndScripts",  "customizations", "1"),
-  new tipEntry("contextual",          "activation",     undefined),
-  new tipEntry("empty",               "activation",     undefined),
-  new tipEntry("moveMenu",            "",               undefined),
-  new tipEntry("smallIcons",          "behavior",       undefined),
-  new tipEntry("largeMenu",           "behavior",       undefined),
-  new tipEntry("empty",               "behavior",       undefined),
-  new tipEntry("empty",               "",               undefined),
-  new tipEntry("empty",               "customizations", "2"),
-  new tipEntry("empty",               "customizations", "2")
+  new tipEntry("tips.openButton",                "triggerBySelection",  "activation",     undefined),
+  new tipEntry("tips.dragToAction",              "triggerByStroke",     ""          ,     undefined),
+  new tipEntry("tips.openAltMenu",               "alternativeMenus",    "activation",     undefined),
+  new tipEntry("tips.menusCustomization",        "builtInAction",       "menus",          "0"),
+  new tipEntry("tips.openExtraMenu",             "empty",               "",               undefined),
+  new tipEntry("tips.clickOnLink",               "clickOnLink",         "behavior",       undefined),
+  new tipEntry("tips.tooltips",                  "noTooltips",          "behavior",       undefined),
+  new tipEntry("tips.searchWebAction",           "empty",               "",               undefined),
+  new tipEntry("tips.backAndForwardSiteActions", "empty",               "",               undefined),
+  new tipEntry("tips.loadURLActions",            "bookmarksOnlyLayout", "customizations", "0"),
+  new tipEntry("tips.advancedLoadURLActions",    "empty",               "customizations", "0"),
+  new tipEntry("tips.runScriptActions",          "programsAndScripts",  "customizations", "1"),
+  new tipEntry("tips.contextualMenus",           "contextual",          "activation",     undefined),
+  new tipEntry("tips.preventOpen",               "empty",               "activation",     undefined),
+  new tipEntry("tips.moveMenu",                  "moveMenu",            "",               undefined),
+  new tipEntry("tips.smallIcons",                "smallIcons",          "behavior",       undefined),
+  new tipEntry("tips.largeMenu",                 "largeMenu",           "behavior",       undefined),
+  new tipEntry("tips.autoscrolling",             "empty",               "behavior",       undefined),
+  new tipEntry("tips.zoomOnImage",               "empty",               "",               undefined),
+  new tipEntry("tips.openLinkAction",            "empty",               "customizations", "2"),
+  new tipEntry("tips.dailyReadingsAction",       "empty",               "customizations", "2")
 ];
-tips.forEach(function(tip, index) {
-  tip.description = tipLabels[index];
+tips.forEach(function(tip) {
+  tip.description = eGStrings.getString(tip.label);
 });
 
 var tipNbr;
-document.getElementById("showTips").checked = eGPrefs.areStartupTipsOn();
-try {
-  tipNbr = eGPrefs.getTipNumberPref();
-}
-catch (ex) {
-  tipNbr = 1;
+
+function onloadHandler() {
+  document.title = eGStrings.getString("tips") + " " + document.title;
+  var showTipsCheckbox = document.getElementById("showTips");
+  showTipsCheckbox.label = eGStrings.getString("general.startupTips");
+  showTipsCheckbox.checked = eGPrefs.areStartupTipsOn();
+  document.getElementById("previousButton").label = eGStrings.getString("tips.previous");
+  document.getElementById("nextButton").label = eGStrings.getString("tips.next");
+  document.getElementById("closeButton").label = eGStrings.getString("close");
+  try {
+    tipNbr = eGPrefs.getTipNumberPref();
+  }
+  catch (ex) {
+    tipNbr = 1;
+  }
+  updateTipNbr(0);
 }
 
 function updateTipNbr(step) {
@@ -130,10 +140,19 @@ function updateContent(tipNbr) {
   // inside square brackets (with no space after the opening bracket and no
   // space before the closing bracket): "text1 [link] text2"
   var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
+  var linkText = "";
+  
+  // we resolve the locale strings that constitute the link text
+  if (text.length > 1) {
+    let linkTextStrings = text[1].split("/");
+    linkText = linkTextStrings.map(function(label) {
+      return eGStrings.getString(label);
+    }).join("/");
+  }
   
   document.getElementById("tipNbrDisplay").value = (tipNbr + 1) + " / " + tips.length;
   document.getElementById("tipTextBeforeLink").textContent = text[0];
-  document.getElementById("tipTextLink").textContent = text[1];
+  document.getElementById("tipTextLink").textContent = linkText;
   document.getElementById("tipTextAfterLink").textContent = text[2];
   document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
   sizeToContent();
