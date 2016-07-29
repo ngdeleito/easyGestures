@@ -109,6 +109,30 @@ function tipsUnloadHandler() {
   generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
 }
 
+function updateContent(tipNbr) {
+  // we extract a potential link from the description; links are contained
+  // inside square brackets (with no space after the opening bracket and no
+  // space before the closing bracket): "text1 [link] text2"
+  var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
+  var linkText = "";
+  
+  // we resolve the locale strings that constitute the link text
+  if (text.length > 1) {
+    let linkTextStrings = text[1].split("/");
+    linkText = linkTextStrings.map(function(label) {
+      return eGStrings.getString(label);
+    }).join("/");
+  }
+  
+  document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " +
+                                                     tips.length;
+  document.getElementById("tipTextBeforeLink").textContent = text[0];
+  document.getElementById("tipTextLink").textContent = linkText;
+  document.getElementById("tipTextAfterLink").textContent = text[2];
+  document.getElementById("tipImage").setAttribute("class",
+                                                   tips[tipNbr].imageClass);
+}
+
 function updateTipNbr(step) {
   tipNumber = (((tipNumber + step) % tips.length) + tips.length) % tips.length;
   eGPrefs.setTipNumberPref(tipNumber);
@@ -149,28 +173,6 @@ function tipLinkClick() {
   var paneName = tips[tipNumber].paneName;
   var tabNumber = tips[tipNumber].tabNumber;
   openPreferencesWith(paneName, tabNumber);
-}
-
-function updateContent(tipNbr) {
-  // we extract a potential link from the description; links are contained
-  // inside square brackets (with no space after the opening bracket and no
-  // space before the closing bracket): "text1 [link] text2"
-  var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
-  var linkText = "";
-  
-  // we resolve the locale strings that constitute the link text
-  if (text.length > 1) {
-    let linkTextStrings = text[1].split("/");
-    linkText = linkTextStrings.map(function(label) {
-      return eGStrings.getString(label);
-    }).join("/");
-  }
-  
-  document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " + tips.length;
-  document.getElementById("tipTextBeforeLink").textContent = text[0];
-  document.getElementById("tipTextLink").textContent = linkText;
-  document.getElementById("tipTextAfterLink").textContent = text[2];
-  document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
 }
 
 function updateShowTipsCheckbox() {
