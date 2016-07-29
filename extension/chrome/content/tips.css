@@ -2,7 +2,7 @@
 Version: MPL 1.1/GPL 2.0/LGPL 2.1
 
 The contents of this file are subject to the Mozilla Public License Version 
-1.1 (the "License")!important you may not use this file except in compliance with 
+1.1 (the "License") you may not use this file except in compliance with 
 the License. You may obtain a copy of the License at 
 http://www.mozilla.org/MPL/
 
@@ -31,19 +31,35 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
+body {
+  width: 460px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  font-family: sans-serif;
+}
+
+input {
+  vertical-align: middle;
+  font-family: sans-serif;
+  font-size: smaller;
+}
+
+#tipNumber {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  font-size: smaller;
+}
+
 #tip {
-  margin-top: 0px;
-  font-size: larger;
+  text-align: justify;
   white-space: pre-line;
 }
 
 #tipTextLink {
-  color: -moz-nativehyperlinktext;
-  cursor: pointer;
-}
-
-#tipTextLink:hover {
+  color: rgb(0, 0, 238);
   text-decoration: underline;
+  cursor: pointer;
 }
 
 #tipImage {
@@ -55,7 +71,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 #tipImage.openExtraMenu, #tipImage.searchWebAction,
 #tipImage.backAndForwardSiteActions, #tipImage.advancedLoadURLActions,
 #tipImage.preventOpen, #tipImage.autoscrolling, #tipImage.zoomOnImage,
-#tipImage.openLinkAction, #tipImage.dailyReadingsAction { visibility: hidden; }
+#tipImage.openLinkAction, #tipImage.dailyReadingsAction { display: none; }
 
 #tipImage.openButton { background-position: 0px 0px; }
 #tipImage.dragToAction { background-position: -460px 0px; }
@@ -71,3 +87,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 #tipImage.largeMenu { background-position: -920px -520px; }
 
 /* #tipImage.suppressMenu { background-position: -460px -390px; } */
+
+#showTipsLabel {
+  font-size: smaller;
+}

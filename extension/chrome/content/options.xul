@@ -53,7 +53,7 @@
   
   onload="initMenuDialog();"
   buttons="accept,cancel,disclosure"
-  ondialogdisclosure="window.openDialog('chrome://easygestures/content/tips.xul', '', 'chrome,centerscreen,resizable');">
+  ondialogdisclosure="eGUtils.showOrOpenTab('chrome://easygestures/content/tips.html');">
 
   <stringbundleset>
     <stringbundle id="easyGesturesNStrings"

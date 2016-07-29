@@ -43,6 +43,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function addEventListenerToTooltip(element, actionName) {
   element.addEventListener("change", function() {

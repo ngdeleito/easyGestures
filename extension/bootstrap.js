@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported startup, shutdown, install, uninstall */
 /* global Components, Services, eGPieMenu, eGContext, eGActions, AddonManager,
           ADDON_INSTALL, ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings,
-          setTimeout, ADDON_UNINSTALL */
+          setTimeout, eGUtils, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -250,6 +250,7 @@ function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
   Components.utils.import("chrome://easygestures/content/eGActions.jsm");
   Components.utils.import("chrome://easygestures/content/eGContext.jsm");
+  Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
   
   AddonManager.getAddonByID(data.id, function(addon) {
     // installing or upgrading preferences
@@ -308,14 +309,14 @@ function startup(data, reason) {
     if (eGPrefs.areStartupTipsOn()) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
       if (window.document.readyState === "complete") {
-        window.openDialog("chrome://easygestures/content/tips.xul", "",
-                          "chrome,centerscreen,resizable");
+        eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html");
       }
       else {
         window.addEventListener("load", function displayTipsAtStartup() {
           window.removeEventListener("load", displayTipsAtStartup, false);
-          window.openDialog("chrome://easygestures/content/tips.xul", "",
-                            "chrome,centerscreen,resizable");
+          setTimeout(function() {
+            eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html");
+          }, 200);
         }, false);
       }
     }

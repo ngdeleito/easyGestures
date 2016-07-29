@@ -32,9 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported onloadHandler, tipLinkClick */
+/* exported tipsLoadHandler, tipsUnloadHandler, tipLinkClick,
+            updateShowTipsCheckbox */
 /* global Components, eGStrings, document, eGPrefs, Services, window,
-          removeEventListener, sizeToContent */
+          removeEventListener */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
@@ -75,15 +76,25 @@ tips.forEach(function(tip) {
 });
 
 var tipNbr;
+var generalPrefBranch;
 
-function onloadHandler() {
+function setShowTipsCheckbox() {
+  document.getElementById("showTipsCheckbox").checked =
+    eGPrefs.areStartupTipsOn();
+}
+
+function tipsLoadHandler() {
+  generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
+  generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
+  
   document.title = eGStrings.getString("tips") + " " + document.title;
-  var showTipsCheckbox = document.getElementById("showTips");
-  showTipsCheckbox.label = eGStrings.getString("general.startupTips");
-  showTipsCheckbox.checked = eGPrefs.areStartupTipsOn();
-  document.getElementById("previousButton").label = eGStrings.getString("tips.previous");
-  document.getElementById("nextButton").label = eGStrings.getString("tips.next");
-  document.getElementById("closeButton").label = eGStrings.getString("close");
+  setShowTipsCheckbox();
+  document.getElementById("showTipsLabel").textContent =
+    eGStrings.getString("general.startupTips");
+  document.getElementById("previousButton").value =
+    eGStrings.getString("tips.previous");
+  document.getElementById("nextButton").value =
+    eGStrings.getString("tips.next");
   try {
     tipNbr = eGPrefs.getTipNumberPref();
   }
@@ -91,6 +102,11 @@ function onloadHandler() {
     tipNbr = 1;
   }
   updateTipNbr(0);
+}
+
+function tipsUnloadHandler() {
+  eGPrefs.setTipNumberPref((tipNbr+1) % tips.length);
+  generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
 }
 
 function updateTipNbr(step) {
@@ -150,10 +166,13 @@ function updateContent(tipNbr) {
     }).join("/");
   }
   
-  document.getElementById("tipNbrDisplay").value = (tipNbr + 1) + " / " + tips.length;
+  document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " + tips.length;
   document.getElementById("tipTextBeforeLink").textContent = text[0];
   document.getElementById("tipTextLink").textContent = linkText;
   document.getElementById("tipTextAfterLink").textContent = text[2];
   document.getElementById("tipImage").setAttribute("class", tips[tipNbr].imageClass);
-  sizeToContent();
+}
+
+function updateShowTipsCheckbox() {
+  eGPrefs.toggleStartupTips();
 }
