@@ -75,8 +75,8 @@ tips.forEach(function(tip) {
   tip.description = eGStrings.getString(tip.label);
 });
 
-var tipNbr;
 var generalPrefBranch;
+var tipNumber;
 
 function setShowTipsCheckbox() {
   document.getElementById("showTipsCheckbox").checked =
@@ -96,23 +96,23 @@ function tipsLoadHandler() {
   document.getElementById("nextButton").value =
     eGStrings.getString("tips.next");
   try {
-    tipNbr = eGPrefs.getTipNumberPref();
+    tipNumber = eGPrefs.getTipNumberPref();
   }
   catch (ex) {
-    tipNbr = 1;
+    tipNumber = 1;
   }
   updateTipNbr(0);
 }
 
 function tipsUnloadHandler() {
-  eGPrefs.setTipNumberPref((tipNbr+1) % tips.length);
+  eGPrefs.setTipNumberPref((tipNumber + 1) % tips.length);
   generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
 }
 
 function updateTipNbr(step) {
-  tipNbr = (((tipNbr + step) % tips.length) + tips.length) % tips.length;
-  eGPrefs.setTipNumberPref(tipNbr);
-  updateContent(tipNbr);
+  tipNumber = (((tipNumber + step) % tips.length) + tips.length) % tips.length;
+  eGPrefs.setTipNumberPref(tipNumber);
+  updateContent(tipNumber);
 }
 
 function showPaneAndTabOn(paneName, tabNumber, doc) {
@@ -146,8 +146,8 @@ function openPreferencesWith(paneName, tabNumber) {
 }
 
 function tipLinkClick() {
-  var paneName = tips[tipNbr].paneName;
-  var tabNumber = tips[tipNbr].tabNumber;
+  var paneName = tips[tipNumber].paneName;
+  var tabNumber = tips[tipNumber].tabNumber;
   openPreferencesWith(paneName, tabNumber);
 }
 
