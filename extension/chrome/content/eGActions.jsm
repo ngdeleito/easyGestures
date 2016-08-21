@@ -59,7 +59,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported EXPORTED_SYMBOLS, eGActions */
-/* global Components, eGStrings, Services, eGContext, eGPrefs, Downloads */
+/* global Components, eGStrings, Services, eGContext, eGPrefs, Downloads,
+          eGUtils */
 
 var EXPORTED_SYMBOLS = ["eGActions"];
 
@@ -67,6 +68,7 @@ Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGContext.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -154,24 +156,6 @@ Action.prototype = {
   _openInPrivateWindow: function(URL, window) {
     window.open(URL, "_blank",
                 "toolbar,location,personalbar,resizable,scrollbars,private");
-  },
-  
-  _showOrOpenTab: function(aURL) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var i;
-    var found = false;
-    
-    for (i = 0; i < gBrowser.tabs.length && !found; i++) {
-      let browser = gBrowser.getBrowserForTab(gBrowser.tabs[i]);
-      found = browser.currentURI.spec === aURL;
-    }
-    if (found) {
-      gBrowser.selectedTab = gBrowser.tabs[--i];
-    }
-    else {
-      gBrowser.selectedTab = gBrowser.addTab(aURL);
-    }
   }
 };
 
@@ -928,11 +912,11 @@ var eGActions = {
   runScript10 : new RunScriptAction(10, false, "firefoxPreferences"),
   
   firefoxPreferences : new Action("firefoxPreferences", function() {
-    this._showOrOpenTab("about:preferences");
+    eGUtils.showOrOpenTab("about:preferences", true);
   }, true, "addOns"),
   
   addOns : new Action("addOns", function() {
-    this._showOrOpenTab("about:addons");
+    eGUtils.showOrOpenTab("about:addons", true);
   }, false, "easyGesturesNPreferences"),
   
   easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
