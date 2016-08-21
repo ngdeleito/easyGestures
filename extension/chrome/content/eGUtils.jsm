@@ -40,21 +40,20 @@ var EXPORTED_SYMBOLS = ["eGUtils"];
 Components.utils.import("resource://gre/modules/Services.jsm");
 
 var eGUtils = {
-  showOrOpenTab: function(aURL) {
+  showOrOpenTab: function(aURL, giveFocus) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var gBrowser = window.gBrowser;
     var i;
     var found = false;
+    var tab;
     
     for (i = 0; i < gBrowser.tabs.length && !found; i++) {
       let browser = gBrowser.getBrowserForTab(gBrowser.tabs[i]);
       found = browser.currentURI.spec === aURL;
     }
-    if (found) {
-      gBrowser.selectedTab = gBrowser.tabs[--i];
-    }
-    else {
-      gBrowser.selectedTab = gBrowser.addTab(aURL);
+    tab = found ? gBrowser.tabs[--i] : gBrowser.addTab(aURL);
+    if (giveFocus) {
+      gBrowser.selectedTab = tab;
     }
     
     window.focus();

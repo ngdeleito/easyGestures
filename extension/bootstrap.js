@@ -309,13 +309,14 @@ function startup(data, reason) {
     if (eGPrefs.areStartupTipsOn()) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
       if (window.document.readyState === "complete") {
-        eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html");
+        eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html", false);
       }
       else {
         window.addEventListener("load", function displayTipsAtStartup() {
           window.removeEventListener("load", displayTipsAtStartup, false);
           setTimeout(function() {
-            eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html");
+            eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html",
+                                  false);
           }, 200);
         }, false);
       }
