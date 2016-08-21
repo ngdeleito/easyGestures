@@ -47,7 +47,7 @@ var eGUtils = {
     var found = false;
     var tab;
     
-    for (i = 0; i < gBrowser.tabs.length && !found; i++) {
+    for (i = 0; i < gBrowser.tabs.length && !found; ++i) {
       let browser = gBrowser.getBrowserForTab(gBrowser.tabs[i]);
       found = browser.currentURI.spec === aURL;
     }
