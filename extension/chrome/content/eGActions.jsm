@@ -72,9 +72,9 @@ Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function(pieMenu) {
+  this.run = function(pieMenu, options) {
     pieMenu.close();
-    action.call(this);
+    action.call(this, options);
   };
   
   // startsNewGroup and nextAction are used in options.js to display a sorted
@@ -118,9 +118,11 @@ Action.prototype = {
     return rootURL;
   },
   
-  _sendPerformActionMessage: function() {
+  _sendPerformActionMessage: function(options) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:" + this._name);
+    window.gBrowser.selectedBrowser.messageManager
+          .sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:" + this._name,
+                            options);
   },
   
   _getFileForSavingData: function(filter, defaultName) {
@@ -497,8 +499,13 @@ var eGActions = {
            eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY;
   }, false, "autoscrolling"),
   
-  autoscrolling : new Action("autoscrolling", function() {
-    this._sendPerformActionMessage();
+  autoscrolling : new Action("autoscrolling", function(options) {
+    if (options === undefined) {
+      options = {
+        useMousedownCoordinates: false
+      };
+    }
+    this._sendPerformActionMessage(options);
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {

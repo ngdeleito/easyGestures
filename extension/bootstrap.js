@@ -148,7 +148,9 @@ var eGMessageListeners = {
     if (eGPieMenu.autoscrollingOn) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
       eGContext.autoscrollingTrigger = window.setTimeout(function() {
-        eGActions.autoscrolling.run(eGPieMenu);
+        eGActions.autoscrolling.run(eGPieMenu, {
+          useMousedownCoordinates: true
+        });
       }, eGPieMenu.autoscrollingDelay);
     }
   },

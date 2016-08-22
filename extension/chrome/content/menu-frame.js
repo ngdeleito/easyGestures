@@ -42,10 +42,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
           clearHoverEffect, setHoverEffect, showExtraMenu, hideExtraMenu, hide,
           clearMenuSign */
 
+var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var easyGesturesID;
 var targetDocument, targetWindow, topmostWindow;
 var selection, contextualMenus, anchorElement, imageElement;
-var mouseupScreenX, mouseupScreenY;
 
 Components.utils.import("chrome://easygestures/content/menu-frame-module.jsm");
 addStatelessListeners(this);
@@ -99,6 +99,10 @@ function handleMousedown(anEvent) {
   if (!anEvent.cancelable) {
     return ;
   }
+  
+  mousedownScreenX = anEvent.screenX;
+  mousedownScreenY = anEvent.screenY;
+  
   var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", {
     button: anEvent.button,
     shiftKey: anEvent.shiftKey,
@@ -348,15 +352,16 @@ function runPageBottomAction() {
   }
 }
 
-function runAutoscrollingAction() {
+function runAutoscrollingAction(aMessage) {
+  var useMousedownCoordinates = aMessage.data.useMousedownCoordinates;
   // see chrome://global/content/browser-content.js: we simulate a middle
   // button (non cancelable) mousedown event to trigger Firefox's autoscrolling
   content.document.documentElement.dispatchEvent(new content.MouseEvent("mousedown", {
     view: content,
     bubbles: true,
     button: 1,
-    screenX: mouseupScreenX,
-    screenY: mouseupScreenY
+    screenX: useMousedownCoordinates ? mousedownScreenX : mouseupScreenX,
+    screenY: useMousedownCoordinates ? mousedownScreenY : mouseupScreenY
   }));
 }
 
