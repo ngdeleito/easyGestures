@@ -127,7 +127,6 @@ function fillMainMenuDirections(layout) {
                                            "main" + layout + "Sector5"));
   
   var image = document.createElement("image");
-  image.setAttribute("tooltiptext", "&menus.main;");
   image.setAttribute("src", "mainMenu.png");
   image.setAttribute("width", "41");
   image.setAttribute("height", "41");
@@ -167,7 +166,6 @@ function fillExtraMenuDirections(layout) {
   hbox.appendChild(label);
   
   var image = document.createElement("image");
-  image.setAttribute("tooltiptext", "&menus.extra;");
   image.setAttribute("src", "extraMenu.png");
   image.setAttribute("width", "41");
   image.setAttribute("height", "41");
