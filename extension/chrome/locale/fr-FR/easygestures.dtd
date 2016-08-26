@@ -99,10 +99,3 @@
 <!ENTITY customizations.openLink.newWindow "Ouvrir le lien dans une nouvelle fenêtre">
 <!ENTITY customizations.dailyReadings "Personnaliser l'action 'Lectures quotidiennes'">
 <!ENTITY customizations.dailyReadings.folderSelection "Dossier utilisé par cette action&#160;:">
-
-<!ENTITY close "Fermer">
-
-<!ENTITY stats.lastReset "Dernière réinitialisation">
-<!ENTITY stats.actions "Clics par actions">
-<!ENTITY stats.directions "Clics par directions">
-<!ENTITY stats.all "Toutes les actions">

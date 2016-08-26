@@ -100,10 +100,3 @@
 <!ENTITY customizations.openLink.newWindow "Abrir el enlace en una ventana nueva">
 <!ENTITY customizations.dailyReadings "Personalizar la acción 'Lecturas diarias'">
 <!ENTITY customizations.dailyReadings.folderSelection "Carpeta utilizada por esta acción:">
-
-<!ENTITY close "Cerrar">
-
-<!ENTITY stats.lastReset "Último reinicio">
-<!ENTITY stats.actions "Uso por acciones">
-<!ENTITY stats.directions "Uso por direcciones">
-<!ENTITY stats.all "Todas las acciones">

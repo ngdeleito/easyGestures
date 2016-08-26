@@ -31,10 +31,11 @@ GPL or the LGPL.
 
 
 /* exported initDialog */
-/* global Components, document, eGPrefs, eGActions */
+/* global Components, document, eGPrefs, eGActions, eGStrings */
 
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
+Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 
 function createRow1(id) {
   var row = document.createElement("hbox");
@@ -259,6 +260,32 @@ function fillActions() {
 }
 
 function initDialog() {
+  document.title = eGStrings.getString("stats") + " " + document.title;
+  document.getElementById("lastResetLabel").value =
+    eGStrings.getString("stats.lastReset");
+  document.getElementById("clicksByActionsTab").label =
+    eGStrings.getString("stats.actions");
+  document.getElementById("eG_byDirectionsTab").label =
+    eGStrings.getString("stats.directions");
+  document.getElementById("mainMenuLabel").value =
+    eGStrings.getString("menus.main");
+  document.getElementById("primaryMainMenuLabel").value =
+    document.getElementById("primaryExtraMenuLabel").value =
+    eGStrings.getString("menus.primary");
+  document.getElementById("alt1MainMenuLabel").value =
+    document.getElementById("alt1ExtraMenuLabel").value =
+    eGStrings.getString("menus.alternative1");
+  document.getElementById("alt2MainMenuLabel").value =
+    document.getElementById("alt2ExtraMenuLabel").value =
+    eGStrings.getString("menus.alternative2");
+  document.getElementById("mainMenuAllStatsLabel").value =
+    document.getElementById("extraMenuAllStatsLabel").value =
+    eGStrings.getString("stats.all");
+  document.getElementById("extraMenuLabel").value =
+    eGStrings.getString("menus.extra");
+  document.getElementById("closeButton").label =
+    eGStrings.getString("close");
+  
   fillActions();
   fillMainMenuDirections("Primary");
   fillMainMenuDirections("Alternative1");

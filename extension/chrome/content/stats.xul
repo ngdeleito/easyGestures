@@ -35,13 +35,12 @@
 
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
-<!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
 
 <window
   id="eG_statsWindow"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
-  title="&stats; - easyGestures N"
+  title="- easyGestures N"
   onload="initDialog();">
   
   <stringbundleset>
@@ -53,14 +52,14 @@
   <script type="application/x-javascript" src="chrome://global/content/menu.js" />
   
   <hbox align="center">
-    <label value="&stats.lastReset;:" />
+    <label id="lastResetLabel" />
     <label id="eG_statsLastReset" value="0" style="font-weight: bold;" />
   </hbox>
   <spacer height="4"/>
   <tabbox>
     <tabs>
-      <tab label="&stats.actions;" />
-      <tab label="&stats.directions;" id="eG_byDirectionsTab" />
+      <tab id="clicksByActionsTab" />
+      <tab id="eG_byDirectionsTab" />
     </tabs>
     <tabpanels>
       <tabpanel pack="center">
@@ -69,50 +68,50 @@
       </tabpanel>
       <tabpanel pack="center">
         <vbox>
-          <label value="&menus.main;" class="header" />
+          <label id="mainMenuLabel" class="header" />
           <hbox>
             <groupbox id="gr_MainPrimary" align="center">
-              <label value="&menus.primary;" class="header" />
+              <label id="primaryMainMenuLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_MainAlternative1" align="center">
-              <label value="&menus.alternative1;" class="header" />
+              <label id="alt1MainMenuLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_MainAlternative2" align="center">
-              <label value="&menus.alternative2;" class="header" />
+              <label id="alt2MainMenuLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_MainTotal" align="center" style="background-color: white">
-              <label value="&stats.all;" class="header" />
+              <label id="mainMenuAllStatsLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
           </hbox>
           
           <spacer style="height: 2em" />
           
-          <label value="&menus.extra;" class="header" />
+          <label id="extraMenuLabel" class="header" />
           <hbox>
             <groupbox id="gr_ExtraPrimary" align="center">
-              <label value="&menus.primary;" class="header" />
+              <label id="primaryExtraMenuLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_ExtraAlternative1" align="center">
-              <label value="&menus.alternative1;" class="header" />
+              <label id="alt1ExtraMenuLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_ExtraAlternative2" align="center">
-              <label value="&menus.alternative2;" class="header" />
+              <label id="alt2ExtraMenuLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
             <separator class="thin" />
             <groupbox id="gr_ExtraTotal" align="center" style="background-color: white">
-              <label value="&stats.all;" class="header" />
+              <label id="extraMenuAllStatsLabel" class="header" />
               <separator orient="horizontal" style="height: 1em" />
             </groupbox>
           </hbox>
@@ -122,7 +121,7 @@
   </tabbox>
   <spacer height="6" />
   <hbox pack="end" flex="1">
-    <button label="&close;" oncommand="close();" />
+    <button id="closeButton" oncommand="close();" />
   </hbox>
   <spacer height="4" />
   

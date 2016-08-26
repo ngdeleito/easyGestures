@@ -88,10 +88,3 @@
 <!ENTITY customizations.openLink.newWindow "Open link in a new window">
 <!ENTITY customizations.dailyReadings "Customize the 'Daily readings' action">
 <!ENTITY customizations.dailyReadings.folderSelection "Folder used by this action:">
-
-<!ENTITY close "Close">
-
-<!ENTITY stats.lastReset "Last reset">
-<!ENTITY stats.actions "Clicks by Actions">
-<!ENTITY stats.directions "Clicks by Directions">
-<!ENTITY stats.all "All Actions">
