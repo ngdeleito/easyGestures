@@ -99,6 +99,10 @@ Action.prototype = {
     return document.getElementById("easyGesturesNStrings").getString(this._name);
   },
   
+  getLocalizedActionName: function() {
+    return this.getLabel();
+  },
+  
   setActionStatusOn: function() {},
   
   // helper functions
@@ -199,6 +203,9 @@ ReloadAction.prototype = Object.create(Action.prototype);
 ReloadAction.prototype.constructor = ReloadAction;
 ReloadAction.prototype.getXULLabel = function(document) {
   return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
+};
+ReloadAction.prototype.getLocalizedActionName = function() {
+  return eGStrings.getString("reloadActionName");
 };
 ReloadAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");

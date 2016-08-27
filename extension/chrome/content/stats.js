@@ -226,7 +226,7 @@ function fillActions() {
       var image = document.createElement("image");
       image.setAttribute("id", "eG_image" + actionNames[i]);
       image.setAttribute("tooltiptext",
-        eGActions[actionNames[i]].getXULLabel(document));
+        eGActions[actionNames[i]].getLocalizedActionName());
       image.setAttribute("class", "eG_" + actionNames[i]);
       hbox.appendChild(image);
       
