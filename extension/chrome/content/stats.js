@@ -30,7 +30,7 @@ GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported initDialog */
+/* exported statsLoadHandler */
 /* global Components, document, eGPrefs, eGActions, eGStrings */
 
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
@@ -259,7 +259,7 @@ function fillActions() {
   }
 }
 
-function initDialog() {
+function statsLoadHandler() {
   document.title = eGStrings.getString("stats") + " " + document.title;
   document.getElementById("lastResetLabel").value =
     eGStrings.getString("stats.lastReset");
