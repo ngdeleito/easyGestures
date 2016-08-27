@@ -265,7 +265,7 @@ function initDialog() {
     eGStrings.getString("stats.lastReset");
   document.getElementById("clicksByActionsTab").label =
     eGStrings.getString("stats.actions");
-  document.getElementById("eG_byDirectionsTab").label =
+  document.getElementById("clicksByDirectionsTab").label =
     eGStrings.getString("stats.directions");
   document.getElementById("mainMenuLabel").value =
     eGStrings.getString("menus.main");
@@ -305,7 +305,7 @@ function initDialog() {
   
   var statsLastReset = eGPrefs.getStatsLastResetPref();
   
-  document.getElementById("eG_statsLastReset").value = statsLastReset;
+  document.getElementById("lastReset").value = statsLastReset;
   
   for (let action in statsActions) {
     statsClicksOnActions += statsActions[action];

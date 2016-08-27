@@ -37,7 +37,6 @@
 <?xml-stylesheet href="chrome://easygestures/skin/actions.css" type="text/css"?>
 
 <window
-  id="eG_statsWindow"
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   title="- easyGestures N"
@@ -48,13 +47,13 @@
   
   <hbox align="center">
     <label id="lastResetLabel" />
-    <label id="eG_statsLastReset" value="0" style="font-weight: bold;" />
+    <label id="lastReset" value="0" style="font-weight: bold;" />
   </hbox>
   <spacer height="4"/>
   <tabbox>
     <tabs>
       <tab id="clicksByActionsTab" />
-      <tab id="eG_byDirectionsTab" />
+      <tab id="clicksByDirectionsTab" />
     </tabs>
     <tabpanels>
       <tabpanel pack="center">
