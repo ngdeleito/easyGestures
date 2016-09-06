@@ -38,253 +38,159 @@ Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 
 function createRow1(id) {
-  var row = document.createElement("hbox");
-  row.setAttribute("pack", "center");
-  
-  var label = document.createElement("label");
-  label.setAttribute("id", id);
-  label.setAttribute("value", "0%");
-  row.appendChild(label);
-  
-  return row;
+  var div = document.createElement("div");
+  div.id = id;
+  div.className = "row1";
+  return div;
 }
 
 function createRow2(id1, id2) {
-  var row = document.createElement("hbox");
+  var div = document.createElement("div");
+  div.className = "row2";
   
-  var spacer = document.createElement("spacer");
-  spacer.setAttribute("flex", "1");
-  row.appendChild(spacer);
+  var span = document.createElement("span");
+  span.id = id1;
+  div.appendChild(span);
   
-  var label = document.createElement("label");
-  label.setAttribute("id", id1);
-  label.setAttribute("value", "0%");
-  row.appendChild(label);
+  span = document.createElement("span");
+  span.id = id2;
+  div.appendChild(span);
   
-  spacer = document.createElement("spacer");
-  spacer.setAttribute("flex", "1");
-  row.appendChild(spacer);
-  
-  label = document.createElement("label");
-  label.setAttribute("id", id2);
-  label.setAttribute("value", "0%");
-  row.appendChild(label);
-  
-  spacer = document.createElement("spacer");
-  spacer.setAttribute("flex", "1");
-  row.appendChild(spacer);
-  
-  return row;
+  return div;
 }
 
 function createLabelsforMiddleRow(id1, id2) {
-  var vbox = document.createElement("vbox");
-  vbox.setAttribute("pack", "center");
+  var div = document.createElement("div");
   
-  var label = document.createElement("label");
-  label.setAttribute("id", id1);
-  label.setAttribute("value", "0%");
-  vbox.appendChild(label);
+  var div2 = document.createElement("div");
+  div2.id = id1;
+  div.appendChild(div2);
   
-  label = document.createElement("label");
-  label.setAttribute("id", id2);
-  label.setAttribute("value", "0%");
-  if (eGPrefs.isLargeMenuOff()) {
-    label.setAttribute("style", "display: none");
+  if (!eGPrefs.isLargeMenuOff()) {
+    div2 = document.createElement("div");
+    div2.id = id2;
+    div.appendChild(div2);
   }
-  vbox.appendChild(label);
   
-  return vbox;
+  return div;
 }
 
 function createRowTotal(id) {
-  var row = document.createElement("hbox");
-  row.setAttribute("pack", "center");
-  
-  var label = document.createElement("label");
-  label.setAttribute("id", id);
-  label.setAttribute("style", "font-weight: bold; font-size:medium");
-  label.setAttribute("value", "0%");
-  row.appendChild(label);
-  
-  return row;
+  var div = document.createElement("div");
+  div.id = id;
+  div.className = "row1";
+  div.setAttribute("style", "font-weight: bold; font-size:medium");
+  return div;
 }
 
 function fillMainMenuDirections(layout) {
-  var target = document.getElementById("gr_Main" + layout);
+  var container = document.getElementById("gr_Main" + layout);
   
-  var vbox = document.createElement("vbox");
-  target.appendChild(vbox);
+  container.appendChild(createRow1("main" + layout + "Sector2"));
+  container.appendChild(createRow2("main" + layout + "Sector3",
+                                   "main" + layout + "Sector1"));
   
-  vbox.appendChild(createRow1("main" + layout + "Sector2"));
-  vbox.appendChild(createRow2("main" + layout + "Sector3",
-                              "main" + layout + "Sector1"));
+  var div = document.createElement("div");
+  div.className = "row3";
+  container.appendChild(div);
   
-  var row = document.createElement("hbox");
-  row.setAttribute("pack", "center");
-  vbox.appendChild(row);
-  
-  row.appendChild(createLabelsforMiddleRow("main" + layout + "Sector4",
+  div.appendChild(createLabelsforMiddleRow("main" + layout + "Sector4",
                                            "main" + layout + "Sector5"));
   
-  var image = document.createElement("image");
-  image.setAttribute("src", "mainMenu.png");
-  image.setAttribute("width", "41");
-  image.setAttribute("height", "41");
-  row.appendChild(image);
+  var img = document.createElement("img");
+  img.setAttribute("src", "mainMenu.png");
+  img.setAttribute("width", "41");
+  img.setAttribute("height", "41");
+  div.appendChild(img);
   
-  row.appendChild(createLabelsforMiddleRow("main" + layout + "Sector0",
+  div.appendChild(createLabelsforMiddleRow("main" + layout + "Sector0",
                                            "main" + layout + "Sector9"));
   
-  vbox.appendChild(createRow2("main" + layout + "Sector6",
-                              "main" + layout + "Sector8"));
-  vbox.appendChild(createRow1("main" + layout + "Sector7"));
+  container.appendChild(createRow2("main" + layout + "Sector6",
+                                   "main" + layout + "Sector8"));
+  container.appendChild(createRow1("main" + layout + "Sector7"));
   
-  var separator = document.createElement("separator");
-  separator.setAttribute("style", "height: 1em");
-  vbox.appendChild(separator);
-  
-  vbox.appendChild(createRowTotal("main" + layout));
+  container.appendChild(createRowTotal("main" + layout));
 }
 
 function fillExtraMenuDirections(layout) {
-  var target = document.getElementById("gr_Extra" + layout);
+  var container = document.getElementById("gr_Extra" + layout);
   
-  var vbox = document.createElement("vbox");
-  target.appendChild(vbox);
+  container.appendChild(createRow1("extra" + layout + "Sector2"));
+  container.appendChild(createRow2("extra" + layout + "Sector3",
+                                   "extra" + layout + "Sector1"));
   
-  vbox.appendChild(createRow1("extra" + layout + "Sector2"));
-  vbox.appendChild(createRow2("extra" + layout + "Sector3",
-                              "extra" + layout + "Sector1"));
+  var div = document.createElement("div");
+  div.className = "row3";
+  container.appendChild(div);
   
-  var hbox = document.createElement("hbox");
-  hbox.setAttribute("align", "center");
-  vbox.appendChild(hbox);
+  var div2 = document.createElement("div");
+  div2.id = "extra" + layout + "Sector4";
+  div.appendChild(div2);
   
-  var label = document.createElement("label");
-  label.setAttribute("id", "extra" + layout + "Sector4");
-  label.setAttribute("value", "0%");
-  hbox.appendChild(label);
+  var img = document.createElement("img");
+  img.setAttribute("src", "extraMenu.png");
+  img.setAttribute("width", "41");
+  img.setAttribute("height", "41");
+  div.appendChild(img);
   
-  var image = document.createElement("image");
-  image.setAttribute("src", "extraMenu.png");
-  image.setAttribute("width", "41");
-  image.setAttribute("height", "41");
-  hbox.appendChild(image);
+  div2 = document.createElement("div");
+  div2.id = "extra" + layout + "Sector0";
+  div.appendChild(div2);
   
-  label = document.createElement("label");
-  label.setAttribute("id", "extra" + layout + "Sector0");
-  label.setAttribute("value", "0%");
-  hbox.appendChild(label);
-  
-  var separator = document.createElement("separator");
-  separator.setAttribute("style", "height: 1em");
-  vbox.appendChild(separator);
-  
-  vbox.appendChild(createRowTotal("extra" + layout));
+  container.appendChild(createRowTotal("extra" + layout));
 }
 
 function fillActions() {
-  var target = document.getElementById("statsActionsTab");
+  var container = document.getElementById("statsActionsTab");
   
-  for (var n=0; n<5; n++) {	// number of columns
-    var vbox = document.createElement("vbox");
-    target.appendChild(vbox);
+  // we start at the action that follow the "empty" action
+  var currentAction = eGActions.empty.nextAction;
+  while (currentAction !== null) {
+    let div = document.createElement("div");
+    container.appendChild(div);
     
-    var grid = document.createElement("grid");
-    vbox.appendChild(grid);
+    let span = document.createElement("span");
+    span.id = "eG_image" + currentAction;
+    span.className = "eG_" + currentAction;
+    span.setAttribute("title",
+      eGActions[currentAction].getLocalizedActionName());
+    div.appendChild(span);
     
-    var columns = document.createElement("columns");
-    grid.appendChild(columns);
+    let img = document.createElement("img");
+    img.id = "eG_bar" + currentAction;
+    img.setAttribute("src", "chrome://easygestures/content/bar.png");
+    img.setAttribute("height", "20");
+    div.appendChild(img);
     
-    var column = document.createElement("column");
-    column.setAttribute("flex","1");
-    columns.appendChild(column);
+    span = document.createElement("span");
+    span.id = "eG_action" + currentAction;
+    div.appendChild(span);
     
-    column = document.createElement("column");
-    column.setAttribute("flex","1");
-    columns.appendChild(column);
-    
-    var rows = document.createElement("rows");
-    grid.appendChild(rows);
-    
-    var actionNames = Object.getOwnPropertyNames(eGActions);
-    // excluding "empty" action from the actionNames array
-    actionNames.splice(actionNames.indexOf("empty"), 1);
-    for (var i=n*19; i<(n+1)*19 && i < actionNames.length; i++) {
-      // 19 rows per column
-      
-      var row = document.createElement("row");
-      rows.appendChild(row);
-      
-      vbox = document.createElement("vbox");
-      row.appendChild(vbox);
-      
-      var hbox = document.createElement("hbox");
-      vbox.appendChild(hbox);
-      
-      var image = document.createElement("image");
-      image.setAttribute("id", "eG_image" + actionNames[i]);
-      image.setAttribute("tooltiptext",
-        eGActions[actionNames[i]].getLocalizedActionName());
-      image.setAttribute("class", "eG_" + actionNames[i]);
-      hbox.appendChild(image);
-      
-      var hbox2 = document.createElement("hbox");
-      hbox2.setAttribute("align", "center");
-      hbox2.setAttribute("style", "width: 80px;");
-      hbox.appendChild(hbox2);
-      
-      var label = document.createElement("label");
-      label.setAttribute("value", " ");
-      hbox2.appendChild(label);
-      
-      image = document.createElement("image");
-      image.setAttribute("id", "eG_bar" + actionNames[i]);
-      image.setAttribute("src", "chrome://easygestures/content/bar.png");
-      image.setAttribute("maxwidth", "40");
-      image.setAttribute("width", "0");
-      image.setAttribute("height", "20");
-      hbox2.appendChild(image);
-      
-      label = document.createElement("label");
-      label.setAttribute("id", "eG_action" + actionNames[i]);
-      label.setAttribute("value", "0%");
-      hbox2.appendChild(label);
-      
-      var separator = document.createElement("separator");
-      separator.setAttribute("class", "thin");
-      vbox.appendChild(separator);
-    }
+    currentAction = eGActions[currentAction].nextAction;
   }
 }
 
 function statsLoadHandler() {
   document.title = eGStrings.getString("stats") + " " + document.title;
-  document.getElementById("lastResetLabel").value =
+  document.getElementById("lastResetLabel").textContent =
     eGStrings.getString("stats.lastReset");
-  document.getElementById("clicksByActionsTab").label =
+  document.getElementById("clicksByActionsTab").textContent =
     eGStrings.getString("stats.actions");
-  document.getElementById("clicksByDirectionsTab").label =
+  document.getElementById("clicksByDirectionsTab").textContent =
     eGStrings.getString("stats.directions");
-  document.getElementById("mainMenuLabel").value =
+  document.getElementById("mainMenuLabel").textContent =
     eGStrings.getString("menus.main");
-  document.getElementById("primaryMainMenuLabel").value =
-    document.getElementById("primaryExtraMenuLabel").value =
+  document.getElementById("primaryMenuLabel").textContent =
     eGStrings.getString("menus.primary");
-  document.getElementById("alt1MainMenuLabel").value =
-    document.getElementById("alt1ExtraMenuLabel").value =
+  document.getElementById("alt1MenuLabel").textContent =
     eGStrings.getString("menus.alternative1");
-  document.getElementById("alt2MainMenuLabel").value =
-    document.getElementById("alt2ExtraMenuLabel").value =
+  document.getElementById("alt2MenuLabel").textContent =
     eGStrings.getString("menus.alternative2");
-  document.getElementById("mainMenuAllStatsLabel").value =
-    document.getElementById("extraMenuAllStatsLabel").value =
+  document.getElementById("allStatsLabel").textContent =
     eGStrings.getString("stats.all");
-  document.getElementById("extraMenuLabel").value =
+  document.getElementById("extraMenuLabel").textContent =
     eGStrings.getString("menus.extra");
-  document.getElementById("closeButton").label =
-    eGStrings.getString("close");
   
   fillActions();
   fillMainMenuDirections("Primary");
@@ -305,7 +211,7 @@ function statsLoadHandler() {
   
   var statsLastReset = eGPrefs.getStatsLastResetPref();
   
-  document.getElementById("lastReset").value = statsLastReset;
+  document.getElementById("lastReset").textContent = statsLastReset;
   
   for (let action in statsActions) {
     statsClicksOnActions += statsActions[action];
@@ -330,42 +236,45 @@ function statsLoadHandler() {
         count = Math.round(count);
       }
       
-      document.getElementById("eG_action" + actionName).value = (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : " _ ");
+      document.getElementById("eG_action" + actionName).textContent =
+        (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : " _ ");
       document.getElementById("eG_bar" + actionName).width = count * scaleFactor;
-      document.getElementById("eG_image" + actionName).setAttribute("tooltiptext", document.getElementById("eG_image" + actionName).getAttribute("tooltiptext") + " : " + clicksForAction);
+      document.getElementById("eG_image" + actionName).setAttribute("title",
+        document.getElementById("eG_image" + actionName).getAttribute("title") +
+        " : " + clicksForAction);
     }
   }
   
-  for (var i=0; i<10; i++) {
-    document.getElementById("mainPrimarySector"+String(i)).value=Math.round(statsMainArray[i]/statsClicksOnActions*100)+"%";
-    document.getElementById("mainAlternative1Sector"+String(i)).value=Math.round(statsMainArray[10+i]/statsClicksOnActions*100)+"%";
-    document.getElementById("mainAlternative2Sector"+String(i)).value=Math.round(statsMainArray[20+i]/statsClicksOnActions*100)+"%";
-    document.getElementById("mainTotalSector"+String(i)).value=Math.round((statsMainArray[i]+statsMainArray[10+i]+statsMainArray[20+i])/statsClicksOnActions*100)+"%";
+  var sectors = eGPrefs.isLargeMenuOff() ? [0, 1, 2, 3, 4, 6, 7, 8]
+                                         : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+  sectors.forEach(function (i) {
+    document.getElementById("mainPrimarySector"+String(i)).textContent=Math.round(statsMainArray[i]/statsClicksOnActions*100)+"%";
+    document.getElementById("mainAlternative1Sector"+String(i)).textContent=Math.round(statsMainArray[10+i]/statsClicksOnActions*100)+"%";
+    document.getElementById("mainAlternative2Sector"+String(i)).textContent=Math.round(statsMainArray[20+i]/statsClicksOnActions*100)+"%";
+    document.getElementById("mainTotalSector"+String(i)).textContent=Math.round((statsMainArray[i]+statsMainArray[10+i]+statsMainArray[20+i])/statsClicksOnActions*100)+"%";
     totalMP+=statsMainArray[i];
     totalMA1+=statsMainArray[10+i];
     totalMA2+=statsMainArray[20+i];
     if (i < 5) {
-      document.getElementById("extraPrimarySector"+String(i)).value=Math.round(statsExtraArray[i]/statsClicksOnActions*100)+"%";
-      document.getElementById("extraAlternative1Sector"+String(i)).value=Math.round(statsExtraArray[5+i]/statsClicksOnActions*100)+"%";
-      document.getElementById("extraAlternative2Sector"+String(i)).value=Math.round(statsExtraArray[10+i]/statsClicksOnActions*100)+"%";
-      document.getElementById("extraTotalSector"+String(i)).value=Math.round((statsExtraArray[i]+statsExtraArray[5+i]+statsExtraArray[10+i])/statsClicksOnActions*100)+"%";
+      document.getElementById("extraPrimarySector"+String(i)).textContent=Math.round(statsExtraArray[i]/statsClicksOnActions*100)+"%";
+      document.getElementById("extraAlternative1Sector"+String(i)).textContent=Math.round(statsExtraArray[5+i]/statsClicksOnActions*100)+"%";
+      document.getElementById("extraAlternative2Sector"+String(i)).textContent=Math.round(statsExtraArray[10+i]/statsClicksOnActions*100)+"%";
+      document.getElementById("extraTotalSector"+String(i)).textContent=Math.round((statsExtraArray[i]+statsExtraArray[5+i]+statsExtraArray[10+i])/statsClicksOnActions*100)+"%";
       totalEP+=statsExtraArray[i];
       totalEA1+=statsExtraArray[5+i];
       totalEA2+=statsExtraArray[10+i];
     }
-  }
+  });
   
-  document.getElementById("mainPrimary").value=Math.round(totalMP/statsClicksOnActions*100)+"%";
-  document.getElementById("extraPrimary").value=Math.round(totalEP/statsClicksOnActions*100)+"%";
+  document.getElementById("mainPrimary").textContent=Math.round(totalMP/statsClicksOnActions*100)+"%";
+  document.getElementById("extraPrimary").textContent=Math.round(totalEP/statsClicksOnActions*100)+"%";
   
-  document.getElementById("mainAlternative1").value=Math.round(totalMA1/statsClicksOnActions*100)+"%";
-  document.getElementById("extraAlternative1").value=Math.round(totalEA1/statsClicksOnActions*100)+"%";
+  document.getElementById("mainAlternative1").textContent=Math.round(totalMA1/statsClicksOnActions*100)+"%";
+  document.getElementById("extraAlternative1").textContent=Math.round(totalEA1/statsClicksOnActions*100)+"%";
   
-  document.getElementById("mainAlternative2").value=Math.round(totalMA2/statsClicksOnActions*100)+"%";
-  document.getElementById("extraAlternative2").value=Math.round(totalEA2/statsClicksOnActions*100)+"%";
+  document.getElementById("mainAlternative2").textContent=Math.round(totalMA2/statsClicksOnActions*100)+"%";
+  document.getElementById("extraAlternative2").textContent=Math.round(totalEA2/statsClicksOnActions*100)+"%";
   
-  document.getElementById("mainTotal").value= Math.round((totalMP + totalMA1+totalMA2)/statsClicksOnActions*100)+"%";
-  document.getElementById("extraTotal").value=Math.round((totalEP + totalEA1+totalEA2)/statsClicksOnActions*100)+"%";
-  
-  this.sizeToContent();
+  document.getElementById("mainTotal").textContent= Math.round((totalMP + totalMA1+totalMA2)/statsClicksOnActions*100)+"%";
+  document.getElementById("extraTotal").textContent=Math.round((totalEP + totalEA1+totalEA2)/statsClicksOnActions*100)+"%";
 }
