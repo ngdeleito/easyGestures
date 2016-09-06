@@ -88,7 +88,7 @@
     <label value="&stats;" class="header" />
     <hbox>
       <button label="&general.stats.display;"
-              oncommand="window.openDialog('chrome://easygestures/content/stats.xul', '', 'chrome,alwaysRaised,centerscreen');" />
+              oncommand="eGUtils.showOrOpenTab('chrome://easygestures/content/stats.html', true);" />
       <button label="&general.stats.reset;"
               oncommand="if (confirm('&general.stats.reset;')) { eGPrefs.initializeStats(); }" />
     </hbox>
