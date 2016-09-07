@@ -40,16 +40,16 @@ body {
   font-family: sans-serif;
 }
 
-#statsActionsTab {
+#clicksByActions {
   -moz-column-width: calc(80px + 4ch);
   column-width: calc(80px + 4ch);
 }
 
-#statsActionsTab span:first-child {
+#clicksByActions span:first-child {
   margin-right: 5px;
 }
 
-#statsActionsTab img {
+#clicksByActions img {
   max-width: 50px;
   margin-right: 5px;
 }
@@ -108,6 +108,6 @@ th {
   vertical-align: bottom;
 }
 
-[id^="gr_Main"] .row1:last-child {
+[id$="MainMenuTotal"] {
   margin-top: 1em;
 }
