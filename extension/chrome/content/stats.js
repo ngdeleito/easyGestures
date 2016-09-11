@@ -157,10 +157,8 @@ function fillActions() {
       eGActions[currentAction].getLocalizedActionName());
     div.appendChild(span);
     
-    let img = document.createElement("img");
+    let img = document.createElement("span");
     img.id = "eG_bar" + currentAction;
-    img.setAttribute("src", "chrome://easygestures/content/bar.png");
-    img.setAttribute("height", "20");
     div.appendChild(img);
     
     span = document.createElement("span");
@@ -202,7 +200,6 @@ function statsLoadHandler() {
   fillExtraMenuDirections("alt2");
   fillExtraMenuDirections("allMenus");
   
-  var scaleFactor = 3;
   var statsClicksOnActions = 0;
   
   var statsMainArray = eGPrefs.getStatsMainMenuPref();
@@ -238,7 +235,7 @@ function statsLoadHandler() {
       
       document.getElementById("eG_action" + actionName).textContent =
         (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : " _ ");
-      document.getElementById("eG_bar" + actionName).width = count * scaleFactor;
+      document.getElementById("eG_bar" + actionName).style.width = count / 2 + "px";
       document.getElementById("eG_image" + actionName).setAttribute("title",
         document.getElementById("eG_image" + actionName).getAttribute("title") +
         " : " + clicksForAction);

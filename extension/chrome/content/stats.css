@@ -45,13 +45,25 @@ body {
   column-width: calc(80px + 4ch);
 }
 
-#clicksByActions span:first-child {
-  margin-right: 5px;
+#clicksByActions div {
+  margin-top: 0.25em;
+  height: 20px;
+  line-height: 20px;
 }
 
-#clicksByActions img {
+#clicksByActions span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#clicksByActions span + span {
+  margin-left: 5px;
+}
+
+#clicksByActions span:nth-child(2) {
   max-width: 50px;
-  margin-right: 5px;
+  height: 20px;
+  background-color: hsl(0, 0%, 60%);
 }
 
 
