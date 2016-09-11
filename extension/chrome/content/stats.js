@@ -148,13 +148,14 @@ function fillActions() {
   var currentAction = eGActions.empty.nextAction;
   while (currentAction !== null) {
     let div = document.createElement("div");
+    div.id = "eGStatsFor" + currentAction;
+    div.setAttribute("title",
+                     eGActions[currentAction].getLocalizedActionName());
+    
     container.appendChild(div);
     
     let span = document.createElement("span");
-    span.id = "eG_image" + currentAction;
     span.className = "eG_" + currentAction;
-    span.setAttribute("title",
-      eGActions[currentAction].getLocalizedActionName());
     div.appendChild(span);
     
     let img = document.createElement("span");
@@ -236,9 +237,9 @@ function statsLoadHandler() {
       document.getElementById("eG_action" + actionName).textContent =
         (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : "–");
       document.getElementById("eG_bar" + actionName).style.width = count / 2 + "px";
-      document.getElementById("eG_image" + actionName).setAttribute("title",
-        document.getElementById("eG_image" + actionName).getAttribute("title") +
-        " : " + clicksForAction);
+      document.getElementById("eGStatsFor" + actionName).setAttribute("title",
+        document.getElementById("eGStatsFor" + actionName).getAttribute("title") +
+        ": " + clicksForAction + " " + eGStrings.getString("stats.clicks"));
     }
   }
   
