@@ -252,15 +252,16 @@ function statsLoadHandler() {
     totalMP+=statsMainArray[i];
     totalMA1+=statsMainArray[10+i];
     totalMA2+=statsMainArray[20+i];
-    if (i < 5) {
-      document.getElementById("primaryExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[i]/statsClicksOnActions*100)+"%";
-      document.getElementById("alt1ExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[5+i]/statsClicksOnActions*100)+"%";
-      document.getElementById("alt2ExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[10+i]/statsClicksOnActions*100)+"%";
-      document.getElementById("allMenusExtraMenuSector"+String(i)).textContent=Math.round((statsExtraArray[i]+statsExtraArray[5+i]+statsExtraArray[10+i])/statsClicksOnActions*100)+"%";
-      totalEP+=statsExtraArray[i];
-      totalEA1+=statsExtraArray[5+i];
-      totalEA2+=statsExtraArray[10+i];
-    }
+  });
+  
+  [0, 1, 2, 3, 4].forEach(function(i) {
+    document.getElementById("primaryExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[i]/statsClicksOnActions*100)+"%";
+    document.getElementById("alt1ExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[5+i]/statsClicksOnActions*100)+"%";
+    document.getElementById("alt2ExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[10+i]/statsClicksOnActions*100)+"%";
+    document.getElementById("allMenusExtraMenuSector"+String(i)).textContent=Math.round((statsExtraArray[i]+statsExtraArray[5+i]+statsExtraArray[10+i])/statsClicksOnActions*100)+"%";
+    totalEP+=statsExtraArray[i];
+    totalEA1+=statsExtraArray[5+i];
+    totalEA2+=statsExtraArray[10+i];
   });
   
   document.getElementById("primaryMainMenuTotal").textContent=Math.round(totalMP/statsClicksOnActions*100)+"%";
