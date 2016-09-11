@@ -234,7 +234,7 @@ function statsLoadHandler() {
       }
       
       document.getElementById("eG_action" + actionName).textContent =
-        (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : " _ ");
+        (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : "–");
       document.getElementById("eG_bar" + actionName).style.width = count / 2 + "px";
       document.getElementById("eG_image" + actionName).setAttribute("title",
         document.getElementById("eG_image" + actionName).getAttribute("title") +
