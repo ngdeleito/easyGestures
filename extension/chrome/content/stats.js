@@ -141,17 +141,22 @@ function fillExtraMenuDirections(layout) {
   container.appendChild(createRowTotal(layout + "ExtraMenuTotal"));
 }
 
-function fillActions() {
+function fillActions(statsActions, totalClicks) {
   var container = document.getElementById("clicksByActions");
   
   // we start at the action that follow the "empty" action
   var currentAction = eGActions.empty.nextAction;
   while (currentAction !== null) {
-    let div = document.createElement("div");
-    div.id = "eGStatsFor" + currentAction;
-    div.setAttribute("title",
-                     eGActions[currentAction].getLocalizedActionName());
+    let clicksForAction = statsActions[currentAction];
+    let count = Math.round(clicksForAction / totalClicks * 1000) / 10;
+    if (count > 1) {
+      count = Math.round(count);
+    }
     
+    let div = document.createElement("div");
+    div.setAttribute("title",
+      eGActions[currentAction].getLocalizedActionName() + ": " +
+      clicksForAction + " " + eGStrings.getString("stats.clicks"));
     container.appendChild(div);
     
     let span = document.createElement("span");
@@ -159,11 +164,12 @@ function fillActions() {
     div.appendChild(span);
     
     let img = document.createElement("span");
-    img.id = "eG_bar" + currentAction;
+    img.style.width = count / 2 + "px";
     div.appendChild(img);
     
     span = document.createElement("span");
-    span.id = "eG_action" + currentAction;
+    span.textContent = clicksForAction > 0 ?
+                         (count > 0.1 ? count + "%" : "<0.1%") : "–";
     div.appendChild(span);
     
     currentAction = eGActions[currentAction].nextAction;
@@ -191,7 +197,6 @@ function statsLoadHandler() {
   document.getElementById("extraMenuLabel").textContent =
     eGStrings.getString("menus.extra");
   
-  fillActions();
   fillMainMenuDirections("primary");
   fillMainMenuDirections("alt1");
   fillMainMenuDirections("alt2");
@@ -225,23 +230,7 @@ function statsLoadHandler() {
   var totalMA2 = 0;
   var totalEA2 = 0;
   
-  var clicksForEmptyAction = statsActions.empty;
-  for (let actionName in statsActions) {
-    if (actionName !== "empty") {
-      var clicksForAction = statsActions[actionName];
-      var count = Math.round(clicksForAction/(statsClicksOnActions - clicksForEmptyAction)*1000)/10;
-      if (count > 1) {
-        count = Math.round(count);
-      }
-      
-      document.getElementById("eG_action" + actionName).textContent =
-        (clicksForAction > 0 ? (count > 0.1 ? count + "%" : "<0.1%") : "–");
-      document.getElementById("eG_bar" + actionName).style.width = count / 2 + "px";
-      document.getElementById("eGStatsFor" + actionName).setAttribute("title",
-        document.getElementById("eGStatsFor" + actionName).getAttribute("title") +
-        ": " + clicksForAction + " " + eGStrings.getString("stats.clicks"));
-    }
-  }
+  fillActions(statsActions, statsClicksOnActions - statsActions.empty);
   
   var sectors = eGPrefs.isLargeMenuOff() ? [0, 1, 2, 3, 4, 6, 7, 8]
                                          : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
