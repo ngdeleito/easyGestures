@@ -41,13 +41,11 @@
 <?xml-stylesheet href="chrome://browser/skin/places/places.css" ?>
 <?xul-overlay href="chrome://browser/content/places/placesOverlay.xul" ?>
 
-<!DOCTYPE overlay SYSTEM "chrome://easygestures/locale/easygestures.dtd">
-
 <prefwindow
   xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
   xmlns:html="http://www.w3.org/1999/xhtml"
   id="eG_optionsWindow"
-  title="&preferences; - easyGestures N"
+  title="- easyGestures N"
   onkeypress="preventCloseOnEnter(event);"
   persist="lastSelected screenX screenY width height"
   
@@ -62,41 +60,39 @@
 
   <prefpane
     id="generalPane"
-    label="&general;"
     image="chrome://easygestures/content/profile.png">
     <preferences>
       <preference id="startupTips" name="extensions.easygestures.general.startupTips" type="bool" />
     </preferences>
-    <checkbox preference="startupTips" label="&general.startupTips;" />
+    <checkbox id="startupTipsCheckbox" preference="startupTips" />
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&general.prefs.manage;" class="header" />
+    <label id="managePreferencesLabel" class="header" />
     <hbox>
-      <button label="&general.prefs.import;"
+      <button id="importPreferences"
               oncommand="importPrefs(); initMenuDialog();" />
-      <button label="&general.prefs.export;"
+      <button id="exportPreferences"
               oncommand="saveAllPreferences(); exportPrefs();" />
-      <button label="&general.prefs.reset;"
-              oncommand="if (confirm('&general.prefs.reset;')) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
+      <button id="resetPreferences"
+              oncommand="if (confirm(eGStrings.getString('general.prefs.reset'))) { eGPrefs.setDefaultSettings(); initMenuDialog(); }" />
     </hbox>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
 
-    <label value="&stats;" class="header" />
+    <label id="statisticsLabel" class="header" />
     <hbox>
-      <button label="&general.stats.display;"
+      <button id="displayStatistics"
               oncommand="eGUtils.showOrOpenTab('chrome://easygestures/content/stats.html', true);" />
-      <button label="&general.stats.reset;"
-              oncommand="if (confirm('&general.stats.reset;')) { eGPrefs.initializeStats(); }" />
+      <button id="resetStatistics"
+              oncommand="if (confirm(eGStrings.getString('general.stats.reset'))) { eGPrefs.initializeStats(); }" />
     </hbox>
   </prefpane>
   
   <prefpane
     id="activationPane"
-    label="&activation;"
     image="chrome://easygestures/content/behavior.png">
     <preferences>
       <preference id="showButton" name="extensions.easygestures.activation.showButton" type="int" />
@@ -106,74 +102,73 @@
       <preference id="contextKey" name="extensions.easygestures.activation.contextKey" type="int" />
       <preference id="contextShowAuto" name="extensions.easygestures.activation.contextShowAuto" type="bool" />
     </preferences>
-    <label value="&activation.open.with;" class="header" />
+    <label id="openWithLabel" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="showButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem label="&activation.open.with.button.left;" value="0" />
-          <menuitem label="&activation.open.with.button.middle;" value="1" />
-          <menuitem label="&activation.open.with.button.right;" value="2" />
-          <menuitem label="&activation.open.with.button.custom;" />
+          <menuitem id="openWithLeftButton" value="0" />
+          <menuitem id="openWithMiddleButton" value="1" />
+          <menuitem id="openWithRightButton" value="2" />
+          <menuitem id="openWithCustomButton" />
         </menupopup>
       </menulist>
-      <label value="&activation.open.with.buttoncode;" />
+      <label id="openWithButtonCodeLabel" />
       <textbox preference="showButton" size="2"
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
-    <label value="&activation.open.with.and;" class="header" />
+    <label id="andLabel" class="header" />
     <radiogroup id="showKeyRadiogroup" preference="showKey"
       style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this);">
-      <radio label="&activation.shiftKey;" value="16" />
-      <radio label="&activation.ctrlKey;" value="17" />
-      <radio label="&activation.noKey;" value="0" />
+      <radio id="openWithShiftKey" value="16" />
+      <radio id="openWithCtrlKey" value="17" />
+      <radio id="openWithNoneOfTheseKeys" value="0" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&activation.openAltMenu;" class="header" />
+    <label id="openAltMenuLabel" class="header" />
     <hbox align="center" style="margin-left: 1em">
       <menulist id="showAltButtonMenulist" oncommand="updateLabelAndTextboxFor(this); fireChangeEventOn(this.parentNode.lastElementChild);">
         <menupopup>
-          <menuitem label="&activation.open.with.button.left;" value="0" />
-          <menuitem label="&activation.open.with.button.middle;" value="1" />
-          <menuitem label="&activation.open.with.button.right;" value="2" />
-          <menuitem label="&activation.open.with.button.custom;" />
+          <menuitem id="openAltMenuWithLeftButton" value="0" />
+          <menuitem id="openAltMenuWithMiddleButton" value="1" />
+          <menuitem id="openAltMenuWithRightButton" value="2" />
+          <menuitem id="openAltMenuWithCustomButton" />
         </menupopup>
       </menulist>
-      <label value="&activation.open.with.buttoncode;" />
+      <label id="openAltMenuWithButtonCodeLabel" />
       <textbox preference="showAltButton" size="2"
         onclick="this.value = event.button; fireChangeEventOn(this);" />
     </hbox>
-    <label value="&activation.openAltMenu.altKey;" />
+    <label id="openAltMenuWithAltKeyLabel" />
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&activation.preventOpen;" class="header" />
+    <label id="preventOpenLabel" class="header" />
     <radiogroup id="preventOpenKeyRadiogroup" preference="preventOpenKey"
       style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this);">
-      <radio label="&activation.ctrlKey;" value="17" />
-      <radio label="&activation.altKey;" value="18" />
-      <radio label="&activation.noKey;" value="0" />
+      <radio id="preventOpenWithCtrlKey" value="17" />
+      <radio id="preventOpenWithAltKey" value="18" />
+      <radio id="preventOpenWithNoneOfTheseKeys" value="0" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&activation.contextualMenu;" class="header" />
+    <label id="contextualMenuLabel" class="header" />
     <radiogroup id="contextKeyRadiogroup" preference="contextKey"
       style="margin-left: 1em" oncommand="resetOnDuplicatedKeys(this);">
-      <radio label="&activation.ctrlKey;" value="17" />
-      <radio label="&activation.altKey;" value="18" />
-      <radio label="&activation.noKey;" value="0" />
+      <radio id="contextualMenuWithCtrlKey" value="17" />
+      <radio id="contextualMenuWithAltKey" value="18" />
+      <radio id="contextualMenuWithNoneOfTheseKeys" value="0" />
     </radiogroup>
-    <checkbox preference="contextShowAuto" label="&activation.contextualMenu.showAuto;" />
+    <checkbox id="contextualMenuShowAuto" preference="contextShowAuto" />
   </prefpane>
   
   <prefpane
     id="behaviorPane"
-    label="&behavior;"
     image="chrome://easygestures/content/behavior.png">
     <preferences>
       <preference id="largeMenu" name="extensions.easygestures.behavior.largeMenu" type="bool" />
@@ -188,22 +183,22 @@
       <preference id="autoscrollingOn" name="extensions.easygestures.behavior.autoscrollingOn" type="bool" />
       <preference id="autoscrollingDelay" name="extensions.easygestures.behavior.autoscrollingDelay" type="int" />
     </preferences>
-    <label value="&behavior.menuType;" class="header" />
+    <label id="menuTypeLabel" class="header" />
     <radiogroup preference="largeMenu"
       oncommand="setMenuType(this.selectedItem.value === 'false');"
       style="margin-left: 1em">
-      <radio label="&behavior.menuType.standard;" value="false" />
-      <radio label="&behavior.menuType.large;" value="true" />
+      <radio id="standardMenuType" value="false" />
+      <radio id="largeMenuType" value="true" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&behavior.display;" class="header" />
+    <label id="displayLabel" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="smallIcons" label="&behavior.display.smallIcons;" />
+      <checkbox id="smallIconsCheckbox" preference="smallIcons" />
       <hbox align="center">
-        <label value="&behavior.display.opacity;" />
+        <label id="opacityLabel" />
         <textbox preference="menuOpacity" type="number" min="0" max="100"
           size="3" />
         <label value="%" />
@@ -213,12 +208,12 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&behavior.tooltips;" class="header" />
+    <label id="tooltipsLabel" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="showTooltips" label="&behavior.tooltips.activate;"
+      <checkbox id="activateTooltips" preference="showTooltips"
         oncommand="setBehaviorTooltipsDisabledStatus(this.checked);" />
       <hbox align="center">
-        <label id="BehaviorTooltipsLabel" value="&behavior.tooltips.delay;" />
+        <label id="BehaviorTooltipsLabel" />
         <textbox id="BehaviorTooltipsTextbox" preference="tooltipsDelay"
           size="3" style="text-align: right" />
         <label id="BehaviorTooltipsUnit" value="ms" />
@@ -228,21 +223,21 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&behavior.move;" class="header" />
+    <label id="movePieMenuLabel" class="header" />
     <radiogroup preference="moveAuto" style="margin-left: 1em">
-      <radio label="&behavior.move.shiftKey;" value="false" />
-      <radio label="&behavior.move.menuEdge;" value="true" />
+      <radio id="moveWithShiftKey" value="false" />
+      <radio id="moveWithMenuEdge" value="true" />
     </radiogroup>
     
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&behavior.links;" class="header" />
+    <label id="openLinksThroughPieMenuCenterLabel" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="handleLinks" label="&behavior.links.activate;"
+      <checkbox id="activateOpenLinksThroughPieMenuCenter" preference="handleLinks"
         oncommand="setBehaviorLinksDisabledStatus(this.checked);" />
       <hbox align="center">
-        <label id="BehaviorLinksLabel" value="&behavior.links.delay;" />
+        <label id="BehaviorLinksLabel" />
         <textbox id="BehaviorLinksTextbox" preference="linksDelay" size="3"
           style="text-align: right" />
         <label id="BehaviorLinksUnit" value="ms" />
@@ -251,11 +246,11 @@
         <radiogroup id="BehaviorLinksRadiogroup"
           preference="handleLinksAsOpenLink">
           <hbox align="center">
-            <radio label="&behavior.links.openLinkAction;" value="true" />
+            <radio id="openLinksWithOpenLinkAction" value="true" />
             <separator orient="vertical" />
-            <label class="text-link" value="&behavior.links.configureAction;" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
+            <label id="configureActionLabel" class="text-link" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
           </hbox>
-          <radio label="&behavior.links.browser;" value="false" />
+          <radio id="openLinksWithBrowserBehavior" value="false" />
         </radiogroup>
       </hbox>
     </vbox>
@@ -263,14 +258,12 @@
     <separator orient="horizontal" class="thin" />
     <menuseparator />
     
-    <label value="&behavior.autoscrolling;" class="header" />
+    <label id="autoscrollingLabel" class="header" />
     <vbox style="margin-left: 1em">
-      <checkbox preference="autoscrollingOn"
-        label="&behavior.autoscrolling.activate;"
+      <checkbox id="activateAutoscrolling" preference="autoscrollingOn"
         oncommand="setBehaviorAutoscrollingDisabledStatus(this.checked);" />
       <hbox align="center">
-        <label id="BehaviorAutoscrollingLabel"
-          value="&behavior.autoscrolling.delay;" />
+        <label id="BehaviorAutoscrollingLabel" />
         <textbox id="BehaviorAutoscrollingTextbox"
           preference="autoscrollingDelay" size="3" style="text-align: right" />
         <label id="BehaviorAutoscrollingUnit" value="ms" />
@@ -280,7 +273,6 @@
   
   <prefpane
     id="menusPane"
-    label="&menus;"
     image="chrome://easygestures/content/actions.png">
     <preferences>
       <preference id="mainMenu" name="extensions.easygestures.menus.main" type="string" />
@@ -300,22 +292,22 @@
     </preferences>
     <tabbox id="menusTabboxes">
       <tabs>
-        <tab label="&menus.main;" />
-        <tab label="&menus.extra;" />
-        <tab label="&menus.contextual;" />
+        <tab id="mainMenuTabLabel" />
+        <tab id="extraMenuTabLabel" />
+        <tab id="contextualMenusTabLabel" />
       </tabs>
       <tabpanels>
         <tabpanel pack="center">
           <tabbox>
             <tabs>
-              <tab label="&menus.primary;" />
-              <tab label="&menus.alternative1;" />
-              <tab label="&menus.alternative2;" />
+              <tab id="mainPrimaryMenuTabLabel" />
+              <tab id="mainAlt1MenuTabLabel" />
+              <tab id="mainAlt2MenuTabLabel" />
             </tabs>
             <tabpanels>
               <tabpanel pack="center">
                 <vbox>
-                  <checkbox label="&menus.enabled;"
+                  <checkbox id="enableMainPrimaryMenu"
                     style="visibility: hidden" />
                   <vbox id="gr_main" preference-editable="true"
                     preference="mainMenu"
@@ -326,7 +318,7 @@
               <tabpanel pack="center">
                 <vbox>
                   <checkbox id="mainAlternative1Checkbox"
-                    preference="mainAlt1Enabled" label="&menus.enabled;"
+                    preference="mainAlt1Enabled"
                     oncommand="setDisabledStatusForMainMenu('Alt1', this.checked);" />
                   <vbox id="gr_mainAlt1" preference-editable="true"
                     preference="mainAlt1Menu"
@@ -337,7 +329,7 @@
               <tabpanel pack="center">
                 <vbox>
                   <checkbox id="mainAlternative2Checkbox"
-                    preference="mainAlt2Enabled" label="&menus.enabled;"
+                    preference="mainAlt2Enabled"
                     oncommand="setDisabledStatusForMainMenu('Alt2', this.checked);" />
                   <vbox id="gr_mainAlt2" preference-editable="true"
                     preference="mainAlt2Menu"
@@ -352,19 +344,19 @@
           <vbox>
             <hbox align="center">
               <image class="message-icon" style="height: 1.5em; width: auto" />
-              <label value="&menus.extra.info;" />
+              <label id="extraMenuInfoLabel" />
             </hbox>
             <separator orient="horizontal" style="height: 2em" />
             <tabbox>
               <tabs>
-                <tab label="&menus.primary;" />
-                <tab label="&menus.alternative1;" />
-                <tab label="&menus.alternative2;" />
+                <tab id="extraPrimaryMenuTabLabel" />
+                <tab id="extraAlt1MenuTabLabel" />
+                <tab id="extraAlt2MenuTabLabel" />
               </tabs>
               <tabpanels>
                 <tabpanel pack="center">
                   <vbox>
-                    <checkbox label="&menus.enabled;"
+                    <checkbox id="enableExtraPrimaryMenu"
                       style="visibility: hidden" />
                     <vbox id="gr_extra" preference-editable="true"
                       preference="extraMenu"
@@ -375,7 +367,7 @@
                 <tabpanel pack="center">
                   <vbox>
                     <checkbox id="extraAlternative1Checkbox"
-                      preference="extraAlt1Enabled" label="&menus.enabled;"
+                      preference="extraAlt1Enabled"
                       oncommand="setDisabledStatusForExtraMenu('Alt1', this.checked);" />
                     <vbox id="gr_extraAlt1" preference-editable="true"
                       preference="extraAlt1Menu"
@@ -386,7 +378,7 @@
                 <tabpanel pack="center">
                   <vbox>
                     <checkbox id="extraAlternative2Checkbox"
-                      preference="extraAlt2Enabled" label="&menus.enabled;"
+                      preference="extraAlt2Enabled"
                       oncommand="setDisabledStatusForExtraMenu('Alt2', this.checked);" />
                     <vbox id="gr_extraAlt2" preference-editable="true"
                       preference="extraAlt2Menu"
@@ -401,10 +393,10 @@
         <tabpanel pack="center">
           <tabbox>
             <tabs>
-              <tab label="&menus.contextual.link;" />
-              <tab label="&menus.contextual.image;" />
-              <tab label="&menus.contextual.selection;" />
-              <tab label="&menus.contextual.textbox;" />
+              <tab id="contextualLinkMenuTabLabel" />
+              <tab id="contextualImageMenuTabLabel" />
+              <tab id="contextualSelectionMenuTabLabel" />
+              <tab id="contextualTextboxMenuTabLabel" />
             </tabs>
             <tabpanels>
               <tabpanel pack="center">
@@ -440,7 +432,6 @@
   
   <prefpane
     id="customizationsPane"
-    label="&customizations;"
     image="chrome://easygestures/content/customizations.png">
     <preferences>
       <preference id="loadURLin" name="extensions.easygestures.customizations.loadURLin" type="string" />
@@ -489,9 +480,9 @@
     </preferences>
     <tabbox id="customizationsTabboxes">
       <tabs>
-        <tab label="&customizations.loadURLActions;" />
-        <tab label="&customizations.runScriptActions;" />
-        <tab label="&customizations.otherActions;" id="otherActionsCustomizationsTab" />
+        <tab id="customizationsForLoadURLActionsTabLabel" />
+        <tab id="customizationsForRunScriptActionsTabLabel" />
+        <tab id="otherActionsCustomizationsTab" />
       </tabs>
       <tabpanels>
         <tabpanel>
@@ -499,20 +490,20 @@
             <hbox align="start">
               <image class="message-icon" style="height: 1.5em; width: auto" />
               <vbox flex="1">
-                <label>&customizations.infoActions;</label>
-                <label>&customizations.infoPlaceholders;</label>
+                <label id="loadURLInfoActionsLabel"></label>
+                <label id="loadURLInfoPlaceholdersLabel"></label>
               </vbox>
             </hbox>
             
             <separator orient="horizontal" style="height: 2em" />
             
-            <label value="&customizations.loadURLActions.load;" class="header" />
+            <label id="loadURLActionsLoadLabel" class="header" />
             <hbox>
               <menulist preference="loadURLin" style="margin-left: 1em">
                 <menupopup>
-                  <menuitem label="&customizations.loadURLActions.currentTab;" value="curTab" />
-                  <menuitem label="&customizations.loadURLActions.newTab;" value="newTab" />
-                  <menuitem label="&customizations.loadURLActions.newWindow;" value="newWindow" />
+                  <menuitem id="loadURLActionsInCurrentTabLabel" value="curTab" />
+                  <menuitem id="loadURLActionsInNewTabLabel" value="newTab" />
+                  <menuitem id="loadURLActionsInNewWindowLabel" value="newWindow" />
                 </menupopup>
               </menulist>
             </hbox>
@@ -584,8 +575,8 @@
             <hbox align="start">
               <image class="message-icon" style="height: 1.5em; width: auto" />
               <vbox flex="1">
-                <label>&customizations.infoActions;</label>
-                <label>&customizations.infoPlaceholders;</label>
+                <label id="runScriptInfoActionsLabel"></label>
+                <label id="runScriptInfoPlaceholdersLabel"></label>
               </vbox>
             </hbox>
             
@@ -658,7 +649,7 @@
             <hbox align="center">
               <image class="message-icon" style="height: 1.5em; width: auto" />
               <vbox flex="1">
-                <label>&customizations.infoActions;</label>
+                <label id="otherActionsInfoActionsLabel"></label>
               </vbox>
             </hbox>
             
@@ -666,12 +657,12 @@
             
             <hbox align="center">
               <image class="eG_openLink" />
-              <label value="&customizations.openLink;" class="header" />
+              <label id="customizeOpenLinkActionLabel" class="header" />
             </hbox>
             <radiogroup preference="openLink" style="margin-left: 1em">
-              <radio label="&customizations.openLink.currentTab;" value="curTab" />
-              <radio label="&customizations.openLink.newTab;" value="newTab" />
-              <radio label="&customizations.openLink.newWindow;" value="newWindow" />
+              <radio id="openLinkActionInCurrentTab" value="curTab" />
+              <radio id="openLinkActionInNewTab" value="newTab" />
+              <radio id="openLinkActionInNewWindow" value="newWindow" />
             </radiogroup>
             
             <separator orient="horizontal" class="thin" />
@@ -679,9 +670,9 @@
             
             <hbox align="center">
               <image class="eG_dailyReadings" />
-              <label value="&customizations.dailyReadings;" class="header" />
+              <label id="customizeDailyReadingsActionLabel" class="header" />
             </hbox>
-            <label value="&customizations.dailyReadings.folderSelection;" />
+            <label id="dailyReadingsFolderSelectionLabel" />
             <tree id="dailyReadingsTree" type="places" hidecolumnpicker="true"
               rows="7" seltype="single" preference-editable="true"
               preference="dailyReadingsFolderID"

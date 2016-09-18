@@ -37,12 +37,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
             preparePreferenceValueForLoadURL,
             preparePreferenceValueForRunScript,
             preparePreferenceValueForDailyReadings, resetOnDuplicatedKeys */
-/* global Components, document, window, Services, eGActions, eGPrefs,
+/* global Components, document, window, Services, eGActions, eGPrefs, eGStrings,
           PlacesUIUtils, alert */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function addEventListenerToTooltip(element, actionName) {
@@ -649,6 +650,187 @@ function initializeDailyReadingsTree() {
 
 function initMenuDialog() {
   window.setCursor("wait");
+  
+  document.title = eGStrings.getString("preferences") + " " + document.title;
+  document.getAnonymousElementByAttribute(document.documentElement, "pane",
+    "generalPane").label = eGStrings.getString("general");
+  document.getElementById("startupTipsCheckbox").label =
+    eGStrings.getString("general.startupTips");
+  document.getElementById("managePreferencesLabel").value =
+    eGStrings.getString("general.prefs.manage");
+  document.getElementById("importPreferences").label =
+    eGStrings.getString("general.prefs.import");
+  document.getElementById("exportPreferences").label =
+    eGStrings.getString("general.prefs.export");
+  document.getElementById("resetPreferences").label =
+    eGStrings.getString("general.prefs.reset");
+  document.getElementById("statisticsLabel").value =
+    eGStrings.getString("stats");
+  document.getElementById("displayStatistics").label =
+    eGStrings.getString("general.stats.display");
+  document.getElementById("resetStatistics").label =
+    eGStrings.getString("general.stats.reset");
+  
+  document.getAnonymousElementByAttribute(document.documentElement, "pane",
+    "activationPane").label = eGStrings.getString("activation");
+  document.getElementById("openWithLabel").value =
+    eGStrings.getString("activation.open.with");
+  document.getElementById("openWithLeftButton").label =
+    document.getElementById("openAltMenuWithLeftButton").label =
+    eGStrings.getString("activation.open.with.button.left");
+  document.getElementById("openWithMiddleButton").label =
+    document.getElementById("openAltMenuWithMiddleButton").label =
+    eGStrings.getString("activation.open.with.button.middle");
+  document.getElementById("openWithRightButton").label =
+    document.getElementById("openAltMenuWithRightButton").label =
+    eGStrings.getString("activation.open.with.button.right");
+  document.getElementById("openWithCustomButton").label =
+    document.getElementById("openAltMenuWithCustomButton").label =
+    eGStrings.getString("activation.open.with.button.custom");
+  document.getElementById("openWithButtonCodeLabel").value =
+    document.getElementById("openAltMenuWithButtonCodeLabel").value =
+    eGStrings.getString("activation.open.with.buttoncode");
+  document.getElementById("andLabel").value =
+    eGStrings.getString("activation.open.with.and");
+  document.getElementById("openWithShiftKey").label =
+    eGStrings.getString("activation.shiftKey");
+  document.getElementById("openWithCtrlKey").label =
+    document.getElementById("preventOpenWithCtrlKey").label =
+    document.getElementById("contextualMenuWithCtrlKey").label =
+    eGStrings.getString("activation.ctrlKey");
+  document.getElementById("openWithNoneOfTheseKeys").label =
+    document.getElementById("preventOpenWithNoneOfTheseKeys").label =
+    document.getElementById("contextualMenuWithNoneOfTheseKeys").label =
+    eGStrings.getString("activation.noKey");
+  document.getElementById("openAltMenuLabel").value =
+    eGStrings.getString("activation.openAltMenu");
+  document.getElementById("openAltMenuWithAltKeyLabel").value =
+    eGStrings.getString("activation.openAltMenu.altKey");
+  document.getElementById("preventOpenLabel").value =
+    eGStrings.getString("activation.preventOpen");
+  document.getElementById("preventOpenWithAltKey").label =
+    document.getElementById("contextualMenuWithAltKey").label =
+    eGStrings.getString("activation.altKey");
+  document.getElementById("contextualMenuLabel").value =
+    eGStrings.getString("activation.contextualMenu");
+  document.getElementById("contextualMenuShowAuto").label =
+    eGStrings.getString("activation.contextualMenu.showAuto");
+  
+  document.getAnonymousElementByAttribute(document.documentElement, "pane",
+    "behaviorPane").label = eGStrings.getString("behavior");
+  document.getElementById("menuTypeLabel").value =
+    eGStrings.getString("behavior.menuType");
+  document.getElementById("standardMenuType").label =
+    eGStrings.getString("behavior.menuType.standard");
+  document.getElementById("largeMenuType").label =
+    eGStrings.getString("behavior.menuType.large");
+  document.getElementById("displayLabel").value =
+    eGStrings.getString("behavior.display");
+  document.getElementById("smallIconsCheckbox").label =
+    eGStrings.getString("behavior.display.smallIcons");
+  document.getElementById("opacityLabel").value =
+    eGStrings.getString("behavior.display.opacity");
+  document.getElementById("tooltipsLabel").value =
+    eGStrings.getString("behavior.tooltips");
+  document.getElementById("activateTooltips").label =
+    eGStrings.getString("behavior.tooltips.activate");
+  document.getElementById("BehaviorTooltipsLabel").value =
+    eGStrings.getString("behavior.tooltips.delay");
+  document.getElementById("movePieMenuLabel").value =
+    eGStrings.getString("behavior.move");
+  document.getElementById("moveWithShiftKey").label =
+    eGStrings.getString("behavior.move.shiftKey");
+  document.getElementById("moveWithMenuEdge").label =
+    eGStrings.getString("behavior.move.menuEdge");
+  document.getElementById("openLinksThroughPieMenuCenterLabel").value =
+    eGStrings.getString("behavior.links");
+  document.getElementById("activateOpenLinksThroughPieMenuCenter").label =
+    eGStrings.getString("behavior.links.activate");
+  document.getElementById("BehaviorLinksLabel").value =
+    eGStrings.getString("behavior.links.delay");
+  document.getElementById("openLinksWithOpenLinkAction").label =
+    eGStrings.getString("behavior.links.openLinkAction");
+  document.getElementById("configureActionLabel").value =
+    eGStrings.getString("behavior.links.configureAction");
+  document.getElementById("openLinksWithBrowserBehavior").label =
+    eGStrings.getString("behavior.links.browser");
+  document.getElementById("autoscrollingLabel").value =
+    eGStrings.getString("behavior.autoscrolling");
+  document.getElementById("activateAutoscrolling").label =
+    eGStrings.getString("behavior.autoscrolling.activate");
+  document.getElementById("BehaviorAutoscrollingLabel").value =
+    eGStrings.getString("behavior.autoscrolling.delay");
+  
+  document.getAnonymousElementByAttribute(document.documentElement, "pane",
+    "menusPane").label = eGStrings.getString("menus");
+  document.getElementById("mainMenuTabLabel").label =
+    eGStrings.getString("menus.main");
+  document.getElementById("extraMenuTabLabel").label =
+    eGStrings.getString("menus.extra");
+  document.getElementById("contextualMenusTabLabel").label =
+    eGStrings.getString("menus.contextual");
+  document.getElementById("mainPrimaryMenuTabLabel").label =
+    document.getElementById("extraPrimaryMenuTabLabel").label =
+    eGStrings.getString("menus.primary");
+  document.getElementById("mainAlt1MenuTabLabel").label =
+    document.getElementById("extraAlt1MenuTabLabel").label =
+    eGStrings.getString("menus.alternative1");
+  document.getElementById("mainAlt2MenuTabLabel").label =
+    document.getElementById("extraAlt2MenuTabLabel").label =
+    eGStrings.getString("menus.alternative2");
+  document.getElementById("enableMainPrimaryMenu").label =
+    document.getElementById("mainAlternative1Checkbox").label =
+    document.getElementById("mainAlternative2Checkbox").label =
+    document.getElementById("enableExtraPrimaryMenu").label =
+    document.getElementById("extraAlternative1Checkbox").label =
+    document.getElementById("extraAlternative2Checkbox").label =
+    eGStrings.getString("menus.enabled");
+  document.getElementById("extraMenuInfoLabel").value =
+    eGStrings.getString("menus.extra.info");
+  document.getElementById("contextualLinkMenuTabLabel").label =
+    eGStrings.getString("menus.contextual.link");
+  document.getElementById("contextualImageMenuTabLabel").label =
+    eGStrings.getString("menus.contextual.image");
+  document.getElementById("contextualSelectionMenuTabLabel").label =
+    eGStrings.getString("menus.contextual.selection");
+  document.getElementById("contextualTextboxMenuTabLabel").label =
+    eGStrings.getString("menus.contextual.textbox");
+  
+  document.getAnonymousElementByAttribute(document.documentElement, "pane",
+    "customizationsPane").label = eGStrings.getString("customizations");
+  document.getElementById("customizationsForLoadURLActionsTabLabel").label =
+    eGStrings.getString("customizations.loadURLActions");
+  document.getElementById("customizationsForRunScriptActionsTabLabel").label =
+    eGStrings.getString("customizations.runScriptActions");
+  document.getElementById("otherActionsCustomizationsTab").label =
+    eGStrings.getString("customizations.otherActions");
+  document.getElementById("loadURLInfoActionsLabel").textContent =
+    document.getElementById("runScriptInfoActionsLabel").textContent =
+    document.getElementById("otherActionsInfoActionsLabel").textContent =
+    eGStrings.getString("customizations.infoActions");
+  document.getElementById("loadURLInfoPlaceholdersLabel").textContent =
+    document.getElementById("runScriptInfoPlaceholdersLabel").textContent =
+    eGStrings.getString("customizations.infoPlaceholders");
+  document.getElementById("loadURLActionsLoadLabel").value =
+    eGStrings.getString("customizations.loadURLActions.load");
+  document.getElementById("loadURLActionsInCurrentTabLabel").label =
+    eGStrings.getString("customizations.loadURLActions.currentTab");
+  document.getElementById("loadURLActionsInNewTabLabel").label =
+    eGStrings.getString("customizations.loadURLActions.newTab");
+  document.getElementById("loadURLActionsInNewWindowLabel").label =
+    eGStrings.getString("customizations.loadURLActions.newWindow");
+  document.getElementById("customizeOpenLinkActionLabel").value =
+    eGStrings.getString("customizations.openLink");
+  document.getElementById("openLinkActionInCurrentTab").label =
+    eGStrings.getString("customizations.openLink.currentTab");
+  document.getElementById("openLinkActionInNewTab").label =
+    eGStrings.getString("customizations.openLink.newTab");
+  document.getElementById("openLinkActionInNewWindow").label =
+    eGStrings.getString("customizations.openLink.newWindow");
+  document.getElementById("customizeDailyReadingsActionLabel").value =
+    eGStrings.getString("customizations.dailyReadings");
+  document.getElementById("dailyReadingsFolderSelectionLabel").value =
+    eGStrings.getString("customizations.dailyReadings.folderSelection");
   
   createActions();
   createLoadURLActions();
