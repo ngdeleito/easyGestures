@@ -605,20 +605,21 @@ function toggleDisabledStatusOnElementsById(ids, disabled) {
   });
 }
 
-function setBehaviorTooltipsDisabledStatus(disabled) {
-  toggleDisabledStatusOnElementsById(["BehaviorTooltipsLabel",
-    "BehaviorTooltipsTextbox", "BehaviorTooltipsUnit"], disabled);
+function setDisabledStatusForTooltipsActivationDelay(disabled) {
+  toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
+    "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"], disabled);
 }
 
-function setBehaviorLinksDisabledStatus(disabled) {
-  toggleDisabledStatusOnElementsById(["BehaviorLinksLabel",
-    "BehaviorLinksTextbox", "BehaviorLinksUnit", "BehaviorLinksRadiogroup"],
+function setDisabledStatusForOpenLinksMaximumDelay(disabled) {
+  toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
+    "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
+    "openLinksThroughPieMenuCenterConfiguration"], disabled);
+}
+
+function setDisabledStatusForAutoscrollingActivationDelay(disabled) {
+  toggleDisabledStatusOnElementsById(["autoscrollingActivationDelayLabel",
+    "autoscrollingActivationDelayInput", "autoscrollingActivationDelayUnit"],
     disabled);
-}
-
-function setBehaviorAutoscrollingDisabledStatus(disabled) {
-  toggleDisabledStatusOnElementsById(["BehaviorAutoscrollingLabel",
-    "BehaviorAutoscrollingTextbox", "BehaviorAutoscrollingUnit"], disabled);
 }
 
 function setDisabledStatusForMainMenu(menu, disabled) {
@@ -734,7 +735,7 @@ function initMenuDialog() {
     eGStrings.getString("behavior.tooltips");
   document.getElementById("activateTooltips").label =
     eGStrings.getString("behavior.tooltips.activate");
-  document.getElementById("BehaviorTooltipsLabel").value =
+  document.getElementById("tooltipsActivationDelayLabel").value =
     eGStrings.getString("behavior.tooltips.delay");
   document.getElementById("movePieMenuLabel").value =
     eGStrings.getString("behavior.move");
@@ -746,7 +747,7 @@ function initMenuDialog() {
     eGStrings.getString("behavior.links");
   document.getElementById("activateOpenLinksThroughPieMenuCenter").label =
     eGStrings.getString("behavior.links.activate");
-  document.getElementById("BehaviorLinksLabel").value =
+  document.getElementById("openLinksMaximumDelayLabel").value =
     eGStrings.getString("behavior.links.delay");
   document.getElementById("openLinksWithOpenLinkAction").label =
     eGStrings.getString("behavior.links.openLinkAction");
@@ -758,7 +759,7 @@ function initMenuDialog() {
     eGStrings.getString("behavior.autoscrolling");
   document.getElementById("activateAutoscrolling").label =
     eGStrings.getString("behavior.autoscrolling.activate");
-  document.getElementById("BehaviorAutoscrollingLabel").value =
+  document.getElementById("autoscrollingActivationDelayLabel").value =
     eGStrings.getString("behavior.autoscrolling.delay");
   
   document.getAnonymousElementByAttribute(document.documentElement, "pane",
@@ -779,11 +780,11 @@ function initMenuDialog() {
     document.getElementById("extraAlt2MenuTabLabel").label =
     eGStrings.getString("menus.alternative2");
   document.getElementById("enableMainPrimaryMenu").label =
-    document.getElementById("mainAlternative1Checkbox").label =
-    document.getElementById("mainAlternative2Checkbox").label =
+    document.getElementById("enableMainAlt1Menu").label =
+    document.getElementById("enableMainAlt2Menu").label =
     document.getElementById("enableExtraPrimaryMenu").label =
-    document.getElementById("extraAlternative1Checkbox").label =
-    document.getElementById("extraAlternative2Checkbox").label =
+    document.getElementById("enableExtraAlt1Menu").label =
+    document.getElementById("enableExtraAlt2Menu").label =
     eGStrings.getString("menus.enabled");
   document.getElementById("extraMenuInfoLabel").value =
     eGStrings.getString("menus.extra.info");
@@ -802,7 +803,7 @@ function initMenuDialog() {
     eGStrings.getString("customizations.loadURLActions");
   document.getElementById("customizationsForRunScriptActionsTabLabel").label =
     eGStrings.getString("customizations.runScriptActions");
-  document.getElementById("otherActionsCustomizationsTab").label =
+  document.getElementById("customizationsForOtherActionsTabLabel").label =
     eGStrings.getString("customizations.otherActions");
   document.getElementById("loadURLInfoActionsLabel").textContent =
     document.getElementById("runScriptInfoActionsLabel").textContent =
@@ -849,9 +850,9 @@ function initMenuDialog() {
   );
   
   setMenuType(eGPrefs.isLargeMenuOff());
-  setBehaviorTooltipsDisabledStatus(eGPrefs.areTooltipsOn());
-  setBehaviorLinksDisabledStatus(eGPrefs.isHandleLinksOn());
-  setBehaviorAutoscrollingDisabledStatus(eGPrefs.isAutoscrollingOn());
+  setDisabledStatusForTooltipsActivationDelay(eGPrefs.areTooltipsOn());
+  setDisabledStatusForOpenLinksMaximumDelay(eGPrefs.isHandleLinksOn());
+  setDisabledStatusForAutoscrollingActivationDelay(eGPrefs.isAutoscrollingOn());
   
   setDisabledStatusForMainMenu("Alt1", eGPrefs.isMainAlt1MenuEnabled());
   setDisabledStatusForMainMenu("Alt2", eGPrefs.isMainAlt2MenuEnabled());

@@ -211,12 +211,12 @@
     <label id="tooltipsLabel" class="header" />
     <vbox style="margin-left: 1em">
       <checkbox id="activateTooltips" preference="showTooltips"
-        oncommand="setBehaviorTooltipsDisabledStatus(this.checked);" />
+        oncommand="setDisabledStatusForTooltipsActivationDelay(this.checked);" />
       <hbox align="center">
-        <label id="BehaviorTooltipsLabel" />
-        <textbox id="BehaviorTooltipsTextbox" preference="tooltipsDelay"
+        <label id="tooltipsActivationDelayLabel" />
+        <textbox id="tooltipsActivationDelayInput" preference="tooltipsDelay"
           size="3" style="text-align: right" />
-        <label id="BehaviorTooltipsUnit" value="ms" />
+        <label id="tooltipsActivationDelayUnit" value="ms" />
       </hbox>
     </vbox>
     
@@ -235,20 +235,20 @@
     <label id="openLinksThroughPieMenuCenterLabel" class="header" />
     <vbox style="margin-left: 1em">
       <checkbox id="activateOpenLinksThroughPieMenuCenter" preference="handleLinks"
-        oncommand="setBehaviorLinksDisabledStatus(this.checked);" />
+        oncommand="setDisabledStatusForOpenLinksMaximumDelay(this.checked);" />
       <hbox align="center">
-        <label id="BehaviorLinksLabel" />
-        <textbox id="BehaviorLinksTextbox" preference="linksDelay" size="3"
+        <label id="openLinksMaximumDelayLabel" />
+        <textbox id="openLinksMaximumDelayInput" preference="linksDelay" size="3"
           style="text-align: right" />
-        <label id="BehaviorLinksUnit" value="ms" />
+        <label id="openLinksMaximumDelayUnit" value="ms" />
       </hbox>
       <hbox>
-        <radiogroup id="BehaviorLinksRadiogroup"
+        <radiogroup id="openLinksThroughPieMenuCenterConfiguration"
           preference="handleLinksAsOpenLink">
           <hbox align="center">
             <radio id="openLinksWithOpenLinkAction" value="true" />
             <separator orient="vertical" />
-            <label id="configureActionLabel" class="text-link" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('otherActionsCustomizationsTab'));" />
+            <label id="configureActionLabel" class="text-link" onclick="document.getElementById('eG_optionsWindow').showPane(document.getElementById('customizationsPane')); var tabbox = document.getElementById('customizationsTabboxes'); tabbox.selectedIndex = tabbox.tabs.getIndexOfItem(document.getElementById('customizationsForOtherActionsTabLabel'));" />
           </hbox>
           <radio id="openLinksWithBrowserBehavior" value="false" />
         </radiogroup>
@@ -261,12 +261,12 @@
     <label id="autoscrollingLabel" class="header" />
     <vbox style="margin-left: 1em">
       <checkbox id="activateAutoscrolling" preference="autoscrollingOn"
-        oncommand="setBehaviorAutoscrollingDisabledStatus(this.checked);" />
+        oncommand="setDisabledStatusForAutoscrollingActivationDelay(this.checked);" />
       <hbox align="center">
-        <label id="BehaviorAutoscrollingLabel" />
-        <textbox id="BehaviorAutoscrollingTextbox"
+        <label id="autoscrollingActivationDelayLabel" />
+        <textbox id="autoscrollingActivationDelayInput"
           preference="autoscrollingDelay" size="3" style="text-align: right" />
-        <label id="BehaviorAutoscrollingUnit" value="ms" />
+        <label id="autoscrollingActivationDelayUnit" value="ms" />
       </hbox>
     </vbox>
   </prefpane>
@@ -317,7 +317,7 @@
               </tabpanel>
               <tabpanel pack="center">
                 <vbox>
-                  <checkbox id="mainAlternative1Checkbox"
+                  <checkbox id="enableMainAlt1Menu"
                     preference="mainAlt1Enabled"
                     oncommand="setDisabledStatusForMainMenu('Alt1', this.checked);" />
                   <vbox id="gr_mainAlt1" preference-editable="true"
@@ -328,7 +328,7 @@
               </tabpanel>
               <tabpanel pack="center">
                 <vbox>
-                  <checkbox id="mainAlternative2Checkbox"
+                  <checkbox id="enableMainAlt2Menu"
                     preference="mainAlt2Enabled"
                     oncommand="setDisabledStatusForMainMenu('Alt2', this.checked);" />
                   <vbox id="gr_mainAlt2" preference-editable="true"
@@ -366,7 +366,7 @@
                 </tabpanel>
                 <tabpanel pack="center">
                   <vbox>
-                    <checkbox id="extraAlternative1Checkbox"
+                    <checkbox id="enableExtraAlt1Menu"
                       preference="extraAlt1Enabled"
                       oncommand="setDisabledStatusForExtraMenu('Alt1', this.checked);" />
                     <vbox id="gr_extraAlt1" preference-editable="true"
@@ -377,7 +377,7 @@
                 </tabpanel>
                 <tabpanel pack="center">
                   <vbox>
-                    <checkbox id="extraAlternative2Checkbox"
+                    <checkbox id="enableExtraAlt2Menu"
                       preference="extraAlt2Enabled"
                       oncommand="setDisabledStatusForExtraMenu('Alt2', this.checked);" />
                     <vbox id="gr_extraAlt2" preference-editable="true"
@@ -482,7 +482,7 @@
       <tabs>
         <tab id="customizationsForLoadURLActionsTabLabel" />
         <tab id="customizationsForRunScriptActionsTabLabel" />
-        <tab id="otherActionsCustomizationsTab" />
+        <tab id="customizationsForOtherActionsTabLabel" />
       </tabs>
       <tabpanels>
         <tabpanel>
