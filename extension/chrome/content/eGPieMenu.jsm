@@ -62,7 +62,7 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   }
   this.actions = actionsPrefs;
   this.labels = actionsPrefs.map(function(actionName) {
-    return eGActions[actionName].getLabel();
+    return eGActions[actionName].getTooltipLabel();
   });
   
   // half the angle reserved for a sector (in radians)

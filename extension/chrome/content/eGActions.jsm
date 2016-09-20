@@ -91,12 +91,12 @@ Action.prototype = {
     return false;
   },
   
-  getLabel: function() {
+  getTooltipLabel: function() {
     return eGStrings.getString(this._name);
   },
   
   getLocalizedActionName: function() {
-    return this.getLabel();
+    return this.getTooltipLabel();
   },
   
   setActionStatusOn: function() {},
@@ -335,7 +335,7 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
 }
 NumberedAction.prototype = Object.create(DisableableAction.prototype);
 NumberedAction.prototype.constructor = NumberedAction;
-NumberedAction.prototype.getLabel = function() {
+NumberedAction.prototype.getTooltipLabel = function() {
   var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
   var label = prefValue[0];
   if (label !== "") {
