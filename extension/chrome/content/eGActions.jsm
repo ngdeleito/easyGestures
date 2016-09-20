@@ -95,10 +95,6 @@ Action.prototype = {
     return eGStrings.getString(this._name);
   },
   
-  getXULLabel: function(document) {
-    return document.getElementById("easyGesturesNStrings").getString(this._name);
-  },
-  
   getLocalizedActionName: function() {
     return this.getLabel();
   },
@@ -170,8 +166,8 @@ function EmptyAction(startsNewGroup, nextAction) {
 }
 EmptyAction.prototype = Object.create(Action.prototype);
 EmptyAction.prototype.constructor = EmptyAction;
-EmptyAction.prototype.getXULLabel = function(document) {
-  return document.getElementById("easyGesturesNStrings").getString("emptyActionName");
+EmptyAction.prototype.getLocalizedActionName = function() {
+  return eGStrings.getString("emptyActionName");
 };
 
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
@@ -201,9 +197,6 @@ function ReloadAction(startsNewGroup, nextAction) {
 }
 ReloadAction.prototype = Object.create(Action.prototype);
 ReloadAction.prototype.constructor = ReloadAction;
-ReloadAction.prototype.getXULLabel = function(document) {
-  return document.getElementById("easyGesturesNStrings").getString("reloadActionName");
-};
 ReloadAction.prototype.getLocalizedActionName = function() {
   return eGStrings.getString("reloadActionName");
 };

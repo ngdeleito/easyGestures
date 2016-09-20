@@ -122,8 +122,7 @@ function createHeaderForAction(actionName) {
   hbox.appendChild(image);
   
   var label = document.createElement("label");
-  label.setAttribute("value",
-    document.getElementById("easyGesturesNStrings").getString(actionName));
+  label.setAttribute("value", eGStrings.getString(actionName));
   label.setAttribute("style", "font-weight: bold;");
   hbox.appendChild(label);
   
@@ -135,8 +134,7 @@ function createTooltipRowForAction(actionName) {
   row.setAttribute("align", "center");
   
   var label = document.createElement("label");
-  label.setAttribute("value", document.getElementById("easyGesturesNStrings")
-                                      .getString("customizations.tooltip"));
+  label.setAttribute("value", eGStrings.getString("customizations.tooltip"));
   row.appendChild(label);
   
   var textbox = document.createElement("textbox");
@@ -176,8 +174,7 @@ function createLoadURLActions() {
     row.setAttribute("align", "center");
     
     var label = document.createElement("label");
-    label.setAttribute("value", document.getElementById("easyGesturesNStrings")
-                                        .getString("customizations.URL"));
+    label.setAttribute("value", eGStrings.getString("customizations.URL"));
     row.appendChild(label);
     
     var textbox = document.createElement("textbox");
@@ -198,8 +195,7 @@ function createLoadURLActions() {
     var checkbox = document.createElement("checkbox");
     checkbox.setAttribute("id", actionName + "_faviconCheckbox");
     checkbox.setAttribute("label",
-      document.getElementById("easyGesturesNStrings")
-              .getString("customizations.useFavicon"));
+      eGStrings.getString("customizations.useFavicon"));
     addEventListenerToLoadURLFavicon(checkbox, actionName);
     hbox.appendChild(checkbox);
     
@@ -227,8 +223,7 @@ function createLoadURLActions() {
     checkbox = document.createElement("checkbox");
     checkbox.setAttribute("id", actionName + "_openInPrivateWindowCheckbox");
     checkbox.setAttribute("label",
-      document.getElementById("easyGesturesNStrings")
-              .getString("customizations.openInPrivateWindow"));
+      eGStrings.getString("customizations.openInPrivateWindow"));
     addEventListenerToLoadURLOpenInPrivateWindow(checkbox, actionName);
     hbox.appendChild(checkbox);
     
@@ -268,8 +263,7 @@ function createRunScriptActions() {
     row.setAttribute("align", "baseline");
     
     var label = document.createElement("label");
-    label.setAttribute("value", document.getElementById("easyGesturesNStrings")
-                                        .getString("customizations.code"));
+    label.setAttribute("value", eGStrings.getString("customizations.code"));
     row.appendChild(label);
     
     var textbox = document.createElement("textbox");
@@ -292,8 +286,7 @@ function createRunScriptActions() {
     var checkbox = document.createElement("checkbox");
     checkbox.setAttribute("id", actionName + "_newIconCheckbox");
     checkbox.setAttribute("label",
-      document.getElementById("easyGesturesNStrings")
-              .getString("customizations.changeIcon"));
+      eGStrings.getString("customizations.changeIcon"));
     addEventListenerToRunScriptNewIcon(checkbox, actionName);
     hbox.appendChild(checkbox);
     
@@ -495,11 +488,13 @@ function createActionsPopupList() {
     
     itemNode.setAttribute("actionName", currentAction);
     itemNode.setAttribute("crop", "end");
-    itemNode.setAttribute("label", eGActions[currentAction].getXULLabel(document));
+    itemNode.setAttribute("label",
+      eGActions[currentAction].getLocalizedActionName());
     itemNode.style.paddingRight = "20px";
     imageNode.setAttribute("class", "eG_" + currentAction);
     
-    subItemNode.setAttribute("value", eGActions[currentAction].getXULLabel(document));
+    subItemNode.setAttribute("value",
+      eGActions[currentAction].getLocalizedActionName());
     popupNode.appendChild(itemNode);
     
     currentAction = eGActions[currentAction].nextAction;
@@ -580,8 +575,7 @@ function importPrefs() {
       if (exception.prefs !== undefined) {
         nonImportedPreferences += " " + exception.prefs;
       }
-      alert(document.getElementById("easyGesturesNStrings")
-                    .getString("general.prefs.import." + exception.code) +
+      alert(eGStrings.getString("general.prefs.import." + exception.code) +
             nonImportedPreferences);
     }
     converterInputStream.close();
@@ -879,7 +873,7 @@ function readActionsGroupPreference(name) {
   actionNames.forEach(function(value, index) {
     var element = document.getElementById(name + "Sector" + index);
     element.setAttribute("actionName", value);
-    element.setAttribute("label", eGActions[value].getXULLabel(document));
+    element.setAttribute("label", eGActions[value].getLocalizedActionName());
   });
 }
 
@@ -965,8 +959,7 @@ function resetOnDuplicatedKeys(aRadiogroup) {
   if ((showKey !== "0" && (showKey === preventOpenKey || showKey === contextKey)) ||
       (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
     aRadiogroup.value = "0";
-    alert(document.getElementById("easyGesturesNStrings")
-                  .getString("activation.duplicateKey"));
+    alert(eGStrings.getString("activation.duplicateKey"));
   }
 }
 

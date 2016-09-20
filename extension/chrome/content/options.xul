@@ -52,12 +52,7 @@
   onload="initMenuDialog();"
   buttons="accept,cancel,disclosure"
   ondialogdisclosure="eGUtils.showOrOpenTab('chrome://easygestures/content/tips.html', true);">
-
-  <stringbundleset>
-    <stringbundle id="easyGesturesNStrings"
-      src="chrome://easygestures/locale/easygestures.properties" />
-  </stringbundleset>
-
+  
   <prefpane
     id="generalPane"
     image="chrome://easygestures/content/profile.png">
