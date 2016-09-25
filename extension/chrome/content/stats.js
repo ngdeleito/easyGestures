@@ -179,24 +179,15 @@ function fillActions(statsActions, totalClicks) {
 
 function statsLoadHandler() {
   eGUtils.setDocumentTitle(document, "stats");
-  document.getElementById("lastResetLabel").textContent =
-    eGStrings.getString("stats.lastReset");
-  document.getElementById("clicksByActionsLabel").textContent =
-    eGStrings.getString("stats.actions");
-  document.getElementById("clicksByDirectionsLabel").textContent =
-    eGStrings.getString("stats.directions");
-  document.getElementById("mainMenuLabel").textContent =
-    eGStrings.getString("menus.main");
-  document.getElementById("primaryMenuLabel").textContent =
-    eGStrings.getString("menus.primary");
-  document.getElementById("alt1MenuLabel").textContent =
-    eGStrings.getString("menus.alternative1");
-  document.getElementById("alt2MenuLabel").textContent =
-    eGStrings.getString("menus.alternative2");
-  document.getElementById("allMenusLabel").textContent =
-    eGStrings.getString("stats.allMenus");
-  document.getElementById("extraMenuLabel").textContent =
-    eGStrings.getString("menus.extra");
+  eGUtils.setDocumentLocalizedStrings(document, new Map([
+    ["lastResetLabel", "stats.lastReset"],
+    ["clicksByActionsLabel", "stats.actions"],
+    ["clicksByDirectionsLabel", "stats.directions"],
+    ["mainMenuLabel", "menus.main"], ["primaryMenuLabel", "menus.primary"],
+    ["alt1MenuLabel", "menus.alternative1"],
+    ["alt2MenuLabel", "menus.alternative2"],
+    ["allMenusLabel", "stats.allMenus"], ["extraMenuLabel", "menus.extra"]
+  ]));
   
   fillMainMenuDirections("primary");
   fillMainMenuDirections("alt1");

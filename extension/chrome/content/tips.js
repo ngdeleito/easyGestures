@@ -90,8 +90,8 @@ function tipsLoadHandler() {
   
   eGUtils.setDocumentTitle(document, "tips");
   setShowTipsCheckbox();
-  document.getElementById("showTipsLabel").textContent =
-    eGStrings.getString("general.startupTips");
+  eGUtils.setDocumentLocalizedStrings(document,
+    new Map([["showTipsLabel", "general.startupTips"]]));
   document.getElementById("previousButton").value =
     eGStrings.getString("tips.previous");
   document.getElementById("nextButton").value =

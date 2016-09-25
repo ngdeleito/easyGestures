@@ -63,5 +63,11 @@ var eGUtils = {
   setDocumentTitle: function(document, titleStringName) {
     document.title = eGStrings.getString(titleStringName) + " " +
                      document.title;
+  },
+  
+  setDocumentLocalizedStrings: function(document, idStringNameMap) {
+    idStringNameMap.forEach(function(stringName, id) {
+      document.getElementById(id).textContent = eGStrings.getString(stringName);
+    });
   }
 };
