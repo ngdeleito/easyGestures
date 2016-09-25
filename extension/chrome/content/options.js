@@ -38,7 +38,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
             preparePreferenceValueForRunScript,
             preparePreferenceValueForDailyReadings, resetOnDuplicatedKeys */
 /* global Components, document, window, Services, eGActions, eGPrefs, eGStrings,
-          PlacesUIUtils, alert */
+          PlacesUIUtils, eGUtils, alert */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
@@ -646,7 +646,7 @@ function initializeDailyReadingsTree() {
 function initMenuDialog() {
   window.setCursor("wait");
   
-  document.title = eGStrings.getString("preferences") + " " + document.title;
+  eGUtils.setDocumentTitle(document, "preferences");
   document.getAnonymousElementByAttribute(document.documentElement, "pane",
     "generalPane").label = eGStrings.getString("general");
   document.getElementById("startupTipsCheckbox").label =

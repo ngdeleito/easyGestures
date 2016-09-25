@@ -34,12 +34,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported tipsLoadHandler, tipsUnloadHandler, tipLinkClick,
             updateShowTipsCheckbox */
-/* global Components, eGStrings, document, eGPrefs, Services, window,
+/* global Components, eGStrings, document, eGPrefs, Services, eGUtils, window,
           removeEventListener */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function tipEntry(label, paneName, tabNumber) {
   this.label = label;
@@ -87,7 +88,7 @@ function tipsLoadHandler() {
   generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
   generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
   
-  document.title = eGStrings.getString("tips") + " " + document.title;
+  eGUtils.setDocumentTitle(document, "tips");
   setShowTipsCheckbox();
   document.getElementById("showTipsLabel").textContent =
     eGStrings.getString("general.startupTips");

@@ -31,11 +31,12 @@ GPL or the LGPL.
 
 
 /* exported statsLoadHandler */
-/* global Components, document, eGPrefs, eGActions, eGStrings */
+/* global Components, document, eGPrefs, eGActions, eGStrings, eGUtils */
 
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
+Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function createRow1(id) {
   var div = document.createElement("div");
@@ -177,7 +178,7 @@ function fillActions(statsActions, totalClicks) {
 }
 
 function statsLoadHandler() {
-  document.title = eGStrings.getString("stats") + " " + document.title;
+  eGUtils.setDocumentTitle(document, "stats");
   document.getElementById("lastResetLabel").textContent =
     eGStrings.getString("stats.lastReset");
   document.getElementById("clicksByActionsLabel").textContent =

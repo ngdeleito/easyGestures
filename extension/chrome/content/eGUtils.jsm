@@ -33,11 +33,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported EXPORTED_SYMBOLS, eGUtils */
-/* global Components, Services */
+/* global Components, Services, eGStrings */
 
 var EXPORTED_SYMBOLS = ["eGUtils"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
+Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 
 var eGUtils = {
   showOrOpenTab: function(aURL, giveFocus) {
@@ -57,5 +58,10 @@ var eGUtils = {
     }
     
     window.focus();
+  },
+  
+  setDocumentTitle: function(document, titleStringName) {
+    document.title = eGStrings.getString(titleStringName) + " " +
+                     document.title;
   }
 };
