@@ -592,7 +592,7 @@ var eGActions = {
   
   closeTab : new DisableableAction("closeTab", function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.removeCurrentTab();
+    window.gBrowser.removeCurrentTab({animate: true, skipPermitUnload: true});
   }, function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     return window.gBrowser.selectedTab.pinned;
