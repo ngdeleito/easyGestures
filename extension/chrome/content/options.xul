@@ -651,7 +651,7 @@
             <separator orient="horizontal" style="height: 2em" />
             
             <hbox align="center">
-              <image class="eG_openLink" />
+              <html:span class="eG_openLink"></html:span>
               <label id="customizeOpenLinkActionLabel" class="header" />
             </hbox>
             <radiogroup preference="openLink" style="margin-left: 1em">
@@ -664,7 +664,7 @@
             <menuseparator />
             
             <hbox align="center">
-              <image class="eG_dailyReadings" />
+              <html:span class="eG_dailyReadings"></html:span>
               <label id="customizeDailyReadingsActionLabel" class="header" />
             </hbox>
             <label id="dailyReadingsFolderSelectionLabel" />

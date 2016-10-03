@@ -117,7 +117,7 @@ function createHeaderForAction(actionName) {
   var hbox = document.createElement("hbox");
   hbox.setAttribute("align", "center");
   
-  var image = document.createElement("image");
+  var image = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
   image.setAttribute("class", "eG_" + actionName);
   hbox.appendChild(image);
   
@@ -480,7 +480,7 @@ function createActionsPopupList() {
     }
     
     itemNode = document.createElement("menuitem");
-    var imageNode = document.createElement("image");
+    var imageNode = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
     var subItemNode = document.createElement("label");
     
     itemNode.appendChild(imageNode);
