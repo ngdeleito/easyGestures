@@ -43,23 +43,19 @@
 </head>
 
 <body onload="tipsLoadHandler();" onunload="tipsUnloadHandler();">
-  
-  <!-- value attributes on input button elements are mandatory -->
-  <input type="button" id="previousButton" value="Previous"
-         onclick="updateTipNbr(-1);" />
+  <button id="previousButton" type="button" onclick="updateTipNbr(-1);">
+  </button>
   <span id="tipNumber"></span>
-  <input type="button" id="nextButton" value="Next"
-         onclick="updateTipNbr(+1);" />
+  <button id="nextButton" type="button" onclick="updateTipNbr(+1);">
+  </button>
   
   <p id="tip"><span id="tipTextBeforeLink">
     </span><a id="tipTextLink" onclick="tipLinkClick();">
     </a><span id="tipTextAfterLink">
   </span></p>
   <div id="tipImage"></div>
-  <label>
-    <input type="checkbox" id="showTipsCheckbox"
-           onclick="updateShowTipsCheckbox();" />
-    <span id="showTipsLabel"></span>
-  </label>
+  <input id="showTipsControl" type="checkbox"
+         onclick="updateShowTipsCheckbox();" />
+  <label id="showTipsLabel" for="showTipsControl"></label>
 </body>
 </html>

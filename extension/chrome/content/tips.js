@@ -80,7 +80,7 @@ var generalPrefBranch;
 var tipNumber;
 
 function setShowTipsCheckbox() {
-  document.getElementById("showTipsCheckbox").checked =
+  document.getElementById("showTipsControl").checked =
     eGPrefs.areStartupTipsOn();
 }
 
@@ -90,12 +90,10 @@ function tipsLoadHandler() {
   
   eGUtils.setDocumentTitle(document, "tips");
   setShowTipsCheckbox();
-  eGUtils.setDocumentLocalizedStrings(document,
-    new Map([["showTipsLabel", "general.startupTips"]]));
-  document.getElementById("previousButton").value =
-    eGStrings.getString("tips.previous");
-  document.getElementById("nextButton").value =
-    eGStrings.getString("tips.next");
+  eGUtils.setDocumentLocalizedStrings(document, new Map([
+    ["previousButton", "tips.previous"], ["nextButton", "tips.next"],
+    ["showTipsLabel", "general.startupTips"]
+  ]));
   try {
     tipNumber = eGPrefs.getTipNumberPref();
   }
