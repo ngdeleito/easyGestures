@@ -1,6 +1,16 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 5.0 (October 11, 2016)
+
+- fixed issues:
+    - when using autoscrolling through the pie menu center the autoscrolling control appeared at the last clicked location instead of at the pie menu center (thanks gamingexpert13 for reporting!)
+    - closeTab action did not always work in Firefox 50+
+- replaced XUL-based tips and stats dialogs with HTML-based pages
+- got rid of DTD localization files
+- minor improvements in the tips, stats and preferences dialogs
+
+
 Version 4.14 (July 14, 2016)
 
 - exporting and importing preferences is again possible (importing is however backwards incompatible with the file format used by the original easyGestures)
