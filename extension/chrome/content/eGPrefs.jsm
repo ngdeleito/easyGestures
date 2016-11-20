@@ -401,7 +401,7 @@ var eGPrefs = {
   },
   
   setTipNumberPref : function(anInteger) {
-    return this._prefs.setIntPref("general.tipNumber", anInteger);
+    this._prefs.setIntPref("general.tipNumber", anInteger);
   },
   
   getShowButtonPref : function() {
