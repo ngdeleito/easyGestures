@@ -168,7 +168,7 @@ var eGMessageListeners = {
     }
     else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
       if (eGPieMenu.sector !== -1) {
-        eGPieMenu.runAction();
+        window.setTimeout(function() { eGPieMenu.runAction(); });
       }
       else {
         eGPieMenu.setOpen();
@@ -181,7 +181,7 @@ var eGMessageListeners = {
       }
       else {
         if (eGPieMenu.sector !== -1) {
-          eGPieMenu.runAction();
+          window.setTimeout(function() { eGPieMenu.runAction(); });
         }
         else {
           eGPieMenu.close();
