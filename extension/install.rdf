@@ -48,6 +48,7 @@
     </em:localized>
     
     <!-- Front End Integration Hooks (used by Extension Manager)-->
-    <em:optionsURL>chrome://easygestures/content/options.xul</em:optionsURL>
+    <em:optionsType>3</em:optionsType>
+    <em:optionsURL>chrome://easygestures/content/options.html</em:optionsURL>
   </Description>
 </RDF>

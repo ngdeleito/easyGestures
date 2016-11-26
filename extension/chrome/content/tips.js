@@ -34,43 +34,41 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported tipsLoadHandler, tipsUnloadHandler, tipLinkClick,
             updateShowTipsCheckbox */
-/* global Components, eGStrings, document, eGPrefs, Services, eGUtils, window,
-          removeEventListener */
+/* global Components, eGStrings, document, eGPrefs, Services, eGUtils */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
-function tipEntry(label, paneName, tabNumber) {
+function tipEntry(label, hash) {
   this.label = label;
   this.imageClass = label.slice("tips.".length);
-  this.paneName = paneName;
-  this.tabNumber = tabNumber;
+  this.hash = hash;
 }
 
 var tips = [
-  new tipEntry("tips.openButton",                "activation",     undefined),
-  new tipEntry("tips.dragToAction",              ""          ,     undefined),
-  new tipEntry("tips.openAltMenu",               "activation",     undefined),
-  new tipEntry("tips.menusCustomization",        "menus",          "0"),
-  new tipEntry("tips.openExtraMenu",             "",               undefined),
-  new tipEntry("tips.clickOnLink",               "behavior",       undefined),
-  new tipEntry("tips.tooltips",                  "behavior",       undefined),
-  new tipEntry("tips.searchWebAction",           "",               undefined),
-  new tipEntry("tips.backAndForwardSiteActions", "",               undefined),
-  new tipEntry("tips.loadURLActions",            "customizations", "0"),
-  new tipEntry("tips.advancedLoadURLActions",    "customizations", "0"),
-  new tipEntry("tips.runScriptActions",          "customizations", "1"),
-  new tipEntry("tips.contextualMenus",           "activation",     undefined),
-  new tipEntry("tips.preventOpen",               "activation",     undefined),
-  new tipEntry("tips.moveMenu",                  "",               undefined),
-  new tipEntry("tips.smallIcons",                "behavior",       undefined),
-  new tipEntry("tips.largeMenu",                 "behavior",       undefined),
-  new tipEntry("tips.autoscrolling",             "behavior",       undefined),
-  new tipEntry("tips.zoomOnImage",               "",               undefined),
-  new tipEntry("tips.openLinkAction",            "customizations", "2"),
-  new tipEntry("tips.dailyReadingsAction",       "customizations", "2")
+  new tipEntry("tips.openButton",                "activation"),
+  new tipEntry("tips.dragToAction",              ""),
+  new tipEntry("tips.openAltMenu",               "activation"),
+  new tipEntry("tips.menusCustomization",        "menus"),
+  new tipEntry("tips.openExtraMenu",             ""),
+  new tipEntry("tips.clickOnLink",               "behavior"),
+  new tipEntry("tips.tooltips",                  "behavior"),
+  new tipEntry("tips.searchWebAction",           ""),
+  new tipEntry("tips.backAndForwardSiteActions", ""),
+  new tipEntry("tips.loadURLActions",            "customizations"),
+  new tipEntry("tips.advancedLoadURLActions",    "customizations"),
+  new tipEntry("tips.runScriptActions",          "customizations_runScriptActions"),
+  new tipEntry("tips.contextualMenus",           "activation"),
+  new tipEntry("tips.preventOpen",               "activation"),
+  new tipEntry("tips.moveMenu",                  ""),
+  new tipEntry("tips.smallIcons",                "behavior"),
+  new tipEntry("tips.largeMenu",                 "behavior"),
+  new tipEntry("tips.autoscrolling",             "behavior"),
+  new tipEntry("tips.zoomOnImage",               ""),
+  new tipEntry("tips.openLinkAction",            "customizations_otherActions"),
+  new tipEntry("tips.dailyReadingsAction",       "customizations_otherActions")
 ];
 tips.forEach(function(tip) {
   tip.description = eGStrings.getString(tip.label);
@@ -138,40 +136,10 @@ function updateTipNbr(step) {
   updateContent(tipNumber);
 }
 
-function showPaneAndTabOn(paneName, tabNumber, doc) {
-  var pane = doc.getElementById(paneName + "Pane");
-  doc.getElementById("eG_optionsWindow").showPane(pane);
-  if (tabNumber !== undefined) {
-    var tabbox = doc.getElementById(paneName + "Tabboxes");
-    tabbox.selectedIndex = tabNumber;
-  }
-}
-
-function openPreferencesWith(paneName, tabNumber) {
-  var winenum = Services.wm.getEnumerator("");
-  var found = false;
-  var win;
-  while (winenum.hasMoreElements() && !found) {
-    win = winenum.getNext();
-    found = win.location.toString() === "chrome://easygestures/content/options.xul";
-  }
-  if (!found) {
-    win = window.openDialog("chrome://easygestures/content/options.xul", "", "");
-    win.addEventListener("load", function runOnLoad() {
-      removeEventListener("load", runOnLoad, false);
-      showPaneAndTabOn(paneName, tabNumber, win.document);
-    }, false);
-  }
-  else {
-    showPaneAndTabOn(paneName, tabNumber, win.document);
-    win.focus();
-  }
-}
-
 function tipLinkClick() {
-  var paneName = tips[tipNumber].paneName;
-  var tabNumber = tips[tipNumber].tabNumber;
-  openPreferencesWith(paneName, tabNumber);
+  var hash = tips[tipNumber].hash;
+  eGUtils.showOrOpenTab("chrome://easygestures/content/options.html" +
+                        (hash === "" ? "" : "#" + hash), true);
 }
 
 function updateShowTipsCheckbox() {

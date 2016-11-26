@@ -59,6 +59,12 @@ var eGPrefsObserver = {
   },
 
   observe: function() {
+    if (eGPieMenu.isShown()) {
+      // we properly close an open menu in case e.g. the showAltButton
+      // preference has been updated through the custom mouse button option
+      eGPieMenu.close();
+    }
+    
     // removing existing easyGestures menus from open web pages
     eGPieMenu.removeFromAllPages();
     

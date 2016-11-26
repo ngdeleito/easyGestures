@@ -31,14 +31,14 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-/* exported preventCloseOnEnter, exportPrefs, importPrefs, initMenuDialog,
-            saveAllPreferences, preparePreferenceValueForNormalMenu,
-            preparePreferenceValueForExtraMenu,
-            preparePreferenceValueForLoadURL,
-            preparePreferenceValueForRunScript,
-            preparePreferenceValueForDailyReadings, resetOnDuplicatedKeys */
+
+/* exported optionsLoadHandler, optionsHashChangeHandler, optionsUnloadHandler,
+            importPrefs, exportPrefs, resetPrefs, resetStats,
+            initializeDailyReadingsTree,
+            preparePreferenceValueForDailyReadings, fireChangeEventOn,
+            updateTextInputElement, openOptionsDailyReadings */
 /* global Components, document, window, Services, eGActions, eGPrefs, eGStrings,
-          PlacesUIUtils, eGUtils, alert */
+          PlacesUIUtils, eGUtils, confirm, alert */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
@@ -46,43 +46,464 @@ Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
 Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
-function addEventListenerToTooltip(element, actionName) {
+const DEFAULT_FAVICON_URL = "chrome://easygestures/content/defaultFavicon.svg";
+
+var prefsObserver = {
+  register: function() {
+    this._branch = Services.prefs.getBranch("extensions.easygestures.");
+    this._branch.addObserver("general.startupTips", this, false);
+    this._branch.addObserver("activation.", this, false);
+    this._branch.addObserver("behavior.", this, false);
+    this._branch.addObserver("menus.", this, false);
+    this._branch.addObserver("customizations.", this, false);
+  },
+  
+  unregister: function() {
+    this._branch.removeObserver("general.startupTips", this);
+    this._branch.removeObserver("activation.", this);
+    this._branch.removeObserver("behavior.", this);
+    this._branch.removeObserver("menus.", this);
+    this._branch.removeObserver("customizations.", this);
+  },
+  
+  observe: function(aSubject, aTopic, aData) {
+    if (aData === "customizations.dailyReadingsFolderID") {
+      return ;
+    }
+    var prefControl =
+          document.querySelector("[data-preference='" + aData + "']");
+    initializePreferenceControl(prefControl);
+    setPreferenceControlsDisabledStatus();
+  }
+};
+
+function initializePaneAndTabs(hash) {
+  function selectTab(hash) {
+    document.getElementById(hash + "_label").className = "selectedTabLabel";
+    document.getElementById(hash).classList.add("selected");
+  }
+  
+  function selectSubtabs(anElement) {
+    let container = anElement;
+    let finished = false;
+    while (!finished) {
+      let tabboxes = container.getElementsByClassName("tabbox");
+      if (tabboxes.length > 0) {
+        let tabbox = tabboxes[0];
+        if (tabbox.getElementsByClassName("selectedTabLabel").length === 0) {
+          selectTab(tabbox.firstElementChild.hash.substr(1));
+        }
+        container =
+          document.getElementById(tabbox.firstElementChild.hash.substr(1));
+      }
+      else {
+        finished = true;
+      }
+    }
+  }
+  
+  document.location.hash = hash === "" ? "#general" : hash;
+  
+  var locationHash = document.location.hash.substr(1);
+  var locationHashArray = locationHash.split("_");
+  document.getElementById(locationHashArray[0] + "_label").className =
+    "selectedPaneLabel";
+  var selectedPane = document.getElementById(locationHashArray[0]);
+  selectedPane.classList.add("selected");
+  
+  switch (locationHashArray.length) {
+    case 1:
+      selectSubtabs(selectedPane);
+      break;
+    case 2:
+      selectTab(locationHash);
+      selectSubtabs(document.getElementById(locationHash));
+      break;
+    case 3:
+      selectTab(locationHashArray[0] + "_" + locationHashArray[1]);
+      selectTab(locationHash);
+      break;
+  }
+}
+
+function initializePreferenceControl(control) {
+  function initializeSelectWithTextInputControl(control) {
+    var prefValue = eGPrefs.getIntPref(control.dataset.preference);
+    var aSelectElement = control.firstElementChild;
+    var aLabelElement = aSelectElement.nextElementSibling;
+    var aTextInputElement = aLabelElement.nextElementSibling;
+    aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
+    aTextInputElement.value = prefValue;
+    var shouldBeDisabled = prefValue < 3;
+    aLabelElement.classList.toggle("disabled", shouldBeDisabled);
+    aTextInputElement.disabled = shouldBeDisabled;
+  }
+  
+  function initializeIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
+    var prefValue = eGPrefs.getIntPref(control.dataset.preference);
+    control.querySelector("input[value='" + prefValue + "']").checked = true;
+  }
+  
+  function initializeBoolRadiogroupControl(control) {
+    var prefValue = eGPrefs.getBoolPref(control.dataset.preference);
+    var childIndexToSet = prefValue ? 1 : 0;
+    control.getElementsByTagName("input")[childIndexToSet].checked = true;
+  }
+  
+  function initializeMenuControl(control) {
+    var prefValue = eGPrefs.getMenuPrefAsArray(control.dataset.preference);
+    var menuPrefix = control.dataset.preference.replace("menus.", "");
+    prefValue.forEach(function(value, index) {
+      document.getElementById(menuPrefix + "Sector" + index)
+              .querySelector("[value=" + value + "]").selected = true;
+    });
+  }
+  
+  function initializeSelectControl(control) {
+    var prefValue = eGPrefs.getCharPref(control.dataset.preference);
+    control.querySelector("[value=" + prefValue + "]").selected = true;
+  }
+  
+  function initializeStringRadiogroup(control) {
+    var prefValue = eGPrefs.getCharPref(control.dataset.preference);
+    control.querySelector("[value=" + prefValue + "]").checked = true;
+  }
+  
+  switch (control.dataset.preferenceType) {
+    case "checkboxInput":
+      control.checked = eGPrefs.getBoolPref(control.dataset.preference);
+      break;
+    case "selectWithTextInput":
+      initializeSelectWithTextInputControl(control);
+      break;
+    case "intRadiogroupWithResetOnDuplicatedKeys":
+      initializeIntRadiogroupWithResetOnDuplicatedKeysControl(control);
+      break;
+    case "boolRadiogroup":
+      initializeBoolRadiogroupControl(control);
+      break;
+    case "numberInput":
+      control.value = eGPrefs.getIntPref(control.dataset.preference);
+      break;
+    case "menu":
+      initializeMenuControl(control);
+      break;
+    case "select":
+      initializeSelectControl(control);
+      break;
+    case "loadURL":
+      readLoadURLPreference(control.id);
+      break;
+    case "runScript":
+      readRunScriptPreference(control.id);
+      break;
+    case "stringRadiogroup":
+      initializeStringRadiogroup(control);
+      break;
+  }
+}
+
+function addOnchangeListenerToPreferenceControl(control) {
+  function addOnchangeListenerToSelectWithTextInputControl(control) {
+    var aSelectElement = control.firstElementChild;
+    var aTextInputElement = control.lastElementChild;
+    aSelectElement.addEventListener("change", function() {
+      let shouldBeDisabled = aSelectElement.selectedIndex < 3;
+      let aLabelElement = aSelectElement.nextElementSibling;
+      aLabelElement.classList.toggle("disabled", shouldBeDisabled);
+      aTextInputElement.disabled = shouldBeDisabled;
+      
+      if (shouldBeDisabled) {
+        aTextInputElement.value = aSelectElement.selectedIndex;
+        eGPrefs.setIntPref(control.dataset.preference,
+                           aSelectElement.selectedIndex);
+      }
+      else {
+        aTextInputElement.focus();
+      }
+    }, true);
+    aTextInputElement.addEventListener("change", function(anEvent) {
+      eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
+    }, true);
+  }
+  
+  function addOnchangeListenerToIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
+    function onchangeHandler(anEvent) {
+      writeOrResetPrefOnDuplicatedKeys(anEvent, control.dataset.preference);
+    }
+    
+    var radioElements = control.getElementsByTagName("input");
+    for (let i = 0; i < radioElements.length; ++i) {
+      radioElements[i].addEventListener("change", onchangeHandler, true);
+    }
+  }
+  
+  function addOnchangeListenerToBoolRadiogroupControl(control) {
+    function onchangeHandler(anEvent) {
+      eGPrefs.setBoolPref(control.dataset.preference,
+                          anEvent.target.value === "true");
+    }
+    
+    var radioElements = control.getElementsByTagName("input");
+    for (let i = 0; i < radioElements.length; ++i) {
+      radioElements[i].addEventListener("change", onchangeHandler, true);
+    }
+  }
+  
+  function addOnchangeListenerToMenuControl(control) {
+    function onchangeHandler() {
+      var menuName = control.dataset.preference.replace("menus.", "");
+      var menuIndexes = menuName.startsWith("extra") ?
+                          [0, 1, 2, 3, 4] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+      var prefValueAsArray = menuIndexes.map(function(value) {
+        return document.getElementById(menuName + "Sector" + value).value;
+      });
+      
+      eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
+    }
+    
+    var selectElements = control.getElementsByTagName("select");
+    for (let i = 0; i < selectElements.length; ++i) {
+      selectElements[i].addEventListener("change", onchangeHandler, true);
+    }
+  }
+  
+  function addOnchangeListenerToLoadURLControl(control) {
+    addEventListenerToLoadURLTooltip(control.dataset.preference,
+      document.getElementById(control.id + "_tooltip"), control.id);
+    addEventListenerToLoadURLURL(control.dataset.preference,
+      document.getElementById(control.id + "_URL"), control.id);
+    addEventListenerToLoadURLFavicon(control.dataset.preference,
+      document.getElementById(control.id + "_faviconCheckbox"), control.id);
+    addEventListenerToLoadURLOpenInPrivateWindow(control.dataset.preference,
+      document.getElementById(control.id + "_openInPrivateWindowCheckbox"),
+      control.id);
+  }
+  
+  function addOnchangeListenerToRunScriptControl(control) {
+    addEventListenerToRunScriptTooltip(control.dataset.preference,
+      document.getElementById(control.id + "_tooltip"), control.id);
+    addEventListenerToRunScriptCode(control.dataset.preference,
+      document.getElementById(control.id + "_code"), control.id);
+    addEventListenerToRunScriptNewIcon(control.dataset.preference,
+      document.getElementById(control.id + "_newIconCheckbox"), control.id);
+  }
+  
+  function addOnchangeListenerToStringRadiogroupControl(control) {
+    function onchangeHandler(anEvent) {
+      eGPrefs.setCharPref(control.dataset.preference, anEvent.target.value);
+    }
+    
+    var radioElements = control.getElementsByTagName("input");
+    for (let i = 0; i < radioElements.length; ++i) {
+      radioElements[i].addEventListener("change", onchangeHandler, true);
+    }
+  }
+  
+  switch (control.dataset.preferenceType) {
+    case "checkboxInput":
+      control.addEventListener("change", function() {
+        eGPrefs.toggleBoolPref(control.dataset.preference);
+      }, true);
+      break;
+    case "selectWithTextInput":
+      addOnchangeListenerToSelectWithTextInputControl(control);
+      break;
+    case "intRadiogroupWithResetOnDuplicatedKeys":
+      addOnchangeListenerToIntRadiogroupWithResetOnDuplicatedKeysControl(control);
+      break;
+    case "boolRadiogroup":
+      addOnchangeListenerToBoolRadiogroupControl(control);
+      break;
+    case "numberInput":
+      control.addEventListener("change", function() {
+        eGPrefs.setIntPref(control.dataset.preference, control.value);
+      }, true);
+      break;
+    case "menu":
+      addOnchangeListenerToMenuControl(control);
+      break;
+    case "select":
+      control.addEventListener("change", function() {
+        eGPrefs.setCharPref(control.dataset.preference, control.value);
+      }, true);
+      break;
+    case "loadURL":
+      addOnchangeListenerToLoadURLControl(control);
+      break;
+    case "runScript":
+      addOnchangeListenerToRunScriptControl(control);
+      break;
+    case "stringRadiogroup":
+      addOnchangeListenerToStringRadiogroupControl(control);
+      break;
+  }
+}
+
+function setPreferenceControlsDisabledStatus() {
+  setMenuType(eGPrefs.isLargeMenuOff());
+  setDisabledStatusForTooltipsActivationDelay(!eGPrefs.areTooltipsOn());
+  setDisabledStatusForOpenLinksMaximumDelay(!eGPrefs.isHandleLinksOn());
+  setDisabledStatusForAutoscrollingActivationDelay(!eGPrefs.isAutoscrollingOn());
+  setDisabledStatusForMainMenu("Alt1", eGPrefs.isMainAlt1MenuEnabled());
+  setDisabledStatusForMainMenu("Alt2", eGPrefs.isMainAlt2MenuEnabled());
+  setDisabledStatusForExtraMenu("Alt1", eGPrefs.isExtraAlt1MenuEnabled());
+  setDisabledStatusForExtraMenu("Alt2", eGPrefs.isExtraAlt2MenuEnabled());
+}
+
+function loadPreferences(isReload) {
+  var prefControls = document.querySelectorAll("[data-preference]");
+  for (let i=0; i < prefControls.length; ++i) {
+    initializePreferenceControl(prefControls[i]);
+    if (!isReload) {
+      addOnchangeListenerToPreferenceControl(prefControls[i]);
+    }
+  }
+  setPreferenceControlsDisabledStatus();
+}
+
+function optionsLoadHandler() {
+  document.body.style.cursor = "wait";
+  prefsObserver.register();
+  
+  eGUtils.setDocumentTitle(document, "preferences");
+  var elements = document.querySelectorAll("[data-l10n]");
+  for (let i=0; i < elements.length; ++i) {
+    elements[i].textContent = eGStrings.getString(elements[i].dataset.l10n);
+  }
+  
+  createActions();
+  createLoadURLActions();
+  createRunScriptActions();
+  
+  initializePaneAndTabs(document.location.hash);
+  loadPreferences(false);
+  
+  window.setTimeout(function() { window.scrollTo(0, 0); });
+  document.body.style.cursor = "auto";
+}
+
+function unselectCurrentPane() {
+  var selectedPaneLabelElement =
+        document.getElementsByClassName("selectedPaneLabel")[0];
+  if (selectedPaneLabelElement !== undefined) {
+    selectedPaneLabelElement.removeAttribute("class");
+    document.getElementById(selectedPaneLabelElement.hash.substr(1))
+            .classList.remove("selected");
+  }
+}
+
+function unselectCurrentTab(oldHash) {
+  function unselectTab(aTabLabel) {
+    aTabLabel.removeAttribute("class");
+    document.getElementById(aTabLabel.hash.substr(1)).classList
+            .remove("selected");
+  }
+  
+  function unselectSubTabs(hash) {
+    let container = document.getElementById(hash);
+    let finished = false;
+    while (!finished) {
+      let tabboxes = container.getElementsByClassName("tabbox");
+      if (tabboxes.length > 0) {
+        let tabLabel =
+              tabboxes[0].getElementsByClassName("selectedTabLabel")[0];
+        unselectTab(tabLabel);
+        container = document.getElementById(tabLabel.hash.substr(1));
+      }
+      else {
+        finished = true;
+      }
+    }
+  }
+  
+  var oldHashArray = oldHash.split("_");
+  switch (oldHashArray.length) {
+    case 1:
+      unselectSubTabs(oldHash);
+      break;
+    case 2:
+      unselectSubTabs(oldHash);
+      unselectTab(document.getElementById(oldHash + "_label"));
+      break;
+    case 3:
+      unselectSubTabs(oldHashArray[0] + "_" + oldHashArray[1]);
+      unselectTab(document.getElementById(oldHashArray[0] + "_" +
+                  oldHashArray[1] + "_label"));
+      break;
+  }
+}
+
+function optionsHashChangeHandler(anEvent) {
+  unselectCurrentPane();
+  if (anEvent.oldURL.split("#")[1] !== undefined) {
+    unselectCurrentTab(anEvent.oldURL.split("#")[1]);
+  }
+  initializePaneAndTabs(document.location.hash);
+  window.scrollTo(0, 0);
+}
+
+function optionsUnloadHandler() {
+  prefsObserver.unregister();
+}
+
+function resetPrefs() {
+  if (confirm(eGStrings.getString("general.prefs.reset"))) {
+    eGPrefs.setDefaultSettings();
+    loadPreferences(true);
+  }
+}
+
+function addEventListenerToLoadURLTooltip(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    fireChangeEventOnElementWithID(actionName);
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
-function addEventListenerToLoadURLURL(element, actionName) {
+function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     if (document.getElementById(actionName + "_faviconCheckbox").checked) {
       addFavicon(this.value, actionName);
     }
-    fireChangeEventOnElementWithID(actionName);
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
-function addEventListenerToLoadURLFavicon(element, actionName) {
-  element.addEventListener("command", function() {
+function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
+  element.addEventListener("change", function() {
     if (this.checked) {
       addFavicon(document.getElementById(actionName + "_URL").value,
-                      actionName);
+                 actionName);
     }
     else {
-      document.getElementById(actionName + "_favicon").src = "";
+      document.getElementById(actionName + "_favicon").src =
+        DEFAULT_FAVICON_URL;
     }
-    fireChangeEventOnElementWithID(actionName);
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
-function addEventListenerToLoadURLOpenInPrivateWindow(element, actionName) {
-  element.addEventListener("command", function() {
-    fireChangeEventOnElementWithID(actionName);
+function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, actionName) {
+  element.addEventListener("change", function() {
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   });
 }
 
-function addEventListenerToRunScriptCode(element, actionName) {
+function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    fireChangeEventOnElementWithID(actionName);
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForRunScript(actionName));
+  }, false);
+}
+
+function addEventListenerToRunScriptCode(aPrefName, element, actionName) {
+  element.addEventListener("change", function() {
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForRunScript(actionName));
   }, false);
 }
 
@@ -101,237 +522,168 @@ function retrieveCustomIconFile(actionName) {
   return returnedOK;
 }
 
-function addEventListenerToRunScriptNewIcon(element, actionName) {
-  element.addEventListener("command", function() {
+function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
+  element.addEventListener("change", function() {
     if (this.checked) {
       this.checked = retrieveCustomIconFile(actionName);
     }
     else {
-      document.getElementById(actionName + "_newIcon").src = "";
+      document.getElementById(actionName + "_newIcon").src =
+        DEFAULT_FAVICON_URL;
     }
-    fireChangeEventOnElementWithID(actionName);
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForRunScript(actionName));
   }, false);
 }
 
 function createHeaderForAction(actionName) {
-  var hbox = document.createElement("hbox");
-  hbox.setAttribute("align", "center");
+  var h1 = document.createElement("h1");
   
-  var image = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
-  image.setAttribute("class", "eG_" + actionName);
-  hbox.appendChild(image);
+  var span = document.createElement("span");
+  span.className = "eG_" + actionName;
+  h1.appendChild(span);
   
-  var label = document.createElement("label");
-  label.setAttribute("value", eGStrings.getString(actionName));
-  label.setAttribute("style", "font-weight: bold;");
-  hbox.appendChild(label);
+  span = document.createElement("span");
+  span.textContent = eGStrings.getString(actionName);
+  h1.appendChild(span);
   
-  return hbox;
+  return h1;
 }
 
 function createTooltipRowForAction(actionName) {
-  var row = document.createElement("row");
-  row.setAttribute("align", "center");
+  var tr = document.createElement("tr");
   
-  var label = document.createElement("label");
-  label.setAttribute("value", eGStrings.getString("customizations.tooltip"));
-  row.appendChild(label);
+  var th = document.createElement("th");
+  th.textContent = eGStrings.getString("customizations.tooltip");
+  tr.appendChild(th);
   
-  var textbox = document.createElement("textbox");
-  textbox.setAttribute("id", actionName + "_tooltip");
-  textbox.setAttribute("maxlength", "20");
-  textbox.setAttribute("maxwidth", "220");
-  addEventListenerToTooltip(textbox, actionName);
-  row.appendChild(textbox);
+  var td = document.createElement("td");
+  var input = document.createElement("input");
+  input.id = actionName + "_tooltip";
+  input.type = "text";
+  input.size = 20;
+  input.maxLength = 20;
+  td.appendChild(input);
+  tr.appendChild(td);
   
-  return row;
+  return tr;
 }
 
 function createLoadURLActions() {
   for (var i=1; i <= 10; ++i) {
     var actionName = "loadURL" + i;
-    var vbox = document.getElementById(actionName);
-    while (vbox.firstChild !== null) {
-      vbox.removeChild(vbox.firstChild);
-    }
+    var container = document.getElementById(actionName);
+    container.parentElement.insertBefore(createHeaderForAction(actionName),
+                                         container);
     
-    vbox.appendChild(createHeaderForAction(actionName));
+    var table = document.createElement("table");
+    table.appendChild(createTooltipRowForAction(actionName));
     
-    var separator = document.createElement("separator");
-    separator.setAttribute("class", "thin");
-    vbox.appendChild(separator);
+    var tr = document.createElement("tr");
+    var th = document.createElement("th");
+    th.textContent = eGStrings.getString("customizations.URL");
+    tr.appendChild(th);
+    var td = document.createElement("td");
+    var input = document.createElement("input");
+    input.id = actionName + "_URL";
+    input.type = "url";
+    input.size = "50";
+    td.appendChild(input);
+    tr.appendChild(td);
+    table.appendChild(tr);
     
-    var grid = document.createElement("grid");
-    var columns = document.createElement("columns");
-    columns.appendChild(document.createElement("column"));
-    columns.appendChild(document.createElement("column"));
-    grid.appendChild(columns);
-    
-    var rows = document.createElement("rows");
-    rows.appendChild(createTooltipRowForAction(actionName));
-    
-    var row = document.createElement("row");
-    row.setAttribute("align", "center");
-    
+    tr = document.createElement("tr");
+    tr.appendChild(document.createElement("th"));
+    td = document.createElement("td");
+    input = document.createElement("input");
+    input.id = actionName + "_faviconCheckbox";
+    input.type = "checkbox";
+    td.appendChild(input);
     var label = document.createElement("label");
-    label.setAttribute("value", eGStrings.getString("customizations.URL"));
-    row.appendChild(label);
+    label.htmlFor = input.id;
+    label.textContent = eGStrings.getString("customizations.useFavicon");
+    td.appendChild(label);
+    var img = document.createElement("img");
+    img.id = actionName + "_favicon";
+    img.src = DEFAULT_FAVICON_URL;
+    td.appendChild(img);
+    tr.appendChild(td);
+    table.appendChild(tr);
     
-    var textbox = document.createElement("textbox");
-    textbox.setAttribute("id", actionName + "_URL");
-    textbox.setAttribute("size", "50");
-    addEventListenerToLoadURLURL(textbox, actionName);
-    row.appendChild(textbox);
-    rows.appendChild(row);
+    tr = document.createElement("tr");
+    tr.appendChild(document.createElement("th"));
+    td = document.createElement("td");
+    input = document.createElement("input");
+    input.id = actionName + "_openInPrivateWindowCheckbox";
+    input.type = "checkbox";
+    td.appendChild(input);
+    label = document.createElement("label");
+    label.htmlFor = input.id;
+    label.textContent =
+      eGStrings.getString("customizations.openInPrivateWindow");
+    td.appendChild(label);
+    tr.appendChild(td);
+    table.appendChild(tr);
     
-    row = document.createElement("row");
-    row.setAttribute("align", "center");
-    
-    row.appendChild(document.createElement("hbox"));
-    
-    var hbox = document.createElement("hbox");
-    hbox.setAttribute("align", "center");
-    
-    var checkbox = document.createElement("checkbox");
-    checkbox.setAttribute("id", actionName + "_faviconCheckbox");
-    checkbox.setAttribute("label",
-      eGStrings.getString("customizations.useFavicon"));
-    addEventListenerToLoadURLFavicon(checkbox, actionName);
-    hbox.appendChild(checkbox);
-    
-    separator = document.createElement("separator");
-    separator.setAttribute("orient", "vertical");
-    separator.setAttribute("class", "thin");
-    hbox.appendChild(separator);
-    
-    var image = document.createElement("image");
-    image.setAttribute("id", actionName + "_favicon");
-    image.setAttribute("src", "");
-    image.setAttribute("maxwidth", "20");
-    image.setAttribute("maxheight", "20");
-    hbox.appendChild(image);
-    row.appendChild(hbox);
-    rows.appendChild(row);
-    
-    row = document.createElement("row");
-    row.setAttribute("align", "center");
-    
-    row.appendChild(document.createElement("hbox"));
-    
-    hbox = document.createElement("hbox");
-    
-    checkbox = document.createElement("checkbox");
-    checkbox.setAttribute("id", actionName + "_openInPrivateWindowCheckbox");
-    checkbox.setAttribute("label",
-      eGStrings.getString("customizations.openInPrivateWindow"));
-    addEventListenerToLoadURLOpenInPrivateWindow(checkbox, actionName);
-    hbox.appendChild(checkbox);
-    
-    row.appendChild(hbox);
-    rows.appendChild(row);
-    grid.appendChild(rows);
-    vbox.appendChild(grid);
-    
-    readLoadURLPreference(actionName);
+    container.appendChild(table);
   }
 }
 
 function createRunScriptActions() {
   for (var i=1; i <= 10; ++i) {
     var actionName = "runScript" + i;
-    var vbox = document.getElementById(actionName);
-    while (vbox.firstChild !== null) {
-      vbox.removeChild(vbox.firstChild);
-    }
+    var container = document.getElementById(actionName);
+    container.parentElement.insertBefore(createHeaderForAction(actionName),
+                                         container);
     
-    vbox.appendChild(createHeaderForAction(actionName));
+    var table = document.createElement("table");
+    table.appendChild(createTooltipRowForAction(actionName));
     
-    var separator = document.createElement("separator");
-    separator.setAttribute("class", "thin");
-    vbox.appendChild(separator);
+    var tr = document.createElement("tr");
+    var th = document.createElement("th");
+    th.textContent = eGStrings.getString("customizations.code");
+    tr.appendChild(th);
+    var td = document.createElement("td");
+    var input = document.createElement("textarea");
+    input.id = actionName + "_code";
+    input.cols = "50";
+    input.rows = "7";
+    td.appendChild(input);
+    tr.appendChild(td);
+    table.appendChild(tr);
     
-    var grid = document.createElement("grid");
-    var columns = document.createElement("columns");
-    columns.appendChild(document.createElement("column"));
-    columns.appendChild(document.createElement("column"));
-    grid.appendChild(columns);
-    
-    var rows = document.createElement("rows");
-    rows.appendChild(createTooltipRowForAction(actionName));
-    
-    var row = document.createElement("row");
-    row.setAttribute("align", "baseline");
-    
+    tr = document.createElement("tr");
+    tr.appendChild(document.createElement("th"));
+    td = document.createElement("td");
+    input = document.createElement("input");
+    input.id = actionName + "_newIconCheckbox";
+    input.type = "checkbox";
+    td.appendChild(input);
     var label = document.createElement("label");
-    label.setAttribute("value", eGStrings.getString("customizations.code"));
-    row.appendChild(label);
+    label.htmlFor = input.id;
+    label.textContent = eGStrings.getString("customizations.changeIcon");
+    td.appendChild(label);
+    var img = document.createElement("img");
+    img.id = actionName + "_newIcon";
+    img.src = DEFAULT_FAVICON_URL;
+    td.appendChild(img);
+    tr.appendChild(td);
+    table.appendChild(tr);
     
-    var textbox = document.createElement("textbox");
-    textbox.setAttribute("id", actionName + "_code");
-    textbox.setAttribute("multiline", "true");
-    textbox.setAttribute("cols", "50");
-    textbox.setAttribute("rows", "7");
-    addEventListenerToRunScriptCode(textbox, actionName);
-    row.appendChild(textbox);
-    rows.appendChild(row);
-    
-    row = document.createElement("row");
-    row.setAttribute("align", "center");
-    
-    row.appendChild(document.createElement("hbox"));
-    
-    var hbox = document.createElement("hbox");
-    hbox.setAttribute("align", "center");
-    
-    var checkbox = document.createElement("checkbox");
-    checkbox.setAttribute("id", actionName + "_newIconCheckbox");
-    checkbox.setAttribute("label",
-      eGStrings.getString("customizations.changeIcon"));
-    addEventListenerToRunScriptNewIcon(checkbox, actionName);
-    hbox.appendChild(checkbox);
-    
-    separator = document.createElement("separator");
-    separator.setAttribute("orient", "vertical");
-    separator.setAttribute("class", "thin");
-    hbox.appendChild(separator);
-    
-    var image = document.createElement("image");
-    image.setAttribute("id", actionName + "_newIcon");
-    image.setAttribute("src", "");
-    image.setAttribute("maxwidth", "20");
-    image.setAttribute("maxheight", "20");
-    hbox.appendChild(image);
-    
-    row.appendChild(hbox);
-    rows.appendChild(row);
-    grid.appendChild(rows);
-    vbox.appendChild(grid);
-    
-    readRunScriptPreference(actionName);
+    container.appendChild(table);
   }
 }
 
 function createActionsMenulistWithSectorID(name, sectorNumber) {
-  var hbox = document.createElement("hbox");
-  hbox.setAttribute("pack", "center");
+  var select = createActionsSelect();
+  select.id = name + sectorNumber;
   
-  var menulist = document.createElement("menulist");
-  menulist.setAttribute("id", name + sectorNumber);
-  menulist.setAttribute("editable", "false");
-  menulist.setAttribute("width", "150");
-  menulist.setAttribute("crop", "end");
-  menulist.setAttribute("sizetopopup", "false");
-  menulist.setAttribute("actionName", "");
-  menulist.addEventListener("command", function() {
-    this.setAttribute("actionName", this.selectedItem.getAttribute("actionName"));
-    fireChangeEventOnActionsGroup(name);
-  }, false);
-  menulist.addEventListener("mousedown", function() {
-    attachMenupopup(this);
-  }, false);
-
-  hbox.appendChild(menulist);
-  return hbox;
+  if (sectorNumber !== "Sector2" || name.startsWith("extra")) {
+    // remove showExtraMenu action
+    select.removeChild(select.childNodes[1]);
+  }
+  
+  return select;
 }
 
 function createActions() {
@@ -343,54 +695,32 @@ function createActions() {
   for (var i=0; i < boxes.length; i++) {
     var box = document.getElementById("gr_" + boxes[i]);
     
-    // empty box if needed first
-    if (box.hasChildNodes()) {
-      while (box.lastChild !== null) {
-        box.removeChild(box.lastChild);
-      }
-    }
-    
     // sector 2
-    box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector2"));
+    let row1 = document.createElement("div");
+    row1.className = "row1";
+    row1.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector2"));
+    box.appendChild(row1);
     
     // sectors 3 and 1
-    var hbox = document.createElement("hbox");
-    hbox.setAttribute("pack", "center");
-    
-    hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector3"));
-    
-    var spacer = document.createElement("spacer");
-    spacer.setAttribute("height", "0");
-    spacer.setAttribute("width", "11px");
-    hbox.appendChild(spacer);
-    
-    hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector1"));
-    box.appendChild(hbox);
+    let row2 = document.createElement("div");
+    row2.className = "row2";
+    row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector3"));
+    row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector1"));
+    box.appendChild(row2);
     
     // sectors 4,5 and 0,9
-    hbox = document.createElement("hbox");
-    hbox.setAttribute("pack", "center");
-    box.appendChild(hbox);
+    let row3 = document.createElement("div");
+    row3.className = "row3";
+    box.appendChild(row3);
     
-    var vbox = document.createElement("vbox");
-    vbox.setAttribute("pack", "center");
-    hbox.appendChild(vbox);
-    
+    var vbox = document.createElement("div");
     vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector4"));
-    
     if (!boxes[i].startsWith("extra")) {
       vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector5"));
     }
+    row3.appendChild(vbox);
     
-    ///////////////////////////////
-    vbox = document.createElement("vbox");
-    hbox.appendChild(vbox);
-    
-    spacer = document.createElement("spacer");
-    spacer.setAttribute("flex", "1");
-    vbox.appendChild(spacer);
-    
-    var image = document.createElement("image");
+    var image = document.createElement("img");
     image.setAttribute("id", boxes[i]+"Image");
     if (!boxes[i].startsWith("extra")) {
       image.setAttribute("src", "mainMenu.png");
@@ -400,49 +730,35 @@ function createActions() {
     }
     image.setAttribute("width", "41");
     image.setAttribute("height", "41");
-    vbox.appendChild(image);
+    row3.appendChild(image);
     
-    spacer = document.createElement("spacer");
-    spacer.setAttribute("flex", "1");
-    vbox.appendChild(spacer);
-    ///////////////////////////////
-    
-    vbox = document.createElement("vbox");
-    vbox.setAttribute("pack", "center");
-    hbox.appendChild(vbox);
-    
+    vbox = document.createElement("div");
     vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector0"));
-    
     if (!boxes[i].startsWith("extra")) {
       vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector9"));
     }
+    row3.appendChild(vbox);
     
     if (!boxes[i].startsWith("extra")) {
       // sectors 6 and 8
-      hbox = document.createElement("hbox");
-      hbox.setAttribute("pack", "center");
-      
-      hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector6"));
-      
-      spacer = document.createElement("spacer");
-      spacer.setAttribute("height", "0");
-      spacer.setAttribute("width", "11px");
-      hbox.appendChild(spacer);
-      
-      hbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector8"));
-      box.appendChild(hbox);
+      let row2 = document.createElement("div");
+      row2.className = "row2";
+      row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector6"));
+      row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector8"));
+      box.appendChild(row2);
       
       // sector 7
-      box.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector7"));
+      let row1 = document.createElement("div");
+      row1.className = "row1";
+      row1.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector7"));
+      box.appendChild(row1);
     }
-    
-    readActionsGroupPreference(boxes[i]);
   }
 }
 
 function addFavicon(url, actionName) {
   if (url === "") {
-    document.getElementById(actionName + "_favicon").src = "";
+    document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
   }
   else {
     if (url.match(/\:\/\//i) === null) {
@@ -453,71 +769,37 @@ function addFavicon(url, actionName) {
                            .getService(Components.interfaces.mozIAsyncFavicons);
     faviconService.getFaviconURLForPage(Services.io.newURI(url, null, null), function(aURI) {
       document.getElementById(actionName + "_favicon").src =
-        aURI !== null ? aURI.spec : "";
+        aURI !== null ? aURI.spec : DEFAULT_FAVICON_URL;
     });
   }
 }
 
-function preventCloseOnEnter(event) {
-  if (event.keyCode === 13 && event.target.nodeName === "textbox") {
-    if (!event.target.hasAttribute("multiline")) {
-      event.preventDefault();
-      event.target.parentNode.focus();
-    }
-  }
-}
-
-function createActionsPopupList() {
-  var popupNode = document.createElement("menupopup");
-  popupNode.setAttribute("maxheight", "500px");
+function createActionsSelect() {
+  var select = document.createElement("select");
+  var currentOptgroup = document.createElement("optgroup");
+  select.appendChild(currentOptgroup);
   
   var currentAction = "empty"; // the EmptyAction is the first action
   while (currentAction !== null) {
-    let itemNode;
     if (eGActions[currentAction].startsNewGroup) {
-      itemNode = document.createElement("menuseparator");
-      popupNode.appendChild(itemNode);
+      currentOptgroup = document.createElement("optgroup");
+      select.appendChild(currentOptgroup);
     }
     
-    itemNode = document.createElement("menuitem");
-    var imageNode = document.createElementNS("http://www.w3.org/1999/xhtml", "span");
-    var subItemNode = document.createElement("label");
-    
-    itemNode.appendChild(imageNode);
-    itemNode.appendChild(subItemNode);
-    
-    itemNode.setAttribute("actionName", currentAction);
-    itemNode.setAttribute("crop", "end");
-    itemNode.setAttribute("label",
-      eGActions[currentAction].getLocalizedActionName());
-    itemNode.style.paddingRight = "20px";
-    imageNode.setAttribute("class", "eG_" + currentAction);
-    
-    subItemNode.setAttribute("value",
-      eGActions[currentAction].getLocalizedActionName());
-    popupNode.appendChild(itemNode);
+    let option = document.createElement("option");
+    option.className = "eGOptions_" + currentAction;
+    option.value = currentAction;
+    option.label = eGActions[currentAction].getLocalizedActionName();
+    // setting the text attribute is needed since the label attribute is
+    // currently ignored by Firefox
+    // (https://bugzilla.mozilla.org/show_bug.cgi?id=1205213)
+    option.text = eGActions[currentAction].getLocalizedActionName();
+    currentOptgroup.appendChild(option);
     
     currentAction = eGActions[currentAction].nextAction;
   }
   
-  return popupNode;
-}
-
-function attachMenupopup(menulist) {
-  if (menulist.firstChild !== null) {
-    return;
-  }
-  
-  var clonedMenupopup = createActionsPopupList();
-  menulist.appendChild(clonedMenupopup);
-  clonedMenupopup.boxObject.firstChild.setAttribute("style", "overflow-x:hidden;"); // boxObject does not exist before menupopup is shown
-  
-  if (!clonedMenupopup.parentNode.id.endsWith("Sector2") ||
-      menulist.id.startsWith("extra")) {
-    // remove showExtraMenu action
-    clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
-    clonedMenupopup.removeChild(clonedMenupopup.childNodes[1]);
-  }
+  return select;
 }
 
 function exportPrefs() {
@@ -569,6 +851,7 @@ function importPrefs() {
     
     try {
       eGPrefs.importPrefsFromString(aString);
+      loadPreferences(true);
     }
     catch (exception) {
       let nonImportedPreferences = "";
@@ -589,31 +872,39 @@ function setMenuType(menuTypeIsStandard) {
    "contextLinkSector9", "contextImageSector5", "contextImageSector9",
    "contextSelectionSector5", "contextSelectionSector9",
    "contextTextboxSector5", "contextTextboxSector9"].forEach(function(id) {
-    document.getElementById(id).hidden = menuTypeIsStandard;
+    document.getElementById(id).style.display =
+      menuTypeIsStandard ? "none" : "block";
   });
 }
 
-function toggleDisabledStatusOnElementsById(ids, disabled) {
+function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
   ids.forEach(function(id) {
-    document.getElementById(id).disabled = !disabled;
+    document.getElementById(id).classList.toggle("disabled", shouldBeDisabled);
   });
+  document.getElementById(ids[1]).readOnly = shouldBeDisabled;
 }
 
-function setDisabledStatusForTooltipsActivationDelay(disabled) {
+function setDisabledStatusForTooltipsActivationDelay(shouldBeDisabled) {
   toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
-    "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"], disabled);
+    "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"],
+    shouldBeDisabled);
 }
 
-function setDisabledStatusForOpenLinksMaximumDelay(disabled) {
+function setDisabledStatusForOpenLinksMaximumDelay(shouldBeDisabled) {
   toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
     "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
-    "openLinksThroughPieMenuCenterConfiguration"], disabled);
+    "openLinksThroughPieMenuCenterConfiguration"], shouldBeDisabled);
+  var radioElements =
+        document.getElementById("openLinksThroughPieMenuCenterConfiguration")
+                .getElementsByTagName("input");
+  radioElements[0].disabled = shouldBeDisabled;
+  radioElements[1].disabled = shouldBeDisabled;
 }
 
-function setDisabledStatusForAutoscrollingActivationDelay(disabled) {
+function setDisabledStatusForAutoscrollingActivationDelay(shouldBeDisabled) {
   toggleDisabledStatusOnElementsById(["autoscrollingActivationDelayLabel",
     "autoscrollingActivationDelayInput", "autoscrollingActivationDelayUnit"],
-    disabled);
+    shouldBeDisabled);
 }
 
 function setDisabledStatusForMainMenu(menu, disabled) {
@@ -631,6 +922,10 @@ function setDisabledStatusForExtraMenu(menu, disabled) {
 }
 
 function initializeDailyReadingsTree() {
+  eGUtils.setDocumentTitle(document, "customizations.dailyReadings");
+  document.getElementById("dailyReadingsFolderSelectionLabel").value =
+    eGStrings.getString("customizations.dailyReadings.folderSelection");
+  
   var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
                                  .getService(Components.interfaces.nsINavHistoryService);
   var query = historyService.getNewQuery();
@@ -643,272 +938,25 @@ function initializeDailyReadingsTree() {
   tree.selectItems([eGPrefs.getDailyReadingsFolderID()]);
 }
 
-function initMenuDialog() {
-  window.setCursor("wait");
-  
-  eGUtils.setDocumentTitle(document, "preferences");
-  document.getAnonymousElementByAttribute(document.documentElement, "pane",
-    "generalPane").label = eGStrings.getString("general");
-  document.getElementById("startupTipsCheckbox").label =
-    eGStrings.getString("general.startupTips");
-  document.getElementById("managePreferencesLabel").value =
-    eGStrings.getString("general.prefs.manage");
-  document.getElementById("importPreferences").label =
-    eGStrings.getString("general.prefs.import");
-  document.getElementById("exportPreferences").label =
-    eGStrings.getString("general.prefs.export");
-  document.getElementById("resetPreferences").label =
-    eGStrings.getString("general.prefs.reset");
-  document.getElementById("statisticsLabel").value =
-    eGStrings.getString("stats");
-  document.getElementById("displayStatistics").label =
-    eGStrings.getString("general.stats.display");
-  document.getElementById("resetStatistics").label =
-    eGStrings.getString("general.stats.reset");
-  
-  document.getAnonymousElementByAttribute(document.documentElement, "pane",
-    "activationPane").label = eGStrings.getString("activation");
-  document.getElementById("openWithLabel").value =
-    eGStrings.getString("activation.open.with");
-  document.getElementById("openWithLeftButton").label =
-    document.getElementById("openAltMenuWithLeftButton").label =
-    eGStrings.getString("activation.open.with.button.left");
-  document.getElementById("openWithMiddleButton").label =
-    document.getElementById("openAltMenuWithMiddleButton").label =
-    eGStrings.getString("activation.open.with.button.middle");
-  document.getElementById("openWithRightButton").label =
-    document.getElementById("openAltMenuWithRightButton").label =
-    eGStrings.getString("activation.open.with.button.right");
-  document.getElementById("openWithCustomButton").label =
-    document.getElementById("openAltMenuWithCustomButton").label =
-    eGStrings.getString("activation.open.with.button.custom");
-  document.getElementById("openWithButtonCodeLabel").value =
-    document.getElementById("openAltMenuWithButtonCodeLabel").value =
-    eGStrings.getString("activation.open.with.buttoncode");
-  document.getElementById("andLabel").value =
-    eGStrings.getString("activation.open.with.and");
-  document.getElementById("openWithShiftKey").label =
-    eGStrings.getString("activation.shiftKey");
-  document.getElementById("openWithCtrlKey").label =
-    document.getElementById("preventOpenWithCtrlKey").label =
-    document.getElementById("contextualMenuWithCtrlKey").label =
-    eGStrings.getString("activation.ctrlKey");
-  document.getElementById("openWithNoneOfTheseKeys").label =
-    document.getElementById("preventOpenWithNoneOfTheseKeys").label =
-    document.getElementById("contextualMenuWithNoneOfTheseKeys").label =
-    eGStrings.getString("activation.noKey");
-  document.getElementById("openAltMenuLabel").value =
-    eGStrings.getString("activation.openAltMenu");
-  document.getElementById("openAltMenuWithAltKeyLabel").value =
-    eGStrings.getString("activation.openAltMenu.altKey");
-  document.getElementById("preventOpenLabel").value =
-    eGStrings.getString("activation.preventOpen");
-  document.getElementById("preventOpenWithAltKey").label =
-    document.getElementById("contextualMenuWithAltKey").label =
-    eGStrings.getString("activation.altKey");
-  document.getElementById("contextualMenuLabel").value =
-    eGStrings.getString("activation.contextualMenu");
-  document.getElementById("contextualMenuShowAuto").label =
-    eGStrings.getString("activation.contextualMenu.showAuto");
-  
-  document.getAnonymousElementByAttribute(document.documentElement, "pane",
-    "behaviorPane").label = eGStrings.getString("behavior");
-  document.getElementById("menuTypeLabel").value =
-    eGStrings.getString("behavior.menuType");
-  document.getElementById("standardMenuType").label =
-    eGStrings.getString("behavior.menuType.standard");
-  document.getElementById("largeMenuType").label =
-    eGStrings.getString("behavior.menuType.large");
-  document.getElementById("displayLabel").value =
-    eGStrings.getString("behavior.display");
-  document.getElementById("smallIconsCheckbox").label =
-    eGStrings.getString("behavior.display.smallIcons");
-  document.getElementById("opacityLabel").value =
-    eGStrings.getString("behavior.display.opacity");
-  document.getElementById("tooltipsLabel").value =
-    eGStrings.getString("behavior.tooltips");
-  document.getElementById("activateTooltips").label =
-    eGStrings.getString("behavior.tooltips.activate");
-  document.getElementById("tooltipsActivationDelayLabel").value =
-    eGStrings.getString("behavior.tooltips.delay");
-  document.getElementById("movePieMenuLabel").value =
-    eGStrings.getString("behavior.move");
-  document.getElementById("moveWithShiftKey").label =
-    eGStrings.getString("behavior.move.shiftKey");
-  document.getElementById("moveWithMenuEdge").label =
-    eGStrings.getString("behavior.move.menuEdge");
-  document.getElementById("openLinksThroughPieMenuCenterLabel").value =
-    eGStrings.getString("behavior.links");
-  document.getElementById("activateOpenLinksThroughPieMenuCenter").label =
-    eGStrings.getString("behavior.links.activate");
-  document.getElementById("openLinksMaximumDelayLabel").value =
-    eGStrings.getString("behavior.links.delay");
-  document.getElementById("openLinksWithOpenLinkAction").label =
-    eGStrings.getString("behavior.links.openLinkAction");
-  document.getElementById("configureActionLabel").value =
-    eGStrings.getString("behavior.links.configureAction");
-  document.getElementById("openLinksWithBrowserBehavior").label =
-    eGStrings.getString("behavior.links.browser");
-  document.getElementById("autoscrollingLabel").value =
-    eGStrings.getString("behavior.autoscrolling");
-  document.getElementById("activateAutoscrolling").label =
-    eGStrings.getString("behavior.autoscrolling.activate");
-  document.getElementById("autoscrollingActivationDelayLabel").value =
-    eGStrings.getString("behavior.autoscrolling.delay");
-  
-  document.getAnonymousElementByAttribute(document.documentElement, "pane",
-    "menusPane").label = eGStrings.getString("menus");
-  document.getElementById("mainMenuTabLabel").label =
-    eGStrings.getString("menus.main");
-  document.getElementById("extraMenuTabLabel").label =
-    eGStrings.getString("menus.extra");
-  document.getElementById("contextualMenusTabLabel").label =
-    eGStrings.getString("menus.contextual");
-  document.getElementById("mainPrimaryMenuTabLabel").label =
-    document.getElementById("extraPrimaryMenuTabLabel").label =
-    eGStrings.getString("menus.primary");
-  document.getElementById("mainAlt1MenuTabLabel").label =
-    document.getElementById("extraAlt1MenuTabLabel").label =
-    eGStrings.getString("menus.alternative1");
-  document.getElementById("mainAlt2MenuTabLabel").label =
-    document.getElementById("extraAlt2MenuTabLabel").label =
-    eGStrings.getString("menus.alternative2");
-  document.getElementById("enableMainPrimaryMenu").label =
-    document.getElementById("enableMainAlt1Menu").label =
-    document.getElementById("enableMainAlt2Menu").label =
-    document.getElementById("enableExtraPrimaryMenu").label =
-    document.getElementById("enableExtraAlt1Menu").label =
-    document.getElementById("enableExtraAlt2Menu").label =
-    eGStrings.getString("menus.enabled");
-  document.getElementById("extraMenuInfoLabel").value =
-    eGStrings.getString("menus.extra.info");
-  document.getElementById("contextualLinkMenuTabLabel").label =
-    eGStrings.getString("menus.contextual.link");
-  document.getElementById("contextualImageMenuTabLabel").label =
-    eGStrings.getString("menus.contextual.image");
-  document.getElementById("contextualSelectionMenuTabLabel").label =
-    eGStrings.getString("menus.contextual.selection");
-  document.getElementById("contextualTextboxMenuTabLabel").label =
-    eGStrings.getString("menus.contextual.textbox");
-  
-  document.getAnonymousElementByAttribute(document.documentElement, "pane",
-    "customizationsPane").label = eGStrings.getString("customizations");
-  document.getElementById("customizationsForLoadURLActionsTabLabel").label =
-    eGStrings.getString("customizations.loadURLActions");
-  document.getElementById("customizationsForRunScriptActionsTabLabel").label =
-    eGStrings.getString("customizations.runScriptActions");
-  document.getElementById("customizationsForOtherActionsTabLabel").label =
-    eGStrings.getString("customizations.otherActions");
-  document.getElementById("loadURLInfoActionsLabel").textContent =
-    document.getElementById("runScriptInfoActionsLabel").textContent =
-    document.getElementById("otherActionsInfoActionsLabel").textContent =
-    eGStrings.getString("customizations.infoActions");
-  document.getElementById("loadURLInfoPlaceholdersLabel").textContent =
-    document.getElementById("runScriptInfoPlaceholdersLabel").textContent =
-    eGStrings.getString("customizations.infoPlaceholders");
-  document.getElementById("loadURLActionsLoadLabel").value =
-    eGStrings.getString("customizations.loadURLActions.load");
-  document.getElementById("loadURLActionsInCurrentTabLabel").label =
-    eGStrings.getString("customizations.loadURLActions.currentTab");
-  document.getElementById("loadURLActionsInNewTabLabel").label =
-    eGStrings.getString("customizations.loadURLActions.newTab");
-  document.getElementById("loadURLActionsInNewWindowLabel").label =
-    eGStrings.getString("customizations.loadURLActions.newWindow");
-  document.getElementById("customizeOpenLinkActionLabel").value =
-    eGStrings.getString("customizations.openLink");
-  document.getElementById("openLinkActionInCurrentTab").label =
-    eGStrings.getString("customizations.openLink.currentTab");
-  document.getElementById("openLinkActionInNewTab").label =
-    eGStrings.getString("customizations.openLink.newTab");
-  document.getElementById("openLinkActionInNewWindow").label =
-    eGStrings.getString("customizations.openLink.newWindow");
-  document.getElementById("customizeDailyReadingsActionLabel").value =
-    eGStrings.getString("customizations.dailyReadings");
-  document.getElementById("dailyReadingsFolderSelectionLabel").value =
-    eGStrings.getString("customizations.dailyReadings.folderSelection");
-  
-  createActions();
-  createLoadURLActions();
-  createRunScriptActions();
-  
-  [["showButtonMenulist", eGPrefs.getShowButtonPref()],
-   ["showAltButtonMenulist", eGPrefs.getShowAltButtonPref()]].forEach(
-    function ([id, prefValue]) {
-      var menulist = document.getElementById(id);
-      menulist.value = prefValue;
-      if (menulist.selectedIndex === -1) {
-        menulist.selectedIndex = menulist.itemCount - 1;
-      }
-      updateLabelAndTextboxFor(menulist);
-    }
-  );
-  
-  setMenuType(eGPrefs.isLargeMenuOff());
-  setDisabledStatusForTooltipsActivationDelay(eGPrefs.areTooltipsOn());
-  setDisabledStatusForOpenLinksMaximumDelay(eGPrefs.isHandleLinksOn());
-  setDisabledStatusForAutoscrollingActivationDelay(eGPrefs.isAutoscrollingOn());
-  
-  setDisabledStatusForMainMenu("Alt1", eGPrefs.isMainAlt1MenuEnabled());
-  setDisabledStatusForMainMenu("Alt2", eGPrefs.isMainAlt2MenuEnabled());
-  setDisabledStatusForExtraMenu("Alt1", eGPrefs.isExtraAlt1MenuEnabled());
-  setDisabledStatusForExtraMenu("Alt2", eGPrefs.isExtraAlt2MenuEnabled());
-  
-  initializeDailyReadingsTree();
-  
-  window.setCursor("auto");
-}
-
-function saveAllPreferences() {
-  // saving the preferences of each preference pane
-  var prefwindow = document.getElementById("eG_optionsWindow");
-  for (var i=0; i < prefwindow.preferencePanes.length; ++i) {
-    prefwindow.preferencePanes[i].writePreferences();
-  }
-}
-
-function readActionsGroupPreference(name) {
-  var preference = document.getElementById(name + "Menu");
-  var actionNames = preference.value.split("/");
-  
-  actionNames.forEach(function(value, index) {
-    var element = document.getElementById(name + "Sector" + index);
-    element.setAttribute("actionName", value);
-    element.setAttribute("label", eGActions[value].getLocalizedActionName());
-  });
-}
-
-function preparePreferenceValueForNormalMenu(name) {
-  var result = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(value) {
-    return document.getElementById(name + "Sector" + value).getAttribute("actionName");
-  });
-  return result.join("/");
-}
-
-function preparePreferenceValueForExtraMenu(name) {
-  var result = [0, 1, 2, 3, 4].map(function(value) {
-    return document.getElementById(name + "Sector" + value).getAttribute("actionName");
-  });
-  return result.join("/");
-}
-
 function readLoadURLPreference(actionName) {
-  var preference = document.getElementById(actionName + "Pref");
-  var string = preference.value.split("\u2022");
+  var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(actionName);
   
-  document.getElementById(actionName + "_tooltip").value = string[0];
-  document.getElementById(actionName + "_URL").value = string[1];
-  var isFaviconEnabled = string[2] === "true";
+  document.getElementById(actionName + "_tooltip").value = prefValue[0];
+  document.getElementById(actionName + "_URL").value = prefValue[1];
+  var isFaviconEnabled = prefValue[2] === "true";
   document.getElementById(actionName + "_faviconCheckbox").checked =
     isFaviconEnabled;
   if (isFaviconEnabled) {
-    addFavicon(string[1], actionName);
+    addFavicon(prefValue[1], actionName);
+  }
+  else {
+    document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
   }
   document.getElementById(actionName + "_openInPrivateWindowCheckbox").checked =
-    string[3] === "true";
+    prefValue[3] === "true";
 }
 
-function preparePreferenceValueForLoadURL(number) {
-  var actionName = "loadURL" + number;
+function preparePreferenceValueForLoadURL(actionName) {
   var string = Components.classes["@mozilla.org/supports-string;1"]
                        .createInstance(Components.interfaces.nsISupportsString);
   string.data = document.getElementById(actionName + "_tooltip").value +
@@ -920,23 +968,24 @@ function preparePreferenceValueForLoadURL(number) {
 }
 
 function readRunScriptPreference(actionName) {
-  var preference = document.getElementById(actionName + "Pref");
-  var string = preference.value.split("\u2022");
+  var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(actionName);
   
-  document.getElementById(actionName + "_tooltip").value = string[0];
-  document.getElementById(actionName + "_code").value = string[1];
+  document.getElementById(actionName + "_tooltip").value = prefValue[0];
+  document.getElementById(actionName + "_code").value = prefValue[1];
+  var isIconEnabled = prefValue[2] !== "";
   document.getElementById(actionName + "_newIconCheckbox").checked =
-   string[2] !== "";
-  document.getElementById(actionName + "_newIcon").src = string[2];
+    isIconEnabled;
+  document.getElementById(actionName + "_newIcon").src =
+    isIconEnabled ? prefValue[2] : DEFAULT_FAVICON_URL;
 }
 
-function preparePreferenceValueForRunScript(number) {
-  var actionName = "runScript" + number;
+function preparePreferenceValueForRunScript(actionName) {
   var string = Components.classes["@mozilla.org/supports-string;1"]
                        .createInstance(Components.interfaces.nsISupportsString);
   string.data = document.getElementById(actionName + "_tooltip").value +
-    "\u2022" + document.getElementById(actionName + "_code").value +
-    "\u2022" + document.getElementById(actionName + "_newIcon").src;
+    "\u2022" + document.getElementById(actionName + "_code").value + "\u2022";
+  var iconURL = document.getElementById(actionName + "_newIcon").src;
+  string.data += iconURL === DEFAULT_FAVICON_URL ? "" : iconURL;
   return string;
 }
 
@@ -951,26 +1000,26 @@ function preparePreferenceValueForDailyReadings(aTreeElement) {
   }
 }
 
-function resetOnDuplicatedKeys(aRadiogroup) {
-  var showKey = document.getElementById("showKeyRadiogroup").value;
-  var preventOpenKey = document.getElementById("preventOpenKeyRadiogroup").value;
-  var contextKey = document.getElementById("contextKeyRadiogroup").value;
+function writeOrResetPrefOnDuplicatedKeys(anEvent, aPrefName) {
+  var showKey = document
+        .querySelectorAll("[name='showKeyRadiogroup']:checked")[0].value;
+  var preventOpenKey = document
+        .querySelectorAll("[name='preventOpenKeyRadiogroup']:checked")[0].value;
+  var contextKey = document
+        .querySelectorAll("[name='contextualMenuKeyRadiogroup']:checked")[0]
+        .value;
   
-  if ((showKey !== "0" && (showKey === preventOpenKey || showKey === contextKey)) ||
+  if ((showKey !== "0" &&
+       (showKey === preventOpenKey || showKey === contextKey)) ||
       (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
-    aRadiogroup.value = "0";
+    let currentValue = eGPrefs.getIntPref(aPrefName);
+    anEvent.target.parentElement.parentElement
+           .querySelector("[value='" + currentValue + "']").checked = true;
     alert(eGStrings.getString("activation.duplicateKey"));
   }
-}
-
-function fireChangeEventOnActionsGroup(name) {
-  var element = document.getElementById("gr_" + name);
-  fireChangeEventOn(element);
-}
-
-function fireChangeEventOnElementWithID(id) {
-  var element = document.getElementById(id);
-  fireChangeEventOn(element);
+  else {
+    eGPrefs.setIntPref(aPrefName, anEvent.target.value);
+  }
 }
 
 function fireChangeEventOn(element) {
@@ -981,14 +1030,36 @@ function fireChangeEventOn(element) {
   element.dispatchEvent(event);
 }
 
-function updateLabelAndTextboxFor(menulist) {
-  var label = menulist.nextElementSibling;
-  var textbox = label.nextElementSibling;
-  var shouldBeDisabled = menulist.selectedIndex !== menulist.itemCount - 1;
+function updateTextInputElement(aTextInputElement, anEvent) {
+  anEvent.preventDefault();
+  if (aTextInputElement.parentElement.firstElementChild.selectedIndex < 3) {
+    return ;
+  }
   
-  label.disabled = shouldBeDisabled;
-  textbox.disabled = shouldBeDisabled;
-  if (shouldBeDisabled) {
-    textbox.value = menulist.value;
+  aTextInputElement.value = anEvent.button;
+  aTextInputElement.dispatchEvent(new window.Event("change"));
+}
+
+function openOptionsDailyReadings() {
+  var openWindows = Services.wm.getEnumerator(null);
+  var found = false;
+  var openWindow;
+  
+  while (openWindows.hasMoreElements() && !found) {
+    openWindow = openWindows.getNext();
+    found = openWindow.location.href ===
+              "chrome://easygestures/content/options.xul";
+  }
+  if (found) {
+    openWindow.focus();
+  }
+  else {
+    openWindow.openDialog("chrome://easygestures/content/options.xul", "", "");
+  }
+}
+
+function resetStats() {
+  if (confirm(eGStrings.getString("general.stats.reset"))) {
+    eGPrefs.initializeStats();
   }
 }

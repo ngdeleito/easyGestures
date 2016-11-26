@@ -1,0 +1,254 @@
+/***** BEGIN LICENSE BLOCK *****
+Version: MPL 1.1/GPL 2.0/LGPL 2.1
+
+The contents of this file are subject to the Mozilla Public License Version 
+1.1 (the "License") you may not use this file except in compliance with 
+the License. You may obtain a copy of the License at 
+http://www.mozilla.org/MPL/
+
+Software distributed under the License is distributed on an "AS IS" basis,
+WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
+for the specific language governing rights and limitations under the
+License.
+
+The Original Code is easyGestures N.
+
+The Initial Developer of the Original Code is ngdeleito.
+
+Contributor(s):
+
+Alternatively, the contents of this file may be used under the terms of
+either the GNU General Public License Version 2 or later (the "GPL"), or
+the GNU Lesser General Public License Version 2.1 or later (the "LGPL"),
+in which case the provisions of the GPL or the LGPL are applicable instead
+of those above. If you wish to allow use of your version of this file only
+under the terms of either the GPL or the LGPL, and not to allow others to
+use your version of this file under the terms of the MPL, indicate your
+decision by deleting the provisions above and replace them with the notice
+and other provisions required by the GPL or the LGPL. If you do not delete
+the provisions above, a recipient may use your version of this file under
+the terms of any one of the MPL, the GPL or the LGPL.
+
+***** END LICENSE BLOCK *****/
+
+body {
+  min-width: 480px;
+  max-width: 800px;
+  margin-top: 1em;
+  font-family: sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+main {
+  margin-left: 180px;
+}
+
+nav {
+  position: fixed;
+  width: 160px;
+  font-size: larger;
+}
+
+nav a {
+  display: block;
+  padding: 0.25em;
+  text-align: right;
+  color: black;
+}
+
+nav a:hover {
+  text-decoration: none;
+  background-color: hsla(300, 100%, 25%, 0.75);
+  color: white;
+}
+
+.selectedPaneLabel {
+  background-color: hsl(300, 100%, 25%); /* purple */
+  color: white;
+}
+
+.pane, .tab {
+  display: none;
+}
+
+.pane.selected, .tab.selected {
+  display: block;
+}
+
+.pane .tabbox {
+  margin-bottom: 0.75em;
+  text-align: center;
+}
+
+.tabbox a {
+  display: inline-block;
+  border: solid 0.2em hsl(300, 100%, 25%);
+  border-right: none;
+  padding: 0.1em 0.25em;
+  color: hsl(300, 100%, 25%);
+}
+
+.tabbox a:first-child {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.tabbox a:last-child {
+  border-right: solid 0.2em hsl(300, 100%, 25%);
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.tabbox a:hover {
+  text-decoration: none;
+  background-color: hsla(300, 100%, 25%, 0.75);
+  color: white;
+}
+
+.tabbox .selectedTabLabel {
+  background-color: hsl(300, 100%, 25%);
+  color: white;
+}
+
+h1 {
+  margin: 0 0 0.75em 0;
+  padding-top: 0.25em;
+  font-size: larger;
+}
+
+h1 > span:first-child {
+  margin-right: 0.25em;
+}
+
+h1 ~ div {
+  margin: 0 0 0.75em 1.5em;
+}
+
+h1 ~ div > div {
+  margin-bottom: 0.25em;
+}
+
+button, select, input[type="text"], input[type="url"] {
+  font-size: inherit;
+}
+
+input[type="number"] {
+  width: 4em;
+  text-align: right;
+}
+
+.disabled, :disabled {
+  color: hsl(0, 0%, 80%);
+}
+
+#openLinksThroughPieMenuCenterConfiguration a {
+  margin-left: 0.5em;
+}
+
+#menus .indented {
+  width: calc(391px + 1em); /* 2 * 175px + 41px + 1em */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#menus [id^="gr_"] {
+  display: flex;
+  flex-direction: column;
+}
+
+#menus select {
+  width: 175px;
+  font-size: smaller;
+  text-overflow: ellipsis;
+}
+
+.row1, .row2, .row3 {
+  text-align: center;
+}
+
+.row2 > :first-child {
+  margin-right: 2em;
+}
+
+.row3 {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.row3 > * {
+  display: inline-flex;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.row3 select {
+  display: block;
+}
+
+.row3 > div:first-child {
+  flex-direction: column;
+  margin-right: 0.5em;
+}
+
+.row3 > div:last-child {
+  flex-direction: column;
+  margin-left: 0.5em;
+}
+
+optgroup + optgroup {
+  border-top: solid thin hsl(0, 0%, 80%);
+}
+
+option[class^="eGOptions_"] {
+  display: flex;
+  padding: 2px 0 1px 5px;
+}
+
+option[class^="eGOptions_"]::before {
+  display: inline-block;
+  margin-right: 5px;
+  background-image: url("chrome://easygestures/skin/small_actions.png");
+  height: 20px;
+  width: 20px;
+  content: " ";
+}
+
+.pane .message {
+  margin-bottom: 0.75em;
+  border-left: dashed 0.2em hsl(55, 100%, 39%);
+  padding: 0.5em;
+  background-color: hsl(55, 100%, 89%);
+}
+
+.pane .message p {
+  margin: 0;
+}
+
+.pane .message p + p {
+  margin-top: 0.5em;
+}
+
+th {
+  font-weight: normal;
+  text-align: left;
+}
+
+#customizations img {
+  margin-left: 0.5em;
+  max-width: 20px;
+  max-height: 20px;
+  vertical-align: middle;
+}
+
+#customizations textarea {
+  font-family: inherit; /* required for font-size to inherit */
+  font-size: inherit;
+}

@@ -50,9 +50,20 @@ var eGUtils = {
     
     for (i = 0; i < gBrowser.tabs.length && !found; ++i) {
       let browser = gBrowser.getBrowserForTab(gBrowser.tabs[i]);
-      found = browser.currentURI.spec === aURL;
+      found = browser.currentURI.specIgnoringRef === aURL.split("#")[0];
     }
-    tab = found ? gBrowser.tabs[--i] : gBrowser.addTab(aURL);
+    if (found) {
+      tab = gBrowser.tabs[--i];
+      if (aURL.includes("#")) {
+        let currentTab = gBrowser.selectedTab;
+        gBrowser.selectedTab = tab;
+        gBrowser.loadURI(aURL);
+        gBrowser.selectedTab = currentTab;
+      }
+    }
+    else {
+      tab = gBrowser.addTab(aURL);
+    }
     if (giveFocus) {
       gBrowser.selectedTab = tab;
     }

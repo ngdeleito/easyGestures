@@ -388,6 +388,46 @@ var eGPrefs = {
     }, this);
   },
   
+  getBoolPref : function(aPrefName) {
+    return this._prefs.getBoolPref(aPrefName);
+  },
+  
+  getIntPref : function(aPrefName) {
+    return this._prefs.getIntPref(aPrefName);
+  },
+  
+  getMenuPrefAsArray : function(aPrefName) {
+    return this._prefs.getCharPref(aPrefName).split("/");
+  },
+  
+  getCharPref : function(aPrefName) {
+    return this._prefs.getCharPref(aPrefName);
+  },
+  
+  toggleBoolPref : function(aPrefName) {
+    this._prefs.setBoolPref(aPrefName, !this._prefs.getBoolPref(aPrefName));
+  },
+  
+  setBoolPref : function(aPrefName, prefValue) {
+    this._prefs.setBoolPref(aPrefName, prefValue);
+  },
+  
+  setIntPref : function(aPrefName, prefValue) {
+    this._prefs.setIntPref(aPrefName, prefValue);
+  },
+  
+  setMenuPref : function(aPrefName, prefValueAsArray) {
+    this._prefs.setCharPref(aPrefName, prefValueAsArray.join("/"));
+  },
+  
+  setCharPref : function(aPrefName, prefValue) {
+    // for an unknown reason, using this._prefs here results in notifying the
+    // prefsObserver in options.js of a change in the menus.extraAlt2Enabled
+    // preference
+    var prefs = Services.prefs.getBranch("extensions.easygestures.");
+    /*this._*/prefs.setCharPref(aPrefName, prefValue);
+  },
+  
   areStartupTipsOn : function() {
     return this._prefs.getBoolPref("general.startupTips");
   },
@@ -402,14 +442,6 @@ var eGPrefs = {
   
   setTipNumberPref : function(anInteger) {
     this._prefs.setIntPref("general.tipNumber", anInteger);
-  },
-  
-  getShowButtonPref : function() {
-    return this._prefs.getIntPref("activation.showButton");
-  },
-  
-  getShowAltButtonPref : function() {
-    return this._prefs.getIntPref("activation.showAltButton");
   },
   
   isLargeMenuOff : function() {
@@ -452,6 +484,15 @@ var eGPrefs = {
   getLoadURLOrRunScriptPrefValue : function(aPrefName) {
     return this._prefs.getComplexValue("customizations." + aPrefName,
       Components.interfaces.nsISupportsString).data.split("\u2022");
+  },
+  
+  setLoadURLOrRunScriptPrefValue : function(aPrefName, aPrefValue) {
+    // for an unknown reason, using this._prefs here results in notifying the
+    // prefsObserver in options.js of a change in the menus.extraAlt2Enabled
+    // preference
+    var prefs = Services.prefs.getBranch("extensions.easygestures.");
+    /*this._*/prefs.setComplexValue(aPrefName,
+      Components.interfaces.nsISupportsString, aPrefValue);
   },
   
   getOpenLinkPref : function() {
