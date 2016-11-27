@@ -38,7 +38,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
             fireChangeEventOn, preparePreferenceValueForDailyReadings,
             resetStats */
 /* global Components, Services, document, eGActions, eGStrings, eGPrefs, window,
-          eGUtils, alert, confirm, PlacesUIUtils */
+          alert, eGUtils, confirm, PlacesUIUtils */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
@@ -628,7 +628,26 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
     function onchangeHandler(anEvent) {
-      writeOrResetPrefOnDuplicatedKeys(anEvent, control.dataset.preference);
+      var showKey = document
+            .querySelectorAll("[name='showKeyRadiogroup']:checked")[0].value;
+      var preventOpenKey = document
+            .querySelectorAll("[name='preventOpenKeyRadiogroup']:checked")[0]
+            .value;
+      var contextKey = document
+            .querySelectorAll("[name='contextualMenuKeyRadiogroup']:checked")[0]
+            .value;
+      
+      if ((showKey !== "0" &&
+           (showKey === preventOpenKey || showKey === contextKey)) ||
+          (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
+        let currentValue = eGPrefs.getIntPref(control.dataset.preference);
+        anEvent.target.parentElement.parentElement
+               .querySelector("[value='" + currentValue + "']").checked = true;
+        alert(eGStrings.getString("activation.duplicateKey"));
+      }
+      else {
+        eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
+      }
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -969,28 +988,6 @@ function resetPrefs() {
   if (confirm(eGStrings.getString("general.prefs.reset"))) {
     eGPrefs.setDefaultSettings();
     loadPreferences(true);
-  }
-}
-
-function writeOrResetPrefOnDuplicatedKeys(anEvent, aPrefName) {
-  var showKey = document
-        .querySelectorAll("[name='showKeyRadiogroup']:checked")[0].value;
-  var preventOpenKey = document
-        .querySelectorAll("[name='preventOpenKeyRadiogroup']:checked")[0].value;
-  var contextKey = document
-        .querySelectorAll("[name='contextualMenuKeyRadiogroup']:checked")[0]
-        .value;
-  
-  if ((showKey !== "0" &&
-       (showKey === preventOpenKey || showKey === contextKey)) ||
-      (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
-    let currentValue = eGPrefs.getIntPref(aPrefName);
-    anEvent.target.parentElement.parentElement
-           .querySelector("[value='" + currentValue + "']").checked = true;
-    alert(eGStrings.getString("activation.duplicateKey"));
-  }
-  else {
-    eGPrefs.setIntPref(aPrefName, anEvent.target.value);
   }
 }
 
