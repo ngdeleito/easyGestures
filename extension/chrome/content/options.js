@@ -392,36 +392,6 @@ function addFavicon(url, actionName) {
   }
 }
 
-function readLoadURLPreference(actionName) {
-  var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(actionName);
-  
-  document.getElementById(actionName + "_tooltip").value = prefValue[0];
-  document.getElementById(actionName + "_URL").value = prefValue[1];
-  var isFaviconEnabled = prefValue[2] === "true";
-  document.getElementById(actionName + "_faviconCheckbox").checked =
-    isFaviconEnabled;
-  if (isFaviconEnabled) {
-    addFavicon(prefValue[1], actionName);
-  }
-  else {
-    document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
-  }
-  document.getElementById(actionName + "_openInPrivateWindowCheckbox").checked =
-    prefValue[3] === "true";
-}
-
-function readRunScriptPreference(actionName) {
-  var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(actionName);
-  
-  document.getElementById(actionName + "_tooltip").value = prefValue[0];
-  document.getElementById(actionName + "_code").value = prefValue[1];
-  var isIconEnabled = prefValue[2] !== "";
-  document.getElementById(actionName + "_newIconCheckbox").checked =
-    isIconEnabled;
-  document.getElementById(actionName + "_newIcon").src =
-    isIconEnabled ? prefValue[2] : DEFAULT_FAVICON_URL;
-}
-
 function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
     var prefValue = eGPrefs.getIntPref(control.dataset.preference);
@@ -460,6 +430,37 @@ function initializePreferenceControl(control) {
     control.querySelector("[value=" + prefValue + "]").selected = true;
   }
   
+  function initializeLoadURLPreference(actionName) {
+    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(actionName);
+    
+    document.getElementById(actionName + "_tooltip").value = prefValue[0];
+    document.getElementById(actionName + "_URL").value = prefValue[1];
+    var isFaviconEnabled = prefValue[2] === "true";
+    document.getElementById(actionName + "_faviconCheckbox").checked =
+      isFaviconEnabled;
+    if (isFaviconEnabled) {
+      addFavicon(prefValue[1], actionName);
+    }
+    else {
+      document.getElementById(actionName + "_favicon").src =
+        DEFAULT_FAVICON_URL;
+    }
+    document.getElementById(actionName + "_openInPrivateWindowCheckbox")
+            .checked = prefValue[3] === "true";
+  }
+  
+  function initializeRunScriptPreference(actionName) {
+    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(actionName);
+    
+    document.getElementById(actionName + "_tooltip").value = prefValue[0];
+    document.getElementById(actionName + "_code").value = prefValue[1];
+    var isIconEnabled = prefValue[2] !== "";
+    document.getElementById(actionName + "_newIconCheckbox").checked =
+      isIconEnabled;
+    document.getElementById(actionName + "_newIcon").src =
+      isIconEnabled ? prefValue[2] : DEFAULT_FAVICON_URL;
+  }
+  
   function initializeStringRadiogroup(control) {
     var prefValue = eGPrefs.getCharPref(control.dataset.preference);
     control.querySelector("[value=" + prefValue + "]").checked = true;
@@ -488,10 +489,10 @@ function initializePreferenceControl(control) {
       initializeSelectControl(control);
       break;
     case "loadURL":
-      readLoadURLPreference(control.id);
+      initializeLoadURLPreference(control.id);
       break;
     case "runScript":
-      readRunScriptPreference(control.id);
+      initializeRunScriptPreference(control.id);
       break;
     case "stringRadiogroup":
       initializeStringRadiogroup(control);
