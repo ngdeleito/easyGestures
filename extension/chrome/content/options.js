@@ -77,8 +77,9 @@ var prefsObserver = {
   }
 };
 
-function createActionsSelect() {
+function createActionsSelectWithSectorID(name, sectorNumber) {
   var select = document.createElement("select");
+  select.id = name + sectorNumber;
   var currentOptgroup = document.createElement("optgroup");
   select.appendChild(currentOptgroup);
   
@@ -102,13 +103,6 @@ function createActionsSelect() {
     currentAction = eGActions[currentAction].nextAction;
   }
   
-  return select;
-}
-
-function createActionsMenulistWithSectorID(name, sectorNumber) {
-  var select = createActionsSelect();
-  select.id = name + sectorNumber;
-  
   if (sectorNumber !== "Sector2" || name.startsWith("extra")) {
     // remove showExtraMenu action
     select.removeChild(select.childNodes[1]);
@@ -129,14 +123,14 @@ function createActions() {
     // sector 2
     let row1 = document.createElement("div");
     row1.className = "row1";
-    row1.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector2"));
+    row1.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector2"));
     box.appendChild(row1);
     
     // sectors 3 and 1
     let row2 = document.createElement("div");
     row2.className = "row2";
-    row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector3"));
-    row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector1"));
+    row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector3"));
+    row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector1"));
     box.appendChild(row2);
     
     // sectors 4,5 and 0,9
@@ -145,9 +139,9 @@ function createActions() {
     box.appendChild(row3);
     
     var vbox = document.createElement("div");
-    vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector4"));
+    vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector4"));
     if (!boxes[i].startsWith("extra")) {
-      vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector5"));
+      vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector5"));
     }
     row3.appendChild(vbox);
     
@@ -164,9 +158,9 @@ function createActions() {
     row3.appendChild(image);
     
     vbox = document.createElement("div");
-    vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector0"));
+    vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector0"));
     if (!boxes[i].startsWith("extra")) {
-      vbox.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector9"));
+      vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector9"));
     }
     row3.appendChild(vbox);
     
@@ -174,14 +168,14 @@ function createActions() {
       // sectors 6 and 8
       let row2 = document.createElement("div");
       row2.className = "row2";
-      row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector6"));
-      row2.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector8"));
+      row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector6"));
+      row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector8"));
       box.appendChild(row2);
       
       // sector 7
       let row1 = document.createElement("div");
       row1.className = "row1";
-      row1.appendChild(createActionsMenulistWithSectorID(boxes[i], "Sector7"));
+      row1.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector7"));
       box.appendChild(row1);
     }
   }
