@@ -500,14 +500,11 @@ function initializePreferenceControl(control) {
 }
 
 function preparePreferenceValueForLoadURL(actionName) {
-  var string = Components.classes["@mozilla.org/supports-string;1"]
-                       .createInstance(Components.interfaces.nsISupportsString);
-  string.data = document.getElementById(actionName + "_tooltip").value +
-    "\u2022" + document.getElementById(actionName + "_URL").value +
-    "\u2022" + document.getElementById(actionName + "_faviconCheckbox").checked +
-    "\u2022" +
-    document.getElementById(actionName + "_openInPrivateWindowCheckbox").checked;
-  return string;
+  return [document.getElementById(actionName + "_tooltip").value,
+          document.getElementById(actionName + "_URL").value,
+          document.getElementById(actionName + "_faviconCheckbox").checked,
+          document.getElementById(actionName + "_openInPrivateWindowCheckbox")
+                  .checked];
 }
 
 function addEventListenerToLoadURLTooltip(aPrefName, element, actionName) {
@@ -550,13 +547,11 @@ function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, action
 }
 
 function preparePreferenceValueForRunScript(actionName) {
-  var string = Components.classes["@mozilla.org/supports-string;1"]
-                       .createInstance(Components.interfaces.nsISupportsString);
-  string.data = document.getElementById(actionName + "_tooltip").value +
-    "\u2022" + document.getElementById(actionName + "_code").value + "\u2022";
+  var result = [document.getElementById(actionName + "_tooltip").value,
+                document.getElementById(actionName + "_code").value];
   var iconURL = document.getElementById(actionName + "_newIcon").src;
-  string.data += iconURL === DEFAULT_FAVICON_URL ? "" : iconURL;
-  return string;
+  result.push(iconURL === DEFAULT_FAVICON_URL ? "" : iconURL);
+  return result;
 }
 
 function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {

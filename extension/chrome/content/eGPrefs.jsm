@@ -486,13 +486,16 @@ var eGPrefs = {
       Components.interfaces.nsISupportsString).data.split("\u2022");
   },
   
-  setLoadURLOrRunScriptPrefValue : function(aPrefName, aPrefValue) {
+  setLoadURLOrRunScriptPrefValue : function(aPrefName, aPrefValueAsArray) {
     // for an unknown reason, using this._prefs here results in notifying the
     // prefsObserver in options.js of a change in the menus.extraAlt2Enabled
     // preference
+    var string = Components.classes["@mozilla.org/supports-string;1"]
+                   .createInstance(Components.interfaces.nsISupportsString);
+    string.data = aPrefValueAsArray.join("\u2022");
     var prefs = Services.prefs.getBranch("extensions.easygestures.");
     /*this._*/prefs.setComplexValue(aPrefName,
-      Components.interfaces.nsISupportsString, aPrefValue);
+      Components.interfaces.nsISupportsString, string);
   },
   
   getOpenLinkPref : function() {
