@@ -179,15 +179,7 @@ function fillActions(statsActions, totalClicks) {
 
 function statsLoadHandler() {
   eGUtils.setDocumentTitle(document, "stats");
-  eGUtils.setDocumentLocalizedStrings(document, new Map([
-    ["lastResetLabel", "stats.lastReset"],
-    ["clicksByActionsLabel", "stats.actions"],
-    ["clicksByDirectionsLabel", "stats.directions"],
-    ["mainMenuLabel", "menus.main"], ["primaryMenuLabel", "menus.primary"],
-    ["alt1MenuLabel", "menus.alternative1"],
-    ["alt2MenuLabel", "menus.alternative2"],
-    ["allMenusLabel", "stats.allMenus"], ["extraMenuLabel", "menus.extra"]
-  ]));
+  eGUtils.setDocumentLocalizedStrings(document);
   
   fillMainMenuDirections("primary");
   fillMainMenuDirections("alt1");

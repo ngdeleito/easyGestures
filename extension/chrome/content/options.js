@@ -836,10 +836,7 @@ function optionsLoadHandler() {
   prefsObserver.register();
   
   eGUtils.setDocumentTitle(document, "preferences");
-  var elements = document.querySelectorAll("[data-l10n]");
-  for (let i=0; i < elements.length; ++i) {
-    elements[i].textContent = eGStrings.getString(elements[i].dataset.l10n);
-  }
+  eGUtils.setDocumentLocalizedStrings(document);
   
   createActions();
   createLoadURLActions();

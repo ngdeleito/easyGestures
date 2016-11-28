@@ -76,9 +76,10 @@ var eGUtils = {
                      document.title;
   },
   
-  setDocumentLocalizedStrings: function(document, idStringNameMap) {
-    idStringNameMap.forEach(function(stringName, id) {
-      document.getElementById(id).textContent = eGStrings.getString(stringName);
-    });
+  setDocumentLocalizedStrings: function(document) {
+    var elements = document.querySelectorAll("[data-l10n]");
+    for (let i=0; i < elements.length; ++i) {
+      elements[i].textContent = eGStrings.getString(elements[i].dataset.l10n);
+    }
   }
 };

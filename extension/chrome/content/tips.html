@@ -43,10 +43,10 @@
 </head>
 
 <body onload="tipsLoadHandler();" onunload="tipsUnloadHandler();">
-  <button id="previousButton" type="button" onclick="updateTipNbr(-1);">
+  <button type="button" data-l10n="tips.previous" onclick="updateTipNbr(-1);">
   </button>
   <span id="tipNumber"></span>
-  <button id="nextButton" type="button" onclick="updateTipNbr(+1);">
+  <button type="button" data-l10n="tips.next" onclick="updateTipNbr(+1);">
   </button>
   
   <p id="tip"><span id="tipTextBeforeLink">
@@ -56,6 +56,7 @@
   <div id="tipImage"></div>
   <input id="showTipsControl" type="checkbox"
          onclick="updateShowTipsCheckbox();" />
-  <label id="showTipsLabel" for="showTipsControl"></label>
+  <label id="showTipsLabel" for="showTipsControl"
+         data-l10n="general.startupTips"></label>
 </body>
 </html>
