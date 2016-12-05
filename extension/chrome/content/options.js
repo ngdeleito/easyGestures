@@ -77,9 +77,8 @@ var prefsObserver = {
   }
 };
 
-function createActionsSelectWithSectorID(name, sectorNumber) {
+function createActionsSelect(sectorNumber, isExtraMenu) {
   var select = document.createElement("select");
-  select.id = name + sectorNumber;
   var currentOptgroup = document.createElement("optgroup");
   select.appendChild(currentOptgroup);
   
@@ -103,7 +102,7 @@ function createActionsSelectWithSectorID(name, sectorNumber) {
     currentAction = eGActions[currentAction].nextAction;
   }
   
-  if (sectorNumber !== "Sector2" || name.startsWith("extra")) {
+  if (sectorNumber !== 2 || isExtraMenu) {
     // remove showExtraMenu action
     select.removeChild(select.childNodes[1]);
   }
@@ -111,74 +110,40 @@ function createActionsSelectWithSectorID(name, sectorNumber) {
   return select;
 }
 
-function createActions() {
-  var boxes = new Array(
-    "main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
-    "contextLink", "contextImage", "contextSelection", "contextTextbox"
-  );
+function createMenuControl(menuName, isExtraMenu) {
+  var menuControlElement = document.getElementById("menuControl_" + menuName);
+  menuControlElement.className = "menuControl";
+  menuControlElement.classList.toggle("extra", isExtraMenu);
+  menuControlElement.classList.toggle("large", !eGPrefs.isLargeMenuOff());
   
-  for (var i=0; i < boxes.length; i++) {
-    var box = document.getElementById("gr_" + boxes[i]);
+  var actionElements = document.createElement("div");
+  menuControlElement.appendChild(actionElements);
+  var selectElements = document.createElement("div");
+  menuControlElement.appendChild(selectElements);
+  
+  var numberOfItems = isExtraMenu ? 5 : 10;
+  for (let i = 0; i < numberOfItems; ++i) {
+    let action = document.createElement("div");
+    action.className = "sector" + i;
+    actionElements.appendChild(action);
     
-    // sector 2
-    let row1 = document.createElement("div");
-    row1.className = "row1";
-    row1.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector2"));
-    box.appendChild(row1);
-    
-    // sectors 3 and 1
-    let row2 = document.createElement("div");
-    row2.className = "row2";
-    row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector3"));
-    row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector1"));
-    box.appendChild(row2);
-    
-    // sectors 4,5 and 0,9
-    let row3 = document.createElement("div");
-    row3.className = "row3";
-    box.appendChild(row3);
-    
-    var vbox = document.createElement("div");
-    vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector4"));
-    if (!boxes[i].startsWith("extra")) {
-      vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector5"));
-    }
-    row3.appendChild(vbox);
-    
-    var image = document.createElement("img");
-    image.setAttribute("id", boxes[i]+"Image");
-    if (!boxes[i].startsWith("extra")) {
-      image.setAttribute("src", "mainMenu.png");
-    }
-    else {
-      image.setAttribute("src", "extraMenu.png");
-    }
-    image.setAttribute("width", "41");
-    image.setAttribute("height", "41");
-    row3.appendChild(image);
-    
-    vbox = document.createElement("div");
-    vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector0"));
-    if (!boxes[i].startsWith("extra")) {
-      vbox.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector9"));
-    }
-    row3.appendChild(vbox);
-    
-    if (!boxes[i].startsWith("extra")) {
-      // sectors 6 and 8
-      let row2 = document.createElement("div");
-      row2.className = "row2";
-      row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector6"));
-      row2.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector8"));
-      box.appendChild(row2);
-      
-      // sector 7
-      let row1 = document.createElement("div");
-      row1.className = "row1";
-      row1.appendChild(createActionsSelectWithSectorID(boxes[i], "Sector7"));
-      box.appendChild(row1);
-    }
+    let select = createActionsSelect(i, isExtraMenu);
+    select.className = "sector" + i;
+    selectElements.appendChild(select);
   }
+}
+
+function createRegularMenuControls() {
+  ["main", "mainAlt1", "mainAlt2", "contextLink", "contextImage",
+   "contextSelection", "contextTextbox"].forEach(function(menuName) {
+     createMenuControl(menuName, false);
+  });
+}
+
+function createExtraMenuControls() {
+  ["extra", "extraAlt1", "extraAlt2"].forEach(function(menuName) {
+    createMenuControl(menuName, true);
+  });
 }
 
 function createHeaderForAction(actionName) {
@@ -412,10 +377,10 @@ function initializePreferenceControl(control) {
   
   function initializeMenuControl(control) {
     var prefValue = eGPrefs.getMenuPrefAsArray(control.dataset.preference);
-    var menuPrefix = control.dataset.preference.replace("menus.", "");
     prefValue.forEach(function(value, index) {
-      document.getElementById(menuPrefix + "Sector" + index)
-              .querySelector("[value=" + value + "]").selected = true;
+      control.firstElementChild.childNodes[index].dataset.action = value;
+      control.lastElementChild.childNodes[index]
+             .querySelector("[value=" + value + "]").selected = true;
     });
   }
   
@@ -660,19 +625,18 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToMenuControl(control) {
     function onchangeHandler() {
-      var menuName = control.dataset.preference.replace("menus.", "");
-      var menuIndexes = menuName.startsWith("extra") ?
-                          [0, 1, 2, 3, 4] : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-      var prefValueAsArray = menuIndexes.map(function(value) {
-        return document.getElementById(menuName + "Sector" + value).value;
-      });
-      
+      var selectElements = control.lastElementChild;
+      var prefValueAsArray = [];
+      for (let i = 0; i < selectElements.childNodes.length; ++i) {
+        prefValueAsArray.push(selectElements.childNodes[i].value);
+      }
       eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
     }
     
-    var selectElements = control.getElementsByTagName("select");
-    for (let i = 0; i < selectElements.length; ++i) {
-      selectElements[i].addEventListener("change", onchangeHandler, true);
+    var selectElements = control.lastElementChild;
+    for (let i = 0; i < selectElements.childNodes.length; ++i) {
+      selectElements.childNodes[i]
+                    .addEventListener("change", onchangeHandler, true);
     }
   }
   
@@ -749,13 +713,11 @@ function addOnchangeListenerToPreferenceControl(control) {
 }
 
 function setMenuType(menuTypeIsStandard) {
-  ["mainSector5", "mainSector9", "mainAlt1Sector5", "mainAlt1Sector9",
-   "mainAlt2Sector5", "mainAlt2Sector9", "contextLinkSector5",
-   "contextLinkSector9", "contextImageSector5", "contextImageSector9",
-   "contextSelectionSector5", "contextSelectionSector9",
-   "contextTextboxSector5", "contextTextboxSector9"].forEach(function(id) {
-    document.getElementById(id).style.display =
-      menuTypeIsStandard ? "none" : "block";
+  ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
+   "contextLink", "contextImage", "contextSelection", "contextTextbox"]
+    .forEach(function(menuName) {
+    document.getElementById("menuControl_" + menuName).classList
+            .toggle("large", !menuTypeIsStandard);
   });
 }
 
@@ -789,18 +751,12 @@ function setDisabledStatusForAutoscrollingActivationDelay(shouldBeDisabled) {
     shouldBeDisabled);
 }
 
-function setDisabledStatusForMainMenu(menu, disabled) {
-  [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function(sector) {
-    document.getElementById("main" + menu + "Sector" + sector).disabled =
-      !disabled;
-  });
-}
-
-function setDisabledStatusForExtraMenu(menu, disabled) {
-  [0, 1, 2, 3, 4].forEach(function(sector) {
-    document.getElementById("extra" + menu + "Sector" + sector).disabled =
-      !disabled;
-  });
+function setDisabledStatusForMenu(menuName, enabled) {
+  var selectElements = document.getElementById("menuControl_" + menuName)
+                               .lastElementChild;
+  for (let i = 0; i < selectElements.childNodes.length; ++i) {
+    selectElements.childNodes[i].disabled = !enabled;
+  }
 }
 
 function setPreferenceControlsDisabledStatus() {
@@ -808,10 +764,10 @@ function setPreferenceControlsDisabledStatus() {
   setDisabledStatusForTooltipsActivationDelay(!eGPrefs.areTooltipsOn());
   setDisabledStatusForOpenLinksMaximumDelay(!eGPrefs.isHandleLinksOn());
   setDisabledStatusForAutoscrollingActivationDelay(!eGPrefs.isAutoscrollingOn());
-  setDisabledStatusForMainMenu("Alt1", eGPrefs.isMainAlt1MenuEnabled());
-  setDisabledStatusForMainMenu("Alt2", eGPrefs.isMainAlt2MenuEnabled());
-  setDisabledStatusForExtraMenu("Alt1", eGPrefs.isExtraAlt1MenuEnabled());
-  setDisabledStatusForExtraMenu("Alt2", eGPrefs.isExtraAlt2MenuEnabled());
+  setDisabledStatusForMenu("mainAlt1", eGPrefs.isMainAlt1MenuEnabled());
+  setDisabledStatusForMenu("mainAlt2", eGPrefs.isMainAlt2MenuEnabled());
+  setDisabledStatusForMenu("extraAlt1", eGPrefs.isExtraAlt1MenuEnabled());
+  setDisabledStatusForMenu("extraAlt2", eGPrefs.isExtraAlt2MenuEnabled());
 }
 
 function loadPreferences(isReload) {
@@ -832,7 +788,8 @@ function optionsLoadHandler() {
   eGUtils.setDocumentTitle(document, "preferences");
   eGUtils.setDocumentLocalizedStrings(document);
   
-  createActions();
+  createRegularMenuControls();
+  createExtraMenuControls();
   createLoadURLActions();
   createRunScriptActions();
   

@@ -365,7 +365,7 @@
             <label for="enableMainPrimaryMenu" data-l10n="menus.enabled">
             </label>
           </div>
-          <div id="gr_main" data-preference="menus.main"
+          <div id="menuControl_main" data-preference="menus.main"
                data-preference-type="menu">
           </div>
         </div>
@@ -374,11 +374,11 @@
             <input id="enableMainAlt1Menu" type="checkbox"
                    data-preference="menus.mainAlt1Enabled"
                    data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForMainMenu('Alt1',
-                                                          this.checked);" />
+                   onchange="setDisabledStatusForMenu('mainAlt1',
+                                                      this.checked);" />
             <label for="enableMainAlt1Menu" data-l10n="menus.enabled"></label>
           </div>
-          <div id="gr_mainAlt1" data-preference="menus.mainAlt1"
+          <div id="menuControl_mainAlt1" data-preference="menus.mainAlt1"
                data-preference-type="menu">
           </div>
         </div>
@@ -387,11 +387,11 @@
             <input id="enableMainAlt2Menu" type="checkbox"
                    data-preference="menus.mainAlt2Enabled"
                    data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForMainMenu('Alt2',
-                                                          this.checked);" />
+                   onchange="setDisabledStatusForMenu('mainAlt2',
+                                                      this.checked);" />
             <label for="enableMainAlt2Menu" data-l10n="menus.enabled"></label>
           </div>
-          <div id="gr_mainAlt2" data-preference="menus.mainAlt2"
+          <div id="menuControl_mainAlt2" data-preference="menus.mainAlt2"
                data-preference-type="menu">
           </div>
         </div>
@@ -415,7 +415,7 @@
             <label for="enableExtraPrimaryMenu" data-l10n="menus.enabled">
             </label>
           </div>
-          <div id="gr_extra" data-preference="menus.extra"
+          <div id="menuControl_extra" data-preference="menus.extra"
                data-preference-type="menu">
           </div>
         </div>
@@ -424,11 +424,11 @@
             <input id="enableExtraAlt1Menu" type="checkbox"
                    data-preference="menus.extraAlt1Enabled"
                    data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForExtraMenu('Alt1',
-                                                           this.checked);" />
+                   onchange="setDisabledStatusForMenu('extraAlt1',
+                                                      this.checked);" />
             <label for="enableExtraAlt1Menu" data-l10n="menus.enabled"></label>
           </div>
-          <div id="gr_extraAlt1" data-preference="menus.extraAlt1"
+          <div id="menuControl_extraAlt1" data-preference="menus.extraAlt1"
                data-preference-type="menu">
           </div>
         </div>
@@ -437,11 +437,11 @@
             <input id="enableExtraAlt2Menu" type="checkbox"
                    data-preference="menus.extraAlt2Enabled"
                    data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForExtraMenu('Alt2',
-                                                           this.checked);" />
+                   onchange="setDisabledStatusForMenu('extraAlt2',
+                                                      this.checked);" />
             <label for="enableExtraAlt2Menu" data-l10n="menus.enabled"></label>
           </div>
-          <div id="gr_extraAlt2" data-preference="menus.extraAlt2"
+          <div id="menuControl_extraAlt2" data-preference="menus.extraAlt2"
                data-preference-type="menu">
           </div>
         </div>
@@ -462,22 +462,24 @@
         </div>
         
         <div id="menus_contextual_link" class="tab">
-          <div id="gr_contextLink" data-preference="menus.contextLink"
+          <div id="menuControl_contextLink" data-preference="menus.contextLink"
                data-preference-type="menu">
           </div>
         </div>
         <div id="menus_contextual_image" class="tab">
-          <div id="gr_contextImage" data-preference="menus.contextImage"
-               data-preference-type="menu">
+          <div id="menuControl_contextImage"
+               data-preference="menus.contextImage" data-preference-type="menu">
           </div>
         </div>
         <div id="menus_contextual_selection" class="tab">
-          <div id="gr_contextSelection" data-preference="menus.contextSelection"
+          <div id="menuControl_contextSelection"
+               data-preference="menus.contextSelection"
                data-preference-type="menu">
           </div>
         </div>
         <div id="menus_contextual_textbox" class="tab">
-          <div id="gr_contextTextbox" data-preference="menus.contextTextbox"
+          <div id="menuControl_contextTextbox"
+               data-preference="menus.contextTextbox"
                data-preference-type="menu">
           </div>
         </div>
