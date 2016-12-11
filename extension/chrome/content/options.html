@@ -52,6 +52,7 @@
     <a id="menus_label" href="#menus" data-l10n="menus"></a>
     <a id="customizations_label" href="#customizations"
        data-l10n="customizations"></a>
+    <a id="stats_label" href="#stats" data-l10n="stats"></a>
   </nav>
   
   <main>
@@ -80,17 +81,6 @@
         </button>
         <button type="button" data-l10n="general.prefs.reset"
                 onclick="resetPrefs();">
-        </button>
-      </div>
-      
-      <h1 data-l10n="stats">&nbsp;</h1>
-      <div>
-        <button type="button" data-l10n="general.stats.display"
-                onclick="eGUtils.showOrOpenTab(
-                         'chrome://easygestures/content/stats.html', true);">
-        </button>
-        <button type="button" data-l10n="general.stats.reset"
-                onclick="resetStats();">
         </button>
       </div>
     </div>
@@ -626,6 +616,62 @@
                   onclick="openOptionsDailyReadings();">
           </button>
         </div>
+      </div>
+    </div>
+    
+    <div id="stats" class="pane">
+      <div class="tabbox">
+        <a id="stats_clicksByAction_label" href="#stats_clicksByAction"
+           data-l10n="stats.actions"></a><!--
+     --><a id="stats_clicksByDirection_label" href="#stats_clicksByDirection"
+           data-l10n="stats.directions"></a>
+      </div>
+      
+      <div id="statsResetSection">
+        <p>
+          <span data-l10n="stats.lastReset"></span>
+          <span id="lastReset"></span>
+        </p>
+        <button type="button" data-l10n="stats.reset" onclick="resetStats();">
+        </button>
+      </div>
+      
+      <div id="stats_clicksByAction" class="tab"></div>
+      
+      <div id="stats_clicksByDirection" class="tab">
+        <table>
+          <colgroup>
+            <col />
+            <col span="4" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th></th>
+              <td data-l10n="menus.primary"></td>
+              <td data-l10n="menus.alternative1"></td>
+              <td data-l10n="menus.alternative2"></td>
+              <td data-l10n="stats.allMenus"></td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th data-l10n="menus.main"></th>
+              <td id="primaryMainMenu"></td>
+              <td id="alt1MainMenu"></td>
+              <td id="alt2MainMenu"></td>
+              <td id="allMenusMainMenu"></td>
+            </tr>
+          </tbody>
+          <tbody>
+            <tr>
+              <th data-l10n="menus.extra"></th>
+              <td id="primaryExtraMenu"></td>
+              <td id="alt1ExtraMenu"></td>
+              <td id="alt2ExtraMenu"></td>
+              <td id="allMenusExtraMenu"></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </main>

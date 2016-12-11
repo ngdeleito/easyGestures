@@ -322,3 +322,101 @@ th {
   font-family: inherit; /* required for font-size to inherit */
   font-size: inherit;
 }
+
+#statsResetSection {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 0.75em;
+}
+
+#statsResetSection p {
+  margin: 0;
+}
+
+#statsResetSection button {
+  margin-left: auto;
+}
+
+#stats_clicksByAction {
+  -moz-column-count: 5;
+  column-count: 5;
+}
+
+#stats_clicksByAction div {
+  margin-top: 0.25em;
+  height: 20px;
+  line-height: 20px;
+}
+
+#stats_clicksByAction span {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#stats_clicksByAction span + span {
+  margin-left: 5px;
+}
+
+#stats_clicksByAction span:nth-child(2) {
+  max-width: 50px;
+  height: 20px;
+  background-color: hsl(0, 0%, 60%);
+}
+
+#stats_clicksByDirection table {
+  width: 100%;
+}
+
+#stats_clicksByDirection col:first-child {
+  width: 4em;
+}
+
+#stats_clicksByDirection thead td {
+  text-align: center;
+  font-weight: bold;
+}
+
+#stats_clicksByDirection tbody td {
+  padding-top: 1em;
+}
+
+#stats_clicksByDirection th {
+  transform: rotateZ(-90deg);
+}
+
+#stats_clicksByDirection .row1, .row2, .row3 {
+  text-align: center;
+}
+
+#stats_clicksByDirection .row2 :first-child {
+  margin-right: 2em;
+}
+
+#stats_clicksByDirection .row3 > div:first-child {
+  display: inline-block;
+  line-height: 41px;
+  margin-right: 0.2em;
+}
+
+#stats_clicksByDirection .row3 > div:last-child {
+  display: inline-block;
+  line-height: 41px;
+  margin-left: 0.2em;
+}
+
+#stats_clicksByDirection .row3 > div div:only-child {
+  line-height: 41px;
+}
+
+#stats_clicksByDirection .row3 > div div {
+  line-height: 20.5px;
+}
+
+#stats_clicksByDirection .row3 img {
+  vertical-align: bottom;
+}
+
+#stats_clicksByDirection [id$="MainMenuTotal"] {
+  margin-top: 1em;
+}
