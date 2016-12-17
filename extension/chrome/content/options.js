@@ -864,15 +864,13 @@ function initializeTotalStatsForMenu(isExtraMenu, statsArray,
 }
 
 function loadStats() {
+  document.getElementById("statsLastReset").textContent =
+    eGPrefs.getStatsLastResetPref();
   
   var statsClicksOnActions = 0;
   var statsActions = eGPrefs.getStatsActionsPref();
   var statsMainArray = eGPrefs.getStatsMainMenuPref();
   var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
-  
-  var statsLastReset = eGPrefs.getStatsLastResetPref();
-  
-  document.getElementById("lastReset").textContent = statsLastReset;
   
   for (let action in statsActions) {
     statsClicksOnActions += statsActions[action];
