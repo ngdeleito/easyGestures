@@ -53,6 +53,8 @@ main {
 nav {
   position: fixed;
   width: 160px;
+  z-index: 1;
+  background-color: hsla(0, 100%, 100%, 0.8);
   font-size: larger;
 }
 
