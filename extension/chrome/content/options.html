@@ -639,39 +639,33 @@
       <div id="stats_clicksByAction" class="tab"></div>
       
       <div id="stats_clicksByDirection" class="tab">
-        <table>
-          <colgroup>
-            <col />
-            <col span="4" />
-          </colgroup>
-          <thead>
-            <tr>
-              <th></th>
-              <td data-l10n="menus.primary"></td>
-              <td data-l10n="menus.alternative1"></td>
-              <td data-l10n="menus.alternative2"></td>
-              <td data-l10n="stats.allMenus"></td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th data-l10n="menus.main"></th>
-              <td id="primaryMainMenu"></td>
-              <td id="alt1MainMenu"></td>
-              <td id="alt2MainMenu"></td>
-              <td id="allMenusMainMenu"></td>
-            </tr>
-          </tbody>
-          <tbody>
-            <tr>
-              <th data-l10n="menus.extra"></th>
-              <td id="primaryExtraMenu"></td>
-              <td id="alt1ExtraMenu"></td>
-              <td id="alt2ExtraMenu"></td>
-              <td id="allMenusExtraMenu"></td>
-            </tr>
-          </tbody>
-        </table>
+        <div>
+          <div>
+            <div></div>
+            <div id="mainMenuLabel" data-l10n="menus.main"></div>
+            <div id="extraMenuLabel" data-l10n="menus.extra"></div>
+          </div>
+          <div>
+            <div data-l10n="menus.primary"></div>
+            <div id="primaryMainMenu"></div>
+            <div id="primaryExtraMenu"></div>
+          </div>
+          <div>
+            <div data-l10n="menus.alternative1"></div>
+            <div id="alt1MainMenu"></div>
+            <div id="alt1ExtraMenu"></div>
+          </div>
+          <div>
+            <div data-l10n="menus.alternative2"></div>
+            <div id="alt2MainMenu"></div>
+            <div id="alt2ExtraMenu"></div>
+          </div>
+          <div>
+            <div data-l10n="stats.allMenus"></div>
+            <div id="allMenusMainMenu"></div>
+            <div id="allMenusExtraMenu"></div>
+          </div>
+        </div>
       </div>
     </div>
   </main>

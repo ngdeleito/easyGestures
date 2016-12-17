@@ -719,6 +719,11 @@ function setMenuType(menuTypeIsStandard) {
     document.getElementById("menuControl_" + menuName).classList
             .toggle("large", !menuTypeIsStandard);
   });
+  ["mainMenuLabel", "extraMenuLabel", "primaryMainMenu", "primaryExtraMenu",
+   "alt1MainMenu", "alt1ExtraMenu", "alt2MainMenu", "alt2ExtraMenu",
+   "allMenusMainMenu", "allMenusExtraMenu"].forEach(function(id) {
+     document.getElementById(id).classList.toggle("large", !menuTypeIsStandard);
+  });
 }
 
 function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
@@ -781,110 +786,6 @@ function loadPreferences(isReload) {
   setPreferenceControlsDisabledStatus();
 }
 
-function createRow1(id) {
-  var div = document.createElement("div");
-  div.id = id;
-  div.className = "row1";
-  return div;
-}
-
-function createRow2(id1, id2) {
-  var div = document.createElement("div");
-  div.className = "row2";
-  
-  var span = document.createElement("span");
-  span.id = id1;
-  div.appendChild(span);
-  
-  span = document.createElement("span");
-  span.id = id2;
-  div.appendChild(span);
-  
-  return div;
-}
-
-function createLabelsforMiddleRow(id1, id2) {
-  var div = document.createElement("div");
-  
-  var div2 = document.createElement("div");
-  div2.id = id1;
-  div.appendChild(div2);
-  
-  if (!eGPrefs.isLargeMenuOff()) {
-    div2 = document.createElement("div");
-    div2.id = id2;
-    div.appendChild(div2);
-  }
-  
-  return div;
-}
-
-function createRowTotal(id) {
-  var div = document.createElement("div");
-  div.id = id;
-  div.className = "row1";
-  div.setAttribute("style", "font-weight: bold; font-size:medium");
-  return div;
-}
-
-function fillMainMenuDirections(layout) {
-  var container = document.getElementById(layout + "MainMenu");
-  
-  container.appendChild(createRow1(layout + "MainMenuSector2"));
-  container.appendChild(createRow2(layout + "MainMenuSector3",
-                                   layout + "MainMenuSector1"));
-  
-  var div = document.createElement("div");
-  div.className = "row3";
-  container.appendChild(div);
-  
-  div.appendChild(createLabelsforMiddleRow(layout + "MainMenuSector4",
-                                           layout + "MainMenuSector5"));
-  
-  var img = document.createElement("img");
-  img.setAttribute("src", "mainMenu.png");
-  img.setAttribute("width", "41");
-  img.setAttribute("height", "41");
-  div.appendChild(img);
-  
-  div.appendChild(createLabelsforMiddleRow(layout + "MainMenuSector0",
-                                           layout + "MainMenuSector9"));
-  
-  container.appendChild(createRow2(layout + "MainMenuSector6",
-                                   layout + "MainMenuSector8"));
-  container.appendChild(createRow1(layout + "MainMenuSector7"));
-  
-  container.appendChild(createRowTotal(layout + "MainMenuTotal"));
-}
-
-function fillExtraMenuDirections(layout) {
-  var container = document.getElementById(layout + "ExtraMenu");
-  
-  container.appendChild(createRow1(layout + "ExtraMenuSector2"));
-  container.appendChild(createRow2(layout + "ExtraMenuSector3",
-                                   layout + "ExtraMenuSector1"));
-  
-  var div = document.createElement("div");
-  div.className = "row3";
-  container.appendChild(div);
-  
-  var div2 = document.createElement("div");
-  div2.id = layout + "ExtraMenuSector4";
-  div.appendChild(div2);
-  
-  var img = document.createElement("img");
-  img.setAttribute("src", "extraMenu.png");
-  img.setAttribute("width", "41");
-  img.setAttribute("height", "41");
-  div.appendChild(img);
-  
-  div2 = document.createElement("div");
-  div2.id = layout + "ExtraMenuSector0";
-  div.appendChild(div2);
-  
-  container.appendChild(createRowTotal(layout + "ExtraMenuTotal"));
-}
-
 function fillActions(statsActions, totalClicks) {
   var container = document.getElementById("stats_clicksByAction");
   
@@ -920,21 +821,54 @@ function fillActions(statsActions, totalClicks) {
   }
 }
 
+function initializeStatsForMenuLayout(menuPrefix, isExtraMenu, getClicks,
+                                      statsClicksOnActions) {
+  var container = document.getElementById(menuPrefix +
+                                          (isExtraMenu ? "Extra" : "Main") +
+                                          "Menu");
+  container.className = "statsMenu";
+  container.classList.toggle("extra", isExtraMenu);
+  container.classList.toggle("large", !eGPrefs.isLargeMenuOff());
+  var totalClicks = 0;
+  var numberOfActions = isExtraMenu ? 5 : 10;
+  for (let i = 0; i < numberOfActions; ++i) {
+    let stat = document.createElement("div");
+    stat.className = "sector" + i;
+    let clicks = getClicks(i, numberOfActions);
+    stat.textContent = Math.round(clicks / statsClicksOnActions * 100) + "%";
+    totalClicks += clicks;
+    container.appendChild(stat);
+  }
+  var total = document.createElement("div");
+  total.className = "total";
+  total.textContent = Math.round(totalClicks / statsClicksOnActions * 100) + "%";
+  container.appendChild(total);
+}
+
+function initializeStatsForMenu(menuPrefix, isExtraMenu, index, statsArray,
+                                statsClicksOnActions) {
+  initializeStatsForMenuLayout(menuPrefix, isExtraMenu,
+                               function(i, numberOfActions) {
+                                 return statsArray[i + index * numberOfActions];
+                               }, statsClicksOnActions);
+}
+
+function initializeTotalStatsForMenu(isExtraMenu, statsArray,
+                                     statsClicksOnActions) {
+  initializeStatsForMenuLayout("allMenus", isExtraMenu,
+                               function(i, numberOfActions) {
+                                 return statsArray[i] +
+                                        statsArray[i + numberOfActions] +
+                                        statsArray[i + numberOfActions * 2];
+                               }, statsClicksOnActions);
+}
+
 function loadStats() {
-  fillMainMenuDirections("primary");
-  fillMainMenuDirections("alt1");
-  fillMainMenuDirections("alt2");
-  fillMainMenuDirections("allMenus");
-  fillExtraMenuDirections("primary");
-  fillExtraMenuDirections("alt1");
-  fillExtraMenuDirections("alt2");
-  fillExtraMenuDirections("allMenus");
   
   var statsClicksOnActions = 0;
-  
+  var statsActions = eGPrefs.getStatsActionsPref();
   var statsMainArray = eGPrefs.getStatsMainMenuPref();
   var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
-  var statsActions = eGPrefs.getStatsActionsPref();
   
   var statsLastReset = eGPrefs.getStatsLastResetPref();
   
@@ -947,48 +881,15 @@ function loadStats() {
     statsClicksOnActions = 1; //just avoiding division by 0 to prevent displaying NaN
   }
   
-  var totalMP = 0;
-  var totalEP = 0;
-  var totalMA1 = 0;
-  var totalEA1 = 0;
-  var totalMA2 = 0;
-  var totalEA2 = 0;
-  
   fillActions(statsActions, statsClicksOnActions - statsActions.empty);
-  
-  var sectors = eGPrefs.isLargeMenuOff() ? [0, 1, 2, 3, 4, 6, 7, 8]
-                                         : [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-  sectors.forEach(function (i) {
-    document.getElementById("primaryMainMenuSector"+String(i)).textContent=Math.round(statsMainArray[i]/statsClicksOnActions*100)+"%";
-    document.getElementById("alt1MainMenuSector"+String(i)).textContent=Math.round(statsMainArray[10+i]/statsClicksOnActions*100)+"%";
-    document.getElementById("alt2MainMenuSector"+String(i)).textContent=Math.round(statsMainArray[20+i]/statsClicksOnActions*100)+"%";
-    document.getElementById("allMenusMainMenuSector"+String(i)).textContent=Math.round((statsMainArray[i]+statsMainArray[10+i]+statsMainArray[20+i])/statsClicksOnActions*100)+"%";
-    totalMP+=statsMainArray[i];
-    totalMA1+=statsMainArray[10+i];
-    totalMA2+=statsMainArray[20+i];
+  ["primary", "alt1", "alt2"].forEach(function(menuPrefix, index) {
+    initializeStatsForMenu(menuPrefix, false, index, statsMainArray,
+                           statsClicksOnActions);
+    initializeStatsForMenu(menuPrefix, true, index, statsExtraArray,
+                           statsClicksOnActions);
   });
-  
-  [0, 1, 2, 3, 4].forEach(function(i) {
-    document.getElementById("primaryExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[i]/statsClicksOnActions*100)+"%";
-    document.getElementById("alt1ExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[5+i]/statsClicksOnActions*100)+"%";
-    document.getElementById("alt2ExtraMenuSector"+String(i)).textContent=Math.round(statsExtraArray[10+i]/statsClicksOnActions*100)+"%";
-    document.getElementById("allMenusExtraMenuSector"+String(i)).textContent=Math.round((statsExtraArray[i]+statsExtraArray[5+i]+statsExtraArray[10+i])/statsClicksOnActions*100)+"%";
-    totalEP+=statsExtraArray[i];
-    totalEA1+=statsExtraArray[5+i];
-    totalEA2+=statsExtraArray[10+i];
-  });
-  
-  document.getElementById("primaryMainMenuTotal").textContent=Math.round(totalMP/statsClicksOnActions*100)+"%";
-  document.getElementById("primaryExtraMenuTotal").textContent=Math.round(totalEP/statsClicksOnActions*100)+"%";
-  
-  document.getElementById("alt1MainMenuTotal").textContent=Math.round(totalMA1/statsClicksOnActions*100)+"%";
-  document.getElementById("alt1ExtraMenuTotal").textContent=Math.round(totalEA1/statsClicksOnActions*100)+"%";
-  
-  document.getElementById("alt2MainMenuTotal").textContent=Math.round(totalMA2/statsClicksOnActions*100)+"%";
-  document.getElementById("alt2ExtraMenuTotal").textContent=Math.round(totalEA2/statsClicksOnActions*100)+"%";
-  
-  document.getElementById("allMenusMainMenuTotal").textContent= Math.round((totalMP + totalMA1+totalMA2)/statsClicksOnActions*100)+"%";
-  document.getElementById("allMenusExtraMenuTotal").textContent=Math.round((totalEP + totalEA1+totalEA2)/statsClicksOnActions*100)+"%";
+  initializeTotalStatsForMenu(false, statsMainArray, statsClicksOnActions);
+  initializeTotalStatsForMenu(true, statsExtraArray, statsClicksOnActions);
 }
 
 function optionsLoadHandler() {
