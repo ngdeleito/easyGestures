@@ -112,7 +112,7 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
 
 function createMenuControl(menuName, isExtraMenu) {
   var menuControlElement = document.getElementById("menuControl_" + menuName);
-  menuControlElement.className = "menuControl";
+  menuControlElement.className = "menu";
   menuControlElement.classList.toggle("extra", isExtraMenu);
   menuControlElement.classList.toggle("large", !eGPrefs.isLargeMenuOff());
   
@@ -826,7 +826,7 @@ function initializeStatsForMenuLayout(menuPrefix, isExtraMenu, getClicks,
   var container = document.getElementById(menuPrefix +
                                           (isExtraMenu ? "Extra" : "Main") +
                                           "Menu");
-  container.className = "statsMenu";
+  container.className = "menu";
   container.classList.toggle("extra", isExtraMenu);
   container.classList.toggle("large", !eGPrefs.isLargeMenuOff());
   var totalClicks = 0;
