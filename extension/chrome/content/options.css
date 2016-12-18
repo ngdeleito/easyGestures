@@ -264,16 +264,16 @@ input[type="number"] {
 .menu.large select.sector8 { left: calc(175px + 140px + 2 * 3px); top: calc(92px + 20px); }
 .menu.large select.sector9 { display: block; left: calc(175px + 140px + 2 * 3px); top: calc(65px + 20px); }
 
-.menu.large.extra div.sector0 { left: 107px; top: 54px; }
-.menu.large.extra div.sector1 { left: 91px; top: 17px; }
-.menu.large.extra div.sector2 { left: 54px; top: 1px; }
-.menu.large.extra div.sector3 { left: 17px; top: 17px; }
-.menu.large.extra div.sector4 { left: 1px; top: 54px; }
-.menu.large.extra select.sector0 { left: calc(175px + 140px + 2 * 3px); top: calc(54px + 20px); }
-.menu.large.extra select.sector1 { left: calc(175px + 140px + 2 * 3px); top: calc(17px + 20px); }
-.menu.large.extra select.sector2 { left: 16px; top: calc(-20px + 20px); }
-.menu.large.extra select.sector3 { left: 0px; top: calc(17px + 20px); }
-.menu.large.extra select.sector4 { left: 0px; top: calc(54px + 20px); }
+.menu.extra.large div.sector0 { left: 107px; top: 54px; }
+.menu.extra.large div.sector1 { left: 91px; top: 17px; }
+.menu.extra.large div.sector2 { left: 54px; top: 1px; }
+.menu.extra.large div.sector3 { left: 17px; top: 17px; }
+.menu.extra.large div.sector4 { left: 1px; top: 54px; }
+.menu.extra.large select.sector0 { left: calc(175px + 140px + 2 * 3px); top: calc(54px + 20px); }
+.menu.extra.large select.sector1 { left: calc(175px + 140px + 2 * 3px); top: calc(17px + 20px); }
+.menu.extra.large select.sector2 { left: 16px; top: calc(-20px + 20px); }
+.menu.extra.large select.sector3 { left: 0px; top: calc(17px + 20px); }
+.menu.extra.large select.sector4 { left: 0px; top: calc(54px + 20px); }
 
 optgroup + optgroup {
   border-top: solid thin hsl(0, 0%, 80%);
