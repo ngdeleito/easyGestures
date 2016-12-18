@@ -155,7 +155,7 @@ input[type="number"] {
 }
 
 #menus .indented {
-  width: calc(391px + 1em); /* 2 * 175px + 41px + 1em */
+  width: calc(2 * 175px + 41px + 1em);
   margin-left: auto;
   margin-right: auto;
 }
