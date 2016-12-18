@@ -1040,7 +1040,7 @@ function exportPrefs() {
 }
 
 function resetPrefs() {
-  if (confirm(eGStrings.getString("general.prefs.reset"))) {
+  if (confirm(eGStrings.getString("general.prefs.reset.confirm"))) {
     eGPrefs.setDefaultSettings();
     loadPreferences(true);
   }
@@ -1111,7 +1111,7 @@ function preparePreferenceValueForDailyReadings(aTreeElement) {
 }
 
 function resetStats() {
-  if (confirm(eGStrings.getString("stats.reset"))) {
+  if (confirm(eGStrings.getString("stats.reset.confirm"))) {
     eGPrefs.initializeStats();
   }
 }
