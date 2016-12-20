@@ -32,12 +32,18 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global Components, QUnit, eGPieMenu */
+/* global Components, QUnit, eGPrefs, eGPieMenu */
 
-Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
 Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
+
+var savedPrefs;
+
+QUnit.begin(function() {
+  savedPrefs = eGPrefs.exportPrefsToString();
+});
 
 QUnit.done(function() {
+  eGPrefs.importPrefsFromString(savedPrefs);
   eGPieMenu.init();
 });
