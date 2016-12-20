@@ -123,8 +123,7 @@ function updateContent(tipNbr) {
   document.getElementById("tipTextBeforeLink").textContent = text[0];
   document.getElementById("tipTextLink").textContent = linkText;
   document.getElementById("tipTextAfterLink").textContent = text[2];
-  document.getElementById("tipImage").setAttribute("class",
-                                                   tips[tipNbr].imageClass);
+  document.getElementById("tipImage").className = tips[tipNbr].imageClass;
 }
 
 function updateTipNbr(step) {

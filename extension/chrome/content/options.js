@@ -799,9 +799,8 @@ function fillActions(statsActions, totalClicks) {
     }
     
     let div = document.createElement("div");
-    div.setAttribute("title",
-      eGActions[currentAction].getLocalizedActionName() + ": " +
-      clicksForAction + " " + eGStrings.getString("stats.clicks"));
+    div.title = eGActions[currentAction].getLocalizedActionName() + ": " +
+                  clicksForAction + " " + eGStrings.getString("stats.clicks");
     container.appendChild(div);
     
     let span = document.createElement("span");
