@@ -50,14 +50,14 @@ var eGPrefsObserver = {
     this._branch.addObserver("menus.", this, false);
     this._branch.addObserver("customizations.", this, false);
   },
-
+  
   unregister: function() {
     this._branch.removeObserver("activation.", this);
     this._branch.removeObserver("behavior.", this);
     this._branch.removeObserver("menus.", this);
     this._branch.removeObserver("customizations.", this);
   },
-
+  
   observe: function() {
     if (eGPieMenu.isShown()) {
       // we properly close an open menu in case e.g. the showAltButton
@@ -249,7 +249,6 @@ var eGMessageListeners = {
       });
     });
   }
-  
 };
 
 function startup(data, reason) {
