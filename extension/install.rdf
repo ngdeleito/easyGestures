@@ -23,7 +23,7 @@
     <em:multiprocessCompatible>true</em:multiprocessCompatible>
     
     <em:name>easyGestures N</em:name>
-    <em:description>A fully customizable pie menu for browsing the Web from where your cursor is located; a fork of easyGestures 4.3.2.</em:description>
+    <em:description>A highly customizable pie menu for browsing the Web from where the mouse pointer is located.</em:description>
     <em:creator>Nicolás González-Deleito</em:creator>
     <em:homepageURL>https://github.com/ngdeleito/easyGestures</em:homepageURL>
     
@@ -31,7 +31,7 @@
       <Description>
         <em:locale>es-ES</em:locale>
         <em:name>easyGestures N</em:name>
-        <em:description>Un menú circular configurable para navegar por la red desde donde se encuentra el cursor; un derivado de easyGestures 4.3.2.</em:description>
+        <em:description>Un menú circular configurable para navegar por la red desde donde se encuentra el puntero del ratón.</em:description>
         <em:creator>Nicolás González-Deleito</em:creator>
         <em:homepageURL>https://github.com/ngdeleito/easyGestures</em:homepageURL>
       </Description>
@@ -41,7 +41,7 @@
       <Description>
         <em:locale>fr-FR</em:locale>
         <em:name>easyGestures N</em:name>
-        <em:description>Un menu circulaire configurable pour surfer sur Internet depuis l'endroit où se trouve le curseur; un fork d'easyGestures 4.3.2.</em:description>
+        <em:description>Un menu circulaire configurable pour surfer sur Internet depuis l'endroit où se trouve le pointeur de la souris.</em:description>
         <em:creator>Nicolás González-Deleito</em:creator>
         <em:homepageURL>https://github.com/ngdeleito/easyGestures</em:homepageURL>
       </Description>
