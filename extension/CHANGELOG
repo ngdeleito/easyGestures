@@ -1,6 +1,14 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 5.1 (January 8, 2017)
+
+- replaced (most of) XUL-based preferences dialog with an HTML-based page
+- merged the stats dialog into the preferences dialog
+- redesigned the control for customizing menu layouts and the clicks by direction stats tab
+- properly fixed closeTab action in Firefox 50+ (thanks to Gijs Kruitbosch!)
+
+
 Version 5.0 (October 11, 2016)
 
 - fixed issues:
