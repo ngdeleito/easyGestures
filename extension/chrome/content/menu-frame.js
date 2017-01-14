@@ -36,11 +36,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global Components, addStatelessListeners, removeStatelessListeners,
           addMessageListener, removeMessageListener, addEventListener,
-          removeEventListener, sendSyncMessage, sendAsyncMessage, content,
-          HTML_NAMESPACE, cleanSelection, setContext, createSpecialNodes,
-          createActionsNodes, hideLinkSign, updateMenuPosition,
-          clearHoverEffect, setHoverEffect, showExtraMenu, hideExtraMenu, hide,
-          clearMenuSign */
+          removeEventListener, sendSyncMessage, content, HTML_NAMESPACE,
+          cleanSelection, setContext, createSpecialNodes, createActionsNodes,
+          hideLinkSign, updateMenuPosition, clearHoverEffect, setHoverEffect,
+          showExtraMenu, hideExtraMenu, hide, clearMenuSign */
 
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var easyGesturesID;
@@ -54,7 +53,6 @@ addMessageListener("easyGesturesN@ngdeleito.eu:removeListeners", removeListeners
 
 addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
-addEventListener("keydown", handleKeydown, true);
 addEventListener("contextmenu", handleContextmenu, true);
 
 addMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
@@ -76,7 +74,6 @@ function removeListeners() {
   
   removeEventListener("mousedown", handleMousedown, true);
   removeEventListener("mouseup", handleMouseup, true);
-  removeEventListener("keydown", handleKeydown, true);
   removeEventListener("contextmenu", handleContextmenu, true);
   
   removeMessageListener("easyGesturesN@ngdeleito.eu:showMenu", showMenu);
@@ -177,12 +174,6 @@ function handleMouseup(anEvent) {
   }
 }
 
-function handleKeydown(anEvent) {
-  sendAsyncMessage("easyGesturesN@ngdeleito.eu:handleKeydown", {
-    altKey: anEvent.keyCode === 18,
-    escKey: anEvent.keyCode === 27
-  });
-}
 
 function handleContextmenu(anEvent) {
   var [result] = sendSyncMessage("easyGesturesN@ngdeleito.eu:handleContextmenu", {

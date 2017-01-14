@@ -13,14 +13,15 @@
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>41.0</em:minVersion>
-        <em:maxVersion>41.*</em:maxVersion>
+        <em:minVersion>51.0</em:minVersion>
+        <em:maxVersion>51.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
     <!-- Front End MetaData -->
     <em:bootstrap>true</em:bootstrap>
     <em:multiprocessCompatible>true</em:multiprocessCompatible>
+    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
     
     <em:name>easyGestures N</em:name>
     <em:description>A highly customizable pie menu for browsing the Web from where the mouse pointer is located.</em:description>

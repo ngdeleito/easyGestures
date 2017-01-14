@@ -205,10 +205,10 @@ var eGMessageListeners = {
     window.clearTimeout(eGContext.autoscrollingTrigger);
     
     if (eGPieMenu.isShown()) {
-      if (aMessage.data.altKey) {
+      if (aMessage.altKey) {
         eGPieMenu.switchLayout();
       }
-      else if (aMessage.data.escKey) {
+      else if (aMessage.escKey) {
         eGPieMenu.close();
       }
     }
@@ -250,6 +250,10 @@ var eGMessageListeners = {
     });
   }
 };
+
+function handleMessage(aMessage) {
+  eGMessageListeners.handleKeydown(aMessage);
+}
 
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
@@ -306,6 +310,11 @@ function startup(data, reason) {
     if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
       sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
     }
+    
+    data.webExtension.startup().then(api => {
+      const {browser} = api;
+      browser.runtime.onMessage.addListener(handleMessage);
+    });
     
     // when upgrading: giving some time to the frame scripts from the previous
     // version to remove their listeners before adding new ones
