@@ -72,9 +72,14 @@ Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function(pieMenu, options) {
-    pieMenu.close();
-    action.call(this, options);
+  this.run = function(options) {
+    var response = action.call(this, options);
+    if (response === undefined) {
+      response = {
+        runActionName: null
+      };
+    }
+    return response;
   };
   
   // startsNewGroup and nextAction are used in options.js to display a sorted
@@ -119,10 +124,10 @@ Action.prototype = {
   },
   
   _sendPerformActionMessage: function(options) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.messageManager
-          .sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:" + this._name,
-                            options);
+    return {
+      runActionName: this._name,
+      runActionOptions: options
+    };
   },
   
   _getFileForSavingData: function(filter, defaultName) {
@@ -171,11 +176,7 @@ EmptyAction.prototype.getLocalizedActionName = function() {
 };
 
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
-  Action.call(this, "showExtraMenu", null, startsNewGroup, nextAction);
-  
-  this.run = function(pieMenu) {
-    pieMenu.showExtraMenu();
-  };
+  Action.call(this, "showExtraMenu", function() {}, startsNewGroup, nextAction);
   
   this.isExtraMenuAction = true;
 }
@@ -202,14 +203,14 @@ ReloadAction.prototype.getLocalizedActionName = function() {
 };
 ReloadAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
-  var browserMM = window.gBrowser.selectedBrowser.messageManager;
   var stop_bcaster = window.document.getElementById("Browser:Stop");
   eGContext.loading = !stop_bcaster.hasAttribute("disabled");
-  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setReloadActionStatus", {
+  return {
+    messageName: "setReloadActionStatus",
     layoutName: layoutName,
     actionSector: actionSector,
     status: eGContext.loading
-  });
+  };
 };
 
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
@@ -220,13 +221,12 @@ function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction)
 DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
 DisableableAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  var browserMM = window.gBrowser.selectedBrowser.messageManager;
-  browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setActionStatus", {
+  return {
+    messageName: "setActionStatus",
     layoutName: layoutName,
     actionSector: actionSector,
     status: this.isDisabled()
-  });
+  };
 };
 
 function CanGoBackDisableableAction(name, action, startsNewGroup, nextAction) {
@@ -325,8 +325,8 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
     content = content.replace("%s", eGContext.selection);
     content = content.replace("%u", window.gBrowser.selectedBrowser.currentURI.spec);
     
-    action.call(this, content, window,
-      3 in prefValue ? prefValue[3] : undefined);
+    return action.call(this, content, window,
+                       3 in prefValue ? prefValue[3] : undefined);
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
   }, startsNewGroup, nextAction);
@@ -373,11 +373,13 @@ LoadURLAction.prototype = Object.create(NumberedAction.prototype);
 LoadURLAction.prototype.constructor = LoadURLAction;
 
 function RunScriptAction(number, startsNewGroup, nextAction) {
-  NumberedAction.call(this, "runScript", number, function(script, window) {
-    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:runScript", {
-      script: script,
-      actionName: this._name
-    });
+  NumberedAction.call(this, "runScript", number, function(script) {
+    return {
+      runActionName: "runScript",
+      runActionOptions: {
+        script: script
+      }
+    };
   }, startsNewGroup, nextAction);
 }
 RunScriptAction.prototype = Object.create(NumberedAction.prototype);
@@ -393,18 +395,19 @@ ImageExistsDisableableAction.prototype.constructor = ImageExistsDisableableActio
 
 function DocumentContainsImagesDisableableAction(name, startsNewGroup, nextAction) {
   Action.call(this, name, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:action:hideImages");
+    return {
+      runActionName: "hideImages"
+    };
   }, startsNewGroup, nextAction);
 }
 DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototype);
 DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
 DocumentContainsImagesDisableableAction.prototype.setActionStatusOn = function(layoutName, actionSector) {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  window.gBrowser.selectedBrowser.messageManager.sendAsyncMessage("easyGesturesN@ngdeleito.eu:setHideImagesActionStatus", {
+  return {
+    messageName: "setHideImagesActionStatus",
     layoutName: layoutName,
     actionSector: actionSector
-  });
+  };
 };
 
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
@@ -486,14 +489,14 @@ var eGActions = {
   }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
-    this._sendPerformActionMessage();
+    return this._sendPerformActionMessage();
   }, function() {
     return eGContext.targetWindowScrollY === 0 &&
            eGContext.topmostWindowScrollY === 0;
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
-    this._sendPerformActionMessage();
+    return this._sendPerformActionMessage();
   }, function() {
     return eGContext.targetWindowScrollY === eGContext.targetWindowScrollMaxY &&
            eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY;
@@ -505,7 +508,7 @@ var eGActions = {
         useMousedownCoordinates: false
       };
     }
-    this._sendPerformActionMessage(options);
+    return this._sendPerformActionMessage(options);
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
@@ -514,7 +517,7 @@ var eGActions = {
       window.ZoomManager.enlarge();
     }
     else {
-      this._sendPerformActionMessage();
+      return this._sendPerformActionMessage();
     }
   }, false, "zoomOut"),
   
@@ -524,7 +527,7 @@ var eGActions = {
       window.ZoomManager.reduce();
     }
     else {
-      this._sendPerformActionMessage();
+      return this._sendPerformActionMessage();
     }
   }, false, "zoomReset"),
   

@@ -74,163 +74,116 @@ var eGPrefsObserver = {
 };
 
 var eGMessageListeners = {
-  enable: function() {
-    Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", this);
+  handleContentScriptLoad : function(aMessage, sendResponse) {
+    sendResponse({
+      showButton: eGPieMenu.showButton,
+      showKey: eGPieMenu.showKey,
+      showAltButton: eGPieMenu.showAltButton,
+      preventOpenKey: eGPieMenu.preventOpenKey,
+      contextKey: eGPieMenu.contextKey,
+      contextShowAuto: eGPieMenu.contextShowAuto,
+      largeMenu: eGPieMenu.largeMenu,
+      smallIcons: eGPieMenu.smallIcons,
+      menuOpacity: eGPieMenu.menuOpacity,
+      showTooltips: eGPieMenu.showTooltips,
+      tooltipsDelay: eGPieMenu.tooltipsDelay,
+      moveAuto: eGPieMenu.moveAuto,
+      handleLinks: eGPieMenu.handleLinks,
+      linksDelay: eGPieMenu.linksDelay,
+      handleLinksAsOpenLink: eGPieMenu.handleLinksAsOpenLink,
+      openTabForMiddleclick: Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick"),
+      autoscrollingOn: eGPieMenu.autoscrollingOn,
+      autoscrollingDelay: eGPieMenu.autoscrollingDelay,
+      mainAlt1MenuEnabled: eGPieMenu.mainAlt1MenuEnabled,
+      mainAlt2MenuEnabled: eGPieMenu.mainAlt2MenuEnabled,
+      extraAlt1MenuEnabled: eGPieMenu.extraAlt1MenuEnabled,
+      extraAlt2MenuEnabled: eGPieMenu.extraAlt2MenuEnabled,
+      loadURLActionPrefs: eGPieMenu.loadURLActionPrefs,
+      runScriptActionPrefs: eGPieMenu.runScriptActionPrefs,
+      menusMain: eGPrefs._prefs.getCharPref("menus.main"),
+      menusMainAlt1: eGPrefs._prefs.getCharPref("menus.mainAlt1"),
+      menusMainAlt2: eGPrefs._prefs.getCharPref("menus.mainAlt2"),
+      menusExtra: eGPrefs._prefs.getCharPref("menus.extra"),
+      menusExtraAlt1: eGPrefs._prefs.getCharPref("menus.extraAlt1"),
+      menusExtraAlt2: eGPrefs._prefs.getCharPref("menus.extraAlt2"),
+      menusContextLink: eGPrefs._prefs.getCharPref("menus.contextLink"),
+      menusContextImage: eGPrefs._prefs.getCharPref("menus.contextImage"),
+      menusContextSelection: eGPrefs._prefs.getCharPref("menus.contextSelection"),
+      menusContextTextbox: eGPrefs._prefs.getCharPref("menus.contextTextbox")
+    });
   },
   
-  disable: function() {
-    Services.mm.removeDelayedFrameScript("chrome://easygestures/content/menu-frame.js");
-    Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeListeners");
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", this);
+  seteGContext : function(aMessage) {
+    for (let key in aMessage.eGContext) {
+      eGContext[key] = aMessage.eGContext[key];
+    }
   },
   
-  receiveMessage: function(aMessage) {
-    return this[aMessage.name.split(":")[1]](aMessage);
+  getTooltipLabels : function(aMessage, sendResponse) {
+    sendResponse({
+      response: aMessage.actions.map(function(actionName) {
+                  return eGActions[actionName].getTooltipLabel();
+                })
+    });
   },
   
-  performOpenMenuChecks: function(aMessage) {
-    const PREVENT_DEFAULT_AND_OPEN_MENU = 0;
-    const PREVENT_DEFAULT_AND_RETURN = 1;
-    const LET_DEFAULT_AND_RETURN = 2;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGContext.autoscrollingTrigger);
-    
-    // check whether pie menu should change layout or hide (later)
-    if (eGPieMenu.isShown()) {
-      if (eGPieMenu.canLayoutBeSwitched(aMessage.data.button)) {
-        eGPieMenu.switchLayout();
+  isExtraMenuAction : function(aMessage, sendResponse) {
+    sendResponse({
+      response: eGActions[aMessage.actionName].isExtraMenuAction
+    });
+  },
+  
+  getContextualMenuLocalizedName : function(aMessage, sendResponse) {
+    sendResponse({
+      response: eGStrings.getString(aMessage.contextualMenuName)
+    });
+  },
+  
+  setActionsStatusOn : function(aMessage, sendResponse) {
+    sendResponse({
+      response: eGActions[aMessage.actionName]
+                  .setActionStatusOn(aMessage.layoutName, aMessage.actionSector)
+    });
+  },
+  
+  updateStatsForActionToBeExecuted : function(aMessage) {
+    if (aMessage.type === "main") {
+      eGPrefs.incrementStatsMainMenuPref(aMessage.position);
+    }
+    else if (aMessage.type === "extra") {
+      eGPrefs.incrementStatsExtraMenuPref(aMessage.position);
+    }
+    eGPrefs.updateStatsForAction(aMessage.actionName);
+  },
+  
+  runAction : function(aMessage, sendResponse) {
+    var actionIsDisabled = eGActions[aMessage.actionName].isDisabled();
+    var response;
+    if (!actionIsDisabled) {
+      try {
+        response = eGActions[aMessage.actionName].run(aMessage.options);
       }
-      return PREVENT_DEFAULT_AND_RETURN;
-    }
-    
-    // check if menu should not be displayed
-    if (!eGPieMenu.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
-                               aMessage.data.ctrlKey, aMessage.data.altKey)) {
-      return LET_DEFAULT_AND_RETURN;
-    }
-    
-    return PREVENT_DEFAULT_AND_OPEN_MENU;
-  },
-  
-  handleMousedown: function(aMessage) {
-    eGContext.contextualMenus = aMessage.data.contextualMenus;
-    eGContext.selection = aMessage.data.selection;
-    eGContext.anchorElementExists = aMessage.data.anchorElementExists;
-    eGContext.anchorElementHREF = aMessage.data.anchorElementHREF;
-    eGContext.anchorElementText = aMessage.data.anchorElementText;
-    eGContext.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
-    eGContext.imageElementSRC = aMessage.data.imageElementSRC;
-    eGPieMenu.centerX = aMessage.data.centerX;
-    eGPieMenu.centerY = aMessage.data.centerY;
-    eGContext.targetDocumentURL = aMessage.data.targetDocumentURL;
-    eGContext.targetWindowScrollY = aMessage.data.targetWindowScrollY;
-    eGContext.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
-    eGContext.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
-    eGContext.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
-    
-    if (eGContext.contextualMenus.length !== 0 &&
-        eGPieMenu.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
-      eGPieMenu.show(eGContext.contextualMenus[0]);
+      catch(ex) {
+        var error = Components.classes["@mozilla.org/scripterror;1"]
+                              .createInstance(Components.interfaces.nsIScriptError);
+        error.init("easyGestures N exception: " + ex.toString(), null, null, null, null, error.errorFlag, null);
+        Services.console.logMessage(error);
+      }
+      sendResponse({
+        actionIsDisabled: actionIsDisabled,
+        runActionName: response.runActionName,
+        runActionOptions: response.runActionOptions
+      });
     }
     else {
-      eGPieMenu.show("main");
-    }
-    
-    if (eGPieMenu.autoscrollingOn) {
-      let window = Services.wm.getMostRecentWindow("navigator:browser");
-      eGContext.autoscrollingTrigger = window.setTimeout(function() {
-        eGActions.autoscrolling.run(eGPieMenu, {
-          useMousedownCoordinates: true
-        });
-      }, eGPieMenu.autoscrollingDelay);
+      sendResponse({
+        actionIsDisabled: actionIsDisabled,
+      });
     }
   },
   
-  handleMouseup: function(aMessage) {
-    var preventDefaultUponReturn = false;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    if (eGPieMenu.isJustOpened()) {
-      eGPieMenu.setOpen();
-      if (aMessage.data.linkSignIsVisible) {
-        window.clearTimeout(eGContext.autoscrollingTrigger);
-        eGPieMenu.openLinkThroughPieMenuCenter(aMessage.data.button);
-      }
-    }
-    else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
-      if (eGPieMenu.sector !== -1) {
-        window.setTimeout(function() { eGPieMenu.runAction(); });
-      }
-      else {
-        eGPieMenu.setOpen();
-        preventDefaultUponReturn = true;
-      }
-    }
-    else if (eGPieMenu.isShown()) {
-      if (aMessage.data.button === eGPieMenu.showAltButton) {
-        preventDefaultUponReturn = true;
-      }
-      else {
-        if (eGPieMenu.sector !== -1) {
-          window.setTimeout(function() { eGPieMenu.runAction(); });
-        }
-        else {
-          eGPieMenu.close();
-        }
-      }
-    }
-    
-    return preventDefaultUponReturn;
-  },
-  
-  handleKeydown: function(aMessage) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGContext.autoscrollingTrigger);
-    
-    if (eGPieMenu.isShown()) {
-      if (aMessage.altKey) {
-        eGPieMenu.switchLayout();
-      }
-      else if (aMessage.escKey) {
-        eGPieMenu.close();
-      }
-    }
-  },
-  
-  handleContextmenu: function(aMessage) {
-    return eGPieMenu.canContextmenuBeOpened(aMessage.data.shiftKey,
-                                            aMessage.data.ctrlKey,
-                                            aMessage.data.altKey);
-  },
-  
-  handleMousemove: function(aMessage) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGContext.autoscrollingTrigger);
-    
-    return eGPieMenu.handleMousemove(aMessage.data);
-  },
-  
-  retrieveAndAddFavicon: function(aMessage) {
-    var aURL = aMessage.data.aURL;
+  retrieveAndAddFavicon: function(aMessage, sendResponse) {
+    var aURL = aMessage.aURL;
     if (aURL.match(/\:\/\//i) === null) {
       aURL = "http://" + aURL;
     }
@@ -239,20 +192,15 @@ var eGMessageListeners = {
                            .classes["@mozilla.org/browser/favicon-service;1"]
                            .getService(Components.interfaces.mozIAsyncFavicons);
     faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      var browserMM = window.gBrowser.selectedBrowser.messageManager;
-      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addFavicon", {
-        anActionNodeID: aMessage.data.anActionNodeID,
-        aURL: aURI !== null ? aURI.spec : "",
-        iconName: aMessage.data.iconName,
-        fallbackIconName: aMessage.data.fallbackIconName
+      sendResponse({
+        aURL: aURI !== null ? aURI.spec : ""
       });
     });
   }
 };
 
-function handleMessage(aMessage) {
-  eGMessageListeners.handleKeydown(aMessage);
+function handleMessage(aMessage, sender, sendResponse) {
+  eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
 }
 
 function startup(data, reason) {
@@ -316,11 +264,6 @@ function startup(data, reason) {
       browser.runtime.onMessage.addListener(handleMessage);
     });
     
-    // when upgrading: giving some time to the frame scripts from the previous
-    // version to remove their listeners before adding new ones
-    Components.utils.import("resource://gre/modules/Timer.jsm");
-    setTimeout(function() { eGMessageListeners.enable(); }, 200);
-    
     // displaying startup tips
     if (eGPrefs.areStartupTipsOn()) {
       let window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -357,8 +300,6 @@ function shutdown() {
   if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
     sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
   }
-  
-  eGMessageListeners.disable();
   
   Components.utils.unload("chrome://easygestures/content/eGContext.jsm");
   Components.utils.unload("chrome://easygestures/content/eGActions.jsm");
