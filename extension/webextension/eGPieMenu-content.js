@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* global browser, updateMenuSign, eGContext, updateContextualMenuSign,
-          showMenu, showMenuTooltips, targetWindow, topmostWindow,
+          document, showMenu, showMenuTooltips, targetWindow, topmostWindow,
           mousedownScreenX, mouseupScreenX, mousedownScreenY, mouseupScreenY,
           imageElement, handleHideLayout, close, window */
 
@@ -278,7 +278,7 @@ var eGPieMenu = {
     this._menuState = 3;
   },
   
-  _setActionStatusHelper : function(document, layoutName, actionSector, disabled) {
+  _setActionStatusHelper : function(layoutName, actionSector, disabled) {
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     var actionNode = actionsNode.childNodes[actionSector];
     if (disabled) {
@@ -290,12 +290,11 @@ var eGPieMenu = {
   },
   
   setActionStatus : function(aMessage) {
-    this._setActionStatusHelper(content.document, aMessage.layoutName,
-                                aMessage.actionSector, aMessage.status);
+    this._setActionStatusHelper(aMessage.layoutName, aMessage.actionSector,
+                                aMessage.status);
   },
   
   setReloadActionStatus : function(aMessage) {
-    var document = content.document;
     var actionsNode = document.getElementById("eG_actions_" + aMessage.layoutName);
     var actionNode = actionsNode.childNodes[aMessage.actionSector];
     actionNode.classList.toggle("stop", aMessage.status);
@@ -303,10 +302,9 @@ var eGPieMenu = {
   },
   
   setHideImagesActionStatus : function(aMessage) {
-    var document = content.document;
     var disabled = document.querySelectorAll("img").length === 0;
-    this._setActionStatusHelper(document, aMessage.layoutName,
-                                aMessage.actionSector, disabled);
+    this._setActionStatusHelper(aMessage.layoutName, aMessage.actionSector,
+                                disabled);
   },
   
   show : function(layoutName) { // makes menu visible
@@ -462,8 +460,8 @@ var eGPieMenu = {
     var useMousedownCoordinates = options.useMousedownCoordinates;
     // see chrome://global/content/browser-content.js: we simulate a middle
     // button (non cancelable) mousedown event to trigger Firefox's autoscrolling
-    content.document.documentElement.dispatchEvent(new content.MouseEvent("mousedown", {
-      view: content,
+    document.documentElement.dispatchEvent(new window.MouseEvent("mousedown", {
+      view: window,
       bubbles: true,
       button: 1,
       screenX: useMousedownCoordinates ? mousedownScreenX : mouseupScreenX,
@@ -504,7 +502,7 @@ var eGPieMenu = {
   },
   
   runAction_hideImages : function() {
-    var images = content.document.querySelectorAll("img");
+    var images = document.querySelectorAll("img");
     for (var i=0; i < images.length; ++i) {
       images[i].style.display = "none";
     }

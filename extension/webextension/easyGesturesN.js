@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported showMenu, updateMenuSign, updateContextualMenuSign,
             showMenuTooltips, handleHideLayout, close */
 /* global browser, eGPieMenu, addEventListener, removeEventListener, window,
-          content, document */
+          document */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 const EXTRA_MENU_ACTION = 2;
@@ -170,7 +170,7 @@ function handleMousedown(anEvent) {
   var centerY = anEvent.clientY + targetWindow.mozInnerScreenY -
                                   topmostWindow.mozInnerScreenY;
   
-  content.focus();
+  window.focus();
   
   eGContext.contextualMenus = contextualMenus;
   eGContext.selection = selection;
@@ -213,7 +213,7 @@ function handleMousedown(anEvent) {
 }
 
 function handleMouseup(anEvent) {
-  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var linkSignIsVisible = false;
   if (specialNodes !== null) {
     var linkSign = specialNodes.childNodes[0];
@@ -291,8 +291,8 @@ function removeMenuEventHandler(anEvent) {
   easyGesturesNode.parentNode.removeChild(easyGesturesNode);
 }
 
-function createEasyGesturesNode(aDocument, menuOpacity) {
-  var easyGesturesNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+function createEasyGesturesNode(menuOpacity) {
+  var easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
   easyGesturesNode.id = easyGesturesID;
   easyGesturesNode.style.opacity = menuOpacity;
   
@@ -301,47 +301,47 @@ function createEasyGesturesNode(aDocument, menuOpacity) {
   return easyGesturesNode;
 }
 
-function createSpecialNodes(aDocument, numberOfMainMenus, numberOfExtraMenus) {
-  var specialNodesNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+function createSpecialNodes(numberOfMainMenus, numberOfExtraMenus) {
+  var specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
   specialNodesNode.id = "eG_SpecialNodes";
   
-  var linkSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+  var linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
   linkSignNode.id = "eG_linkSign";
   specialNodesNode.appendChild(linkSignNode);
   
-  var mainMenusSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+  var mainMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
   mainMenusSignNode.id = "easyGesturesMainMenusSign";
   
   var i = numberOfMainMenus;
   while (i > 0) {
-    let span = aDocument.createElementNS(HTML_NAMESPACE, "span");
+    let span = document.createElementNS(HTML_NAMESPACE, "span");
     mainMenusSignNode.appendChild(span);
     --i;
   }
   
   specialNodesNode.appendChild(mainMenusSignNode);
   
-  var extraMenusSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+  var extraMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
   extraMenusSignNode.id = "easyGesturesExtraMenusSign";
   
   i = numberOfExtraMenus;
   while (i > 0) {
-    let span = aDocument.createElementNS(HTML_NAMESPACE, "span");
+    let span = document.createElementNS(HTML_NAMESPACE, "span");
     extraMenusSignNode.appendChild(span);
     --i;
   }
   
   specialNodesNode.appendChild(extraMenusSignNode);
   
-  var contextMenuSignNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+  var contextMenuSignNode = document.createElementNS(HTML_NAMESPACE, "div");
   contextMenuSignNode.id = "easyGesturesContextMenuSign";
   specialNodesNode.appendChild(contextMenuSignNode);
   
   return specialNodesNode;
 }
 
-function createActionsNodes(frame, aDocument, aMessageData) {
-  var anActionsNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+function createActionsNodes(frame, aMessageData) {
+  var anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
   anActionsNode.id = "eG_actions_" + aMessageData.layoutName;
   
   // creating actions images
@@ -354,7 +354,7 @@ function createActionsNodes(frame, aDocument, aMessageData) {
     let xpos = imageR * Math.cos(angle) + offset;
     let ypos = -imageR * Math.sin(angle) + offset;
     
-    let anActionNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+    let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
     anActionNode.id = "eG_action_" + aMessageData.layoutName + "_" + index;
     anActionNode.style.left = Math.round(xpos) + "px";
     anActionNode.style.top = Math.round(ypos) + "px";
@@ -382,7 +382,7 @@ function createActionsNodes(frame, aDocument, aMessageData) {
     }
     else if (action.startsWith("runScript")) { // new icon path for runScript ?
       let iconPath = aMessageData.runScriptActionPrefs[action][2];
-      if (iconPath !== "" && !aDocument.documentURI.startsWith("https://")) {
+      if (iconPath !== "" && !document.documentURI.startsWith("https://")) {
         anActionNode.style.backgroundImage =
           "url('" + iconPath.replace(/\\/g , "\\\\") + "')";
         iconName = "customIcon";
@@ -399,21 +399,19 @@ function createActionsNodes(frame, aDocument, aMessageData) {
 
 function showMenu(aMessage) {
   easyGesturesID = aMessage.easyGesturesID;
-  var bodyNode = content.document.body ? content.document.body :
-                                         content.document.documentElement;
-  var easyGesturesNode = content.document.getElementById(easyGesturesID);
+  var bodyNode = document.body ? document.body : document.documentElement;
+  var easyGesturesNode = document.getElementById(easyGesturesID);
   if (easyGesturesNode === null) {
-    easyGesturesNode = createEasyGesturesNode(content.document, aMessage.menuOpacity);
+    easyGesturesNode = createEasyGesturesNode(aMessage.menuOpacity);
     bodyNode.insertBefore(easyGesturesNode, bodyNode.firstChild);
   }
   
   easyGesturesNode.style.left = aMessage.centerX + "px";
   easyGesturesNode.style.top = aMessage.centerY + "px";
   
-  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   if (specialNodes === null) {
-    specialNodes = createSpecialNodes(content.document,
-                                      aMessage.numberOfMainMenus,
+    specialNodes = createSpecialNodes(aMessage.numberOfMainMenus,
                                       aMessage.numberOfExtraMenus);
     easyGesturesNode.appendChild(specialNodes);
   }
@@ -425,9 +423,9 @@ function showMenu(aMessage) {
     }
   }
   
-  var actionsNode = content.document.getElementById("eG_actions_" + aMessage.layoutName);
+  var actionsNode = document.getElementById("eG_actions_" + aMessage.layoutName);
   if (actionsNode === null) {
-    actionsNode = createActionsNodes(this, content.document, aMessage);
+    actionsNode = createActionsNodes(this, aMessage);
     easyGesturesNode.appendChild(actionsNode);
   }
   actionsNode.style.visibility = "visible";
@@ -436,7 +434,7 @@ function showMenu(aMessage) {
   var linkSign = specialNodes.childNodes[0];
   if (aMessage.showLinkSign) {
     linkSign.style.visibility = "visible";
-    content.setTimeout(function() {
+    window.setTimeout(function() {
       linkSign.style.visibility = "hidden";
     }, aMessage.linksDelay);
   }
@@ -448,7 +446,7 @@ function showMenu(aMessage) {
 }
 
 function updateMenuSign(aMessage) {
-  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var menusSign = specialNodes.childNodes[aMessage.menuSign];
   
   menusSign.childNodes[aMessage.previousLayoutNumber].removeAttribute("class");
@@ -456,7 +454,7 @@ function updateMenuSign(aMessage) {
 }
 
 function updateContextualMenuSign(aMessage) {
-  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var contextMenuSign = specialNodes.childNodes[3];
   
   contextMenuSign.textContent = aMessage.layoutLabel;
@@ -469,15 +467,15 @@ function updateContextualMenuSign(aMessage) {
   }
 }
 
-function createTooltipsNodes(aDocument, aMessageData) {
-  var aTooltipsNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+function createTooltipsNodes(aMessageData) {
+  var aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
   aTooltipsNode.id = "eG_labels_" + aMessageData.layoutName;
   
   aMessageData.tooltips.forEach(function(tooltip, index) {
-    let aTooltipNode = aDocument.createElementNS(HTML_NAMESPACE, "div");
+    let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
     aTooltipNode.id = "eG_label_" + aMessageData.layoutName + "_" + index;
     aTooltipNode.classList.add("label" + index);
-    aTooltipNode.appendChild(aDocument.createTextNode(tooltip));
+    aTooltipNode.appendChild(document.createTextNode(tooltip));
     aTooltipsNode.appendChild(aTooltipNode);
   });
   if (aMessageData.hasExtraMenuAction) {
@@ -488,18 +486,17 @@ function createTooltipsNodes(aDocument, aMessageData) {
 }
 
 function showMenuTooltips(aMessage) {
-  var document = content.document;
   var easyGesturesNode = document.getElementById(aMessage.easyGesturesID);
   var tooltipsNode = document.getElementById("eG_labels_" + aMessage.layoutName);
   if (tooltipsNode === null) {
-    tooltipsNode = createTooltipsNodes(document, aMessage);
+    tooltipsNode = createTooltipsNodes(aMessage);
     easyGesturesNode.appendChild(tooltipsNode);
   }
   tooltipsNode.style.visibility = "visible";
 }
 
-function hideLinkSign(aDocument) {
-  var specialNodes = aDocument.getElementById("eG_SpecialNodes");
+function hideLinkSign() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var linkSign = specialNodes.childNodes[0];
   linkSign.style.visibility = "hidden";
 }
@@ -509,9 +506,9 @@ function updateMenuPosition(easyGesturesNode, centerX, centerY) {
   easyGesturesNode.style.top = centerY + "px";
 }
 
-function clearHoverEffect(aDocument, sector, layoutName, actionsLength) {
-  var actionsNode = aDocument.getElementById("eG_actions_" + layoutName);
-  var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
+function clearHoverEffect(sector, layoutName, actionsLength) {
+  var actionsNode = document.getElementById("eG_actions_" + layoutName);
+  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
   
   if (sector >= 0 && sector < actionsLength) {
     actionsNode.childNodes[sector].classList.remove("selected");
@@ -521,9 +518,9 @@ function clearHoverEffect(aDocument, sector, layoutName, actionsLength) {
   }
 }
 
-function setHoverEffect(aDocument, sector, layoutName, actionsLength) {
-  var actionsNode = aDocument.getElementById("eG_actions_" + layoutName);
-  var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
+function setHoverEffect(sector, layoutName, actionsLength) {
+  var actionsNode = document.getElementById("eG_actions_" + layoutName);
+  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
   
   if (sector >= 0 && sector < actionsLength) {
     actionsNode.childNodes[sector].classList.add("selected");
@@ -533,10 +530,10 @@ function setHoverEffect(aDocument, sector, layoutName, actionsLength) {
   }
 }
 
-function hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName) {
-  var actionsNode = aDocument.getElementById("eG_actions_" + layoutName);
-  var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
-  var specialNodes = aDocument.getElementById("eG_SpecialNodes");
+function hide(layoutName, sector, layoutActionsLength, baseLayoutName) {
+  var actionsNode = document.getElementById("eG_actions_" + layoutName);
+  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var linkSign = specialNodes.childNodes[0];
   var contextMenuSign = specialNodes.childNodes[3];
   
@@ -559,8 +556,8 @@ function hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName
   
   // reset rollover for extra menu in base menu if needed
   if (baseLayoutName !== "") {
-    var baseActionsNode = aDocument.getElementById("eG_actions_" + baseLayoutName);
-    var baseTooltipsNode = aDocument.getElementById("eG_labels_" + baseLayoutName);
+    var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
+    var baseTooltipsNode = document.getElementById("eG_labels_" + baseLayoutName);
     baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
     baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
     if (baseTooltipsNode !== null) {
@@ -569,12 +566,12 @@ function hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName
   }
 }
 
-function showExtraMenu(aDocument, layoutName) {
-  var actionsNode = aDocument.getElementById("eG_actions_" + layoutName);
-  var specialNodes = aDocument.getElementById("eG_SpecialNodes");
+function showExtraMenu(layoutName) {
+  var actionsNode = document.getElementById("eG_actions_" + layoutName);
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var mainMenusSign = specialNodes.childNodes[1];
   var extraMenusSign = specialNodes.childNodes[2];
-  var tooltipsNode = aDocument.getElementById("eG_labels_" + layoutName);
+  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
   
   actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
   
@@ -587,23 +584,23 @@ function showExtraMenu(aDocument, layoutName) {
   }
 }
 
-function hideExtraMenu(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName) {
-  var baseActionsNode = aDocument.getElementById("eG_actions_" + baseLayoutName);
-  var specialNodes = aDocument.getElementById("eG_SpecialNodes");
+function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) {
+  var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var mainMenusSign = specialNodes.childNodes[1];
   var extraMenusSign = specialNodes.childNodes[2];
   
   // reset rollover of extra menu action icon in main menu
   baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
   
-  hide(aDocument, layoutName, sector, layoutActionsLength, baseLayoutName);
+  hide(layoutName, sector, layoutActionsLength, baseLayoutName);
   
   mainMenusSign.style.visibility = "visible";
   extraMenusSign.style.visibility = "hidden";
 }
 
 function handleMousemove(anEvent) {
-  hideLinkSign(content.document);
+  hideLinkSign();
   
   // anEvent.target differs depending on whether the mouse button is pressed or
   // not; if pressed we reuse the original targetWindow value, if not we
@@ -628,26 +625,26 @@ function handleMousemove(anEvent) {
     movementY: anEvent.movementY
   });
   if (result.centerX !== undefined) {
-    let easyGesturesNode = content.document.getElementById(easyGesturesID);
+    let easyGesturesNode = document.getElementById(easyGesturesID);
     updateMenuPosition(easyGesturesNode, result.centerX, result.centerY);
   }
   else {
     if (result.oldSector !== result.newSector) {
-      clearHoverEffect(content.document, result.oldSector, result.layoutName, result.actionsLength);
-      setHoverEffect(content.document, result.newSector, result.layoutName, result.actionsLength);
+      clearHoverEffect(result.oldSector, result.layoutName, result.actionsLength);
+      setHoverEffect(result.newSector, result.layoutName, result.actionsLength);
     }
     if (result.showExtraMenu) {
-      showExtraMenu(content.document, result.layoutName);
+      showExtraMenu(result.layoutName);
     }
     else if (result.hideExtraMenu) {
-      hideExtraMenu(content.document, result.layoutName, result.newSector, result.actionsLength, result.baseLayoutName);
+      hideExtraMenu(result.layoutName, result.newSector, result.actionsLength, result.baseLayoutName);
     }
   }
 }
 
 function handleHideLayout(aMessage) {
-  hide(content.document, aMessage.layoutName, aMessage.sector,
-       aMessage.layoutActionsLength, aMessage.baseLayoutName);
+  hide(aMessage.layoutName, aMessage.sector, aMessage.layoutActionsLength,
+       aMessage.baseLayoutName);
 }
 
 function clearMenuSign(menuSign) {
@@ -657,19 +654,19 @@ function clearMenuSign(menuSign) {
 }
 
 function close(aMessage) {
-  if (content === null) {
+  if (window === null) {
     return ;
   }
   
-  var specialNodes = content.document.getElementById("eG_SpecialNodes");
+  var specialNodes = document.getElementById("eG_SpecialNodes");
   var mainMenusSign = specialNodes.childNodes[1];
   var extraMenusSign = specialNodes.childNodes[2];
   
-  hide(content.document, aMessage.layoutName, aMessage.sector,
-       aMessage.layoutActionsLength, aMessage.baseLayoutName);
+  hide(aMessage.layoutName, aMessage.sector, aMessage.layoutActionsLength,
+       aMessage.baseLayoutName);
   if (aMessage.layoutIsExtraMenu) {
     // hide base menu too if closing is done from extra menu
-    hide(content.document, aMessage.baseLayoutName, aMessage.sector,
+    hide(aMessage.baseLayoutName, aMessage.sector,
          aMessage.baseLayoutActionsLength, aMessage.baseLayoutName);
     
     extraMenusSign.style.visibility = "hidden";
