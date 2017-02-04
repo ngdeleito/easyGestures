@@ -340,7 +340,7 @@ function createSpecialNodes(numberOfMainMenus, numberOfExtraMenus) {
   return specialNodesNode;
 }
 
-function createActionsNodes(frame, aMessageData) {
+function createActionsNodes(aMessageData) {
   var anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
   anActionsNode.id = "eG_actions_" + aMessageData.layoutName;
   
@@ -425,7 +425,7 @@ function showMenu(aMessage) {
   
   var actionsNode = document.getElementById("eG_actions_" + aMessage.layoutName);
   if (actionsNode === null) {
-    actionsNode = createActionsNodes(this, aMessage);
+    actionsNode = createActionsNodes(aMessage);
     easyGesturesNode.appendChild(actionsNode);
   }
   actionsNode.style.visibility = "visible";
