@@ -36,10 +36,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, updateMenuSign, eGContext, updateContextualMenuSign,
-          document, showMenu, showMenuTooltips, targetWindow, topmostWindow,
-          mousedownScreenX, mouseupScreenX, mousedownScreenY, mouseupScreenY,
-          imageElement, handleHideLayout, close, window */
+/* global browser, document, eGContext, addEventListener,
+          removeMenuEventHandler, window, handleMousemove, EXTRA_MENU_ACTION,
+          targetWindow, topmostWindow, mousedownScreenX, mouseupScreenX,
+          mousedownScreenY, mouseupScreenY, imageElement, hide,
+          removeEventListener */
+
+const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -105,11 +108,11 @@ MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
                               numberOfMenus) % numberOfMenus;
   previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
   
-  updateMenuSign({
-    menuSign: menuSign,
-    layoutNumber: layoutNumber,
-    previousLayoutNumber: previousLayoutNumber
-  });
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var menusSignNode = specialNodes.childNodes[menuSign];
+  
+  menusSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
+  menusSignNode.childNodes[layoutNumber].className = "active";
 };
 MenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(1, this._pieMenu.numberOfMainMenus);
@@ -164,10 +167,17 @@ ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   });
 };
 ContextualMenuLayout.prototype.updateMenuSign = function() {
-  updateContextualMenuSign({
-    layoutLabel: this.localizedName,
-    moreThanOneLayout: eGContext.contextualMenus.length > 1
-  });
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var contextMenuSignNode = specialNodes.childNodes[3];
+  
+  contextMenuSignNode.textContent = this.localizedName;
+  contextMenuSignNode.style.visibility = "visible";
+  if (eGContext.contextualMenus.length > 1) {
+    contextMenuSignNode.className = "withAltSign";
+  }
+  else {
+    contextMenuSignNode.removeAttribute("class");
+  }
 };
 
 var eGPieMenu = {
@@ -307,6 +317,113 @@ var eGPieMenu = {
                                 disabled);
   },
   
+  _createEasyGesturesNode : function() {
+    var easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
+    easyGesturesNode.id = this.easyGesturesID;
+    easyGesturesNode.style.opacity = this.settings.menuOpacity;
+    
+    addEventListener("pagehide", removeMenuEventHandler, true);
+    
+    return easyGesturesNode;
+  },
+  
+  _createSpecialNodes : function(numberOfMainMenus, numberOfExtraMenus) {
+    var specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
+    specialNodesNode.id = "eG_SpecialNodes";
+    
+    var linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
+    linkSignNode.id = "eG_linkSign";
+    specialNodesNode.appendChild(linkSignNode);
+    
+    var mainMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
+    mainMenusSignNode.id = "easyGesturesMainMenusSign";
+    
+    var i = numberOfMainMenus;
+    while (i > 0) {
+      let span = document.createElementNS(HTML_NAMESPACE, "span");
+      mainMenusSignNode.appendChild(span);
+      --i;
+    }
+    
+    specialNodesNode.appendChild(mainMenusSignNode);
+    
+    var extraMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
+    extraMenusSignNode.id = "easyGesturesExtraMenusSign";
+    
+    i = numberOfExtraMenus;
+    while (i > 0) {
+      let span = document.createElementNS(HTML_NAMESPACE, "span");
+      extraMenusSignNode.appendChild(span);
+      --i;
+    }
+    
+    specialNodesNode.appendChild(extraMenusSignNode);
+    
+    var contextMenuSignNode = document.createElementNS(HTML_NAMESPACE, "div");
+    contextMenuSignNode.id = "easyGesturesContextMenuSign";
+    specialNodesNode.appendChild(contextMenuSignNode);
+    
+    return specialNodesNode;
+  },
+  
+  _createActionsNodes : function(layoutName, outerRadius, innerRadius,
+                                 startingAngle, actions, halfAngleForSector) {
+    var anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
+    anActionsNode.id = "eG_actions_" + layoutName;
+    
+    // creating actions images
+    
+    var offset = outerRadius - this.iconSize / 2;
+    var imageR = (outerRadius + innerRadius) / 2;
+    var angle = startingAngle;
+    
+    actions.forEach(function(action, index) {
+      let xpos = imageR * Math.cos(angle) + offset;
+      let ypos = -imageR * Math.sin(angle) + offset;
+      
+      let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
+      anActionNode.id = "eG_action_" + layoutName + "_" + index;
+      anActionNode.style.left = Math.round(xpos) + "px";
+      anActionNode.style.top = Math.round(ypos) + "px";
+      
+      let iconName = action;
+      
+      if (action.startsWith("loadURL")) { // new icon path for loadURL ?
+        if (this.settings.loadURLActionPrefs[action][2] === "true" &&
+            this.settings.loadURLActionPrefs[action][1] !== "") {
+          browser.runtime.sendMessage({
+            messageName: "retrieveAndAddFavicon",
+            aURL: this.settings.loadURLActionPrefs[action][1]
+          }).then(aMessage => {
+            var faviconURL = aMessage.aURL;
+            if (faviconURL === "" || (document.documentURI.startsWith("https://") &&
+                                      faviconURL.startsWith("http://"))) {
+              anActionNode.className = action;
+            }
+            else {
+              anActionNode.style.backgroundImage = "url('" + faviconURL + "')";
+              anActionNode.className = "customIcon";
+            }
+          });
+        }
+      }
+      else if (action.startsWith("runScript")) { // new icon path for runScript?
+        let iconPath = this.settings.runScriptActionPrefs[action][2];
+        if (iconPath !== "" && !document.documentURI.startsWith("https://")) {
+          anActionNode.style.backgroundImage =
+            "url('" + iconPath.replace(/\\/g , "\\\\") + "')";
+          iconName = "customIcon";
+        }
+      }
+      
+      anActionNode.className = iconName;
+      anActionsNode.appendChild(anActionNode);
+      angle += 2 * halfAngleForSector;
+    }, this);
+    
+    return anActionsNode;
+  },
+  
   show : function(layoutName) { // makes menu visible
     var layout = this.menuSet[layoutName];
     
@@ -314,27 +431,55 @@ var eGPieMenu = {
       this.setJustOpened();
     }
     
-    showMenu({
-      easyGesturesID: this.easyGesturesID,
-      menuOpacity: this.settings.menuOpacity,
-      centerX: this.centerX,
-      centerY: this.centerY,
-      numberOfMainMenus: this.numberOfMainMenus,
-      numberOfExtraMenus: this.numberOfExtraMenus,
-      isExtraMenu: layout.isExtraMenu,
-      layoutName: layoutName,
-      iconSize: this.iconSize,
-      outerRadius: layout.outerR,
-      innerRadius: layout.innerR,
-      actions: layout.actions,
-      startingAngle: layout.startingAngle,
-      loadURLActionPrefs: this.settings.loadURLActionPrefs,
-      runScriptActionPrefs: this.settings.runScriptActionPrefs,
-      halfAngleForSector: layout.halfAngleForSector,
-      showLinkSign: this.settings.handleLinks && eGContext.anchorElementExists &&
-                    this.isJustOpened() && layoutName === "main",
-      linksDelay: this.settings.linksDelay
-    });
+    var bodyNode = document.body ? document.body : document.documentElement;
+    var easyGesturesNode = document.getElementById(this.easyGesturesID);
+    if (easyGesturesNode === null) {
+      easyGesturesNode = this._createEasyGesturesNode();
+      bodyNode.insertBefore(easyGesturesNode, bodyNode.firstChild);
+    }
+    
+    easyGesturesNode.style.left = this.centerX + "px";
+    easyGesturesNode.style.top = this.centerY + "px";
+    
+    var specialNodes = document.getElementById("eG_SpecialNodes");
+    if (specialNodes === null) {
+      specialNodes = this._createSpecialNodes(this.numberOfMainMenus,
+                                              this.numberOfExtraMenus);
+      easyGesturesNode.appendChild(specialNodes);
+    }
+    
+    if (!layout.isExtraMenu) {
+      if (layoutName.startsWith("main")) {
+        var mainMenusSign = specialNodes.childNodes[1];
+        mainMenusSign.style.visibility = "visible";
+      }
+    }
+    
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    if (actionsNode === null) {
+      actionsNode = this._createActionsNodes(layoutName, layout.outerR,
+                                             layout.innerR,
+                                             layout.startingAngle,
+                                             layout.actions,
+                                             layout.halfAngleForSector);
+      easyGesturesNode.appendChild(actionsNode);
+    }
+    actionsNode.style.visibility = "visible";
+    
+    // showing link sign
+    var linkSign = specialNodes.childNodes[0];
+    if (this.settings.handleLinks && eGContext.anchorElementExists &&
+        this.isJustOpened() && layoutName === "main") {
+      linkSign.style.visibility = "visible";
+      window.setTimeout(function() {
+        linkSign.style.visibility = "hidden";
+      }, this.settings.linksDelay);
+    }
+    else {
+      linkSign.style.visibility = "hidden";
+    }
+    
+    addEventListener("mousemove", handleMousemove, true);
     
     this.curLayoutName = layoutName;
     layout.actions.forEach(function(actionName, actionSector) {
@@ -353,15 +498,34 @@ var eGPieMenu = {
     this.resetTooltipsTimeout();
   },
   
+  _createTooltipsNodes : function(layoutName, tooltips, hasExtraMenuAction) {
+    var aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
+    aTooltipsNode.id = "eG_labels_" + layoutName;
+    
+    tooltips.forEach(function(tooltip, index) {
+      let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
+      aTooltipNode.id = "eG_label_" + layoutName + "_" + index;
+      aTooltipNode.classList.add("label" + index);
+      aTooltipNode.appendChild(document.createTextNode(tooltip));
+      aTooltipsNode.appendChild(aTooltipNode);
+    });
+    if (hasExtraMenuAction) {
+      aTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.add("extra");
+    }
+    
+    return aTooltipsNode;
+  },
+  
   showMenuTooltips : function() {
     var layout = this.menuSet[this.curLayoutName];
-    
-    showMenuTooltips({
-      easyGesturesID: this.easyGesturesID,
-      layoutName: layout.name,
-      tooltips: layout.labels,
-      hasExtraMenuAction: layout.hasExtraMenuAction
-    });
+    var easyGesturesNode = document.getElementById(this.easyGesturesID);
+    var tooltipsNode = document.getElementById("eG_labels_" + layout.name);
+    if (tooltipsNode === null) {
+      tooltipsNode = this._createTooltipsNodes(layout.name, layout.labels,
+                                               layout.hasExtraMenuAction);
+      easyGesturesNode.appendChild(tooltipsNode);
+    }
+    tooltipsNode.style.visibility = "visible";
     this.showingTooltips = true;
   },
   
@@ -530,28 +694,42 @@ var eGPieMenu = {
   
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-    
-    handleHideLayout({
-      layoutName: layout.name,
-      sector: this.sector,
-      layoutActionsLength: layout.actions.length,
-      baseLayoutName: this.baseMenu
-    });
+    hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
     this.show(layout.getNextLayout());
+  },
+  
+  _clearMenuSign : function(menuSign) {
+    for (let i=0; i < menuSign.childNodes.length; ++i) {
+      menuSign.childNodes[i].removeAttribute("class");
+    }
   },
   
   close : function() {
     var layout = this.menuSet[this.curLayoutName];
     var baseLayout = this.menuSet[this.baseMenu];
     
-    close({
-      layoutName: layout.name,
-      sector: this.sector,
-      layoutActionsLength: layout.actions.length,
-      baseLayoutName: this.baseMenu,
-      layoutIsExtraMenu: layout.isExtraMenu,
-      baseLayoutActionsLength: baseLayout !== undefined ? baseLayout.actions.length : 0
-    });
+    if (window === null) {
+      return ;
+    }
+    
+    var specialNodes = document.getElementById("eG_SpecialNodes");
+    var mainMenusSign = specialNodes.childNodes[1];
+    var extraMenusSign = specialNodes.childNodes[2];
+    
+    hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
+    if (layout.isExtraMenu) {
+      // hide base menu too if closing is done from extra menu
+      hide(this.baseMenu, this.sector,
+           baseLayout !== undefined ? baseLayout.actions.length : 0,
+           this.baseMenu);
+      extraMenusSign.style.visibility = "hidden";
+    }
+    mainMenusSign.style.visibility = "hidden";
+    
+    this._clearMenuSign(mainMenusSign);
+    this._clearMenuSign(extraMenusSign);
+    
+    removeEventListener("mousemove", handleMousemove, true);
     
     this.setHidden();
     this.sector = -1;

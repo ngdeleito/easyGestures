@@ -34,19 +34,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported showMenu, updateMenuSign, updateContextualMenuSign,
-            showMenuTooltips, handleHideLayout, close */
+/* exported handleMousemove */
 /* global browser, eGPieMenu, addEventListener, removeEventListener, window,
           document */
 
-const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 const EXTRA_MENU_ACTION = 2;
 
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
 var targetDocument, targetWindow, topmostWindow;
 var selection, contextualMenus, anchorElement, imageElement;
-var easyGesturesID;
 var eGContext = {};
 
 browser.runtime.sendMessage({
@@ -287,212 +284,8 @@ function handleContextmenu(anEvent) {
 
 function removeMenuEventHandler(anEvent) {
   removeEventListener("pagehide", removeMenuEventHandler, true);
-  var easyGesturesNode = anEvent.target.getElementById(easyGesturesID);
+  var easyGesturesNode = anEvent.target.getElementById(eGPieMenu.easyGesturesID);
   easyGesturesNode.parentNode.removeChild(easyGesturesNode);
-}
-
-function createEasyGesturesNode(menuOpacity) {
-  var easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
-  easyGesturesNode.id = easyGesturesID;
-  easyGesturesNode.style.opacity = menuOpacity;
-  
-  addEventListener("pagehide", removeMenuEventHandler, true);
-  
-  return easyGesturesNode;
-}
-
-function createSpecialNodes(numberOfMainMenus, numberOfExtraMenus) {
-  var specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
-  specialNodesNode.id = "eG_SpecialNodes";
-  
-  var linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
-  linkSignNode.id = "eG_linkSign";
-  specialNodesNode.appendChild(linkSignNode);
-  
-  var mainMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
-  mainMenusSignNode.id = "easyGesturesMainMenusSign";
-  
-  var i = numberOfMainMenus;
-  while (i > 0) {
-    let span = document.createElementNS(HTML_NAMESPACE, "span");
-    mainMenusSignNode.appendChild(span);
-    --i;
-  }
-  
-  specialNodesNode.appendChild(mainMenusSignNode);
-  
-  var extraMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
-  extraMenusSignNode.id = "easyGesturesExtraMenusSign";
-  
-  i = numberOfExtraMenus;
-  while (i > 0) {
-    let span = document.createElementNS(HTML_NAMESPACE, "span");
-    extraMenusSignNode.appendChild(span);
-    --i;
-  }
-  
-  specialNodesNode.appendChild(extraMenusSignNode);
-  
-  var contextMenuSignNode = document.createElementNS(HTML_NAMESPACE, "div");
-  contextMenuSignNode.id = "easyGesturesContextMenuSign";
-  specialNodesNode.appendChild(contextMenuSignNode);
-  
-  return specialNodesNode;
-}
-
-function createActionsNodes(aMessageData) {
-  var anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
-  anActionsNode.id = "eG_actions_" + aMessageData.layoutName;
-  
-  // creating actions images
-  
-  var offset = aMessageData.outerRadius - aMessageData.iconSize / 2;
-  var imageR = (aMessageData.outerRadius + aMessageData.innerRadius) / 2;
-  var angle = aMessageData.startingAngle;
-  
-  aMessageData.actions.forEach(function(action, index) {
-    let xpos = imageR * Math.cos(angle) + offset;
-    let ypos = -imageR * Math.sin(angle) + offset;
-    
-    let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
-    anActionNode.id = "eG_action_" + aMessageData.layoutName + "_" + index;
-    anActionNode.style.left = Math.round(xpos) + "px";
-    anActionNode.style.top = Math.round(ypos) + "px";
-    
-    let iconName = action;
-    
-    if (action.startsWith("loadURL")) { // new icon path for loadURL ?
-      if (aMessageData.loadURLActionPrefs[action][2] === "true" &&
-          aMessageData.loadURLActionPrefs[action][1] !== "") {
-        browser.runtime.sendMessage({
-          messageName: "retrieveAndAddFavicon",
-          aURL: aMessageData.loadURLActionPrefs[action][1]
-        }).then(aMessage => {
-          var faviconURL = aMessage.aURL;
-          if (faviconURL === "" || (document.documentURI.startsWith("https://") &&
-                                    faviconURL.startsWith("http://"))) {
-            anActionNode.className = action;
-          }
-          else {
-            anActionNode.style.backgroundImage = "url('" + faviconURL + "')";
-            anActionNode.className = "customIcon";
-          }
-        });
-      }
-    }
-    else if (action.startsWith("runScript")) { // new icon path for runScript ?
-      let iconPath = aMessageData.runScriptActionPrefs[action][2];
-      if (iconPath !== "" && !document.documentURI.startsWith("https://")) {
-        anActionNode.style.backgroundImage =
-          "url('" + iconPath.replace(/\\/g , "\\\\") + "')";
-        iconName = "customIcon";
-      }
-    }
-    
-    anActionNode.className = iconName;
-    anActionsNode.appendChild(anActionNode);
-    angle += 2 * aMessageData.halfAngleForSector;
-  });
-  
-  return anActionsNode;
-}
-
-function showMenu(aMessage) {
-  easyGesturesID = aMessage.easyGesturesID;
-  var bodyNode = document.body ? document.body : document.documentElement;
-  var easyGesturesNode = document.getElementById(easyGesturesID);
-  if (easyGesturesNode === null) {
-    easyGesturesNode = createEasyGesturesNode(aMessage.menuOpacity);
-    bodyNode.insertBefore(easyGesturesNode, bodyNode.firstChild);
-  }
-  
-  easyGesturesNode.style.left = aMessage.centerX + "px";
-  easyGesturesNode.style.top = aMessage.centerY + "px";
-  
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  if (specialNodes === null) {
-    specialNodes = createSpecialNodes(aMessage.numberOfMainMenus,
-                                      aMessage.numberOfExtraMenus);
-    easyGesturesNode.appendChild(specialNodes);
-  }
-  
-  if (!aMessage.isExtraMenu) {
-    if (aMessage.layoutName.startsWith("main")) {
-      var mainMenusSign = specialNodes.childNodes[1];
-      mainMenusSign.style.visibility = "visible";
-    }
-  }
-  
-  var actionsNode = document.getElementById("eG_actions_" + aMessage.layoutName);
-  if (actionsNode === null) {
-    actionsNode = createActionsNodes(aMessage);
-    easyGesturesNode.appendChild(actionsNode);
-  }
-  actionsNode.style.visibility = "visible";
-  
-  // showing link sign
-  var linkSign = specialNodes.childNodes[0];
-  if (aMessage.showLinkSign) {
-    linkSign.style.visibility = "visible";
-    window.setTimeout(function() {
-      linkSign.style.visibility = "hidden";
-    }, aMessage.linksDelay);
-  }
-  else {
-    linkSign.style.visibility = "hidden";
-  }
-  
-  addEventListener("mousemove", handleMousemove, true);
-}
-
-function updateMenuSign(aMessage) {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var menusSign = specialNodes.childNodes[aMessage.menuSign];
-  
-  menusSign.childNodes[aMessage.previousLayoutNumber].removeAttribute("class");
-  menusSign.childNodes[aMessage.layoutNumber].className = "active";
-}
-
-function updateContextualMenuSign(aMessage) {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var contextMenuSign = specialNodes.childNodes[3];
-  
-  contextMenuSign.textContent = aMessage.layoutLabel;
-  contextMenuSign.style.visibility = "visible";
-  if (aMessage.moreThanOneLayout) {
-    contextMenuSign.className = "withAltSign";
-  }
-  else {
-    contextMenuSign.removeAttribute("class");
-  }
-}
-
-function createTooltipsNodes(aMessageData) {
-  var aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
-  aTooltipsNode.id = "eG_labels_" + aMessageData.layoutName;
-  
-  aMessageData.tooltips.forEach(function(tooltip, index) {
-    let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
-    aTooltipNode.id = "eG_label_" + aMessageData.layoutName + "_" + index;
-    aTooltipNode.classList.add("label" + index);
-    aTooltipNode.appendChild(document.createTextNode(tooltip));
-    aTooltipsNode.appendChild(aTooltipNode);
-  });
-  if (aMessageData.hasExtraMenuAction) {
-    aTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.add("extra");
-  }
-  
-  return aTooltipsNode;
-}
-
-function showMenuTooltips(aMessage) {
-  var easyGesturesNode = document.getElementById(aMessage.easyGesturesID);
-  var tooltipsNode = document.getElementById("eG_labels_" + aMessage.layoutName);
-  if (tooltipsNode === null) {
-    tooltipsNode = createTooltipsNodes(aMessage);
-    easyGesturesNode.appendChild(tooltipsNode);
-  }
-  tooltipsNode.style.visibility = "visible";
 }
 
 function hideLinkSign() {
@@ -625,7 +418,7 @@ function handleMousemove(anEvent) {
     movementY: anEvent.movementY
   });
   if (result.centerX !== undefined) {
-    let easyGesturesNode = document.getElementById(easyGesturesID);
+    let easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
     updateMenuPosition(easyGesturesNode, result.centerX, result.centerY);
   }
   else {
@@ -640,41 +433,4 @@ function handleMousemove(anEvent) {
       hideExtraMenu(result.layoutName, result.newSector, result.actionsLength, result.baseLayoutName);
     }
   }
-}
-
-function handleHideLayout(aMessage) {
-  hide(aMessage.layoutName, aMessage.sector, aMessage.layoutActionsLength,
-       aMessage.baseLayoutName);
-}
-
-function clearMenuSign(menuSign) {
-  for (let i=0; i < menuSign.childNodes.length; ++i) {
-    menuSign.childNodes[i].removeAttribute("class");
-  }
-}
-
-function close(aMessage) {
-  if (window === null) {
-    return ;
-  }
-  
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var mainMenusSign = specialNodes.childNodes[1];
-  var extraMenusSign = specialNodes.childNodes[2];
-  
-  hide(aMessage.layoutName, aMessage.sector, aMessage.layoutActionsLength,
-       aMessage.baseLayoutName);
-  if (aMessage.layoutIsExtraMenu) {
-    // hide base menu too if closing is done from extra menu
-    hide(aMessage.baseLayoutName, aMessage.sector,
-         aMessage.baseLayoutActionsLength, aMessage.baseLayoutName);
-    
-    extraMenusSign.style.visibility = "hidden";
-  }
-  mainMenusSign.style.visibility = "hidden";
-  
-  clearMenuSign(mainMenusSign);
-  clearMenuSign(extraMenusSign);
-  
-  removeEventListener("mousemove", handleMousemove, true);
 }
