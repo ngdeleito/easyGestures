@@ -200,7 +200,9 @@ var eGMessageListeners = {
 };
 
 function handleMessage(aMessage, sender, sendResponse) {
-  eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
+  if (eGMessageListeners[aMessage.messageName] !== undefined) {
+    eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
+  }
 }
 
 function startup(data, reason) {
