@@ -198,12 +198,9 @@ function handleMousedown(anEvent) {
   
   if (eGPieMenu.settings.autoscrollingOn) {
     autoscrollingTrigger = window.setTimeout(function() {
-      browser.runtime.sendMessage({
-        messageName: "runAction",
-        actionName: "autoscrolling",
-        options: {
-          useMousedownCoordinates: true
-        }
+      eGPieMenu.close();
+      eGPieMenu.runAction_autoscrolling({
+        useMousedownCoordinates: true
       });
     }, eGPieMenu.settings.autoscrollingDelay);
   }

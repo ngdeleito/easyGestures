@@ -623,7 +623,9 @@ var eGPieMenu = {
   runAction_autoscrolling : function(options) {
     var useMousedownCoordinates = options.useMousedownCoordinates;
     // see chrome://global/content/browser-content.js: we simulate a middle
-    // button (non cancelable) mousedown event to trigger Firefox's autoscrolling
+    // button (non cancelable) mousedown event to trigger Firefox's
+    // autoscrolling --> autoscrolling is currently broken, as in WebExtensions
+    // created events seem to be non trusted
     document.documentElement.dispatchEvent(new window.MouseEvent("mousedown", {
       view: window,
       bubbles: true,

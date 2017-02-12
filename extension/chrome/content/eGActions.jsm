@@ -502,13 +502,10 @@ var eGActions = {
            eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY;
   }, false, "autoscrolling"),
   
-  autoscrolling : new Action("autoscrolling", function(options) {
-    if (options === undefined) {
-      options = {
-        useMousedownCoordinates: false
-      };
-    }
-    return this._sendPerformActionMessage(options);
+  autoscrolling : new Action("autoscrolling", function() {
+    return this._sendPerformActionMessage({
+             useMousedownCoordinates: false
+           });
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
