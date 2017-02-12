@@ -196,12 +196,13 @@ var eGMessageListeners = {
         aURL: aURI !== null ? aURI.spec : ""
       });
     });
+    return true;
   }
 };
 
 function handleMessage(aMessage, sender, sendResponse) {
   if (eGMessageListeners[aMessage.messageName] !== undefined) {
-    eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
+    return eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
   }
 }
 
