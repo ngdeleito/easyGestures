@@ -157,11 +157,14 @@ var eGMessageListeners = {
   },
   
   runAction : function(aMessage, sendResponse) {
-    var actionIsDisabled = eGActions[aMessage.actionName].isDisabled();
-    var response;
-    if (!actionIsDisabled) {
+    var response = {
+      actionIsDisabled: eGActions[aMessage.actionName].isDisabled()
+    };
+    if (!response.actionIsDisabled) {
       try {
-        response = eGActions[aMessage.actionName].run(aMessage.options);
+        let result = eGActions[aMessage.actionName].run();
+        response.runActionName = result.runActionName;
+        response.runActionOptions = result.runActionOptions;
       }
       catch(ex) {
         var error = Components.classes["@mozilla.org/scripterror;1"]
@@ -169,17 +172,8 @@ var eGMessageListeners = {
         error.init("easyGestures N exception: " + ex.toString(), null, null, null, null, error.errorFlag, null);
         Services.console.logMessage(error);
       }
-      sendResponse({
-        actionIsDisabled: actionIsDisabled,
-        runActionName: response.runActionName,
-        runActionOptions: response.runActionOptions
-      });
     }
-    else {
-      sendResponse({
-        actionIsDisabled: actionIsDisabled,
-      });
-    }
+    sendResponse(response);
   },
   
   retrieveAndAddFavicon: function(aMessage, sendResponse) {

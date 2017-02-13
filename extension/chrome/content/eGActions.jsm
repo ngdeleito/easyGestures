@@ -72,12 +72,10 @@ Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function(options) {
-    var response = action.call(this, options);
+  this.run = function() {
+    var response = action.call(this);
     if (response === undefined) {
-      response = {
-        runActionName: null
-      };
+      response = {};
     }
     return response;
   };

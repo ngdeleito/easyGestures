@@ -687,7 +687,7 @@ var eGPieMenu = {
       else {
         layout.updateStatsForActionToBeExecuted();
         this.close();
-        if (aMessage.runActionName !== null) {
+        if (aMessage.runActionName !== undefined) {
           this["runAction_" + aMessage.runActionName](aMessage.runActionOptions);
         }
       }
