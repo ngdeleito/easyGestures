@@ -139,11 +139,11 @@ var eGMessageListeners = {
     });
   },
   
-  setActionsStatusOn : function(aMessage, sendResponse) {
+  getActionsStatus : function(aMessage, sendResponse) {
     sendResponse({
       responses: aMessage.actions.map(function(actionName, actionSector) {
         return eGActions[actionName]
-                 .setActionStatusOn(aMessage.layoutName, actionSector);
+                 .getActionStatus(aMessage.layoutName, actionSector);
       })
     });
   },

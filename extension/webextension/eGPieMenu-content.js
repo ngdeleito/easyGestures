@@ -299,7 +299,7 @@ var eGPieMenu = {
     }
   },
   
-  setActionStatus : function(aMessage) {
+  setDisableableActionStatus : function(aMessage) {
     this._setActionStatusHelper(aMessage.layoutName, aMessage.actionSector,
                                 aMessage.status);
   },
@@ -483,7 +483,7 @@ var eGPieMenu = {
     
     this.curLayoutName = layoutName;
     browser.runtime.sendMessage({
-      messageName: "setActionsStatusOn",
+      messageName: "getActionsStatus",
       actions: layout.actions,
       layoutName: layoutName
     }).then(aMessage => {
