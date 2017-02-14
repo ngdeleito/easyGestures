@@ -141,8 +141,10 @@ var eGMessageListeners = {
   
   setActionsStatusOn : function(aMessage, sendResponse) {
     sendResponse({
-      response: eGActions[aMessage.actionName]
-                  .setActionStatusOn(aMessage.layoutName, aMessage.actionSector)
+      responses: aMessage.actions.map(function(actionName, actionSector) {
+        return eGActions[actionName]
+                 .setActionStatusOn(aMessage.layoutName, actionSector);
+      })
     });
   },
   

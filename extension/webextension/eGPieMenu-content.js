@@ -482,15 +482,14 @@ var eGPieMenu = {
     addEventListener("mousemove", handleMousemove, true);
     
     this.curLayoutName = layoutName;
-    layout.actions.forEach(function(actionName, actionSector) {
-      browser.runtime.sendMessage({
-        messageName: "setActionsStatusOn",
-        actionName: actionName,
-        layoutName: layoutName,
-        actionSector: actionSector
-      }).then(aMessage => {
-        if (aMessage.response !== undefined) {
-          eGPieMenu[aMessage.response.messageName](aMessage.response);
+    browser.runtime.sendMessage({
+      messageName: "setActionsStatusOn",
+      actions: layout.actions,
+      layoutName: layoutName
+    }).then(aMessage => {
+      aMessage.responses.forEach(function(response) {
+        if (response !== undefined) {
+          eGPieMenu[response.messageName](response);
         }
       });
     });
