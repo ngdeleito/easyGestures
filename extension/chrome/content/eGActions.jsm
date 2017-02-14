@@ -199,14 +199,12 @@ ReloadAction.prototype.constructor = ReloadAction;
 ReloadAction.prototype.getLocalizedActionName = function() {
   return eGStrings.getString("reloadActionName");
 };
-ReloadAction.prototype.getActionStatus = function(layoutName, actionSector) {
+ReloadAction.prototype.getActionStatus = function() {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
   var stop_bcaster = window.document.getElementById("Browser:Stop");
   eGContext.loading = !stop_bcaster.hasAttribute("disabled");
   return {
     messageName: "setReloadActionStatus",
-    layoutName: layoutName,
-    actionSector: actionSector,
     status: eGContext.loading
   };
 };
@@ -218,11 +216,9 @@ function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction)
 }
 DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
-DisableableAction.prototype.getActionStatus = function(layoutName, actionSector) {
+DisableableAction.prototype.getActionStatus = function() {
   return {
     messageName: "setDisableableActionStatus",
-    layoutName: layoutName,
-    actionSector: actionSector,
     status: this.isDisabled()
   };
 };
@@ -400,11 +396,9 @@ function DocumentContainsImagesDisableableAction(name, startsNewGroup, nextActio
 }
 DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototype);
 DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
-DocumentContainsImagesDisableableAction.prototype.getActionStatus = function(layoutName, actionSector) {
+DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setHideImagesActionStatus",
-    layoutName: layoutName,
-    actionSector: actionSector
+    messageName: "setHideImagesActionStatus"
   };
 };
 

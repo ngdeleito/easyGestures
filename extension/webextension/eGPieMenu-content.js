@@ -299,22 +299,20 @@ var eGPieMenu = {
     }
   },
   
-  setDisableableActionStatus : function(aMessage) {
-    this._setActionStatusHelper(aMessage.layoutName, aMessage.actionSector,
-                                aMessage.status);
+  setDisableableActionStatus : function(aMessage, layoutName, actionSector) {
+    this._setActionStatusHelper(layoutName, actionSector, aMessage.status);
   },
   
-  setReloadActionStatus : function(aMessage) {
-    var actionsNode = document.getElementById("eG_actions_" + aMessage.layoutName);
-    var actionNode = actionsNode.childNodes[aMessage.actionSector];
+  setReloadActionStatus : function(aMessage, layoutName, actionSector) {
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    var actionNode = actionsNode.childNodes[actionSector];
     actionNode.classList.toggle("stop", aMessage.status);
     actionNode.classList.toggle("reload", !aMessage.status);
   },
   
-  setHideImagesActionStatus : function(aMessage) {
+  setHideImagesActionStatus : function(aMessage, layoutName, actionSector) {
     var disabled = document.querySelectorAll("img").length === 0;
-    this._setActionStatusHelper(aMessage.layoutName, aMessage.actionSector,
-                                disabled);
+    this._setActionStatusHelper(layoutName, actionSector, disabled);
   },
   
   _createEasyGesturesNode : function() {
@@ -484,12 +482,11 @@ var eGPieMenu = {
     this.curLayoutName = layoutName;
     browser.runtime.sendMessage({
       messageName: "getActionsStatus",
-      actions: layout.actions,
-      layoutName: layoutName
+      actions: layout.actions
     }).then(aMessage => {
-      aMessage.responses.forEach(function(response) {
+      aMessage.responses.forEach(function(response, actionSector) {
         if (response !== undefined) {
-          eGPieMenu[response.messageName](response);
+          eGPieMenu[response.messageName](response, layoutName, actionSector);
         }
       });
     });

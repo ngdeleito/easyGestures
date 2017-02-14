@@ -141,9 +141,8 @@ var eGMessageListeners = {
   
   getActionsStatus : function(aMessage, sendResponse) {
     sendResponse({
-      responses: aMessage.actions.map(function(actionName, actionSector) {
-        return eGActions[actionName]
-                 .getActionStatus(aMessage.layoutName, actionSector);
+      responses: aMessage.actions.map(function(actionName) {
+        return eGActions[actionName].getActionStatus();
       })
     });
   },
