@@ -113,9 +113,9 @@ var eGMessageListeners = {
     });
   },
   
-  seteGContext : function(aMessage) {
-    for (let key in aMessage.eGContext) {
-      eGContext[key] = aMessage.eGContext[key];
+  setContext : function(aMessage) {
+    for (let key in aMessage.context) {
+      eGContext[key] = aMessage.context[key];
     }
   },
   

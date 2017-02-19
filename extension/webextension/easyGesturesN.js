@@ -44,7 +44,6 @@ var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
 var targetDocument, targetWindow, topmostWindow;
 var selection, contextualMenus, anchorElement, imageElement;
-var eGContext = {};
 
 browser.runtime.sendMessage({
   messageName: "handleContentScriptLoad"
@@ -169,28 +168,28 @@ function handleMousedown(anEvent) {
   
   window.focus();
   
-  eGContext.contextualMenus = contextualMenus;
-  eGContext.selection = selection;
-  eGContext.anchorElementExists = anchorElement !== null;
-  eGContext.anchorElementHREF = anchorElement !== null ? anchorElement.href : null;
-  eGContext.anchorElementText = anchorElement !== null ? anchorElement.text : null;
-  eGContext.imageElementDoesntExist = imageElement === null;
-  eGContext.imageElementSRC = imageElement !== null ? imageElement.src : null;
   eGPieMenu.centerX = centerX;
   eGPieMenu.centerY = centerY;
-  eGContext.targetDocumentURL = targetDocument.URL;
-  eGContext.targetWindowScrollY = targetWindow.scrollY;
-  eGContext.targetWindowScrollMaxY = targetWindow.scrollMaxY;
-  eGContext.topmostWindowScrollY = topmostWindow.scrollY;
-  eGContext.topmostWindowScrollMaxY = topmostWindow.scrollMaxY;
   browser.runtime.sendMessage({
-    messageName: "seteGContext",
-    eGContext: eGContext
+    messageName: "setContext",
+    context: {
+      selection: selection,
+      anchorElementExists: anchorElement !== null,
+      anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
+      anchorElementText: anchorElement !== null ? anchorElement.text : null,
+      imageElementDoesntExist: imageElement === null,
+      imageElementSRC: imageElement !== null ? imageElement.src : null,
+      targetDocumentURL: targetDocument.URL,
+      targetWindowScrollY: targetWindow.scrollY,
+      targetWindowScrollMaxY: targetWindow.scrollMaxY,
+      topmostWindowScrollY: topmostWindow.scrollY,
+      topmostWindowScrollMaxY: topmostWindow.scrollMaxY
+    }
   });
   
-  if (eGContext.contextualMenus.length !== 0 &&
+  if (contextualMenus.length !== 0 &&
       eGPieMenu.canContextualMenuBeOpened(anEvent.ctrlKey, anEvent.altKey)) {
-    eGPieMenu.show(eGContext.contextualMenus[0]);
+    eGPieMenu.show(contextualMenus[0]);
   }
   else {
     eGPieMenu.show("main");

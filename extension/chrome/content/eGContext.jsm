@@ -37,7 +37,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 var EXPORTED_SYMBOLS = ["eGContext"];
 
 var eGContext = {
-  contextualMenus: [], // possible values: contextLink, contextImage, contextSelection or contextTextbox
   selection: null,
   anchorElementExists: false,
   anchorElementHREF: null,
@@ -50,8 +49,6 @@ var eGContext = {
   targetWindowScrollMaxY: null,
   topmostWindowScrollY: null,
   topmostWindowScrollMaxY: null,
-  
-  autoscrollingTrigger: null,
   
   loading: false // used for reload/stop action
 };

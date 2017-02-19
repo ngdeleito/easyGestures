@@ -36,10 +36,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, document, eGContext, addEventListener,
-          removeMenuEventHandler, window, handleMousemove, EXTRA_MENU_ACTION,
-          targetWindow, topmostWindow, mousedownScreenX, mouseupScreenX,
-          mousedownScreenY, mouseupScreenY, imageElement, hide,
+/* global browser, document, contextualMenus, addEventListener,
+          removeMenuEventHandler, anchorElement, window, handleMousemove,
+          EXTRA_MENU_ACTION, targetWindow, topmostWindow, mousedownScreenX,
+          mouseupScreenX, mousedownScreenY, mouseupScreenY, imageElement, hide,
           removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
@@ -155,9 +155,8 @@ function ContextualMenuLayout(menu, name, actionsPrefs) {
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
 ContextualMenuLayout.prototype.getNextLayout = function() {
-  return eGContext.contextualMenus[
-    (eGContext.contextualMenus.indexOf(this.name) + 1) %
-      eGContext.contextualMenus.length];
+  return contextualMenus[(contextualMenus.indexOf(this.name) + 1) %
+                         contextualMenus.length];
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   browser.runtime.sendMessage({
@@ -172,7 +171,7 @@ ContextualMenuLayout.prototype.updateMenuSign = function() {
   
   contextMenuSignNode.textContent = this.localizedName;
   contextMenuSignNode.style.visibility = "visible";
-  if (eGContext.contextualMenus.length > 1) {
+  if (contextualMenus.length > 1) {
     contextMenuSignNode.className = "withAltSign";
   }
   else {
@@ -466,7 +465,7 @@ var eGPieMenu = {
     
     // showing link sign
     var linkSign = specialNodes.childNodes[0];
-    if (this.settings.handleLinks && eGContext.anchorElementExists &&
+    if (this.settings.handleLinks && anchorElement !== null &&
         this.isJustOpened() && layoutName === "main") {
       linkSign.style.visibility = "visible";
       window.setTimeout(function() {
@@ -820,7 +819,7 @@ var eGPieMenu = {
       }
       browser.runtime.sendMessage({
         messageName: messageName,
-        url: eGContext.anchorElementHREF
+        url: anchorElement.href
       });
     }
     this.close();
