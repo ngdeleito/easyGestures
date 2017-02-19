@@ -42,6 +42,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
+var embeddedExtensionPort;
+
 var eGPrefsObserver = {
   register: function() {
     this._branch = Services.prefs.getBranch("extensions.easygestures.");
@@ -59,17 +61,10 @@ var eGPrefsObserver = {
   },
   
   observe: function() {
-    if (eGPieMenu.isShown()) {
-      // we properly close an open menu in case e.g. the showAltButton
-      // preference has been updated through the custom mouse button option
-      eGPieMenu.close();
-    }
+    eGPieMenu.init();
     
     // removing existing easyGestures menus from open web pages
-    eGPieMenu.removeFromAllPages();
-    
-    // rebulding the menu
-    eGPieMenu.init();
+    embeddedExtensionPort.postMessage({});
   }
 };
 
@@ -260,6 +255,9 @@ function startup(data, reason) {
     data.webExtension.startup().then(api => {
       const {browser} = api;
       browser.runtime.onMessage.addListener(handleMessage);
+      browser.runtime.onConnect.addListener(aPort => {
+        embeddedExtensionPort = aPort;
+      });
     });
     
     // displaying startup tips

@@ -823,9 +823,5 @@ var eGPieMenu = {
       });
     }
     this.close();
-  },
-  
-  // removeFromAllPages : function() {
-  //   Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeMenu");
-  // }
+  }
 };

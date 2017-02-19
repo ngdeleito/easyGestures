@@ -45,19 +45,33 @@ var autoscrollingTrigger = null;
 var targetDocument, targetWindow, topmostWindow;
 var selection, contextualMenus, anchorElement, imageElement;
 
-browser.runtime.sendMessage({
-  messageName: "handleContentScriptLoad"
-}).then(aMessage => {
-  for (let key in aMessage) {
-    eGPieMenu.settings[key] = aMessage[key];
-  }
-  eGPieMenu.init();
-});
+function setPieMenuSettings() {
+  browser.runtime.sendMessage({
+    messageName: "handleContentScriptLoad"
+  }).then(aMessage => {
+    for (let key in aMessage) {
+      eGPieMenu.settings[key] = aMessage[key];
+    }
+    eGPieMenu.init();
+  });
+}
 
+setPieMenuSettings();
 addEventListener("mousedown", handleMousedown, true);
 addEventListener("mouseup", handleMouseup, true);
 addEventListener("keydown", handleKeydown, true);
 addEventListener("contextmenu", handleContextmenu, true);
+
+function resetPieMenu() {
+  removeEventListener("pagehide", removeMenuEventHandler, true);
+  var easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
+  if (easyGesturesNode !== null) {
+    easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+  }
+  setPieMenuSettings();
+}
+
+browser.runtime.onMessage.addListener(resetPieMenu);
 
 function cleanSelection(selection) {
   var result = selection.trim();

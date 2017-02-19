@@ -99,13 +99,6 @@ var eGPieMenu = {
     };
   },
   
-  isShown : function() {
-    return false;
-  },
-  
-  close : function() {
-  },
-  
   removeFromAllPages : function() {
   }
 };

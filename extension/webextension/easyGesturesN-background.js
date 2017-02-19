@@ -62,3 +62,15 @@ function handleMessage(aMessage, sender, sendResponse) {
     eGMessageHandlers[aMessage.messageName](aMessage, sendResponse);
   }
 }
+
+function resetPieMenuOnAllTabs() {
+  browser.tabs.query({}).then(tabs => {
+    for (let tab of tabs) {
+      // we do a catch to avoid having an error message being displayed on the
+      // console for tabs on which the content scripts are not loaded
+      browser.tabs.sendMessage(tab.id, {}).catch(() => {});
+    }
+  });
+}
+
+browser.runtime.connect().onMessage.addListener(resetPieMenuOnAllTabs);
