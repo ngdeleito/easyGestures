@@ -12,6 +12,6 @@
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "css": ["content/easyGesturesN.css"],
-    "js": ["eGPieMenu-content.js", "easyGesturesN.js"]
+    "js": ["content/eGPieMenu.js", "content/easyGesturesN.js"]
   }]
 }
