@@ -244,14 +244,6 @@ function startup(data, reason) {
     // creating menu
     eGPieMenu.init();
     
-    // registering style sheet
-    var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-                        .getService(Components.interfaces.nsIStyleSheetService);
-    var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-    if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
-      sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
-    }
-    
     data.webExtension.startup().then(api => {
       const {browser} = api;
       browser.runtime.onMessage.addListener(handleMessage);
@@ -288,14 +280,6 @@ function shutdown() {
   
   // removing existing easyGestures menus from open web pages
   eGPieMenu.removeFromAllPages();
-  
-  // unregistering style sheet
-  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-                      .getService(Components.interfaces.nsIStyleSheetService);
-  var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-  if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
-    sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
-  }
   
   Components.utils.unload("chrome://easygestures/content/eGContext.jsm");
   Components.utils.unload("chrome://easygestures/content/eGActions.jsm");

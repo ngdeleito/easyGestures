@@ -5,3 +5,4 @@ locale easygestures es-ES chrome/locale/es-ES/
 locale easygestures fr-FR chrome/locale/fr-FR/
 
 skin easygestures default chrome/skin/
+content easygestures-webext webextension/content/
