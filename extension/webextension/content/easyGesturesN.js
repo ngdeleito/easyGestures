@@ -385,6 +385,11 @@ function showExtraMenu(layoutName) {
   if (tooltipsNode !== null) {
     tooltipsNode.style.visibility = "hidden";
   }
+  
+  browser.runtime.sendMessage({
+    messageName: "increaseExtraMenuUsage",
+    position: eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION
+  });
 }
 
 function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) {

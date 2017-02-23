@@ -152,6 +152,10 @@ var eGMessageListeners = {
     eGPrefs.updateStatsForAction(aMessage.actionName);
   },
   
+  increaseExtraMenuUsage : function(aMessage) {
+    eGPrefs.incrementStatsMainMenuPref(aMessage.position);
+  },
+  
   runAction : function(aMessage, sendResponse) {
     var response = {
       actionIsDisabled: eGActions[aMessage.actionName].isDisabled()
