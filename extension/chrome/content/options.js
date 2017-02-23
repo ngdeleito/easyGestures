@@ -820,46 +820,81 @@ function fillActions(statsActions, totalClicks) {
   }
 }
 
-function initializeStatsForMenuLayout(menuPrefix, isExtraMenu, getClicks,
-                                      statsClicksOnActions) {
-  var container = document.getElementById(menuPrefix +
-                                          (isExtraMenu ? "Extra" : "Main") +
-                                          "Menu");
+function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
+  var numberOfActions = isExtraMenu ? 5 : 10;
+  var usages = [0, 0, 0, 0];
+  
+  for (let i = 0; i < numberOfActions; ++i) {
+    let usage = statsArray[0 * numberOfActions + i];
+    usages[0] += usage;
+    usages[3] += usage;
+    usage = statsArray[1 * numberOfActions + i];
+    usages[1] += usage;
+    usages[3] += usage;
+    usage = statsArray[2 * numberOfActions + i];
+    usages[2] += usage;
+    usages[3] += usage;
+  }
+  
+  ["primary", "alt1", "alt2"].forEach((menuPrefix, layoutIndex) => {
+    var container = document.getElementById(menuPrefix +
+                                            (isExtraMenu ? "Extra" : "Main") +
+                                            "Menu");
+    container.className = "menu";
+    container.classList.toggle("extra", isExtraMenu);
+    container.classList.toggle("large", !eGPrefs.isLargeMenuOff());
+    for (let i = 0; i < numberOfActions; ++i) {
+      let stat = document.createElement("div");
+      stat.className = "sector" + i;
+      let clicks = statsArray[layoutIndex * numberOfActions + i];
+      let totalUsage = usages[layoutIndex] === 0 ? 1 : usages[layoutIndex];
+      stat.textContent = Math.round(clicks * 100 / totalUsage) + "%";
+      container.appendChild(stat);
+    }
+    
+    var total = document.createElement("div");
+    total.className = "total";
+    total.textContent = Math.round(usages[layoutIndex] * 100 /
+                                   (usages[3] === 0 ? 1 : usages[3])) + "%";
+    container.appendChild(total);
+  });
+}
+
+function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
+  var numberOfActions = isExtraMenu ? 5 : 10;
+  var usages = [];
+  var total = 0;
+  for (let i = 0; i < numberOfActions; ++i) {
+    let usage = statsArray[0 * numberOfActions + i] +
+                statsArray[1 * numberOfActions + i] +
+                statsArray[2 * numberOfActions + i];
+    usages.push(usage);
+    total += usage;
+  }
+  
+  var container = document.getElementById("allMenus" +
+                                         (isExtraMenu ? "Extra" : "Main") +
+                                         "Menu");
   container.className = "menu";
   container.classList.toggle("extra", isExtraMenu);
   container.classList.toggle("large", !eGPrefs.isLargeMenuOff());
-  var totalClicks = 0;
-  var numberOfActions = isExtraMenu ? 5 : 10;
   for (let i = 0; i < numberOfActions; ++i) {
-    let stat = document.createElement("div");
-    stat.className = "sector" + i;
-    let clicks = getClicks(i, numberOfActions);
-    stat.textContent = Math.round(clicks / statsClicksOnActions * 100) + "%";
-    totalClicks += clicks;
-    container.appendChild(stat);
+   let stat = document.createElement("div");
+   stat.className = "sector" + i;
+   stat.textContent = Math.round(usages[i] * 100 / (total === 0 ? 1 : total)) +
+                        "%";
+   container.appendChild(stat);
   }
-  var total = document.createElement("div");
-  total.className = "total";
-  total.textContent = Math.round(totalClicks / statsClicksOnActions * 100) + "%";
-  container.appendChild(total);
 }
 
-function initializeStatsForMenu(menuPrefix, isExtraMenu, index, statsArray,
-                                statsClicksOnActions) {
-  initializeStatsForMenuLayout(menuPrefix, isExtraMenu,
-                               function(i, numberOfActions) {
-                                 return statsArray[i + index * numberOfActions];
-                               }, statsClicksOnActions);
-}
-
-function initializeTotalStatsForMenu(isExtraMenu, statsArray,
-                                     statsClicksOnActions) {
-  initializeStatsForMenuLayout("allMenus", isExtraMenu,
-                               function(i, numberOfActions) {
-                                 return statsArray[i] +
-                                        statsArray[i + numberOfActions] +
-                                        statsArray[i + numberOfActions * 2];
-                               }, statsClicksOnActions);
+function initializeClicksByDirection() {
+  var statsMainArray = eGPrefs.getStatsMainMenuPref();
+  var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
+  
+  initializeClicksByDirectionForMenuLayouts(statsMainArray, false);
+  initializeClicksByDirectionForMenuLayouts(statsExtraArray, true);
+  initializeClicksByDirectionTotals(statsMainArray, false);
+  initializeClicksByDirectionTotals(statsExtraArray, true);
 }
 
 function loadStats() {
@@ -868,8 +903,6 @@ function loadStats() {
   
   var statsClicksOnActions = 0;
   var statsActions = eGPrefs.getStatsActionsPref();
-  var statsMainArray = eGPrefs.getStatsMainMenuPref();
-  var statsExtraArray = eGPrefs.getStatsExtraMenuPref();
   
   for (let action in statsActions) {
     statsClicksOnActions += statsActions[action];
@@ -879,14 +912,7 @@ function loadStats() {
   }
   
   fillActions(statsActions, statsClicksOnActions - statsActions.empty);
-  ["primary", "alt1", "alt2"].forEach(function(menuPrefix, index) {
-    initializeStatsForMenu(menuPrefix, false, index, statsMainArray,
-                           statsClicksOnActions);
-    initializeStatsForMenu(menuPrefix, true, index, statsExtraArray,
-                           statsClicksOnActions);
-  });
-  initializeTotalStatsForMenu(false, statsMainArray, statsClicksOnActions);
-  initializeTotalStatsForMenu(true, statsExtraArray, statsClicksOnActions);
+  initializeClicksByDirection();
 }
 
 function optionsLoadHandler() {
