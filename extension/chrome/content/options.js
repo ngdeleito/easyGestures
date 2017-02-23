@@ -786,7 +786,14 @@ function loadPreferences(isReload) {
   setPreferenceControlsDisabledStatus();
 }
 
-function fillActions(statsActions, totalClicks) {
+function initializeClicksByAction() {
+  var statsActions = eGPrefs.getStatsActionsPref();
+  var totalClicks = 0;
+  for (let action in statsActions) {
+    totalClicks += statsActions[action];
+  }
+  totalClicks = totalClicks === 0 ? 1 : totalClicks - statsActions.empty;
+  
   var container = document.getElementById("stats_clicksByAction");
   
   // we start at the action that follows the "empty" action
@@ -901,17 +908,7 @@ function loadStats() {
   document.getElementById("statsLastReset").textContent =
     eGPrefs.getStatsLastResetPref();
   
-  var statsClicksOnActions = 0;
-  var statsActions = eGPrefs.getStatsActionsPref();
-  
-  for (let action in statsActions) {
-    statsClicksOnActions += statsActions[action];
-  }
-  if (statsClicksOnActions === 0) {
-    statsClicksOnActions = 1; //just avoiding division by 0 to prevent displaying NaN
-  }
-  
-  fillActions(statsActions, statsClicksOnActions - statsActions.empty);
+  initializeClicksByAction();
   initializeClicksByDirection();
 }
 
