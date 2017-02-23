@@ -796,8 +796,8 @@ function initializeClicksByAction() {
   
   var container = document.getElementById("stats_clicksByAction");
   
-  // we start at the action that follows the "empty" action
-  var currentAction = eGActions.empty.nextAction;
+  // we start at the action that follows the "showExtraMenu" action
+  var currentAction = eGActions.showExtraMenu.nextAction;
   while (currentAction !== null) {
     let clicksForAction = statsActions[currentAction];
     let count = Math.round(clicksForAction / totalClicks * 1000) / 10;
