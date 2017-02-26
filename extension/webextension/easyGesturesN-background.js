@@ -55,13 +55,13 @@ var eGMessageHandlers = {
   }
 };
 
-browser.runtime.onMessage.addListener(handleMessage);
-
 function handleMessage(aMessage, sender, sendResponse) {
   if (eGMessageHandlers[aMessage.messageName] !== undefined) {
     eGMessageHandlers[aMessage.messageName](aMessage, sendResponse);
   }
 }
+
+browser.runtime.onMessage.addListener(handleMessage);
 
 function resetPieMenuOnAllTabs() {
   browser.tabs.query({}).then(tabs => {
