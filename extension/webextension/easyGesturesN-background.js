@@ -74,3 +74,15 @@ function resetPieMenuOnAllTabs() {
 }
 
 browser.runtime.connect().onMessage.addListener(resetPieMenuOnAllTabs);
+
+browser.runtime.sendMessage({
+  messageName: "query_eGPrefs",
+  methodName: "areStartupTipsOn"
+}).then(aMessage => {
+  if (aMessage.response) {
+    browser.tabs.create({
+      active: false,
+      url: "/tips/tips.html"
+    });
+  }
+});

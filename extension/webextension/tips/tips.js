@@ -32,14 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported tipsLoadHandler, tipsUnloadHandler, tipLinkClick,
-            updateShowTipsCheckbox */
-/* global Components, eGStrings, document, eGPrefs, Services, eGUtils */
+/* global window, browser, document */
 
-Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
-Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
-Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
+window.addEventListener("load", tipsLoadHandler);
+window.addEventListener("unload", tipsUnloadHandler);
 
 function tipEntry(label, hash) {
   this.label = label;
@@ -70,74 +66,148 @@ var tips = [
   new tipEntry("tips.openLinkAction",            "customizations_otherActions"),
   new tipEntry("tips.dailyReadingsAction",       "customizations_otherActions")
 ];
-tips.forEach(function(tip) {
-  tip.description = eGStrings.getString(tip.label);
+browser.runtime.sendMessage({
+  messageName: "getLocalizedStrings",
+  stringIDs: tips.map(tip => {
+    return tip.label;
+  })
+}).then(aMessage => {
+  tips.forEach(function(tip, index) {
+    tip.description = aMessage.response[index];
+  });
 });
 
-var generalPrefBranch;
+// var generalPrefBranch;
 var tipNumber;
-
-function setShowTipsCheckbox() {
-  document.getElementById("showTipsControl").checked =
-    eGPrefs.areStartupTipsOn();
-}
-
-function tipsLoadHandler() {
-  generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
-  generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
-  
-  eGUtils.setDocumentTitle(document, "tips");
-  setShowTipsCheckbox();
-  eGUtils.setDocumentLocalizedStrings(document);
-  try {
-    tipNumber = eGPrefs.getTipNumberPref();
-  }
-  catch (ex) {
-    tipNumber = 1;
-  }
-  updateTipNbr(0);
-}
-
-function tipsUnloadHandler() {
-  eGPrefs.setTipNumberPref((tipNumber + 1) % tips.length);
-  generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
-}
 
 function updateContent(tipNbr) {
   // we extract a potential link from the description; links are contained
   // inside square brackets (with no space after the opening bracket and no
   // space before the closing bracket): "text1 [link] text2"
   var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
-  var linkText = "";
   
   // we resolve the locale strings that constitute the link text
   if (text.length > 1) {
-    let linkTextStrings = text[1].split("/");
-    linkText = linkTextStrings.map(function(label) {
-      return eGStrings.getString(label);
-    }).join("/");
+    browser.runtime.sendMessage({
+      messageName: "getLocalizedStrings",
+      stringIDs: text[1].split("/")
+    }).then(aMessage => {
+      document.getElementById("tipTextLink").textContent =
+        aMessage.response.join("/");
+    });
   }
   
   document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " +
                                                      tips.length;
   document.getElementById("tipTextBeforeLink").textContent = text[0];
-  document.getElementById("tipTextLink").textContent = linkText;
+  document.getElementById("tipTextLink").textContent = "";
   document.getElementById("tipTextAfterLink").textContent = text[2];
   document.getElementById("tipImage").className = tips[tipNbr].imageClass;
 }
 
 function updateTipNbr(step) {
   tipNumber = (((tipNumber + step) % tips.length) + tips.length) % tips.length;
-  eGPrefs.setTipNumberPref(tipNumber);
+  browser.runtime.sendMessage({
+    messageName: "query_eGPrefs",
+    methodName: "setTipNumberPref",
+    parameter: tipNumber
+  });
   updateContent(tipNumber);
+}
+
+function goToPreviousTip() {
+  updateTipNbr(-1);
+}
+
+function goToNextTip() {
+  updateTipNbr(+1);
 }
 
 function tipLinkClick() {
   var hash = tips[tipNumber].hash;
-  eGUtils.showOrOpenTab("chrome://easygestures/content/options.html" +
-                        (hash === "" ? "" : "#" + hash), true);
+  browser.runtime.sendMessage({
+    messageName: "showOrOpenTab",
+    aURL: "chrome://easygestures/content/options.html" +
+            (hash === "" ? "" : "#" + hash),
+    giveFocus: true
+  });
 }
 
 function updateShowTipsCheckbox() {
-  eGPrefs.toggleStartupTips();
+  browser.runtime.sendMessage({
+    messageName: "query_eGPrefs",
+    methodName: "toggleStartupTips"
+  });
+}
+
+function setShowTipsCheckbox() {
+  browser.runtime.sendMessage({
+    messageName: "query_eGPrefs",
+    methodName: "areStartupTipsOn"
+  }).then(aMessage => {
+    document.getElementById("showTipsControl").checked = aMessage.response;
+  });
+}
+
+function tipsLoadHandler() {
+  document.getElementById("previousTipButton")
+          .addEventListener("click", goToPreviousTip);
+  document.getElementById("nextTipButton")
+          .addEventListener("click", goToNextTip);
+  document.getElementById("tipTextLink")
+          .addEventListener("click", tipLinkClick);
+  document.getElementById("showTipsControl")
+          .addEventListener("click", updateShowTipsCheckbox);
+  
+  // generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
+  // generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
+  
+  browser.runtime.sendMessage({
+    messageName: "query_eGStrings",
+    methodName: "getString",
+    parameter: "tips"
+  }).then(aMessage => {
+    document.title = aMessage.response + " " + document.title;
+  });
+  setShowTipsCheckbox();
+  var elementsToLocalize = document.querySelectorAll("[data-l10n]");
+  var stringIDs = [];
+  for (let i=0; i < elementsToLocalize.length; i++) {
+    stringIDs.push(elementsToLocalize[i].dataset.l10n);
+  }
+  browser.runtime.sendMessage({
+    messageName: "getLocalizedStrings",
+    stringIDs: stringIDs
+  }).then(aMessage => {
+    for (let i=0; i < elementsToLocalize.length; ++i) {
+      elementsToLocalize[i].textContent = aMessage.response[i];
+    }
+  });
+  browser.runtime.sendMessage({
+    messageName: "query_eGPrefs",
+    methodName: "getTipNumberPref"
+  }).then(aMessage => {
+    tipNumber = aMessage.response;
+    updateTipNbr(0);
+  });
+}
+
+function tipsUnloadHandler() {
+  window.removeEventListener("load", tipsLoadHandler);
+  window.removeEventListener("unload", tipsUnloadHandler);
+  document.getElementById("previousTipButton")
+          .removeEventListener("click", goToPreviousTip);
+  document.getElementById("nextTipButton")
+          .removeEventListener("click", goToNextTip);
+  document.getElementById("tipTextLink")
+          .removeEventListener("click", tipLinkClick);
+  document.getElementById("showTipsControl")
+          .removeEventListener("click", updateShowTipsCheckbox);
+  
+  browser.runtime.sendMessage({
+    messageName: "query_eGPrefs",
+    methodName: "setTipNumberPref",
+    parameter: (tipNumber + 1) % tips.length
+  });
+  // generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
 }

@@ -42,20 +42,19 @@
   <script src="tips.js"></script>
 </head>
 
-<body onload="tipsLoadHandler();" onunload="tipsUnloadHandler();">
-  <button type="button" data-l10n="tips.previous" onclick="updateTipNbr(-1);">
+<body>
+  <button id="previousTipButton" type="button" data-l10n="tips.previous">
   </button>
   <span id="tipNumber"></span>
-  <button type="button" data-l10n="tips.next" onclick="updateTipNbr(+1);">
+  <button id="nextTipButton" type="button" data-l10n="tips.next">
   </button>
   
   <p id="tip"><span id="tipTextBeforeLink">
-    </span><a id="tipTextLink" onclick="tipLinkClick();">
+    </span><a id="tipTextLink">
     </a><span id="tipTextAfterLink">
   </span></p>
   <div id="tipImage"></div>
-  <input id="showTipsControl" type="checkbox"
-         onclick="updateShowTipsCheckbox();" />
+  <input id="showTipsControl" type="checkbox" />
   <label id="showTipsLabel" for="showTipsControl"
          data-l10n="general.startupTips"></label>
 </body>

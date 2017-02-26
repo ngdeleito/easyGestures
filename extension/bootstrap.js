@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported startup, shutdown, install, uninstall */
 /* global Components, Services, eGPieMenu, eGContext, eGActions, AddonManager,
           ADDON_INSTALL, ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings,
-          setTimeout, eGUtils, ADDON_UNINSTALL */
+          eGUtils, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -106,6 +106,30 @@ var eGMessageListeners = {
       menusContextSelection: eGPrefs._prefs.getCharPref("menus.contextSelection"),
       menusContextTextbox: eGPrefs._prefs.getCharPref("menus.contextTextbox")
     });
+  },
+  
+  query_eGPrefs : function(aMessage, sendResponse) {
+    sendResponse({
+      response: eGPrefs[aMessage.methodName](aMessage.parameter)
+    });
+  },
+  
+  query_eGStrings : function(aMessage, sendResponse) {
+    sendResponse({
+      response: eGStrings[aMessage.methodName](aMessage.parameter)
+    });
+  },
+  
+  getLocalizedStrings : function(aMessage, sendResponse) {
+    sendResponse({
+      response: aMessage.stringIDs.map(stringID => {
+                  return eGStrings.getString(stringID);
+                })
+    });
+  },
+  
+  showOrOpenTab : function(aMessage) {
+    eGUtils.showOrOpenTab(aMessage.aURL, aMessage.giveFocus);
   },
   
   setContext : function(aMessage) {
@@ -255,23 +279,6 @@ function startup(data, reason) {
         embeddedExtensionPort = aPort;
       });
     });
-    
-    // displaying startup tips
-    if (eGPrefs.areStartupTipsOn()) {
-      let window = Services.wm.getMostRecentWindow("navigator:browser");
-      if (window.document.readyState === "complete") {
-        eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html", false);
-      }
-      else {
-        window.addEventListener("load", function displayTipsAtStartup() {
-          window.removeEventListener("load", displayTipsAtStartup, false);
-          setTimeout(function() {
-            eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html",
-                                  false);
-          }, 200);
-        }, false);
-      }
-    }
   });
 }
 
