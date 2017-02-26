@@ -173,7 +173,7 @@ input[type="number"] {
   left: calc(175px + 3px);
   top: 20px;
   position: relative;
-  background-image: url("chrome://easygestures/skin/menu-edit.svg");
+  background-image: url("menu-edit.svg");
   background-size: cover;
   width: 122px;
   height: 122px;
@@ -184,7 +184,7 @@ input[type="number"] {
 }
 
 #menus .menu.extra > div:first-child {
-  background-image: url("chrome://easygestures/skin/extraMenu-edit.svg");
+  background-image: url("extraMenu-edit.svg");
   width: 122px;
   height: 82px;
 }
