@@ -32,11 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported optionsLoadHandler, optionsHashChangeHandler, optionsUnloadHandler,
-            importPrefs, exportPrefs, resetPrefs, updateTextInputElement,
-            openOptionsDailyReadings, initializeDailyReadingsTree,
-            fireChangeEventOn, preparePreferenceValueForDailyReadings,
-            resetStats */
+/* exported openOptionsDailyReadings, initializeDailyReadingsTree,
+            fireChangeEventOn, preparePreferenceValueForDailyReadings */
 /* global Components, Services, document, eGActions, eGStrings, eGPrefs, window,
           alert, eGUtils, confirm, PlacesUIUtils */
 
@@ -47,6 +44,10 @@ Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 const DEFAULT_FAVICON_URL = "chrome://easygestures/content/defaultFavicon.svg";
+
+window.addEventListener("load", optionsLoadHandler);
+window.addEventListener("hashchange", optionsHashChangeHandler);
+window.addEventListener("unload", optionsUnloadHandler);
 
 var prefsObserver = {
   register: function() {
@@ -76,6 +77,51 @@ var prefsObserver = {
     setPreferenceControlsDisabledStatus();
   }
 };
+
+var eventListenersArray = [
+  ["displayTipsButton", "click", displayTips],
+  ["importPrefsButton", "click", importPrefs],
+  ["exportPrefsButton", "click", exportPrefs],
+  ["resetPrefsButton", "click", resetPrefs],
+  ["showButtonInput", "mousedown", updateTextInputElement],
+  ["showButtonInput", "contextmenu", preventDefault],
+  ["showAltButtonInput", "mousedown", updateTextInputElement],
+  ["showAltButtonInput", "contextmenu", preventDefault],
+  ["standardMenuType", "change", setMenuType],
+  ["largeMenuType", "change", setMenuType],
+  ["activateTooltips", "change", setDisabledStatusForTooltipsActivationDelay],
+  ["activateOpenLinksThroughPieMenuCenter", "change",
+    setDisabledStatusForOpenLinksMaximumDelay],
+  ["activateAutoscrolling", "change",
+    setDisabledStatusForAutoscrollingActivationDelay],
+  ["enableMainAlt1Menu", "change", setDisabledStatusForMainAlt1Menu],
+  ["enableMainAlt2Menu", "change", setDisabledStatusForMainAlt2Menu],
+  ["enableExtraAlt1Menu", "change", setDisabledStatusForExtraAlt1Menu],
+  ["enableExtraAlt2Menu", "change", setDisabledStatusForExtraAlt2Menu],
+  ["resetStatsButton", "click", resetStats]
+];
+
+function displayTips() {
+  eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html", true);
+}
+
+function preventDefault(anEvent) {
+  anEvent.preventDefault();
+}
+
+function addEventListeners() {
+  eventListenersArray.forEach(listener => {
+    document.getElementById(listener[0])
+            .addEventListener(listener[1], listener[2]);
+  });
+}
+
+function removeEventListeners() {
+  eventListenersArray.forEach(listener => {
+    document.getElementById(listener[0])
+            .removeEventListener(listener[1], listener[2]);
+  });
+}
 
 function createActionsSelect(sectorNumber, isExtraMenu) {
   var select = document.createElement("select");
@@ -712,7 +758,9 @@ function addOnchangeListenerToPreferenceControl(control) {
   }
 }
 
-function setMenuType(menuTypeIsStandard) {
+function setMenuType(anEvent) {
+  var menuTypeIsStandard = anEvent === undefined ? eGPrefs.isLargeMenuOff() :
+                                                   !anEvent.target.value;
   ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
    "contextLink", "contextImage", "contextSelection", "contextTextbox"]
     .forEach(function(menuName) {
@@ -733,13 +781,17 @@ function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
   document.getElementById(ids[1]).readOnly = shouldBeDisabled;
 }
 
-function setDisabledStatusForTooltipsActivationDelay(shouldBeDisabled) {
+function setDisabledStatusForTooltipsActivationDelay(anEvent) {
+  var shouldBeDisabled = anEvent === undefined ? !eGPrefs.areTooltipsOn() :
+                                                 !anEvent.target.checked;
   toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
     "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"],
     shouldBeDisabled);
 }
 
-function setDisabledStatusForOpenLinksMaximumDelay(shouldBeDisabled) {
+function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
+  var shouldBeDisabled = anEvent === undefined ? !eGPrefs.isHandleLinksOn() :
+                                                 !anEvent.target.checked;
   toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
     "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
     "openLinksThroughPieMenuCenterConfiguration"], shouldBeDisabled);
@@ -750,7 +802,9 @@ function setDisabledStatusForOpenLinksMaximumDelay(shouldBeDisabled) {
   radioElements[1].disabled = shouldBeDisabled;
 }
 
-function setDisabledStatusForAutoscrollingActivationDelay(shouldBeDisabled) {
+function setDisabledStatusForAutoscrollingActivationDelay(anEvent) {
+  var shouldBeDisabled = anEvent === undefined ? !eGPrefs.isAutoscrollingOn() :
+                                                 !anEvent.target.checked;
   toggleDisabledStatusOnElementsById(["autoscrollingActivationDelayLabel",
     "autoscrollingActivationDelayInput", "autoscrollingActivationDelayUnit"],
     shouldBeDisabled);
@@ -764,15 +818,39 @@ function setDisabledStatusForMenu(menuName, enabled) {
   }
 }
 
+function setDisabledStatusForMainAlt1Menu(anEvent) {
+  var enabled = anEvent === undefined ? eGPrefs.isMainAlt1MenuEnabled() :
+                                        anEvent.target.checked;
+  setDisabledStatusForMenu("mainAlt1", enabled);
+}
+
+function setDisabledStatusForMainAlt2Menu(anEvent) {
+  var enabled = anEvent === undefined ? eGPrefs.isMainAlt2MenuEnabled() :
+                                        anEvent.target.checked;
+  setDisabledStatusForMenu("mainAlt2", enabled);
+}
+
+function setDisabledStatusForExtraAlt1Menu(anEvent) {
+  var enabled = anEvent === undefined ? eGPrefs.isExtraAlt1MenuEnabled() :
+                                        anEvent.target.checked;
+  setDisabledStatusForMenu("extraAlt1", enabled);
+}
+
+function setDisabledStatusForExtraAlt2Menu(anEvent) {
+  var enabled = anEvent === undefined ? eGPrefs.isExtraAlt2MenuEnabled() :
+                                        anEvent.target.checked;
+  setDisabledStatusForMenu("extraAlt2", enabled);
+}
+
 function setPreferenceControlsDisabledStatus() {
-  setMenuType(eGPrefs.isLargeMenuOff());
-  setDisabledStatusForTooltipsActivationDelay(!eGPrefs.areTooltipsOn());
-  setDisabledStatusForOpenLinksMaximumDelay(!eGPrefs.isHandleLinksOn());
-  setDisabledStatusForAutoscrollingActivationDelay(!eGPrefs.isAutoscrollingOn());
-  setDisabledStatusForMenu("mainAlt1", eGPrefs.isMainAlt1MenuEnabled());
-  setDisabledStatusForMenu("mainAlt2", eGPrefs.isMainAlt2MenuEnabled());
-  setDisabledStatusForMenu("extraAlt1", eGPrefs.isExtraAlt1MenuEnabled());
-  setDisabledStatusForMenu("extraAlt2", eGPrefs.isExtraAlt2MenuEnabled());
+  setMenuType();
+  setDisabledStatusForTooltipsActivationDelay();
+  setDisabledStatusForOpenLinksMaximumDelay();
+  setDisabledStatusForAutoscrollingActivationDelay();
+  setDisabledStatusForMainAlt1Menu();
+  setDisabledStatusForMainAlt2Menu();
+  setDisabledStatusForExtraAlt1Menu();
+  setDisabledStatusForExtraAlt2Menu();
 }
 
 function loadPreferences(isReload) {
@@ -915,6 +993,7 @@ function loadStats() {
 function optionsLoadHandler() {
   document.body.style.cursor = "wait";
   prefsObserver.register();
+  addEventListeners();
   
   eGUtils.setDocumentTitle(document, "preferences");
   eGUtils.setDocumentLocalizedStrings(document);
@@ -994,6 +1073,11 @@ function optionsHashChangeHandler(anEvent) {
 }
 
 function optionsUnloadHandler() {
+  window.removeEventListener("load", optionsLoadHandler);
+  window.removeEventListener("hashchange", optionsHashChangeHandler);
+  window.removeEventListener("unload", optionsUnloadHandler);
+  
+  removeEventListeners();
   prefsObserver.unregister();
 }
 
@@ -1068,7 +1152,8 @@ function resetPrefs() {
   }
 }
 
-function updateTextInputElement(aTextInputElement, anEvent) {
+function updateTextInputElement(anEvent) {
+  var aTextInputElement = anEvent.target;
   anEvent.preventDefault();
   if (aTextInputElement.parentElement.firstElementChild.selectedIndex < 3) {
     return ;

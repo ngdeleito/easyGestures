@@ -43,9 +43,7 @@
   <script src="options.js"></script>
 </head>
 
-<body onload="optionsLoadHandler();"
-      onhashchange="optionsHashChangeHandler(event);"
-      onunload="optionsUnloadHandler();">
+<body>
   <nav>
     <a id="general_label" href="#general" data-l10n="general"></a>
     <a id="activation_label" href="#activation" data-l10n="activation"></a>
@@ -66,22 +64,21 @@
         <label for="startupTips" data-l10n="general.startupTips"></label>
       </div>
       <div>
-        <button type="button" data-l10n="general.displayTips"
-                onclick="eGUtils.showOrOpenTab(
-                         'chrome://easygestures/content/tips.html', true);">
+        <button id="displayTipsButton" type="button"
+                data-l10n="general.displayTips">
         </button>
       </div>
       
       <h1 data-l10n="general.prefs.manage">&nbsp;</h1>
       <div>
-        <button type="button" data-l10n="general.prefs.import"
-                onclick="importPrefs();">
+        <button id="importPrefsButton" type="button"
+                data-l10n="general.prefs.import">
         </button>
-        <button type="button" data-l10n="general.prefs.export"
-                onclick="exportPrefs();">
+        <button id="exportPrefsButton" type="button"
+                data-l10n="general.prefs.export">
         </button>
-        <button type="button" data-l10n="general.prefs.reset"
-                onclick="resetPrefs();">
+        <button id="resetPrefsButton" type="button"
+                data-l10n="general.prefs.reset">
         </button>
       </div>
     </div>
@@ -101,9 +98,8 @@
           <option data-l10n="activation.open.with.button.custom">&nbsp;</option>
         </select>
         <label data-l10n="activation.open.with.buttoncode"></label>
-        <input type="text" size="2" disabled="disabled" readonly="readonly"
-               onmousedown="updateTextInputElement(this, event);"
-               oncontextmenu="event.preventDefault();" />
+        <input id="showButtonInput" type="text" size="2" disabled="disabled"
+               readonly="readonly" />
       </div>
       <h1 data-l10n="activation.open.with.and">&nbsp;</h1>
       <div data-preference="activation.showKey"
@@ -141,9 +137,8 @@
           <option data-l10n="activation.open.with.button.custom">&nbsp;</option>
         </select>
         <label data-l10n="activation.open.with.buttoncode"></label>
-        <input type="text" size="2" disabled="disabled"
-               onmousedown="updateTextInputElement(this, event);"
-               oncontextmenu="event.preventDefault();" />
+        <input id="showAltButtonInput" type="text" size="2"
+               disabled="disabled" />
       </div>
       <div>
         <p data-l10n="activation.openAltMenu.altKey"></p>
@@ -209,13 +204,13 @@
            data-preference-type="boolRadiogroup">
         <div>
           <input id="standardMenuType" type="radio" name="menuTypeRadiogroup"
-                 value="false" onchange="setMenuType(true);" />
+                 value="false" />
           <label for="standardMenuType" data-l10n="behavior.menuType.standard">
           </label>
         </div>
         <div>
           <input id="largeMenuType" type="radio" name="menuTypeRadiogroup"
-                 value="true" onchange="setMenuType(false);" />
+                 value="true" />
           <label for="largeMenuType" data-l10n="behavior.menuType.large">
           </label>
         </div>
@@ -241,9 +236,7 @@
       <div>
         <input id="activateTooltips" type="checkbox"
                data-preference="behavior.showTooltips"
-               data-preference-type="checkboxInput"
-               onchange="setDisabledStatusForTooltipsActivationDelay(
-                         !this.checked);" />
+               data-preference-type="checkboxInput" />
         <label for="activateTooltips" data-l10n="behavior.tooltips.activate">
         </label>
       </div>
@@ -277,9 +270,7 @@
       <div>
         <input id="activateOpenLinksThroughPieMenuCenter" type="checkbox"
                data-preference="behavior.handleLinks"
-               data-preference-type="checkboxInput"
-               onchange="setDisabledStatusForOpenLinksMaximumDelay(
-                         !this.checked);" />
+               data-preference-type="checkboxInput" />
         <label for="activateOpenLinksThroughPieMenuCenter"
                data-l10n="behavior.links.activate"></label>
       </div>
@@ -314,9 +305,7 @@
       <div>
         <input id="activateAutoscrolling" type="checkbox"
                data-preference="behavior.autoscrollingOn"
-               data-preference-type="checkboxInput"
-               onchange="setDisabledStatusForAutoscrollingActivationDelay(
-                         !this.checked);" />
+               data-preference-type="checkboxInput" />
         <label for="activateAutoscrolling"
                data-l10n="behavior.autoscrolling.activate"></label>
       </div>
@@ -363,9 +352,7 @@
           <div class="indented">
             <input id="enableMainAlt1Menu" type="checkbox"
                    data-preference="menus.mainAlt1Enabled"
-                   data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForMenu('mainAlt1',
-                                                      this.checked);" />
+                   data-preference-type="checkboxInput" />
             <label for="enableMainAlt1Menu" data-l10n="menus.enabled"></label>
           </div>
           <div id="menuControl_mainAlt1" data-preference="menus.mainAlt1"
@@ -376,9 +363,7 @@
           <div class="indented">
             <input id="enableMainAlt2Menu" type="checkbox"
                    data-preference="menus.mainAlt2Enabled"
-                   data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForMenu('mainAlt2',
-                                                      this.checked);" />
+                   data-preference-type="checkboxInput" />
             <label for="enableMainAlt2Menu" data-l10n="menus.enabled"></label>
           </div>
           <div id="menuControl_mainAlt2" data-preference="menus.mainAlt2"
@@ -413,9 +398,7 @@
           <div class="indented">
             <input id="enableExtraAlt1Menu" type="checkbox"
                    data-preference="menus.extraAlt1Enabled"
-                   data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForMenu('extraAlt1',
-                                                      this.checked);" />
+                   data-preference-type="checkboxInput" />
             <label for="enableExtraAlt1Menu" data-l10n="menus.enabled"></label>
           </div>
           <div id="menuControl_extraAlt1" data-preference="menus.extraAlt1"
@@ -426,9 +409,7 @@
           <div class="indented">
             <input id="enableExtraAlt2Menu" type="checkbox"
                    data-preference="menus.extraAlt2Enabled"
-                   data-preference-type="checkboxInput"
-                   onchange="setDisabledStatusForMenu('extraAlt2',
-                                                      this.checked);" />
+                   data-preference-type="checkboxInput" />
             <label for="enableExtraAlt2Menu" data-l10n="menus.enabled"></label>
           </div>
           <div id="menuControl_extraAlt2" data-preference="menus.extraAlt2"
@@ -633,7 +614,7 @@
           <span data-l10n="stats.lastReset"></span>
           <span id="statsLastReset"></span>
         </p>
-        <button type="button" data-l10n="stats.reset" onclick="resetStats();">
+        <button id="resetStatsButton" type="button" data-l10n="stats.reset">
         </button>
       </div>
       
