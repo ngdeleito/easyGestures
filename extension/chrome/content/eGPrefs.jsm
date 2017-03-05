@@ -241,7 +241,8 @@ var eGPrefs = {
                       function(prefName, newPrefValue) {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
-    setIntPref(defaultPrefs, "customizations.dailyReadingsFolderID", -1);
+    this._setCharPref(defaultPrefs, "customizations.dailyReadingsFolderName",
+                      "", () => { return true; });
     
     return defaultPrefs;
   },
@@ -502,8 +503,12 @@ var eGPrefs = {
     return this._prefs.getCharPref("customizations.openLink");
   },
   
-  getDailyReadingsFolderID : function() {
-    return this._prefs.getIntPref("customizations.dailyReadingsFolderID");
+  getDailyReadingsFolderName : function() {
+    return this._prefs.getCharPref("customizations.dailyReadingsFolderName");
+  },
+  
+  setDailyReadingsFolderName : function(prefValue) {
+    this._prefs.setCharPref("customizations.dailyReadingsFolderName", prefValue);
   },
   
   getStatsLastResetPref : function() {
@@ -648,5 +653,10 @@ var eGPrefs = {
                                  lastResetItems[4], lastResetItems[5]);
     this._prefs.setCharPref("stats.lastReset", lastResetDate.toISOString());
     this._prefs.deleteBranch("behavior.noIcons");
+  },
+  
+  updateToV5_2: function() {
+    this._prefs.setCharPref("customizations.dailyReadingsFolderName", "");
+    this._prefs.deleteBranch("customizations.dailyReadingsFolderID");
   }
 };

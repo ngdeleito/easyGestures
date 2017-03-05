@@ -594,9 +594,12 @@
           <span data-l10n="customizations.dailyReadings">&nbsp;</span>
         </h1>
         <div>
-          <button type="button" data-l10n="customizations.dailyReadings"
-                  onclick="openOptionsDailyReadings();">
-          </button>
+          <label for="dailyReadingsFolderName"
+                 data-l10n="customizations.dailyReadings.folderName">
+          </label>
+          <input id="dailyReadingsFolderName" type="text" size="20"
+                 data-preference="customizations.dailyReadingsFolderName"
+                 data-preference-type="dailyReadingsInput" />
         </div>
       </div>
     </div>

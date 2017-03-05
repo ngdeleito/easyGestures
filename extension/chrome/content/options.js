@@ -32,10 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported openOptionsDailyReadings, initializeDailyReadingsTree,
-            fireChangeEventOn, preparePreferenceValueForDailyReadings */
 /* global Components, Services, document, eGActions, eGStrings, eGPrefs, window,
-          alert, eGUtils, confirm, PlacesUIUtils */
+          alert, eGUtils, confirm */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 Components.utils.import("chrome://easygestures/content/eGActions.jsm");
@@ -68,9 +66,6 @@ var prefsObserver = {
   },
   
   observe: function(aSubject, aTopic, aData) {
-    if (aData === "customizations.dailyReadingsFolderID") {
-      return ;
-    }
     var prefControl =
           document.querySelector("[data-preference='" + aData + "']");
     initializePreferenceControl(prefControl);
@@ -502,6 +497,9 @@ function initializePreferenceControl(control) {
     case "stringRadiogroup":
       initializeStringRadiogroup(control);
       break;
+    case "dailyReadingsInput":
+      control.value = eGPrefs.getDailyReadingsFolderName();
+      break;
   }
 }
 
@@ -754,6 +752,11 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "stringRadiogroup":
       addOnchangeListenerToStringRadiogroupControl(control);
+      break;
+    case "dailyReadingsInput":
+      control.addEventListener("change", function() {
+        eGPrefs.setDailyReadingsFolderName(control.value);
+      }, true);
       break;
   }
 }
@@ -1161,60 +1164,6 @@ function updateTextInputElement(anEvent) {
   
   aTextInputElement.value = anEvent.button;
   aTextInputElement.dispatchEvent(new window.Event("change"));
-}
-
-function openOptionsDailyReadings() {
-  var openWindows = Services.wm.getEnumerator(null);
-  var found = false;
-  var openWindow;
-  
-  while (openWindows.hasMoreElements() && !found) {
-    openWindow = openWindows.getNext();
-    found = openWindow.location.href ===
-              "chrome://easygestures/content/options.xul";
-  }
-  if (found) {
-    openWindow.focus();
-  }
-  else {
-    openWindow.openDialog("chrome://easygestures/content/options.xul", "", "");
-  }
-}
-
-function initializeDailyReadingsTree() {
-  eGUtils.setDocumentTitle(document, "customizations.dailyReadings");
-  document.getElementById("dailyReadingsFolderSelectionLabel").value =
-    eGStrings.getString("customizations.dailyReadings.folderSelection");
-  
-  var historyService = Components.classes["@mozilla.org/browser/nav-history-service;1"]
-                                 .getService(Components.interfaces.nsINavHistoryService);
-  var query = historyService.getNewQuery();
-  query.setFolders([PlacesUIUtils.allBookmarksFolderId], 1);
-  var options = historyService.getNewQueryOptions();
-  options.excludeItems = true;
-  
-  var tree = document.getElementById("dailyReadingsTree");
-  tree.load([query], options);
-  tree.selectItems([eGPrefs.getDailyReadingsFolderID()]);
-}
-
-function fireChangeEventOn(element) {
-  // firing a change event triggers XUL's preferences system to change the
-  // value of the preference
-  var event = document.createEvent("Event");
-  event.initEvent("change", true, false);
-  element.dispatchEvent(event);
-}
-
-function preparePreferenceValueForDailyReadings(aTreeElement) {
-  var currentTreeIndex = aTreeElement.view.selection.currentIndex;
-  if (currentTreeIndex === -1) {
-    // just return when there is no selection yet
-    return undefined;
-  }
-  else {
-    return aTreeElement.view.nodeForTreeIndex(currentTreeIndex).itemId;
-  }
 }
 
 function resetStats() {

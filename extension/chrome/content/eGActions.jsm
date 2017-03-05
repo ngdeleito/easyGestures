@@ -273,9 +273,9 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     window.gBrowser.loadTabs(this.uris, true, false);
   }, function() {
-    var folderID = eGPrefs.getDailyReadingsFolderID();
+    var folderName = eGPrefs.getDailyReadingsFolderName();
     this.initializeURIsArrayWithContentsOfDailyReadingsFolder();
-    return folderID === -1 || this.uris.length === 0;
+    return folderName === "" || this.uris.length === 0;
   }, startsNewGroup, nextAction);
 }
 DailyReadingsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -298,16 +298,16 @@ DailyReadingsDisableableAction.prototype.initializeURIsArrayWithContentsOfDailyR
     resultNode.containerOpen = false;
   }
   
-  var historyService =
-    Components.classes["@mozilla.org/browser/nav-history-service;1"]
-              .getService(Components.interfaces.nsINavHistoryService);
-  var query = historyService.getNewQuery();
-  query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
-  var options = historyService.getNewQueryOptions();
-  var results = historyService.executeQuery(query, options);
+  // var historyService =
+  //   Components.classes["@mozilla.org/browser/nav-history-service;1"]
+  //             .getService(Components.interfaces.nsINavHistoryService);
+  // var query = historyService.getNewQuery();
+  // query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
+  // var options = historyService.getNewQueryOptions();
+  // var results = historyService.executeQuery(query, options);
   
   this.uris = [];
-  pushURIsContainedInFolder(results.root, this);
+  // pushURIsContainedInFolder(results.root, this);
 };
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
