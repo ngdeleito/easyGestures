@@ -37,7 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported startup, shutdown, install, uninstall */
 /* global Components, Services, eGPieMenu, eGContext, eGActions, AddonManager,
           ADDON_INSTALL, ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings,
-          eGUtils, ADDON_UNINSTALL */
+          ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -110,8 +110,22 @@ var eGMessageListeners = {
   
   query_eGPrefs : function(aMessage, sendResponse) {
     sendResponse({
-      response: eGPrefs[aMessage.methodName](aMessage.parameter)
+      response: eGPrefs[aMessage.methodName].apply(eGPrefs,
+         [aMessage.parameter, aMessage.parameter2])
     });
+  },
+  
+  importPrefsFromString : function(aMessage, sendResponse) {
+    var response = {};
+    try {
+      eGPrefs.importPrefsFromString(aMessage.prefsString);
+    }
+    catch (exception) {
+      response.prefs = exception.prefs;
+      response.code = exception.code;
+    }
+    
+    sendResponse(response);
   },
   
   query_eGStrings : function(aMessage, sendResponse) {
@@ -128,8 +142,17 @@ var eGMessageListeners = {
     });
   },
   
-  showOrOpenTab : function(aMessage) {
-    eGUtils.showOrOpenTab(aMessage.aURL, aMessage.giveFocus);
+  query_eGActions_getLocalizedActionNames : function(aMessage, sendResponse) {
+    var currentAction = "empty";
+    var localizedActionNames = [];
+    while (currentAction !== null) {
+      localizedActionNames.push(
+        [currentAction, eGActions[currentAction].getLocalizedActionName()]);
+      currentAction = eGActions[currentAction].nextAction;
+    }
+    sendResponse({
+      response: localizedActionNames
+    });
   },
   
   setContext : function(aMessage) {
@@ -215,6 +238,78 @@ var eGMessageListeners = {
       });
     });
     return true;
+  },
+  
+  retrieveCustomIconFile: function(aMessage, sendResponse) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                       .createInstance(Components.interfaces.nsIFilePicker);
+    fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
+    fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
+    var returnedOK = fp.show() === Components.interfaces.nsIFilePicker.returnOK;
+    
+    sendResponse({
+      returnedOK: returnedOK,
+      path: returnedOK ? fp.file.path : undefined
+    });
+  },
+  
+  importPrefs: function(aMessage, sendResponse) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                       .createInstance(Components.interfaces.nsIFilePicker);
+    fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeOpen);
+    fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+    var returnValue = fp.show();
+    var aString;
+    if (returnValue === Components.interfaces.nsIFilePicker.returnOK) {
+      var inputStream = Components
+                        .classes["@mozilla.org/network/file-input-stream;1"]
+                        .createInstance(Components.interfaces.nsIFileInputStream);
+      inputStream.init(fp.file, 0x01, 444, 0);
+      
+      var converterInputStream = Components
+                   .classes["@mozilla.org/intl/converter-input-stream;1"]
+                   .createInstance(Components.interfaces.nsIConverterInputStream);
+      converterInputStream.init(inputStream, "UTF-8", 0, 0xFFFD);
+      var content = {};
+      aString = "";
+      while (converterInputStream.readString(4096, content) !== 0) {
+        aString += content.value;
+      }
+      converterInputStream.close();
+      inputStream.close();
+    }
+    
+    sendResponse({
+      prefsString: aString
+    });
+  },
+  
+  exportPrefs: function() {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                       .createInstance(Components.interfaces.nsIFilePicker);
+    fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeSave);
+    fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+    fp.defaultString = "easyGesturesNPreferences-" + (new Date()).toISOString() +
+                       ".json";
+    var returnValue = fp.show();
+    if (returnValue === Components.interfaces.nsIFilePicker.returnOK ||
+        returnValue === Components.interfaces.nsIFilePicker.returnReplace) {
+      var outputStream = Components
+                       .classes[ "@mozilla.org/network/file-output-stream;1"]
+                       .createInstance(Components.interfaces.nsIFileOutputStream);
+      outputStream.init(fp.file, 0x04 | 0x08, 420, 0);
+      
+      var converterOutputStream = Components
+                  .classes["@mozilla.org/intl/converter-output-stream;1"]
+                  .createInstance(Components.interfaces.nsIConverterOutputStream);
+      converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
+      converterOutputStream.writeString(eGPrefs.exportPrefsToString());
+      converterOutputStream.close();
+      outputStream.close();
+    }
   }
 };
 

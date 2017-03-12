@@ -47,9 +47,5 @@
         <em:homepageURL>https://github.com/ngdeleito/easyGestures</em:homepageURL>
       </Description>
     </em:localized>
-    
-    <!-- Front End Integration Hooks (used by Extension Manager)-->
-    <em:optionsType>3</em:optionsType>
-    <em:optionsURL>chrome://easygestures/content/options.html</em:optionsURL>
   </Description>
 </RDF>

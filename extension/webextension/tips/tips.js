@@ -125,11 +125,24 @@ function goToNextTip() {
 
 function tipLinkClick() {
   var hash = tips[tipNumber].hash;
-  browser.runtime.sendMessage({
-    messageName: "showOrOpenTab",
-    aURL: "chrome://easygestures/content/options.html" +
-            (hash === "" ? "" : "#" + hash),
-    giveFocus: true
+  browser.tabs.query({}).then(tabs => {
+    let tipsTab = tabs.find(tab => {
+      return tab.url
+                .startsWith(browser.extension.getURL("/options/options.html"));
+    });
+    let urlToOpen = "/options/options.html" + (hash === "" ? "" : "#" + hash);
+    if (tipsTab === undefined) {
+      browser.tabs.create({
+        active: true,
+        url: urlToOpen
+      });
+    }
+    else {
+      browser.tabs.update(tipsTab.id, {
+        active: true,
+        url: urlToOpen
+      });
+    }
   });
 }
 
