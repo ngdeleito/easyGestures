@@ -446,7 +446,7 @@ function createRunScriptActions(codeString, changeIconString) {
     tr.appendChild(document.createElement("th"));
     td = document.createElement("td");
     input = document.createElement("input");
-    input.id = actionName + "_newIconCheckbox";
+    input.id = actionName + "_customIconCheckbox";
     input.type = "checkbox";
     td.appendChild(input);
     var label = document.createElement("label");
@@ -630,7 +630,7 @@ function initializePreferenceControl(control) {
       
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_code").value = prefValue[1];
-      document.getElementById(actionName + "_newIconCheckbox").checked =
+      document.getElementById(actionName + "_customIconCheckbox").checked =
         prefValue[2] !== "";
       document.getElementById(actionName + "_customIconURL").textContent =
         prefValue[2];
@@ -960,7 +960,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     addEventListenerToRunScriptCode(control.dataset.preference,
       document.getElementById(control.id + "_code"), control.id);
     addEventListenerToRunScriptNewIcon(control.dataset.preference,
-      document.getElementById(control.id + "_newIconCheckbox"), control.id);
+      document.getElementById(control.id + "_customIconCheckbox"), control.id);
   }
   
   function addOnchangeListenerToStringRadiogroupControl(control) {
