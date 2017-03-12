@@ -419,7 +419,7 @@ function createLoadURLActions(URLString, useFaviconString, openInPrivateWindowSt
   }
 }
 
-function createRunScriptActions(codeString, changeIconString) {
+function createRunScriptActions(codeString, useCustomIconString) {
   for (var i=1; i <= 10; ++i) {
     var actionName = "runScript" + i;
     var container = document.getElementById(actionName);
@@ -451,7 +451,7 @@ function createRunScriptActions(codeString, changeIconString) {
     td.appendChild(input);
     var label = document.createElement("label");
     label.htmlFor = input.id;
-    label.textContent = changeIconString;
+    label.textContent = useCustomIconString;
     td.appendChild(label);
     var span = document.createElement("span");
     span.id = actionName + "_customIconURL";
@@ -1381,7 +1381,7 @@ function optionsLoadHandler() {
     messageName: "getLocalizedStrings",
     stringIDs: ["customizations.URL", "customizations.useFavicon",
                 "customizations.openInPrivateWindow", "customizations.code",
-                "customizations.changeIcon"]
+                "customizations.useCustomIcon"]
   }).then(aMessage => {
     createLoadURLActions(aMessage.response[0], aMessage.response[1],
                          aMessage.response[2]);
