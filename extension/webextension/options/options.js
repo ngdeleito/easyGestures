@@ -453,10 +453,9 @@ function createRunScriptActions(codeString, changeIconString) {
     label.htmlFor = input.id;
     label.textContent = changeIconString;
     td.appendChild(label);
-    var img = document.createElement("img");
-    img.id = actionName + "_newIcon";
-    img.src = DEFAULT_FAVICON_URL;
-    td.appendChild(img);
+    var span = document.createElement("span");
+    span.id = actionName + "_customIconURL";
+    td.appendChild(span);
     tr.appendChild(td);
     table.appendChild(tr);
     
@@ -634,8 +633,8 @@ function initializePreferenceControl(control) {
       var isIconEnabled = prefValue[2] !== "";
       document.getElementById(actionName + "_newIconCheckbox").checked =
         isIconEnabled;
-      document.getElementById(actionName + "_newIcon").src =
-        isIconEnabled ? prefValue[2] : DEFAULT_FAVICON_URL;
+      document.getElementById(actionName + "_customIconURL").textContent =
+        prefValue[2];
     });
   }
   
@@ -768,13 +767,9 @@ function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, action
 }
 
 function preparePreferenceValueForRunScript(actionName) {
-  var result = [document.getElementById(actionName + "_tooltip").value,
-                document.getElementById(actionName + "_code").value];
-  var iconURL = document.getElementById(actionName + "_newIcon").src;
-  var defaultIconURL = browser.extension.getURL("/options/" +
-                                                DEFAULT_FAVICON_URL);
-  result.push(iconURL === defaultIconURL ? "" : iconURL);
-  return result;
+  return [document.getElementById(actionName + "_tooltip").value,
+          document.getElementById(actionName + "_code").value,
+          document.getElementById(actionName + "_customIconURL").textContent];
 }
 
 function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
@@ -806,8 +801,8 @@ function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
         messageName: "retrieveCustomIconFile"
       }).then(aMessage => {
         if (aMessage.returnedOK) {
-          document.getElementById(actionName + "_newIcon").src = "file://" +
-            aMessage.path;
+          document.getElementById(actionName + "_customIconURL").textContent =
+            "file://" + aMessage.path;
         }
         this.checked = aMessage.returnedOK;
         browser.runtime.sendMessage({
@@ -819,8 +814,7 @@ function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
       });
     }
     else {
-      document.getElementById(actionName + "_newIcon").src =
-        DEFAULT_FAVICON_URL;
+      document.getElementById(actionName + "_customIconURL").textContent = "";
       browser.runtime.sendMessage({
         messageName: "query_eGPrefs",
         methodName: "setLoadURLOrRunScriptPrefValue",
