@@ -630,9 +630,8 @@ function initializePreferenceControl(control) {
       
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_code").value = prefValue[1];
-      var isIconEnabled = prefValue[2] !== "";
       document.getElementById(actionName + "_newIconCheckbox").checked =
-        isIconEnabled;
+        prefValue[2] !== "";
       document.getElementById(actionName + "_customIconURL").textContent =
         prefValue[2];
     });
