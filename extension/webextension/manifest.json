@@ -6,7 +6,7 @@
   "author": "Nicolás González-Deleito",
   "homepage_url": "https://github.com/ngdeleito/easyGestures",
   
-  "permissions": ["tabs"],
+  "permissions": ["bookmarks", "tabs"],
   "background": {
     "scripts": ["easyGesturesN-background.js"]
   },

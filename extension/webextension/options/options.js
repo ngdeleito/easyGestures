@@ -648,6 +648,37 @@ function initializePreferenceControl(control) {
     });
   }
   
+  function initializeDailyReadingsControl(control) {
+    browser.bookmarks.getTree().then(bookmarkItems => {
+      function collectFolders(item) {
+        if (item.url !== undefined) {
+          return [];
+        }
+        else {
+          let result = [item.title];
+          if (item.children !== undefined) {
+            for (let subitem of item.children) {
+              result = result.concat(collectFolders(subitem));
+            }
+          }
+          return result;
+        }
+      }
+      
+      collectFolders(bookmarkItems[0]).forEach(bookmarkFolder => {
+        let option = document.createElement("option");
+        option.value = bookmarkFolder;
+        document.getElementById("bookmarkFolders").appendChild(option);
+      });
+    });
+    browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "getDailyReadingsFolderName",
+    }).then(aMessage => {
+      control.value = aMessage.response;
+    });
+  }
+  
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
       browser.runtime.sendMessage({
@@ -692,12 +723,7 @@ function initializePreferenceControl(control) {
       initializeStringRadiogroup(control);
       break;
     case "dailyReadingsInput":
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "getDailyReadingsFolderName",
-      }).then(aMessage => {
-        control.value = aMessage.response;
-      });
+      initializeDailyReadingsControl(control);
       break;
   }
 }
