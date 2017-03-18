@@ -8,7 +8,7 @@
   
   "permissions": ["bookmarks", "tabs"],
   "background": {
-    "scripts": ["easyGesturesN-background.js"]
+    "scripts": ["eGContext.js", "eGActions.js", "easyGesturesN-background.js"]
   },
   "content_scripts": [{
     "matches": ["<all_urls>"],

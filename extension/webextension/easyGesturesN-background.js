@@ -32,9 +32,59 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser */
+/* global eGContext, eGActions, console, browser */
 
 var eGMessageHandlers = {
+  setContext : function(aMessage) {
+    for (let key in aMessage.context) {
+      eGContext[key] = aMessage.context[key];
+    }
+  },
+  
+  getTooltipLabels : function(aMessage, sendResponse) {
+    // return Promise.all(aMessage.actions.map(function(actionName) {
+    //   return eGActions[actionName].getTooltipLabel();
+    // })).then(function(responses) {
+    //   return responses.map(function(response) {
+    //     return response.response;
+    //   });
+    // });
+    sendResponse({
+      response: aMessage.actions
+    });
+  },
+  
+  isExtraMenuAction : function(aMessage, sendResponse) {
+    sendResponse({
+      response: eGActions[aMessage.actionName].isExtraMenuAction
+    });
+  },
+  
+  getActionsStatus : function(aMessage, sendResponse) {
+    sendResponse({
+      responses: aMessage.actions.map(function(actionName) {
+        return eGActions[actionName].getActionStatus();
+      })
+    });
+  },
+  
+  runAction : function(aMessage, sendResponse) {
+    var response = {
+      actionIsDisabled: eGActions[aMessage.actionName].isDisabled()
+    };
+    if (!response.actionIsDisabled) {
+      try {
+        let result = eGActions[aMessage.actionName].run();
+        response.runActionName = result.runActionName;
+        response.runActionOptions = result.runActionOptions;
+      }
+      catch(ex) {
+        console.error("easyGestures N exception: " + ex.toString());
+      }
+    }
+    sendResponse(response);
+  },
+  
   loadURLInNewNonActiveTab : function(aMessage) {
     browser.tabs.create({
       active: false,

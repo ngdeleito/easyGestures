@@ -32,9 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported EXPORTED_SYMBOLS, eGContext */
-
-var EXPORTED_SYMBOLS = ["eGContext"];
+/* exported eGContext */
 
 var eGContext = {
   selection: null,

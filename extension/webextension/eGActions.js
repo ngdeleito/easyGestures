@@ -58,17 +58,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- ImageExistsDisableableAction
 //       |-- DisableableCommandAction
 
-/* exported EXPORTED_SYMBOLS, eGActions */
-/* global Components, eGStrings, Services, eGContext, eGPrefs, Downloads,
+/* exported eGActions */
+/* global Components, browser, Services, eGContext, eGPrefs, Downloads,
           eGUtils */
 
-var EXPORTED_SYMBOLS = ["eGActions"];
-
-Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
-Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/eGContext.jsm");
-Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
-Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
+// Components.utils.import("resource://gre/modules/Services.jsm");
+// Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+// Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -95,7 +91,11 @@ Action.prototype = {
   },
   
   getTooltipLabel: function() {
-    return eGStrings.getString(this._name);
+    return browser.runtime.sendMessage({
+      messageName: "query_eGStrings",
+      methodName: "getString",
+      parameter: this._name
+    });
   },
   
   getLocalizedActionName: function() {
@@ -170,7 +170,11 @@ function EmptyAction(startsNewGroup, nextAction) {
 EmptyAction.prototype = Object.create(Action.prototype);
 EmptyAction.prototype.constructor = EmptyAction;
 EmptyAction.prototype.getLocalizedActionName = function() {
-  return eGStrings.getString("emptyActionName");
+  return browser.runtime.sendMessage({
+    messageName: "query_eGStrings",
+    methodName: "getString",
+    parameter: "emptyActionName"
+  });
 };
 
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
@@ -197,7 +201,11 @@ function ReloadAction(startsNewGroup, nextAction) {
 ReloadAction.prototype = Object.create(Action.prototype);
 ReloadAction.prototype.constructor = ReloadAction;
 ReloadAction.prototype.getLocalizedActionName = function() {
-  return eGStrings.getString("reloadActionName");
+  return browser.runtime.sendMessage({
+    messageName: "query_eGStrings",
+    methodName: "getString",
+    parameter: "reloadActionName"
+  });
 };
 ReloadAction.prototype.getActionStatus = function() {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -330,14 +338,18 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
 NumberedAction.prototype = Object.create(DisableableAction.prototype);
 NumberedAction.prototype.constructor = NumberedAction;
 NumberedAction.prototype.getTooltipLabel = function() {
-  var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
-  var label = prefValue[0];
-  if (label !== "") {
-    // if this action has already a label given by the user, then use it
-    return label;
-  }
+  // var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
+  // var label = prefValue[0];
+  // if (label !== "") {
+  //   // if this action has already a label given by the user, then use it
+  //   return label;
+  // }
   // otherwise use the default label
-  return eGStrings.getString(this._name);
+  return browser.runtime.sendMessage({
+    messageName: "query_eGStrings",
+    methodName: "getString",
+    parameter: this._name
+  });
 };
 
 function LoadURLAction(number, startsNewGroup, nextAction) {

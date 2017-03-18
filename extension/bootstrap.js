@@ -35,9 +35,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported startup, shutdown, install, uninstall */
-/* global Components, Services, eGPieMenu, eGContext, eGActions, AddonManager,
-          ADDON_INSTALL, ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings,
-          ADDON_UNINSTALL */
+/* global Components, Services, eGPieMenu, AddonManager, ADDON_INSTALL,
+          ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -142,50 +141,9 @@ var eGMessageListeners = {
     });
   },
   
-  query_eGActions_getLocalizedActionNames : function(aMessage, sendResponse) {
-    var currentAction = "empty";
-    var localizedActionNames = [];
-    while (currentAction !== null) {
-      localizedActionNames.push(
-        [currentAction, eGActions[currentAction].getLocalizedActionName()]);
-      currentAction = eGActions[currentAction].nextAction;
-    }
-    sendResponse({
-      response: localizedActionNames
-    });
-  },
-  
-  setContext : function(aMessage) {
-    for (let key in aMessage.context) {
-      eGContext[key] = aMessage.context[key];
-    }
-  },
-  
-  getTooltipLabels : function(aMessage, sendResponse) {
-    sendResponse({
-      response: aMessage.actions.map(function(actionName) {
-                  return eGActions[actionName].getTooltipLabel();
-                })
-    });
-  },
-  
-  isExtraMenuAction : function(aMessage, sendResponse) {
-    sendResponse({
-      response: eGActions[aMessage.actionName].isExtraMenuAction
-    });
-  },
-  
   getContextualMenuLocalizedName : function(aMessage, sendResponse) {
     sendResponse({
       response: eGStrings.getString(aMessage.contextualMenuName)
-    });
-  },
-  
-  getActionsStatus : function(aMessage, sendResponse) {
-    sendResponse({
-      responses: aMessage.actions.map(function(actionName) {
-        return eGActions[actionName].getActionStatus();
-      })
     });
   },
   
@@ -201,26 +159,6 @@ var eGMessageListeners = {
   
   increaseExtraMenuUsage : function(aMessage) {
     eGPrefs.incrementStatsMainMenuPref(aMessage.position);
-  },
-  
-  runAction : function(aMessage, sendResponse) {
-    var response = {
-      actionIsDisabled: eGActions[aMessage.actionName].isDisabled()
-    };
-    if (!response.actionIsDisabled) {
-      try {
-        let result = eGActions[aMessage.actionName].run();
-        response.runActionName = result.runActionName;
-        response.runActionOptions = result.runActionOptions;
-      }
-      catch(ex) {
-        var error = Components.classes["@mozilla.org/scripterror;1"]
-                              .createInstance(Components.interfaces.nsIScriptError);
-        error.init("easyGestures N exception: " + ex.toString(), null, null, null, null, error.errorFlag, null);
-        Services.console.logMessage(error);
-      }
-    }
-    sendResponse(response);
   },
   
   retrieveAndAddFavicon: function(aMessage, sendResponse) {
@@ -323,8 +261,6 @@ function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
   Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
-  Components.utils.import("chrome://easygestures/content/eGActions.jsm");
-  Components.utils.import("chrome://easygestures/content/eGContext.jsm");
   Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
   
   AddonManager.getAddonByID(data.id, function(addon) {
@@ -387,8 +323,6 @@ function shutdown() {
   // removing existing easyGestures menus from open web pages
   eGPieMenu.removeFromAllPages();
   
-  Components.utils.unload("chrome://easygestures/content/eGContext.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGActions.jsm");
   Components.utils.unload("chrome://easygestures/content/eGPieMenu.jsm");
   Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");

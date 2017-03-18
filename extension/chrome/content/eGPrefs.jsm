@@ -34,11 +34,114 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported EXPORTED_SYMBOLS, eGPrefs */
-/* global Components, Services, eGActions */
+/* global Components, Services */
 
 var EXPORTED_SYMBOLS = ["eGPrefs"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
+
+function Action(startsNewGroup, nextAction) {
+  // startsNewGroup and nextAction are used in options.js to display a sorted
+  // list of available actions
+  this.startsNewGroup = startsNewGroup;
+  this.nextAction = nextAction;
+}
+var eGActions = {
+  empty : new Action(false, "showExtraMenu"),
+  showExtraMenu : new Action(true, "back"),
+  back : new Action(true, "backSite"),
+  backSite : new Action(false, "firstPage"),
+  firstPage : new Action(false, "forward"),
+  forward : new Action(false, "forwardSite"),
+  forwardSite : new Action(false, "lastPage"),
+  lastPage : new Action(false, "reload"),
+  reload : new Action(false, "homepage"),
+  homepage : new Action(false, "pageTop"),
+  pageTop : new Action(true, "pageBottom"),
+  pageBottom : new Action(false, "autoscrolling"),
+  autoscrolling : new Action(false, "zoomIn"),
+  zoomIn : new Action(false, "zoomOut"),
+  zoomOut : new Action(false, "zoomReset"),
+  zoomReset : new Action(false, "toggleFullscreen"),
+  toggleFullscreen : new Action(false, "toggleFindBar"),
+  toggleFindBar : new Action(false, "savePageAs"),
+  savePageAs : new Action(false, "printPage"),
+  printPage : new Action(false, "viewPageSource"),
+  viewPageSource : new Action(false, "viewPageInfo"),
+  viewPageInfo : new Action(false, "newTab"),
+  newTab : new Action(true, "newBlankTab"),
+  newBlankTab : new Action(false, "duplicateTab"),
+  duplicateTab : new Action(false, "closeTab"),
+  closeTab : new Action(false, "closeOtherTabs"),
+  closeOtherTabs : new Action(false, "undoCloseTab"),
+  undoCloseTab : new Action(false, "prevTab"),
+  prevTab : new Action(false, "nextTab"),
+  nextTab : new Action(false, "pinUnpinTab"),
+  pinUnpinTab : new Action(false, "newWindow"),
+  newWindow : new Action(true, "newBlankWindow"),
+  newBlankWindow : new Action(false, "newPrivateWindow"),
+  newPrivateWindow : new Action(false, "duplicateWindow"),
+  duplicateWindow : new Action(false, "minimizeWindow"),
+  minimizeWindow : new Action(false, "closeWindow"),
+  closeWindow : new Action(false, "closeOtherWindows"),
+  closeOtherWindows : new Action(false, "undoCloseWindow"),
+  undoCloseWindow : new Action(false, "up"),
+  up : new Action(true, "root"),
+  root : new Action(false, "showOnlyThisFrame"),
+  showOnlyThisFrame : new Action(false, "focusLocationBar"),
+  focusLocationBar : new Action(false, "searchWeb"),
+  searchWeb : new Action(false, "quit"),
+  quit : new Action(false, "restart"),
+  restart : new Action(false, "openLink"),
+  openLink : new Action(true, "openLinkInNewWindow"),
+  openLinkInNewWindow : new Action(false, "openLinkInNewPrivateWindow"),
+  openLinkInNewPrivateWindow : new Action(false, "copyLink"),
+  copyLink : new Action(false, "saveLinkAs"),
+  saveLinkAs : new Action(false, "dailyReadings"),
+  dailyReadings : new Action(true, "bookmarkThisPage"),
+  bookmarkThisPage : new Action(false, "bookmarkThisLink"),
+  bookmarkThisLink : new Action(false, "bookmarkOpenTabs"),
+  bookmarkOpenTabs : new Action(false, "showBookmarks"),
+  showBookmarks : new Action(false, "toggleBookmarksSidebar"),
+  toggleBookmarksSidebar : new Action(false, "toggleBookmarksToolbar"),
+  toggleBookmarksToolbar : new Action(false, "showHistory"),
+  showHistory : new Action(false, "toggleHistorySidebar"),
+  toggleHistorySidebar : new Action(false, "showDownloads"),
+  showDownloads : new Action(false, "loadURL1"),
+  loadURL1 : new Action(true, "loadURL2"),
+  loadURL2 : new Action(false, "loadURL3"),
+  loadURL3 : new Action(false, "loadURL4"),
+  loadURL4 : new Action(false, "loadURL5"),
+  loadURL5 : new Action(false, "loadURL6"),
+  loadURL6 : new Action(false, "loadURL7"),
+  loadURL7 : new Action(false, "loadURL8"),
+  loadURL8 : new Action(false, "loadURL9"),
+  loadURL9 : new Action(false, "loadURL10"),
+  loadURL10 : new Action(false, "runScript1"),
+  runScript1 : new Action(true, "runScript2"),
+  runScript2 : new Action(false, "runScript3"),
+  runScript3 : new Action(false, "runScript4"),
+  runScript4 : new Action(false, "runScript5"),
+  runScript5 : new Action(false, "runScript6"),
+  runScript6 : new Action(false, "runScript7"),
+  runScript7 : new Action(false, "runScript8"),
+  runScript8 : new Action(false, "runScript9"),
+  runScript9 : new Action(false, "runScript10"),
+  runScript10 : new Action(false, "firefoxPreferences"),
+  firefoxPreferences : new Action(true, "addOns"),
+  addOns : new Action(false, "easyGesturesNPreferences"),
+  easyGesturesNPreferences : new Action(false, "copyImageLocation"),
+  copyImageLocation : new Action(true, "copyImage"),
+  copyImage : new Action(false, "saveImageAs"),
+  saveImageAs : new Action(false, "hideImages"),
+  hideImages : new Action(false, "cut"),
+  cut : new Action(true, "copy"),
+  copy : new Action(false, "paste"),
+  paste : new Action(false, "undo"),
+  undo : new Action(false, "redo"),
+  redo : new Action(false, "selectAll"),
+  selectAll : new Action(false, null)
+};
 
 function Pref(name, value) {
   this.name = name;
@@ -184,7 +287,6 @@ var eGPrefs = {
       return newPrefValue.split("\u2022").length === 3;
     }
     
-    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
     var defaultPrefs = new Map();
     setBoolPref(defaultPrefs, "general.startupTips", true);
     setIntPref(defaultPrefs, "general.tipNumber", 0);
@@ -248,7 +350,6 @@ var eGPrefs = {
   },
   
   _getDefaultStatsMap : function() {
-    Components.utils.import("chrome://easygestures/content/eGActions.jsm");
     var defaultStats = new Map();
     
     var lastResetDate = new Date();
