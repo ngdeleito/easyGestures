@@ -33,12 +33,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported EXPORTED_SYMBOLS, eGUtils */
-/* global Components, Services, eGStrings */
+/* global Components, Services */
 
 var EXPORTED_SYMBOLS = ["eGUtils"];
 
 Components.utils.import("resource://gre/modules/Services.jsm");
-Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
 
 var eGUtils = {
   showOrOpenTab: function(aURL, giveFocus) {

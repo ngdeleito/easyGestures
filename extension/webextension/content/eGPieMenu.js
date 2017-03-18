@@ -145,12 +145,7 @@ ExtraMenuLayout.prototype.updateMenuSign = function() {
 
 function ContextualMenuLayout(menu, name, actionsPrefs) {
   MenuLayout.call(this, menu, name, 0, null, actionsPrefs);
-  browser.runtime.sendMessage({
-    messageName: "getContextualMenuLocalizedName",
-    contextualMenuName: this.name
-  }).then(aMessage => {
-    this.localizedName = aMessage.response;
-  });
+  this.localizedName = browser.i18n.getMessage(this.name);
 }
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;

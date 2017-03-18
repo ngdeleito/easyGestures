@@ -42,15 +42,10 @@ var eGMessageHandlers = {
   },
   
   getTooltipLabels : function(aMessage, sendResponse) {
-    // return Promise.all(aMessage.actions.map(function(actionName) {
-    //   return eGActions[actionName].getTooltipLabel();
-    // })).then(function(responses) {
-    //   return responses.map(function(response) {
-    //     return response.response;
-    //   });
-    // });
     sendResponse({
-      response: aMessage.actions
+      response: aMessage.actions.map(function(actionName) {
+                  return eGActions[actionName].getTooltipLabel();
+                })
     });
   },
   

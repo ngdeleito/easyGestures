@@ -91,11 +91,7 @@ Action.prototype = {
   },
   
   getTooltipLabel: function() {
-    return browser.runtime.sendMessage({
-      messageName: "query_eGStrings",
-      methodName: "getString",
-      parameter: this._name
-    });
+    return browser.i18n.getMessage(this._name);
   },
   
   getLocalizedActionName: function() {
@@ -170,11 +166,7 @@ function EmptyAction(startsNewGroup, nextAction) {
 EmptyAction.prototype = Object.create(Action.prototype);
 EmptyAction.prototype.constructor = EmptyAction;
 EmptyAction.prototype.getLocalizedActionName = function() {
-  return browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "emptyActionName"
-  });
+  return browser.i18n.getMessage("emptyActionName");
 };
 
 function ShowExtraMenuAction(startsNewGroup, nextAction) {
@@ -201,11 +193,7 @@ function ReloadAction(startsNewGroup, nextAction) {
 ReloadAction.prototype = Object.create(Action.prototype);
 ReloadAction.prototype.constructor = ReloadAction;
 ReloadAction.prototype.getLocalizedActionName = function() {
-  return browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "reloadActionName"
-  });
+  return browser.i18n.getMessage("reloadActionName");
 };
 ReloadAction.prototype.getActionStatus = function() {
   var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -345,11 +333,7 @@ NumberedAction.prototype.getTooltipLabel = function() {
   //   return label;
   // }
   // otherwise use the default label
-  return browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: this._name
-  });
+  return browser.i18n.getMessage(this._name);
 };
 
 function LoadURLAction(number, startsNewGroup, nextAction) {

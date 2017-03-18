@@ -141,13 +141,11 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
     let option = document.createElement("option");
     option.className = "eGOptions_" + currentAction;
     option.value = currentAction;
-    eGActions[currentAction].getLocalizedActionName().then(response => {
-      option.label = response.response;
-      // setting the text attribute is needed since the label attribute is
-      // currently ignored by Firefox
-      // (https://bugzilla.mozilla.org/show_bug.cgi?id=1205213)
-      option.text = response.response;
-    });
+    option.label = eGActions[currentAction].getLocalizedActionName();
+    // setting the text attribute is needed since the label attribute is
+    // currently ignored by Firefox
+    // (https://bugzilla.mozilla.org/show_bug.cgi?id=1205213)
+    option.text = eGActions[currentAction].getLocalizedActionName();
     currentOptgroup.appendChild(option);
     
     currentAction = eGActions[currentAction].nextAction;
@@ -210,13 +208,7 @@ function createHeaderForAction(actionName) {
   h1.appendChild(span);
   
   span = document.createElement("span");
-  browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: actionName
-  }).then(aMessage => {
-    span.textContent = aMessage.response;
-  });
+  span.textContent = browser.i18n.getMessage(actionName);
   h1.appendChild(span);
   
   return h1;
@@ -226,13 +218,7 @@ function createTooltipRowForAction(actionName) {
   var tr = document.createElement("tr");
   
   var th = document.createElement("th");
-  browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "customizations.tooltip"
-  }).then(aMessage => {
-    th.textContent = aMessage.response;
-  });
+  th.textContent = browser.i18n.getMessage("customizations.tooltip");
   tr.appendChild(th);
   
   var td = document.createElement("td");
@@ -247,7 +233,7 @@ function createTooltipRowForAction(actionName) {
   return tr;
 }
 
-function createLoadURLActions(URLString, useFaviconString, openInPrivateWindowString) {
+function createLoadURLActions() {
   for (var i=1; i <= 10; ++i) {
     var actionName = "loadURL" + i;
     var container = document.getElementById(actionName);
@@ -259,7 +245,7 @@ function createLoadURLActions(URLString, useFaviconString, openInPrivateWindowSt
     
     var tr = document.createElement("tr");
     var th = document.createElement("th");
-    th.textContent = URLString;
+    th.textContent = browser.i18n.getMessage("customizations.URL");
     tr.appendChild(th);
     var td = document.createElement("td");
     var input = document.createElement("input");
@@ -279,7 +265,7 @@ function createLoadURLActions(URLString, useFaviconString, openInPrivateWindowSt
     td.appendChild(input);
     var label = document.createElement("label");
     label.htmlFor = input.id;
-    label.textContent = useFaviconString;
+    label.textContent = browser.i18n.getMessage("customizations.useFavicon");
     td.appendChild(label);
     var img = document.createElement("img");
     img.id = actionName + "_favicon";
@@ -297,7 +283,8 @@ function createLoadURLActions(URLString, useFaviconString, openInPrivateWindowSt
     td.appendChild(input);
     label = document.createElement("label");
     label.htmlFor = input.id;
-    label.textContent = openInPrivateWindowString;
+    label.textContent =
+      browser.i18n.getMessage("customizations.openInPrivateWindow");
     td.appendChild(label);
     tr.appendChild(td);
     table.appendChild(tr);
@@ -306,7 +293,7 @@ function createLoadURLActions(URLString, useFaviconString, openInPrivateWindowSt
   }
 }
 
-function createRunScriptActions(codeString, useCustomIconString) {
+function createRunScriptActions() {
   for (var i=1; i <= 10; ++i) {
     var actionName = "runScript" + i;
     var container = document.getElementById(actionName);
@@ -318,7 +305,7 @@ function createRunScriptActions(codeString, useCustomIconString) {
     
     var tr = document.createElement("tr");
     var th = document.createElement("th");
-    th.textContent = codeString;
+    th.textContent = browser.i18n.getMessage("customizations.code");
     tr.appendChild(th);
     var td = document.createElement("td");
     var input = document.createElement("textarea");
@@ -338,7 +325,7 @@ function createRunScriptActions(codeString, useCustomIconString) {
     td.appendChild(input);
     var label = document.createElement("label");
     label.htmlFor = input.id;
-    label.textContent = useCustomIconString;
+    label.textContent = browser.i18n.getMessage("customizations.useCustomIcon");
     td.appendChild(label);
     var span = document.createElement("span");
     span.id = actionName + "_customIconURL";
@@ -792,13 +779,7 @@ function addOnchangeListenerToPreferenceControl(control) {
           let currentValue = aMessage.response;
           anEvent.target.parentElement.parentElement
                  .querySelector("[value='" + currentValue + "']").checked = true;
-          browser.runtime.sendMessage({
-            messageName: "query_eGStrings",
-            methodName: "getString",
-            parameter: "activation.duplicateKey"
-          }).then(aMessage => {
-            alert(aMessage.response);
-          });
+          alert(browser.i18n.getMessage("activation.duplicateKey"));
         });
       }
       else {
@@ -1115,43 +1096,36 @@ function initializeClicksByAction() {
     
     var container = document.getElementById("stats_clicksByAction");
     
-    browser.runtime.sendMessage({
-      messageName: "query_eGStrings",
-      methodName: "getString",
-      parameter: "stats.clicks"
-    }).then(aMessage => {
-      // we start at the action that follows the "showExtraMenu" action
-      var currentAction = eGActions.showExtraMenu.nextAction;
-      while (currentAction !== null) {
-        let clicksForAction = statsActions[currentAction];
-        let count = Math.round(clicksForAction / totalClicks * 1000) / 10;
-        if (count > 1) {
-          count = Math.round(count);
-        }
-        
-        let div = document.createElement("div");
-        eGActions[currentAction].getLocalizedActionName().then(response => {
-          div.title = response.response + ": " +
-                        clicksForAction + " " + aMessage.response;
-        });
-        container.appendChild(div);
-        
-        let span = document.createElement("span");
-        span.className = "eG_" + currentAction;
-        div.appendChild(span);
-        
-        let img = document.createElement("span");
-        img.style.width = count / 2 + "px";
-        div.appendChild(img);
-        
-        span = document.createElement("span");
-        span.textContent = clicksForAction > 0 ?
-                             (count > 0.1 ? count + "%" : "<0.1%") : "–";
-        div.appendChild(span);
-        
-        currentAction = eGActions[currentAction].nextAction;
+    // we start at the action that follows the "showExtraMenu" action
+    var currentAction = eGActions.showExtraMenu.nextAction;
+    while (currentAction !== null) {
+      let clicksForAction = statsActions[currentAction];
+      let count = Math.round(clicksForAction / totalClicks * 1000) / 10;
+      if (count > 1) {
+        count = Math.round(count);
       }
-    });
+      
+      let div = document.createElement("div");
+      div.title = eGActions[currentAction].getLocalizedActionName() + ": " +
+                  clicksForAction + " " +
+                  browser.i18n.getMessage("stats.clicks");
+      container.appendChild(div);
+      
+      let span = document.createElement("span");
+      span.className = "eG_" + currentAction;
+      div.appendChild(span);
+      
+      let img = document.createElement("span");
+      img.style.width = count / 2 + "px";
+      div.appendChild(img);
+      
+      span = document.createElement("span");
+      span.textContent = clicksForAction > 0 ?
+                           (count > 0.1 ? count + "%" : "<0.1%") : "–";
+      div.appendChild(span);
+      
+      currentAction = eGActions[currentAction].nextAction;
+    }
   });
 }
 
@@ -1269,47 +1243,25 @@ function optionsLoadHandler() {
   // prefsObserver.register();
   addEventListeners();
   
-  browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "preferences"
-  }).then(aMessage => {
-    document.title = aMessage.response + " " + document.title;
-  });
+  document.title = browser.i18n.getMessage("preferences") + " " + document.title;
   var elementsToLocalize = document.querySelectorAll("[data-l10n]");
-  var stringIDs = [];
   for (let i=0; i < elementsToLocalize.length; i++) {
-    stringIDs.push(elementsToLocalize[i].dataset.l10n);
+    elementsToLocalize[i].textContent =
+      browser.i18n.getMessage(elementsToLocalize[i].dataset.l10n);
   }
-  browser.runtime.sendMessage({
-    messageName: "getLocalizedStrings",
-    stringIDs: stringIDs
-  }).then(aMessage => {
-    for (let i=0; i < elementsToLocalize.length; ++i) {
-      elementsToLocalize[i].textContent = aMessage.response[i];
-    }
-  });
   
   createRegularMenuControls();
   createExtraMenuControls();
-  browser.runtime.sendMessage({
-    messageName: "getLocalizedStrings",
-    stringIDs: ["customizations.URL", "customizations.useFavicon",
-                "customizations.openInPrivateWindow", "customizations.code",
-                "customizations.useCustomIcon"]
-  }).then(aMessage => {
-    createLoadURLActions(aMessage.response[0], aMessage.response[1],
-                         aMessage.response[2]);
-    createRunScriptActions(aMessage.response[3], aMessage.response[4]);
-    
-    initializePaneAndTabs(document.location.hash);
-    loadPreferences(false);
-    
-    loadStats();
-    
-    window.setTimeout(function() { window.scrollTo(0, 0); });
-    document.body.style.cursor = "auto";
-  });
+  createLoadURLActions();
+  createRunScriptActions();
+  
+  initializePaneAndTabs(document.location.hash);
+  loadPreferences(false);
+  
+  loadStats();
+  
+  window.setTimeout(function() { window.scrollTo(0, 0); });
+  document.body.style.cursor = "auto";
 }
 
 function unselectCurrentPane() {
@@ -1398,13 +1350,9 @@ function importPrefs() {
           if (aMessage.prefs !== undefined) {
             nonImportedPreferences += " " + aMessage.prefs;
           }
-          browser.runtime.sendMessage({
-            messageName: "query_eGStrings",
-            methodName: "getString",
-            parameter: "general.prefs.import." + aMessage.code
-          }).then(aMessage => {
-            alert(aMessage.response + nonImportedPreferences);
-          });
+          alert(browser.i18n
+                       .getMessage("general.prefs.import." + aMessage.code) +
+                nonImportedPreferences);
         }
       });
     }
@@ -1418,20 +1366,14 @@ function exportPrefs() {
 }
 
 function resetPrefs() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "general.prefs.reset.confirm"
-  }).then(aMessage => {
-    if (confirm(aMessage.response)) {
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "setDefaultSettings"
-      }).then(() => {
-        loadPreferences(true);
-      });
-    }
-  });
+  if (confirm(browser.i18n.getMessage("general.prefs.reset.confirm"))) {
+    browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "setDefaultSettings"
+    }).then(() => {
+      loadPreferences(true);
+    });
+  }
 }
 
 function updateTextInputElement(anEvent) {
@@ -1446,16 +1388,10 @@ function updateTextInputElement(anEvent) {
 }
 
 function resetStats() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "stats.reset.confirm"
-  }).then(aMessage => {
-    if (confirm(aMessage.response)) {
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "initializeStats"
-      });
-    }
-  });
+  if (confirm(browser.i18n.getMessage("stats.reset.confirm"))) {
+    browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "initializeStats"
+    });
+  }
 }

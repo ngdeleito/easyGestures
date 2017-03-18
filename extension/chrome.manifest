@@ -1,5 +1,1 @@
 content easygestures chrome/content/     contentaccessible=yes
-
-locale easygestures en-US chrome/locale/en-US/
-locale easygestures es-ES chrome/locale/es-ES/
-locale easygestures fr-FR chrome/locale/fr-FR/

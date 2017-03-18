@@ -66,15 +66,8 @@ var tips = [
   new tipEntry("tips.openLinkAction",            "customizations_otherActions"),
   new tipEntry("tips.dailyReadingsAction",       "customizations_otherActions")
 ];
-browser.runtime.sendMessage({
-  messageName: "getLocalizedStrings",
-  stringIDs: tips.map(tip => {
-    return tip.label;
-  })
-}).then(aMessage => {
-  tips.forEach(function(tip, index) {
-    tip.description = aMessage.response[index];
-  });
+tips.forEach(function(tip) {
+  tip.description = browser.i18n.getMessage(tip.label);
 });
 
 // var generalPrefBranch;
@@ -85,22 +78,20 @@ function updateContent(tipNbr) {
   // inside square brackets (with no space after the opening bracket and no
   // space before the closing bracket): "text1 [link] text2"
   var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
+  var linkText = "";
   
   // we resolve the locale strings that constitute the link text
   if (text.length > 1) {
-    browser.runtime.sendMessage({
-      messageName: "getLocalizedStrings",
-      stringIDs: text[1].split("/")
-    }).then(aMessage => {
-      document.getElementById("tipTextLink").textContent =
-        aMessage.response.join("/");
-    });
+    let linkTextStrings = text[1].split("/");
+    linkText = linkTextStrings.map(function(label) {
+      return browser.i18n.getMessage(label);
+    }).join("/");
   }
   
   document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " +
                                                      tips.length;
   document.getElementById("tipTextBeforeLink").textContent = text[0];
-  document.getElementById("tipTextLink").textContent = "";
+  document.getElementById("tipTextLink").textContent = linkText;
   document.getElementById("tipTextAfterLink").textContent = text[2];
   document.getElementById("tipImage").className = tips[tipNbr].imageClass;
 }
@@ -175,27 +166,13 @@ function tipsLoadHandler() {
   // generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
   // generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
   
-  browser.runtime.sendMessage({
-    messageName: "query_eGStrings",
-    methodName: "getString",
-    parameter: "tips"
-  }).then(aMessage => {
-    document.title = aMessage.response + " " + document.title;
-  });
+  document.title = browser.i18n.getMessage("tips") + " " + document.title;
   setShowTipsCheckbox();
   var elementsToLocalize = document.querySelectorAll("[data-l10n]");
-  var stringIDs = [];
   for (let i=0; i < elementsToLocalize.length; i++) {
-    stringIDs.push(elementsToLocalize[i].dataset.l10n);
+    elementsToLocalize[i].textContent =
+      browser.i18n.getMessage(elementsToLocalize[i].dataset.l10n);
   }
-  browser.runtime.sendMessage({
-    messageName: "getLocalizedStrings",
-    stringIDs: stringIDs
-  }).then(aMessage => {
-    for (let i=0; i < elementsToLocalize.length; ++i) {
-      elementsToLocalize[i].textContent = aMessage.response[i];
-    }
-  });
   browser.runtime.sendMessage({
     messageName: "query_eGPrefs",
     methodName: "getTipNumberPref"

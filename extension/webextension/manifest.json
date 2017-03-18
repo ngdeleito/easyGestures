@@ -2,10 +2,11 @@
   "manifest_version": 2,
   "name": "easyGestures N",
   "version": "5.2dev1",
-  "description": "A highly customizable pie menu for browsing the Web from where the mouse pointer is located.",
+  "description": "__MSG_extensionDescription__",
   "author": "Nicolás González-Deleito",
   "homepage_url": "https://github.com/ngdeleito/easyGestures",
   
+  "default_locale": "en",
   "permissions": ["bookmarks", "tabs"],
   "background": {
     "scripts": ["eGContext.js", "eGActions.js", "easyGesturesN-background.js"]

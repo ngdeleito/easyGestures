@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported startup, shutdown, install, uninstall */
 /* global Components, Services, eGPieMenu, AddonManager, ADDON_INSTALL,
-          ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings, ADDON_UNINSTALL */
+          ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -125,26 +125,6 @@ var eGMessageListeners = {
     }
     
     sendResponse(response);
-  },
-  
-  query_eGStrings : function(aMessage, sendResponse) {
-    sendResponse({
-      response: eGStrings[aMessage.methodName](aMessage.parameter)
-    });
-  },
-  
-  getLocalizedStrings : function(aMessage, sendResponse) {
-    sendResponse({
-      response: aMessage.stringIDs.map(stringID => {
-                  return eGStrings.getString(stringID);
-                })
-    });
-  },
-  
-  getContextualMenuLocalizedName : function(aMessage, sendResponse) {
-    sendResponse({
-      response: eGStrings.getString(aMessage.contextualMenuName)
-    });
   },
   
   updateStatsForActionToBeExecuted : function(aMessage) {
@@ -259,11 +239,10 @@ function handleMessage(aMessage, sender, sendResponse) {
 
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
-  Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
   Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
   
-  AddonManager.getAddonByID(data.id, function(addon) {
+  AddonManager.getAddonByID(data.id, function() {
     // installing or upgrading preferences
     var count = {};
     Services.prefs.getChildList("extensions.easygestures.", count);
@@ -293,9 +272,6 @@ function startup(data, reason) {
       }
     }
     
-    // getting access to localization strings
-    eGStrings.init(addon);
-    
     // start listening to changes in preferences that could require rebuilding
     // the menus
     eGPrefsObserver.register();
@@ -314,9 +290,6 @@ function startup(data, reason) {
 }
 
 function shutdown() {
-  // flushing because a string bundle was created
-  Services.strings.flushBundles();
-  
   // stop listening to changes in preferences
   eGPrefsObserver.unregister();
   
@@ -324,7 +297,6 @@ function shutdown() {
   eGPieMenu.removeFromAllPages();
   
   Components.utils.unload("chrome://easygestures/content/eGPieMenu.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
   Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");
 }
 
