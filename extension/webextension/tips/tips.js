@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global window, browser, document */
+/* global window, browser, document, eGUtils */
 
 window.addEventListener("load", tipsLoadHandler);
 window.addEventListener("unload", tipsUnloadHandler);
@@ -115,26 +115,7 @@ function goToNextTip() {
 }
 
 function tipLinkClick() {
-  var hash = tips[tipNumber].hash;
-  browser.tabs.query({}).then(tabs => {
-    let tipsTab = tabs.find(tab => {
-      return tab.url
-                .startsWith(browser.extension.getURL("/options/options.html"));
-    });
-    let urlToOpen = "/options/options.html" + (hash === "" ? "" : "#" + hash);
-    if (tipsTab === undefined) {
-      browser.tabs.create({
-        active: true,
-        url: urlToOpen
-      });
-    }
-    else {
-      browser.tabs.update(tipsTab.id, {
-        active: true,
-        url: urlToOpen
-      });
-    }
-  });
+  eGUtils.showOrOpenTab("/options/options.html", tips[tipNumber].hash, true);
 }
 
 function updateShowTipsCheckbox() {
@@ -166,13 +147,9 @@ function tipsLoadHandler() {
   // generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
   // generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
   
-  document.title = browser.i18n.getMessage("tips") + " " + document.title;
+  eGUtils.setDocumentTitle(document, "tips");
+  eGUtils.setDocumentLocalizedStrings(document);
   setShowTipsCheckbox();
-  var elementsToLocalize = document.querySelectorAll("[data-l10n]");
-  for (let i=0; i < elementsToLocalize.length; i++) {
-    elementsToLocalize[i].textContent =
-      browser.i18n.getMessage(elementsToLocalize[i].dataset.l10n);
-  }
   browser.runtime.sendMessage({
     messageName: "query_eGPrefs",
     methodName: "getTipNumberPref"

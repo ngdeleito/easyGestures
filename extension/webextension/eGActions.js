@@ -64,7 +64,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 // Components.utils.import("resource://gre/modules/Services.jsm");
 // Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
-// Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;

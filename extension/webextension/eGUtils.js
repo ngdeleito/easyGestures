@@ -32,53 +32,41 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported EXPORTED_SYMBOLS, eGUtils */
-/* global Components, Services */
-
-var EXPORTED_SYMBOLS = ["eGUtils"];
-
-Components.utils.import("resource://gre/modules/Services.jsm");
+/* exported eGUtils */
+/* global browser */
 
 var eGUtils = {
-  showOrOpenTab: function(aURL, giveFocus) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var i;
-    var found = false;
-    var tab;
-    
-    for (i = 0; i < gBrowser.tabs.length && !found; ++i) {
-      let browser = gBrowser.getBrowserForTab(gBrowser.tabs[i]);
-      found = browser.currentURI.specIgnoringRef === aURL.split("#")[0];
-    }
-    if (found) {
-      tab = gBrowser.tabs[--i];
-      if (aURL.includes("#")) {
-        let currentTab = gBrowser.selectedTab;
-        gBrowser.selectedTab = tab;
-        gBrowser.loadURI(aURL);
-        gBrowser.selectedTab = currentTab;
+  showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
+    browser.tabs.query({}).then(tabs => {
+      let tipsTab = tabs.find(tab => {
+        return tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
+      });
+      let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
+      if (tipsTab === undefined) {
+        browser.tabs.create({
+          active: giveFocus,
+          url: urlToOpen
+        });
       }
-    }
-    else {
-      tab = gBrowser.addTab(aURL);
-    }
-    if (giveFocus) {
-      gBrowser.selectedTab = tab;
-    }
-    
-    window.focus();
+      else {
+        browser.tabs.update(tipsTab.id, {
+          active: giveFocus,
+          url: urlToOpen
+        });
+      }
+    });
   },
   
   setDocumentTitle: function(document, titleStringName) {
-    document.title = eGStrings.getString(titleStringName) + " " +
+    document.title = browser.i18n.getMessage(titleStringName) + " " +
                      document.title;
   },
   
   setDocumentLocalizedStrings: function(document) {
     var elements = document.querySelectorAll("[data-l10n]");
     for (let i=0; i < elements.length; ++i) {
-      elements[i].textContent = eGStrings.getString(elements[i].dataset.l10n);
+      elements[i].textContent = browser.i18n
+                                       .getMessage(elements[i].dataset.l10n);
     }
   }
 };

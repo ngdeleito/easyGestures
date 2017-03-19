@@ -240,7 +240,6 @@ function handleMessage(aMessage, sender, sendResponse) {
 function startup(data, reason) {
   Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
   Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
-  Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
   
   AddonManager.getAddonByID(data.id, function() {
     // installing or upgrading preferences

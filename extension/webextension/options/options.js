@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global window, browser, document, eGActions, alert, confirm */
+/* global window, eGUtils, browser, document, eGActions, alert, confirm */
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
@@ -90,22 +90,7 @@ var eventListenersArray = [
 ];
 
 function displayTips() {
-  browser.tabs.query({}).then(tabs => {
-    let tipsTab = tabs.find(tab => {
-      return tab.url === browser.extension.getURL("/tips/tips.html");
-    });
-    if (tipsTab === undefined) {
-      browser.tabs.create({
-        active: true,
-        url: "/tips/tips.html"
-      });
-    }
-    else {
-      browser.tabs.update(tipsTab.id, {
-        active: true
-      });
-    }
-  });
+  eGUtils.showOrOpenTab("/tips/tips.html", "", true);
 }
 
 function preventDefault(anEvent) {
@@ -1243,12 +1228,8 @@ function optionsLoadHandler() {
   // prefsObserver.register();
   addEventListeners();
   
-  document.title = browser.i18n.getMessage("preferences") + " " + document.title;
-  var elementsToLocalize = document.querySelectorAll("[data-l10n]");
-  for (let i=0; i < elementsToLocalize.length; i++) {
-    elementsToLocalize[i].textContent =
-      browser.i18n.getMessage(elementsToLocalize[i].dataset.l10n);
-  }
+  eGUtils.setDocumentTitle(document, "preferences");
+  eGUtils.setDocumentLocalizedStrings(document);
   
   createRegularMenuControls();
   createExtraMenuControls();
