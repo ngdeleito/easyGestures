@@ -592,6 +592,14 @@ var eGPieMenu = {
     return result;
   },
   
+  runAction_back : function() {
+    window.history.back();
+  },
+  
+  runAction_forward : function() {
+    window.history.forward();
+  },
+  
   runAction_pageTop : function() {
     if (targetWindow.scrollY !== 0) {
       targetWindow.scroll(0, 0);

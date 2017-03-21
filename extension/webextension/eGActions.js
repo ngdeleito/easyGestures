@@ -45,8 +45,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- DocumentContainsImagesDisableableAction
 //  |-- DisableableAction
 //       ^
-//       |-- CanGoBackDisableableAction
-//       |-- CanGoForwardDisableableAction
 //       |-- OtherTabsExistDisableableAction
 //       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
@@ -217,24 +215,6 @@ DisableableAction.prototype.getActionStatus = function() {
     status: this.isDisabled()
   };
 };
-
-function CanGoBackDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    return !window.gBrowser.canGoBack;
-  }, startsNewGroup, nextAction);
-}
-CanGoBackDisableableAction.prototype = Object.create(DisableableAction.prototype);
-CanGoBackDisableableAction.prototype.constructor = CanGoBackDisableableAction;
-
-function CanGoForwardDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    return !window.gBrowser.canGoForward;
-  }, startsNewGroup, nextAction);
-}
-CanGoForwardDisableableAction.prototype = Object.create(DisableableAction.prototype);
-CanGoForwardDisableableAction.prototype.constructor = CanGoForwardDisableableAction;
 
 function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -417,55 +397,21 @@ var eGActions = {
   
   showExtraMenu : new ShowExtraMenuAction(true, "back"),
   
-  back : new CanGoBackDisableableAction("back", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.goBack();
+  back : new Action("back", function() {
+    return this._sendPerformActionMessage();
   }, true, "backSite"),
   
-  backSite : new CanGoBackDisableableAction("backSite", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var index = gBrowser.sessionHistory.index - 1;
-    var url = gBrowser.selectedBrowser.currentURI.spec;
-    var backurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
-    
-    while ((this._getRootURL(url).replace("www.", "") === this._getRootURL(backurl).replace("www.", "")) && index > 0) {
-      index -= 1;
-      url = backurl;
-      backurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
-    }
-    gBrowser.gotoIndex(index);
-  }, false, "firstPage"),
+  backSite : new Action("backSite", function() {}, false, "firstPage"),
   
-  firstPage : new CanGoBackDisableableAction("firstPage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.gotoIndex(0);
-  }, false, "forward"),
+  firstPage : new Action("firstPage", function() {}, false, "forward"),
   
-  forward : new CanGoForwardDisableableAction("forward", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.goForward();
+  forward : new Action("forward", function() {
+    return this._sendPerformActionMessage();
   }, false, "forwardSite"),
   
-  forwardSite : new CanGoForwardDisableableAction("forwardSite", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var index = gBrowser.sessionHistory.index + 1;
-    var url = gBrowser.selectedBrowser.currentURI.spec;
-    var forwardurl = (gBrowser.sessionHistory.getEntryAtIndex(index, false)).URI.spec;
-    
-    while (this._getRootURL(url).replace("www.", "") === this._getRootURL(forwardurl).replace("www.", "") && index < gBrowser.sessionHistory.count - 1) {
-      index += 1;
-      url = forwardurl;
-      forwardurl = gBrowser.sessionHistory.getEntryAtIndex(index, false).URI.spec;
-    }
-    gBrowser.gotoIndex(index);
-  }, false, "lastPage"),
+  forwardSite : new Action("forwardSite", function() {}, false, "lastPage"),
   
-  lastPage : new CanGoForwardDisableableAction("lastPage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.gotoIndex(window.gBrowser.sessionHistory.count - 1);
-  }, false, "reload"),
+  lastPage : new Action("lastPage", function() {}, false, "reload"),
   
   reload : new ReloadAction(false, "homepage"),
   
