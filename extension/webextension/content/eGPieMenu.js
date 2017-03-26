@@ -654,6 +654,10 @@ var eGPieMenu = {
     imageElement.style.height = height;
   },
   
+  runAction_printPage : function() {
+    window.print();
+  },
+  
   runAction_runScript: function(options) {
     eval(options.script);
   },

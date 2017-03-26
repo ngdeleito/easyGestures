@@ -482,8 +482,7 @@ var eGActions = {
   }, false, "printPage"),
   
   printPage : new Action("printPage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PrintUtils.print();
+    return this._sendPerformActionMessage();
   }, false, "viewPageSource"),
   
   viewPageSource : new Action("viewPageSource", function() {
