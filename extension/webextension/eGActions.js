@@ -458,8 +458,12 @@ var eGActions = {
   }, false, "toggleFullscreen"),
   
   toggleFullscreen : new Action("toggleFullscreen", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.fullScreen = !window.fullScreen;
+    browser.windows.getCurrent().then(aWindow => {
+      let newState = aWindow.state === "fullscreen" ? "normal" : "fullscreen";
+      browser.windows.update(aWindow.id, {
+        state: newState
+      });
+    });
   }, false, "toggleFindBar"),
   
   toggleFindBar : new Action("toggleFindBar", function() {
