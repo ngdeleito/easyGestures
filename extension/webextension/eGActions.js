@@ -82,6 +82,11 @@ function Action(name, action, startsNewGroup, nextAction) {
 Action.prototype = {
   constructor: Action,
   
+  increasingZoomLevels: [0.3, 0.5, 0.67, 0.8, 0.9, 1, 1.1, 1.2, 1.33, 1.5, 1.7,
+                         2, 2.4, 3],
+  decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
+                         0.5, 0.3],
+  
   isDisabled: function() {
     return false;
   },
@@ -417,9 +422,15 @@ var eGActions = {
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (eGContext.imageElementDoesntExist) {
-      window.ZoomManager.enlarge();
+      browser.tabs.getZoom().then(zoomFactor => {
+        let newZoomFactor = this.increasingZoomLevels.find(element => {
+          return element > zoomFactor;
+        });
+        if (newZoomFactor !== undefined) {
+          browser.tabs.setZoom(newZoomFactor);
+        }
+      });
     }
     else {
       return this._sendPerformActionMessage();
@@ -427,9 +438,15 @@ var eGActions = {
   }, false, "zoomOut"),
   
   zoomOut : new Action("zoomOut", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
     if (eGContext.imageElementDoesntExist) {
-      window.ZoomManager.reduce();
+      browser.tabs.getZoom().then(zoomFactor => {
+        let newZoomFactor = this.decreasingZoomLevels.find(element => {
+          return element < zoomFactor;
+        });
+        if (newZoomFactor !== undefined) {
+          browser.tabs.setZoom(newZoomFactor);
+        }
+      });
     }
     else {
       return this._sendPerformActionMessage();
@@ -437,8 +454,7 @@ var eGActions = {
   }, false, "zoomReset"),
   
   zoomReset : new Action("zoomReset", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.ZoomManager.reset();
+    browser.tabs.setZoom(1);
   }, false, "toggleFullscreen"),
   
   toggleFullscreen : new Action("toggleFullscreen", function() {
