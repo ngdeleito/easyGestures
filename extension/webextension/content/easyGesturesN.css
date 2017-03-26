@@ -741,14 +741,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .reload.selected:not(.disabled),
 #easyGesturesPieMenu_ln .reload.selected:not(.disabled) { background-position: 0px -256px; }
 
-#easyGesturesPieMenu_nn .stop.disabled,
-#easyGesturesPieMenu_ln .stop.disabled { background-position: -32px -192px; }
-#easyGesturesPieMenu_nn .stop,
-#easyGesturesPieMenu_ln .stop,
-[data-action="stop"] { background-position: -32px -224px; }
-#easyGesturesPieMenu_nn .stop.selected:not(.disabled),
-#easyGesturesPieMenu_ln .stop.selected:not(.disabled) { background-position: -32px -256px; }
-
 #easyGesturesPieMenu_nn .homepage.disabled,
 #easyGesturesPieMenu_ln .homepage.disabled { background-position: 0px -576px; }
 #easyGesturesPieMenu_nn .homepage,
@@ -1429,6 +1421,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .moreDropDownMenu.showingExtraMenu,
 #easyGesturesPieMenu_ln .moreDropDownMenu.showingExtraMenu { background-position: -64px -64px; }
 
+#easyGesturesPieMenu_nn .stop.disabled,
+#easyGesturesPieMenu_ln .stop.disabled { background-position: -32px -192px; }
+#easyGesturesPieMenu_nn .stop,
+#easyGesturesPieMenu_ln .stop,
+[data-action="stop"] { background-position: -32px -224px; }
+#easyGesturesPieMenu_nn .stop.selected:not(.disabled),
+#easyGesturesPieMenu_ln .stop.selected:not(.disabled) { background-position: -32px -256px; }
+
 div.markVisitedLinks.disabled { background-position: 0px -864px; }
 div.markVisitedLinks { background-position: 0px -896px; }
 div.markVisitedLinks.selected:not(.disabled) { background-position: 0px -928px; }
@@ -1609,14 +1609,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .reload { background-position: 0px -140px; }
 #easyGesturesPieMenu_ns .reload.selected:not(.disabled),
 #easyGesturesPieMenu_ls .reload.selected:not(.disabled) { background-position: 0px -160px; }
-
-#easyGesturesPieMenu_ns .stop.disabled,
-#easyGesturesPieMenu_ls .stop.disabled { background-position: -20px -120px; }
-.eG_stop, .eGOptions_stop::before,
-#easyGesturesPieMenu_ns .stop,
-#easyGesturesPieMenu_ls .stop { background-position: -20px -140px; }
-#easyGesturesPieMenu_ns .stop.selected:not(.disabled),
-#easyGesturesPieMenu_ls .stop.selected:not(.disabled) { background-position: -20px -160px; }
 
 #easyGesturesPieMenu_ns .homepage.disabled,
 #easyGesturesPieMenu_ls .homepage.disabled { background-position: 0px -360px; }
@@ -2298,6 +2290,14 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .moreDropDownMenu.showingExtraMenu,
 #easyGesturesPieMenu_ls .moreDropDownMenu.showingExtraMenu { background-position: -40px -40px; }
 image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
+
+#easyGesturesPieMenu_ns .stop.disabled,
+#easyGesturesPieMenu_ls .stop.disabled { background-position: -20px -120px; }
+.eG_stop, .eGOptions_stop::before,
+#easyGesturesPieMenu_ns .stop,
+#easyGesturesPieMenu_ls .stop { background-position: -20px -140px; }
+#easyGesturesPieMenu_ns .stop.selected:not(.disabled),
+#easyGesturesPieMenu_ls .stop.selected:not(.disabled) { background-position: -20px -160px; }
 
 div.markVisitedLinks.disabled { background-position: 0px -540px; }
 div.markVisitedLinks { background-position: 0px -560px; }

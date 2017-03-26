@@ -41,7 +41,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  ^
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
-//  |-- ReloadAction
 //  |-- DocumentContainsImagesDisableableAction
 //  |-- DisableableAction
 //       ^
@@ -173,34 +172,6 @@ function ShowExtraMenuAction(startsNewGroup, nextAction) {
 }
 ShowExtraMenuAction.prototype = Object.create(Action.prototype);
 ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
-
-function ReloadAction(startsNewGroup, nextAction) {
-  Action.call(this, "reload", function() { // reload or stop
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    
-    if (!eGContext.loading) {
-      gBrowser.reload();
-    }
-    else {
-      gBrowser.stop();
-    }
-  }, startsNewGroup, nextAction);
-}
-ReloadAction.prototype = Object.create(Action.prototype);
-ReloadAction.prototype.constructor = ReloadAction;
-ReloadAction.prototype.getLocalizedActionName = function() {
-  return browser.i18n.getMessage("reloadActionName");
-};
-ReloadAction.prototype.getActionStatus = function() {
-  var window = Services.wm.getMostRecentWindow("navigator:browser");
-  var stop_bcaster = window.document.getElementById("Browser:Stop");
-  eGContext.loading = !stop_bcaster.hasAttribute("disabled");
-  return {
-    messageName: "setReloadActionStatus",
-    status: eGContext.loading
-  };
-};
 
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
@@ -413,7 +384,11 @@ var eGActions = {
   
   lastPage : new Action("lastPage", function() {}, false, "reload"),
   
-  reload : new ReloadAction(false, "homepage"),
+  reload : new Action("reload", function() {
+    browser.tabs.reload({
+      bypassCache: true
+    });
+  }, false, "homepage"),
   
   homepage : new Action("homepage", function() {
     var homepage = Services.prefs.getCharPref("browser.startup.homepage");

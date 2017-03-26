@@ -297,13 +297,6 @@ var eGPieMenu = {
     this._setActionStatusHelper(layoutName, actionSector, aMessage.status);
   },
   
-  setReloadActionStatus : function(aMessage, layoutName, actionSector) {
-    var actionsNode = document.getElementById("eG_actions_" + layoutName);
-    var actionNode = actionsNode.childNodes[actionSector];
-    actionNode.classList.toggle("stop", aMessage.status);
-    actionNode.classList.toggle("reload", !aMessage.status);
-  },
-  
   setHideImagesActionStatus : function(aMessage, layoutName, actionSector) {
     var disabled = document.querySelectorAll("img").length === 0;
     this._setActionStatusHelper(layoutName, actionSector, disabled);

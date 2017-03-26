@@ -47,6 +47,4 @@ var eGContext = {
   targetWindowScrollMaxY: null,
   topmostWindowScrollY: null,
   topmostWindowScrollMaxY: null,
-  
-  loading: false // used for reload/stop action
 };

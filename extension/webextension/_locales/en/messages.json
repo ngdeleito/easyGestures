@@ -18,8 +18,6 @@
   "forwardSite": { "message": "Forward site" },
   "lastPage": { "message": "Last page" },
   "reload": { "message": "Reload" },
-  "stop": { "message": "Stop" },
-  "reloadActionName": { "message": "Reload-stop" },
   "homepage": { "message": "Home page" },
   
   "pageTop": { "message": "Page top" },
