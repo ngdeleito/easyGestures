@@ -496,17 +496,13 @@ var eGActions = {
   }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    gBrowser.selectedTab = gBrowser.addTab("about:newtab");
-    window.gURLBar.focus();
+    browser.tabs.create({});
   }, true, "newBlankTab"),
   
   newBlankTab : new Action("newBlankTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    gBrowser.selectedTab = gBrowser.addTab("about:blank");
-    window.gURLBar.focus();
+    browser.tabs.create({
+      url: "about:blank"
+    });
   }, false, "duplicateTab"),
   
   duplicateTab : new Action("duplicateTab", function() {
