@@ -568,14 +568,11 @@ var eGActions = {
   }, false, "pinUnpinTab"),
   
   pinUnpinTab : new Action("pinUnpinTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    if (gBrowser.selectedTab.pinned) {
-      gBrowser.unpinTab(gBrowser.selectedTab);
-    }
-    else {
-      gBrowser.pinTab(gBrowser.selectedTab);
-    }
+    this._performOnCurrentTab(function(currentTab) {
+      browser.tabs.update({
+        pinned: !currentTab.pinned
+      });
+    });
   }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
