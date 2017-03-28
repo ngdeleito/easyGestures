@@ -103,6 +103,15 @@ Action.prototype = {
   
   // helper functions
   
+  _performOnCurrentTab: function(aFunction) {
+    browser.tabs.query({
+      active: true,
+      currentWindow: true
+    }).then(tabs => {
+      aFunction(tabs[0]);
+    });
+  },
+  
   _getRootURL: function(url) {
     // this should work correcly with http://jolt.co.uk or gouv.qc.ca domains.
     var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"]
@@ -506,11 +515,9 @@ var eGActions = {
   }, false, "duplicateTab"),
   
   duplicateTab : new Action("duplicateTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                       .getService(Components.interfaces.nsISessionStore);
-    gBrowser.selectedTab = ss.duplicateTab(window, gBrowser.selectedTab);
+    this._performOnCurrentTab(function(currentTab) {
+      browser.tabs.duplicate(currentTab.id);
+    });
   }, false, "closeTab"),
   
   closeTab : new DisableableAction("closeTab", function() {
