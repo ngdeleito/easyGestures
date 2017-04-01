@@ -205,8 +205,11 @@ DisableableAction.prototype.getActionStatus = function() {
 
 function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    return window.gBrowser.mTabContainer.childNodes.length <= 1;
+    return browser.tabs.query({
+      currentWindow: true
+    }).then(tabs => {
+      return tabs.length <= 1;
+    });
   }, startsNewGroup, nextAction);
 }
 OtherTabsExistDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -569,13 +572,34 @@ var eGActions = {
   }, false, "prevTab"),
   
   prevTab : new OtherTabsExistDisableableAction("prevTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.tabContainer.advanceSelectedTab(-1, true);
+    this._performOnCurrentTab(async function(currentTab) {
+      let tabs = await browser.tabs.query({
+        currentWindow: true
+      });
+      let [previousTab] = await browser.tabs.query({
+        index: currentTab.index - 1 < 0 ? tabs.length - 1 :
+                                          currentTab.index - 1,
+        currentWindow: true
+      });
+      browser.tabs.update(previousTab.id, {
+        active: true
+      });
+    });
   }, false, "nextTab"),
   
   nextTab : new OtherTabsExistDisableableAction("nextTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.tabContainer.advanceSelectedTab(1, true);
+    this._performOnCurrentTab(async function(currentTab) {
+      let tabs = await browser.tabs.query({
+        currentWindow: true
+      });
+      let [nextTab] = await browser.tabs.query({
+        index: currentTab.index + 1 < tabs.length ? currentTab.index + 1 : 0,
+        currentWindow: true
+      });
+      browser.tabs.update(nextTab.id, {
+        active: true
+      });
+    });
   }, false, "pinUnpinTab"),
   
   pinUnpinTab : new Action("pinUnpinTab", function() {
