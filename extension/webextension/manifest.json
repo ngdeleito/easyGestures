@@ -7,7 +7,7 @@
   "homepage_url": "https://github.com/ngdeleito/easyGestures",
   
   "default_locale": "en",
-  "permissions": ["bookmarks", "tabs"],
+  "permissions": ["bookmarks", "sessions", "tabs"],
   "background": {
     "scripts": [
       "eGUtils.js", "eGContext.js", "eGActions.js",

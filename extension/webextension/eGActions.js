@@ -553,15 +553,19 @@ var eGActions = {
   }, false, "undoCloseTab"),
   
   undoCloseTab : new DisableableAction("undoCloseTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    Components.classes["@mozilla.org/browser/sessionstore;1"]
-              .getService(Components.interfaces.nsISessionStore)
-              .undoCloseTab(window, 0);
+    browser.sessions.getRecentlyClosed().then(closedItems => {
+      let mostRecentlyClosedTab = closedItems.find(closedItem => {
+        return closedItem.tab !== undefined;
+      });
+      browser.sessions.restore(mostRecentlyClosedTab.tab.sessionId);
+    });
   }, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    return Components.classes["@mozilla.org/browser/sessionstore;1"]
-                     .getService(Components.interfaces.nsISessionStore)
-                     .getClosedTabCount(window) === 0;
+    return browser.sessions.getRecentlyClosed().then(closedItems => {
+      let mostRecentlyClosedTab = closedItems.find(closedItem => {
+        return closedItem.tab !== undefined;
+      });
+      return mostRecentlyClosedTab === undefined;
+    });
   }, false, "prevTab"),
   
   prevTab : new OtherTabsExistDisableableAction("prevTab", function() {
