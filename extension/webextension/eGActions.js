@@ -533,20 +533,23 @@ var eGActions = {
   }, false, "closeOtherTabs"),
   
   closeOtherTabs : new DisableableAction("closeOtherTabs", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    gBrowser.removeAllTabsBut(gBrowser.selectedTab);
+    browser.tabs.query({
+      active: false,
+      pinned: false,
+      currentWindow: true
+    }).then(tabsToClose => {
+      browser.tabs.remove(tabsToClose.map(tab => {
+        return tab.id;
+      }));
+    });
   }, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
-    var numberOfTabs = gBrowser.tabs.length;
-    var numberOfPinnedTabs = 0;
-    for (let i=0; i < numberOfTabs; ++i) {
-      if (gBrowser.tabs[i].pinned) {
-        ++numberOfPinnedTabs;
-      }
-    }
-    return numberOfTabs - numberOfPinnedTabs < 2;
+    return browser.tabs.query({
+      active: false,
+      pinned: false,
+      currentWindow: true
+    }).then(tabsToClose => {
+      return tabsToClose.length === 0;
+    });
   }, false, "undoCloseTab"),
   
   undoCloseTab : new DisableableAction("undoCloseTab", function() {
