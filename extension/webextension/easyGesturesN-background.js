@@ -55,29 +55,40 @@ var eGMessageHandlers = {
     });
   },
   
-  getActionsStatus : function(aMessage, sendResponse) {
-    sendResponse({
-      responses: aMessage.actions.map(function(actionName) {
-        return eGActions[actionName].getActionStatus();
-      })
+  getActionsStatus : function(aMessage) {
+    var actionsStatus = aMessage.actions.map(function(actionName) {
+                            return eGActions[actionName].getActionStatus();
+                        });
+    return Promise.all(actionsStatus.map(function(status) {
+      return status !== undefined ? status.status : status;
+    })).then(statuses => {
+      return actionsStatus.map((actionStatus, index) => {
+        if (actionStatus !== undefined) {
+          actionStatus.status = statuses[index];
+        }
+        return actionStatus;
+      });
     });
   },
   
   runAction : function(aMessage, sendResponse) {
-    var response = {
-      actionIsDisabled: eGActions[aMessage.actionName].isDisabled()
-    };
-    if (!response.actionIsDisabled) {
-      try {
-        let result = eGActions[aMessage.actionName].run();
-        response.runActionName = result.runActionName;
-        response.runActionOptions = result.runActionOptions;
+    eGActions[aMessage.actionName].isDisabled().then(actionIsDisabled => {
+      var response = {
+        actionIsDisabled: actionIsDisabled
+      };
+      if (!actionIsDisabled) {
+        try {
+          let result = eGActions[aMessage.actionName].run();
+          response.runActionName = result.runActionName;
+          response.runActionOptions = result.runActionOptions;
+        }
+        catch(ex) {
+          console.error("easyGestures N exception: " + ex.toString());
+        }
       }
-      catch(ex) {
-        console.error("easyGestures N exception: " + ex.toString());
-      }
-    }
-    sendResponse(response);
+      sendResponse(response);
+    });
+    return true;
   },
   
   loadURLInNewNonActiveTab : function(aMessage) {
@@ -102,7 +113,7 @@ var eGMessageHandlers = {
 
 function handleMessage(aMessage, sender, sendResponse) {
   if (eGMessageHandlers[aMessage.messageName] !== undefined) {
-    eGMessageHandlers[aMessage.messageName](aMessage, sendResponse);
+    return eGMessageHandlers[aMessage.messageName](aMessage, sendResponse);
   }
 }
 

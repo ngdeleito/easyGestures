@@ -88,7 +88,9 @@ Action.prototype = {
                          0.5, 0.3],
   
   isDisabled: function() {
-    return false;
+    return new Promise(resolve => {
+      resolve(false);
+    });
   },
   
   getTooltipLabel: function() {
@@ -104,11 +106,11 @@ Action.prototype = {
   // helper functions
   
   _performOnCurrentTab: function(aFunction) {
-    browser.tabs.query({
+    return browser.tabs.query({
       active: true,
       currentWindow: true
     }).then(tabs => {
-      aFunction(tabs[0]);
+      return aFunction(tabs[0]);
     });
   },
   
@@ -521,11 +523,13 @@ var eGActions = {
   }, false, "closeTab"),
   
   closeTab : new DisableableAction("closeTab", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.removeCurrentTab({animate: true});
+    this._performOnCurrentTab(function(currentTab) {
+      browser.tabs.remove(currentTab.id);
+    });
   }, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    return window.gBrowser.selectedTab.pinned;
+    return this._performOnCurrentTab(function(currentTab) {
+      return currentTab.pinned;
+    });
   }, false, "closeOtherTabs"),
   
   closeOtherTabs : new DisableableAction("closeOtherTabs", function() {

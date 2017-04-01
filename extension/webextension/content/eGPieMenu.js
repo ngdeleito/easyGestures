@@ -470,8 +470,8 @@ var eGPieMenu = {
     browser.runtime.sendMessage({
       messageName: "getActionsStatus",
       actions: layout.actions
-    }).then(aMessage => {
-      aMessage.responses.forEach(function(response, actionSector) {
+    }).then(statusesArray => {
+      statusesArray.forEach(function(response, actionSector) {
         if (response !== undefined) {
           eGPieMenu[response.messageName](response, layoutName, actionSector);
         }
