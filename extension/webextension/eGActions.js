@@ -684,13 +684,19 @@ var eGActions = {
   }, false, "undoCloseWindow"),
   
   undoCloseWindow : new DisableableAction("undoCloseWindow", function() {
-    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                       .getService(Components.interfaces.nsISessionStore);
-    ss.undoCloseWindow(0);
+    browser.sessions.getRecentlyClosed().then(closedItems => {
+      let mostRecentlyClosedWindow = closedItems.find(closedItem => {
+        return closedItem.window !== undefined;
+      });
+      browser.sessions.restore(mostRecentlyClosedWindow.window.sessionId);
+    });
   }, function() {
-    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                       .getService(Components.interfaces.nsISessionStore);
-    return ss.getClosedWindowCount() === 0;
+    return browser.sessions.getRecentlyClosed().then(closedItems => {
+      let mostRecentlyClosedWindow = closedItems.find(closedItem => {
+        return closedItem.window !== undefined;
+      });
+      return mostRecentlyClosedWindow === undefined;
+    });
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
