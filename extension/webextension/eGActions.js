@@ -630,18 +630,29 @@ var eGActions = {
     });
   }, false, "duplicateWindow"),
   
-  duplicateWindow : new Action("duplicateWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var tabs = window.gBrowser.tabs;
-    window.open();
-    var newWindow = Services.wm.getMostRecentWindow("navigator:browser");
-    var ss = Components.classes["@mozilla.org/browser/sessionstore;1"]
-                       .getService(Components.interfaces.nsISessionStore);
-    
-    for (let i = 0; i < tabs.length; ++i) {
-      newWindow.gBrowser.selectedTab = ss.duplicateTab(newWindow, tabs[i]);
-    }
-    newWindow.gBrowser.removeTab(newWindow.gBrowser.tabs[0]);
+  duplicateWindow : new Action("duplicateWindow", async function() {
+    let currentWindow = await browser.windows.getCurrent({
+      populate: true
+    });
+    let newWindow = await browser.windows.create({});
+    Promise.all(currentWindow.tabs.map(tab => {
+      return browser.tabs.duplicate(tab.id).then(async duplicatedTab => {
+        let wasPinned = duplicatedTab.pinned;
+        let unpinnedTab = await browser.tabs.update(duplicatedTab.id, {
+          pinned: false
+        });
+        browser.tabs.move(unpinnedTab.id, {
+          windowId: newWindow.id,
+          index: tab.index + 1
+        }).then(movedTabs => {
+          browser.tabs.update(movedTabs[0].id, {
+            pinned: wasPinned
+          });
+        });
+      });
+    })).then(() => {
+      browser.tabs.remove(newWindow.tabs[0].id);
+    });
   }, false, "minimizeWindow"),
   
   minimizeWindow : new Action("minimizeWindow", function() {
