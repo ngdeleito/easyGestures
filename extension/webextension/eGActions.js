@@ -621,13 +621,13 @@ var eGActions = {
   }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open("about:blank");
+    browser.windows.create({});
   }, false, "newPrivateWindow"),
   
   newPrivateWindow : new Action("newPrivateWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.OpenBrowserWindow({private: true});
+    browser.windows.create({
+      incognito: true
+    });
   }, false, "duplicateWindow"),
   
   duplicateWindow : new Action("duplicateWindow", function() {
