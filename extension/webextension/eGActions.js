@@ -664,26 +664,23 @@ var eGActions = {
   }, false, "closeWindow"),
   
   closeWindow : new Action("closeWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.close();
+    browser.windows.getCurrent().then(currentWindow => {
+      browser.windows.remove(currentWindow.id);
+    });
   }, false, "closeOtherWindows"),
   
-  closeOtherWindows : new DisableableAction("closeOtherWindows", function() {
-    var currentWindow = Services.wm.getMostRecentWindow("navigator:browser");
-    var openWindows = Services.wm.getEnumerator("navigator:browser");
-    
-    while (openWindows.hasMoreElements()) {
-      let window = openWindows.getNext();
-      if (window !== currentWindow) {
-        window.close();
+  closeOtherWindows : new DisableableAction("closeOtherWindows", async function() {
+    let currentWindow = await browser.windows.getCurrent();
+    let openWindows = await browser.windows.getAll();
+    openWindows.forEach(windowToClose => {
+      if (windowToClose.id !== currentWindow.id) {
+        browser.windows.remove(windowToClose.id);
       }
-    }
+    });
   }, function() {
-    var winEnum = Services.wm.getZOrderDOMWindowEnumerator("navigator:browser", false);
-    if (winEnum.hasMoreElements()) {
-      winEnum.getNext(); //first window
-    }
-    return !winEnum.hasMoreElements();
+    return browser.windows.getAll().then(openWindows => {
+      return openWindows.length === 1;
+    });
   }, false, "undoCloseWindow"),
   
   undoCloseWindow : new DisableableAction("undoCloseWindow", function() {
