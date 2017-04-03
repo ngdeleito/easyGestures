@@ -656,8 +656,11 @@ var eGActions = {
   }, false, "minimizeWindow"),
   
   minimizeWindow : new Action("minimizeWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.minimize();
+    browser.windows.getCurrent().then(currentWindow => {
+      browser.windows.update(currentWindow.id, {
+        state: "minimized"
+      });
+    });
   }, false, "closeWindow"),
   
   closeWindow : new Action("closeWindow", function() {
