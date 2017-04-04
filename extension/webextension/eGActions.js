@@ -114,21 +114,6 @@ Action.prototype = {
     });
   },
   
-  _getRootURL: function(url) {
-    // this should work correcly with http://jolt.co.uk or gouv.qc.ca domains.
-    var tld = Components.classes["@mozilla.org/network/effective-tld-service;1"]
-                        .getService(Components.interfaces.nsIEffectiveTLDService);
-    var uri = Services.io.newURI(url, null, null);
-    var rootURL;
-    try {
-      rootURL = uri.scheme + "://" + tld.getBaseDomainFromHost(uri.host) + "/";
-    }
-    catch (ex) { // do something when NS_ERROR_HOST_IS_IP_ADDRES or other exception is thrown
-      rootURL = url;
-    }
-    return rootURL;
-  },
-  
   _sendPerformActionMessage: function(options) {
     return {
       runActionName: this._name,
@@ -217,9 +202,10 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var url = window.gBrowser.selectedBrowser.currentURI.spec;
-    return this._getRootURL(url) === url.replace("www.", "");
+    return this._performOnCurrentTab(function(currentTab) {
+      let url = new URL(currentTab.url);
+      return url.pathname === "/";
+    });
   }, startsNewGroup, nextAction);
 }
 CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -700,24 +686,31 @@ var eGActions = {
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var url = window.gBrowser.selectedBrowser.currentURI.spec;
-    // removing any trailing "/"
-    url = url.replace(/\/$/, "");
-    // creating a nsIURI and removing the last "/"-separated item from its path
-    var uri = Services.io.newURI(url, null, null);
-    var path = uri.path.split("/");
-    path.pop();
-    var upurl = uri.prePath + path.join("/");
-    
-    window.gBrowser.loadURI(upurl);
+    this._performOnCurrentTab(function(currentTab) {
+      let url = new URL(currentTab.url);
+      let pathname = url.pathname;
+      // removing any trailing "/" and the leading "/"
+      pathname = pathname.replace(/\/$/, "").substring(1);
+      let pathnameItems = pathname.split("/");
+      pathnameItems.pop();
+      browser.tabs.update({
+        url: url.protocol + "//" + url.username +
+             (url.password === "" ? "" : ":" + url.password) +
+             (url.username === "" ? "" : "@") + url.hostname + "/" +
+             pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
+      });
+    });
   }, true, "root"),
   
   root : new CanGoUpDisableableAction("root", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var url = window.gBrowser.selectedBrowser.currentURI.spec;
-    var rootURL = this._getRootURL(url);
-    window.gBrowser.loadURI(rootURL);
+    this._performOnCurrentTab(function(currentTab) {
+      let url = new URL(currentTab.url);
+      browser.tabs.update({
+        url: url.protocol + "//" + url.username +
+             (url.password === "" ? "" : ":" + url.password) +
+             (url.username === "" ? "" : "@") + url.hostname
+      });
+    });
   }, false, "showOnlyThisFrame"),
   
   showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
