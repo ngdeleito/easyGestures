@@ -213,7 +213,9 @@ CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return !eGContext.anchorElementExists;
+    return new Promise(resolve => {
+      return resolve(!eGContext.anchorElementExists);
+    });
   }, startsNewGroup, nextAction);
 }
 LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -739,31 +741,44 @@ var eGActions = {
   }, false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var gBrowser = window.gBrowser;
     var url = eGContext.anchorElementHREF;
     
-    switch (eGPrefs.getOpenLinkPref()) {
-      case "curTab":
-        gBrowser.loadURI(url);
-        break;
-      case "newTab":
-        gBrowser.addTab(url);
-        break;
-      case "newWindow":
-        window.open(url);
-        break;
-    }
+    browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "getOpenLinkPref"
+    }).then(aMessage => {
+      switch (aMessage.response) {
+        case "curTab":
+          browser.tabs.update({
+            url: url
+          });
+          break;
+        case "newTab":
+          browser.tabs.create({
+            active: false,
+            url: url
+          });
+          break;
+        case "newWindow":
+          browser.windows.create({
+            url: url
+          });
+          break;
+      }
+    });
   }, true, "openLinkInNewWindow"),
   
   openLinkInNewWindow : new LinkExistsDisableableAction("openLinkInNewWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open(eGContext.anchorElementHREF);
+    browser.windows.create({
+      url: eGContext.anchorElementHREF
+    });
   }, false, "openLinkInNewPrivateWindow"),
   
   openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    this._openInPrivateWindow(eGContext.anchorElementHREF, window);
+    browser.windows.create({
+      incognito: true,
+      url: eGContext.anchorElementHREF
+    });
   }, false, "copyLink"),
   
   copyLink : new LinkExistsDisableableAction("copyLink", function() {
