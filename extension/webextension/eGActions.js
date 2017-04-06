@@ -223,45 +223,45 @@ LinkExistsDisableableAction.prototype.constructor = LinkExistsDisableableAction;
 
 function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
   DisableableAction.call(this, "dailyReadings", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadTabs(this.uris, true, false);
+    function traverseSubTree(node) {
+      if (node.children === undefined) {
+        browser.tabs.create({
+          active: false,
+          url: node.url
+        });
+      }
+      else {
+        node.children.forEach(subnode => {
+          traverseSubTree(subnode);
+        });
+      }
+    }
+    
+    traverseSubTree(this.rootNode);
   }, function() {
-    var folderName = eGPrefs.getDailyReadingsFolderName();
-    this.initializeURIsArrayWithContentsOfDailyReadingsFolder();
-    return folderName === "" || this.uris.length === 0;
+    return browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "getDailyReadingsFolderName"
+    }).then(async aMessage => {
+      let folderName = aMessage.response;
+      if (folderName === "") {
+        return true;
+      }
+      
+      let foundBookmarks = await browser.bookmarks.search({
+        title: folderName
+      });
+      return foundBookmarks.length === 0 ||
+             browser.bookmarks.getSubTree(foundBookmarks[0].id)
+                              .then(rootNode => {
+               this.rootNode = rootNode[0];
+               return rootNode[0].children === undefined;
+             });
+    });
   }, startsNewGroup, nextAction);
 }
 DailyReadingsDisableableAction.prototype = Object.create(DisableableAction.prototype);
 DailyReadingsDisableableAction.prototype.constructor = DailyReadingsDisableableAction;
-DailyReadingsDisableableAction.prototype.initializeURIsArrayWithContentsOfDailyReadingsFolder = function() {
-  function pushURIsContainedInFolder(resultNode, that) {
-    resultNode.containerOpen = true;
-    for (let i=0; i < resultNode.childCount; ++i) {
-      if (resultNode.getChild(i).type === 6) {
-        // the current child is a folder
-        let node = resultNode.getChild(i).QueryInterface(
-          Components.interfaces.nsINavHistoryContainerResultNode);
-        pushURIsContainedInFolder(node, that);
-      }
-      else if (resultNode.getChild(i).type === 0) {
-        // the current child is a bookmark (i.e. no folder, no separator)
-        that.uris.push(resultNode.getChild(i).uri);
-      }
-    }
-    resultNode.containerOpen = false;
-  }
-  
-  // var historyService =
-  //   Components.classes["@mozilla.org/browser/nav-history-service;1"]
-  //             .getService(Components.interfaces.nsINavHistoryService);
-  // var query = historyService.getNewQuery();
-  // query.setFolders([eGPrefs.getDailyReadingsFolderID()], 1);
-  // var options = historyService.getNewQueryOptions();
-  // var results = historyService.executeQuery(query, options);
-  
-  this.uris = [];
-  // pushURIsContainedInFolder(results.root, this);
-};
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, namePrefix + number, function() {
