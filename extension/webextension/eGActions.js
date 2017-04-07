@@ -794,24 +794,21 @@ var eGActions = {
   
   dailyReadings : new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
   
-  // useful links:
-  // http://mxr.mozilla.org/mozilla-central/source/browser/components/places/
-  // http://mxr.mozilla.org/mozilla-central/source/browser/base/content/browser-places.js
-  bookmarkThisPage : new Action("bookmarkThisPage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var bookmarksService =
-          Components.classes["@mozilla.org/browser/nav-bookmarks-service;1"]
-                    .getService(Components.interfaces.nsINavBookmarksService);
-    var uri = window.gBrowser.selectedBrowser.currentURI;
-    if (bookmarksService.isBookmarked(uri)) {
-      window.PlacesCommandHook.bookmarkCurrentPage(true,
-          window.PlacesUtils.unfiledBookmarksFolderId);
-    }
-    else {
-      bookmarksService.insertBookmark(bookmarksService.unfiledBookmarksFolder,
-                                      uri, bookmarksService.DEFAULT_INDEX,
-                                      window.gBrowser.selectedBrowser.contentTitle);
-    }
+  bookmarkThisPage : new DisableableAction("bookmarkThisPage", function() {
+    this._performOnCurrentTab(function(currentTab) {
+      browser.bookmarks.create({
+        title: currentTab.title,
+        url: currentTab.url
+      });
+    });
+  }, function() {
+    return this._performOnCurrentTab(function(currentTab) {
+      return browser.bookmarks.search({
+        url: currentTab.url
+      }).then(foundBookmarks => {
+        return foundBookmarks.length > 0;
+      });
+    });
   }, false, "bookmarkThisLink"),
   
   bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
