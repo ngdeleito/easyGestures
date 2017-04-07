@@ -68,8 +68,8 @@
   
   "dailyReadings": { "message": "Daily readings" },
   "bookmarkThisPage": { "message": "Bookmark this page" },
-  "bookmarkThisLink": { "message": "Bookmark this link..." },
-  "bookmarkOpenTabs": { "message": "Bookmark all tabs..." },
+  "bookmarkThisLink": { "message": "Bookmark this link" },
+  "bookmarkOpenTabs": { "message": "Bookmark all tabs" },
   "showBookmarks": { "message": "Show bookmarks" },
   "toggleBookmarksSidebar": { "message": "Toggle bookmarks" },
   "toggleBookmarksToolbar": { "message": "Toggle bookmarks toolbar" },

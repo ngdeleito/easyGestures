@@ -68,8 +68,8 @@
   
   "dailyReadings": { "message": "Lecturas diarias" },
   "bookmarkThisPage": { "message": "Añadir esta página a marcadores" },
-  "bookmarkThisLink": { "message": "Añadir este enlace a marcadores..." },
-  "bookmarkOpenTabs": { "message": "Añadir pestañas a marcadores..." },
+  "bookmarkThisLink": { "message": "Añadir este enlace a marcadores" },
+  "bookmarkOpenTabs": { "message": "Añadir pestañas a marcadores" },
   "showBookmarks": { "message": "Mostrar todos los marcadores" },
   "toggleBookmarksSidebar": { "message": "Mostrar/ocultar marcadores" },
   "toggleBookmarksToolbar": { "message": "Mostrar/ocultar la barra de marcadores" },

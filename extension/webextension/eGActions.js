@@ -811,16 +811,33 @@ var eGActions = {
     });
   }, false, "bookmarkThisLink"),
   
-  bookmarkThisLink : new LinkExistsDisableableAction("bookmarkThisLink", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.bookmarkLink(window.PlacesUtils.bookmarksMenuFolderId,
-                                          eGContext.anchorElementHREF,
-                                          eGContext.anchorElementText);
+  bookmarkThisLink : new DisableableAction("bookmarkThisLink", function() {
+    browser.bookmarks.create({
+      title: eGContext.anchorElementText,
+      url: eGContext.anchorElementHREF
+    });
+  }, function() {
+    return eGContext.anchorElementExists ? browser.bookmarks.search({
+                                             url: eGContext.anchorElementHREF
+                                           }).then(foundBookmarks => {
+                                             return foundBookmarks.length > 0;
+                                           })
+                                         : new Promise(resolve => {
+                                             return resolve(true);
+                                           });
   }, false, "bookmarkOpenTabs"),
   
   bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.bookmarkCurrentPages();
+    browser.windows.getCurrent({
+      populate: true
+    }).then(currentWindow => {
+      currentWindow.tabs.forEach(tab => {
+        browser.bookmarks.create({
+          title: tab.title,
+          url: tab.url
+        });
+      });
+    });
   }, false, "showBookmarks"),
   
   showBookmarks : new Action("showBookmarks", function() {
