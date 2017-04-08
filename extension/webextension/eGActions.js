@@ -938,7 +938,7 @@ var eGActions = {
   }, false, "easyGesturesNPreferences"),
   
   easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
-    eGUtils.showOrOpenTab("chrome://easygestures/content/options.html", true);
+    eGUtils.showOrOpenTab("/options/options.html", "", true);
   }, false, "copyImageLocation"),
   
   copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
