@@ -429,15 +429,21 @@ var eGActions = {
   pageTop : new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
   }, function() {
-    return eGContext.targetWindowScrollY === 0 &&
-           eGContext.topmostWindowScrollY === 0;
+    return new Promise(resolve => {
+      resolve(eGContext.targetWindowScrollY === 0 &&
+              eGContext.topmostWindowScrollY === 0);
+    });
   }, true, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
     return this._sendPerformActionMessage();
   }, function() {
-    return eGContext.targetWindowScrollY === eGContext.targetWindowScrollMaxY &&
-           eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY;
+    return new Promise(resolve => {
+      resolve(
+        eGContext.targetWindowScrollY === eGContext.targetWindowScrollMaxY &&
+        eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY
+      );
+    });
   }, false, "autoscrolling"),
   
   autoscrolling : new Action("autoscrolling", function() {
