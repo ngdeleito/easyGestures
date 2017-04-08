@@ -71,24 +71,24 @@ var eGMessageHandlers = {
     });
   },
   
-  runAction : function(aMessage, sendResponse) {
-    eGActions[aMessage.actionName].isDisabled().then(actionIsDisabled => {
+  runAction : function(aMessage) {
+    return eGActions[aMessage.actionName].isDisabled().then(actionIsDisabled => {
       var response = {
         actionIsDisabled: actionIsDisabled
       };
       if (!actionIsDisabled) {
-        try {
-          let result = eGActions[aMessage.actionName].run();
+        return eGActions[aMessage.actionName].run().then(result => {
           response.runActionName = result.runActionName;
           response.runActionOptions = result.runActionOptions;
-        }
-        catch(ex) {
-          console.error("easyGestures N exception: " + ex.toString());
-        }
+          return response;
+        }, error => {
+          console.error("easyGestures N: error when executing " +
+                        aMessage.actionName + " action: " + error);
+          return response;
+        });
       }
-      sendResponse(response);
+      return response;
     });
-    return true;
   },
   
   loadURLInNewNonActiveTab : function(aMessage) {

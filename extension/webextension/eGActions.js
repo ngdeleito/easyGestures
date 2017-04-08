@@ -65,11 +65,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = function() {
-    var response = action.call(this);
-    if (response === undefined) {
-      response = {};
-    }
-    return response;
+    return new Promise(resolve => {
+      resolve(action.call(this));
+    }).then(response => {
+      return response === undefined ? {} : response;
+    });
   };
   
   // startsNewGroup and nextAction are used in options.js to display a sorted
@@ -149,11 +149,6 @@ Action.prototype = {
       Components.utils.import("resource://gre/modules/Downloads.jsm");
       Downloads.fetch(uri, file);
     }
-  },
-  
-  _openInPrivateWindow: function(URL, window) {
-    window.open(URL, "_blank",
-                "toolbar,location,personalbar,resizable,scrollbars,private");
   },
   
   _openURLOn: function(url, on, newTabShouldBeActive) {
@@ -286,17 +281,28 @@ DailyReadingsDisableableAction.prototype.constructor = DailyReadingsDisableableA
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, namePrefix + number, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
-    var content = prefValue[1];
-    
-    content = content.replace("%s", eGContext.selection);
-    content = content.replace("%u", window.gBrowser.selectedBrowser.currentURI.spec);
-    
-    return action.call(this, content, window,
-                       3 in prefValue ? prefValue[3] : undefined);
+    return browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "getLoadURLOrRunScriptPrefValue",
+      parameter: this._name
+    }).then(aMessage => {
+      return this._performOnCurrentTab(currentTab => {
+        let prefValue = aMessage.response;
+        let content = prefValue[1];
+        content = content.replace("%s", eGContext.selection);
+        content = content.replace("%u", currentTab.url);
+        return action.call(this, content,
+                           3 in prefValue ? prefValue[3] : undefined);
+      });
+    });
   }, function() {
-    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)[1] === "";
+    return browser.runtime.sendMessage({
+      messageName: "query_eGPrefs",
+      methodName: "getLoadURLOrRunScriptPrefValue",
+      parameter: this._name
+    }).then(aMessage => {
+      return aMessage.response[1] === "";
+    });
   }, startsNewGroup, nextAction);
   
   this._number = number;
@@ -316,24 +322,20 @@ NumberedAction.prototype.getTooltipLabel = function() {
 
 function LoadURLAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "loadURL", number,
-    function(URL, window, openInPrivateWindow) {
-      var gBrowser = window.gBrowser;
-      
+    function(URL, openInPrivateWindow) {
       if (openInPrivateWindow === "true") {
-        this._openInPrivateWindow(URL, window);
+        browser.windows.create({
+          incognito: true,
+          url: URL
+        });
       }
       else {
-        switch (eGPrefs.getLoadURLInPref()) {
-          case "curTab":
-            gBrowser.loadURI(URL);
-            break;
-          case "newTab":
-            gBrowser.selectedTab = gBrowser.addTab(URL);
-            break;
-          case "newWindow":
-            window.open(URL);
-            break;
-        }
+        browser.runtime.sendMessage({
+          messageName: "query_eGPrefs",
+          methodName: "getLoadURLInPref"
+        }).then(aMessage => {
+          this._openURLOn(URL, aMessage.response, true);
+        });
       }
     }, startsNewGroup, nextAction);
 }
