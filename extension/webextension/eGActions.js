@@ -154,6 +154,27 @@ Action.prototype = {
   _openInPrivateWindow: function(URL, window) {
     window.open(URL, "_blank",
                 "toolbar,location,personalbar,resizable,scrollbars,private");
+  },
+  
+  _openURLOn: function(url, on, newTabShouldBeActive) {
+    switch (on) {
+      case "curTab":
+        browser.tabs.update({
+          url: url
+        });
+        break;
+      case "newTab":
+        browser.tabs.create({
+          active: newTabShouldBeActive,
+          url: url
+        });
+        break;
+      case "newWindow":
+        browser.windows.create({
+          url: url
+        });
+        break;
+    }
   }
 };
 
@@ -741,30 +762,11 @@ var eGActions = {
   }, false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
-    var url = eGContext.anchorElementHREF;
-    
     browser.runtime.sendMessage({
       messageName: "query_eGPrefs",
       methodName: "getOpenLinkPref"
     }).then(aMessage => {
-      switch (aMessage.response) {
-        case "curTab":
-          browser.tabs.update({
-            url: url
-          });
-          break;
-        case "newTab":
-          browser.tabs.create({
-            active: false,
-            url: url
-          });
-          break;
-        case "newWindow":
-          browser.windows.create({
-            url: url
-          });
-          break;
-      }
+      this._openURLOn(eGContext.anchorElementHREF, aMessage.response, false);
     });
   }, true, "openLinkInNewWindow"),
   
