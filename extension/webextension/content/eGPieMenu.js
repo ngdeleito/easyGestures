@@ -669,6 +669,10 @@ var eGPieMenu = {
     }
   },
   
+  runAction_commandAction : function(options) {
+    document.execCommand(options.commandName);
+  },
+  
   runAction : function() {
     var layout = this.menuSet[this.curLayoutName];
     

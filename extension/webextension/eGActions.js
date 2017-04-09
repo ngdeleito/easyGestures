@@ -379,6 +379,19 @@ DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   };
 };
 
+function CommandAction(name, startsNewGroup, nextAction) {
+  Action.call(this, name, function() {
+    return {
+      runActionName: "commandAction",
+      runActionOptions: {
+        commandName: name
+      }
+    };
+  }, startsNewGroup, nextAction);
+}
+CommandAction.prototype = Object.create(Action.prototype);
+CommandAction.prototype.constructor = CommandAction;
+
 function DisableableCommandAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
@@ -962,9 +975,9 @@ var eGActions = {
   
   hideImages : new DocumentContainsImagesDisableableAction("hideImages", false, "cut"),
   
-  cut : new DisableableCommandAction("cut", true, "copy"),
+  cut : new CommandAction("cut", true, "copy"),
   
-  copy : new DisableableCommandAction("copy", false, "paste"),
+  copy : new CommandAction("copy", false, "paste"),
   
   paste : new DisableableCommandAction("paste", false, "undo"),
   
