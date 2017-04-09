@@ -374,7 +374,8 @@ DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototy
 DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
 DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setHideImagesActionStatus"
+    messageName: "setHideImagesActionStatus",
+    status: undefined
   };
 };
 
