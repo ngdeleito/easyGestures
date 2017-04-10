@@ -39,8 +39,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global browser, document, contextualMenus, addEventListener,
           removeMenuEventHandler, anchorElement, window, handleMousemove,
           EXTRA_MENU_ACTION, targetWindow, topmostWindow, mousedownScreenX,
-          mouseupScreenX, mousedownScreenY, mouseupScreenY, imageElement, hide,
-          removeEventListener */
+          mouseupScreenX, mousedownScreenY, mouseupScreenY, imageElement,
+          inputElement, hide, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
@@ -671,6 +671,17 @@ var eGPieMenu = {
   
   runAction_commandAction : function(options) {
     document.execCommand(options.commandName);
+  },
+  
+  runAction_selectAll : function() {
+    if (inputElement !== null) {
+      inputElement.select();
+    }
+    else {
+      document.designMode = "on";
+      document.execCommand("selectAll");
+      document.designMode = "off";
+    }
   },
   
   runAction : function() {

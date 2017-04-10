@@ -986,5 +986,7 @@ var eGActions = {
   
   redo : new DisableableCommandAction("redo", false, "selectAll"),
   
-  selectAll : new DisableableCommandAction("selectAll", false, null)
+  selectAll : new Action("selectAll", function() {
+    return this._sendPerformActionMessage();
+  }, false, null)
 };

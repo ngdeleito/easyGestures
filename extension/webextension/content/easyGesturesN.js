@@ -43,7 +43,7 @@ const EXTRA_MENU_ACTION = 2;
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
 var targetDocument, targetWindow, topmostWindow;
-var selection, contextualMenus, anchorElement, imageElement;
+var selection, contextualMenus, anchorElement, imageElement, inputElement;
 
 function setPieMenuSettings() {
   browser.runtime.sendMessage({
@@ -89,6 +89,7 @@ function setContext(anHTMLElement, window, currentSelection) {
   var contextualMenus = [];
   var anchorElement = null;
   var imageElement = null;
+  var inputElement = null;
   var selection = currentSelection;
   if (anHTMLElement instanceof window.HTMLInputElement &&
       (anHTMLElement.type.toUpperCase() === "EMAIL" ||
@@ -100,11 +101,13 @@ function setContext(anHTMLElement, window, currentSelection) {
        anHTMLElement.type.toUpperCase() === "URL")) {
     inputBoxSelection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
                                                       anHTMLElement.selectionEnd);
+    inputElement = anHTMLElement;
     contextualMenus.push("contextTextbox");
   }
   else if (anHTMLElement instanceof window.HTMLTextAreaElement) {
     inputBoxSelection = anHTMLElement.value.substring(anHTMLElement.selectionStart,
                                                       anHTMLElement.selectionEnd);
+    inputElement = anHTMLElement;
     contextualMenus.push("contextTextbox");
   }
   else if (anHTMLElement instanceof window.HTMLAreaElement &&
@@ -134,7 +137,7 @@ function setContext(anHTMLElement, window, currentSelection) {
   if (selection !== "") {
     contextualMenus.push("contextSelection");
   }
-  return [selection, contextualMenus, anchorElement, imageElement];
+  return [selection, contextualMenus, anchorElement, imageElement, inputElement];
 }
 
 function handleMousedown(anEvent) {
@@ -172,7 +175,7 @@ function handleMousedown(anEvent) {
   topmostWindow = targetWindow.top;
   
   selection = cleanSelection(targetWindow.getSelection().toString());
-  [selection, contextualMenus, anchorElement, imageElement] =
+  [selection, contextualMenus, anchorElement, imageElement, inputElement] =
     setContext(anEvent.target, targetWindow, selection);
   
   var centerX = anEvent.clientX + targetWindow.mozInnerScreenX -
