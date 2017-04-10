@@ -53,6 +53,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |    |-- LoadURLAction
 //       |    |-- RunScriptAction
 //       |-- ImageExistsDisableableAction
+//       |-- CommandAction
 //       |-- DisableableCommandAction
 
 /* exported eGActions */
@@ -979,7 +980,7 @@ var eGActions = {
   
   copy : new CommandAction("copy", false, "paste"),
   
-  paste : new DisableableCommandAction("paste", false, "undo"),
+  paste : new CommandAction("paste", false, "undo"),
   
   undo : new DisableableCommandAction("undo", false, "redo"),
   
