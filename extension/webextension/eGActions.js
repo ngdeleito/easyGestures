@@ -57,8 +57,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisableableCommandAction
 
 /* exported eGActions */
-/* global Components, browser, Services, eGContext, eGPrefs, Downloads,
-          eGUtils */
+/* global Components, browser, Services, eGContext, eGPrefs, eGUtils */
 
 // Components.utils.import("resource://gre/modules/Services.jsm");
 // Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
@@ -120,36 +119,6 @@ Action.prototype = {
       runActionName: this._name,
       runActionOptions: options
     };
-  },
-  
-  _getFileForSavingData: function(filter, defaultName) {
-    const nsIFilePicker = Components.interfaces.nsIFilePicker;
-    var fp = Components.classes["@mozilla.org/filepicker;1"]
-                       .createInstance(nsIFilePicker);
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    fp.init(window, null, nsIFilePicker.modeSave);
-    fp.appendFilters(filter);
-    fp.defaultString = defaultName;
-    var returnValue = fp.show();
-    if (returnValue === nsIFilePicker.returnOK || returnValue === nsIFilePicker.returnReplace) {
-      return fp.file;
-    }
-    else {
-      return null;
-    }
-  },
-  
-  _saveContentFromLink: function(link, filter) {
-    var uri = Services.io.newURI(link, null, null);
-    var file = this._getFileForSavingData(
-                 filter,
-                 uri.path.substring(uri.path.lastIndexOf("/") + 1));
-    
-    if (file !== null) {
-      Components.utils.import("resource://gre/modules/Downloads.jsm");
-      Downloads.fetch(uri, file);
-    }
   },
   
   _openURLOn: function(url, on, newTabShouldBeActive) {
@@ -358,7 +327,9 @@ RunScriptAction.prototype.constructor = RunScriptAction;
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return eGContext.imageElementDoesntExist;
+    return new Promise(resolve => {
+      return resolve(eGContext.imageElementDoesntExist);
+    });
   }, startsNewGroup, nextAction);
 }
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -523,8 +494,13 @@ var eGActions = {
   }, false, "savePageAs"),
   
   savePageAs : new Action("savePageAs", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.saveBrowser(window.gBrowser.selectedBrowser);
+    this._performOnCurrentTab(function(currentTab) {
+      browser.downloads.download({
+        url: currentTab.url,
+        filename: currentTab.title,
+        saveAs: true
+      }).catch(() => {});
+    });
   }, false, "printPage"),
   
   printPage : new Action("printPage", function() {
@@ -813,8 +789,10 @@ var eGActions = {
   }, false, "saveLinkAs"),
   
   saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
-    this._saveContentFromLink(eGContext.anchorElementHREF,
-                              Components.interfaces.nsIFilePicker.filterHTML);
+    browser.downloads.download({
+      url: eGContext.anchorElementHREF,
+      saveAs: true
+    }).catch(() => {});
   }, false, "dailyReadings"),
   
   dailyReadings : new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
@@ -970,8 +948,10 @@ var eGActions = {
   }, false, "saveImageAs"),
   
   saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
-    this._saveContentFromLink(eGContext.imageElementSRC,
-                              Components.interfaces.nsIFilePicker.filterImages);
+    browser.downloads.download({
+      url: eGContext.imageElementSRC,
+      saveAs: true
+    }).catch(() => {});
   }, false, "hideImages"),
   
   hideImages : new DocumentContainsImagesDisableableAction("hideImages", false, "cut"),
