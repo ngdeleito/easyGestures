@@ -658,6 +658,20 @@ var eGPieMenu = {
     window.print();
   },
   
+  runAction_copyInformation: function(options) {
+    var selection = window.getSelection();
+    selection.removeAllRanges();
+    var node = document.createElement("div");
+    node.textContent = options.information;
+    var easyGesturesNode = document.getElementById(this.easyGesturesID);
+    easyGesturesNode.appendChild(node);
+    var range = document.createRange();
+    range.selectNode(node);
+    selection.addRange(range);
+    document.execCommand("copy");
+    easyGesturesNode.removeChild(node);
+  },
+  
   runAction_runScript: function(options) {
     eval(options.script);
   },

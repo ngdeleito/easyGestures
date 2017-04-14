@@ -783,9 +783,12 @@ var eGActions = {
   }, false, "copyLink"),
   
   copyLink : new LinkExistsDisableableAction("copyLink", function() {
-    Components.classes["@mozilla.org/widget/clipboardhelper;1"]
-              .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGContext.anchorElementHREF);
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.anchorElementHREF
+      }
+    };
   }, false, "saveLinkAs"),
   
   saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
@@ -936,9 +939,12 @@ var eGActions = {
   
   copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
     function() {
-    Components.classes["@mozilla.org/widget/clipboardhelper;1"]
-              .getService(Components.interfaces.nsIClipboardHelper)
-              .copyString(eGContext.imageElementSRC);
+      return {
+        runActionName: "copyInformation",
+        runActionOptions: {
+          information: eGContext.imageElementSRC
+        }
+      };
   }, true, "copyImage"),
   
   copyImage : new ImageExistsDisableableAction("copyImage", function() {
