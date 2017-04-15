@@ -16,8 +16,6 @@ The Original Code is easyGestures N.
 The Initial Developer of the Original Code is ngdeleito.
 
 Contributor(s):
-  Jens Tinz, his portions are Copyright (C) 2002. All Rights Reserved.
-  Ons Besbes.
 
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -54,13 +52,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |    |-- RunScriptAction
 //       |-- ImageExistsDisableableAction
 //       |-- CommandAction
-//       |-- DisableableCommandAction
+//       |-- DisabledAction
 
 /* exported eGActions */
-/* global Components, browser, Services, eGContext, eGPrefs, eGUtils */
-
-// Components.utils.import("resource://gre/modules/Services.jsm");
-// Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
+/* global browser, URL, eGContext, eGPrefs, eGUtils */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -364,19 +359,15 @@ function CommandAction(name, startsNewGroup, nextAction) {
 CommandAction.prototype = Object.create(Action.prototype);
 CommandAction.prototype.constructor = CommandAction;
 
-function DisableableCommandAction(name, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.goDoCommand("cmd_" + name);
-  }, function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var controller = window.document.commandDispatcher
-                                    .getControllerForCommand("cmd_" + name);
-    return controller === null || !controller.isCommandEnabled("cmd_" + name);
+function DisabledAction(name, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, function() {}, function() {
+    return new Promise(resolve => {
+      resolve(true);
+    });
   }, startsNewGroup, nextAction);
 }
-DisableableCommandAction.prototype = Object.create(DisableableAction.prototype);
-DisableableCommandAction.prototype.constructor = DisableableCommandAction;
+DisabledAction.prototype = Object.create(DisableableAction.prototype);
+DisabledAction.prototype.constructor = DisabledAction;
 
 
 var eGActions = {
@@ -388,17 +379,17 @@ var eGActions = {
     return this._sendPerformActionMessage();
   }, true, "backSite"),
   
-  backSite : new Action("backSite", function() {}, false, "firstPage"),
+  backSite : new DisabledAction("backSite", false, "firstPage"),
   
-  firstPage : new Action("firstPage", function() {}, false, "forward"),
+  firstPage : new DisabledAction("firstPage", false, "forward"),
   
   forward : new Action("forward", function() {
     return this._sendPerformActionMessage();
   }, false, "forwardSite"),
   
-  forwardSite : new Action("forwardSite", function() {}, false, "lastPage"),
+  forwardSite : new DisabledAction("forwardSite", false, "lastPage"),
   
-  lastPage : new Action("lastPage", function() {}, false, "reload"),
+  lastPage : new DisabledAction("lastPage", false, "reload"),
   
   reload : new Action("reload", function() {
     browser.tabs.reload({
@@ -406,11 +397,7 @@ var eGActions = {
     });
   }, false, "homepage"),
   
-  homepage : new Action("homepage", function() {
-    var homepage = Services.prefs.getCharPref("browser.startup.homepage");
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gBrowser.loadTabs(homepage.split("|"), true, false);
-  }, false, "pageTop"),
+  homepage : new DisabledAction("homepage", false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
@@ -432,11 +419,7 @@ var eGActions = {
     });
   }, false, "autoscrolling"),
   
-  autoscrolling : new Action("autoscrolling", function() {
-    return this._sendPerformActionMessage({
-             useMousedownCoordinates: false
-           });
-  }, false, "zoomIn"),
+  autoscrolling : new DisabledAction("autoscrolling", false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
     if (eGContext.imageElementDoesntExist) {
@@ -483,15 +466,7 @@ var eGActions = {
     });
   }, false, "toggleFindBar"),
   
-  toggleFindBar : new Action("toggleFindBar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (window.gFindBar.hidden) {
-      window.gFindBar.onFindCommand();
-    }
-    else {
-      window.gFindBar.close();
-    }
-  }, false, "savePageAs"),
+  toggleFindBar : new DisabledAction("toggleFindBar", false, "savePageAs"),
   
   savePageAs : new Action("savePageAs", function() {
     this._performOnCurrentTab(function(currentTab) {
@@ -507,15 +482,9 @@ var eGActions = {
     return this._sendPerformActionMessage();
   }, false, "viewPageSource"),
   
-  viewPageSource : new Action("viewPageSource", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserViewSource(window.gBrowser.selectedBrowser);
-  }, false, "viewPageInfo"),
+  viewPageSource : new DisabledAction("viewPageSource", false, "viewPageInfo"),
   
-  viewPageInfo : new Action("viewPageInfo", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserPageInfo();
-  }, false, "newTab"),
+  viewPageInfo : new DisabledAction("viewPageInfo", false, "newTab"),
   
   newTab : new Action("newTab", function() {
     browser.tabs.create({});
@@ -729,30 +698,15 @@ var eGActions = {
     });
   }, false, "showOnlyThisFrame"),
   
-  showOnlyThisFrame : new Action("showOnlyThisFrame", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.loadURI(eGContext.targetDocumentURL);
-  }, false, "focusLocationBar"),
+  showOnlyThisFrame : new DisabledAction("showOnlyThisFrame", false, "focusLocationBar"),
   
-  focusLocationBar : new Action("focusLocationBar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.gURLBar.focus();
-  }, false, "searchWeb"),
+  focusLocationBar : new DisabledAction("focusLocationBar", false, "searchWeb"),
   
-  searchWeb : new Action("searchWeb", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.BrowserSearch.searchBar.value = eGContext.selection;
-    window.BrowserSearch.webSearch();
-  }, false, "quit"),
+  searchWeb : new DisabledAction("searchWeb", false, "quit"),
   
-  quit : new Action("quit", function() {
-    Services.startup.quit(Components.interfaces.nsIAppStartup.eForceQuit);
-  }, false, "restart"),
+  quit : new DisabledAction("quit", false, "restart"),
   
-  restart : new Action("restart", function() {
-    Services.startup.quit(Components.interfaces.nsIAppStartup.eAttemptQuit |
-                          Components.interfaces.nsIAppStartup.eRestart);
-  }, false, "openLink"),
+  restart : new DisabledAction("restart", false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
     browser.runtime.sendMessage({
@@ -840,44 +794,17 @@ var eGActions = {
     });
   }, false, "showBookmarks"),
   
-  showBookmarks : new Action("showBookmarks", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.showPlacesOrganizer("AllBookmarks");
-  }, false, "toggleBookmarksSidebar"),
+  showBookmarks : new DisabledAction("showBookmarks", false, "toggleBookmarksSidebar"),
   
-  toggleBookmarksSidebar : new Action("toggleBookmarksSidebar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.SidebarUI.toggle("viewBookmarksSidebar");
-  }, false, "toggleBookmarksToolbar"),
+  toggleBookmarksSidebar : new DisabledAction("toggleBookmarksSidebar", false, "toggleBookmarksToolbar"),
   
-  toggleBookmarksToolbar : new Action("toggleBookmarksToolbar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var document = window.document;
-    var tb = document.getElementById("PersonalToolbar");
-    if (tb.hasAttribute("collapsed")) {
-      tb.removeAttribute("collapsed");
-    }
-    else {
-      tb.setAttribute("collapsed", true);
-    }
-    // make it persistent
-    document.persist("PersonalToolbar", "collapsed");
-  }, false, "showHistory"),
+  toggleBookmarksToolbar : new DisabledAction("toggleBookmarksToolbar", false, "showHistory"),
   
-  showHistory : new Action("showHistory", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.showPlacesOrganizer("History");
-  }, false, "toggleHistorySidebar"),
+  showHistory : new DisabledAction("showHistory", false, "toggleHistorySidebar"),
   
-  toggleHistorySidebar : new Action("toggleHistorySidebar", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.SidebarUI.toggle("viewHistorySidebar");
-  }, false, "showDownloads"),
+  toggleHistorySidebar : new DisabledAction("toggleHistorySidebar", false, "showDownloads"),
   
-  showDownloads : new Action("showDownloads", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.PlacesCommandHook.showPlacesOrganizer("Downloads");
-  }, false, "loadURL1"),
+  showDownloads : new DisabledAction("showDownloads", false, "loadURL1"),
   
   loadURL1 : new LoadURLAction(1, true, "loadURL2"),
   
@@ -919,13 +846,9 @@ var eGActions = {
   
   runScript10 : new RunScriptAction(10, false, "firefoxPreferences"),
   
-  firefoxPreferences : new Action("firefoxPreferences", function() {
-    eGUtils.showOrOpenTab("about:preferences", true);
-  }, true, "addOns"),
+  firefoxPreferences : new DisabledAction("firefoxPreferences", true, "addOns"),
   
-  addOns : new Action("addOns", function() {
-    eGUtils.showOrOpenTab("about:addons", true);
-  }, false, "easyGesturesNPreferences"),
+  addOns : new DisabledAction("addOns", false, "easyGesturesNPreferences"),
   
   easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
     eGUtils.showOrOpenTab("/options/options.html", "", true);
@@ -941,11 +864,7 @@ var eGActions = {
       };
   }, true, "copyImage"),
   
-  copyImage : new ImageExistsDisableableAction("copyImage", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    // window.document.popupNode = eGPieMenu.imageElement;
-    window.goDoCommand("cmd_copyImageContents");
-  }, false, "saveImageAs"),
+  copyImage : new DisabledAction("copyImage", false, "saveImageAs"),
   
   saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
     browser.downloads.download({
@@ -962,9 +881,9 @@ var eGActions = {
   
   paste : new CommandAction("paste", false, "undo"),
   
-  undo : new DisableableCommandAction("undo", false, "redo"),
+  undo : new DisabledAction("undo", false, "redo"),
   
-  redo : new DisableableCommandAction("redo", false, "selectAll"),
+  redo : new DisabledAction("redo", false, "selectAll"),
   
   selectAll : new Action("selectAll", function() {
     return this._sendPerformActionMessage();

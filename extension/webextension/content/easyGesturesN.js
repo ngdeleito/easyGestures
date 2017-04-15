@@ -196,7 +196,6 @@ function handleMousedown(anEvent) {
       anchorElementText: anchorElement !== null ? anchorElement.text : null,
       imageElementDoesntExist: imageElement === null,
       imageElementSRC: imageElement !== null ? imageElement.src : null,
-      targetDocumentURL: targetDocument.URL,
       targetWindowScrollY: targetWindow.scrollY,
       targetWindowScrollMaxY: targetWindow.scrollMaxY,
       topmostWindowScrollY: topmostWindow.scrollY,
