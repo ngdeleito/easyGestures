@@ -619,13 +619,7 @@ var eGActions = {
   }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    window.open("about:blank");
-    if (Services.prefs.getIntPref("browser.startup.page") !== 0) {
-      window = Services.wm.getMostRecentWindow("navigator:browser");
-      let homepage = Services.prefs.getCharPref("browser.startup.homepage");
-      window.gBrowser.loadTabs(homepage.split("|"), true, true);
-    }
+    eGActions.newBlankWindow.run();
   }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
