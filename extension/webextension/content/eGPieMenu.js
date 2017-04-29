@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, document, contextualMenus, addEventListener,
+/* global browser, eGPrefs, document, contextualMenus, addEventListener,
           removeMenuEventHandler, anchorElement, window, handleMousemove,
           EXTRA_MENU_ACTION, targetWindow, topmostWindow, mousedownScreenX,
           mouseupScreenX, mousedownScreenY, mouseupScreenY, imageElement,
@@ -95,12 +95,8 @@ MenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   if (!this.isLarge && sector > 4) {
     sector8To10++;
   }
-  browser.runtime.sendMessage({
-    messageName: "updateStatsForActionToBeExecuted",
-    type: "main",
-    position: this._layoutNumber * 10 + sector8To10,
-    actionName: this.actions[sector]
-  });
+  eGPrefs.incrementStatsMainMenuPref(this._layoutNumber * 10 + sector8To10);
+  eGPrefs.updateStatsForAction(this.actions[sector]);
 };
 MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
   var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
@@ -132,12 +128,8 @@ ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
 ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
   var sector = this._pieMenu.sector;
-  browser.runtime.sendMessage({
-    messageName: "updateStatsForActionToBeExecuted",
-    type: "extra",
-    position: this._layoutNumber * 5 + sector,
-    actionName: this.actions[sector]
-  });
+  eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 5 + sector);
+  eGPrefs.updateStatsForAction(this.actions[sector]);
 };
 ExtraMenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
@@ -154,11 +146,7 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
                          contextualMenus.length];
 };
 ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
-  browser.runtime.sendMessage({
-    messageName: "updateStatsForActionToBeExecuted",
-    type: "contextual",
-    actionName: this.actions[this._pieMenu.sector]
-  });
+  eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
 };
 ContextualMenuLayout.prototype.updateMenuSign = function() {
   var specialNodes = document.getElementById("eG_SpecialNodes");
@@ -179,12 +167,12 @@ var eGPieMenu = {
   
   init : function() {
     this.numberOfMainMenus = 1 +
-      ((this.settings.mainAlt1MenuEnabled || this.settings.mainAlt2MenuEnabled) ? 1 : 0) +
-      ((this.settings.mainAlt1MenuEnabled && this.settings.mainAlt2MenuEnabled) ? 1 : 0);
+      ((this.settings.mainAlt1Enabled || this.settings.mainAlt2Enabled) ? 1 : 0) +
+      ((this.settings.mainAlt1Enabled && this.settings.mainAlt2Enabled) ? 1 : 0);
     
     this.numberOfExtraMenus = 1 +
-      ((this.settings.extraAlt1MenuEnabled || this.settings.extraAlt2MenuEnabled) ? 1 : 0) +
-      ((this.settings.extraAlt1MenuEnabled && this.settings.extraAlt2MenuEnabled) ? 1 : 0);
+      ((this.settings.extraAlt1Enabled || this.settings.extraAlt2Enabled) ? 1 : 0) +
+      ((this.settings.extraAlt1Enabled && this.settings.extraAlt2Enabled) ? 1 : 0);
     
     // initializing properties
     this.easyGesturesID = "easyGesturesPieMenu_" +
@@ -213,40 +201,40 @@ var eGPieMenu = {
     
     this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
       main: new MenuLayout(this, "main", 0,
-                           this.settings.mainAlt1MenuEnabled ? "mainAlt1" :
-                             (this.settings.mainAlt2MenuEnabled ? "mainAlt2" : "main"),
-                           this.settings.menusMain.split("/")),
+                           this.settings.mainAlt1Enabled ? "mainAlt1" :
+                             (this.settings.mainAlt2Enabled ? "mainAlt2" : "main"),
+                           this.settings.main.split("/")),
       
       mainAlt1: new MenuLayout(this, "mainAlt1", 1,
-                               this.settings.mainAlt2MenuEnabled ? "mainAlt2" : "main",
-                               this.settings.menusMainAlt1.split("/")),
+                               this.settings.mainAlt2Enabled ? "mainAlt2" : "main",
+                               this.settings.mainAlt1.split("/")),
       
       mainAlt2: new MenuLayout(this, "mainAlt2", 2, "main",
-                               this.settings.menusMainAlt2.split("/")),
+                               this.settings.mainAlt2.split("/")),
       
       extra: new ExtraMenuLayout(this, "extra", 0,
-                                 this.settings.extraAlt1MenuEnabled ? "extraAlt1" :
-                                   (this.settings.extraAlt2MenuEnabled ? "extraAlt2" : "extra"),
-                                 this.settings.menusExtra.split("/")),
+                                 this.settings.extraAlt1Enabled ? "extraAlt1" :
+                                   (this.settings.extraAlt2Enabled ? "extraAlt2" : "extra"),
+                                 this.settings.extra.split("/")),
       
       extraAlt1: new ExtraMenuLayout(this, "extraAlt1", 1,
-                                     this.settings.extraAlt2MenuEnabled ? "extraAlt2" : "extra",
-                                     this.settings.menusExtraAlt1.split("/")),
+                                     this.settings.extraAlt2Enabled ? "extraAlt2" : "extra",
+                                     this.settings.extraAlt1.split("/")),
       
       extraAlt2: new ExtraMenuLayout(this, "extraAlt2", 2, "extra",
-                                     this.settings.menusExtraAlt2.split("/")),
+                                     this.settings.extraAlt2.split("/")),
       
       contextLink: new ContextualMenuLayout(this, "contextLink",
-                                            this.settings.menusContextLink.split("/")),
+                                            this.settings.contextLink.split("/")),
       
       contextImage: new ContextualMenuLayout(this, "contextImage",
-                                             this.settings.menusContextImage.split("/")),
+                                             this.settings.contextImage.split("/")),
       
       contextSelection: new ContextualMenuLayout(this, "contextSelection",
-                                                 this.settings.menusContextSelection.split("/")),
+                                                 this.settings.contextSelection.split("/")),
       
       contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
-                                               this.settings.menusContextTextbox.split("/"))
+                                               this.settings.contextTextbox.split("/"))
     };
   },
   

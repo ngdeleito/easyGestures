@@ -8,18 +8,18 @@
   
   "default_locale": "en",
   "permissions": [
-    "clipboardWrite", "bookmarks", "downloads", "sessions", "tabs"
+    "bookmarks", "clipboardWrite", "downloads", "sessions", "storage", "tabs"
   ],
   "background": {
     "scripts": [
-      "eGUtils.js", "eGContext.js", "eGActions.js",
+      "eGUtils.js", "eGContext.js", "eGActions.js", "eGPrefs.js",
       "easyGesturesN-background.js"
     ]
   },
   "content_scripts": [{
     "matches": ["<all_urls>"],
     "css": ["content/easyGesturesN.css"],
-    "js": ["content/eGPieMenu.js", "content/easyGesturesN.js"]
+    "js": ["eGPrefs.js", "content/eGPieMenu.js", "content/easyGesturesN.js"]
   }],
   "options_ui": {
     "page": "options/options.html",

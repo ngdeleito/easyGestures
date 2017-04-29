@@ -32,7 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global window, eGUtils, browser, document, eGActions, alert, confirm */
+/* global window, eGUtils, eGPrefs, browser, document, eGActions, alert,
+          confirm */
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
@@ -148,11 +149,8 @@ function createMenuControl(menuName, isExtraMenu) {
   var menuControlElement = document.getElementById("menuControl_" + menuName);
   menuControlElement.className = "menu";
   menuControlElement.classList.toggle("extra", isExtraMenu);
-  browser.runtime.sendMessage({
-    "messageName": "query_eGPrefs",
-    "methodName": "isLargeMenuOff"
-  }).then(aMessage => {
-    menuControlElement.classList.toggle("large", !aMessage.response);
+  eGPrefs.isLargeMenuOn().then(prefValue => {
+    menuControlElement.classList.toggle("large", prefValue);
   });
   
   var actionElements = document.createElement("div");
@@ -388,12 +386,7 @@ function addFavicon(url, actionName) {
 
 function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getIntPref",
-      parameter: control.dataset.preference
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
+    eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
       var aSelectElement = control.firstElementChild;
       var aLabelElement = aSelectElement.nextElementSibling;
       var aTextInputElement = aLabelElement.nextElementSibling;
@@ -406,35 +399,20 @@ function initializePreferenceControl(control) {
   }
   
   function initializeIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getIntPref",
-      parameter: control.dataset.preference
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
+    eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
       control.querySelector("input[value='" + prefValue + "']").checked = true;
     });
   }
   
   function initializeBoolRadiogroupControl(control) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getBoolPref",
-      parameter: control.dataset.preference
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
+    eGPrefs.getBoolPref(control.dataset.preference).then(prefValue => {
       var childIndexToSet = prefValue ? 1 : 0;
       control.getElementsByTagName("input")[childIndexToSet].checked = true;
     });
   }
   
   function initializeMenuControl(control) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getMenuPrefAsArray",
-      parameter: control.dataset.preference
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
+    eGPrefs.getMenuPrefAsArray(control.dataset.preference).then(prefValue => {
       prefValue.forEach(function(value, index) {
         control.firstElementChild.childNodes[index].dataset.action = value;
         control.lastElementChild.childNodes[index]
@@ -444,24 +422,13 @@ function initializePreferenceControl(control) {
   }
   
   function initializeSelectControl(control) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getCharPref",
-      parameter: control.dataset.preference
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
+    eGPrefs.getCharPref(control.dataset.preference).then(prefValue => {
       control.querySelector("[value=" + prefValue + "]").selected = true;
     });
   }
   
   function initializeLoadURLPreference(actionName) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getLoadURLOrRunScriptPrefValue",
-      parameter: actionName
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
-      
+    eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_URL").value = prefValue[1];
       var isFaviconEnabled = prefValue[2] === "true";
@@ -480,13 +447,7 @@ function initializePreferenceControl(control) {
   }
   
   function initializeRunScriptPreference(actionName) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getLoadURLOrRunScriptPrefValue",
-      parameter: actionName
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
-      
+    eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_code").value = prefValue[1];
       document.getElementById(actionName + "_customIconCheckbox").checked =
@@ -497,12 +458,7 @@ function initializePreferenceControl(control) {
   }
   
   function initializeStringRadiogroup(control) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getCharPref",
-      parameter: control.dataset.preference
-    }).then(aMessage => {
-      var prefValue = aMessage.response;
+    eGPrefs.getCharPref(control.dataset.preference).then(prefValue => {
       control.querySelector("[value=" + prefValue + "]").checked = true;
     });
   }
@@ -530,22 +486,15 @@ function initializePreferenceControl(control) {
         document.getElementById("bookmarkFolders").appendChild(option);
       });
     });
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getDailyReadingsFolderName",
-    }).then(aMessage => {
-      control.value = aMessage.response;
+    eGPrefs.getDailyReadingsFolderName().then(prefValue => {
+      control.value = prefValue;
     });
   }
   
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "getBoolPref",
-        parameter: control.dataset.preference
-      }).then(aMessage => {
-        control.checked = aMessage.response;
+      eGPrefs.getBoolPref(control.dataset.preference).then(prefValue => {
+        control.checked = prefValue;
       });
       break;
     case "selectWithTextInput":
@@ -558,12 +507,8 @@ function initializePreferenceControl(control) {
       initializeBoolRadiogroupControl(control);
       break;
     case "numberInput":
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "getIntPref",
-        parameter: control.dataset.preference
-      }).then(aMessage => {
-        control.value = aMessage.response;
+      eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+        control.value = prefValue;
       });
       break;
     case "menu":
@@ -597,12 +542,8 @@ function preparePreferenceValueForLoadURL(actionName) {
 
 function addEventListenerToLoadURLTooltip(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setLoadURLOrRunScriptPrefValue",
-      parameter: aPrefName,
-      parameter2: preparePreferenceValueForLoadURL(actionName)
-    });
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
@@ -611,12 +552,8 @@ function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
     if (document.getElementById(actionName + "_faviconCheckbox").checked) {
       addFavicon(this.value, actionName);
     }
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setLoadURLOrRunScriptPrefValue",
-      parameter: aPrefName,
-      parameter2: preparePreferenceValueForLoadURL(actionName)
-    });
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
@@ -630,23 +567,15 @@ function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
       document.getElementById(actionName + "_favicon").src =
         DEFAULT_FAVICON_URL;
     }
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setLoadURLOrRunScriptPrefValue",
-      parameter: aPrefName,
-      parameter2: preparePreferenceValueForLoadURL(actionName)
-    });
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
 function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setLoadURLOrRunScriptPrefValue",
-      parameter: aPrefName,
-      parameter2: preparePreferenceValueForLoadURL(actionName)
-    });
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForLoadURL(actionName));
   });
 }
 
@@ -658,23 +587,15 @@ function preparePreferenceValueForRunScript(actionName) {
 
 function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setLoadURLOrRunScriptPrefValue",
-      parameter: aPrefName,
-      parameter2: preparePreferenceValueForRunScript(actionName)
-    });
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForRunScript(actionName));
   }, false);
 }
 
 function addEventListenerToRunScriptCode(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setLoadURLOrRunScriptPrefValue",
-      parameter: aPrefName,
-      parameter2: preparePreferenceValueForRunScript(actionName)
-    });
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForRunScript(actionName));
   }, false);
 }
 
@@ -689,22 +610,14 @@ function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
             "file://" + aMessage.path;
         }
         this.checked = aMessage.returnedOK;
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "setLoadURLOrRunScriptPrefValue",
-          parameter: aPrefName,
-          parameter2: preparePreferenceValueForRunScript(actionName)
-        });
+        eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+          preparePreferenceValueForRunScript(actionName));
       });
     }
     else {
       document.getElementById(actionName + "_customIconURL").textContent = "";
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "setLoadURLOrRunScriptPrefValue",
-        parameter: aPrefName,
-        parameter2: preparePreferenceValueForRunScript(actionName)
-      });
+      eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+        preparePreferenceValueForRunScript(actionName));
     }
   }, false);
 }
@@ -721,24 +634,15 @@ function addOnchangeListenerToPreferenceControl(control) {
       
       if (shouldBeDisabled) {
         aTextInputElement.value = aSelectElement.selectedIndex;
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "setIntPref",
-          parameter: control.dataset.preference,
-          parameter2: aSelectElement.selectedIndex
-        });
+        eGPrefs.setIntPref(control.dataset.preference,
+                           aSelectElement.selectedIndex);
       }
       else {
         aTextInputElement.focus();
       }
     }, true);
     aTextInputElement.addEventListener("change", function(anEvent) {
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "setIntPref",
-        parameter: control.dataset.preference,
-        parameter2: anEvent.target.value
-      });
+      eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
     }, true);
   }
   
@@ -756,24 +660,14 @@ function addOnchangeListenerToPreferenceControl(control) {
       if ((showKey !== "0" &&
            (showKey === preventOpenKey || showKey === contextKey)) ||
           (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "getIntPref",
-          parameter: control.dataset.preference
-        }).then(aMessage => {
-          let currentValue = aMessage.response;
+        eGPrefs.getIntPref(control.dataset.preference).then(currentValue => {
           anEvent.target.parentElement.parentElement
                  .querySelector("[value='" + currentValue + "']").checked = true;
           alert(browser.i18n.getMessage("activation.duplicateKey"));
         });
       }
       else {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "setIntPref",
-          parameter: control.dataset.preference,
-          parameter2: anEvent.target.value
-        });
+        eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
       }
     }
     
@@ -785,12 +679,8 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToBoolRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "setBoolPref",
-        parameter: control.dataset.preference,
-        parameter2: anEvent.target.value === "true"
-      });
+      eGPrefs.setBoolPref(control.dataset.preference,
+                          anEvent.target.value === "true");
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -806,12 +696,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       for (let i = 0; i < selectElements.childNodes.length; ++i) {
         prefValueAsArray.push(selectElements.childNodes[i].value);
       }
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "setMenuPref",
-        parameter: control.dataset.preference,
-        parameter2: prefValueAsArray
-      });
+      eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
     }
     
     var selectElements = control.lastElementChild;
@@ -844,12 +729,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToStringRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
-      browser.runtime.sendMessage({
-        messageName: "query_eGPrefs",
-        methodName: "setCharPref",
-        parameter: control.dataset.preference,
-        parameter2: anEvent.target.value
-      });
+      eGPrefs.setCharPref(control.dataset.preference, anEvent.target.value);
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -861,11 +741,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
       control.addEventListener("change", function() {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "toggleBoolPref",
-          parameter: control.dataset.preference,
-        });
+        eGPrefs.toggleBoolPref(control.dataset.preference);
       }, true);
       break;
     case "selectWithTextInput":
@@ -879,12 +755,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "numberInput":
       control.addEventListener("change", function() {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "setIntPref",
-          parameter: control.dataset.preference,
-          parameter2: control.value
-        });
+        eGPrefs.setIntPref(control.dataset.preference, control.value);
       }, true);
       break;
     case "menu":
@@ -892,12 +763,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "select":
       control.addEventListener("change", function() {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "setCharPref",
-          parameter: control.dataset.preference,
-          parameter2: control.value
-        });
+        eGPrefs.setCharPref(control.dataset.preference, control.value);
       }, true);
       break;
     case "loadURL":
@@ -911,33 +777,26 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "dailyReadingsInput":
       control.addEventListener("change", function() {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "setDailyReadingsFolderName",
-          parameter: control.value
-        });
+        eGPrefs.setDailyReadingsFolderName(control.value);
       }, true);
       break;
   }
 }
 
 function setMenuType(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isLargeMenuOff",
-  }).then(aMessage => {
-    var menuTypeIsStandard = anEvent === undefined ? aMessage.response :
-                                                     !anEvent.target.value;
+  eGPrefs.isLargeMenuOn().then(prefValue => {
+    var menuTypeIsLarge = anEvent === undefined ?
+                            prefValue : JSON.parse(anEvent.target.value);
     ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
      "contextLink", "contextImage", "contextSelection", "contextTextbox"]
       .forEach(function(menuName) {
       document.getElementById("menuControl_" + menuName).classList
-              .toggle("large", !menuTypeIsStandard);
+              .toggle("large", menuTypeIsLarge);
     });
     ["mainMenuLabel", "extraMenuLabel", "primaryMainMenu", "primaryExtraMenu",
      "alt1MainMenu", "alt1ExtraMenu", "alt2MainMenu", "alt2ExtraMenu",
      "allMenusMainMenu", "allMenusExtraMenu"].forEach(function(id) {
-       document.getElementById(id).classList.toggle("large", !menuTypeIsStandard);
+       document.getElementById(id).classList.toggle("large", menuTypeIsLarge);
     });
   });
 }
@@ -950,11 +809,8 @@ function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
 }
 
 function setDisabledStatusForTooltipsActivationDelay(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "areTooltipsOn",
-  }).then(aMessage => {
-    var shouldBeDisabled = anEvent === undefined ? !aMessage.response :
+  eGPrefs.areTooltipsOn().then(prefValue => {
+    var shouldBeDisabled = anEvent === undefined ? !prefValue :
                                                    !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
       "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"],
@@ -963,11 +819,8 @@ function setDisabledStatusForTooltipsActivationDelay(anEvent) {
 }
 
 function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isHandleLinksOn",
-  }).then(aMessage => {
-    var shouldBeDisabled = anEvent === undefined ? !aMessage.response :
+  eGPrefs.isHandleLinksOn().then(prefValue => {
+    var shouldBeDisabled = anEvent === undefined ? !prefValue :
                                                    !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
       "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
@@ -981,11 +834,8 @@ function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
 }
 
 function setDisabledStatusForAutoscrollingActivationDelay(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isAutoscrollingOn",
-  }).then(aMessage => {
-    var shouldBeDisabled = anEvent === undefined ? !aMessage.response :
+  eGPrefs.isAutoscrollingOn().then(prefValue => {
+    var shouldBeDisabled = anEvent === undefined ? !prefValue :
                                                    !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["autoscrollingActivationDelayLabel",
       "autoscrollingActivationDelayInput", "autoscrollingActivationDelayUnit"],
@@ -1002,45 +852,29 @@ function setDisabledStatusForMenu(menuName, enabled) {
 }
 
 function setDisabledStatusForMainAlt1Menu(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isMainAlt1MenuEnabled",
-  }).then(aMessage => {
-    var enabled = anEvent === undefined ? aMessage.response :
-                                          anEvent.target.checked;
+  eGPrefs.isMainAlt1MenuEnabled().then(prefValue => {
+    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("mainAlt1", enabled);
   });
 }
 
 function setDisabledStatusForMainAlt2Menu(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isMainAlt2MenuEnabled",
-  }).then(aMessage => {
-    var enabled = anEvent === undefined ? aMessage.response :
-                                          anEvent.target.checked;
+  eGPrefs.isMainAlt2MenuEnabled().then(prefValue => {
+    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("mainAlt2", enabled);
   });
 }
 
 function setDisabledStatusForExtraAlt1Menu(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isExtraAlt1MenuEnabled",
-  }).then(aMessage => {
-    var enabled = anEvent === undefined ? aMessage.response :
-                                          anEvent.target.checked;
+  eGPrefs.isExtraAlt1MenuEnabled().then(prefValue => {
+    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("extraAlt1", enabled);
   });
 }
 
 function setDisabledStatusForExtraAlt2Menu(anEvent) {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isExtraAlt2MenuEnabled",
-  }).then(aMessage => {
-    var enabled = anEvent === undefined ? aMessage.response :
-                                          anEvent.target.checked;
+  eGPrefs.isExtraAlt2MenuEnabled().then(prefValue => {
+    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("extraAlt2", enabled);
   });
 }
@@ -1068,11 +902,7 @@ function loadPreferences(isReload) {
 }
 
 function initializeClicksByAction() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "getStatsActionsPref",
-  }).then(aMessage => {
-    var statsActions = aMessage.response;
+  eGPrefs.getStatsActionsPref().then(statsActions => {
     var totalClicks = 0;
     for (let action in statsActions) {
       totalClicks += statsActions[action];
@@ -1136,11 +966,8 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
                                             "Menu");
     container.className = "menu";
     container.classList.toggle("extra", isExtraMenu);
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "isLargeMenuOff"
-    }).then(aMessage => {
-      container.classList.toggle("large", !aMessage.response);
+    eGPrefs.isLargeMenuOn().then(prefValue => {
+      container.classList.toggle("large", prefValue);
     });
     for (let i = 0; i < numberOfActions; ++i) {
       let stat = document.createElement("div");
@@ -1176,11 +1003,8 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
                                          "Menu");
   container.className = "menu";
   container.classList.toggle("extra", isExtraMenu);
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "isLargeMenuOff"
-  }).then(aMessage => {
-    container.classList.toggle("large", !aMessage.response);
+  eGPrefs.isLargeMenuOn().then(prefValue => {
+    container.classList.toggle("large", prefValue);
   });
   for (let i = 0; i < numberOfActions; ++i) {
    let stat = document.createElement("div");
@@ -1192,31 +1016,20 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
 }
 
 function initializeClicksByDirection() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "getStatsMainMenuPref"
-  }).then(aMessage => {
-    var statsMainArray = aMessage.response;
+  eGPrefs.getStatsMainMenuPref().then(statsMainArray => {
     initializeClicksByDirectionForMenuLayouts(statsMainArray, false);
     initializeClicksByDirectionTotals(statsMainArray, false);
   });
   
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "getStatsExtraMenuPref"
-  }).then(aMessage => {
-    var statsExtraArray = aMessage.response;
+  eGPrefs.getStatsExtraMenuPref().then(statsExtraArray => {
     initializeClicksByDirectionForMenuLayouts(statsExtraArray, true);
     initializeClicksByDirectionTotals(statsExtraArray, true);
   });
 }
 
 function loadStats() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "getStatsLastResetPref",
-  }).then(aMessage => {
-    document.getElementById("statsLastReset").textContent = aMessage.response;
+  eGPrefs.getStatsLastResetPref().then(prefValue => {
+    document.getElementById("statsLastReset").textContent = prefValue;
   });
   
   initializeClicksByAction();
@@ -1319,39 +1132,36 @@ function importPrefs() {
     messageName: "importPrefs"
   }).then(aMessage => {
     if (aMessage.prefsString !== undefined) {
-      browser.runtime.sendMessage({
-        messageName: "importPrefsFromString",
-        prefsString: aMessage.prefsString
-      }).then(aMessage => {
-        if (aMessage.code === undefined) {
-          loadPreferences(true);
-        }
-        else {
-          let nonImportedPreferences = "";
-          if (aMessage.prefs !== undefined) {
-            nonImportedPreferences += " " + aMessage.prefs;
+      try {
+        eGPrefs.importPrefsFromString(aMessage.prefsString).then(result => {
+          if (result !== undefined) {
+            alert(browser.i18n
+                         .getMessage("general.prefs.import." + result.code) +
+                  " " + result.prefs);
           }
-          alert(browser.i18n
-                       .getMessage("general.prefs.import." + aMessage.code) +
-                nonImportedPreferences);
-        }
-      });
+          loadPreferences(true);
+        });
+      }
+      catch (exception) {
+        alert(browser.i18n.getMessage("general.prefs.import." +
+                                      exception.code));
+      }
     }
   });
 }
 
 function exportPrefs() {
-  browser.runtime.sendMessage({
-    messageName: "exportPrefs"
+  eGPrefs.exportPrefsToString().then(prefsAsString => {
+    browser.runtime.sendMessage({
+      messageName: "exportPrefs",
+      prefsAsString: prefsAsString
+    });
   });
 }
 
 function resetPrefs() {
   if (confirm(browser.i18n.getMessage("general.prefs.reset.confirm"))) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "setDefaultSettings"
-    }).then(() => {
+    eGPrefs.setDefaultSettings().then(() => {
       loadPreferences(true);
     });
   }
@@ -1370,9 +1180,6 @@ function updateTextInputElement(anEvent) {
 
 function resetStats() {
   if (confirm(browser.i18n.getMessage("stats.reset.confirm"))) {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "initializeStats"
-    });
+    eGPrefs.initializeStats();
   }
 }

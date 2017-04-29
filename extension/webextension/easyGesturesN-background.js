@@ -32,7 +32,34 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global eGContext, eGActions, console, browser */
+/* global browser, eGPrefs, eGContext, eGActions, console */
+
+browser.storage.local.get("general.startupTips").then(async prefValue => {
+  if (prefValue["general.startupTips"] === undefined) {
+    await eGPrefs.setDefaultSettings();
+    await eGPrefs.initializeStats();
+    browser.runtime.sendMessage({
+      messageName: "retrievePreferences"
+    }).then(aMessage => {
+      let prefsArray = JSON.parse(aMessage.response);
+      prefsArray.forEach(pref => {
+        let prefObject = {};
+        prefObject[pref[0]] = pref[1];
+        browser.storage.local.set(prefObject);
+      });
+    });
+  }
+  else {
+    eGPrefs.areStartupTipsOn().then(prefValue => {
+      if (prefValue) {
+        browser.tabs.create({
+          active: false,
+          url: "/tips/tips.html"
+        });
+      }
+    });
+  }
+});
 
 var eGMessageHandlers = {
   setContext : function(aMessage) {
@@ -130,15 +157,3 @@ function resetPieMenuOnAllTabs() {
 }
 
 browser.runtime.connect().onMessage.addListener(resetPieMenuOnAllTabs);
-
-browser.runtime.sendMessage({
-  messageName: "query_eGPrefs",
-  methodName: "areStartupTipsOn"
-}).then(aMessage => {
-  if (aMessage.response) {
-    browser.tabs.create({
-      active: false,
-      url: "/tips/tips.html"
-    });
-  }
-});

@@ -35,8 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported startup, shutdown, install, uninstall */
-/* global Components, Services, eGPieMenu, AddonManager, ADDON_INSTALL,
-          ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, ADDON_UNINSTALL */
+/* global Components, Services, AddonManager, ADDON_UPGRADE, ADDON_UNINSTALL */
 
 Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
@@ -60,7 +59,7 @@ var eGPrefsObserver = {
   },
   
   observe: function() {
-    eGPieMenu.init();
+    // eGPieMenu.init();
     
     // removing existing easyGestures menus from open web pages
     embeddedExtensionPort.postMessage({});
@@ -186,79 +185,6 @@ var eGPrefsUpdater = {
 };
 
 var eGMessageListeners = {
-  handleContentScriptLoad : function(aMessage, sendResponse) {
-    sendResponse({
-      showButton: eGPieMenu.showButton,
-      showKey: eGPieMenu.showKey,
-      showAltButton: eGPieMenu.showAltButton,
-      preventOpenKey: eGPieMenu.preventOpenKey,
-      contextKey: eGPieMenu.contextKey,
-      contextShowAuto: eGPieMenu.contextShowAuto,
-      largeMenu: eGPieMenu.largeMenu,
-      smallIcons: eGPieMenu.smallIcons,
-      menuOpacity: eGPieMenu.menuOpacity,
-      showTooltips: eGPieMenu.showTooltips,
-      tooltipsDelay: eGPieMenu.tooltipsDelay,
-      moveAuto: eGPieMenu.moveAuto,
-      handleLinks: eGPieMenu.handleLinks,
-      linksDelay: eGPieMenu.linksDelay,
-      handleLinksAsOpenLink: eGPieMenu.handleLinksAsOpenLink,
-      openTabForMiddleclick: Services.prefs.getBoolPref("browser.tabs.opentabfor.middleclick"),
-      autoscrollingOn: eGPieMenu.autoscrollingOn,
-      autoscrollingDelay: eGPieMenu.autoscrollingDelay,
-      mainAlt1MenuEnabled: eGPieMenu.mainAlt1MenuEnabled,
-      mainAlt2MenuEnabled: eGPieMenu.mainAlt2MenuEnabled,
-      extraAlt1MenuEnabled: eGPieMenu.extraAlt1MenuEnabled,
-      extraAlt2MenuEnabled: eGPieMenu.extraAlt2MenuEnabled,
-      loadURLActionPrefs: eGPieMenu.loadURLActionPrefs,
-      runScriptActionPrefs: eGPieMenu.runScriptActionPrefs,
-      menusMain: eGPrefs._prefs.getCharPref("menus.main"),
-      menusMainAlt1: eGPrefs._prefs.getCharPref("menus.mainAlt1"),
-      menusMainAlt2: eGPrefs._prefs.getCharPref("menus.mainAlt2"),
-      menusExtra: eGPrefs._prefs.getCharPref("menus.extra"),
-      menusExtraAlt1: eGPrefs._prefs.getCharPref("menus.extraAlt1"),
-      menusExtraAlt2: eGPrefs._prefs.getCharPref("menus.extraAlt2"),
-      menusContextLink: eGPrefs._prefs.getCharPref("menus.contextLink"),
-      menusContextImage: eGPrefs._prefs.getCharPref("menus.contextImage"),
-      menusContextSelection: eGPrefs._prefs.getCharPref("menus.contextSelection"),
-      menusContextTextbox: eGPrefs._prefs.getCharPref("menus.contextTextbox")
-    });
-  },
-  
-  query_eGPrefs : function(aMessage, sendResponse) {
-    sendResponse({
-      response: eGPrefs[aMessage.methodName].apply(eGPrefs,
-         [aMessage.parameter, aMessage.parameter2])
-    });
-  },
-  
-  importPrefsFromString : function(aMessage, sendResponse) {
-    var response = {};
-    try {
-      eGPrefs.importPrefsFromString(aMessage.prefsString);
-    }
-    catch (exception) {
-      response.prefs = exception.prefs;
-      response.code = exception.code;
-    }
-    
-    sendResponse(response);
-  },
-  
-  updateStatsForActionToBeExecuted : function(aMessage) {
-    if (aMessage.type === "main") {
-      eGPrefs.incrementStatsMainMenuPref(aMessage.position);
-    }
-    else if (aMessage.type === "extra") {
-      eGPrefs.incrementStatsExtraMenuPref(aMessage.position);
-    }
-    eGPrefs.updateStatsForAction(aMessage.actionName);
-  },
-  
-  increaseExtraMenuUsage : function(aMessage) {
-    eGPrefs.incrementStatsMainMenuPref(aMessage.position);
-  },
-  
   retrieveAndAddFavicon: function(aMessage, sendResponse) {
     var aURL = aMessage.aURL;
     if (aURL.match(/\:\/\//i) === null) {
@@ -322,7 +248,7 @@ var eGMessageListeners = {
     });
   },
   
-  exportPrefs: function() {
+  exportPrefs: function(aMessage) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var fp = Components.classes["@mozilla.org/filepicker;1"]
                        .createInstance(Components.interfaces.nsIFilePicker);
@@ -342,10 +268,37 @@ var eGMessageListeners = {
                   .classes["@mozilla.org/intl/converter-output-stream;1"]
                   .createInstance(Components.interfaces.nsIConverterOutputStream);
       converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
-      converterOutputStream.writeString(eGPrefs.exportPrefsToString());
+      converterOutputStream.writeString(aMessage.prefsAsString);
       converterOutputStream.close();
       outputStream.close();
     }
+  },
+  
+  retrievePreferences: function(aMessage, sendResponse) {
+    var prefs = Services.prefs.getBranch("extensions.easygestures.");
+    var prefsNames = prefs.getChildList("");
+    var result = [];
+    
+    prefsNames.forEach(function(prefName) {
+      let prefType = prefs.getPrefType(prefName);
+      let prefValue;
+      switch (prefType) {
+        case Components.interfaces.nsIPrefBranch.PREF_STRING:
+          prefValue = prefs.getComplexValue(prefName,
+                        Components.interfaces.nsISupportsString).data;
+          break;
+        case Components.interfaces.nsIPrefBranch.PREF_INT:
+          prefValue = prefs.getIntPref(prefName);
+          break;
+        case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+          prefValue = prefs.getBoolPref(prefName);
+          break;
+      }
+      result.push([prefName, prefValue]);
+    });
+    sendResponse({
+      response: JSON.stringify(result)
+    });
   }
 };
 
@@ -356,22 +309,8 @@ function handleMessage(aMessage, sender, sendResponse) {
 }
 
 function startup(data, reason) {
-  Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
-  Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
-  
   AddonManager.getAddonByID(data.id, function() {
-    // installing or upgrading preferences
-    var count = {};
-    Services.prefs.getChildList("extensions.easygestures.", count);
-    if (reason === ADDON_INSTALL ||
-        (reason === ADDON_ENABLE && count.value === 0)) {
-      // when installing an extension by copying it to the extensions folder
-      // reason == ADDON_ENABLE, hence the test to see if there are already
-      // preferences in the easygestures preferences branch
-      eGPrefs.setDefaultSettings();
-      eGPrefs.initializeStats();
-    }
-    else if (reason === ADDON_UPGRADE) {
+    if (reason === ADDON_UPGRADE) {
       if (Services.vc.compare(data.oldVersion, "4.10") < 0) {
         eGPrefsUpdater.updateToV4_10();
       }
@@ -391,10 +330,7 @@ function startup(data, reason) {
     
     // start listening to changes in preferences that could require rebuilding
     // the menus
-    eGPrefsObserver.register();
-    
-    // creating menu
-    eGPieMenu.init();
+    // eGPrefsObserver.register();
     
     data.webExtension.startup().then(api => {
       const {browser} = api;
@@ -408,13 +344,10 @@ function startup(data, reason) {
 
 function shutdown() {
   // stop listening to changes in preferences
-  eGPrefsObserver.unregister();
+  // eGPrefsObserver.unregister();
   
   // removing existing easyGestures menus from open web pages
-  eGPieMenu.removeFromAllPages();
-  
-  Components.utils.unload("chrome://easygestures/content/eGPieMenu.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");
+  // eGPieMenu.removeFromAllPages();
 }
 
 function install() {

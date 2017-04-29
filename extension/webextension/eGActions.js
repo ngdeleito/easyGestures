@@ -220,11 +220,7 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
     
     traverseSubTree(this.rootNode);
   }, function() {
-    return browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getDailyReadingsFolderName"
-    }).then(async aMessage => {
-      let folderName = aMessage.response;
+    return eGPrefs.getDailyReadingsFolderName().then(async folderName => {
       if (folderName === "") {
         return true;
       }
@@ -246,13 +242,9 @@ DailyReadingsDisableableAction.prototype.constructor = DailyReadingsDisableableA
 
 function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, namePrefix + number, function() {
-    return browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getLoadURLOrRunScriptPrefValue",
-      parameter: this._name
-    }).then(aMessage => {
+    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
+                  .then(prefValue => {
       return this._performOnCurrentTab(currentTab => {
-        let prefValue = aMessage.response;
         let content = prefValue[1];
         content = content.replace("%s", eGContext.selection);
         content = content.replace("%u", currentTab.url);
@@ -261,12 +253,9 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
       });
     });
   }, function() {
-    return browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getLoadURLOrRunScriptPrefValue",
-      parameter: this._name
-    }).then(aMessage => {
-      return aMessage.response[1] === "";
+    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
+                  .then(prefValue => {
+      return prefValue[1] === "";
     });
   }, startsNewGroup, nextAction);
   
@@ -295,11 +284,8 @@ function LoadURLAction(number, startsNewGroup, nextAction) {
         });
       }
       else {
-        browser.runtime.sendMessage({
-          messageName: "query_eGPrefs",
-          methodName: "getLoadURLInPref"
-        }).then(aMessage => {
-          this._openURLOn(URL, aMessage.response, true);
+        eGPrefs.getLoadURLInPref().then(prefValue => {
+          this._openURLOn(URL, prefValue, true);
         });
       }
     }, startsNewGroup, nextAction);
@@ -709,11 +695,8 @@ var eGActions = {
   restart : new DisabledAction("restart", false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
-    browser.runtime.sendMessage({
-      messageName: "query_eGPrefs",
-      methodName: "getOpenLinkPref"
-    }).then(aMessage => {
-      this._openURLOn(eGContext.anchorElementHREF, aMessage.response, false);
+    eGPrefs.getOpenLinkPref().then(prefValue => {
+      this._openURLOn(eGContext.anchorElementHREF, prefValue, false);
     });
   }, true, "openLinkInNewWindow"),
   

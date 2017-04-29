@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported handleMousemove */
 /* global browser, eGPieMenu, addEventListener, removeEventListener, window,
-          document */
+          document, eGPrefs */
 
 const EXTRA_MENU_ACTION = 2;
 
@@ -46,12 +46,49 @@ var targetDocument, targetWindow, topmostWindow;
 var selection, contextualMenus, anchorElement, imageElement, inputElement;
 
 function setPieMenuSettings() {
-  browser.runtime.sendMessage({
-    messageName: "handleContentScriptLoad"
-  }).then(aMessage => {
-    for (let key in aMessage) {
-      eGPieMenu.settings[key] = aMessage[key];
+  browser.storage.local.get([
+    "activation.showButton", "activation.showKey", "activation.showAltButton",
+    "activation.preventOpenKey", "activation.contextKey",
+    "activation.contextShowAuto", "behavior.largeMenu", "behavior.smallIcons",
+    "behavior.menuOpacity", "behavior.showTooltips", "behavior.tooltipsDelay",
+    "behavior.moveAuto", "behavior.handleLinks", "behavior.linksDelay",
+    "behavior.handleLinksAsOpenLink", "behavior.autoscrollingOn",
+    "behavior.autoscrollingDelay", "menus.main", "menus.mainAlt1Enabled",
+    "menus.mainAlt1", "menus.mainAlt2Enabled", "menus.mainAlt2", "menus.extra",
+    "menus.extraAlt1Enabled", "menus.extraAlt1", "menus.extraAlt2Enabled",
+    "menus.extraAlt2", "menus.contextLink", "menus.contextImage",
+    "menus.contextSelection", "menus.contextTextbox", "customizations.loadURL1",
+    "customizations.loadURL2", "customizations.loadURL3",
+    "customizations.loadURL4", "customizations.loadURL5",
+    "customizations.loadURL6", "customizations.loadURL7",
+    "customizations.loadURL8", "customizations.loadURL9",
+    "customizations.loadURL10", "customizations.runScript1",
+    "customizations.runScript2", "customizations.runScript3",
+    "customizations.runScript4", "customizations.runScript5",
+    "customizations.runScript6", "customizations.runScript7",
+    "customizations.runScript8", "customizations.runScript9",
+    "customizations.runScript10"
+  ]).then(prefs => {
+    eGPieMenu.settings.loadURLActionPrefs = {};
+    eGPieMenu.settings.runScriptActionPrefs = {};
+    for (let key in prefs) {
+      let prefName = key.split(".")[1];
+      if (prefName.startsWith("loadURL")) {
+        eGPieMenu.settings.loadURLActionPrefs[prefName] =
+          prefs[key].split("\u2022");
+      }
+      else if (prefName.startsWith("runScript")) {
+        eGPieMenu.settings.runScriptActionPrefs[prefName] =
+          prefs[key].split("\u2022");
+      }
+      else if (prefName === "menuOpacity") {
+        eGPieMenu.settings[prefName] = prefs[key] / 100;
+      }
+      else {
+        eGPieMenu.settings[prefName] = prefs[key];
+      }
     }
+    eGPieMenu.settings.openTabForMiddleclick = true;
     eGPieMenu.init();
   });
 }
@@ -388,10 +425,7 @@ function showExtraMenu(layoutName) {
     tooltipsNode.style.visibility = "hidden";
   }
   
-  browser.runtime.sendMessage({
-    messageName: "increaseExtraMenuUsage",
-    position: eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION
-  });
+  eGPrefs.incrementStatsMainMenuPref(eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION);
 }
 
 function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) {

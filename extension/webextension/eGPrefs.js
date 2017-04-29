@@ -11,12 +11,11 @@ WITHOUT WARRANTY OF ANY KIND, either express or implied. See the License
 for the specific language governing rights and limitations under the
 License.
 
-The Original Code is easyGestures.
+The Original Code is easyGestures N.
 
-The Initial Developer of the Original Code is Ons Besbes.
+The Initial Developer of the Original Code is ngdeleito.
 
 Contributor(s):
-  ngdeleito
 
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -33,115 +32,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported EXPORTED_SYMBOLS, eGPrefs */
-/* global Components, Services */
-
-var EXPORTED_SYMBOLS = ["eGPrefs"];
-
-Components.utils.import("resource://gre/modules/Services.jsm");
-
-function Action(startsNewGroup, nextAction) {
-  // startsNewGroup and nextAction are used in options.js to display a sorted
-  // list of available actions
-  this.startsNewGroup = startsNewGroup;
-  this.nextAction = nextAction;
-}
-var eGActions = {
-  empty : new Action(false, "showExtraMenu"),
-  showExtraMenu : new Action(true, "back"),
-  back : new Action(true, "backSite"),
-  backSite : new Action(false, "firstPage"),
-  firstPage : new Action(false, "forward"),
-  forward : new Action(false, "forwardSite"),
-  forwardSite : new Action(false, "lastPage"),
-  lastPage : new Action(false, "reload"),
-  reload : new Action(false, "homepage"),
-  homepage : new Action(false, "pageTop"),
-  pageTop : new Action(true, "pageBottom"),
-  pageBottom : new Action(false, "autoscrolling"),
-  autoscrolling : new Action(false, "zoomIn"),
-  zoomIn : new Action(false, "zoomOut"),
-  zoomOut : new Action(false, "zoomReset"),
-  zoomReset : new Action(false, "toggleFullscreen"),
-  toggleFullscreen : new Action(false, "toggleFindBar"),
-  toggleFindBar : new Action(false, "savePageAs"),
-  savePageAs : new Action(false, "printPage"),
-  printPage : new Action(false, "viewPageSource"),
-  viewPageSource : new Action(false, "viewPageInfo"),
-  viewPageInfo : new Action(false, "newTab"),
-  newTab : new Action(true, "newBlankTab"),
-  newBlankTab : new Action(false, "duplicateTab"),
-  duplicateTab : new Action(false, "closeTab"),
-  closeTab : new Action(false, "closeOtherTabs"),
-  closeOtherTabs : new Action(false, "undoCloseTab"),
-  undoCloseTab : new Action(false, "prevTab"),
-  prevTab : new Action(false, "nextTab"),
-  nextTab : new Action(false, "pinUnpinTab"),
-  pinUnpinTab : new Action(false, "newWindow"),
-  newWindow : new Action(true, "newBlankWindow"),
-  newBlankWindow : new Action(false, "newPrivateWindow"),
-  newPrivateWindow : new Action(false, "duplicateWindow"),
-  duplicateWindow : new Action(false, "minimizeWindow"),
-  minimizeWindow : new Action(false, "closeWindow"),
-  closeWindow : new Action(false, "closeOtherWindows"),
-  closeOtherWindows : new Action(false, "undoCloseWindow"),
-  undoCloseWindow : new Action(false, "up"),
-  up : new Action(true, "root"),
-  root : new Action(false, "showOnlyThisFrame"),
-  showOnlyThisFrame : new Action(false, "focusLocationBar"),
-  focusLocationBar : new Action(false, "searchWeb"),
-  searchWeb : new Action(false, "quit"),
-  quit : new Action(false, "restart"),
-  restart : new Action(false, "openLink"),
-  openLink : new Action(true, "openLinkInNewWindow"),
-  openLinkInNewWindow : new Action(false, "openLinkInNewPrivateWindow"),
-  openLinkInNewPrivateWindow : new Action(false, "copyLink"),
-  copyLink : new Action(false, "saveLinkAs"),
-  saveLinkAs : new Action(false, "dailyReadings"),
-  dailyReadings : new Action(true, "bookmarkThisPage"),
-  bookmarkThisPage : new Action(false, "bookmarkThisLink"),
-  bookmarkThisLink : new Action(false, "bookmarkOpenTabs"),
-  bookmarkOpenTabs : new Action(false, "showBookmarks"),
-  showBookmarks : new Action(false, "toggleBookmarksSidebar"),
-  toggleBookmarksSidebar : new Action(false, "toggleBookmarksToolbar"),
-  toggleBookmarksToolbar : new Action(false, "showHistory"),
-  showHistory : new Action(false, "toggleHistorySidebar"),
-  toggleHistorySidebar : new Action(false, "showDownloads"),
-  showDownloads : new Action(false, "loadURL1"),
-  loadURL1 : new Action(true, "loadURL2"),
-  loadURL2 : new Action(false, "loadURL3"),
-  loadURL3 : new Action(false, "loadURL4"),
-  loadURL4 : new Action(false, "loadURL5"),
-  loadURL5 : new Action(false, "loadURL6"),
-  loadURL6 : new Action(false, "loadURL7"),
-  loadURL7 : new Action(false, "loadURL8"),
-  loadURL8 : new Action(false, "loadURL9"),
-  loadURL9 : new Action(false, "loadURL10"),
-  loadURL10 : new Action(false, "runScript1"),
-  runScript1 : new Action(true, "runScript2"),
-  runScript2 : new Action(false, "runScript3"),
-  runScript3 : new Action(false, "runScript4"),
-  runScript4 : new Action(false, "runScript5"),
-  runScript5 : new Action(false, "runScript6"),
-  runScript6 : new Action(false, "runScript7"),
-  runScript7 : new Action(false, "runScript8"),
-  runScript8 : new Action(false, "runScript9"),
-  runScript9 : new Action(false, "runScript10"),
-  runScript10 : new Action(false, "firefoxPreferences"),
-  firefoxPreferences : new Action(true, "addOns"),
-  addOns : new Action(false, "easyGesturesNPreferences"),
-  easyGesturesNPreferences : new Action(false, "copyImageLocation"),
-  copyImageLocation : new Action(true, "copyImage"),
-  copyImage : new Action(false, "saveImageAs"),
-  saveImageAs : new Action(false, "hideImages"),
-  hideImages : new Action(false, "cut"),
-  cut : new Action(true, "copy"),
-  copy : new Action(false, "paste"),
-  paste : new Action(false, "undo"),
-  undo : new Action(false, "redo"),
-  redo : new Action(false, "selectAll"),
-  selectAll : new Action(false, null)
-};
+/* exported eGPrefs */
+/* global browser, eGActions */
 
 function Pref(name, value) {
   this.name = name;
@@ -153,8 +45,10 @@ function BoolPref(name, value) {
 }
 BoolPref.prototype = Object.create(Pref.prototype);
 BoolPref.prototype.constructor = BoolPref;
-BoolPref.prototype.setPreference = function(prefsBranch) {
-  prefsBranch.setBoolPref(this.name, this.value);
+BoolPref.prototype.setPreference = function() {
+  let prefObject = {};
+  prefObject[this.name] = this.value;
+  return browser.storage.local.set(prefObject);
 };
 BoolPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "boolean") {
@@ -171,8 +65,10 @@ function IntPref(name, value, possibleValuesArray) {
 }
 IntPref.prototype = Object.create(Pref.prototype);
 IntPref.prototype.constructor = IntPref;
-IntPref.prototype.setPreference = function(prefsBranch) {
-  prefsBranch.setIntPref(this.name, this.value);
+IntPref.prototype.setPreference = function() {
+  let prefObject = {};
+  prefObject[this.name] = this.value;
+  return browser.storage.local.set(prefObject);
 };
 IntPref.prototype.updateTo = function(newPrefValue) {
   if (Number.isInteger(newPrefValue) &&
@@ -191,8 +87,10 @@ function CharPref(name, value, isPossibleValue) {
 }
 CharPref.prototype = Object.create(Pref.prototype);
 CharPref.prototype.constructor = CharPref;
-CharPref.prototype.setPreference = function(prefsBranch) {
-  prefsBranch.setCharPref(this.name, this.value);
+CharPref.prototype.setPreference = function() {
+  let prefObject = {};
+  prefObject[this.name] = this.value;
+  return browser.storage.local.set(prefObject);
 };
 CharPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "string" &&
@@ -210,12 +108,10 @@ function ComplexPref(name, value, isPossibleValue) {
 }
 ComplexPref.prototype = Object.create(Pref.prototype);
 ComplexPref.prototype.constructor = ComplexPref;
-ComplexPref.prototype.setPreference = function(prefsBranch) {
-  var string = Components.classes["@mozilla.org/supports-string;1"]
-                 .createInstance(Components.interfaces.nsISupportsString);
-  string.data = this.value;
-  prefsBranch.setComplexValue(this.name,
-                              Components.interfaces.nsISupportsString, string);
+ComplexPref.prototype.setPreference = function() {
+  let prefObject = {};
+  prefObject[this.name] = this.value;
+  return browser.storage.local.set(prefObject);
 };
 ComplexPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
@@ -227,13 +123,11 @@ ComplexPref.prototype.updateTo = function(newPrefValue) {
 };
 
 var eGPrefs = {
-  _prefs : Services.prefs.getBranch("extensions.easygestures."),
-  
   _setCharPref : function(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
     defaultPrefsMap.set(prefName, new CharPref(prefName, prefValue, isPossibleValue));
   },
   
-  _getDefaultPrefsMap : function() {
+  _getDefaultPrefsMap : function(platformOS) {
     function setBoolPref(defaultPrefsMap, prefName, prefValue) {
       defaultPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
     }
@@ -291,8 +185,7 @@ var eGPrefs = {
     setBoolPref(defaultPrefs, "general.startupTips", true);
     setIntPref(defaultPrefs, "general.tipNumber", 0);
     
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    if (window.navigator.userAgent.indexOf("Mac") === -1) {
+    if (platformOS !== "mac") {
       setIntPref(defaultPrefs, "activation.showButton", 1); // middle button
       setIntPref(defaultPrefs, "activation.showKey", 0, [0, 16, 17]); // no key
       setIntPref(defaultPrefs, "activation.preventOpenKey", 17, [0, 17, 18]); // ctrl key
@@ -405,27 +298,13 @@ var eGPrefs = {
   },
   
   exportPrefsToString : function() {
-    var prefsNames = this._prefs.getChildList("");
-    var result = [];
-    
-    prefsNames.forEach(function(prefName) {
-      let prefType = this._prefs.getPrefType(prefName);
-      let prefValue;
-      switch (prefType) {
-        case Components.interfaces.nsIPrefBranch.PREF_STRING:
-          prefValue = this._prefs.getComplexValue(prefName,
-                        Components.interfaces.nsISupportsString).data;
-          break;
-        case Components.interfaces.nsIPrefBranch.PREF_INT:
-          prefValue = this._prefs.getIntPref(prefName);
-          break;
-        case Components.interfaces.nsIPrefBranch.PREF_BOOL:
-          prefValue = this._prefs.getBoolPref(prefName);
-          break;
+    return browser.storage.local.get().then(prefs => {
+      let result = [];
+      for (let key in prefs) {
+        result.push([key, prefs[key]]);
       }
-      result.push([prefName, prefValue]);
-    }, this);
-    return JSON.stringify(result);
+      return JSON.stringify(result);
+    });
   },
   
   importPrefsFromString : function(aString) {
@@ -444,206 +323,252 @@ var eGPrefs = {
       throw { code: "invalidFileContent" };
     }
     
-    var prefs = this._getDefaultPrefsMap();
-    var stats = this._getDefaultStatsMap();
-    var notImportedPrefs = [];
-    newPrefs.forEach(function([prefName, prefValue]) {
-      try {
-        if (prefs.has(prefName)) {
-          prefs.get(prefName).updateTo(prefValue);
+    return browser.runtime.getPlatformInfo().then(platformInfo => {
+      let prefs = this._getDefaultPrefsMap(platformInfo.os);
+      let stats = this._getDefaultStatsMap();
+      let notImportedPrefs = [];
+      newPrefs.forEach(function([prefName, prefValue]) {
+        try {
+          if (prefs.has(prefName)) {
+            prefs.get(prefName).updateTo(prefValue);
+          }
+          else if (stats.has(prefName)) {
+            stats.get(prefName).updateTo(prefValue);
+          }
+          else {
+            notImportedPrefs.push(prefName);
+          }
         }
-        else if (stats.has(prefName)) {
-          stats.get(prefName).updateTo(prefValue);
-        }
-        else {
+        catch (exception) {
           notImportedPrefs.push(prefName);
         }
-      }
-      catch (exception) {
-        notImportedPrefs.push(prefName);
-      }
+      });
+      
+      let setPreferencePromises = [];
+      prefs.forEach(function(pref) {
+        setPreferencePromises.push(pref.setPreference());
+      });
+      stats.forEach(function(stat) {
+        setPreferencePromises.push(stat.setPreference());
+      });
+      
+      return Promise.all(setPreferencePromises).then(() => {
+        return notImportedPrefs.length === 0 ? undefined : {
+          code: "nonImportedPrefs",
+          prefs: notImportedPrefs.join(", ")
+        };
+      });
     });
-    
-    prefs.forEach(function(pref) {
-      pref.setPreference(this._prefs);
-    }, this);
-    stats.forEach(function(stat) {
-      stat.setPreference(this._prefs);
-    }, this);
-    
-    if (notImportedPrefs.length !== 0) {
-      throw { code: "nonImportedPrefs", prefs: notImportedPrefs.join(", ") };
-    }
   },
   
   setDefaultSettings : function() {
-    var defaultPrefsMap = this._getDefaultPrefsMap();
-    defaultPrefsMap.forEach(function(pref) {
-      pref.setPreference(this._prefs);
-    }, this);
+    return browser.runtime.getPlatformInfo().then(platformInfo => {
+      let defaultPrefsMap = this._getDefaultPrefsMap(platformInfo.os);
+      let setPreferencePromises = [];
+      defaultPrefsMap.forEach(function(pref) {
+        setPreferencePromises.push(pref.setPreference());
+      });
+      return Promise.all(setPreferencePromises);
+    });
   },
   
   initializeStats : function() {
     var defaultStats = this._getDefaultStatsMap();
+    var setPreferencePromises = [];
     defaultStats.forEach(function(pref) {
-      pref.setPreference(this._prefs);
-    }, this);
+      setPreferencePromises.push(pref.setPreference());
+    });
+    return Promise.all(setPreferencePromises);
   },
   
   getBoolPref : function(aPrefName) {
-    return this._prefs.getBoolPref(aPrefName);
+    return browser.storage.local.get(aPrefName).then(prefObject => {
+      return prefObject[aPrefName];
+    });
   },
   
   getIntPref : function(aPrefName) {
-    return this._prefs.getIntPref(aPrefName);
+    return browser.storage.local.get(aPrefName).then(prefObject => {
+      return prefObject[aPrefName];
+    });
   },
   
   getMenuPrefAsArray : function(aPrefName) {
-    return this._prefs.getCharPref(aPrefName).split("/");
+    return browser.storage.local.get(aPrefName).then(prefObject => {
+      return prefObject[aPrefName].split("/");
+    });
   },
   
   getCharPref : function(aPrefName) {
-    return this._prefs.getCharPref(aPrefName);
+    return browser.storage.local.get(aPrefName).then(prefObject => {
+      return prefObject[aPrefName];
+    });
   },
   
   toggleBoolPref : function(aPrefName) {
-    this._prefs.setBoolPref(aPrefName, !this._prefs.getBoolPref(aPrefName));
+    browser.storage.local.get(aPrefName).then(prefObject => {
+      this.setBoolPref(aPrefName, !prefObject[aPrefName]);
+    });
   },
   
   setBoolPref : function(aPrefName, prefValue) {
-    this._prefs.setBoolPref(aPrefName, prefValue);
+    let prefObject = {};
+    prefObject[aPrefName] = prefValue;
+    browser.storage.local.set(prefObject);
   },
   
   setIntPref : function(aPrefName, prefValue) {
-    this._prefs.setIntPref(aPrefName, prefValue);
+    let prefObject = {};
+    prefObject[aPrefName] = Number(prefValue);
+    browser.storage.local.set(prefObject);
   },
   
   setMenuPref : function(aPrefName, prefValueAsArray) {
-    this._prefs.setCharPref(aPrefName, prefValueAsArray.join("/"));
+    let prefObject = {};
+    prefObject[aPrefName] = prefValueAsArray.join("/");
+    browser.storage.local.set(prefObject);
   },
   
   setCharPref : function(aPrefName, prefValue) {
-    // for an unknown reason, using this._prefs here results in notifying the
-    // prefsObserver in options.js of a change in the menus.extraAlt2Enabled
-    // preference
-    var prefs = Services.prefs.getBranch("extensions.easygestures.");
-    /*this._*/prefs.setCharPref(aPrefName, prefValue);
+    let prefObject = {};
+    prefObject[aPrefName] = prefValue;
+    browser.storage.local.set(prefObject);
   },
   
   areStartupTipsOn : function() {
-    return this._prefs.getBoolPref("general.startupTips");
+    return this.getBoolPref("general.startupTips");
   },
   
   toggleStartupTips : function() {
-    this._prefs.setBoolPref("general.startupTips", !this.areStartupTipsOn());
+    this.areStartupTipsOn().then(prefValue => {
+      browser.storage.local.set({
+        "general.startupTips": !prefValue
+      });
+    });
   },
   
   getTipNumberPref : function() {
-    return this._prefs.getIntPref("general.tipNumber");
+    return this.getIntPref("general.tipNumber");
   },
   
   setTipNumberPref : function(anInteger) {
-    this._prefs.setIntPref("general.tipNumber", anInteger);
+    browser.storage.local.set({
+      "general.tipNumber": anInteger
+    });
   },
   
-  isLargeMenuOff : function() {
-    return !this._prefs.getBoolPref("behavior.largeMenu");
+  isLargeMenuOn : function() {
+    return this.getBoolPref("behavior.largeMenu");
   },
   
   areTooltipsOn : function() {
-    return this._prefs.getBoolPref("behavior.showTooltips");
+    return this.getBoolPref("behavior.showTooltips");
   },
   
   isHandleLinksOn : function() {
-    return this._prefs.getBoolPref("behavior.handleLinks");
+    return this.getBoolPref("behavior.handleLinks");
   },
   
   isAutoscrollingOn : function() {
-    return this._prefs.getBoolPref("behavior.autoscrollingOn");
+    return this.getBoolPref("behavior.autoscrollingOn");
   },
   
   isMainAlt1MenuEnabled : function() {
-    return this._prefs.getBoolPref("menus.mainAlt1Enabled");
+    return this.getBoolPref("menus.mainAlt1Enabled");
   },
   
   isMainAlt2MenuEnabled : function() {
-    return this._prefs.getBoolPref("menus.mainAlt2Enabled");
+    return this.getBoolPref("menus.mainAlt2Enabled");
   },
   
   isExtraAlt1MenuEnabled : function() {
-    return this._prefs.getBoolPref("menus.extraAlt1Enabled");
+    return this.getBoolPref("menus.extraAlt1Enabled");
   },
   
   isExtraAlt2MenuEnabled : function() {
-    return this._prefs.getBoolPref("menus.extraAlt2Enabled");
+    return this.getBoolPref("menus.extraAlt2Enabled");
   },
   
   getLoadURLInPref : function() {
     // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-    return this._prefs.getCharPref("customizations.loadURLin");
+    return this.getCharPref("customizations.loadURLin");
   },
   
   getLoadURLOrRunScriptPrefValue : function(aPrefName) {
-    return this._prefs.getComplexValue("customizations." + aPrefName,
-      Components.interfaces.nsISupportsString).data.split("\u2022");
+    return this.getCharPref("customizations." + aPrefName).then(prefValue => {
+      return prefValue.split("\u2022");
+    });
   },
   
   setLoadURLOrRunScriptPrefValue : function(aPrefName, aPrefValueAsArray) {
-    // for an unknown reason, using this._prefs here results in notifying the
-    // prefsObserver in options.js of a change in the menus.extraAlt2Enabled
-    // preference
-    var string = Components.classes["@mozilla.org/supports-string;1"]
-                   .createInstance(Components.interfaces.nsISupportsString);
-    string.data = aPrefValueAsArray.join("\u2022");
-    var prefs = Services.prefs.getBranch("extensions.easygestures.");
-    /*this._*/prefs.setComplexValue(aPrefName,
-      Components.interfaces.nsISupportsString, string);
+    let prefObject = {};
+    prefObject[aPrefName] = aPrefValueAsArray.join("\u2022");
+    browser.storage.local.set(prefObject);
   },
   
   getOpenLinkPref : function() {
-    return this._prefs.getCharPref("customizations.openLink");
+    return this.getCharPref("customizations.openLink");
   },
   
   getDailyReadingsFolderName : function() {
-    return this._prefs.getCharPref("customizations.dailyReadingsFolderName");
+    return this.getCharPref("customizations.dailyReadingsFolderName");
   },
   
   setDailyReadingsFolderName : function(prefValue) {
-    this._prefs.setCharPref("customizations.dailyReadingsFolderName", prefValue);
+    browser.storage.local.set({
+      "customizations.dailyReadingsFolderName": prefValue
+    });
   },
   
   getStatsLastResetPref : function() {
-    return (new Date(this._prefs.getCharPref("stats.lastReset")))
-             .toLocaleString();
+    return this.getCharPref("stats.lastReset").then(prefValue => {
+      return (new Date(prefValue)).toLocaleString();
+    });
   },
   
   getStatsMainMenuPref : function() {
-    return JSON.parse(this._prefs.getCharPref("stats.mainMenu"));
+    return this.getCharPref("stats.mainMenu").then(prefValue => {
+      return JSON.parse(prefValue);
+    });
   },
   
   incrementStatsMainMenuPref : function(anIndex) {
-    var anArray = this.getStatsMainMenuPref();
-    ++anArray[anIndex];
-    this._prefs.setCharPref("stats.mainMenu", JSON.stringify(anArray));
+    this.getStatsMainMenuPref().then(anArray => {
+      ++anArray[anIndex];
+      browser.storage.local.set({
+        "stats.mainMenu": JSON.stringify(anArray)
+      });
+    });
   },
   
   getStatsExtraMenuPref : function() {
-    return JSON.parse(this._prefs.getCharPref("stats.extraMenu"));
+    return this.getCharPref("stats.extraMenu").then(prefValue => {
+      return JSON.parse(prefValue);
+    });
   },
   
   incrementStatsExtraMenuPref : function(anIndex) {
-    var anArray = this.getStatsExtraMenuPref();
-    ++anArray[anIndex];
-    this._prefs.setCharPref("stats.extraMenu", JSON.stringify(anArray));
+    this.getStatsExtraMenuPref().then(anArray => {
+      ++anArray[anIndex];
+      browser.storage.local.set({
+        "stats.extraMenu": JSON.stringify(anArray)
+      });
+    });
   },
   
   updateStatsForAction : function(anActionName) {
-    var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
-    ++actionsStats[anActionName];
-    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+    this.getCharPref("stats.actions").then(prefValue => {
+      var actionsStats = JSON.parse(prefValue);
+      ++actionsStats[anActionName];
+      browser.storage.local.set({
+        "stats.actions": JSON.stringify(actionsStats)
+      });
+    });
   },
   
   getStatsActionsPref : function() {
-    return JSON.parse(this._prefs.getCharPref("stats.actions"));
+    return this.getCharPref("stats.actions").then(prefValue => {
+      return JSON.parse(prefValue);
+    });
   }
 };

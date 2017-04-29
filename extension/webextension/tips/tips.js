@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global window, browser, document, eGUtils */
+/* global window, browser, document, eGPrefs, eGUtils */
 
 window.addEventListener("load", tipsLoadHandler);
 window.addEventListener("unload", tipsUnloadHandler);
@@ -98,11 +98,7 @@ function updateContent(tipNbr) {
 
 function updateTipNbr(step) {
   tipNumber = (((tipNumber + step) % tips.length) + tips.length) % tips.length;
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "setTipNumberPref",
-    parameter: tipNumber
-  });
+  eGPrefs.setTipNumberPref(tipNumber);
   updateContent(tipNumber);
 }
 
@@ -119,18 +115,12 @@ function tipLinkClick() {
 }
 
 function updateShowTipsCheckbox() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "toggleStartupTips"
-  });
+  eGPrefs.toggleStartupTips();
 }
 
 function setShowTipsCheckbox() {
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "areStartupTipsOn"
-  }).then(aMessage => {
-    document.getElementById("showTipsControl").checked = aMessage.response;
+  eGPrefs.areStartupTipsOn().then(prefValue => {
+    document.getElementById("showTipsControl").checked = prefValue;
   });
 }
 
@@ -150,12 +140,9 @@ function tipsLoadHandler() {
   eGUtils.setDocumentTitle(document, "tips");
   eGUtils.setDocumentLocalizedStrings(document);
   setShowTipsCheckbox();
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "getTipNumberPref"
-  }).then(aMessage => {
-    tipNumber = aMessage.response;
-    updateTipNbr(0);
+  eGPrefs.getTipNumberPref().then(prefValue => {
+    tipNumber = prefValue;
+    updateTipNbr(+1);
   });
 }
 
@@ -171,10 +158,5 @@ function tipsUnloadHandler() {
   document.getElementById("showTipsControl")
           .removeEventListener("click", updateShowTipsCheckbox);
   
-  browser.runtime.sendMessage({
-    messageName: "query_eGPrefs",
-    methodName: "setTipNumberPref",
-    parameter: (tipNumber + 1) % tips.length
-  });
   // generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
 }
