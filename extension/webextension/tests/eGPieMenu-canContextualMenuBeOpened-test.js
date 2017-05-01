@@ -35,8 +35,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global eGPieMenu, QUnit */
 
 function initCanContextualMenuBeOpened(contextShowAuto, contextKey) {
-  eGPieMenu.contextShowAuto = contextShowAuto;
-  eGPieMenu.contextKey = contextKey;
+  eGPieMenu.settings.contextShowAuto = contextShowAuto;
+  eGPieMenu.settings.contextKey = contextKey;
 }
 
 QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and no key", function(assert) {

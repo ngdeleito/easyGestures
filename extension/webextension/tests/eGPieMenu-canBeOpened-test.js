@@ -35,10 +35,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global eGPieMenu, QUnit */
 
 function initCanBeOpened(showButton, showKey, preventOpenKey, contextKey) {
-  eGPieMenu.showButton = showButton;
-  eGPieMenu.showKey = showKey;
-  eGPieMenu.preventOpenKey = preventOpenKey;
-  eGPieMenu.contextKey = contextKey;
+  eGPieMenu.settings.showButton = showButton;
+  eGPieMenu.settings.showKey = showKey;
+  eGPieMenu.settings.preventOpenKey = preventOpenKey;
+  eGPieMenu.settings.contextKey = contextKey;
 }
 
 // All possible combinations (with left, middle and right mouse buttons) for
