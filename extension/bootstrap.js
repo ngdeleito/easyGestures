@@ -35,9 +35,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported startup, shutdown, install, uninstall */
-/* global Components, Services, AddonManager, ADDON_UPGRADE, ADDON_UNINSTALL */
+/* global Components, Services, ADDON_UPGRADE, ADDON_UNINSTALL */
 
-Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
 var embeddedExtensionPort;
@@ -309,35 +308,33 @@ function handleMessage(aMessage, sender, sendResponse) {
 }
 
 function startup(data, reason) {
-  AddonManager.getAddonByID(data.id, function() {
-    if (reason === ADDON_UPGRADE) {
-      if (Services.vc.compare(data.oldVersion, "4.10") < 0) {
-        eGPrefsUpdater.updateToV4_10();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.11") < 0) {
-        eGPrefsUpdater.updateToV4_11();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.12") < 0) {
-        eGPrefsUpdater.updateToV4_12();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.13") < 0) {
-        eGPrefsUpdater.updateToV4_13();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.14") < 0) {
-        eGPrefsUpdater.updateToV4_14();
-      }
+  if (reason === ADDON_UPGRADE) {
+    if (Services.vc.compare(data.oldVersion, "4.10") < 0) {
+      eGPrefsUpdater.updateToV4_10();
     }
-    
-    // start listening to changes in preferences that could require rebuilding
-    // the menus
-    // eGPrefsObserver.register();
-    
-    data.webExtension.startup().then(api => {
-      const {browser} = api;
-      browser.runtime.onMessage.addListener(handleMessage);
-      browser.runtime.onConnect.addListener(aPort => {
-        embeddedExtensionPort = aPort;
-      });
+    if (Services.vc.compare(data.oldVersion, "4.11") < 0) {
+      eGPrefsUpdater.updateToV4_11();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.12") < 0) {
+      eGPrefsUpdater.updateToV4_12();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.13") < 0) {
+      eGPrefsUpdater.updateToV4_13();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.14") < 0) {
+      eGPrefsUpdater.updateToV4_14();
+    }
+  }
+  
+  // start listening to changes in preferences that could require rebuilding
+  // the menus
+  // eGPrefsObserver.register();
+  
+  data.webExtension.startup().then(api => {
+    const {browser} = api;
+    browser.runtime.onMessage.addListener(handleMessage);
+    browser.runtime.onConnect.addListener(aPort => {
+      embeddedExtensionPort = aPort;
     });
   });
 }
