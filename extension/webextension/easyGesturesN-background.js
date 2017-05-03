@@ -61,6 +61,29 @@ browser.storage.local.get("general.startupTips").then(async prefValue => {
   }
 });
 
+function resetPieMenuOnAllTabs() {
+  browser.tabs.query({}).then(tabs => {
+    for (let tab of tabs) {
+      // we do a catch to avoid having an error message being displayed on the
+      // console for tabs on which the content scripts are not loaded
+      browser.tabs.sendMessage(tab.id, {}).catch(() => {});
+    }
+  });
+}
+
+function handleStorageChange(changes) {
+  for (let change in changes) {
+    let prefix = change.split(".")[0];
+    if (prefix !== "general" && prefix !== "stats") {
+      resetPieMenuOnAllTabs();
+    }
+  }
+}
+
+// start listening to changes in preferences that could require rebuilding the
+// menus
+browser.storage.onChanged.addListener(handleStorageChange);
+
 var eGMessageHandlers = {
   setContext : function(aMessage) {
     for (let key in aMessage.context) {
@@ -145,15 +168,3 @@ function handleMessage(aMessage, sender, sendResponse) {
 }
 
 browser.runtime.onMessage.addListener(handleMessage);
-
-function resetPieMenuOnAllTabs() {
-  browser.tabs.query({}).then(tabs => {
-    for (let tab of tabs) {
-      // we do a catch to avoid having an error message being displayed on the
-      // console for tabs on which the content scripts are not loaded
-      browser.tabs.sendMessage(tab.id, {}).catch(() => {});
-    }
-  });
-}
-
-browser.runtime.connect().onMessage.addListener(resetPieMenuOnAllTabs);

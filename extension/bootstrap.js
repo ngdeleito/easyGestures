@@ -39,32 +39,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 
-var embeddedExtensionPort;
-
-var eGPrefsObserver = {
-  register: function() {
-    this._branch = Services.prefs.getBranch("extensions.easygestures.");
-    this._branch.addObserver("activation.", this, false);
-    this._branch.addObserver("behavior.", this, false);
-    this._branch.addObserver("menus.", this, false);
-    this._branch.addObserver("customizations.", this, false);
-  },
-  
-  unregister: function() {
-    this._branch.removeObserver("activation.", this);
-    this._branch.removeObserver("behavior.", this);
-    this._branch.removeObserver("menus.", this);
-    this._branch.removeObserver("customizations.", this);
-  },
-  
-  observe: function() {
-    // eGPieMenu.init();
-    
-    // removing existing easyGestures menus from open web pages
-    embeddedExtensionPort.postMessage({});
-  }
-};
-
 var eGPrefsUpdater = {
   _prefs : Services.prefs.getBranch("extensions.easygestures."),
   
@@ -326,23 +300,13 @@ function startup(data, reason) {
     }
   }
   
-  // start listening to changes in preferences that could require rebuilding
-  // the menus
-  // eGPrefsObserver.register();
-  
   data.webExtension.startup().then(api => {
     const {browser} = api;
     browser.runtime.onMessage.addListener(handleMessage);
-    browser.runtime.onConnect.addListener(aPort => {
-      embeddedExtensionPort = aPort;
-    });
   });
 }
 
 function shutdown() {
-  // stop listening to changes in preferences
-  // eGPrefsObserver.unregister();
-  
   // removing existing easyGestures menus from open web pages
   // eGPieMenu.removeFromAllPages();
 }
