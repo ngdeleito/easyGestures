@@ -70,7 +70,6 @@ tips.forEach(function(tip) {
   tip.description = browser.i18n.getMessage(tip.label);
 });
 
-// var generalPrefBranch;
 var tipNumber;
 
 function updateContent(tipNbr) {
@@ -124,6 +123,14 @@ function setShowTipsCheckbox() {
   });
 }
 
+function handleStorageChange(changes) {
+  for (let change in changes) {
+    if (change === "general.startupTips") {
+      setShowTipsCheckbox();
+    }
+  }
+}
+
 function tipsLoadHandler() {
   document.getElementById("previousTipButton")
           .addEventListener("click", goToPreviousTip);
@@ -134,8 +141,7 @@ function tipsLoadHandler() {
   document.getElementById("showTipsControl")
           .addEventListener("click", updateShowTipsCheckbox);
   
-  // generalPrefBranch = Services.prefs.getBranch("extensions.easygestures.general.");
-  // generalPrefBranch.addObserver("startupTips", setShowTipsCheckbox, false);
+  browser.storage.onChanged.addListener(handleStorageChange);
   
   eGUtils.setDocumentTitle(document, "tips");
   eGUtils.setDocumentLocalizedStrings(document);
@@ -158,5 +164,5 @@ function tipsUnloadHandler() {
   document.getElementById("showTipsControl")
           .removeEventListener("click", updateShowTipsCheckbox);
   
-  // generalPrefBranch.removeObserver("startupTips", setShowTipsCheckbox);
+  browser.storage.onChanged.removeListener(handleStorageChange);
 }
