@@ -37,35 +37,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
+var prefChanged = false;
+
 window.addEventListener("load", optionsLoadHandler);
 window.addEventListener("hashchange", optionsHashChangeHandler);
 window.addEventListener("unload", optionsUnloadHandler);
-
-// var prefsObserver = {
-//   register: function() {
-//     this._branch = Services.prefs.getBranch("extensions.easygestures.");
-//     this._branch.addObserver("general.startupTips", this, false);
-//     this._branch.addObserver("activation.", this, false);
-//     this._branch.addObserver("behavior.", this, false);
-//     this._branch.addObserver("menus.", this, false);
-//     this._branch.addObserver("customizations.", this, false);
-//   },
-//
-//   unregister: function() {
-//     this._branch.removeObserver("general.startupTips", this);
-//     this._branch.removeObserver("activation.", this);
-//     this._branch.removeObserver("behavior.", this);
-//     this._branch.removeObserver("menus.", this);
-//     this._branch.removeObserver("customizations.", this);
-//   },
-//
-//   observe: function(aSubject, aTopic, aData) {
-//     var prefControl =
-//           document.querySelector("[data-preference='" + aData + "']");
-//     initializePreferenceControl(prefControl);
-//     setPreferenceControlsDisabledStatus();
-//   }
-// };
 
 var eventListenersArray = [
   ["displayTipsButton", "click", displayTips],
@@ -96,6 +72,27 @@ function displayTips() {
 
 function preventDefault(anEvent) {
   anEvent.preventDefault();
+}
+
+function handleStorageChange(changes) {
+  for (let change in changes) {
+    let prefix = change.split(".")[0];
+    if (prefix === "stats") {
+      initializeClicksByAction();
+      initializeClicksByDirection();
+    }
+    else if (prefix !== "general" || change === "general.startupTips") {
+      if (!prefChanged) {
+        // a preference has been updated in another tab, so we update the
+        // corresponding preference control
+        let prefControl = document.querySelector("[data-preference='" + change +
+                                                 "']");
+        initializePreferenceControl(prefControl);
+        setPreferenceControlsDisabledStatus();
+      }
+      prefChanged = false;
+    }
+  }
 }
 
 function addEventListeners() {
@@ -548,6 +545,7 @@ function preparePreferenceValueForLoadURL(actionName) {
 
 function addEventListenerToLoadURLTooltip(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
+    prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForLoadURL(actionName));
   }, false);
@@ -558,6 +556,7 @@ function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
     if (document.getElementById(actionName + "_faviconCheckbox").checked) {
       addFavicon(this.value, actionName);
     }
+    prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForLoadURL(actionName));
   }, false);
@@ -573,6 +572,7 @@ function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
       document.getElementById(actionName + "_favicon").src =
         DEFAULT_FAVICON_URL;
     }
+    prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForLoadURL(actionName));
   }, false);
@@ -580,6 +580,7 @@ function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
 
 function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
+    prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForLoadURL(actionName));
   });
@@ -593,6 +594,7 @@ function preparePreferenceValueForRunScript(actionName) {
 
 function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
+    prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForRunScript(actionName));
   }, false);
@@ -600,6 +602,7 @@ function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
 
 function addEventListenerToRunScriptCode(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
+    prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForRunScript(actionName));
   }, false);
@@ -616,12 +619,14 @@ function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
             "file://" + aMessage.path;
         }
         this.checked = aMessage.returnedOK;
+        prefChanged = true;
         eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
           preparePreferenceValueForRunScript(actionName));
       });
     }
     else {
       document.getElementById(actionName + "_customIconURL").textContent = "";
+      prefChanged = true;
       eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
         preparePreferenceValueForRunScript(actionName));
     }
@@ -638,6 +643,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       
       if (aSelectElement.selectedIndex < 3) {
         aTextInputElement.value = aSelectElement.selectedIndex;
+        prefChanged = true;
         eGPrefs.setIntPref(control.dataset.preference,
                            aSelectElement.selectedIndex);
       }
@@ -647,6 +653,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     }, true);
     aTextInputElement.addEventListener("change", function(anEvent) {
       let prefValue = anEvent.target.value;
+      prefChanged = true;
       eGPrefs.setIntPref(control.dataset.preference, prefValue);
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
       setDisabledStatusForSelectWithTextInputControl(control);
@@ -674,6 +681,7 @@ function addOnchangeListenerToPreferenceControl(control) {
         });
       }
       else {
+        prefChanged = true;
         eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
       }
     }
@@ -686,6 +694,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToBoolRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
+      prefChanged = true;
       eGPrefs.setBoolPref(control.dataset.preference,
                           anEvent.target.value === "true");
     }
@@ -705,6 +714,7 @@ function addOnchangeListenerToPreferenceControl(control) {
         control.firstElementChild.childNodes[i].dataset.action = value;
         prefValueAsArray.push(value);
       }
+      prefChanged = true;
       eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
     }
     
@@ -738,6 +748,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToStringRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
+      prefChanged = true;
       eGPrefs.setCharPref(control.dataset.preference, anEvent.target.value);
     }
     
@@ -750,6 +761,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
       control.addEventListener("change", function() {
+        prefChanged = true;
         eGPrefs.toggleBoolPref(control.dataset.preference);
       }, true);
       break;
@@ -764,6 +776,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "numberInput":
       control.addEventListener("change", function() {
+        prefChanged = true;
         eGPrefs.setIntPref(control.dataset.preference, control.value);
       }, true);
       break;
@@ -772,6 +785,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "select":
       control.addEventListener("change", function() {
+        prefChanged = true;
         eGPrefs.setCharPref(control.dataset.preference, control.value);
       }, true);
       break;
@@ -786,6 +800,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       break;
     case "dailyReadingsInput":
       control.addEventListener("change", function() {
+        prefChanged = true;
         eGPrefs.setDailyReadingsFolderName(control.value);
       }, true);
       break;
@@ -910,6 +925,12 @@ function loadPreferences(isReload) {
   setPreferenceControlsDisabledStatus();
 }
 
+function removeChildNodes(node) {
+  while (node.hasChildNodes()) {
+    node.removeChild(node.firstChild);
+  }
+}
+
 function initializeClicksByAction() {
   eGPrefs.getStatsActionsPref().then(statsActions => {
     var totalClicks = 0;
@@ -919,6 +940,7 @@ function initializeClicksByAction() {
     totalClicks = totalClicks === 0 ? 1 : totalClicks - statsActions.empty;
     
     var container = document.getElementById("stats_clicksByAction");
+    removeChildNodes(container);
     
     // we start at the action that follows the "showExtraMenu" action
     var currentAction = eGActions.showExtraMenu.nextAction;
@@ -973,6 +995,7 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
     var container = document.getElementById(menuPrefix +
                                             (isExtraMenu ? "Extra" : "Main") +
                                             "Menu");
+    removeChildNodes(container);
     container.className = "menu";
     container.classList.toggle("extra", isExtraMenu);
     eGPrefs.isLargeMenuOn().then(prefValue => {
@@ -1010,6 +1033,7 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
   var container = document.getElementById("allMenus" +
                                          (isExtraMenu ? "Extra" : "Main") +
                                          "Menu");
+  removeChildNodes(container);
   container.className = "menu";
   container.classList.toggle("extra", isExtraMenu);
   eGPrefs.isLargeMenuOn().then(prefValue => {
@@ -1047,7 +1071,7 @@ function loadStats() {
 
 function optionsLoadHandler() {
   document.body.style.cursor = "wait";
-  // prefsObserver.register();
+  browser.storage.onChanged.addListener(handleStorageChange);
   addEventListeners();
   
   eGUtils.setDocumentTitle(document, "preferences");
@@ -1133,7 +1157,7 @@ function optionsUnloadHandler() {
   window.removeEventListener("unload", optionsUnloadHandler);
   
   removeEventListeners();
-  // prefsObserver.unregister();
+  browser.storage.onChanged.removeListener(handleStorageChange);
 }
 
 function importPrefs() {
