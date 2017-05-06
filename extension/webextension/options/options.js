@@ -369,6 +369,15 @@ function initializePaneAndTabs(hash) {
   }
 }
 
+function setDisabledStatusForSelectWithTextInputControl(control) {
+  var aSelectElement = control.firstElementChild;
+  var aLabelElement = aSelectElement.nextElementSibling;
+  var aTextInputElement = aLabelElement.nextElementSibling;
+  var shouldBeDisabled = aSelectElement.selectedIndex < 3;
+  aLabelElement.classList.toggle("disabled", shouldBeDisabled);
+  aTextInputElement.disabled = shouldBeDisabled;
+}
+
 function addFavicon(url, actionName) {
   if (url === "") {
     document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
@@ -388,13 +397,10 @@ function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
     eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
       var aSelectElement = control.firstElementChild;
-      var aLabelElement = aSelectElement.nextElementSibling;
-      var aTextInputElement = aLabelElement.nextElementSibling;
+      var aTextInputElement = control.lastElementChild;
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
       aTextInputElement.value = prefValue;
-      var shouldBeDisabled = prefValue < 3;
-      aLabelElement.classList.toggle("disabled", shouldBeDisabled);
-      aTextInputElement.disabled = shouldBeDisabled;
+      setDisabledStatusForSelectWithTextInputControl(control);
     });
   }
   
@@ -625,14 +631,12 @@ function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
 function addOnchangeListenerToPreferenceControl(control) {
   function addOnchangeListenerToSelectWithTextInputControl(control) {
     var aSelectElement = control.firstElementChild;
-    var aTextInputElement = control.lastElementChild;
+    var aLabelElement = aSelectElement.nextElementSibling;
+    var aTextInputElement = aLabelElement.nextElementSibling;
     aSelectElement.addEventListener("change", function() {
-      let shouldBeDisabled = aSelectElement.selectedIndex < 3;
-      let aLabelElement = aSelectElement.nextElementSibling;
-      aLabelElement.classList.toggle("disabled", shouldBeDisabled);
-      aTextInputElement.disabled = shouldBeDisabled;
+      setDisabledStatusForSelectWithTextInputControl(control);
       
-      if (shouldBeDisabled) {
+      if (aSelectElement.selectedIndex < 3) {
         aTextInputElement.value = aSelectElement.selectedIndex;
         eGPrefs.setIntPref(control.dataset.preference,
                            aSelectElement.selectedIndex);
@@ -642,7 +646,10 @@ function addOnchangeListenerToPreferenceControl(control) {
       }
     }, true);
     aTextInputElement.addEventListener("change", function(anEvent) {
-      eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
+      let prefValue = anEvent.target.value;
+      eGPrefs.setIntPref(control.dataset.preference, prefValue);
+      aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
+      setDisabledStatusForSelectWithTextInputControl(control);
     }, true);
   }
   
@@ -694,7 +701,9 @@ function addOnchangeListenerToPreferenceControl(control) {
       var selectElements = control.lastElementChild;
       var prefValueAsArray = [];
       for (let i = 0; i < selectElements.childNodes.length; ++i) {
-        prefValueAsArray.push(selectElements.childNodes[i].value);
+        let value = selectElements.childNodes[i].value;
+        control.firstElementChild.childNodes[i].dataset.action = value;
+        prefValueAsArray.push(value);
       }
       eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
     }
