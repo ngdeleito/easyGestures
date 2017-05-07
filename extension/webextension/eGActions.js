@@ -89,11 +89,13 @@ Action.prototype = {
   },
   
   getTooltipLabel: function() {
-    return browser.i18n.getMessage(this._name);
+    return new Promise(resolve => {
+      resolve(browser.i18n.getMessage(this._name));
+    });
   },
   
   getLocalizedActionName: function() {
-    return this.getTooltipLabel();
+    return browser.i18n.getMessage(this._name);
   },
   
   getActionStatus: function() {},
@@ -264,14 +266,15 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
 NumberedAction.prototype = Object.create(DisableableAction.prototype);
 NumberedAction.prototype.constructor = NumberedAction;
 NumberedAction.prototype.getTooltipLabel = function() {
-  // var prefValue = eGPrefs.getLoadURLOrRunScriptPrefValue(this._name);
-  // var label = prefValue[0];
-  // if (label !== "") {
-  //   // if this action has already a label given by the user, then use it
-  //   return label;
-  // }
-  // otherwise use the default label
-  return browser.i18n.getMessage(this._name);
+  return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name).then(prefValue => {
+    let label = prefValue[0];
+    if (label !== "") {
+      // if this action has already a label given by the user, then use it
+      return label;
+    }
+    // otherwise use the default label
+    return browser.i18n.getMessage(this._name);
+  });
 };
 
 function LoadURLAction(number, startsNewGroup, nextAction) {

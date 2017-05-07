@@ -61,8 +61,8 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   browser.runtime.sendMessage({
     messageName: "getTooltipLabels",
     actions: this.actions
-  }).then(aMessage => {
-    this.labels = aMessage.response;
+  }).then(labels => {
+    this.labels = labels;
   });
   
   // half the angle reserved for a sector (in radians)

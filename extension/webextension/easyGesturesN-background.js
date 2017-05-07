@@ -91,12 +91,10 @@ var eGMessageHandlers = {
     }
   },
   
-  getTooltipLabels : function(aMessage, sendResponse) {
-    sendResponse({
-      response: aMessage.actions.map(function(actionName) {
-                  return eGActions[actionName].getTooltipLabel();
-                })
-    });
+  getTooltipLabels : function(aMessage) {
+    return Promise.all(aMessage.actions.map(function(actionName) {
+      return eGActions[actionName].getTooltipLabel();
+    }));
   },
   
   isExtraMenuAction : function(aMessage, sendResponse) {
