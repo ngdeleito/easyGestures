@@ -197,7 +197,7 @@ CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
     return new Promise(resolve => {
-      return resolve(!eGContext.anchorElementExists);
+      resolve(!eGContext.anchorElementExists);
     });
   }, startsNewGroup, nextAction);
 }
@@ -312,7 +312,7 @@ RunScriptAction.prototype.constructor = RunScriptAction;
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
     return new Promise(resolve => {
-      return resolve(eGContext.imageElementDoesntExist);
+      resolve(eGContext.imageElementDoesntExist);
     });
   }, startsNewGroup, nextAction);
 }
@@ -763,7 +763,7 @@ var eGActions = {
                                              return foundBookmarks.length > 0;
                                            })
                                          : new Promise(resolve => {
-                                             return resolve(true);
+                                             resolve(true);
                                            });
   }, false, "bookmarkOpenTabs"),
   
