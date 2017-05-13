@@ -33,7 +33,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* global window, eGUtils, eGPrefs, browser, document, eGActions, alert,
-          confirm */
+          FileReader, confirm */
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
@@ -45,7 +45,8 @@ window.addEventListener("unload", optionsUnloadHandler);
 
 var eventListenersArray = [
   ["displayTipsButton", "click", displayTips],
-  ["importPrefsButton", "click", importPrefs],
+  ["importPrefsFilePicker", "change", importPrefs],
+  ["importPrefsButton", "click", triggerImportPrefsFilePicker],
   ["exportPrefsButton", "click", exportPrefs],
   ["resetPrefsButton", "click", resetPrefs],
   ["showButtonInput", "mousedown", updateTextInputElement],
@@ -1160,27 +1161,28 @@ function optionsUnloadHandler() {
   browser.storage.onChanged.removeListener(handleStorageChange);
 }
 
-function importPrefs() {
-  browser.runtime.sendMessage({
-    messageName: "importPrefs"
-  }).then(aMessage => {
-    if (aMessage.prefsString !== undefined) {
-      try {
-        eGPrefs.importPrefsFromString(aMessage.prefsString).then(result => {
-          if (result !== undefined) {
-            alert(browser.i18n
-                         .getMessage("general.prefs.import." + result.code) +
-                  " " + result.prefs);
-          }
-          loadPreferences(true);
-        });
-      }
-      catch (exception) {
-        alert(browser.i18n.getMessage("general.prefs.import." +
-                                      exception.code));
-      }
+function importPrefs(anEvent) {
+  var fileReader = new FileReader();
+  fileReader.onload = function(anEvent) {
+    try {
+      eGPrefs.importPrefsFromString(anEvent.target.result).then(result => {
+        if (result !== undefined) {
+          alert(browser.i18n.getMessage("general.prefs.import." + result.code) +
+                " " + result.prefs);
+        }
+        loadPreferences(true);
+      });
     }
-  });
+    catch (exception) {
+      alert(browser.i18n.getMessage("general.prefs.import." + exception.code));
+    }
+  };
+  fileReader.readAsText(anEvent.target.files[0]);
+}
+
+function triggerImportPrefsFilePicker() {
+  var filePicker = document.getElementById("importPrefsFilePicker");
+  filePicker.click();
 }
 
 function exportPrefs() {

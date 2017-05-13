@@ -189,38 +189,6 @@ var eGMessageListeners = {
     });
   },
   
-  importPrefs: function(aMessage, sendResponse) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var fp = Components.classes["@mozilla.org/filepicker;1"]
-                       .createInstance(Components.interfaces.nsIFilePicker);
-    fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeOpen);
-    fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
-    var returnValue = fp.show();
-    var aString;
-    if (returnValue === Components.interfaces.nsIFilePicker.returnOK) {
-      var inputStream = Components
-                        .classes["@mozilla.org/network/file-input-stream;1"]
-                        .createInstance(Components.interfaces.nsIFileInputStream);
-      inputStream.init(fp.file, 0x01, 444, 0);
-      
-      var converterInputStream = Components
-                   .classes["@mozilla.org/intl/converter-input-stream;1"]
-                   .createInstance(Components.interfaces.nsIConverterInputStream);
-      converterInputStream.init(inputStream, "UTF-8", 0, 0xFFFD);
-      var content = {};
-      aString = "";
-      while (converterInputStream.readString(4096, content) !== 0) {
-        aString += content.value;
-      }
-      converterInputStream.close();
-      inputStream.close();
-    }
-    
-    sendResponse({
-      prefsString: aString
-    });
-  },
-  
   exportPrefs: function(aMessage) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var fp = Components.classes["@mozilla.org/filepicker;1"]
