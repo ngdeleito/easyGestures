@@ -88,7 +88,6 @@ function setPieMenuSettings() {
         eGPieMenu.settings[prefName] = prefs[key];
       }
     }
-    eGPieMenu.settings.openTabForMiddleclick = true;
     eGPieMenu.init();
   });
 }

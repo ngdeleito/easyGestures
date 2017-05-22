@@ -819,21 +819,8 @@ var eGPieMenu = {
       });
     }
     else {
-      // when option "use browser behavior" is checked to open links
-      // middle clicking on a link through eG must display the link in a new tab or new window according to corresponding Firefox pref.
-      let messageName;
-      if (clickedButton === 1) {
-        // middle click
-        if (this.settings.openTabForMiddleclick) {
-          messageName = "loadURLInNewNonActiveTab";
-        }
-        else {
-          messageName = "loadURLInNewWindow";
-        }
-      }
-      else {
-        messageName = "loadURLInCurrentTab";
-      }
+      let messageName = clickedButton === 1 ? "loadURLInNewNonActiveTab" :
+                                              "loadURLInCurrentTab";
       browser.runtime.sendMessage({
         messageName: messageName,
         url: anchorElement.href

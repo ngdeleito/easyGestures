@@ -146,12 +146,6 @@ var eGMessageHandlers = {
     });
   },
   
-  loadURLInNewWindow : function(aMessage) {
-    browser.windows.create({
-      url: aMessage.url
-    });
-  },
-  
   loadURLInCurrentTab : function(aMessage) {
     browser.tabs.update({
       url: aMessage.url
