@@ -1,6 +1,29 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 5.2 (June 8, 2017)
+
+- migrated most of the extension to an embedded WebExtension
+- limitations due to the migration to a WebExtension:
+    - the pie menu can only be opened on pages whose location starts with "http://", "https://" (except https://addons.mozilla.org/), and "file://" and "about:blank" (with limitations, as some actions do not work on these type of pages)
+    - it is currently not possible to perform a cleanup operation when the extension is disabled; reenabling the extension afterwards might require explicitly reloading pages to reset the internal state of the pie menu on those pages
+    - the pie menu cannot (currently) be opened inside a frame
+    - the following actions can no longer appear as disabled: "Back", "Forward", "Cut", "Copy", and "Paste"
+    - it does not seem to be possible to migrate the following actions (they currently appear as disabled and will normally be removed in the next version of the extension): "Back Site", "First Page", "Forward Site", "Last Page", "Home Page", "Autoscrolling", "Toggle Find Bar", "View Page Source", "View Page Info", "Show Only This Frame", "Focus Location Bar", "Search Web", "Quit", "Restart", "Show Bookmarks", "Toggle Bookmarks Sidebar", "Toggle Bookmarks Toolbar", "Show History", "Toggle History Sidebar", "Show Downloads", "Firefox Preferences", "Add-ons", "Copy Image", "Undo", and "Redo"
+    - "New Blank Tab" action no longer gives focus to the location bar
+    - "New Window" action became an alias of "New Blank Window"
+    - "Bookmark This Page" action appears disabled if the page is already bookmarked
+    - "Bookmark This Link" and "Bookmark Open Tabs" actions do no longer open a popup for user interaction
+    - the URL of custom icons for "Run Script" actions is displayed in place of the icon itself in the preferences dialog
+    - "Paste" action is temporarily broken
+    - autoscrolling through the pie menu center no longer works (as WebExtensions create “untrusted” events)
+- "Reload" action only reloads now the current tab
+- replaced the last XUL-based control in the preferences dialog (the one for customizing the "Daily Readings" action folder) with an HTML-based control; the corresponding preference needs to be manually reset
+- custom tooltips for "Load URL" and "Run Script" actions are now only displayed on the pie menu
+- stats by direction are now updated when the extra menu is shown
+- stats are automatically refreshed while the preferences dialog is open
+
+
 Version 5.1 (January 8, 2017)
 
 - replaced (most of) XUL-based preferences dialog with an HTML-based page

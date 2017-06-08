@@ -35,7 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported startup, shutdown, install, uninstall */
-/* global Components, Services, ADDON_UPGRADE, ADDON_UNINSTALL */
+/* global Components, Services, ADDON_UPGRADE */
 
 Components.utils.import("resource://gre/modules/Services.jsm");
 
@@ -240,6 +240,7 @@ var eGMessageListeners = {
     sendResponse({
       response: JSON.stringify(result)
     });
+    prefs.deleteBranch("");
   }
 };
 
@@ -266,6 +267,9 @@ function startup(data, reason) {
     if (Services.vc.compare(data.oldVersion, "4.14") < 0) {
       eGPrefsUpdater.updateToV4_14();
     }
+    if (Services.vc.compare(data.oldVersion, "5.2") < 0) {
+      eGPrefsUpdater.updateToV5_2();
+    }
   }
   
   data.webExtension.startup().then(api => {
@@ -282,9 +286,5 @@ function shutdown() {
 function install() {
 }
 
-function uninstall(data, reason) {
-  if (reason === ADDON_UNINSTALL) {
-    var prefs = Services.prefs.getBranch("extensions.easygestures.");
-    prefs.deleteBranch("");
-  }
+function uninstall() {
 }
