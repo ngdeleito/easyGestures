@@ -762,7 +762,9 @@ var eGPieMenu = {
         this.showMenuTooltips();
       }
       else {
-        this.tooltipsTrigger = window.setTimeout(this.showMenuTooltips.bind(eGPieMenu), this.settings.tooltipsDelay);
+        this.tooltipsTrigger = window.setTimeout(function() {
+          eGPieMenu.showMenuTooltips();
+        }, this.settings.tooltipsDelay);
       }
     }
   },
