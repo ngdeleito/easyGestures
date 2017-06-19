@@ -37,17 +37,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 browser.storage.local.get("general.startupTips").then(async prefValue => {
   if (prefValue["general.startupTips"] === undefined) {
     await eGPrefs.setDefaultSettings();
-    await eGPrefs.initializeStats();
-    browser.runtime.sendMessage({
-      messageName: "retrievePreferences"
-    }).then(aMessage => {
-      let prefsArray = JSON.parse(aMessage.response);
-      prefsArray.forEach(pref => {
-        let prefObject = {};
-        prefObject[pref[0]] = pref[1];
-        browser.storage.local.set(prefObject);
-      });
-    });
+    eGPrefs.initializeStats();
   }
   else {
     eGPrefs.areStartupTipsOn().then(prefValue => {
