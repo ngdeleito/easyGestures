@@ -675,6 +675,26 @@ var eGPieMenu = {
     document.execCommand(options.commandName);
   },
   
+  runAction_paste : function() {
+    var selectionStart = inputElement.selectionStart;
+    var selectionEnd = inputElement.selectionEnd;
+    
+    var textareaWithPastedText = document.createElement("textarea");
+    textareaWithPastedText.contentEditable = true;
+    var easyGesturesNode = document.getElementById(this.easyGesturesID);
+    easyGesturesNode.appendChild(textareaWithPastedText);
+    textareaWithPastedText.focus();
+    document.execCommand("paste");
+    
+    var inputContent = inputElement.value;
+    inputElement.value = inputContent.substring(0, selectionStart) +
+      textareaWithPastedText.textContent +
+      inputContent.substring(selectionEnd, inputContent.length);
+    inputElement.focus();
+    
+    easyGesturesNode.removeChild(textareaWithPastedText);
+  },
+  
   runAction_selectAll : function() {
     if (inputElement !== null) {
       inputElement.select();

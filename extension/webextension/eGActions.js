@@ -865,7 +865,13 @@ var eGActions = {
   
   copy : new CommandAction("copy", false, "paste"),
   
-  paste : new CommandAction("paste", false, "undo"),
+  paste : new DisableableAction("paste", function() {
+    return this._sendPerformActionMessage();
+  }, function() {
+    return new Promise(resolve => {
+      resolve(!eGContext.inputElementExists);
+    });
+  }, false, "undo"),
   
   undo : new DisabledAction("undo", false, "redo"),
   

@@ -8,7 +8,8 @@
   
   "default_locale": "en",
   "permissions": [
-    "bookmarks", "clipboardWrite", "downloads", "sessions", "storage", "tabs"
+    "bookmarks", "clipboardRead", "clipboardWrite", "downloads", "sessions",
+    "storage", "tabs"
   ],
   "background": {
     "scripts": [
