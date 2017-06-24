@@ -347,6 +347,12 @@ function CommandAction(name, startsNewGroup, nextAction) {
 }
 CommandAction.prototype = Object.create(Action.prototype);
 CommandAction.prototype.constructor = CommandAction;
+CommandAction.prototype.getActionStatus = function() {
+  return {
+    messageName: "setActionStatus_" + this._name,
+    status: undefined
+  };
+};
 
 function DisabledAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {}, function() {

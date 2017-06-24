@@ -36,11 +36,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, eGPrefs, document, contextualMenus, addEventListener,
-          removeMenuEventHandler, anchorElement, window, handleMousemove,
-          EXTRA_MENU_ACTION, targetWindow, topmostWindow, mousedownScreenX,
-          mouseupScreenX, mousedownScreenY, mouseupScreenY, imageElement,
-          inputElement, hide, removeEventListener */
+/* global browser, eGPrefs, document, contextualMenus, selection,
+          addEventListener, removeMenuEventHandler, anchorElement, window,
+          handleMousemove, EXTRA_MENU_ACTION, targetWindow, topmostWindow,
+          mousedownScreenX, mouseupScreenX, mousedownScreenY, mouseupScreenY,
+          imageElement, inputElement, hide, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
@@ -288,6 +288,18 @@ var eGPieMenu = {
   setHideImagesActionStatus : function(aMessage, layoutName, actionSector) {
     var disabled = document.querySelectorAll("img").length === 0;
     this._setActionStatusHelper(layoutName, actionSector, disabled);
+  },
+  
+  setActionStatus_cut : function(aMessage, layoutName, actionSector) {
+    var disabled = inputElement === null ||
+                   inputElement.selectionStart === inputElement.selectionEnd;
+    this._setActionStatusHelper(layoutName, actionSector, disabled);
+  },
+  
+  setActionStatus_copy : function(aMessage, layoutName, actionSector) {
+    var enabled = selection !== "" || (inputElement !== null &&
+                    inputElement.selectionEnd > inputElement.selectionStart);
+    this._setActionStatusHelper(layoutName, actionSector, !enabled);
   },
   
   _createEasyGesturesNode : function() {
