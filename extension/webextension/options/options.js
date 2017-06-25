@@ -537,7 +537,7 @@ function preparePreferenceValueForLoadURL(actionName) {
                   .checked];
 }
 
-function addEventListenerToLoadURLTooltip(aPrefName, element, actionName) {
+function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
@@ -572,37 +572,13 @@ function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
   }, false);
 }
 
-function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForLoadURL(actionName));
-  });
-}
-
 function preparePreferenceValueForRunScript(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
           document.getElementById(actionName + "_code").value,
           document.getElementById(actionName + "_customIconURL").value];
 }
 
-function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForRunScript(actionName));
-  }, false);
-}
-
-function addEventListenerToRunScriptCode(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForRunScript(actionName));
-  }, false);
-}
-
-function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
+function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
@@ -703,23 +679,23 @@ function addOnchangeListenerToPreferenceControl(control) {
   }
   
   function addOnchangeListenerToLoadURLControl(control) {
-    addEventListenerToLoadURLTooltip(control.dataset.preference,
+    addEventListenerToLoadURLComponent(control.dataset.preference,
       document.getElementById(control.id + "_tooltip"), control.id);
     addEventListenerToLoadURLURL(control.dataset.preference,
       document.getElementById(control.id + "_URL"), control.id);
     addEventListenerToLoadURLFavicon(control.dataset.preference,
       document.getElementById(control.id + "_faviconCheckbox"), control.id);
-    addEventListenerToLoadURLOpenInPrivateWindow(control.dataset.preference,
+    addEventListenerToLoadURLComponent(control.dataset.preference,
       document.getElementById(control.id + "_openInPrivateWindowCheckbox"),
       control.id);
   }
   
   function addOnchangeListenerToRunScriptControl(control) {
-    addEventListenerToRunScriptTooltip(control.dataset.preference,
+    addEventListenerToRunScriptComponent(control.dataset.preference,
       document.getElementById(control.id + "_tooltip"), control.id);
-    addEventListenerToRunScriptCode(control.dataset.preference,
+    addEventListenerToRunScriptComponent(control.dataset.preference,
       document.getElementById(control.id + "_code"), control.id);
-    addEventListenerToRunScriptNewIcon(control.dataset.preference,
+    addEventListenerToRunScriptComponent(control.dataset.preference,
       document.getElementById(control.id + "_customIconURL"), control.id);
   }
   
