@@ -130,7 +130,7 @@
   "general.prefs.manage": { "message": "Gérer les préférences" },
   "general.prefs.import": { "message": "Importer les préférences..." },
   "general.prefs.import.invalidFileContent": { "message": "Le contenu du fichier n'est pas valide." },
-  "general.prefs.import.nonImportedPrefs": { "message": "Les préférences suivantes n'ont pas pu être importées et les valeurs par défault ont été utilisées quand cela a été nécessaire :" },
+  "general.prefs.import.nonImportedPrefs": { "message": "Les préférences suivantes n'ont pas pu être importées et les valeurs par défaut ont été utilisées quand cela a été nécessaire :" },
   "general.prefs.export": { "message": "Exporter les préférences..." },
   "general.prefs.reset": { "message": "Réinitialiser les préférences..." },
   "general.prefs.reset.confirm": { "message": "Confirmez svp que vous souhaitez réinitialiser les préférences." },
