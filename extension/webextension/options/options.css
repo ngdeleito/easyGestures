@@ -325,6 +325,11 @@ th {
   font-size: inherit;
 }
 
+[id$="_customIconURL"] {
+  box-sizing: border-box;
+  width: 100%;
+}
+
 #statsResetSection {
   display: flex;
   flex-direction: row;

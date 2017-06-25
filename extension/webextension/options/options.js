@@ -298,19 +298,14 @@ function createRunScriptActions() {
     table.appendChild(tr);
     
     tr = document.createElement("tr");
-    tr.appendChild(document.createElement("th"));
+    th = document.createElement("th");
+    th.textContent = browser.i18n.getMessage("customizations.customIconURL");
+    tr.appendChild(th);
     td = document.createElement("td");
     input = document.createElement("input");
-    input.id = actionName + "_customIconCheckbox";
-    input.type = "checkbox";
+    input.id = actionName + "_customIconURL";
+    input.type = "url";
     td.appendChild(input);
-    var label = document.createElement("label");
-    label.htmlFor = input.id;
-    label.textContent = browser.i18n.getMessage("customizations.useCustomIcon");
-    td.appendChild(label);
-    var span = document.createElement("span");
-    span.id = actionName + "_customIconURL";
-    td.appendChild(span);
     tr.appendChild(td);
     table.appendChild(tr);
     
@@ -454,9 +449,7 @@ function initializePreferenceControl(control) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_code").value = prefValue[1];
-      document.getElementById(actionName + "_customIconCheckbox").checked =
-        prefValue[2] !== "";
-      document.getElementById(actionName + "_customIconURL").textContent =
+      document.getElementById(actionName + "_customIconURL").value =
         prefValue[2];
     });
   }
@@ -590,7 +583,7 @@ function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, action
 function preparePreferenceValueForRunScript(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
           document.getElementById(actionName + "_code").value,
-          document.getElementById(actionName + "_customIconURL").textContent];
+          document.getElementById(actionName + "_customIconURL").value];
 }
 
 function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
@@ -611,26 +604,9 @@ function addEventListenerToRunScriptCode(aPrefName, element, actionName) {
 
 function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    if (this.checked) {
-      browser.runtime.sendMessage({
-        messageName: "retrieveCustomIconFile"
-      }).then(aMessage => {
-        if (aMessage.returnedOK) {
-          document.getElementById(actionName + "_customIconURL").textContent =
-            "file://" + aMessage.path;
-        }
-        this.checked = aMessage.returnedOK;
-        prefChanged = true;
-        eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-          preparePreferenceValueForRunScript(actionName));
-      });
-    }
-    else {
-      document.getElementById(actionName + "_customIconURL").textContent = "";
-      prefChanged = true;
-      eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-        preparePreferenceValueForRunScript(actionName));
-    }
+    prefChanged = true;
+    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
+      preparePreferenceValueForRunScript(actionName));
   }, false);
 }
 
@@ -744,7 +720,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     addEventListenerToRunScriptCode(control.dataset.preference,
       document.getElementById(control.id + "_code"), control.id);
     addEventListenerToRunScriptNewIcon(control.dataset.preference,
-      document.getElementById(control.id + "_customIconCheckbox"), control.id);
+      document.getElementById(control.id + "_customIconURL"), control.id);
   }
   
   function addOnchangeListenerToStringRadiogroupControl(control) {

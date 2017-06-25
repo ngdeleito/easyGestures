@@ -57,20 +57,6 @@ var eGMessageListeners = {
     return true;
   },
   
-  retrieveCustomIconFile: function(aMessage, sendResponse) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var fp = Components.classes["@mozilla.org/filepicker;1"]
-                       .createInstance(Components.interfaces.nsIFilePicker);
-    fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
-    fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
-    var returnedOK = fp.show() === Components.interfaces.nsIFilePicker.returnOK;
-    
-    sendResponse({
-      returnedOK: returnedOK,
-      path: returnedOK ? fp.file.path : undefined
-    });
-  },
-  
   exportPrefs: function(aMessage) {
     var window = Services.wm.getMostRecentWindow("navigator:browser");
     var fp = Components.classes["@mozilla.org/filepicker;1"]
