@@ -146,7 +146,7 @@
   "activation.ctrlKey": { "message": "Una tecla 'Ctrl'" },
   "activation.noKey": { "message": "Ninguna de estas teclas" },
   "activation.openAltMenu": { "message": "Mostrar el menú alternativo con" },
-  "activation.openAltMenu.altKey": { "message": "(Puede usar también una de las teclas Alt)" },
+  "activation.openAltMenu.altKey": { "message": "(Puede usar también una de las teclas 'Alt')" },
   "activation.preventOpen": { "message": "Impedir la apertura del menú circular con" },
   "activation.altKey": { "message": "Una tecla 'Alt'" },
   "activation.contextualMenu": { "message": "Activar el menú contextual con" },
