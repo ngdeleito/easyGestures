@@ -33,7 +33,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* global window, eGUtils, eGPrefs, browser, document, eGActions, alert,
-          FileReader, confirm */
+          FileReader, Blob, URL, confirm */
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
@@ -1139,9 +1139,23 @@ function triggerImportPrefsFilePicker() {
 
 function exportPrefs() {
   eGPrefs.exportPrefsToString().then(prefsAsString => {
-    browser.runtime.sendMessage({
-      messageName: "exportPrefs",
-      prefsAsString: prefsAsString
+    let aBlob = new Blob([prefsAsString]);
+    let blobURL = URL.createObjectURL(aBlob);
+    browser.downloads.download({
+      url: blobURL,
+      filename: "easyGesturesNPreferences-" + (new Date()).toISOString() +
+                ".json",
+      saveAs: true
+    }).then((downloadID) => {
+      browser.downloads.onChanged.addListener(function downloadListener(download) {
+        if (downloadID === download.id &&
+            download.state.current === "complete") {
+          URL.revokeObjectURL(blobURL);
+          browser.downloads.onChanged.removeListener(downloadListener);
+        }
+      });
+    }).catch(() => {
+      URL.revokeObjectURL(blobURL);
     });
   });
 }

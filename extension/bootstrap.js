@@ -55,32 +55,6 @@ var eGMessageListeners = {
       });
     });
     return true;
-  },
-  
-  exportPrefs: function(aMessage) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    var fp = Components.classes["@mozilla.org/filepicker;1"]
-                       .createInstance(Components.interfaces.nsIFilePicker);
-    fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeSave);
-    fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
-    fp.defaultString = "easyGesturesNPreferences-" + (new Date()).toISOString() +
-                       ".json";
-    var returnValue = fp.show();
-    if (returnValue === Components.interfaces.nsIFilePicker.returnOK ||
-        returnValue === Components.interfaces.nsIFilePicker.returnReplace) {
-      var outputStream = Components
-                       .classes[ "@mozilla.org/network/file-output-stream;1"]
-                       .createInstance(Components.interfaces.nsIFileOutputStream);
-      outputStream.init(fp.file, 0x04 | 0x08, 420, 0);
-      
-      var converterOutputStream = Components
-                  .classes["@mozilla.org/intl/converter-output-stream;1"]
-                  .createInstance(Components.interfaces.nsIConverterOutputStream);
-      converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
-      converterOutputStream.writeString(aMessage.prefsAsString);
-      converterOutputStream.close();
-      outputStream.close();
-    }
   }
 };
 
