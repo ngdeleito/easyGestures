@@ -42,7 +42,6 @@ const EXTRA_MENU_ACTION = 2;
 
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
-var targetDocument, targetWindow, topmostWindow;
 var selection, contextualMenus, anchorElement, imageElement, inputElement;
 
 function setPieMenuSettings() {
@@ -116,7 +115,7 @@ function cleanSelection(selection) {
   return result;
 }
 
-function setContext(anHTMLElement, window, currentSelection) {
+function setContext(anHTMLElement, currentSelection) {
   // <a> elements cannot be nested
   // <a> elements cannot have <input> and <textarea> elements as descendants
   // <area>, <img> and <input> elements cannot have children
@@ -206,23 +205,14 @@ function handleMousedown(anEvent) {
   
   anEvent.preventDefault();
   
-  targetDocument = anEvent.target.ownerDocument;
-  targetWindow = targetDocument.defaultView;
-  topmostWindow = targetWindow.top;
-  
-  selection = cleanSelection(targetWindow.getSelection().toString());
+  selection = cleanSelection(window.getSelection().toString());
   [selection, contextualMenus, anchorElement, imageElement, inputElement] =
-    setContext(anEvent.target, targetWindow, selection);
-  
-  var centerX = anEvent.clientX + targetWindow.mozInnerScreenX -
-                                  topmostWindow.mozInnerScreenX;
-  var centerY = anEvent.clientY + targetWindow.mozInnerScreenY -
-                                  topmostWindow.mozInnerScreenY;
+    setContext(anEvent.target, selection);
   
   window.focus();
   
-  eGPieMenu.centerX = centerX;
-  eGPieMenu.centerY = centerY;
+  eGPieMenu.centerX = anEvent.clientX;
+  eGPieMenu.centerY = anEvent.clientY;
   browser.runtime.sendMessage({
     messageName: "setContext",
     context: {
@@ -233,10 +223,10 @@ function handleMousedown(anEvent) {
       imageElementDoesntExist: imageElement === null,
       imageElementSRC: imageElement !== null ? imageElement.src : null,
       inputElementExists: inputElement !== null,
-      targetWindowScrollY: targetWindow.scrollY,
-      targetWindowScrollMaxY: targetWindow.scrollMaxY,
-      topmostWindowScrollY: topmostWindow.scrollY,
-      topmostWindowScrollMaxY: topmostWindow.scrollMaxY
+      targetWindowScrollY: window.scrollY,
+      targetWindowScrollMaxY: window.scrollMaxY,
+      topmostWindowScrollY: window.scrollY,
+      topmostWindowScrollMaxY: window.scrollMaxY
     }
   });
   
@@ -446,24 +436,12 @@ function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) 
 function handleMousemove(anEvent) {
   hideLinkSign();
   
-  // anEvent.target differs depending on whether the mouse button is pressed or
-  // not; if pressed we reuse the original targetWindow value, if not we
-  // reconstruct it
-  var localTargetWindow = anEvent.target.ownerDocument === null ?
-                            targetWindow :
-                            anEvent.target.ownerDocument.defaultView;
-  var localTopmostWindow = localTargetWindow.top;
-  var positionX = anEvent.clientX + localTargetWindow.mozInnerScreenX -
-                                    localTopmostWindow.mozInnerScreenX;
-  var positionY = anEvent.clientY + localTargetWindow.mozInnerScreenY -
-                                    localTopmostWindow.mozInnerScreenY;
-  
   // clear automatic delayed autoscrolling
   window.clearTimeout(autoscrollingTrigger);
   
   var result = eGPieMenu.handleMousemove({
-    positionX: positionX,
-    positionY: positionY,
+    positionX: anEvent.clientX,
+    positionY: anEvent.clientY,
     shiftKey: anEvent.shiftKey,
     movementX: anEvent.movementX,
     movementY: anEvent.movementY

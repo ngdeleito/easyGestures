@@ -38,9 +38,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global browser, eGPrefs, document, contextualMenus, selection,
           addEventListener, removeMenuEventHandler, anchorElement, window,
-          handleMousemove, EXTRA_MENU_ACTION, targetWindow, topmostWindow,
-          mousedownScreenX, mouseupScreenX, mousedownScreenY, mouseupScreenY,
-          imageElement, inputElement, hide, removeEventListener */
+          handleMousemove, EXTRA_MENU_ACTION, mousedownScreenX, mouseupScreenX,
+          mousedownScreenY, mouseupScreenY, imageElement, inputElement, hide,
+          removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
@@ -594,21 +594,21 @@ var eGPieMenu = {
   },
   
   runAction_pageTop : function() {
-    if (targetWindow.scrollY !== 0) {
-      targetWindow.scroll(0, 0);
+    if (window.scrollY !== 0) {
+      window.scroll(0, 0);
     }
-    else {
-      topmostWindow.scroll(0, 0);
-    }
+    // else {
+    //   topmostWindow.scroll(0, 0);
+    // }
   },
   
   runAction_pageBottom : function() {
-    if (targetWindow.scrollY !== targetWindow.scrollMaxY) {
-      targetWindow.scroll(0, targetWindow.scrollMaxY);
+    if (window.scrollY !== window.scrollMaxY) {
+      window.scroll(0, window.scrollMaxY);
     }
-    else {
-      topmostWindow.scroll(0, topmostWindow.scrollMaxY);
-    }
+    // else {
+    //   topmostWindow.scroll(0, topmostWindow.scrollMaxY);
+    // }
   },
   
   runAction_autoscrolling : function(options) {
