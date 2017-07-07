@@ -42,7 +42,9 @@ const EXTRA_MENU_ACTION = 2;
 
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
-var selection, contextualMenus, anchorElement, imageElement, inputElement;
+var selection, contextualMenus, anchorElement, imageElement, inputElement,
+    iframeElement;
+var frameScrollY, frameScrollMaxY;
 
 if (window.self === window.top) {
   // setting up pie menu on topmost frame
@@ -240,6 +242,14 @@ function handleMousedown(anEvent) {
   
   eGPieMenu.centerX = anEvent.clientX;
   eGPieMenu.centerY = anEvent.clientY;
+  iframeElement = undefined;
+  frameScrollY = 0;
+  frameScrollMaxY = 0;
+  if (anEvent.target instanceof window.HTMLIFrameElement) {
+    iframeElement = anEvent.target;
+    frameScrollY = iframeElement.contentWindow.scrollY;
+    frameScrollMaxY = iframeElement.contentWindow.scrollMaxY;
+  }
   browser.runtime.sendMessage({
     messageName: "setContext",
     context: {
@@ -250,10 +260,10 @@ function handleMousedown(anEvent) {
       imageElementDoesntExist: imageElement === null,
       imageElementSRC: imageElement !== null ? imageElement.src : null,
       inputElementExists: inputElement !== null,
-      targetWindowScrollY: window.scrollY,
-      targetWindowScrollMaxY: window.scrollMaxY,
-      topmostWindowScrollY: window.scrollY,
-      topmostWindowScrollMaxY: window.scrollMaxY
+      windowScrollY: window.scrollY,
+      windowScrollMaxY: window.scrollMaxY,
+      frameScrollY: frameScrollY,
+      frameScrollMaxY: frameScrollMaxY,
     }
   });
   

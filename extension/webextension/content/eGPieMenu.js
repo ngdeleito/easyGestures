@@ -40,7 +40,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
           addEventListener, removeMenuEventHandler, anchorElement, window,
           handleMousemove, EXTRA_MENU_ACTION, mousedownScreenX, mouseupScreenX,
           mousedownScreenY, mouseupScreenY, imageElement, inputElement, hide,
-          removeEventListener */
+          frameScrollY, iframeElement, frameScrollMaxY, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
@@ -594,21 +594,21 @@ var eGPieMenu = {
   },
   
   runAction_pageTop : function() {
-    if (window.scrollY !== 0) {
+    if (frameScrollY !== 0) {
+      iframeElement.contentWindow.scroll(0, 0);
+    }
+    else {
       window.scroll(0, 0);
     }
-    // else {
-    //   topmostWindow.scroll(0, 0);
-    // }
   },
   
   runAction_pageBottom : function() {
-    if (window.scrollY !== window.scrollMaxY) {
+    if (frameScrollY !== frameScrollMaxY) {
+      iframeElement.contentWindow.scroll(0, frameScrollMaxY);
+    }
+    else {
       window.scroll(0, window.scrollMaxY);
     }
-    // else {
-    //   topmostWindow.scroll(0, topmostWindow.scrollMaxY);
-    // }
   },
   
   runAction_autoscrolling : function(options) {

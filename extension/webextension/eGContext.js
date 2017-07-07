@@ -42,8 +42,8 @@ var eGContext = {
   imageElementDoesntExist: true,
   imageElementSRC: "",
   
-  targetWindowScrollY: null,
-  targetWindowScrollMaxY: null,
-  topmostWindowScrollY: null,
-  topmostWindowScrollMaxY: null,
+  windowScrollY: null,
+  windowScrollMaxY: null,
+  frameScrollY: null,
+  frameScrollMaxY: null,
 };

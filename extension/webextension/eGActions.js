@@ -398,8 +398,7 @@ var eGActions = {
     return this._sendPerformActionMessage();
   }, function() {
     return new Promise(resolve => {
-      resolve(eGContext.targetWindowScrollY === 0 &&
-              eGContext.topmostWindowScrollY === 0);
+      resolve(eGContext.frameScrollY === 0 && eGContext.windowScrollY === 0);
     });
   }, true, "pageBottom"),
   
@@ -408,8 +407,8 @@ var eGActions = {
   }, function() {
     return new Promise(resolve => {
       resolve(
-        eGContext.targetWindowScrollY === eGContext.targetWindowScrollMaxY &&
-        eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY
+        eGContext.frameScrollY === eGContext.frameScrollMaxY &&
+        eGContext.windowScrollY === eGContext.windowScrollMaxY
       );
     });
   }, false, "autoscrolling"),
