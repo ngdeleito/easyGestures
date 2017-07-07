@@ -44,7 +44,7 @@ var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
 var selection, contextualMenus, anchorElement, imageElement, inputElement,
     iframeElement;
-var frameScrollY, frameScrollMaxY;
+var frameScrollY, frameScrollMaxY, frameURL;
 
 if (window.self === window.top) {
   // setting up pie menu on topmost frame
@@ -245,10 +245,12 @@ function handleMousedown(anEvent) {
   iframeElement = undefined;
   frameScrollY = 0;
   frameScrollMaxY = 0;
+  frameURL = null;
   if (anEvent.target instanceof window.HTMLIFrameElement) {
     iframeElement = anEvent.target;
     frameScrollY = iframeElement.contentWindow.scrollY;
     frameScrollMaxY = iframeElement.contentWindow.scrollMaxY;
+    frameURL = iframeElement.contentDocument.documentURI;
   }
   browser.runtime.sendMessage({
     messageName: "setContext",
@@ -264,6 +266,7 @@ function handleMousedown(anEvent) {
       windowScrollMaxY: window.scrollMaxY,
       frameScrollY: frameScrollY,
       frameScrollMaxY: frameScrollMaxY,
+      frameURL: frameURL
     }
   });
   

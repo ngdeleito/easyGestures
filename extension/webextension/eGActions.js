@@ -692,7 +692,15 @@ var eGActions = {
     });
   }, false, "showOnlyThisFrame"),
   
-  showOnlyThisFrame : new DisabledAction("showOnlyThisFrame", false, "focusLocationBar"),
+  showOnlyThisFrame : new DisableableAction("showOnlyThisFrame", function() {
+    browser.tabs.update({
+      url: eGContext.frameURL
+    });
+  }, function() {
+    return new Promise(resolve => {
+      resolve(eGContext.frameURL === null);
+    });
+  }, false, "focusLocationBar"),
   
   focusLocationBar : new DisabledAction("focusLocationBar", false, "searchWeb"),
   

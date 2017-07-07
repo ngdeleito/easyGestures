@@ -46,4 +46,5 @@ var eGContext = {
   windowScrollMaxY: null,
   frameScrollY: null,
   frameScrollMaxY: null,
+  frameURL: null
 };
