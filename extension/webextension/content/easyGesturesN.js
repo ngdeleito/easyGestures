@@ -36,13 +36,31 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported handleMousemove */
 /* global browser, eGPieMenu, addEventListener, removeEventListener, window,
-          document, eGPrefs */
+          document, MouseEvent, eGPrefs */
 
 const EXTRA_MENU_ACTION = 2;
 
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
 var selection, contextualMenus, anchorElement, imageElement, inputElement;
+
+if (window.self === window.top) {
+  // setting up pie menu on topmost frame
+  setPieMenuSettings();
+  addEventListener("mousedown", handleMousedown, true);
+  addEventListener("mouseup", handleMouseup, true);
+  addEventListener("keydown", handleKeydown, true);
+  addEventListener("contextmenu", handleContextmenu, true);
+  browser.runtime.onMessage.addListener(resetPieMenu);
+}
+else {
+  // initializing state for eGPieMenu.canBeOpened()
+  setPieMenuSettingsOnInnerFrame();
+  // capturing necessary events on inner frame
+  addEventListener("mousedown", handleMousedownOnInnerFrame, true);
+  addEventListener("mouseup", handleMouseupOnInnerFrame, true);
+  browser.runtime.onMessage.addListener(resetPieMenuOnInnerFrame);
+}
 
 function setPieMenuSettings() {
   browser.storage.local.get([
@@ -91,12 +109,6 @@ function setPieMenuSettings() {
   });
 }
 
-setPieMenuSettings();
-addEventListener("mousedown", handleMousedown, true);
-addEventListener("mouseup", handleMouseup, true);
-addEventListener("keydown", handleKeydown, true);
-addEventListener("contextmenu", handleContextmenu, true);
-
 function resetPieMenu() {
   removeEventListener("pagehide", removeMenuEventHandler, true);
   var easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
@@ -106,7 +118,22 @@ function resetPieMenu() {
   setPieMenuSettings();
 }
 
-browser.runtime.onMessage.addListener(resetPieMenu);
+function setPieMenuSettingsOnInnerFrame() {
+  browser.storage.local.get([
+    "activation.showButton", "activation.showKey", "activation.preventOpenKey",
+    "activation.contextKey"
+  ]).then(prefs => {
+    for (let key in prefs) {
+      let prefName = key.split(".")[1];
+      eGPieMenu.settings[prefName] = prefs[key];
+    }
+  });
+}
+
+function resetPieMenuOnInnerFrame() {
+  setPieMenuSettingsOnInnerFrame();
+}
+
 
 function cleanSelection(selection) {
   var result = selection.trim();
@@ -319,6 +346,45 @@ function handleContextmenu(anEvent) {
   if (result) {
     anEvent.preventDefault();
   }
+}
+
+function handleMousedownOnInnerFrame(anEvent) {
+  if (!eGPieMenu.canBeOpened(anEvent.button, anEvent.shiftKey, anEvent.ctrlKey,
+                             anEvent.altKey)) {
+    return ;
+  }
+  
+  anEvent.preventDefault();
+  var frameElementStyle = window.getComputedStyle(window.frameElement);
+  var frameElementOffsetX =
+        Number(frameElementStyle.paddingLeft.replace("px", "")) +
+        Number(frameElementStyle.borderLeftWidth.replace("px", ""));
+  var frameElementOffsetY =
+        Number(frameElementStyle.paddingTop.replace("px", "")) +
+        Number(frameElementStyle.borderTopWidth.replace("px", ""));
+  var frameElementBoundingRect = window.frameElement.getBoundingClientRect();
+  var newEvent = new MouseEvent("mousedown", {
+    cancelable: anEvent.cancelable,
+    screenX: anEvent.screenX,
+    screenY: anEvent.screenY,
+    clientX: anEvent.clientX + frameElementOffsetX + frameElementBoundingRect.x,
+    clientY: anEvent.clientY + frameElementOffsetY + frameElementBoundingRect.y,
+    ctrlKey: anEvent.ctrlKey,
+    shiftKey: anEvent.shiftKey,
+    altKey: anEvent.altKey,
+    button: anEvent.button
+  });
+  // per the call to dispatchEvent, window.frameElement becomes newEvent.target
+  window.frameElement.dispatchEvent(newEvent);
+}
+
+function handleMouseupOnInnerFrame(anEvent) {
+  var newEvent = new MouseEvent("mouseup", {
+    screenX: anEvent.screenX,
+    screenY: anEvent.screenY,
+    button: anEvent.button
+  });
+  window.frameElement.dispatchEvent(newEvent);
 }
 
 function removeMenuEventHandler(anEvent) {
