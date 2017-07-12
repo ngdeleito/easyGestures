@@ -719,23 +719,28 @@ var eGPieMenu = {
   },
   
   runAction : function() {
+    var actionsNode = document.getElementById("eG_actions_" + this.curLayoutName);
+    var actionNode = actionsNode.childNodes[this.sector];
     var layout = this.menuSet[this.curLayoutName];
     
-    browser.runtime.sendMessage({
-      messageName: "runAction",
-      actionName: layout.actions[this.sector]
-    }).then(aMessage => {
-      if (aMessage.actionIsDisabled) {
-        this.close();
-      }
-      else {
-        layout.updateStatsForActionToBeExecuted();
-        this.close();
+    if (actionNode.classList.contains("disabled")) {
+      this.close();
+    }
+    else {
+      // this.close() resets this.sector, so we initialize actionName before
+      // calling this.close()
+      let actionName = layout.actions[this.sector];
+      layout.updateStatsForActionToBeExecuted();
+      this.close();
+      browser.runtime.sendMessage({
+        messageName: "runAction",
+        actionName: actionName
+      }).then(aMessage => {
         if (aMessage.runActionName !== undefined) {
           this["runAction_" + aMessage.runActionName](aMessage.runActionOptions);
         }
-      }
-    });
+      });
+    }
   },
   
   switchLayout : function() { // this is not about switching to/from extra menu

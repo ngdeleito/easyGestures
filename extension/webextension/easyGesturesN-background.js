@@ -110,22 +110,15 @@ var eGMessageHandlers = {
   },
   
   runAction : function(aMessage) {
-    return eGActions[aMessage.actionName].isDisabled().then(actionIsDisabled => {
-      var response = {
-        actionIsDisabled: actionIsDisabled
+    return eGActions[aMessage.actionName].run().then(result => {
+      return {
+        runActionName: result.runActionName,
+        runActionOptions: result.runActionOptions
       };
-      if (!actionIsDisabled) {
-        return eGActions[aMessage.actionName].run().then(result => {
-          response.runActionName = result.runActionName;
-          response.runActionOptions = result.runActionOptions;
-          return response;
-        }, error => {
-          console.error("easyGestures N: error when executing " +
-                        aMessage.actionName + " action: " + error);
-          return response;
-        });
-      }
-      return response;
+    }, error => {
+      console.error("easyGestures N: error when executing " +
+                    aMessage.actionName + " action: " + error);
+      return {};
     });
   },
   

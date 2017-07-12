@@ -82,7 +82,7 @@ Action.prototype = {
   decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
                          0.5, 0.3],
   
-  isDisabled: function() {
+  _isDisabled: function() {
     return new Promise(resolve => {
       resolve(false);
     });
@@ -160,14 +160,14 @@ ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
   
-  this.isDisabled = isDisabled;
+  this._isDisabled = isDisabled;
 }
 DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
 DisableableAction.prototype.getActionStatus = function() {
   return {
     messageName: "setDisableableActionStatus",
-    status: this.isDisabled()
+    status: this._isDisabled()
   };
 };
 
