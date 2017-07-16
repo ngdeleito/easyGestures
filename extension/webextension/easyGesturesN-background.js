@@ -110,7 +110,8 @@ var eGMessageHandlers = {
   },
   
   runAction : function(aMessage) {
-    return eGActions[aMessage.actionName].run().then(result => {
+    return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation)
+                                         .then(result => {
       return {
         runActionName: result.runActionName,
         runActionOptions: result.runActionOptions

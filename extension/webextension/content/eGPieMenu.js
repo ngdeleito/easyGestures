@@ -36,11 +36,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, eGPrefs, document, contextualMenus, selection,
-          addEventListener, removeMenuEventHandler, anchorElement, window,
-          handleMousemove, EXTRA_MENU_ACTION, mousedownScreenX, mouseupScreenX,
-          mousedownScreenY, mouseupScreenY, imageElement, inputElement, hide,
-          frameScrollY, iframeElement, frameScrollMaxY, removeEventListener */
+/* global browser, document, contextualMenus, selection, addEventListener,
+          removeMenuEventHandler, anchorElement, window, handleMousemove,
+          EXTRA_MENU_ACTION, mousedownScreenX, mouseupScreenX, mousedownScreenY,
+          mouseupScreenY, imageElement, inputElement, hide, frameScrollY,
+          iframeElement, frameScrollMaxY, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
@@ -89,14 +89,17 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
 };
-MenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
+MenuLayout.prototype.getUpdateStatsInformation = function() {
   var sector = this._pieMenu.sector;
   var sector8To10 = sector;
   if (!this.isLarge && sector > 4) {
     sector8To10++;
   }
-  eGPrefs.incrementStatsMainMenuPref(this._layoutNumber * 10 + sector8To10);
-  eGPrefs.updateStatsForAction(this.actions[sector]);
+  return {
+    incrementMethodName: "incrementStatsMainMenuPref",
+    incrementIndex: this._layoutNumber * 10 + sector8To10,
+    updateActionName: this.actions[sector]
+  };
 };
 MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
   var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
@@ -126,10 +129,13 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
-ExtraMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
+ExtraMenuLayout.prototype.getUpdateStatsInformation = function() {
   var sector = this._pieMenu.sector;
-  eGPrefs.incrementStatsExtraMenuPref(this._layoutNumber * 5 + sector);
-  eGPrefs.updateStatsForAction(this.actions[sector]);
+  return {
+    incrementMethodName: "incrementStatsExtraMenuPref",
+    incrementIndex: this._layoutNumber * 5 + sector,
+    updateActionName: this.actions[sector]
+  };
 };
 ExtraMenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
@@ -145,8 +151,10 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
   return contextualMenus[(contextualMenus.indexOf(this.name) + 1) %
                          contextualMenus.length];
 };
-ContextualMenuLayout.prototype.updateStatsForActionToBeExecuted = function() {
-  eGPrefs.updateStatsForAction(this.actions[this._pieMenu.sector]);
+ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
+  return {
+    updateActionName: this.actions[this._pieMenu.sector]
+  };
 };
 ContextualMenuLayout.prototype.updateMenuSign = function() {
   var specialNodes = document.getElementById("eG_SpecialNodes");
@@ -727,15 +735,13 @@ var eGPieMenu = {
       this.close();
     }
     else {
-      // this.close() resets this.sector, so we initialize actionName before
-      // calling this.close()
-      let actionName = layout.actions[this.sector];
-      layout.updateStatsForActionToBeExecuted();
-      this.close();
-      browser.runtime.sendMessage({
+      let runActionMessage = {
         messageName: "runAction",
-        actionName: actionName
-      }).then(aMessage => {
+        actionName: layout.actions[this.sector],
+        updateStatsInformation: layout.getUpdateStatsInformation()
+      };
+      this.close();
+      browser.runtime.sendMessage(runActionMessage).then(aMessage => {
         if (aMessage.runActionName !== undefined) {
           this["runAction_" + aMessage.runActionName](aMessage.runActionOptions);
         }

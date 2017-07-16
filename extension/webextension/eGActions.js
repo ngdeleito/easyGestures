@@ -55,11 +55,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisabledAction
 
 /* exported eGActions */
-/* global browser, URL, eGContext, eGPrefs, eGUtils */
+/* global eGPrefs, browser, URL, eGContext, eGUtils */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function() {
+  this.run = function(updateStatsInformation) {
+    if (updateStatsInformation.incrementMethodName !== undefined) {
+      eGPrefs[updateStatsInformation.incrementMethodName](updateStatsInformation.incrementIndex);
+    }
+    eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
     return new Promise(resolve => {
       resolve(action.call(this));
     }).then(response => {
@@ -582,7 +586,7 @@ var eGActions = {
   }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
-    eGActions.newBlankWindow.run();
+    browser.windows.create({});
   }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
