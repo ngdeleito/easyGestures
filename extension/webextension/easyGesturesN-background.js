@@ -109,6 +109,10 @@ var eGMessageHandlers = {
     });
   },
   
+  incrementShowExtraMenuStats : function(aMessage) {
+    eGPrefs.incrementStatsMainMenuPref(aMessage.incrementIndex);
+  },
+  
   runAction : function(aMessage) {
     return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation)
                                          .then(result => {

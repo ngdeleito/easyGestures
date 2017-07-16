@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported handleMousemove */
 /* global browser, eGPieMenu, addEventListener, removeEventListener, window,
-          document, MouseEvent, eGPrefs */
+          document, MouseEvent */
 
 const EXTRA_MENU_ACTION = 2;
 
@@ -494,7 +494,10 @@ function showExtraMenu(layoutName) {
     tooltipsNode.style.visibility = "hidden";
   }
   
-  eGPrefs.incrementStatsMainMenuPref(eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION);
+  browser.runtime.sendMessage({
+    messageName: "incrementShowExtraMenuStats",
+    incrementIndex: eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION
+  });
 }
 
 function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) {

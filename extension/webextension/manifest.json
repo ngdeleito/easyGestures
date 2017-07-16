@@ -21,7 +21,7 @@
     "all_frames": true,
     "matches": ["<all_urls>"],
     "css": ["content/easyGesturesN.css"],
-    "js": ["eGPrefs.js", "content/eGPieMenu.js", "content/easyGesturesN.js"],
+    "js": ["content/eGPieMenu.js", "content/easyGesturesN.js"],
     "match_about_blank": true
   }],
   "options_ui": {
