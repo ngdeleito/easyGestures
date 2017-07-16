@@ -5,7 +5,7 @@
 
   <Description about="urn:mozilla:install-manifest">
     <em:id>easyGesturesN@ngdeleito.eu</em:id>
-    <em:version>5.1</em:version>
+    <em:version>5.2</em:version>
     <em:type>2</em:type>
 
     <!-- Target Application this extension can install into,
@@ -13,14 +13,15 @@
     <em:targetApplication>
       <Description>
         <em:id>{ec8030f7-c20a-464f-9b0e-13a3a9e97384}</em:id>
-        <em:minVersion>41.0</em:minVersion>
-        <em:maxVersion>41.*</em:maxVersion>
+        <em:minVersion>52.0</em:minVersion>
+        <em:maxVersion>52.*</em:maxVersion>
       </Description>
     </em:targetApplication>
 
     <!-- Front End MetaData -->
     <em:bootstrap>true</em:bootstrap>
     <em:multiprocessCompatible>true</em:multiprocessCompatible>
+    <em:hasEmbeddedWebExtension>true</em:hasEmbeddedWebExtension>
     
     <em:name>easyGestures N</em:name>
     <em:description>A highly customizable pie menu for browsing the Web from where the mouse pointer is located.</em:description>
@@ -46,9 +47,5 @@
         <em:homepageURL>https://github.com/ngdeleito/easyGestures</em:homepageURL>
       </Description>
     </em:localized>
-    
-    <!-- Front End Integration Hooks (used by Extension Manager)-->
-    <em:optionsType>3</em:optionsType>
-    <em:optionsURL>chrome://easygestures/content/options.html</em:optionsURL>
   </Description>
 </RDF>

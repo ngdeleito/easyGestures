@@ -35,202 +35,131 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported startup, shutdown, install, uninstall */
-/* global Components, Services, eGPieMenu, eGContext, eGActions, AddonManager,
-          ADDON_INSTALL, ADDON_ENABLE, eGPrefs, ADDON_UPGRADE, eGStrings,
-          setTimeout, eGUtils, ADDON_UNINSTALL */
+/* global Components, Services, ADDON_UPGRADE */
 
-Components.utils.import("resource://gre/modules/AddonManager.jsm");
 Components.utils.import("resource://gre/modules/Services.jsm");
 
-var eGPrefsObserver = {
-  register: function() {
-    this._branch = Services.prefs.getBranch("extensions.easygestures.");
-    this._branch.addObserver("activation.", this, false);
-    this._branch.addObserver("behavior.", this, false);
-    this._branch.addObserver("menus.", this, false);
-    this._branch.addObserver("customizations.", this, false);
+var eGPrefsUpdater = {
+  _prefs : Services.prefs.getBranch("extensions.easygestures."),
+  
+  updateToV4_10: function() {
+    this._prefs.deleteBranch("menus.contextImageFirst");
+    this._prefs.deleteBranch("menus.contextTextboxFirst");
+    
+    var actionsStats = JSON.parse(this._prefs.getCharPref("stats.actions"));
+    var newActions = ["firefoxPreferences", "addOns",
+                      "easyGesturesNPreferences"];
+    newActions.forEach(function(actionName) {
+      actionsStats[actionName] = 0;
+    });
+    this._prefs.setCharPref("stats.actions", JSON.stringify(actionsStats));
+    
+    this._prefs.setIntPref("activation.preventOpenKey",
+      this._prefs.getIntPref("activation.suppressKey"));
+    this._prefs.deleteBranch("activation.suppressKey");
   },
   
-  unregister: function() {
-    this._branch.removeObserver("activation.", this);
-    this._branch.removeObserver("behavior.", this);
-    this._branch.removeObserver("menus.", this);
-    this._branch.removeObserver("customizations.", this);
+  updateToV4_11: function() {
+    var menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+      "extraAlt2", "contextLink", "contextImage", "contextSelection",
+      "contextTextbox"];
+    var extraMenuNames = ["extra", "extraAlt1", "extraAlt2"];
+    
+    menuNames.forEach(function(menuName) {
+      let actions = this._prefs.getCharPref("menus." + menuName).split("/");
+      [actions[0], actions[2]] = [actions[2], actions[0]];
+      [actions[9], actions[3]] = [actions[3], actions[9]];
+      [actions[8], actions[4]] = [actions[4], actions[8]];
+      [actions[7], actions[5]] = [actions[5], actions[7]];
+      this._prefs.setCharPref("menus." + menuName, actions.join("/"));
+    }, this);
+    
+    extraMenuNames.forEach(function(menuName) {
+      let actions = this._prefs.getCharPref("menus." + menuName).split("/");
+      actions.splice(5, 5);
+      this._prefs.setCharPref("menus." + menuName, actions.join("/"));
+    }, this);
+    
+    var mainMenuStats = JSON.parse(this._prefs.getCharPref("stats.mainMenu"));
+    [mainMenuStats[0], mainMenuStats[2]] = [mainMenuStats[2], mainMenuStats[0]];
+    [mainMenuStats[9], mainMenuStats[3]] = [mainMenuStats[3], mainMenuStats[9]];
+    [mainMenuStats[8], mainMenuStats[4]] = [mainMenuStats[4], mainMenuStats[8]];
+    [mainMenuStats[7], mainMenuStats[5]] = [mainMenuStats[5], mainMenuStats[7]];
+    [mainMenuStats[10], mainMenuStats[12]] = [mainMenuStats[12], mainMenuStats[10]];
+    [mainMenuStats[19], mainMenuStats[13]] = [mainMenuStats[13], mainMenuStats[19]];
+    [mainMenuStats[18], mainMenuStats[14]] = [mainMenuStats[14], mainMenuStats[18]];
+    [mainMenuStats[17], mainMenuStats[15]] = [mainMenuStats[15], mainMenuStats[17]];
+    [mainMenuStats[20], mainMenuStats[22]] = [mainMenuStats[22], mainMenuStats[20]];
+    [mainMenuStats[29], mainMenuStats[23]] = [mainMenuStats[23], mainMenuStats[29]];
+    [mainMenuStats[28], mainMenuStats[24]] = [mainMenuStats[24], mainMenuStats[28]];
+    [mainMenuStats[27], mainMenuStats[25]] = [mainMenuStats[25], mainMenuStats[27]];
+    this._prefs.setCharPref("stats.mainMenu", JSON.stringify(mainMenuStats));
+    
+    var extraMenuStats = JSON.parse(this._prefs.getCharPref("stats.extraMenu"));
+    [extraMenuStats[0], extraMenuStats[2]] = [extraMenuStats[2], extraMenuStats[0]];
+    [extraMenuStats[7], extraMenuStats[3]] = [extraMenuStats[3], extraMenuStats[7]];
+    [extraMenuStats[6], extraMenuStats[4]] = [extraMenuStats[4], extraMenuStats[6]];
+    [extraMenuStats[8], extraMenuStats[10]] = [extraMenuStats[10], extraMenuStats[8]];
+    [extraMenuStats[15], extraMenuStats[11]] = [extraMenuStats[11], extraMenuStats[15]];
+    [extraMenuStats[14], extraMenuStats[12]] = [extraMenuStats[12], extraMenuStats[14]];
+    [extraMenuStats[16], extraMenuStats[18]] = [extraMenuStats[18], extraMenuStats[16]];
+    [extraMenuStats[22], extraMenuStats[19]] = [extraMenuStats[19], extraMenuStats[22]];
+    [extraMenuStats[23], extraMenuStats[20]] = [extraMenuStats[20], extraMenuStats[23]];
+    extraMenuStats.splice(5, 3);
+    extraMenuStats.splice(10, 3);
+    extraMenuStats.splice(15, 3);
+    this._prefs.setCharPref("stats.extraMenu", JSON.stringify(extraMenuStats));
   },
   
-  observe: function() {
-    if (eGPieMenu.isShown()) {
-      // we properly close an open menu in case e.g. the showAltButton
-      // preference has been updated through the custom mouse button option
-      eGPieMenu.close();
+  updateToV4_12: function() {
+    this._prefs.deleteBranch("activation.showAfterDelay");
+    this._prefs.deleteBranch("activation.showAfterDelayValue");
+    this._prefs.deleteBranch("stats.clicks");
+    this._prefs.deleteBranch("stats.menuShown");
+  },
+  
+  updateToV4_13: function() {
+    var preventOpenKey = this._prefs.getIntPref("activation.preventOpenKey");
+    var contextKey = this._prefs.getIntPref("activation.contextKey");
+    var message = "Your previous key choices for the preferences listed below " +
+      "are no longer supported and have been reset. You can select other keys " +
+      "under the \"Activation\" tab in the easyGestures N preferences dialog.\n";
+    var showMessage = false;
+    if (preventOpenKey !== 0 && preventOpenKey !== 17 && preventOpenKey !== 18) {
+      this._prefs.setIntPref("activation.preventOpenKey", 0);
+      message += "  - key used to prevent the pie menu from opening\n";
+      showMessage = true;
     }
-    
-    // removing existing easyGestures menus from open web pages
-    eGPieMenu.removeFromAllPages();
-    
-    // rebulding the menu
-    eGPieMenu.init();
+    if (contextKey !== 0 && contextKey !== 17 && contextKey !== 18) {
+      this._prefs.setIntPref("activation.contextKey", 18);
+      message += "  - key used to activate the contextual menu";
+      showMessage = true;
+    }
+    if (showMessage) {
+      Services.prompt.alert(null, "easyGestures N v4.13", message);
+    }
+  },
+  
+  updateToV4_14: function() {
+    this._prefs.deleteBranch("customizations.dailyReadingsFolder");
+    var lastResetString = this._prefs.getCharPref("stats.lastReset");
+    var lastResetItems = lastResetString.split(/\/|\s{2}|:/);
+    var lastResetDate = new Date(lastResetItems[0], lastResetItems[1],
+                                 lastResetItems[2], lastResetItems[3],
+                                 lastResetItems[4], lastResetItems[5]);
+    this._prefs.setCharPref("stats.lastReset", lastResetDate.toISOString());
+    this._prefs.deleteBranch("behavior.noIcons");
+  },
+  
+  updateToV5_2: function() {
+    this._prefs.setCharPref("customizations.dailyReadingsFolderName", "");
+    this._prefs.deleteBranch("customizations.dailyReadingsFolderID");
   }
 };
 
 var eGMessageListeners = {
-  enable: function() {
-    Services.mm.loadFrameScript("chrome://easygestures/content/menu-frame.js", true);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", this);
-    Services.mm.addMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", this);
-  },
-  
-  disable: function() {
-    Services.mm.removeDelayedFrameScript("chrome://easygestures/content/menu-frame.js");
-    Services.mm.broadcastAsyncMessage("easyGesturesN@ngdeleito.eu:removeListeners");
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:performOpenMenuChecks", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousedown", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMouseup", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleKeydown", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleContextmenu", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:handleMousemove", this);
-    Services.mm.removeMessageListener("easyGesturesN@ngdeleito.eu:retrieveAndAddFavicon", this);
-  },
-  
-  receiveMessage: function(aMessage) {
-    return this[aMessage.name.split(":")[1]](aMessage);
-  },
-  
-  performOpenMenuChecks: function(aMessage) {
-    const PREVENT_DEFAULT_AND_OPEN_MENU = 0;
-    const PREVENT_DEFAULT_AND_RETURN = 1;
-    const LET_DEFAULT_AND_RETURN = 2;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGContext.autoscrollingTrigger);
-    
-    // check whether pie menu should change layout or hide (later)
-    if (eGPieMenu.isShown()) {
-      if (eGPieMenu.canLayoutBeSwitched(aMessage.data.button)) {
-        eGPieMenu.switchLayout();
-      }
-      return PREVENT_DEFAULT_AND_RETURN;
-    }
-    
-    // check if menu should not be displayed
-    if (!eGPieMenu.canBeOpened(aMessage.data.button, aMessage.data.shiftKey,
-                               aMessage.data.ctrlKey, aMessage.data.altKey)) {
-      return LET_DEFAULT_AND_RETURN;
-    }
-    
-    return PREVENT_DEFAULT_AND_OPEN_MENU;
-  },
-  
-  handleMousedown: function(aMessage) {
-    eGContext.contextualMenus = aMessage.data.contextualMenus;
-    eGContext.selection = aMessage.data.selection;
-    eGContext.anchorElementExists = aMessage.data.anchorElementExists;
-    eGContext.anchorElementHREF = aMessage.data.anchorElementHREF;
-    eGContext.anchorElementText = aMessage.data.anchorElementText;
-    eGContext.imageElementDoesntExist = aMessage.data.imageElementDoesntExist;
-    eGContext.imageElementSRC = aMessage.data.imageElementSRC;
-    eGPieMenu.centerX = aMessage.data.centerX;
-    eGPieMenu.centerY = aMessage.data.centerY;
-    eGContext.targetDocumentURL = aMessage.data.targetDocumentURL;
-    eGContext.targetWindowScrollY = aMessage.data.targetWindowScrollY;
-    eGContext.targetWindowScrollMaxY = aMessage.data.targetWindowScrollMaxY;
-    eGContext.topmostWindowScrollY = aMessage.data.topmostWindowScrollY;
-    eGContext.topmostWindowScrollMaxY = aMessage.data.topmostWindowScrollMaxY;
-    
-    if (eGContext.contextualMenus.length !== 0 &&
-        eGPieMenu.canContextualMenuBeOpened(aMessage.data.ctrlKey, aMessage.data.altKey)) {
-      eGPieMenu.show(eGContext.contextualMenus[0]);
-    }
-    else {
-      eGPieMenu.show("main");
-    }
-    
-    if (eGPieMenu.autoscrollingOn) {
-      let window = Services.wm.getMostRecentWindow("navigator:browser");
-      eGContext.autoscrollingTrigger = window.setTimeout(function() {
-        eGActions.autoscrolling.run(eGPieMenu, {
-          useMousedownCoordinates: true
-        });
-      }, eGPieMenu.autoscrollingDelay);
-    }
-  },
-  
-  handleMouseup: function(aMessage) {
-    var preventDefaultUponReturn = false;
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    if (eGPieMenu.isJustOpened()) {
-      eGPieMenu.setOpen();
-      if (aMessage.data.linkSignIsVisible) {
-        window.clearTimeout(eGContext.autoscrollingTrigger);
-        eGPieMenu.openLinkThroughPieMenuCenter(aMessage.data.button);
-      }
-    }
-    else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
-      if (eGPieMenu.sector !== -1) {
-        window.setTimeout(function() { eGPieMenu.runAction(); });
-      }
-      else {
-        eGPieMenu.setOpen();
-        preventDefaultUponReturn = true;
-      }
-    }
-    else if (eGPieMenu.isShown()) {
-      if (aMessage.data.button === eGPieMenu.showAltButton) {
-        preventDefaultUponReturn = true;
-      }
-      else {
-        if (eGPieMenu.sector !== -1) {
-          window.setTimeout(function() { eGPieMenu.runAction(); });
-        }
-        else {
-          eGPieMenu.close();
-        }
-      }
-    }
-    
-    return preventDefaultUponReturn;
-  },
-  
-  handleKeydown: function(aMessage) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGContext.autoscrollingTrigger);
-    
-    if (eGPieMenu.isShown()) {
-      if (aMessage.data.altKey) {
-        eGPieMenu.switchLayout();
-      }
-      else if (aMessage.data.escKey) {
-        eGPieMenu.close();
-      }
-    }
-  },
-  
-  handleContextmenu: function(aMessage) {
-    return eGPieMenu.canContextmenuBeOpened(aMessage.data.shiftKey,
-                                            aMessage.data.ctrlKey,
-                                            aMessage.data.altKey);
-  },
-  
-  handleMousemove: function(aMessage) {
-    var window = Services.wm.getMostRecentWindow("navigator:browser");
-    
-    // clear automatic delayed autoscrolling
-    window.clearTimeout(eGContext.autoscrollingTrigger);
-    
-    return eGPieMenu.handleMousemove(aMessage.data);
-  },
-  
-  retrieveAndAddFavicon: function(aMessage) {
-    var aURL = aMessage.data.aURL;
+  retrieveAndAddFavicon: function(aMessage, sendResponse) {
+    var aURL = aMessage.aURL;
     if (aURL.match(/\:\/\//i) === null) {
       aURL = "http://" + aURL;
     }
@@ -239,131 +168,123 @@ var eGMessageListeners = {
                            .classes["@mozilla.org/browser/favicon-service;1"]
                            .getService(Components.interfaces.mozIAsyncFavicons);
     faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
-      var window = Services.wm.getMostRecentWindow("navigator:browser");
-      var browserMM = window.gBrowser.selectedBrowser.messageManager;
-      browserMM.sendAsyncMessage("easyGesturesN@ngdeleito.eu:addFavicon", {
-        anActionNodeID: aMessage.data.anActionNodeID,
-        aURL: aURI !== null ? aURI.spec : "",
-        iconName: aMessage.data.iconName,
-        fallbackIconName: aMessage.data.fallbackIconName
+      sendResponse({
+        aURL: aURI !== null ? aURI.spec : ""
       });
     });
+    return true;
+  },
+  
+  retrieveCustomIconFile: function(aMessage, sendResponse) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                       .createInstance(Components.interfaces.nsIFilePicker);
+    fp.init(window, null, Components.interfaces.nsIFilePicker.modeOpen);
+    fp.appendFilters(Components.interfaces.nsIFilePicker.filterImages);
+    var returnedOK = fp.show() === Components.interfaces.nsIFilePicker.returnOK;
+    
+    sendResponse({
+      returnedOK: returnedOK,
+      path: returnedOK ? fp.file.path : undefined
+    });
+  },
+  
+  exportPrefs: function(aMessage) {
+    var window = Services.wm.getMostRecentWindow("navigator:browser");
+    var fp = Components.classes["@mozilla.org/filepicker;1"]
+                       .createInstance(Components.interfaces.nsIFilePicker);
+    fp.init(window, "easyGestures N", Components.interfaces.nsIFilePicker.modeSave);
+    fp.appendFilters(Components.interfaces.nsIFilePicker.filterAll);
+    fp.defaultString = "easyGesturesNPreferences-" + (new Date()).toISOString() +
+                       ".json";
+    var returnValue = fp.show();
+    if (returnValue === Components.interfaces.nsIFilePicker.returnOK ||
+        returnValue === Components.interfaces.nsIFilePicker.returnReplace) {
+      var outputStream = Components
+                       .classes[ "@mozilla.org/network/file-output-stream;1"]
+                       .createInstance(Components.interfaces.nsIFileOutputStream);
+      outputStream.init(fp.file, 0x04 | 0x08, 420, 0);
+      
+      var converterOutputStream = Components
+                  .classes["@mozilla.org/intl/converter-output-stream;1"]
+                  .createInstance(Components.interfaces.nsIConverterOutputStream);
+      converterOutputStream.init(outputStream, "UTF-8", 0, 0x0000);
+      converterOutputStream.writeString(aMessage.prefsAsString);
+      converterOutputStream.close();
+      outputStream.close();
+    }
+  },
+  
+  retrievePreferences: function(aMessage, sendResponse) {
+    var prefs = Services.prefs.getBranch("extensions.easygestures.");
+    var prefsNames = prefs.getChildList("");
+    var result = [];
+    
+    prefsNames.forEach(function(prefName) {
+      let prefType = prefs.getPrefType(prefName);
+      let prefValue;
+      switch (prefType) {
+        case Components.interfaces.nsIPrefBranch.PREF_STRING:
+          prefValue = prefs.getComplexValue(prefName,
+                        Components.interfaces.nsISupportsString).data;
+          break;
+        case Components.interfaces.nsIPrefBranch.PREF_INT:
+          prefValue = prefs.getIntPref(prefName);
+          break;
+        case Components.interfaces.nsIPrefBranch.PREF_BOOL:
+          prefValue = prefs.getBoolPref(prefName);
+          break;
+      }
+      result.push([prefName, prefValue]);
+    });
+    sendResponse({
+      response: JSON.stringify(result)
+    });
+    prefs.deleteBranch("");
   }
 };
 
+function handleMessage(aMessage, sender, sendResponse) {
+  if (eGMessageListeners[aMessage.messageName] !== undefined) {
+    return eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
+  }
+}
+
 function startup(data, reason) {
-  Components.utils.import("chrome://easygestures/content/eGPrefs.jsm");
-  Components.utils.import("chrome://easygestures/content/eGStrings.jsm");
-  Components.utils.import("chrome://easygestures/content/eGPieMenu.jsm");
-  Components.utils.import("chrome://easygestures/content/eGActions.jsm");
-  Components.utils.import("chrome://easygestures/content/eGContext.jsm");
-  Components.utils.import("chrome://easygestures/content/eGUtils.jsm");
+  if (reason === ADDON_UPGRADE) {
+    if (Services.vc.compare(data.oldVersion, "4.10") < 0) {
+      eGPrefsUpdater.updateToV4_10();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.11") < 0) {
+      eGPrefsUpdater.updateToV4_11();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.12") < 0) {
+      eGPrefsUpdater.updateToV4_12();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.13") < 0) {
+      eGPrefsUpdater.updateToV4_13();
+    }
+    if (Services.vc.compare(data.oldVersion, "4.14") < 0) {
+      eGPrefsUpdater.updateToV4_14();
+    }
+    if (Services.vc.compare(data.oldVersion, "5.2") < 0) {
+      eGPrefsUpdater.updateToV5_2();
+    }
+  }
   
-  AddonManager.getAddonByID(data.id, function(addon) {
-    // installing or upgrading preferences
-    var count = {};
-    Services.prefs.getChildList("extensions.easygestures.", count);
-    if (reason === ADDON_INSTALL ||
-        (reason === ADDON_ENABLE && count.value === 0)) {
-      // when installing an extension by copying it to the extensions folder
-      // reason == ADDON_ENABLE, hence the test to see if there are already
-      // preferences in the easygestures preferences branch
-      eGPrefs.setDefaultSettings();
-      eGPrefs.initializeStats();
-    }
-    else if (reason === ADDON_UPGRADE) {
-      if (Services.vc.compare(data.oldVersion, "4.10") < 0) {
-        eGPrefs.updateToV4_10();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.11") < 0) {
-        eGPrefs.updateToV4_11();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.12") < 0) {
-        eGPrefs.updateToV4_12();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.13") < 0) {
-        eGPrefs.updateToV4_13();
-      }
-      if (Services.vc.compare(data.oldVersion, "4.14") < 0) {
-        eGPrefs.updateToV4_14();
-      }
-    }
-    
-    // getting access to localization strings
-    eGStrings.init(addon);
-    
-    // start listening to changes in preferences that could require rebuilding
-    // the menus
-    eGPrefsObserver.register();
-    
-    // creating menu
-    eGPieMenu.init();
-    
-    // registering style sheet
-    var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-                        .getService(Components.interfaces.nsIStyleSheetService);
-    var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-    if (!sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
-      sss.loadAndRegisterSheet(uri, sss.AUTHOR_SHEET);
-    }
-    
-    // when upgrading: giving some time to the frame scripts from the previous
-    // version to remove their listeners before adding new ones
-    Components.utils.import("resource://gre/modules/Timer.jsm");
-    setTimeout(function() { eGMessageListeners.enable(); }, 200);
-    
-    // displaying startup tips
-    if (eGPrefs.areStartupTipsOn()) {
-      let window = Services.wm.getMostRecentWindow("navigator:browser");
-      if (window.document.readyState === "complete") {
-        eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html", false);
-      }
-      else {
-        window.addEventListener("load", function displayTipsAtStartup() {
-          window.removeEventListener("load", displayTipsAtStartup, false);
-          setTimeout(function() {
-            eGUtils.showOrOpenTab("chrome://easygestures/content/tips.html",
-                                  false);
-          }, 200);
-        }, false);
-      }
-    }
+  data.webExtension.startup().then(api => {
+    const {browser} = api;
+    browser.runtime.onMessage.addListener(handleMessage);
   });
 }
 
 function shutdown() {
-  // flushing because a string bundle was created
-  Services.strings.flushBundles();
-  
-  // stop listening to changes in preferences
-  eGPrefsObserver.unregister();
-  
   // removing existing easyGestures menus from open web pages
-  eGPieMenu.removeFromAllPages();
-  
-  // unregistering style sheet
-  var sss = Components.classes["@mozilla.org/content/style-sheet-service;1"]
-                      .getService(Components.interfaces.nsIStyleSheetService);
-  var uri = Services.io.newURI("chrome://easygestures/skin/actions.css", null, null);
-  if (sss.sheetRegistered(uri, sss.AUTHOR_SHEET)) {
-    sss.unregisterSheet(uri, sss.AUTHOR_SHEET);
-  }
-  
-  eGMessageListeners.disable();
-  
-  Components.utils.unload("chrome://easygestures/content/eGContext.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGActions.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGPieMenu.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGStrings.jsm");
-  Components.utils.unload("chrome://easygestures/content/eGPrefs.jsm");
+  // eGPieMenu.removeFromAllPages();
 }
 
 function install() {
 }
 
-function uninstall(data, reason) {
-  if (reason === ADDON_UNINSTALL) {
-    var prefs = Services.prefs.getBranch("extensions.easygestures.");
-    prefs.deleteBranch("");
-  }
+function uninstall() {
 }
