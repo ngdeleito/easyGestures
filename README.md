@@ -8,7 +8,7 @@ The formerly supported locales are: cz-CZ, de-DE, hu-HU, it-IT, ja-JP, ko-KR, pl
 
 To install the latest development version:
 
-  - Make sure to run version 4.8 or greater (or uninstall any previous version)
+  - Make sure to run version 5.2 or greater (or uninstall any previous version)
   - Click on the button labeled "Clone or download", and then click on "Download ZIP"
   - Once the file downloaded, unzip it
   - Zip the content of the "easyGestures-development/extension" folder (and not the folder itself!)
