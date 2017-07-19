@@ -39,17 +39,21 @@ function Pref(name, value) {
   this.name = name;
   this.value = value;
 }
+Pref.prototype = {
+  constructor: Pref,
+  
+  setPreference: function() {
+    let prefObject = {};
+    prefObject[this.name] = this.value;
+    return browser.storage.local.set(prefObject);
+  }
+};
 
 function BoolPref(name, value) {
   Pref.call(this, name, value);
 }
 BoolPref.prototype = Object.create(Pref.prototype);
 BoolPref.prototype.constructor = BoolPref;
-BoolPref.prototype.setPreference = function() {
-  let prefObject = {};
-  prefObject[this.name] = this.value;
-  return browser.storage.local.set(prefObject);
-};
 BoolPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "boolean") {
     this.value = newPrefValue;
@@ -65,11 +69,6 @@ function IntPref(name, value, possibleValuesArray) {
 }
 IntPref.prototype = Object.create(Pref.prototype);
 IntPref.prototype.constructor = IntPref;
-IntPref.prototype.setPreference = function() {
-  let prefObject = {};
-  prefObject[this.name] = this.value;
-  return browser.storage.local.set(prefObject);
-};
 IntPref.prototype.updateTo = function(newPrefValue) {
   if (Number.isInteger(newPrefValue) &&
       (this.possibleValuesArray === undefined ||
@@ -87,11 +86,6 @@ function CharPref(name, value, isPossibleValue) {
 }
 CharPref.prototype = Object.create(Pref.prototype);
 CharPref.prototype.constructor = CharPref;
-CharPref.prototype.setPreference = function() {
-  let prefObject = {};
-  prefObject[this.name] = this.value;
-  return browser.storage.local.set(prefObject);
-};
 CharPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "string" &&
       this.isPossibleValue(this.name, newPrefValue)) {
@@ -108,11 +102,6 @@ function ComplexPref(name, value, isPossibleValue) {
 }
 ComplexPref.prototype = Object.create(Pref.prototype);
 ComplexPref.prototype.constructor = ComplexPref;
-ComplexPref.prototype.setPreference = function() {
-  let prefObject = {};
-  prefObject[this.name] = this.value;
-  return browser.storage.local.set(prefObject);
-};
 ComplexPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
     this.value = newPrefValue;
