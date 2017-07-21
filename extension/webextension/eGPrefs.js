@@ -87,8 +87,7 @@ function CharPref(name, value, isPossibleValue) {
 CharPref.prototype = Object.create(Pref.prototype);
 CharPref.prototype.constructor = CharPref;
 CharPref.prototype.updateTo = function(newPrefValue) {
-  if (typeof newPrefValue === "string" &&
-      this.isPossibleValue(this.name, newPrefValue)) {
+  if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
     this.value = newPrefValue;
   }
   else {
@@ -129,33 +128,48 @@ var eGPrefs = {
     }
     
     function setDefaultMenus(defaultPrefsMap) {
-      var menus = [
+      function checkPossibleMenuValues(numberOfActions, newPrefValue) {
+        var actionsArray = newPrefValue.split("/");
+        if (actionsArray.length === numberOfActions) {
+          return actionsArray.every(function(element) {
+            return element in eGActions;
+          });
+        }
+        else {
+          return false;
+        }
+      }
+      
+      function checkPossibleNonExtraMenuValues(newPrefValue) {
+        return checkPossibleMenuValues(10, newPrefValue);
+      }
+      
+      function checkPossibleExtraMenuValues(newPrefValue) {
+        return checkPossibleMenuValues(5, newPrefValue);
+      }
+      
+      var nonExtraMenus = [
         ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
         ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
         ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
-        ["extra",            "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
-        ["extraAlt1",        "newPrivateWindow/empty/toggleFullscreen/restart/quit"],
-        ["extraAlt2",        "zoomReset/zoomOut/zoomIn/savePageAs/printPage"],
         ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
         ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
         ["contextSelection", "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
         ["contextTextbox",   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"]
       ];
+      var extraMenus = [
+        ["extra",     "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
+        ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/restart/quit"],
+        ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
+      ];
       
-      menus.forEach(function([menuName, actions]) {
+      nonExtraMenus.forEach(function([menuName, actions]) {
         eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions,
-                             function(prefName, newPrefValue) {
-          var numberOfActions = prefName.startsWith("menus.extra") ? 5 : 10;
-          var actionsArray = newPrefValue.split("/");
-          if (actionsArray.length === numberOfActions) {
-            return actionsArray.every(function(element) {
-              return element in eGActions;
-            });
-          }
-          else {
-            return false;
-          }
-        });
+                             checkPossibleNonExtraMenuValues);
+      });
+      extraMenus.forEach(function([menuName, actions]) {
+        eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions,
+                             checkPossibleExtraMenuValues);
       });
     }
     
@@ -209,7 +223,7 @@ var eGPrefs = {
     setDefaultMenus(defaultPrefs);
     
     this._setCharPref(defaultPrefs, "customizations.loadURLin", "newTab",
-                      function(prefName, newPrefValue) {
+                      function(newPrefValue) {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
     
@@ -222,7 +236,7 @@ var eGPrefs = {
     }
     
     this._setCharPref(defaultPrefs, "customizations.openLink", "newTab",
-                      function(prefName, newPrefValue) {
+                      function(newPrefValue) {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
     this._setCharPref(defaultPrefs, "customizations.dailyReadingsFolderName",
@@ -236,13 +250,12 @@ var eGPrefs = {
     
     var lastResetDate = new Date();
     this._setCharPref(defaultStats, "stats.lastReset",
-                      lastResetDate.toISOString(),
-                      function(prefName, newPrefValue) {
+                      lastResetDate.toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
     this._setCharPref(defaultStats, "stats.mainMenu",
                       "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
-                      function(prefName, newPrefValue) {
+                      function(newPrefValue) {
       var statsMainMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsMainMenuArray) &&
              statsMainMenuArray.length === 30 &&
@@ -252,7 +265,7 @@ var eGPrefs = {
     });
     this._setCharPref(defaultStats, "stats.extraMenu",
                       "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
-                      function(prefName, newPrefValue) {
+                      function(newPrefValue) {
       var statsExtraMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsExtraMenuArray) &&
              statsExtraMenuArray.length === 15 &&
@@ -266,8 +279,7 @@ var eGPrefs = {
       actionsStats[action] = 0;
     }
     this._setCharPref(defaultStats, "stats.actions",
-                      JSON.stringify(actionsStats),
-                      function(prefName, newPrefValue) {
+                      JSON.stringify(actionsStats), function(newPrefValue) {
       var statsActionsObject = JSON.parse(newPrefValue);
       var result = statsActionsObject instanceof Object &&
                    !(statsActionsObject instanceof Array);
