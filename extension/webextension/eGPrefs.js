@@ -80,28 +80,13 @@ IntPref.prototype.updateTo = function(newPrefValue) {
   }
 };
 
-function CharPref(name, value, isPossibleValue) {
+function StringPref(name, value, isPossibleValue) {
   Pref.call(this, name, value);
   this.isPossibleValue = isPossibleValue;
 }
-CharPref.prototype = Object.create(Pref.prototype);
-CharPref.prototype.constructor = CharPref;
-CharPref.prototype.updateTo = function(newPrefValue) {
-  if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
-    this.value = newPrefValue;
-  }
-  else {
-    throw "";
-  }
-};
-
-function ComplexPref(name, value, isPossibleValue) {
-  Pref.call(this, name, value);
-  this.isPossibleValue = isPossibleValue;
-}
-ComplexPref.prototype = Object.create(Pref.prototype);
-ComplexPref.prototype.constructor = ComplexPref;
-ComplexPref.prototype.updateTo = function(newPrefValue) {
+StringPref.prototype = Object.create(Pref.prototype);
+StringPref.prototype.constructor = StringPref;
+StringPref.prototype.updateTo = function(newPrefValue) {
   if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
     this.value = newPrefValue;
   }
@@ -111,8 +96,9 @@ ComplexPref.prototype.updateTo = function(newPrefValue) {
 };
 
 var eGPrefs = {
-  _setCharPref : function(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
-    defaultPrefsMap.set(prefName, new CharPref(prefName, prefValue, isPossibleValue));
+  _setStringPref : function(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
+    defaultPrefsMap.set(prefName,
+                        new StringPref(prefName, prefValue, isPossibleValue));
   },
   
   _getDefaultPrefsMap : function(platformOS) {
@@ -122,9 +108,6 @@ var eGPrefs = {
     function setIntPref(defaultPrefsMap, prefName, prefValue, possibleValues) {
       defaultPrefsMap.set(prefName,
                           new IntPref(prefName, prefValue, possibleValues));
-    }
-    function setComplexPref(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
-      defaultPrefsMap.set(prefName, new ComplexPref(prefName, prefValue, isPossibleValue));
     }
     
     function setDefaultMenus(defaultPrefsMap) {
@@ -164,12 +147,12 @@ var eGPrefs = {
       ];
       
       nonExtraMenus.forEach(function([menuName, actions]) {
-        eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions,
-                             checkPossibleNonExtraMenuValues);
+        eGPrefs._setStringPref(defaultPrefsMap, "menus." + menuName, actions,
+                               checkPossibleNonExtraMenuValues);
       });
       extraMenus.forEach(function([menuName, actions]) {
-        eGPrefs._setCharPref(defaultPrefsMap, "menus." + menuName, actions,
-                             checkPossibleExtraMenuValues);
+        eGPrefs._setStringPref(defaultPrefsMap, "menus." + menuName, actions,
+                               checkPossibleExtraMenuValues);
       });
     }
     
@@ -222,25 +205,25 @@ var eGPrefs = {
     setBoolPref(defaultPrefs, "menus.extraAlt2Enabled", false);
     setDefaultMenus(defaultPrefs);
     
-    this._setCharPref(defaultPrefs, "customizations.loadURLin", "newTab",
-                      function(newPrefValue) {
+    this._setStringPref(defaultPrefs, "customizations.loadURLin", "newTab",
+                        function(newPrefValue) {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
     
     for (let i=1; i<=10; i++) {
-      setComplexPref(defaultPrefs, "customizations.loadURL" + i,
-                     "\u2022\u2022false\u2022false",
-                     checkPossibleLoadURLValues);
-      setComplexPref(defaultPrefs, "customizations.runScript" + i,
-                     "\u2022\u2022", checkPossibleRunScriptValues);
+      this._setStringPref(defaultPrefs, "customizations.loadURL" + i,
+                          "\u2022\u2022false\u2022false",
+                          checkPossibleLoadURLValues);
+      this._setStringPref(defaultPrefs, "customizations.runScript" + i,
+                          "\u2022\u2022", checkPossibleRunScriptValues);
     }
     
-    this._setCharPref(defaultPrefs, "customizations.openLink", "newTab",
-                      function(newPrefValue) {
+    this._setStringPref(defaultPrefs, "customizations.openLink", "newTab",
+                        function(newPrefValue) {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
-    this._setCharPref(defaultPrefs, "customizations.dailyReadingsFolderName",
-                      "", () => { return true; });
+    this._setStringPref(defaultPrefs, "customizations.dailyReadingsFolderName",
+                        "", () => { return true; });
     
     return defaultPrefs;
   },
@@ -249,13 +232,13 @@ var eGPrefs = {
     var defaultStats = new Map();
     
     var lastResetDate = new Date();
-    this._setCharPref(defaultStats, "stats.lastReset",
-                      lastResetDate.toISOString(), function(newPrefValue) {
+    this._setStringPref(defaultStats, "stats.lastReset",
+                        lastResetDate.toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
-    this._setCharPref(defaultStats, "stats.mainMenu",
-                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
-                      function(newPrefValue) {
+    this._setStringPref(defaultStats, "stats.mainMenu",
+                        "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+                        function(newPrefValue) {
       var statsMainMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsMainMenuArray) &&
              statsMainMenuArray.length === 30 &&
@@ -263,9 +246,9 @@ var eGPrefs = {
                return Number.isInteger(element);
              });
     });
-    this._setCharPref(defaultStats, "stats.extraMenu",
-                      "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
-                      function(newPrefValue) {
+    this._setStringPref(defaultStats, "stats.extraMenu",
+                        "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+                        function(newPrefValue) {
       var statsExtraMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsExtraMenuArray) &&
              statsExtraMenuArray.length === 15 &&
@@ -278,8 +261,8 @@ var eGPrefs = {
     for (let action in eGActions) {
       actionsStats[action] = 0;
     }
-    this._setCharPref(defaultStats, "stats.actions",
-                      JSON.stringify(actionsStats), function(newPrefValue) {
+    this._setStringPref(defaultStats, "stats.actions",
+                        JSON.stringify(actionsStats), function(newPrefValue) {
       var statsActionsObject = JSON.parse(newPrefValue);
       var result = statsActionsObject instanceof Object &&
                    !(statsActionsObject instanceof Array);
