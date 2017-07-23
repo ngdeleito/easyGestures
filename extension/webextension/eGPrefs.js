@@ -231,7 +231,7 @@ var eGPrefs = {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
     this._setStringPref(defaultStats, "stats.mainMenu",
-                        "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+                        JSON.stringify(Array(30).fill(0)),
                         function(newPrefValue) {
       var statsMainMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsMainMenuArray) &&
@@ -241,7 +241,7 @@ var eGPrefs = {
              });
     });
     this._setStringPref(defaultStats, "stats.extraMenu",
-                        "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]",
+                        JSON.stringify(Array(15).fill(0)),
                         function(newPrefValue) {
       var statsExtraMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsExtraMenuArray) &&
