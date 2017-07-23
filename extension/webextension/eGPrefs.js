@@ -359,13 +359,7 @@ var eGPrefs = {
     return Promise.all(setPreferencePromises);
   },
   
-  getBoolPref : function(aPrefName) {
-    return browser.storage.local.get(aPrefName).then(prefObject => {
-      return prefObject[aPrefName];
-    });
-  },
-  
-  getIntPref : function(aPrefName) {
+  getPref : function(aPrefName) {
     return browser.storage.local.get(aPrefName).then(prefObject => {
       return prefObject[aPrefName];
     });
@@ -374,12 +368,6 @@ var eGPrefs = {
   getMenuPrefAsArray : function(aPrefName) {
     return browser.storage.local.get(aPrefName).then(prefObject => {
       return prefObject[aPrefName].split("/");
-    });
-  },
-  
-  getCharPref : function(aPrefName) {
-    return browser.storage.local.get(aPrefName).then(prefObject => {
-      return prefObject[aPrefName];
     });
   },
   
@@ -414,7 +402,7 @@ var eGPrefs = {
   },
   
   areStartupTipsOn : function() {
-    return this.getBoolPref("general.startupTips");
+    return this.getPref("general.startupTips");
   },
   
   toggleStartupTips : function() {
@@ -426,7 +414,7 @@ var eGPrefs = {
   },
   
   getTipNumberPref : function() {
-    return this.getIntPref("general.tipNumber");
+    return this.getPref("general.tipNumber");
   },
   
   setTipNumberPref : function(anInteger) {
@@ -436,44 +424,44 @@ var eGPrefs = {
   },
   
   isLargeMenuOn : function() {
-    return this.getBoolPref("behavior.largeMenu");
+    return this.getPref("behavior.largeMenu");
   },
   
   areTooltipsOn : function() {
-    return this.getBoolPref("behavior.showTooltips");
+    return this.getPref("behavior.showTooltips");
   },
   
   isHandleLinksOn : function() {
-    return this.getBoolPref("behavior.handleLinks");
+    return this.getPref("behavior.handleLinks");
   },
   
   isAutoscrollingOn : function() {
-    return this.getBoolPref("behavior.autoscrollingOn");
+    return this.getPref("behavior.autoscrollingOn");
   },
   
   isMainAlt1MenuEnabled : function() {
-    return this.getBoolPref("menus.mainAlt1Enabled");
+    return this.getPref("menus.mainAlt1Enabled");
   },
   
   isMainAlt2MenuEnabled : function() {
-    return this.getBoolPref("menus.mainAlt2Enabled");
+    return this.getPref("menus.mainAlt2Enabled");
   },
   
   isExtraAlt1MenuEnabled : function() {
-    return this.getBoolPref("menus.extraAlt1Enabled");
+    return this.getPref("menus.extraAlt1Enabled");
   },
   
   isExtraAlt2MenuEnabled : function() {
-    return this.getBoolPref("menus.extraAlt2Enabled");
+    return this.getPref("menus.extraAlt2Enabled");
   },
   
   getLoadURLInPref : function() {
     // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
-    return this.getCharPref("customizations.loadURLin");
+    return this.getPref("customizations.loadURLin");
   },
   
   getLoadURLOrRunScriptPrefValue : function(aPrefName) {
-    return this.getCharPref("customizations." + aPrefName).then(prefValue => {
+    return this.getPref("customizations." + aPrefName).then(prefValue => {
       return prefValue.split("\u2022");
     });
   },
@@ -485,11 +473,11 @@ var eGPrefs = {
   },
   
   getOpenLinkPref : function() {
-    return this.getCharPref("customizations.openLink");
+    return this.getPref("customizations.openLink");
   },
   
   getDailyReadingsFolderName : function() {
-    return this.getCharPref("customizations.dailyReadingsFolderName");
+    return this.getPref("customizations.dailyReadingsFolderName");
   },
   
   setDailyReadingsFolderName : function(prefValue) {
@@ -499,13 +487,13 @@ var eGPrefs = {
   },
   
   getStatsLastResetPref : function() {
-    return this.getCharPref("stats.lastReset").then(prefValue => {
+    return this.getPref("stats.lastReset").then(prefValue => {
       return (new Date(prefValue)).toLocaleString();
     });
   },
   
   getStatsMainMenuPref : function() {
-    return this.getCharPref("stats.mainMenu").then(prefValue => {
+    return this.getPref("stats.mainMenu").then(prefValue => {
       return JSON.parse(prefValue);
     });
   },
@@ -520,7 +508,7 @@ var eGPrefs = {
   },
   
   getStatsExtraMenuPref : function() {
-    return this.getCharPref("stats.extraMenu").then(prefValue => {
+    return this.getPref("stats.extraMenu").then(prefValue => {
       return JSON.parse(prefValue);
     });
   },
@@ -535,7 +523,7 @@ var eGPrefs = {
   },
   
   updateStatsForAction : function(anActionName) {
-    this.getCharPref("stats.actions").then(prefValue => {
+    this.getPref("stats.actions").then(prefValue => {
       var actionsStats = JSON.parse(prefValue);
       ++actionsStats[anActionName];
       browser.storage.local.set({
@@ -545,7 +533,7 @@ var eGPrefs = {
   },
   
   getStatsActionsPref : function() {
-    return this.getCharPref("stats.actions").then(prefValue => {
+    return this.getPref("stats.actions").then(prefValue => {
       return JSON.parse(prefValue);
     });
   }

@@ -388,7 +388,7 @@ function addFavicon(url, actionName) {
 
 function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
-    eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       var aSelectElement = control.firstElementChild;
       var aTextInputElement = control.lastElementChild;
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
@@ -398,13 +398,13 @@ function initializePreferenceControl(control) {
   }
   
   function initializeIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
-    eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       control.querySelector("input[value='" + prefValue + "']").checked = true;
     });
   }
   
   function initializeBoolRadiogroupControl(control) {
-    eGPrefs.getBoolPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       var childIndexToSet = prefValue ? 1 : 0;
       control.getElementsByTagName("input")[childIndexToSet].checked = true;
     });
@@ -421,7 +421,7 @@ function initializePreferenceControl(control) {
   }
   
   function initializeSelectControl(control) {
-    eGPrefs.getCharPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       control.querySelector("[value=" + prefValue + "]").selected = true;
     });
   }
@@ -455,7 +455,7 @@ function initializePreferenceControl(control) {
   }
   
   function initializeStringRadiogroup(control) {
-    eGPrefs.getCharPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       control.querySelector("[value=" + prefValue + "]").checked = true;
     });
   }
@@ -490,7 +490,7 @@ function initializePreferenceControl(control) {
   
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
-      eGPrefs.getBoolPref(control.dataset.preference).then(prefValue => {
+      eGPrefs.getPref(control.dataset.preference).then(prefValue => {
         control.checked = prefValue;
       });
       break;
@@ -504,7 +504,7 @@ function initializePreferenceControl(control) {
       initializeBoolRadiogroupControl(control);
       break;
     case "numberInput":
-      eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+      eGPrefs.getPref(control.dataset.preference).then(prefValue => {
         control.value = prefValue;
       });
       break;
@@ -627,7 +627,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       if ((showKey !== "0" &&
            (showKey === preventOpenKey || showKey === contextKey)) ||
           (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
-        eGPrefs.getIntPref(control.dataset.preference).then(currentValue => {
+        eGPrefs.getPref(control.dataset.preference).then(currentValue => {
           anEvent.target.parentElement.parentElement
                  .querySelector("[value='" + currentValue + "']").checked = true;
           alert(browser.i18n.getMessage("activation.duplicateKey"));
