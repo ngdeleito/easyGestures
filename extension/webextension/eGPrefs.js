@@ -42,6 +42,15 @@ function Pref(name, value) {
 Pref.prototype = {
   constructor: Pref,
   
+  updateTo: function(newPrefValue) {
+    if (this.isNewValuePossible(newPrefValue)) {
+      this.value = newPrefValue;
+    }
+    else {
+      throw "";
+    }
+  },
+  
   setPreference: function() {
     let prefObject = {};
     prefObject[this.name] = this.value;
@@ -54,13 +63,8 @@ function BoolPref(name, value) {
 }
 BoolPref.prototype = Object.create(Pref.prototype);
 BoolPref.prototype.constructor = BoolPref;
-BoolPref.prototype.updateTo = function(newPrefValue) {
-  if (typeof newPrefValue === "boolean") {
-    this.value = newPrefValue;
-  }
-  else {
-    throw "";
-  }
+BoolPref.prototype.isNewValuePossible = function(newPrefValue) {
+  return typeof newPrefValue === "boolean";
 };
 
 function IntPref(name, value, possibleValuesArray) {
@@ -69,15 +73,10 @@ function IntPref(name, value, possibleValuesArray) {
 }
 IntPref.prototype = Object.create(Pref.prototype);
 IntPref.prototype.constructor = IntPref;
-IntPref.prototype.updateTo = function(newPrefValue) {
-  if (Number.isInteger(newPrefValue) &&
-      (this.possibleValuesArray === undefined ||
-       this.possibleValuesArray.indexOf(newPrefValue) !== -1)) {
-    this.value = newPrefValue;
-  }
-  else {
-    throw "";
-  }
+IntPref.prototype.isNewValuePossible = function(newPrefValue) {
+  return Number.isInteger(newPrefValue) &&
+         (this.possibleValuesArray === undefined ||
+          this.possibleValuesArray.indexOf(newPrefValue) !== -1);
 };
 
 function StringPref(name, value, isPossibleValue) {
@@ -86,13 +85,8 @@ function StringPref(name, value, isPossibleValue) {
 }
 StringPref.prototype = Object.create(Pref.prototype);
 StringPref.prototype.constructor = StringPref;
-StringPref.prototype.updateTo = function(newPrefValue) {
-  if (typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue)) {
-    this.value = newPrefValue;
-  }
-  else {
-    throw "";
-  }
+StringPref.prototype.isNewValuePossible = function(newPrefValue) {
+  return typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue);
 };
 
 var eGPrefs = {
