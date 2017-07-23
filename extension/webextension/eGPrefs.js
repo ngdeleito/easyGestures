@@ -373,31 +373,19 @@ var eGPrefs = {
   
   toggleBoolPref : function(aPrefName) {
     browser.storage.local.get(aPrefName).then(prefObject => {
-      this.setBoolPref(aPrefName, !prefObject[aPrefName]);
+      this.setPref(aPrefName, !prefObject[aPrefName]);
     });
   },
   
-  setBoolPref : function(aPrefName, prefValue) {
+  setPref : function(aPrefName, prefValue) {
     let prefObject = {};
     prefObject[aPrefName] = prefValue;
-    browser.storage.local.set(prefObject);
-  },
-  
-  setIntPref : function(aPrefName, prefValue) {
-    let prefObject = {};
-    prefObject[aPrefName] = Number(prefValue);
     browser.storage.local.set(prefObject);
   },
   
   setMenuPref : function(aPrefName, prefValueAsArray) {
     let prefObject = {};
     prefObject[aPrefName] = prefValueAsArray.join("/");
-    browser.storage.local.set(prefObject);
-  },
-  
-  setCharPref : function(aPrefName, prefValue) {
-    let prefObject = {};
-    prefObject[aPrefName] = prefValue;
     browser.storage.local.set(prefObject);
   },
   

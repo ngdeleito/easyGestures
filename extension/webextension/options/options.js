@@ -597,17 +597,17 @@ function addOnchangeListenerToPreferenceControl(control) {
       if (aSelectElement.selectedIndex < 3) {
         aTextInputElement.value = aSelectElement.selectedIndex;
         prefChanged = true;
-        eGPrefs.setIntPref(control.dataset.preference,
-                           aSelectElement.selectedIndex);
+        eGPrefs.setPref(control.dataset.preference,
+                        aSelectElement.selectedIndex);
       }
       else {
         aTextInputElement.focus();
       }
     }, true);
     aTextInputElement.addEventListener("change", function(anEvent) {
-      let prefValue = anEvent.target.value;
+      let prefValue = Number(anEvent.target.value);
       prefChanged = true;
-      eGPrefs.setIntPref(control.dataset.preference, prefValue);
+      eGPrefs.setPref(control.dataset.preference, prefValue);
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
       setDisabledStatusForSelectWithTextInputControl(control);
     }, true);
@@ -635,7 +635,8 @@ function addOnchangeListenerToPreferenceControl(control) {
       }
       else {
         prefChanged = true;
-        eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
+        eGPrefs.setPref(control.dataset.preference,
+                        Number(anEvent.target.value));
       }
     }
     
@@ -648,8 +649,8 @@ function addOnchangeListenerToPreferenceControl(control) {
   function addOnchangeListenerToBoolRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
       prefChanged = true;
-      eGPrefs.setBoolPref(control.dataset.preference,
-                          anEvent.target.value === "true");
+      eGPrefs.setPref(control.dataset.preference,
+                      anEvent.target.value === "true");
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -702,7 +703,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   function addOnchangeListenerToStringRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
       prefChanged = true;
-      eGPrefs.setCharPref(control.dataset.preference, anEvent.target.value);
+      eGPrefs.setPref(control.dataset.preference, anEvent.target.value);
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -730,7 +731,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     case "numberInput":
       control.addEventListener("change", function() {
         prefChanged = true;
-        eGPrefs.setIntPref(control.dataset.preference, control.value);
+        eGPrefs.setPref(control.dataset.preference, Number(control.value));
       }, true);
       break;
     case "menu":
@@ -739,7 +740,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     case "select":
       control.addEventListener("change", function() {
         prefChanged = true;
-        eGPrefs.setCharPref(control.dataset.preference, control.value);
+        eGPrefs.setPref(control.dataset.preference, control.value);
       }, true);
       break;
     case "loadURL":
