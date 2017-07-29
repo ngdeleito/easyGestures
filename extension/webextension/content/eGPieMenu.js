@@ -36,11 +36,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, document, contextualMenus, selection, addEventListener,
+/* global browser, document, contextualMenus, addEventListener,
           removeMenuEventHandler, anchorElement, window, handleMousemove,
-          EXTRA_MENU_ACTION, mousedownScreenX, mouseupScreenX, mousedownScreenY,
-          mouseupScreenY, imageElement, inputElement, hide, frameScrollY,
-          iframeElement, frameScrollMaxY, removeEventListener */
+          actionStatusSetters, EXTRA_MENU_ACTION, actionRunners, hide,
+          removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 
@@ -278,38 +277,6 @@ var eGPieMenu = {
     this._menuState = 3;
   },
   
-  _setActionStatusHelper : function(layoutName, actionSector, disabled) {
-    var actionsNode = document.getElementById("eG_actions_" + layoutName);
-    var actionNode = actionsNode.childNodes[actionSector];
-    if (disabled) {
-      actionNode.classList.add("disabled");
-    }
-    else {
-      actionNode.classList.remove("disabled");
-    }
-  },
-  
-  setDisableableActionStatus : function(aMessage, layoutName, actionSector) {
-    this._setActionStatusHelper(layoutName, actionSector, aMessage.status);
-  },
-  
-  setHideImagesActionStatus : function(aMessage, layoutName, actionSector) {
-    var disabled = document.querySelectorAll("img").length === 0;
-    this._setActionStatusHelper(layoutName, actionSector, disabled);
-  },
-  
-  setActionStatus_cut : function(aMessage, layoutName, actionSector) {
-    var disabled = inputElement === null ||
-                   inputElement.selectionStart === inputElement.selectionEnd;
-    this._setActionStatusHelper(layoutName, actionSector, disabled);
-  },
-  
-  setActionStatus_copy : function(aMessage, layoutName, actionSector) {
-    var enabled = selection !== "" || (inputElement !== null &&
-                    inputElement.selectionEnd > inputElement.selectionStart);
-    this._setActionStatusHelper(layoutName, actionSector, !enabled);
-  },
-  
   _createEasyGesturesNode : function() {
     var easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
     easyGesturesNode.id = this.easyGesturesID;
@@ -481,7 +448,7 @@ var eGPieMenu = {
     }).then(statusesArray => {
       statusesArray.forEach(function(response, actionSector) {
         if (response !== undefined) {
-          eGPieMenu[response.messageName](response, layoutName, actionSector);
+          actionStatusSetters[response.messageName](response, layoutName, actionSector);
         }
       });
     });
@@ -593,139 +560,6 @@ var eGPieMenu = {
     return result;
   },
   
-  runAction_back : function() {
-    window.history.back();
-  },
-  
-  runAction_forward : function() {
-    window.history.forward();
-  },
-  
-  runAction_pageTop : function() {
-    if (frameScrollY !== 0) {
-      iframeElement.contentWindow.scroll(0, 0);
-    }
-    else {
-      window.scroll(0, 0);
-    }
-  },
-  
-  runAction_pageBottom : function() {
-    if (frameScrollY !== frameScrollMaxY) {
-      iframeElement.contentWindow.scroll(0, frameScrollMaxY);
-    }
-    else {
-      window.scroll(0, window.scrollMaxY);
-    }
-  },
-  
-  runAction_autoscrolling : function(options) {
-    var useMousedownCoordinates = options.useMousedownCoordinates;
-    // see chrome://global/content/browser-content.js: we simulate a middle
-    // button (non cancelable) mousedown event to trigger Firefox's
-    // autoscrolling --> autoscrolling is currently broken, as in WebExtensions
-    // created events seem to be non trusted
-    document.documentElement.dispatchEvent(new window.MouseEvent("mousedown", {
-      view: window,
-      bubbles: true,
-      button: 1,
-      screenX: useMousedownCoordinates ? mousedownScreenX : mouseupScreenX,
-      screenY: useMousedownCoordinates ? mousedownScreenY : mouseupScreenY
-    }));
-  },
-  
-  runAction_zoomIn : function() {
-    // double image size only
-    var width = imageElement.style.width === "" ?
-      imageElement.width * 2 + "px" :
-      parseInt(imageElement.style.width, 10) * 2 + "px";
-    
-    var height = imageElement.style.height === "" ?
-      imageElement.height * 2 + "px" :
-      parseInt(imageElement.style.height, 10) * 2 + "px";
-    
-    imageElement.style.width = width;
-    imageElement.style.height = height;
-  },
-  
-  runAction_zoomOut : function() {
-    // halve image size only
-    var width = imageElement.style.width === "" ?
-      imageElement.width * 0.5 + "px" :
-      parseInt(imageElement.style.width, 10) * 0.5 + "px";
-    
-    var height = imageElement.style.height === "" ?
-      imageElement.height * 0.5 + "px" :
-      parseInt(imageElement.style.height, 10) * 0.5 + "px";
-    
-    imageElement.style.width = width;
-    imageElement.style.height = height;
-  },
-  
-  runAction_printPage : function() {
-    window.print();
-  },
-  
-  runAction_copyInformation: function(options) {
-    var selection = window.getSelection();
-    selection.removeAllRanges();
-    var node = document.createElement("div");
-    node.textContent = options.information;
-    var easyGesturesNode = document.getElementById(this.easyGesturesID);
-    easyGesturesNode.appendChild(node);
-    var range = document.createRange();
-    range.selectNode(node);
-    selection.addRange(range);
-    document.execCommand("copy");
-    easyGesturesNode.removeChild(node);
-  },
-  
-  runAction_runScript: function(options) {
-    eval(options.script);
-  },
-  
-  runAction_hideImages : function() {
-    var images = document.querySelectorAll("img");
-    for (var i=0; i < images.length; ++i) {
-      images[i].style.display = "none";
-    }
-  },
-  
-  runAction_commandAction : function(options) {
-    document.execCommand(options.commandName);
-  },
-  
-  runAction_paste : function() {
-    var selectionStart = inputElement.selectionStart;
-    var selectionEnd = inputElement.selectionEnd;
-    
-    var textareaWithPastedText = document.createElement("textarea");
-    textareaWithPastedText.contentEditable = true;
-    var easyGesturesNode = document.getElementById(this.easyGesturesID);
-    easyGesturesNode.appendChild(textareaWithPastedText);
-    textareaWithPastedText.focus();
-    document.execCommand("paste");
-    
-    var inputContent = inputElement.value;
-    inputElement.value = inputContent.substring(0, selectionStart) +
-      textareaWithPastedText.textContent +
-      inputContent.substring(selectionEnd, inputContent.length);
-    inputElement.focus();
-    
-    easyGesturesNode.removeChild(textareaWithPastedText);
-  },
-  
-  runAction_selectAll : function() {
-    if (inputElement !== null) {
-      inputElement.select();
-    }
-    else {
-      document.designMode = "on";
-      document.execCommand("selectAll");
-      document.designMode = "off";
-    }
-  },
-  
   runAction : function() {
     var actionsNode = document.getElementById("eG_actions_" + this.curLayoutName);
     var actionNode = actionsNode.childNodes[this.sector];
@@ -743,7 +577,7 @@ var eGPieMenu = {
       this.close();
       browser.runtime.sendMessage(runActionMessage).then(aMessage => {
         if (aMessage.runActionName !== undefined) {
-          this["runAction_" + aMessage.runActionName](aMessage.runActionOptions);
+          actionRunners[aMessage.runActionName](aMessage.runActionOptions);
         }
       });
     }

@@ -170,7 +170,7 @@ DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
 DisableableAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setDisableableActionStatus",
+    messageName: "disableableAction",
     status: this._isDisabled()
   };
 };
@@ -334,7 +334,7 @@ DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototy
 DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
 DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setHideImagesActionStatus",
+    messageName: this._name,
     status: undefined
   };
 };
@@ -353,7 +353,7 @@ CommandAction.prototype = Object.create(Action.prototype);
 CommandAction.prototype.constructor = CommandAction;
 CommandAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setActionStatus_" + this._name,
+    messageName: this._name,
     status: undefined
   };
 };
