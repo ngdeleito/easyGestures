@@ -521,13 +521,9 @@ function handleMousemove(anEvent) {
   // clear automatic delayed autoscrolling
   window.clearTimeout(autoscrollingTrigger);
   
-  var result = eGPieMenu.handleMousemove({
-    positionX: anEvent.clientX,
-    positionY: anEvent.clientY,
-    shiftKey: anEvent.shiftKey,
-    movementX: anEvent.movementX,
-    movementY: anEvent.movementY
-  });
+  var result = eGPieMenu.handleMousemove(anEvent.clientX, anEvent.clientY,
+                                         anEvent.shiftKey, anEvent.movementX,
+                                         anEvent.movementY);
   if (result.centerX !== undefined) {
     let easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
     updateMenuPosition(easyGesturesNode, result.centerX, result.centerY);

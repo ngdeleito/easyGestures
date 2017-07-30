@@ -487,11 +487,11 @@ var eGPieMenu = {
     this.showingTooltips = true;
   },
   
-  handleMousemove : function(aMessageData) {
+  handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
     var layout = this.menuSet[this.curLayoutName];
     
     // state change if was dragged
-    if (this.isJustOpened() && (aMessageData.movementX !== 0 || aMessageData.movementY !== 0)) {
+    if (this.isJustOpened() && (movementX !== 0 || movementY !== 0)) {
       this.setJustOpenedAndMouseMoved();
     }
     
@@ -502,11 +502,11 @@ var eGPieMenu = {
     if (layout.isExtraMenu) {
       refY -= this.menuSet[this.baseMenu].outerR * 1.2;
     }
-    var radius = Math.sqrt((aMessageData.positionX - refX) * (aMessageData.positionX - refX) +
-                           (aMessageData.positionY - refY) * (aMessageData.positionY - refY));
+    var radius = Math.sqrt((positionX - refX) * (positionX - refX) +
+                           (positionY - refY) * (positionY - refY));
     
     if (radius > layout.innerR) {
-      var angle = Math.atan2(refY - aMessageData.positionY, aMessageData.positionX - refX) + layout.sectorOffset;
+      var angle = Math.atan2(refY - positionY, positionX - refX) + layout.sectorOffset;
       if (angle < 0) {
         angle += 2 * Math.PI;
       }
@@ -514,13 +514,13 @@ var eGPieMenu = {
     }
     
     // moving menu when shift key is down
-    if (!this.settings.moveAuto && aMessageData.shiftKey ||
+    if (!this.settings.moveAuto && shiftKey ||
         this.settings.moveAuto && radius >= layout.outerR &&
           sector < layout.actions.length &&
           (sector !== this.extraMenuAction || sector === this.extraMenuAction &&
                                               !layout.hasExtraMenuAction)) {
-      this.centerX += aMessageData.movementX;
-      this.centerY += aMessageData.movementY;
+      this.centerX += movementX;
+      this.centerY += movementY;
       
       return {
         centerX: this.centerX,
