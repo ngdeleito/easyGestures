@@ -38,10 +38,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global browser, document, contextualMenus, addEventListener,
           removeMenuEventHandler, anchorElement, window, handleMousemove,
-          actionStatusSetters, EXTRA_MENU_ACTION, actionRunners, hide,
-          removeEventListener */
+          actionStatusSetters, actionRunners, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
+const EXTRA_MENU_ACTION = 2;
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -287,6 +287,11 @@ var eGPieMenu = {
     return easyGesturesNode;
   },
   
+  _updateMenuPosition: function(easyGesturesNode) {
+    easyGesturesNode.style.left = this.centerX + "px";
+    easyGesturesNode.style.top = this.centerY + "px";
+  },
+  
   _createSpecialNodes : function(numberOfMainMenus, numberOfExtraMenus) {
     var specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
     specialNodesNode.id = "eG_SpecialNodes";
@@ -398,8 +403,7 @@ var eGPieMenu = {
       bodyNode.insertBefore(easyGesturesNode, bodyNode.firstChild);
     }
     
-    easyGesturesNode.style.left = this.centerX + "px";
-    easyGesturesNode.style.top = this.centerY + "px";
+    this._updateMenuPosition(easyGesturesNode);
     
     var specialNodes = document.getElementById("eG_SpecialNodes");
     if (specialNodes === null) {
@@ -487,8 +491,114 @@ var eGPieMenu = {
     this.showingTooltips = true;
   },
   
+  hideLinkSign: function() {
+    var specialNodes = document.getElementById("eG_SpecialNodes");
+    var linkSign = specialNodes.childNodes[0];
+    linkSign.style.visibility = "hidden";
+  },
+  
+  clearHoverEffect: function(sector, layoutName, actionsLength) {
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+    
+    if (sector >= 0 && sector < actionsLength) {
+      actionsNode.childNodes[sector].classList.remove("selected");
+      if (tooltipsNode !== null) {
+        tooltipsNode.childNodes[sector].classList.remove("selected");
+      }
+    }
+  },
+  
+  setHoverEffect: function(sector, layoutName, actionsLength) {
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+    
+    if (sector >= 0 && sector < actionsLength) {
+      actionsNode.childNodes[sector].classList.add("selected");
+      if (tooltipsNode !== null) {
+        tooltipsNode.childNodes[sector].classList.add("selected");
+      }
+    }
+  },
+  
+  hide: function(layoutName, sector, layoutActionsLength, baseLayoutName) {
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+    var specialNodes = document.getElementById("eG_SpecialNodes");
+    var linkSign = specialNodes.childNodes[0];
+    var contextMenuSign = specialNodes.childNodes[3];
+  
+    if (actionsNode !== null) {
+      actionsNode.style.visibility = "hidden";
+    }
+    if (tooltipsNode !== null) {
+      tooltipsNode.style.visibility = "hidden";
+    }
+    
+    linkSign.style.visibility = "hidden";
+    contextMenuSign.style.visibility = "hidden";
+    
+    if (sector >= 0 && sector < layoutActionsLength) {
+      actionsNode.childNodes[sector].classList.remove("selected");
+      if (tooltipsNode !== null) {
+        tooltipsNode.childNodes[sector].classList.remove("selected");
+      }
+    }
+    
+    // reset rollover for extra menu in base menu if needed
+    if (baseLayoutName !== "") {
+      var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
+      var baseTooltipsNode = document.getElementById("eG_labels_" + baseLayoutName);
+      baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
+      baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
+      if (baseTooltipsNode !== null) {
+        baseTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
+      }
+    }
+  },
+  
+  showExtraMenu: function(layoutName) {
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    var specialNodes = document.getElementById("eG_SpecialNodes");
+    var mainMenusSign = specialNodes.childNodes[1];
+    var extraMenusSign = specialNodes.childNodes[2];
+    var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+    
+    actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
+    
+    mainMenusSign.style.visibility = "hidden";
+    extraMenusSign.style.visibility = "visible";
+    
+    // hide main menu tooltips after extra menu showed
+    if (tooltipsNode !== null) {
+      tooltipsNode.style.visibility = "hidden";
+    }
+    
+    browser.runtime.sendMessage({
+      messageName: "incrementShowExtraMenuStats",
+      incrementIndex: eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION
+    });
+  },
+  
+  hideExtraMenu: function(layoutName, sector, layoutActionsLength, baseLayoutName) {
+    var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
+    var specialNodes = document.getElementById("eG_SpecialNodes");
+    var mainMenusSign = specialNodes.childNodes[1];
+    var extraMenusSign = specialNodes.childNodes[2];
+    
+    // reset rollover of extra menu action icon in main menu
+    baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
+    
+    this.hide(layoutName, sector, layoutActionsLength, baseLayoutName);
+    
+    mainMenusSign.style.visibility = "visible";
+    extraMenusSign.style.visibility = "hidden";
+  },
+  
   handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
     var layout = this.menuSet[this.curLayoutName];
+    
+    this.hideLinkSign();
     
     // state change if was dragged
     if (this.isJustOpened() && (movementX !== 0 || movementY !== 0)) {
@@ -521,21 +631,15 @@ var eGPieMenu = {
                                               !layout.hasExtraMenuAction)) {
       this.centerX += movementX;
       this.centerY += movementY;
-      
-      return {
-        centerX: this.centerX,
-        centerY: this.centerY
-      };
+      let easyGesturesNode = document.getElementById(this.easyGesturesID);
+      this._updateMenuPosition(easyGesturesNode);
+      return ;
     }
     
-    var result = {
-      oldSector: this.sector,
-      newSector: sector,
-      layoutName: layout.name,
-      actionsLength: layout.actions.length,
-      showExtraMenu: false,
-      hideExtraMenu: false
-    };
+    if (this.sector !== sector) {
+      this.clearHoverEffect(this.sector, layout.name, layout.actions.length);
+      this.setHoverEffect(sector, layout.name, layout.actions.length);
+    }
     this.sector = sector;
     
     // switching to/from extra menu
@@ -546,18 +650,15 @@ var eGPieMenu = {
     }
     else if (radius > layout.outerR && sector === this.extraMenuAction &&
              layout.hasExtraMenuAction) {
-      result.showExtraMenu = true;
       this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
       this.show("extra");
+      this.showExtraMenu(layout.name);
     }
     else if (layout.isExtraMenu && sector > 4) {
-      result.hideExtraMenu = true;
-      result.baseLayoutName = this.baseMenu;
       this.curLayoutName = this.baseMenu;
       this.resetTooltipsTimeout();
+      this.hideExtraMenu(layout.name, this.sector, layout.actions.length, this.baseMenu);
     }
-    
-    return result;
   },
   
   runAction : function() {
@@ -585,7 +686,7 @@ var eGPieMenu = {
   
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-    hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
+    this.hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
     this.show(layout.getNextLayout());
   },
   
@@ -607,12 +708,12 @@ var eGPieMenu = {
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
     
-    hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
+    this.hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
     if (layout.isExtraMenu) {
       // hide base menu too if closing is done from extra menu
-      hide(this.baseMenu, this.sector,
-           baseLayout !== undefined ? baseLayout.actions.length : 0,
-           this.baseMenu);
+      this.hide(this.baseMenu, this.sector,
+                baseLayout !== undefined ? baseLayout.actions.length : 0,
+                this.baseMenu);
       extraMenusSign.style.visibility = "hidden";
     }
     mainMenusSign.style.visibility = "hidden";

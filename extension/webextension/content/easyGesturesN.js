@@ -38,8 +38,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global browser, eGPieMenu, addEventListener, removeEventListener, window,
           document, MouseEvent */
 
-const EXTRA_MENU_ACTION = 2;
-
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
 var selection, contextualMenus, anchorElement, imageElement, inputElement,
@@ -406,138 +404,10 @@ function removeMenuEventHandler(anEvent) {
   easyGesturesNode.parentNode.removeChild(easyGesturesNode);
 }
 
-function hideLinkSign() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var linkSign = specialNodes.childNodes[0];
-  linkSign.style.visibility = "hidden";
-}
-
-function updateMenuPosition(easyGesturesNode, centerX, centerY) {
-  easyGesturesNode.style.left = centerX + "px";
-  easyGesturesNode.style.top = centerY + "px";
-}
-
-function clearHoverEffect(sector, layoutName, actionsLength) {
-  var actionsNode = document.getElementById("eG_actions_" + layoutName);
-  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
-  
-  if (sector >= 0 && sector < actionsLength) {
-    actionsNode.childNodes[sector].classList.remove("selected");
-    if (tooltipsNode !== null) {
-      tooltipsNode.childNodes[sector].classList.remove("selected");
-    }
-  }
-}
-
-function setHoverEffect(sector, layoutName, actionsLength) {
-  var actionsNode = document.getElementById("eG_actions_" + layoutName);
-  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
-  
-  if (sector >= 0 && sector < actionsLength) {
-    actionsNode.childNodes[sector].classList.add("selected");
-    if (tooltipsNode !== null) {
-      tooltipsNode.childNodes[sector].classList.add("selected");
-    }
-  }
-}
-
-function hide(layoutName, sector, layoutActionsLength, baseLayoutName) {
-  var actionsNode = document.getElementById("eG_actions_" + layoutName);
-  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var linkSign = specialNodes.childNodes[0];
-  var contextMenuSign = specialNodes.childNodes[3];
-  
-  if (actionsNode !== null) {
-    actionsNode.style.visibility = "hidden";
-  }
-  if (tooltipsNode !== null) {
-    tooltipsNode.style.visibility = "hidden";
-  }
-  
-  linkSign.style.visibility = "hidden";
-  contextMenuSign.style.visibility = "hidden";
-  
-  if (sector >= 0 && sector < layoutActionsLength) {
-    actionsNode.childNodes[sector].classList.remove("selected");
-    if (tooltipsNode !== null) {
-      tooltipsNode.childNodes[sector].classList.remove("selected");
-    }
-  }
-  
-  // reset rollover for extra menu in base menu if needed
-  if (baseLayoutName !== "") {
-    var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
-    var baseTooltipsNode = document.getElementById("eG_labels_" + baseLayoutName);
-    baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
-    baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
-    if (baseTooltipsNode !== null) {
-      baseTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
-    }
-  }
-}
-
-function showExtraMenu(layoutName) {
-  var actionsNode = document.getElementById("eG_actions_" + layoutName);
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var mainMenusSign = specialNodes.childNodes[1];
-  var extraMenusSign = specialNodes.childNodes[2];
-  var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
-  
-  actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
-  
-  mainMenusSign.style.visibility = "hidden";
-  extraMenusSign.style.visibility = "visible";
-  
-  // hide main menu tooltips after extra menu showed
-  if (tooltipsNode !== null) {
-    tooltipsNode.style.visibility = "hidden";
-  }
-  
-  browser.runtime.sendMessage({
-    messageName: "incrementShowExtraMenuStats",
-    incrementIndex: eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION
-  });
-}
-
-function hideExtraMenu(layoutName, sector, layoutActionsLength, baseLayoutName) {
-  var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var mainMenusSign = specialNodes.childNodes[1];
-  var extraMenusSign = specialNodes.childNodes[2];
-  
-  // reset rollover of extra menu action icon in main menu
-  baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
-  
-  hide(layoutName, sector, layoutActionsLength, baseLayoutName);
-  
-  mainMenusSign.style.visibility = "visible";
-  extraMenusSign.style.visibility = "hidden";
-}
-
 function handleMousemove(anEvent) {
-  hideLinkSign();
-  
   // clear automatic delayed autoscrolling
   window.clearTimeout(autoscrollingTrigger);
   
-  var result = eGPieMenu.handleMousemove(anEvent.clientX, anEvent.clientY,
-                                         anEvent.shiftKey, anEvent.movementX,
-                                         anEvent.movementY);
-  if (result.centerX !== undefined) {
-    let easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
-    updateMenuPosition(easyGesturesNode, result.centerX, result.centerY);
-  }
-  else {
-    if (result.oldSector !== result.newSector) {
-      clearHoverEffect(result.oldSector, result.layoutName, result.actionsLength);
-      setHoverEffect(result.newSector, result.layoutName, result.actionsLength);
-    }
-    if (result.showExtraMenu) {
-      showExtraMenu(result.layoutName);
-    }
-    else if (result.hideExtraMenu) {
-      hideExtraMenu(result.layoutName, result.newSector, result.actionsLength, result.baseLayoutName);
-    }
-  }
+  eGPieMenu.handleMousemove(anEvent.clientX, anEvent.clientY, anEvent.shiftKey,
+                            anEvent.movementX, anEvent.movementY);
 }
