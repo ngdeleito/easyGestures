@@ -41,7 +41,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
           actionStatusSetters, actionRunners, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
-const EXTRA_MENU_ACTION = 2;
+const EXTRA_MENU_ACTION = 2; // position of the extra menu action in base menus
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -71,7 +71,7 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   browser.runtime.sendMessage({
     messageName: "isExtraMenuAction",
-    actionName: this.actions[menu.extraMenuAction]
+    actionName: this.actions[EXTRA_MENU_ACTION]
   }).then(aMessage => {
     this.hasExtraMenuAction = aMessage.response;
   });
@@ -197,8 +197,6 @@ var eGPieMenu = {
     this.sector = -1; // index of item under mouse
     
     this.tooltipsTrigger = null; // trigger to display pie menu labels
-    
-    this.extraMenuAction = 2; // position of extra menu action in base menu from which extra menu is called
     
     this.iconSize = this.settings.smallIcons? 20 : 32;
     
@@ -627,8 +625,8 @@ var eGPieMenu = {
     if (!this.settings.moveAuto && shiftKey ||
         this.settings.moveAuto && radius >= layout.outerR &&
           sector < layout.actions.length &&
-          (sector !== this.extraMenuAction || sector === this.extraMenuAction &&
-                                              !layout.hasExtraMenuAction)) {
+          (sector !== EXTRA_MENU_ACTION || sector === EXTRA_MENU_ACTION &&
+                                           !layout.hasExtraMenuAction)) {
       this.centerX += movementX;
       this.centerY += movementY;
       let easyGesturesNode = document.getElementById(this.easyGesturesID);
@@ -648,7 +646,7 @@ var eGPieMenu = {
         this.close();
       }
     }
-    else if (radius > layout.outerR && sector === this.extraMenuAction &&
+    else if (radius > layout.outerR && sector === EXTRA_MENU_ACTION &&
              layout.hasExtraMenuAction) {
       this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
       this.show("extra");
