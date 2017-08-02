@@ -495,18 +495,18 @@ var eGPieMenu = {
     linkSign.style.visibility = "hidden";
   },
   
-  _highlightSelectedAction: function(oldSector, newSector, layoutName, actionsLength) {
+  _highlightSelectedAction: function(oldSector, newSector, layoutName) {
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
     
-    if (oldSector >= 0 && oldSector < actionsLength) {
+    if (oldSector >= 0) {
       actionsNode.childNodes[oldSector].classList.remove("selected");
       if (tooltipsNode !== null) {
         tooltipsNode.childNodes[oldSector].classList.remove("selected");
       }
     }
     
-    if (newSector >= 0 && newSector < actionsLength) {
+    if (newSector >= 0) {
       actionsNode.childNodes[newSector].classList.add("selected");
       if (tooltipsNode !== null) {
         tooltipsNode.childNodes[newSector].classList.add("selected");
@@ -514,7 +514,7 @@ var eGPieMenu = {
     }
   },
   
-  hide: function(layoutName, sector, layoutActionsLength, baseLayoutName) {
+  hide: function(layoutName, sector, baseLayoutName) {
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
     var specialNodes = document.getElementById("eG_SpecialNodes");
@@ -531,7 +531,7 @@ var eGPieMenu = {
     linkSign.style.visibility = "hidden";
     contextMenuSign.style.visibility = "hidden";
     
-    if (sector >= 0 && sector < layoutActionsLength) {
+    if (sector >= 0) {
       actionsNode.childNodes[sector].classList.remove("selected");
       if (tooltipsNode !== null) {
         tooltipsNode.childNodes[sector].classList.remove("selected");
@@ -573,7 +573,7 @@ var eGPieMenu = {
     });
   },
   
-  hideExtraMenu: function(layoutName, sector, layoutActionsLength, baseLayoutName) {
+  hideExtraMenu: function(layoutName, sector, baseLayoutName) {
     var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
@@ -582,7 +582,7 @@ var eGPieMenu = {
     // reset rollover of extra menu action icon in main menu
     baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
     
-    this.hide(layoutName, sector, layoutActionsLength, baseLayoutName);
+    this.hide(layoutName, sector, baseLayoutName);
     
     mainMenusSign.style.visibility = "visible";
     extraMenusSign.style.visibility = "hidden";
@@ -590,6 +590,7 @@ var eGPieMenu = {
   
   handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
     var layout = this.menuSet[this.curLayoutName];
+    var shouldExtraMenuBeHidden = false;
     
     this.hideLinkSign();
     
@@ -615,11 +616,14 @@ var eGPieMenu = {
       }
       sector = Math.floor(angle / (2 * layout.halfAngleForSector));
     }
+    if (sector >= layout.actions.length) {
+      shouldExtraMenuBeHidden = true;
+      sector = -1;
+    }
     
     // moving menu when shift key is down
     if (!this.settings.moveAuto && shiftKey ||
         this.settings.moveAuto && radius >= layout.outerR &&
-          sector < layout.actions.length &&
           (sector !== EXTRA_MENU_ACTION || sector === EXTRA_MENU_ACTION &&
                                            !layout.hasExtraMenuAction)) {
       this.centerX += movementX;
@@ -630,8 +634,7 @@ var eGPieMenu = {
     }
     
     if (this.sector !== sector) {
-      this._highlightSelectedAction(this.sector, sector, layout.name,
-                                    layout.actions.length);
+      this._highlightSelectedAction(this.sector, sector, layout.name);
     }
     this.sector = sector;
     
@@ -647,10 +650,10 @@ var eGPieMenu = {
       this.show("extra");
       this.showExtraMenu(layout.name);
     }
-    else if (layout.isExtraMenu && sector > 4) {
+    else if (shouldExtraMenuBeHidden) {
       this.curLayoutName = this.baseMenu;
       this.resetTooltipsTimeout();
-      this.hideExtraMenu(layout.name, this.sector, layout.actions.length, this.baseMenu);
+      this.hideExtraMenu(layout.name, this.sector, this.baseMenu);
     }
   },
   
@@ -679,7 +682,7 @@ var eGPieMenu = {
   
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
-    this.hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
+    this.hide(layout.name, this.sector, this.baseMenu);
     this.show(layout.getNextLayout());
   },
   
@@ -691,7 +694,6 @@ var eGPieMenu = {
   
   close : function() {
     var layout = this.menuSet[this.curLayoutName];
-    var baseLayout = this.menuSet[this.baseMenu];
     
     if (window === null) {
       return ;
@@ -701,12 +703,10 @@ var eGPieMenu = {
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
     
-    this.hide(layout.name, this.sector, layout.actions.length, this.baseMenu);
+    this.hide(layout.name, this.sector, this.baseMenu);
     if (layout.isExtraMenu) {
       // hide base menu too if closing is done from extra menu
-      this.hide(this.baseMenu, this.sector,
-                baseLayout !== undefined ? baseLayout.actions.length : 0,
-                this.baseMenu);
+      this.hide(this.baseMenu, this.sector, this.baseMenu);
       extraMenusSign.style.visibility = "hidden";
     }
     mainMenusSign.style.visibility = "hidden";
