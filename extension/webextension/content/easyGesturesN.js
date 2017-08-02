@@ -270,10 +270,10 @@ function handleMousedown(anEvent) {
   
   if (contextualMenus.length !== 0 &&
       eGPieMenu.canContextualMenuBeOpened(anEvent.ctrlKey, anEvent.altKey)) {
-    eGPieMenu.show(contextualMenus[0]);
+    eGPieMenu.open(contextualMenus[0]);
   }
   else {
-    eGPieMenu.show("main");
+    eGPieMenu.open("main");
   }
   
   if (eGPieMenu.settings.autoscrollingOn) {

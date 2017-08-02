@@ -243,10 +243,6 @@ var eGPieMenu = {
     };
   },
   
-  isHidden : function() {
-    return this._menuState === 0;
-  },
-  
   isShown : function() {
     return this._menuState !== 0;
   },
@@ -387,12 +383,37 @@ var eGPieMenu = {
     return anActionsNode;
   },
   
-  show : function(layoutName) { // makes menu visible
+  _showLayout: function(layoutName) {
     var layout = this.menuSet[layoutName];
-    
-    if (this.isHidden()) {
-      this.setJustOpened();
+    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+    if (actionsNode === null) {
+      let easyGesturesNode = document.getElementById(this.easyGesturesID);
+      actionsNode = this._createActionsNodes(layoutName, layout.outerR,
+                                             layout.innerR,
+                                             layout.startingAngle,
+                                             layout.actions,
+                                             layout.halfAngleForSector);
+      easyGesturesNode.appendChild(actionsNode);
     }
+    actionsNode.style.visibility = "visible";
+    
+    this.curLayoutName = layoutName;
+    browser.runtime.sendMessage({
+      messageName: "getActionsStatus",
+      actions: layout.actions
+    }).then(statusesArray => {
+      statusesArray.forEach(function(response, actionSector) {
+        if (response !== undefined) {
+          actionStatusSetters[response.messageName](response, layoutName, actionSector);
+        }
+      });
+    });
+    layout.updateMenuSign();
+    this.resetTooltipsTimeout();
+  },
+  
+  open: function(layoutName) {
+    this.setJustOpened();
     
     var bodyNode = document.body ? document.body : document.documentElement;
     var easyGesturesNode = document.getElementById(this.easyGesturesID);
@@ -410,23 +431,12 @@ var eGPieMenu = {
       easyGesturesNode.appendChild(specialNodes);
     }
     
-    if (!layout.isExtraMenu) {
-      if (layoutName.startsWith("main")) {
-        var mainMenusSign = specialNodes.childNodes[1];
-        mainMenusSign.style.visibility = "visible";
-      }
+    if (layoutName.startsWith("main")) {
+      var mainMenusSign = specialNodes.childNodes[1];
+      mainMenusSign.style.visibility = "visible";
     }
     
-    var actionsNode = document.getElementById("eG_actions_" + layoutName);
-    if (actionsNode === null) {
-      actionsNode = this._createActionsNodes(layoutName, layout.outerR,
-                                             layout.innerR,
-                                             layout.startingAngle,
-                                             layout.actions,
-                                             layout.halfAngleForSector);
-      easyGesturesNode.appendChild(actionsNode);
-    }
-    actionsNode.style.visibility = "visible";
+    this._showLayout(layoutName);
     
     // showing link sign
     var linkSign = specialNodes.childNodes[0];
@@ -442,20 +452,6 @@ var eGPieMenu = {
     }
     
     addEventListener("mousemove", handleMousemove, true);
-    
-    this.curLayoutName = layoutName;
-    browser.runtime.sendMessage({
-      messageName: "getActionsStatus",
-      actions: layout.actions
-    }).then(statusesArray => {
-      statusesArray.forEach(function(response, actionSector) {
-        if (response !== undefined) {
-          actionStatusSetters[response.messageName](response, layoutName, actionSector);
-        }
-      });
-    });
-    layout.updateMenuSign();
-    this.resetTooltipsTimeout();
   },
   
   _createTooltipsNodes : function(layoutName, tooltips, hasExtraMenuAction) {
@@ -647,7 +643,7 @@ var eGPieMenu = {
     else if (radius > layout.outerR && sector === EXTRA_MENU_ACTION &&
              layout.hasExtraMenuAction) {
       this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
-      this.show("extra");
+      this._showLayout("extra");
       this.showExtraMenu(layout.name);
     }
     else if (shouldExtraMenuBeHidden) {
@@ -683,7 +679,7 @@ var eGPieMenu = {
   switchLayout : function() { // this is not about switching to/from extra menu
     var layout = this.menuSet[this.curLayoutName];
     this.hide(layout.name, this.sector, this.baseMenu);
-    this.show(layout.getNextLayout());
+    this._showLayout(layout.getNextLayout());
   },
   
   _clearMenuSign : function(menuSign) {
