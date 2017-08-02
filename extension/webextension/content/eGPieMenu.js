@@ -495,26 +495,21 @@ var eGPieMenu = {
     linkSign.style.visibility = "hidden";
   },
   
-  clearHoverEffect: function(sector, layoutName, actionsLength) {
+  _highlightSelectedAction: function(oldSector, newSector, layoutName, actionsLength) {
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
     
-    if (sector >= 0 && sector < actionsLength) {
-      actionsNode.childNodes[sector].classList.remove("selected");
+    if (oldSector >= 0 && oldSector < actionsLength) {
+      actionsNode.childNodes[oldSector].classList.remove("selected");
       if (tooltipsNode !== null) {
-        tooltipsNode.childNodes[sector].classList.remove("selected");
+        tooltipsNode.childNodes[oldSector].classList.remove("selected");
       }
     }
-  },
-  
-  setHoverEffect: function(sector, layoutName, actionsLength) {
-    var actionsNode = document.getElementById("eG_actions_" + layoutName);
-    var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
     
-    if (sector >= 0 && sector < actionsLength) {
-      actionsNode.childNodes[sector].classList.add("selected");
+    if (newSector >= 0 && newSector < actionsLength) {
+      actionsNode.childNodes[newSector].classList.add("selected");
       if (tooltipsNode !== null) {
-        tooltipsNode.childNodes[sector].classList.add("selected");
+        tooltipsNode.childNodes[newSector].classList.add("selected");
       }
     }
   },
@@ -635,8 +630,8 @@ var eGPieMenu = {
     }
     
     if (this.sector !== sector) {
-      this.clearHoverEffect(this.sector, layout.name, layout.actions.length);
-      this.setHoverEffect(sector, layout.name, layout.actions.length);
+      this._highlightSelectedAction(this.sector, sector, layout.name,
+                                    layout.actions.length);
     }
     this.sector = sector;
     
