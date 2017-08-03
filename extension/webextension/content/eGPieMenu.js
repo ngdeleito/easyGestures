@@ -561,14 +561,14 @@ var eGPieMenu = {
     }
   },
   
-  showExtraMenu: function(layoutName) {
-    var actionsNode = document.getElementById("eG_actions_" + layoutName);
+  _showExtraMenu: function() {
+    this.baseMenu = this.curLayoutName;
+    var actionsNode = document.getElementById("eG_actions_" + this.baseMenu);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
-    var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+    var tooltipsNode = document.getElementById("eG_labels_" + this.baseMenu);
     
-    this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
     this._showLayout("extra");
     
     actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
@@ -583,7 +583,8 @@ var eGPieMenu = {
     
     browser.runtime.sendMessage({
       messageName: "incrementShowExtraMenuStats",
-      incrementIndex: eGPieMenu.menuSet[layoutName]._layoutNumber * 10 + EXTRA_MENU_ACTION
+      incrementIndex: eGPieMenu.menuSet[this.baseMenu]._layoutNumber * 10 +
+                      EXTRA_MENU_ACTION
     });
   },
   
@@ -663,7 +664,7 @@ var eGPieMenu = {
     }
     else if (radius > layout.outerR && sector === EXTRA_MENU_ACTION &&
              layout.hasExtraMenuAction) {
-      this.showExtraMenu(layout.name);
+      this._showExtraMenu();
     }
     else if (shouldExtraMenuBeHidden) {
       this.hideExtraMenu(layout.name, this.sector, this.baseMenu);
