@@ -383,6 +383,12 @@ var eGPieMenu = {
     return anActionsNode;
   },
   
+  _ensureMenuTooltipsAreShown: function() {
+    if (this.showingTooltips) {
+        this.showMenuTooltips();
+    }
+  },
+  
   _showLayout: function(layoutName) {
     var layout = this.menuSet[layoutName];
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
@@ -409,7 +415,15 @@ var eGPieMenu = {
       });
     });
     layout.updateMenuSign();
-    this.resetTooltipsTimeout();
+    this._ensureMenuTooltipsAreShown();
+  },
+  
+  _setTooltipsTimeout: function() {
+    if (this.settings.showTooltips) {
+      this.tooltipsTrigger = window.setTimeout(function() {
+        eGPieMenu.showMenuTooltips();
+      }, this.settings.tooltipsDelay);
+    }
   },
   
   open: function(layoutName) {
@@ -437,6 +451,7 @@ var eGPieMenu = {
     }
     
     this._showLayout(layoutName);
+    this._setTooltipsTimeout();
     
     // showing link sign
     var linkSign = specialNodes.childNodes[0];
@@ -648,7 +663,7 @@ var eGPieMenu = {
     }
     else if (shouldExtraMenuBeHidden) {
       this.curLayoutName = this.baseMenu;
-      this.resetTooltipsTimeout();
+      this._ensureMenuTooltipsAreShown();
       this.hideExtraMenu(layout.name, this.sector, this.baseMenu);
     }
   },
@@ -719,20 +734,6 @@ var eGPieMenu = {
     if (this.settings.showTooltips) {
       window.clearTimeout(this.tooltipsTrigger);
       this.showingTooltips = false;
-    }
-  },
-  
-  resetTooltipsTimeout : function() { // setting and resetting tooltips timeout
-    if (this.settings.showTooltips) {
-      window.clearTimeout(this.tooltipsTrigger);
-      if (this.showingTooltips || this.settings.tooltipsDelay === 0) {
-        this.showMenuTooltips();
-      }
-      else {
-        this.tooltipsTrigger = window.setTimeout(function() {
-          eGPieMenu.showMenuTooltips();
-        }, this.settings.tooltipsDelay);
-      }
     }
   },
   
