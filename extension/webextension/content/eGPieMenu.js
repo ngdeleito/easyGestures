@@ -568,6 +568,9 @@ var eGPieMenu = {
     var extraMenusSign = specialNodes.childNodes[2];
     var tooltipsNode = document.getElementById("eG_labels_" + layoutName);
     
+    this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
+    this._showLayout("extra");
+    
     actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
     
     mainMenusSign.style.visibility = "hidden";
@@ -589,6 +592,9 @@ var eGPieMenu = {
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
+    
+    this.curLayoutName = this.baseMenu;
+    this._ensureMenuTooltipsAreShown();
     
     // reset rollover of extra menu action icon in main menu
     baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
@@ -657,13 +663,9 @@ var eGPieMenu = {
     }
     else if (radius > layout.outerR && sector === EXTRA_MENU_ACTION &&
              layout.hasExtraMenuAction) {
-      this.baseMenu = this.curLayoutName; // base menu from which extra menu is called
-      this._showLayout("extra");
       this.showExtraMenu(layout.name);
     }
     else if (shouldExtraMenuBeHidden) {
-      this.curLayoutName = this.baseMenu;
-      this._ensureMenuTooltipsAreShown();
       this.hideExtraMenu(layout.name, this.sector, this.baseMenu);
     }
   },
