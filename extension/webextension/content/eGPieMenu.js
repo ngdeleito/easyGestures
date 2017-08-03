@@ -588,22 +588,22 @@ var eGPieMenu = {
     });
   },
   
-  hideExtraMenu: function(layoutName, sector, baseLayoutName) {
-    var baseActionsNode = document.getElementById("eG_actions_" + baseLayoutName);
+  _hideExtraMenu: function(sector) {
+    var baseActionsNode = document.getElementById("eG_actions_" + this.baseMenu);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
     
-    this.curLayoutName = this.baseMenu;
-    this._ensureMenuTooltipsAreShown();
-    
     // reset rollover of extra menu action icon in main menu
     baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
     
-    this.hide(layoutName, sector, baseLayoutName);
+    this.hide(this.curLayoutName, sector, this.baseMenu);
     
     mainMenusSign.style.visibility = "visible";
     extraMenusSign.style.visibility = "hidden";
+    
+    this.curLayoutName = this.baseMenu;
+    this._ensureMenuTooltipsAreShown();
   },
   
   handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
@@ -667,7 +667,7 @@ var eGPieMenu = {
       this._showExtraMenu();
     }
     else if (shouldExtraMenuBeHidden) {
-      this.hideExtraMenu(layout.name, this.sector, this.baseMenu);
+      this._hideExtraMenu(this.sector);
     }
   },
   
