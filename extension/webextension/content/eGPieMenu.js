@@ -383,9 +383,40 @@ var eGPieMenu = {
     return anActionsNode;
   },
   
+  _createTooltipsNodes: function(layoutName, tooltips, hasExtraMenuAction) {
+    var aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
+    aTooltipsNode.id = "eG_labels_" + layoutName;
+    
+    tooltips.forEach(function(tooltip, index) {
+      let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
+      aTooltipNode.id = "eG_label_" + layoutName + "_" + index;
+      aTooltipNode.classList.add("label" + index);
+      aTooltipNode.appendChild(document.createTextNode(tooltip));
+      aTooltipsNode.appendChild(aTooltipNode);
+    });
+    if (hasExtraMenuAction) {
+      aTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.add("extra");
+    }
+    
+    return aTooltipsNode;
+  },
+  
+  _showMenuTooltips: function() {
+    var layout = this.menuSet[this.curLayoutName];
+    var easyGesturesNode = document.getElementById(this.easyGesturesID);
+    var tooltipsNode = document.getElementById("eG_labels_" + layout.name);
+    if (tooltipsNode === null) {
+      tooltipsNode = this._createTooltipsNodes(layout.name, layout.labels,
+                                               layout.hasExtraMenuAction);
+      easyGesturesNode.appendChild(tooltipsNode);
+    }
+    tooltipsNode.style.visibility = "visible";
+    this.showingTooltips = true;
+  },
+  
   _ensureMenuTooltipsAreShown: function() {
     if (this.showingTooltips) {
-        this.showMenuTooltips();
+        this._showMenuTooltips();
     }
   },
   
@@ -421,7 +452,7 @@ var eGPieMenu = {
   _setTooltipsTimeout: function() {
     if (this.settings.showTooltips) {
       this.tooltipsTrigger = window.setTimeout(function() {
-        eGPieMenu.showMenuTooltips();
+        eGPieMenu._showMenuTooltips();
       }, this.settings.tooltipsDelay);
     }
   },
@@ -467,37 +498,6 @@ var eGPieMenu = {
     }
     
     addEventListener("mousemove", handleMousemove, true);
-  },
-  
-  _createTooltipsNodes : function(layoutName, tooltips, hasExtraMenuAction) {
-    var aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
-    aTooltipsNode.id = "eG_labels_" + layoutName;
-    
-    tooltips.forEach(function(tooltip, index) {
-      let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
-      aTooltipNode.id = "eG_label_" + layoutName + "_" + index;
-      aTooltipNode.classList.add("label" + index);
-      aTooltipNode.appendChild(document.createTextNode(tooltip));
-      aTooltipsNode.appendChild(aTooltipNode);
-    });
-    if (hasExtraMenuAction) {
-      aTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.add("extra");
-    }
-    
-    return aTooltipsNode;
-  },
-  
-  showMenuTooltips : function() {
-    var layout = this.menuSet[this.curLayoutName];
-    var easyGesturesNode = document.getElementById(this.easyGesturesID);
-    var tooltipsNode = document.getElementById("eG_labels_" + layout.name);
-    if (tooltipsNode === null) {
-      tooltipsNode = this._createTooltipsNodes(layout.name, layout.labels,
-                                               layout.hasExtraMenuAction);
-      easyGesturesNode.appendChild(tooltipsNode);
-    }
-    tooltipsNode.style.visibility = "visible";
-    this.showingTooltips = true;
   },
   
   hideLinkSign: function() {
