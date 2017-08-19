@@ -232,7 +232,7 @@ var eGPieMenu = {
     
     // final initializations
     
-    this.menuSet = { // contains main, extra, alternatives and contextual menu layouts objects
+    this._layouts = {
       main: new MenuLayout(this, "main", 0,
                            this.settings.mainAlt1Enabled ? "mainAlt1" :
                              (this.settings.mainAlt2Enabled ? "mainAlt2" : "main"),
@@ -430,7 +430,7 @@ var eGPieMenu = {
   },
   
   _showMenuTooltips: function() {
-    var layout = this.menuSet[this.curLayoutName];
+    var layout = this._layouts[this.curLayoutName];
     var easyGesturesNode = document.getElementById(this.easyGesturesID);
     var tooltipsNode = document.getElementById("eG_labels_" + layout.name);
     if (tooltipsNode === null) {
@@ -449,7 +449,7 @@ var eGPieMenu = {
   },
   
   _showLayout: function(layoutName) {
-    var layout = this.menuSet[layoutName];
+    var layout = this._layouts[layoutName];
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     if (actionsNode === null) {
       let easyGesturesNode = document.getElementById(this.easyGesturesID);
@@ -504,7 +504,7 @@ var eGPieMenu = {
       easyGesturesNode.appendChild(specialNodes);
     }
     
-    var layout = this.menuSet[layoutName];
+    var layout = this._layouts[layoutName];
     layout.showMenuSign();
     this._showLayout(layoutName);
     this._setTooltipsTimeout();
@@ -606,7 +606,7 @@ var eGPieMenu = {
     
     browser.runtime.sendMessage({
       messageName: "incrementShowExtraMenuStats",
-      incrementIndex: eGPieMenu.menuSet[this.baseMenu]._layoutNumber * 10 +
+      incrementIndex: eGPieMenu._layouts[this.baseMenu]._layoutNumber * 10 +
                       EXTRA_MENU_ACTION
     });
   },
@@ -630,7 +630,7 @@ var eGPieMenu = {
   },
   
   handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
-    var layout = this.menuSet[this.curLayoutName];
+    var layout = this._layouts[this.curLayoutName];
     var shouldExtraMenuBeHidden = false;
     
     this.hideLinkSign();
@@ -645,7 +645,7 @@ var eGPieMenu = {
     var refX = this.centerX;
     var refY = this.centerY;
     if (layout.isExtraMenu) {
-      refY -= this.menuSet[this.baseMenu].outerR * 1.2;
+      refY -= this._layouts[this.baseMenu].outerR * 1.2;
     }
     var radius = Math.sqrt((positionX - refX) * (positionX - refX) +
                            (positionY - refY) * (positionY - refY));
@@ -697,7 +697,7 @@ var eGPieMenu = {
   runAction : function() {
     var actionsNode = document.getElementById("eG_actions_" + this.curLayoutName);
     var actionNode = actionsNode.childNodes[this.sector];
-    var layout = this.menuSet[this.curLayoutName];
+    var layout = this._layouts[this.curLayoutName];
     
     if (actionNode.classList.contains("disabled")) {
       this.close();
@@ -718,20 +718,20 @@ var eGPieMenu = {
   },
   
   switchLayout : function() { // this is not about switching to/from extra menu
-    var layout = this.menuSet[this.curLayoutName];
+    var layout = this._layouts[this.curLayoutName];
     this._hideCurrentLayout();
     this._showLayout(layout.getNextLayout());
   },
   
   close : function() {
-    var layout = this.menuSet[this.curLayoutName];
+    var layout = this._layouts[this.curLayoutName];
     
     this._hideCurrentLayout();
     layout.hideMenuSign();
     if (layout.isExtraMenu) {
       // hide base menu too if closing is done from extra menu
       this.curLayoutName = this.baseMenu;
-      layout = this.menuSet[this.curLayoutName];
+      layout = this._layouts[this.curLayoutName];
       this._hideCurrentLayout();
       layout.hideMenuSign();
     }
