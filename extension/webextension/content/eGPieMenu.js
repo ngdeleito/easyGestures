@@ -708,11 +708,6 @@ var eGPieMenu = {
   
   close : function() {
     var layout = this.menuSet[this.curLayoutName];
-    
-    if (window === null) {
-      return ;
-    }
-    
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
