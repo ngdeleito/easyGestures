@@ -100,6 +100,11 @@ MenuLayout.prototype.getUpdateStatsInformation = function() {
     updateActionName: this.actions[sector]
   };
 };
+MenuLayout.prototype.showMenuSign = function() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var mainMenusSign = specialNodes.childNodes[1];
+  mainMenusSign.style.visibility = "visible";
+};
 MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
   var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
   var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
@@ -114,6 +119,17 @@ MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
 };
 MenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(1, this._pieMenu.numberOfMainMenus);
+};
+MenuLayout.prototype._clearMenuSign = function(menuSignNode) {
+  for (let i=0; i < menuSignNode.childNodes.length; ++i) {
+    menuSignNode.childNodes[i].removeAttribute("class");
+  }
+};
+MenuLayout.prototype.hideMenuSign = function() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var mainMenusSignNode = specialNodes.childNodes[1];
+  mainMenusSignNode.style.visibility = "hidden";
+  this._clearMenuSign(mainMenusSignNode);
 };
 
 function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
@@ -139,6 +155,12 @@ ExtraMenuLayout.prototype.getUpdateStatsInformation = function() {
 ExtraMenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
 };
+ExtraMenuLayout.prototype.hideMenuSign = function() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var extraMenusSignNode = specialNodes.childNodes[2];
+  extraMenusSignNode.style.visibility = "hidden";
+  this._clearMenuSign(extraMenusSignNode);
+};
 
 function ContextualMenuLayout(menu, name, actionsPrefs) {
   MenuLayout.call(this, menu, name, 0, null, actionsPrefs);
@@ -155,18 +177,24 @@ ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
     updateActionName: this.actions[this._pieMenu.sector]
   };
 };
-ContextualMenuLayout.prototype.updateMenuSign = function() {
+ContextualMenuLayout.prototype.showMenuSign = function() {
   var specialNodes = document.getElementById("eG_SpecialNodes");
   var contextMenuSignNode = specialNodes.childNodes[3];
-  
-  contextMenuSignNode.textContent = this.localizedName;
   contextMenuSignNode.style.visibility = "visible";
   if (contextualMenus.length > 1) {
     contextMenuSignNode.className = "withAltSign";
   }
-  else {
-    contextMenuSignNode.removeAttribute("class");
-  }
+};
+ContextualMenuLayout.prototype.updateMenuSign = function() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var contextMenuSignNode = specialNodes.childNodes[3];
+  contextMenuSignNode.textContent = this.localizedName;
+};
+ContextualMenuLayout.prototype.hideMenuSign = function() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var contextMenuSignNode = specialNodes.childNodes[3];
+  contextMenuSignNode.style.visibility = "hidden";
+  contextMenuSignNode.removeAttribute("class");
 };
 
 var eGPieMenu = {
@@ -476,11 +504,8 @@ var eGPieMenu = {
       easyGesturesNode.appendChild(specialNodes);
     }
     
-    if (layoutName.startsWith("main")) {
-      var mainMenusSign = specialNodes.childNodes[1];
-      mainMenusSign.style.visibility = "visible";
-    }
-    
+    var layout = this.menuSet[layoutName];
+    layout.showMenuSign();
     this._showLayout(layoutName);
     this._setTooltipsTimeout();
     
@@ -530,7 +555,6 @@ var eGPieMenu = {
     var tooltipsNode = document.getElementById("eG_labels_" + this.curLayoutName);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
-    var contextMenuSign = specialNodes.childNodes[3];
     
     if (actionsNode !== null) {
       actionsNode.style.visibility = "hidden";
@@ -540,7 +564,6 @@ var eGPieMenu = {
     }
     
     linkSign.style.visibility = "hidden";
-    contextMenuSign.style.visibility = "hidden";
     
     if (this.sector >= 0) {
       actionsNode.childNodes[this.sector].classList.remove("selected");
@@ -700,29 +723,18 @@ var eGPieMenu = {
     this._showLayout(layout.getNextLayout());
   },
   
-  _clearMenuSign : function(menuSign) {
-    for (let i=0; i < menuSign.childNodes.length; ++i) {
-      menuSign.childNodes[i].removeAttribute("class");
-    }
-  },
-  
   close : function() {
     var layout = this.menuSet[this.curLayoutName];
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
     
     this._hideCurrentLayout();
+    layout.hideMenuSign();
     if (layout.isExtraMenu) {
       // hide base menu too if closing is done from extra menu
       this.curLayoutName = this.baseMenu;
+      layout = this.menuSet[this.curLayoutName];
       this._hideCurrentLayout();
-      extraMenusSign.style.visibility = "hidden";
+      layout.hideMenuSign();
     }
-    mainMenusSign.style.visibility = "hidden";
-    
-    this._clearMenuSign(mainMenusSign);
-    this._clearMenuSign(extraMenusSign);
     
     removeEventListener("mousemove", handleMousemove, true);
     
