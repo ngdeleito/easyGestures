@@ -723,29 +723,29 @@ var eGPieMenu = {
     this._showLayout(layout.getNextLayout());
   },
   
-  close : function() {
+  close: function() {
     var layout = this._layouts[this.curLayoutName];
     
-    this._hideCurrentLayout();
-    layout.hideMenuSign();
-    if (layout.isExtraMenu) {
-      // hide base menu too if closing is done from extra menu
-      this.curLayoutName = this.baseMenu;
-      layout = this._layouts[this.curLayoutName];
-      this._hideCurrentLayout();
-      layout.hideMenuSign();
-    }
-    
     removeEventListener("mousemove", handleMousemove, true);
-    
-    this.setHidden();
-    this.sector = -1;
-    this.baseMenu = "";
     
     if (this.settings.showTooltips) {
       window.clearTimeout(this.tooltipsTrigger);
       this.showingTooltips = false;
     }
+    
+    if (layout.isExtraMenu) {
+      this._hideCurrentLayout();
+      layout.hideMenuSign();
+      this.curLayoutName = this.baseMenu;
+      layout = this._layouts[this.curLayoutName];
+    }
+    this._hideCurrentLayout();
+    layout.hideMenuSign();
+    
+    this.curLayoutName = "";
+    this.baseMenu = "";
+    this.sector = -1;
+    this.setHidden();
   },
   
   canBeOpened : function(button, shiftKey, ctrlKey, altKey) {
