@@ -41,7 +41,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
           actionStatusSetters, actionRunners, removeEventListener */
 
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
-const EXTRA_MENU_ACTION = 2; // position of the extra menu action in base menus
+const EXTRA_MENU_SECTOR = 2; // position of the extra menu action in base menus
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -71,7 +71,7 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   browser.runtime.sendMessage({
     messageName: "isExtraMenuAction",
-    actionName: this.actions[EXTRA_MENU_ACTION]
+    actionName: this.actions[EXTRA_MENU_SECTOR]
   }).then(aMessage => {
     this.hasExtraMenuAction = aMessage.response;
   });
@@ -418,7 +418,7 @@ var eGPieMenu = {
       aTooltipsNode.appendChild(aTooltipNode);
     });
     if (hasExtraMenuAction) {
-      aTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.add("extra");
+      aTooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("extra");
     }
     
     return aTooltipsNode;
@@ -571,10 +571,10 @@ var eGPieMenu = {
     if (this.baseMenu !== "") {
       var baseActionsNode = document.getElementById("eG_actions_" + this.baseMenu);
       var baseTooltipsNode = document.getElementById("eG_labels_" + this.baseMenu);
-      baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
-      baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
+      baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("showingExtraMenu");
+      baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
       if (baseTooltipsNode !== null) {
-        baseTooltipsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("selected");
+        baseTooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
       }
     }
   },
@@ -589,7 +589,7 @@ var eGPieMenu = {
     
     this._showLayout("extra");
     
-    actionsNode.childNodes[EXTRA_MENU_ACTION].classList.add("showingExtraMenu");
+    actionsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("showingExtraMenu");
     
     mainMenusSign.style.visibility = "hidden";
     extraMenusSign.style.visibility = "visible";
@@ -602,7 +602,7 @@ var eGPieMenu = {
     browser.runtime.sendMessage({
       messageName: "incrementShowExtraMenuStats",
       incrementIndex: eGPieMenu._layouts[this.baseMenu]._layoutNumber * 10 +
-                      EXTRA_MENU_ACTION
+                      EXTRA_MENU_SECTOR
     });
   },
   
@@ -613,7 +613,7 @@ var eGPieMenu = {
     var extraMenusSign = specialNodes.childNodes[2];
     
     // reset rollover of extra menu action icon in main menu
-    baseActionsNode.childNodes[EXTRA_MENU_ACTION].classList.remove("showingExtraMenu");
+    baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("showingExtraMenu");
     
     this._hideCurrentLayout();
     
@@ -660,7 +660,7 @@ var eGPieMenu = {
     // moving menu when shift key is down
     if (!this.settings.moveAuto && shiftKey ||
         this.settings.moveAuto && radius >= layout.outerR &&
-          (sector !== EXTRA_MENU_ACTION || sector === EXTRA_MENU_ACTION &&
+          (sector !== EXTRA_MENU_SECTOR || sector === EXTRA_MENU_SECTOR &&
                                            !layout.hasExtraMenuAction)) {
       this.centerX += movementX;
       this.centerY += movementY;
@@ -680,7 +680,7 @@ var eGPieMenu = {
         this.close();
       }
     }
-    else if (radius > layout.outerR && sector === EXTRA_MENU_ACTION &&
+    else if (radius > layout.outerR && sector === EXTRA_MENU_SECTOR &&
              layout.hasExtraMenuAction) {
       this._showExtraMenu();
     }
