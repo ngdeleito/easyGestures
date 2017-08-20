@@ -200,7 +200,7 @@ ContextualMenuLayout.prototype.hideMenuSign = function() {
 var eGPieMenu = {
   settings: {},
   
-  init : function() {
+  init: function() {
     this.numberOfMainMenus = 1 +
       ((this.settings.mainAlt1Enabled || this.settings.mainAlt2Enabled) ? 1 : 0) +
       ((this.settings.mainAlt1Enabled && this.settings.mainAlt2Enabled) ? 1 : 0);
@@ -209,28 +209,23 @@ var eGPieMenu = {
       ((this.settings.extraAlt1Enabled || this.settings.extraAlt2Enabled) ? 1 : 0) +
       ((this.settings.extraAlt1Enabled && this.settings.extraAlt2Enabled) ? 1 : 0);
     
-    // initializing properties
     this.easyGesturesID = "easyGesturesPieMenu_" +
                           (this.settings.largeMenu ? "l" : "n") +
                           (this.settings.smallIcons ? "s": "n");
     
-    this.curLayoutName = "main";
-    this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
-    this.setHidden();
+    this.iconSize = this.settings.smallIcons ? 20 : 32;
     
     // coordinates of the pie menu center (relative to the viewport)
     this.centerX = 0;
     this.centerY = 0;
     
+    this.curLayoutName = "";
+    this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
     this.sector = -1; // index of item under mouse
+    this.setHidden();
     
     this.tooltipsTrigger = null; // trigger to display pie menu labels
-    
-    this.iconSize = this.settings.smallIcons? 20 : 32;
-    
     this.showingTooltips = false; // tooltips are showing or hidden
-    
-    // final initializations
     
     this._layouts = {
       main: new MenuLayout(this, "main", 0,
