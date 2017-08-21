@@ -219,8 +219,8 @@ var eGPieMenu = {
     this.centerX = 0;
     this.centerY = 0;
     
-    this.curLayoutName = "";
-    this.baseMenu = ""; // is the menu from which extra menu is called: main, mainAlt1 or mainAlt2
+    this._currentLayout = null;
+    this._baseLayout = null;
     this.sector = -1; // index of item under mouse
     this.setHidden();
     
@@ -425,12 +425,13 @@ var eGPieMenu = {
   },
   
   _showMenuTooltips: function() {
-    var layout = this._layouts[this.curLayoutName];
     var easyGesturesNode = document.getElementById(this.easyGesturesID);
-    var tooltipsNode = document.getElementById("eG_labels_" + layout.name);
+    var tooltipsNode = document.getElementById("eG_labels_" +
+                                               this._currentLayout.name);
     if (tooltipsNode === null) {
-      tooltipsNode = this._createTooltipsNodes(layout.name, layout.labels,
-                                               layout.hasExtraMenuAction);
+      tooltipsNode = this._createTooltipsNodes(this._currentLayout.name,
+                       this._currentLayout.labels,
+                       this._currentLayout.hasExtraMenuAction);
       easyGesturesNode.appendChild(tooltipsNode);
     }
     tooltipsNode.style.visibility = "visible";
@@ -444,23 +445,23 @@ var eGPieMenu = {
   },
   
   _showLayout: function(layoutName) {
-    var layout = this._layouts[layoutName];
+    this._currentLayout = this._layouts[layoutName];
+    
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     if (actionsNode === null) {
       let easyGesturesNode = document.getElementById(this.easyGesturesID);
-      actionsNode = this._createActionsNodes(layoutName, layout.outerR,
-                                             layout.innerR,
-                                             layout.startingAngle,
-                                             layout.actions,
-                                             layout.halfAngleForSector);
+      actionsNode = this._createActionsNodes(layoutName,
+                      this._currentLayout.outerR, this._currentLayout.innerR,
+                      this._currentLayout.startingAngle,
+                      this._currentLayout.actions,
+                      this._currentLayout.halfAngleForSector);
       easyGesturesNode.appendChild(actionsNode);
     }
     actionsNode.style.visibility = "visible";
     
-    this.curLayoutName = layoutName;
     browser.runtime.sendMessage({
       messageName: "getActionsStatus",
-      actions: layout.actions
+      actions: this._currentLayout.actions
     }).then(statusesArray => {
       statusesArray.forEach(function(response, actionSector) {
         if (response !== undefined) {
@@ -468,7 +469,7 @@ var eGPieMenu = {
         }
       });
     });
-    layout.updateMenuSign();
+    this._currentLayout.updateMenuSign();
     this._ensureMenuTooltipsAreShown();
   },
   
@@ -546,8 +547,10 @@ var eGPieMenu = {
   },
   
   _hideCurrentLayout: function() {
-    var actionsNode = document.getElementById("eG_actions_" + this.curLayoutName);
-    var tooltipsNode = document.getElementById("eG_labels_" + this.curLayoutName);
+    var actionsNode = document.getElementById("eG_actions_" +
+                                              this._currentLayout.name);
+    var tooltipsNode = document.getElementById("eG_labels_" +
+                                               this._currentLayout.name);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     
@@ -568,9 +571,9 @@ var eGPieMenu = {
     }
     
     // reset rollover for extra menu in base menu if needed
-    if (this.baseMenu !== "") {
-      var baseActionsNode = document.getElementById("eG_actions_" + this.baseMenu);
-      var baseTooltipsNode = document.getElementById("eG_labels_" + this.baseMenu);
+    if (this._baseLayout !== null) {
+      var baseActionsNode = document.getElementById("eG_actions_" + this._baseLayout.name);
+      var baseTooltipsNode = document.getElementById("eG_labels_" + this._baseLayout.name);
       baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("showingExtraMenu");
       baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
       if (baseTooltipsNode !== null) {
@@ -580,12 +583,14 @@ var eGPieMenu = {
   },
   
   _showExtraMenu: function() {
-    this.baseMenu = this.curLayoutName;
-    var actionsNode = document.getElementById("eG_actions_" + this.baseMenu);
+    this._baseLayout = this._currentLayout;
+    var actionsNode = document.getElementById("eG_actions_" +
+                                              this._baseLayout.name);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
-    var tooltipsNode = document.getElementById("eG_labels_" + this.baseMenu);
+    var tooltipsNode = document.getElementById("eG_labels_" +
+                                               this._baseLayout.name);
     
     this._showLayout("extra");
     
@@ -601,13 +606,13 @@ var eGPieMenu = {
     
     browser.runtime.sendMessage({
       messageName: "incrementShowExtraMenuStats",
-      incrementIndex: eGPieMenu._layouts[this.baseMenu]._layoutNumber * 10 +
-                      EXTRA_MENU_SECTOR
+      incrementIndex: this._baseLayout._layoutNumber * 10 + EXTRA_MENU_SECTOR
     });
   },
   
   _hideExtraMenu: function() {
-    var baseActionsNode = document.getElementById("eG_actions_" + this.baseMenu);
+    var baseActionsNode = document.getElementById("eG_actions_" +
+                                                  this._baseLayout.name);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
     var extraMenusSign = specialNodes.childNodes[2];
@@ -620,12 +625,11 @@ var eGPieMenu = {
     mainMenusSign.style.visibility = "visible";
     extraMenusSign.style.visibility = "hidden";
     
-    this.curLayoutName = this.baseMenu;
+    this._currentLayout = this._baseLayout;
     this._ensureMenuTooltipsAreShown();
   },
   
   handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
-    var layout = this._layouts[this.curLayoutName];
     var shouldExtraMenuBeHidden = false;
     
     this.hideLinkSign();
@@ -639,29 +643,30 @@ var eGPieMenu = {
     var sector = -1;
     var refX = this.centerX;
     var refY = this.centerY;
-    if (layout.isExtraMenu) {
-      refY -= this._layouts[this.baseMenu].outerR * 1.2;
+    if (this._currentLayout.isExtraMenu) {
+      refY -= this._baseLayout.outerR * 1.2;
     }
     var radius = Math.sqrt((positionX - refX) * (positionX - refX) +
                            (positionY - refY) * (positionY - refY));
     
-    if (radius > layout.innerR) {
-      var angle = Math.atan2(refY - positionY, positionX - refX) + layout.sectorOffset;
+    if (radius > this._currentLayout.innerR) {
+      var angle = Math.atan2(refY - positionY, positionX - refX) +
+                  this._currentLayout.sectorOffset;
       if (angle < 0) {
         angle += 2 * Math.PI;
       }
-      sector = Math.floor(angle / (2 * layout.halfAngleForSector));
+      sector = Math.floor(angle / (2 * this._currentLayout.halfAngleForSector));
     }
-    if (sector >= layout.actions.length) {
+    if (sector >= this._currentLayout.actions.length) {
       shouldExtraMenuBeHidden = true;
       sector = -1;
     }
     
     // moving menu when shift key is down
     if (!this.settings.moveAuto && shiftKey ||
-        this.settings.moveAuto && radius >= layout.outerR &&
+        this.settings.moveAuto && radius >= this._currentLayout.outerR &&
           (sector !== EXTRA_MENU_SECTOR || sector === EXTRA_MENU_SECTOR &&
-                                           !layout.hasExtraMenuAction)) {
+                                           !this._currentLayout.hasExtraMenuAction)) {
       this.centerX += movementX;
       this.centerY += movementY;
       let easyGesturesNode = document.getElementById(this.easyGesturesID);
@@ -670,18 +675,19 @@ var eGPieMenu = {
     }
     
     if (this.sector !== sector) {
-      this._highlightSelectedAction(this.sector, sector, layout.name);
+      this._highlightSelectedAction(this.sector, sector, this._currentLayout.name);
     }
     this.sector = sector;
     
     // switching to/from extra menu
-    if (radius > 3*layout.outerR) {
+    if (radius > 3 * this._currentLayout.outerR) {
       if (!this.isJustOpenedAndMouseMoved()) {
         this.close();
       }
     }
-    else if (radius > layout.outerR && sector === EXTRA_MENU_SECTOR &&
-             layout.hasExtraMenuAction) {
+    else if (radius > this._currentLayout.outerR &&
+             sector === EXTRA_MENU_SECTOR &&
+             this._currentLayout.hasExtraMenuAction) {
       this._showExtraMenu();
     }
     else if (shouldExtraMenuBeHidden) {
@@ -690,9 +696,9 @@ var eGPieMenu = {
   },
   
   runAction : function() {
-    var actionsNode = document.getElementById("eG_actions_" + this.curLayoutName);
+    var actionsNode = document.getElementById("eG_actions_" +
+                                              this._currentLayout.name);
     var actionNode = actionsNode.childNodes[this.sector];
-    var layout = this._layouts[this.curLayoutName];
     
     if (actionNode.classList.contains("disabled")) {
       this.close();
@@ -700,8 +706,8 @@ var eGPieMenu = {
     else {
       let runActionMessage = {
         messageName: "runAction",
-        actionName: layout.actions[this.sector],
-        updateStatsInformation: layout.getUpdateStatsInformation()
+        actionName: this._currentLayout.actions[this.sector],
+        updateStatsInformation: this._currentLayout.getUpdateStatsInformation()
       };
       this.close();
       browser.runtime.sendMessage(runActionMessage).then(aMessage => {
@@ -713,14 +719,11 @@ var eGPieMenu = {
   },
   
   switchLayout : function() { // this is not about switching to/from extra menu
-    var layout = this._layouts[this.curLayoutName];
     this._hideCurrentLayout();
-    this._showLayout(layout.getNextLayout());
+    this._showLayout(this._currentLayout.getNextLayout());
   },
   
   close: function() {
-    var layout = this._layouts[this.curLayoutName];
-    
     removeEventListener("mousemove", handleMousemove, true);
     
     if (this.settings.showTooltips) {
@@ -728,17 +731,16 @@ var eGPieMenu = {
       this.showingTooltips = false;
     }
     
-    if (layout.isExtraMenu) {
+    if (this._currentLayout.isExtraMenu) {
       this._hideCurrentLayout();
-      layout.hideMenuSign();
-      this.curLayoutName = this.baseMenu;
-      layout = this._layouts[this.curLayoutName];
+      this._currentLayout.hideMenuSign();
+      this._currentLayout = this._baseLayout;
     }
     this._hideCurrentLayout();
-    layout.hideMenuSign();
+    this._currentLayout.hideMenuSign();
     
-    this.curLayoutName = "";
-    this.baseMenu = "";
+    this._currentLayout = null;
+    this._baseLayout = null;
     this.sector = -1;
     this.setHidden();
   },
