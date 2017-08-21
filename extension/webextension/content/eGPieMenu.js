@@ -500,9 +500,8 @@ var eGPieMenu = {
       easyGesturesNode.appendChild(specialNodes);
     }
     
-    var layout = this._layouts[layoutName];
-    layout.showMenuSign();
     this._showLayout(layoutName);
+    this._currentLayout.showMenuSign();
     this._setTooltipsTimeout();
     
     // showing link sign
