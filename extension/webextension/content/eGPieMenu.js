@@ -568,17 +568,6 @@ var eGPieMenu = {
         tooltipsNode.childNodes[this.sector].classList.remove("selected");
       }
     }
-    
-    // reset rollover for extra menu in base menu if needed
-    if (this._baseLayout !== null) {
-      var baseActionsNode = document.getElementById("eG_actions_" + this._baseLayout.name);
-      var baseTooltipsNode = document.getElementById("eG_labels_" + this._baseLayout.name);
-      baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("showingExtraMenu");
-      baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
-      if (baseTooltipsNode !== null) {
-        baseTooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
-      }
-    }
   },
   
   _showExtraMenu: function() {
@@ -612,17 +601,21 @@ var eGPieMenu = {
   _hideExtraMenu: function() {
     var baseActionsNode = document.getElementById("eG_actions_" +
                                                   this._baseLayout.name);
+    var baseTooltipsNode = document.getElementById("eG_labels_" +
+                                                   this._baseLayout.name);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
-    
-    // reset rollover of extra menu action icon in main menu
-    baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("showingExtraMenu");
     
     this._hideCurrentLayout();
+    this._currentLayout.hideMenuSign();
+    
+    baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("showingExtraMenu");
+    baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
+    if (baseTooltipsNode !== null) {
+      baseTooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
+    }
     
     mainMenusSign.style.visibility = "visible";
-    extraMenusSign.style.visibility = "hidden";
     
     this._currentLayout = this._baseLayout;
     this._ensureMenuTooltipsAreShown();
@@ -731,9 +724,7 @@ var eGPieMenu = {
     }
     
     if (this._currentLayout.isExtraMenu) {
-      this._hideCurrentLayout();
-      this._currentLayout.hideMenuSign();
-      this._currentLayout = this._baseLayout;
+      this._hideExtraMenu();
     }
     this._hideCurrentLayout();
     this._currentLayout.hideMenuSign();
