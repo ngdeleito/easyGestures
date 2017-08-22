@@ -152,6 +152,11 @@ ExtraMenuLayout.prototype.getUpdateStatsInformation = function() {
     updateActionName: this.actions[sector]
   };
 };
+ExtraMenuLayout.prototype.showMenuSign = function() {
+  var specialNodes = document.getElementById("eG_SpecialNodes");
+  var extraMenusSign = specialNodes.childNodes[2];
+  extraMenusSign.style.visibility = "visible";
+};
 ExtraMenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
 };
@@ -576,16 +581,15 @@ var eGPieMenu = {
                                               this._baseLayout.name);
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var mainMenusSign = specialNodes.childNodes[1];
-    var extraMenusSign = specialNodes.childNodes[2];
     var tooltipsNode = document.getElementById("eG_labels_" +
                                                this._baseLayout.name);
     
     this._showLayout("extra");
+    this._currentLayout.showMenuSign();
     
     actionsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("showingExtraMenu");
     
     mainMenusSign.style.visibility = "hidden";
-    extraMenusSign.style.visibility = "visible";
     
     // hide main menu tooltips after extra menu showed
     if (tooltipsNode !== null) {
