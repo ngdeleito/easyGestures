@@ -576,21 +576,20 @@ var eGPieMenu = {
   },
   
   _showExtraMenu: function() {
-    this._baseLayout = this._currentLayout;
-    var actionsNode = document.getElementById("eG_actions_" +
-                                              this._baseLayout.name);
-    var tooltipsNode = document.getElementById("eG_labels_" +
-                                               this._baseLayout.name);
+    var baseActionsNode = document.getElementById("eG_actions_" +
+                                                  this._currentLayout.name);
+    var baseTooltipsNode = document.getElementById("eG_labels_" +
+                                                   this._currentLayout.name);
     
+    this._baseLayout = this._currentLayout;
     this._currentLayout.hideMenuSign();
     this._showLayout("extra");
     this._currentLayout.showMenuSign();
-    
-    actionsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("showingExtraMenu");
+    baseActionsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("showingExtraMenu");
     
     // hide main menu tooltips after extra menu showed
-    if (tooltipsNode !== null) {
-      tooltipsNode.style.visibility = "hidden";
+    if (baseTooltipsNode !== null) {
+      baseTooltipsNode.style.visibility = "hidden";
     }
     
     browser.runtime.sendMessage({
