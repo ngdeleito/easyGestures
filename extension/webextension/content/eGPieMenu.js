@@ -579,17 +579,14 @@ var eGPieMenu = {
     this._baseLayout = this._currentLayout;
     var actionsNode = document.getElementById("eG_actions_" +
                                               this._baseLayout.name);
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    var mainMenusSign = specialNodes.childNodes[1];
     var tooltipsNode = document.getElementById("eG_labels_" +
                                                this._baseLayout.name);
     
+    this._currentLayout.hideMenuSign();
     this._showLayout("extra");
     this._currentLayout.showMenuSign();
     
     actionsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("showingExtraMenu");
-    
-    mainMenusSign.style.visibility = "hidden";
     
     // hide main menu tooltips after extra menu showed
     if (tooltipsNode !== null) {
@@ -607,8 +604,6 @@ var eGPieMenu = {
                                                   this._baseLayout.name);
     var baseTooltipsNode = document.getElementById("eG_labels_" +
                                                    this._baseLayout.name);
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    var mainMenusSign = specialNodes.childNodes[1];
     
     this._hideCurrentLayout();
     this._currentLayout.hideMenuSign();
@@ -619,9 +614,9 @@ var eGPieMenu = {
       baseTooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.remove("selected");
     }
     
-    mainMenusSign.style.visibility = "visible";
-    
     this._currentLayout = this._baseLayout;
+    this._currentLayout.showMenuSign();
+    this._currentLayout.updateMenuSign();
     this._ensureMenuTooltipsAreShown();
   },
   
