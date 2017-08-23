@@ -512,10 +512,7 @@ var eGPieMenu = {
     addEventListener("mousemove", handleMousemove, true);
   },
   
-  openWithMainLayout: function() {
-    this._open("main");
-    
-    // showing link sign
+  _showLinkSign: function() {
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     if (this.settings.handleLinks && anchorElement !== null &&
@@ -528,6 +525,11 @@ var eGPieMenu = {
     else {
       linkSign.style.visibility = "hidden";
     }
+  },
+  
+  openWithMainLayout: function() {
+    this._open("main");
+    this._showLinkSign();
   },
   
   openWithContextualLayout: function(layoutName) {
