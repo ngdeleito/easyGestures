@@ -525,7 +525,7 @@ var eGPieMenu = {
     addEventListener("mousemove", handleMousemove, true);
   },
   
-  hideLinkSign: function() {
+  _hideLinkSign: function() {
     var specialNodes = document.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     linkSign.style.visibility = "hidden";
@@ -622,7 +622,7 @@ var eGPieMenu = {
   handleMousemove : function(positionX, positionY, shiftKey, movementX, movementY) {
     var shouldExtraMenuBeHidden = false;
     
-    this.hideLinkSign();
+    this._hideLinkSign();
     
     // state change if was dragged
     if (this.isJustOpened() && (movementX !== 0 || movementY !== 0)) {
