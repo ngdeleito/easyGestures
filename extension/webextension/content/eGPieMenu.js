@@ -555,8 +555,6 @@ var eGPieMenu = {
                                               this._currentLayout.name);
     var tooltipsNode = document.getElementById("eG_labels_" +
                                                this._currentLayout.name);
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    var linkSign = specialNodes.childNodes[0];
     
     if (actionsNode !== null) {
       actionsNode.style.visibility = "hidden";
@@ -564,8 +562,7 @@ var eGPieMenu = {
     if (tooltipsNode !== null) {
       tooltipsNode.style.visibility = "hidden";
     }
-    
-    linkSign.style.visibility = "hidden";
+    this._hideLinkSign();
     
     if (this.sector >= 0) {
       actionsNode.childNodes[this.sector].classList.remove("selected");
