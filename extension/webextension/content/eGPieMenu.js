@@ -486,7 +486,7 @@ var eGPieMenu = {
     }
   },
   
-  open: function(layoutName) {
+  _open: function(layoutName) {
     this.setJustOpened();
     
     var bodyNode = document.body ? document.body : document.documentElement;
@@ -509,10 +509,17 @@ var eGPieMenu = {
     this._currentLayout.showMenuSign();
     this._setTooltipsTimeout();
     
+    addEventListener("mousemove", handleMousemove, true);
+  },
+  
+  openWithMainLayout: function() {
+    this._open("main");
+    
     // showing link sign
+    var specialNodes = document.getElementById("eG_SpecialNodes");
     var linkSign = specialNodes.childNodes[0];
     if (this.settings.handleLinks && anchorElement !== null &&
-        this.isJustOpened() && layoutName === "main") {
+        this.isJustOpened()) {
       linkSign.style.visibility = "visible";
       window.setTimeout(function() {
         linkSign.style.visibility = "hidden";
@@ -521,8 +528,10 @@ var eGPieMenu = {
     else {
       linkSign.style.visibility = "hidden";
     }
-    
-    addEventListener("mousemove", handleMousemove, true);
+  },
+  
+  openWithContextualLayout: function(layoutName) {
+    this._open(layoutName);
   },
   
   _hideLinkSign: function() {
