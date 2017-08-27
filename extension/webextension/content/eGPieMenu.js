@@ -101,8 +101,7 @@ MenuLayout.prototype.getUpdateStatsInformation = function() {
   };
 };
 MenuLayout.prototype.showMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var mainMenusSign = specialNodes.childNodes[1];
+  var mainMenusSign = this._pieMenu._specialNodesNode.childNodes[1];
   mainMenusSign.style.visibility = "visible";
 };
 MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
@@ -111,8 +110,7 @@ MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
                               numberOfMenus) % numberOfMenus;
   previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
   
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var menusSignNode = specialNodes.childNodes[menuSign];
+  var menusSignNode = this._pieMenu._specialNodesNode.childNodes[menuSign];
   
   menusSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
   menusSignNode.childNodes[layoutNumber].className = "active";
@@ -126,8 +124,7 @@ MenuLayout.prototype._clearMenuSign = function(menuSignNode) {
   }
 };
 MenuLayout.prototype.hideMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var mainMenusSignNode = specialNodes.childNodes[1];
+  var mainMenusSignNode = this._pieMenu._specialNodesNode.childNodes[1];
   mainMenusSignNode.style.visibility = "hidden";
   this._clearMenuSign(mainMenusSignNode);
 };
@@ -153,16 +150,14 @@ ExtraMenuLayout.prototype.getUpdateStatsInformation = function() {
   };
 };
 ExtraMenuLayout.prototype.showMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var extraMenusSign = specialNodes.childNodes[2];
+  var extraMenusSign = this._pieMenu._specialNodesNode.childNodes[2];
   extraMenusSign.style.visibility = "visible";
 };
 ExtraMenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
 };
 ExtraMenuLayout.prototype.hideMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var extraMenusSignNode = specialNodes.childNodes[2];
+  var extraMenusSignNode = this._pieMenu._specialNodesNode.childNodes[2];
   extraMenusSignNode.style.visibility = "hidden";
   this._clearMenuSign(extraMenusSignNode);
 };
@@ -183,21 +178,18 @@ ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
   };
 };
 ContextualMenuLayout.prototype.showMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var contextMenuSignNode = specialNodes.childNodes[3];
+  var contextMenuSignNode = this._pieMenu._specialNodesNode.childNodes[3];
   contextMenuSignNode.style.visibility = "visible";
   if (contextualMenus.length > 1) {
     contextMenuSignNode.className = "withAltSign";
   }
 };
 ContextualMenuLayout.prototype.updateMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var contextMenuSignNode = specialNodes.childNodes[3];
+  var contextMenuSignNode = this._pieMenu._specialNodesNode.childNodes[3];
   contextMenuSignNode.textContent = this.localizedName;
 };
 ContextualMenuLayout.prototype.hideMenuSign = function() {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var contextMenuSignNode = specialNodes.childNodes[3];
+  var contextMenuSignNode = this._pieMenu._specialNodesNode.childNodes[3];
   contextMenuSignNode.style.visibility = "hidden";
   contextMenuSignNode.removeAttribute("class");
 };
@@ -269,6 +261,9 @@ var eGPieMenu = {
       contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
                                                this.settings.contextTextbox.split("/"))
     };
+    
+    this.easyGesturesNode = null;
+    this._specialNodesNode = null;
   },
   
   isShown : function() {
@@ -300,27 +295,25 @@ var eGPieMenu = {
   },
   
   _createEasyGesturesNode : function() {
-    var easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
-    easyGesturesNode.id = this.easyGesturesID;
-    easyGesturesNode.style.opacity = this.settings.menuOpacity;
+    this.easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
+    this.easyGesturesNode.id = this.easyGesturesID;
+    this.easyGesturesNode.style.opacity = this.settings.menuOpacity;
     
     addEventListener("pagehide", removeMenuEventHandler, true);
-    
-    return easyGesturesNode;
   },
   
-  _updateMenuPosition: function(easyGesturesNode) {
-    easyGesturesNode.style.left = this.centerX + "px";
-    easyGesturesNode.style.top = this.centerY + "px";
+  _updateMenuPosition: function() {
+    this.easyGesturesNode.style.left = this.centerX + "px";
+    this.easyGesturesNode.style.top = this.centerY + "px";
   },
   
   _createSpecialNodes : function(numberOfMainMenus, numberOfExtraMenus) {
-    var specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
-    specialNodesNode.id = "eG_SpecialNodes";
+    this._specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
+    this._specialNodesNode.id = "eG_SpecialNodes";
     
     var linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     linkSignNode.id = "eG_linkSign";
-    specialNodesNode.appendChild(linkSignNode);
+    this._specialNodesNode.appendChild(linkSignNode);
     
     var mainMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     mainMenusSignNode.id = "easyGesturesMainMenusSign";
@@ -332,7 +325,7 @@ var eGPieMenu = {
       --i;
     }
     
-    specialNodesNode.appendChild(mainMenusSignNode);
+    this._specialNodesNode.appendChild(mainMenusSignNode);
     
     var extraMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     extraMenusSignNode.id = "easyGesturesExtraMenusSign";
@@ -344,13 +337,11 @@ var eGPieMenu = {
       --i;
     }
     
-    specialNodesNode.appendChild(extraMenusSignNode);
+    this._specialNodesNode.appendChild(extraMenusSignNode);
     
     var contextMenuSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     contextMenuSignNode.id = "easyGesturesContextMenuSign";
-    specialNodesNode.appendChild(contextMenuSignNode);
-    
-    return specialNodesNode;
+    this._specialNodesNode.appendChild(contextMenuSignNode);
   },
   
   _createActionsNodes : function(layoutName, outerRadius, innerRadius,
@@ -430,14 +421,13 @@ var eGPieMenu = {
   },
   
   _showMenuTooltips: function() {
-    var easyGesturesNode = document.getElementById(this.easyGesturesID);
     var tooltipsNode = document.getElementById("eG_labels_" +
                                                this._currentLayout.name);
     if (tooltipsNode === null) {
       tooltipsNode = this._createTooltipsNodes(this._currentLayout.name,
                        this._currentLayout.labels,
                        this._currentLayout.hasExtraMenuAction);
-      easyGesturesNode.appendChild(tooltipsNode);
+      this.easyGesturesNode.appendChild(tooltipsNode);
     }
     tooltipsNode.style.visibility = "visible";
     this.showingTooltips = true;
@@ -454,13 +444,12 @@ var eGPieMenu = {
     
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
     if (actionsNode === null) {
-      let easyGesturesNode = document.getElementById(this.easyGesturesID);
       actionsNode = this._createActionsNodes(layoutName,
                       this._currentLayout.outerR, this._currentLayout.innerR,
                       this._currentLayout.startingAngle,
                       this._currentLayout.actions,
                       this._currentLayout.halfAngleForSector);
-      easyGesturesNode.appendChild(actionsNode);
+      this.easyGesturesNode.appendChild(actionsNode);
     }
     actionsNode.style.visibility = "visible";
     
@@ -490,19 +479,16 @@ var eGPieMenu = {
     this.setJustOpened();
     
     var bodyNode = document.body ? document.body : document.documentElement;
-    var easyGesturesNode = document.getElementById(this.easyGesturesID);
-    if (easyGesturesNode === null) {
-      easyGesturesNode = this._createEasyGesturesNode();
-      bodyNode.insertBefore(easyGesturesNode, bodyNode.firstChild);
+    if (this.easyGesturesNode === null) {
+      this._createEasyGesturesNode();
+      bodyNode.insertBefore(this.easyGesturesNode, bodyNode.firstChild);
     }
     
-    this._updateMenuPosition(easyGesturesNode);
+    this._updateMenuPosition();
     
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    if (specialNodes === null) {
-      specialNodes = this._createSpecialNodes(this.numberOfMainMenus,
-                                              this.numberOfExtraMenus);
-      easyGesturesNode.appendChild(specialNodes);
+    if (this._specialNodesNode === null) {
+      this._createSpecialNodes(this.numberOfMainMenus, this.numberOfExtraMenus);
+      this.easyGesturesNode.appendChild(this._specialNodesNode);
     }
     
     this._showLayout(layoutName);
@@ -513,8 +499,7 @@ var eGPieMenu = {
   },
   
   _showLinkSign: function() {
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    var linkSign = specialNodes.childNodes[0];
+    var linkSign = this._specialNodesNode.childNodes[0];
     if (this.settings.handleLinks && anchorElement !== null &&
         this.isJustOpened()) {
       linkSign.style.visibility = "visible";
@@ -537,8 +522,7 @@ var eGPieMenu = {
   },
   
   _hideLinkSign: function() {
-    var specialNodes = document.getElementById("eG_SpecialNodes");
-    var linkSign = specialNodes.childNodes[0];
+    var linkSign = this._specialNodesNode.childNodes[0];
     linkSign.style.visibility = "hidden";
   },
   
@@ -667,8 +651,7 @@ var eGPieMenu = {
                                            !this._currentLayout.hasExtraMenuAction)) {
       this.centerX += movementX;
       this.centerY += movementY;
-      let easyGesturesNode = document.getElementById(this.easyGesturesID);
-      this._updateMenuPosition(easyGesturesNode);
+      this._updateMenuPosition();
       return ;
     }
     

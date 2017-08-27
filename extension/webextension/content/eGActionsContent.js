@@ -152,13 +152,12 @@ var actionRunners = {
     selection.removeAllRanges();
     var node = document.createElement("div");
     node.textContent = options.information;
-    var easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
-    easyGesturesNode.appendChild(node);
+    eGPieMenu.easyGesturesNode.appendChild(node);
     var range = document.createRange();
     range.selectNode(node);
     selection.addRange(range);
     document.execCommand("copy");
-    easyGesturesNode.removeChild(node);
+    eGPieMenu.easyGesturesNode.removeChild(node);
   },
   
   runScript: function(options) {
@@ -182,8 +181,7 @@ var actionRunners = {
     
     var textareaWithPastedText = document.createElement("textarea");
     textareaWithPastedText.contentEditable = true;
-    var easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
-    easyGesturesNode.appendChild(textareaWithPastedText);
+    eGPieMenu.easyGesturesNode.appendChild(textareaWithPastedText);
     textareaWithPastedText.focus();
     document.execCommand("paste");
     
@@ -193,7 +191,7 @@ var actionRunners = {
       inputContent.substring(selectionEnd, inputContent.length);
     inputElement.focus();
     
-    easyGesturesNode.removeChild(textareaWithPastedText);
+    eGPieMenu.easyGesturesNode.removeChild(textareaWithPastedText);
   },
   
   selectAll: function() {
