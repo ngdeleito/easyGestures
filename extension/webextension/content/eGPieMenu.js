@@ -507,9 +507,6 @@ var eGPieMenu = {
         linkSign.style.visibility = "hidden";
       }, this.settings.linksDelay);
     }
-    else {
-      linkSign.style.visibility = "hidden";
-    }
   },
   
   openWithMainLayout: function() {
