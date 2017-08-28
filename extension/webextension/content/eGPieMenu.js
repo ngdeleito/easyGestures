@@ -206,9 +206,9 @@ var eGPieMenu = {
       ((this.settings.extraAlt1Enabled || this.settings.extraAlt2Enabled) ? 1 : 0) +
       ((this.settings.extraAlt1Enabled && this.settings.extraAlt2Enabled) ? 1 : 0);
     
-    this.easyGesturesID = "easyGesturesPieMenu_" +
-                          (this.settings.largeMenu ? "l" : "n") +
-                          (this.settings.smallIcons ? "s": "n");
+    this._easyGesturesNodeID = "easyGesturesPieMenu_" +
+                               (this.settings.largeMenu ? "l" : "n") +
+                               (this.settings.smallIcons ? "s": "n");
     
     this.iconSize = this.settings.smallIcons ? 20 : 32;
     
@@ -296,7 +296,7 @@ var eGPieMenu = {
   
   _createEasyGesturesNode : function() {
     this.easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
-    this.easyGesturesNode.id = this.easyGesturesID;
+    this.easyGesturesNode.id = this._easyGesturesNodeID;
     this.easyGesturesNode.style.opacity = this.settings.menuOpacity;
     
     addEventListener("pagehide", removeMenuEventHandler, true);
