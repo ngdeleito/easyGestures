@@ -34,9 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported handleMousemove */
-/* global browser, eGPieMenu, addEventListener, removeEventListener, window,
-          document, MouseEvent */
+/* exported removeMenuEventHandler, handleMousemove */
+/* global browser, eGPieMenu, addEventListener, window, MouseEvent */
 
 var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
 var autoscrollingTrigger = null;
@@ -110,11 +109,7 @@ function setPieMenuSettings() {
 }
 
 function resetPieMenu() {
-  removeEventListener("pagehide", removeMenuEventHandler, true);
-  var easyGesturesNode = document.getElementById(eGPieMenu.easyGesturesID);
-  if (easyGesturesNode !== null) {
-    easyGesturesNode.parentNode.removeChild(easyGesturesNode);
-  }
+  eGPieMenu.removeEasyGesturesNode();
   setPieMenuSettings();
 }
 
@@ -391,10 +386,8 @@ function handleMouseupOnInnerFrame(anEvent) {
   window.frameElement.dispatchEvent(newEvent);
 }
 
-function removeMenuEventHandler(anEvent) {
-  removeEventListener("pagehide", removeMenuEventHandler, true);
-  var easyGesturesNode = anEvent.target.getElementById(eGPieMenu.easyGesturesID);
-  easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+function removeMenuEventHandler() {
+  eGPieMenu.removeEasyGesturesNode();
 }
 
 function handleMousemove(anEvent) {

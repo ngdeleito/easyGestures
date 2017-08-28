@@ -725,6 +725,14 @@ var eGPieMenu = {
     this.setHidden();
   },
   
+  removeEasyGesturesNode: function() {
+    removeEventListener("pagehide", removeMenuEventHandler, true);
+    if (this.easyGesturesNode !== null) {
+      this.easyGesturesNode.parentNode.removeChild(this.easyGesturesNode);
+      this.easyGesturesNode = null;
+    }
+  },
+  
   canBeOpened : function(button, shiftKey, ctrlKey, altKey) {
     var showKey = this.settings.showKey;
     var contextKey = this.settings.contextKey;
