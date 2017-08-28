@@ -509,6 +509,10 @@ var eGPieMenu = {
     }
   },
   
+  isLinkSignVisible: function() {
+    return this._specialNodesNode.childNodes[0].style.visibility === "visible";
+  },
+  
   openWithMainLayout: function() {
     this._open("main");
     this._showLinkSign();

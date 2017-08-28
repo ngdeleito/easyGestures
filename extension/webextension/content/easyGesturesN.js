@@ -287,13 +287,6 @@ function handleMousedown(anEvent) {
 }
 
 function handleMouseup(anEvent) {
-  var specialNodes = document.getElementById("eG_SpecialNodes");
-  var linkSignIsVisible = false;
-  if (specialNodes !== null) {
-    var linkSign = specialNodes.childNodes[0];
-    linkSignIsVisible = linkSign.style.visibility === "visible";
-  }
-  
   mouseupScreenX = anEvent.screenX;
   mouseupScreenY = anEvent.screenY;
   
@@ -301,7 +294,7 @@ function handleMouseup(anEvent) {
   
   if (eGPieMenu.isJustOpened()) {
     eGPieMenu.setOpen();
-    if (linkSignIsVisible) {
+    if (eGPieMenu.isLinkSignVisible()) {
       window.clearTimeout(autoscrollingTrigger);
       eGPieMenu.openLinkThroughPieMenuCenter(anEvent.button);
     }
