@@ -292,6 +292,7 @@ function handleMouseup(anEvent) {
     if (eGPieMenu.isLinkSignVisible()) {
       window.clearTimeout(autoscrollingTrigger);
       eGPieMenu.openLinkThroughPieMenuCenter(anEvent.button);
+      eGPieMenu.close();
     }
   }
   else if (eGPieMenu.isJustOpenedAndMouseMoved()) {

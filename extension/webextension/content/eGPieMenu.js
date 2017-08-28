@@ -792,6 +792,5 @@ var eGPieMenu = {
         url: anchorElement.href
       });
     }
-    this.close();
   }
 };
