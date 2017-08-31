@@ -278,7 +278,7 @@ var eGPieMenu = {
     return this._menuState === 1;
   },
   
-  setJustOpened: function() {
+  _setJustOpened: function() {
     this._menuState = 1;
   },
   
@@ -286,7 +286,7 @@ var eGPieMenu = {
     return this._menuState === 2;
   },
   
-  setJustOpenedAndMouseMoved: function() {
+  _setJustOpenedAndMouseMoved: function() {
     this._menuState = 2;
   },
   
@@ -476,7 +476,7 @@ var eGPieMenu = {
   },
   
   _open: function(layoutName) {
-    this.setJustOpened();
+    this._setJustOpened();
     
     var bodyNode = document.body ? document.body : document.documentElement;
     if (this.easyGesturesNode === null) {
@@ -619,7 +619,7 @@ var eGPieMenu = {
     
     // state change if was dragged
     if (this.isJustOpened() && (movementX !== 0 || movementY !== 0)) {
-      this.setJustOpenedAndMouseMoved();
+      this._setJustOpenedAndMouseMoved();
     }
     
     // identifying current sector
