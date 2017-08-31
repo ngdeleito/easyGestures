@@ -46,12 +46,12 @@ const EXTRA_MENU_SECTOR = 2; // position of the extra menu action in base menus
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
   this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
-  this._layoutNumber = number;
+  this.layoutNumber = number;
   this._nextMenuLayout = nextMenuLayout;
   this.isExtraMenu = false;
-  this.isLarge = menu.settings.largeMenu;
+  this._isLarge = menu.settings.largeMenu;
   
-  if (!this.isLarge) {
+  if (!this._isLarge) {
     // removing actions intended for large menus
     actionsPrefs.splice(9, 1);
     actionsPrefs.splice(5, 1);
@@ -66,8 +66,8 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   // half the angle reserved for a sector (in radians)
   this.halfAngleForSector = Math.PI / this.actions.length;
-  this.startingAngle = this.isLarge ? this.halfAngleForSector : 0;
-  this.sectorOffset = this.isLarge ? 0 : this.halfAngleForSector;
+  this.startingAngle = this._isLarge ? this.halfAngleForSector : 0;
+  this.sectorOffset = this._isLarge ? 0 : this.halfAngleForSector;
   
   browser.runtime.sendMessage({
     messageName: "isExtraMenuAction",
@@ -82,8 +82,8 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   var zoom = menu.settings.smallIcons ? 0.625:1;
   
-  this.outerR = Math.round((this.isLarge ? 70:61)*zoom); // outer radius of pie
-  this.innerR = Math.round((this.isLarge ? 36:26)*zoom); // inner radius of pie
+  this.outerR = Math.round((this._isLarge ? 70:61)*zoom); // outer radius of pie
+  this.innerR = Math.round((this._isLarge ? 36:26)*zoom); // inner radius of pie
 }
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
@@ -91,26 +91,26 @@ MenuLayout.prototype.getNextLayout = function() {
 MenuLayout.prototype.getUpdateStatsInformation = function() {
   var sector = this._pieMenu.sector;
   var sector8To10 = sector;
-  if (!this.isLarge && sector > 4) {
+  if (!this._isLarge && sector > 4) {
     sector8To10++;
   }
   return {
     incrementMethodName: "incrementStatsMainMenuPref",
-    incrementIndex: this._layoutNumber * 10 + sector8To10,
+    incrementIndex: this.layoutNumber * 10 + sector8To10,
     updateActionName: this.actions[sector]
   };
 };
 MenuLayout.prototype.showMenuSign = function() {
-  var mainMenusSign = this._pieMenu._specialNodesNode.childNodes[1];
+  var mainMenusSign = this._pieMenu.specialNodesNode.childNodes[1];
   mainMenusSign.style.visibility = "visible";
 };
 MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
-  var layoutNumber = Math.min(this._layoutNumber, numberOfMenus - 1);
+  var layoutNumber = Math.min(this.layoutNumber, numberOfMenus - 1);
   var previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
                               numberOfMenus) % numberOfMenus;
   previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
   
-  var menusSignNode = this._pieMenu._specialNodesNode.childNodes[menuSign];
+  var menusSignNode = this._pieMenu.specialNodesNode.childNodes[menuSign];
   
   menusSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
   menusSignNode.childNodes[layoutNumber].className = "active";
@@ -124,7 +124,7 @@ MenuLayout.prototype._clearMenuSign = function(menuSignNode) {
   }
 };
 MenuLayout.prototype.hideMenuSign = function() {
-  var mainMenusSignNode = this._pieMenu._specialNodesNode.childNodes[1];
+  var mainMenusSignNode = this._pieMenu.specialNodesNode.childNodes[1];
   mainMenusSignNode.style.visibility = "hidden";
   this._clearMenuSign(mainMenusSignNode);
 };
@@ -133,7 +133,7 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   MenuLayout.call(this, menu, name, number, nextMenuLayout, actionsPrefs);
   
   this.isExtraMenu = true;
-  this.isLarge = false; // extra menus are never large
+  this._isLarge = false; // extra menus are never large
   
   this.halfAngleForSector = Math.PI / 8;
   this.startingAngle = 0;
@@ -145,26 +145,26 @@ ExtraMenuLayout.prototype.getUpdateStatsInformation = function() {
   var sector = this._pieMenu.sector;
   return {
     incrementMethodName: "incrementStatsExtraMenuPref",
-    incrementIndex: this._layoutNumber * 5 + sector,
+    incrementIndex: this.layoutNumber * 5 + sector,
     updateActionName: this.actions[sector]
   };
 };
 ExtraMenuLayout.prototype.showMenuSign = function() {
-  var extraMenusSign = this._pieMenu._specialNodesNode.childNodes[2];
+  var extraMenusSign = this._pieMenu.specialNodesNode.childNodes[2];
   extraMenusSign.style.visibility = "visible";
 };
 ExtraMenuLayout.prototype.updateMenuSign = function() {
   this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
 };
 ExtraMenuLayout.prototype.hideMenuSign = function() {
-  var extraMenusSignNode = this._pieMenu._specialNodesNode.childNodes[2];
+  var extraMenusSignNode = this._pieMenu.specialNodesNode.childNodes[2];
   extraMenusSignNode.style.visibility = "hidden";
   this._clearMenuSign(extraMenusSignNode);
 };
 
 function ContextualMenuLayout(menu, name, actionsPrefs) {
   MenuLayout.call(this, menu, name, 0, null, actionsPrefs);
-  this.localizedName = browser.i18n.getMessage(this.name);
+  this._localizedName = browser.i18n.getMessage(this.name);
 }
 ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
@@ -178,18 +178,18 @@ ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
   };
 };
 ContextualMenuLayout.prototype.showMenuSign = function() {
-  var contextMenuSignNode = this._pieMenu._specialNodesNode.childNodes[3];
+  var contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
   contextMenuSignNode.style.visibility = "visible";
   if (contextualMenus.length > 1) {
     contextMenuSignNode.className = "withAltSign";
   }
 };
 ContextualMenuLayout.prototype.updateMenuSign = function() {
-  var contextMenuSignNode = this._pieMenu._specialNodesNode.childNodes[3];
-  contextMenuSignNode.textContent = this.localizedName;
+  var contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
+  contextMenuSignNode.textContent = this._localizedName;
 };
 ContextualMenuLayout.prototype.hideMenuSign = function() {
-  var contextMenuSignNode = this._pieMenu._specialNodesNode.childNodes[3];
+  var contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
   contextMenuSignNode.style.visibility = "hidden";
   contextMenuSignNode.removeAttribute("class");
 };
@@ -210,7 +210,7 @@ var eGPieMenu = {
                                (this.settings.largeMenu ? "l" : "n") +
                                (this.settings.smallIcons ? "s" : "n");
     
-    this.iconSize = this.settings.smallIcons ? 20 : 32;
+    this._iconSize = this.settings.smallIcons ? 20 : 32;
     
     // coordinates of the pie menu center (relative to the viewport)
     this.centerX = 0;
@@ -221,8 +221,8 @@ var eGPieMenu = {
     this.sector = -1; // index of item under mouse
     this.setHidden();
     
-    this.tooltipsTrigger = null; // trigger to display pie menu labels
-    this.showingTooltips = false; // tooltips are showing or hidden
+    this._tooltipsTimeoutID = null;
+    this._showingTooltips = false; // indicates whether tooltips are being shown
     
     this._layouts = {
       main: new MenuLayout(this, "main", 0,
@@ -263,7 +263,7 @@ var eGPieMenu = {
     };
     
     this.easyGesturesNode = null;
-    this._specialNodesNode = null;
+    this.specialNodesNode = null;
   },
   
   isShown: function() {
@@ -308,12 +308,12 @@ var eGPieMenu = {
   },
   
   _createSpecialNodes: function(numberOfMainMenus, numberOfExtraMenus) {
-    this._specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
-    this._specialNodesNode.id = "eG_SpecialNodes";
+    this.specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
+    this.specialNodesNode.id = "eG_SpecialNodes";
     
     var linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     linkSignNode.id = "eG_linkSign";
-    this._specialNodesNode.appendChild(linkSignNode);
+    this.specialNodesNode.appendChild(linkSignNode);
     
     var mainMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     mainMenusSignNode.id = "easyGesturesMainMenusSign";
@@ -325,7 +325,7 @@ var eGPieMenu = {
       --i;
     }
     
-    this._specialNodesNode.appendChild(mainMenusSignNode);
+    this.specialNodesNode.appendChild(mainMenusSignNode);
     
     var extraMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     extraMenusSignNode.id = "easyGesturesExtraMenusSign";
@@ -337,11 +337,11 @@ var eGPieMenu = {
       --i;
     }
     
-    this._specialNodesNode.appendChild(extraMenusSignNode);
+    this.specialNodesNode.appendChild(extraMenusSignNode);
     
     var contextMenuSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     contextMenuSignNode.id = "easyGesturesContextMenuSign";
-    this._specialNodesNode.appendChild(contextMenuSignNode);
+    this.specialNodesNode.appendChild(contextMenuSignNode);
   },
   
   _createActionsNodes: function(layoutName, outerRadius, innerRadius,
@@ -351,7 +351,7 @@ var eGPieMenu = {
     
     // creating actions images
     
-    var offset = outerRadius - this.iconSize / 2;
+    var offset = outerRadius - this._iconSize / 2;
     var imageR = (outerRadius + innerRadius) / 2;
     var angle = startingAngle;
     
@@ -430,11 +430,11 @@ var eGPieMenu = {
       this.easyGesturesNode.appendChild(tooltipsNode);
     }
     tooltipsNode.style.visibility = "visible";
-    this.showingTooltips = true;
+    this._showingTooltips = true;
   },
   
   _ensureMenuTooltipsAreShown: function() {
-    if (this.showingTooltips) {
+    if (this._showingTooltips) {
         this._showMenuTooltips();
     }
   },
@@ -469,7 +469,7 @@ var eGPieMenu = {
   
   _setTooltipsTimeout: function() {
     if (this.settings.showTooltips) {
-      this.tooltipsTrigger = window.setTimeout(function() {
+      this._tooltipsTimeoutID = window.setTimeout(function() {
         eGPieMenu._showMenuTooltips();
       }, this.settings.tooltipsDelay);
     }
@@ -486,9 +486,9 @@ var eGPieMenu = {
     
     this._updateMenuPosition();
     
-    if (this._specialNodesNode === null) {
+    if (this.specialNodesNode === null) {
       this._createSpecialNodes(this.numberOfMainMenus, this.numberOfExtraMenus);
-      this.easyGesturesNode.appendChild(this._specialNodesNode);
+      this.easyGesturesNode.appendChild(this.specialNodesNode);
     }
     
     this._showLayout(layoutName);
@@ -499,7 +499,7 @@ var eGPieMenu = {
   },
   
   _showLinkSign: function() {
-    var linkSign = this._specialNodesNode.childNodes[0];
+    var linkSign = this.specialNodesNode.childNodes[0];
     if (this.settings.handleLinks && anchorElement !== null &&
         this.isJustOpened()) {
       linkSign.style.visibility = "visible";
@@ -510,7 +510,7 @@ var eGPieMenu = {
   },
   
   isLinkSignVisible: function() {
-    return this._specialNodesNode.childNodes[0].style.visibility === "visible";
+    return this.specialNodesNode.childNodes[0].style.visibility === "visible";
   },
   
   openWithMainLayout: function() {
@@ -523,7 +523,7 @@ var eGPieMenu = {
   },
   
   _hideLinkSign: function() {
-    var linkSign = this._specialNodesNode.childNodes[0];
+    var linkSign = this.specialNodesNode.childNodes[0];
     linkSign.style.visibility = "hidden";
   },
   
@@ -587,7 +587,7 @@ var eGPieMenu = {
     
     browser.runtime.sendMessage({
       messageName: "incrementShowExtraMenuStats",
-      incrementIndex: this._baseLayout._layoutNumber * 10 + EXTRA_MENU_SECTOR
+      incrementIndex: this._baseLayout.layoutNumber * 10 + EXTRA_MENU_SECTOR
     });
   },
   
@@ -709,8 +709,8 @@ var eGPieMenu = {
     removeEventListener("mousemove", handleMousemove, true);
     
     if (this.settings.showTooltips) {
-      window.clearTimeout(this.tooltipsTrigger);
-      this.showingTooltips = false;
+      window.clearTimeout(this._tooltipsTimeoutID);
+      this._showingTooltips = false;
     }
     
     if (this._currentLayout.isExtraMenu) {
