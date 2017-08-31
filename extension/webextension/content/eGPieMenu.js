@@ -218,7 +218,7 @@ var eGPieMenu = {
     
     this._currentLayout = null;
     this._baseLayout = null;
-    this.sector = -1; // index of item under mouse
+    this.sector = -1; // index of the action under the mouse pointer
     this.setHidden();
     
     this._tooltipsTimeoutID = null;
