@@ -499,12 +499,12 @@ var eGPieMenu = {
   },
   
   _showLinkSign: function() {
-    var linkSign = this.specialNodesNode.childNodes[0];
+    var linkSignNode = this.specialNodesNode.childNodes[0];
     if (this.settings.handleLinks && anchorElement !== null &&
         this.isJustOpened()) {
-      linkSign.style.visibility = "visible";
+      linkSignNode.style.visibility = "visible";
       window.setTimeout(function() {
-        linkSign.style.visibility = "hidden";
+        linkSignNode.style.visibility = "hidden";
       }, this.settings.linksDelay);
     }
   },
@@ -523,8 +523,8 @@ var eGPieMenu = {
   },
   
   _hideLinkSign: function() {
-    var linkSign = this.specialNodesNode.childNodes[0];
-    linkSign.style.visibility = "hidden";
+    var linkSignNode = this.specialNodesNode.childNodes[0];
+    linkSignNode.style.visibility = "hidden";
   },
   
   _highlightSelectedAction: function(oldSector, newSector, layoutName) {
