@@ -372,18 +372,18 @@ function setDisabledStatusForSelectWithTextInputControl(control) {
 }
 
 function addFavicon(url, actionName) {
-  if (url === "") {
+  // if (url === "") {
     document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
-  }
-  else {
-    browser.runtime.sendMessage({
-      messageName: "retrieveAndAddFavicon",
-      aURL: url
-    }).then(aMessage => {
-      document.getElementById(actionName + "_favicon").src =
-        aMessage.aURL !== "" ? aMessage.aURL : DEFAULT_FAVICON_URL;
-    });
-  }
+  // }
+  // else {
+  //   browser.runtime.sendMessage({
+  //     messageName: "retrieveAndAddFavicon",
+  //     aURL: url
+  //   }).then(aMessage => {
+  //     document.getElementById(actionName + "_favicon").src =
+  //       aMessage.aURL !== "" ? aMessage.aURL : DEFAULT_FAVICON_URL;
+  //   });
+  // }
 }
 
 function initializePreferenceControl(control) {

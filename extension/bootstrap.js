@@ -16,8 +16,6 @@ The Original Code is easyGestures N.
 The Initial Developer of the Original Code is ngdeleito.
 
 Contributor(s):
-  Jens Tinz, his portions are Copyright (C) 2002. All Rights Reserved.
-  Ons Besbes.
 
 Alternatively, the contents of this file may be used under the terms of
 either the GNU General Public License Version 2 or later (the "GPL"), or
@@ -35,40 +33,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported startup, shutdown, install, uninstall */
-/* global Components, Services */
-
-Components.utils.import("resource://gre/modules/Services.jsm");
-
-var eGMessageListeners = {
-  retrieveAndAddFavicon: function(aMessage, sendResponse) {
-    var aURL = aMessage.aURL;
-    if (aURL.match(/\:\/\//i) === null) {
-      aURL = "http://" + aURL;
-    }
-    
-    var faviconService = Components
-                           .classes["@mozilla.org/browser/favicon-service;1"]
-                           .getService(Components.interfaces.mozIAsyncFavicons);
-    faviconService.getFaviconURLForPage(Services.io.newURI(aURL, null, null), function(aURI) {
-      sendResponse({
-        aURL: aURI !== null ? aURI.spec : ""
-      });
-    });
-    return true;
-  }
-};
-
-function handleMessage(aMessage, sender, sendResponse) {
-  if (eGMessageListeners[aMessage.messageName] !== undefined) {
-    return eGMessageListeners[aMessage.messageName](aMessage, sendResponse);
-  }
-}
 
 function startup(data) {
-  data.webExtension.startup().then(api => {
-    const {browser} = api;
-    browser.runtime.onMessage.addListener(handleMessage);
-  });
+  data.webExtension.startup().then();
 }
 
 function shutdown() {
