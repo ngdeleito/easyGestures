@@ -75,10 +75,15 @@ function handleStorageChange(changes) {
 browser.storage.onChanged.addListener(handleStorageChange);
 
 var eGMessageHandlers = {
-  setContext : function(aMessage) {
+  setContextAndFocusCurrentWindow : function(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
     }
+    browser.windows.getCurrent().then(currentWindow => {
+      browser.windows.update(currentWindow.id, {
+        focused: true
+      });
+    });
   },
   
   getTooltipLabels : function(aMessage) {

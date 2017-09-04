@@ -231,8 +231,6 @@ function handleMousedown(anEvent) {
   [selection, contextualMenus, anchorElement, imageElement, inputElement] =
     setContext(anEvent.target, selection);
   
-  window.focus();
-  
   eGPieMenu.centerX = anEvent.clientX;
   eGPieMenu.centerY = anEvent.clientY;
   iframeElement = undefined;
@@ -246,7 +244,7 @@ function handleMousedown(anEvent) {
     frameURL = iframeElement.contentDocument.documentURI;
   }
   browser.runtime.sendMessage({
-    messageName: "setContext",
+    messageName: "setContextAndFocusCurrentWindow",
     context: {
       selection: selection,
       anchorElementExists: anchorElement !== null,
