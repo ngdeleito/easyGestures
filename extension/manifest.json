@@ -20,8 +20,9 @@
   ],
   "background": {
     "scripts": [
-      "eGUtils.js", "eGContext.js", "eGActions.js", "eGPrefs.js",
-      "easyGesturesN-background.js"
+      "background/eGUtils.js", "background/eGContext.js",
+      "background/eGActions.js", "background/eGPrefs.js",
+      "background/easyGesturesN-background.js"
     ]
   },
   "content_scripts": [{
