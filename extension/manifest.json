@@ -30,7 +30,7 @@
     "css": ["content/easyGesturesN.css"],
     "js": [
       "content/eGActionsContent.js", "content/eGPieMenu.js",
-      "content/easyGesturesN.js"
+      "content/easyGesturesN-content.js"
     ],
     "match_about_blank": true
   }],
