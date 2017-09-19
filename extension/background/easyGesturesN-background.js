@@ -34,22 +34,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global browser, eGPrefs, eGContext, eGActions, console */
 
-browser.storage.local.get("general.startupTips").then(async prefValue => {
-  if (prefValue["general.startupTips"] === undefined) {
-    await eGPrefs.setDefaultSettings();
-    eGPrefs.initializeStats();
-  }
-  else {
-    eGPrefs.areStartupTipsOn().then(prefValue => {
-      if (prefValue) {
-        browser.tabs.create({
-          active: false,
-          url: "/tips/tips.html"
-        });
-      }
-    });
-  }
-});
+var installOrUpgradeTriggered = false;
 
 function resetPieMenuOnAllTabs() {
   browser.tabs.query({}).then(tabs => {
@@ -69,10 +54,6 @@ function handleStorageChange(changes) {
     }
   }
 }
-
-// start listening to changes in preferences that could require rebuilding the
-// menus
-browser.storage.onChanged.addListener(handleStorageChange);
 
 var eGMessageHandlers = {
   setContextAndFocusCurrentWindow : function(aMessage) {
@@ -152,4 +133,43 @@ function handleMessage(aMessage, sender, sendResponse) {
   }
 }
 
-browser.runtime.onMessage.addListener(handleMessage);
+function startup() {
+  // start listening to changes in preferences that could require rebuilding the
+  // menus
+  browser.storage.onChanged.addListener(handleStorageChange);
+  // start listening to messages from content scripts
+  browser.runtime.onMessage.addListener(handleMessage);
+  // displaying tips if requested
+  eGPrefs.areStartupTipsOn().then(prefValue => {
+    if (prefValue) {
+      browser.tabs.create({
+        active: false,
+        url: "/tips/tips.html"
+      });
+    }
+  });
+}
+
+async function handleInstallOrUpgrade(details) {
+  installOrUpgradeTriggered = true;
+  await browser.storage.local.set({
+    "installOrUpgradeTriggered": true
+  });
+  if (details.reason === "install") {
+    await eGPrefs.setDefaultSettings();
+    eGPrefs.initializeStats();
+  }
+  await browser.storage.local.remove("installOrUpgradeTriggered");
+  startup();
+  // sending a reset to initialize the content scripts
+  resetPieMenuOnAllTabs();
+}
+
+browser.runtime.onInstalled.addListener(handleInstallOrUpgrade);
+
+window.setTimeout(function() {
+  // if no install or upgrade procedure is triggered, then run startup
+  if (!installOrUpgradeTriggered) {
+    startup();
+  }
+}, 200);

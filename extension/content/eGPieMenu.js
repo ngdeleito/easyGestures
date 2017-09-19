@@ -196,6 +196,7 @@ ContextualMenuLayout.prototype.hideMenuSign = function() {
 
 var eGPieMenu = {
   settings: {},
+  easyGesturesNode: null,
   
   init: function() {
     this.numberOfMainMenus = 1 +
@@ -262,7 +263,6 @@ var eGPieMenu = {
                                                this.settings.contextTextbox.split("/"))
     };
     
-    this.easyGesturesNode = null;
     this.specialNodesNode = null;
   },
   

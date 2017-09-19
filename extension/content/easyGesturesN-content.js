@@ -63,17 +63,18 @@ else {
 
 function setPieMenuSettings() {
   browser.storage.local.get([
-    "activation.showButton", "activation.showKey", "activation.showAltButton",
-    "activation.preventOpenKey", "activation.contextKey",
-    "activation.contextShowAuto", "behavior.largeMenu", "behavior.smallIcons",
-    "behavior.menuOpacity", "behavior.showTooltips", "behavior.tooltipsDelay",
-    "behavior.moveAuto", "behavior.handleLinks", "behavior.linksDelay",
-    "behavior.handleLinksAsOpenLink", "behavior.autoscrollingOn",
-    "behavior.autoscrollingDelay", "menus.main", "menus.mainAlt1Enabled",
-    "menus.mainAlt1", "menus.mainAlt2Enabled", "menus.mainAlt2", "menus.extra",
-    "menus.extraAlt1Enabled", "menus.extraAlt1", "menus.extraAlt2Enabled",
-    "menus.extraAlt2", "menus.contextLink", "menus.contextImage",
-    "menus.contextSelection", "menus.contextTextbox", "customizations.loadURL1",
+    "installOrUpgradeTriggered", "activation.showButton", "activation.showKey",
+    "activation.showAltButton", "activation.preventOpenKey",
+    "activation.contextKey", "activation.contextShowAuto", "behavior.largeMenu",
+    "behavior.smallIcons", "behavior.menuOpacity", "behavior.showTooltips",
+    "behavior.tooltipsDelay", "behavior.moveAuto", "behavior.handleLinks",
+    "behavior.linksDelay", "behavior.handleLinksAsOpenLink",
+    "behavior.autoscrollingOn", "behavior.autoscrollingDelay", "menus.main",
+    "menus.mainAlt1Enabled", "menus.mainAlt1", "menus.mainAlt2Enabled",
+    "menus.mainAlt2", "menus.extra", "menus.extraAlt1Enabled",
+    "menus.extraAlt1", "menus.extraAlt2Enabled", "menus.extraAlt2",
+    "menus.contextLink", "menus.contextImage", "menus.contextSelection",
+    "menus.contextTextbox", "customizations.loadURL1",
     "customizations.loadURL2", "customizations.loadURL3",
     "customizations.loadURL4", "customizations.loadURL5",
     "customizations.loadURL6", "customizations.loadURL7",
@@ -85,6 +86,12 @@ function setPieMenuSettings() {
     "customizations.runScript8", "customizations.runScript9",
     "customizations.runScript10"
   ]).then(prefs => {
+    if (Object.keys(prefs).length === 0 || prefs.installOrUpgradeTriggered) {
+      // an install or upgrade procedure is ongoing, we wait for the background
+      // scripts to send a reset
+      return ;
+    }
+    
     eGPieMenu.settings.loadURLActionPrefs = {};
     eGPieMenu.settings.runScriptActionPrefs = {};
     for (let key in prefs) {
