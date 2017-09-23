@@ -36,6 +36,24 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global browser */
 
 var eGUtils = {
+  isVersionSmallerOrEqualThan(oldVersion, newVersion) {
+    var oldVersionArray = oldVersion.split(".");
+    var newVersionArray = newVersion.split(".");
+    
+    if (oldVersionArray[2] === undefined) {
+      oldVersionArray[2] = 0;
+    }
+    if (newVersionArray[2] === undefined) {
+      newVersionArray[2] = 0;
+    }
+    
+    return oldVersionArray[0] < newVersionArray[0] ||
+           (oldVersionArray[0] === newVersionArray[0] &&
+             oldVersionArray[1] < newVersionArray[1] ||
+             (oldVersionArray[1] === newVersionArray[1] &&
+               oldVersionArray[2] <= newVersionArray[2]));
+  },
+  
   showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
     browser.tabs.query({}).then(tabs => {
       let tipsTab = tabs.find(tab => {
