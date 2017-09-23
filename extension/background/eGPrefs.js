@@ -190,8 +190,6 @@ var eGPrefs = {
     setBoolPref(defaultPrefs, "behavior.handleLinks", true);
     setIntPref(defaultPrefs, "behavior.linksDelay", 300);
     setBoolPref(defaultPrefs, "behavior.handleLinksAsOpenLink", false);
-    setBoolPref(defaultPrefs, "behavior.autoscrollingOn", false);
-    setIntPref(defaultPrefs, "behavior.autoscrollingDelay", 750);
     
     setBoolPref(defaultPrefs, "menus.mainAlt1Enabled", true);
     setBoolPref(defaultPrefs, "menus.mainAlt2Enabled", false);
@@ -423,10 +421,6 @@ var eGPrefs = {
     return this.getPref("behavior.handleLinks");
   },
   
-  isAutoscrollingOn : function() {
-    return this.getPref("behavior.autoscrollingOn");
-  },
-  
   isMainAlt1MenuEnabled : function() {
     return this.getPref("menus.mainAlt1Enabled");
   },
@@ -524,5 +518,35 @@ var eGPrefs = {
     return this.getPref("stats.actions").then(prefValue => {
       return JSON.parse(prefValue);
     });
+  },
+  
+  updateToV5_3: function() {
+    var actionsToRemove = ["autoscrolling"];
+    var promises = [];
+    promises.push(browser.storage.local.get([
+      "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
+      "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",
+      "menus.contextImage", "menus.contextSelection", "menus.contextTextbox"
+    ]).then(prefs => {
+      actionsToRemove.forEach(actionName => {
+        for (let pref in prefs) {
+          prefs[pref] = prefs[pref].replace(actionName, "empty");
+        }
+      });
+      return browser.storage.local.set(prefs);
+    }));
+    promises.push(this.getPref("stats.actions").then(prefValue => {
+      var actionsStats = JSON.parse(prefValue);
+      actionsToRemove.forEach(actionName => {
+        delete actionsStats[actionName];
+      });
+      return browser.storage.local.set({
+        "stats.actions": JSON.stringify(actionsStats)
+      });
+    }));
+    promises.push(browser.storage.local.remove([
+      "behavior.autoscrollingOn", "behavior.autoscrollingDelay"
+    ]));
+    return Promise.all(promises);
   }
 };

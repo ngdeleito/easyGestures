@@ -22,7 +22,6 @@
   
   "pageTop": { "message": "Subir en página" },
   "pageBottom": { "message": "Bajar en página" },
-  "autoscrolling": { "message": "Desplazamiento automático" },
   "zoomIn": { "message": "Aumentar el tamaño" },
   "zoomOut": { "message": "Reducir el tamaño" },
   "zoomReset": { "message": "Reiniciar el tamaño" },
@@ -171,9 +170,6 @@
   "behavior.links.openLinkAction": { "message": "Usar el comportamiento de la acción 'Abrir enlace'" },
   "behavior.links.configureAction": { "message": "Configurar esta acción" },
   "behavior.links.browser": { "message": "Usar el comportamiento del navegador" },
-  "behavior.autoscrolling": { "message": "Desplazamiento automático a través del menú circular" },
-  "behavior.autoscrolling.activate": { "message": "Activar el desplazamiento automático" },
-  "behavior.autoscrolling.delay": { "message": "Activar tras un periodo de" },
   
   "menus.main": { "message": "Menú principal" },
   "menus.extra": { "message": "Menú extra" },
@@ -241,7 +237,6 @@
   "tips.moveMenu": { "message": "Puede desplazar el menú circular manteniendo pulsada una tecla 'Mayúsculas' mientras mueve el ratón." },
   "tips.smallIcons": { "message": "Puede pasar a utilizar iconos pequeños en el menú circular en [preferences/behavior]." },
   "tips.largeMenu": { "message": "Por defecto, los menús se componen de 8 acciones. Puede pasar a utilizar menús de 10 acciones en [preferences/behavior]." },
-  "tips.autoscrolling": { "message": "Si utiliza el botón central del ratón para abrir el menú circular, el desplazamiento automático quedará inhabilitado. Habilitándolo previamente en [preferences/behavior] aparecerá de nuevo después de un periodo de tiempo configurable de inactividad. Puede también habilitar el desplazamiento automático cuando se utilicen otros botones y/o teclas para abrir el menú circular." },
   "tips.zoomOnImage": { "message": "Una acción de zoom sobre una imagen ejecuta esta acción solamente en esta imagen." },
   "tips.openLinkAction": { "message": "Por defecto, la acción 'Abrir enlace' abre el enlace bajo el menú circular en una nueva pestaña. Puede cambiar este comportamiento por defecto en [preferences/customizations/customizations.otherActions]." },
   "tips.dailyReadingsAction": { "message": "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas. Puede seleccionar esta carpeta en [preferences/customizations/customizations.otherActions]." }

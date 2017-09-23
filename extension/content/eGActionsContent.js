@@ -36,8 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported actionStatusSetters, actionRunners */
 /* global document, inputElement, selection, window, frameScrollY,
-          iframeElement, frameScrollMaxY, mousedownScreenX, mouseupScreenX,
-          mousedownScreenY, mouseupScreenY, imageElement, eGPieMenu  */
+          iframeElement, frameScrollMaxY, imageElement, eGPieMenu  */
 
 var actionStatusSetters = {
   _setActionStatus: function(layoutName, actionSector, disabled) {
@@ -98,21 +97,6 @@ var actionRunners = {
     else {
       window.scroll(0, window.scrollMaxY);
     }
-  },
-  
-  autoscrolling: function(options) {
-    var useMousedownCoordinates = options.useMousedownCoordinates;
-    // see chrome://global/content/browser-content.js: we simulate a middle
-    // button (non cancelable) mousedown event to trigger Firefox's
-    // autoscrolling --> autoscrolling is currently broken, as in WebExtensions
-    // created events seem to be non trusted
-    document.documentElement.dispatchEvent(new window.MouseEvent("mousedown", {
-      view: window,
-      bubbles: true,
-      button: 1,
-      screenX: useMousedownCoordinates ? mousedownScreenX : mouseupScreenX,
-      screenY: useMousedownCoordinates ? mousedownScreenY : mouseupScreenY
-    }));
   },
   
   zoomIn: function() {

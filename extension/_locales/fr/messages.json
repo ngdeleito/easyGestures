@@ -22,7 +22,6 @@
   
   "pageTop": { "message": "Haut de page" },
   "pageBottom": { "message": "Bas de page" },
-  "autoscrolling": { "message": "Défilement automatique" },
   "zoomIn": { "message": "Zoom avant" },
   "zoomOut": { "message": "Zoom arrière" },
   "zoomReset": { "message": "Réinitialiser zoom" },
@@ -171,9 +170,6 @@
   "behavior.links.openLinkAction": { "message": "Suivre le comportement de l'action 'Ouvrir le lien'" },
   "behavior.links.configureAction": { "message": "Configurer cette action" },
   "behavior.links.browser": { "message": "Suivre le comportement du navigateur" },
-  "behavior.autoscrolling": { "message": "Défilement automatique par le centre du menu circulaire" },
-  "behavior.autoscrolling.activate": { "message": "Activer le défilement automatique" },
-  "behavior.autoscrolling.delay": { "message": "Activer après un délai de" },
   
   "menus.main": { "message": "Menu principal" },
   "menus.extra": { "message": "Menu supplémentaire" },
@@ -241,7 +237,6 @@
   "tips.moveMenu": { "message": "Vous pouvez déplacer le menu circulaire en maintenant une touche 'Maj' enfoncée tout en bougeant la souris." },
   "tips.smallIcons": { "message": "Vous pouvez changer les icônes du menu circulaire en petites icônes dans [preferences/behavior]." },
   "tips.largeMenu": { "message": "Par défaut, les menus sont composés de 8 actions. Vous pouvez passer à 10 actions par menu dans [preferences/behavior]." },
-  "tips.autoscrolling": { "message": "Lorsque le bouton central de la souris est utilisé pour ouvrir le menu circulaire, le défilement automatique n'est plus disponible. En l'activant dans [preferences/behavior], il deviendra disponible après un délai configurable d'inactivité. Vous pouvez aussi activer le défilement automatique lorsque d'autres boutons et/ou touches sont utilisés pour ouvrir le menu circulaire." },
   "tips.zoomOnImage": { "message": "Une action de zoom sur une image exécute cette action uniquement sur cette image." },
   "tips.openLinkAction": { "message": "Par défaut, l'action 'Ouvrir le lien' ouvre le lien sous le menu circulaire dans un nouvel onglet. Vous pouvez changer ce comportement par défaut dans [preferences/customizations/customizations.otherActions]." },
   "tips.dailyReadingsAction": { "message": "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets. Vous pouvez choisir ce dossier dans [preferences/customizations/customizations.otherActions]." }

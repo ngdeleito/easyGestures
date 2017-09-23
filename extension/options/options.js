@@ -58,8 +58,6 @@ var eventListenersArray = [
   ["activateTooltips", "change", setDisabledStatusForTooltipsActivationDelay],
   ["activateOpenLinksThroughPieMenuCenter", "change",
     setDisabledStatusForOpenLinksMaximumDelay],
-  ["activateAutoscrolling", "change",
-    setDisabledStatusForAutoscrollingActivationDelay],
   ["enableMainAlt1Menu", "change", setDisabledStatusForMainAlt1Menu],
   ["enableMainAlt2Menu", "change", setDisabledStatusForMainAlt2Menu],
   ["enableExtraAlt1Menu", "change", setDisabledStatusForExtraAlt1Menu],
@@ -811,16 +809,6 @@ function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
   });
 }
 
-function setDisabledStatusForAutoscrollingActivationDelay(anEvent) {
-  eGPrefs.isAutoscrollingOn().then(prefValue => {
-    var shouldBeDisabled = anEvent === undefined ? !prefValue :
-                                                   !anEvent.target.checked;
-    toggleDisabledStatusOnElementsById(["autoscrollingActivationDelayLabel",
-      "autoscrollingActivationDelayInput", "autoscrollingActivationDelayUnit"],
-      shouldBeDisabled);
-  });
-}
-
 function setDisabledStatusForMenu(menuName, enabled) {
   var selectElements = document.getElementById("menuControl_" + menuName)
                                .lastElementChild;
@@ -861,7 +849,6 @@ function setPreferenceControlsDisabledStatus() {
   setMenuType();
   setDisabledStatusForTooltipsActivationDelay();
   setDisabledStatusForOpenLinksMaximumDelay();
-  setDisabledStatusForAutoscrollingActivationDelay();
   setDisabledStatusForMainAlt1Menu();
   setDisabledStatusForMainAlt2Menu();
   setDisabledStatusForExtraAlt1Menu();

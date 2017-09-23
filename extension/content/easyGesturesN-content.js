@@ -37,8 +37,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported removeMenuEventHandler, handleMousemove */
 /* global browser, eGPieMenu, addEventListener, window, MouseEvent */
 
-var mousedownScreenX, mousedownScreenY, mouseupScreenX, mouseupScreenY;
-var autoscrollingTrigger = null;
 var selection, contextualMenus, anchorElement, imageElement, inputElement,
     iframeElement;
 var frameScrollY, frameScrollMaxY, frameURL;
@@ -68,8 +66,7 @@ function setPieMenuSettings() {
     "activation.contextKey", "activation.contextShowAuto", "behavior.largeMenu",
     "behavior.smallIcons", "behavior.menuOpacity", "behavior.showTooltips",
     "behavior.tooltipsDelay", "behavior.moveAuto", "behavior.handleLinks",
-    "behavior.linksDelay", "behavior.handleLinksAsOpenLink",
-    "behavior.autoscrollingOn", "behavior.autoscrollingDelay", "menus.main",
+    "behavior.linksDelay", "behavior.handleLinksAsOpenLink", "menus.main",
     "menus.mainAlt1Enabled", "menus.mainAlt1", "menus.mainAlt2Enabled",
     "menus.mainAlt2", "menus.extra", "menus.extraAlt1Enabled",
     "menus.extraAlt1", "menus.extraAlt2Enabled", "menus.extraAlt2",
@@ -205,18 +202,6 @@ function setContext(anHTMLElement, currentSelection) {
 }
 
 function handleMousedown(anEvent) {
-  // we ignore non cancelable mousedown events like those issued for triggering
-  // Firefox's autoscrolling
-  if (!anEvent.cancelable) {
-    return ;
-  }
-  
-  mousedownScreenX = anEvent.screenX;
-  mousedownScreenY = anEvent.screenY;
-  
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(autoscrollingTrigger);
-  
   // check whether pie menu should change layout or hide (later)
   if (eGPieMenu.isShown()) {
     if (eGPieMenu.canLayoutBeSwitched(anEvent.button)) {
@@ -275,27 +260,14 @@ function handleMousedown(anEvent) {
   else {
     eGPieMenu.openWithMainLayout();
   }
-  
-  if (eGPieMenu.settings.autoscrollingOn) {
-    autoscrollingTrigger = window.setTimeout(function() {
-      eGPieMenu.close();
-      eGPieMenu.runAction_autoscrolling({
-        useMousedownCoordinates: true
-      });
-    }, eGPieMenu.settings.autoscrollingDelay);
-  }
 }
 
 function handleMouseup(anEvent) {
-  mouseupScreenX = anEvent.screenX;
-  mouseupScreenY = anEvent.screenY;
-  
   var preventDefaultUponReturn = false;
   
   if (eGPieMenu.isJustOpened()) {
     eGPieMenu.setOpen();
     if (eGPieMenu.isLinkSignVisible()) {
-      window.clearTimeout(autoscrollingTrigger);
       eGPieMenu.openLinkThroughPieMenuCenter(anEvent.button);
       eGPieMenu.close();
     }
@@ -330,9 +302,6 @@ function handleMouseup(anEvent) {
 function handleKeydown(anEvent) {
   var altKey = anEvent.keyCode === 18;
   var escKey = anEvent.keyCode === 27;
-  
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(autoscrollingTrigger);
   
   if (eGPieMenu.isShown()) {
     if (altKey) {
@@ -397,9 +366,6 @@ function removeMenuEventHandler() {
 }
 
 function handleMousemove(anEvent) {
-  // clear automatic delayed autoscrolling
-  window.clearTimeout(autoscrollingTrigger);
-  
   eGPieMenu.handleMousemove(anEvent.clientX, anEvent.clientY, anEvent.shiftKey,
                             anEvent.movementX, anEvent.movementY);
 }

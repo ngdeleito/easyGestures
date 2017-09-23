@@ -415,9 +415,7 @@ var eGActions = {
         eGContext.windowScrollY === eGContext.windowScrollMaxY
       );
     });
-  }, false, "autoscrolling"),
-  
-  autoscrolling : new DisabledAction("autoscrolling", false, "zoomIn"),
+  }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
     if (eGContext.imageElementDoesntExist) {

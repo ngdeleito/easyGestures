@@ -765,14 +765,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .pageBottom.selected:not(.disabled),
 #easyGesturesPieMenu_ln .pageBottom.selected:not(.disabled) { background-position: -160px -256px; }
 
-#easyGesturesPieMenu_nn .autoscrolling.disabled,
-#easyGesturesPieMenu_ln .autoscrolling.disabled { background-position: -192px -192px; }
-#easyGesturesPieMenu_nn .autoscrolling,
-#easyGesturesPieMenu_ln .autoscrolling,
-[data-action="autoscrolling"] { background-position: -192px -224px; }
-#easyGesturesPieMenu_nn .autoscrolling.selected:not(.disabled),
-#easyGesturesPieMenu_ln .autoscrolling.selected:not(.disabled) { background-position: -192px -256px; }
-
 #easyGesturesPieMenu_nn .zoomIn.disabled,
 #easyGesturesPieMenu_ln .zoomIn.disabled { background-position: -192px -960px; }
 #easyGesturesPieMenu_nn .zoomIn,
@@ -1429,6 +1421,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .stop.selected:not(.disabled),
 #easyGesturesPieMenu_ln .stop.selected:not(.disabled) { background-position: -32px -256px; }
 
+#easyGesturesPieMenu_nn .autoscrolling.disabled,
+#easyGesturesPieMenu_ln .autoscrolling.disabled { background-position: -192px -192px; }
+#easyGesturesPieMenu_nn .autoscrolling,
+#easyGesturesPieMenu_ln .autoscrolling,
+[data-action="autoscrolling"] { background-position: -192px -224px; }
+#easyGesturesPieMenu_nn .autoscrolling.selected:not(.disabled),
+#easyGesturesPieMenu_ln .autoscrolling.selected:not(.disabled) { background-position: -192px -256px; }
+
 div.markVisitedLinks.disabled { background-position: 0px -864px; }
 div.markVisitedLinks { background-position: 0px -896px; }
 div.markVisitedLinks.selected:not(.disabled) { background-position: 0px -928px; }
@@ -1633,14 +1633,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .pageBottom { background-position: -100px -140px; }
 #easyGesturesPieMenu_ns .pageBottom.selected:not(.disabled),
 #easyGesturesPieMenu_ls .pageBottom.selected:not(.disabled) { background-position: -100px -160px; }
-
-#easyGesturesPieMenu_ns .autoscrolling.disabled,
-#easyGesturesPieMenu_ls .autoscrolling.disabled { background-position: -120px -120px; }
-.eG_autoscrolling, .eGOptions_autoscrolling::before,
-#easyGesturesPieMenu_ns .autoscrolling,
-#easyGesturesPieMenu_ls .autoscrolling { background-position: -120px -140px; }
-#easyGesturesPieMenu_ns .autoscrolling.selected:not(.disabled),
-#easyGesturesPieMenu_ls .autoscrolling.selected:not(.disabled) { background-position: -120px -160px; }
 
 #easyGesturesPieMenu_ns .zoomIn.disabled,
 #easyGesturesPieMenu_ls .zoomIn.disabled { background-position: -120px -600px; }
@@ -2298,6 +2290,14 @@ image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
 #easyGesturesPieMenu_ls .stop { background-position: -20px -140px; }
 #easyGesturesPieMenu_ns .stop.selected:not(.disabled),
 #easyGesturesPieMenu_ls .stop.selected:not(.disabled) { background-position: -20px -160px; }
+
+#easyGesturesPieMenu_ns .autoscrolling.disabled,
+#easyGesturesPieMenu_ls .autoscrolling.disabled { background-position: -120px -120px; }
+.eG_autoscrolling, .eGOptions_autoscrolling::before,
+#easyGesturesPieMenu_ns .autoscrolling,
+#easyGesturesPieMenu_ls .autoscrolling { background-position: -120px -140px; }
+#easyGesturesPieMenu_ns .autoscrolling.selected:not(.disabled),
+#easyGesturesPieMenu_ls .autoscrolling.selected:not(.disabled) { background-position: -120px -160px; }
 
 div.markVisitedLinks.disabled { background-position: 0px -540px; }
 div.markVisitedLinks { background-position: 0px -560px; }
