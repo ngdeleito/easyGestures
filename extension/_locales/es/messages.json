@@ -56,8 +56,6 @@
   "showOnlyThisFrame": { "message": "Mostrar sólo este marco" },
   "focusLocationBar": { "message": "Seleccionar la barra de direcciones" },
   "searchWeb": { "message": "Buscar en la web" },
-  "quit": { "message": "Salir de Firefox" },
-  "restart": { "message": "Reiniciar Firefox" },
   
   "openLink": { "message": "Abrir enlace" },
   "openLinkInNewWindow": { "message": "Abrir enlace en una ventana nueva" },

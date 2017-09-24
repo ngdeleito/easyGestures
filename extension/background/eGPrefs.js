@@ -136,7 +136,7 @@ var eGPrefs = {
       ];
       var extraMenus = [
         ["extra",     "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
-        ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/restart/quit"],
+        ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/empty/empty"],
         ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
       ];
       
@@ -521,7 +521,7 @@ var eGPrefs = {
   },
   
   updateToV5_3: function() {
-    var actionsToRemove = ["autoscrolling"];
+    var actionsToRemove = ["autoscrolling", "quit", "restart"];
     var promises = [];
     promises.push(browser.storage.local.get([
       "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",

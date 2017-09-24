@@ -56,8 +56,6 @@
   "showOnlyThisFrame": { "message": "Show only this frame" },
   "focusLocationBar": { "message": "Focus location bar" },
   "searchWeb": { "message": "Search web" },
-  "quit": { "message": "Quit Firefox" },
-  "restart": { "message": "Restart Firefox" },
   
   "openLink": { "message": "Open link" },
   "openLinkInNewWindow": { "message": "Open link in a new window" },

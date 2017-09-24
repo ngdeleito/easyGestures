@@ -706,11 +706,7 @@ var eGActions = {
   
   focusLocationBar : new DisabledAction("focusLocationBar", false, "searchWeb"),
   
-  searchWeb : new DisabledAction("searchWeb", false, "quit"),
-  
-  quit : new DisabledAction("quit", false, "restart"),
-  
-  restart : new DisabledAction("restart", false, "openLink"),
+  searchWeb : new DisabledAction("searchWeb", false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
     eGPrefs.getOpenLinkPref().then(prefValue => {
