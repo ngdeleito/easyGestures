@@ -96,8 +96,6 @@
   "runScript9": { "message": "Ejecutar script 9" },
   "runScript10": { "message": "Ejecutar script 10" },
   
-  "firefoxPreferences": { "message": "Preferencias de Firefox" },
-  "addOns": { "message": "Complementos" },
   "easyGesturesNPreferences": { "message": "Preferencias de easyGestures N" },
   
   "copyImageLocation": { "message": "Copiar la ruta de la imagen" },

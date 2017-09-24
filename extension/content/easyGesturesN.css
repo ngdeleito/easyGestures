@@ -1283,22 +1283,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .runScript10.selected:not(.disabled),
 #easyGesturesPieMenu_ln .runScript10.selected:not(.disabled) { background-position: -288px -736px; }
 
-#easyGesturesPieMenu_nn .firefoxPreferences.disabled,
-#easyGesturesPieMenu_ln .firefoxPreferences.disabled { background-position: -256px -576px; }
-#easyGesturesPieMenu_nn .firefoxPreferences,
-#easyGesturesPieMenu_ln .firefoxPreferences,
-[data-action="firefoxPreferences"] { background-position: -256px -608px; }
-#easyGesturesPieMenu_nn .firefoxPreferences.selected:not(.disabled),
-#easyGesturesPieMenu_ln .firefoxPreferences.selected:not(.disabled) { background-position: -256px -640px; }
-
-#easyGesturesPieMenu_nn .addOns.disabled,
-#easyGesturesPieMenu_ln .addOns.disabled { background-position: -288px -576px; }
-#easyGesturesPieMenu_nn .addOns,
-#easyGesturesPieMenu_ln .addOns,
-[data-action="addOns"] { background-position: -288px -608px; }
-#easyGesturesPieMenu_nn .addOns.selected:not(.disabled),
-#easyGesturesPieMenu_ln .addOns.selected:not(.disabled) { background-position: -288px -640px; }
-
 #easyGesturesPieMenu_nn .easyGesturesNPreferences.disabled,
 #easyGesturesPieMenu_ln .easyGesturesNPreferences.disabled { background-position: -320px -576px; }
 #easyGesturesPieMenu_nn .easyGesturesNPreferences,
@@ -1516,6 +1500,22 @@ div.runProgramFile9.selected:not(.disabled) { background-position: -384px -640px
 div.runProgramFile10.disabled { background-position: -416px -576px; }
 div.runProgramFile10 { background-position: -416px -608px; }
 div.runProgramFile10.selected:not(.disabled) { background-position: -416px -640px; }
+
+#easyGesturesPieMenu_nn .firefoxPreferences.disabled,
+#easyGesturesPieMenu_ln .firefoxPreferences.disabled { background-position: -256px -576px; }
+#easyGesturesPieMenu_nn .firefoxPreferences,
+#easyGesturesPieMenu_ln .firefoxPreferences,
+[data-action="firefoxPreferences"] { background-position: -256px -608px; }
+#easyGesturesPieMenu_nn .firefoxPreferences.selected:not(.disabled),
+#easyGesturesPieMenu_ln .firefoxPreferences.selected:not(.disabled) { background-position: -256px -640px; }
+
+#easyGesturesPieMenu_nn .addOns.disabled,
+#easyGesturesPieMenu_ln .addOns.disabled { background-position: -288px -576px; }
+#easyGesturesPieMenu_nn .addOns,
+#easyGesturesPieMenu_ln .addOns,
+[data-action="addOns"] { background-position: -288px -608px; }
+#easyGesturesPieMenu_nn .addOns.selected:not(.disabled),
+#easyGesturesPieMenu_ln .addOns.selected:not(.disabled) { background-position: -288px -640px; }
 */
 
 
@@ -2152,22 +2152,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .runScript10.selected:not(.disabled),
 #easyGesturesPieMenu_ls .runScript10.selected:not(.disabled) { background-position: -180px -460px; }
 
-#easyGesturesPieMenu_ns .firefoxPreferences.disabled,
-#easyGesturesPieMenu_ls .firefoxPreferences.disabled { background-position: -160px -360px; }
-.eG_firefoxPreferences, .eGOptions_firefoxPreferences::before,
-#easyGesturesPieMenu_ns .firefoxPreferences,
-#easyGesturesPieMenu_ls .firefoxPreferences { background-position: -160px -380px; }
-#easyGesturesPieMenu_ns .firefoxPreferences.selected:not(.disabled),
-#easyGesturesPieMenu_ls .firefoxPreferences.selected:not(.disabled) { background-position: -160px -400px; }
-
-#easyGesturesPieMenu_ns .addOns.disabled,
-#easyGesturesPieMenu_ls .addOns.disabled { background-position: -180px -360px; }
-.eG_addOns, .eGOptions_addOns::before,
-#easyGesturesPieMenu_ns .addOns,
-#easyGesturesPieMenu_ls .addOns { background-position: -180px -380px; }
-#easyGesturesPieMenu_ns .addOns.selected:not(.disabled),
-#easyGesturesPieMenu_ls .addOns.selected:not(.disabled) { background-position: -180px -400px; }
-
 #easyGesturesPieMenu_ns .easyGesturesNPreferences.disabled,
 #easyGesturesPieMenu_ls .easyGesturesNPreferences.disabled { background-position: -200px -360px; }
 .eG_easyGesturesNPreferences, .eGOptions_easyGesturesNPreferences::before,
@@ -2408,4 +2392,20 @@ div.runProgramFile10.disabled { background-position: -260px -360px; }
 div.runProgramFile10 { background-position: -260px -380px; }
 div.runProgramFile10.selected:not(.disabled) { background-position: -260px -400px; }
 image.eG_runProgramFile10 { -moz-image-region: rect(380px 280px 400px 260px); }
+
+#easyGesturesPieMenu_ns .firefoxPreferences.disabled,
+#easyGesturesPieMenu_ls .firefoxPreferences.disabled { background-position: -160px -360px; }
+.eG_firefoxPreferences, .eGOptions_firefoxPreferences::before,
+#easyGesturesPieMenu_ns .firefoxPreferences,
+#easyGesturesPieMenu_ls .firefoxPreferences { background-position: -160px -380px; }
+#easyGesturesPieMenu_ns .firefoxPreferences.selected:not(.disabled),
+#easyGesturesPieMenu_ls .firefoxPreferences.selected:not(.disabled) { background-position: -160px -400px; }
+
+#easyGesturesPieMenu_ns .addOns.disabled,
+#easyGesturesPieMenu_ls .addOns.disabled { background-position: -180px -360px; }
+.eG_addOns, .eGOptions_addOns::before,
+#easyGesturesPieMenu_ns .addOns,
+#easyGesturesPieMenu_ls .addOns { background-position: -180px -380px; }
+#easyGesturesPieMenu_ns .addOns.selected:not(.disabled),
+#easyGesturesPieMenu_ls .addOns.selected:not(.disabled) { background-position: -180px -400px; }
 */

@@ -521,7 +521,9 @@ var eGPrefs = {
   },
   
   updateToV5_3: function() {
-    var actionsToRemove = ["autoscrolling", "quit", "restart"];
+    var actionsToRemove = [
+      "autoscrolling", "quit", "restart", "firefoxPreferences", "addOns"
+    ];
     var promises = [];
     promises.push(browser.storage.local.get([
       "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",

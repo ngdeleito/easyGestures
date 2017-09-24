@@ -197,10 +197,9 @@ QUnit.test("test importPrefsFromString with invalid preference values",
     "loadURL8": 0, "loadURL9": 0, "loadURL10": 0, "runScript1": 0,
     "runScript2": 0, "runScript3": 0, "runScript4": 0, "runScript5": 0,
     "runScript6": 0, "runScript7": 0, "runScript8": 0, "runScript9": 0,
-    "runScript10": 0, "firefoxPreferences": 0, "addOns": 0,
-    "easyGesturesNPreferences": 0, "copyImageLocation": 0, "copyImage": 0,
-    "saveImageAs": 0, "hideImages": 0, "cut": 0, "copy": 0, "paste": 0,
-    "undo": 0, "redo": 0, "selectAll": false});
+    "runScript10": 0, "easyGesturesNPreferences": 0, "copyImageLocation": 0,
+    "copyImage": 0, "saveImageAs": 0, "hideImages": 0, "cut": 0, "copy": 0,
+    "paste": 0, "undo": 0, "redo": 0, "selectAll": false});
   let prefToImportArray = [["stats.actions"]];
   prefToImportArray[0][1] = statsActionsString;
   eGPrefs.importPrefsFromString(JSON.stringify(prefToImportArray))

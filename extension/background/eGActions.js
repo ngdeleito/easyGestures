@@ -841,15 +841,11 @@ var eGActions = {
   
   runScript9 : new RunScriptAction(9, false, "runScript10"),
   
-  runScript10 : new RunScriptAction(10, false, "firefoxPreferences"),
-  
-  firefoxPreferences : new DisabledAction("firefoxPreferences", true, "addOns"),
-  
-  addOns : new DisabledAction("addOns", false, "easyGesturesNPreferences"),
+  runScript10 : new RunScriptAction(10, false, "easyGesturesNPreferences"),
   
   easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
     eGUtils.showOrOpenTab("/options/options.html", "", true);
-  }, false, "copyImageLocation"),
+  }, true, "copyImageLocation"),
   
   copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
     function() {
