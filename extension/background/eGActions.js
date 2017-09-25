@@ -478,7 +478,13 @@ var eGActions = {
     return this._sendPerformActionMessage();
   }, false, "viewPageSource"),
   
-  viewPageSource : new DisabledAction("viewPageSource", false, "viewPageInfo"),
+  viewPageSource : new Action("viewPageSource", function() {
+    this._performOnCurrentTab(function(currentTab) {
+      browser.tabs.create({
+        url: "view-source:" + currentTab.url
+      });
+    });
+  }, false, "viewPageInfo"),
   
   viewPageInfo : new DisabledAction("viewPageInfo", false, "newTab"),
   
