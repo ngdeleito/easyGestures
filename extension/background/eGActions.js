@@ -484,9 +484,7 @@ var eGActions = {
         url: "view-source:" + currentTab.url
       });
     });
-  }, false, "viewPageInfo"),
-  
-  viewPageInfo : new DisabledAction("viewPageInfo", false, "newTab"),
+  }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
     browser.tabs.create({});

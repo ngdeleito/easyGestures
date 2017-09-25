@@ -30,7 +30,6 @@
   "savePageAs": { "message": "Guardar como..." },
   "printPage": { "message": "Imprimir..." },
   "viewPageSource": { "message": "Ver código fuente de la página" },
-  "viewPageInfo": { "message": "Ver información de la página" },
   
   "newTab": { "message": "Nueva pestaña" },
   "newBlankTab": { "message": "Nueva pestaña en blanco" },

@@ -30,7 +30,6 @@
   "savePageAs": { "message": "Enregistrer sous..." },
   "printPage": { "message": "Imprimer..." },
   "viewPageSource": { "message": "Afficher code source de la page" },
-  "viewPageInfo": { "message": "Afficher informations sur la page" },
   
   "newTab": { "message": "Nouvel onglet" },
   "newBlankTab": { "message": "Nouvel onglet en blanc" },

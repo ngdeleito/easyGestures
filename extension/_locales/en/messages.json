@@ -30,7 +30,6 @@
   "savePageAs": { "message": "Save page as..." },
   "printPage": { "message": "Print..." },
   "viewPageSource": { "message": "View page source" },
-  "viewPageInfo": { "message": "View page info" },
   
   "newTab": { "message": "New tab" },
   "newBlankTab": { "message": "New blank tab" },
