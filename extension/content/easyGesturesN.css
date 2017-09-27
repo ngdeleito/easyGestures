@@ -79,6 +79,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesMainMenusSign {
+  visibility: hidden;
   width: 3.85em; /* border-width and width for 3 children + space between 2 children */
 }
 
