@@ -1331,22 +1331,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .paste.selected:not(.disabled),
 #easyGesturesPieMenu_ln .paste.selected:not(.disabled) { background-position: -64px -1024px; }
 
-#easyGesturesPieMenu_nn .undo.disabled,
-#easyGesturesPieMenu_ln .undo.disabled { background-position: -96px -960px; }
-#easyGesturesPieMenu_nn .undo,
-#easyGesturesPieMenu_ln .undo,
-[data-action="undo"] { background-position: -96px -992px; }
-#easyGesturesPieMenu_nn .undo.selected:not(.disabled),
-#easyGesturesPieMenu_ln .undo.selected:not(.disabled) { background-position: -96px -1024px; }
-
-#easyGesturesPieMenu_nn .redo.disabled,
-#easyGesturesPieMenu_ln .redo.disabled { background-position: -96px -960px; transform: scaleX(-1); }
-#easyGesturesPieMenu_nn .redo,
-#easyGesturesPieMenu_ln .redo,
-[data-action="redo"] { background-position: -96px -992px; transform: scaleX(-1); }
-#easyGesturesPieMenu_nn .redo.selected:not(.disabled),
-#easyGesturesPieMenu_ln .redo.selected:not(.disabled) { background-position: -96px -1024px; transform: scaleX(-1); }
-
 #easyGesturesPieMenu_nn .selectAll.disabled,
 #easyGesturesPieMenu_ln .selectAll.disabled { background-position: -128px -960px; }
 #easyGesturesPieMenu_nn .selectAll,
@@ -1516,6 +1500,22 @@ div.runProgramFile10.selected:not(.disabled) { background-position: -416px -640p
 [data-action="addOns"] { background-position: -288px -608px; }
 #easyGesturesPieMenu_nn .addOns.selected:not(.disabled),
 #easyGesturesPieMenu_ln .addOns.selected:not(.disabled) { background-position: -288px -640px; }
+
+#easyGesturesPieMenu_nn .undo.disabled,
+#easyGesturesPieMenu_ln .undo.disabled { background-position: -96px -960px; }
+#easyGesturesPieMenu_nn .undo,
+#easyGesturesPieMenu_ln .undo,
+[data-action="undo"] { background-position: -96px -992px; }
+#easyGesturesPieMenu_nn .undo.selected:not(.disabled),
+#easyGesturesPieMenu_ln .undo.selected:not(.disabled) { background-position: -96px -1024px; }
+
+#easyGesturesPieMenu_nn .redo.disabled,
+#easyGesturesPieMenu_ln .redo.disabled { background-position: -96px -960px; transform: scaleX(-1); }
+#easyGesturesPieMenu_nn .redo,
+#easyGesturesPieMenu_ln .redo,
+[data-action="redo"] { background-position: -96px -992px; transform: scaleX(-1); }
+#easyGesturesPieMenu_nn .redo.selected:not(.disabled),
+#easyGesturesPieMenu_ln .redo.selected:not(.disabled) { background-position: -96px -1024px; transform: scaleX(-1); }
 */
 
 
@@ -2200,22 +2200,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .paste.selected:not(.disabled),
 #easyGesturesPieMenu_ls .paste.selected:not(.disabled) { background-position: -40px -640px; }
 
-#easyGesturesPieMenu_ns .undo.disabled,
-#easyGesturesPieMenu_ls .undo.disabled { background-position: -60px -600px; }
-.eG_undo, .eGOptions_undo::before,
-#easyGesturesPieMenu_ns .undo,
-#easyGesturesPieMenu_ls .undo { background-position: -60px -620px; }
-#easyGesturesPieMenu_ns .undo.selected:not(.disabled),
-#easyGesturesPieMenu_ls .undo.selected:not(.disabled) { background-position: -60px -640px; }
-
-#easyGesturesPieMenu_ns .redo.disabled,
-#easyGesturesPieMenu_ls .redo.disabled { background-position: -60px -600px; transform: scaleX(-1); }
-.eG_redo, .eGOptions_redo::before,
-#easyGesturesPieMenu_ns .redo,
-#easyGesturesPieMenu_ls .redo { background-position: -60px -620px; transform: scaleX(-1); }
-#easyGesturesPieMenu_ns .redo.selected:not(.disabled),
-#easyGesturesPieMenu_ls .redo.selected:not(.disabled) { background-position: -60px -640px; transform: scaleX(-1); }
-
 #easyGesturesPieMenu_ns .selectAll.disabled,
 #easyGesturesPieMenu_ls .selectAll.disabled { background-position: -80px -600px; }
 .eG_selectAll, .eGOptions_selectAll::before,
@@ -2408,4 +2392,20 @@ image.eG_runProgramFile10 { -moz-image-region: rect(380px 280px 400px 260px); }
 #easyGesturesPieMenu_ls .addOns { background-position: -180px -380px; }
 #easyGesturesPieMenu_ns .addOns.selected:not(.disabled),
 #easyGesturesPieMenu_ls .addOns.selected:not(.disabled) { background-position: -180px -400px; }
+
+#easyGesturesPieMenu_ns .undo.disabled,
+#easyGesturesPieMenu_ls .undo.disabled { background-position: -60px -600px; }
+.eG_undo, .eGOptions_undo::before,
+#easyGesturesPieMenu_ns .undo,
+#easyGesturesPieMenu_ls .undo { background-position: -60px -620px; }
+#easyGesturesPieMenu_ns .undo.selected:not(.disabled),
+#easyGesturesPieMenu_ls .undo.selected:not(.disabled) { background-position: -60px -640px; }
+
+#easyGesturesPieMenu_ns .redo.disabled,
+#easyGesturesPieMenu_ls .redo.disabled { background-position: -60px -600px; transform: scaleX(-1); }
+.eG_redo, .eGOptions_redo::before,
+#easyGesturesPieMenu_ns .redo,
+#easyGesturesPieMenu_ls .redo { background-position: -60px -620px; transform: scaleX(-1); }
+#easyGesturesPieMenu_ns .redo.selected:not(.disabled),
+#easyGesturesPieMenu_ls .redo.selected:not(.disabled) { background-position: -60px -640px; transform: scaleX(-1); }
 */

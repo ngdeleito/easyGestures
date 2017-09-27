@@ -132,7 +132,7 @@ var eGPrefs = {
         ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
         ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
         ["contextSelection", "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
-        ["contextTextbox",   "selectAll/redo/undo/cut/copy/empty/paste/empty/empty/empty"]
+        ["contextTextbox",   "selectAll/empty/empty/cut/copy/empty/paste/empty/empty/empty"]
       ];
       var extraMenus = [
         ["extra",     "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
@@ -523,7 +523,7 @@ var eGPrefs = {
   updateToV5_3: function() {
     var actionsToRemove = [
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
-      "firefoxPreferences", "addOns"
+      "firefoxPreferences", "addOns", "undo", "redo"
     ];
     var promises = [];
     promises.push(browser.storage.local.get([

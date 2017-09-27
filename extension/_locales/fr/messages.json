@@ -104,8 +104,6 @@
   "cut": { "message": "Couper" },
   "copy": { "message": "Copier" },
   "paste": { "message": "Coller" },
-  "undo": { "message": "Annuler" },
-  "redo": { "message": "Rétablir" },
   "selectAll": { "message": "Tout sélectionner" },
   
   

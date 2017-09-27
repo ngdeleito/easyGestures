@@ -880,11 +880,7 @@ var eGActions = {
     return new Promise(resolve => {
       resolve(!eGContext.inputElementExists);
     });
-  }, false, "undo"),
-  
-  undo : new DisabledAction("undo", false, "redo"),
-  
-  redo : new DisabledAction("redo", false, "selectAll"),
+  }, false, "selectAll"),
   
   selectAll : new Action("selectAll", function() {
     return this._sendPerformActionMessage();
