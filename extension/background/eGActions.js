@@ -706,9 +706,7 @@ var eGActions = {
     return new Promise(resolve => {
       resolve(eGContext.frameURL === null);
     });
-  }, false, "focusLocationBar"),
-  
-  focusLocationBar : new DisabledAction("focusLocationBar", false, "searchWeb"),
+  }, false, "searchWeb"),
   
   searchWeb : new DisabledAction("searchWeb", false, "openLink"),
   

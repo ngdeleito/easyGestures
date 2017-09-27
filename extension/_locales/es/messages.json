@@ -53,7 +53,6 @@
   "up": { "message": "Arriba" },
   "root": { "message": "Raíz" },
   "showOnlyThisFrame": { "message": "Mostrar sólo este marco" },
-  "focusLocationBar": { "message": "Seleccionar la barra de direcciones" },
   "searchWeb": { "message": "Buscar en la web" },
   
   "openLink": { "message": "Abrir enlace" },

@@ -989,14 +989,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .showOnlyThisFrame.selected:not(.disabled),
 #easyGesturesPieMenu_ln .showOnlyThisFrame.selected:not(.disabled) { background-position: -288px -928px; }
 
-#easyGesturesPieMenu_nn .focusLocationBar.disabled,
-#easyGesturesPieMenu_ln .focusLocationBar.disabled { background-position: -160px -576px; }
-#easyGesturesPieMenu_nn .focusLocationBar,
-#easyGesturesPieMenu_ln .focusLocationBar,
-[data-action="focusLocationBar"] { background-position: -160px -608px; }
-#easyGesturesPieMenu_nn .focusLocationBar.selected:not(.disabled),
-#easyGesturesPieMenu_ln .focusLocationBar.selected:not(.disabled) { background-position: -160px -640px; }
-
 #easyGesturesPieMenu_nn .searchWeb.disabled,
 #easyGesturesPieMenu_ln .searchWeb.disabled { background-position: -64px -576px; }
 #easyGesturesPieMenu_nn .searchWeb,
@@ -1396,6 +1388,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 [data-action="viewPageInfo"] { background-position: -256px -896px; }
 #easyGesturesPieMenu_nn .viewPageInfo.selected:not(.disabled),
 #easyGesturesPieMenu_ln .viewPageInfo.selected:not(.disabled) { background-position: -256px -928px; }
+
+#easyGesturesPieMenu_nn .focusLocationBar.disabled,
+#easyGesturesPieMenu_ln .focusLocationBar.disabled { background-position: -160px -576px; }
+#easyGesturesPieMenu_nn .focusLocationBar,
+#easyGesturesPieMenu_ln .focusLocationBar,
+[data-action="focusLocationBar"] { background-position: -160px -608px; }
+#easyGesturesPieMenu_nn .focusLocationBar.selected:not(.disabled),
+#easyGesturesPieMenu_ln .focusLocationBar.selected:not(.disabled) { background-position: -160px -640px; }
 
 #easyGesturesPieMenu_nn .quit.disabled,
 #easyGesturesPieMenu_ln .quit.disabled { background-position: -96px -384px; }
@@ -1858,14 +1858,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .showOnlyThisFrame.selected:not(.disabled),
 #easyGesturesPieMenu_ls .showOnlyThisFrame.selected:not(.disabled) { background-position: -180px -580px; }
 
-#easyGesturesPieMenu_ns .focusLocationBar.disabled,
-#easyGesturesPieMenu_ls .focusLocationBar.disabled { background-position: -100px -360px; }
-.eG_focusLocationBar, .eGOptions_focusLocationBar::before,
-#easyGesturesPieMenu_ns .focusLocationBar,
-#easyGesturesPieMenu_ls .focusLocationBar { background-position: -100px -380px; }
-#easyGesturesPieMenu_ns .focusLocationBar.selected:not(.disabled),
-#easyGesturesPieMenu_ls .focusLocationBar.selected:not(.disabled) { background-position: -100px -400px; }
-
 #easyGesturesPieMenu_ns .searchWeb.disabled,
 #easyGesturesPieMenu_ls .searchWeb.disabled { background-position: -40px -360px; }
 .eG_searchWeb, .eGOptions_searchWeb::before,
@@ -2266,6 +2258,14 @@ image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
 #easyGesturesPieMenu_ls .viewPageInfo { background-position: -160px -560px; }
 #easyGesturesPieMenu_ns .viewPageInfo.selected:not(.disabled),
 #easyGesturesPieMenu_ls .viewPageInfo.selected:not(.disabled) { background-position: -160px -580px; }
+
+#easyGesturesPieMenu_ns .focusLocationBar.disabled,
+#easyGesturesPieMenu_ls .focusLocationBar.disabled { background-position: -100px -360px; }
+.eG_focusLocationBar, .eGOptions_focusLocationBar::before,
+#easyGesturesPieMenu_ns .focusLocationBar,
+#easyGesturesPieMenu_ls .focusLocationBar { background-position: -100px -380px; }
+#easyGesturesPieMenu_ns .focusLocationBar.selected:not(.disabled),
+#easyGesturesPieMenu_ls .focusLocationBar.selected:not(.disabled) { background-position: -100px -400px; }
 
 #easyGesturesPieMenu_ns .quit.disabled,
 #easyGesturesPieMenu_ls .quit.disabled { background-position: -60px -240px; }
