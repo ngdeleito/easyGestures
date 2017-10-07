@@ -531,11 +531,15 @@ var eGPrefs = {
       "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",
       "menus.contextImage", "menus.contextSelection", "menus.contextTextbox"
     ]).then(prefs => {
-      actionsToRemove.forEach(actionName => {
-        for (let pref in prefs) {
-          prefs[pref] = prefs[pref].replace(actionName, "empty");
+      for (let pref in prefs) {
+        let prefArray = prefs[pref].split("/");
+        for (let i=0; i < prefArray.length; ++i) {
+          if (actionsToRemove.includes(prefArray[i])) {
+            prefArray[i] = "empty";
+          }
         }
-      });
+        prefs[pref] = prefArray.join("/");
+      }
       return browser.storage.local.set(prefs);
     }));
     promises.push(this.getPref("stats.actions").then(prefValue => {
