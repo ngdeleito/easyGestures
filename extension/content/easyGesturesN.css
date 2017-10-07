@@ -862,6 +862,22 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .newBlankTab.selected:not(.disabled),
 #easyGesturesPieMenu_ln .newBlankTab.selected:not(.disabled) { background-position: 0px -352px; }
 
+#easyGesturesPieMenu_nn .moveTabToNewWindow.disabled,
+#easyGesturesPieMenu_ln .moveTabToNewWindow.disabled { background-position: -256px -576px; }
+#easyGesturesPieMenu_nn .moveTabToNewWindow,
+#easyGesturesPieMenu_ln .moveTabToNewWindow,
+[data-action="moveTabToNewWindow"] { background-position: -256px -608px; }
+#easyGesturesPieMenu_nn .moveTabToNewWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ln .moveTabToNewWindow.selected:not(.disabled) { background-position: -256px -640px; }
+
+#easyGesturesPieMenu_nn .loadURLInNewPrivateWindow.disabled,
+#easyGesturesPieMenu_ln .loadURLInNewPrivateWindow.disabled { background-position: -288px -576px; }
+#easyGesturesPieMenu_nn .loadURLInNewPrivateWindow,
+#easyGesturesPieMenu_ln .loadURLInNewPrivateWindow,
+[data-action="loadURLInNewPrivateWindow"] { background-position: -288px -608px; }
+#easyGesturesPieMenu_nn .loadURLInNewPrivateWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ln .loadURLInNewPrivateWindow.selected:not(.disabled) { background-position: -288px -640px; }
+
 #easyGesturesPieMenu_nn .duplicateTab.disabled,
 #easyGesturesPieMenu_ln .duplicateTab.disabled { background-position: -32px -288px; }
 #easyGesturesPieMenu_nn .duplicateTab,
@@ -1486,22 +1502,6 @@ div.runProgramFile10.disabled { background-position: -416px -576px; }
 div.runProgramFile10 { background-position: -416px -608px; }
 div.runProgramFile10.selected:not(.disabled) { background-position: -416px -640px; }
 
-#easyGesturesPieMenu_nn .firefoxPreferences.disabled,
-#easyGesturesPieMenu_ln .firefoxPreferences.disabled { background-position: -256px -576px; }
-#easyGesturesPieMenu_nn .firefoxPreferences,
-#easyGesturesPieMenu_ln .firefoxPreferences,
-[data-action="firefoxPreferences"] { background-position: -256px -608px; }
-#easyGesturesPieMenu_nn .firefoxPreferences.selected:not(.disabled),
-#easyGesturesPieMenu_ln .firefoxPreferences.selected:not(.disabled) { background-position: -256px -640px; }
-
-#easyGesturesPieMenu_nn .addOns.disabled,
-#easyGesturesPieMenu_ln .addOns.disabled { background-position: -288px -576px; }
-#easyGesturesPieMenu_nn .addOns,
-#easyGesturesPieMenu_ln .addOns,
-[data-action="addOns"] { background-position: -288px -608px; }
-#easyGesturesPieMenu_nn .addOns.selected:not(.disabled),
-#easyGesturesPieMenu_ln .addOns.selected:not(.disabled) { background-position: -288px -640px; }
-
 #easyGesturesPieMenu_nn .undo.disabled,
 #easyGesturesPieMenu_ln .undo.disabled { background-position: -96px -960px; }
 #easyGesturesPieMenu_nn .undo,
@@ -1730,6 +1730,22 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .newBlankTab { background-position: 0px -200px; }
 #easyGesturesPieMenu_ns .newBlankTab.selected:not(.disabled),
 #easyGesturesPieMenu_ls .newBlankTab.selected:not(.disabled) { background-position: 0px -220px; }
+
+#easyGesturesPieMenu_ns .moveTabToNewWindow.disabled,
+#easyGesturesPieMenu_ls .moveTabToNewWindow.disabled { background-position: -160px -360px; }
+.eG_moveTabToNewWindow, .eGOptions_moveTabToNewWindow::before,
+#easyGesturesPieMenu_ns .moveTabToNewWindow,
+#easyGesturesPieMenu_ls .moveTabToNewWindow { background-position: -160px -380px; }
+#easyGesturesPieMenu_ns .moveTabToNewWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ls .moveTabToNewWindow.selected:not(.disabled) { background-position: -160px -400px; }
+
+#easyGesturesPieMenu_ns .loadURLInNewPrivateWindow.disabled,
+#easyGesturesPieMenu_ls .loadURLInNewPrivateWindow.disabled { background-position: -180px -360px; }
+.eG_loadURLInNewPrivateWindow, .eGOptions_loadURLInNewPrivateWindow::before,
+#easyGesturesPieMenu_ns .loadURLInNewPrivateWindow,
+#easyGesturesPieMenu_ls .loadURLInNewPrivateWindow { background-position: -180px -380px; }
+#easyGesturesPieMenu_ns .loadURLInNewPrivateWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ls .loadURLInNewPrivateWindow.selected:not(.disabled) { background-position: -180px -400px; }
 
 #easyGesturesPieMenu_ns .duplicateTab.disabled,
 #easyGesturesPieMenu_ls .duplicateTab.disabled { background-position: -20px -180px; }
@@ -2377,22 +2393,6 @@ div.runProgramFile10.disabled { background-position: -260px -360px; }
 div.runProgramFile10 { background-position: -260px -380px; }
 div.runProgramFile10.selected:not(.disabled) { background-position: -260px -400px; }
 image.eG_runProgramFile10 { -moz-image-region: rect(380px 280px 400px 260px); }
-
-#easyGesturesPieMenu_ns .firefoxPreferences.disabled,
-#easyGesturesPieMenu_ls .firefoxPreferences.disabled { background-position: -160px -360px; }
-.eG_firefoxPreferences, .eGOptions_firefoxPreferences::before,
-#easyGesturesPieMenu_ns .firefoxPreferences,
-#easyGesturesPieMenu_ls .firefoxPreferences { background-position: -160px -380px; }
-#easyGesturesPieMenu_ns .firefoxPreferences.selected:not(.disabled),
-#easyGesturesPieMenu_ls .firefoxPreferences.selected:not(.disabled) { background-position: -160px -400px; }
-
-#easyGesturesPieMenu_ns .addOns.disabled,
-#easyGesturesPieMenu_ls .addOns.disabled { background-position: -180px -360px; }
-.eG_addOns, .eGOptions_addOns::before,
-#easyGesturesPieMenu_ns .addOns,
-#easyGesturesPieMenu_ls .addOns { background-position: -180px -380px; }
-#easyGesturesPieMenu_ns .addOns.selected:not(.disabled),
-#easyGesturesPieMenu_ls .addOns.selected:not(.disabled) { background-position: -180px -400px; }
 
 #easyGesturesPieMenu_ns .undo.disabled,
 #easyGesturesPieMenu_ls .undo.disabled { background-position: -60px -600px; }

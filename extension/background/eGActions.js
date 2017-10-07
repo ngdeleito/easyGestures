@@ -523,6 +523,21 @@ var eGActions = {
     browser.tabs.create({
       url: "about:blank"
     });
+  }, false, "moveTabToNewWindow"),
+  
+  moveTabToNewWindow: new Action("moveTabToNewWindow", function() {
+    this._performOnCurrentTab(function(currentTab) {
+      browser.windows.create({
+        tabId: currentTab.id
+      });
+    });
+  }, false, "loadURLInNewPrivateWindow"),
+  
+  loadURLInNewPrivateWindow: new Action("loadURLInNewPrivateWindow", function() {
+    browser.windows.create({
+      incognito: true,
+      url: eGContext.pageURL
+    });
   }, false, "duplicateTab"),
   
   duplicateTab : new Action("duplicateTab", function() {

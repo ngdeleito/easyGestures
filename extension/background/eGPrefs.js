@@ -526,7 +526,8 @@ var eGPrefs = {
       "firefoxPreferences", "addOns", "undo", "redo"
     ];
     var actionsToAdd = [
-      "copyPageURL", "copyURLToIdentifier",
+      "copyPageURL", "copyURLToIdentifier", "moveTabToNewWindow",
+      "loadURLInNewPrivateWindow",
     ];
     var promises = [];
     promises.push(browser.storage.local.get([
