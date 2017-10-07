@@ -42,6 +42,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- DocumentContainsImagesDisableableAction
 //  |-- DisableableAction
 //       ^
+//       |-- URLToIdentifierExistsDisableableAction
 //       |-- OtherTabsExistDisableableAction
 //       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
@@ -174,6 +175,16 @@ DisableableAction.prototype.getActionStatus = function() {
     status: this._isDisabled()
   };
 };
+
+function URLToIdentifierExistsDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return new Promise(resolve => {
+      resolve(eGContext.urlToIdentifier === "");
+    });
+  }, startsNewGroup, nextAction);
+}
+URLToIdentifierExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
+URLToIdentifierExistsDisableableAction.prototype.constructor = URLToIdentifierExistsDisableableAction;
 
 function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -396,7 +407,25 @@ var eGActions = {
     });
   }, false, "homepage"),
   
-  homepage : new DisabledAction("homepage", false, "pageTop"),
+  homepage : new DisabledAction("homepage", false, "copyPageURL"),
+  
+  copyPageURL: new Action("copyPageURL", function() {
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.pageURL
+      }
+    };
+  }, true, "copyURLToIdentifier"),
+  
+  copyURLToIdentifier: new URLToIdentifierExistsDisableableAction("copyURLToIdentifier", function() {
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.urlToIdentifier
+      }
+    };
+  }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
@@ -404,7 +433,7 @@ var eGActions = {
     return new Promise(resolve => {
       resolve(eGContext.frameScrollY === 0 && eGContext.windowScrollY === 0);
     });
-  }, true, "pageBottom"),
+  }, false, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
     return this._sendPerformActionMessage();

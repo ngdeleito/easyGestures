@@ -20,6 +20,8 @@
   "reload": { "message": "Recargar" },
   "homepage": { "message": "Página de inicio" },
   
+  "copyPageURL": { "message": "Copiar la dirección de la página" },
+  "copyURLToIdentifier": { "message": "Copiar la dirección del identificador" },
   "pageTop": { "message": "Subir en página" },
   "pageBottom": { "message": "Bajar en página" },
   "zoomIn": { "message": "Aumentar el tamaño" },

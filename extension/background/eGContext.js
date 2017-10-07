@@ -35,6 +35,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported eGContext */
 
 var eGContext = {
+  pageURL: "",
+  urlToIdentifier: "",
+  
   selection: null,
   anchorElementExists: false,
   anchorElementHREF: null,

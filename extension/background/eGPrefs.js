@@ -525,6 +525,9 @@ var eGPrefs = {
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
       "firefoxPreferences", "addOns", "undo", "redo"
     ];
+    var actionsToAdd = [
+      "copyPageURL", "copyURLToIdentifier",
+    ];
     var promises = [];
     promises.push(browser.storage.local.get([
       "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
@@ -546,6 +549,9 @@ var eGPrefs = {
       var actionsStats = JSON.parse(prefValue);
       actionsToRemove.forEach(actionName => {
         delete actionsStats[actionName];
+      });
+      actionsToAdd.forEach(actionName => {
+        actionsStats[actionName] = 0;
       });
       return browser.storage.local.set({
         "stats.actions": JSON.stringify(actionsStats)

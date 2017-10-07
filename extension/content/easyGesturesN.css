@@ -750,6 +750,22 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .homepage.selected:not(.disabled),
 #easyGesturesPieMenu_ln .homepage.selected:not(.disabled) { background-position: 0px -640px; }
 
+#easyGesturesPieMenu_nn .copyPageURL.disabled,
+#easyGesturesPieMenu_ln .copyPageURL.disabled { background-position: -160px -576px; }
+#easyGesturesPieMenu_nn .copyPageURL,
+#easyGesturesPieMenu_ln .copyPageURL,
+[data-action="copyPageURL"] { background-position: -160px -608px; }
+#easyGesturesPieMenu_nn .copyPageURL.selected:not(.disabled),
+#easyGesturesPieMenu_ln .copyPageURL.selected:not(.disabled) { background-position: -160px -640px; }
+
+#easyGesturesPieMenu_nn .copyURLToIdentifier.disabled,
+#easyGesturesPieMenu_ln .copyURLToIdentifier.disabled { background-position: -128px -576px; }
+#easyGesturesPieMenu_nn .copyURLToIdentifier,
+#easyGesturesPieMenu_ln .copyURLToIdentifier,
+[data-action="copyURLToIdentifier"] { background-position: -128px -608px; }
+#easyGesturesPieMenu_nn .copyURLToIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ln .copyURLToIdentifier.selected:not(.disabled) { background-position: -128px -640px; }
+
 #easyGesturesPieMenu_nn .pageTop.disabled,
 #easyGesturesPieMenu_ln .pageTop.disabled { background-position: -128px -192px; }
 #easyGesturesPieMenu_nn .pageTop,
@@ -1374,14 +1390,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .viewPageInfo.selected:not(.disabled),
 #easyGesturesPieMenu_ln .viewPageInfo.selected:not(.disabled) { background-position: -256px -928px; }
 
-#easyGesturesPieMenu_nn .focusLocationBar.disabled,
-#easyGesturesPieMenu_ln .focusLocationBar.disabled { background-position: -160px -576px; }
-#easyGesturesPieMenu_nn .focusLocationBar,
-#easyGesturesPieMenu_ln .focusLocationBar,
-[data-action="focusLocationBar"] { background-position: -160px -608px; }
-#easyGesturesPieMenu_nn .focusLocationBar.selected:not(.disabled),
-#easyGesturesPieMenu_ln .focusLocationBar.selected:not(.disabled) { background-position: -160px -640px; }
-
 #easyGesturesPieMenu_nn .quit.disabled,
 #easyGesturesPieMenu_ln .quit.disabled { background-position: -96px -384px; }
 #easyGesturesPieMenu_nn .quit,
@@ -1389,14 +1397,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 [data-action="quit"] { background-position: -96px -416px; }
 #easyGesturesPieMenu_nn .quit.selected:not(.disabled),
 #easyGesturesPieMenu_ln .quit.selected:not(.disabled) { background-position: -96px -448px; }
-
-#easyGesturesPieMenu_nn .restart.disabled,
-#easyGesturesPieMenu_ln .restart.disabled { background-position: -128px -576px; }
-#easyGesturesPieMenu_nn .restart,
-#easyGesturesPieMenu_ln .restart,
-[data-action="restart"] { background-position: -128px -608px; }
-#easyGesturesPieMenu_nn .restart.selected:not(.disabled),
-#easyGesturesPieMenu_ln .restart.selected:not(.disabled) { background-position: -128px -640px; }
 
 div.markVisitedLinks.disabled { background-position: 0px -864px; }
 div.markVisitedLinks { background-position: 0px -896px; }
@@ -1618,6 +1618,22 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .homepage { background-position: 0px -380px; }
 #easyGesturesPieMenu_ns .homepage.selected:not(.disabled),
 #easyGesturesPieMenu_ls .homepage.selected:not(.disabled) { background-position: 0px -400px; }
+
+#easyGesturesPieMenu_ns .copyPageURL.disabled,
+#easyGesturesPieMenu_ls .copyPageURL.disabled { background-position: -100px -360px; }
+.eG_copyPageURL, .eGOptions_copyPageURL::before,
+#easyGesturesPieMenu_ns .copyPageURL,
+#easyGesturesPieMenu_ls .copyPageURL { background-position: -100px -380px; }
+#easyGesturesPieMenu_ns .copyPageURL.selected:not(.disabled),
+#easyGesturesPieMenu_ls .copyPageURL.selected:not(.disabled) { background-position: -100px -400px; }
+
+#easyGesturesPieMenu_ns .copyURLToIdentifier.disabled,
+#easyGesturesPieMenu_ls .copyURLToIdentifier.disabled { background-position: -80px -360px; }
+.eG_copyURLToIdentifier, .eGOptions_copyURLToIdentifier::before,
+#easyGesturesPieMenu_ns .copyURLToIdentifier,
+#easyGesturesPieMenu_ls .copyURLToIdentifier { background-position: -80px -380px; }
+#easyGesturesPieMenu_ns .copyURLToIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ls .copyURLToIdentifier.selected:not(.disabled) { background-position: -80px -400px; }
 
 #easyGesturesPieMenu_ns .pageTop.disabled,
 #easyGesturesPieMenu_ls .pageTop.disabled { background-position: -80px -120px; }
@@ -2244,14 +2260,6 @@ image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
 #easyGesturesPieMenu_ns .viewPageInfo.selected:not(.disabled),
 #easyGesturesPieMenu_ls .viewPageInfo.selected:not(.disabled) { background-position: -160px -580px; }
 
-#easyGesturesPieMenu_ns .focusLocationBar.disabled,
-#easyGesturesPieMenu_ls .focusLocationBar.disabled { background-position: -100px -360px; }
-.eG_focusLocationBar, .eGOptions_focusLocationBar::before,
-#easyGesturesPieMenu_ns .focusLocationBar,
-#easyGesturesPieMenu_ls .focusLocationBar { background-position: -100px -380px; }
-#easyGesturesPieMenu_ns .focusLocationBar.selected:not(.disabled),
-#easyGesturesPieMenu_ls .focusLocationBar.selected:not(.disabled) { background-position: -100px -400px; }
-
 #easyGesturesPieMenu_ns .quit.disabled,
 #easyGesturesPieMenu_ls .quit.disabled { background-position: -60px -240px; }
 .eG_quit, .eGOptions_quit::before,
@@ -2259,14 +2267,6 @@ image.eG_moreDropDownMenu { -moz-image-region: rect(20px 60px 40px 40px); }
 #easyGesturesPieMenu_ls .quit { background-position: -60px -260px; }
 #easyGesturesPieMenu_ns .quit.selected:not(.disabled),
 #easyGesturesPieMenu_ls .quit.selected:not(.disabled) { background-position: -60px -280px; }
-
-#easyGesturesPieMenu_ns .restart.disabled,
-#easyGesturesPieMenu_ls .restart.disabled { background-position: -80px -360px; }
-.eG_restart, .eGOptions_restart::before,
-#easyGesturesPieMenu_ns .restart,
-#easyGesturesPieMenu_ls .restart { background-position: -80px -380px; }
-#easyGesturesPieMenu_ns .restart.selected:not(.disabled),
-#easyGesturesPieMenu_ls .restart.selected:not(.disabled) { background-position: -80px -400px; }
 
 div.markVisitedLinks.disabled { background-position: 0px -540px; }
 div.markVisitedLinks { background-position: 0px -560px; }

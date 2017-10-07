@@ -35,7 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported removeMenuEventHandler, handleMousemove */
-/* global browser, eGPieMenu, addEventListener, window, MouseEvent */
+/* global browser, eGPieMenu, addEventListener, window, document, MouseEvent */
 
 var selection, contextualMenus, anchorElement, imageElement, inputElement,
     iframeElement;
@@ -201,6 +201,17 @@ function setContext(anHTMLElement, currentSelection) {
   return [selection, contextualMenus, anchorElement, imageElement, inputElement];
 }
 
+function findNearestIDAttribute(anHTMLElement) {
+  var currentElement = anHTMLElement;
+  while (currentElement.parentElement !== null &&
+         currentElement.previousElementSibling === null &&
+         currentElement.nextElementSibling === null &&
+         currentElement.id === "") {
+    currentElement = currentElement.parentElement;
+  }
+  return currentElement.id;
+}
+
 function handleMousedown(anEvent) {
   // check whether pie menu should change layout or hide (later)
   if (eGPieMenu.isShown()) {
@@ -223,6 +234,7 @@ function handleMousedown(anEvent) {
   [selection, contextualMenus, anchorElement, imageElement, inputElement] =
     setContext(anEvent.target, selection);
   
+  let elementID = findNearestIDAttribute(anEvent.target);
   eGPieMenu.centerX = anEvent.clientX;
   eGPieMenu.centerY = anEvent.clientY;
   iframeElement = undefined;
@@ -238,6 +250,8 @@ function handleMousedown(anEvent) {
   browser.runtime.sendMessage({
     messageName: "setContextAndFocusCurrentWindow",
     context: {
+      pageURL: document.documentURI,
+      urlToIdentifier: elementID === "" ? "" : document.documentURI + "#" + elementID,
       selection: selection,
       anchorElementExists: anchorElement !== null,
       anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
