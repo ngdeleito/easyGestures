@@ -527,7 +527,7 @@ var eGPrefs = {
     ];
     var actionsToAdd = [
       "copyPageURL", "copyURLToIdentifier", "moveTabToNewWindow",
-      "loadURLInNewPrivateWindow",
+      "loadURLInNewPrivateWindow", "bookmarkThisIdentifier",
     ];
     var promises = [];
     promises.push(browser.storage.local.get([

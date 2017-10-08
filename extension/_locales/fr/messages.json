@@ -67,6 +67,7 @@
   
   "dailyReadings": { "message": "Lectures quotidiennes" },
   "bookmarkThisPage": { "message": "Marquer cette page" },
+  "bookmarkThisIdentifier": { "message": "Marquer cet identificateur" },
   "bookmarkThisLink": { "message": "Marque-page sur ce lien" },
   "bookmarkOpenTabs": { "message": "Marquer tous les onglets" },
   "showBookmarks": { "message": "Afficher tous les marque-pages" },

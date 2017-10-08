@@ -806,6 +806,15 @@ var eGActions = {
         return foundBookmarks.length > 0;
       });
     });
+  }, false, "bookmarkThisIdentifier"),
+  
+  bookmarkThisIdentifier: new URLToIdentifierExistsDisableableAction("bookmarkThisIdentifier", function() {
+    this._performOnCurrentTab(function(currentTab) {
+      browser.bookmarks.create({
+        title: currentTab.title,
+        url: eGContext.urlToIdentifier
+      });
+    });
   }, false, "bookmarkThisLink"),
   
   bookmarkThisLink : new DisableableAction("bookmarkThisLink", function() {

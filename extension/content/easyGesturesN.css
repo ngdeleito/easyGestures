@@ -1086,6 +1086,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .bookmarkThisPage.selected:not(.disabled),
 #easyGesturesPieMenu_ln .bookmarkThisPage.selected:not(.disabled) { background-position: -64px -928px; }
 
+#easyGesturesPieMenu_nn .bookmarkThisIdentifier.disabled,
+#easyGesturesPieMenu_ln .bookmarkThisIdentifier.disabled { background-position: -352px -576px; }
+#easyGesturesPieMenu_nn .bookmarkThisIdentifier,
+#easyGesturesPieMenu_ln .bookmarkThisIdentifier,
+[data-action="bookmarkThisIdentifier"] { background-position: -352px -608px; }
+#easyGesturesPieMenu_nn .bookmarkThisIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ln .bookmarkThisIdentifier.selected:not(.disabled) { background-position: -352px -640px; }
+
 #easyGesturesPieMenu_nn .bookmarkThisLink.disabled,
 #easyGesturesPieMenu_ln .bookmarkThisLink.disabled { background-position: -32px -864px; }
 #easyGesturesPieMenu_nn .bookmarkThisLink,
@@ -1954,6 +1962,14 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .bookmarkThisPage { background-position: -40px -560px; }
 #easyGesturesPieMenu_ns .bookmarkThisPage.selected:not(.disabled),
 #easyGesturesPieMenu_ls .bookmarkThisPage.selected:not(.disabled) { background-position: -40px -580px; }
+
+#easyGesturesPieMenu_ns .bookmarkThisIdentifier.disabled,
+#easyGesturesPieMenu_ls .bookmarkThisIdentifier.disabled { background-position: -220px -360px; }
+.eG_bookmarkThisIdentifier, .eGOptions_bookmarkThisIdentifier::before,
+#easyGesturesPieMenu_ns .bookmarkThisIdentifier,
+#easyGesturesPieMenu_ls .bookmarkThisIdentifier { background-position: -220px -380px; }
+#easyGesturesPieMenu_ns .bookmarkThisIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ls .bookmarkThisIdentifier.selected:not(.disabled) { background-position: -220px -400px; }
 
 #easyGesturesPieMenu_ns .bookmarkThisLink.disabled,
 #easyGesturesPieMenu_ls .bookmarkThisLink.disabled { background-position: -20px -540px; }
