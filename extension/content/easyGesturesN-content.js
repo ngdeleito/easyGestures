@@ -251,7 +251,10 @@ function handleMousedown(anEvent) {
     messageName: "setContextAndFocusCurrentWindow",
     context: {
       pageURL: document.documentURI,
-      urlToIdentifier: elementID === "" ? "" : document.documentURI + "#" + elementID,
+      urlToIdentifier:
+        elementID === "" ? ""
+                         : document.location.origin +
+                           document.location.pathname + "#" + elementID,
       selection: selection,
       anchorElementExists: anchorElement !== null,
       anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
