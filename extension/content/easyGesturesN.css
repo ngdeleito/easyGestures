@@ -1110,6 +1110,30 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .bookmarkOpenTabs.selected:not(.disabled),
 #easyGesturesPieMenu_ln .bookmarkOpenTabs.selected:not(.disabled) { background-position: -96px -928px; }
 
+#easyGesturesPieMenu_nn .removeBookmarkToThisPage.disabled,
+#easyGesturesPieMenu_ln .removeBookmarkToThisPage.disabled { background-position: -384px -576px; }
+#easyGesturesPieMenu_nn .removeBookmarkToThisPage,
+#easyGesturesPieMenu_ln .removeBookmarkToThisPage,
+[data-action="removeBookmarkToThisPage"] { background-position: -384px -608px; }
+#easyGesturesPieMenu_nn .removeBookmarkToThisPage.selected:not(.disabled),
+#easyGesturesPieMenu_ln .removeBookmarkToThisPage.selected:not(.disabled) { background-position: -384px -640px; }
+
+#easyGesturesPieMenu_nn .removeBookmarkToThisIdentifier.disabled,
+#easyGesturesPieMenu_ln .removeBookmarkToThisIdentifier.disabled { background-position: -416px -576px; }
+#easyGesturesPieMenu_nn .removeBookmarkToThisIdentifier,
+#easyGesturesPieMenu_ln .removeBookmarkToThisIdentifier,
+[data-action="removeBookmarkToThisIdentifier"] { background-position: -416px -608px; }
+#easyGesturesPieMenu_nn .removeBookmarkToThisIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ln .removeBookmarkToThisIdentifier.selected:not(.disabled) { background-position: -416px -640px; }
+
+#easyGesturesPieMenu_nn .removeBookmarkToThisLink.disabled,
+#easyGesturesPieMenu_ln .removeBookmarkToThisLink.disabled { background-position: 0px -768px; }
+#easyGesturesPieMenu_nn .removeBookmarkToThisLink,
+#easyGesturesPieMenu_ln .removeBookmarkToThisLink,
+[data-action="removeBookmarkToThisLink"] { background-position: 0px -800px; }
+#easyGesturesPieMenu_nn .removeBookmarkToThisLink.selected:not(.disabled),
+#easyGesturesPieMenu_ln .removeBookmarkToThisLink.selected:not(.disabled) { background-position: 0px -832px; }
+
 #easyGesturesPieMenu_nn .showBookmarks.disabled,
 #easyGesturesPieMenu_ln .showBookmarks.disabled { background-position: -160px -864px; }
 #easyGesturesPieMenu_nn .showBookmarks,
@@ -1986,6 +2010,30 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .bookmarkOpenTabs { background-position: -60px -560px; }
 #easyGesturesPieMenu_ns .bookmarkOpenTabs.selected:not(.disabled),
 #easyGesturesPieMenu_ls .bookmarkOpenTabs.selected:not(.disabled) { background-position: -60px -580px; }
+
+#easyGesturesPieMenu_ns .removeBookmarkToThisPage.disabled,
+#easyGesturesPieMenu_ls .removeBookmarkToThisPage.disabled { background-position: -240px -360px; }
+.eG_removeBookmarkToThisPage, .eGOptions_removeBookmarkToThisPage::before,
+#easyGesturesPieMenu_ns .removeBookmarkToThisPage,
+#easyGesturesPieMenu_ls .removeBookmarkToThisPage { background-position: -240px -380px; }
+#easyGesturesPieMenu_ns .removeBookmarkToThisPage.selected:not(.disabled),
+#easyGesturesPieMenu_ls .removeBookmarkToThisPage.selected:not(.disabled) { background-position: -240px -400px; }
+
+#easyGesturesPieMenu_ns .removeBookmarkToThisIdentifier.disabled,
+#easyGesturesPieMenu_ls .removeBookmarkToThisIdentifier.disabled { background-position: -260px -360px; }
+.eG_removeBookmarkToThisIdentifier, .eGOptions_removeBookmarkToThisIdentifier::before,
+#easyGesturesPieMenu_ns .removeBookmarkToThisIdentifier,
+#easyGesturesPieMenu_ls .removeBookmarkToThisIdentifier { background-position: -260px -380px; }
+#easyGesturesPieMenu_ns .removeBookmarkToThisIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ls .removeBookmarkToThisIdentifier.selected:not(.disabled) { background-position: -260px -400px; }
+
+#easyGesturesPieMenu_ns .removeBookmarkToThisLink.disabled,
+#easyGesturesPieMenu_ls .removeBookmarkToThisLink.disabled { background-position: 0px -480px; }
+.eG_removeBookmarkToThisLink, .eGOptions_removeBookmarkToThisLink::before,
+#easyGesturesPieMenu_ns .removeBookmarkToThisLink,
+#easyGesturesPieMenu_ls .removeBookmarkToThisLink { background-position: 0px -500px; }
+#easyGesturesPieMenu_ns .removeBookmarkToThisLink.selected:not(.disabled),
+#easyGesturesPieMenu_ls .removeBookmarkToThisLink.selected:not(.disabled) { background-position: 0px -520px; }
 
 #easyGesturesPieMenu_ns .showBookmarks.disabled,
 #easyGesturesPieMenu_ls .showBookmarks.disabled { background-position: -100px -540px; }

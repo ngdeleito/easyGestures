@@ -528,6 +528,8 @@ var eGPrefs = {
     var actionsToAdd = [
       "copyPageURL", "copyURLToIdentifier", "moveTabToNewWindow",
       "loadURLInNewPrivateWindow", "bookmarkThisIdentifier",
+      "removeBookmarkToThisPage", "removeBookmarkToThisIdentifier",
+      "removeBookmarkToThisLink"
     ];
     var promises = [];
     promises.push(browser.storage.local.get([

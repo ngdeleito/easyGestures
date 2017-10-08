@@ -844,6 +844,54 @@ var eGActions = {
         });
       });
     });
+  }, false, "removeBookmarkToThisPage"),
+  
+  removeBookmarkToThisPage: new DisableableAction("removeBookmarkToThisPage", function() {
+    browser.bookmarks.search({
+      url: eGContext.pageURL
+    }).then(foundBookmarks => {
+      browser.bookmarks.remove(foundBookmarks[0].id);
+    });
+  }, function() {
+    return browser.bookmarks.search({
+      url: eGContext.pageURL
+    }).then(foundBookmarks => {
+      return foundBookmarks.length === 0;
+    });
+  }, false, "removeBookmarkToThisIdentifier"),
+  
+  removeBookmarkToThisIdentifier: new DisableableAction("removeBookmarkToThisIdentifier", function() {
+    browser.bookmarks.search({
+      url: eGContext.urlToIdentifier
+    }).then(foundBookmarks => {
+      browser.bookmarks.remove(foundBookmarks[0].id);
+    });
+  }, function() {
+    return eGContext.urlToIdentifier === "" ? new Promise(resolve => {
+                                                resolve(true);
+                                              })
+                                            : browser.bookmarks.search({
+                                                url: eGContext.urlToIdentifier
+                                              }).then(foundBookmarks => {
+                                                return foundBookmarks.length === 0;
+                                              });
+  }, false, "removeBookmarkToThisLink"),
+  
+  removeBookmarkToThisLink: new DisableableAction("removeBookmarkToThisLink", function() {
+    browser.bookmarks.search({
+      url: eGContext.anchorElementHREF
+    }).then(foundBookmarks => {
+      browser.bookmarks.remove(foundBookmarks[0].id);
+    });
+  }, function() {
+    return eGContext.anchorElementExists ? browser.bookmarks.search({
+                                             url: eGContext.anchorElementHREF
+                                           }).then(foundBookmarks => {
+                                             return foundBookmarks.length === 0;
+                                           })
+                                         : new Promise(resolve => {
+                                             resolve(true);
+                                           });
   }, false, "showBookmarks"),
   
   showBookmarks : new DisabledAction("showBookmarks", false, "toggleBookmarksSidebar"),
