@@ -200,9 +200,9 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return this._performOnCurrentTab(function(currentTab) {
-      let url = new URL(currentTab.url);
-      return url.pathname === "/";
+    return new Promise(resolve => {
+      let url = new URL(eGContext.pageURL);
+      resolve(url.pathname === "/");
     });
   }, startsNewGroup, nextAction);
 }
@@ -261,13 +261,11 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
   DisableableAction.call(this, namePrefix + number, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
                   .then(prefValue => {
-      return this._performOnCurrentTab(currentTab => {
-        let content = prefValue[1];
-        content = content.replace("%s", eGContext.selection);
-        content = content.replace("%u", currentTab.url);
-        return action.call(this, content,
-                           3 in prefValue ? prefValue[3] : undefined);
-      });
+      let content = prefValue[1];
+      content = content.replace("%s", eGContext.selection);
+      content = content.replace("%u", eGContext.pageURL);
+      return action.call(this, content,
+                         3 in prefValue ? prefValue[3] : undefined);
     });
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
@@ -508,10 +506,8 @@ var eGActions = {
   }, false, "viewPageSource"),
   
   viewPageSource : new Action("viewPageSource", function() {
-    this._performOnCurrentTab(function(currentTab) {
-      browser.tabs.create({
-        url: "view-source:" + currentTab.url
-      });
+    browser.tabs.create({
+      url: "view-source:" + eGContext.pageURL
     });
   }, false, "newTab"),
   
@@ -715,30 +711,26 @@ var eGActions = {
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
-    this._performOnCurrentTab(function(currentTab) {
-      let url = new URL(currentTab.url);
-      let pathname = url.pathname;
-      // removing any trailing "/" and the leading "/"
-      pathname = pathname.replace(/\/$/, "").substring(1);
-      let pathnameItems = pathname.split("/");
-      pathnameItems.pop();
-      browser.tabs.update({
-        url: url.protocol + "//" + url.username +
-             (url.password === "" ? "" : ":" + url.password) +
-             (url.username === "" ? "" : "@") + url.hostname + "/" +
-             pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
-      });
+    let url = new URL(eGContext.pageURL);
+    let pathname = url.pathname;
+    // removing any trailing "/" and the leading "/"
+    pathname = pathname.replace(/\/$/, "").substring(1);
+    let pathnameItems = pathname.split("/");
+    pathnameItems.pop();
+    browser.tabs.update({
+      url: url.protocol + "//" + url.username +
+           (url.password === "" ? "" : ":" + url.password) +
+           (url.username === "" ? "" : "@") + url.hostname + "/" +
+           pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
     });
   }, true, "root"),
   
   root : new CanGoUpDisableableAction("root", function() {
-    this._performOnCurrentTab(function(currentTab) {
-      let url = new URL(currentTab.url);
-      browser.tabs.update({
-        url: url.protocol + "//" + url.username +
-             (url.password === "" ? "" : ":" + url.password) +
-             (url.username === "" ? "" : "@") + url.hostname
-      });
+    let url = new URL(eGContext.pageURL);
+    browser.tabs.update({
+      url: url.protocol + "//" + url.username +
+           (url.password === "" ? "" : ":" + url.password) +
+           (url.username === "" ? "" : "@") + url.hostname
     });
   }, false, "showOnlyThisFrame"),
   
@@ -799,12 +791,10 @@ var eGActions = {
       });
     });
   }, function() {
-    return this._performOnCurrentTab(function(currentTab) {
-      return browser.bookmarks.search({
-        url: currentTab.url
-      }).then(foundBookmarks => {
-        return foundBookmarks.length > 0;
-      });
+    return browser.bookmarks.search({
+      url: eGContext.pageURL
+    }).then(foundBookmarks => {
+      return foundBookmarks.length > 0;
     });
   }, false, "bookmarkThisIdentifier"),
   
