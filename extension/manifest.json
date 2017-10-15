@@ -33,6 +33,7 @@
       "content/eGActionsContent.js", "content/eGPieMenu.js",
       "content/easyGesturesN-content.js"
     ],
+    "run_at": "document_end",
     "match_about_blank": true
   }],
   "options_ui": {
