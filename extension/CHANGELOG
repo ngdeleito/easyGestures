@@ -1,6 +1,22 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 5.3 (October 17, 2017)
+
+- finalized the migration to WebExtensions
+- the limitations listed in the release notes of version 5.2 remain valid, except for what follows:
+    - fixed actions: "View Page Source", "Show Only This Frame", and "Paste"
+    - "Cut", "Copy" and "Paste" actions can appear again as disabled (with some limitations)
+    - removed actions: "Autoscrolling", "View Page Info", "Focus Location Bar", "Quit", "Restart", "Firefox Preferences", "Add-ons", "Undo", and "Redo"
+    - removed support for activating autoscrolling through the pie menu center
+    - the pie menu can again be opened inside a frame, and "Page Top" and "Page Bottom" actions work again inside frames
+    - the custom icon URL for "Run Script" actions needs to be manually provided in the preferences dialog through a text input box
+    - favicons cannot be retrieved nor displayed
+    - removed support for upgrading from versions prior to 5.2
+- new actions: "Copy Page URL", "Copy URL to Identifier", "Move Tab to New Window", "Load URL in New Private Window", "Bookmark this Identifier", "Remove Bookmark to this Page", "Remove Bookmark to this Identifier", and "Remove Bookmark to this Link"
+- improved code dealing with preferences and code running in content scripts
+
+
 Version 5.2 (June 8, 2017)
 
 - migrated most of the extension to an embedded WebExtension

@@ -1,2 +1,2 @@
-extension/webextension/tests/qunit.css
-extension/webextension/tests/qunit.js
+extension/tests/qunit.css
+extension/tests/qunit.js

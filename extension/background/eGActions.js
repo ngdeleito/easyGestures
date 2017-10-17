@@ -42,6 +42,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- DocumentContainsImagesDisableableAction
 //  |-- DisableableAction
 //       ^
+//       |-- URLToIdentifierExistsDisableableAction
 //       |-- OtherTabsExistDisableableAction
 //       |-- CanGoUpDisableableAction
 //       |-- LinkExistsDisableableAction
@@ -55,11 +56,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisabledAction
 
 /* exported eGActions */
-/* global browser, URL, eGContext, eGPrefs, eGUtils */
+/* global eGPrefs, browser, URL, eGContext, eGUtils */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function() {
+  this.run = function(updateStatsInformation) {
+    if (updateStatsInformation.incrementMethodName !== undefined) {
+      eGPrefs[updateStatsInformation.incrementMethodName](updateStatsInformation.incrementIndex);
+    }
+    eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
     return new Promise(resolve => {
       resolve(action.call(this));
     }).then(response => {
@@ -82,7 +87,7 @@ Action.prototype = {
   decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
                          0.5, 0.3],
   
-  isDisabled: function() {
+  _isDisabled: function() {
     return new Promise(resolve => {
       resolve(false);
     });
@@ -160,16 +165,26 @@ ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
 function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
   
-  this.isDisabled = isDisabled;
+  this._isDisabled = isDisabled;
 }
 DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
 DisableableAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setDisableableActionStatus",
-    status: this.isDisabled()
+    messageName: "disableableAction",
+    status: this._isDisabled()
   };
 };
+
+function URLToIdentifierExistsDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return new Promise(resolve => {
+      resolve(eGContext.urlToIdentifier === "");
+    });
+  }, startsNewGroup, nextAction);
+}
+URLToIdentifierExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
+URLToIdentifierExistsDisableableAction.prototype.constructor = URLToIdentifierExistsDisableableAction;
 
 function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -185,9 +200,9 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return this._performOnCurrentTab(function(currentTab) {
-      let url = new URL(currentTab.url);
-      return url.pathname === "/";
+    return new Promise(resolve => {
+      let url = new URL(eGContext.pageURL);
+      resolve(url.pathname === "/");
     });
   }, startsNewGroup, nextAction);
 }
@@ -246,13 +261,11 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
   DisableableAction.call(this, namePrefix + number, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
                   .then(prefValue => {
-      return this._performOnCurrentTab(currentTab => {
-        let content = prefValue[1];
-        content = content.replace("%s", eGContext.selection);
-        content = content.replace("%u", currentTab.url);
-        return action.call(this, content,
-                           3 in prefValue ? prefValue[3] : undefined);
-      });
+      let content = prefValue[1];
+      content = content.replace("%s", eGContext.selection);
+      content = content.replace("%u", eGContext.pageURL);
+      return action.call(this, content,
+                         3 in prefValue ? prefValue[3] : undefined);
     });
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
@@ -330,7 +343,7 @@ DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototy
 DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
 DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   return {
-    messageName: "setHideImagesActionStatus",
+    messageName: this._name,
     status: undefined
   };
 };
@@ -347,6 +360,12 @@ function CommandAction(name, startsNewGroup, nextAction) {
 }
 CommandAction.prototype = Object.create(Action.prototype);
 CommandAction.prototype.constructor = CommandAction;
+CommandAction.prototype.getActionStatus = function() {
+  return {
+    messageName: this._name,
+    status: undefined
+  };
+};
 
 function DisabledAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {}, function() {
@@ -386,29 +405,44 @@ var eGActions = {
     });
   }, false, "homepage"),
   
-  homepage : new DisabledAction("homepage", false, "pageTop"),
+  homepage : new DisabledAction("homepage", false, "copyPageURL"),
+  
+  copyPageURL: new Action("copyPageURL", function() {
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.pageURL
+      }
+    };
+  }, true, "copyURLToIdentifier"),
+  
+  copyURLToIdentifier: new URLToIdentifierExistsDisableableAction("copyURLToIdentifier", function() {
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.urlToIdentifier
+      }
+    };
+  }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
   }, function() {
     return new Promise(resolve => {
-      resolve(eGContext.targetWindowScrollY === 0 &&
-              eGContext.topmostWindowScrollY === 0);
+      resolve(eGContext.frameScrollY === 0 && eGContext.windowScrollY === 0);
     });
-  }, true, "pageBottom"),
+  }, false, "pageBottom"),
   
   pageBottom : new DisableableAction("pageBottom", function() {
     return this._sendPerformActionMessage();
   }, function() {
     return new Promise(resolve => {
       resolve(
-        eGContext.targetWindowScrollY === eGContext.targetWindowScrollMaxY &&
-        eGContext.topmostWindowScrollY === eGContext.topmostWindowScrollMaxY
+        eGContext.frameScrollY === eGContext.frameScrollMaxY &&
+        eGContext.windowScrollY === eGContext.windowScrollMaxY
       );
     });
-  }, false, "autoscrolling"),
-  
-  autoscrolling : new DisabledAction("autoscrolling", false, "zoomIn"),
+  }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
     if (eGContext.imageElementDoesntExist) {
@@ -471,9 +505,11 @@ var eGActions = {
     return this._sendPerformActionMessage();
   }, false, "viewPageSource"),
   
-  viewPageSource : new DisabledAction("viewPageSource", false, "viewPageInfo"),
-  
-  viewPageInfo : new DisabledAction("viewPageInfo", false, "newTab"),
+  viewPageSource : new Action("viewPageSource", function() {
+    browser.tabs.create({
+      url: "view-source:" + eGContext.pageURL
+    });
+  }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
     browser.tabs.create({});
@@ -482,6 +518,21 @@ var eGActions = {
   newBlankTab : new Action("newBlankTab", function() {
     browser.tabs.create({
       url: "about:blank"
+    });
+  }, false, "moveTabToNewWindow"),
+  
+  moveTabToNewWindow: new Action("moveTabToNewWindow", function() {
+    this._performOnCurrentTab(function(currentTab) {
+      browser.windows.create({
+        tabId: currentTab.id
+      });
+    });
+  }, false, "loadURLInNewPrivateWindow"),
+  
+  loadURLInNewPrivateWindow: new Action("loadURLInNewPrivateWindow", function() {
+    browser.windows.create({
+      incognito: true,
+      url: eGContext.pageURL
     });
   }, false, "duplicateTab"),
   
@@ -577,7 +628,7 @@ var eGActions = {
   }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
-    eGActions.newBlankWindow.run();
+    browser.windows.create({});
   }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
@@ -660,42 +711,40 @@ var eGActions = {
   }, false, "up"),
   
   up : new CanGoUpDisableableAction("up", function() {
-    this._performOnCurrentTab(function(currentTab) {
-      let url = new URL(currentTab.url);
-      let pathname = url.pathname;
-      // removing any trailing "/" and the leading "/"
-      pathname = pathname.replace(/\/$/, "").substring(1);
-      let pathnameItems = pathname.split("/");
-      pathnameItems.pop();
-      browser.tabs.update({
-        url: url.protocol + "//" + url.username +
-             (url.password === "" ? "" : ":" + url.password) +
-             (url.username === "" ? "" : "@") + url.hostname + "/" +
-             pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
-      });
+    let url = new URL(eGContext.pageURL);
+    let pathname = url.pathname;
+    // removing any trailing "/" and the leading "/"
+    pathname = pathname.replace(/\/$/, "").substring(1);
+    let pathnameItems = pathname.split("/");
+    pathnameItems.pop();
+    browser.tabs.update({
+      url: url.protocol + "//" + url.username +
+           (url.password === "" ? "" : ":" + url.password) +
+           (url.username === "" ? "" : "@") + url.hostname + "/" +
+           pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
     });
   }, true, "root"),
   
   root : new CanGoUpDisableableAction("root", function() {
-    this._performOnCurrentTab(function(currentTab) {
-      let url = new URL(currentTab.url);
-      browser.tabs.update({
-        url: url.protocol + "//" + url.username +
-             (url.password === "" ? "" : ":" + url.password) +
-             (url.username === "" ? "" : "@") + url.hostname
-      });
+    let url = new URL(eGContext.pageURL);
+    browser.tabs.update({
+      url: url.protocol + "//" + url.username +
+           (url.password === "" ? "" : ":" + url.password) +
+           (url.username === "" ? "" : "@") + url.hostname
     });
   }, false, "showOnlyThisFrame"),
   
-  showOnlyThisFrame : new DisabledAction("showOnlyThisFrame", false, "focusLocationBar"),
+  showOnlyThisFrame : new DisableableAction("showOnlyThisFrame", function() {
+    browser.tabs.update({
+      url: eGContext.frameURL
+    });
+  }, function() {
+    return new Promise(resolve => {
+      resolve(eGContext.frameURL === null);
+    });
+  }, false, "searchWeb"),
   
-  focusLocationBar : new DisabledAction("focusLocationBar", false, "searchWeb"),
-  
-  searchWeb : new DisabledAction("searchWeb", false, "quit"),
-  
-  quit : new DisabledAction("quit", false, "restart"),
-  
-  restart : new DisabledAction("restart", false, "openLink"),
+  searchWeb : new DisabledAction("searchWeb", false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
     eGPrefs.getOpenLinkPref().then(prefValue => {
@@ -742,11 +791,18 @@ var eGActions = {
       });
     });
   }, function() {
-    return this._performOnCurrentTab(function(currentTab) {
-      return browser.bookmarks.search({
-        url: currentTab.url
-      }).then(foundBookmarks => {
-        return foundBookmarks.length > 0;
+    return browser.bookmarks.search({
+      url: eGContext.pageURL
+    }).then(foundBookmarks => {
+      return foundBookmarks.length > 0;
+    });
+  }, false, "bookmarkThisIdentifier"),
+  
+  bookmarkThisIdentifier: new URLToIdentifierExistsDisableableAction("bookmarkThisIdentifier", function() {
+    this._performOnCurrentTab(function(currentTab) {
+      browser.bookmarks.create({
+        title: currentTab.title,
+        url: eGContext.urlToIdentifier
       });
     });
   }, false, "bookmarkThisLink"),
@@ -778,6 +834,54 @@ var eGActions = {
         });
       });
     });
+  }, false, "removeBookmarkToThisPage"),
+  
+  removeBookmarkToThisPage: new DisableableAction("removeBookmarkToThisPage", function() {
+    browser.bookmarks.search({
+      url: eGContext.pageURL
+    }).then(foundBookmarks => {
+      browser.bookmarks.remove(foundBookmarks[0].id);
+    });
+  }, function() {
+    return browser.bookmarks.search({
+      url: eGContext.pageURL
+    }).then(foundBookmarks => {
+      return foundBookmarks.length === 0;
+    });
+  }, false, "removeBookmarkToThisIdentifier"),
+  
+  removeBookmarkToThisIdentifier: new DisableableAction("removeBookmarkToThisIdentifier", function() {
+    browser.bookmarks.search({
+      url: eGContext.urlToIdentifier
+    }).then(foundBookmarks => {
+      browser.bookmarks.remove(foundBookmarks[0].id);
+    });
+  }, function() {
+    return eGContext.urlToIdentifier === "" ? new Promise(resolve => {
+                                                resolve(true);
+                                              })
+                                            : browser.bookmarks.search({
+                                                url: eGContext.urlToIdentifier
+                                              }).then(foundBookmarks => {
+                                                return foundBookmarks.length === 0;
+                                              });
+  }, false, "removeBookmarkToThisLink"),
+  
+  removeBookmarkToThisLink: new DisableableAction("removeBookmarkToThisLink", function() {
+    browser.bookmarks.search({
+      url: eGContext.anchorElementHREF
+    }).then(foundBookmarks => {
+      browser.bookmarks.remove(foundBookmarks[0].id);
+    });
+  }, function() {
+    return eGContext.anchorElementExists ? browser.bookmarks.search({
+                                             url: eGContext.anchorElementHREF
+                                           }).then(foundBookmarks => {
+                                             return foundBookmarks.length === 0;
+                                           })
+                                         : new Promise(resolve => {
+                                             resolve(true);
+                                           });
   }, false, "showBookmarks"),
   
   showBookmarks : new DisabledAction("showBookmarks", false, "toggleBookmarksSidebar"),
@@ -830,15 +934,11 @@ var eGActions = {
   
   runScript9 : new RunScriptAction(9, false, "runScript10"),
   
-  runScript10 : new RunScriptAction(10, false, "firefoxPreferences"),
-  
-  firefoxPreferences : new DisabledAction("firefoxPreferences", true, "addOns"),
-  
-  addOns : new DisabledAction("addOns", false, "easyGesturesNPreferences"),
+  runScript10 : new RunScriptAction(10, false, "easyGesturesNPreferences"),
   
   easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
     eGUtils.showOrOpenTab("/options/options.html", "", true);
-  }, false, "copyImageLocation"),
+  }, true, "copyImageLocation"),
   
   copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
     function() {
@@ -865,11 +965,13 @@ var eGActions = {
   
   copy : new CommandAction("copy", false, "paste"),
   
-  paste : new CommandAction("paste", false, "undo"),
-  
-  undo : new DisabledAction("undo", false, "redo"),
-  
-  redo : new DisabledAction("redo", false, "selectAll"),
+  paste : new DisableableAction("paste", function() {
+    return this._sendPerformActionMessage();
+  }, function() {
+    return new Promise(resolve => {
+      resolve(!eGContext.inputElementExists);
+    });
+  }, false, "selectAll"),
   
   selectAll : new Action("selectAll", function() {
     return this._sendPerformActionMessage();

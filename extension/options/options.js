@@ -33,7 +33,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* global window, eGUtils, eGPrefs, browser, document, eGActions, alert,
-          FileReader, confirm */
+          FileReader, Blob, URL, confirm */
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
@@ -58,8 +58,6 @@ var eventListenersArray = [
   ["activateTooltips", "change", setDisabledStatusForTooltipsActivationDelay],
   ["activateOpenLinksThroughPieMenuCenter", "change",
     setDisabledStatusForOpenLinksMaximumDelay],
-  ["activateAutoscrolling", "change",
-    setDisabledStatusForAutoscrollingActivationDelay],
   ["enableMainAlt1Menu", "change", setDisabledStatusForMainAlt1Menu],
   ["enableMainAlt2Menu", "change", setDisabledStatusForMainAlt2Menu],
   ["enableExtraAlt1Menu", "change", setDisabledStatusForExtraAlt1Menu],
@@ -298,19 +296,14 @@ function createRunScriptActions() {
     table.appendChild(tr);
     
     tr = document.createElement("tr");
-    tr.appendChild(document.createElement("th"));
+    th = document.createElement("th");
+    th.textContent = browser.i18n.getMessage("customizations.customIconURL");
+    tr.appendChild(th);
     td = document.createElement("td");
     input = document.createElement("input");
-    input.id = actionName + "_customIconCheckbox";
-    input.type = "checkbox";
+    input.id = actionName + "_customIconURL";
+    input.type = "url";
     td.appendChild(input);
-    var label = document.createElement("label");
-    label.htmlFor = input.id;
-    label.textContent = browser.i18n.getMessage("customizations.useCustomIcon");
-    td.appendChild(label);
-    var span = document.createElement("span");
-    span.id = actionName + "_customIconURL";
-    td.appendChild(span);
     tr.appendChild(td);
     table.appendChild(tr);
     
@@ -377,23 +370,23 @@ function setDisabledStatusForSelectWithTextInputControl(control) {
 }
 
 function addFavicon(url, actionName) {
-  if (url === "") {
+  // if (url === "") {
     document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
-  }
-  else {
-    browser.runtime.sendMessage({
-      messageName: "retrieveAndAddFavicon",
-      aURL: url
-    }).then(aMessage => {
-      document.getElementById(actionName + "_favicon").src =
-        aMessage.aURL !== "" ? aMessage.aURL : DEFAULT_FAVICON_URL;
-    });
-  }
+  // }
+  // else {
+  //   browser.runtime.sendMessage({
+  //     messageName: "retrieveAndAddFavicon",
+  //     aURL: url
+  //   }).then(aMessage => {
+  //     document.getElementById(actionName + "_favicon").src =
+  //       aMessage.aURL !== "" ? aMessage.aURL : DEFAULT_FAVICON_URL;
+  //   });
+  // }
 }
 
 function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
-    eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       var aSelectElement = control.firstElementChild;
       var aTextInputElement = control.lastElementChild;
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
@@ -403,13 +396,13 @@ function initializePreferenceControl(control) {
   }
   
   function initializeIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
-    eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       control.querySelector("input[value='" + prefValue + "']").checked = true;
     });
   }
   
   function initializeBoolRadiogroupControl(control) {
-    eGPrefs.getBoolPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       var childIndexToSet = prefValue ? 1 : 0;
       control.getElementsByTagName("input")[childIndexToSet].checked = true;
     });
@@ -426,7 +419,7 @@ function initializePreferenceControl(control) {
   }
   
   function initializeSelectControl(control) {
-    eGPrefs.getCharPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       control.querySelector("[value=" + prefValue + "]").selected = true;
     });
   }
@@ -454,15 +447,13 @@ function initializePreferenceControl(control) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_code").value = prefValue[1];
-      document.getElementById(actionName + "_customIconCheckbox").checked =
-        prefValue[2] !== "";
-      document.getElementById(actionName + "_customIconURL").textContent =
+      document.getElementById(actionName + "_customIconURL").value =
         prefValue[2];
     });
   }
   
   function initializeStringRadiogroup(control) {
-    eGPrefs.getCharPref(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       control.querySelector("[value=" + prefValue + "]").checked = true;
     });
   }
@@ -497,7 +488,7 @@ function initializePreferenceControl(control) {
   
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
-      eGPrefs.getBoolPref(control.dataset.preference).then(prefValue => {
+      eGPrefs.getPref(control.dataset.preference).then(prefValue => {
         control.checked = prefValue;
       });
       break;
@@ -511,7 +502,7 @@ function initializePreferenceControl(control) {
       initializeBoolRadiogroupControl(control);
       break;
     case "numberInput":
-      eGPrefs.getIntPref(control.dataset.preference).then(prefValue => {
+      eGPrefs.getPref(control.dataset.preference).then(prefValue => {
         control.value = prefValue;
       });
       break;
@@ -544,7 +535,7 @@ function preparePreferenceValueForLoadURL(actionName) {
                   .checked];
 }
 
-function addEventListenerToLoadURLTooltip(aPrefName, element, actionName) {
+function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
@@ -579,58 +570,17 @@ function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
   }, false);
 }
 
-function addEventListenerToLoadURLOpenInPrivateWindow(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForLoadURL(actionName));
-  });
-}
-
 function preparePreferenceValueForRunScript(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
           document.getElementById(actionName + "_code").value,
-          document.getElementById(actionName + "_customIconURL").textContent];
+          document.getElementById(actionName + "_customIconURL").value];
 }
 
-function addEventListenerToRunScriptTooltip(aPrefName, element, actionName) {
+function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForRunScript(actionName));
-  }, false);
-}
-
-function addEventListenerToRunScriptCode(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForRunScript(actionName));
-  }, false);
-}
-
-function addEventListenerToRunScriptNewIcon(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    if (this.checked) {
-      browser.runtime.sendMessage({
-        messageName: "retrieveCustomIconFile"
-      }).then(aMessage => {
-        if (aMessage.returnedOK) {
-          document.getElementById(actionName + "_customIconURL").textContent =
-            "file://" + aMessage.path;
-        }
-        this.checked = aMessage.returnedOK;
-        prefChanged = true;
-        eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-          preparePreferenceValueForRunScript(actionName));
-      });
-    }
-    else {
-      document.getElementById(actionName + "_customIconURL").textContent = "";
-      prefChanged = true;
-      eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-        preparePreferenceValueForRunScript(actionName));
-    }
   }, false);
 }
 
@@ -645,17 +595,17 @@ function addOnchangeListenerToPreferenceControl(control) {
       if (aSelectElement.selectedIndex < 3) {
         aTextInputElement.value = aSelectElement.selectedIndex;
         prefChanged = true;
-        eGPrefs.setIntPref(control.dataset.preference,
-                           aSelectElement.selectedIndex);
+        eGPrefs.setPref(control.dataset.preference,
+                        aSelectElement.selectedIndex);
       }
       else {
         aTextInputElement.focus();
       }
     }, true);
     aTextInputElement.addEventListener("change", function(anEvent) {
-      let prefValue = anEvent.target.value;
+      let prefValue = Number(anEvent.target.value);
       prefChanged = true;
-      eGPrefs.setIntPref(control.dataset.preference, prefValue);
+      eGPrefs.setPref(control.dataset.preference, prefValue);
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
       setDisabledStatusForSelectWithTextInputControl(control);
     }, true);
@@ -675,7 +625,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       if ((showKey !== "0" &&
            (showKey === preventOpenKey || showKey === contextKey)) ||
           (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
-        eGPrefs.getIntPref(control.dataset.preference).then(currentValue => {
+        eGPrefs.getPref(control.dataset.preference).then(currentValue => {
           anEvent.target.parentElement.parentElement
                  .querySelector("[value='" + currentValue + "']").checked = true;
           alert(browser.i18n.getMessage("activation.duplicateKey"));
@@ -683,7 +633,8 @@ function addOnchangeListenerToPreferenceControl(control) {
       }
       else {
         prefChanged = true;
-        eGPrefs.setIntPref(control.dataset.preference, anEvent.target.value);
+        eGPrefs.setPref(control.dataset.preference,
+                        Number(anEvent.target.value));
       }
     }
     
@@ -696,8 +647,8 @@ function addOnchangeListenerToPreferenceControl(control) {
   function addOnchangeListenerToBoolRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
       prefChanged = true;
-      eGPrefs.setBoolPref(control.dataset.preference,
-                          anEvent.target.value === "true");
+      eGPrefs.setPref(control.dataset.preference,
+                      anEvent.target.value === "true");
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -727,30 +678,30 @@ function addOnchangeListenerToPreferenceControl(control) {
   }
   
   function addOnchangeListenerToLoadURLControl(control) {
-    addEventListenerToLoadURLTooltip(control.dataset.preference,
+    addEventListenerToLoadURLComponent(control.dataset.preference,
       document.getElementById(control.id + "_tooltip"), control.id);
     addEventListenerToLoadURLURL(control.dataset.preference,
       document.getElementById(control.id + "_URL"), control.id);
     addEventListenerToLoadURLFavicon(control.dataset.preference,
       document.getElementById(control.id + "_faviconCheckbox"), control.id);
-    addEventListenerToLoadURLOpenInPrivateWindow(control.dataset.preference,
+    addEventListenerToLoadURLComponent(control.dataset.preference,
       document.getElementById(control.id + "_openInPrivateWindowCheckbox"),
       control.id);
   }
   
   function addOnchangeListenerToRunScriptControl(control) {
-    addEventListenerToRunScriptTooltip(control.dataset.preference,
+    addEventListenerToRunScriptComponent(control.dataset.preference,
       document.getElementById(control.id + "_tooltip"), control.id);
-    addEventListenerToRunScriptCode(control.dataset.preference,
+    addEventListenerToRunScriptComponent(control.dataset.preference,
       document.getElementById(control.id + "_code"), control.id);
-    addEventListenerToRunScriptNewIcon(control.dataset.preference,
-      document.getElementById(control.id + "_customIconCheckbox"), control.id);
+    addEventListenerToRunScriptComponent(control.dataset.preference,
+      document.getElementById(control.id + "_customIconURL"), control.id);
   }
   
   function addOnchangeListenerToStringRadiogroupControl(control) {
     function onchangeHandler(anEvent) {
       prefChanged = true;
-      eGPrefs.setCharPref(control.dataset.preference, anEvent.target.value);
+      eGPrefs.setPref(control.dataset.preference, anEvent.target.value);
     }
     
     var radioElements = control.getElementsByTagName("input");
@@ -778,7 +729,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     case "numberInput":
       control.addEventListener("change", function() {
         prefChanged = true;
-        eGPrefs.setIntPref(control.dataset.preference, control.value);
+        eGPrefs.setPref(control.dataset.preference, Number(control.value));
       }, true);
       break;
     case "menu":
@@ -787,7 +738,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     case "select":
       control.addEventListener("change", function() {
         prefChanged = true;
-        eGPrefs.setCharPref(control.dataset.preference, control.value);
+        eGPrefs.setPref(control.dataset.preference, control.value);
       }, true);
       break;
     case "loadURL":
@@ -858,16 +809,6 @@ function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
   });
 }
 
-function setDisabledStatusForAutoscrollingActivationDelay(anEvent) {
-  eGPrefs.isAutoscrollingOn().then(prefValue => {
-    var shouldBeDisabled = anEvent === undefined ? !prefValue :
-                                                   !anEvent.target.checked;
-    toggleDisabledStatusOnElementsById(["autoscrollingActivationDelayLabel",
-      "autoscrollingActivationDelayInput", "autoscrollingActivationDelayUnit"],
-      shouldBeDisabled);
-  });
-}
-
 function setDisabledStatusForMenu(menuName, enabled) {
   var selectElements = document.getElementById("menuControl_" + menuName)
                                .lastElementChild;
@@ -908,7 +849,6 @@ function setPreferenceControlsDisabledStatus() {
   setMenuType();
   setDisabledStatusForTooltipsActivationDelay();
   setDisabledStatusForOpenLinksMaximumDelay();
-  setDisabledStatusForAutoscrollingActivationDelay();
   setDisabledStatusForMainAlt1Menu();
   setDisabledStatusForMainAlt2Menu();
   setDisabledStatusForExtraAlt1Menu();
@@ -1187,9 +1127,23 @@ function triggerImportPrefsFilePicker() {
 
 function exportPrefs() {
   eGPrefs.exportPrefsToString().then(prefsAsString => {
-    browser.runtime.sendMessage({
-      messageName: "exportPrefs",
-      prefsAsString: prefsAsString
+    let aBlob = new Blob([prefsAsString]);
+    let blobURL = URL.createObjectURL(aBlob);
+    browser.downloads.download({
+      url: blobURL,
+      filename: "easyGesturesNPreferences-" + (new Date()).toISOString() +
+                ".json",
+      saveAs: true
+    }).then((downloadID) => {
+      browser.downloads.onChanged.addListener(function downloadListener(download) {
+        if (downloadID === download.id &&
+            download.state.current === "complete") {
+          URL.revokeObjectURL(blobURL);
+          browser.downloads.onChanged.removeListener(downloadListener);
+        }
+      });
+    }).catch(() => {
+      URL.revokeObjectURL(blobURL);
     });
   });
 }

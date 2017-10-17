@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+  "name": "easyGestures N",
+  "version": "5.3",
+  "description": "__MSG_extensionDescription__",
+  "author": "Nicolás González-Deleito",
+  "homepage_url": "https://github.com/ngdeleito/easyGestures",
+  
+  "applications": {
+    "gecko": {
+      "id": "easyGesturesN@ngdeleito.eu",
+      "strict_min_version": "54.0"
+    }
+  },
+  
+  "default_locale": "en",
+  "permissions": [
+    "bookmarks", "clipboardRead", "clipboardWrite", "downloads", "sessions",
+    "storage", "tabs"
+  ],
+  "background": {
+    "scripts": [
+      "background/eGUtils.js", "background/eGContext.js",
+      "background/eGActions.js", "background/eGPrefs.js",
+      "background/easyGesturesN-background.js"
+    ]
+  },
+  "content_scripts": [{
+    "all_frames": true,
+    "matches": ["<all_urls>"],
+    "css": ["content/easyGesturesN.css"],
+    "js": [
+      "content/eGActionsContent.js", "content/eGPieMenu.js",
+      "content/easyGesturesN-content.js"
+    ],
+    "run_at": "document_end",
+    "match_about_blank": true
+  }],
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true,
+    "browser_style": false
+  }
+}

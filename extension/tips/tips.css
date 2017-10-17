@@ -70,8 +70,8 @@ input {
 
 #tipImage.openExtraMenu, #tipImage.searchWebAction,
 #tipImage.backAndForwardSiteActions, #tipImage.advancedLoadURLActions,
-#tipImage.preventOpen, #tipImage.autoscrolling, #tipImage.zoomOnImage,
-#tipImage.openLinkAction, #tipImage.dailyReadingsAction { display: none; }
+#tipImage.preventOpen, #tipImage.zoomOnImage, #tipImage.openLinkAction,
+#tipImage.dailyReadingsAction { display: none; }
 
 #tipImage.openButton { background-position: 0px 0px; }
 #tipImage.dragToAction { background-position: -460px 0px; }

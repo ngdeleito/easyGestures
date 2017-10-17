@@ -61,7 +61,6 @@ var tips = [
   new tipEntry("tips.moveMenu",                  ""),
   new tipEntry("tips.smallIcons",                "behavior"),
   new tipEntry("tips.largeMenu",                 "behavior"),
-  new tipEntry("tips.autoscrolling",             "behavior"),
   new tipEntry("tips.zoomOnImage",               ""),
   new tipEntry("tips.openLinkAction",            "customizations_otherActions"),
   new tipEntry("tips.dailyReadingsAction",       "customizations_otherActions")

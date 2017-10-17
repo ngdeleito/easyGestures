@@ -37,27 +37,27 @@
   
   ***** END LICENSE BLOCK ***** -->
   
-  <!--
-    It is assumed that QUnit is installed and that qunit.css and qunit.js in
-    this folder are symbolic links to the corresponding QUnit files
-  -->
-  
-  <title>easyGestures N tests</title>
-  <link rel="stylesheet" href="qunit.css" />
+  <title>- easyGestures N</title>
+  <link rel="stylesheet" href="tips.css" />
+  <script src="../background/eGPrefs.js"></script>
+  <script src="../background/eGUtils.js"></script>
+  <script src="tips.js"></script>
 </head>
 
 <body>
-  <div id="qunit"></div>
-  <div id="qunit-fixture"></div>
-  <script src="qunit.js">
-  </script>
-  <script src="/eGActions.js"></script>
-  <script src="/eGPrefs.js"></script>
-  <script src="/content/eGPieMenu.js"></script>
-  <script src="load-easyGesturesN.js"></script>
-  <script src="eGPieMenu-canBeOpened-test.js"></script>
-  <script src="eGPieMenu-canContextualMenuBeOpened-test.js"></script>
-  <script src="eGPieMenu-canContextmenuBeOpened-test.js"></script>
-  <script src="eGPrefs-importPrefsFromString-test.js"></script>
+  <button id="previousTipButton" type="button" data-l10n="tips.previous">
+  </button>
+  <span id="tipNumber"></span>
+  <button id="nextTipButton" type="button" data-l10n="tips.next">
+  </button>
+  
+  <p id="tip"><span id="tipTextBeforeLink">
+    </span><a id="tipTextLink">
+    </a><span id="tipTextAfterLink">
+  </span></p>
+  <div id="tipImage"></div>
+  <input id="showTipsControl" type="checkbox" />
+  <label id="showTipsLabel" for="showTipsControl"
+         data-l10n="general.startupTips"></label>
 </body>
 </html>

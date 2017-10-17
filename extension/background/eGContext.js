@@ -32,41 +32,22 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* exported eGUtils */
-/* global browser */
+/* exported eGContext */
 
-var eGUtils = {
-  showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
-    browser.tabs.query({}).then(tabs => {
-      let tipsTab = tabs.find(tab => {
-        return tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
-      });
-      let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
-      if (tipsTab === undefined) {
-        browser.tabs.create({
-          active: giveFocus,
-          url: urlToOpen
-        });
-      }
-      else {
-        browser.tabs.update(tipsTab.id, {
-          active: giveFocus,
-          url: urlToOpen
-        });
-      }
-    });
-  },
+var eGContext = {
+  pageURL: "",
+  urlToIdentifier: "",
   
-  setDocumentTitle: function(document, titleStringName) {
-    document.title = browser.i18n.getMessage(titleStringName) + " " +
-                     document.title;
-  },
+  selection: null,
+  anchorElementExists: false,
+  anchorElementHREF: null,
+  anchorElementText: null,
+  imageElementDoesntExist: true,
+  imageElementSRC: "",
   
-  setDocumentLocalizedStrings: function(document) {
-    var elements = document.querySelectorAll("[data-l10n]");
-    for (let i=0; i < elements.length; ++i) {
-      elements[i].textContent = browser.i18n
-                                       .getMessage(elements[i].dataset.l10n);
-    }
-  }
+  windowScrollY: null,
+  windowScrollMaxY: null,
+  frameScrollY: null,
+  frameScrollMaxY: null,
+  frameURL: null
 };

@@ -40,9 +40,9 @@
   <title>- easyGestures N</title>
   <link rel="stylesheet" href="options.css" />
   <link rel="stylesheet" href="../content/easyGesturesN.css">
-  <script src="../eGActions.js"></script>
-  <script src="../eGPrefs.js"></script>
-  <script src="../eGUtils.js"></script>
+  <script src="../background/eGActions.js"></script>
+  <script src="../background/eGPrefs.js"></script>
+  <script src="../background/eGUtils.js"></script>
   <script src="options.js"></script>
 </head>
 
@@ -305,23 +305,6 @@
              data-l10n="behavior.links.configureAction"></a>
         </div>
       </div>
-      
-      <h1 data-l10n="behavior.autoscrolling">&nbsp;</h1>
-      <div>
-        <input id="activateAutoscrolling" type="checkbox"
-               data-preference="behavior.autoscrollingOn"
-               data-preference-type="checkboxInput" />
-        <label for="activateAutoscrolling"
-               data-l10n="behavior.autoscrolling.activate"></label>
-      </div>
-      <div>
-        <span id="autoscrollingActivationDelayLabel"
-              data-l10n="behavior.autoscrolling.delay"></span>
-        <input id="autoscrollingActivationDelayInput" type="number" min="0"
-               data-preference="behavior.autoscrollingDelay"
-               data-preference-type="numberInput" />
-        <span id="autoscrollingActivationDelayUnit">ms</span>
-      </div>
     </div>
     
     <div id="menus" class="pane">
@@ -532,6 +515,7 @@
         <div class="message">
           <p data-l10n="customizations.infoActions"></p>
           <p data-l10n="customizations.infoPlaceholders"></p>
+          <p data-l10n="customizations.infoCustomIconURLs"></p>
         </div>
         
         <div id="runScript1" data-preference="customizations.runScript1"

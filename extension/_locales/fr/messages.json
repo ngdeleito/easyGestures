@@ -1,5 +1,5 @@
 ﻿{
-  "extensionDescription": { "message": "Un menu circulaire configurable pour surfer sur Internet depuis l'endroit où se trouve le pointeur de la souris." },
+  "extensionDescription": { "message": "Gestes faciles à apprendre grâce à un menu circulaire hautement configurable." },
   
   
   "contextLink": { "message": "Lien" },
@@ -20,9 +20,10 @@
   "reload": { "message": "Actualiser" },
   "homepage": { "message": "Page d'accueil" },
   
+  "copyPageURL": { "message": "Copier l'URL de la page" },
+  "copyURLToIdentifier": { "message": "Copier l'URL vers l'identificateur" },
   "pageTop": { "message": "Haut de page" },
   "pageBottom": { "message": "Bas de page" },
-  "autoscrolling": { "message": "Défilement automatique" },
   "zoomIn": { "message": "Zoom avant" },
   "zoomOut": { "message": "Zoom arrière" },
   "zoomReset": { "message": "Réinitialiser zoom" },
@@ -31,10 +32,11 @@
   "savePageAs": { "message": "Enregistrer sous..." },
   "printPage": { "message": "Imprimer..." },
   "viewPageSource": { "message": "Afficher code source de la page" },
-  "viewPageInfo": { "message": "Afficher informations sur la page" },
   
   "newTab": { "message": "Nouvel onglet" },
   "newBlankTab": { "message": "Nouvel onglet en blanc" },
+  "moveTabToNewWindow": { "message": "Déplacer l'onglet vers une nouvelle fenêtre" },
+  "loadURLInNewPrivateWindow": { "message": "Charger l'URL dans une nouvelle fenêtre privée" },
   "duplicateTab": { "message": "Dupliquer l'onglet" },
   "closeTab": { "message": "Fermer l'onglet" },
   "closeOtherTabs": { "message": "Fermer les autres onglets" },
@@ -55,10 +57,7 @@
   "up": { "message": "Monter" },
   "root": { "message": "Racine" },
   "showOnlyThisFrame": { "message": "Afficher ce cadre uniquement" },
-  "focusLocationBar": { "message": "Sélectionner la barre d'adresse" },
   "searchWeb": { "message": "Rechercher sur le web" },
-  "quit": { "message": "Quitter Firefox" },
-  "restart": { "message": "Relancer Firefox" },
   
   "openLink": { "message": "Ouvrir le lien" },
   "openLinkInNewWindow": { "message": "Ouvrir le lien dans nouvelle fenêtre" },
@@ -68,8 +67,12 @@
   
   "dailyReadings": { "message": "Lectures quotidiennes" },
   "bookmarkThisPage": { "message": "Marquer cette page" },
+  "bookmarkThisIdentifier": { "message": "Marquer cet identificateur" },
   "bookmarkThisLink": { "message": "Marque-page sur ce lien" },
   "bookmarkOpenTabs": { "message": "Marquer tous les onglets" },
+  "removeBookmarkToThisPage": { "message": "Supprimer le marque-page vers cette page" },
+  "removeBookmarkToThisIdentifier": { "message": "Supprimer le marque-page vers cet identificateur" },
+  "removeBookmarkToThisLink": { "message": "Supprimer le marque-page vers ce lien" },
   "showBookmarks": { "message": "Afficher tous les marque-pages" },
   "toggleBookmarksSidebar": { "message": "Basculer les marque-pages" },
   "toggleBookmarksToolbar": { "message": "Basculer la barre personnelle" },
@@ -99,8 +102,6 @@
   "runScript9": { "message": "Exécuter script 9" },
   "runScript10": { "message": "Exécuter script 10" },
   
-  "firefoxPreferences": { "message": "Préférences de Firefox" },
-  "addOns": { "message": "Modules complémentaires" },
   "easyGesturesNPreferences": { "message": "Préférences d'easyGestures N" },
   
   "copyImageLocation": { "message": "Copier l'adresse de l'image" },
@@ -111,8 +112,6 @@
   "cut": { "message": "Couper" },
   "copy": { "message": "Copier" },
   "paste": { "message": "Coller" },
-  "undo": { "message": "Annuler" },
-  "redo": { "message": "Rétablir" },
   "selectAll": { "message": "Tout sélectionner" },
   
   
@@ -130,7 +129,7 @@
   "general.prefs.manage": { "message": "Gérer les préférences" },
   "general.prefs.import": { "message": "Importer les préférences..." },
   "general.prefs.import.invalidFileContent": { "message": "Le contenu du fichier n'est pas valide." },
-  "general.prefs.import.nonImportedPrefs": { "message": "Les préférences suivantes n'ont pas pu être importées et les valeurs par défault ont été utilisées quand cela a été nécessaire :" },
+  "general.prefs.import.nonImportedPrefs": { "message": "Les préférences suivantes n'ont pas pu être importées et les valeurs par défaut ont été utilisées quand cela a été nécessaire :" },
   "general.prefs.export": { "message": "Exporter les préférences..." },
   "general.prefs.reset": { "message": "Réinitialiser les préférences..." },
   "general.prefs.reset.confirm": { "message": "Confirmez svp que vous souhaitez réinitialiser les préférences." },
@@ -171,9 +170,6 @@
   "behavior.links.openLinkAction": { "message": "Suivre le comportement de l'action 'Ouvrir le lien'" },
   "behavior.links.configureAction": { "message": "Configurer cette action" },
   "behavior.links.browser": { "message": "Suivre le comportement du navigateur" },
-  "behavior.autoscrolling": { "message": "Défilement automatique par le centre du menu circulaire" },
-  "behavior.autoscrolling.activate": { "message": "Activer le défilement automatique" },
-  "behavior.autoscrolling.delay": { "message": "Activer après un délai de" },
   
   "menus.main": { "message": "Menu principal" },
   "menus.extra": { "message": "Menu supplémentaire" },
@@ -193,6 +189,7 @@
   "customizations.otherActions": { "message": "Autres actions" },
   "customizations.infoActions": { "message": "Vous pouvez sélectionner ces actions dans le panneau 'Menus'" },
   "customizations.infoPlaceholders": { "message": "Les symboles '%s' et '%u' sont remplacés respectivement par la sélection et l'URL courants" },
+  "customizations.infoCustomIconURLs": { "message": "Les icônes personnalisées seront utilisées lorsque cela soit possible" },
   "customizations.loadURLActions.load": { "message": "Charger les URLs" },
   "customizations.loadURLActions.currentTab": { "message": "Dans l'onglet courant" },
   "customizations.loadURLActions.newTab": { "message": "Dans un nouvel onglet" },
@@ -202,7 +199,7 @@
   "customizations.useFavicon": { "message": "Utiliser la favicône du site (lorsque cela soit possible)" },
   "customizations.openInPrivateWindow": { "message": "Ouvrir dans une fenêtre privée" },
   "customizations.code": { "message": "Code" },
-  "customizations.useCustomIcon": { "message": "Utiliser une icône personalisée (lorsque cela soit possible)..." },
+  "customizations.customIconURL": { "message": "URL de l'icône personnalisée" },
   "customizations.openLink": { "message": "Personnaliser l'action 'Ouvrir le lien'" },
   "customizations.openLink.currentTab": { "message": "Ouvrir le lien dans l'onglet courant" },
   "customizations.openLink.newTab": { "message": "Ouvrir le lien dans un nouvel onglet" },
@@ -240,7 +237,6 @@
   "tips.moveMenu": { "message": "Vous pouvez déplacer le menu circulaire en maintenant une touche 'Maj' enfoncée tout en bougeant la souris." },
   "tips.smallIcons": { "message": "Vous pouvez changer les icônes du menu circulaire en petites icônes dans [preferences/behavior]." },
   "tips.largeMenu": { "message": "Par défaut, les menus sont composés de 8 actions. Vous pouvez passer à 10 actions par menu dans [preferences/behavior]." },
-  "tips.autoscrolling": { "message": "Lorsque le bouton central de la souris est utilisé pour ouvrir le menu circulaire, le défilement automatique n'est plus disponible. En l'activant dans [preferences/behavior], il deviendra disponible après un délai configurable d'inactivité. Vous pouvez aussi activer le défilement automatique lorsque d'autres boutons et/ou touches sont utilisés pour ouvrir le menu circulaire." },
   "tips.zoomOnImage": { "message": "Une action de zoom sur une image exécute cette action uniquement sur cette image." },
   "tips.openLinkAction": { "message": "Par défaut, l'action 'Ouvrir le lien' ouvre le lien sous le menu circulaire dans un nouvel onglet. Vous pouvez changer ce comportement par défaut dans [preferences/customizations/customizations.otherActions]." },
   "tips.dailyReadingsAction": { "message": "L'action 'Lectures quotidiennes' ouvre tous les marque-pages contenus dans un dossier de votre choix (ainsi que dans ses sous-dossiers) dans des nouveaux onglets. Vous pouvez choisir ce dossier dans [preferences/customizations/customizations.otherActions]." }

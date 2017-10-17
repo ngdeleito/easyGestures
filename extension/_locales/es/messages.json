@@ -1,5 +1,5 @@
 {
-  "extensionDescription": { "message": "Un menú circular configurable para navegar por la red desde donde se encuentra el puntero del ratón." },
+  "extensionDescription": { "message": "Gestos fáciles de aprender gracias a un menú circular configurable." },
   
   
   "contextLink": { "message": "Enlace" },
@@ -20,9 +20,10 @@
   "reload": { "message": "Recargar" },
   "homepage": { "message": "Página de inicio" },
   
+  "copyPageURL": { "message": "Copiar la dirección de la página" },
+  "copyURLToIdentifier": { "message": "Copiar la dirección del identificador" },
   "pageTop": { "message": "Subir en página" },
   "pageBottom": { "message": "Bajar en página" },
-  "autoscrolling": { "message": "Desplazamiento automático" },
   "zoomIn": { "message": "Aumentar el tamaño" },
   "zoomOut": { "message": "Reducir el tamaño" },
   "zoomReset": { "message": "Reiniciar el tamaño" },
@@ -31,10 +32,11 @@
   "savePageAs": { "message": "Guardar como..." },
   "printPage": { "message": "Imprimir..." },
   "viewPageSource": { "message": "Ver código fuente de la página" },
-  "viewPageInfo": { "message": "Ver información de la página" },
   
   "newTab": { "message": "Nueva pestaña" },
   "newBlankTab": { "message": "Nueva pestaña en blanco" },
+  "moveTabToNewWindow": { "message": "Desplazar la pestaña a una nueva ventana" },
+  "loadURLInNewPrivateWindow": { "message": "Cargar la dirección en una nueva ventana privada" },
   "duplicateTab": { "message": "Duplicar la pestaña" },
   "closeTab": { "message": "Cerrar la pestaña" },
   "closeOtherTabs": { "message": "Cerrar las otras pestañas" },
@@ -55,10 +57,7 @@
   "up": { "message": "Arriba" },
   "root": { "message": "Raíz" },
   "showOnlyThisFrame": { "message": "Mostrar sólo este marco" },
-  "focusLocationBar": { "message": "Seleccionar la barra de direcciones" },
   "searchWeb": { "message": "Buscar en la web" },
-  "quit": { "message": "Salir de Firefox" },
-  "restart": { "message": "Reiniciar Firefox" },
   
   "openLink": { "message": "Abrir enlace" },
   "openLinkInNewWindow": { "message": "Abrir enlace en una ventana nueva" },
@@ -68,8 +67,12 @@
   
   "dailyReadings": { "message": "Lecturas diarias" },
   "bookmarkThisPage": { "message": "Añadir esta página a marcadores" },
+  "bookmarkThisIdentifier": { "message": "Añadir este identificador a marcadores" },
   "bookmarkThisLink": { "message": "Añadir este enlace a marcadores" },
   "bookmarkOpenTabs": { "message": "Añadir pestañas a marcadores" },
+  "removeBookmarkToThisPage": { "message": "Eliminar esta página de marcadores" },
+  "removeBookmarkToThisIdentifier": { "message": "Eliminar este identificador de marcadores" },
+  "removeBookmarkToThisLink": { "message": "Eliminar este enlace de marcadores" },
   "showBookmarks": { "message": "Mostrar todos los marcadores" },
   "toggleBookmarksSidebar": { "message": "Mostrar/ocultar marcadores" },
   "toggleBookmarksToolbar": { "message": "Mostrar/ocultar la barra de marcadores" },
@@ -99,8 +102,6 @@
   "runScript9": { "message": "Ejecutar script 9" },
   "runScript10": { "message": "Ejecutar script 10" },
   
-  "firefoxPreferences": { "message": "Preferencias de Firefox" },
-  "addOns": { "message": "Complementos" },
   "easyGesturesNPreferences": { "message": "Preferencias de easyGestures N" },
   
   "copyImageLocation": { "message": "Copiar la ruta de la imagen" },
@@ -111,8 +112,6 @@
   "cut": { "message": "Cortar" },
   "copy": { "message": "Copiar" },
   "paste": { "message": "Pegar" },
-  "undo": { "message": "Deshacer" },
-  "redo": { "message": "Rehacer" },
   "selectAll": { "message": "Seleccionar todo" },
   
   
@@ -146,7 +145,7 @@
   "activation.ctrlKey": { "message": "Una tecla 'Ctrl'" },
   "activation.noKey": { "message": "Ninguna de estas teclas" },
   "activation.openAltMenu": { "message": "Mostrar el menú alternativo con" },
-  "activation.openAltMenu.altKey": { "message": "(Puede usar también una de las teclas Alt)" },
+  "activation.openAltMenu.altKey": { "message": "(Puede usar también una de las teclas 'Alt')" },
   "activation.preventOpen": { "message": "Impedir la apertura del menú circular con" },
   "activation.altKey": { "message": "Una tecla 'Alt'" },
   "activation.contextualMenu": { "message": "Activar el menú contextual con" },
@@ -171,9 +170,6 @@
   "behavior.links.openLinkAction": { "message": "Usar el comportamiento de la acción 'Abrir enlace'" },
   "behavior.links.configureAction": { "message": "Configurar esta acción" },
   "behavior.links.browser": { "message": "Usar el comportamiento del navegador" },
-  "behavior.autoscrolling": { "message": "Desplazamiento automático a través del menú circular" },
-  "behavior.autoscrolling.activate": { "message": "Activar el desplazamiento automático" },
-  "behavior.autoscrolling.delay": { "message": "Activar tras un periodo de" },
   
   "menus.main": { "message": "Menú principal" },
   "menus.extra": { "message": "Menú extra" },
@@ -193,6 +189,7 @@
   "customizations.otherActions": { "message": "Otras acciones" },
   "customizations.infoActions": { "message": "Puede seleccionar estas acciones en el panel 'Menús'" },
   "customizations.infoPlaceholders": { "message": "Los símbolos '%s' y '%u' son sustituidos por la selección y la dirección actuales, respectivamente" },
+  "customizations.infoCustomIconURLs": { "message": "Los iconos personalizados serán utilizados cuando sea posible" },
   "customizations.loadURLActions.load": { "message": "Cargar direcciones" },
   "customizations.loadURLActions.currentTab": { "message": "En la pestaña actual" },
   "customizations.loadURLActions.newTab": { "message": "En una pestaña nueva" },
@@ -202,7 +199,7 @@
   "customizations.useFavicon": { "message": "Usar el icono del sitio (cuando sea posible)" },
   "customizations.openInPrivateWindow": { "message": "Abrir en una ventana privada" },
   "customizations.code": { "message": "Código" },
-  "customizations.useCustomIcon": { "message": "Usar un icono personalizado (cuando sea posible)..." },
+  "customizations.customIconURL": { "message": "Dirección del icono personalizado" },
   "customizations.openLink": { "message": "Personalizar la acción 'Abrir enlace'" },
   "customizations.openLink.currentTab": { "message": "Abrir el enlace en la pestaña actual" },
   "customizations.openLink.newTab": { "message": "Abrir el enlace en una pestaña nueva" },
@@ -240,7 +237,6 @@
   "tips.moveMenu": { "message": "Puede desplazar el menú circular manteniendo pulsada una tecla 'Mayúsculas' mientras mueve el ratón." },
   "tips.smallIcons": { "message": "Puede pasar a utilizar iconos pequeños en el menú circular en [preferences/behavior]." },
   "tips.largeMenu": { "message": "Por defecto, los menús se componen de 8 acciones. Puede pasar a utilizar menús de 10 acciones en [preferences/behavior]." },
-  "tips.autoscrolling": { "message": "Si utiliza el botón central del ratón para abrir el menú circular, el desplazamiento automático quedará inhabilitado. Habilitándolo previamente en [preferences/behavior] aparecerá de nuevo después de un periodo de tiempo configurable de inactividad. Puede también habilitar el desplazamiento automático cuando se utilicen otros botones y/o teclas para abrir el menú circular." },
   "tips.zoomOnImage": { "message": "Una acción de zoom sobre una imagen ejecuta esta acción solamente en esta imagen." },
   "tips.openLinkAction": { "message": "Por defecto, la acción 'Abrir enlace' abre el enlace bajo el menú circular en una nueva pestaña. Puede cambiar este comportamiento por defecto en [preferences/customizations/customizations.otherActions]." },
   "tips.dailyReadingsAction": { "message": "La acción 'Lecturas diarias' abre todos los marcadores contenidos en una carpeta de su elección (y en sus subcarpetas) en nuevas pestañas. Puede seleccionar esta carpeta en [preferences/customizations/customizations.otherActions]." }
