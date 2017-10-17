@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "easyGestures N",
-  "version": "5.3dev1",
+  "version": "5.3",
   "description": "__MSG_extensionDescription__",
   "author": "Nicolás González-Deleito",
   "homepage_url": "https://github.com/ngdeleito/easyGestures",

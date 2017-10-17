@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, eGPrefs, eGContext, eGActions, console */
+/* global browser, eGPrefs, eGContext, eGActions, console, eGUtils, window */
 
 var installOrUpgradeTriggered = false;
 
@@ -158,6 +158,11 @@ async function handleInstallOrUpgrade(details) {
   if (details.reason === "install") {
     await eGPrefs.setDefaultSettings();
     eGPrefs.initializeStats();
+  }
+  else if (details.reason === "update") {
+    if (eGUtils.isVersionSmallerOrEqualThan(details.previousVersion, "5.3")) {
+      await eGPrefs.updateToV5_3();
+    }
   }
   await browser.storage.local.remove("installOrUpgradeTriggered");
   startup();
