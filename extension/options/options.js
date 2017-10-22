@@ -1131,8 +1131,8 @@ function exportPrefs() {
     let blobURL = URL.createObjectURL(aBlob);
     browser.downloads.download({
       url: blobURL,
-      filename: "easyGesturesNPreferences-" + (new Date()).toISOString() +
-                ".json",
+      filename: "easyGesturesNPreferences-" +
+                (new Date()).toISOString().replace(/:/g, "-") + ".json",
       saveAs: true
     }).then((downloadID) => {
       browser.downloads.onChanged.addListener(function downloadListener(download) {
