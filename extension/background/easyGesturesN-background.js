@@ -114,9 +114,12 @@ var eGMessageHandlers = {
   },
   
   loadURLInNewNonActiveTab : function(aMessage) {
-    browser.tabs.create({
-      active: false,
-      url: aMessage.url
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.tabs.create({
+        active: false,
+        openerTabId: currentTab.id,
+        url: aMessage.url
+      });
     });
   },
   

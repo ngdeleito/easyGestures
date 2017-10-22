@@ -56,7 +56,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisabledAction
 
 /* exported eGActions */
-/* global eGPrefs, browser, URL, eGContext, eGUtils */
+/* global eGPrefs, browser, eGUtils, URL, eGContext */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -107,15 +107,6 @@ Action.prototype = {
   
   // helper functions
   
-  _performOnCurrentTab: function(aFunction) {
-    return browser.tabs.query({
-      active: true,
-      currentWindow: true
-    }).then(tabs => {
-      return aFunction(tabs[0]);
-    });
-  },
-  
   _sendPerformActionMessage: function(options) {
     return {
       runActionName: this._name,
@@ -131,9 +122,12 @@ Action.prototype = {
         });
         break;
       case "newTab":
-        browser.tabs.create({
-          active: newTabShouldBeActive,
-          url: url
+        eGUtils.performOnCurrentTab(function(currentTab) {
+          browser.tabs.create({
+            active: newTabShouldBeActive,
+            openerTabId: currentTab.id,
+            url: url
+          });
         });
         break;
       case "newWindow":
@@ -225,6 +219,7 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
       if (node.children === undefined) {
         browser.tabs.create({
           active: false,
+          openerTabId: currentTabId,
           url: node.url
         });
       }
@@ -235,7 +230,12 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
       }
     }
     
-    traverseSubTree(this.rootNode);
+    let currentTabId;
+    let rootNode = this.rootNode;
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      currentTabId = currentTab.id;
+      traverseSubTree(rootNode);
+    });
   }, function() {
     return eGPrefs.getDailyReadingsFolderName().then(async folderName => {
       if (folderName === "") {
@@ -492,7 +492,7 @@ var eGActions = {
   toggleFindBar : new DisabledAction("toggleFindBar", false, "savePageAs"),
   
   savePageAs : new Action("savePageAs", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.downloads.download({
         url: currentTab.url,
         filename: currentTab.title,
@@ -506,23 +506,33 @@ var eGActions = {
   }, false, "viewPageSource"),
   
   viewPageSource : new Action("viewPageSource", function() {
-    browser.tabs.create({
-      url: "view-source:" + eGContext.pageURL
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.tabs.create({
+        openerTabId: currentTab.id,
+        url: "view-source:" + eGContext.pageURL
+      });
     });
   }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
-    browser.tabs.create({});
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.tabs.create({
+        openerTabId: currentTab.id
+      });
+    });
   }, true, "newBlankTab"),
   
   newBlankTab : new Action("newBlankTab", function() {
-    browser.tabs.create({
-      url: "about:blank"
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.tabs.create({
+        openerTabId: currentTab.id,
+        url: "about:blank"
+      });
     });
   }, false, "moveTabToNewWindow"),
   
   moveTabToNewWindow: new Action("moveTabToNewWindow", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.windows.create({
         tabId: currentTab.id
       });
@@ -537,17 +547,17 @@ var eGActions = {
   }, false, "duplicateTab"),
   
   duplicateTab : new Action("duplicateTab", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.duplicate(currentTab.id);
     });
   }, false, "closeTab"),
   
   closeTab : new DisableableAction("closeTab", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.remove(currentTab.id);
     });
   }, function() {
-    return this._performOnCurrentTab(function(currentTab) {
+    return eGUtils.performOnCurrentTab(function(currentTab) {
       return currentTab.pinned;
     });
   }, false, "closeOtherTabs"),
@@ -589,7 +599,7 @@ var eGActions = {
   }, false, "prevTab"),
   
   prevTab : new OtherTabsExistDisableableAction("prevTab", function() {
-    this._performOnCurrentTab(async function(currentTab) {
+    eGUtils.performOnCurrentTab(async function(currentTab) {
       let tabs = await browser.tabs.query({
         currentWindow: true
       });
@@ -605,7 +615,7 @@ var eGActions = {
   }, false, "nextTab"),
   
   nextTab : new OtherTabsExistDisableableAction("nextTab", function() {
-    this._performOnCurrentTab(async function(currentTab) {
+    eGUtils.performOnCurrentTab(async function(currentTab) {
       let tabs = await browser.tabs.query({
         currentWindow: true
       });
@@ -620,7 +630,7 @@ var eGActions = {
   }, false, "pinUnpinTab"),
   
   pinUnpinTab : new Action("pinUnpinTab", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.update({
         pinned: !currentTab.pinned
       });
@@ -784,7 +794,7 @@ var eGActions = {
   dailyReadings : new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
   
   bookmarkThisPage : new DisableableAction("bookmarkThisPage", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.bookmarks.create({
         title: currentTab.title,
         url: currentTab.url
@@ -799,7 +809,7 @@ var eGActions = {
   }, false, "bookmarkThisIdentifier"),
   
   bookmarkThisIdentifier: new URLToIdentifierExistsDisableableAction("bookmarkThisIdentifier", function() {
-    this._performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(function(currentTab) {
       browser.bookmarks.create({
         title: currentTab.title,
         url: eGContext.urlToIdentifier

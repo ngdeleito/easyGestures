@@ -54,6 +54,15 @@ var eGUtils = {
                oldVersionArray[2] <= newVersionArray[2]));
   },
   
+  performOnCurrentTab(aFunction) {
+    return browser.tabs.query({
+      active: true,
+      currentWindow: true
+    }).then(tabs => {
+      return aFunction(tabs[0]);
+    });
+  },
+  
   showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
     browser.tabs.query({}).then(tabs => {
       let tipsTab = tabs.find(tab => {
@@ -61,9 +70,12 @@ var eGUtils = {
       });
       let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
       if (tipsTab === undefined) {
-        browser.tabs.create({
-          active: giveFocus,
-          url: urlToOpen
+        this.performOnCurrentTab(currentTab => {
+          browser.tabs.create({
+            active: giveFocus,
+            openerTabId: currentTab.id,
+            url: urlToOpen
+          });
         });
       }
       else {
