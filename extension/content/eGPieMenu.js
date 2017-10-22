@@ -782,7 +782,8 @@ var eGPieMenu = {
     if (this.settings.handleLinksAsOpenLink) {
       browser.runtime.sendMessage({
         messageName: "runAction",
-        actionName: "openLink"
+        actionName: "openLink",
+        updateStatsInformation: {}
       });
     }
     else {

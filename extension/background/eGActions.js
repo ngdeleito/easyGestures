@@ -64,7 +64,9 @@ function Action(name, action, startsNewGroup, nextAction) {
     if (updateStatsInformation.incrementMethodName !== undefined) {
       eGPrefs[updateStatsInformation.incrementMethodName](updateStatsInformation.incrementIndex);
     }
-    eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
+    if (updateStatsInformation.updateActionName !== undefined) {
+      eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
+    }
     return new Promise(resolve => {
       resolve(action.call(this));
     }).then(response => {
