@@ -517,19 +517,12 @@ var eGActions = {
   }, false, "newTab"),
   
   newTab : new Action("newTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
-      browser.tabs.create({
-        openerTabId: currentTab.id
-      });
-    });
+    browser.tabs.create({});
   }, true, "newBlankTab"),
   
   newBlankTab : new Action("newBlankTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
-      browser.tabs.create({
-        openerTabId: currentTab.id,
-        url: "about:blank"
-      });
+    browser.tabs.create({
+      url: "about:blank"
     });
   }, false, "moveTabToNewWindow"),
   
