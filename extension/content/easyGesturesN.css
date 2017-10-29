@@ -814,13 +814,21 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .toggleFullscreen.selected:not(.disabled),
 #easyGesturesPieMenu_ln .toggleFullscreen.selected:not(.disabled) { background-position: -160px -448px; }
 
-#easyGesturesPieMenu_nn .toggleFindBar.disabled,
-#easyGesturesPieMenu_ln .toggleFindBar.disabled { background-position: -160px -960px; }
-#easyGesturesPieMenu_nn .toggleFindBar,
-#easyGesturesPieMenu_ln .toggleFindBar,
-[data-action="toggleFindBar"] { background-position: -160px -992px; }
-#easyGesturesPieMenu_nn .toggleFindBar.selected:not(.disabled),
-#easyGesturesPieMenu_ln .toggleFindBar.selected:not(.disabled) { background-position: -160px -1024px; }
+#easyGesturesPieMenu_nn .findAndHighlightSelection.disabled,
+#easyGesturesPieMenu_ln .findAndHighlightSelection.disabled { background-position: -160px -960px; }
+#easyGesturesPieMenu_nn .findAndHighlightSelection,
+#easyGesturesPieMenu_ln .findAndHighlightSelection,
+[data-action="findAndHighlightSelection"] { background-position: -160px -992px; }
+#easyGesturesPieMenu_nn .findAndHighlightSelection.selected:not(.disabled),
+#easyGesturesPieMenu_ln .findAndHighlightSelection.selected:not(.disabled) { background-position: -160px -1024px; }
+
+#easyGesturesPieMenu_nn .removeHighlight.disabled,
+#easyGesturesPieMenu_ln .removeHighlight.disabled { background-position: -32px -768px; }
+#easyGesturesPieMenu_nn .removeHighlight,
+#easyGesturesPieMenu_ln .removeHighlight,
+[data-action="removeHighlight"] { background-position: -32px -800px; }
+#easyGesturesPieMenu_nn .removeHighlight.selected:not(.disabled),
+#easyGesturesPieMenu_ln .removeHighlight.selected:not(.disabled) { background-position: -32px -832px; }
 
 #easyGesturesPieMenu_nn .savePageAs.disabled,
 #easyGesturesPieMenu_ln .savePageAs.disabled { background-position: -224px -480px; }
@@ -1715,13 +1723,21 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .toggleFullscreen.selected:not(.disabled),
 #easyGesturesPieMenu_ls .toggleFullscreen.selected:not(.disabled) { background-position: -100px -280px; }
 
-#easyGesturesPieMenu_ns .toggleFindBar.disabled,
-#easyGesturesPieMenu_ls .toggleFindBar.disabled { background-position: -100px -600px; }
-.eG_toggleFindBar, .eGOptions_toggleFindBar::before,
-#easyGesturesPieMenu_ns .toggleFindBar,
-#easyGesturesPieMenu_ls .toggleFindBar { background-position: -100px -620px; }
-#easyGesturesPieMenu_ns .toggleFindBar.selected:not(.disabled),
-#easyGesturesPieMenu_ls .toggleFindBar.selected:not(.disabled) { background-position: -100px -640px; }
+#easyGesturesPieMenu_ns .findAndHighlightSelection.disabled,
+#easyGesturesPieMenu_ls .findAndHighlightSelection.disabled { background-position: -100px -600px; }
+.eG_findAndHighlightSelection, .eGOptions_findAndHighlightSelection::before,
+#easyGesturesPieMenu_ns .findAndHighlightSelection,
+#easyGesturesPieMenu_ls .findAndHighlightSelection { background-position: -100px -620px; }
+#easyGesturesPieMenu_ns .findAndHighlightSelection.selected:not(.disabled),
+#easyGesturesPieMenu_ls .findAndHighlightSelection.selected:not(.disabled) { background-position: -100px -640px; }
+
+#easyGesturesPieMenu_ns .removeHighlight.disabled,
+#easyGesturesPieMenu_ls .removeHighlight.disabled { background-position: -20px -480px; }
+.eG_removeHighlight, .eGOptions_removeHighlight::before,
+#easyGesturesPieMenu_ns .removeHighlight,
+#easyGesturesPieMenu_ls .removeHighlight { background-position: -20px -500px; }
+#easyGesturesPieMenu_ns .removeHighlight.selected:not(.disabled),
+#easyGesturesPieMenu_ls .removeHighlight.selected:not(.disabled) { background-position: -20px -520px; }
 
 #easyGesturesPieMenu_ns .savePageAs.disabled,
 #easyGesturesPieMenu_ls .savePageAs.disabled { background-position: -140px -300px; }

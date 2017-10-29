@@ -131,11 +131,11 @@ var eGPrefs = {
         ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
         ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
         ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
-        ["contextSelection", "empty/toggleFindBar/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
+        ["contextSelection", "empty/findAndHighlightSelection/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
         ["contextTextbox",   "selectAll/empty/empty/cut/copy/empty/paste/empty/empty/empty"]
       ];
       var extraMenus = [
-        ["extra",     "bookmarkThisPage/toggleFindBar/searchWeb/reload/homepage"],
+        ["extra",     "bookmarkThisPage/findAndHighlightSelection/searchWeb/reload/homepage"],
         ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/empty/empty"],
         ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
       ];
@@ -520,6 +520,25 @@ var eGPrefs = {
     });
   },
   
+  _updateActions: function(actionsToRemove, actionsToAdd, actionsToRename) {
+    this.getPref("stats.actions").then(prefValue => {
+      var actionsStats = JSON.parse(prefValue);
+      actionsToRemove.forEach(actionName => {
+        delete actionsStats[actionName];
+      });
+      actionsToAdd.forEach(actionName => {
+        actionsStats[actionName] = 0;
+      });
+      actionsToRename.forEach(actionTuple => {
+        actionsStats[actionTuple[1]] = actionsStats[actionTuple[0]];
+        delete actionsStats[actionTuple[0]];
+      });
+      return browser.storage.local.set({
+        "stats.actions": JSON.stringify(actionsStats)
+      });
+    });
+  },
+  
   updateToV5_3: function() {
     var actionsToRemove = [
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
@@ -548,21 +567,30 @@ var eGPrefs = {
       }
       return browser.storage.local.set(prefs);
     }));
-    promises.push(this.getPref("stats.actions").then(prefValue => {
-      var actionsStats = JSON.parse(prefValue);
-      actionsToRemove.forEach(actionName => {
-        delete actionsStats[actionName];
-      });
-      actionsToAdd.forEach(actionName => {
-        actionsStats[actionName] = 0;
-      });
-      return browser.storage.local.set({
-        "stats.actions": JSON.stringify(actionsStats)
-      });
-    }));
+    promises.push(this._updateActions(actionsToRemove, actionsToAdd, []));
     promises.push(browser.storage.local.remove([
       "behavior.autoscrollingOn", "behavior.autoscrollingDelay"
     ]));
+    return Promise.all(promises);
+  },
+  
+  updateToV5_4: function() {
+    var actionsToRename = [
+      ["toggleFindBar", "findAndHighlightSelection"]
+    ];
+    var actionsToAdd = ["removeHighlight"];
+    var promises = [];
+    promises.push(browser.storage.local.get([
+      "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
+      "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",
+      "menus.contextImage", "menus.contextSelection", "menus.contextTextbox"
+    ]).then(prefs => {
+      for (let pref in prefs) {
+        prefs[pref] = prefs[pref].replace("toggleFindBar", "findAndHighlightSelection");
+      }
+      return browser.storage.local.set(prefs);
+    }));
+    promises.push(this._updateActions([], actionsToAdd, actionsToRename));
     return Promise.all(promises);
   }
 };

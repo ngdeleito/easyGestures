@@ -9,14 +9,14 @@
   "applications": {
     "gecko": {
       "id": "easyGesturesN@ngdeleito.eu",
-      "strict_min_version": "54.0"
+      "strict_min_version": "57.0"
     }
   },
   
   "default_locale": "en",
   "permissions": [
-    "bookmarks", "clipboardRead", "clipboardWrite", "downloads", "sessions",
-    "storage", "tabs"
+    "bookmarks", "clipboardRead", "clipboardWrite", "downloads", "find",
+    "sessions", "storage", "tabs"
   ],
   "background": {
     "scripts": [

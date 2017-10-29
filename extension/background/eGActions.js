@@ -489,9 +489,21 @@ var eGActions = {
         state: newState
       });
     });
-  }, false, "toggleFindBar"),
+  }, false, "findAndHighlightSelection"),
   
-  toggleFindBar : new DisabledAction("toggleFindBar", false, "savePageAs"),
+  findAndHighlightSelection: new DisableableAction("findAndHighlightSelection", function() {
+    browser.find.find(eGContext.selection).then(() => {
+      browser.find.highlightResults();
+    });
+  }, function() {
+    return new Promise(resolve => {
+      resolve(eGContext.selection === "");
+    });
+  }, false, "removeHighlight"),
+  
+  removeHighlight: new Action("removeHighlight", function() {
+    browser.find.removeHighlighting();
+  }, false, "savePageAs"),
   
   savePageAs : new Action("savePageAs", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
