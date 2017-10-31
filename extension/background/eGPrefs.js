@@ -163,7 +163,7 @@ var eGPrefs = {
     
     var defaultPrefs = new Map();
     setBoolPref(defaultPrefs, "general.startupTips", true);
-    setIntPref(defaultPrefs, "general.tipNumber", 0);
+    setIntPref(defaultPrefs, "general.tipNumber", -1);
     
     if (platformOS !== "mac") {
       setIntPref(defaultPrefs, "activation.showButton", 1); // middle button
