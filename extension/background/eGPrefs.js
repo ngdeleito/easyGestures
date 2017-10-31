@@ -578,7 +578,7 @@ var eGPrefs = {
     var actionsToRename = [
       ["toggleFindBar", "findAndHighlightSelection"]
     ];
-    var actionsToAdd = ["removeHighlight"];
+    var actionsToAdd = ["removeHighlight", "showPrintPreview"];
     var promises = [];
     promises.push(browser.storage.local.get([
       "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",

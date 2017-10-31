@@ -32,6 +32,7 @@
   "removeHighlight": { "message": "Eliminar el resaltado" },
   "savePageAs": { "message": "Guardar como..." },
   "printPage": { "message": "Imprimir..." },
+  "showPrintPreview": { "message": "Mostrar la previsualización de impresión" },
   "viewPageSource": { "message": "Ver código fuente de la página" },
   
   "newTab": { "message": "Nueva pestaña" },

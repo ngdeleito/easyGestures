@@ -32,6 +32,7 @@
   "removeHighlight": { "message": "Remove highlight" },
   "savePageAs": { "message": "Save page as..." },
   "printPage": { "message": "Print..." },
+  "showPrintPreview": { "message": "Show print preview" },
   "viewPageSource": { "message": "View page source" },
   
   "newTab": { "message": "New tab" },

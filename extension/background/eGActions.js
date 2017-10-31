@@ -517,6 +517,10 @@ var eGActions = {
   
   printPage : new Action("printPage", function() {
     browser.tabs.print();
+  }, false, "showPrintPreview"),
+  
+  showPrintPreview: new Action("showPrintPreview", function() {
+    browser.tabs.printPreview();
   }, false, "viewPageSource"),
   
   viewPageSource : new Action("viewPageSource", function() {

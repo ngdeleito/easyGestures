@@ -846,6 +846,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .printPage.selected:not(.disabled),
 #easyGesturesPieMenu_ln .printPage.selected:not(.disabled) { background-position: -352px -928px; }
 
+#easyGesturesPieMenu_nn .showPrintPreview.disabled,
+#easyGesturesPieMenu_ln .showPrintPreview.disabled { background-position: -352px -864px; }
+#easyGesturesPieMenu_nn .showPrintPreview,
+#easyGesturesPieMenu_ln .showPrintPreview,
+[data-action="showPrintPreview"] { background-position: -352px -896px; }
+#easyGesturesPieMenu_nn .showPrintPreview.selected:not(.disabled),
+#easyGesturesPieMenu_ln .showPrintPreview.selected:not(.disabled) { background-position: -352px -928px; }
+
 #easyGesturesPieMenu_nn .viewPageSource.disabled,
 #easyGesturesPieMenu_ln .viewPageSource.disabled { background-position: -224px -864px; }
 #easyGesturesPieMenu_nn .viewPageSource,
@@ -1754,6 +1762,14 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .printPage { background-position: -220px -560px; }
 #easyGesturesPieMenu_ns .printPage.selected:not(.disabled),
 #easyGesturesPieMenu_ls .printPage.selected:not(.disabled) { background-position: -220px -580px; }
+
+#easyGesturesPieMenu_ns .showPrintPreview.disabled,
+#easyGesturesPieMenu_ls .showPrintPreview.disabled { background-position: -220px -540px; }
+.eG_showPrintPreview, .eGOptions_showPrintPreview::before,
+#easyGesturesPieMenu_ns .showPrintPreview,
+#easyGesturesPieMenu_ls .showPrintPreview { background-position: -220px -560px; }
+#easyGesturesPieMenu_ns .showPrintPreview.selected:not(.disabled),
+#easyGesturesPieMenu_ls .showPrintPreview.selected:not(.disabled) { background-position: -220px -580px; }
 
 #easyGesturesPieMenu_ns .viewPageSource.disabled,
 #easyGesturesPieMenu_ls .viewPageSource.disabled { background-position: -140px -540px; }

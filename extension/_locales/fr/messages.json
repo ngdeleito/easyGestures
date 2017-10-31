@@ -32,6 +32,7 @@
   "removeHighlight": { "message": "Supprimer le surlignage" },
   "savePageAs": { "message": "Enregistrer sous..." },
   "printPage": { "message": "Imprimer..." },
+  "showPrintPreview": { "message": "Montrer la prévisualisation d'impression" },
   "viewPageSource": { "message": "Afficher code source de la page" },
   
   "newTab": { "message": "Nouvel onglet" },
