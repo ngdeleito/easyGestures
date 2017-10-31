@@ -127,10 +127,6 @@ var actionRunners = {
     imageElement.style.height = height;
   },
   
-  printPage: function() {
-    window.print();
-  },
-  
   copyInformation: function(options) {
     var selection = window.getSelection();
     selection.removeAllRanges();

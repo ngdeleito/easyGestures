@@ -516,7 +516,7 @@ var eGActions = {
   }, false, "printPage"),
   
   printPage : new Action("printPage", function() {
-    return this._sendPerformActionMessage();
+    browser.tabs.print();
   }, false, "viewPageSource"),
   
   viewPageSource : new Action("viewPageSource", function() {
