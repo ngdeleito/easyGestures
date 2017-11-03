@@ -59,6 +59,7 @@
   "up": { "message": "Up" },
   "root": { "message": "Root" },
   "showOnlyThisFrame": { "message": "Show only this frame" },
+  "takeTabScreenshot": { "message": "Take tab screenshot" },
   "searchWeb": { "message": "Search web" },
   
   "openLink": { "message": "Open link" },

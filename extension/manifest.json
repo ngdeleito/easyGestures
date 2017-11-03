@@ -15,8 +15,8 @@
   
   "default_locale": "en",
   "permissions": [
-    "bookmarks", "clipboardRead", "clipboardWrite", "downloads", "find",
-    "sessions", "storage", "tabs"
+    "<all_urls>", "bookmarks", "clipboardRead", "clipboardWrite", "downloads",
+    "find", "sessions", "storage", "tabs"
   ],
   "background": {
     "scripts": [

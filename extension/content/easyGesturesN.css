@@ -1038,6 +1038,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .showOnlyThisFrame.selected:not(.disabled),
 #easyGesturesPieMenu_ln .showOnlyThisFrame.selected:not(.disabled) { background-position: -288px -928px; }
 
+#easyGesturesPieMenu_nn .takeTabScreenshot.disabled,
+#easyGesturesPieMenu_ln .takeTabScreenshot.disabled { background-position: -64px -768px; }
+#easyGesturesPieMenu_nn .takeTabScreenshot,
+#easyGesturesPieMenu_ln .takeTabScreenshot,
+[data-action="takeTabScreenshot"] { background-position: -64px -800px; }
+#easyGesturesPieMenu_nn .takeTabScreenshot.selected:not(.disabled),
+#easyGesturesPieMenu_ln .takeTabScreenshot.selected:not(.disabled) { background-position: -64px -832px; }
+
 #easyGesturesPieMenu_nn .searchWeb.disabled,
 #easyGesturesPieMenu_ln .searchWeb.disabled { background-position: -64px -576px; }
 #easyGesturesPieMenu_nn .searchWeb,
@@ -1954,6 +1962,14 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .showOnlyThisFrame { background-position: -180px -560px; }
 #easyGesturesPieMenu_ns .showOnlyThisFrame.selected:not(.disabled),
 #easyGesturesPieMenu_ls .showOnlyThisFrame.selected:not(.disabled) { background-position: -180px -580px; }
+
+#easyGesturesPieMenu_ns .takeTabScreenshot.disabled,
+#easyGesturesPieMenu_ls .takeTabScreenshot.disabled { background-position: -40px -480px; }
+.eG_takeTabScreenshot, .eGOptions_takeTabScreenshot::before,
+#easyGesturesPieMenu_ns .takeTabScreenshot,
+#easyGesturesPieMenu_ls .takeTabScreenshot { background-position: -40px -500px; }
+#easyGesturesPieMenu_ns .takeTabScreenshot.selected:not(.disabled),
+#easyGesturesPieMenu_ls .takeTabScreenshot.selected:not(.disabled) { background-position: -40px -520px; }
 
 #easyGesturesPieMenu_ns .searchWeb.disabled,
 #easyGesturesPieMenu_ls .searchWeb.disabled { background-position: -40px -360px; }

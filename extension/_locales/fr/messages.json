@@ -59,6 +59,7 @@
   "up": { "message": "Monter" },
   "root": { "message": "Racine" },
   "showOnlyThisFrame": { "message": "Afficher ce cadre uniquement" },
+  "takeTabScreenshot": { "message": "Prendre une capture d'écran de l'onglet" },
   "searchWeb": { "message": "Rechercher sur le web" },
   
   "openLink": { "message": "Ouvrir le lien" },

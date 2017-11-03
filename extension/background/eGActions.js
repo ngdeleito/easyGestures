@@ -763,6 +763,35 @@ var eGActions = {
     return new Promise(resolve => {
       resolve(eGContext.frameURL === null);
     });
+  }, false, "takeTabScreenshot"),
+  
+  takeTabScreenshot: new Action("takeTabScreenshot", function() {
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.tabs.captureVisibleTab().then(dataURL => {
+        let imageData = atob(dataURL.split(",")[1]);
+        let imageDataArray = new Uint8Array(imageData.length);
+        for (let i=0; i < imageData.length; ++i) {
+          imageDataArray[i] = imageData.charCodeAt(i);
+        }
+        let aBlob = new Blob([imageDataArray.buffer], {type: "image/png"});
+        let blobURL = URL.createObjectURL(aBlob);
+        browser.downloads.download({
+          url: blobURL,
+          filename: currentTab.title + ".png",
+          saveAs: true
+        }).then((downloadID) => {
+          browser.downloads.onChanged.addListener(function downloadListener(download) {
+            if (downloadID === download.id &&
+                download.state.current === "complete") {
+              URL.revokeObjectURL(blobURL);
+              browser.downloads.onChanged.removeListener(downloadListener);
+            }
+          });
+        }).catch(() => {
+          URL.revokeObjectURL(blobURL);
+        });
+      });
+    });
   }, false, "searchWeb"),
   
   searchWeb : new DisabledAction("searchWeb", false, "openLink"),

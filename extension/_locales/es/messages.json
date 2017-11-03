@@ -59,6 +59,7 @@
   "up": { "message": "Arriba" },
   "root": { "message": "Raíz" },
   "showOnlyThisFrame": { "message": "Mostrar sólo este marco" },
+  "takeTabScreenshot": { "message": "Hacer un pantallazo de la pestaña" },
   "searchWeb": { "message": "Buscar en la web" },
   
   "openLink": { "message": "Abrir enlace" },
