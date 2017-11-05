@@ -127,7 +127,7 @@ var eGPrefs = {
       
       var nonExtraMenus = [
         ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
-        ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/prevTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
+        ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/previousTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
         ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
         ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
         ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
@@ -576,7 +576,8 @@ var eGPrefs = {
   
   updateToV5_4: function() {
     var actionsToRename = [
-      ["toggleFindBar", "findAndHighlightSelection"]
+      ["toggleFindBar", "findAndHighlightSelection"],
+      ["prevTab", "previousTab"], ["bookmarkOpenTabs", "bookmarkAllTabs"]
     ];
     var actionsToAdd = [
       "removeHighlight", "showPrintPreview", "takeTabScreenshot"
@@ -588,7 +589,10 @@ var eGPrefs = {
       "menus.contextImage", "menus.contextSelection", "menus.contextTextbox"
     ]).then(prefs => {
       for (let pref in prefs) {
-        prefs[pref] = prefs[pref].replace("toggleFindBar", "findAndHighlightSelection");
+        for (let i = 0; i < actionsToRename.length; ++i) {
+          prefs[pref] = prefs[pref].replace(actionsToRename[i][0],
+                                            actionsToRename[i][1]);
+        }
       }
       return browser.storage.local.set(prefs);
     }));

@@ -607,9 +607,9 @@ var eGActions = {
       });
       return mostRecentlyClosedTab === undefined;
     });
-  }, false, "prevTab"),
+  }, false, "previousTab"),
   
-  prevTab : new OtherTabsExistDisableableAction("prevTab", function() {
+  previousTab : new OtherTabsExistDisableableAction("previousTab", function() {
     eGUtils.performOnCurrentTab(async function(currentTab) {
       let tabs = await browser.tabs.query({
         currentWindow: true
@@ -871,9 +871,9 @@ var eGActions = {
                                          : new Promise(resolve => {
                                              resolve(true);
                                            });
-  }, false, "bookmarkOpenTabs"),
+  }, false, "bookmarkAllTabs"),
   
-  bookmarkOpenTabs : new Action("bookmarkOpenTabs", function() {
+  bookmarkAllTabs : new Action("bookmarkAllTabs", function() {
     browser.windows.getCurrent({
       populate: true
     }).then(currentWindow => {

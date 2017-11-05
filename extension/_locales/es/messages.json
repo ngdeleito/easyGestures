@@ -43,7 +43,7 @@
   "closeTab": { "message": "Cerrar la pestaña" },
   "closeOtherTabs": { "message": "Cerrar las otras pestañas" },
   "undoCloseTab": { "message": "Restaurar la última pestaña cerrada" },
-  "prevTab": { "message": "Pestaña anterior" },
+  "previousTab": { "message": "Pestaña anterior" },
   "nextTab": { "message": "Pestaña siguiente" },
   "pinUnpinTab": { "message": "Clavar/desclavar pestaña" },
   
@@ -72,7 +72,7 @@
   "bookmarkThisPage": { "message": "Añadir esta página a marcadores" },
   "bookmarkThisIdentifier": { "message": "Añadir este identificador a marcadores" },
   "bookmarkThisLink": { "message": "Añadir este enlace a marcadores" },
-  "bookmarkOpenTabs": { "message": "Añadir pestañas a marcadores" },
+  "bookmarkAllTabs": { "message": "Añadir pestañas a marcadores" },
   "removeBookmarkToThisPage": { "message": "Eliminar esta página de marcadores" },
   "removeBookmarkToThisIdentifier": { "message": "Eliminar este identificador de marcadores" },
   "removeBookmarkToThisLink": { "message": "Eliminar este enlace de marcadores" },

@@ -43,7 +43,7 @@
   "closeTab": { "message": "Close tab" },
   "closeOtherTabs": { "message": "Close other tabs" },
   "undoCloseTab": { "message": "Undo close tab" },
-  "prevTab": { "message": "Previous tab" },
+  "previousTab": { "message": "Previous tab" },
   "nextTab": { "message": "Next tab" },
   "pinUnpinTab": { "message": "Pin/unpin tab" },
   
@@ -72,7 +72,7 @@
   "bookmarkThisPage": { "message": "Bookmark this page" },
   "bookmarkThisIdentifier": { "message": "Bookmark this identifier" },
   "bookmarkThisLink": { "message": "Bookmark this link" },
-  "bookmarkOpenTabs": { "message": "Bookmark all tabs" },
+  "bookmarkAllTabs": { "message": "Bookmark all tabs" },
   "removeBookmarkToThisPage": { "message": "Remove bookmark to this page" },
   "removeBookmarkToThisIdentifier": { "message": "Remove bookmark to this identifier" },
   "removeBookmarkToThisLink": { "message": "Remove bookmark to this link" },

@@ -926,13 +926,13 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .undoCloseTab.selected:not(.disabled),
 #easyGesturesPieMenu_ln .undoCloseTab.selected:not(.disabled) { background-position: -192px -352px; }
 
-#easyGesturesPieMenu_nn .prevTab.disabled,
-#easyGesturesPieMenu_ln .prevTab.disabled { background-position: -64px -288px; }
-#easyGesturesPieMenu_nn .prevTab,
-#easyGesturesPieMenu_ln .prevTab,
-[data-action="prevTab"] { background-position: -64px -320px; }
-#easyGesturesPieMenu_nn .prevTab.selected:not(.disabled),
-#easyGesturesPieMenu_ln .prevTab.selected:not(.disabled) { background-position: -64px -352px; }
+#easyGesturesPieMenu_nn .previousTab.disabled,
+#easyGesturesPieMenu_ln .previousTab.disabled { background-position: -64px -288px; }
+#easyGesturesPieMenu_nn .previousTab,
+#easyGesturesPieMenu_ln .previousTab,
+[data-action="previousTab"] { background-position: -64px -320px; }
+#easyGesturesPieMenu_nn .previousTab.selected:not(.disabled),
+#easyGesturesPieMenu_ln .previousTab.selected:not(.disabled) { background-position: -64px -352px; }
 
 #easyGesturesPieMenu_nn .nextTab.disabled,
 #easyGesturesPieMenu_ln .nextTab.disabled { background-position: -96px -288px; }
@@ -1126,13 +1126,13 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .bookmarkThisLink.selected:not(.disabled),
 #easyGesturesPieMenu_ln .bookmarkThisLink.selected:not(.disabled) { background-position: -32px -928px; }
 
-#easyGesturesPieMenu_nn .bookmarkOpenTabs.disabled,
-#easyGesturesPieMenu_ln .bookmarkOpenTabs.disabled { background-position: -96px -864px; }
-#easyGesturesPieMenu_nn .bookmarkOpenTabs,
-#easyGesturesPieMenu_ln .bookmarkOpenTabs,
-[data-action="bookmarkOpenTabs"] { background-position: -96px -896px; }
-#easyGesturesPieMenu_nn .bookmarkOpenTabs.selected:not(.disabled),
-#easyGesturesPieMenu_ln .bookmarkOpenTabs.selected:not(.disabled) { background-position: -96px -928px; }
+#easyGesturesPieMenu_nn .bookmarkAllTabs.disabled,
+#easyGesturesPieMenu_ln .bookmarkAllTabs.disabled { background-position: -96px -864px; }
+#easyGesturesPieMenu_nn .bookmarkAllTabs,
+#easyGesturesPieMenu_ln .bookmarkAllTabs,
+[data-action="bookmarkAllTabs"] { background-position: -96px -896px; }
+#easyGesturesPieMenu_nn .bookmarkAllTabs.selected:not(.disabled),
+#easyGesturesPieMenu_ln .bookmarkAllTabs.selected:not(.disabled) { background-position: -96px -928px; }
 
 #easyGesturesPieMenu_nn .removeBookmarkToThisPage.disabled,
 #easyGesturesPieMenu_ln .removeBookmarkToThisPage.disabled { background-position: -384px -576px; }
@@ -1851,13 +1851,13 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .undoCloseTab.selected:not(.disabled),
 #easyGesturesPieMenu_ls .undoCloseTab.selected:not(.disabled) { background-position: -120px -220px; }
 
-#easyGesturesPieMenu_ns .prevTab.disabled,
-#easyGesturesPieMenu_ls .prevTab.disabled { background-position: -40px -180px; }
-.eG_prevTab, .eGOptions_prevTab::before,
-#easyGesturesPieMenu_ns .prevTab,
-#easyGesturesPieMenu_ls .prevTab { background-position: -40px -200px; }
-#easyGesturesPieMenu_ns .prevTab.selected:not(.disabled),
-#easyGesturesPieMenu_ls .prevTab.selected:not(.disabled) { background-position: -40px -220px; }
+#easyGesturesPieMenu_ns .previousTab.disabled,
+#easyGesturesPieMenu_ls .previousTab.disabled { background-position: -40px -180px; }
+.eG_previousTab, .eGOptions_previousTab::before,
+#easyGesturesPieMenu_ns .previousTab,
+#easyGesturesPieMenu_ls .previousTab { background-position: -40px -200px; }
+#easyGesturesPieMenu_ns .previousTab.selected:not(.disabled),
+#easyGesturesPieMenu_ls .previousTab.selected:not(.disabled) { background-position: -40px -220px; }
 
 #easyGesturesPieMenu_ns .nextTab.disabled,
 #easyGesturesPieMenu_ls .nextTab.disabled { background-position: -60px -180px; }
@@ -2051,13 +2051,13 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .bookmarkThisLink.selected:not(.disabled),
 #easyGesturesPieMenu_ls .bookmarkThisLink.selected:not(.disabled) { background-position: -20px -580px; }
 
-#easyGesturesPieMenu_ns .bookmarkOpenTabs.disabled,
-#easyGesturesPieMenu_ls .bookmarkOpenTabs.disabled { background-position: -60px -540px; }
-.eG_bookmarkOpenTabs, .eGOptions_bookmarkOpenTabs::before,
-#easyGesturesPieMenu_ns .bookmarkOpenTabs,
-#easyGesturesPieMenu_ls .bookmarkOpenTabs { background-position: -60px -560px; }
-#easyGesturesPieMenu_ns .bookmarkOpenTabs.selected:not(.disabled),
-#easyGesturesPieMenu_ls .bookmarkOpenTabs.selected:not(.disabled) { background-position: -60px -580px; }
+#easyGesturesPieMenu_ns .bookmarkAllTabs.disabled,
+#easyGesturesPieMenu_ls .bookmarkAllTabs.disabled { background-position: -60px -540px; }
+.eG_bookmarkAllTabs, .eGOptions_bookmarkAllTabs::before,
+#easyGesturesPieMenu_ns .bookmarkAllTabs,
+#easyGesturesPieMenu_ls .bookmarkAllTabs { background-position: -60px -560px; }
+#easyGesturesPieMenu_ns .bookmarkAllTabs.selected:not(.disabled),
+#easyGesturesPieMenu_ls .bookmarkAllTabs.selected:not(.disabled) { background-position: -60px -580px; }
 
 #easyGesturesPieMenu_ns .removeBookmarkToThisPage.disabled,
 #easyGesturesPieMenu_ls .removeBookmarkToThisPage.disabled { background-position: -240px -360px; }

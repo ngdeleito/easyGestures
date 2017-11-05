@@ -43,7 +43,7 @@
   "closeTab": { "message": "Fermer l'onglet" },
   "closeOtherTabs": { "message": "Fermer les autres onglets" },
   "undoCloseTab": { "message": "Restaurer le dernier onglet fermé" },
-  "prevTab": { "message": "Onglet précédent" },
+  "previousTab": { "message": "Onglet précédent" },
   "nextTab": { "message": "Onglet suivant" },
   "pinUnpinTab": { "message": "Épingler/relâcher cet onglet" },
   
@@ -72,7 +72,7 @@
   "bookmarkThisPage": { "message": "Marquer cette page" },
   "bookmarkThisIdentifier": { "message": "Marquer cet identificateur" },
   "bookmarkThisLink": { "message": "Marque-page sur ce lien" },
-  "bookmarkOpenTabs": { "message": "Marquer tous les onglets" },
+  "bookmarkAllTabs": { "message": "Marquer tous les onglets" },
   "removeBookmarkToThisPage": { "message": "Supprimer le marque-page vers cette page" },
   "removeBookmarkToThisIdentifier": { "message": "Supprimer le marque-page vers cet identificateur" },
   "removeBookmarkToThisLink": { "message": "Supprimer le marque-page vers ce lien" },
