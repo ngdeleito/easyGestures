@@ -56,7 +56,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisabledAction
 
 /* exported eGActions */
-/* global eGPrefs, browser, eGUtils, URL, eGContext */
+/* global eGPrefs, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
@@ -1000,7 +1000,17 @@ var eGActions = {
       };
   }, true, "copyImage"),
   
-  copyImage : new DisabledAction("copyImage", false, "saveImageAs"),
+  copyImage : new ImageExistsDisableableAction("copyImage", function() {
+    fetch(eGContext.imageElementSRC).then(aResponse => {
+      let imageType = aResponse.headers.get("Content-Type")
+                                       .replace("image/", "");
+      if (imageType === "png" || imageType === "jpeg") {
+        aResponse.arrayBuffer().then(anArrayBuffer => {
+          browser.clipboard.setImageData(anArrayBuffer, imageType);
+        });
+      }
+    });
+  }, false, "saveImageAs"),
   
   saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
     browser.downloads.download({

@@ -13,7 +13,7 @@ The requested permissions are used as follows:
 - `clipboardRead`
   - "Paste" action
 - `clipboardWrite`
-  - "Cut" and "Copy" actions
+  - "Copy image", "Cut", and "Copy" actions
 - `downloads`
   - "Save page as...", "Take tab screenshot", "Save link as...", and "Save image as..." actions
   - Exporting preferences
