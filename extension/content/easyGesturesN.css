@@ -296,7 +296,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_ns [id^="eG_action_"],
 #easyGesturesPieMenu_ls [id^="eG_action_"] {
-  background-image: url("small_actions.png");
+  background-image: url("actions.png");
+  background-size: 280px;
   width: 20px; /* icon size */
   height: 20px;
   z-index: 1;
@@ -1580,7 +1581,8 @@ div.runProgramFile10.selected:not(.disabled) { background-position: -416px -640p
 
 span[class^="eG_"] {
   display: inline-block;
-  background-image: url("small_actions.png");
+  background-image: url("actions.png");
+  background-size: 280px;
   width: 20px;
   height: 20px;
 }
