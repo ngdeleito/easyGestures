@@ -577,6 +577,7 @@ var eGPrefs = {
   updateToV5_4: function() {
     var actionsToRename = [
       ["toggleFindBar", "findAndHighlightSelection"],
+      ["loadURLInNewPrivateWindow", "loadPageInNewPrivateWindow"],
       ["prevTab", "previousTab"], ["bookmarkOpenTabs", "bookmarkAllTabs"]
     ];
     var actionsToAdd = [

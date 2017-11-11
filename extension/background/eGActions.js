@@ -557,9 +557,9 @@ var eGActions = {
         url: eGContext.pageURL
       });
     });
-  }, false, "loadURLInNewPrivateWindow"),
+  }, false, "loadPageInNewPrivateWindow"),
   
-  loadURLInNewPrivateWindow: new Action("loadURLInNewPrivateWindow", function() {
+  loadPageInNewPrivateWindow: new Action("loadPageInNewPrivateWindow", function() {
     browser.windows.create({
       incognito: true,
       url: eGContext.pageURL

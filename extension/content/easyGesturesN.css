@@ -887,14 +887,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .moveTabToNewWindow.selected:not(.disabled),
 #easyGesturesPieMenu_ln .moveTabToNewWindow.selected:not(.disabled) { background-position: -256px -640px; }
 
-#easyGesturesPieMenu_nn .loadURLInNewPrivateWindow.disabled,
-#easyGesturesPieMenu_ln .loadURLInNewPrivateWindow.disabled { background-position: -288px -576px; }
-#easyGesturesPieMenu_nn .loadURLInNewPrivateWindow,
-#easyGesturesPieMenu_ln .loadURLInNewPrivateWindow,
-[data-action="loadURLInNewPrivateWindow"] { background-position: -288px -608px; }
-#easyGesturesPieMenu_nn .loadURLInNewPrivateWindow.selected:not(.disabled),
-#easyGesturesPieMenu_ln .loadURLInNewPrivateWindow.selected:not(.disabled) { background-position: -288px -640px; }
-
 #easyGesturesPieMenu_nn .loadPageInNewTab.disabled,
 #easyGesturesPieMenu_ln .loadPageInNewTab.disabled { background-position: -96px -768px; }
 #easyGesturesPieMenu_nn .loadPageInNewTab,
@@ -902,6 +894,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 [data-action="loadPageInNewTab"] { background-position: -96px -800px; }
 #easyGesturesPieMenu_nn .loadPageInNewTab.selected:not(.disabled),
 #easyGesturesPieMenu_ln .loadPageInNewTab.selected:not(.disabled) { background-position: -96px -832px; }
+
+#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow.disabled,
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow.disabled { background-position: -288px -576px; }
+#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow,
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow,
+[data-action="loadPageInNewPrivateWindow"] { background-position: -288px -608px; }
+#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow.selected:not(.disabled) { background-position: -288px -640px; }
 
 #easyGesturesPieMenu_nn .duplicateTab.disabled,
 #easyGesturesPieMenu_ln .duplicateTab.disabled { background-position: -32px -288px; }
@@ -1821,14 +1821,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .moveTabToNewWindow.selected:not(.disabled),
 #easyGesturesPieMenu_ls .moveTabToNewWindow.selected:not(.disabled) { background-position: -160px -400px; }
 
-#easyGesturesPieMenu_ns .loadURLInNewPrivateWindow.disabled,
-#easyGesturesPieMenu_ls .loadURLInNewPrivateWindow.disabled { background-position: -180px -360px; }
-.eG_loadURLInNewPrivateWindow, .eGOptions_loadURLInNewPrivateWindow::before,
-#easyGesturesPieMenu_ns .loadURLInNewPrivateWindow,
-#easyGesturesPieMenu_ls .loadURLInNewPrivateWindow { background-position: -180px -380px; }
-#easyGesturesPieMenu_ns .loadURLInNewPrivateWindow.selected:not(.disabled),
-#easyGesturesPieMenu_ls .loadURLInNewPrivateWindow.selected:not(.disabled) { background-position: -180px -400px; }
-
 #easyGesturesPieMenu_ns .loadPageInNewTab.disabled,
 #easyGesturesPieMenu_ls .loadPageInNewTab.disabled { background-position: -60px -480px; }
 .eG_loadPageInNewTab, .eGOptions_loadPageInNewTab::before,
@@ -1836,6 +1828,14 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .loadPageInNewTab { background-position: -60px -500px; }
 #easyGesturesPieMenu_ns .loadPageInNewTab.selected:not(.disabled),
 #easyGesturesPieMenu_ls .loadPageInNewTab.selected:not(.disabled) { background-position: -60px -520px; }
+
+#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow.disabled,
+#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow.disabled { background-position: -180px -360px; }
+.eG_loadPageInNewPrivateWindow, .eGOptions_loadPageInNewPrivateWindow::before,
+#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow,
+#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow { background-position: -180px -380px; }
+#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow.selected:not(.disabled) { background-position: -180px -400px; }
 
 #easyGesturesPieMenu_ns .duplicateTab.disabled,
 #easyGesturesPieMenu_ls .duplicateTab.disabled { background-position: -20px -180px; }
