@@ -548,6 +548,15 @@ var eGActions = {
         tabId: currentTab.id
       });
     });
+  }, false, "loadPageInNewTab"),
+  
+  loadPageInNewTab: new Action("loadPageInNewTab", function() {
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.tabs.create({
+        openerTabId: currentTab.id,
+        url: eGContext.pageURL
+      });
+    });
   }, false, "loadURLInNewPrivateWindow"),
   
   loadURLInNewPrivateWindow: new Action("loadURLInNewPrivateWindow", function() {

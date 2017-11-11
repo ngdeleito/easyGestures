@@ -39,6 +39,7 @@
   "newBlankTab": { "message": "Nouvel onglet en blanc" },
   "moveTabToNewWindow": { "message": "Déplacer l'onglet vers une nouvelle fenêtre" },
   "loadURLInNewPrivateWindow": { "message": "Charger l'URL dans une nouvelle fenêtre privée" },
+  "loadPageInNewTab": { "message": "Charger la page dans un nouvel onglet" },
   "duplicateTab": { "message": "Dupliquer l'onglet" },
   "closeTab": { "message": "Fermer l'onglet" },
   "closeOtherTabs": { "message": "Fermer les autres onglets" },

@@ -39,6 +39,7 @@
   "newBlankTab": { "message": "Nueva pestaña en blanco" },
   "moveTabToNewWindow": { "message": "Desplazar la pestaña a una nueva ventana" },
   "loadURLInNewPrivateWindow": { "message": "Cargar la dirección en una nueva ventana privada" },
+  "loadPageInNewTab": { "message": "Cargar la página en una nueva pestaña" },
   "duplicateTab": { "message": "Duplicar la pestaña" },
   "closeTab": { "message": "Cerrar la pestaña" },
   "closeOtherTabs": { "message": "Cerrar las otras pestañas" },
