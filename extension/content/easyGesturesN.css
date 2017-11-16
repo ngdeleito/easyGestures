@@ -751,22 +751,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .homepage.selected:not(.disabled),
 #easyGesturesPieMenu_ln .homepage.selected:not(.disabled) { background-position: 0px -640px; }
 
-#easyGesturesPieMenu_nn .copyPageURL.disabled,
-#easyGesturesPieMenu_ln .copyPageURL.disabled { background-position: -160px -576px; }
-#easyGesturesPieMenu_nn .copyPageURL,
-#easyGesturesPieMenu_ln .copyPageURL,
-[data-action="copyPageURL"] { background-position: -160px -608px; }
-#easyGesturesPieMenu_nn .copyPageURL.selected:not(.disabled),
-#easyGesturesPieMenu_ln .copyPageURL.selected:not(.disabled) { background-position: -160px -640px; }
-
-#easyGesturesPieMenu_nn .copyURLToIdentifier.disabled,
-#easyGesturesPieMenu_ln .copyURLToIdentifier.disabled { background-position: -128px -576px; }
-#easyGesturesPieMenu_nn .copyURLToIdentifier,
-#easyGesturesPieMenu_ln .copyURLToIdentifier,
-[data-action="copyURLToIdentifier"] { background-position: -128px -608px; }
-#easyGesturesPieMenu_nn .copyURLToIdentifier.selected:not(.disabled),
-#easyGesturesPieMenu_ln .copyURLToIdentifier.selected:not(.disabled) { background-position: -128px -640px; }
-
 #easyGesturesPieMenu_nn .pageTop.disabled,
 #easyGesturesPieMenu_ln .pageTop.disabled { background-position: -128px -192px; }
 #easyGesturesPieMenu_nn .pageTop,
@@ -782,54 +766,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 [data-action="pageBottom"] { background-position: -160px -224px; }
 #easyGesturesPieMenu_nn .pageBottom.selected:not(.disabled),
 #easyGesturesPieMenu_ln .pageBottom.selected:not(.disabled) { background-position: -160px -256px; }
-
-#easyGesturesPieMenu_nn .zoomIn.disabled,
-#easyGesturesPieMenu_ln .zoomIn.disabled { background-position: -192px -960px; }
-#easyGesturesPieMenu_nn .zoomIn,
-#easyGesturesPieMenu_ln .zoomIn,
-[data-action="zoomIn"] { background-position: -192px -992px; }
-#easyGesturesPieMenu_nn .zoomIn.selected:not(.disabled),
-#easyGesturesPieMenu_ln .zoomIn.selected:not(.disabled) { background-position: -192px -1024px; }
-
-#easyGesturesPieMenu_nn .zoomOut.disabled,
-#easyGesturesPieMenu_ln .zoomOut.disabled { background-position: -224px -960px; }
-#easyGesturesPieMenu_nn .zoomOut,
-#easyGesturesPieMenu_ln .zoomOut,
-[data-action="zoomOut"] { background-position: -224px -992px; }
-#easyGesturesPieMenu_nn .zoomOut.selected:not(.disabled),
-#easyGesturesPieMenu_ln .zoomOut.selected:not(.disabled) { background-position: -224px -1024px; }
-
-#easyGesturesPieMenu_nn .zoomReset.disabled,
-#easyGesturesPieMenu_ln .zoomReset.disabled { background-position: -256px -960px; }
-#easyGesturesPieMenu_nn .zoomReset,
-#easyGesturesPieMenu_ln .zoomReset,
-[data-action="zoomReset"] { background-position: -256px -992px; }
-#easyGesturesPieMenu_nn .zoomReset.selected:not(.disabled),
-#easyGesturesPieMenu_ln .zoomReset.selected:not(.disabled) { background-position: -256px -1024px; }
-
-#easyGesturesPieMenu_nn .toggleFullscreen.disabled,
-#easyGesturesPieMenu_ln .toggleFullscreen.disabled { background-position: -160px -384px; }
-#easyGesturesPieMenu_nn .toggleFullscreen,
-#easyGesturesPieMenu_ln .toggleFullscreen,
-[data-action="toggleFullscreen"] { background-position: -160px -416px; }
-#easyGesturesPieMenu_nn .toggleFullscreen.selected:not(.disabled),
-#easyGesturesPieMenu_ln .toggleFullscreen.selected:not(.disabled) { background-position: -160px -448px; }
-
-#easyGesturesPieMenu_nn .findAndHighlightSelection.disabled,
-#easyGesturesPieMenu_ln .findAndHighlightSelection.disabled { background-position: -160px -960px; }
-#easyGesturesPieMenu_nn .findAndHighlightSelection,
-#easyGesturesPieMenu_ln .findAndHighlightSelection,
-[data-action="findAndHighlightSelection"] { background-position: -160px -992px; }
-#easyGesturesPieMenu_nn .findAndHighlightSelection.selected:not(.disabled),
-#easyGesturesPieMenu_ln .findAndHighlightSelection.selected:not(.disabled) { background-position: -160px -1024px; }
-
-#easyGesturesPieMenu_nn .removeHighlight.disabled,
-#easyGesturesPieMenu_ln .removeHighlight.disabled { background-position: -32px -768px; }
-#easyGesturesPieMenu_nn .removeHighlight,
-#easyGesturesPieMenu_ln .removeHighlight,
-[data-action="removeHighlight"] { background-position: -32px -800px; }
-#easyGesturesPieMenu_nn .removeHighlight.selected:not(.disabled),
-#easyGesturesPieMenu_ln .removeHighlight.selected:not(.disabled) { background-position: -32px -832px; }
 
 #easyGesturesPieMenu_nn .savePageAs.disabled,
 #easyGesturesPieMenu_ln .savePageAs.disabled { background-position: -224px -480px; }
@@ -855,6 +791,134 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .showPrintPreview.selected:not(.disabled),
 #easyGesturesPieMenu_ln .showPrintPreview.selected:not(.disabled) { background-position: -352px -928px; }
 
+#easyGesturesPieMenu_nn .searchWeb.disabled,
+#easyGesturesPieMenu_ln .searchWeb.disabled { background-position: -64px -576px; }
+#easyGesturesPieMenu_nn .searchWeb,
+#easyGesturesPieMenu_ln .searchWeb,
+[data-action="searchWeb"] { background-position: -64px -608px; }
+#easyGesturesPieMenu_nn .searchWeb.selected:not(.disabled),
+#easyGesturesPieMenu_ln .searchWeb.selected:not(.disabled) { background-position: -64px -640px; }
+
+#easyGesturesPieMenu_nn .loadPageInNewTab.disabled,
+#easyGesturesPieMenu_ln .loadPageInNewTab.disabled { background-position: -96px -768px; }
+#easyGesturesPieMenu_nn .loadPageInNewTab,
+#easyGesturesPieMenu_ln .loadPageInNewTab,
+[data-action="loadPageInNewTab"] { background-position: -96px -800px; }
+#easyGesturesPieMenu_nn .loadPageInNewTab.selected:not(.disabled),
+#easyGesturesPieMenu_ln .loadPageInNewTab.selected:not(.disabled) { background-position: -96px -832px; }
+
+#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow.disabled,
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow.disabled { background-position: -288px -576px; }
+#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow,
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow,
+[data-action="loadPageInNewPrivateWindow"] { background-position: -288px -608px; }
+#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow.selected:not(.disabled) { background-position: -288px -640px; }
+
+#easyGesturesPieMenu_nn .moveTabToNewWindow.disabled,
+#easyGesturesPieMenu_ln .moveTabToNewWindow.disabled { background-position: -256px -576px; }
+#easyGesturesPieMenu_nn .moveTabToNewWindow,
+#easyGesturesPieMenu_ln .moveTabToNewWindow,
+[data-action="moveTabToNewWindow"] { background-position: -256px -608px; }
+#easyGesturesPieMenu_nn .moveTabToNewWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ln .moveTabToNewWindow.selected:not(.disabled) { background-position: -256px -640px; }
+
+#easyGesturesPieMenu_nn .copyPageURL.disabled,
+#easyGesturesPieMenu_ln .copyPageURL.disabled { background-position: -160px -576px; }
+#easyGesturesPieMenu_nn .copyPageURL,
+#easyGesturesPieMenu_ln .copyPageURL,
+[data-action="copyPageURL"] { background-position: -160px -608px; }
+#easyGesturesPieMenu_nn .copyPageURL.selected:not(.disabled),
+#easyGesturesPieMenu_ln .copyPageURL.selected:not(.disabled) { background-position: -160px -640px; }
+
+#easyGesturesPieMenu_nn .copyURLToIdentifier.disabled,
+#easyGesturesPieMenu_ln .copyURLToIdentifier.disabled { background-position: -128px -576px; }
+#easyGesturesPieMenu_nn .copyURLToIdentifier,
+#easyGesturesPieMenu_ln .copyURLToIdentifier,
+[data-action="copyURLToIdentifier"] { background-position: -128px -608px; }
+#easyGesturesPieMenu_nn .copyURLToIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ln .copyURLToIdentifier.selected:not(.disabled) { background-position: -128px -640px; }
+
+#easyGesturesPieMenu_nn .zoomIn.disabled,
+#easyGesturesPieMenu_ln .zoomIn.disabled { background-position: -192px -960px; }
+#easyGesturesPieMenu_nn .zoomIn,
+#easyGesturesPieMenu_ln .zoomIn,
+[data-action="zoomIn"] { background-position: -192px -992px; }
+#easyGesturesPieMenu_nn .zoomIn.selected:not(.disabled),
+#easyGesturesPieMenu_ln .zoomIn.selected:not(.disabled) { background-position: -192px -1024px; }
+
+#easyGesturesPieMenu_nn .zoomOut.disabled,
+#easyGesturesPieMenu_ln .zoomOut.disabled { background-position: -224px -960px; }
+#easyGesturesPieMenu_nn .zoomOut,
+#easyGesturesPieMenu_ln .zoomOut,
+[data-action="zoomOut"] { background-position: -224px -992px; }
+#easyGesturesPieMenu_nn .zoomOut.selected:not(.disabled),
+#easyGesturesPieMenu_ln .zoomOut.selected:not(.disabled) { background-position: -224px -1024px; }
+
+#easyGesturesPieMenu_nn .zoomReset.disabled,
+#easyGesturesPieMenu_ln .zoomReset.disabled { background-position: -256px -960px; }
+#easyGesturesPieMenu_nn .zoomReset,
+#easyGesturesPieMenu_ln .zoomReset,
+[data-action="zoomReset"] { background-position: -256px -992px; }
+#easyGesturesPieMenu_nn .zoomReset.selected:not(.disabled),
+#easyGesturesPieMenu_ln .zoomReset.selected:not(.disabled) { background-position: -256px -1024px; }
+
+#easyGesturesPieMenu_nn .findAndHighlightSelection.disabled,
+#easyGesturesPieMenu_ln .findAndHighlightSelection.disabled { background-position: -160px -960px; }
+#easyGesturesPieMenu_nn .findAndHighlightSelection,
+#easyGesturesPieMenu_ln .findAndHighlightSelection,
+[data-action="findAndHighlightSelection"] { background-position: -160px -992px; }
+#easyGesturesPieMenu_nn .findAndHighlightSelection.selected:not(.disabled),
+#easyGesturesPieMenu_ln .findAndHighlightSelection.selected:not(.disabled) { background-position: -160px -1024px; }
+
+#easyGesturesPieMenu_nn .removeHighlight.disabled,
+#easyGesturesPieMenu_ln .removeHighlight.disabled { background-position: -32px -768px; }
+#easyGesturesPieMenu_nn .removeHighlight,
+#easyGesturesPieMenu_ln .removeHighlight,
+[data-action="removeHighlight"] { background-position: -32px -800px; }
+#easyGesturesPieMenu_nn .removeHighlight.selected:not(.disabled),
+#easyGesturesPieMenu_ln .removeHighlight.selected:not(.disabled) { background-position: -32px -832px; }
+
+#easyGesturesPieMenu_nn .takeTabScreenshot.disabled,
+#easyGesturesPieMenu_ln .takeTabScreenshot.disabled { background-position: -64px -768px; }
+#easyGesturesPieMenu_nn .takeTabScreenshot,
+#easyGesturesPieMenu_ln .takeTabScreenshot,
+[data-action="takeTabScreenshot"] { background-position: -64px -800px; }
+#easyGesturesPieMenu_nn .takeTabScreenshot.selected:not(.disabled),
+#easyGesturesPieMenu_ln .takeTabScreenshot.selected:not(.disabled) { background-position: -64px -832px; }
+
+#easyGesturesPieMenu_nn .toggleFullscreen.disabled,
+#easyGesturesPieMenu_ln .toggleFullscreen.disabled { background-position: -160px -384px; }
+#easyGesturesPieMenu_nn .toggleFullscreen,
+#easyGesturesPieMenu_ln .toggleFullscreen,
+[data-action="toggleFullscreen"] { background-position: -160px -416px; }
+#easyGesturesPieMenu_nn .toggleFullscreen.selected:not(.disabled),
+#easyGesturesPieMenu_ln .toggleFullscreen.selected:not(.disabled) { background-position: -160px -448px; }
+
+#easyGesturesPieMenu_nn .up.disabled,
+#easyGesturesPieMenu_ln .up.disabled { background-position: -64px -192px; }
+#easyGesturesPieMenu_nn .up,
+#easyGesturesPieMenu_ln .up,
+[data-action="up"] { background-position: -64px -224px; }
+#easyGesturesPieMenu_nn .up.selected:not(.disabled),
+#easyGesturesPieMenu_ln .up.selected:not(.disabled) { background-position: -64px -256px; }
+
+#easyGesturesPieMenu_nn .root.disabled,
+#easyGesturesPieMenu_ln .root.disabled { background-position: -96px -192px; }
+#easyGesturesPieMenu_nn .root,
+#easyGesturesPieMenu_ln .root,
+[data-action="root"] { background-position: -96px -224px; }
+#easyGesturesPieMenu_nn .root.selected:not(.disabled),
+#easyGesturesPieMenu_ln .root.selected:not(.disabled) { background-position: -96px -256px; }
+
+#easyGesturesPieMenu_nn .showOnlyThisFrame.disabled,
+#easyGesturesPieMenu_ln .showOnlyThisFrame.disabled { background-position: -288px -864px; }
+#easyGesturesPieMenu_nn .showOnlyThisFrame,
+#easyGesturesPieMenu_ln .showOnlyThisFrame,
+[data-action="showOnlyThisFrame"] { background-position: -288px -896px; }
+#easyGesturesPieMenu_nn .showOnlyThisFrame.selected:not(.disabled),
+#easyGesturesPieMenu_ln .showOnlyThisFrame.selected:not(.disabled) { background-position: -288px -928px; }
+
 #easyGesturesPieMenu_nn .viewPageSource.disabled,
 #easyGesturesPieMenu_ln .viewPageSource.disabled { background-position: -224px -864px; }
 #easyGesturesPieMenu_nn .viewPageSource,
@@ -878,30 +942,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 [data-action="newBlankTab"] { background-position: 0px -320px; }
 #easyGesturesPieMenu_nn .newBlankTab.selected:not(.disabled),
 #easyGesturesPieMenu_ln .newBlankTab.selected:not(.disabled) { background-position: 0px -352px; }
-
-#easyGesturesPieMenu_nn .moveTabToNewWindow.disabled,
-#easyGesturesPieMenu_ln .moveTabToNewWindow.disabled { background-position: -256px -576px; }
-#easyGesturesPieMenu_nn .moveTabToNewWindow,
-#easyGesturesPieMenu_ln .moveTabToNewWindow,
-[data-action="moveTabToNewWindow"] { background-position: -256px -608px; }
-#easyGesturesPieMenu_nn .moveTabToNewWindow.selected:not(.disabled),
-#easyGesturesPieMenu_ln .moveTabToNewWindow.selected:not(.disabled) { background-position: -256px -640px; }
-
-#easyGesturesPieMenu_nn .loadPageInNewTab.disabled,
-#easyGesturesPieMenu_ln .loadPageInNewTab.disabled { background-position: -96px -768px; }
-#easyGesturesPieMenu_nn .loadPageInNewTab,
-#easyGesturesPieMenu_ln .loadPageInNewTab,
-[data-action="loadPageInNewTab"] { background-position: -96px -800px; }
-#easyGesturesPieMenu_nn .loadPageInNewTab.selected:not(.disabled),
-#easyGesturesPieMenu_ln .loadPageInNewTab.selected:not(.disabled) { background-position: -96px -832px; }
-
-#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow.disabled,
-#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow.disabled { background-position: -288px -576px; }
-#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow,
-#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow,
-[data-action="loadPageInNewPrivateWindow"] { background-position: -288px -608px; }
-#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow.selected:not(.disabled),
-#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow.selected:not(.disabled) { background-position: -288px -640px; }
 
 #easyGesturesPieMenu_nn .duplicateTab.disabled,
 #easyGesturesPieMenu_ln .duplicateTab.disabled { background-position: -32px -288px; }
@@ -1022,46 +1062,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 [data-action="undoCloseWindow"] { background-position: -192px -608px; }
 #easyGesturesPieMenu_nn .undoCloseWindow.selected:not(.disabled),
 #easyGesturesPieMenu_ln .undoCloseWindow.selected:not(.disabled) { background-position: -192px -640px; }
-
-#easyGesturesPieMenu_nn .up.disabled,
-#easyGesturesPieMenu_ln .up.disabled { background-position: -64px -192px; }
-#easyGesturesPieMenu_nn .up,
-#easyGesturesPieMenu_ln .up,
-[data-action="up"] { background-position: -64px -224px; }
-#easyGesturesPieMenu_nn .up.selected:not(.disabled),
-#easyGesturesPieMenu_ln .up.selected:not(.disabled) { background-position: -64px -256px; }
-
-#easyGesturesPieMenu_nn .root.disabled,
-#easyGesturesPieMenu_ln .root.disabled { background-position: -96px -192px; }
-#easyGesturesPieMenu_nn .root,
-#easyGesturesPieMenu_ln .root,
-[data-action="root"] { background-position: -96px -224px; }
-#easyGesturesPieMenu_nn .root.selected:not(.disabled),
-#easyGesturesPieMenu_ln .root.selected:not(.disabled) { background-position: -96px -256px; }
-
-#easyGesturesPieMenu_nn .showOnlyThisFrame.disabled,
-#easyGesturesPieMenu_ln .showOnlyThisFrame.disabled { background-position: -288px -864px; }
-#easyGesturesPieMenu_nn .showOnlyThisFrame,
-#easyGesturesPieMenu_ln .showOnlyThisFrame,
-[data-action="showOnlyThisFrame"] { background-position: -288px -896px; }
-#easyGesturesPieMenu_nn .showOnlyThisFrame.selected:not(.disabled),
-#easyGesturesPieMenu_ln .showOnlyThisFrame.selected:not(.disabled) { background-position: -288px -928px; }
-
-#easyGesturesPieMenu_nn .takeTabScreenshot.disabled,
-#easyGesturesPieMenu_ln .takeTabScreenshot.disabled { background-position: -64px -768px; }
-#easyGesturesPieMenu_nn .takeTabScreenshot,
-#easyGesturesPieMenu_ln .takeTabScreenshot,
-[data-action="takeTabScreenshot"] { background-position: -64px -800px; }
-#easyGesturesPieMenu_nn .takeTabScreenshot.selected:not(.disabled),
-#easyGesturesPieMenu_ln .takeTabScreenshot.selected:not(.disabled) { background-position: -64px -832px; }
-
-#easyGesturesPieMenu_nn .searchWeb.disabled,
-#easyGesturesPieMenu_ln .searchWeb.disabled { background-position: -64px -576px; }
-#easyGesturesPieMenu_nn .searchWeb,
-#easyGesturesPieMenu_ln .searchWeb,
-[data-action="searchWeb"] { background-position: -64px -608px; }
-#easyGesturesPieMenu_nn .searchWeb.selected:not(.disabled),
-#easyGesturesPieMenu_ln .searchWeb.selected:not(.disabled) { background-position: -64px -640px; }
 
 #easyGesturesPieMenu_nn .openLink.disabled,
 #easyGesturesPieMenu_ln .openLink.disabled { background-position: 0px -480px; }
@@ -1685,22 +1685,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .homepage.selected:not(.disabled),
 #easyGesturesPieMenu_ls .homepage.selected:not(.disabled) { background-position: 0px -400px; }
 
-#easyGesturesPieMenu_ns .copyPageURL.disabled,
-#easyGesturesPieMenu_ls .copyPageURL.disabled { background-position: -100px -360px; }
-.eG_copyPageURL, .eGOptions_copyPageURL::before,
-#easyGesturesPieMenu_ns .copyPageURL,
-#easyGesturesPieMenu_ls .copyPageURL { background-position: -100px -380px; }
-#easyGesturesPieMenu_ns .copyPageURL.selected:not(.disabled),
-#easyGesturesPieMenu_ls .copyPageURL.selected:not(.disabled) { background-position: -100px -400px; }
-
-#easyGesturesPieMenu_ns .copyURLToIdentifier.disabled,
-#easyGesturesPieMenu_ls .copyURLToIdentifier.disabled { background-position: -80px -360px; }
-.eG_copyURLToIdentifier, .eGOptions_copyURLToIdentifier::before,
-#easyGesturesPieMenu_ns .copyURLToIdentifier,
-#easyGesturesPieMenu_ls .copyURLToIdentifier { background-position: -80px -380px; }
-#easyGesturesPieMenu_ns .copyURLToIdentifier.selected:not(.disabled),
-#easyGesturesPieMenu_ls .copyURLToIdentifier.selected:not(.disabled) { background-position: -80px -400px; }
-
 #easyGesturesPieMenu_ns .pageTop.disabled,
 #easyGesturesPieMenu_ls .pageTop.disabled { background-position: -80px -120px; }
 .eG_pageTop, .eGOptions_pageTop::before,
@@ -1716,54 +1700,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .pageBottom { background-position: -100px -140px; }
 #easyGesturesPieMenu_ns .pageBottom.selected:not(.disabled),
 #easyGesturesPieMenu_ls .pageBottom.selected:not(.disabled) { background-position: -100px -160px; }
-
-#easyGesturesPieMenu_ns .zoomIn.disabled,
-#easyGesturesPieMenu_ls .zoomIn.disabled { background-position: -120px -600px; }
-.eG_zoomIn, .eGOptions_zoomIn::before,
-#easyGesturesPieMenu_ns .zoomIn,
-#easyGesturesPieMenu_ls .zoomIn { background-position: -120px -620px; }
-#easyGesturesPieMenu_ns .zoomIn.selected:not(.disabled),
-#easyGesturesPieMenu_ls .zoomIn.selected:not(.disabled) { background-position: -120px -640px; }
-
-#easyGesturesPieMenu_ns .zoomOut.disabled,
-#easyGesturesPieMenu_ls .zoomOut.disabled { background-position: -140px -600px; }
-.eG_zoomOut, .eGOptions_zoomOut::before,
-#easyGesturesPieMenu_ns .zoomOut,
-#easyGesturesPieMenu_ls .zoomOut { background-position: -140px -620px; }
-#easyGesturesPieMenu_ns .zoomOut.selected:not(.disabled),
-#easyGesturesPieMenu_ls .zoomOut.selected:not(.disabled) { background-position: -140px -640px; }
-
-#easyGesturesPieMenu_ns .zoomReset.disabled,
-#easyGesturesPieMenu_ls .zoomReset.disabled { background-position: -160px -600px; }
-.eG_zoomReset, .eGOptions_zoomReset::before,
-#easyGesturesPieMenu_ns .zoomReset,
-#easyGesturesPieMenu_ls .zoomReset { background-position: -160px -620px; }
-#easyGesturesPieMenu_ns .zoomReset.selected:not(.disabled),
-#easyGesturesPieMenu_ls .zoomReset.selected:not(.disabled) { background-position: -160px -640px; }
-
-#easyGesturesPieMenu_ns .toggleFullscreen.disabled,
-#easyGesturesPieMenu_ls .toggleFullscreen.disabled { background-position: -100px -240px; }
-.eG_toggleFullscreen, .eGOptions_toggleFullscreen::before,
-#easyGesturesPieMenu_ns .toggleFullscreen,
-#easyGesturesPieMenu_ls .toggleFullscreen { background-position: -100px -260px; }
-#easyGesturesPieMenu_ns .toggleFullscreen.selected:not(.disabled),
-#easyGesturesPieMenu_ls .toggleFullscreen.selected:not(.disabled) { background-position: -100px -280px; }
-
-#easyGesturesPieMenu_ns .findAndHighlightSelection.disabled,
-#easyGesturesPieMenu_ls .findAndHighlightSelection.disabled { background-position: -100px -600px; }
-.eG_findAndHighlightSelection, .eGOptions_findAndHighlightSelection::before,
-#easyGesturesPieMenu_ns .findAndHighlightSelection,
-#easyGesturesPieMenu_ls .findAndHighlightSelection { background-position: -100px -620px; }
-#easyGesturesPieMenu_ns .findAndHighlightSelection.selected:not(.disabled),
-#easyGesturesPieMenu_ls .findAndHighlightSelection.selected:not(.disabled) { background-position: -100px -640px; }
-
-#easyGesturesPieMenu_ns .removeHighlight.disabled,
-#easyGesturesPieMenu_ls .removeHighlight.disabled { background-position: -20px -480px; }
-.eG_removeHighlight, .eGOptions_removeHighlight::before,
-#easyGesturesPieMenu_ns .removeHighlight,
-#easyGesturesPieMenu_ls .removeHighlight { background-position: -20px -500px; }
-#easyGesturesPieMenu_ns .removeHighlight.selected:not(.disabled),
-#easyGesturesPieMenu_ls .removeHighlight.selected:not(.disabled) { background-position: -20px -520px; }
 
 #easyGesturesPieMenu_ns .savePageAs.disabled,
 #easyGesturesPieMenu_ls .savePageAs.disabled { background-position: -140px -300px; }
@@ -1789,6 +1725,134 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .showPrintPreview.selected:not(.disabled),
 #easyGesturesPieMenu_ls .showPrintPreview.selected:not(.disabled) { background-position: -220px -580px; }
 
+#easyGesturesPieMenu_ns .searchWeb.disabled,
+#easyGesturesPieMenu_ls .searchWeb.disabled { background-position: -40px -360px; }
+.eG_searchWeb, .eGOptions_searchWeb::before,
+#easyGesturesPieMenu_ns .searchWeb,
+#easyGesturesPieMenu_ls .searchWeb { background-position: -40px -380px; }
+#easyGesturesPieMenu_ns .searchWeb.selected:not(.disabled),
+#easyGesturesPieMenu_ls .searchWeb.selected:not(.disabled) { background-position: -40px -400px; }
+
+#easyGesturesPieMenu_ns .loadPageInNewTab.disabled,
+#easyGesturesPieMenu_ls .loadPageInNewTab.disabled { background-position: -60px -480px; }
+.eG_loadPageInNewTab, .eGOptions_loadPageInNewTab::before,
+#easyGesturesPieMenu_ns .loadPageInNewTab,
+#easyGesturesPieMenu_ls .loadPageInNewTab { background-position: -60px -500px; }
+#easyGesturesPieMenu_ns .loadPageInNewTab.selected:not(.disabled),
+#easyGesturesPieMenu_ls .loadPageInNewTab.selected:not(.disabled) { background-position: -60px -520px; }
+
+#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow.disabled,
+#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow.disabled { background-position: -180px -360px; }
+.eG_loadPageInNewPrivateWindow, .eGOptions_loadPageInNewPrivateWindow::before,
+#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow,
+#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow { background-position: -180px -380px; }
+#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow.selected:not(.disabled) { background-position: -180px -400px; }
+
+#easyGesturesPieMenu_ns .moveTabToNewWindow.disabled,
+#easyGesturesPieMenu_ls .moveTabToNewWindow.disabled { background-position: -160px -360px; }
+.eG_moveTabToNewWindow, .eGOptions_moveTabToNewWindow::before,
+#easyGesturesPieMenu_ns .moveTabToNewWindow,
+#easyGesturesPieMenu_ls .moveTabToNewWindow { background-position: -160px -380px; }
+#easyGesturesPieMenu_ns .moveTabToNewWindow.selected:not(.disabled),
+#easyGesturesPieMenu_ls .moveTabToNewWindow.selected:not(.disabled) { background-position: -160px -400px; }
+
+#easyGesturesPieMenu_ns .copyPageURL.disabled,
+#easyGesturesPieMenu_ls .copyPageURL.disabled { background-position: -100px -360px; }
+.eG_copyPageURL, .eGOptions_copyPageURL::before,
+#easyGesturesPieMenu_ns .copyPageURL,
+#easyGesturesPieMenu_ls .copyPageURL { background-position: -100px -380px; }
+#easyGesturesPieMenu_ns .copyPageURL.selected:not(.disabled),
+#easyGesturesPieMenu_ls .copyPageURL.selected:not(.disabled) { background-position: -100px -400px; }
+
+#easyGesturesPieMenu_ns .copyURLToIdentifier.disabled,
+#easyGesturesPieMenu_ls .copyURLToIdentifier.disabled { background-position: -80px -360px; }
+.eG_copyURLToIdentifier, .eGOptions_copyURLToIdentifier::before,
+#easyGesturesPieMenu_ns .copyURLToIdentifier,
+#easyGesturesPieMenu_ls .copyURLToIdentifier { background-position: -80px -380px; }
+#easyGesturesPieMenu_ns .copyURLToIdentifier.selected:not(.disabled),
+#easyGesturesPieMenu_ls .copyURLToIdentifier.selected:not(.disabled) { background-position: -80px -400px; }
+
+#easyGesturesPieMenu_ns .zoomIn.disabled,
+#easyGesturesPieMenu_ls .zoomIn.disabled { background-position: -120px -600px; }
+.eG_zoomIn, .eGOptions_zoomIn::before,
+#easyGesturesPieMenu_ns .zoomIn,
+#easyGesturesPieMenu_ls .zoomIn { background-position: -120px -620px; }
+#easyGesturesPieMenu_ns .zoomIn.selected:not(.disabled),
+#easyGesturesPieMenu_ls .zoomIn.selected:not(.disabled) { background-position: -120px -640px; }
+
+#easyGesturesPieMenu_ns .zoomOut.disabled,
+#easyGesturesPieMenu_ls .zoomOut.disabled { background-position: -140px -600px; }
+.eG_zoomOut, .eGOptions_zoomOut::before,
+#easyGesturesPieMenu_ns .zoomOut,
+#easyGesturesPieMenu_ls .zoomOut { background-position: -140px -620px; }
+#easyGesturesPieMenu_ns .zoomOut.selected:not(.disabled),
+#easyGesturesPieMenu_ls .zoomOut.selected:not(.disabled) { background-position: -140px -640px; }
+
+#easyGesturesPieMenu_ns .zoomReset.disabled,
+#easyGesturesPieMenu_ls .zoomReset.disabled { background-position: -160px -600px; }
+.eG_zoomReset, .eGOptions_zoomReset::before,
+#easyGesturesPieMenu_ns .zoomReset,
+#easyGesturesPieMenu_ls .zoomReset { background-position: -160px -620px; }
+#easyGesturesPieMenu_ns .zoomReset.selected:not(.disabled),
+#easyGesturesPieMenu_ls .zoomReset.selected:not(.disabled) { background-position: -160px -640px; }
+
+#easyGesturesPieMenu_ns .findAndHighlightSelection.disabled,
+#easyGesturesPieMenu_ls .findAndHighlightSelection.disabled { background-position: -100px -600px; }
+.eG_findAndHighlightSelection, .eGOptions_findAndHighlightSelection::before,
+#easyGesturesPieMenu_ns .findAndHighlightSelection,
+#easyGesturesPieMenu_ls .findAndHighlightSelection { background-position: -100px -620px; }
+#easyGesturesPieMenu_ns .findAndHighlightSelection.selected:not(.disabled),
+#easyGesturesPieMenu_ls .findAndHighlightSelection.selected:not(.disabled) { background-position: -100px -640px; }
+
+#easyGesturesPieMenu_ns .removeHighlight.disabled,
+#easyGesturesPieMenu_ls .removeHighlight.disabled { background-position: -20px -480px; }
+.eG_removeHighlight, .eGOptions_removeHighlight::before,
+#easyGesturesPieMenu_ns .removeHighlight,
+#easyGesturesPieMenu_ls .removeHighlight { background-position: -20px -500px; }
+#easyGesturesPieMenu_ns .removeHighlight.selected:not(.disabled),
+#easyGesturesPieMenu_ls .removeHighlight.selected:not(.disabled) { background-position: -20px -520px; }
+
+#easyGesturesPieMenu_ns .takeTabScreenshot.disabled,
+#easyGesturesPieMenu_ls .takeTabScreenshot.disabled { background-position: -40px -480px; }
+.eG_takeTabScreenshot, .eGOptions_takeTabScreenshot::before,
+#easyGesturesPieMenu_ns .takeTabScreenshot,
+#easyGesturesPieMenu_ls .takeTabScreenshot { background-position: -40px -500px; }
+#easyGesturesPieMenu_ns .takeTabScreenshot.selected:not(.disabled),
+#easyGesturesPieMenu_ls .takeTabScreenshot.selected:not(.disabled) { background-position: -40px -520px; }
+
+#easyGesturesPieMenu_ns .toggleFullscreen.disabled,
+#easyGesturesPieMenu_ls .toggleFullscreen.disabled { background-position: -100px -240px; }
+.eG_toggleFullscreen, .eGOptions_toggleFullscreen::before,
+#easyGesturesPieMenu_ns .toggleFullscreen,
+#easyGesturesPieMenu_ls .toggleFullscreen { background-position: -100px -260px; }
+#easyGesturesPieMenu_ns .toggleFullscreen.selected:not(.disabled),
+#easyGesturesPieMenu_ls .toggleFullscreen.selected:not(.disabled) { background-position: -100px -280px; }
+
+#easyGesturesPieMenu_ns .up.disabled,
+#easyGesturesPieMenu_ls .up.disabled { background-position: -40px -120px; }
+.eG_up, .eGOptions_up::before,
+#easyGesturesPieMenu_ns .up,
+#easyGesturesPieMenu_ls .up { background-position: -40px -140px; }
+#easyGesturesPieMenu_ns .up.selected:not(.disabled),
+#easyGesturesPieMenu_ls .up.selected:not(.disabled) { background-position: -40px -160px; }
+
+#easyGesturesPieMenu_ns .root.disabled,
+#easyGesturesPieMenu_ls .root.disabled { background-position: -60px -120px; }
+.eG_root, .eGOptions_root::before,
+#easyGesturesPieMenu_ns .root,
+#easyGesturesPieMenu_ls .root { background-position: -60px -140px; }
+#easyGesturesPieMenu_ns .root.selected:not(.disabled),
+#easyGesturesPieMenu_ls .root.selected:not(.disabled) { background-position: -60px -160px; }
+
+#easyGesturesPieMenu_ns .showOnlyThisFrame.disabled,
+#easyGesturesPieMenu_ls .showOnlyThisFrame.disabled { background-position: -180px -540px; }
+.eG_showOnlyThisFrame, .eGOptions_showOnlyThisFrame::before,
+#easyGesturesPieMenu_ns .showOnlyThisFrame,
+#easyGesturesPieMenu_ls .showOnlyThisFrame { background-position: -180px -560px; }
+#easyGesturesPieMenu_ns .showOnlyThisFrame.selected:not(.disabled),
+#easyGesturesPieMenu_ls .showOnlyThisFrame.selected:not(.disabled) { background-position: -180px -580px; }
+
 #easyGesturesPieMenu_ns .viewPageSource.disabled,
 #easyGesturesPieMenu_ls .viewPageSource.disabled { background-position: -140px -540px; }
 .eG_viewPageSource, .eGOptions_viewPageSource::before,
@@ -1812,30 +1876,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .newBlankTab { background-position: 0px -200px; }
 #easyGesturesPieMenu_ns .newBlankTab.selected:not(.disabled),
 #easyGesturesPieMenu_ls .newBlankTab.selected:not(.disabled) { background-position: 0px -220px; }
-
-#easyGesturesPieMenu_ns .moveTabToNewWindow.disabled,
-#easyGesturesPieMenu_ls .moveTabToNewWindow.disabled { background-position: -160px -360px; }
-.eG_moveTabToNewWindow, .eGOptions_moveTabToNewWindow::before,
-#easyGesturesPieMenu_ns .moveTabToNewWindow,
-#easyGesturesPieMenu_ls .moveTabToNewWindow { background-position: -160px -380px; }
-#easyGesturesPieMenu_ns .moveTabToNewWindow.selected:not(.disabled),
-#easyGesturesPieMenu_ls .moveTabToNewWindow.selected:not(.disabled) { background-position: -160px -400px; }
-
-#easyGesturesPieMenu_ns .loadPageInNewTab.disabled,
-#easyGesturesPieMenu_ls .loadPageInNewTab.disabled { background-position: -60px -480px; }
-.eG_loadPageInNewTab, .eGOptions_loadPageInNewTab::before,
-#easyGesturesPieMenu_ns .loadPageInNewTab,
-#easyGesturesPieMenu_ls .loadPageInNewTab { background-position: -60px -500px; }
-#easyGesturesPieMenu_ns .loadPageInNewTab.selected:not(.disabled),
-#easyGesturesPieMenu_ls .loadPageInNewTab.selected:not(.disabled) { background-position: -60px -520px; }
-
-#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow.disabled,
-#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow.disabled { background-position: -180px -360px; }
-.eG_loadPageInNewPrivateWindow, .eGOptions_loadPageInNewPrivateWindow::before,
-#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow,
-#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow { background-position: -180px -380px; }
-#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow.selected:not(.disabled),
-#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow.selected:not(.disabled) { background-position: -180px -400px; }
 
 #easyGesturesPieMenu_ns .duplicateTab.disabled,
 #easyGesturesPieMenu_ls .duplicateTab.disabled { background-position: -20px -180px; }
@@ -1956,46 +1996,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .undoCloseWindow { background-position: -120px -380px; }
 #easyGesturesPieMenu_ns .undoCloseWindow.selected:not(.disabled),
 #easyGesturesPieMenu_ls .undoCloseWindow.selected:not(.disabled) { background-position: -120px -400px; }
-
-#easyGesturesPieMenu_ns .up.disabled,
-#easyGesturesPieMenu_ls .up.disabled { background-position: -40px -120px; }
-.eG_up, .eGOptions_up::before,
-#easyGesturesPieMenu_ns .up,
-#easyGesturesPieMenu_ls .up { background-position: -40px -140px; }
-#easyGesturesPieMenu_ns .up.selected:not(.disabled),
-#easyGesturesPieMenu_ls .up.selected:not(.disabled) { background-position: -40px -160px; }
-
-#easyGesturesPieMenu_ns .root.disabled,
-#easyGesturesPieMenu_ls .root.disabled { background-position: -60px -120px; }
-.eG_root, .eGOptions_root::before,
-#easyGesturesPieMenu_ns .root,
-#easyGesturesPieMenu_ls .root { background-position: -60px -140px; }
-#easyGesturesPieMenu_ns .root.selected:not(.disabled),
-#easyGesturesPieMenu_ls .root.selected:not(.disabled) { background-position: -60px -160px; }
-
-#easyGesturesPieMenu_ns .showOnlyThisFrame.disabled,
-#easyGesturesPieMenu_ls .showOnlyThisFrame.disabled { background-position: -180px -540px; }
-.eG_showOnlyThisFrame, .eGOptions_showOnlyThisFrame::before,
-#easyGesturesPieMenu_ns .showOnlyThisFrame,
-#easyGesturesPieMenu_ls .showOnlyThisFrame { background-position: -180px -560px; }
-#easyGesturesPieMenu_ns .showOnlyThisFrame.selected:not(.disabled),
-#easyGesturesPieMenu_ls .showOnlyThisFrame.selected:not(.disabled) { background-position: -180px -580px; }
-
-#easyGesturesPieMenu_ns .takeTabScreenshot.disabled,
-#easyGesturesPieMenu_ls .takeTabScreenshot.disabled { background-position: -40px -480px; }
-.eG_takeTabScreenshot, .eGOptions_takeTabScreenshot::before,
-#easyGesturesPieMenu_ns .takeTabScreenshot,
-#easyGesturesPieMenu_ls .takeTabScreenshot { background-position: -40px -500px; }
-#easyGesturesPieMenu_ns .takeTabScreenshot.selected:not(.disabled),
-#easyGesturesPieMenu_ls .takeTabScreenshot.selected:not(.disabled) { background-position: -40px -520px; }
-
-#easyGesturesPieMenu_ns .searchWeb.disabled,
-#easyGesturesPieMenu_ls .searchWeb.disabled { background-position: -40px -360px; }
-.eG_searchWeb, .eGOptions_searchWeb::before,
-#easyGesturesPieMenu_ns .searchWeb,
-#easyGesturesPieMenu_ls .searchWeb { background-position: -40px -380px; }
-#easyGesturesPieMenu_ns .searchWeb.selected:not(.disabled),
-#easyGesturesPieMenu_ls .searchWeb.selected:not(.disabled) { background-position: -40px -400px; }
 
 #easyGesturesPieMenu_ns .openLink.disabled,
 #easyGesturesPieMenu_ls .openLink.disabled { background-position: 0px -300px; }

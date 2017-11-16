@@ -43,8 +43,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- DisableableAction
 //       ^
 //       |-- URLToIdentifierExistsDisableableAction
-//       |-- OtherTabsExistDisableableAction
 //       |-- CanGoUpDisableableAction
+//       |-- OtherTabsExistDisableableAction
 //       |-- LinkExistsDisableableAction
 //       |-- DailyReadingsDisableableAction
 //       |-- NumberedAction
@@ -182,6 +182,17 @@ function URLToIdentifierExistsDisableableAction(name, action, startsNewGroup, ne
 URLToIdentifierExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
 URLToIdentifierExistsDisableableAction.prototype.constructor = URLToIdentifierExistsDisableableAction;
 
+function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return new Promise(resolve => {
+      let url = new URL(eGContext.pageURL);
+      resolve(url.pathname === "/");
+    });
+  }, startsNewGroup, nextAction);
+}
+CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
+CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
+
 function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
     return browser.tabs.query({
@@ -193,17 +204,6 @@ function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextActio
 }
 OtherTabsExistDisableableAction.prototype = Object.create(DisableableAction.prototype);
 OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableableAction;
-
-function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    return new Promise(resolve => {
-      let url = new URL(eGContext.pageURL);
-      resolve(url.pathname === "/");
-    });
-  }, startsNewGroup, nextAction);
-}
-CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
-CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -407,25 +407,7 @@ var eGActions = {
     });
   }, false, "homepage"),
   
-  homepage : new DisabledAction("homepage", false, "copyPageURL"),
-  
-  copyPageURL: new Action("copyPageURL", function() {
-    return {
-      runActionName: "copyInformation",
-      runActionOptions: {
-        information: eGContext.pageURL
-      }
-    };
-  }, true, "copyURLToIdentifier"),
-  
-  copyURLToIdentifier: new URLToIdentifierExistsDisableableAction("copyURLToIdentifier", function() {
-    return {
-      runActionName: "copyInformation",
-      runActionOptions: {
-        information: eGContext.urlToIdentifier
-      }
-    };
-  }, false, "pageTop"),
+  homepage : new DisabledAction("homepage", false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
@@ -444,6 +426,68 @@ var eGActions = {
         eGContext.windowScrollY === eGContext.windowScrollMaxY
       );
     });
+  }, false, "savePageAs"),
+  
+  savePageAs : new Action("savePageAs", function() {
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.downloads.download({
+        url: currentTab.url,
+        filename: currentTab.title,
+        saveAs: true
+      }).catch(() => {});
+    });
+  }, false, "printPage"),
+  
+  printPage : new Action("printPage", function() {
+    browser.tabs.print();
+  }, false, "showPrintPreview"),
+  
+  showPrintPreview: new Action("showPrintPreview", function() {
+    browser.tabs.printPreview();
+  }, false, "searchWeb"),
+  
+  searchWeb : new DisabledAction("searchWeb", false, "loadPageInNewTab"),
+  
+  loadPageInNewTab: new Action("loadPageInNewTab", function() {
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.tabs.create({
+        openerTabId: currentTab.id,
+        url: eGContext.pageURL
+      });
+    });
+  }, true, "loadPageInNewPrivateWindow"),
+  
+  loadPageInNewPrivateWindow: new Action("loadPageInNewPrivateWindow", function() {
+    browser.windows.create({
+      incognito: true,
+      url: eGContext.pageURL
+    });
+  }, false, "moveTabToNewWindow"),
+  
+  moveTabToNewWindow: new Action("moveTabToNewWindow", function() {
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.windows.create({
+        tabId: currentTab.id
+      });
+    });
+  }, false, "copyPageURL"),
+  
+  copyPageURL: new Action("copyPageURL", function() {
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.pageURL
+      }
+    };
+  }, false, "copyURLToIdentifier"),
+  
+  copyURLToIdentifier: new URLToIdentifierExistsDisableableAction("copyURLToIdentifier", function() {
+    return {
+      runActionName: "copyInformation",
+      runActionOptions: {
+        information: eGContext.urlToIdentifier
+      }
+    };
   }, false, "zoomIn"),
   
   zoomIn : new Action("zoomIn", function() {
@@ -480,15 +524,6 @@ var eGActions = {
   
   zoomReset : new Action("zoomReset", function() {
     browser.tabs.setZoom(1);
-  }, false, "toggleFullscreen"),
-  
-  toggleFullscreen : new Action("toggleFullscreen", function() {
-    browser.windows.getCurrent().then(aWindow => {
-      let newState = aWindow.state === "fullscreen" ? "normal" : "fullscreen";
-      browser.windows.update(aWindow.id, {
-        state: newState
-      });
-    });
   }, false, "findAndHighlightSelection"),
   
   findAndHighlightSelection: new DisableableAction("findAndHighlightSelection", function() {
@@ -503,24 +538,78 @@ var eGActions = {
   
   removeHighlight: new Action("removeHighlight", function() {
     browser.find.removeHighlighting();
-  }, false, "savePageAs"),
+  }, false, "takeTabScreenshot"),
   
-  savePageAs : new Action("savePageAs", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
-      browser.downloads.download({
-        url: currentTab.url,
-        filename: currentTab.title,
-        saveAs: true
-      }).catch(() => {});
+  takeTabScreenshot: new Action("takeTabScreenshot", function() {
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.tabs.captureVisibleTab().then(dataURL => {
+        let imageData = atob(dataURL.split(",")[1]);
+        let imageDataArray = new Uint8Array(imageData.length);
+        for (let i=0; i < imageData.length; ++i) {
+          imageDataArray[i] = imageData.charCodeAt(i);
+        }
+        let aBlob = new Blob([imageDataArray.buffer], {type: "image/png"});
+        let blobURL = URL.createObjectURL(aBlob);
+        browser.downloads.download({
+          url: blobURL,
+          filename: currentTab.title + ".png",
+          saveAs: true
+        }).then((downloadID) => {
+          browser.downloads.onChanged.addListener(function downloadListener(download) {
+            if (downloadID === download.id &&
+                download.state.current === "complete") {
+              URL.revokeObjectURL(blobURL);
+              browser.downloads.onChanged.removeListener(downloadListener);
+            }
+          });
+        }).catch(() => {
+          URL.revokeObjectURL(blobURL);
+        });
+      });
     });
-  }, false, "printPage"),
+  }, false, "toggleFullscreen"),
   
-  printPage : new Action("printPage", function() {
-    browser.tabs.print();
-  }, false, "showPrintPreview"),
+  toggleFullscreen : new Action("toggleFullscreen", function() {
+    browser.windows.getCurrent().then(aWindow => {
+      let newState = aWindow.state === "fullscreen" ? "normal" : "fullscreen";
+      browser.windows.update(aWindow.id, {
+        state: newState
+      });
+    });
+  }, false, "up"),
   
-  showPrintPreview: new Action("showPrintPreview", function() {
-    browser.tabs.printPreview();
+  up : new CanGoUpDisableableAction("up", function() {
+    let url = new URL(eGContext.pageURL);
+    let pathname = url.pathname;
+    // removing any trailing "/" and the leading "/"
+    pathname = pathname.replace(/\/$/, "").substring(1);
+    let pathnameItems = pathname.split("/");
+    pathnameItems.pop();
+    browser.tabs.update({
+      url: url.protocol + "//" + url.username +
+           (url.password === "" ? "" : ":" + url.password) +
+           (url.username === "" ? "" : "@") + url.hostname + "/" +
+           pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
+    });
+  }, false, "root"),
+  
+  root : new CanGoUpDisableableAction("root", function() {
+    let url = new URL(eGContext.pageURL);
+    browser.tabs.update({
+      url: url.protocol + "//" + url.username +
+           (url.password === "" ? "" : ":" + url.password) +
+           (url.username === "" ? "" : "@") + url.hostname
+    });
+  }, false, "showOnlyThisFrame"),
+  
+  showOnlyThisFrame : new DisableableAction("showOnlyThisFrame", function() {
+    browser.tabs.update({
+      url: eGContext.frameURL
+    });
+  }, function() {
+    return new Promise(resolve => {
+      resolve(eGContext.frameURL === null);
+    });
   }, false, "viewPageSource"),
   
   viewPageSource : new Action("viewPageSource", function() {
@@ -539,30 +628,6 @@ var eGActions = {
   newBlankTab : new Action("newBlankTab", function() {
     browser.tabs.create({
       url: "about:blank"
-    });
-  }, false, "moveTabToNewWindow"),
-  
-  moveTabToNewWindow: new Action("moveTabToNewWindow", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
-      browser.windows.create({
-        tabId: currentTab.id
-      });
-    });
-  }, false, "loadPageInNewTab"),
-  
-  loadPageInNewTab: new Action("loadPageInNewTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
-      browser.tabs.create({
-        openerTabId: currentTab.id,
-        url: eGContext.pageURL
-      });
-    });
-  }, false, "loadPageInNewPrivateWindow"),
-  
-  loadPageInNewPrivateWindow: new Action("loadPageInNewPrivateWindow", function() {
-    browser.windows.create({
-      incognito: true,
-      url: eGContext.pageURL
     });
   }, false, "duplicateTab"),
   
@@ -738,72 +803,7 @@ var eGActions = {
       });
       return mostRecentlyClosedWindow === undefined;
     });
-  }, false, "up"),
-  
-  up : new CanGoUpDisableableAction("up", function() {
-    let url = new URL(eGContext.pageURL);
-    let pathname = url.pathname;
-    // removing any trailing "/" and the leading "/"
-    pathname = pathname.replace(/\/$/, "").substring(1);
-    let pathnameItems = pathname.split("/");
-    pathnameItems.pop();
-    browser.tabs.update({
-      url: url.protocol + "//" + url.username +
-           (url.password === "" ? "" : ":" + url.password) +
-           (url.username === "" ? "" : "@") + url.hostname + "/" +
-           pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
-    });
-  }, true, "root"),
-  
-  root : new CanGoUpDisableableAction("root", function() {
-    let url = new URL(eGContext.pageURL);
-    browser.tabs.update({
-      url: url.protocol + "//" + url.username +
-           (url.password === "" ? "" : ":" + url.password) +
-           (url.username === "" ? "" : "@") + url.hostname
-    });
-  }, false, "showOnlyThisFrame"),
-  
-  showOnlyThisFrame : new DisableableAction("showOnlyThisFrame", function() {
-    browser.tabs.update({
-      url: eGContext.frameURL
-    });
-  }, function() {
-    return new Promise(resolve => {
-      resolve(eGContext.frameURL === null);
-    });
-  }, false, "takeTabScreenshot"),
-  
-  takeTabScreenshot: new Action("takeTabScreenshot", function() {
-    eGUtils.performOnCurrentTab(currentTab => {
-      browser.tabs.captureVisibleTab().then(dataURL => {
-        let imageData = atob(dataURL.split(",")[1]);
-        let imageDataArray = new Uint8Array(imageData.length);
-        for (let i=0; i < imageData.length; ++i) {
-          imageDataArray[i] = imageData.charCodeAt(i);
-        }
-        let aBlob = new Blob([imageDataArray.buffer], {type: "image/png"});
-        let blobURL = URL.createObjectURL(aBlob);
-        browser.downloads.download({
-          url: blobURL,
-          filename: currentTab.title + ".png",
-          saveAs: true
-        }).then((downloadID) => {
-          browser.downloads.onChanged.addListener(function downloadListener(download) {
-            if (downloadID === download.id &&
-                download.state.current === "complete") {
-              URL.revokeObjectURL(blobURL);
-              browser.downloads.onChanged.removeListener(downloadListener);
-            }
-          });
-        }).catch(() => {
-          URL.revokeObjectURL(blobURL);
-        });
-      });
-    });
-  }, false, "searchWeb"),
-  
-  searchWeb : new DisabledAction("searchWeb", false, "openLink"),
+  }, false, "openLink"),
   
   openLink : new LinkExistsDisableableAction("openLink", function() {
     eGPrefs.getOpenLinkPref().then(prefValue => {
