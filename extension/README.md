@@ -24,8 +24,6 @@ The requested permissions are used as follows:
 - `storage`
   - Managing preferences
 - `tabs`
-  - "Save page as...", "View page source", "Move tab to new window", "Duplicate tab", "Close tab", "Close other tabs", "Previous tab", "Next tab", "Pin/unpin tab", "Take tab screenshot", "Open link", "Daily readings", "Bookmark this page", "Bookmark this identifier", "Bookmark all tabs", "Load URL", and "easyGestures N preferences" actions
-  - Opening links through the pie menu center
+  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", "Bookmark all tabs", and "easyGestures N preferences" actions
   - Displaying tips from the preferences dialog
   - Displaying preferences from the tips dialog
-  - Resetting the pie menu upon a change in the preferences and after an install or upgrade procedure
