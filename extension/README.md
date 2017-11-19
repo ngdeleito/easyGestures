@@ -10,6 +10,8 @@ The requested permissions are used as follows:
   - "Take tab screenshot" action
 - `bookmarks`
   - "Daily readings", "Bookmark this page", "Bookmark this identifier", "Bookmark this link", "Bookmark all tabs", "Remove bookmark to this page", "Remove bookmark to this identifier", and "Remove bookmark to this link" actions
+- `browserSettings`
+  - "Home page" and "New window" actions
 - `clipboardRead`
   - "Paste" action
 - `clipboardWrite`

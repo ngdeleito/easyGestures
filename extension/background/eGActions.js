@@ -407,7 +407,26 @@ var eGActions = {
     });
   }, false, "homepage"),
   
-  homepage : new DisabledAction("homepage", false, "pageTop"),
+  homepage : new Action("homepage", function() {
+    browser.browserSettings.homepageOverride.get({}).then(result => {
+      let homepageArray = result.value.split("|");
+      browser.tabs.update({
+        url: homepageArray[0]
+      });
+      if (homepageArray.length > 1) {
+        homepageArray.shift();
+        eGUtils.performOnCurrentTab(function(currentTab) {
+          homepageArray.forEach(url => {
+            browser.tabs.create({
+              active: false,
+              openerTabId: currentTab.id,
+              url: url
+            });
+          });
+        });
+      }
+    });
+  }, false, "pageTop"),
   
   pageTop : new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
@@ -723,7 +742,11 @@ var eGActions = {
   }, false, "newWindow"),
   
   newWindow : new Action("newWindow", function() {
-    browser.windows.create({});
+    browser.browserSettings.homepageOverride.get({}).then(result => {
+      browser.windows.create({
+        url: result.value.split("|")
+      });
+    });
   }, true, "newBlankWindow"),
   
   newBlankWindow : new Action("newBlankWindow", function() {
