@@ -36,6 +36,7 @@
   "zoomReset": { "message": "Reset zoom" },
   "findAndHighlightSelection": { "message": "Find and highlight selection" },
   "removeHighlight": { "message": "Remove highlight" },
+  "enterReaderMode": { "message": "Enter reader mode" },
   "takeTabScreenshot": { "message": "Take tab screenshot" },
   "toggleFullscreen": { "message": "Toggle fullscreen" },
   "up": { "message": "Up" },

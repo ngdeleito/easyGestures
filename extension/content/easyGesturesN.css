@@ -879,6 +879,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .removeHighlight.selected:not(.disabled),
 #easyGesturesPieMenu_ln .removeHighlight.selected:not(.disabled) { background-position: -32px -832px; }
 
+#easyGesturesPieMenu_nn .enterReaderMode.disabled,
+#easyGesturesPieMenu_ln .enterReaderMode.disabled { background-position: -32px -576px; }
+#easyGesturesPieMenu_nn .enterReaderMode,
+#easyGesturesPieMenu_ln .enterReaderMode,
+[data-action="enterReaderMode"] { background-position: -32px -608px; }
+#easyGesturesPieMenu_nn .enterReaderMode.selected:not(.disabled),
+#easyGesturesPieMenu_ln .enterReaderMode.selected:not(.disabled) { background-position: -32px -640px; }
+
 #easyGesturesPieMenu_nn .takeTabScreenshot.disabled,
 #easyGesturesPieMenu_ln .takeTabScreenshot.disabled { background-position: -64px -768px; }
 #easyGesturesPieMenu_nn .takeTabScreenshot,
@@ -1812,6 +1820,14 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ls .removeHighlight { background-position: -20px -500px; }
 #easyGesturesPieMenu_ns .removeHighlight.selected:not(.disabled),
 #easyGesturesPieMenu_ls .removeHighlight.selected:not(.disabled) { background-position: -20px -520px; }
+
+#easyGesturesPieMenu_ns .enterReaderMode.disabled,
+#easyGesturesPieMenu_ls .enterReaderMode.disabled { background-position: -20px -360px; }
+.eG_enterReaderMode, .eGOptions_enterReaderMode::before,
+#easyGesturesPieMenu_ns .enterReaderMode,
+#easyGesturesPieMenu_ls .enterReaderMode { background-position: -20px -380px; }
+#easyGesturesPieMenu_ns .enterReaderMode.selected:not(.disabled),
+#easyGesturesPieMenu_ls .enterReaderMode.selected:not(.disabled) { background-position: -20px -400px; }
 
 #easyGesturesPieMenu_ns .takeTabScreenshot.disabled,
 #easyGesturesPieMenu_ls .takeTabScreenshot.disabled { background-position: -40px -480px; }

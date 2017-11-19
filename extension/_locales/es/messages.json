@@ -36,6 +36,7 @@
   "zoomReset": { "message": "Reiniciar el tamaño" },
   "findAndHighlightSelection": { "message": "Buscar y resaltar la selección" },
   "removeHighlight": { "message": "Eliminar el resaltado" },
+  "enterReaderMode": { "message": "Abrir modo de lectura" },
   "takeTabScreenshot": { "message": "Hacer un pantallazo de la pestaña" },
   "toggleFullscreen": { "message": "Activar/desactivar pantalla completa" },
   "up": { "message": "Arriba" },

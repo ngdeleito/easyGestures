@@ -581,8 +581,8 @@ var eGPrefs = {
       ["prevTab", "previousTab"], ["bookmarkOpenTabs", "bookmarkAllTabs"]
     ];
     var actionsToAdd = [
-      "removeHighlight", "showPrintPreview", "loadPageInNewTab",
-      "takeTabScreenshot"
+      "showPrintPreview", "loadPageInNewTab", "removeHighlight",
+      "enterReaderMode", "takeTabScreenshot"
     ];
     var promises = [];
     promises.push(browser.storage.local.get([

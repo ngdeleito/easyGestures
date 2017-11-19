@@ -36,6 +36,7 @@
   "zoomReset": { "message": "Réinitialiser zoom" },
   "findAndHighlightSelection": { "message": "Rechercher et surligner la sélection" },
   "removeHighlight": { "message": "Supprimer le surlignage" },
+  "enterReaderMode": { "message": "Passer en mode lecture" },
   "takeTabScreenshot": { "message": "Prendre une capture d'écran de l'onglet" },
   "toggleFullscreen": { "message": "Basculer plein écran" },
   "up": { "message": "Monter" },

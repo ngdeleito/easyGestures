@@ -557,6 +557,14 @@ var eGActions = {
   
   removeHighlight: new Action("removeHighlight", function() {
     browser.find.removeHighlighting();
+  }, false, "enterReaderMode"),
+  
+  enterReaderMode: new DisableableAction("enterReaderMode", function() {
+    browser.tabs.toggleReaderMode();
+  }, function() {
+    return eGUtils.performOnCurrentTab(function(currentTab) {
+      return !currentTab.isArticle;
+    });
   }, false, "takeTabScreenshot"),
   
   takeTabScreenshot: new Action("takeTabScreenshot", function() {
