@@ -349,9 +349,9 @@ var eGPrefs = {
   },
   
   initializeStats : function() {
-    var defaultStats = this._getDefaultStatsMap();
+    var defaultStatsMap = this._getDefaultStatsMap();
     var setPreferencePromises = [];
-    defaultStats.forEach(function(pref) {
+    defaultStatsMap.forEach(function(pref) {
       setPreferencePromises.push(pref.setPreference());
     });
     return Promise.all(setPreferencePromises);
