@@ -309,6 +309,15 @@ option[class^="eGOptions_"]::before {
   margin-top: 0.5em;
 }
 
+#resetMenusSection {
+  display: flex;
+  margin-top: 0.75em;
+}
+
+#resetMenusButton {
+  margin-left: auto;
+}
+
 th {
   font-weight: normal;
   text-align: left;

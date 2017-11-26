@@ -187,6 +187,8 @@
   "menus.contextual.image": { "message": "Menú imagen" },
   "menus.contextual.selection": { "message": "Menú selección" },
   "menus.contextual.textbox": { "message": "Menú campo de texto" },
+  "menus.reset": { "message": "Reiniciar los menús..." },
+  "menus.reset.confirm": { "message": "Por favor, confirme que desea reiniciar los menús." },
   
   "customizations.loadURLActions": { "message": "Acciones 'Cargar dirección'" },
   "customizations.runScriptActions": { "message": "Acciones 'Ejecutar script'" },

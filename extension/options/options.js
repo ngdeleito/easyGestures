@@ -58,6 +58,7 @@ var eventListenersArray = [
   ["activateTooltips", "change", setDisabledStatusForTooltipsActivationDelay],
   ["activateOpenLinksThroughPieMenuCenter", "change",
     setDisabledStatusForOpenLinksMaximumDelay],
+  ["resetMenusButton", "click", resetMenus],
   ["enableMainAlt1Menu", "change", setDisabledStatusForMainAlt1Menu],
   ["enableMainAlt2Menu", "change", setDisabledStatusForMainAlt2Menu],
   ["enableExtraAlt1Menu", "change", setDisabledStatusForExtraAlt1Menu],
@@ -807,6 +808,12 @@ function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
     radioElements[0].disabled = shouldBeDisabled;
     radioElements[1].disabled = shouldBeDisabled;
   });
+}
+
+function resetMenus() {
+  if (confirm(browser.i18n.getMessage("menus.reset.confirm"))) {
+    eGPrefs.setDefaultMenus();
+  }
 }
 
 function setDisabledStatusForMenu(menuName, enabled) {

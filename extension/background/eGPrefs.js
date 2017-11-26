@@ -90,64 +90,69 @@ StringPref.prototype.isNewValuePossible = function(newPrefValue) {
 };
 
 var eGPrefs = {
+  _setBoolPref: function(defaultPrefsMap, prefName, prefValue) {
+    defaultPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
+  },
+  
   _setStringPref : function(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
     defaultPrefsMap.set(prefName,
                         new StringPref(prefName, prefValue, isPossibleValue));
   },
   
-  _getDefaultPrefsMap : function(platformOS) {
-    function setBoolPref(defaultPrefsMap, prefName, prefValue) {
-      defaultPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
+  _addDefaultMenusMap(aPrefsMap) {
+    function checkPossibleMenuValues(numberOfActions, newPrefValue) {
+      var actionsArray = newPrefValue.split("/");
+      if (actionsArray.length === numberOfActions) {
+        return actionsArray.every(function(element) {
+          return element in eGActions;
+        });
+      }
+      else {
+        return false;
+      }
     }
+    
+    function checkPossibleNonExtraMenuValues(newPrefValue) {
+      return checkPossibleMenuValues(10, newPrefValue);
+    }
+    
+    function checkPossibleExtraMenuValues(newPrefValue) {
+      return checkPossibleMenuValues(5, newPrefValue);
+    }
+    
+    var nonExtraMenus = [
+      ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
+      ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/previousTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
+      ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
+      ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
+      ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
+      ["contextSelection", "empty/findAndHighlightSelection/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
+      ["contextTextbox",   "selectAll/empty/empty/cut/copy/empty/paste/empty/empty/empty"]
+    ];
+    var extraMenus = [
+      ["extra",     "bookmarkThisPage/findAndHighlightSelection/searchWeb/reload/homepage"],
+      ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/empty/empty"],
+      ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
+    ];
+    
+    this._setBoolPref(aPrefsMap, "menus.mainAlt1Enabled", true);
+    this._setBoolPref(aPrefsMap, "menus.mainAlt2Enabled", false);
+    this._setBoolPref(aPrefsMap, "menus.extraAlt1Enabled", true);
+    this._setBoolPref(aPrefsMap, "menus.extraAlt2Enabled", false);
+    nonExtraMenus.forEach(function([menuName, actions]) {
+      this._setStringPref(aPrefsMap, "menus." + menuName, actions,
+                          checkPossibleNonExtraMenuValues);
+    }, this);
+    extraMenus.forEach(function([menuName, actions]) {
+      this._setStringPref(aPrefsMap, "menus." + menuName, actions,
+                          checkPossibleExtraMenuValues);
+    }, this);
+  },
+  
+  _getDefaultPrefsMap : function(platformOS) {
     function setIntPref(defaultPrefsMap, prefName, prefValue, possibleValues) {
       defaultPrefsMap.set(prefName,
                           new IntPref(prefName, prefValue, possibleValues));
-    }
-    
-    function setDefaultMenus(defaultPrefsMap) {
-      function checkPossibleMenuValues(numberOfActions, newPrefValue) {
-        var actionsArray = newPrefValue.split("/");
-        if (actionsArray.length === numberOfActions) {
-          return actionsArray.every(function(element) {
-            return element in eGActions;
-          });
-        }
-        else {
-          return false;
-        }
-      }
-      
-      function checkPossibleNonExtraMenuValues(newPrefValue) {
-        return checkPossibleMenuValues(10, newPrefValue);
-      }
-      
-      function checkPossibleExtraMenuValues(newPrefValue) {
-        return checkPossibleMenuValues(5, newPrefValue);
-      }
-      
-      var nonExtraMenus = [
-        ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
-        ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/previousTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
-        ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
-        ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
-        ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
-        ["contextSelection", "empty/findAndHighlightSelection/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
-        ["contextTextbox",   "selectAll/empty/empty/cut/copy/empty/paste/empty/empty/empty"]
-      ];
-      var extraMenus = [
-        ["extra",     "bookmarkThisPage/findAndHighlightSelection/searchWeb/reload/homepage"],
-        ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/empty/empty"],
-        ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
-      ];
-      
-      nonExtraMenus.forEach(function([menuName, actions]) {
-        eGPrefs._setStringPref(defaultPrefsMap, "menus." + menuName, actions,
-                               checkPossibleNonExtraMenuValues);
-      });
-      extraMenus.forEach(function([menuName, actions]) {
-        eGPrefs._setStringPref(defaultPrefsMap, "menus." + menuName, actions,
-                               checkPossibleExtraMenuValues);
-      });
     }
     
     function checkPossibleLoadURLValues(newPrefValue) {
@@ -162,7 +167,7 @@ var eGPrefs = {
     }
     
     var defaultPrefs = new Map();
-    setBoolPref(defaultPrefs, "general.startupTips", true);
+    this._setBoolPref(defaultPrefs, "general.startupTips", true);
     setIntPref(defaultPrefs, "general.tipNumber", -1);
     
     if (platformOS !== "mac") {
@@ -179,23 +184,19 @@ var eGPrefs = {
     
     setIntPref(defaultPrefs, "activation.showAltButton", 2); // right button
     setIntPref(defaultPrefs, "activation.contextKey", 18, [0, 17, 18]); // alt key
-    setBoolPref(defaultPrefs, "activation.contextShowAuto", false);
+    this._setBoolPref(defaultPrefs, "activation.contextShowAuto", false);
     
-    setBoolPref(defaultPrefs, "behavior.moveAuto", false);
-    setBoolPref(defaultPrefs, "behavior.largeMenu", false);
+    this._setBoolPref(defaultPrefs, "behavior.moveAuto", false);
+    this._setBoolPref(defaultPrefs, "behavior.largeMenu", false);
     setIntPref(defaultPrefs, "behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
-    setBoolPref(defaultPrefs, "behavior.smallIcons", false);
-    setBoolPref(defaultPrefs, "behavior.showTooltips", true);
+    this._setBoolPref(defaultPrefs, "behavior.smallIcons", false);
+    this._setBoolPref(defaultPrefs, "behavior.showTooltips", true);
     setIntPref(defaultPrefs, "behavior.tooltipsDelay", 1000);
-    setBoolPref(defaultPrefs, "behavior.handleLinks", true);
+    this._setBoolPref(defaultPrefs, "behavior.handleLinks", true);
     setIntPref(defaultPrefs, "behavior.linksDelay", 300);
-    setBoolPref(defaultPrefs, "behavior.handleLinksAsOpenLink", false);
+    this._setBoolPref(defaultPrefs, "behavior.handleLinksAsOpenLink", false);
     
-    setBoolPref(defaultPrefs, "menus.mainAlt1Enabled", true);
-    setBoolPref(defaultPrefs, "menus.mainAlt2Enabled", false);
-    setBoolPref(defaultPrefs, "menus.extraAlt1Enabled", true);
-    setBoolPref(defaultPrefs, "menus.extraAlt2Enabled", false);
-    setDefaultMenus(defaultPrefs);
+    this._addDefaultMenusMap(defaultPrefs);
     
     this._setStringPref(defaultPrefs, "customizations.loadURLin", "newTab",
                         function(newPrefValue) {
@@ -346,6 +347,16 @@ var eGPrefs = {
       });
       return Promise.all(setPreferencePromises);
     });
+  },
+  
+  setDefaultMenus: function() {
+    let defaultMenusPrefsMap = new Map();
+    this._addDefaultMenusMap(defaultMenusPrefsMap);
+    let setPreferencePromises = [];
+    defaultMenusPrefsMap.forEach(function(pref) {
+      setPreferencePromises.push(pref.setPreference());
+    });
+    return Promise.all(setPreferencePromises);
   },
   
   initializeStats : function() {
