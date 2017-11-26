@@ -90,13 +90,13 @@ StringPref.prototype.isNewValuePossible = function(newPrefValue) {
 };
 
 var eGPrefs = {
-  _setBoolPref: function(defaultPrefsMap, prefName, prefValue) {
-    defaultPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
+  _setBoolPref: function(aPrefsMap, prefName, prefValue) {
+    aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
   },
   
-  _setStringPref : function(defaultPrefsMap, prefName, prefValue, isPossibleValue) {
-    defaultPrefsMap.set(prefName,
-                        new StringPref(prefName, prefValue, isPossibleValue));
+  _setStringPref : function(aPrefsMap, prefName, prefValue, isPossibleValue) {
+    aPrefsMap.set(prefName,
+                  new StringPref(prefName, prefValue, isPossibleValue));
   },
   
   _addDefaultMenusMap(aPrefsMap) {
@@ -150,9 +150,8 @@ var eGPrefs = {
   },
   
   _getDefaultPrefsMap : function(platformOS) {
-    function setIntPref(defaultPrefsMap, prefName, prefValue, possibleValues) {
-      defaultPrefsMap.set(prefName,
-                          new IntPref(prefName, prefValue, possibleValues));
+    function setIntPref(aPrefsMap, prefName, prefValue, possibleValues) {
+      aPrefsMap.set(prefName, new IntPref(prefName, prefValue, possibleValues));
     }
     
     function checkPossibleLoadURLValues(newPrefValue) {
