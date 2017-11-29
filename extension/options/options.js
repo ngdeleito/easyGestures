@@ -862,13 +862,11 @@ function setPreferenceControlsDisabledStatus() {
   setDisabledStatusForExtraAlt2Menu();
 }
 
-function loadPreferences(isReload) {
+function loadPreferences() {
   var prefControls = document.querySelectorAll("[data-preference]");
   for (let i=0; i < prefControls.length; ++i) {
     initializePreferenceControl(prefControls[i]);
-    if (!isReload) {
-      addOnchangeListenerToPreferenceControl(prefControls[i]);
-    }
+    addOnchangeListenerToPreferenceControl(prefControls[i]);
   }
   setPreferenceControlsDisabledStatus();
 }
@@ -1031,7 +1029,7 @@ function optionsLoadHandler() {
   createRunScriptActions();
   
   initializePaneAndTabs(document.location.hash);
-  loadPreferences(false);
+  loadPreferences();
   
   loadStats();
   
@@ -1117,7 +1115,6 @@ function importPrefs(anEvent) {
           alert(browser.i18n.getMessage("general.prefs.import." + result.code) +
                 " " + result.prefs);
         }
-        loadPreferences(true);
       });
     }
     catch (exception) {
@@ -1157,9 +1154,7 @@ function exportPrefs() {
 
 function resetPrefs() {
   if (confirm(browser.i18n.getMessage("general.prefs.reset.confirm"))) {
-    eGPrefs.setDefaultSettings().then(() => {
-      loadPreferences(true);
-    });
+    eGPrefs.setDefaultSettings();
   }
 }
 
