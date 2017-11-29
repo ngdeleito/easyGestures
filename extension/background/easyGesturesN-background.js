@@ -34,6 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global browser, eGPrefs, eGContext, eGActions, console, eGUtils, window */
 
+"use strict";
+
 var installOrUpgradeTriggered = false;
 
 function resetPieMenuOnAllTabs() {

@@ -35,6 +35,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported eGPrefs */
 /* global browser, eGActions */
 
+"use strict";
+
 function Pref(name, value) {
   this.name = name;
   this.value = value;

@@ -34,6 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global eGPieMenu, QUnit */
 
+"use strict";
+
 function initCanBeOpened(showButton, showKey, preventOpenKey, contextKey) {
   eGPieMenu.settings.showButton = showButton;
   eGPieMenu.settings.showKey = showKey;

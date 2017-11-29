@@ -58,6 +58,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported eGActions */
 /* global eGPrefs, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
 
+"use strict";
+
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = function(updateStatsInformation) {

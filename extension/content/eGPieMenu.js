@@ -40,6 +40,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
           removeMenuEventHandler, anchorElement, window, handleMousemove,
           actionStatusSetters, actionRunners, removeEventListener */
 
+"use strict";
+
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 const EXTRA_MENU_SECTOR = 2; // position of the extra menu action in base menus
 

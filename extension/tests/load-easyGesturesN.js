@@ -34,6 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global  eGPieMenu, QUnit, eGPrefs */
 
+"use strict";
+
 var savedPrefs;
 
 eGPieMenu.setHidden();

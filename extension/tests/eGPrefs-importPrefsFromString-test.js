@@ -34,6 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global QUnit, eGPrefs, eGActions */
 
+"use strict";
+
 QUnit.test("test importPrefsFromString with invalid file content",
   function(assert) {
   assert.throws(function() {

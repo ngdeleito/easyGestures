@@ -34,6 +34,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global QUnit, eGUtils */
 
+"use strict";
+
 QUnit.test("test isVersionSmallerOrEqualThan",
   function(assert) {
   assert.ok(eGUtils.isVersionSmallerOrEqualThan("5.2", "5.2"));

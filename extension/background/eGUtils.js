@@ -35,6 +35,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported eGUtils */
 /* global browser */
 
+"use strict";
+
 var eGUtils = {
   isVersionSmallerOrEqualThan(oldVersion, newVersion) {
     var oldVersionArray = oldVersion.split(".");

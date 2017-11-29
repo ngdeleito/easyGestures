@@ -34,10 +34,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global window, browser, document, eGPrefs, eGUtils */
 
+"use strict";
+
 window.addEventListener("load", tipsLoadHandler);
 window.addEventListener("unload", tipsUnloadHandler);
 
 function tipEntry(label, hash) {
+  /* jshint validthis: true */
   this.label = label;
   this.imageClass = label.slice("tips.".length);
   this.hash = hash;

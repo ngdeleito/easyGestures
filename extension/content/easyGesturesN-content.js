@@ -37,6 +37,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* exported removeMenuEventHandler, handleMousemove */
 /* global browser, eGPieMenu, addEventListener, window, document, MouseEvent */
 
+"use strict";
+
 var selection, contextualMenus, anchorElement, imageElement, inputElement,
     iframeElement;
 var frameScrollY, frameScrollMaxY, frameURL;

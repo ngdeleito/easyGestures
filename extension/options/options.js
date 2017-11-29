@@ -35,6 +35,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global window, eGUtils, eGPrefs, browser, document, eGActions, alert,
           FileReader, Blob, URL, confirm */
 
+"use strict";
+
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
 var prefChanged = false;

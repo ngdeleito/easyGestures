@@ -38,6 +38,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* global document, inputElement, selection, window, frameScrollY,
           iframeElement, frameScrollMaxY, imageElement, eGPieMenu  */
 
+"use strict";
+
 var actionStatusSetters = {
   _setActionStatus: function(layoutName, actionSector, disabled) {
     var actionsNode = document.getElementById("eG_actions_" + layoutName);
