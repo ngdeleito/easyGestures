@@ -225,9 +225,8 @@ var eGPrefs = {
   _getDefaultStatsMap: function() {
     var defaultStats = new Map();
     
-    var lastResetDate = new Date();
     this._setStringPref(defaultStats, "stats.lastReset",
-                        lastResetDate.toISOString(), function(newPrefValue) {
+                        (new Date()).toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
     this._setStringPref(defaultStats, "stats.mainMenu",
