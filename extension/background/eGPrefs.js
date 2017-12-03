@@ -96,7 +96,7 @@ var eGPrefs = {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
   },
   
-  _setStringPref : function(aPrefsMap, prefName, prefValue, isPossibleValue) {
+  _setStringPref: function(aPrefsMap, prefName, prefValue, isPossibleValue) {
     aPrefsMap.set(prefName,
                   new StringPref(prefName, prefValue, isPossibleValue));
   },
@@ -151,7 +151,7 @@ var eGPrefs = {
     }, this);
   },
   
-  _getDefaultPrefsMap : function(platformOS) {
+  _getDefaultPrefsMap: function(platformOS) {
     function setIntPref(aPrefsMap, prefName, prefValue, possibleValues) {
       aPrefsMap.set(prefName, new IntPref(prefName, prefValue, possibleValues));
     }
@@ -222,7 +222,7 @@ var eGPrefs = {
     return defaultPrefs;
   },
   
-  _getDefaultStatsMap : function() {
+  _getDefaultStatsMap: function() {
     var defaultStats = new Map();
     
     var lastResetDate = new Date();
@@ -275,7 +275,7 @@ var eGPrefs = {
     return defaultStats;
   },
   
-  exportPrefsToString : function() {
+  exportPrefsToString: function() {
     return browser.storage.local.get().then(prefs => {
       let result = [];
       for (let key in prefs) {
@@ -285,7 +285,7 @@ var eGPrefs = {
     });
   },
   
-  importPrefsFromString : function(aString) {
+  importPrefsFromString: function(aString) {
     var newPrefs;
     try {
       newPrefs = JSON.parse(aString);
@@ -339,7 +339,7 @@ var eGPrefs = {
     });
   },
   
-  setDefaultSettings : function() {
+  setDefaultSettings: function() {
     return browser.runtime.getPlatformInfo().then(platformInfo => {
       let defaultPrefsMap = this._getDefaultPrefsMap(platformInfo.os);
       let setPreferencePromises = [];
@@ -360,7 +360,7 @@ var eGPrefs = {
     return Promise.all(setPreferencePromises);
   },
   
-  initializeStats : function() {
+  initializeStats: function() {
     var defaultStatsMap = this._getDefaultStatsMap();
     var setPreferencePromises = [];
     defaultStatsMap.forEach(function(pref) {
@@ -369,41 +369,41 @@ var eGPrefs = {
     return Promise.all(setPreferencePromises);
   },
   
-  getPref : function(aPrefName) {
+  getPref: function(aPrefName) {
     return browser.storage.local.get(aPrefName).then(prefObject => {
       return prefObject[aPrefName];
     });
   },
   
-  getMenuPrefAsArray : function(aPrefName) {
+  getMenuPrefAsArray: function(aPrefName) {
     return browser.storage.local.get(aPrefName).then(prefObject => {
       return prefObject[aPrefName].split("/");
     });
   },
   
-  toggleBoolPref : function(aPrefName) {
+  toggleBoolPref: function(aPrefName) {
     browser.storage.local.get(aPrefName).then(prefObject => {
       this.setPref(aPrefName, !prefObject[aPrefName]);
     });
   },
   
-  setPref : function(aPrefName, prefValue) {
+  setPref: function(aPrefName, prefValue) {
     let prefObject = {};
     prefObject[aPrefName] = prefValue;
     browser.storage.local.set(prefObject);
   },
   
-  setMenuPref : function(aPrefName, prefValueAsArray) {
+  setMenuPref: function(aPrefName, prefValueAsArray) {
     let prefObject = {};
     prefObject[aPrefName] = prefValueAsArray.join("/");
     browser.storage.local.set(prefObject);
   },
   
-  areStartupTipsOn : function() {
+  areStartupTipsOn: function() {
     return this.getPref("general.startupTips");
   },
   
-  toggleStartupTips : function() {
+  toggleStartupTips: function() {
     this.areStartupTipsOn().then(prefValue => {
       browser.storage.local.set({
         "general.startupTips": !prefValue
@@ -411,88 +411,88 @@ var eGPrefs = {
     });
   },
   
-  getTipNumberPref : function() {
+  getTipNumberPref: function() {
     return this.getPref("general.tipNumber");
   },
   
-  setTipNumberPref : function(anInteger) {
+  setTipNumberPref: function(anInteger) {
     browser.storage.local.set({
       "general.tipNumber": anInteger
     });
   },
   
-  isLargeMenuOn : function() {
+  isLargeMenuOn: function() {
     return this.getPref("behavior.largeMenu");
   },
   
-  areTooltipsOn : function() {
+  areTooltipsOn: function() {
     return this.getPref("behavior.showTooltips");
   },
   
-  isHandleLinksOn : function() {
+  isHandleLinksOn: function() {
     return this.getPref("behavior.handleLinks");
   },
   
-  isMainAlt1MenuEnabled : function() {
+  isMainAlt1MenuEnabled: function() {
     return this.getPref("menus.mainAlt1Enabled");
   },
   
-  isMainAlt2MenuEnabled : function() {
+  isMainAlt2MenuEnabled: function() {
     return this.getPref("menus.mainAlt2Enabled");
   },
   
-  isExtraAlt1MenuEnabled : function() {
+  isExtraAlt1MenuEnabled: function() {
     return this.getPref("menus.extraAlt1Enabled");
   },
   
-  isExtraAlt2MenuEnabled : function() {
+  isExtraAlt2MenuEnabled: function() {
     return this.getPref("menus.extraAlt2Enabled");
   },
   
-  getLoadURLInPref : function() {
+  getLoadURLInPref: function() {
     // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
     return this.getPref("customizations.loadURLin");
   },
   
-  getLoadURLOrRunScriptPrefValue : function(aPrefName) {
+  getLoadURLOrRunScriptPrefValue: function(aPrefName) {
     return this.getPref("customizations." + aPrefName).then(prefValue => {
       return prefValue.split("\u2022");
     });
   },
   
-  setLoadURLOrRunScriptPrefValue : function(aPrefName, aPrefValueAsArray) {
+  setLoadURLOrRunScriptPrefValue: function(aPrefName, aPrefValueAsArray) {
     let prefObject = {};
     prefObject[aPrefName] = aPrefValueAsArray.join("\u2022");
     browser.storage.local.set(prefObject);
   },
   
-  getOpenLinkPref : function() {
+  getOpenLinkPref: function() {
     return this.getPref("customizations.openLink");
   },
   
-  getDailyReadingsFolderName : function() {
+  getDailyReadingsFolderName: function() {
     return this.getPref("customizations.dailyReadingsFolderName");
   },
   
-  setDailyReadingsFolderName : function(prefValue) {
+  setDailyReadingsFolderName: function(prefValue) {
     browser.storage.local.set({
       "customizations.dailyReadingsFolderName": prefValue
     });
   },
   
-  getStatsLastResetPref : function() {
+  getStatsLastResetPref: function() {
     return this.getPref("stats.lastReset").then(prefValue => {
       return (new Date(prefValue)).toLocaleString();
     });
   },
   
-  getStatsMainMenuPref : function() {
+  getStatsMainMenuPref: function() {
     return this.getPref("stats.mainMenu").then(prefValue => {
       return JSON.parse(prefValue);
     });
   },
   
-  incrementStatsMainMenuPref : function(anIndex) {
+  incrementStatsMainMenuPref: function(anIndex) {
     this.getStatsMainMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
@@ -501,13 +501,13 @@ var eGPrefs = {
     });
   },
   
-  getStatsExtraMenuPref : function() {
+  getStatsExtraMenuPref: function() {
     return this.getPref("stats.extraMenu").then(prefValue => {
       return JSON.parse(prefValue);
     });
   },
   
-  incrementStatsExtraMenuPref : function(anIndex) {
+  incrementStatsExtraMenuPref: function(anIndex) {
     this.getStatsExtraMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
@@ -516,7 +516,7 @@ var eGPrefs = {
     });
   },
   
-  updateStatsForAction : function(anActionName) {
+  updateStatsForAction: function(anActionName) {
     this.getPref("stats.actions").then(prefValue => {
       var actionsStats = JSON.parse(prefValue);
       ++actionsStats[anActionName];
@@ -526,7 +526,7 @@ var eGPrefs = {
     });
   },
   
-  getStatsActionsPref : function() {
+  getStatsActionsPref: function() {
     return this.getPref("stats.actions").then(prefValue => {
       return JSON.parse(prefValue);
     });

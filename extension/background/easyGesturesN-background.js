@@ -58,7 +58,7 @@ function handleStorageChange(changes) {
 }
 
 var eGMessageHandlers = {
-  setContextAndFocusCurrentWindow : function(aMessage) {
+  setContextAndFocusCurrentWindow: function(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
     }
@@ -69,19 +69,19 @@ var eGMessageHandlers = {
     });
   },
   
-  getTooltipLabels : function(aMessage) {
+  getTooltipLabels: function(aMessage) {
     return Promise.all(aMessage.actions.map(function(actionName) {
       return eGActions[actionName].getTooltipLabel();
     }));
   },
   
-  isExtraMenuAction : function(aMessage, sendResponse) {
+  isExtraMenuAction: function(aMessage, sendResponse) {
     sendResponse({
       response: eGActions[aMessage.actionName].isExtraMenuAction
     });
   },
   
-  getActionsStatus : function(aMessage) {
+  getActionsStatus: function(aMessage) {
     var actionsStatus = aMessage.actions.map(function(actionName) {
                             return eGActions[actionName].getActionStatus();
                         });
@@ -97,11 +97,11 @@ var eGMessageHandlers = {
     });
   },
   
-  incrementShowExtraMenuStats : function(aMessage) {
+  incrementShowExtraMenuStats: function(aMessage) {
     eGPrefs.incrementStatsMainMenuPref(aMessage.incrementIndex);
   },
   
-  runAction : function(aMessage) {
+  runAction: function(aMessage) {
     return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation)
                                          .then(result => {
       return {
@@ -115,7 +115,7 @@ var eGMessageHandlers = {
     });
   },
   
-  loadURLInNewNonActiveTab : function(aMessage) {
+  loadURLInNewNonActiveTab: function(aMessage) {
     eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.create({
         active: false,
@@ -125,7 +125,7 @@ var eGMessageHandlers = {
     });
   },
   
-  loadURLInCurrentTab : function(aMessage) {
+  loadURLInCurrentTab: function(aMessage) {
     browser.tabs.update({
       url: aMessage.url
     });

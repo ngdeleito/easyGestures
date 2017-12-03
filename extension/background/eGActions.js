@@ -383,33 +383,33 @@ DisabledAction.prototype.constructor = DisabledAction;
 
 
 var eGActions = {
-  empty : new EmptyAction(false, "showExtraMenu"),
+  empty: new EmptyAction(false, "showExtraMenu"),
   
-  showExtraMenu : new ShowExtraMenuAction(true, "back"),
+  showExtraMenu: new ShowExtraMenuAction(true, "back"),
   
-  back : new Action("back", function() {
+  back: new Action("back", function() {
     return this._sendPerformActionMessage();
   }, true, "backSite"),
   
-  backSite : new DisabledAction("backSite", false, "firstPage"),
+  backSite: new DisabledAction("backSite", false, "firstPage"),
   
-  firstPage : new DisabledAction("firstPage", false, "forward"),
+  firstPage: new DisabledAction("firstPage", false, "forward"),
   
-  forward : new Action("forward", function() {
+  forward: new Action("forward", function() {
     return this._sendPerformActionMessage();
   }, false, "forwardSite"),
   
-  forwardSite : new DisabledAction("forwardSite", false, "lastPage"),
+  forwardSite: new DisabledAction("forwardSite", false, "lastPage"),
   
-  lastPage : new DisabledAction("lastPage", false, "reload"),
+  lastPage: new DisabledAction("lastPage", false, "reload"),
   
-  reload : new Action("reload", function() {
+  reload: new Action("reload", function() {
     browser.tabs.reload({
       bypassCache: true
     });
   }, false, "homepage"),
   
-  homepage : new Action("homepage", function() {
+  homepage: new Action("homepage", function() {
     browser.browserSettings.homepageOverride.get({}).then(result => {
       let homepageArray = result.value.split("|");
       browser.tabs.update({
@@ -430,7 +430,7 @@ var eGActions = {
     });
   }, false, "pageTop"),
   
-  pageTop : new DisableableAction("pageTop", function() {
+  pageTop: new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
   }, function() {
     return new Promise(resolve => {
@@ -438,7 +438,7 @@ var eGActions = {
     });
   }, false, "pageBottom"),
   
-  pageBottom : new DisableableAction("pageBottom", function() {
+  pageBottom: new DisableableAction("pageBottom", function() {
     return this._sendPerformActionMessage();
   }, function() {
     return new Promise(resolve => {
@@ -449,7 +449,7 @@ var eGActions = {
     });
   }, false, "savePageAs"),
   
-  savePageAs : new Action("savePageAs", function() {
+  savePageAs: new Action("savePageAs", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
       browser.downloads.download({
         url: currentTab.url,
@@ -459,7 +459,7 @@ var eGActions = {
     });
   }, false, "printPage"),
   
-  printPage : new Action("printPage", function() {
+  printPage: new Action("printPage", function() {
     browser.tabs.print();
   }, false, "showPrintPreview"),
   
@@ -467,7 +467,7 @@ var eGActions = {
     browser.tabs.printPreview();
   }, false, "searchWeb"),
   
-  searchWeb : new DisabledAction("searchWeb", false, "loadPageInNewTab"),
+  searchWeb: new DisabledAction("searchWeb", false, "loadPageInNewTab"),
   
   loadPageInNewTab: new Action("loadPageInNewTab", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
@@ -511,7 +511,7 @@ var eGActions = {
     };
   }, false, "zoomIn"),
   
-  zoomIn : new Action("zoomIn", function() {
+  zoomIn: new Action("zoomIn", function() {
     if (eGContext.imageElementDoesntExist) {
       browser.tabs.getZoom().then(zoomFactor => {
         let newZoomFactor = this.increasingZoomLevels.find(element => {
@@ -527,7 +527,7 @@ var eGActions = {
     }
   }, false, "zoomOut"),
   
-  zoomOut : new Action("zoomOut", function() {
+  zoomOut: new Action("zoomOut", function() {
     if (eGContext.imageElementDoesntExist) {
       browser.tabs.getZoom().then(zoomFactor => {
         let newZoomFactor = this.decreasingZoomLevels.find(element => {
@@ -543,7 +543,7 @@ var eGActions = {
     }
   }, false, "zoomReset"),
   
-  zoomReset : new Action("zoomReset", function() {
+  zoomReset: new Action("zoomReset", function() {
     browser.tabs.setZoom(1);
   }, false, "findAndHighlightSelection"),
   
@@ -598,7 +598,7 @@ var eGActions = {
     });
   }, false, "toggleFullscreen"),
   
-  toggleFullscreen : new Action("toggleFullscreen", function() {
+  toggleFullscreen: new Action("toggleFullscreen", function() {
     browser.windows.getCurrent().then(aWindow => {
       let newState = aWindow.state === "fullscreen" ? "normal" : "fullscreen";
       browser.windows.update(aWindow.id, {
@@ -607,7 +607,7 @@ var eGActions = {
     });
   }, false, "up"),
   
-  up : new CanGoUpDisableableAction("up", function() {
+  up: new CanGoUpDisableableAction("up", function() {
     let url = new URL(eGContext.pageURL);
     let pathname = url.pathname;
     // removing any trailing "/" and the leading "/"
@@ -622,7 +622,7 @@ var eGActions = {
     });
   }, false, "root"),
   
-  root : new CanGoUpDisableableAction("root", function() {
+  root: new CanGoUpDisableableAction("root", function() {
     let url = new URL(eGContext.pageURL);
     browser.tabs.update({
       url: url.protocol + "//" + url.username +
@@ -631,7 +631,7 @@ var eGActions = {
     });
   }, false, "showOnlyThisFrame"),
   
-  showOnlyThisFrame : new DisableableAction("showOnlyThisFrame", function() {
+  showOnlyThisFrame: new DisableableAction("showOnlyThisFrame", function() {
     browser.tabs.update({
       url: eGContext.frameURL
     });
@@ -641,7 +641,7 @@ var eGActions = {
     });
   }, false, "viewPageSource"),
   
-  viewPageSource : new Action("viewPageSource", function() {
+  viewPageSource: new Action("viewPageSource", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.create({
         openerTabId: currentTab.id,
@@ -650,23 +650,23 @@ var eGActions = {
     });
   }, false, "newTab"),
   
-  newTab : new Action("newTab", function() {
+  newTab: new Action("newTab", function() {
     browser.tabs.create({});
   }, true, "newBlankTab"),
   
-  newBlankTab : new Action("newBlankTab", function() {
+  newBlankTab: new Action("newBlankTab", function() {
     browser.tabs.create({
       url: "about:blank"
     });
   }, false, "duplicateTab"),
   
-  duplicateTab : new Action("duplicateTab", function() {
+  duplicateTab: new Action("duplicateTab", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.duplicate(currentTab.id);
     });
   }, false, "closeTab"),
   
-  closeTab : new DisableableAction("closeTab", function() {
+  closeTab: new DisableableAction("closeTab", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.remove(currentTab.id);
     });
@@ -676,7 +676,7 @@ var eGActions = {
     });
   }, false, "closeOtherTabs"),
   
-  closeOtherTabs : new DisableableAction("closeOtherTabs", function() {
+  closeOtherTabs: new DisableableAction("closeOtherTabs", function() {
     browser.tabs.query({
       active: false,
       pinned: false,
@@ -696,7 +696,7 @@ var eGActions = {
     });
   }, false, "undoCloseTab"),
   
-  undoCloseTab : new DisableableAction("undoCloseTab", function() {
+  undoCloseTab: new DisableableAction("undoCloseTab", function() {
     browser.sessions.getRecentlyClosed().then(closedItems => {
       let mostRecentlyClosedTab = closedItems.find(closedItem => {
         return closedItem.tab !== undefined;
@@ -712,7 +712,7 @@ var eGActions = {
     });
   }, false, "previousTab"),
   
-  previousTab : new OtherTabsExistDisableableAction("previousTab", function() {
+  previousTab: new OtherTabsExistDisableableAction("previousTab", function() {
     eGUtils.performOnCurrentTab(async function(currentTab) {
       let tabs = await browser.tabs.query({
         currentWindow: true
@@ -728,7 +728,7 @@ var eGActions = {
     });
   }, false, "nextTab"),
   
-  nextTab : new OtherTabsExistDisableableAction("nextTab", function() {
+  nextTab: new OtherTabsExistDisableableAction("nextTab", function() {
     eGUtils.performOnCurrentTab(async function(currentTab) {
       let tabs = await browser.tabs.query({
         currentWindow: true
@@ -743,7 +743,7 @@ var eGActions = {
     });
   }, false, "pinUnpinTab"),
   
-  pinUnpinTab : new Action("pinUnpinTab", function() {
+  pinUnpinTab: new Action("pinUnpinTab", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
       browser.tabs.update({
         pinned: !currentTab.pinned
@@ -751,7 +751,7 @@ var eGActions = {
     });
   }, false, "newWindow"),
   
-  newWindow : new Action("newWindow", function() {
+  newWindow: new Action("newWindow", function() {
     browser.browserSettings.homepageOverride.get({}).then(result => {
       browser.windows.create({
         url: result.value.split("|")
@@ -759,17 +759,17 @@ var eGActions = {
     });
   }, true, "newBlankWindow"),
   
-  newBlankWindow : new Action("newBlankWindow", function() {
+  newBlankWindow: new Action("newBlankWindow", function() {
     browser.windows.create({});
   }, false, "newPrivateWindow"),
   
-  newPrivateWindow : new Action("newPrivateWindow", function() {
+  newPrivateWindow: new Action("newPrivateWindow", function() {
     browser.windows.create({
       incognito: true
     });
   }, false, "duplicateWindow"),
   
-  duplicateWindow : new Action("duplicateWindow", async function() {
+  duplicateWindow: new Action("duplicateWindow", async function() {
     let currentWindow = await browser.windows.getCurrent({
       populate: true
     });
@@ -794,7 +794,7 @@ var eGActions = {
     });
   }, false, "minimizeWindow"),
   
-  minimizeWindow : new Action("minimizeWindow", function() {
+  minimizeWindow: new Action("minimizeWindow", function() {
     browser.windows.getCurrent().then(currentWindow => {
       browser.windows.update(currentWindow.id, {
         state: "minimized"
@@ -802,13 +802,13 @@ var eGActions = {
     });
   }, false, "closeWindow"),
   
-  closeWindow : new Action("closeWindow", function() {
+  closeWindow: new Action("closeWindow", function() {
     browser.windows.getCurrent().then(currentWindow => {
       browser.windows.remove(currentWindow.id);
     });
   }, false, "closeOtherWindows"),
   
-  closeOtherWindows : new DisableableAction("closeOtherWindows", async function() {
+  closeOtherWindows: new DisableableAction("closeOtherWindows", async function() {
     let currentWindow = await browser.windows.getCurrent();
     let openWindows = await browser.windows.getAll();
     openWindows.forEach(windowToClose => {
@@ -822,7 +822,7 @@ var eGActions = {
     });
   }, false, "undoCloseWindow"),
   
-  undoCloseWindow : new DisableableAction("undoCloseWindow", function() {
+  undoCloseWindow: new DisableableAction("undoCloseWindow", function() {
     browser.sessions.getRecentlyClosed().then(closedItems => {
       let mostRecentlyClosedWindow = closedItems.find(closedItem => {
         return closedItem.window !== undefined;
@@ -838,26 +838,26 @@ var eGActions = {
     });
   }, false, "openLink"),
   
-  openLink : new LinkExistsDisableableAction("openLink", function() {
+  openLink: new LinkExistsDisableableAction("openLink", function() {
     eGPrefs.getOpenLinkPref().then(prefValue => {
       this._openURLOn(eGContext.anchorElementHREF, prefValue, false);
     });
   }, true, "openLinkInNewWindow"),
   
-  openLinkInNewWindow : new LinkExistsDisableableAction("openLinkInNewWindow", function() {
+  openLinkInNewWindow: new LinkExistsDisableableAction("openLinkInNewWindow", function() {
     browser.windows.create({
       url: eGContext.anchorElementHREF
     });
   }, false, "openLinkInNewPrivateWindow"),
   
-  openLinkInNewPrivateWindow : new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
+  openLinkInNewPrivateWindow: new LinkExistsDisableableAction("openLinkInNewPrivateWindow", function() {
     browser.windows.create({
       incognito: true,
       url: eGContext.anchorElementHREF
     });
   }, false, "copyLink"),
   
-  copyLink : new LinkExistsDisableableAction("copyLink", function() {
+  copyLink: new LinkExistsDisableableAction("copyLink", function() {
     return {
       runActionName: "copyInformation",
       runActionOptions: {
@@ -866,16 +866,16 @@ var eGActions = {
     };
   }, false, "saveLinkAs"),
   
-  saveLinkAs : new LinkExistsDisableableAction("saveLinkAs", function() {
+  saveLinkAs: new LinkExistsDisableableAction("saveLinkAs", function() {
     browser.downloads.download({
       url: eGContext.anchorElementHREF,
       saveAs: true
     }).catch(() => {});
   }, false, "dailyReadings"),
   
-  dailyReadings : new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
+  dailyReadings: new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
   
-  bookmarkThisPage : new DisableableAction("bookmarkThisPage", function() {
+  bookmarkThisPage: new DisableableAction("bookmarkThisPage", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
       browser.bookmarks.create({
         title: currentTab.title,
@@ -899,7 +899,7 @@ var eGActions = {
     });
   }, false, "bookmarkThisLink"),
   
-  bookmarkThisLink : new DisableableAction("bookmarkThisLink", function() {
+  bookmarkThisLink: new DisableableAction("bookmarkThisLink", function() {
     browser.bookmarks.create({
       title: eGContext.anchorElementText,
       url: eGContext.anchorElementHREF
@@ -915,7 +915,7 @@ var eGActions = {
                                            });
   }, false, "bookmarkAllTabs"),
   
-  bookmarkAllTabs : new Action("bookmarkAllTabs", function() {
+  bookmarkAllTabs: new Action("bookmarkAllTabs", function() {
     browser.windows.getCurrent({
       populate: true
     }).then(currentWindow => {
@@ -976,63 +976,63 @@ var eGActions = {
                                            });
   }, false, "showBookmarks"),
   
-  showBookmarks : new DisabledAction("showBookmarks", false, "toggleBookmarksSidebar"),
+  showBookmarks: new DisabledAction("showBookmarks", false, "toggleBookmarksSidebar"),
   
-  toggleBookmarksSidebar : new DisabledAction("toggleBookmarksSidebar", false, "toggleBookmarksToolbar"),
+  toggleBookmarksSidebar: new DisabledAction("toggleBookmarksSidebar", false, "toggleBookmarksToolbar"),
   
-  toggleBookmarksToolbar : new DisabledAction("toggleBookmarksToolbar", false, "showHistory"),
+  toggleBookmarksToolbar: new DisabledAction("toggleBookmarksToolbar", false, "showHistory"),
   
-  showHistory : new DisabledAction("showHistory", false, "toggleHistorySidebar"),
+  showHistory: new DisabledAction("showHistory", false, "toggleHistorySidebar"),
   
-  toggleHistorySidebar : new DisabledAction("toggleHistorySidebar", false, "showDownloads"),
+  toggleHistorySidebar: new DisabledAction("toggleHistorySidebar", false, "showDownloads"),
   
-  showDownloads : new DisabledAction("showDownloads", false, "loadURL1"),
+  showDownloads: new DisabledAction("showDownloads", false, "loadURL1"),
   
-  loadURL1 : new LoadURLAction(1, true, "loadURL2"),
+  loadURL1: new LoadURLAction(1, true, "loadURL2"),
   
-  loadURL2 : new LoadURLAction(2, false, "loadURL3"),
+  loadURL2: new LoadURLAction(2, false, "loadURL3"),
   
-  loadURL3 : new LoadURLAction(3, false, "loadURL4"),
+  loadURL3: new LoadURLAction(3, false, "loadURL4"),
   
-  loadURL4 : new LoadURLAction(4, false, "loadURL5"),
+  loadURL4: new LoadURLAction(4, false, "loadURL5"),
   
-  loadURL5 : new LoadURLAction(5, false, "loadURL6"),
+  loadURL5: new LoadURLAction(5, false, "loadURL6"),
   
-  loadURL6 : new LoadURLAction(6, false, "loadURL7"),
+  loadURL6: new LoadURLAction(6, false, "loadURL7"),
   
-  loadURL7 : new LoadURLAction(7, false, "loadURL8"),
+  loadURL7: new LoadURLAction(7, false, "loadURL8"),
   
-  loadURL8 : new LoadURLAction(8, false, "loadURL9"),
+  loadURL8: new LoadURLAction(8, false, "loadURL9"),
   
-  loadURL9 : new LoadURLAction(9, false, "loadURL10"),
+  loadURL9: new LoadURLAction(9, false, "loadURL10"),
   
-  loadURL10 : new LoadURLAction(10, false, "runScript1"),
+  loadURL10: new LoadURLAction(10, false, "runScript1"),
   
-  runScript1 : new RunScriptAction(1, true, "runScript2"),
+  runScript1: new RunScriptAction(1, true, "runScript2"),
   
-  runScript2 : new RunScriptAction(2, false, "runScript3"),
+  runScript2: new RunScriptAction(2, false, "runScript3"),
   
-  runScript3 : new RunScriptAction(3, false, "runScript4"),
+  runScript3: new RunScriptAction(3, false, "runScript4"),
   
-  runScript4 : new RunScriptAction(4, false, "runScript5"),
+  runScript4: new RunScriptAction(4, false, "runScript5"),
   
-  runScript5 : new RunScriptAction(5, false, "runScript6"),
+  runScript5: new RunScriptAction(5, false, "runScript6"),
   
-  runScript6 : new RunScriptAction(6, false, "runScript7"),
+  runScript6: new RunScriptAction(6, false, "runScript7"),
   
-  runScript7 : new RunScriptAction(7, false, "runScript8"),
+  runScript7: new RunScriptAction(7, false, "runScript8"),
   
-  runScript8 : new RunScriptAction(8, false, "runScript9"),
+  runScript8: new RunScriptAction(8, false, "runScript9"),
   
-  runScript9 : new RunScriptAction(9, false, "runScript10"),
+  runScript9: new RunScriptAction(9, false, "runScript10"),
   
-  runScript10 : new RunScriptAction(10, false, "easyGesturesNPreferences"),
+  runScript10: new RunScriptAction(10, false, "easyGesturesNPreferences"),
   
-  easyGesturesNPreferences : new Action("easyGesturesNPreferences", function() {
+  easyGesturesNPreferences: new Action("easyGesturesNPreferences", function() {
     eGUtils.showOrOpenTab("/options/options.html", "", true);
   }, true, "copyImageLocation"),
   
-  copyImageLocation : new ImageExistsDisableableAction("copyImageLocation",
+  copyImageLocation: new ImageExistsDisableableAction("copyImageLocation",
     function() {
       return {
         runActionName: "copyInformation",
@@ -1042,7 +1042,7 @@ var eGActions = {
       };
   }, true, "copyImage"),
   
-  copyImage : new ImageExistsDisableableAction("copyImage", function() {
+  copyImage: new ImageExistsDisableableAction("copyImage", function() {
     fetch(eGContext.imageElementSRC).then(aResponse => {
       let imageType = aResponse.headers.get("Content-Type")
                                        .replace("image/", "");
@@ -1054,20 +1054,20 @@ var eGActions = {
     });
   }, false, "saveImageAs"),
   
-  saveImageAs : new ImageExistsDisableableAction("saveImageAs", function() {
+  saveImageAs: new ImageExistsDisableableAction("saveImageAs", function() {
     browser.downloads.download({
       url: eGContext.imageElementSRC,
       saveAs: true
     }).catch(() => {});
   }, false, "hideImages"),
   
-  hideImages : new DocumentContainsImagesDisableableAction("hideImages", false, "cut"),
+  hideImages: new DocumentContainsImagesDisableableAction("hideImages", false, "cut"),
   
-  cut : new CommandAction("cut", true, "copy"),
+  cut: new CommandAction("cut", true, "copy"),
   
-  copy : new CommandAction("copy", false, "paste"),
+  copy: new CommandAction("copy", false, "paste"),
   
-  paste : new DisableableAction("paste", function() {
+  paste: new DisableableAction("paste", function() {
     return this._sendPerformActionMessage();
   }, function() {
     return new Promise(resolve => {
@@ -1075,7 +1075,7 @@ var eGActions = {
     });
   }, false, "selectAll"),
   
-  selectAll : new Action("selectAll", function() {
+  selectAll: new Action("selectAll", function() {
     return this._sendPerformActionMessage();
   }, false, null)
 };
