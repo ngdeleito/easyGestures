@@ -40,10 +40,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-var actionStatusSetters = {
+let actionStatusSetters = {
   _setActionStatus: function(layoutName, actionSector, disabled) {
-    var actionsNode = document.getElementById("eG_actions_" + layoutName);
-    var actionNode = actionsNode.childNodes[actionSector];
+    let actionsNode = document.getElementById("eG_actions_" + layoutName);
+    let actionNode = actionsNode.childNodes[actionSector];
     if (disabled) {
       actionNode.classList.add("disabled");
     }
@@ -57,24 +57,24 @@ var actionStatusSetters = {
   },
   
   hideImages: function(aMessage, layoutName, actionSector) {
-    var disabled = document.querySelectorAll("img").length === 0;
+    let disabled = document.querySelectorAll("img").length === 0;
     this._setActionStatus(layoutName, actionSector, disabled);
   },
   
   cut: function(aMessage, layoutName, actionSector) {
-    var disabled = inputElement === null ||
+    let disabled = inputElement === null ||
                    inputElement.selectionStart === inputElement.selectionEnd;
     this._setActionStatus(layoutName, actionSector, disabled);
   },
   
   copy: function(aMessage, layoutName, actionSector) {
-    var enabled = selection !== "" || (inputElement !== null &&
+    let enabled = selection !== "" || (inputElement !== null &&
                     inputElement.selectionEnd > inputElement.selectionStart);
     this._setActionStatus(layoutName, actionSector, !enabled);
   }
 };
 
-var actionRunners = {
+let actionRunners = {
   back: function() {
     window.history.back();
   },
@@ -103,11 +103,11 @@ var actionRunners = {
   
   zoomIn: function() {
     // double image size only
-    var width = imageElement.style.width === "" ?
+    let width = imageElement.style.width === "" ?
       imageElement.width * 2 + "px" :
       parseInt(imageElement.style.width, 10) * 2 + "px";
     
-    var height = imageElement.style.height === "" ?
+    let height = imageElement.style.height === "" ?
       imageElement.height * 2 + "px" :
       parseInt(imageElement.style.height, 10) * 2 + "px";
     
@@ -117,11 +117,11 @@ var actionRunners = {
   
   zoomOut: function() {
     // halve image size only
-    var width = imageElement.style.width === "" ?
+    let width = imageElement.style.width === "" ?
       imageElement.width * 0.5 + "px" :
       parseInt(imageElement.style.width, 10) * 0.5 + "px";
     
-    var height = imageElement.style.height === "" ?
+    let height = imageElement.style.height === "" ?
       imageElement.height * 0.5 + "px" :
       parseInt(imageElement.style.height, 10) * 0.5 + "px";
     
@@ -130,12 +130,12 @@ var actionRunners = {
   },
   
   copyInformation: function(options) {
-    var selection = window.getSelection();
+    let selection = window.getSelection();
     selection.removeAllRanges();
-    var node = document.createElement("div");
+    let node = document.createElement("div");
     node.textContent = options.information;
     eGPieMenu.easyGesturesNode.appendChild(node);
-    var range = document.createRange();
+    let range = document.createRange();
     range.selectNode(node);
     selection.addRange(range);
     document.execCommand("copy");
@@ -147,8 +147,8 @@ var actionRunners = {
   },
   
   hideImages: function() {
-    var images = document.querySelectorAll("img");
-    for (var i=0; i < images.length; ++i) {
+    let images = document.querySelectorAll("img");
+    for (let i=0; i < images.length; ++i) {
       images[i].style.display = "none";
     }
   },
@@ -158,16 +158,16 @@ var actionRunners = {
   },
   
   paste: function() {
-    var selectionStart = inputElement.selectionStart;
-    var selectionEnd = inputElement.selectionEnd;
+    let selectionStart = inputElement.selectionStart;
+    let selectionEnd = inputElement.selectionEnd;
     
-    var textareaWithPastedText = document.createElement("textarea");
+    let textareaWithPastedText = document.createElement("textarea");
     textareaWithPastedText.contentEditable = true;
     eGPieMenu.easyGesturesNode.appendChild(textareaWithPastedText);
     textareaWithPastedText.focus();
     document.execCommand("paste");
     
-    var inputContent = inputElement.value;
+    let inputContent = inputElement.value;
     inputElement.value = inputContent.substring(0, selectionStart) +
       textareaWithPastedText.textContent +
       inputContent.substring(selectionEnd, inputContent.length);

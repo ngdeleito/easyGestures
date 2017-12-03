@@ -91,7 +91,7 @@ StringPref.prototype.isNewValuePossible = function(newPrefValue) {
   return typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue);
 };
 
-var eGPrefs = {
+let eGPrefs = {
   _setBoolPref: function(aPrefsMap, prefName, prefValue) {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
   },
@@ -103,7 +103,7 @@ var eGPrefs = {
   
   _addDefaultMenusMap(aPrefsMap) {
     function checkPossibleMenuValues(numberOfActions, newPrefValue) {
-      var actionsArray = newPrefValue.split("/");
+      let actionsArray = newPrefValue.split("/");
       if (actionsArray.length === numberOfActions) {
         return actionsArray.every(function(element) {
           return element in eGActions;
@@ -122,7 +122,7 @@ var eGPrefs = {
       return checkPossibleMenuValues(5, newPrefValue);
     }
     
-    var nonExtraMenus = [
+    let nonExtraMenus = [
       ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
       ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/previousTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
       ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
@@ -131,7 +131,7 @@ var eGPrefs = {
       ["contextSelection", "empty/findAndHighlightSelection/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
       ["contextTextbox",   "selectAll/empty/empty/cut/copy/empty/paste/empty/empty/empty"]
     ];
-    var extraMenus = [
+    let extraMenus = [
       ["extra",     "bookmarkThisPage/findAndHighlightSelection/searchWeb/reload/homepage"],
       ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/empty/empty"],
       ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
@@ -157,7 +157,7 @@ var eGPrefs = {
     }
     
     function checkPossibleLoadURLValues(newPrefValue) {
-      var values = newPrefValue.split("\u2022");
+      let values = newPrefValue.split("\u2022");
       return values.length === 4 &&
              typeof JSON.parse(values[2]) === "boolean" &&
              typeof JSON.parse(values[3]) === "boolean";
@@ -167,7 +167,7 @@ var eGPrefs = {
       return newPrefValue.split("\u2022").length === 3;
     }
     
-    var defaultPrefs = new Map();
+    let defaultPrefs = new Map();
     this._setBoolPref(defaultPrefs, "general.startupTips", true);
     setIntPref(defaultPrefs, "general.tipNumber", -1);
     
@@ -223,8 +223,7 @@ var eGPrefs = {
   },
   
   _getDefaultStatsMap: function() {
-    var defaultStats = new Map();
-    
+    let defaultStats = new Map();
     this._setStringPref(defaultStats, "stats.lastReset",
                         (new Date()).toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
@@ -232,7 +231,7 @@ var eGPrefs = {
     this._setStringPref(defaultStats, "stats.mainMenu",
                         JSON.stringify(Array(30).fill(0)),
                         function(newPrefValue) {
-      var statsMainMenuArray = JSON.parse(newPrefValue);
+      let statsMainMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsMainMenuArray) &&
              statsMainMenuArray.length === 30 &&
              statsMainMenuArray.every(function(element) {
@@ -242,7 +241,7 @@ var eGPrefs = {
     this._setStringPref(defaultStats, "stats.extraMenu",
                         JSON.stringify(Array(15).fill(0)),
                         function(newPrefValue) {
-      var statsExtraMenuArray = JSON.parse(newPrefValue);
+      let statsExtraMenuArray = JSON.parse(newPrefValue);
       return Array.isArray(statsExtraMenuArray) &&
              statsExtraMenuArray.length === 15 &&
              statsExtraMenuArray.every(function(element) {
@@ -250,18 +249,18 @@ var eGPrefs = {
              });
     });
     
-    var actionsStats = {};
+    let actionsStats = {};
     for (let action in eGActions) {
       actionsStats[action] = 0;
     }
     this._setStringPref(defaultStats, "stats.actions",
                         JSON.stringify(actionsStats), function(newPrefValue) {
-      var statsActionsObject = JSON.parse(newPrefValue);
-      var result = statsActionsObject instanceof Object &&
+      let statsActionsObject = JSON.parse(newPrefValue);
+      let result = statsActionsObject instanceof Object &&
                    !(statsActionsObject instanceof Array);
-      var statsActions = Object.getOwnPropertyNames(statsActionsObject).sort();
-      var actions = Object.getOwnPropertyNames(eGActions).sort();
-      var i = 0;
+      let statsActions = Object.getOwnPropertyNames(statsActionsObject).sort();
+      let actions = Object.getOwnPropertyNames(eGActions).sort();
+      let i = 0;
       result = result && statsActions.length === actions.length;
       while (result && i < statsActions.length) {
         result = result && statsActions[i] === actions[i] &&
@@ -285,7 +284,7 @@ var eGPrefs = {
   },
   
   importPrefsFromString: function(aString) {
-    var newPrefs;
+    let newPrefs;
     try {
       newPrefs = JSON.parse(aString);
     }
@@ -293,7 +292,7 @@ var eGPrefs = {
     if (newPrefs === undefined || !Array.isArray(newPrefs)) {
       throw { code: "invalidFileContent" };
     }
-    var anArrayOfArrays = newPrefs.every(function(element) {
+    let anArrayOfArrays = newPrefs.every(function(element) {
       return Array.isArray(element) && element.length === 2;
     });
     if (newPrefs.length === 0 || !anArrayOfArrays) {
@@ -360,8 +359,8 @@ var eGPrefs = {
   },
   
   initializeStats: function() {
-    var defaultStatsMap = this._getDefaultStatsMap();
-    var setPreferencePromises = [];
+    let defaultStatsMap = this._getDefaultStatsMap();
+    let setPreferencePromises = [];
     defaultStatsMap.forEach(function(pref) {
       setPreferencePromises.push(pref.setPreference());
     });
@@ -517,7 +516,7 @@ var eGPrefs = {
   
   updateStatsForAction: function(anActionName) {
     this.getPref("stats.actions").then(prefValue => {
-      var actionsStats = JSON.parse(prefValue);
+      let actionsStats = JSON.parse(prefValue);
       ++actionsStats[anActionName];
       browser.storage.local.set({
         "stats.actions": JSON.stringify(actionsStats)
@@ -533,7 +532,7 @@ var eGPrefs = {
   
   _updateActions: function(actionsToRemove, actionsToAdd, actionsToRename) {
     this.getPref("stats.actions").then(prefValue => {
-      var actionsStats = JSON.parse(prefValue);
+      let actionsStats = JSON.parse(prefValue);
       actionsToRemove.forEach(actionName => {
         delete actionsStats[actionName];
       });
@@ -551,17 +550,17 @@ var eGPrefs = {
   },
   
   updateToV5_3: function() {
-    var actionsToRemove = [
+    let actionsToRemove = [
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
       "firefoxPreferences", "addOns", "undo", "redo"
     ];
-    var actionsToAdd = [
+    let actionsToAdd = [
       "copyPageURL", "copyURLToIdentifier", "moveTabToNewWindow",
       "loadURLInNewPrivateWindow", "bookmarkThisIdentifier",
       "removeBookmarkToThisPage", "removeBookmarkToThisIdentifier",
       "removeBookmarkToThisLink"
     ];
-    var promises = [];
+    let promises = [];
     promises.push(browser.storage.local.get([
       "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
       "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",
@@ -586,16 +585,16 @@ var eGPrefs = {
   },
   
   updateToV5_4: function() {
-    var actionsToRename = [
+    let actionsToRename = [
       ["toggleFindBar", "findAndHighlightSelection"],
       ["loadURLInNewPrivateWindow", "loadPageInNewPrivateWindow"],
       ["prevTab", "previousTab"], ["bookmarkOpenTabs", "bookmarkAllTabs"]
     ];
-    var actionsToAdd = [
+    let actionsToAdd = [
       "showPrintPreview", "loadPageInNewTab", "removeHighlight",
       "enterReaderMode", "takeTabScreenshot"
     ];
-    var promises = [];
+    let promises = [];
     promises.push(browser.storage.local.get([
       "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
       "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",

@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-var installOrUpgradeTriggered = false;
+let installOrUpgradeTriggered = false;
 
 function resetPieMenuOnAllTabs() {
   browser.tabs.query({}).then(tabs => {
@@ -57,7 +57,7 @@ function handleStorageChange(changes) {
   }
 }
 
-var eGMessageHandlers = {
+let eGMessageHandlers = {
   setContextAndFocusCurrentWindow: function(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
@@ -82,7 +82,7 @@ var eGMessageHandlers = {
   },
   
   getActionsStatus: function(aMessage) {
-    var actionsStatus = aMessage.actions.map(function(actionName) {
+    let actionsStatus = aMessage.actions.map(function(actionName) {
                             return eGActions[actionName].getActionStatus();
                         });
     return Promise.all(actionsStatus.map(function(status) {

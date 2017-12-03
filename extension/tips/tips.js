@@ -46,7 +46,7 @@ function tipEntry(label, hash) {
   this.hash = hash;
 }
 
-var tips = [
+let tips = [
   new tipEntry("tips.openButton",                "activation"),
   new tipEntry("tips.dragToAction",              ""),
   new tipEntry("tips.openAltMenu",               "activation"),
@@ -72,14 +72,14 @@ tips.forEach(function(tip) {
   tip.description = browser.i18n.getMessage(tip.label);
 });
 
-var tipNumber;
+let tipNumber;
 
 function updateContent(tipNbr) {
   // we extract a potential link from the description; links are contained
   // inside square brackets (with no space after the opening bracket and no
   // space before the closing bracket): "text1 [link] text2"
-  var text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
-  var linkText = "";
+  let text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
+  let linkText = "";
   
   // we resolve the locale strings that constitute the link text
   if (text.length > 1) {

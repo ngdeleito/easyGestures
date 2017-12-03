@@ -39,13 +39,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
 
-var prefChanged = false;
+let prefChanged = false;
 
 window.addEventListener("load", optionsLoadHandler);
 window.addEventListener("hashchange", optionsHashChangeHandler);
 window.addEventListener("unload", optionsUnloadHandler);
 
-var eventListenersArray = [
+let eventListenersArray = [
   ["displayTipsButton", "click", displayTips],
   ["importPrefsFilePicker", "change", importPrefs],
   ["importPrefsButton", "click", triggerImportPrefsFilePicker],
@@ -112,11 +112,11 @@ function removeEventListeners() {
 }
 
 function createActionsSelect(sectorNumber, isExtraMenu) {
-  var select = document.createElement("select");
-  var currentOptgroup = document.createElement("optgroup");
+  let select = document.createElement("select");
+  let currentOptgroup = document.createElement("optgroup");
   select.appendChild(currentOptgroup);
   
-  var currentAction = "empty"; // the EmptyAction is the first action
+  let currentAction = "empty"; // the EmptyAction is the first action
   while (currentAction !== null) {
     if (eGActions[currentAction].startsNewGroup) {
       currentOptgroup = document.createElement("optgroup");
@@ -145,19 +145,19 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
 }
 
 function createMenuControl(menuName, isExtraMenu) {
-  var menuControlElement = document.getElementById("menuControl_" + menuName);
+  let menuControlElement = document.getElementById("menuControl_" + menuName);
   menuControlElement.className = "menu";
   menuControlElement.classList.toggle("extra", isExtraMenu);
   eGPrefs.isLargeMenuOn().then(prefValue => {
     menuControlElement.classList.toggle("large", prefValue);
   });
   
-  var actionElements = document.createElement("div");
+  let actionElements = document.createElement("div");
   menuControlElement.appendChild(actionElements);
-  var selectElements = document.createElement("div");
+  let selectElements = document.createElement("div");
   menuControlElement.appendChild(selectElements);
   
-  var numberOfItems = isExtraMenu ? 5 : 10;
+  let numberOfItems = isExtraMenu ? 5 : 10;
   for (let i = 0; i < numberOfItems; ++i) {
     let action = document.createElement("div");
     action.className = "sector" + i;
@@ -183,9 +183,9 @@ function createExtraMenuControls() {
 }
 
 function createHeaderForAction(actionName) {
-  var h1 = document.createElement("h1");
+  let h1 = document.createElement("h1");
   
-  var span = document.createElement("span");
+  let span = document.createElement("span");
   span.className = "eG_" + actionName;
   h1.appendChild(span);
   
@@ -197,14 +197,14 @@ function createHeaderForAction(actionName) {
 }
 
 function createTooltipRowForAction(actionName) {
-  var tr = document.createElement("tr");
+  let tr = document.createElement("tr");
   
-  var th = document.createElement("th");
+  let th = document.createElement("th");
   th.textContent = browser.i18n.getMessage("customizations.tooltip");
   tr.appendChild(th);
   
-  var td = document.createElement("td");
-  var input = document.createElement("input");
+  let td = document.createElement("td");
+  let input = document.createElement("input");
   input.id = actionName + "_tooltip";
   input.type = "text";
   input.size = 20;
@@ -216,21 +216,21 @@ function createTooltipRowForAction(actionName) {
 }
 
 function createLoadURLActions() {
-  for (var i=1; i <= 10; ++i) {
-    var actionName = "loadURL" + i;
-    var container = document.getElementById(actionName);
+  for (let i=1; i <= 10; ++i) {
+    let actionName = "loadURL" + i;
+    let container = document.getElementById(actionName);
     container.parentElement.insertBefore(createHeaderForAction(actionName),
                                          container);
     
-    var table = document.createElement("table");
+    let table = document.createElement("table");
     table.appendChild(createTooltipRowForAction(actionName));
     
-    var tr = document.createElement("tr");
-    var th = document.createElement("th");
+    let tr = document.createElement("tr");
+    let th = document.createElement("th");
     th.textContent = browser.i18n.getMessage("customizations.URL");
     tr.appendChild(th);
-    var td = document.createElement("td");
-    var input = document.createElement("input");
+    let td = document.createElement("td");
+    let input = document.createElement("input");
     input.id = actionName + "_URL";
     input.type = "url";
     input.size = "50";
@@ -245,11 +245,11 @@ function createLoadURLActions() {
     input.id = actionName + "_faviconCheckbox";
     input.type = "checkbox";
     td.appendChild(input);
-    var label = document.createElement("label");
+    let label = document.createElement("label");
     label.htmlFor = input.id;
     label.textContent = browser.i18n.getMessage("customizations.useFavicon");
     td.appendChild(label);
-    var img = document.createElement("img");
+    let img = document.createElement("img");
     img.id = actionName + "_favicon";
     img.src = DEFAULT_FAVICON_URL;
     td.appendChild(img);
@@ -276,21 +276,21 @@ function createLoadURLActions() {
 }
 
 function createRunScriptActions() {
-  for (var i=1; i <= 10; ++i) {
-    var actionName = "runScript" + i;
-    var container = document.getElementById(actionName);
+  for (let i=1; i <= 10; ++i) {
+    let actionName = "runScript" + i;
+    let container = document.getElementById(actionName);
     container.parentElement.insertBefore(createHeaderForAction(actionName),
                                          container);
     
-    var table = document.createElement("table");
+    let table = document.createElement("table");
     table.appendChild(createTooltipRowForAction(actionName));
     
-    var tr = document.createElement("tr");
-    var th = document.createElement("th");
+    let tr = document.createElement("tr");
+    let th = document.createElement("th");
     th.textContent = browser.i18n.getMessage("customizations.code");
     tr.appendChild(th);
-    var td = document.createElement("td");
-    var input = document.createElement("textarea");
+    let td = document.createElement("td");
+    let input = document.createElement("textarea");
     input.id = actionName + "_code";
     input.cols = "50";
     input.rows = "7";
@@ -341,11 +341,11 @@ function initializePaneAndTabs(hash) {
   
   document.location.hash = hash === "" ? "#general" : hash;
   
-  var locationHash = document.location.hash.substr(1);
-  var locationHashArray = locationHash.split("_");
+  let locationHash = document.location.hash.substr(1);
+  let locationHashArray = locationHash.split("_");
   document.getElementById(locationHashArray[0] + "_label").className =
     "selectedPaneLabel";
-  var selectedPane = document.getElementById(locationHashArray[0]);
+  let selectedPane = document.getElementById(locationHashArray[0]);
   selectedPane.classList.add("selected");
   
   switch (locationHashArray.length) {
@@ -364,10 +364,10 @@ function initializePaneAndTabs(hash) {
 }
 
 function setDisabledStatusForSelectWithTextInputControl(control) {
-  var aSelectElement = control.firstElementChild;
-  var aLabelElement = aSelectElement.nextElementSibling;
-  var aTextInputElement = aLabelElement.nextElementSibling;
-  var shouldBeDisabled = aSelectElement.selectedIndex < 3;
+  let aSelectElement = control.firstElementChild;
+  let aLabelElement = aSelectElement.nextElementSibling;
+  let aTextInputElement = aLabelElement.nextElementSibling;
+  let shouldBeDisabled = aSelectElement.selectedIndex < 3;
   aLabelElement.classList.toggle("disabled", shouldBeDisabled);
   aTextInputElement.disabled = shouldBeDisabled;
 }
@@ -390,8 +390,8 @@ function addFavicon(url, actionName) {
 function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
-      var aSelectElement = control.firstElementChild;
-      var aTextInputElement = control.lastElementChild;
+      let aSelectElement = control.firstElementChild;
+      let aTextInputElement = control.lastElementChild;
       aSelectElement.selectedIndex = prefValue < 3 ? prefValue : 3;
       aTextInputElement.value = prefValue;
       setDisabledStatusForSelectWithTextInputControl(control);
@@ -406,7 +406,7 @@ function initializePreferenceControl(control) {
   
   function initializeBoolRadiogroupControl(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
-      var childIndexToSet = prefValue ? 1 : 0;
+      let childIndexToSet = prefValue ? 1 : 0;
       control.getElementsByTagName("input")[childIndexToSet].checked = true;
     });
   }
@@ -431,7 +431,7 @@ function initializePreferenceControl(control) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_URL").value = prefValue[1];
-      var isFaviconEnabled = prefValue[2] === "true";
+      let isFaviconEnabled = prefValue[2] === "true";
       document.getElementById(actionName + "_faviconCheckbox").checked =
         isFaviconEnabled;
       if (isFaviconEnabled) {
@@ -589,9 +589,9 @@ function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
 
 function addOnchangeListenerToPreferenceControl(control) {
   function addOnchangeListenerToSelectWithTextInputControl(control) {
-    var aSelectElement = control.firstElementChild;
-    var aLabelElement = aSelectElement.nextElementSibling;
-    var aTextInputElement = aLabelElement.nextElementSibling;
+    let aSelectElement = control.firstElementChild;
+    let aLabelElement = aSelectElement.nextElementSibling;
+    let aTextInputElement = aLabelElement.nextElementSibling;
     aSelectElement.addEventListener("change", function() {
       setDisabledStatusForSelectWithTextInputControl(control);
       
@@ -616,12 +616,12 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
     function onchangeHandler(anEvent) {
-      var showKey = document
+      let showKey = document
             .querySelectorAll("[name='showKeyRadiogroup']:checked")[0].value;
-      var preventOpenKey = document
+      let preventOpenKey = document
             .querySelectorAll("[name='preventOpenKeyRadiogroup']:checked")[0]
             .value;
-      var contextKey = document
+      let contextKey = document
             .querySelectorAll("[name='contextualMenuKeyRadiogroup']:checked")[0]
             .value;
       
@@ -641,7 +641,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       }
     }
     
-    var radioElements = control.getElementsByTagName("input");
+    let radioElements = control.getElementsByTagName("input");
     for (let i = 0; i < radioElements.length; ++i) {
       radioElements[i].addEventListener("change", onchangeHandler, true);
     }
@@ -654,7 +654,7 @@ function addOnchangeListenerToPreferenceControl(control) {
                       anEvent.target.value === "true");
     }
     
-    var radioElements = control.getElementsByTagName("input");
+    let radioElements = control.getElementsByTagName("input");
     for (let i = 0; i < radioElements.length; ++i) {
       radioElements[i].addEventListener("change", onchangeHandler, true);
     }
@@ -662,8 +662,8 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToMenuControl(control) {
     function onchangeHandler() {
-      var selectElements = control.lastElementChild;
-      var prefValueAsArray = [];
+      let selectElements = control.lastElementChild;
+      let prefValueAsArray = [];
       for (let i = 0; i < selectElements.childNodes.length; ++i) {
         let value = selectElements.childNodes[i].value;
         control.firstElementChild.childNodes[i].dataset.action = value;
@@ -673,7 +673,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
     }
     
-    var selectElements = control.lastElementChild;
+    let selectElements = control.lastElementChild;
     for (let i = 0; i < selectElements.childNodes.length; ++i) {
       selectElements.childNodes[i]
                     .addEventListener("change", onchangeHandler, true);
@@ -707,7 +707,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       eGPrefs.setPref(control.dataset.preference, anEvent.target.value);
     }
     
-    var radioElements = control.getElementsByTagName("input");
+    let radioElements = control.getElementsByTagName("input");
     for (let i = 0; i < radioElements.length; ++i) {
       radioElements[i].addEventListener("change", onchangeHandler, true);
     }
@@ -764,7 +764,7 @@ function addOnchangeListenerToPreferenceControl(control) {
 
 function setMenuType(anEvent) {
   eGPrefs.isLargeMenuOn().then(prefValue => {
-    var menuTypeIsLarge = anEvent === undefined ?
+    let menuTypeIsLarge = anEvent === undefined ?
                             prefValue : JSON.parse(anEvent.target.value);
     ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
      "contextLink", "contextImage", "contextSelection", "contextTextbox"]
@@ -789,7 +789,7 @@ function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
 
 function setDisabledStatusForTooltipsActivationDelay(anEvent) {
   eGPrefs.areTooltipsOn().then(prefValue => {
-    var shouldBeDisabled = anEvent === undefined ? !prefValue :
+    let shouldBeDisabled = anEvent === undefined ? !prefValue :
                                                    !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
       "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"],
@@ -799,12 +799,12 @@ function setDisabledStatusForTooltipsActivationDelay(anEvent) {
 
 function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
   eGPrefs.isHandleLinksOn().then(prefValue => {
-    var shouldBeDisabled = anEvent === undefined ? !prefValue :
+    let shouldBeDisabled = anEvent === undefined ? !prefValue :
                                                    !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
       "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
       "openLinksThroughPieMenuCenterConfiguration"], shouldBeDisabled);
-    var radioElements =
+    let radioElements =
           document.getElementById("openLinksThroughPieMenuCenterConfiguration")
                   .getElementsByTagName("input");
     radioElements[0].disabled = shouldBeDisabled;
@@ -819,7 +819,7 @@ function resetMenus() {
 }
 
 function setDisabledStatusForMenu(menuName, enabled) {
-  var selectElements = document.getElementById("menuControl_" + menuName)
+  let selectElements = document.getElementById("menuControl_" + menuName)
                                .lastElementChild;
   for (let i = 0; i < selectElements.childNodes.length; ++i) {
     selectElements.childNodes[i].disabled = !enabled;
@@ -828,28 +828,28 @@ function setDisabledStatusForMenu(menuName, enabled) {
 
 function setDisabledStatusForMainAlt1Menu(anEvent) {
   eGPrefs.isMainAlt1MenuEnabled().then(prefValue => {
-    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
+    let enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("mainAlt1", enabled);
   });
 }
 
 function setDisabledStatusForMainAlt2Menu(anEvent) {
   eGPrefs.isMainAlt2MenuEnabled().then(prefValue => {
-    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
+    let enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("mainAlt2", enabled);
   });
 }
 
 function setDisabledStatusForExtraAlt1Menu(anEvent) {
   eGPrefs.isExtraAlt1MenuEnabled().then(prefValue => {
-    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
+    let enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("extraAlt1", enabled);
   });
 }
 
 function setDisabledStatusForExtraAlt2Menu(anEvent) {
   eGPrefs.isExtraAlt2MenuEnabled().then(prefValue => {
-    var enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
+    let enabled = anEvent === undefined ? prefValue : anEvent.target.checked;
     setDisabledStatusForMenu("extraAlt2", enabled);
   });
 }
@@ -865,7 +865,7 @@ function setPreferenceControlsDisabledStatus() {
 }
 
 function loadPreferences() {
-  var prefControls = document.querySelectorAll("[data-preference]");
+  let prefControls = document.querySelectorAll("[data-preference]");
   for (let i=0; i < prefControls.length; ++i) {
     initializePreferenceControl(prefControls[i]);
     addOnchangeListenerToPreferenceControl(prefControls[i]);
@@ -881,17 +881,17 @@ function removeChildNodes(node) {
 
 function initializeClicksByAction() {
   eGPrefs.getStatsActionsPref().then(statsActions => {
-    var totalClicks = 0;
+    let totalClicks = 0;
     for (let action in statsActions) {
       totalClicks += statsActions[action];
     }
     totalClicks = totalClicks === 0 ? 1 : totalClicks - statsActions.empty;
     
-    var container = document.getElementById("stats_clicksByAction");
+    let container = document.getElementById("stats_clicksByAction");
     removeChildNodes(container);
     
     // we start at the action that follows the "showExtraMenu" action
-    var currentAction = eGActions.showExtraMenu.nextAction;
+    let currentAction = eGActions.showExtraMenu.nextAction;
     while (currentAction !== null) {
       let clicksForAction = statsActions[currentAction];
       let count = Math.round(clicksForAction / totalClicks * 1000) / 10;
@@ -924,8 +924,8 @@ function initializeClicksByAction() {
 }
 
 function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
-  var numberOfActions = isExtraMenu ? 5 : 10;
-  var usages = [0, 0, 0, 0];
+  let numberOfActions = isExtraMenu ? 5 : 10;
+  let usages = [0, 0, 0, 0];
   
   for (let i = 0; i < numberOfActions; ++i) {
     let usage = statsArray[0 * numberOfActions + i];
@@ -940,7 +940,7 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
   }
   
   ["primary", "alt1", "alt2"].forEach((menuPrefix, layoutIndex) => {
-    var container = document.getElementById(menuPrefix +
+    let container = document.getElementById(menuPrefix +
                                             (isExtraMenu ? "Extra" : "Main") +
                                             "Menu");
     removeChildNodes(container);
@@ -958,7 +958,7 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
       container.appendChild(stat);
     }
     
-    var total = document.createElement("div");
+    let total = document.createElement("div");
     total.className = "total";
     total.textContent = Math.round(usages[layoutIndex] * 100 /
                                    (usages[3] === 0 ? 1 : usages[3])) + "%";
@@ -967,9 +967,9 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
 }
 
 function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
-  var numberOfActions = isExtraMenu ? 5 : 10;
-  var usages = [];
-  var total = 0;
+  let numberOfActions = isExtraMenu ? 5 : 10;
+  let usages = [];
+  let total = 0;
   for (let i = 0; i < numberOfActions; ++i) {
     let usage = statsArray[0 * numberOfActions + i] +
                 statsArray[1 * numberOfActions + i] +
@@ -978,7 +978,7 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
     total += usage;
   }
   
-  var container = document.getElementById("allMenus" +
+  let container = document.getElementById("allMenus" +
                                          (isExtraMenu ? "Extra" : "Main") +
                                          "Menu");
   removeChildNodes(container);
@@ -1040,7 +1040,7 @@ function optionsLoadHandler() {
 }
 
 function unselectCurrentPane() {
-  var selectedPaneLabelElement =
+  let selectedPaneLabelElement =
         document.getElementsByClassName("selectedPaneLabel")[0];
   if (selectedPaneLabelElement !== undefined) {
     selectedPaneLabelElement.removeAttribute("class");
@@ -1073,7 +1073,7 @@ function unselectCurrentTab(oldHash) {
     }
   }
   
-  var oldHashArray = oldHash.split("_");
+  let oldHashArray = oldHash.split("_");
   switch (oldHashArray.length) {
     case 1:
       unselectSubTabs(oldHash);
@@ -1109,7 +1109,7 @@ function optionsUnloadHandler() {
 }
 
 function importPrefs(anEvent) {
-  var fileReader = new FileReader();
+  let fileReader = new FileReader();
   fileReader.onload = function(anEvent) {
     try {
       eGPrefs.importPrefsFromString(anEvent.target.result).then(result => {
@@ -1127,7 +1127,7 @@ function importPrefs(anEvent) {
 }
 
 function triggerImportPrefsFilePicker() {
-  var filePicker = document.getElementById("importPrefsFilePicker");
+  let filePicker = document.getElementById("importPrefsFilePicker");
   filePicker.click();
 }
 
@@ -1161,7 +1161,7 @@ function resetPrefs() {
 }
 
 function updateTextInputElement(anEvent) {
-  var aTextInputElement = anEvent.target;
+  let aTextInputElement = anEvent.target;
   anEvent.preventDefault();
   if (aTextInputElement.parentElement.firstElementChild.selectedIndex < 3) {
     return ;

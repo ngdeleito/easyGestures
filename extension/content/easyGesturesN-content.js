@@ -39,9 +39,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-var selection, contextualMenus, anchorElement, imageElement, inputElement,
+let selection, contextualMenus, anchorElement, imageElement, inputElement,
     iframeElement;
-var frameScrollY, frameScrollMaxY, frameURL;
+let frameScrollY, frameScrollMaxY, frameURL;
 
 if (window.self === window.top) {
   // setting up pie menu on topmost frame
@@ -137,7 +137,7 @@ function resetPieMenuOnInnerFrame() {
 
 
 function cleanSelection(selection) {
-  var result = selection.trim();
+  let result = selection.trim();
   // replace all linefeed, carriage return and tab characters with a space
   result = result.replace(/(\n|\r|\t)+/g, " ");
   return result;
@@ -148,12 +148,12 @@ function setContext(anHTMLElement, currentSelection) {
   // <a> elements cannot have <input> and <textarea> elements as descendants
   // <area>, <img> and <input> elements cannot have children
   // <textarea> cannot have other elements as children, only character data
-  var inputBoxSelection = "";
-  var contextualMenus = [];
-  var anchorElement = null;
-  var imageElement = null;
-  var inputElement = null;
-  var selection = currentSelection;
+  let inputBoxSelection = "";
+  let contextualMenus = [];
+  let anchorElement = null;
+  let imageElement = null;
+  let inputElement = null;
+  let selection = currentSelection;
   if (anHTMLElement instanceof window.HTMLInputElement &&
       (anHTMLElement.type.toUpperCase() === "EMAIL" ||
        anHTMLElement.type.toUpperCase() === "NUMBER" ||
@@ -204,7 +204,7 @@ function setContext(anHTMLElement, currentSelection) {
 }
 
 function findNearestIDAttribute(anHTMLElement) {
-  var currentElement = anHTMLElement;
+  let currentElement = anHTMLElement;
   while (currentElement.parentElement !== null &&
          currentElement.previousElementSibling === null &&
          currentElement.nextElementSibling === null &&
@@ -282,7 +282,7 @@ function handleMousedown(anEvent) {
 }
 
 function handleMouseup(anEvent) {
-  var preventDefaultUponReturn = false;
+  let preventDefaultUponReturn = false;
   
   if (eGPieMenu.isJustOpened()) {
     eGPieMenu.setOpen();
@@ -319,8 +319,8 @@ function handleMouseup(anEvent) {
 }
 
 function handleKeydown(anEvent) {
-  var altKey = anEvent.keyCode === 18;
-  var escKey = anEvent.keyCode === 27;
+  let altKey = anEvent.keyCode === 18;
+  let escKey = anEvent.keyCode === 27;
   
   if (eGPieMenu.isShown()) {
     if (altKey) {
@@ -333,7 +333,7 @@ function handleKeydown(anEvent) {
 }
 
 function handleContextmenu(anEvent) {
-  var result = eGPieMenu.canContextmenuBeOpened(anEvent.shiftKey,
+  let result = eGPieMenu.canContextmenuBeOpened(anEvent.shiftKey,
                                                 anEvent.ctrlKey,
                                                 anEvent.altKey);
   if (result) {
@@ -348,15 +348,15 @@ function handleMousedownOnInnerFrame(anEvent) {
   }
   
   anEvent.preventDefault();
-  var frameElementStyle = window.getComputedStyle(window.frameElement);
-  var frameElementOffsetX =
+  let frameElementStyle = window.getComputedStyle(window.frameElement);
+  let frameElementOffsetX =
         Number(frameElementStyle.paddingLeft.replace("px", "")) +
         Number(frameElementStyle.borderLeftWidth.replace("px", ""));
-  var frameElementOffsetY =
+  let frameElementOffsetY =
         Number(frameElementStyle.paddingTop.replace("px", "")) +
         Number(frameElementStyle.borderTopWidth.replace("px", ""));
-  var frameElementBoundingRect = window.frameElement.getBoundingClientRect();
-  var newEvent = new MouseEvent("mousedown", {
+  let frameElementBoundingRect = window.frameElement.getBoundingClientRect();
+  let newEvent = new MouseEvent("mousedown", {
     cancelable: anEvent.cancelable,
     screenX: anEvent.screenX,
     screenY: anEvent.screenY,
@@ -372,7 +372,7 @@ function handleMousedownOnInnerFrame(anEvent) {
 }
 
 function handleMouseupOnInnerFrame(anEvent) {
-  var newEvent = new MouseEvent("mouseup", {
+  let newEvent = new MouseEvent("mouseup", {
     screenX: anEvent.screenX,
     screenY: anEvent.screenY,
     button: anEvent.button

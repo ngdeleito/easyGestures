@@ -382,7 +382,7 @@ DisabledAction.prototype = Object.create(DisableableAction.prototype);
 DisabledAction.prototype.constructor = DisabledAction;
 
 
-var eGActions = {
+let eGActions = {
   empty: new EmptyAction(false, "showExtraMenu"),
   
   showExtraMenu: new ShowExtraMenuAction(true, "back"),

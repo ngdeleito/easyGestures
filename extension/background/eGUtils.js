@@ -37,10 +37,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-var eGUtils = {
+let eGUtils = {
   isVersionSmallerOrEqualThan(oldVersion, newVersion) {
-    var oldVersionArray = oldVersion.split(".");
-    var newVersionArray = newVersion.split(".");
+    let oldVersionArray = oldVersion.split(".");
+    let newVersionArray = newVersion.split(".");
     
     if (oldVersionArray[2] === undefined) {
       oldVersionArray[2] = 0;
@@ -95,7 +95,7 @@ var eGUtils = {
   },
   
   setDocumentLocalizedStrings: function(document) {
-    var elements = document.querySelectorAll("[data-l10n]");
+    let elements = document.querySelectorAll("[data-l10n]");
     for (let i=0; i < elements.length; ++i) {
       elements[i].textContent = browser.i18n
                                        .getMessage(elements[i].dataset.l10n);
