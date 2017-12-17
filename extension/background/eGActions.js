@@ -585,7 +585,7 @@ let eGActions = {
           saveAs: true
         }).then((downloadID) => {
           browser.downloads.onChanged.addListener(function downloadListener(download) {
-            if (downloadID === download.id &&
+            if (downloadID === download.id && download.state !== undefined &&
                 download.state.current === "complete") {
               URL.revokeObjectURL(blobURL);
               browser.downloads.onChanged.removeListener(downloadListener);
