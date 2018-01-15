@@ -123,17 +123,17 @@ let eGPrefs = {
     }
     
     let nonExtraMenus = [
-      ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/reload/closeTab/firstPage/backSite/bookmarkThisPage"],
-      ["mainAlt1",         "forward/duplicateTab/showExtraMenu/undoCloseTab/previousTab/homepage/pageBottom/lastPage/forwardSite/pinUnpinTab"],
+      ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/empty/closeTab/reload/previousTab/empty"],
+      ["mainAlt1",         "forward/loadPageInNewTab/showExtraMenu/undoCloseTab/bookmarkThisPage/empty/pageBottom/empty/empty/empty"],
       ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
-      ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/empty/empty"],
+      ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/removeBookmarkToThisLink/empty"],
       ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
-      ["contextSelection", "empty/findAndHighlightSelection/searchWeb/cut/copy/empty/paste/empty/empty/empty"],
-      ["contextTextbox",   "selectAll/empty/empty/cut/copy/empty/paste/empty/empty/empty"]
+      ["contextSelection", "findAndHighlightSelection/paste/copy/cut/searchWeb/empty/empty/empty/removeHighlight/empty"],
+      ["contextTextbox",   "selectAll/paste/copy/cut/empty/empty/empty/empty/empty/empty"]
     ];
     let extraMenus = [
-      ["extra",     "bookmarkThisPage/findAndHighlightSelection/searchWeb/reload/homepage"],
-      ["extraAlt1", "newPrivateWindow/empty/toggleFullscreen/empty/empty"],
+      ["extra",     "pinUnpinTab/copyURLToIdentifier/copyPageURL/loadPageInNewPrivateWindow/newPrivateWindow"],
+      ["extraAlt1", "toggleFullscreen/takeTabScreenshot/findAndHighlightSelection/removeHighlight/enterReaderMode"],
       ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
     ];
     
