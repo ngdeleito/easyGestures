@@ -974,19 +974,7 @@ let eGActions = {
                                          : new Promise(resolve => {
                                              resolve(true);
                                            });
-  }, false, "showBookmarks"),
-  
-  showBookmarks: new DisabledAction("showBookmarks", false, "toggleBookmarksSidebar"),
-  
-  toggleBookmarksSidebar: new DisabledAction("toggleBookmarksSidebar", false, "toggleBookmarksToolbar"),
-  
-  toggleBookmarksToolbar: new DisabledAction("toggleBookmarksToolbar", false, "showHistory"),
-  
-  showHistory: new DisabledAction("showHistory", false, "toggleHistorySidebar"),
-  
-  toggleHistorySidebar: new DisabledAction("toggleHistorySidebar", false, "showDownloads"),
-  
-  showDownloads: new DisabledAction("showDownloads", false, "loadURL1"),
+  }, false, "loadURL1"),
   
   loadURL1: new LoadURLAction(1, true, "loadURL2"),
   

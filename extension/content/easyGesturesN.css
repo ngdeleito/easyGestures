@@ -1175,54 +1175,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .removeBookmarkToThisLink.selected:not(.disabled),
 #easyGesturesPieMenu_ln .removeBookmarkToThisLink.selected:not(.disabled) { background-position: 0px -832px; }
 
-#easyGesturesPieMenu_nn .showBookmarks.disabled,
-#easyGesturesPieMenu_ln .showBookmarks.disabled { background-position: -160px -864px; }
-#easyGesturesPieMenu_nn .showBookmarks,
-#easyGesturesPieMenu_ln .showBookmarks,
-[data-action="showBookmarks"] { background-position: -160px -896px; }
-#easyGesturesPieMenu_nn .showBookmarks.selected:not(.disabled),
-#easyGesturesPieMenu_ln .showBookmarks.selected:not(.disabled) { background-position: -160px -928px; }
-
-#easyGesturesPieMenu_nn .toggleBookmarksSidebar.disabled,
-#easyGesturesPieMenu_ln .toggleBookmarksSidebar.disabled { background-position: -128px -864px; }
-#easyGesturesPieMenu_nn .toggleBookmarksSidebar,
-#easyGesturesPieMenu_ln .toggleBookmarksSidebar,
-[data-action="toggleBookmarksSidebar"] { background-position: -128px -896px; }
-#easyGesturesPieMenu_nn .toggleBookmarksSidebar.selected:not(.disabled),
-#easyGesturesPieMenu_ln .toggleBookmarksSidebar.selected:not(.disabled) { background-position: -128px -928px; }
-
-#easyGesturesPieMenu_nn .toggleBookmarksToolbar.disabled,
-#easyGesturesPieMenu_ln .toggleBookmarksToolbar.disabled { background-position: -160px -864px; }
-#easyGesturesPieMenu_nn .toggleBookmarksToolbar,
-#easyGesturesPieMenu_ln .toggleBookmarksToolbar,
-[data-action="toggleBookmarksToolbar"] { background-position: -160px -896px; }
-#easyGesturesPieMenu_nn .toggleBookmarksToolbar.selected:not(.disabled),
-#easyGesturesPieMenu_ln .toggleBookmarksToolbar.selected:not(.disabled) { background-position: -160px -928px; }
-
-#easyGesturesPieMenu_nn .showHistory.disabled,
-#easyGesturesPieMenu_ln .showHistory.disabled { background-position: -192px -864px; }
-#easyGesturesPieMenu_nn .showHistory,
-#easyGesturesPieMenu_ln .showHistory,
-[data-action="showHistory"] { background-position: -192px -896px; }
-#easyGesturesPieMenu_nn .showHistory.selected:not(.disabled),
-#easyGesturesPieMenu_ln .showHistory.selected:not(.disabled) { background-position: -192px -928px; }
-
-#easyGesturesPieMenu_nn .toggleHistorySidebar.disabled,
-#easyGesturesPieMenu_ln .toggleHistorySidebar.disabled { background-position: -192px -864px; }
-#easyGesturesPieMenu_nn .toggleHistorySidebar,
-#easyGesturesPieMenu_ln .toggleHistorySidebar,
-[data-action="toggleHistorySidebar"] { background-position: -192px -896px; }
-#easyGesturesPieMenu_nn .toggleHistorySidebar.selected:not(.disabled),
-#easyGesturesPieMenu_ln .toggleHistorySidebar.selected:not(.disabled) { background-position: -192px -928px; }
-
-#easyGesturesPieMenu_nn .showDownloads.disabled,
-#easyGesturesPieMenu_ln .showDownloads.disabled { background-position: -224px -576px; }
-#easyGesturesPieMenu_nn .showDownloads,
-#easyGesturesPieMenu_ln .showDownloads,
-[data-action="showDownloads"] { background-position: -224px -608px; }
-#easyGesturesPieMenu_nn .showDownloads.selected:not(.disabled),
-#easyGesturesPieMenu_ln .showDownloads.selected:not(.disabled) { background-position: -224px -640px; }
-
 #easyGesturesPieMenu_nn .loadURL1.disabled,
 #easyGesturesPieMenu_ln .loadURL1.disabled,
 #easyGesturesPieMenu_nn .runScript1.disabled,
@@ -1494,6 +1446,54 @@ div.markVisitedLinks.selected:not(.disabled) { background-position: 0px -928px; 
 div.sendLink.disabled { background-position: -96px -480px; }
 div.sendLink { background-position: -96px -512px; }
 div.sendLink.selected:not(.disabled) { background-position: -96px -544px; }
+
+#easyGesturesPieMenu_nn .showBookmarks.disabled,
+#easyGesturesPieMenu_ln .showBookmarks.disabled { background-position: -160px -864px; }
+#easyGesturesPieMenu_nn .showBookmarks,
+#easyGesturesPieMenu_ln .showBookmarks,
+[data-action="showBookmarks"] { background-position: -160px -896px; }
+#easyGesturesPieMenu_nn .showBookmarks.selected:not(.disabled),
+#easyGesturesPieMenu_ln .showBookmarks.selected:not(.disabled) { background-position: -160px -928px; }
+
+#easyGesturesPieMenu_nn .toggleBookmarksSidebar.disabled,
+#easyGesturesPieMenu_ln .toggleBookmarksSidebar.disabled { background-position: -128px -864px; }
+#easyGesturesPieMenu_nn .toggleBookmarksSidebar,
+#easyGesturesPieMenu_ln .toggleBookmarksSidebar,
+[data-action="toggleBookmarksSidebar"] { background-position: -128px -896px; }
+#easyGesturesPieMenu_nn .toggleBookmarksSidebar.selected:not(.disabled),
+#easyGesturesPieMenu_ln .toggleBookmarksSidebar.selected:not(.disabled) { background-position: -128px -928px; }
+
+#easyGesturesPieMenu_nn .toggleBookmarksToolbar.disabled,
+#easyGesturesPieMenu_ln .toggleBookmarksToolbar.disabled { background-position: -160px -864px; }
+#easyGesturesPieMenu_nn .toggleBookmarksToolbar,
+#easyGesturesPieMenu_ln .toggleBookmarksToolbar,
+[data-action="toggleBookmarksToolbar"] { background-position: -160px -896px; }
+#easyGesturesPieMenu_nn .toggleBookmarksToolbar.selected:not(.disabled),
+#easyGesturesPieMenu_ln .toggleBookmarksToolbar.selected:not(.disabled) { background-position: -160px -928px; }
+
+#easyGesturesPieMenu_nn .showHistory.disabled,
+#easyGesturesPieMenu_ln .showHistory.disabled { background-position: -192px -864px; }
+#easyGesturesPieMenu_nn .showHistory,
+#easyGesturesPieMenu_ln .showHistory,
+[data-action="showHistory"] { background-position: -192px -896px; }
+#easyGesturesPieMenu_nn .showHistory.selected:not(.disabled),
+#easyGesturesPieMenu_ln .showHistory.selected:not(.disabled) { background-position: -192px -928px; }
+
+#easyGesturesPieMenu_nn .toggleHistorySidebar.disabled,
+#easyGesturesPieMenu_ln .toggleHistorySidebar.disabled { background-position: -192px -864px; }
+#easyGesturesPieMenu_nn .toggleHistorySidebar,
+#easyGesturesPieMenu_ln .toggleHistorySidebar,
+[data-action="toggleHistorySidebar"] { background-position: -192px -896px; }
+#easyGesturesPieMenu_nn .toggleHistorySidebar.selected:not(.disabled),
+#easyGesturesPieMenu_ln .toggleHistorySidebar.selected:not(.disabled) { background-position: -192px -928px; }
+
+#easyGesturesPieMenu_nn .showDownloads.disabled,
+#easyGesturesPieMenu_ln .showDownloads.disabled { background-position: -224px -576px; }
+#easyGesturesPieMenu_nn .showDownloads,
+#easyGesturesPieMenu_ln .showDownloads,
+[data-action="showDownloads"] { background-position: -224px -608px; }
+#easyGesturesPieMenu_nn .showDownloads.selected:not(.disabled),
+#easyGesturesPieMenu_ln .showDownloads.selected:not(.disabled) { background-position: -224px -640px; }
 
 div.loadURLScript11.disabled { background-position: 0px -768px; }
 div.loadURLScript11 { background-position: 0px -800px; }
@@ -2117,54 +2117,6 @@ span[class^="eG_"] {
 #easyGesturesPieMenu_ns .removeBookmarkToThisLink.selected:not(.disabled),
 #easyGesturesPieMenu_ls .removeBookmarkToThisLink.selected:not(.disabled) { background-position: 0px -520px; }
 
-#easyGesturesPieMenu_ns .showBookmarks.disabled,
-#easyGesturesPieMenu_ls .showBookmarks.disabled { background-position: -100px -540px; }
-.eG_showBookmarks, .eGOptions_showBookmarks::before,
-#easyGesturesPieMenu_ns .showBookmarks,
-#easyGesturesPieMenu_ls .showBookmarks { background-position: -100px -560px; }
-#easyGesturesPieMenu_ns .showBookmarks.selected:not(.disabled),
-#easyGesturesPieMenu_ls .showBookmarks.selected:not(.disabled) { background-position: -100px -580px; }
-
-#easyGesturesPieMenu_ns .toggleBookmarksSidebar.disabled,
-#easyGesturesPieMenu_ls .toggleBookmarksSidebar.disabled { background-position: -80px -540px; }
-.eG_toggleBookmarksSidebar, .eGOptions_toggleBookmarksSidebar::before,
-#easyGesturesPieMenu_ns .toggleBookmarksSidebar,
-#easyGesturesPieMenu_ls .toggleBookmarksSidebar { background-position: -80px -560px; }
-#easyGesturesPieMenu_ns .toggleBookmarksSidebar.selected:not(.disabled),
-#easyGesturesPieMenu_ls .toggleBookmarksSidebar.selected:not(.disabled) { background-position: -80px -580px; }
-
-#easyGesturesPieMenu_ns .toggleBookmarksToolbar.disabled,
-#easyGesturesPieMenu_ls .toggleBookmarksToolbar.disabled { background-position: -100px -540px; }
-.eG_toggleBookmarksToolbar, .eGOptions_toggleBookmarksToolbar::before,
-#easyGesturesPieMenu_ns .toggleBookmarksToolbar,
-#easyGesturesPieMenu_ls .toggleBookmarksToolbar { background-position: -100px -560px; }
-#easyGesturesPieMenu_ns .toggleBookmarksToolbar.selected:not(.disabled),
-#easyGesturesPieMenu_ls .toggleBookmarksToolbar.selected:not(.disabled) { background-position: -100px -580px; }
-
-#easyGesturesPieMenu_ns .showHistory.disabled,
-#easyGesturesPieMenu_ls .showHistory.disabled { background-position: -120px -540px; }
-.eG_showHistory, .eGOptions_showHistory::before,
-#easyGesturesPieMenu_ns .showHistory,
-#easyGesturesPieMenu_ls .showHistory { background-position: -120px -560px; }
-#easyGesturesPieMenu_ns .showHistory.selected:not(.disabled),
-#easyGesturesPieMenu_ls .showHistory.selected:not(.disabled) { background-position: -120px -580px; }
-
-#easyGesturesPieMenu_ns .toggleHistorySidebar.disabled,
-#easyGesturesPieMenu_ls .toggleHistorySidebar.disabled { background-position: -120px -540px; }
-.eG_toggleHistorySidebar, .eGOptions_toggleHistorySidebar::before,
-#easyGesturesPieMenu_ns .toggleHistorySidebar,
-#easyGesturesPieMenu_ls .toggleHistorySidebar { background-position: -120px -560px; }
-#easyGesturesPieMenu_ns .toggleHistorySidebar.selected:not(.disabled),
-#easyGesturesPieMenu_ls .toggleHistorySidebar.selected:not(.disabled) { background-position: -120px -580px; }
-
-#easyGesturesPieMenu_ns .showDownloads.disabled,
-#easyGesturesPieMenu_ls .showDownloads.disabled { background-position: -140px -360px; }
-.eG_showDownloads, .eGOptions_showDownloads::before,
-#easyGesturesPieMenu_ns .showDownloads,
-#easyGesturesPieMenu_ls .showDownloads { background-position: -140px -380px; }
-#easyGesturesPieMenu_ns .showDownloads.selected:not(.disabled),
-#easyGesturesPieMenu_ls .showDownloads.selected:not(.disabled) { background-position: -140px -400px; }
-
 #easyGesturesPieMenu_ns .loadURL1.disabled,
 #easyGesturesPieMenu_ls .loadURL1.disabled,
 #easyGesturesPieMenu_ns .runScript1.disabled,
@@ -2439,6 +2391,54 @@ div.sendLink.disabled { background-position: -60px -300px; }
 div.sendLink { background-position: -60px -320px; }
 div.sendLink.selected:not(.disabled) { background-position: -60px -340px; }
 image.eG_sendLink { -moz-image-region: rect(320px 80px 340px 60px); }
+
+#easyGesturesPieMenu_ns .showBookmarks.disabled,
+#easyGesturesPieMenu_ls .showBookmarks.disabled { background-position: -100px -540px; }
+.eG_showBookmarks, .eGOptions_showBookmarks::before,
+#easyGesturesPieMenu_ns .showBookmarks,
+#easyGesturesPieMenu_ls .showBookmarks { background-position: -100px -560px; }
+#easyGesturesPieMenu_ns .showBookmarks.selected:not(.disabled),
+#easyGesturesPieMenu_ls .showBookmarks.selected:not(.disabled) { background-position: -100px -580px; }
+
+#easyGesturesPieMenu_ns .toggleBookmarksSidebar.disabled,
+#easyGesturesPieMenu_ls .toggleBookmarksSidebar.disabled { background-position: -80px -540px; }
+.eG_toggleBookmarksSidebar, .eGOptions_toggleBookmarksSidebar::before,
+#easyGesturesPieMenu_ns .toggleBookmarksSidebar,
+#easyGesturesPieMenu_ls .toggleBookmarksSidebar { background-position: -80px -560px; }
+#easyGesturesPieMenu_ns .toggleBookmarksSidebar.selected:not(.disabled),
+#easyGesturesPieMenu_ls .toggleBookmarksSidebar.selected:not(.disabled) { background-position: -80px -580px; }
+
+#easyGesturesPieMenu_ns .toggleBookmarksToolbar.disabled,
+#easyGesturesPieMenu_ls .toggleBookmarksToolbar.disabled { background-position: -100px -540px; }
+.eG_toggleBookmarksToolbar, .eGOptions_toggleBookmarksToolbar::before,
+#easyGesturesPieMenu_ns .toggleBookmarksToolbar,
+#easyGesturesPieMenu_ls .toggleBookmarksToolbar { background-position: -100px -560px; }
+#easyGesturesPieMenu_ns .toggleBookmarksToolbar.selected:not(.disabled),
+#easyGesturesPieMenu_ls .toggleBookmarksToolbar.selected:not(.disabled) { background-position: -100px -580px; }
+
+#easyGesturesPieMenu_ns .showHistory.disabled,
+#easyGesturesPieMenu_ls .showHistory.disabled { background-position: -120px -540px; }
+.eG_showHistory, .eGOptions_showHistory::before,
+#easyGesturesPieMenu_ns .showHistory,
+#easyGesturesPieMenu_ls .showHistory { background-position: -120px -560px; }
+#easyGesturesPieMenu_ns .showHistory.selected:not(.disabled),
+#easyGesturesPieMenu_ls .showHistory.selected:not(.disabled) { background-position: -120px -580px; }
+
+#easyGesturesPieMenu_ns .toggleHistorySidebar.disabled,
+#easyGesturesPieMenu_ls .toggleHistorySidebar.disabled { background-position: -120px -540px; }
+.eG_toggleHistorySidebar, .eGOptions_toggleHistorySidebar::before,
+#easyGesturesPieMenu_ns .toggleHistorySidebar,
+#easyGesturesPieMenu_ls .toggleHistorySidebar { background-position: -120px -560px; }
+#easyGesturesPieMenu_ns .toggleHistorySidebar.selected:not(.disabled),
+#easyGesturesPieMenu_ls .toggleHistorySidebar.selected:not(.disabled) { background-position: -120px -580px; }
+
+#easyGesturesPieMenu_ns .showDownloads.disabled,
+#easyGesturesPieMenu_ls .showDownloads.disabled { background-position: -140px -360px; }
+.eG_showDownloads, .eGOptions_showDownloads::before,
+#easyGesturesPieMenu_ns .showDownloads,
+#easyGesturesPieMenu_ls .showDownloads { background-position: -140px -380px; }
+#easyGesturesPieMenu_ns .showDownloads.selected:not(.disabled),
+#easyGesturesPieMenu_ls .showDownloads.selected:not(.disabled) { background-position: -140px -400px; }
 
 div.loadURLScript11.disabled { background-position: 0px -480px; }
 div.loadURLScript11 { background-position: 0px -500px; }

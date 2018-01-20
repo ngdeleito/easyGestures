@@ -77,12 +77,6 @@
   "removeBookmarkToThisPage": { "message": "Eliminar esta página de marcadores" },
   "removeBookmarkToThisIdentifier": { "message": "Eliminar este identificador de marcadores" },
   "removeBookmarkToThisLink": { "message": "Eliminar este enlace de marcadores" },
-  "showBookmarks": { "message": "Mostrar todos los marcadores" },
-  "toggleBookmarksSidebar": { "message": "Mostrar/ocultar marcadores" },
-  "toggleBookmarksToolbar": { "message": "Mostrar/ocultar la barra de marcadores" },
-  "showHistory": { "message": "Mostrar todo el historial" },
-  "toggleHistorySidebar": { "message": "Mostrar/ocultar el historial" },
-  "showDownloads": { "message": "Mostrar las descargas" },
   
   "loadURL1": { "message": "Cargar dirección 1" },
   "loadURL2": { "message": "Cargar dirección 2" },

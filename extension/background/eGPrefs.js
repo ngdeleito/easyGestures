@@ -585,6 +585,10 @@ let eGPrefs = {
   },
   
   updateToV5_4: function() {
+    let actionsToRemove = [
+      "showBookmarks", "toggleBookmarksSidebar", "toggleBookmarksToolbar",
+      "showHistory", "toggleHistorySidebar", "showDownloads"
+    ];
     let actionsToRename = [
       ["toggleFindBar", "findAndHighlightSelection"],
       ["loadURLInNewPrivateWindow", "loadPageInNewPrivateWindow"],
@@ -608,7 +612,8 @@ let eGPrefs = {
       }
       return browser.storage.local.set(prefs);
     }));
-    promises.push(this._updateActions([], actionsToAdd, actionsToRename));
+    promises.push(this._updateActions(actionsToRemove, actionsToAdd,
+                                      actionsToRename));
     return Promise.all(promises);
   }
 };
