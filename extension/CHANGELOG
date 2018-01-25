@@ -1,6 +1,22 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 5.4 (January 25, 2018)
+
+- the limitations related to the migration to WebExtensions listed in the release notes of versions 5.2 and 5.3 remain valid, except for what follows:
+  - fixed actions: "Homepage", "New Window", and "Copy Image" (which only supports PNG and JPEG images)
+  - changed and renamed "Toggle Find Bar" action to "Find and Highlight Selection"
+  - removed actions: "Show Bookmarks", "Toggle Bookmarks Sidebar", "Toggle Bookmarks Toolbar", "Show History", "Toggle History Sidebar", and "Show Downloads"
+- new actions: "Show Print Preview", "Load Page in New Tab", "Remove Highlight", "Enter Reader Mode", and "Take Tab Screenshot"
+- the permissions requested by this extension are documented in the README (https://github.com/ngdeleito/easyGestures/blob/development/extension/README.md)
+- the tab opener is now set when new tabs are opened (except for the "New Tab" and "New Blank Tab" actions)
+- new default menus
+- menus can be now reset in the preferences dialog
+- fixed issues:
+  - opening links by clicking through the pie menu center did not work when the "Open Link" action behavior was used
+  - tips started at tip number 2 when the extension was installed
+
+
 Version 5.3 (October 17, 2017)
 
 - finalized the migration to WebExtensions
