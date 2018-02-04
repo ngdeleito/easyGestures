@@ -11,6 +11,41 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
      version="1.1" width="544" height="384" stroke="black" stroke-width="2"
      fill="transparent">
+  <defs>
+    <g id="arrow">
+      <line x1="6" y1="16" x2="26" y2="16" />
+      <!-- slope is 1 and -1; arrowhead "length" follows this proportion:
+          (26-6) / (14-6) = 2.5 -->
+      <line x1="6" y1="16" x2="14" y2="8" stroke-linecap="round" />
+      <line x1="6" y1="16" x2="14" y2="24" stroke-linecap="round" />
+    </g>
+    <g id="arrowWithLimit">
+      <use href="#arrow" transform="translate(1, 0)"/>
+      <!-- #arrow arrowhead "width" = 24-8 = 16 -->
+      <!-- limit length follows this proportion: (25-7) / 16 = 1.125 -->
+      <line x1="6" y1="7" x2="6" y2="25" />
+    </g>
+    <g id="smallArrow">
+      <!-- same characteristics as #arrow, as 12 / 4.8 = 2.5 -->
+      <line x1="6" y1="0" x2="6" y2="12" />
+      <line x1="6" y1="0" x2="10.8" y2="4.8" stroke-linecap="round" />
+      <line x1="6" y1="0" x2="1.2" y2="4.8" stroke-linecap="round" />
+    </g>
+    <g id="smallArrowWithLimit">
+      <use href="#smallArrow" transform="translate(0 1)" />
+      <!-- same characteristics as #arrowWithLimit, as (11.4-0.6) / (10.8-1.2) =
+           1.125 -->
+      <line x1="0.6" y1="0" x2="11.4" y2="0" />
+    </g>
+    <g id="pageWithoutLeftBorder">
+      <polyline points="0 0, 8 0, 14 6, 14 20, 0 20" />
+      <polyline points="8 0, 8 6, 14 6" />
+    </g>
+    <g id="saveArrow">
+      <use href="#smallArrow" transform="translate(10 14) rotate(180 6 6)" />
+    </g>
+  </defs>
+  
   
   <!-- showExtraMenu -->
   <g>
@@ -24,4 +59,63 @@
     <path d="M 7 19 A 9 9 0 1 1 25 19" />
     <line x1="6" y1="22" x2="26" y2="22" />
   </g>
+  <!-- back -->
+  <use href="#arrow" x="0" y="32" />
+  <!-- backSite -->
+  <!-- firstPage -->
+  <use href="#arrowWithLimit" x="64" y="32" />
+  <!-- forward -->
+  <use href="#arrow" x="96" y="32" transform="rotate(180 112 48)" />
+  <!-- forwardSite -->
+  <!-- lastPage -->
+  <use href="#arrowWithLimit" x="160" y="32" transform="rotate(180 176 48)" />
+  <!-- reload -->
+  <g transform="translate(192, 32)">
+    <path d="M 21 8.52 A 9 9 0 1 1 11 8.52" />
+    <line x1="5" y1="8.52" x2="11" y2="8.52" stroke-linecap="round" />
+    <line x1="11" y1="14.52" x2="11" y2="8.52" stroke-linecap="round" />
+  </g>
+  <!-- homepage -->
+  <g transform="translate(224, 32)">
+    <polyline points="6 16, 16 6, 26 16" stroke-linecap="round"
+              stroke-linejoin="round" />
+    <polyline points="9 14, 9 26, 23 26, 23 14" stroke-linecap="round"
+              stroke-linejoin="round" />
+    <polyline points="14 26, 14 18, 18 18, 18 26" stroke-linejoin="round" />
+  </g>
+  <!-- pageTop -->
+  <g transform="translate(256, 32)">
+    <use href="#smallArrowWithLimit" transform="translate(5.4 10)" />
+    <use href="#pageWithoutLeftBorder" x="12" y="6" />
+  </g>
+  <!-- pageBottom -->
+  <g transform="translate(288, 32)">
+    <use href="#smallArrowWithLimit"
+         transform="translate(5.4 9) rotate(180 6 6.5)" />
+    <use href="#pageWithoutLeftBorder" x="12" y="6" />
+  </g>
+  <!-- savePageAs -->
+  <g transform="translate(320, 32)">
+    <polyline points="6 20, 6 6, 20 6, 26 12, 26 20" />
+    <polyline points="20 6, 20 12, 26 12" />
+    <use href="#saveArrow" />
+  </g>
+  <!-- printPage -->
+  <g transform="translate(352, 32)">
+    <polyline points="10 16, 10 6, 22 6, 22 16" />
+    <line x1="12" y1="9" x2="20" y2="9" />
+    <line x1="12" y1="12" x2="20" y2="12" />
+    <polyline points="6 19, 6 15, 10 15" />
+    <path d="M 6 19 h 4 v -4 h 16 v 7 h -4 v -2 h -12 v 2 h -4 v -3"
+          fill="black" />
+    <polyline points="10 22, 10 26, 22 26, 22 22" />
+  </g>
+  <!-- showPrintPreview -->
+  <g transform="translate(384, 32)">
+    <polyline points="10 9.1, 10 6, 20 6, 26 12, 26 26, 10 26, 10 18.9" />
+    <polyline points="20 6, 20 12, 26 12" />
+    <circle cx="11" cy="14" r="5" />
+    <line x1="14.54" y1="17.54" x2="20.28" y2="23.28" />
+  </g>
+  <!-- searchWeb -->
 </svg>
