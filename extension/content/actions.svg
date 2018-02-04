@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+  International License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by-sa/4.0/.
+  
+  Creator: ngdeleito
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+     version="1.1" width="544" height="384" stroke="black" stroke-width="2"
+     fill="transparent">
+  
+  <!-- showExtraMenu -->
+  <g>
+    <line x1="6" y1="10" x2="26" y2="10" />
+    <line x1="6" y1="14" x2="26" y2="14" />
+    <line x1="6" y1="18" x2="26" y2="18" />
+    <line x1="6" y1="22" x2="26" y2="22" />
+  </g>
+  <!-- showExtraMenu showing -->
+  <g transform="translate(32, 0)">
+    <path d="M 7 19 A 9 9 0 1 1 25 19" />
+    <line x1="6" y1="22" x2="26" y2="22" />
+  </g>
+</svg>
