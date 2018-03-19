@@ -52,6 +52,9 @@
       <line x1="4" y1="0" x2="4" y2="8" />
       <line x1="0" y1="4" x2="8" y2="4" />
     </g>
+    <g id="minusSign">
+      <line x1="0" y1="0" x2="8" y2="0" />
+    </g>
     <g id="highlighter">
       <path d="M 11 6 v 12 Q 16 19 21 18 v -12" stroke-linejoin="round" />
       <path d="M 11 14 Q 16 15 21 14" />
@@ -72,6 +75,19 @@
       <use href="#slash" x="11" y="6" />
       <use href="#slash" x="17" y="6" />
       <use href="#slash" x="23" y="6" />
+    </g>
+    <g id="undoCloseSign">
+      <path d="M 26 15.58 A 8 8 0 0 0 15.58 26" />
+      <g transform="translate(15.58, 26) rotate(-145)">
+        <line x1="0" y1="0" x2="4" y2="0" stroke-linecap="round" />
+        <line x1="0" y1="0" x2="0" y2="4" stroke-linecap="round" />
+      </g>
+      <use href="#crossSign" x="20" y="20" />
+    </g>
+    <g id="window">
+      <path d="M 2 0 h 10 a 2 2 0 0 1 2 2 v 8 a 2 2 0 0 1 -2 2
+                     h -10 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2" />
+      <line x1="0" y1="2" x2="14" y2="2" />
     </g>
     <g id="smallStar">
       <polygon points="13.61 6.00, 11.26 10.76, 6.00 11.53, 9.81 15.24,
@@ -204,7 +220,7 @@
   <!-- zoomOut -->
   <g transform="translate(192, 64)">
     <use href="#magnifyingGlass" />
-    <line x1="9" y1="13" x2="17" y2="13" />
+    <use href="#minusSign" x="9" y="13" />
   </g>
   <!-- zoomReset -->
   <g transform="translate(224, 64)">
@@ -277,6 +293,58 @@
     <line x1="15" y1="23" x2="16.91" y2="16" stroke-width="1.5" />
     <polyline points="18 18, 23 20, 18 22" stroke-linejoin="bevel"
               stroke-width="1.5" />
+  </g>
+  <!-- newWindow -->
+  <g transform="translate(0, 128)">
+    <use href="#window" x="6" y="6" />
+    <use href="#plusSign" x="19" y="19" />
+  </g>
+  <!-- newBlankWindow -->
+  <g transform="translate(32, 128)">
+    <use href="#window" x="6" y="6" />
+    <circle cx="13" cy="13" r="3" stroke-width="1.5" />
+    <line x1="9.5" y1="16.5" x2="16.5" y2="9.5" stroke-width="1.5" />
+    <use href="#plusSign" x="19" y="19" />
+  </g>
+  <!-- newPrivateWindow -->
+  <g transform="translate(64, 128)">
+    <path d="M 7 11 a 4 2.5 0 1 0 8 0 a 4 2.5 0 1 0 -8 0
+             M 17 11 a 4 2.5 0 1 0 8 0 a 4 2.5 0 1 0 -8 0
+             M 6 24 v -16
+             Q 12 6 14 8 Q 16 9 18 8 Q 20 6 26 8
+             Q 25 20 18 14 Q 16 12 14 14 Q 7 20 6 8 Z"
+          fill="black" stroke-linejoin="round" />
+  </g>
+  <!-- duplicateWindow -->
+  <g transform="translate(96, 128)">
+    <path d="M 12 18 h -4 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2
+                     h 10 a 2 2 0 0 1 2 2 v 6" />
+    <line x1="6" y1="8" x2="20" y2="8" />
+    <use href="#window" x="12" y="14" />
+  </g>
+  <!-- minimizeWindow -->
+  <g transform="translate(128, 128)">
+    <use href="#window" x="6" y="6" />
+    <use href="#minusSign" x="19" y="23" />
+  </g>
+  <!-- closeWindow -->
+  <g transform="translate(160, 128)">
+    <use href="#window" x="6" y="6" />
+    <use href="#crossSign" x="20" y="20" />
+  </g>
+  <!-- closeOtherWindows -->
+  <g transform="translate(192, 128)">
+    <path d="M 13 14 v -6 a 2 2 0 0 1 2 -2 h 10 a 2 2 0 0 1 2 2 v 4" />
+    <line x1="13" y1="8" x2="27" y2="8" />
+    <use href="#crossSign" x="22" y="14" />
+    <use href="#window" x="5" y="14" />
+  </g>
+  <!-- undoCloseWindow -->
+  <g transform="translate(224, 128)">
+    <path d="M 13 18 h -5 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2
+                     h 10 a 2 2 0 0 1 2 2 v 4" />
+    <line x1="6" y1="8" x2="20" y2="8" />
+    <use href="#undoCloseSign" />
   </g>
   <!-- dailyReadings -->
   <!-- bookmarkThisPage -->
