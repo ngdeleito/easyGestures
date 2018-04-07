@@ -44,6 +44,37 @@
     <g id="saveArrow">
       <use href="#smallArrow" transform="translate(10 14) rotate(180 6 6)" />
     </g>
+    <g id="tab">
+      <path d="M 0 10 h 3 a 2 2 0 0 0 2 -2 v -6 a 2 2 0 0 1 2 -2 h 8
+                          a 2 2 0 0 1 2 2 v 6 a 2 2 0 0 0 2 2 h 3" />
+    </g>
+    <g id="tinyTopPage">
+      <polyline points="12 26, 12 18, 17 18, 20 21, 20 26" />
+      <polyline points="17 18, 17 21, 20 21" />
+    </g>
+    <g id="mask">
+      <path d="M 7 11 a 4 2.5 0 1 0 8 0 a 4 2.5 0 1 0 -8 0
+               M 17 11 a 4 2.5 0 1 0 8 0 a 4 2.5 0 1 0 -8 0
+               M 6 8
+               Q 12 6 14 8 Q 16 9 18 8 Q 20 6 26 8
+               Q 25 20 18 14 Q 16 12 14 14 Q 7 20 6 8 Z" fill="black" />
+    </g>
+    <g id="slash">
+      <line x1="0" y1="11" x2="3" y2="0" />
+    </g>
+    <g id="url">
+      <circle cx="1" cy="3.5" r="0.5" fill="black" stroke-width="1.5" />
+      <circle cx="1" cy="7.5" r="0.5" fill="black" stroke-width="1.5" />
+      <use href="#slash" x="3.5" y="0" />
+      <use href="#slash" x="7.5" y="0" />
+    </g>
+    <g id="hashSign">
+      <!-- same slope as #slash -->
+      <line x1="2.87" y1="12" x2="6.14" y2="0" />
+      <line x1="6.87" y1="12" x2="10.14" y2="0" />
+      <line x1="1" y1="4" x2="13" y2="4" />
+      <line x1="0" y1="8" x2="12" y2="8" />
+    </g>
     <g id="magnifyingGlass">
       <circle cx="13" cy="13" r="7" />
       <line x1="17.95" y1="17.95" x2="26" y2="26" />
@@ -65,20 +96,16 @@
       <line x1="0" y1="0" x2="6" y2="6" />
       <line x1="0" y1="6" x2="6" y2="0" />
     </g>
-    <g id="slash">
+    <g id="thinnerSlash">
       <line x1="0" y1="11" x2="3" y2="0" stroke-width="1.5" />
     </g>
-    <g id="url">
+    <g id="urlWithPath">
       <circle cx="6" cy="9.5" r="0.5" fill="black" stroke-width="1" />
       <circle cx="6" cy="13.5" r="0.5" fill="black" stroke-width="1" />
-      <use href="#slash" x="8" y="6" />
-      <use href="#slash" x="11" y="6" />
-      <use href="#slash" x="17" y="6" />
-      <use href="#slash" x="23" y="6" />
-    </g>
-    <g id="tab">
-      <path d="M 0 10 h 3 a 2 2 0 0 0 2 -2 v -6 a 2 2 0 0 1 2 -2 h 8
-                          a 2 2 0 0 1 2 2 v 6 a 2 2 0 0 0 2 2 h 3" />
+      <use href="#thinnerSlash" x="8" y="6" />
+      <use href="#thinnerSlash" x="11" y="6" />
+      <use href="#thinnerSlash" x="17" y="6" />
+      <use href="#thinnerSlash" x="23" y="6" />
     </g>
     <g id="emptySign">
       <circle cx="4" cy="4" r="3" stroke-width="1.5" />
@@ -97,13 +124,6 @@
                      h -10 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2" />
       <line x1="0" y1="2" x2="14" y2="2" />
     </g>
-    <g id="mask">
-      <path d="M 7 11 a 4 2.5 0 1 0 8 0 a 4 2.5 0 1 0 -8 0
-               M 17 11 a 4 2.5 0 1 0 8 0 a 4 2.5 0 1 0 -8 0
-               M 6 8
-               Q 12 6 14 8 Q 16 9 18 8 Q 20 6 26 8
-               Q 25 20 18 14 Q 16 12 14 14 Q 7 20 6 8 Z" fill="black" />
-    </g>
     <g id="link">
       <path d="M 8 4 A 2 2 0 0 1 6 6 h -4 A 2 2 0 0 1 0 4 v -2
                      A 2 2 0 0 1 2 0 h 4 A 2 2 0 0 1 8 2" />
@@ -119,7 +139,8 @@
                        21.22 11.53, 15.96 10.76" stroke-linejoin="round"
                stroke-width="1.5" />
     </g>
-    <g id="hashSign">
+    <g id="smallHashSign">
+      <!-- same slope as #slash -->
       <line x1="2.27" y1="9" x2="4.73" y2="0" stroke-width="1.5" />
       <line x1="5.27" y1="9" x2="7.73" y2="0" stroke-width="1.5" />
       <line x1="1" y1="3" x2="10" y2="3" stroke-width="1.5" />
@@ -223,10 +244,38 @@
   </g>
   <!-- searchWeb -->
   <!-- loadPageInNewTab -->
+  <g transform="translate(0, 64)">
+    <use href="#tab" x="5" y="6" />
+    <use href="#tinyTopPage" x="1" />
+  </g>
   <!-- loadPageInNewPrivateWindow -->
+  <g transform="translate(32, 64)">
+    <use href="#mask" />
+    <use href="#tinyTopPage" x="1" />
+  </g>
   <!-- moveTabToNewWindow -->
+  <g transform="translate(64, 64)">
+    <path d="M 13 16 v -8 a 2 2 0 0 1 2 -2 h 10 a 2 2 0 0 1 2 2 v 8" />
+    <line x1="13" y1="8" x2="27" y2="8" />
+    <g transform="translate(15 13)">
+      <!-- same characteristics as #arrow, as 8 / 3.2 = 2.5 -->
+      <line x1="6" y1="0" x2="6" y2="8" />
+      <line x1="6" y1="0" x2="9.2" y2="3.2" stroke-linecap="round" />
+      <line x1="6" y1="0" x2="2.8" y2="3.2" stroke-linecap="round" />
+    </g>
+    <path d="M 5 26 h 1.5 a 2 2 0 0 0 2 -2 v -3 a 2 2 0 0 1 2 -2 h 4
+                          a 2 2 0 0 1 2 2 v 3 a 2 2 0 0 0 2 2 h 1.5" />
+  </g>
   <!-- copyPageURL -->
+  <g transform="translate(96, 64)">
+    <use href="#url" x="6" y="5" />
+    <use href="#url" x="15.5" y="16" />
+  </g>
   <!-- copyURLToIdentifier -->
+  <g transform="translate(128, 64)">
+    <use href="#hashSign" x="5" y="6" />
+    <use href="#hashSign" x="14" y="14" />
+  </g>
   <!-- zoomIn -->
   <g transform="translate(160, 64)">
     <use href="#magnifyingGlass" />
@@ -279,7 +328,7 @@
   </g>
   <!-- up -->
   <g transform="translate(416, 64)">
-    <use href="#url" />
+    <use href="#urlWithPath" />
     <path d="M 26 20 v 6 h -6 v -6" stroke-linejoin="round"
           stroke-width="1.5" />
     <path d="M 18 22 L 20 20 L 22 22" stroke-linecap="round"
@@ -287,7 +336,7 @@
   </g>
   <!-- root -->
   <g transform="translate(448, 64)">
-    <use href="#url" />
+    <use href="#urlWithPath" />
     <path d="M 26 20 v 6 h -12 v -6" stroke-linejoin="round"
           stroke-width="1.5" />
     <path d="M 12 22 L 14 20 L 16 22" stroke-linecap="round"
@@ -442,7 +491,7 @@
   </g>
   <!-- bookmarkThisIdentifier -->
   <g transform="translate(64, 192)">
-    <use href="#hashSign" x="11" y="5" />
+    <use href="#smallHashSign" x="11" y="5" />
     <use href="#tinyStar" />
     <use href="#plusSign" x="19" y="19" />
   </g>
@@ -460,7 +509,7 @@
   </g>
   <!-- removeBookmarkToThisIdentifier -->
   <g transform="translate(192, 192)">
-    <use href="#hashSign" x="11" y="5" />
+    <use href="#smallHashSign" x="11" y="5" />
     <use href="#tinyStar" />
     <use href="#crossSign" x="20" y="20" />
   </g>
