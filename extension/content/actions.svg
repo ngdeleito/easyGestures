@@ -13,36 +13,35 @@
      fill="transparent">
   <defs>
     <g id="arrow">
-      <line x1="6" y1="16" x2="26" y2="16" />
+      <line x1="0" y1="0" x2="20" y2="0" />
       <!-- slope is 1 and -1; arrowhead "length" follows this proportion:
-          (26-6) / (14-6) = 2.5 -->
-      <line x1="6" y1="16" x2="14" y2="8" stroke-linecap="round" />
-      <line x1="6" y1="16" x2="14" y2="24" stroke-linecap="round" />
+           20 / 8 = 2.5 -->
+      <line x1="0" y1="0" x2="8" y2="-8" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="8" y2="8" stroke-linecap="round" />
     </g>
     <g id="arrowWithLimit">
       <use href="#arrow" transform="translate(1, 0)"/>
-      <!-- #arrow arrowhead "width" = 24-8 = 16 -->
-      <!-- limit length follows this proportion: (25-7) / 16 = 1.125 -->
-      <line x1="6" y1="7" x2="6" y2="25" />
+      <!-- #arrow arrowhead "width" = 16 -->
+      <!-- limit length follows this proportion: 9*2 / 16 = 1.125 -->
+      <line x1="0" y1="-9" x2="0" y2="9" />
     </g>
     <g id="smallArrow">
       <!-- same characteristics as #arrow, as 12 / 4.8 = 2.5 -->
-      <line x1="6" y1="0" x2="6" y2="12" />
-      <line x1="6" y1="0" x2="10.8" y2="4.8" stroke-linecap="round" />
-      <line x1="6" y1="0" x2="1.2" y2="4.8" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="0" y2="12" />
+      <line x1="0" y1="0" x2="4.8" y2="4.8" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="-4.8" y2="4.8" stroke-linecap="round" />
     </g>
     <g id="smallArrowWithLimit">
       <use href="#smallArrow" transform="translate(0 1)" />
-      <!-- same characteristics as #arrowWithLimit, as (11.4-0.6) / (10.8-1.2) =
-           1.125 -->
-      <line x1="0.6" y1="0" x2="11.4" y2="0" />
+      <!-- same characteristics as #arrowWithLimit, as 5.4*2 / 4.8*2 = 1.125 -->
+      <line x1="-5.4" y1="0" x2="5.4" y2="0" />
     </g>
     <g id="pageWithoutLeftBorder">
       <polyline points="0 0, 8 0, 14 6, 14 20, 0 20" />
       <polyline points="8 0, 8 6, 14 6" />
     </g>
     <g id="saveArrow">
-      <use href="#smallArrow" transform="translate(10 14) rotate(180 6 6)" />
+      <use href="#smallArrow" transform="translate(16 26) rotate(180)" />
     </g>
     <g id="tab">
       <path d="M 0 10 h 3 a 2 2 0 0 0 2 -2 v -6 a 2 2 0 0 1 2 -2 h 8
@@ -191,15 +190,23 @@
     <line x1="6" y1="22" x2="26" y2="22" />
   </g>
   <!-- back -->
-  <use href="#arrow" x="0" y="32" />
+  <g transform="translate(0, 32)">
+    <use href="#arrow" x="6" y="16" />
+  </g>
   <!-- backSite -->
   <!-- firstPage -->
-  <use href="#arrowWithLimit" x="64" y="32" />
+  <g transform="translate(64, 32)">
+    <use href="#arrowWithLimit" x="6" y="16" />
+  </g>
   <!-- forward -->
-  <use href="#arrow" x="96" y="32" transform="rotate(180 112 48)" />
+  <g transform="translate(96, 32)">
+    <use href="#arrow" transform="translate(26, 16) rotate(180)" />
+  </g>
   <!-- forwardSite -->
   <!-- lastPage -->
-  <use href="#arrowWithLimit" x="160" y="32" transform="rotate(180 176 48)" />
+  <g transform="translate(160, 32)">
+    <use href="#arrowWithLimit" transform="translate(26, 16) rotate(180)" />
+  </g>
   <!-- reload -->
   <g transform="translate(192, 32)">
     <path d="M 21 8.52 A 9 9 0 1 1 11 8.52" />
@@ -216,13 +223,13 @@
   </g>
   <!-- pageTop -->
   <g transform="translate(256, 32)">
-    <use href="#smallArrowWithLimit" transform="translate(5.4 10)" />
+    <use href="#smallArrowWithLimit" transform="translate(11.4 10)" />
     <use href="#pageWithoutLeftBorder" x="12" y="6" />
   </g>
   <!-- pageBottom -->
   <g transform="translate(288, 32)">
     <use href="#smallArrowWithLimit"
-         transform="translate(5.4 9) rotate(180 6 6.5)" />
+         transform="translate(11.4 22) rotate(180)" />
     <use href="#pageWithoutLeftBorder" x="12" y="6" />
   </g>
   <!-- savePageAs -->
@@ -329,8 +336,8 @@
   </g>
   <!-- toggleFullscreen -->
   <g transform="translate(384, 64)">
-    <use href="#smallArrow" transform="translate(15.2, 4.8) rotate(45 6 6)" />
-    <use href="#smallArrow" transform="translate(4.8, 15.2) rotate(225 6 6)" />
+    <use href="#smallArrow" transform="translate(26, 6) rotate(45)" />
+    <use href="#smallArrow" transform="translate(6, 26) rotate(-135)" />
   </g>
   <!-- up -->
   <g transform="translate(416, 64)">
@@ -353,7 +360,7 @@
     <polygon points="6 6, 26 6, 26 26, 6 26" />
     <line x1="12" y1="6" x2="12" y2="26" stroke-width="1" />
     <line x1="12" y1="14" x2="26" y2="14" stroke-width="1" />
-    <use href="#smallArrow" transform="translate(8, 8) rotate(-45 6 6)" />
+    <use href="#smallArrow" transform="translate(10, 10) rotate(-45)" />
   </g>
   <!-- viewPageSource -->
   <g transform="translate(512, 64)">
@@ -403,12 +410,12 @@
   <!-- previousTab -->
   <g transform="translate(192, 96)">
     <use href="#tab" x="5" y="6" />
-    <use href="#smallArrow" transform="translate(10, 14) rotate(-90 6.6 6)" />
+    <use href="#smallArrow" transform="translate(10, 21.2) rotate(-90)" />
   </g>
   <!-- nextTab -->
   <g transform="translate(224, 96)">
     <use href="#tab" x="5" y="6" />
-    <use href="#smallArrow" transform="translate(10, 14) rotate(90 5.4 6)" />
+    <use href="#smallArrow" transform="translate(22, 21.2) rotate(90)" />
   </g>
   <!-- pinUnpinTab -->
   <g transform="translate(256, 96)">
