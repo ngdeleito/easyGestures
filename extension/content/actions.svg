@@ -169,6 +169,12 @@
       <polyline points="6 14, 12 10, 26 15" />
       <polyline points="17 11.83, 20 9, 26 11" />
     </g>
+    <g id="tinyArrow">
+      <!-- same characteristics as #arrow, as 7 / 2.8 = 2.5 -->
+      <line x1="0" y1="0" x2="7" y2="0" />
+      <line x1="0" y1="0" x2="2.8" y2="-2.8" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="2.8" y2="2.8" stroke-linecap="round" />
+    </g>
   </defs>
   
   
@@ -670,5 +676,24 @@
     <use href="#pictureWithTopFrame" y="4" />
     <polyline points="6 15, 6 18, 26 18, 26 16" transform="translate(0 4)" />
     <line x1="6" y1="6" x2="26" y2="26" />
+  </g>
+  <!-- cut -->
+  <g transform="translate(0, 352)">
+    <path d="M 10 14 v -4 h 4 m 4 0 h 4 v 4 m 0 4 v 4 h -4 m -4 0 h -4 v -4" />
+  </g>
+  <!-- copy -->
+  <g transform="translate(32, 352)">
+    <path d="M 12 20 h -4 v -12 h 12 v 4 M 12 12 h 12 v 12 h -12 Z" />
+  </g>
+  <!-- paste -->
+  <g transform="translate(64, 352)">
+    <path d="M 8 8 h 16 v 16 h -16 Z M 16 12 h 4 v 4 h -4 Z" />
+  </g>
+  <!-- selectAll -->
+  <g transform="translate(96, 352)">
+    <use href="#tinyArrow" transform="translate(10, 10) rotate(45)"/>
+    <use href="#tinyArrow" transform="translate(22, 10) rotate(135)"/>
+    <use href="#tinyArrow" transform="translate(22, 22) rotate(-135)"/>
+    <use href="#tinyArrow" transform="translate(10, 22) rotate(-45)"/>
   </g>
 </svg>
