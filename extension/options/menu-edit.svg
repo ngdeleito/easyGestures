@@ -4,10 +4,12 @@
   This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
   International License. To view a copy of this license, visit
   http://creativecommons.org/licenses/by-sa/4.0/.
+  
+  Creator: ngdeleito
 -->
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
-     width="122" height="122">
+     version="1.1" width="122" height="122">
   <g>
     <path d="M1,60   A61,61 0 0 1 60,1
                      A61,61 0 0 1 121,60
