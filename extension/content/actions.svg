@@ -118,10 +118,13 @@
       </g>
       <use href="#crossSign" x="20" y="20" />
     </g>
+    <g id="windowTopArea">
+      <path d="M 0 6 v -4 a 2 2 0 0 1 2 -2 h 10 a 2 2 0 0 1 2 2 v 4
+               M 0 2 h 14" />
+    </g>
     <g id="window">
-      <path d="M 2 0 h 10 a 2 2 0 0 1 2 2 v 8 a 2 2 0 0 1 -2 2
-                     h -10 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2" />
-      <line x1="0" y1="2" x2="14" y2="2" />
+      <use href="#windowTopArea" />
+      <path d="M 0 6 v 4 a 2 2 0 0 0 2 2 h 10 a 2 2 0 0 0 2 -2 v -4" />
     </g>
     <g id="link">
       <path d="M 8 4 A 2 2 0 0 1 6 6 h -4 A 2 2 0 0 1 0 4 v -2
@@ -443,9 +446,8 @@
   </g>
   <!-- duplicateWindow -->
   <g transform="translate(96, 128)">
-    <path d="M 12 18 h -4 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2
-                     h 10 a 2 2 0 0 1 2 2 v 6" />
-    <line x1="6" y1="8" x2="20" y2="8" />
+    <use href="#windowTopArea" x="6" y="6" />
+    <path d="M 12 18 h -4 a 2 2 0 0 1 -2 -2 v -4 m 14 0 v 2" />
     <use href="#window" x="12" y="14" />
   </g>
   <!-- minimizeWindow -->
@@ -460,16 +462,15 @@
   </g>
   <!-- closeOtherWindows -->
   <g transform="translate(192, 128)">
-    <path d="M 13 14 v -6 a 2 2 0 0 1 2 -2 h 10 a 2 2 0 0 1 2 2 v 4" />
-    <line x1="13" y1="8" x2="27" y2="8" />
+    <use href="#windowTopArea" x="13" y="6" />
+    <path d="M 13 14 v -2" />
     <use href="#crossSign" x="22" y="14" />
     <use href="#window" x="5" y="14" />
   </g>
   <!-- undoCloseWindow -->
   <g transform="translate(224, 128)">
-    <path d="M 13 18 h -5 a 2 2 0 0 1 -2 -2 v -8 a 2 2 0 0 1 2 -2
-                     h 10 a 2 2 0 0 1 2 2 v 4" />
-    <line x1="6" y1="8" x2="20" y2="8" />
+    <use href="#windowTopArea" x="6" y="6" />
+    <path d="M 13 18 h -5 a 2 2 0 0 1 -2 -2 v -4" />
     <use href="#undoCloseSign" />
   </g>
   <!-- openLink -->
