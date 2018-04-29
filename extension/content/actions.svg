@@ -498,6 +498,12 @@
     <use href="#saveArrow" />
   </g>
   <!-- dailyReadings -->
+  <g transform="translate(0, 192)">
+    <path d="M 5 9 h 22 v 14 h -22 Z M 16 9 v 14 M 13 14 h 6 M 13 18 h 6" />
+    <text x="10" y="20" text-anchor="middle" font-family="sans-serif"
+          font-size="11" stroke-width="1">1</text>
+    <path d="M 20 13 h 5 M 20 16 h 5 M 20 19 h 5" />
+  </g>
   <!-- bookmarkThisPage -->
   <g transform="translate(32, 192)">
     <use href="#smallStar" />
@@ -516,6 +522,14 @@
     <use href="#plusSign" x="19" y="19" />
   </g>
   <!-- bookmarkAllTabs -->
+  <g transform="translate(128, 192)">
+    <path d="M 6 14 v -6 a 2 2 0 0 1 2 -2 h 4
+                    a 2 2 0 0 1 2 2 v 3 a 2 2 0 0 0 2 2 h 11
+             M 14 10 a 2 2 0 0 1 2 -2 h 2 a 2 2 0 0 1 2 2 v 3
+             M 20 10 a 2 2 0 0 1 2 -2 h 2 a 2 2 0 0 1 2 2 v 3" />
+    <use href="#tinyStar" />
+    <use href="#plusSign" x="19" y="19" />
+  </g>
   <!-- removeBookmarkToThisPage -->
   <g transform="translate(160, 192)">
     <use href="#smallStar" />
