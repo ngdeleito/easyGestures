@@ -19,6 +19,11 @@
       <line x1="0" y1="0" x2="8" y2="-8" stroke-linecap="round" />
       <line x1="0" y1="0" x2="8" y2="8" stroke-linecap="round" />
     </g>
+    <g id="arrowWithDoubleHead">
+      <use href="#arrow" />
+      <line x1="6" y1="0" x2="14" y2="-8" stroke-linecap="round" />
+      <line x1="6" y1="0" x2="14" y2="8" stroke-linecap="round" />
+    </g>
     <g id="arrowWithLimit">
       <use href="#arrow" transform="translate(1, 0)"/>
       <!-- #arrow arrowhead "width" = 16 -->
@@ -197,6 +202,9 @@
     <use href="#arrow" x="6" y="16" />
   </g>
   <!-- backSite -->
+  <g transform="translate(32, 32)">
+    <use href="#arrowWithDoubleHead" x="6" y="16" />
+  </g>
   <!-- firstPage -->
   <g transform="translate(64, 32)">
     <use href="#arrowWithLimit" x="6" y="16" />
@@ -206,6 +214,10 @@
     <use href="#arrow" transform="translate(26, 16) rotate(180)" />
   </g>
   <!-- forwardSite -->
+  <g transform="translate(128, 32)">
+    <use href="#arrowWithDoubleHead"
+         transform="translate(26, 16) rotate(180)" />
+  </g>
   <!-- lastPage -->
   <g transform="translate(160, 32)">
     <use href="#arrowWithLimit" transform="translate(26, 16) rotate(180)" />
@@ -259,6 +271,12 @@
     <line x1="14.54" y1="17.54" x2="20.28" y2="23.28" />
   </g>
   <!-- searchWeb -->
+  <g transform="translate(416, 32)">
+    <path d="M 6.5 11 a 3 5 0 0 0 0 10 h 8 a 3 5 0 0 1 0 -10 h -8
+             M 12.7 12 h 8 a 3 4 0 0 0 0 8 h -8
+             M 18.72 19 h 7 a 2 3 0 0 1 0 -6 h -7
+             M 24.23 14 h 4.27 v 4 h -4.27" stroke-linejoin="round" />
+  </g>
   <!-- loadPageInNewTab -->
   <g transform="translate(0, 64)">
     <use href="#tab" x="5" y="6" />
