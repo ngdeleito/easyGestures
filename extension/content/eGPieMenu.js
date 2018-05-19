@@ -381,7 +381,7 @@ let eGPieMenu = {
       //         anActionNode.className = action;
       //       }
       //       else {
-      //         anActionNode.style.backgroundImage = "url('" + faviconURL + "')";
+      //         anActionNode.style.maskImage = "url('" + faviconURL + "')";
       //         anActionNode.className = "customIcon";
       //       }
       //     });
@@ -391,7 +391,7 @@ let eGPieMenu = {
       if (action.startsWith("runScript")) { // new icon path for runScript?
         let iconPath = this.settings.runScriptActionPrefs[action][2];
         if (iconPath !== "" && !document.documentURI.startsWith("https://")) {
-          anActionNode.style.backgroundImage =
+          anActionNode.style.maskImage =
             "url('" + iconPath.replace(/\\/g , "\\\\") + "')";
           iconName = "customIcon";
         }
