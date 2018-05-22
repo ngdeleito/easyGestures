@@ -680,11 +680,13 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu_nn .empty,
-#easyGesturesPieMenu_ln .empty {
+#easyGesturesPieMenu_ln .empty,
+[data-action="empty"] {
   mask-position: -64px 0px;
 }
 #easyGesturesPieMenu_nn .showExtraMenu,
-#easyGesturesPieMenu_ln .showExtraMenu {
+#easyGesturesPieMenu_ln .showExtraMenu,
+[data-action="showExtraMenu"] {
   mask-position: 0px 0px;
 }
 #easyGesturesPieMenu_nn .showExtraMenu.selected,
@@ -694,327 +696,408 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   mask-position: -32px 0px;
 }
 #easyGesturesPieMenu_nn .back,
-#easyGesturesPieMenu_ln .back {
+#easyGesturesPieMenu_ln .back,
+[data-action="back"] {
   mask-position: 0px -32px;
 }
 #easyGesturesPieMenu_nn .backSite,
-#easyGesturesPieMenu_ln .backSite {
+#easyGesturesPieMenu_ln .backSite,
+[data-action="backSite"] {
   mask-position: -32px -32px;
 }
 #easyGesturesPieMenu_nn .firstPage,
-#easyGesturesPieMenu_ln .firstPage {
+#easyGesturesPieMenu_ln .firstPage,
+[data-action="firstPage"] {
   mask-position: -64px -32px;
 }
 #easyGesturesPieMenu_nn .forward,
-#easyGesturesPieMenu_ln .forward {
+#easyGesturesPieMenu_ln .forward,
+[data-action="forward"] {
   mask-position: -96px -32px;
 }
 #easyGesturesPieMenu_nn .forwardSite,
-#easyGesturesPieMenu_ln .forwardSite {
+#easyGesturesPieMenu_ln .forwardSite,
+[data-action="forwardSite"] {
   mask-position: -128px -32px;
 }
 #easyGesturesPieMenu_nn .lastPage,
-#easyGesturesPieMenu_ln .lastPage {
+#easyGesturesPieMenu_ln .lastPage,
+[data-action="lastPage"] {
   mask-position: -160px -32px;
 }
 #easyGesturesPieMenu_nn .reload,
-#easyGesturesPieMenu_ln .reload {
+#easyGesturesPieMenu_ln .reload,
+[data-action="reload"] {
   mask-position: -192px -32px;
 }
 #easyGesturesPieMenu_nn .homepage,
-#easyGesturesPieMenu_ln .homepage {
+#easyGesturesPieMenu_ln .homepage,
+[data-action="homepage"] {
   mask-position: -224px -32px;
 }
 #easyGesturesPieMenu_nn .pageTop,
-#easyGesturesPieMenu_ln .pageTop {
+#easyGesturesPieMenu_ln .pageTop,
+[data-action="pageTop"] {
   mask-position: -256px -32px;
 }
 #easyGesturesPieMenu_nn .pageBottom,
-#easyGesturesPieMenu_ln .pageBottom {
+#easyGesturesPieMenu_ln .pageBottom,
+[data-action="pageBottom"] {
   mask-position: -288px -32px;
 }
 #easyGesturesPieMenu_nn .savePageAs,
-#easyGesturesPieMenu_ln .savePageAs {
+#easyGesturesPieMenu_ln .savePageAs,
+[data-action="savePageAs"] {
   mask-position: -320px -32px;
 }
 #easyGesturesPieMenu_nn .printPage,
-#easyGesturesPieMenu_ln .printPage {
+#easyGesturesPieMenu_ln .printPage,
+[data-action="printPage"] {
   mask-position: -352px -32px;
 }
 #easyGesturesPieMenu_nn .showPrintPreview,
-#easyGesturesPieMenu_ln .showPrintPreview {
+#easyGesturesPieMenu_ln .showPrintPreview,
+[data-action="showPrintPreview"] {
   mask-position: -384px -32px;
 }
 #easyGesturesPieMenu_nn .searchWeb,
-#easyGesturesPieMenu_ln .searchWeb {
+#easyGesturesPieMenu_ln .searchWeb,
+[data-action="searchWeb"] {
   mask-position: -416px -32px;
 }
 #easyGesturesPieMenu_nn .loadPageInNewTab,
-#easyGesturesPieMenu_ln .loadPageInNewTab {
+#easyGesturesPieMenu_ln .loadPageInNewTab,
+[data-action="loadPageInNewTab"] {
   mask-position: -0px -64px;
 }
 #easyGesturesPieMenu_nn .loadPageInNewPrivateWindow,
-#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow {
+#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow,
+[data-action="loadPageInNewPrivateWindow"] {
   mask-position: -32px -64px;
 }
 #easyGesturesPieMenu_nn .moveTabToNewWindow,
-#easyGesturesPieMenu_ln .moveTabToNewWindow {
+#easyGesturesPieMenu_ln .moveTabToNewWindow,
+[data-action="moveTabToNewWindow"] {
   mask-position: -64px -64px;
 }
 #easyGesturesPieMenu_nn .copyPageURL,
-#easyGesturesPieMenu_ln .copyPageURL {
+#easyGesturesPieMenu_ln .copyPageURL,
+[data-action="copyPageURL"] {
   mask-position: -96px -64px;
 }
 #easyGesturesPieMenu_nn .copyURLToIdentifier,
-#easyGesturesPieMenu_ln .copyURLToIdentifier {
+#easyGesturesPieMenu_ln .copyURLToIdentifier,
+[data-action="copyURLToIdentifier"] {
   mask-position: -128px -64px;
 }
 #easyGesturesPieMenu_nn .zoomIn,
-#easyGesturesPieMenu_ln .zoomIn {
+#easyGesturesPieMenu_ln .zoomIn,
+[data-action="zoomIn"] {
   mask-position: -160px -64px;
 }
 #easyGesturesPieMenu_nn .zoomOut,
-#easyGesturesPieMenu_ln .zoomOut {
+#easyGesturesPieMenu_ln .zoomOut,
+[data-action="zoomOut"] {
   mask-position: -192px -64px;
 }
 #easyGesturesPieMenu_nn .zoomReset,
-#easyGesturesPieMenu_ln .zoomReset {
+#easyGesturesPieMenu_ln .zoomReset,
+[data-action="zoomReset"] {
   mask-position: -224px -64px;
 }
 #easyGesturesPieMenu_nn .findAndHighlightSelection,
-#easyGesturesPieMenu_ln .findAndHighlightSelection {
+#easyGesturesPieMenu_ln .findAndHighlightSelection,
+[data-action="findAndHighlightSelection"] {
   mask-position: -256px -64px;
 }
 #easyGesturesPieMenu_nn .removeHighlight,
-#easyGesturesPieMenu_ln .removeHighlight {
+#easyGesturesPieMenu_ln .removeHighlight,
+[data-action="removeHighlight"] {
   mask-position: -288px -64px;
 }
 #easyGesturesPieMenu_nn .enterReaderMode,
-#easyGesturesPieMenu_ln .enterReaderMode {
+#easyGesturesPieMenu_ln .enterReaderMode,
+[data-action="enterReaderMode"] {
   mask-position: -320px -64px;
 }
 #easyGesturesPieMenu_nn .takeTabScreenshot,
-#easyGesturesPieMenu_ln .takeTabScreenshot {
+#easyGesturesPieMenu_ln .takeTabScreenshot,
+[data-action="takeTabScreenshot"] {
   mask-position: -352px -64px;
 }
 #easyGesturesPieMenu_nn .toggleFullscreen,
-#easyGesturesPieMenu_ln .toggleFullscreen {
+#easyGesturesPieMenu_ln .toggleFullscreen,
+[data-action="toggleFullscreen"] {
   mask-position: -384px -64px;
 }
 #easyGesturesPieMenu_nn .up,
-#easyGesturesPieMenu_ln .up {
+#easyGesturesPieMenu_ln .up,
+[data-action="up"] {
   mask-position: -416px -64px;
 }
 #easyGesturesPieMenu_nn .root,
-#easyGesturesPieMenu_ln .root {
+#easyGesturesPieMenu_ln .root,
+[data-action="root"] {
   mask-position: -448px -64px;
 }
 #easyGesturesPieMenu_nn .showOnlyThisFrame,
-#easyGesturesPieMenu_ln .showOnlyThisFrame {
+#easyGesturesPieMenu_ln .showOnlyThisFrame,
+[data-action="showOnlyThisFrame"] {
   mask-position: -480px -64px;
 }
 #easyGesturesPieMenu_nn .viewPageSource,
-#easyGesturesPieMenu_ln .viewPageSource {
+#easyGesturesPieMenu_ln .viewPageSource,
+[data-action="viewPageSource"] {
   mask-position: -512px -64px;
 }
 #easyGesturesPieMenu_nn .newTab,
-#easyGesturesPieMenu_ln .newTab {
+#easyGesturesPieMenu_ln .newTab,
+[data-action="newTab"] {
   mask-position: -0px -96px;
 }
 #easyGesturesPieMenu_nn .newBlankTab,
-#easyGesturesPieMenu_ln .newBlankTab {
+#easyGesturesPieMenu_ln .newBlankTab,
+[data-action="newBlankTab"] {
   mask-position: -32px -96px;
 }
 #easyGesturesPieMenu_nn .duplicateTab,
-#easyGesturesPieMenu_ln .duplicateTab {
+#easyGesturesPieMenu_ln .duplicateTab,
+[data-action="duplicateTab"] {
   mask-position: -64px -96px;
 }
 #easyGesturesPieMenu_nn .closeTab,
-#easyGesturesPieMenu_ln .closeTab {
+#easyGesturesPieMenu_ln .closeTab,
+[data-action="closeTab"] {
   mask-position: -96px -96px;
 }
 #easyGesturesPieMenu_nn .closeOtherTabs,
-#easyGesturesPieMenu_ln .closeOtherTabs {
+#easyGesturesPieMenu_ln .closeOtherTabs,
+[data-action="closeOtherTabs"] {
   mask-position: -128px -96px;
 }
 #easyGesturesPieMenu_nn .undoCloseTab,
-#easyGesturesPieMenu_ln .undoCloseTab {
+#easyGesturesPieMenu_ln .undoCloseTab,
+[data-action="undoCloseTab"] {
   mask-position: -160px -96px;
 }
 #easyGesturesPieMenu_nn .previousTab,
-#easyGesturesPieMenu_ln .previousTab {
+#easyGesturesPieMenu_ln .previousTab,
+[data-action="previousTab"] {
   mask-position: -192px -96px;
 }
 #easyGesturesPieMenu_nn .nextTab,
-#easyGesturesPieMenu_ln .nextTab {
+#easyGesturesPieMenu_ln .nextTab,
+[data-action="nextTab"] {
   mask-position: -224px -96px;
 }
 #easyGesturesPieMenu_nn .pinUnpinTab,
-#easyGesturesPieMenu_ln .pinUnpinTab {
+#easyGesturesPieMenu_ln .pinUnpinTab,
+[data-action="pinUnpinTab"] {
   mask-position: -256px -96px;
 }
 #easyGesturesPieMenu_nn .newWindow,
-#easyGesturesPieMenu_ln .newWindow {
+#easyGesturesPieMenu_ln .newWindow,
+[data-action="newWindow"] {
   mask-position: -0px -128px;
 }
 #easyGesturesPieMenu_nn .newBlankWindow,
-#easyGesturesPieMenu_ln .newBlankWindow {
+#easyGesturesPieMenu_ln .newBlankWindow,
+[data-action="newBlankWindow"] {
   mask-position: -32px -128px;
 }
 #easyGesturesPieMenu_nn .newPrivateWindow,
-#easyGesturesPieMenu_ln .newPrivateWindow {
+#easyGesturesPieMenu_ln .newPrivateWindow,
+[data-action="newPrivateWindow"] {
   mask-position: -64px -128px;
 }
 #easyGesturesPieMenu_nn .duplicateWindow,
-#easyGesturesPieMenu_ln .duplicateWindow {
+#easyGesturesPieMenu_ln .duplicateWindow,
+[data-action="duplicateWindow"] {
   mask-position: -96px -128px;
 }
 #easyGesturesPieMenu_nn .minimizeWindow,
-#easyGesturesPieMenu_ln .minimizeWindow {
+#easyGesturesPieMenu_ln .minimizeWindow,
+[data-action="minimizeWindow"] {
   mask-position: -128px -128px;
 }
 #easyGesturesPieMenu_nn .closeWindow,
-#easyGesturesPieMenu_ln .closeWindow {
+#easyGesturesPieMenu_ln .closeWindow,
+[data-action="closeWindow"] {
   mask-position: -160px -128px;
 }
 #easyGesturesPieMenu_nn .closeOtherWindows,
-#easyGesturesPieMenu_ln .closeOtherWindows {
+#easyGesturesPieMenu_ln .closeOtherWindows,
+[data-action="closeOtherWindows"] {
   mask-position: -192px -128px;
 }
 #easyGesturesPieMenu_nn .undoCloseWindow,
-#easyGesturesPieMenu_ln .undoCloseWindow {
+#easyGesturesPieMenu_ln .undoCloseWindow,
+[data-action="undoCloseWindow"] {
   mask-position: -224px -128px;
 }
 #easyGesturesPieMenu_nn .openLink,
-#easyGesturesPieMenu_ln .openLink {
+#easyGesturesPieMenu_ln .openLink,
+[data-action="openLink"] {
   mask-position: -0px -160px;
 }
 #easyGesturesPieMenu_nn .openLinkInNewWindow,
-#easyGesturesPieMenu_ln .openLinkInNewWindow {
+#easyGesturesPieMenu_ln .openLinkInNewWindow,
+[data-action="openLinkInNewWindow"] {
   mask-position: -32px -160px;
 }
 #easyGesturesPieMenu_nn .openLinkInNewPrivateWindow,
-#easyGesturesPieMenu_ln .openLinkInNewPrivateWindow {
+#easyGesturesPieMenu_ln .openLinkInNewPrivateWindow,
+[data-action="openLinkInNewPrivateWindow"] {
   mask-position: -64px -160px;
 }
 #easyGesturesPieMenu_nn .copyLink,
-#easyGesturesPieMenu_ln .copyLink {
+#easyGesturesPieMenu_ln .copyLink,
+[data-action="copyLink"] {
   mask-position: -96px -160px;
 }
 #easyGesturesPieMenu_nn .saveLinkAs,
-#easyGesturesPieMenu_ln .saveLinkAs {
+#easyGesturesPieMenu_ln .saveLinkAs,
+[data-action="saveLinkAs"] {
   mask-position: -128px -160px;
 }
 #easyGesturesPieMenu_nn .dailyReadings,
-#easyGesturesPieMenu_ln .dailyReadings {
+#easyGesturesPieMenu_ln .dailyReadings,
+[data-action="dailyReadings"] {
   mask-position: 0px -192px;
 }
 #easyGesturesPieMenu_nn .bookmarkThisPage,
-#easyGesturesPieMenu_ln .bookmarkThisPage {
+#easyGesturesPieMenu_ln .bookmarkThisPage,
+[data-action="bookmarkThisPage"] {
   mask-position: -32px -192px;
 }
 #easyGesturesPieMenu_nn .bookmarkThisIdentifier,
-#easyGesturesPieMenu_ln .bookmarkThisIdentifier {
+#easyGesturesPieMenu_ln .bookmarkThisIdentifier,
+[data-action="bookmarkThisIdentifier"] {
   mask-position: -64px -192px;
 }
 #easyGesturesPieMenu_nn .bookmarkThisLink,
-#easyGesturesPieMenu_ln .bookmarkThisLink {
+#easyGesturesPieMenu_ln .bookmarkThisLink,
+[data-action="bookmarkThisLink"] {
   mask-position: -96px -192px;
 }
 #easyGesturesPieMenu_nn .bookmarkAllTabs,
-#easyGesturesPieMenu_ln .bookmarkAllTabs {
+#easyGesturesPieMenu_ln .bookmarkAllTabs,
+[data-action="bookmarkAllTabs"] {
   mask-position: -128px -192px;
 }
 #easyGesturesPieMenu_nn .removeBookmarkToThisPage,
-#easyGesturesPieMenu_ln .removeBookmarkToThisPage {
+#easyGesturesPieMenu_ln .removeBookmarkToThisPage,
+[data-action="removeBookmarkToThisPage"] {
   mask-position: -160px -192px;
 }
 #easyGesturesPieMenu_nn .removeBookmarkToThisIdentifier,
-#easyGesturesPieMenu_ln .removeBookmarkToThisIdentifier {
+#easyGesturesPieMenu_ln .removeBookmarkToThisIdentifier,
+[data-action="removeBookmarkToThisIdentifier"] {
   mask-position: -192px -192px;
 }
 #easyGesturesPieMenu_nn .removeBookmarkToThisLink,
-#easyGesturesPieMenu_ln .removeBookmarkToThisLink {
+#easyGesturesPieMenu_ln .removeBookmarkToThisLink,
+[data-action="removeBookmarkToThisLink"] {
   mask-position: -224px -192px;
 }
 #easyGesturesPieMenu_nn .loadURL1,
-#easyGesturesPieMenu_ln .loadURL1 {
+#easyGesturesPieMenu_ln .loadURL1,
+[data-action="loadURL1"] {
   mask-position: -0px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL2,
-#easyGesturesPieMenu_ln .loadURL2 {
+#easyGesturesPieMenu_ln .loadURL2,
+[data-action="loadURL2"] {
   mask-position: -32px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL3,
-#easyGesturesPieMenu_ln .loadURL3 {
+#easyGesturesPieMenu_ln .loadURL3,
+[data-action="loadURL3"] {
   mask-position: -64px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL4,
-#easyGesturesPieMenu_ln .loadURL4 {
+#easyGesturesPieMenu_ln .loadURL4,
+[data-action="loadURL4"] {
   mask-position: -96px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL5,
-#easyGesturesPieMenu_ln .loadURL5 {
+#easyGesturesPieMenu_ln .loadURL5,
+[data-action="loadURL5"] {
   mask-position: -128px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL6,
-#easyGesturesPieMenu_ln .loadURL6 {
+#easyGesturesPieMenu_ln .loadURL6,
+[data-action="loadURL6"] {
   mask-position: -160px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL7,
-#easyGesturesPieMenu_ln .loadURL7 {
+#easyGesturesPieMenu_ln .loadURL7,
+[data-action="loadURL7"] {
   mask-position: -192px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL8,
-#easyGesturesPieMenu_ln .loadURL8 {
+#easyGesturesPieMenu_ln .loadURL8,
+[data-action="loadURL8"] {
   mask-position: -224px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL9,
-#easyGesturesPieMenu_ln .loadURL9 {
+#easyGesturesPieMenu_ln .loadURL9,
+[data-action="loadURL9"] {
   mask-position: -256px -224px;
 }
 #easyGesturesPieMenu_nn .loadURL10,
-#easyGesturesPieMenu_ln .loadURL10 {
+#easyGesturesPieMenu_ln .loadURL10,
+[data-action="loadURL10"] {
   mask-position: -288px -224px;
 }
 #easyGesturesPieMenu_nn .runScript1,
-#easyGesturesPieMenu_ln .runScript1 {
+#easyGesturesPieMenu_ln .runScript1,
+[data-action="runScript1"] {
   mask-position: -0px -256px;
 }
 #easyGesturesPieMenu_nn .runScript2,
-#easyGesturesPieMenu_ln .runScript2 {
+#easyGesturesPieMenu_ln .runScript2,
+[data-action="runScript2"] {
   mask-position: -32px -256px;
 }
 #easyGesturesPieMenu_nn .runScript3,
-#easyGesturesPieMenu_ln .runScript3 {
+#easyGesturesPieMenu_ln .runScript3,
+[data-action="runScript3"] {
   mask-position: -64px -256px;
 }
 #easyGesturesPieMenu_nn .runScript4,
-#easyGesturesPieMenu_ln .runScript4 {
+#easyGesturesPieMenu_ln .runScript4,
+[data-action="runScript4"] {
   mask-position: -96px -256px;
 }
 #easyGesturesPieMenu_nn .runScript5,
-#easyGesturesPieMenu_ln .runScript5 {
+#easyGesturesPieMenu_ln .runScript5,
+[data-action="runScript5"] {
   mask-position: -128px -256px;
 }
 #easyGesturesPieMenu_nn .runScript6,
-#easyGesturesPieMenu_ln .runScript6 {
+#easyGesturesPieMenu_ln .runScript6,
+[data-action="runScript6"] {
   mask-position: -160px -256px;
 }
 #easyGesturesPieMenu_nn .runScript7,
-#easyGesturesPieMenu_ln .runScript7 {
+#easyGesturesPieMenu_ln .runScript7,
+[data-action="runScript7"] {
   mask-position: -192px -256px;
 }
 #easyGesturesPieMenu_nn .runScript8,
-#easyGesturesPieMenu_ln .runScript8 {
+#easyGesturesPieMenu_ln .runScript8,
+[data-action="runScript8"] {
   mask-position: -224px -256px;
 }
 #easyGesturesPieMenu_nn .runScript9,
-#easyGesturesPieMenu_ln .runScript9 {
+#easyGesturesPieMenu_ln .runScript9,
+[data-action="runScript9"] {
   mask-position: -256px -256px;
 }
 #easyGesturesPieMenu_nn .runScript10,
-#easyGesturesPieMenu_ln .runScript10 {
+#easyGesturesPieMenu_ln .runScript10,
+[data-action="runScript10"] {
   mask-position: -288px -256px;
 }
 #easyGesturesPieMenu_nn .customIcon,
@@ -1023,39 +1106,48 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   mask-size: 26px 26px;
 }
 #easyGesturesPieMenu_nn .easyGesturesNPreferences,
-#easyGesturesPieMenu_ln .easyGesturesNPreferences {
+#easyGesturesPieMenu_ln .easyGesturesNPreferences,
+[data-action="easyGesturesNPreferences"] {
   mask-position: 0px -288px;
 }
 #easyGesturesPieMenu_nn .copyImageLocation,
-#easyGesturesPieMenu_ln .copyImageLocation {
+#easyGesturesPieMenu_ln .copyImageLocation,
+[data-action="copyImageLocation"] {
   mask-position: -0px -320px;
 }
 #easyGesturesPieMenu_nn .copyImage,
-#easyGesturesPieMenu_ln .copyImage {
+#easyGesturesPieMenu_ln .copyImage,
+[data-action="copyImage"] {
   mask-position: -32px -320px;
 }
 #easyGesturesPieMenu_nn .saveImageAs,
-#easyGesturesPieMenu_ln .saveImageAs {
+#easyGesturesPieMenu_ln .saveImageAs,
+[data-action="saveImageAs"] {
   mask-position: -64px -320px;
 }
 #easyGesturesPieMenu_nn .hideImages,
-#easyGesturesPieMenu_ln .hideImages {
+#easyGesturesPieMenu_ln .hideImages,
+[data-action="hideImages"] {
   mask-position: -96px -320px;
 }
 #easyGesturesPieMenu_nn .cut,
-#easyGesturesPieMenu_ln .cut {
+#easyGesturesPieMenu_ln .cut,
+[data-action="cut"] {
   mask-position: -0px -352px;
 }
 #easyGesturesPieMenu_nn .copy,
-#easyGesturesPieMenu_ln .copy {
+#easyGesturesPieMenu_ln .copy,
+[data-action="copy"] {
   mask-position: -32px -352px;
 }
 #easyGesturesPieMenu_nn .paste,
-#easyGesturesPieMenu_ln .paste {
+#easyGesturesPieMenu_ln .paste,
+[data-action="paste"] {
   mask-position: -64px -352px;
 }
 #easyGesturesPieMenu_nn .selectAll,
-#easyGesturesPieMenu_ln .selectAll {
+#easyGesturesPieMenu_ln .selectAll,
+[data-action="selectAll"] {
   mask-position: -96px -352px;
 }
 
@@ -1438,102 +1530,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ls .selectAll {
   mask-position: -60px -220px;
 }
-
-
-/* REGULAR ICONS */
-
-[data-action="empty"] { background-position: 0px 0px; }
-[data-action="showExtraMenu"] { background-position: -32px -32px; }
-[data-action="back"] { background-position: -128px -128px; }
-[data-action="backSite"] { background-position: -64px -128px; }
-[data-action="firstPage"] { background-position: 0px -128px; }
-[data-action="forward"] { background-position: -160px -128px; }
-[data-action="forwardSite"] { background-position: -96px -128px; }
-[data-action="lastPage"] { background-position: -32px -128px; }
-[data-action="reload"] { background-position: 0px -224px; }
-[data-action="homepage"] { background-position: 0px -608px; }
-[data-action="pageTop"] { background-position: -128px -224px; }
-[data-action="pageBottom"] { background-position: -160px -224px; }
-[data-action="savePageAs"] { background-position: -224px -512px; }
-[data-action="printPage"] { background-position: -352px -896px; }
-[data-action="showPrintPreview"] { background-position: -352px -896px; }
-[data-action="searchWeb"] { background-position: -64px -608px; }
-[data-action="loadPageInNewTab"] { background-position: -96px -800px; }
-[data-action="loadPageInNewPrivateWindow"] { background-position: -288px -608px; }
-[data-action="moveTabToNewWindow"] { background-position: -256px -608px; }
-[data-action="copyPageURL"] { background-position: -160px -608px; }
-[data-action="copyURLToIdentifier"] { background-position: -128px -608px; }
-[data-action="zoomIn"] { background-position: -192px -992px; }
-[data-action="zoomOut"] { background-position: -224px -992px; }
-[data-action="zoomReset"] { background-position: -256px -992px; }
-[data-action="findAndHighlightSelection"] { background-position: -160px -992px; }
-[data-action="removeHighlight"] { background-position: -32px -800px; }
-[data-action="enterReaderMode"] { background-position: -32px -608px; }
-[data-action="takeTabScreenshot"] { background-position: -64px -800px; }
-[data-action="toggleFullscreen"] { background-position: -160px -416px; }
-[data-action="up"] { background-position: -64px -224px; }
-[data-action="root"] { background-position: -96px -224px; }
-[data-action="showOnlyThisFrame"] { background-position: -288px -896px; }
-[data-action="viewPageSource"] { background-position: -224px -896px; }
-[data-action="newTab"] { background-position: 0px -320px; }
-[data-action="newBlankTab"] { background-position: 0px -320px; }
-[data-action="duplicateTab"] { background-position: -32px -320px; }
-[data-action="closeTab"] { background-position: -128px -320px; }
-[data-action="closeOtherTabs"] { background-position: -160px -320px; }
-[data-action="undoCloseTab"] { background-position: -192px -320px; }
-[data-action="previousTab"] { background-position: -64px -320px; }
-[data-action="nextTab"] { background-position: -96px -320px; }
-[data-action="pinUnpinTab"] { background-position: -320px -896px; }
-[data-action="newWindow"] { background-position: 0px -416px; }
-[data-action="newBlankWindow"] { background-position: 0px -416px; }
-[data-action="newPrivateWindow"] { background-position: -420px -896px; }
-[data-action="duplicateWindow"] { background-position: -32px -416px; }
-[data-action="minimizeWindow"] { background-position: -128px -416px; }
-[data-action="closeWindow"] { background-position: -64px -416px; }
-[data-action="closeOtherWindows"] { background-position: -64px -416px; }
-[data-action="undoCloseWindow"] { background-position: -192px -608px; }
-[data-action="openLink"] { background-position: 0px -512px; }
-[data-action="openLinkInNewWindow"] { background-position: -32px -512px; }
-[data-action="openLinkInNewPrivateWindow"] { background-position: -32px -512px; }
-[data-action="copyLink"] { background-position: -64px -512px; }
-[data-action="saveLinkAs"] { background-position: -160px -512px; }
-[data-action="dailyReadings"] { background-position: -32px -608px; }
-[data-action="bookmarkThisPage"] { background-position: -64px -896px; }
-[data-action="bookmarkThisIdentifier"] { background-position: -352px -608px; }
-[data-action="bookmarkThisLink"] { background-position: -32px -896px; }
-[data-action="bookmarkAllTabs"] { background-position: -96px -896px; }
-[data-action="removeBookmarkToThisPage"] { background-position: -384px -608px; }
-[data-action="removeBookmarkToThisIdentifier"] { background-position: -416px -608px; }
-[data-action="removeBookmarkToThisLink"] { background-position: 0px -800px; }
-[data-action="loadURL1"],
-[data-action="runScript1"] { background-position: 0px -704px; }
-[data-action="loadURL2"],
-[data-action="runScript2"] { background-position: -32px -704px; }
-[data-action="loadURL3"],
-[data-action="runScript3"] { background-position: -64px -704px; }
-[data-action="loadURL4"],
-[data-action="runScript4"] { background-position: -96px -704px; }
-[data-action="loadURL5"],
-[data-action="runScript5"] { background-position: -128px -704px; }
-[data-action="loadURL6"],
-[data-action="runScript6"] { background-position: -160px -704px; }
-[data-action="loadURL7"],
-[data-action="runScript7"] { background-position: -192px -704px; }
-[data-action="loadURL8"],
-[data-action="runScript8"] { background-position: -224px -704px; }
-[data-action="loadURL9"],
-[data-action="runScript9"] { background-position: -256px -704px; }
-[data-action="loadURL10"],
-[data-action="runScript10"] { background-position: -288px -704px; }
-[data-action="easyGesturesNPreferences"] { background-position: -320px -608px; }
-[data-action="copyImageLocation"] { background-position: -128px -512px; }
-[data-action="copyImage"] { background-position: -288px -512px; }
-[data-action="saveImageAs"] { background-position: -192px -512px; }
-[data-action="hideImages"] { background-position: -256px -512px; }
-[data-action="cut"] { background-position: 0px -992px; }
-[data-action="copy"] { background-position: -32px -992px; }
-[data-action="paste"] { background-position: -64px -992px; }
-[data-action="selectAll"] { background-position: -128px -992px; }
 
 
 /* SMALL ICONS */
