@@ -120,6 +120,8 @@ nav a:hover {
 }
 
 h1 {
+  display: flex;
+  align-items: center;
   margin: 0 0 0.75em 0;
   padding-top: 0.25em;
   font-size: larger;
@@ -362,9 +364,8 @@ th {
 }
 
 #stats_clicksByAction div {
-  margin-top: 0.25em;
-  height: 20px;
-  line-height: 20px;
+  height: 32px;
+  line-height: 32px;
 }
 
 #stats_clicksByAction span {
