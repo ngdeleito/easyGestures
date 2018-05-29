@@ -68,7 +68,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   
   // half the angle reserved for a sector (in radians)
   this.halfAngleForSector = Math.PI / this.actions.length;
-  this.startingAngle = this._isLarge ? this.halfAngleForSector : 0;
   this.sectorOffset = this._isLarge ? 0 : this.halfAngleForSector;
   
   browser.runtime.sendMessage({
@@ -138,7 +137,6 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._isLarge = false; // extra menus are never large
   
   this.halfAngleForSector = Math.PI / 8;
-  this.startingAngle = 0;
   this.sectorOffset = this.halfAngleForSector;
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
@@ -212,8 +210,6 @@ let eGPieMenu = {
     this._easyGesturesNodeID = "easyGesturesPieMenu_" +
                                (this.settings.largeMenu ? "l" : "n") +
                                (this.settings.smallIcons ? "s" : "n");
-    
-    this._iconSize = this.settings.smallIcons ? 20 : 32;
     
     // coordinates of the pie menu center (relative to the viewport)
     this.centerX = 0;
@@ -346,25 +342,16 @@ let eGPieMenu = {
     this.specialNodesNode.appendChild(contextMenuSignNode);
   },
   
-  _createActionsNodes: function(layoutName, outerRadius, innerRadius,
-                                 startingAngle, actions, halfAngleForSector) {
+  _createActionsNodes: function(layoutName, actions) {
     let anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
     anActionsNode.id = "eG_actions_" + layoutName;
+    anActionsNode.classList.toggle("extra", this._currentLayout.isExtraMenu);
     
     // creating actions images
-    
-    let offset = outerRadius - this._iconSize / 2;
-    let imageR = (outerRadius + innerRadius) / 2;
-    let angle = startingAngle;
-    
     actions.forEach(function(action, index) {
-      let xpos = imageR * Math.cos(angle) + offset;
-      let ypos = -imageR * Math.sin(angle) + offset;
-      
       let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
       anActionNode.id = "eG_action_" + layoutName + "_" + index;
-      anActionNode.style.left = Math.round(xpos) + "px";
-      anActionNode.style.top = Math.round(ypos) + "px";
+      anActionNode.className = "sector" + index;
       
       let iconName = action;
       
@@ -397,9 +384,8 @@ let eGPieMenu = {
         }
       }
       
-      anActionNode.className = iconName;
+      anActionNode.classList.add(iconName);
       anActionsNode.appendChild(anActionNode);
-      angle += 2 * halfAngleForSector;
     }, this);
     
     return anActionsNode;
@@ -448,10 +434,7 @@ let eGPieMenu = {
     let actionsNode = document.getElementById("eG_actions_" + layoutName);
     if (actionsNode === null) {
       actionsNode = this._createActionsNodes(layoutName,
-                      this._currentLayout.outerR, this._currentLayout.innerR,
-                      this._currentLayout.startingAngle,
-                      this._currentLayout.actions,
-                      this._currentLayout.halfAngleForSector);
+                                             this._currentLayout.actions);
       this.easyGesturesNode.appendChild(actionsNode);
     }
     actionsNode.style.visibility = "visible";

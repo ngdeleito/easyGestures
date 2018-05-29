@@ -301,6 +301,57 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 1;
 }
 
+#easyGesturesPieMenu_nn div.sector0 { right: 2px; top: 45px; }
+#easyGesturesPieMenu_nn div.sector1 { left: 76px; top: 14px; }
+#easyGesturesPieMenu_nn div.sector2 { left: 45px; top: 2px; }
+#easyGesturesPieMenu_nn div.sector3 { left: 14px; top: 14px; }
+#easyGesturesPieMenu_nn div.sector4 { left: 2px; top: 45px; }
+#easyGesturesPieMenu_nn div.sector5 { left: 14px; top: 76px; }
+#easyGesturesPieMenu_nn div.sector6 { left: 45px; bottom: 2px; }
+#easyGesturesPieMenu_nn div.sector7 { left: 76px; top: 76px; }
+
+#easyGesturesPieMenu_ns div.sector0 { right: 1.25px; top: 28px; }
+#easyGesturesPieMenu_ns div.sector1 { left: 47px; top: 9px; }
+#easyGesturesPieMenu_ns div.sector2 { left: 28px; top: 1.25px; }
+#easyGesturesPieMenu_ns div.sector3 { left: 9px; top: 9px; }
+#easyGesturesPieMenu_ns div.sector4 { left: 1.25px; top: 28px; }
+#easyGesturesPieMenu_ns div.sector5 { left: 9px; top: 47px; }
+#easyGesturesPieMenu_ns div.sector6 { left: 28px; bottom: 1.25px; }
+#easyGesturesPieMenu_ns div.sector7 { left: 47px; top: 47px; }
+
+#easyGesturesPieMenu_ln div.sector0 { right: 2.3px; top: 38.5px; }
+#easyGesturesPieMenu_ln div.sector1 { left: 85px; top: 11px; }
+#easyGesturesPieMenu_ln div.sector2 { left: 54px; top: 4.66px; }
+#easyGesturesPieMenu_ln div.sector3 { left: 23px; top: 11px; }
+#easyGesturesPieMenu_ln div.sector4 { left: 2.3px; top: 38.5px; }
+#easyGesturesPieMenu_ln div.sector5 { display: block; left: 2.3px; top: 69.5px; }
+#easyGesturesPieMenu_ln div.sector6 { left: 23px; top: 97px; }
+#easyGesturesPieMenu_ln div.sector7 { left: 54px; bottom: 4.66px; }
+#easyGesturesPieMenu_ln div.sector8 { left: 85px; top: 97px; }
+#easyGesturesPieMenu_ln div.sector9 { display: block; right: 2.3px; top: 69.5px; }
+
+#easyGesturesPieMenu_ln .extra div.sector0 { right: 2.3px; top: 54px; }
+#easyGesturesPieMenu_ln .extra div.sector1 { left: 90px; top: 18px; }
+#easyGesturesPieMenu_ln .extra div.sector2 { left: 54px; top: 2.3px; }
+#easyGesturesPieMenu_ln .extra div.sector3 { left: 18px; top: 18px; }
+#easyGesturesPieMenu_ln .extra div.sector4 { left: 2.3px; top: 54px; }
+
+#easyGesturesPieMenu_ls div.sector0 { right: 1.44px; top: 24px; }
+#easyGesturesPieMenu_ls div.sector1 { left: 54px; top: 7px; }
+#easyGesturesPieMenu_ls div.sector2 { left: 34px; top: 2.98px; }
+#easyGesturesPieMenu_ls div.sector3 { left: 14px; top: 7px; }
+#easyGesturesPieMenu_ls div.sector4 { left: 1.44px; top: 24px; }
+#easyGesturesPieMenu_ls div.sector5 { display: block; left: 1.44px; top: 44px; }
+#easyGesturesPieMenu_ls div.sector6 { left: 14px; top: 61px; }
+#easyGesturesPieMenu_ls div.sector7 { left: 34px; bottom: 2.98px; }
+#easyGesturesPieMenu_ls div.sector8 { left: 54px; top: 61px; }
+#easyGesturesPieMenu_ls div.sector9 { display: block; right: 1.44px; top: 44px; }
+
+#easyGesturesPieMenu_ls .extra div.sector0 { right: 1.44px; top: 34px; }
+#easyGesturesPieMenu_ls .extra div.sector1 { left: 58px; top: 10px; }
+#easyGesturesPieMenu_ls .extra div.sector2 { left: 34px; top: 1.44px; }
+#easyGesturesPieMenu_ls .extra div.sector3 { left: 10px; top: 10px; }
+#easyGesturesPieMenu_ls .extra div.sector4 { left: 1.44px; top: 34px; }
 
 /* Labels */
 
