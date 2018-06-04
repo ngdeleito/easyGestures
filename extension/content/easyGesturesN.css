@@ -85,28 +85,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_nn #easyGesturesMainMenusSign {
   left: 32px; /* icon size */
-  top: -75px; /* labels y-offset */
+  top: -81px; /* labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu_ns #easyGesturesMainMenusSign {
   left: 20px; /* icon size */
-  top: -46px; /* labels y-offset */
+  top: -51px; /* labels y-offset */
   line-height: 20px;
   font-size: 10px;
 }
 
 #easyGesturesPieMenu_ln #easyGesturesMainMenusSign {
   left: 32px; /* icon size */
-  top: -92px; /* labels y-offset */
+  top: -97px; /* labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu_ls #easyGesturesMainMenusSign {
   left: 20px; /* icon size */
-  top: -54px; /* labels y-offset */
+  top: -61px; /* labels y-offset */
   line-height: 20px;
   font-size: 10px;
 }
@@ -118,14 +118,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_nn #easyGesturesExtraMenusSign {
   left: 32px; /* icon size */
-  top: -149px; /* extra labels y-offset */
+  top: -154px; /* extra labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu_ns #easyGesturesExtraMenusSign {
   left: 20px; /* icon size */
-  top: -91px; /* extra labels y-offset */
+  top: -95px; /* extra labels y-offset */
   line-height: 20px;
   font-size: 10px;
 }
@@ -139,7 +139,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_ls #easyGesturesExtraMenusSign {
   left: 20px; /* icon size */
-  top: -105px; /* extra labels y-offset */
+  top: -107px; /* extra labels y-offset */
   line-height: 20px;
   font-size: 10px;
 }
@@ -183,28 +183,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu_nn #easyGesturesContextMenuSign {
   left: 32px; /* icon size */
-  top: -75px; /* labels y-offset */
+  top: -81px; /* labels y-offset */
   line-height: 14px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu_ns #easyGesturesContextMenuSign {
   left: 20px; /* icon size */
-  top: -46px; /* labels y-offset */
+  top: -51px; /* labels y-offset */
   line-height: 9px;
   font-size: 9px;
 }
 
 #easyGesturesPieMenu_ln #easyGesturesContextMenuSign {
   left: 32px; /* icon size */
-  top: -92px; /* labels y-offset */
+  top: -97px; /* labels y-offset */
   line-height: 14px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu_ls #easyGesturesContextMenuSign {
   left: 20px; /* icon size */
-  top: -54px; /* labels y-offset */
+  top: -61px; /* labels y-offset */
   line-height: 9px;
   font-size: 9px;
 }
