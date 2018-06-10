@@ -13,7 +13,6 @@
   <g>
     <circle cx="10" cy="10" r="9" fill="hsl(0, 0%, 80%)"
             stroke="hsl(0, 0%, 60%)" stroke-width="2" />
-    <circle cx="10" cy="10" r="4" fill="lime"
-            stroke="hsl(0, 0%, 60%)" stroke-width="2" />
+    <circle cx="10" cy="10" r="4" fill="hsl(0, 0%, 60%)" />
   </g>
 </svg>
