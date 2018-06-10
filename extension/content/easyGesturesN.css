@@ -366,21 +366,25 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn div[id^="eG_labels"] {
   left: -200px; /* labels x-offset */
   top: -81px; /* 2,5 * (label height + 2px) + 1px */
+  width: 400px; /* 2 * labels x-offset */
 }
 
 #easyGesturesPieMenu_ns div[id^="eG_labels"] {
   left: -150px; /* labels x-offset */ /* 75% of non small */
   top: -51px;
+  width: 300px;
 }
 
 #easyGesturesPieMenu_ln div[id^="eG_labels"] {
   left: -220px; /* labels x-offset */
   top: -97px; /* 3 * (label height + 2px) + 1px */
+  width: 440px;
 }
 
 #easyGesturesPieMenu_ls div[id^="eG_labels"] {
   left: -165px; /* labels x-offset */ /* 75% of non small */
   top: -61px;
+  width: 330px;
 }
 
 #easyGesturesPieMenu_nn div[id^="eG_labels_extra"],
@@ -491,50 +495,50 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu_nn .label2 {
-  padding-right: 54px; /* default padding-right + 1,5 * icon size */
-  width: 152px; /* (labels x-offset + 0,5 * icon size) - border-left - padding-left - padding-right - border-right */
+  padding-right: 54px; /* 1,5 * icon size + 6px */
+  width: 152px; /* labels x-offset + 0,5 * icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu_nn .label6 {
-  left: 184px; /* labels x-offset - 0,5 * icon size) */
+#easyGesturesPieMenu_nn .label6 { /* see label2 */
   top: 128px;  /* 4 * (label height + 2px) */
-  padding-left: 54px; /* see label2 padding-right */
-  width: 152px; /* see label2 */
+  right: 0px;
+  padding-left: 54px;
+  width: 152px;
 }
 #easyGesturesPieMenu_nn .label3 {
   left: 0px;
   top: 32px; /* label height + 2px */
-  padding-right: 32px; /* see label1 padding-left */
-  width: 130px; /* labels x-offset - 2 * icon size - 6 */
+  padding-right: 32px; /* icon size */
+  width: 130px; /* labels x-offset - 2 * icon size - 6px */
 }
-#easyGesturesPieMenu_nn .label1 {
-  left: 228px; /* 2 * labels x-offset - border-right - padding-right - width - padding-left - border-left */
-  top: 32px; /* see label3 */
-  padding-left: 32px; /* icon size */
-  width: 130px; /* see label3 */
+#easyGesturesPieMenu_nn .label1 { /* see label3 */
+  top: 32px;
+  right: 0px;
+  padding-left: 32px;
+  width: 130px;
+}
+#easyGesturesPieMenu_nn .label5 { /* see label3 */
+  left: 0px;
+  top: 96px; /* 3 * (label height + 2px) */
+  padding-right: 32px;
+  width: 130px;
+}
+#easyGesturesPieMenu_nn .label7 { /* see label5 */
+  top: 96px;
+  right: 0px;
+  padding-left: 32px;
+  width: 130px;
 }
 #easyGesturesPieMenu_nn .label4 {
   left: 0px;
   top: 64px; /* 2 * (label height + 2px) */
-  padding-right: 32px; /* see label0 padding-left */
-  width: 120px; /* label x-offset - 2,5 * icon size */
+  padding-right: 32px; /* icon size */
+  width: 120px; /* labels x-offset - 2,5 * icon size */
 }
-#easyGesturesPieMenu_nn .label0 {
-  left: 238px; /* 2 * labels x-offset - border-right - padding-right - width - padding-left - border-left */
-  top: 64px; /* see label4 */
-  padding-left: 32px; /* icon size */
-  width: 120px; /* see label4 */
-}
-#easyGesturesPieMenu_nn .label5 {
-  left: 0px;
-  top: 96px; /* 3 * (label height + 2px) */
-  padding-right: 32px; /* see label3 */
-  width: 130px; /* see label3 */
-}
-#easyGesturesPieMenu_nn .label7 {
-  left: 228px; /* see label1 */
-  top: 96px; /* see label5 */
-  padding-left: 32px; /* see label1 */
-  width: 130px; /* see label1 */
+#easyGesturesPieMenu_nn .label0 { /* see label4 */
+  top: 64px;
+  right: 0px;
+  padding-left: 32px;
+  width: 120px;
 }
 
 #easyGesturesPieMenu_ns .label2 {
@@ -542,8 +546,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 114px;
 }
 #easyGesturesPieMenu_ns .label6 {
-  left: 140px;
   top: 80px;
+  right: 0px;
   padding-left: 36px;
   width: 114px;
 }
@@ -554,8 +558,20 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 104px;
 }
 #easyGesturesPieMenu_ns .label1 {
-  left: 166px;
   top: 20px;
+  right: 0px;
+  padding-left: 20px;
+  width: 104px;
+}
+#easyGesturesPieMenu_ns .label5 {
+  left: 0px;
+  top: 60px;
+  padding-right: 20px;
+  width: 104px;
+}
+#easyGesturesPieMenu_ns .label7 {
+  top: 60px;
+  right: 0px;
   padding-left: 20px;
   width: 104px;
 }
@@ -566,140 +582,128 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 100px;
 }
 #easyGesturesPieMenu_ns .label0 {
-  left: 170px;
   top: 40px;
+  right: 0px;
   padding-left: 20px;
   width: 100px;
 }
-#easyGesturesPieMenu_ns .label5 {
-  left: 0px;
-  top: 60px;
-  padding-right: 20px;
-  width: 104px;
-}
-#easyGesturesPieMenu_ns .label7 {
-  left: 166px;
-  top: 60px;
-  padding-left: 20px;
-  width: 104px;
-}
 
 #easyGesturesPieMenu_ln .label2 {
-  padding-right: 54px;
-  width: 172px;
+  padding-right: 38px; /* icon size + 6px */
+  width: 188px;
 }
 #easyGesturesPieMenu_ln .label7 {
-  left: 204px;
   top: 160px; /* 5 * (label height + 2px) */
-  padding-left: 54px;
-  width: 172px;
+  right: 0px;
+  padding-left: 38px;
+  width: 188px;
 }
 #easyGesturesPieMenu_ln .label3 {
   left: 0px;
   top: 32px;
-  padding-right: 42px; /* +10px */
-  width: 150px;
+  padding-right: 54px; /* 1,5 * icon size + 6px */
+  width: 140px; /* labels x-offset - 0,5 * icon size - border-left - padding-left - padding-right - border-right */
 }
 #easyGesturesPieMenu_ln .label1 {
-  left: 238px; /* -10px */
   top: 32px;
-  padding-left: 42px; /* +10px */
-  width: 150px;
+  right: 0px;
+  padding-left: 54px;
+  width: 140px;
+}
+#easyGesturesPieMenu_ln .label6 {
+  left: 0px;
+  top: 128px;
+  padding-right: 54px;
+  width: 140px;
+}
+#easyGesturesPieMenu_ln .label8 {
+  top: 128px;
+  right: 0px;
+  padding-left: 54px;
+  width: 140px;
 }
 #easyGesturesPieMenu_ln .label4 {
   left: 0px;
   top: 64px;
-  padding-right: 32px;
-  width: 140px;
+  padding-right: 48px; /* 1,5 * icon size */
+  width: 130px; /* labels x-offset - icon size - border-left - padding-left - padding-right - border-right */
 }
 #easyGesturesPieMenu_ln .label0 {
-  left: 258px;
   top: 64px;
-  padding-left: 32px;
-  width: 140px;
+  right: 0px;
+  padding-left: 48px;
+  width: 130px;
 }
 #easyGesturesPieMenu_ln .label5 { /* see label4 */
   left: 0px;
   top: 96px;
-  padding-right: 32px;
-  width: 140px;
+  padding-right: 48px;
+  width: 130px;
 }
-#easyGesturesPieMenu_ln .label9 { /* see label0 */
-  left: 258px;
+#easyGesturesPieMenu_ln .label9 { /* see label5 */
   top: 96px;
-  padding-left: 32px;
-  width: 140px;
-}
-#easyGesturesPieMenu_ln .label6 { /* see label3 */
-  left: 0px;
-  top: 128px;
-  padding-right: 42px; /* +10px */
-  width: 150px;
-}
-#easyGesturesPieMenu_ln .label8 { /* see label1 */
-  left: 238px; /* -10px */
-  top: 128px;
-  padding-left: 42px; /* +10px */
-  width: 150px;
+  right: 0px;
+  padding-left: 48px;
+  width: 130px;
 }
 
 #easyGesturesPieMenu_ls .label2 {
-  padding-right: 36px;
-  width: 129px;
+  padding-right: 26px;
+  width: 139px;
 }
 #easyGesturesPieMenu_ls .label7 {
-  left: 155px;
   top: 100px;
-  padding-left: 36px;
-  width: 129px;
+  right: 0px;
+  padding-left: 26px;
+  width: 139px;
 }
 #easyGesturesPieMenu_ls .label3 {
   left: 0px;
   top: 20px;
-  padding-right: 20px;
-  width: 119px;
+  padding-right: 36px;
+  width: 109px;
 }
 #easyGesturesPieMenu_ls .label1 {
-  left: 181px;
   top: 20px;
-  padding-left: 20px;
-  width: 119px;
-}
-#easyGesturesPieMenu_ls .label4 {
-  left: 0px;
-  top: 40px;
-  padding-right: 20px;
-  width: 115px;
-}
-#easyGesturesPieMenu_ls .label0 {
-  left: 185px;
-  top: 40px;
-  padding-left: 20px;
-  width: 115px;
-}
-#easyGesturesPieMenu_ls .label5 {
-  left: 0px;
-  top: 60px;
-  padding-right: 20px;
-  width: 115px;
-}
-#easyGesturesPieMenu_ls .label9 {
-  left: 185px;
-  top: 60px;
-  padding-left: 20px;
-  width: 115px;
+  right: 0px;
+  padding-left: 36px;
+  width: 109px;
 }
 #easyGesturesPieMenu_ls .label6 {
   left: 0px;
   top: 80px;
-  padding-right: 20px;
-  width: 119px;
+  padding-right: 36px;
+  width: 109px;
 }
 #easyGesturesPieMenu_ls .label8 {
-  left: 181px;
   top: 80px;
-  padding-left: 20px;
-  width: 119px;
+  right: 0px;
+  padding-left: 36px;
+  width: 109px;
+}
+#easyGesturesPieMenu_ls .label4 {
+  left: 0px;
+  top: 40px;
+  padding-right: 30px;
+  width: 105px;
+}
+#easyGesturesPieMenu_ls .label0 {
+  top: 40px;
+  right: 0px;
+  padding-left: 30px;
+  width: 105px;
+}
+#easyGesturesPieMenu_ls .label5 {
+  left: 0px;
+  top: 60px;
+  padding-right: 30px;
+  width: 105px;
+}
+#easyGesturesPieMenu_ls .label9 {
+  top: 60px;
+  right: 0px;
+  padding-left: 30px;
+  width: 105px;
 }
 
 #easyGesturesPieMenu_nn [id^="eG_label_"].selected,
