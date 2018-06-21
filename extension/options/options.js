@@ -124,7 +124,6 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
     }
     
     let option = document.createElement("option");
-    option.className = "eGOptions_" + currentAction;
     option.value = currentAction;
     option.label = eGActions[currentAction].getLocalizedActionName();
     // setting the text attribute is needed since the label attribute is
