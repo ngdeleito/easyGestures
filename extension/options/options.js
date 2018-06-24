@@ -112,8 +112,10 @@ function removeEventListeners() {
 }
 
 function createActionsSelect(sectorNumber, isExtraMenu) {
+  let div = document.createElement("div");
   let select = document.createElement("select");
   let currentOptgroup = document.createElement("optgroup");
+  div.appendChild(select);
   select.appendChild(currentOptgroup);
   
   let currentAction = "empty"; // the EmptyAction is the first action
@@ -140,7 +142,7 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
     select.removeChild(select.childNodes[1]);
   }
   
-  return select;
+  return div;
 }
 
 function createMenuControl(menuName, isExtraMenu) {
@@ -159,11 +161,11 @@ function createMenuControl(menuName, isExtraMenu) {
   let numberOfItems = isExtraMenu ? 5 : 10;
   for (let i = 0; i < numberOfItems; ++i) {
     let action = document.createElement("div");
-    action.className = "sector" + i;
+    action.className = "menuIcon sector" + i;
     actionElements.appendChild(action);
     
     let select = createActionsSelect(i, isExtraMenu);
-    select.className = "sector" + i;
+    select.className = "menuSelect sector" + i;
     selectElements.appendChild(select);
   }
 }
