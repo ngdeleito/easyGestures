@@ -666,7 +666,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       let selectElements = control.lastElementChild;
       let prefValueAsArray = [];
       for (let i = 0; i < selectElements.childNodes.length; ++i) {
-        let value = selectElements.childNodes[i].value;
+        let value = selectElements.childNodes[i].firstElementChild.value;
         control.firstElementChild.childNodes[i].dataset.action = value;
         prefValueAsArray.push(value);
       }
@@ -677,6 +677,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     let selectElements = control.lastElementChild;
     for (let i = 0; i < selectElements.childNodes.length; ++i) {
       selectElements.childNodes[i]
+                    .firstElementChild
                     .addEventListener("change", onchangeHandler, true);
     }
   }
@@ -823,7 +824,7 @@ function setDisabledStatusForMenu(menuName, enabled) {
   let selectElements = document.getElementById("menuControl_" + menuName)
                                .lastElementChild;
   for (let i = 0; i < selectElements.childNodes.length; ++i) {
-    selectElements.childNodes[i].disabled = !enabled;
+    selectElements.childNodes[i].firstElementChild.disabled = !enabled;
   }
 }
 
