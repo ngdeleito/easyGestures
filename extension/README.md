@@ -4,28 +4,28 @@ Click the middle mouse button (or the left mouse button and a 'Shift' key on a M
 
 This extension is a fork of version 4.3.2 of the easyGestures extension created by Ons Besbes, who maintained it until Firefox 4. Help is very much welcome, especially for updating and maintaining both the visual appearance and the formerly supported locales.
 
-The requested permissions are used as follows:
+The permissions requested by this extension are used for the following purposes:
 
-- `<all_urls>`
+- `<all_urls>`: "Access your data for all websites"
   - "Take tab screenshot" action
-- `bookmarks`
+- `bookmarks`: "Read and modify bookmarks"
   - "Daily readings", "Bookmark this page", "Bookmark this identifier", "Bookmark this link", "Bookmark all tabs", "Remove bookmark to this page", "Remove bookmark to this identifier", and "Remove bookmark to this link" actions
-- `browserSettings`
+- `browserSettings`: "Read and modify browser settings"
   - "Home page" and "New window" actions
-- `clipboardRead`
+- `clipboardRead`: "Get data from the clipboard"
   - "Paste" action
-- `clipboardWrite`
+- `clipboardWrite`: "Input data to the clipboard"
   - "Copy image", "Cut", and "Copy" actions
-- `downloads`
+- `downloads`: "Download files and read and modify the browser’s download history"
   - "Save page as...", "Take tab screenshot", "Save link as...", and "Save image as..." actions
   - Exporting preferences
-- `find`
+- `find`: "Read the text of all open tabs"
   - "Find and highlight selection" and "Remove highlight" actions
-- `sessions`
+- `sessions`: "Access recently closed tabs"
   - "Undo close tab" and "Undo close window" actions
 - `storage`
   - Managing preferences
-- `tabs`
+- `tabs`: "Access browser tabs"
   - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", "Bookmark all tabs", and "easyGestures N preferences" actions
   - Displaying tips from the preferences dialog
   - Displaying preferences from the tips dialog
