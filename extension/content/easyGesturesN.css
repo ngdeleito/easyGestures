@@ -1161,7 +1161,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_nn .customIcon,
 #easyGesturesPieMenu_ln .customIcon {
   mask-repeat: no-repeat;
-  mask-size: 26px 26px;
+  mask-size: 20px 20px;
+  mask-position: 6px 6px;
 }
 #easyGesturesPieMenu_nn .easyGesturesNPreferences,
 #easyGesturesPieMenu_ln .easyGesturesNPreferences,
@@ -1550,7 +1551,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu_ns .customIcon,
 #easyGesturesPieMenu_ls .customIcon {
   mask-repeat: no-repeat;
-  mask-size: 16.25px 16.25px;
+  mask-size: 12.5px 12.5px;
+  mask-position: 3.75px 3.75px;
 }
 #easyGesturesPieMenu_ns .easyGesturesNPreferences,
 #easyGesturesPieMenu_ls .easyGesturesNPreferences {
