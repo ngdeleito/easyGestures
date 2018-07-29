@@ -953,7 +953,7 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
     });
     for (let i = 0; i < numberOfActions; ++i) {
       let stat = document.createElement("div");
-      stat.className = "sector" + i;
+      stat.className = "menuIcon sector" + i;
       let clicks = statsArray[layoutIndex * numberOfActions + i];
       let totalUsage = usages[layoutIndex] === 0 ? 1 : usages[layoutIndex];
       stat.textContent = Math.round(clicks * 100 / totalUsage) + "%";
@@ -991,7 +991,7 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
   });
   for (let i = 0; i < numberOfActions; ++i) {
    let stat = document.createElement("div");
-   stat.className = "sector" + i;
+   stat.className = "menuIcon sector" + i;
    stat.textContent = Math.round(usages[i] * 100 / (total === 0 ? 1 : total)) +
                         "%";
    container.appendChild(stat);
