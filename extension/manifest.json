@@ -6,8 +6,8 @@
   "author": "Nicolás González-Deleito",
   "homepage_url": "https://github.com/ngdeleito/easyGestures",
   "icons": {
-    "48": "icon.png",
-    "124": "icon.png"
+    "48": "icon48.png",
+    "124": "icon124.png"
   },
   
   "applications": {
