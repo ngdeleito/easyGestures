@@ -1,6 +1,13 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.0 (July 29, 2018)
+
+- new action icons!
+- new extension icon and tip images
+- minor theme improvements
+
+
 Version 5.4 (January 25, 2018)
 
 - the limitations related to the migration to WebExtensions listed in the release notes of versions 5.2 and 5.3 remain valid, except for what follows:

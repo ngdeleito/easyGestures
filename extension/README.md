@@ -2,7 +2,7 @@ easyGestures N provides easy to learn gestures for browsing the Web through a hi
 
 Click the middle mouse button (or the left mouse button and a 'Shift' key on a Mac) to open the pie menu, then click on the action to execute. Or even faster, hold down that button, drag the mouse pointer over the action to execute and release the button. Customize the actions available on the pie menu in the preferences dialog. Check out other features in the tips.
 
-This extension is a fork of version 4.3.2 of the easyGestures extension created by Ons Besbes, who maintained it until Firefox 4. Help is very much welcome, especially for updating and maintaining both the visual appearance and the formerly supported locales.
+This extension is a fork of version 4.3.2 of the easyGestures extension created by Ons Besbes, who maintained it until Firefox 4. Help is very much welcome, especially for updating and maintaining the formerly supported locales.
 
 The permissions requested by this extension are used for the following purposes:
 
