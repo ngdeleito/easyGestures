@@ -319,14 +319,11 @@ function handleMouseup(anEvent) {
 }
 
 function handleKeydown(anEvent) {
-  let altKey = anEvent.keyCode === 18;
-  let escKey = anEvent.keyCode === 27;
-  
   if (eGPieMenu.isShown()) {
-    if (altKey) {
+    if (anEvent.key === "Alt") {
       eGPieMenu.switchLayout();
     }
-    else if (escKey) {
+    else if (anEvent.key === "Escape") {
       eGPieMenu.close();
     }
   }
