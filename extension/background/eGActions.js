@@ -883,11 +883,16 @@ let eGActions = {
       });
     });
   }, function() {
-    return browser.bookmarks.search({
-      url: eGContext.pageURL
-    }).then(foundBookmarks => {
-      return foundBookmarks.length > 0;
-    });
+    try {
+      return browser.bookmarks.search({
+        url: eGContext.pageURL
+      }).then(foundBookmarks => {
+        return foundBookmarks.length > 0;
+      });
+    }
+    catch (exception) {
+      return true;
+    }
   }, false, "bookmarkThisIdentifier"),
   
   bookmarkThisIdentifier: new URLToIdentifierExistsDisableableAction("bookmarkThisIdentifier", function() {
@@ -905,14 +910,19 @@ let eGActions = {
       url: eGContext.anchorElementHREF
     });
   }, function() {
-    return eGContext.anchorElementExists ? browser.bookmarks.search({
-                                             url: eGContext.anchorElementHREF
-                                           }).then(foundBookmarks => {
-                                             return foundBookmarks.length > 0;
-                                           })
-                                         : new Promise(resolve => {
-                                             resolve(true);
-                                           });
+    try {
+      return eGContext.anchorElementExists ? browser.bookmarks.search({
+                                               url: eGContext.anchorElementHREF
+                                             }).then(foundBookmarks => {
+                                               return foundBookmarks.length > 0;
+                                             })
+                                           : new Promise(resolve => {
+                                               resolve(true);
+                                             });
+    }
+    catch (exception) {
+      return true;
+    }
   }, false, "bookmarkAllTabs"),
   
   bookmarkAllTabs: new Action("bookmarkAllTabs", function() {
@@ -935,11 +945,16 @@ let eGActions = {
       browser.bookmarks.remove(foundBookmarks[0].id);
     });
   }, function() {
-    return browser.bookmarks.search({
-      url: eGContext.pageURL
-    }).then(foundBookmarks => {
-      return foundBookmarks.length === 0;
-    });
+    try {
+      return browser.bookmarks.search({
+        url: eGContext.pageURL
+      }).then(foundBookmarks => {
+        return foundBookmarks.length === 0;
+      });
+    }
+    catch (exception) {
+      return true;
+    }
   }, false, "removeBookmarkToThisIdentifier"),
   
   removeBookmarkToThisIdentifier: new DisableableAction("removeBookmarkToThisIdentifier", function() {
@@ -949,14 +964,19 @@ let eGActions = {
       browser.bookmarks.remove(foundBookmarks[0].id);
     });
   }, function() {
-    return eGContext.urlToIdentifier === "" ? new Promise(resolve => {
-                                                resolve(true);
-                                              })
-                                            : browser.bookmarks.search({
-                                                url: eGContext.urlToIdentifier
-                                              }).then(foundBookmarks => {
-                                                return foundBookmarks.length === 0;
-                                              });
+    try {
+      return eGContext.urlToIdentifier === "" ? new Promise(resolve => {
+                                                  resolve(true);
+                                                })
+                                              : browser.bookmarks.search({
+                                                  url: eGContext.urlToIdentifier
+                                                }).then(foundBookmarks => {
+                                                  return foundBookmarks.length === 0;
+                                                });
+    }
+    catch (exception) {
+      return true;
+    }
   }, false, "removeBookmarkToThisLink"),
   
   removeBookmarkToThisLink: new DisableableAction("removeBookmarkToThisLink", function() {
@@ -966,14 +986,19 @@ let eGActions = {
       browser.bookmarks.remove(foundBookmarks[0].id);
     });
   }, function() {
-    return eGContext.anchorElementExists ? browser.bookmarks.search({
-                                             url: eGContext.anchorElementHREF
-                                           }).then(foundBookmarks => {
-                                             return foundBookmarks.length === 0;
-                                           })
-                                         : new Promise(resolve => {
-                                             resolve(true);
-                                           });
+    try {
+      return eGContext.anchorElementExists ? browser.bookmarks.search({
+                                               url: eGContext.anchorElementHREF
+                                             }).then(foundBookmarks => {
+                                               return foundBookmarks.length === 0;
+                                             })
+                                           : new Promise(resolve => {
+                                               resolve(true);
+                                             });
+    }
+    catch (exception) {
+      return true;
+    }
   }, false, "loadURL1"),
   
   loadURL1: new LoadURLAction(1, true, "loadURL2"),
