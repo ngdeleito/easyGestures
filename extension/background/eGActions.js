@@ -274,8 +274,8 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
                   .then(prefValue => {
-      return prefValue[1] === "";
-    });
+                    return prefValue[1] === "";
+                  });
   }, startsNewGroup, nextAction);
   
   this._number = number;
