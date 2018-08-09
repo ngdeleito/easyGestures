@@ -91,10 +91,8 @@ Action.prototype = {
   decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
                          0.5, 0.3],
   
-  _isDisabled: function() {
-    return new Promise(resolve => {
-      resolve(false);
-    });
+  _isDisabledAsPromise: function() {
+    return Promise.resolve(false);
   },
   
   getTooltipLabel: function() {
@@ -160,25 +158,23 @@ function ShowExtraMenuAction(startsNewGroup, nextAction) {
 ShowExtraMenuAction.prototype = Object.create(Action.prototype);
 ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
 
-function DisableableAction(name, action, isDisabled, startsNewGroup, nextAction) {
+function DisableableAction(name, action, isDisabledAsPromise, startsNewGroup, nextAction) {
   Action.call(this, name, action, startsNewGroup, nextAction);
   
-  this._isDisabled = isDisabled;
+  this._isDisabledAsPromise = isDisabledAsPromise;
 }
 DisableableAction.prototype = Object.create(Action.prototype);
 DisableableAction.prototype.constructor = DisableableAction;
 DisableableAction.prototype.getActionStatus = function() {
   return {
     messageName: "disableableAction",
-    status: this._isDisabled()
+    status: this._isDisabledAsPromise()
   };
 };
 
 function URLToIdentifierExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return new Promise(resolve => {
-      resolve(eGContext.urlToIdentifier === "");
-    });
+    return Promise.resolve(eGContext.urlToIdentifier === "");
   }, startsNewGroup, nextAction);
 }
 URLToIdentifierExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -186,10 +182,8 @@ URLToIdentifierExistsDisableableAction.prototype.constructor = URLToIdentifierEx
 
 function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return new Promise(resolve => {
-      let url = new URL(eGContext.pageURL);
-      resolve(url.pathname === "/");
-    });
+    let url = new URL(eGContext.pageURL);
+    return Promise.resolve(url.pathname === "/");
   }, startsNewGroup, nextAction);
 }
 CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -209,9 +203,7 @@ OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableabl
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return new Promise(resolve => {
-      resolve(!eGContext.anchorElementExists);
-    });
+    return Promise.resolve(!eGContext.anchorElementExists);
   }, startsNewGroup, nextAction);
 }
 LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -328,9 +320,7 @@ RunScriptAction.prototype.constructor = RunScriptAction;
 
 function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
-    return new Promise(resolve => {
-      resolve(eGContext.imageElementDoesntExist);
-    });
+    return Promise.resolve(eGContext.imageElementDoesntExist);
   }, startsNewGroup, nextAction);
 }
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
@@ -348,7 +338,7 @@ DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContains
 DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   return {
     messageName: this._name,
-    status: undefined
+    status: Promise.resolve(undefined)
   };
 };
 
@@ -367,15 +357,13 @@ CommandAction.prototype.constructor = CommandAction;
 CommandAction.prototype.getActionStatus = function() {
   return {
     messageName: this._name,
-    status: undefined
+    status: Promise.resolve(undefined)
   };
 };
 
 function DisabledAction(name, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, function() {}, function() {
-    return new Promise(resolve => {
-      resolve(true);
-    });
+    return Promise.resolve(true);
   }, startsNewGroup, nextAction);
 }
 DisabledAction.prototype = Object.create(DisableableAction.prototype);
@@ -433,20 +421,17 @@ let eGActions = {
   pageTop: new DisableableAction("pageTop", function() {
     return this._sendPerformActionMessage();
   }, function() {
-    return new Promise(resolve => {
-      resolve(eGContext.frameScrollY === 0 && eGContext.windowScrollY === 0);
-    });
+    return Promise.resolve(eGContext.frameScrollY === 0 &&
+                           eGContext.windowScrollY === 0);
   }, false, "pageBottom"),
   
   pageBottom: new DisableableAction("pageBottom", function() {
     return this._sendPerformActionMessage();
   }, function() {
-    return new Promise(resolve => {
-      resolve(
-        eGContext.frameScrollY === eGContext.frameScrollMaxY &&
-        eGContext.windowScrollY === eGContext.windowScrollMaxY
-      );
-    });
+    return Promise.resolve(
+             eGContext.frameScrollY === eGContext.frameScrollMaxY &&
+             eGContext.windowScrollY === eGContext.windowScrollMaxY
+    );
   }, false, "savePageAs"),
   
   savePageAs: new Action("savePageAs", function() {
@@ -552,9 +537,7 @@ let eGActions = {
       browser.find.highlightResults();
     });
   }, function() {
-    return new Promise(resolve => {
-      resolve(eGContext.selection === "");
-    });
+    return Promise.resolve(eGContext.selection === "");
   }, false, "removeHighlight"),
   
   removeHighlight: new Action("removeHighlight", function() {
@@ -636,9 +619,7 @@ let eGActions = {
       url: eGContext.frameURL
     });
   }, function() {
-    return new Promise(resolve => {
-      resolve(eGContext.frameURL === null);
-    });
+    return Promise.resolve(eGContext.frameURL === null);
   }, false, "viewPageSource"),
   
   viewPageSource: new Action("viewPageSource", function() {
@@ -891,7 +872,7 @@ let eGActions = {
       });
     }
     catch (exception) {
-      return true;
+      return Promise.resolve(true);
     }
   }, false, "bookmarkThisIdentifier"),
   
@@ -916,12 +897,10 @@ let eGActions = {
                                              }).then(foundBookmarks => {
                                                return foundBookmarks.length > 0;
                                              })
-                                           : new Promise(resolve => {
-                                               resolve(true);
-                                             });
+                                           : Promise.resolve(true);
     }
     catch (exception) {
-      return true;
+      return Promise.resolve(true);
     }
   }, false, "bookmarkAllTabs"),
   
@@ -953,7 +932,7 @@ let eGActions = {
       });
     }
     catch (exception) {
-      return true;
+      return Promise.resolve(true);
     }
   }, false, "removeBookmarkToThisIdentifier"),
   
@@ -965,9 +944,7 @@ let eGActions = {
     });
   }, function() {
     try {
-      return eGContext.urlToIdentifier === "" ? new Promise(resolve => {
-                                                  resolve(true);
-                                                })
+      return eGContext.urlToIdentifier === "" ? Promise.resolve(true)
                                               : browser.bookmarks.search({
                                                   url: eGContext.urlToIdentifier
                                                 }).then(foundBookmarks => {
@@ -975,7 +952,7 @@ let eGActions = {
                                                 });
     }
     catch (exception) {
-      return true;
+      return Promise.resolve(true);
     }
   }, false, "removeBookmarkToThisLink"),
   
@@ -992,12 +969,10 @@ let eGActions = {
                                              }).then(foundBookmarks => {
                                                return foundBookmarks.length === 0;
                                              })
-                                           : new Promise(resolve => {
-                                               resolve(true);
-                                             });
+                                           : Promise.resolve(true);
     }
     catch (exception) {
-      return true;
+      return Promise.resolve(true);
     }
   }, false, "loadURL1"),
   
@@ -1083,9 +1058,7 @@ let eGActions = {
   paste: new DisableableAction("paste", function() {
     return this._sendPerformActionMessage();
   }, function() {
-    return new Promise(resolve => {
-      resolve(!eGContext.inputElementExists);
-    });
+    return Promise.resolve(!eGContext.inputElementExists);
   }, false, "selectAll"),
   
   selectAll: new Action("selectAll", function() {
