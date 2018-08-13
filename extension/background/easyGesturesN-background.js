@@ -86,12 +86,10 @@ let eGMessageHandlers = {
                             return eGActions[actionName].getActionStatus();
                         });
     return Promise.all(actionsStatus.map(function(status) {
-      return status !== undefined ? status.status : status;
+      return status.status;
     })).then(statuses => {
       return actionsStatus.map((actionStatus, index) => {
-        if (actionStatus !== undefined) {
-          actionStatus.status = statuses[index];
-        }
+        actionStatus.status = statuses[index];
         return actionStatus;
       });
     });

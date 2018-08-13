@@ -89,10 +89,6 @@ Action.prototype = {
   decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
                          0.5, 0.3],
   
-  _isDisabledAsPromise: function() {
-    return Promise.resolve(false);
-  },
-  
   getTooltipLabel: function() {
     return Promise.resolve(browser.i18n.getMessage(this._name));
   },
@@ -101,7 +97,12 @@ Action.prototype = {
     return browser.i18n.getMessage(this._name);
   },
   
-  getActionStatus: function() {},
+  getActionStatus: function() {
+    return {
+      messageName: "nonDisableableAction",
+      status: Promise.resolve(false)
+    };
+  },
   
   // helper functions
   

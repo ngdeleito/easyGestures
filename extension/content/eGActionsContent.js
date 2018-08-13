@@ -52,6 +52,8 @@ let actionStatusSetters = {
     }
   },
   
+  nonDisableableAction: function() {},
+  
   disableableAction: function(aMessage, layoutName, actionSector) {
     this._setActionStatus(layoutName, actionSector, aMessage.status);
   },

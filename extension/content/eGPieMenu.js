@@ -444,9 +444,7 @@ let eGPieMenu = {
       actions: this._currentLayout.actions
     }).then(statusesArray => {
       statusesArray.forEach(function(response, actionSector) {
-        if (response !== undefined) {
-          actionStatusSetters[response.messageName](response, layoutName, actionSector);
-        }
+        actionStatusSetters[response.messageName](response, layoutName, actionSector);
       });
     });
     this._currentLayout.updateMenuSign();
