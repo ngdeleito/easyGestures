@@ -69,9 +69,7 @@ function Action(name, action, startsNewGroup, nextAction) {
     if (updateStatsInformation.updateActionName !== undefined) {
       eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
     }
-    return new Promise(resolve => {
-      resolve(action.call(this));
-    }).then(response => {
+    return Promise.resolve(action.call(this)).then(response => {
       return response === undefined ? {} : response;
     });
   };
@@ -96,9 +94,7 @@ Action.prototype = {
   },
   
   getTooltipLabel: function() {
-    return new Promise(resolve => {
-      resolve(browser.i18n.getMessage(this._name));
-    });
+    return Promise.resolve(browser.i18n.getMessage(this._name));
   },
   
   getLocalizedActionName: function() {
