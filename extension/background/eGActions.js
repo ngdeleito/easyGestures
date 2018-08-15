@@ -67,7 +67,16 @@ function Action(name, action, startsNewGroup, nextAction) {
     if (updateStatsInformation.updateActionName !== undefined) {
       eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
     }
-    return Promise.resolve(action.call(this));
+    return new Promise((resolve, reject) => {
+      try {
+        resolve(action.call(this));
+      }
+      catch (exception) {
+        console.error("easyGestures N: error when executing \"" + this._name +
+                      "\" action: " + exception);
+        reject();
+      }
+    });
   };
   
   // startsNewGroup and nextAction are used in options.js to display a sorted

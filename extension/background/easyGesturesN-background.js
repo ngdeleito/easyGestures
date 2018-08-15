@@ -100,12 +100,7 @@ let eGMessageHandlers = {
   },
   
   runAction: function(aMessage) {
-    return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation)
-                                         .catch(error => {
-      console.error("easyGestures N: error when executing " +
-                    aMessage.actionName + " action: " + error);
-      return {};
-    });
+    return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation);
   },
   
   loadURLInNewNonActiveTab: function(aMessage) {
