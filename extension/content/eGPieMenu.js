@@ -174,6 +174,7 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
 };
 ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
   return {
+    incrementMethodName: "incrementNoStats",
     updateActionName: this.actions[this._pieMenu.sector]
   };
 };
@@ -677,7 +678,7 @@ let eGPieMenu = {
       };
       this.close();
       browser.runtime.sendMessage(runActionMessage).then(aMessage => {
-        if (aMessage.runActionName !== undefined) {
+        if (aMessage !== undefined) {
           actionRunners[aMessage.runActionName](aMessage.runActionOptions);
         }
       });
@@ -766,7 +767,9 @@ let eGPieMenu = {
       browser.runtime.sendMessage({
         messageName: "runAction",
         actionName: "openLink",
-        updateStatsInformation: {}
+        updateStatsInformation: {
+          incrementMethodName: "incrementNoStats"
+        }
       });
     }
     else {

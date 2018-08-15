@@ -63,15 +63,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
   this.run = function(updateStatsInformation) {
-    if (updateStatsInformation.incrementMethodName !== undefined) {
-      eGPrefs[updateStatsInformation.incrementMethodName](updateStatsInformation.incrementIndex);
-    }
+    eGPrefs[updateStatsInformation.incrementMethodName](updateStatsInformation.incrementIndex);
     if (updateStatsInformation.updateActionName !== undefined) {
       eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
     }
-    return Promise.resolve(action.call(this)).then(response => {
-      return response === undefined ? {} : response;
-    });
+    return Promise.resolve(action.call(this));
   };
   
   // startsNewGroup and nextAction are used in options.js to display a sorted

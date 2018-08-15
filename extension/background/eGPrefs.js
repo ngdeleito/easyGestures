@@ -514,6 +514,8 @@ let eGPrefs = {
     });
   },
   
+  incrementNoStats: function() {},
+  
   updateStatsForAction: function(anActionName) {
     this.getPref("stats.actions").then(prefValue => {
       let actionsStats = JSON.parse(prefValue);

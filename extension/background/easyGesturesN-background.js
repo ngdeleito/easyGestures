@@ -101,12 +101,7 @@ let eGMessageHandlers = {
   
   runAction: function(aMessage) {
     return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation)
-                                         .then(result => {
-      return {
-        runActionName: result.runActionName,
-        runActionOptions: result.runActionOptions
-      };
-    }, error => {
+                                         .catch(error => {
       console.error("easyGestures N: error when executing " +
                     aMessage.actionName + " action: " + error);
       return {};
