@@ -208,10 +208,6 @@ let eGPieMenu = {
       ((this.settings.extraAlt1Enabled || this.settings.extraAlt2Enabled) ? 1 : 0) +
       ((this.settings.extraAlt1Enabled && this.settings.extraAlt2Enabled) ? 1 : 0);
     
-    this._easyGesturesNodeID = "easyGesturesPieMenu_" +
-                               (this.settings.largeMenu ? "l" : "n") +
-                               (this.settings.smallIcons ? "s" : "n");
-    
     // coordinates of the pie menu center (relative to the viewport)
     this.centerX = 0;
     this.centerY = 0;
@@ -295,7 +291,9 @@ let eGPieMenu = {
   
   _createEasyGesturesNode: function() {
     this.easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
-    this.easyGesturesNode.id = this._easyGesturesNodeID;
+    this.easyGesturesNode.id = "easyGesturesPieMenu";
+    this.easyGesturesNode.classList.toggle("large", this.settings.largeMenu);
+    this.easyGesturesNode.classList.toggle("smallIcons", this.settings.smallIcons);
     this.easyGesturesNode.style.opacity = this.settings.menuOpacity;
     
     addEventListener("pagehide", removeMenuEventHandler, true);

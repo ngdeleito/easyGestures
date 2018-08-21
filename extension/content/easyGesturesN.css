@@ -29,26 +29,22 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-#easyGesturesPieMenu_nn, #easyGesturesPieMenu_ns,
-#easyGesturesPieMenu_ln, #easyGesturesPieMenu_ls {
+#easyGesturesPieMenu {
   all: initial;
   position: fixed;
   z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
 }
 
-#easyGesturesPieMenu_nn *, #easyGesturesPieMenu_ns *,
-#easyGesturesPieMenu_ln *, #easyGesturesPieMenu_ls * {
+#easyGesturesPieMenu * {
   all: initial;
   visibility: inherit;
 }
 
-#easyGesturesPieMenu_nn > div, #easyGesturesPieMenu_ns > div,
-#easyGesturesPieMenu_ln > div, #easyGesturesPieMenu_ls > div {
+#easyGesturesPieMenu > div {
   position: absolute;
 }
 
-#easyGesturesPieMenu_nn > div > *, #easyGesturesPieMenu_ns > div > *,
-#easyGesturesPieMenu_ln > div > *, #easyGesturesPieMenu_ls > div > * {
+#easyGesturesPieMenu > div > * {
   position: absolute;
 }
 
@@ -60,8 +56,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   background-image: url("linkSign.svg");
 }
 
-#easyGesturesPieMenu_nn #eG_linkSign,
-#easyGesturesPieMenu_ln #eG_linkSign {
+#easyGesturesPieMenu #eG_linkSign {
   left: -10px;
   top: -10px;
   background-size: 20px 20px;
@@ -69,8 +64,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 20px;
 }
 
-#easyGesturesPieMenu_ns #eG_linkSign,
-#easyGesturesPieMenu_ls #eG_linkSign {
+#easyGesturesPieMenu.smallIcons #eG_linkSign {
   left: -7px;
   top: -7px;
   background-size: 14px 14px;
@@ -83,28 +77,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 3.85em; /* border-width and width for 3 children + space between 2 children */
 }
 
-#easyGesturesPieMenu_nn #easyGesturesMainMenusSign {
+#easyGesturesPieMenu #easyGesturesMainMenusSign {
   left: 32px; /* icon size */
   top: -81px; /* labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ns #easyGesturesMainMenusSign {
+#easyGesturesPieMenu.smallIcons #easyGesturesMainMenusSign {
   left: 20px; /* icon size */
   top: -51px; /* labels y-offset */
   line-height: 20px;
   font-size: 10px;
 }
 
-#easyGesturesPieMenu_ln #easyGesturesMainMenusSign {
+#easyGesturesPieMenu.large #easyGesturesMainMenusSign {
   left: 32px; /* icon size */
   top: -97px; /* labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ls #easyGesturesMainMenusSign {
+#easyGesturesPieMenu.large.smallIcons #easyGesturesMainMenusSign {
   left: 20px; /* icon size */
   top: -61px; /* labels y-offset */
   line-height: 20px;
@@ -116,28 +110,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 3.85em;
 }
 
-#easyGesturesPieMenu_nn #easyGesturesExtraMenusSign {
+#easyGesturesPieMenu #easyGesturesExtraMenusSign {
   left: 32px; /* icon size */
   top: -154px; /* extra labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ns #easyGesturesExtraMenusSign {
+#easyGesturesPieMenu.smallIcons #easyGesturesExtraMenusSign {
   left: 20px; /* icon size */
   top: -95px; /* extra labels y-offset */
   line-height: 20px;
   font-size: 10px;
 }
 
-#easyGesturesPieMenu_ln #easyGesturesExtraMenusSign {
+#easyGesturesPieMenu.large #easyGesturesExtraMenusSign {
   left: 32px; /* icon size */
   top: -165px; /* extra labels y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ls #easyGesturesExtraMenusSign {
+#easyGesturesPieMenu.large.smallIcons #easyGesturesExtraMenusSign {
   left: 20px; /* icon size */
   top: -107px; /* extra labels y-offset */
   line-height: 20px;
@@ -181,28 +175,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   white-space: nowrap;
 }
 
-#easyGesturesPieMenu_nn #easyGesturesContextMenuSign {
+#easyGesturesPieMenu #easyGesturesContextMenuSign {
   left: 32px; /* icon size */
   top: -81px; /* labels y-offset */
   line-height: 14px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ns #easyGesturesContextMenuSign {
+#easyGesturesPieMenu.smallIcons #easyGesturesContextMenuSign {
   left: 20px; /* icon size */
   top: -51px; /* labels y-offset */
   line-height: 9px;
   font-size: 9px;
 }
 
-#easyGesturesPieMenu_ln #easyGesturesContextMenuSign {
+#easyGesturesPieMenu.large #easyGesturesContextMenuSign {
   left: 32px; /* icon size */
   top: -97px; /* labels y-offset */
   line-height: 14px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ls #easyGesturesContextMenuSign {
+#easyGesturesPieMenu.large.smallIcons #easyGesturesContextMenuSign {
   left: 20px; /* icon size */
   top: -61px; /* labels y-offset */
   line-height: 9px;
@@ -216,206 +210,181 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 /* Actions */
 
-#easyGesturesPieMenu_nn div[id^="eG_actions"],
-#easyGesturesPieMenu_ns div[id^="eG_actions"],
-#easyGesturesPieMenu_ln div[id^="eG_actions"],
-#easyGesturesPieMenu_ls div[id^="eG_actions"] {
+#easyGesturesPieMenu div[id^="eG_actions"] {
   visibility: hidden;
   z-index: -1;
   background-image: url("menu.svg");
   background-size: cover;
-}
-
-#easyGesturesPieMenu_nn div[id^="eG_actions"] {
+  
   left: -61px; /* menu radius */
   top: -61px;
   width: 122px;
   height: 122px;
 }
 
-#easyGesturesPieMenu_ns div[id^="eG_actions"] {
+#easyGesturesPieMenu.smallIcons div[id^="eG_actions"] {
   left: -38px; /* menu radius */
   top: -38px;
   width: 76px;
   height: 76px;
 }
 
-#easyGesturesPieMenu_ln div[id^="eG_actions"] {
+#easyGesturesPieMenu.large div[id^="eG_actions"] {
   left: -70px; /* menu radius */
   top: -70px;
   width: 140px;
   height: 140px;
 }
 
-#easyGesturesPieMenu_ls div[id^="eG_actions"] {
+#easyGesturesPieMenu.large.smallIcons div[id^="eG_actions"] {
   left: -44px; /* menu radius */
   top: -44px;
   width: 88px;
   height: 88px;
 }
 
-#easyGesturesPieMenu_nn div[id^="eG_actions_extra"],
-#easyGesturesPieMenu_ns div[id^="eG_actions_extra"],
-#easyGesturesPieMenu_ln div[id^="eG_actions_extra"],
-#easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu div[id^="eG_actions_extra"] {
   z-index: -2;
   background-image: url("extraMenu.svg");
-}
-
-#easyGesturesPieMenu_nn div[id^="eG_actions_extra"] {
+  
   top: -135px; /* extra menu y-offset */
   width: 122px;
   height: 82px;
 }
 
-#easyGesturesPieMenu_ns div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu.smallIcons div[id^="eG_actions_extra"] {
   top: -83px; /* extra menu y-offset */
   width: 76px;
   height: 51px;
 }
 
-#easyGesturesPieMenu_ln div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu.large div[id^="eG_actions_extra"] {
   top: -151px; /* extra menu y-offset */
   width: 140px;
   height: 94px;
 }
 
-#easyGesturesPieMenu_ls div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu.large.smallIcons div[id^="eG_actions_extra"] {
   top: -97px; /* extra menu y-offset */
   width: 88px;
   height: 59px;
 }
 
-#easyGesturesPieMenu_nn [id^="eG_action_"],
-#easyGesturesPieMenu_ln [id^="eG_action_"] {
+#easyGesturesPieMenu [id^="eG_action_"] {
   width: 32px; /* icon size */
   height: 32px;
   z-index: 1;
 }
 
-#easyGesturesPieMenu_ns [id^="eG_action_"],
-#easyGesturesPieMenu_ls [id^="eG_action_"] {
+#easyGesturesPieMenu.smallIcons [id^="eG_action_"] {
   mask-size: 340px;
   width: 20px; /* icon size */
   height: 20px;
   z-index: 1;
 }
 
-#easyGesturesPieMenu_nn div.sector0 { right: 2px; top: 45px; }
-#easyGesturesPieMenu_nn div.sector1 { left: 76px; top: 14px; }
-#easyGesturesPieMenu_nn div.sector2 { left: 45px; top: 2px; }
-#easyGesturesPieMenu_nn div.sector3 { left: 14px; top: 14px; }
-#easyGesturesPieMenu_nn div.sector4 { left: 2px; top: 45px; }
-#easyGesturesPieMenu_nn div.sector5 { left: 14px; top: 76px; }
-#easyGesturesPieMenu_nn div.sector6 { left: 45px; bottom: 2px; }
-#easyGesturesPieMenu_nn div.sector7 { left: 76px; top: 76px; }
+#easyGesturesPieMenu div.sector0 { right: 2px; top: 45px; }
+#easyGesturesPieMenu div.sector1 { left: 76px; top: 14px; }
+#easyGesturesPieMenu div.sector2 { left: 45px; top: 2px; }
+#easyGesturesPieMenu div.sector3 { left: 14px; top: 14px; }
+#easyGesturesPieMenu div.sector4 { left: 2px; top: 45px; }
+#easyGesturesPieMenu div.sector5 { left: 14px; top: 76px; }
+#easyGesturesPieMenu div.sector6 { left: 45px; bottom: 2px; }
+#easyGesturesPieMenu div.sector7 { left: 76px; top: 76px; }
 
-#easyGesturesPieMenu_ns div.sector0 { right: 1.25px; top: 28px; }
-#easyGesturesPieMenu_ns div.sector1 { left: 47px; top: 9px; }
-#easyGesturesPieMenu_ns div.sector2 { left: 28px; top: 1.25px; }
-#easyGesturesPieMenu_ns div.sector3 { left: 9px; top: 9px; }
-#easyGesturesPieMenu_ns div.sector4 { left: 1.25px; top: 28px; }
-#easyGesturesPieMenu_ns div.sector5 { left: 9px; top: 47px; }
-#easyGesturesPieMenu_ns div.sector6 { left: 28px; bottom: 1.25px; }
-#easyGesturesPieMenu_ns div.sector7 { left: 47px; top: 47px; }
+#easyGesturesPieMenu.smallIcons div.sector0 { right: 1.25px; top: 28px; }
+#easyGesturesPieMenu.smallIcons div.sector1 { left: 47px; top: 9px; }
+#easyGesturesPieMenu.smallIcons div.sector2 { left: 28px; top: 1.25px; }
+#easyGesturesPieMenu.smallIcons div.sector3 { left: 9px; top: 9px; }
+#easyGesturesPieMenu.smallIcons div.sector4 { left: 1.25px; top: 28px; }
+#easyGesturesPieMenu.smallIcons div.sector5 { left: 9px; top: 47px; }
+#easyGesturesPieMenu.smallIcons div.sector6 { left: 28px; bottom: 1.25px; }
+#easyGesturesPieMenu.smallIcons div.sector7 { left: 47px; top: 47px; }
 
-#easyGesturesPieMenu_ln div.sector0 { right: 2.3px; top: 38.5px; }
-#easyGesturesPieMenu_ln div.sector1 { left: 85px; top: 11px; }
-#easyGesturesPieMenu_ln div.sector2 { left: 54px; top: 4.66px; }
-#easyGesturesPieMenu_ln div.sector3 { left: 23px; top: 11px; }
-#easyGesturesPieMenu_ln div.sector4 { left: 2.3px; top: 38.5px; }
-#easyGesturesPieMenu_ln div.sector5 { display: block; left: 2.3px; top: 69.5px; }
-#easyGesturesPieMenu_ln div.sector6 { left: 23px; top: 97px; }
-#easyGesturesPieMenu_ln div.sector7 { left: 54px; bottom: 4.66px; }
-#easyGesturesPieMenu_ln div.sector8 { left: 85px; top: 97px; }
-#easyGesturesPieMenu_ln div.sector9 { display: block; right: 2.3px; top: 69.5px; }
+#easyGesturesPieMenu.large div.sector0 { right: 2.3px; top: 38.5px; }
+#easyGesturesPieMenu.large div.sector1 { left: 85px; top: 11px; }
+#easyGesturesPieMenu.large div.sector2 { left: 54px; top: 4.66px; }
+#easyGesturesPieMenu.large div.sector3 { left: 23px; top: 11px; }
+#easyGesturesPieMenu.large div.sector4 { left: 2.3px; top: 38.5px; }
+#easyGesturesPieMenu.large div.sector5 { display: block; left: 2.3px; top: 69.5px; }
+#easyGesturesPieMenu.large div.sector6 { left: 23px; top: 97px; bottom: auto; }
+#easyGesturesPieMenu.large div.sector7 { left: 54px; top: auto; bottom: 4.66px; }
+#easyGesturesPieMenu.large div.sector8 { left: 85px; top: 97px; }
+#easyGesturesPieMenu.large div.sector9 { display: block; right: 2.3px; top: 69.5px; }
 
-#easyGesturesPieMenu_ln .extra div.sector0 { right: 2.3px; top: 54px; }
-#easyGesturesPieMenu_ln .extra div.sector1 { left: 90px; top: 18px; }
-#easyGesturesPieMenu_ln .extra div.sector2 { left: 54px; top: 2.3px; }
-#easyGesturesPieMenu_ln .extra div.sector3 { left: 18px; top: 18px; }
-#easyGesturesPieMenu_ln .extra div.sector4 { left: 2.3px; top: 54px; }
+#easyGesturesPieMenu.large .extra div.sector0 { right: 2.3px; top: 54px; }
+#easyGesturesPieMenu.large .extra div.sector1 { left: 90px; top: 18px; }
+#easyGesturesPieMenu.large .extra div.sector2 { left: 54px; top: 2.3px; }
+#easyGesturesPieMenu.large .extra div.sector3 { left: 18px; top: 18px; }
+#easyGesturesPieMenu.large .extra div.sector4 { left: 2.3px; top: 54px; }
 
-#easyGesturesPieMenu_ls div.sector0 { right: 1.44px; top: 24px; }
-#easyGesturesPieMenu_ls div.sector1 { left: 54px; top: 7px; }
-#easyGesturesPieMenu_ls div.sector2 { left: 34px; top: 2.98px; }
-#easyGesturesPieMenu_ls div.sector3 { left: 14px; top: 7px; }
-#easyGesturesPieMenu_ls div.sector4 { left: 1.44px; top: 24px; }
-#easyGesturesPieMenu_ls div.sector5 { display: block; left: 1.44px; top: 44px; }
-#easyGesturesPieMenu_ls div.sector6 { left: 14px; top: 61px; }
-#easyGesturesPieMenu_ls div.sector7 { left: 34px; bottom: 2.98px; }
-#easyGesturesPieMenu_ls div.sector8 { left: 54px; top: 61px; }
-#easyGesturesPieMenu_ls div.sector9 { display: block; right: 1.44px; top: 44px; }
+#easyGesturesPieMenu.large.smallIcons div.sector0 { right: 1.44px; top: 24px; }
+#easyGesturesPieMenu.large.smallIcons div.sector1 { left: 54px; top: 7px; }
+#easyGesturesPieMenu.large.smallIcons div.sector2 { left: 34px; top: 2.98px; }
+#easyGesturesPieMenu.large.smallIcons div.sector3 { left: 14px; top: 7px; }
+#easyGesturesPieMenu.large.smallIcons div.sector4 { left: 1.44px; top: 24px; }
+#easyGesturesPieMenu.large.smallIcons div.sector5 { display: block; left: 1.44px; top: 44px; }
+#easyGesturesPieMenu.large.smallIcons div.sector6 { left: 14px; top: 61px; }
+#easyGesturesPieMenu.large.smallIcons div.sector7 { left: 34px; bottom: 2.98px; }
+#easyGesturesPieMenu.large.smallIcons div.sector8 { left: 54px; top: 61px; }
+#easyGesturesPieMenu.large.smallIcons div.sector9 { display: block; right: 1.44px; top: 44px; }
 
-#easyGesturesPieMenu_ls .extra div.sector0 { right: 1.44px; top: 34px; }
-#easyGesturesPieMenu_ls .extra div.sector1 { left: 58px; top: 10px; }
-#easyGesturesPieMenu_ls .extra div.sector2 { left: 34px; top: 1.44px; }
-#easyGesturesPieMenu_ls .extra div.sector3 { left: 10px; top: 10px; }
-#easyGesturesPieMenu_ls .extra div.sector4 { left: 1.44px; top: 34px; }
+#easyGesturesPieMenu.large.smallIcons .extra div.sector0 { right: 1.44px; top: 34px; }
+#easyGesturesPieMenu.large.smallIcons .extra div.sector1 { left: 58px; top: 10px; }
+#easyGesturesPieMenu.large.smallIcons .extra div.sector2 { left: 34px; top: 1.44px; }
+#easyGesturesPieMenu.large.smallIcons .extra div.sector3 { left: 10px; top: 10px; }
+#easyGesturesPieMenu.large.smallIcons .extra div.sector4 { left: 1.44px; top: 34px; }
 
 /* Labels */
 
-#easyGesturesPieMenu_nn div[id^="eG_labels"],
-#easyGesturesPieMenu_ns div[id^="eG_labels"],
-#easyGesturesPieMenu_ln div[id^="eG_labels"],
-#easyGesturesPieMenu_ls div[id^="eG_labels"] {
+#easyGesturesPieMenu div[id^="eG_labels"] {
   visibility: hidden;
   z-index: -2; /* labels are displayed below menu level */
-}
-
-#easyGesturesPieMenu_nn div[id^="eG_labels"] {
+  
   left: -200px; /* labels x-offset */
   top: -81px; /* 2,5 * (label height + 2px) + 1px */
   width: 400px; /* 2 * labels x-offset */
 }
 
-#easyGesturesPieMenu_ns div[id^="eG_labels"] {
+#easyGesturesPieMenu.smallIcons div[id^="eG_labels"] {
   left: -150px; /* labels x-offset */ /* 75% of non small */
   top: -51px;
   width: 300px;
 }
 
-#easyGesturesPieMenu_ln div[id^="eG_labels"] {
+#easyGesturesPieMenu.large div[id^="eG_labels"] {
   left: -220px; /* labels x-offset */
   top: -97px; /* 3 * (label height + 2px) + 1px */
   width: 440px;
 }
 
-#easyGesturesPieMenu_ls div[id^="eG_labels"] {
+#easyGesturesPieMenu.large.smallIcons div[id^="eG_labels"] {
   left: -165px; /* labels x-offset */ /* 75% of non small */
   top: -61px;
   width: 330px;
 }
 
-#easyGesturesPieMenu_nn div[id^="eG_labels_extra"],
-#easyGesturesPieMenu_ns div[id^="eG_labels_extra"],
-#easyGesturesPieMenu_ln div[id^="eG_labels_extra"],
-#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu div[id^="eG_labels_extra"] {
   z-index: -3; /* labels are displayed below menu level */
-}
-
-#easyGesturesPieMenu_nn div[id^="eG_labels_extra"] {
+  
   top: -154px; /* extra menu y-offset + top of action with sector4
                   - 2 * (label height + 2px) */
 }
 
-#easyGesturesPieMenu_ns div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu.smallIcons div[id^="eG_labels_extra"] {
   top: -95px;
 }
 
-#easyGesturesPieMenu_ln div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu.large div[id^="eG_labels_extra"] {
   top: -165px; /* extra menu y-offset + top of action with sector4
                   - 2 * (label height + 2px) - 4px */
 }
 
-#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu.large.smallIcons div[id^="eG_labels_extra"] {
   top: -107px;
 }
 
-#easyGesturesPieMenu_nn [id^="eG_label_"],
-#easyGesturesPieMenu_ns [id^="eG_label_"],
-#easyGesturesPieMenu_ln [id^="eG_label_"],
-#easyGesturesPieMenu_ls [id^="eG_label_"] {
+#easyGesturesPieMenu [id^="eG_label_"] {
   z-index: 1;
   border-style: solid;
   border-width: 2px;
@@ -427,34 +396,24 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-}
-
-#easyGesturesPieMenu_nn [id^="eG_label_"],
-#easyGesturesPieMenu_ln [id^="eG_label_"] {
+  
   height: 30px; /* label height */
   line-height: 30px;
   font-size: 14px;
 }
 
-#easyGesturesPieMenu_ns [id^="eG_label_"],
-#easyGesturesPieMenu_ls [id^="eG_label_"] {
+#easyGesturesPieMenu.smallIcons [id^="eG_label_"] {
   height: 18px; /* label height */
   line-height: 18px;
   font-size: 10px;
 }
 
-#easyGesturesPieMenu_nn .label1,
-#easyGesturesPieMenu_ns .label1,
-#easyGesturesPieMenu_ln .label1,
-#easyGesturesPieMenu_ls .label1 {
+#easyGesturesPieMenu .label1 {
   border-top-color: hsl(0, 0%, 60%);
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu_nn .label2,
-#easyGesturesPieMenu_ns .label2,
-#easyGesturesPieMenu_ln .label2,
-#easyGesturesPieMenu_ls .label2 {
+#easyGesturesPieMenu .label2 {
   top: 0px;
   left: 0px;
   border-top-color: hsl(0, 0%, 60%);
@@ -462,1132 +421,924 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu_nn .label2.extra,
-#easyGesturesPieMenu_ns .label2.extra,
-#easyGesturesPieMenu_ln .label2.extra,
-#easyGesturesPieMenu_ls .label2.extra {
+#easyGesturesPieMenu .label2.extra {
   background-color: hsl(0, 100%, 90%);
 }
 
-#easyGesturesPieMenu_nn .label5,
-#easyGesturesPieMenu_nn div[id^="eG_labels_extra"] .label4,
-#easyGesturesPieMenu_ns .label5,
-#easyGesturesPieMenu_ns div[id^="eG_labels_extra"] .label4,
-#easyGesturesPieMenu_ln .label6,
-#easyGesturesPieMenu_ln div[id^="eG_labels_extra"] .label4,
-#easyGesturesPieMenu_ls .label6,
-#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] .label4 {
+#easyGesturesPieMenu .label5,
+#easyGesturesPieMenu.large .label6,
+#easyGesturesPieMenu div[id^="eG_labels_extra"] .label4 {
   border-bottom-color: hsl(0, 0%, 60%);
   border-bottom-left-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu_nn .label6,
-#easyGesturesPieMenu_nn div[id^="eG_labels_extra"] .label0,
-#easyGesturesPieMenu_ns .label6,
-#easyGesturesPieMenu_ns div[id^="eG_labels_extra"] .label0,
-#easyGesturesPieMenu_ln .label7,
-#easyGesturesPieMenu_ln div[id^="eG_labels_extra"] .label0,
-#easyGesturesPieMenu_ls .label7,
-#easyGesturesPieMenu_ls div[id^="eG_labels_extra"] .label0 {
+#easyGesturesPieMenu.large .label5 {
+  border-bottom-color: hsl(60, 40%, 83%);
+  border-bottom-left-radius: 0px 0px;
+}
+
+#easyGesturesPieMenu .label6,
+#easyGesturesPieMenu.large .label7,
+#easyGesturesPieMenu div[id^="eG_labels_extra"] .label0 {
   border-bottom-color: hsl(0, 0%, 60%);
   border-bottom-left-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu_nn .label2 {
+#easyGesturesPieMenu .label2 {
   padding-right: 54px; /* 1,5 * icon size + 6px */
   width: 152px; /* labels x-offset + 0,5 * icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu_nn .label6 { /* see label2 */
+#easyGesturesPieMenu .label6 { /* see label2 */
   top: 128px;  /* 4 * (label height + 2px) */
   right: 0px;
   padding-left: 54px;
   width: 152px;
 }
-#easyGesturesPieMenu_nn .label3 {
+#easyGesturesPieMenu .label3 {
   left: 0px;
   top: 32px; /* label height + 2px */
   padding-right: 32px; /* icon size */
   width: 130px; /* labels x-offset - 2 * icon size - 6px */
 }
-#easyGesturesPieMenu_nn .label1 { /* see label3 */
+#easyGesturesPieMenu .label1 { /* see label3 */
   top: 32px;
   right: 0px;
   padding-left: 32px;
   width: 130px;
 }
-#easyGesturesPieMenu_nn .label5 { /* see label3 */
+#easyGesturesPieMenu .label5 { /* see label3 */
   left: 0px;
   top: 96px; /* 3 * (label height + 2px) */
   padding-right: 32px;
   width: 130px;
 }
-#easyGesturesPieMenu_nn .label7 { /* see label5 */
+#easyGesturesPieMenu .label7 { /* see label5 */
   top: 96px;
   right: 0px;
   padding-left: 32px;
   width: 130px;
 }
-#easyGesturesPieMenu_nn .label4 {
+#easyGesturesPieMenu .label4 {
   left: 0px;
   top: 64px; /* 2 * (label height + 2px) */
   padding-right: 32px; /* icon size */
   width: 120px; /* labels x-offset - 2,5 * icon size */
 }
-#easyGesturesPieMenu_nn .label0 { /* see label4 */
+#easyGesturesPieMenu .label0 { /* see label4 */
   top: 64px;
   right: 0px;
   padding-left: 32px;
   width: 120px;
 }
 
-#easyGesturesPieMenu_ns .label2 {
+#easyGesturesPieMenu.smallIcons .label2 {
   padding-right: 36px;
   width: 114px;
 }
-#easyGesturesPieMenu_ns .label6 {
+#easyGesturesPieMenu.smallIcons .label6 {
   top: 80px;
   right: 0px;
   padding-left: 36px;
   width: 114px;
 }
-#easyGesturesPieMenu_ns .label3 {
+#easyGesturesPieMenu.smallIcons .label3 {
   left: 0px;
   top: 20px;
   padding-right: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu_ns .label1 {
+#easyGesturesPieMenu.smallIcons .label1 {
   top: 20px;
   right: 0px;
   padding-left: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu_ns .label5 {
+#easyGesturesPieMenu.smallIcons .label5 {
   left: 0px;
   top: 60px;
   padding-right: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu_ns .label7 {
+#easyGesturesPieMenu.smallIcons .label7 {
   top: 60px;
   right: 0px;
   padding-left: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu_ns .label4 {
+#easyGesturesPieMenu.smallIcons .label4 {
   left: 0px;
   top: 40px;
   padding-right: 20px;
   width: 100px;
 }
-#easyGesturesPieMenu_ns .label0 {
+#easyGesturesPieMenu.smallIcons .label0 {
   top: 40px;
   right: 0px;
   padding-left: 20px;
   width: 100px;
 }
 
-#easyGesturesPieMenu_ln .label2 {
+#easyGesturesPieMenu.large .label2 {
   padding-right: 38px; /* icon size + 6px */
   width: 188px;
 }
-#easyGesturesPieMenu_ln .label7 {
+#easyGesturesPieMenu.large .label7 {
   top: 160px; /* 5 * (label height + 2px) */
   right: 0px;
   padding-left: 38px;
   width: 188px;
 }
-#easyGesturesPieMenu_ln .label3 {
+#easyGesturesPieMenu.large .label3 {
   left: 0px;
   top: 32px;
   padding-right: 54px; /* 1,5 * icon size + 6px */
   width: 140px; /* labels x-offset - 0,5 * icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu_ln .label1 {
+#easyGesturesPieMenu.large .label1 {
   top: 32px;
   right: 0px;
   padding-left: 54px;
   width: 140px;
 }
-#easyGesturesPieMenu_ln .label6 {
+#easyGesturesPieMenu.large .label6 {
   left: 0px;
   top: 128px;
+  right: auto;
+  padding-left: 6px;
   padding-right: 54px;
   width: 140px;
 }
-#easyGesturesPieMenu_ln .label8 {
+#easyGesturesPieMenu.large .label8 {
   top: 128px;
   right: 0px;
   padding-left: 54px;
   width: 140px;
 }
-#easyGesturesPieMenu_ln .label4 {
+#easyGesturesPieMenu.large .label4 {
   left: 0px;
   top: 64px;
   padding-right: 48px; /* 1,5 * icon size */
   width: 130px; /* labels x-offset - icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu_ln .label0 {
+#easyGesturesPieMenu.large .label0 {
   top: 64px;
   right: 0px;
   padding-left: 48px;
   width: 130px;
 }
-#easyGesturesPieMenu_ln .label5 { /* see label4 */
+#easyGesturesPieMenu.large .label5 { /* see label4 */
   left: 0px;
   top: 96px;
   padding-right: 48px;
   width: 130px;
 }
-#easyGesturesPieMenu_ln .label9 { /* see label5 */
+#easyGesturesPieMenu.large .label9 { /* see label5 */
   top: 96px;
   right: 0px;
   padding-left: 48px;
   width: 130px;
 }
 
-#easyGesturesPieMenu_ls .label2 {
+#easyGesturesPieMenu.large.smallIcons .label2 {
   padding-right: 26px;
   width: 139px;
 }
-#easyGesturesPieMenu_ls .label7 {
+#easyGesturesPieMenu.large.smallIcons .label7 {
   top: 100px;
   right: 0px;
   padding-left: 26px;
   width: 139px;
 }
-#easyGesturesPieMenu_ls .label3 {
+#easyGesturesPieMenu.large.smallIcons .label3 {
   left: 0px;
   top: 20px;
   padding-right: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu_ls .label1 {
+#easyGesturesPieMenu.large.smallIcons .label1 {
   top: 20px;
   right: 0px;
   padding-left: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu_ls .label6 {
+#easyGesturesPieMenu.large.smallIcons .label6 {
   left: 0px;
   top: 80px;
   padding-right: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu_ls .label8 {
+#easyGesturesPieMenu.large.smallIcons .label8 {
   top: 80px;
   right: 0px;
   padding-left: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu_ls .label4 {
+#easyGesturesPieMenu.large.smallIcons .label4 {
   left: 0px;
   top: 40px;
   padding-right: 30px;
   width: 105px;
 }
-#easyGesturesPieMenu_ls .label0 {
+#easyGesturesPieMenu.large.smallIcons .label0 {
   top: 40px;
   right: 0px;
   padding-left: 30px;
   width: 105px;
 }
-#easyGesturesPieMenu_ls .label5 {
+#easyGesturesPieMenu.large.smallIcons .label5 {
   left: 0px;
   top: 60px;
   padding-right: 30px;
   width: 105px;
 }
-#easyGesturesPieMenu_ls .label9 {
+#easyGesturesPieMenu.large.smallIcons .label9 {
   top: 60px;
   right: 0px;
   padding-left: 30px;
   width: 105px;
 }
 
-#easyGesturesPieMenu_nn [id^="eG_label_"].selected,
-#easyGesturesPieMenu_ns [id^="eG_label_"].selected,
-#easyGesturesPieMenu_ln [id^="eG_label_"].selected,
-#easyGesturesPieMenu_ls [id^="eG_label_"].selected {
+#easyGesturesPieMenu [id^="eG_label_"].selected {
   font-weight: bold;
 }
 
 
 /* Icons */
 
-#easyGesturesPieMenu_nn [id^="eG_action_"],
-#easyGesturesPieMenu_ln [id^="eG_action_"],
-#easyGesturesPieMenu_ns [id^="eG_action_"],
-#easyGesturesPieMenu_ls [id^="eG_action_"] {
+#easyGesturesPieMenu [id^="eG_action_"] {
   background-color: hsl(0, 0%, 50%);
   mask-image: url("actions.svg");
 }
-#easyGesturesPieMenu_nn .disabled,
-#easyGesturesPieMenu_ln .disabled,
-#easyGesturesPieMenu_ns .disabled,
-#easyGesturesPieMenu_ls .disabled {
+#easyGesturesPieMenu .disabled {
   background-color: hsl(0, 0%, 70%);
 }
-#easyGesturesPieMenu_nn [id^="eG_action_"].selected:not(.disabled),
-#easyGesturesPieMenu_ln [id^="eG_action_"].selected:not(.disabled),
-#easyGesturesPieMenu_ns [id^="eG_action_"].selected:not(.disabled),
-#easyGesturesPieMenu_ls [id^="eG_action_"].selected:not(.disabled) {
+#easyGesturesPieMenu [id^="eG_action_"].selected:not(.disabled) {
   background-color: hsl(0, 0%, 30%);
 }
 
-#easyGesturesPieMenu_nn .empty,
-#easyGesturesPieMenu_ln .empty,
+#easyGesturesPieMenu .empty,
 [data-action="empty"], .eG_empty {
   mask-position: -64px 0px;
 }
-#easyGesturesPieMenu_nn .showExtraMenu,
-#easyGesturesPieMenu_ln .showExtraMenu,
+#easyGesturesPieMenu .showExtraMenu,
 [data-action="showExtraMenu"], .eG_showExtraMenu {
   mask-position: 0px 0px;
 }
-#easyGesturesPieMenu_nn .showExtraMenu.selected,
-#easyGesturesPieMenu_nn .showExtraMenu.showingExtraMenu,
-#easyGesturesPieMenu_ln .showExtraMenu.selected,
-#easyGesturesPieMenu_ln .showExtraMenu.showingExtraMenu {
+#easyGesturesPieMenu .showExtraMenu.selected,
+#easyGesturesPieMenu .showExtraMenu.showingExtraMenu {
   mask-position: -32px 0px;
 }
-#easyGesturesPieMenu_nn .back,
-#easyGesturesPieMenu_ln .back,
+#easyGesturesPieMenu .back,
 [data-action="back"], .eG_back {
   mask-position: 0px -32px;
 }
-#easyGesturesPieMenu_nn .backSite,
-#easyGesturesPieMenu_ln .backSite,
+#easyGesturesPieMenu .backSite,
 [data-action="backSite"], .eG_backSite {
   mask-position: -32px -32px;
 }
-#easyGesturesPieMenu_nn .firstPage,
-#easyGesturesPieMenu_ln .firstPage,
+#easyGesturesPieMenu .firstPage,
 [data-action="firstPage"], .eG_firstPage {
   mask-position: -64px -32px;
 }
-#easyGesturesPieMenu_nn .forward,
-#easyGesturesPieMenu_ln .forward,
+#easyGesturesPieMenu .forward,
 [data-action="forward"], .eG_forward {
   mask-position: -96px -32px;
 }
-#easyGesturesPieMenu_nn .forwardSite,
-#easyGesturesPieMenu_ln .forwardSite,
+#easyGesturesPieMenu .forwardSite,
 [data-action="forwardSite"], .eG_forwardSite {
   mask-position: -128px -32px;
 }
-#easyGesturesPieMenu_nn .lastPage,
-#easyGesturesPieMenu_ln .lastPage,
+#easyGesturesPieMenu .lastPage,
 [data-action="lastPage"], .eG_lastPage {
   mask-position: -160px -32px;
 }
-#easyGesturesPieMenu_nn .reload,
-#easyGesturesPieMenu_ln .reload,
+#easyGesturesPieMenu .reload,
 [data-action="reload"], .eG_reload {
   mask-position: -192px -32px;
 }
-#easyGesturesPieMenu_nn .homepage,
-#easyGesturesPieMenu_ln .homepage,
+#easyGesturesPieMenu .homepage,
 [data-action="homepage"], .eG_homepage {
   mask-position: -224px -32px;
 }
-#easyGesturesPieMenu_nn .pageTop,
-#easyGesturesPieMenu_ln .pageTop,
+#easyGesturesPieMenu .pageTop,
 [data-action="pageTop"], .eG_pageTop {
   mask-position: -256px -32px;
 }
-#easyGesturesPieMenu_nn .pageBottom,
-#easyGesturesPieMenu_ln .pageBottom,
+#easyGesturesPieMenu .pageBottom,
 [data-action="pageBottom"], .eG_pageBottom {
   mask-position: -288px -32px;
 }
-#easyGesturesPieMenu_nn .savePageAs,
-#easyGesturesPieMenu_ln .savePageAs,
+#easyGesturesPieMenu .savePageAs,
 [data-action="savePageAs"], .eG_savePageAs {
   mask-position: -320px -32px;
 }
-#easyGesturesPieMenu_nn .printPage,
-#easyGesturesPieMenu_ln .printPage,
+#easyGesturesPieMenu .printPage,
 [data-action="printPage"], .eG_printPage {
   mask-position: -352px -32px;
 }
-#easyGesturesPieMenu_nn .showPrintPreview,
-#easyGesturesPieMenu_ln .showPrintPreview,
+#easyGesturesPieMenu .showPrintPreview,
 [data-action="showPrintPreview"], .eG_showPrintPreview {
   mask-position: -384px -32px;
 }
-#easyGesturesPieMenu_nn .searchWeb,
-#easyGesturesPieMenu_ln .searchWeb,
+#easyGesturesPieMenu .searchWeb,
 [data-action="searchWeb"], .eG_searchWeb {
   mask-position: -416px -32px;
 }
-#easyGesturesPieMenu_nn .loadPageInNewTab,
-#easyGesturesPieMenu_ln .loadPageInNewTab,
+#easyGesturesPieMenu .loadPageInNewTab,
 [data-action="loadPageInNewTab"], .eG_loadPageInNewTab {
   mask-position: -0px -64px;
 }
-#easyGesturesPieMenu_nn .loadPageInNewPrivateWindow,
-#easyGesturesPieMenu_ln .loadPageInNewPrivateWindow,
+#easyGesturesPieMenu .loadPageInNewPrivateWindow,
 [data-action="loadPageInNewPrivateWindow"], .eG_loadPageInNewPrivateWindow {
   mask-position: -32px -64px;
 }
-#easyGesturesPieMenu_nn .moveTabToNewWindow,
-#easyGesturesPieMenu_ln .moveTabToNewWindow,
+#easyGesturesPieMenu .moveTabToNewWindow,
 [data-action="moveTabToNewWindow"], .eG_moveTabToNewWindow {
   mask-position: -64px -64px;
 }
-#easyGesturesPieMenu_nn .copyPageURL,
-#easyGesturesPieMenu_ln .copyPageURL,
+#easyGesturesPieMenu .copyPageURL,
 [data-action="copyPageURL"], .eG_copyPageURL {
   mask-position: -96px -64px;
 }
-#easyGesturesPieMenu_nn .copyURLToIdentifier,
-#easyGesturesPieMenu_ln .copyURLToIdentifier,
+#easyGesturesPieMenu .copyURLToIdentifier,
 [data-action="copyURLToIdentifier"], .eG_copyURLToIdentifier {
   mask-position: -128px -64px;
 }
-#easyGesturesPieMenu_nn .zoomIn,
-#easyGesturesPieMenu_ln .zoomIn,
+#easyGesturesPieMenu .zoomIn,
 [data-action="zoomIn"], .eG_zoomIn {
   mask-position: -160px -64px;
 }
-#easyGesturesPieMenu_nn .zoomOut,
-#easyGesturesPieMenu_ln .zoomOut,
+#easyGesturesPieMenu .zoomOut,
 [data-action="zoomOut"], .eG_zoomOut {
   mask-position: -192px -64px;
 }
-#easyGesturesPieMenu_nn .zoomReset,
-#easyGesturesPieMenu_ln .zoomReset,
+#easyGesturesPieMenu .zoomReset,
 [data-action="zoomReset"], .eG_zoomReset {
   mask-position: -224px -64px;
 }
-#easyGesturesPieMenu_nn .findAndHighlightSelection,
-#easyGesturesPieMenu_ln .findAndHighlightSelection,
+#easyGesturesPieMenu .findAndHighlightSelection,
 [data-action="findAndHighlightSelection"], .eG_findAndHighlightSelection {
   mask-position: -256px -64px;
 }
-#easyGesturesPieMenu_nn .removeHighlight,
-#easyGesturesPieMenu_ln .removeHighlight,
+#easyGesturesPieMenu .removeHighlight,
 [data-action="removeHighlight"], .eG_removeHighlight {
   mask-position: -288px -64px;
 }
-#easyGesturesPieMenu_nn .enterReaderMode,
-#easyGesturesPieMenu_ln .enterReaderMode,
+#easyGesturesPieMenu .enterReaderMode,
 [data-action="enterReaderMode"], .eG_enterReaderMode {
   mask-position: -320px -64px;
 }
-#easyGesturesPieMenu_nn .takeTabScreenshot,
-#easyGesturesPieMenu_ln .takeTabScreenshot,
+#easyGesturesPieMenu .takeTabScreenshot,
 [data-action="takeTabScreenshot"], .eG_takeTabScreenshot {
   mask-position: -352px -64px;
 }
-#easyGesturesPieMenu_nn .toggleFullscreen,
-#easyGesturesPieMenu_ln .toggleFullscreen,
+#easyGesturesPieMenu .toggleFullscreen,
 [data-action="toggleFullscreen"], .eG_toggleFullscreen {
   mask-position: -384px -64px;
 }
-#easyGesturesPieMenu_nn .up,
-#easyGesturesPieMenu_ln .up,
+#easyGesturesPieMenu .up,
 [data-action="up"], .eG_up {
   mask-position: -416px -64px;
 }
-#easyGesturesPieMenu_nn .root,
-#easyGesturesPieMenu_ln .root,
+#easyGesturesPieMenu .root,
 [data-action="root"], .eG_root {
   mask-position: -448px -64px;
 }
-#easyGesturesPieMenu_nn .showOnlyThisFrame,
-#easyGesturesPieMenu_ln .showOnlyThisFrame,
+#easyGesturesPieMenu .showOnlyThisFrame,
 [data-action="showOnlyThisFrame"], .eG_showOnlyThisFrame {
   mask-position: -480px -64px;
 }
-#easyGesturesPieMenu_nn .viewPageSource,
-#easyGesturesPieMenu_ln .viewPageSource,
+#easyGesturesPieMenu .viewPageSource,
 [data-action="viewPageSource"], .eG_viewPageSource {
   mask-position: -512px -64px;
 }
-#easyGesturesPieMenu_nn .newTab,
-#easyGesturesPieMenu_ln .newTab,
+#easyGesturesPieMenu .newTab,
 [data-action="newTab"], .eG_newTab {
   mask-position: -0px -96px;
 }
-#easyGesturesPieMenu_nn .newBlankTab,
-#easyGesturesPieMenu_ln .newBlankTab,
+#easyGesturesPieMenu .newBlankTab,
 [data-action="newBlankTab"], .eG_newBlankTab {
   mask-position: -32px -96px;
 }
-#easyGesturesPieMenu_nn .duplicateTab,
-#easyGesturesPieMenu_ln .duplicateTab,
+#easyGesturesPieMenu .duplicateTab,
 [data-action="duplicateTab"], .eG_duplicateTab {
   mask-position: -64px -96px;
 }
-#easyGesturesPieMenu_nn .closeTab,
-#easyGesturesPieMenu_ln .closeTab,
+#easyGesturesPieMenu .closeTab,
 [data-action="closeTab"], .eG_closeTab {
   mask-position: -96px -96px;
 }
-#easyGesturesPieMenu_nn .closeOtherTabs,
-#easyGesturesPieMenu_ln .closeOtherTabs,
+#easyGesturesPieMenu .closeOtherTabs,
 [data-action="closeOtherTabs"], .eG_closeOtherTabs {
   mask-position: -128px -96px;
 }
-#easyGesturesPieMenu_nn .undoCloseTab,
-#easyGesturesPieMenu_ln .undoCloseTab,
+#easyGesturesPieMenu .undoCloseTab,
 [data-action="undoCloseTab"], .eG_undoCloseTab {
   mask-position: -160px -96px;
 }
-#easyGesturesPieMenu_nn .previousTab,
-#easyGesturesPieMenu_ln .previousTab,
+#easyGesturesPieMenu .previousTab,
 [data-action="previousTab"], .eG_previousTab {
   mask-position: -192px -96px;
 }
-#easyGesturesPieMenu_nn .nextTab,
-#easyGesturesPieMenu_ln .nextTab,
+#easyGesturesPieMenu .nextTab,
 [data-action="nextTab"], .eG_nextTab {
   mask-position: -224px -96px;
 }
-#easyGesturesPieMenu_nn .pinUnpinTab,
-#easyGesturesPieMenu_ln .pinUnpinTab,
+#easyGesturesPieMenu .pinUnpinTab,
 [data-action="pinUnpinTab"], .eG_pinUnpinTab {
   mask-position: -256px -96px;
 }
-#easyGesturesPieMenu_nn .newWindow,
-#easyGesturesPieMenu_ln .newWindow,
+#easyGesturesPieMenu .newWindow,
 [data-action="newWindow"], .eG_newWindow {
   mask-position: -0px -128px;
 }
-#easyGesturesPieMenu_nn .newBlankWindow,
-#easyGesturesPieMenu_ln .newBlankWindow,
+#easyGesturesPieMenu .newBlankWindow,
 [data-action="newBlankWindow"], .eG_newBlankWindow {
   mask-position: -32px -128px;
 }
-#easyGesturesPieMenu_nn .newPrivateWindow,
-#easyGesturesPieMenu_ln .newPrivateWindow,
+#easyGesturesPieMenu .newPrivateWindow,
 [data-action="newPrivateWindow"], .eG_newPrivateWindow {
   mask-position: -64px -128px;
 }
-#easyGesturesPieMenu_nn .duplicateWindow,
-#easyGesturesPieMenu_ln .duplicateWindow,
+#easyGesturesPieMenu .duplicateWindow,
 [data-action="duplicateWindow"], .eG_duplicateWindow {
   mask-position: -96px -128px;
 }
-#easyGesturesPieMenu_nn .minimizeWindow,
-#easyGesturesPieMenu_ln .minimizeWindow,
+#easyGesturesPieMenu .minimizeWindow,
 [data-action="minimizeWindow"], .eG_minimizeWindow {
   mask-position: -128px -128px;
 }
-#easyGesturesPieMenu_nn .closeWindow,
-#easyGesturesPieMenu_ln .closeWindow,
+#easyGesturesPieMenu .closeWindow,
 [data-action="closeWindow"], .eG_closeWindow {
   mask-position: -160px -128px;
 }
-#easyGesturesPieMenu_nn .closeOtherWindows,
-#easyGesturesPieMenu_ln .closeOtherWindows,
+#easyGesturesPieMenu .closeOtherWindows,
 [data-action="closeOtherWindows"], .eG_closeOtherWindows {
   mask-position: -192px -128px;
 }
-#easyGesturesPieMenu_nn .undoCloseWindow,
-#easyGesturesPieMenu_ln .undoCloseWindow,
+#easyGesturesPieMenu .undoCloseWindow,
 [data-action="undoCloseWindow"], .eG_undoCloseWindow {
   mask-position: -224px -128px;
 }
-#easyGesturesPieMenu_nn .openLink,
-#easyGesturesPieMenu_ln .openLink,
+#easyGesturesPieMenu .openLink,
 [data-action="openLink"], .eG_openLink {
   mask-position: -0px -160px;
 }
-#easyGesturesPieMenu_nn .openLinkInNewWindow,
-#easyGesturesPieMenu_ln .openLinkInNewWindow,
+#easyGesturesPieMenu .openLinkInNewWindow,
 [data-action="openLinkInNewWindow"], .eG_openLinkInNewWindow {
   mask-position: -32px -160px;
 }
-#easyGesturesPieMenu_nn .openLinkInNewPrivateWindow,
-#easyGesturesPieMenu_ln .openLinkInNewPrivateWindow,
+#easyGesturesPieMenu .openLinkInNewPrivateWindow,
 [data-action="openLinkInNewPrivateWindow"], .eG_openLinkInNewPrivateWindow {
   mask-position: -64px -160px;
 }
-#easyGesturesPieMenu_nn .copyLink,
-#easyGesturesPieMenu_ln .copyLink,
+#easyGesturesPieMenu .copyLink,
 [data-action="copyLink"], .eG_copyLink {
   mask-position: -96px -160px;
 }
-#easyGesturesPieMenu_nn .saveLinkAs,
-#easyGesturesPieMenu_ln .saveLinkAs,
+#easyGesturesPieMenu .saveLinkAs,
 [data-action="saveLinkAs"], .eG_saveLinkAs {
   mask-position: -128px -160px;
 }
-#easyGesturesPieMenu_nn .dailyReadings,
-#easyGesturesPieMenu_ln .dailyReadings,
+#easyGesturesPieMenu .dailyReadings,
 [data-action="dailyReadings"], .eG_dailyReadings {
   mask-position: 0px -192px;
 }
-#easyGesturesPieMenu_nn .bookmarkThisPage,
-#easyGesturesPieMenu_ln .bookmarkThisPage,
+#easyGesturesPieMenu .bookmarkThisPage,
 [data-action="bookmarkThisPage"], .eG_bookmarkThisPage {
   mask-position: -32px -192px;
 }
-#easyGesturesPieMenu_nn .bookmarkThisIdentifier,
-#easyGesturesPieMenu_ln .bookmarkThisIdentifier,
+#easyGesturesPieMenu .bookmarkThisIdentifier,
 [data-action="bookmarkThisIdentifier"], .eG_bookmarkThisIdentifier {
   mask-position: -64px -192px;
 }
-#easyGesturesPieMenu_nn .bookmarkThisLink,
-#easyGesturesPieMenu_ln .bookmarkThisLink,
+#easyGesturesPieMenu .bookmarkThisLink,
 [data-action="bookmarkThisLink"], .eG_bookmarkThisLink {
   mask-position: -96px -192px;
 }
-#easyGesturesPieMenu_nn .bookmarkAllTabs,
-#easyGesturesPieMenu_ln .bookmarkAllTabs,
+#easyGesturesPieMenu .bookmarkAllTabs,
 [data-action="bookmarkAllTabs"], .eG_bookmarkAllTabs {
   mask-position: -128px -192px;
 }
-#easyGesturesPieMenu_nn .removeBookmarkToThisPage,
-#easyGesturesPieMenu_ln .removeBookmarkToThisPage,
+#easyGesturesPieMenu .removeBookmarkToThisPage,
 [data-action="removeBookmarkToThisPage"], .eG_removeBookmarkToThisPage {
   mask-position: -160px -192px;
 }
-#easyGesturesPieMenu_nn .removeBookmarkToThisIdentifier,
-#easyGesturesPieMenu_ln .removeBookmarkToThisIdentifier,
+#easyGesturesPieMenu .removeBookmarkToThisIdentifier,
 [data-action="removeBookmarkToThisIdentifier"],
 .eG_removeBookmarkToThisIdentifier {
   mask-position: -192px -192px;
 }
-#easyGesturesPieMenu_nn .removeBookmarkToThisLink,
-#easyGesturesPieMenu_ln .removeBookmarkToThisLink,
+#easyGesturesPieMenu .removeBookmarkToThisLink,
 [data-action="removeBookmarkToThisLink"], .eG_removeBookmarkToThisLink {
   mask-position: -224px -192px;
 }
-#easyGesturesPieMenu_nn .loadURL1,
-#easyGesturesPieMenu_ln .loadURL1,
+#easyGesturesPieMenu .loadURL1,
 [data-action="loadURL1"], .eG_loadURL1 {
   mask-position: -0px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL2,
-#easyGesturesPieMenu_ln .loadURL2,
+#easyGesturesPieMenu .loadURL2,
 [data-action="loadURL2"], .eG_loadURL2 {
   mask-position: -32px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL3,
-#easyGesturesPieMenu_ln .loadURL3,
+#easyGesturesPieMenu .loadURL3,
 [data-action="loadURL3"], .eG_loadURL3 {
   mask-position: -64px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL4,
-#easyGesturesPieMenu_ln .loadURL4,
+#easyGesturesPieMenu .loadURL4,
 [data-action="loadURL4"], .eG_loadURL4 {
   mask-position: -96px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL5,
-#easyGesturesPieMenu_ln .loadURL5,
+#easyGesturesPieMenu .loadURL5,
 [data-action="loadURL5"], .eG_loadURL5 {
   mask-position: -128px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL6,
-#easyGesturesPieMenu_ln .loadURL6,
+#easyGesturesPieMenu .loadURL6,
 [data-action="loadURL6"], .eG_loadURL6 {
   mask-position: -160px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL7,
-#easyGesturesPieMenu_ln .loadURL7,
+#easyGesturesPieMenu .loadURL7,
 [data-action="loadURL7"], .eG_loadURL7 {
   mask-position: -192px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL8,
-#easyGesturesPieMenu_ln .loadURL8,
+#easyGesturesPieMenu .loadURL8,
 [data-action="loadURL8"], .eG_loadURL8 {
   mask-position: -224px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL9,
-#easyGesturesPieMenu_ln .loadURL9,
+#easyGesturesPieMenu .loadURL9,
 [data-action="loadURL9"], .eG_loadURL9 {
   mask-position: -256px -224px;
 }
-#easyGesturesPieMenu_nn .loadURL10,
-#easyGesturesPieMenu_ln .loadURL10,
+#easyGesturesPieMenu .loadURL10,
 [data-action="loadURL10"], .eG_loadURL10 {
   mask-position: -288px -224px;
 }
-#easyGesturesPieMenu_nn .runScript1,
-#easyGesturesPieMenu_ln .runScript1,
+#easyGesturesPieMenu .runScript1,
 [data-action="runScript1"], .eG_runScript1 {
   mask-position: -0px -256px;
 }
-#easyGesturesPieMenu_nn .runScript2,
-#easyGesturesPieMenu_ln .runScript2,
+#easyGesturesPieMenu .runScript2,
 [data-action="runScript2"], .eG_runScript2 {
   mask-position: -32px -256px;
 }
-#easyGesturesPieMenu_nn .runScript3,
-#easyGesturesPieMenu_ln .runScript3,
+#easyGesturesPieMenu .runScript3,
 [data-action="runScript3"], .eG_runScript3 {
   mask-position: -64px -256px;
 }
-#easyGesturesPieMenu_nn .runScript4,
-#easyGesturesPieMenu_ln .runScript4,
+#easyGesturesPieMenu .runScript4,
 [data-action="runScript4"], .eG_runScript4 {
   mask-position: -96px -256px;
 }
-#easyGesturesPieMenu_nn .runScript5,
-#easyGesturesPieMenu_ln .runScript5,
+#easyGesturesPieMenu .runScript5,
 [data-action="runScript5"], .eG_runScript5 {
   mask-position: -128px -256px;
 }
-#easyGesturesPieMenu_nn .runScript6,
-#easyGesturesPieMenu_ln .runScript6,
+#easyGesturesPieMenu .runScript6,
 [data-action="runScript6"], .eG_runScript6 {
   mask-position: -160px -256px;
 }
-#easyGesturesPieMenu_nn .runScript7,
-#easyGesturesPieMenu_ln .runScript7,
+#easyGesturesPieMenu .runScript7,
 [data-action="runScript7"], .eG_runScript7 {
   mask-position: -192px -256px;
 }
-#easyGesturesPieMenu_nn .runScript8,
-#easyGesturesPieMenu_ln .runScript8,
+#easyGesturesPieMenu .runScript8,
 [data-action="runScript8"], .eG_runScript8 {
   mask-position: -224px -256px;
 }
-#easyGesturesPieMenu_nn .runScript9,
-#easyGesturesPieMenu_ln .runScript9,
+#easyGesturesPieMenu .runScript9,
 [data-action="runScript9"], .eG_runScript9 {
   mask-position: -256px -256px;
 }
-#easyGesturesPieMenu_nn .runScript10,
-#easyGesturesPieMenu_ln .runScript10,
+#easyGesturesPieMenu .runScript10,
 [data-action="runScript10"], .eG_runScript10 {
   mask-position: -288px -256px;
 }
-#easyGesturesPieMenu_nn .customIcon,
-#easyGesturesPieMenu_ln .customIcon {
+#easyGesturesPieMenu .customIcon {
   mask-repeat: no-repeat;
   mask-size: 20px 20px;
   mask-position: 6px 6px;
 }
-#easyGesturesPieMenu_nn .easyGesturesNPreferences,
-#easyGesturesPieMenu_ln .easyGesturesNPreferences,
+#easyGesturesPieMenu .easyGesturesNPreferences,
 [data-action="easyGesturesNPreferences"], .eG_easyGesturesNPreferences {
   mask-position: 0px -288px;
 }
-#easyGesturesPieMenu_nn .copyImageLocation,
-#easyGesturesPieMenu_ln .copyImageLocation,
+#easyGesturesPieMenu .copyImageLocation,
 [data-action="copyImageLocation"], .eG_copyImageLocation {
   mask-position: -0px -320px;
 }
-#easyGesturesPieMenu_nn .copyImage,
-#easyGesturesPieMenu_ln .copyImage,
+#easyGesturesPieMenu .copyImage,
 [data-action="copyImage"], .eG_copyImage {
   mask-position: -32px -320px;
 }
-#easyGesturesPieMenu_nn .saveImageAs,
-#easyGesturesPieMenu_ln .saveImageAs,
+#easyGesturesPieMenu .saveImageAs,
 [data-action="saveImageAs"], .eG_saveImageAs {
   mask-position: -64px -320px;
 }
-#easyGesturesPieMenu_nn .hideImages,
-#easyGesturesPieMenu_ln .hideImages,
+#easyGesturesPieMenu .hideImages,
 [data-action="hideImages"], .eG_hideImages {
   mask-position: -96px -320px;
 }
-#easyGesturesPieMenu_nn .cut,
-#easyGesturesPieMenu_ln .cut,
+#easyGesturesPieMenu .cut,
 [data-action="cut"], .eG_cut {
   mask-position: -0px -352px;
 }
-#easyGesturesPieMenu_nn .copy,
-#easyGesturesPieMenu_ln .copy,
+#easyGesturesPieMenu .copy,
 [data-action="copy"], .eG_copy {
   mask-position: -32px -352px;
 }
-#easyGesturesPieMenu_nn .paste,
-#easyGesturesPieMenu_ln .paste,
+#easyGesturesPieMenu .paste,
 [data-action="paste"], .eG_paste {
   mask-position: -64px -352px;
 }
-#easyGesturesPieMenu_nn .selectAll,
-#easyGesturesPieMenu_ln .selectAll,
+#easyGesturesPieMenu .selectAll,
 [data-action="selectAll"], .eG_selectAll {
   mask-position: -96px -352px;
 }
 
-#easyGesturesPieMenu_ns .empty,
-#easyGesturesPieMenu_ls .empty {
+#easyGesturesPieMenu.smallIcons .empty {
   mask-position: -40px 0px;
 }
-#easyGesturesPieMenu_ns .showExtraMenu,
-#easyGesturesPieMenu_ls .showExtraMenu {
+#easyGesturesPieMenu.smallIcons .showExtraMenu {
   mask-position: 0px 0px;
 }
-#easyGesturesPieMenu_ns .showExtraMenu.selected,
-#easyGesturesPieMenu_ns .showExtraMenu.showingExtraMenu,
-#easyGesturesPieMenu_ls .showExtraMenu.selected,
-#easyGesturesPieMenu_ls .showExtraMenu.showingExtraMenu {
+#easyGesturesPieMenu.smallIcons .showExtraMenu.selected,
+#easyGesturesPieMenu.smallIcons .showExtraMenu.showingExtraMenu {
   mask-position: -20px 0px;
 }
-#easyGesturesPieMenu_ns .back,
-#easyGesturesPieMenu_ls .back {
+#easyGesturesPieMenu.smallIcons .back {
   mask-position: 0px -20px;
 }
-#easyGesturesPieMenu_ns .backSite,
-#easyGesturesPieMenu_ls .backSite {
+#easyGesturesPieMenu.smallIcons .backSite {
   mask-position: -20px -20px;
 }
-#easyGesturesPieMenu_ns .firstPage,
-#easyGesturesPieMenu_ls .firstPage {
+#easyGesturesPieMenu.smallIcons .firstPage {
   mask-position: -40px -20px;
 }
-#easyGesturesPieMenu_ns .forward,
-#easyGesturesPieMenu_ls .forward {
+#easyGesturesPieMenu.smallIcons .forward {
   mask-position: -60px -20px;
 }
-#easyGesturesPieMenu_ns .forwardSite,
-#easyGesturesPieMenu_ls .forwardSite {
+#easyGesturesPieMenu.smallIcons .forwardSite {
   mask-position: -80px -20px;
 }
-#easyGesturesPieMenu_ns .lastPage,
-#easyGesturesPieMenu_ls .lastPage {
+#easyGesturesPieMenu.smallIcons .lastPage {
   mask-position: -100px -20px;
 }
-#easyGesturesPieMenu_ns .reload,
-#easyGesturesPieMenu_ls .reload {
+#easyGesturesPieMenu.smallIcons .reload {
   mask-position: -120px -20px;
 }
-#easyGesturesPieMenu_ns .homepage,
-#easyGesturesPieMenu_ls .homepage {
+#easyGesturesPieMenu.smallIcons .homepage {
   mask-position: -140px -20px;
 }
-#easyGesturesPieMenu_ns .pageTop,
-#easyGesturesPieMenu_ls .pageTop {
+#easyGesturesPieMenu.smallIcons .pageTop {
   mask-position: -160px -20px;
 }
-#easyGesturesPieMenu_ns .pageBottom,
-#easyGesturesPieMenu_ls .pageBottom {
+#easyGesturesPieMenu.smallIcons .pageBottom {
   mask-position: -180px -20px;
 }
-#easyGesturesPieMenu_ns .savePageAs,
-#easyGesturesPieMenu_ls .savePageAs {
+#easyGesturesPieMenu.smallIcons .savePageAs {
   mask-position: -200px -20px;
 }
-#easyGesturesPieMenu_ns .printPage,
-#easyGesturesPieMenu_ls .printPage {
+#easyGesturesPieMenu.smallIcons .printPage {
   mask-position: -220px -20px;
 }
-#easyGesturesPieMenu_ns .showPrintPreview,
-#easyGesturesPieMenu_ls .showPrintPreview {
+#easyGesturesPieMenu.smallIcons .showPrintPreview {
   mask-position: -240px -20px;
 }
-#easyGesturesPieMenu_ns .searchWeb,
-#easyGesturesPieMenu_ls .searchWeb {
+#easyGesturesPieMenu.smallIcons .searchWeb {
   mask-position: -260px -20px;
 }
-#easyGesturesPieMenu_ns .loadPageInNewTab,
-#easyGesturesPieMenu_ls .loadPageInNewTab {
+#easyGesturesPieMenu.smallIcons .loadPageInNewTab {
   mask-position: -0px -40px;
 }
-#easyGesturesPieMenu_ns .loadPageInNewPrivateWindow,
-#easyGesturesPieMenu_ls .loadPageInNewPrivateWindow {
+#easyGesturesPieMenu.smallIcons .loadPageInNewPrivateWindow {
   mask-position: -20px -40px;
 }
-#easyGesturesPieMenu_ns .moveTabToNewWindow,
-#easyGesturesPieMenu_ls .moveTabToNewWindow {
+#easyGesturesPieMenu.smallIcons .moveTabToNewWindow {
   mask-position: -40px -40px;
 }
-#easyGesturesPieMenu_ns .copyPageURL,
-#easyGesturesPieMenu_ls .copyPageURL {
+#easyGesturesPieMenu.smallIcons .copyPageURL {
   mask-position: -60px -40px;
 }
-#easyGesturesPieMenu_ns .copyURLToIdentifier,
-#easyGesturesPieMenu_ls .copyURLToIdentifier {
+#easyGesturesPieMenu.smallIcons .copyURLToIdentifier {
   mask-position: -80px -40px;
 }
-#easyGesturesPieMenu_ns .zoomIn,
-#easyGesturesPieMenu_ls .zoomIn {
+#easyGesturesPieMenu.smallIcons .zoomIn {
   mask-position: -100px -40px;
 }
-#easyGesturesPieMenu_ns .zoomOut,
-#easyGesturesPieMenu_ls .zoomOut {
+#easyGesturesPieMenu.smallIcons .zoomOut {
   mask-position: -120px -40px;
 }
-#easyGesturesPieMenu_ns .zoomReset,
-#easyGesturesPieMenu_ls .zoomReset {
+#easyGesturesPieMenu.smallIcons .zoomReset {
   mask-position: -140px -40px;
 }
-#easyGesturesPieMenu_ns .findAndHighlightSelection,
-#easyGesturesPieMenu_ls .findAndHighlightSelection {
+#easyGesturesPieMenu.smallIcons .findAndHighlightSelection {
   mask-position: -160px -40px;
 }
-#easyGesturesPieMenu_ns .removeHighlight,
-#easyGesturesPieMenu_ls .removeHighlight {
+#easyGesturesPieMenu.smallIcons .removeHighlight {
   mask-position: -180px -40px;
 }
-#easyGesturesPieMenu_ns .enterReaderMode,
-#easyGesturesPieMenu_ls .enterReaderMode {
+#easyGesturesPieMenu.smallIcons .enterReaderMode {
   mask-position: -200px -40px;
 }
-#easyGesturesPieMenu_ns .takeTabScreenshot,
-#easyGesturesPieMenu_ls .takeTabScreenshot {
+#easyGesturesPieMenu.smallIcons .takeTabScreenshot {
   mask-position: -220px -40px;
 }
-#easyGesturesPieMenu_ns .toggleFullscreen,
-#easyGesturesPieMenu_ls .toggleFullscreen {
+#easyGesturesPieMenu.smallIcons .toggleFullscreen {
   mask-position: -240px -40px;
 }
-#easyGesturesPieMenu_ns .up,
-#easyGesturesPieMenu_ls .up {
+#easyGesturesPieMenu.smallIcons .up {
   mask-position: -260px -40px;
 }
-#easyGesturesPieMenu_ns .root,
-#easyGesturesPieMenu_ls .root {
+#easyGesturesPieMenu.smallIcons .root {
   mask-position: -280px -40px;
 }
-#easyGesturesPieMenu_ns .showOnlyThisFrame,
-#easyGesturesPieMenu_ls .showOnlyThisFrame {
+#easyGesturesPieMenu.smallIcons .showOnlyThisFrame {
   mask-position: -300px -40px;
 }
-#easyGesturesPieMenu_ns .viewPageSource,
-#easyGesturesPieMenu_ls .viewPageSource {
+#easyGesturesPieMenu.smallIcons .viewPageSource {
   mask-position: -320px -40px;
 }
-#easyGesturesPieMenu_ns .newTab,
-#easyGesturesPieMenu_ls .newTab {
+#easyGesturesPieMenu.smallIcons .newTab {
   mask-position: -0px -60px;
 }
-#easyGesturesPieMenu_ns .newBlankTab,
-#easyGesturesPieMenu_ls .newBlankTab {
+#easyGesturesPieMenu.smallIcons .newBlankTab {
   mask-position: -20px -60px;
 }
-#easyGesturesPieMenu_ns .duplicateTab,
-#easyGesturesPieMenu_ls .duplicateTab {
+#easyGesturesPieMenu.smallIcons .duplicateTab {
   mask-position: -40px -60px;
 }
-#easyGesturesPieMenu_ns .closeTab,
-#easyGesturesPieMenu_ls .closeTab {
+#easyGesturesPieMenu.smallIcons .closeTab {
   mask-position: -60px -60px;
 }
-#easyGesturesPieMenu_ns .closeOtherTabs,
-#easyGesturesPieMenu_ls .closeOtherTabs {
+#easyGesturesPieMenu.smallIcons .closeOtherTabs {
   mask-position: -80px -60px;
 }
-#easyGesturesPieMenu_ns .undoCloseTab,
-#easyGesturesPieMenu_ls .undoCloseTab {
+#easyGesturesPieMenu.smallIcons .undoCloseTab {
   mask-position: -100px -60px;
 }
-#easyGesturesPieMenu_ns .previousTab,
-#easyGesturesPieMenu_ls .previousTab {
+#easyGesturesPieMenu.smallIcons .previousTab {
   mask-position: -120px -60px;
 }
-#easyGesturesPieMenu_ns .nextTab,
-#easyGesturesPieMenu_ls .nextTab {
+#easyGesturesPieMenu.smallIcons .nextTab {
   mask-position: -140px -60px;
 }
-#easyGesturesPieMenu_ns .pinUnpinTab,
-#easyGesturesPieMenu_ls .pinUnpinTab {
+#easyGesturesPieMenu.smallIcons .pinUnpinTab {
   mask-position: -160px -60px;
 }
-#easyGesturesPieMenu_ns .newWindow,
-#easyGesturesPieMenu_ls .newWindow {
+#easyGesturesPieMenu.smallIcons .newWindow {
   mask-position: -0px -80px;
 }
-#easyGesturesPieMenu_ns .newBlankWindow,
-#easyGesturesPieMenu_ls .newBlankWindow {
+#easyGesturesPieMenu.smallIcons .newBlankWindow {
   mask-position: -20px -80px;
 }
-#easyGesturesPieMenu_ns .newPrivateWindow,
-#easyGesturesPieMenu_ls .newPrivateWindow {
+#easyGesturesPieMenu.smallIcons .newPrivateWindow {
   mask-position: -40px -80px;
 }
-#easyGesturesPieMenu_ns .duplicateWindow,
-#easyGesturesPieMenu_ls .duplicateWindow {
+#easyGesturesPieMenu.smallIcons .duplicateWindow {
   mask-position: -60px -80px;
 }
-#easyGesturesPieMenu_ns .minimizeWindow,
-#easyGesturesPieMenu_ls .minimizeWindow {
+#easyGesturesPieMenu.smallIcons .minimizeWindow {
   mask-position: -80px -80px;
 }
-#easyGesturesPieMenu_ns .closeWindow,
-#easyGesturesPieMenu_ls .closeWindow {
+#easyGesturesPieMenu.smallIcons .closeWindow {
   mask-position: -100px -80px;
 }
-#easyGesturesPieMenu_ns .closeOtherWindows,
-#easyGesturesPieMenu_ls .closeOtherWindows {
+#easyGesturesPieMenu.smallIcons .closeOtherWindows {
   mask-position: -120px -80px;
 }
-#easyGesturesPieMenu_ns .undoCloseWindow,
-#easyGesturesPieMenu_ls .undoCloseWindow {
+#easyGesturesPieMenu.smallIcons .undoCloseWindow {
   mask-position: -140px -80px;
 }
-#easyGesturesPieMenu_ns .openLink,
-#easyGesturesPieMenu_ls .openLink {
+#easyGesturesPieMenu.smallIcons .openLink {
   mask-position: -0px -100px;
 }
-#easyGesturesPieMenu_ns .openLinkInNewWindow,
-#easyGesturesPieMenu_ls .openLinkInNewWindow {
+#easyGesturesPieMenu.smallIcons .openLinkInNewWindow {
   mask-position: -20px -100px;
 }
-#easyGesturesPieMenu_ns .openLinkInNewPrivateWindow,
-#easyGesturesPieMenu_ls .openLinkInNewPrivateWindow {
+#easyGesturesPieMenu.smallIcons .openLinkInNewPrivateWindow {
   mask-position: -40px -100px;
 }
-#easyGesturesPieMenu_ns .copyLink,
-#easyGesturesPieMenu_ls .copyLink {
+#easyGesturesPieMenu.smallIcons .copyLink {
   mask-position: -60px -100px;
 }
-#easyGesturesPieMenu_ns .saveLinkAs,
-#easyGesturesPieMenu_ls .saveLinkAs {
+#easyGesturesPieMenu.smallIcons .saveLinkAs {
   mask-position: -80px -100px;
 }
-#easyGesturesPieMenu_ns .dailyReadings,
-#easyGesturesPieMenu_ls .dailyReadings {
+#easyGesturesPieMenu.smallIcons .dailyReadings {
   mask-position: 0px -120px;
 }
-#easyGesturesPieMenu_ns .bookmarkThisPage,
-#easyGesturesPieMenu_ls .bookmarkThisPage {
+#easyGesturesPieMenu.smallIcons .bookmarkThisPage {
   mask-position: -20px -120px;
 }
-#easyGesturesPieMenu_ns .bookmarkThisIdentifier,
-#easyGesturesPieMenu_ls .bookmarkThisIdentifier {
+#easyGesturesPieMenu.smallIcons .bookmarkThisIdentifier {
   mask-position: -40px -120px;
 }
-#easyGesturesPieMenu_ns .bookmarkThisLink,
-#easyGesturesPieMenu_ls .bookmarkThisLink {
+#easyGesturesPieMenu.smallIcons .bookmarkThisLink {
   mask-position: -60px -120px;
 }
-#easyGesturesPieMenu_ns .bookmarkAllTabs,
-#easyGesturesPieMenu_ls .bookmarkAllTabs {
+#easyGesturesPieMenu.smallIcons .bookmarkAllTabs {
   mask-position: -80px -120px;
 }
-#easyGesturesPieMenu_ns .removeBookmarkToThisPage,
-#easyGesturesPieMenu_ls .removeBookmarkToThisPage {
+#easyGesturesPieMenu.smallIcons .removeBookmarkToThisPage {
   mask-position: -100px -120px;
 }
-#easyGesturesPieMenu_ns .removeBookmarkToThisIdentifier,
-#easyGesturesPieMenu_ls .removeBookmarkToThisIdentifier {
+#easyGesturesPieMenu.smallIcons .removeBookmarkToThisIdentifier {
   mask-position: -120px -120px;
 }
-#easyGesturesPieMenu_ns .removeBookmarkToThisLink,
-#easyGesturesPieMenu_ls .removeBookmarkToThisLink {
+#easyGesturesPieMenu.smallIcons .removeBookmarkToThisLink {
   mask-position: -140px -120px;
 }
-#easyGesturesPieMenu_ns .loadURL1,
-#easyGesturesPieMenu_ls .loadURL1 {
+#easyGesturesPieMenu.smallIcons .loadURL1 {
   mask-position: -0px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL2,
-#easyGesturesPieMenu_ls .loadURL2 {
+#easyGesturesPieMenu.smallIcons .loadURL2 {
   mask-position: -20px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL3,
-#easyGesturesPieMenu_ls .loadURL3 {
+#easyGesturesPieMenu.smallIcons .loadURL3 {
   mask-position: -40px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL4,
-#easyGesturesPieMenu_ls .loadURL4 {
+#easyGesturesPieMenu.smallIcons .loadURL4 {
   mask-position: -60px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL5,
-#easyGesturesPieMenu_ls .loadURL5 {
+#easyGesturesPieMenu.smallIcons .loadURL5 {
   mask-position: -80px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL6,
-#easyGesturesPieMenu_ls .loadURL6 {
+#easyGesturesPieMenu.smallIcons .loadURL6 {
   mask-position: -100px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL7,
-#easyGesturesPieMenu_ls .loadURL7 {
+#easyGesturesPieMenu.smallIcons .loadURL7 {
   mask-position: -120px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL8,
-#easyGesturesPieMenu_ls .loadURL8 {
+#easyGesturesPieMenu.smallIcons .loadURL8 {
   mask-position: -140px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL9,
-#easyGesturesPieMenu_ls .loadURL9 {
+#easyGesturesPieMenu.smallIcons .loadURL9 {
   mask-position: -160px -140px;
 }
-#easyGesturesPieMenu_ns .loadURL10,
-#easyGesturesPieMenu_ls .loadURL10 {
+#easyGesturesPieMenu.smallIcons .loadURL10 {
   mask-position: -180px -140px;
 }
-#easyGesturesPieMenu_ns .runScript1,
-#easyGesturesPieMenu_ls .runScript1 {
+#easyGesturesPieMenu.smallIcons .runScript1 {
   mask-position: -0px -160px;
 }
-#easyGesturesPieMenu_ns .runScript2,
-#easyGesturesPieMenu_ls .runScript2 {
+#easyGesturesPieMenu.smallIcons .runScript2 {
   mask-position: -20px -160px;
 }
-#easyGesturesPieMenu_ns .runScript3,
-#easyGesturesPieMenu_ls .runScript3 {
+#easyGesturesPieMenu.smallIcons .runScript3 {
   mask-position: -40px -160px;
 }
-#easyGesturesPieMenu_ns .runScript4,
-#easyGesturesPieMenu_ls .runScript4 {
+#easyGesturesPieMenu.smallIcons .runScript4 {
   mask-position: -60px -160px;
 }
-#easyGesturesPieMenu_ns .runScript5,
-#easyGesturesPieMenu_ls .runScript5 {
+#easyGesturesPieMenu.smallIcons .runScript5 {
   mask-position: -80px -160px;
 }
-#easyGesturesPieMenu_ns .runScript6,
-#easyGesturesPieMenu_ls .runScript6 {
+#easyGesturesPieMenu.smallIcons .runScript6 {
   mask-position: -100px -160px;
 }
-#easyGesturesPieMenu_ns .runScript7,
-#easyGesturesPieMenu_ls .runScript7 {
+#easyGesturesPieMenu.smallIcons .runScript7 {
   mask-position: -120px -160px;
 }
-#easyGesturesPieMenu_ns .runScript8,
-#easyGesturesPieMenu_ls .runScript8 {
+#easyGesturesPieMenu.smallIcons .runScript8 {
   mask-position: -140px -160px;
 }
-#easyGesturesPieMenu_ns .runScript9,
-#easyGesturesPieMenu_ls .runScript9 {
+#easyGesturesPieMenu.smallIcons .runScript9 {
   mask-position: -160px -160px;
 }
-#easyGesturesPieMenu_ns .runScript10,
-#easyGesturesPieMenu_ls .runScript10 {
+#easyGesturesPieMenu.smallIcons .runScript10 {
   mask-position: -180px -160px;
 }
-#easyGesturesPieMenu_ns .customIcon,
-#easyGesturesPieMenu_ls .customIcon {
+#easyGesturesPieMenu.smallIcons .customIcon {
   mask-repeat: no-repeat;
   mask-size: 12.5px 12.5px;
   mask-position: 3.75px 3.75px;
 }
-#easyGesturesPieMenu_ns .easyGesturesNPreferences,
-#easyGesturesPieMenu_ls .easyGesturesNPreferences {
+#easyGesturesPieMenu.smallIcons .easyGesturesNPreferences {
   mask-position: 0px -180px;
 }
-#easyGesturesPieMenu_ns .copyImageLocation,
-#easyGesturesPieMenu_ls .copyImageLocation {
+#easyGesturesPieMenu.smallIcons .copyImageLocation {
   mask-position: -0px -200px;
 }
-#easyGesturesPieMenu_ns .copyImage,
-#easyGesturesPieMenu_ls .copyImage {
+#easyGesturesPieMenu.smallIcons .copyImage {
   mask-position: -20px -200px;
 }
-#easyGesturesPieMenu_ns .saveImageAs,
-#easyGesturesPieMenu_ls .saveImageAs {
+#easyGesturesPieMenu.smallIcons .saveImageAs {
   mask-position: -40px -200px;
 }
-#easyGesturesPieMenu_ns .hideImages,
-#easyGesturesPieMenu_ls .hideImages {
+#easyGesturesPieMenu.smallIcons .hideImages {
   mask-position: -60px -200px;
 }
-#easyGesturesPieMenu_ns .cut,
-#easyGesturesPieMenu_ls .cut {
+#easyGesturesPieMenu.smallIcons .cut {
   mask-position: -0px -220px;
 }
-#easyGesturesPieMenu_ns .copy,
-#easyGesturesPieMenu_ls .copy {
+#easyGesturesPieMenu.smallIcons .copy {
   mask-position: -20px -220px;
 }
-#easyGesturesPieMenu_ns .paste,
-#easyGesturesPieMenu_ls .paste {
+#easyGesturesPieMenu.smallIcons .paste {
   mask-position: -40px -220px;
 }
-#easyGesturesPieMenu_ns .selectAll,
-#easyGesturesPieMenu_ls .selectAll {
+#easyGesturesPieMenu.smallIcons .selectAll {
   mask-position: -60px -220px;
 }
 
