@@ -309,7 +309,7 @@ let eGPieMenu = {
     this.specialNodesNode.id = "eG_SpecialNodes";
     
     let linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
-    linkSignNode.id = "eG_linkSign";
+    linkSignNode.id = "easyGesturesLinkSign";
     this.specialNodesNode.appendChild(linkSignNode);
     
     let mainMenusSignNode = document.createElementNS(HTML_NAMESPACE, "div");
