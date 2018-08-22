@@ -306,7 +306,6 @@ let eGPieMenu = {
   
   _createSpecialNodes: function(numberOfMainMenus, numberOfExtraMenus) {
     this.specialNodesNode = document.createElementNS(HTML_NAMESPACE, "div");
-    this.specialNodesNode.id = "eG_SpecialNodes";
     
     let linkSignNode = document.createElementNS(HTML_NAMESPACE, "div");
     linkSignNode.id = "easyGesturesLinkSign";
