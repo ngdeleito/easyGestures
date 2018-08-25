@@ -42,8 +42,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
 const EXTRA_MENU_SECTOR = 2; // position of the extra menu action in base menus
+const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
+const EXTRA_NODE_CLASS_NAME = "easyGesturesExtraNode";
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -343,7 +344,9 @@ let eGPieMenu = {
   _createActionsNodes: function(layoutName, actions) {
     let anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
     anActionsNode.id = "eG_actions_" + layoutName;
-    anActionsNode.classList.toggle("extra", this._currentLayout.isExtraMenu);
+    anActionsNode.className = "easyGesturesActionsNode";
+    anActionsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
+                                   this._currentLayout.isExtraMenu);
     
     // creating actions images
     actions.forEach(function(action, index) {
@@ -392,6 +395,9 @@ let eGPieMenu = {
   _createTooltipsNodes: function(layoutName, tooltips, hasExtraMenuAction) {
     let aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
     aTooltipsNode.id = "eG_labels_" + layoutName;
+    aTooltipsNode.className = "easyGesturesTooltipsNode";
+    aTooltipsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
+                                   this._currentLayout.isExtraMenu);
     
     tooltips.forEach(function(tooltip, index) {
       let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");

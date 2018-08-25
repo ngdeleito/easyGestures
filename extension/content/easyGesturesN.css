@@ -210,7 +210,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 /* Actions */
 
-#easyGesturesPieMenu div[id^="eG_actions"] {
+#easyGesturesPieMenu .easyGesturesActionsNode {
   visibility: hidden;
   z-index: -1;
   background-image: url("menu.svg");
@@ -222,28 +222,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 122px;
 }
 
-#easyGesturesPieMenu.smallIcons div[id^="eG_actions"] {
+#easyGesturesPieMenu.smallIcons .easyGesturesActionsNode {
   left: -38px; /* menu radius */
   top: -38px;
   width: 76px;
   height: 76px;
 }
 
-#easyGesturesPieMenu.large div[id^="eG_actions"] {
+#easyGesturesPieMenu.large .easyGesturesActionsNode {
   left: -70px; /* menu radius */
   top: -70px;
   width: 140px;
   height: 140px;
 }
 
-#easyGesturesPieMenu.large.smallIcons div[id^="eG_actions"] {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesActionsNode {
   left: -44px; /* menu radius */
   top: -44px;
   width: 88px;
   height: 88px;
 }
 
-#easyGesturesPieMenu div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode {
   z-index: -2;
   background-image: url("extraMenu.svg");
   
@@ -252,19 +252,19 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 82px;
 }
 
-#easyGesturesPieMenu.smallIcons div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu.smallIcons .easyGesturesActionsNode.easyGesturesExtraNode {
   top: -83px; /* extra menu y-offset */
   width: 76px;
   height: 51px;
 }
 
-#easyGesturesPieMenu.large div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu.large .easyGesturesActionsNode.easyGesturesExtraNode {
   top: -151px; /* extra menu y-offset */
   width: 140px;
   height: 94px;
 }
 
-#easyGesturesPieMenu.large.smallIcons div[id^="eG_actions_extra"] {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesActionsNode.easyGesturesExtraNode {
   top: -97px; /* extra menu y-offset */
   width: 88px;
   height: 59px;
@@ -312,11 +312,11 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu.large div.sector8 { left: 85px; top: 97px; }
 #easyGesturesPieMenu.large div.sector9 { display: block; right: 2.3px; top: 69.5px; }
 
-#easyGesturesPieMenu.large .extra div.sector0 { right: 2.3px; top: 54px; }
-#easyGesturesPieMenu.large .extra div.sector1 { left: 90px; top: 18px; }
-#easyGesturesPieMenu.large .extra div.sector2 { left: 54px; top: 2.3px; }
-#easyGesturesPieMenu.large .extra div.sector3 { left: 18px; top: 18px; }
-#easyGesturesPieMenu.large .extra div.sector4 { left: 2.3px; top: 54px; }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0 { right: 2.3px; top: 54px; }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1 { left: 90px; top: 18px; }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2 { left: 54px; top: 2.3px; }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3 { left: 18px; top: 18px; }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4 { left: 2.3px; top: 54px; }
 
 #easyGesturesPieMenu.large.smallIcons div.sector0 { right: 1.44px; top: 24px; }
 #easyGesturesPieMenu.large.smallIcons div.sector1 { left: 54px; top: 7px; }
@@ -329,15 +329,15 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu.large.smallIcons div.sector8 { left: 54px; top: 61px; }
 #easyGesturesPieMenu.large.smallIcons div.sector9 { display: block; right: 1.44px; top: 44px; }
 
-#easyGesturesPieMenu.large.smallIcons .extra div.sector0 { right: 1.44px; top: 34px; }
-#easyGesturesPieMenu.large.smallIcons .extra div.sector1 { left: 58px; top: 10px; }
-#easyGesturesPieMenu.large.smallIcons .extra div.sector2 { left: 34px; top: 1.44px; }
-#easyGesturesPieMenu.large.smallIcons .extra div.sector3 { left: 10px; top: 10px; }
-#easyGesturesPieMenu.large.smallIcons .extra div.sector4 { left: 1.44px; top: 34px; }
+#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector0 { right: 1.44px; top: 34px; }
+#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector1 { left: 58px; top: 10px; }
+#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector2 { left: 34px; top: 1.44px; }
+#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector3 { left: 10px; top: 10px; }
+#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector4 { left: 1.44px; top: 34px; }
 
 /* Labels */
 
-#easyGesturesPieMenu div[id^="eG_labels"] {
+#easyGesturesPieMenu .easyGesturesTooltipsNode {
   visibility: hidden;
   z-index: -2; /* labels are displayed below menu level */
   
@@ -346,41 +346,41 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   width: 400px; /* 2 * labels x-offset */
 }
 
-#easyGesturesPieMenu.smallIcons div[id^="eG_labels"] {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode {
   left: -150px; /* labels x-offset */ /* 75% of non small */
   top: -51px;
   width: 300px;
 }
 
-#easyGesturesPieMenu.large div[id^="eG_labels"] {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode {
   left: -220px; /* labels x-offset */
   top: -97px; /* 3 * (label height + 2px) + 1px */
   width: 440px;
 }
 
-#easyGesturesPieMenu.large.smallIcons div[id^="eG_labels"] {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode {
   left: -165px; /* labels x-offset */ /* 75% of non small */
   top: -61px;
   width: 330px;
 }
 
-#easyGesturesPieMenu div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu .easyGesturesTooltipsNode.easyGesturesExtraNode {
   z-index: -3; /* labels are displayed below menu level */
   
   top: -154px; /* extra menu y-offset + top of action with sector4
                   - 2 * (label height + 2px) */
 }
 
-#easyGesturesPieMenu.smallIcons div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode.easyGesturesExtraNode {
   top: -95px;
 }
 
-#easyGesturesPieMenu.large div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode.easyGesturesExtraNode {
   top: -165px; /* extra menu y-offset + top of action with sector4
                   - 2 * (label height + 2px) - 4px */
 }
 
-#easyGesturesPieMenu.large.smallIcons div[id^="eG_labels_extra"] {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode.easyGesturesExtraNode {
   top: -107px;
 }
 
@@ -427,7 +427,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .label5,
 #easyGesturesPieMenu.large .label6,
-#easyGesturesPieMenu div[id^="eG_labels_extra"] .label4 {
+#easyGesturesPieMenu .easyGesturesExtraNode .label4 {
   border-bottom-color: hsl(0, 0%, 60%);
   border-bottom-left-radius: 5px 5px;
 }
@@ -439,7 +439,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .label6,
 #easyGesturesPieMenu.large .label7,
-#easyGesturesPieMenu div[id^="eG_labels_extra"] .label0 {
+#easyGesturesPieMenu .easyGesturesExtraNode .label0 {
   border-bottom-color: hsl(0, 0%, 60%);
   border-bottom-left-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
