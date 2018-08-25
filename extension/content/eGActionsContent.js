@@ -35,14 +35,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported actionStatusSetters, actionRunners */
-/* global document, inputElement, selection, window, frameScrollY,
-          iframeElement, frameScrollMaxY, imageElement, eGPieMenu  */
+/* global document, ACTIONS_NODE_ID_PREFIX, inputElement, selection, window,
+          frameScrollY, iframeElement, frameScrollMaxY, imageElement, eGPieMenu */
 
 "use strict";
 
 let actionStatusSetters = {
   _setActionStatus: function(layoutName, actionSector, disabled) {
-    let actionsNode = document.getElementById("eG_actions_" + layoutName);
     let actionNode = actionsNode.childNodes[actionSector];
     if (disabled) {
       actionNode.classList.add("disabled");
@@ -50,6 +49,7 @@ let actionStatusSetters = {
     else {
       actionNode.classList.remove("disabled");
     }
+    let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
   },
   
   nonDisableableAction: function() {},

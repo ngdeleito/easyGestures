@@ -44,7 +44,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 const EXTRA_MENU_SECTOR = 2; // position of the extra menu action in base menus
 const HTML_NAMESPACE = "http://www.w3.org/1999/xhtml";
+const ACTIONS_NODE_ID_PREFIX = "easyGesturesActionsNode:";
 const EXTRA_NODE_CLASS_NAME = "easyGesturesExtraNode";
+const TOOLTIPS_NODE_ID_PREFIX = "easyGesturesTooltipsNode:";
 
 function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   this._pieMenu = menu;
@@ -343,7 +345,7 @@ let eGPieMenu = {
   
   _createActionsNodes: function(layoutName, actions) {
     let anActionsNode = document.createElementNS(HTML_NAMESPACE, "div");
-    anActionsNode.id = "eG_actions_" + layoutName;
+    anActionsNode.id = ACTIONS_NODE_ID_PREFIX + layoutName;
     anActionsNode.className = "easyGesturesActionsNode";
     anActionsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
                                    this._currentLayout.isExtraMenu);
@@ -394,7 +396,7 @@ let eGPieMenu = {
   
   _createTooltipsNodes: function(layoutName, tooltips, hasExtraMenuAction) {
     let aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
-    aTooltipsNode.id = "eG_labels_" + layoutName;
+    aTooltipsNode.id = TOOLTIPS_NODE_ID_PREFIX + layoutName;
     aTooltipsNode.className = "easyGesturesTooltipsNode";
     aTooltipsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
                                    this._currentLayout.isExtraMenu);
@@ -414,7 +416,7 @@ let eGPieMenu = {
   },
   
   _showMenuTooltips: function() {
-    let tooltipsNode = document.getElementById("eG_labels_" +
+    let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX +
                                                this._currentLayout.name);
     if (tooltipsNode === null) {
       tooltipsNode = this._createTooltipsNodes(this._currentLayout.name,
@@ -435,7 +437,7 @@ let eGPieMenu = {
   _showLayout: function(layoutName) {
     this._currentLayout = this._layouts[layoutName];
     
-    let actionsNode = document.getElementById("eG_actions_" + layoutName);
+    let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
     if (actionsNode === null) {
       actionsNode = this._createActionsNodes(layoutName,
                                              this._currentLayout.actions);
@@ -516,8 +518,8 @@ let eGPieMenu = {
   },
   
   _highlightSelectedAction: function(oldSector, newSector, layoutName) {
-    let actionsNode = document.getElementById("eG_actions_" + layoutName);
-    let tooltipsNode = document.getElementById("eG_labels_" + layoutName);
+    let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
+    let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX + layoutName);
     
     if (oldSector >= 0) {
       actionsNode.childNodes[oldSector].classList.remove("selected");
@@ -535,9 +537,9 @@ let eGPieMenu = {
   },
   
   _hideCurrentLayout: function() {
-    let actionsNode = document.getElementById("eG_actions_" +
+    let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX +
                                               this._currentLayout.name);
-    let tooltipsNode = document.getElementById("eG_labels_" +
+    let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX +
                                                this._currentLayout.name);
     
     if (actionsNode !== null) {
@@ -557,9 +559,9 @@ let eGPieMenu = {
   },
   
   _showExtraMenu: function() {
-    let baseActionsNode = document.getElementById("eG_actions_" +
+    let baseActionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX +
                                                   this._currentLayout.name);
-    let baseTooltipsNode = document.getElementById("eG_labels_" +
+    let baseTooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX +
                                                    this._currentLayout.name);
     
     this._baseLayout = this._currentLayout;
@@ -580,9 +582,9 @@ let eGPieMenu = {
   },
   
   _hideExtraMenu: function() {
-    let baseActionsNode = document.getElementById("eG_actions_" +
+    let baseActionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX +
                                                   this._baseLayout.name);
-    let baseTooltipsNode = document.getElementById("eG_labels_" +
+    let baseTooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX +
                                                    this._baseLayout.name);
     
     this._hideCurrentLayout();
@@ -666,7 +668,7 @@ let eGPieMenu = {
   },
   
   runAction: function() {
-    let actionsNode = document.getElementById("eG_actions_" +
+    let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX +
                                               this._currentLayout.name);
     let actionNode = actionsNode.childNodes[this.sector];
     
