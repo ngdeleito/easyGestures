@@ -353,7 +353,6 @@ let eGPieMenu = {
     // creating actions images
     actions.forEach(function(action, index) {
       let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
-      anActionNode.id = "eG_action_" + layoutName + "_" + index;
       anActionNode.className = "sector" + index;
       
       let iconName = action;
@@ -403,7 +402,6 @@ let eGPieMenu = {
     
     tooltips.forEach(function(tooltip, index) {
       let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
-      aTooltipNode.id = "eG_label_" + layoutName + "_" + index;
       aTooltipNode.classList.add("label" + index);
       aTooltipNode.appendChild(document.createTextNode(tooltip));
       aTooltipsNode.appendChild(aTooltipNode);
