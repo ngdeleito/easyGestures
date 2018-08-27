@@ -42,14 +42,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 let actionStatusSetters = {
   _setActionStatus: function(layoutName, actionSector, disabled) {
-    let actionNode = actionsNode.childNodes[actionSector];
-    if (disabled) {
-      actionNode.classList.add("disabled");
-    }
-    else {
-      actionNode.classList.remove("disabled");
-    }
     let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
+    actionsNode.childNodes[actionSector].classList.toggle("disabled", disabled);
   },
   
   nonDisableableAction: function() {},
