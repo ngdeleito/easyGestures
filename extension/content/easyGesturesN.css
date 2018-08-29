@@ -79,28 +79,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu #easyGesturesMainMenusSign {
   left: 32px; /* icon size */
-  top: -81px; /* labels y-offset */
+  top: -81px; /* tooltips y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.smallIcons #easyGesturesMainMenusSign {
   left: 20px; /* icon size */
-  top: -51px; /* labels y-offset */
+  top: -51px; /* tooltips y-offset */
   line-height: 20px;
   font-size: 10px;
 }
 
 #easyGesturesPieMenu.large #easyGesturesMainMenusSign {
   left: 32px; /* icon size */
-  top: -97px; /* labels y-offset */
+  top: -97px; /* tooltips y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.large.smallIcons #easyGesturesMainMenusSign {
   left: 20px; /* icon size */
-  top: -61px; /* labels y-offset */
+  top: -61px; /* tooltips y-offset */
   line-height: 20px;
   font-size: 10px;
 }
@@ -112,28 +112,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu #easyGesturesExtraMenusSign {
   left: 32px; /* icon size */
-  top: -154px; /* extra labels y-offset */
+  top: -154px; /* extra tooltips y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.smallIcons #easyGesturesExtraMenusSign {
   left: 20px; /* icon size */
-  top: -95px; /* extra labels y-offset */
+  top: -95px; /* extra tooltips y-offset */
   line-height: 20px;
   font-size: 10px;
 }
 
 #easyGesturesPieMenu.large #easyGesturesExtraMenusSign {
   left: 32px; /* icon size */
-  top: -165px; /* extra labels y-offset */
+  top: -165px; /* extra tooltips y-offset */
   line-height: 32px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.large.smallIcons #easyGesturesExtraMenusSign {
   left: 20px; /* icon size */
-  top: -107px; /* extra labels y-offset */
+  top: -107px; /* extra tooltips y-offset */
   line-height: 20px;
   font-size: 10px;
 }
@@ -177,28 +177,28 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu #easyGesturesContextMenuSign {
   left: 32px; /* icon size */
-  top: -81px; /* labels y-offset */
+  top: -81px; /* tooltips y-offset */
   line-height: 14px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.smallIcons #easyGesturesContextMenuSign {
   left: 20px; /* icon size */
-  top: -51px; /* labels y-offset */
+  top: -51px; /* tooltips y-offset */
   line-height: 9px;
   font-size: 9px;
 }
 
 #easyGesturesPieMenu.large #easyGesturesContextMenuSign {
   left: 32px; /* icon size */
-  top: -97px; /* labels y-offset */
+  top: -97px; /* tooltips y-offset */
   line-height: 14px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.large.smallIcons #easyGesturesContextMenuSign {
   left: 20px; /* icon size */
-  top: -61px; /* labels y-offset */
+  top: -61px; /* tooltips y-offset */
   line-height: 9px;
   font-size: 9px;
 }
@@ -339,36 +339,36 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode {
   visibility: hidden;
-  z-index: -2; /* labels are displayed below menu level */
+  z-index: -2; /* tooltips are displayed below menu level */
   
-  left: -200px; /* labels x-offset */
-  top: -81px; /* 2,5 * (label height + 2px) + 1px */
-  width: 400px; /* 2 * labels x-offset */
+  left: -200px; /* tooltips x-offset */
+  top: -81px; /* 2,5 * (tooltip height + 2px) + 1px */
+  width: 400px; /* 2 * tooltips x-offset */
 }
 
 #easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode {
-  left: -150px; /* labels x-offset */ /* 75% of non small */
+  left: -150px; /* tooltips x-offset */ /* 75% of non small */
   top: -51px;
   width: 300px;
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode {
-  left: -220px; /* labels x-offset */
-  top: -97px; /* 3 * (label height + 2px) + 1px */
+  left: -220px; /* tooltips x-offset */
+  top: -97px; /* 3 * (tooltip height + 2px) + 1px */
   width: 440px;
 }
 
 #easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode {
-  left: -165px; /* labels x-offset */ /* 75% of non small */
+  left: -165px; /* tooltips x-offset */ /* 75% of non small */
   top: -61px;
   width: 330px;
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode.easyGesturesExtraNode {
-  z-index: -3; /* labels are displayed below menu level */
+  z-index: -3; /* tooltips are displayed below menu level */
   
   top: -154px; /* extra menu y-offset + top of action with sector4
-                  - 2 * (label height + 2px) */
+                  - 2 * (tooltip height + 2px) */
 }
 
 #easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode.easyGesturesExtraNode {
@@ -377,7 +377,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode.easyGesturesExtraNode {
   top: -165px; /* extra menu y-offset + top of action with sector4
-                  - 2 * (label height + 2px) - 4px */
+                  - 2 * (tooltip height + 2px) - 4px */
 }
 
 #easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode.easyGesturesExtraNode {
@@ -397,23 +397,23 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   text-overflow: ellipsis;
   white-space: nowrap;
   
-  height: 30px; /* label height */
+  height: 30px; /* tooltip height */
   line-height: 30px;
   font-size: 14px;
 }
 
 #easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode div {
-  height: 18px; /* label height */
+  height: 18px; /* tooltip height */
   line-height: 18px;
   font-size: 10px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label1 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 {
   border-top-color: hsl(0, 0%, 60%);
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label2 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
   top: 0px;
   left: 0px;
   border-top-color: hsl(0, 0%, 60%);
@@ -421,147 +421,147 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label2.extra {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2.extra {
   background-color: hsl(0, 100%, 90%);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label5,
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label6,
-#easyGesturesPieMenu .easyGesturesExtraNode .label4 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5,
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6,
+#easyGesturesPieMenu .easyGesturesExtraNode .tooltip4 {
   border-bottom-color: hsl(0, 0%, 60%);
   border-bottom-left-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label5 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip5 {
   border-bottom-color: hsl(60, 40%, 83%);
   border-bottom-left-radius: 0px 0px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label6,
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label7,
-#easyGesturesPieMenu .easyGesturesExtraNode .label0 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6,
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7,
+#easyGesturesPieMenu .easyGesturesExtraNode .tooltip0 {
   border-bottom-color: hsl(0, 0%, 60%);
   border-bottom-left-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label2 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
   padding-right: 54px; /* 1,5 * icon size + 6px */
-  width: 152px; /* labels x-offset + 0,5 * icon size - border-left - padding-left - padding-right - border-right */
+  width: 152px; /* tooltips x-offset + 0,5 * icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label6 { /* see label2 */
-  top: 128px;  /* 4 * (label height + 2px) */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
+  top: 128px;  /* 4 * (tooltip height + 2px) */
   right: 0px;
   padding-left: 54px;
   width: 152px;
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label3 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
-  top: 32px; /* label height + 2px */
+  top: 32px; /* tooltip height + 2px */
   padding-right: 32px; /* icon size */
-  width: 130px; /* labels x-offset - 2 * icon size - 6px */
+  width: 130px; /* tooltips x-offset - 2 * icon size - 6px */
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label1 { /* see label3 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
   top: 32px;
   right: 0px;
   padding-left: 32px;
   width: 130px;
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label5 { /* see label3 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
   left: 0px;
-  top: 96px; /* 3 * (label height + 2px) */
+  top: 96px; /* 3 * (tooltip height + 2px) */
   padding-right: 32px;
   width: 130px;
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label7 { /* see label5 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
   top: 96px;
   right: 0px;
   padding-left: 32px;
   width: 130px;
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label4 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
-  top: 64px; /* 2 * (label height + 2px) */
+  top: 64px; /* 2 * (tooltip height + 2px) */
   padding-right: 32px; /* icon size */
-  width: 120px; /* labels x-offset - 2,5 * icon size */
+  width: 120px; /* tooltips x-offset - 2,5 * icon size */
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .label0 { /* see label4 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
   top: 64px;
   right: 0px;
   padding-left: 32px;
   width: 120px;
 }
 
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label2 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip2 {
   padding-right: 36px;
   width: 114px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label6 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip6 {
   top: 80px;
   right: 0px;
   padding-left: 36px;
   width: 114px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label3 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
   top: 20px;
   padding-right: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label1 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip1 {
   top: 20px;
   right: 0px;
   padding-left: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label5 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip5 {
   left: 0px;
   top: 60px;
   padding-right: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label7 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip7 {
   top: 60px;
   right: 0px;
   padding-left: 20px;
   width: 104px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label4 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
   top: 40px;
   padding-right: 20px;
   width: 100px;
 }
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .label0 {
+#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip0 {
   top: 40px;
   right: 0px;
   padding-left: 20px;
   width: 100px;
 }
 
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label2 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip2 {
   padding-right: 38px; /* icon size + 6px */
   width: 188px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label7 {
-  top: 160px; /* 5 * (label height + 2px) */
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7 {
+  top: 160px; /* 5 * (tooltip height + 2px) */
   right: 0px;
   padding-left: 38px;
   width: 188px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label3 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
   top: 32px;
   padding-right: 54px; /* 1,5 * icon size + 6px */
-  width: 140px; /* labels x-offset - 0,5 * icon size - border-left - padding-left - padding-right - border-right */
+  width: 140px; /* tooltips x-offset - 0,5 * icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label1 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip1 {
   top: 32px;
   right: 0px;
   padding-left: 54px;
   width: 140px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label6 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6 {
   left: 0px;
   top: 128px;
   right: auto;
@@ -569,90 +569,90 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   padding-right: 54px;
   width: 140px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label8 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip8 {
   top: 128px;
   right: 0px;
   padding-left: 54px;
   width: 140px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label4 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
   top: 64px;
   padding-right: 48px; /* 1,5 * icon size */
-  width: 130px; /* labels x-offset - icon size - border-left - padding-left - padding-right - border-right */
+  width: 130px; /* tooltips x-offset - icon size - border-left - padding-left - padding-right - border-right */
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label0 {
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip0 {
   top: 64px;
   right: 0px;
   padding-left: 48px;
   width: 130px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label5 { /* see label4 */
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip5 { /* see tooltip4 */
   left: 0px;
   top: 96px;
   padding-right: 48px;
   width: 130px;
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .label9 { /* see label5 */
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip9 { /* see tooltip5 */
   top: 96px;
   right: 0px;
   padding-left: 48px;
   width: 130px;
 }
 
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label2 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip2 {
   padding-right: 26px;
   width: 139px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label7 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip7 {
   top: 100px;
   right: 0px;
   padding-left: 26px;
   width: 139px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label3 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
   top: 20px;
   padding-right: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label1 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip1 {
   top: 20px;
   right: 0px;
   padding-left: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label6 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip6 {
   left: 0px;
   top: 80px;
   padding-right: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label8 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip8 {
   top: 80px;
   right: 0px;
   padding-left: 36px;
   width: 109px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label4 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
   top: 40px;
   padding-right: 30px;
   width: 105px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label0 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip0 {
   top: 40px;
   right: 0px;
   padding-left: 30px;
   width: 105px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label5 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip5 {
   left: 0px;
   top: 60px;
   padding-right: 30px;
   width: 105px;
 }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .label9 {
+#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip9 {
   top: 60px;
   right: 0px;
   padding-left: 30px;

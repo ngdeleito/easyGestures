@@ -63,10 +63,10 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   }
   this.actions = actionsPrefs;
   browser.runtime.sendMessage({
-    messageName: "getTooltipLabels",
+    messageName: "getTooltips",
     actions: this.actions
-  }).then(labels => {
-    this.labels = labels;
+  }).then(tooltips => {
+    this.tooltips = tooltips;
   });
   
   // half the angle reserved for a sector (in radians)
@@ -402,7 +402,7 @@ let eGPieMenu = {
     
     tooltips.forEach(function(tooltip, index) {
       let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
-      aTooltipNode.classList.add("label" + index);
+      aTooltipNode.classList.add("tooltip" + index);
       aTooltipNode.appendChild(document.createTextNode(tooltip));
       aTooltipsNode.appendChild(aTooltipNode);
     });
@@ -418,7 +418,7 @@ let eGPieMenu = {
                                                this._currentLayout.name);
     if (tooltipsNode === null) {
       tooltipsNode = this._createTooltipsNodes(this._currentLayout.name,
-                       this._currentLayout.labels,
+                       this._currentLayout.tooltips,
                        this._currentLayout.hasExtraMenuAction);
       this.easyGesturesNode.appendChild(tooltipsNode);
     }

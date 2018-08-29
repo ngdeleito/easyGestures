@@ -69,9 +69,9 @@ let eGMessageHandlers = {
     });
   },
   
-  getTooltipLabels: function(aMessage) {
+  getTooltips: function(aMessage) {
     return Promise.all(aMessage.actions.map(function(actionName) {
-      return eGActions[actionName].getTooltipLabel();
+      return eGActions[actionName].getTooltip();
     }));
   },
   

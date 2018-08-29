@@ -94,7 +94,7 @@ Action.prototype = {
   decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
                          0.5, 0.3],
   
-  getTooltipLabel: function() {
+  getTooltip: function() {
     return Promise.resolve(browser.i18n.getMessage(this._name));
   },
   
@@ -276,14 +276,14 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
 }
 NumberedAction.prototype = Object.create(DisableableAction.prototype);
 NumberedAction.prototype.constructor = NumberedAction;
-NumberedAction.prototype.getTooltipLabel = function() {
+NumberedAction.prototype.getTooltip = function() {
   return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name).then(prefValue => {
-    let label = prefValue[0];
-    if (label !== "") {
-      // if this action has already a label given by the user, then use it
-      return label;
+    let tooltip = prefValue[0];
+    if (tooltip !== "") {
+      // if this action has already a tooltip given by the user, then use it
+      return tooltip;
     }
-    // otherwise use the default label
+    // otherwise use the default tooltip
     return browser.i18n.getMessage(this._name);
   });
 };
