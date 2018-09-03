@@ -211,11 +211,14 @@ input[type="number"] {
 }
 
 #menus .menuIcon {
+  --icon-size: 32px;
   position: absolute;
   background-color: hsl(0, 0%, 50%);
   mask-image: url("../content/actions.svg");
-  width: 32px;
-  height: 32px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
+                 calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
 
 .menuSelect {

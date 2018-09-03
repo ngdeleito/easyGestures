@@ -271,15 +271,17 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
-  width: 32px; /* icon size */
-  height: 32px;
+  --icon-size: 32px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   z-index: 1;
 }
 
 #easyGesturesPieMenu.smallIcons .easyGesturesActionsNode div {
+  --icon-size: 20px;
   mask-size: 340px;
-  width: 20px; /* icon size */
-  height: 20px;
+  width: var(--icon-size);
+  height: var(--icon-size);
   z-index: 1;
 }
 
@@ -669,6 +671,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu .easyGesturesActionsNode div {
   background-color: hsl(0, 0%, 50%);
   mask-image: url("actions.svg");
+  mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
+                 calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
 #easyGesturesPieMenu .easyGesturesActionsNode .disabled {
   background-color: hsl(0, 0%, 70%);
@@ -679,676 +683,487 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .empty,
 [data-action="empty"], .eG_empty {
-  mask-position: -64px 0px;
+  --icon-position-x: 2;
+  --icon-position-y: 0;
 }
 #easyGesturesPieMenu .showExtraMenu,
 [data-action="showExtraMenu"], .eG_showExtraMenu {
-  mask-position: 0px 0px;
+  --icon-position-x: 0;
+  --icon-position-y: 0;
 }
 #easyGesturesPieMenu .showExtraMenu.selected,
 #easyGesturesPieMenu .showExtraMenu.showingExtraMenu {
-  mask-position: -32px 0px;
+  --icon-position-x: 1;
+  --icon-position-y: 0;
 }
 #easyGesturesPieMenu .back,
 [data-action="back"], .eG_back {
-  mask-position: 0px -32px;
+  --icon-position-x: 0;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .backSite,
 [data-action="backSite"], .eG_backSite {
-  mask-position: -32px -32px;
+  --icon-position-x: 1;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .firstPage,
 [data-action="firstPage"], .eG_firstPage {
-  mask-position: -64px -32px;
+  --icon-position-x: 2;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .forward,
 [data-action="forward"], .eG_forward {
-  mask-position: -96px -32px;
+  --icon-position-x: 3;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .forwardSite,
 [data-action="forwardSite"], .eG_forwardSite {
-  mask-position: -128px -32px;
+  --icon-position-x: 4;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .lastPage,
 [data-action="lastPage"], .eG_lastPage {
-  mask-position: -160px -32px;
+  --icon-position-x: 5;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .reload,
 [data-action="reload"], .eG_reload {
-  mask-position: -192px -32px;
+  --icon-position-x: 6;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .homepage,
 [data-action="homepage"], .eG_homepage {
-  mask-position: -224px -32px;
+  --icon-position-x: 7;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .pageTop,
 [data-action="pageTop"], .eG_pageTop {
-  mask-position: -256px -32px;
+  --icon-position-x: 8;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .pageBottom,
 [data-action="pageBottom"], .eG_pageBottom {
-  mask-position: -288px -32px;
+  --icon-position-x: 9;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .savePageAs,
 [data-action="savePageAs"], .eG_savePageAs {
-  mask-position: -320px -32px;
+  --icon-position-x: 10;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .printPage,
 [data-action="printPage"], .eG_printPage {
-  mask-position: -352px -32px;
+  --icon-position-x: 11;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .showPrintPreview,
 [data-action="showPrintPreview"], .eG_showPrintPreview {
-  mask-position: -384px -32px;
+  --icon-position-x: 12;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .searchWeb,
 [data-action="searchWeb"], .eG_searchWeb {
-  mask-position: -416px -32px;
+  --icon-position-x: 13;
+  --icon-position-y: 1;
 }
 #easyGesturesPieMenu .loadPageInNewTab,
 [data-action="loadPageInNewTab"], .eG_loadPageInNewTab {
-  mask-position: -0px -64px;
+  --icon-position-x: 0;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .loadPageInNewPrivateWindow,
 [data-action="loadPageInNewPrivateWindow"], .eG_loadPageInNewPrivateWindow {
-  mask-position: -32px -64px;
+  --icon-position-x: 1;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .moveTabToNewWindow,
 [data-action="moveTabToNewWindow"], .eG_moveTabToNewWindow {
-  mask-position: -64px -64px;
+  --icon-position-x: 2;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .copyPageURL,
 [data-action="copyPageURL"], .eG_copyPageURL {
-  mask-position: -96px -64px;
+  --icon-position-x: 3;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .copyURLToIdentifier,
 [data-action="copyURLToIdentifier"], .eG_copyURLToIdentifier {
-  mask-position: -128px -64px;
+  --icon-position-x: 4;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomIn,
 [data-action="zoomIn"], .eG_zoomIn {
-  mask-position: -160px -64px;
+  --icon-position-x: 5;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomOut,
 [data-action="zoomOut"], .eG_zoomOut {
-  mask-position: -192px -64px;
+  --icon-position-x: 6;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomReset,
 [data-action="zoomReset"], .eG_zoomReset {
-  mask-position: -224px -64px;
+  --icon-position-x: 7;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .findAndHighlightSelection,
 [data-action="findAndHighlightSelection"], .eG_findAndHighlightSelection {
-  mask-position: -256px -64px;
+  --icon-position-x: 8;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .removeHighlight,
 [data-action="removeHighlight"], .eG_removeHighlight {
-  mask-position: -288px -64px;
+  --icon-position-x: 9;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .enterReaderMode,
 [data-action="enterReaderMode"], .eG_enterReaderMode {
-  mask-position: -320px -64px;
+  --icon-position-x: 10;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .takeTabScreenshot,
 [data-action="takeTabScreenshot"], .eG_takeTabScreenshot {
-  mask-position: -352px -64px;
+  --icon-position-x: 11;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .toggleFullscreen,
 [data-action="toggleFullscreen"], .eG_toggleFullscreen {
-  mask-position: -384px -64px;
+  --icon-position-x: 12;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .up,
 [data-action="up"], .eG_up {
-  mask-position: -416px -64px;
+  --icon-position-x: 13;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .root,
 [data-action="root"], .eG_root {
-  mask-position: -448px -64px;
+  --icon-position-x: 14;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .showOnlyThisFrame,
 [data-action="showOnlyThisFrame"], .eG_showOnlyThisFrame {
-  mask-position: -480px -64px;
+  --icon-position-x: 15;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .viewPageSource,
 [data-action="viewPageSource"], .eG_viewPageSource {
-  mask-position: -512px -64px;
+  --icon-position-x: 16;
+  --icon-position-y: 2;
 }
 #easyGesturesPieMenu .newTab,
 [data-action="newTab"], .eG_newTab {
-  mask-position: -0px -96px;
+  --icon-position-x: 0;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .newBlankTab,
 [data-action="newBlankTab"], .eG_newBlankTab {
-  mask-position: -32px -96px;
+  --icon-position-x: 1;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .duplicateTab,
 [data-action="duplicateTab"], .eG_duplicateTab {
-  mask-position: -64px -96px;
+  --icon-position-x: 2;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .closeTab,
 [data-action="closeTab"], .eG_closeTab {
-  mask-position: -96px -96px;
+  --icon-position-x: 3;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .closeOtherTabs,
 [data-action="closeOtherTabs"], .eG_closeOtherTabs {
-  mask-position: -128px -96px;
+  --icon-position-x: 4;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .undoCloseTab,
 [data-action="undoCloseTab"], .eG_undoCloseTab {
-  mask-position: -160px -96px;
+  --icon-position-x: 5;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .previousTab,
 [data-action="previousTab"], .eG_previousTab {
-  mask-position: -192px -96px;
+  --icon-position-x: 6;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .nextTab,
 [data-action="nextTab"], .eG_nextTab {
-  mask-position: -224px -96px;
+  --icon-position-x: 7;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .pinUnpinTab,
 [data-action="pinUnpinTab"], .eG_pinUnpinTab {
-  mask-position: -256px -96px;
+  --icon-position-x: 8;
+  --icon-position-y: 3;
 }
 #easyGesturesPieMenu .newWindow,
 [data-action="newWindow"], .eG_newWindow {
-  mask-position: -0px -128px;
+  --icon-position-x: 0;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .newBlankWindow,
 [data-action="newBlankWindow"], .eG_newBlankWindow {
-  mask-position: -32px -128px;
+  --icon-position-x: 1;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .newPrivateWindow,
 [data-action="newPrivateWindow"], .eG_newPrivateWindow {
-  mask-position: -64px -128px;
+  --icon-position-x: 2;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .duplicateWindow,
 [data-action="duplicateWindow"], .eG_duplicateWindow {
-  mask-position: -96px -128px;
+  --icon-position-x: 3;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .minimizeWindow,
 [data-action="minimizeWindow"], .eG_minimizeWindow {
-  mask-position: -128px -128px;
+  --icon-position-x: 4;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .closeWindow,
 [data-action="closeWindow"], .eG_closeWindow {
-  mask-position: -160px -128px;
+  --icon-position-x: 5;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .closeOtherWindows,
 [data-action="closeOtherWindows"], .eG_closeOtherWindows {
-  mask-position: -192px -128px;
+  --icon-position-x: 6;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .undoCloseWindow,
 [data-action="undoCloseWindow"], .eG_undoCloseWindow {
-  mask-position: -224px -128px;
+  --icon-position-x: 7;
+  --icon-position-y: 4;
 }
 #easyGesturesPieMenu .openLink,
 [data-action="openLink"], .eG_openLink {
-  mask-position: -0px -160px;
+  --icon-position-x: 0;
+  --icon-position-y: 5;
 }
 #easyGesturesPieMenu .openLinkInNewWindow,
 [data-action="openLinkInNewWindow"], .eG_openLinkInNewWindow {
-  mask-position: -32px -160px;
+  --icon-position-x: 1;
+  --icon-position-y: 5;
 }
 #easyGesturesPieMenu .openLinkInNewPrivateWindow,
 [data-action="openLinkInNewPrivateWindow"], .eG_openLinkInNewPrivateWindow {
-  mask-position: -64px -160px;
+  --icon-position-x: 2;
+  --icon-position-y: 5;
 }
 #easyGesturesPieMenu .copyLink,
 [data-action="copyLink"], .eG_copyLink {
-  mask-position: -96px -160px;
+  --icon-position-x: 3;
+  --icon-position-y: 5;
 }
 #easyGesturesPieMenu .saveLinkAs,
 [data-action="saveLinkAs"], .eG_saveLinkAs {
-  mask-position: -128px -160px;
+  --icon-position-x: 4;
+  --icon-position-y: 5;
 }
 #easyGesturesPieMenu .dailyReadings,
 [data-action="dailyReadings"], .eG_dailyReadings {
-  mask-position: 0px -192px;
+  --icon-position-x: 0;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisPage,
 [data-action="bookmarkThisPage"], .eG_bookmarkThisPage {
-  mask-position: -32px -192px;
+  --icon-position-x: 1;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisIdentifier,
 [data-action="bookmarkThisIdentifier"], .eG_bookmarkThisIdentifier {
-  mask-position: -64px -192px;
+  --icon-position-x: 2;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisLink,
 [data-action="bookmarkThisLink"], .eG_bookmarkThisLink {
-  mask-position: -96px -192px;
+  --icon-position-x: 3;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkAllTabs,
 [data-action="bookmarkAllTabs"], .eG_bookmarkAllTabs {
-  mask-position: -128px -192px;
+  --icon-position-x: 4;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisPage,
 [data-action="removeBookmarkToThisPage"], .eG_removeBookmarkToThisPage {
-  mask-position: -160px -192px;
+  --icon-position-x: 5;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisIdentifier,
 [data-action="removeBookmarkToThisIdentifier"],
 .eG_removeBookmarkToThisIdentifier {
-  mask-position: -192px -192px;
+  --icon-position-x: 6;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisLink,
 [data-action="removeBookmarkToThisLink"], .eG_removeBookmarkToThisLink {
-  mask-position: -224px -192px;
+  --icon-position-x: 7;
+  --icon-position-y: 6;
 }
 #easyGesturesPieMenu .loadURL1,
 [data-action="loadURL1"], .eG_loadURL1 {
-  mask-position: -0px -224px;
+  --icon-position-x: 0;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL2,
 [data-action="loadURL2"], .eG_loadURL2 {
-  mask-position: -32px -224px;
+  --icon-position-x: 1;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL3,
 [data-action="loadURL3"], .eG_loadURL3 {
-  mask-position: -64px -224px;
+  --icon-position-x: 2;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL4,
 [data-action="loadURL4"], .eG_loadURL4 {
-  mask-position: -96px -224px;
+  --icon-position-x: 3;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL5,
 [data-action="loadURL5"], .eG_loadURL5 {
-  mask-position: -128px -224px;
+  --icon-position-x: 4;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL6,
 [data-action="loadURL6"], .eG_loadURL6 {
-  mask-position: -160px -224px;
+  --icon-position-x: 5;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL7,
 [data-action="loadURL7"], .eG_loadURL7 {
-  mask-position: -192px -224px;
+  --icon-position-x: 6;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL8,
 [data-action="loadURL8"], .eG_loadURL8 {
-  mask-position: -224px -224px;
+  --icon-position-x: 7;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL9,
 [data-action="loadURL9"], .eG_loadURL9 {
-  mask-position: -256px -224px;
+  --icon-position-x: 8;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL10,
 [data-action="loadURL10"], .eG_loadURL10 {
-  mask-position: -288px -224px;
+  --icon-position-x: 9;
+  --icon-position-y: 7;
 }
 #easyGesturesPieMenu .runScript1,
 [data-action="runScript1"], .eG_runScript1 {
-  mask-position: -0px -256px;
+  --icon-position-x: 0;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript2,
 [data-action="runScript2"], .eG_runScript2 {
-  mask-position: -32px -256px;
+  --icon-position-x: 1;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript3,
 [data-action="runScript3"], .eG_runScript3 {
-  mask-position: -64px -256px;
+  --icon-position-x: 2;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript4,
 [data-action="runScript4"], .eG_runScript4 {
-  mask-position: -96px -256px;
+  --icon-position-x: 3;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript5,
 [data-action="runScript5"], .eG_runScript5 {
-  mask-position: -128px -256px;
+  --icon-position-x: 4;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript6,
 [data-action="runScript6"], .eG_runScript6 {
-  mask-position: -160px -256px;
+  --icon-position-x: 5;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript7,
 [data-action="runScript7"], .eG_runScript7 {
-  mask-position: -192px -256px;
+  --icon-position-x: 6;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript8,
 [data-action="runScript8"], .eG_runScript8 {
-  mask-position: -224px -256px;
+  --icon-position-x: 7;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript9,
 [data-action="runScript9"], .eG_runScript9 {
-  mask-position: -256px -256px;
+  --icon-position-x: 8;
+  --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript10,
 [data-action="runScript10"], .eG_runScript10 {
-  mask-position: -288px -256px;
+  --icon-position-x: 9;
+  --icon-position-y: 8;
 }
-#easyGesturesPieMenu .customIcon {
+#easyGesturesPieMenu .easyGesturesActionsNode .customIcon {
+  --mask-size-value: calc(var(--icon-size) * 0.625);
   mask-repeat: no-repeat;
-  mask-size: 20px 20px;
-  mask-position: 6px 6px;
+  mask-size: var(--mask-size-value) var(--mask-size-value) !important;
+  mask-position: calc(var(--mask-size-value) * 0.3) calc(var(--mask-size-value) * 0.3);
 }
 #easyGesturesPieMenu .easyGesturesNPreferences,
 [data-action="easyGesturesNPreferences"], .eG_easyGesturesNPreferences {
-  mask-position: 0px -288px;
+  --icon-position-x: 0;
+  --icon-position-y: 9;
 }
 #easyGesturesPieMenu .copyImageLocation,
 [data-action="copyImageLocation"], .eG_copyImageLocation {
-  mask-position: -0px -320px;
+  --icon-position-x: 0;
+  --icon-position-y: 10;
 }
 #easyGesturesPieMenu .copyImage,
 [data-action="copyImage"], .eG_copyImage {
-  mask-position: -32px -320px;
+  --icon-position-x: 1;
+  --icon-position-y: 10;
 }
 #easyGesturesPieMenu .saveImageAs,
 [data-action="saveImageAs"], .eG_saveImageAs {
-  mask-position: -64px -320px;
+  --icon-position-x: 2;
+  --icon-position-y: 10;
 }
 #easyGesturesPieMenu .hideImages,
 [data-action="hideImages"], .eG_hideImages {
-  mask-position: -96px -320px;
+  --icon-position-x: 3;
+  --icon-position-y: 10;
 }
 #easyGesturesPieMenu .cut,
 [data-action="cut"], .eG_cut {
-  mask-position: -0px -352px;
+  --icon-position-x: 0;
+  --icon-position-y: 11;
 }
 #easyGesturesPieMenu .copy,
 [data-action="copy"], .eG_copy {
-  mask-position: -32px -352px;
+  --icon-position-x: 1;
+  --icon-position-y: 11;
 }
 #easyGesturesPieMenu .paste,
 [data-action="paste"], .eG_paste {
-  mask-position: -64px -352px;
+  --icon-position-x: 2;
+  --icon-position-y: 11;
 }
 #easyGesturesPieMenu .selectAll,
 [data-action="selectAll"], .eG_selectAll {
-  mask-position: -96px -352px;
-}
-
-#easyGesturesPieMenu.smallIcons .empty {
-  mask-position: -40px 0px;
-}
-#easyGesturesPieMenu.smallIcons .showExtraMenu {
-  mask-position: 0px 0px;
-}
-#easyGesturesPieMenu.smallIcons .showExtraMenu.selected,
-#easyGesturesPieMenu.smallIcons .showExtraMenu.showingExtraMenu {
-  mask-position: -20px 0px;
-}
-#easyGesturesPieMenu.smallIcons .back {
-  mask-position: 0px -20px;
-}
-#easyGesturesPieMenu.smallIcons .backSite {
-  mask-position: -20px -20px;
-}
-#easyGesturesPieMenu.smallIcons .firstPage {
-  mask-position: -40px -20px;
-}
-#easyGesturesPieMenu.smallIcons .forward {
-  mask-position: -60px -20px;
-}
-#easyGesturesPieMenu.smallIcons .forwardSite {
-  mask-position: -80px -20px;
-}
-#easyGesturesPieMenu.smallIcons .lastPage {
-  mask-position: -100px -20px;
-}
-#easyGesturesPieMenu.smallIcons .reload {
-  mask-position: -120px -20px;
-}
-#easyGesturesPieMenu.smallIcons .homepage {
-  mask-position: -140px -20px;
-}
-#easyGesturesPieMenu.smallIcons .pageTop {
-  mask-position: -160px -20px;
-}
-#easyGesturesPieMenu.smallIcons .pageBottom {
-  mask-position: -180px -20px;
-}
-#easyGesturesPieMenu.smallIcons .savePageAs {
-  mask-position: -200px -20px;
-}
-#easyGesturesPieMenu.smallIcons .printPage {
-  mask-position: -220px -20px;
-}
-#easyGesturesPieMenu.smallIcons .showPrintPreview {
-  mask-position: -240px -20px;
-}
-#easyGesturesPieMenu.smallIcons .searchWeb {
-  mask-position: -260px -20px;
-}
-#easyGesturesPieMenu.smallIcons .loadPageInNewTab {
-  mask-position: -0px -40px;
-}
-#easyGesturesPieMenu.smallIcons .loadPageInNewPrivateWindow {
-  mask-position: -20px -40px;
-}
-#easyGesturesPieMenu.smallIcons .moveTabToNewWindow {
-  mask-position: -40px -40px;
-}
-#easyGesturesPieMenu.smallIcons .copyPageURL {
-  mask-position: -60px -40px;
-}
-#easyGesturesPieMenu.smallIcons .copyURLToIdentifier {
-  mask-position: -80px -40px;
-}
-#easyGesturesPieMenu.smallIcons .zoomIn {
-  mask-position: -100px -40px;
-}
-#easyGesturesPieMenu.smallIcons .zoomOut {
-  mask-position: -120px -40px;
-}
-#easyGesturesPieMenu.smallIcons .zoomReset {
-  mask-position: -140px -40px;
-}
-#easyGesturesPieMenu.smallIcons .findAndHighlightSelection {
-  mask-position: -160px -40px;
-}
-#easyGesturesPieMenu.smallIcons .removeHighlight {
-  mask-position: -180px -40px;
-}
-#easyGesturesPieMenu.smallIcons .enterReaderMode {
-  mask-position: -200px -40px;
-}
-#easyGesturesPieMenu.smallIcons .takeTabScreenshot {
-  mask-position: -220px -40px;
-}
-#easyGesturesPieMenu.smallIcons .toggleFullscreen {
-  mask-position: -240px -40px;
-}
-#easyGesturesPieMenu.smallIcons .up {
-  mask-position: -260px -40px;
-}
-#easyGesturesPieMenu.smallIcons .root {
-  mask-position: -280px -40px;
-}
-#easyGesturesPieMenu.smallIcons .showOnlyThisFrame {
-  mask-position: -300px -40px;
-}
-#easyGesturesPieMenu.smallIcons .viewPageSource {
-  mask-position: -320px -40px;
-}
-#easyGesturesPieMenu.smallIcons .newTab {
-  mask-position: -0px -60px;
-}
-#easyGesturesPieMenu.smallIcons .newBlankTab {
-  mask-position: -20px -60px;
-}
-#easyGesturesPieMenu.smallIcons .duplicateTab {
-  mask-position: -40px -60px;
-}
-#easyGesturesPieMenu.smallIcons .closeTab {
-  mask-position: -60px -60px;
-}
-#easyGesturesPieMenu.smallIcons .closeOtherTabs {
-  mask-position: -80px -60px;
-}
-#easyGesturesPieMenu.smallIcons .undoCloseTab {
-  mask-position: -100px -60px;
-}
-#easyGesturesPieMenu.smallIcons .previousTab {
-  mask-position: -120px -60px;
-}
-#easyGesturesPieMenu.smallIcons .nextTab {
-  mask-position: -140px -60px;
-}
-#easyGesturesPieMenu.smallIcons .pinUnpinTab {
-  mask-position: -160px -60px;
-}
-#easyGesturesPieMenu.smallIcons .newWindow {
-  mask-position: -0px -80px;
-}
-#easyGesturesPieMenu.smallIcons .newBlankWindow {
-  mask-position: -20px -80px;
-}
-#easyGesturesPieMenu.smallIcons .newPrivateWindow {
-  mask-position: -40px -80px;
-}
-#easyGesturesPieMenu.smallIcons .duplicateWindow {
-  mask-position: -60px -80px;
-}
-#easyGesturesPieMenu.smallIcons .minimizeWindow {
-  mask-position: -80px -80px;
-}
-#easyGesturesPieMenu.smallIcons .closeWindow {
-  mask-position: -100px -80px;
-}
-#easyGesturesPieMenu.smallIcons .closeOtherWindows {
-  mask-position: -120px -80px;
-}
-#easyGesturesPieMenu.smallIcons .undoCloseWindow {
-  mask-position: -140px -80px;
-}
-#easyGesturesPieMenu.smallIcons .openLink {
-  mask-position: -0px -100px;
-}
-#easyGesturesPieMenu.smallIcons .openLinkInNewWindow {
-  mask-position: -20px -100px;
-}
-#easyGesturesPieMenu.smallIcons .openLinkInNewPrivateWindow {
-  mask-position: -40px -100px;
-}
-#easyGesturesPieMenu.smallIcons .copyLink {
-  mask-position: -60px -100px;
-}
-#easyGesturesPieMenu.smallIcons .saveLinkAs {
-  mask-position: -80px -100px;
-}
-#easyGesturesPieMenu.smallIcons .dailyReadings {
-  mask-position: 0px -120px;
-}
-#easyGesturesPieMenu.smallIcons .bookmarkThisPage {
-  mask-position: -20px -120px;
-}
-#easyGesturesPieMenu.smallIcons .bookmarkThisIdentifier {
-  mask-position: -40px -120px;
-}
-#easyGesturesPieMenu.smallIcons .bookmarkThisLink {
-  mask-position: -60px -120px;
-}
-#easyGesturesPieMenu.smallIcons .bookmarkAllTabs {
-  mask-position: -80px -120px;
-}
-#easyGesturesPieMenu.smallIcons .removeBookmarkToThisPage {
-  mask-position: -100px -120px;
-}
-#easyGesturesPieMenu.smallIcons .removeBookmarkToThisIdentifier {
-  mask-position: -120px -120px;
-}
-#easyGesturesPieMenu.smallIcons .removeBookmarkToThisLink {
-  mask-position: -140px -120px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL1 {
-  mask-position: -0px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL2 {
-  mask-position: -20px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL3 {
-  mask-position: -40px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL4 {
-  mask-position: -60px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL5 {
-  mask-position: -80px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL6 {
-  mask-position: -100px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL7 {
-  mask-position: -120px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL8 {
-  mask-position: -140px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL9 {
-  mask-position: -160px -140px;
-}
-#easyGesturesPieMenu.smallIcons .loadURL10 {
-  mask-position: -180px -140px;
-}
-#easyGesturesPieMenu.smallIcons .runScript1 {
-  mask-position: -0px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript2 {
-  mask-position: -20px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript3 {
-  mask-position: -40px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript4 {
-  mask-position: -60px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript5 {
-  mask-position: -80px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript6 {
-  mask-position: -100px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript7 {
-  mask-position: -120px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript8 {
-  mask-position: -140px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript9 {
-  mask-position: -160px -160px;
-}
-#easyGesturesPieMenu.smallIcons .runScript10 {
-  mask-position: -180px -160px;
-}
-#easyGesturesPieMenu.smallIcons .customIcon {
-  mask-repeat: no-repeat;
-  mask-size: 12.5px 12.5px;
-  mask-position: 3.75px 3.75px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesNPreferences {
-  mask-position: 0px -180px;
-}
-#easyGesturesPieMenu.smallIcons .copyImageLocation {
-  mask-position: -0px -200px;
-}
-#easyGesturesPieMenu.smallIcons .copyImage {
-  mask-position: -20px -200px;
-}
-#easyGesturesPieMenu.smallIcons .saveImageAs {
-  mask-position: -40px -200px;
-}
-#easyGesturesPieMenu.smallIcons .hideImages {
-  mask-position: -60px -200px;
-}
-#easyGesturesPieMenu.smallIcons .cut {
-  mask-position: -0px -220px;
-}
-#easyGesturesPieMenu.smallIcons .copy {
-  mask-position: -20px -220px;
-}
-#easyGesturesPieMenu.smallIcons .paste {
-  mask-position: -40px -220px;
-}
-#easyGesturesPieMenu.smallIcons .selectAll {
-  mask-position: -60px -220px;
+  --icon-position-x: 3;
+  --icon-position-y: 11;
 }
 
 
 /* SMALL ICONS */
 
 span[class^="eG_"] {
+  --icon-size: 32px;
   display: inline-block;
   background-color: black;
   mask-image: url("actions.svg");
-  width: 32px;
-  height: 32px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
+                 calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
