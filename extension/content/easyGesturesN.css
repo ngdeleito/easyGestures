@@ -33,6 +33,30 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   all: initial;
   position: fixed;
   z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
+  
+  --icon-size: 32px;
+  --tooltips-x-offset: -200px;
+  --extra-menu-y-offset: -135px;
+  --action-sector4-top: 45px;
+}
+
+#easyGesturesPieMenu.smallIcons {
+  --icon-size: 20px;
+  --tooltips-x-offset: -150px; /* 75% of non small */
+  --extra-menu-y-offset: -83px;
+  --action-sector4-top: 28px;
+}
+
+#easyGesturesPieMenu.large {
+  --tooltips-x-offset: -220px;
+  --extra-menu-y-offset: -151px;
+  --action-sector4-top: 54px;
+}
+
+#easyGesturesPieMenu.large.smallIcons {
+  --tooltips-x-offset: -165px; /* 75% of non small */
+  --extra-menu-y-offset: -97px;
+  --action-sector4-top: 34px;
 }
 
 #easyGesturesPieMenu * {
@@ -247,38 +271,36 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: -2;
   background-image: url("extraMenu.svg");
   
-  top: -135px; /* extra menu y-offset */
+  top: var(--extra-menu-y-offset);
   width: 122px;
   height: 82px;
 }
 
 #easyGesturesPieMenu.smallIcons .easyGesturesActionsNode.easyGesturesExtraNode {
-  top: -83px; /* extra menu y-offset */
+  top: var(--extra-menu-y-offset);
   width: 76px;
   height: 51px;
 }
 
 #easyGesturesPieMenu.large .easyGesturesActionsNode.easyGesturesExtraNode {
-  top: -151px; /* extra menu y-offset */
+  top: var(--extra-menu-y-offset);
   width: 140px;
   height: 94px;
 }
 
 #easyGesturesPieMenu.large.smallIcons .easyGesturesActionsNode.easyGesturesExtraNode {
-  top: -97px; /* extra menu y-offset */
+  top: var(--extra-menu-y-offset);
   width: 88px;
   height: 59px;
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
-  --icon-size: 32px;
   width: var(--icon-size);
   height: var(--icon-size);
   z-index: 1;
 }
 
 #easyGesturesPieMenu.smallIcons .easyGesturesActionsNode div {
-  --icon-size: 20px;
   mask-size: 340px;
   width: var(--icon-size);
   height: var(--icon-size);
@@ -289,7 +311,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu div.sector1 { left: 76px; top: 14px; }
 #easyGesturesPieMenu div.sector2 { left: 45px; top: 2px; }
 #easyGesturesPieMenu div.sector3 { left: 14px; top: 14px; }
-#easyGesturesPieMenu div.sector4 { left: 2px; top: 45px; }
+#easyGesturesPieMenu div.sector4 { left: 2px; top: var(--action-sector4-top); }
 #easyGesturesPieMenu div.sector5 { left: 14px; top: 76px; }
 #easyGesturesPieMenu div.sector6 { left: 45px; bottom: 2px; }
 #easyGesturesPieMenu div.sector7 { left: 76px; top: 76px; }
@@ -298,7 +320,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu.smallIcons div.sector1 { left: 47px; top: 9px; }
 #easyGesturesPieMenu.smallIcons div.sector2 { left: 28px; top: 1.25px; }
 #easyGesturesPieMenu.smallIcons div.sector3 { left: 9px; top: 9px; }
-#easyGesturesPieMenu.smallIcons div.sector4 { left: 1.25px; top: 28px; }
+#easyGesturesPieMenu.smallIcons div.sector4 { left: 1.25px; }
 #easyGesturesPieMenu.smallIcons div.sector5 { left: 9px; top: 47px; }
 #easyGesturesPieMenu.smallIcons div.sector6 { left: 28px; bottom: 1.25px; }
 #easyGesturesPieMenu.smallIcons div.sector7 { left: 47px; top: 47px; }
@@ -318,7 +340,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1 { left: 90px; top: 18px; }
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2 { left: 54px; top: 2.3px; }
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3 { left: 18px; top: 18px; }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4 { left: 2.3px; top: 54px; }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4 { left: 2.3px; top: var(--action-sector4-top); }
 
 #easyGesturesPieMenu.large.smallIcons div.sector0 { right: 1.44px; top: 24px; }
 #easyGesturesPieMenu.large.smallIcons div.sector1 { left: 54px; top: 7px; }
@@ -335,55 +357,33 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector1 { left: 58px; top: 10px; }
 #easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector2 { left: 34px; top: 1.44px; }
 #easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector3 { left: 10px; top: 10px; }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector4 { left: 1.44px; top: 34px; }
+#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector4 { left: 1.44px; top: var(--action-sector4-top); }
 
-/* Labels */
+/* Tooltips */
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode {
   visibility: hidden;
   z-index: -2; /* tooltips are displayed below menu level */
   
-  left: -200px; /* tooltips x-offset */
-  top: -81px; /* 2,5 * (tooltip height + 2px) + 1px */
-  width: 400px; /* 2 * tooltips x-offset */
-}
-
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode {
-  left: -150px; /* tooltips x-offset */ /* 75% of non small */
-  top: -51px;
-  width: 300px;
+  left: var(--tooltips-x-offset);
+  top: calc(-2.5 * var(--icon-size) - 1px);
+  width: calc(-2 * var(--tooltips-x-offset));
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode {
-  left: -220px; /* tooltips x-offset */
-  top: -97px; /* 3 * (tooltip height + 2px) + 1px */
-  width: 440px;
-}
-
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode {
-  left: -165px; /* tooltips x-offset */ /* 75% of non small */
-  top: -61px;
-  width: 330px;
+  top: calc(-3 * var(--icon-size) - 1px);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode.easyGesturesExtraNode {
   z-index: -3; /* tooltips are displayed below menu level */
   
-  top: -154px; /* extra menu y-offset + top of action with sector4
-                  - 2 * (tooltip height + 2px) */
-}
-
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode.easyGesturesExtraNode {
-  top: -95px;
+  top: calc(var(--extra-menu-y-offset) + var(--action-sector4-top) -
+            2 * var(--icon-size));
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode.easyGesturesExtraNode {
-  top: -165px; /* extra menu y-offset + top of action with sector4
-                  - 2 * (tooltip height + 2px) - 4px */
-}
-
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode.easyGesturesExtraNode {
-  top: -107px;
+  top: calc(var(--extra-menu-y-offset) + var(--action-sector4-top) -
+            2 * var(--icon-size) - 4px);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode div {
@@ -399,15 +399,10 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   text-overflow: ellipsis;
   white-space: nowrap;
   
-  height: 30px; /* tooltip height */
-  line-height: 30px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode div {
-  height: 18px; /* tooltip height */
-  line-height: 18px;
-  font-size: 10px;
+  --tooltip-height: calc(var(--icon-size) - 2px);
+  height: var(--tooltip-height);
+  line-height: var(--tooltip-height);
+  font-size: calc(var(--tooltip-height) / 2);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 {
@@ -448,217 +443,126 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
-  padding-right: 54px; /* 1,5 * icon size + 6px */
-  width: 152px; /* tooltips x-offset + 0,5 * icon size - border-left - padding-left - padding-right - border-right */
+  --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
+  padding-right: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
+         /* 10px = border-left + border-right + padding-left */
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
-  top: 128px;  /* 4 * (tooltip height + 2px) */
+  --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
+  top: calc(4 * var(--icon-size));
   right: 0px;
-  padding-left: 54px;
-  width: 152px;
+  padding-left: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
-  top: 32px; /* tooltip height + 2px */
-  padding-right: 32px; /* icon size */
-  width: 130px; /* tooltips x-offset - 2 * icon size - 6px */
+  top: var(--icon-size);
+  padding-right: var(--icon-size);
+  width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
-  top: 32px;
+  top: var(--icon-size);
   right: 0px;
-  padding-left: 32px;
-  width: 130px;
+  padding-left: var(--icon-size);
+  width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
   left: 0px;
-  top: 96px; /* 3 * (tooltip height + 2px) */
-  padding-right: 32px;
-  width: 130px;
+  top: calc(3 * var(--icon-size));
+  padding-right: var(--icon-size);
+  width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
-  top: 96px;
+  top: calc(3 * var(--icon-size));
   right: 0px;
-  padding-left: 32px;
-  width: 130px;
+  padding-left: var(--icon-size);
+  width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
-  top: 64px; /* 2 * (tooltip height + 2px) */
-  padding-right: 32px; /* icon size */
-  width: 120px; /* tooltips x-offset - 2,5 * icon size */
+  top: calc(2 * var(--icon-size));
+  padding-right: var(--icon-size);
+  width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
-  top: 64px;
+  top: calc(2 * var(--icon-size));
   right: 0px;
-  padding-left: 32px;
-  width: 120px;
-}
-
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip2 {
-  padding-right: 36px;
-  width: 114px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip6 {
-  top: 80px;
-  right: 0px;
-  padding-left: 36px;
-  width: 114px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip3 {
-  left: 0px;
-  top: 20px;
-  padding-right: 20px;
-  width: 104px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip1 {
-  top: 20px;
-  right: 0px;
-  padding-left: 20px;
-  width: 104px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip5 {
-  left: 0px;
-  top: 60px;
-  padding-right: 20px;
-  width: 104px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip7 {
-  top: 60px;
-  right: 0px;
-  padding-left: 20px;
-  width: 104px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip4 {
-  left: 0px;
-  top: 40px;
-  padding-right: 20px;
-  width: 100px;
-}
-#easyGesturesPieMenu.smallIcons .easyGesturesTooltipsNode .tooltip0 {
-  top: 40px;
-  right: 0px;
-  padding-left: 20px;
-  width: 100px;
+  padding-left: var(--icon-size);
+  width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip2 {
-  padding-right: 38px; /* icon size + 6px */
-  width: 188px;
+  --tooltip-padding: calc(var(--icon-size) + 6px);
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7 {
-  top: 160px; /* 5 * (tooltip height + 2px) */
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7 { /* see tooltip2 */
+  --tooltip-padding: calc(var(--icon-size) + 6px);
+  top: calc(5 * var(--icon-size));
   right: 0px;
-  padding-left: 38px;
-  width: 188px;
+  padding-left: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
+         /* 10px = border-left + border-right + padding-left */
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip3 {
+  --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
+  padding-right: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
+         /* 10px = border-left + border-right + padding-left */
+}
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
+  --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
+  padding-left: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
+}
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6 { /* see tooltip3 */
+  --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   left: 0px;
-  top: 32px;
-  padding-right: 54px; /* 1,5 * icon size + 6px */
-  width: 140px; /* tooltips x-offset - 0,5 * icon size - border-left - padding-left - padding-right - border-right */
+  top: calc(4 * var(--icon-size));
+  right: auto; /* resetting default value */
+  padding-left: 6px; /* resetting default value */
+  padding-right: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip1 {
-  top: 32px;
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip8 { /* see tooltip6 */
+  --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
+  top: calc(4 * var(--icon-size));
   right: 0px;
-  padding-left: 54px;
-  width: 140px;
-}
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6 {
-  left: 0px;
-  top: 128px;
-  right: auto;
-  padding-left: 6px;
-  padding-right: 54px;
-  width: 140px;
-}
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip8 {
-  top: 128px;
-  right: 0px;
-  padding-left: 54px;
-  width: 140px;
+  padding-left: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
+              var(--tooltip-padding) - 10px);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip4 {
-  left: 0px;
-  top: 64px;
-  padding-right: 48px; /* 1,5 * icon size */
-  width: 130px; /* tooltips x-offset - icon size - border-left - padding-left - padding-right - border-right */
+  --tooltip-padding: calc(1.5 * var(--icon-size));
+  padding-right: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
+              var(--tooltip-padding) - 10px);
+         /* 10px = border-left + border-right + padding-left */
 }
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip0 {
-  top: 64px;
-  right: 0px;
-  padding-left: 48px;
-  width: 130px;
+#easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
+  --tooltip-padding: calc(1.5 * var(--icon-size));
+  padding-left: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
+              var(--tooltip-padding) - 10px);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip5 { /* see tooltip4 */
-  left: 0px;
-  top: 96px;
-  padding-right: 48px;
-  width: 130px;
+  --tooltip-padding: calc(1.5 * var(--icon-size));
+  padding-right: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
+              var(--tooltip-padding) - 10px);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip9 { /* see tooltip5 */
-  top: 96px;
+  --tooltip-padding: calc(1.5 * var(--icon-size));
+  top: calc(3 * var(--icon-size));
   right: 0px;
-  padding-left: 48px;
-  width: 130px;
-}
-
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip2 {
-  padding-right: 26px;
-  width: 139px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip7 {
-  top: 100px;
-  right: 0px;
-  padding-left: 26px;
-  width: 139px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip3 {
-  left: 0px;
-  top: 20px;
-  padding-right: 36px;
-  width: 109px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip1 {
-  top: 20px;
-  right: 0px;
-  padding-left: 36px;
-  width: 109px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip6 {
-  left: 0px;
-  top: 80px;
-  padding-right: 36px;
-  width: 109px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip8 {
-  top: 80px;
-  right: 0px;
-  padding-left: 36px;
-  width: 109px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip4 {
-  left: 0px;
-  top: 40px;
-  padding-right: 30px;
-  width: 105px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip0 {
-  top: 40px;
-  right: 0px;
-  padding-left: 30px;
-  width: 105px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip5 {
-  left: 0px;
-  top: 60px;
-  padding-right: 30px;
-  width: 105px;
-}
-#easyGesturesPieMenu.large.smallIcons .easyGesturesTooltipsNode .tooltip9 {
-  top: 60px;
-  right: 0px;
-  padding-left: 30px;
-  width: 105px;
+  padding-left: var(--tooltip-padding);
+  width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
+              var(--tooltip-padding) - 10px);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .selected {
