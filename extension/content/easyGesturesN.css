@@ -35,6 +35,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
   
   --icon-size: 32px;
+  --menu-radius: -61px;
+  --extra-menu-height: 82px;
   --tooltips-x-offset: -200px;
   --extra-menu-y-offset: -135px;
   --action-sector4-top: 45px;
@@ -42,18 +44,24 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu.smallIcons {
   --icon-size: 20px;
+  --menu-radius: -38px;
+  --extra-menu-height: 51px;
   --tooltips-x-offset: -150px; /* 75% of non small */
   --extra-menu-y-offset: -83px;
   --action-sector4-top: 28px;
 }
 
 #easyGesturesPieMenu.large {
+  --menu-radius: -70px;
+  --extra-menu-height: 94px;
   --tooltips-x-offset: -220px;
   --extra-menu-y-offset: -151px;
   --action-sector4-top: 54px;
 }
 
 #easyGesturesPieMenu.large.smallIcons {
+  --menu-radius: -44px;
+  --extra-menu-height: 59px;
   --tooltips-x-offset: -165px; /* 75% of non small */
   --extra-menu-y-offset: -97px;
   --action-sector4-top: 34px;
@@ -239,59 +247,17 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: -1;
   background-image: url("menu.svg");
   background-size: cover;
-  
-  left: -61px; /* menu radius */
-  top: -61px;
-  width: 122px;
-  height: 122px;
-}
-
-#easyGesturesPieMenu.smallIcons .easyGesturesActionsNode {
-  left: -38px; /* menu radius */
-  top: -38px;
-  width: 76px;
-  height: 76px;
-}
-
-#easyGesturesPieMenu.large .easyGesturesActionsNode {
-  left: -70px; /* menu radius */
-  top: -70px;
-  width: 140px;
-  height: 140px;
-}
-
-#easyGesturesPieMenu.large.smallIcons .easyGesturesActionsNode {
-  left: -44px; /* menu radius */
-  top: -44px;
-  width: 88px;
-  height: 88px;
+  left: var(--menu-radius);
+  top: var(--menu-radius);
+  width: calc(-2 * var(--menu-radius));
+  height: calc(-2 * var(--menu-radius));
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode {
   z-index: -2;
   background-image: url("extraMenu.svg");
-  
   top: var(--extra-menu-y-offset);
-  width: 122px;
-  height: 82px;
-}
-
-#easyGesturesPieMenu.smallIcons .easyGesturesActionsNode.easyGesturesExtraNode {
-  top: var(--extra-menu-y-offset);
-  width: 76px;
-  height: 51px;
-}
-
-#easyGesturesPieMenu.large .easyGesturesActionsNode.easyGesturesExtraNode {
-  top: var(--extra-menu-y-offset);
-  width: 140px;
-  height: 94px;
-}
-
-#easyGesturesPieMenu.large.smallIcons .easyGesturesActionsNode.easyGesturesExtraNode {
-  top: var(--extra-menu-y-offset);
-  width: 88px;
-  height: 59px;
+  height: var(--extra-menu-height);
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
