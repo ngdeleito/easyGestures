@@ -35,12 +35,12 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
   
   --icon-size: 32px;
-  --menu-radius: -61px;
+  --actions-node-offset: -61px;
   --extra-menu-height: 82px;
   --border-width: 2px;
   --menu-section-width: 32px;
   --cardinal-action-farthest-border-offset:
-      calc(-1 * var(--menu-radius) - var(--icon-size) / 2);
+      calc(-1 * var(--actions-node-offset) - var(--icon-size) / 2);
   --cardinal-action-closest-border-offset:
       calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
   --tooltips-x-offset: -200px;
@@ -49,7 +49,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu.smallIcons {
   --icon-size: 20px;
-  --menu-radius: -38px;
+  --actions-node-offset: -38px;
   --extra-menu-height: 51px;
   --border-width: 1.25px;
   --menu-section-width: 20px;
@@ -58,7 +58,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu.large {
-  --menu-radius: -70px;
+  --actions-node-offset: -70px;
   --extra-menu-height: 94px;
   --border-width: 2.3px;
   --menu-section-width: 36.72px;
@@ -68,7 +68,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu.large.smallIcons {
-  --menu-radius: -44px;
+  --actions-node-offset: -44px;
   --extra-menu-height: 59px;
   --border-width: 1.44px;
   --menu-section-width: 23.08px;
@@ -257,10 +257,10 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: -1;
   background-image: url("menu.svg");
   background-size: cover;
-  left: var(--menu-radius);
-  top: var(--menu-radius);
-  width: calc(-2 * var(--menu-radius));
-  height: calc(-2 * var(--menu-radius));
+  left: var(--actions-node-offset);
+  top: var(--actions-node-offset);
+  width: calc(-2 * var(--actions-node-offset));
+  height: calc(-2 * var(--actions-node-offset));
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode {
@@ -311,32 +311,32 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu.large div.sector0 {
-  top: calc(-1 * var(--menu-radius) - var(--icon-size));
+  top: calc(-1 * var(--actions-node-offset) - var(--icon-size));
   right: var(--border-width);
 }
 #easyGesturesPieMenu.large div.sector1 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
-  top: calc(-1 * var(--menu-radius) - 2 * var(--icon-size) + var(--icon-border));
+  top: calc(-1 * var(--actions-node-offset) - 2 * var(--icon-size) + var(--icon-border));
 }
 #easyGesturesPieMenu.large div.sector2 {
   left: var(--cardinal-action-farthest-border-offset);
 }
 #easyGesturesPieMenu.large div.sector3 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
-  top: calc(-1 * var(--menu-radius) - 2 * var(--icon-size) + var(--icon-border));
+  top: calc(-1 * var(--actions-node-offset) - 2 * var(--icon-size) + var(--icon-border));
 }
 #easyGesturesPieMenu.large div.sector4 {
   left: var(--border-width);
-  top: calc(-1 * var(--menu-radius) - var(--icon-size));
+  top: calc(-1 * var(--actions-node-offset) - var(--icon-size));
 }
 #easyGesturesPieMenu.large div.sector5 {
   display: block;
   left: var(--border-width);
-  top: calc(-1 * var(--menu-radius));
+  top: calc(-1 * var(--actions-node-offset));
 }
 #easyGesturesPieMenu.large div.sector6 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
-  top: calc(-1 * var(--menu-radius) + var(--icon-size) - var(--icon-border));
+  top: calc(-1 * var(--actions-node-offset) + var(--icon-size) - var(--icon-border));
   bottom: auto;
 }
 #easyGesturesPieMenu.large div.sector7 {
@@ -346,12 +346,12 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 #easyGesturesPieMenu.large div.sector8 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
-  top: calc(-1 * var(--menu-radius) + var(--icon-size) - var(--icon-border));
+  top: calc(-1 * var(--actions-node-offset) + var(--icon-size) - var(--icon-border));
 }
 #easyGesturesPieMenu.large div.sector9 {
   display: block;
   right: var(--border-width);
-  top: calc(-1 * var(--menu-radius));
+  top: calc(-1 * var(--actions-node-offset));
 }
 
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0 {
