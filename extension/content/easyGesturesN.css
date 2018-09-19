@@ -37,34 +37,44 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --icon-size: 32px;
   --menu-radius: -61px;
   --extra-menu-height: 82px;
+  --border-width: 2px;
+  --menu-section-width: 32px;
+  --cardinal-action-farthest-border-offset:
+      calc(-1 * var(--menu-radius) - var(--icon-size) / 2);
+  --cardinal-action-closest-border-offset:
+      calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
   --tooltips-x-offset: -200px;
   --extra-menu-y-offset: -135px;
-  --action-sector4-top: 45px;
 }
 
 #easyGesturesPieMenu.smallIcons {
   --icon-size: 20px;
   --menu-radius: -38px;
   --extra-menu-height: 51px;
+  --border-width: 1.25px;
+  --menu-section-width: 20px;
   --tooltips-x-offset: -150px; /* 75% of non small */
   --extra-menu-y-offset: -83px;
-  --action-sector4-top: 28px;
 }
 
 #easyGesturesPieMenu.large {
   --menu-radius: -70px;
   --extra-menu-height: 94px;
+  --border-width: 2.3px;
+  --menu-section-width: 36.72px;
+  --icon-border: 5px;
   --tooltips-x-offset: -220px;
   --extra-menu-y-offset: -151px;
-  --action-sector4-top: 54px;
 }
 
 #easyGesturesPieMenu.large.smallIcons {
   --menu-radius: -44px;
   --extra-menu-height: 59px;
+  --border-width: 1.44px;
+  --menu-section-width: 23.08px;
+  --icon-border: 3px;
   --tooltips-x-offset: -165px; /* 75% of non small */
   --extra-menu-y-offset: -97px;
-  --action-sector4-top: 34px;
 }
 
 #easyGesturesPieMenu * {
@@ -261,69 +271,106 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
+  mask-size: calc(var(--icon-size) * 17);
   width: var(--icon-size);
   height: var(--icon-size);
   z-index: 1;
 }
 
-#easyGesturesPieMenu.smallIcons .easyGesturesActionsNode div {
-  mask-size: 340px;
-  width: var(--icon-size);
-  height: var(--icon-size);
-  z-index: 1;
+#easyGesturesPieMenu div.sector0 {
+  top: var(--cardinal-action-farthest-border-offset);
+  right: var(--cardinal-action-closest-border-offset);
+}
+#easyGesturesPieMenu div.sector1 {
+  left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) - 1px);
+  top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) + 1px);
+}
+#easyGesturesPieMenu div.sector2 {
+  left: var(--cardinal-action-farthest-border-offset);
+  top: var(--cardinal-action-closest-border-offset);
+}
+#easyGesturesPieMenu div.sector3 {
+  left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) + 1px);
+  top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) + 1px);
+}
+#easyGesturesPieMenu div.sector4 {
+  left: var(--cardinal-action-closest-border-offset);
+  top: var(--cardinal-action-farthest-border-offset);
+}
+#easyGesturesPieMenu div.sector5 {
+  left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) + 1px);
+  top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) - 1px);
+}
+#easyGesturesPieMenu div.sector6 {
+  left: var(--cardinal-action-farthest-border-offset);
+  bottom: var(--cardinal-action-closest-border-offset);
+}
+#easyGesturesPieMenu div.sector7 {
+  left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) - 1px);
+  top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) - 1px);
 }
 
-#easyGesturesPieMenu div.sector0 { right: 2px; top: 45px; }
-#easyGesturesPieMenu div.sector1 { left: 76px; top: 14px; }
-#easyGesturesPieMenu div.sector2 { left: 45px; top: 2px; }
-#easyGesturesPieMenu div.sector3 { left: 14px; top: 14px; }
-#easyGesturesPieMenu div.sector4 { left: 2px; top: var(--action-sector4-top); }
-#easyGesturesPieMenu div.sector5 { left: 14px; top: 76px; }
-#easyGesturesPieMenu div.sector6 { left: 45px; bottom: 2px; }
-#easyGesturesPieMenu div.sector7 { left: 76px; top: 76px; }
+#easyGesturesPieMenu.large div.sector0 {
+  top: calc(-1 * var(--menu-radius) - var(--icon-size));
+  right: var(--border-width);
+}
+#easyGesturesPieMenu.large div.sector1 {
+  left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
+  top: calc(-1 * var(--menu-radius) - 2 * var(--icon-size) + var(--icon-border));
+}
+#easyGesturesPieMenu.large div.sector2 {
+  left: var(--cardinal-action-farthest-border-offset);
+}
+#easyGesturesPieMenu.large div.sector3 {
+  left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
+  top: calc(-1 * var(--menu-radius) - 2 * var(--icon-size) + var(--icon-border));
+}
+#easyGesturesPieMenu.large div.sector4 {
+  left: var(--border-width);
+  top: calc(-1 * var(--menu-radius) - var(--icon-size));
+}
+#easyGesturesPieMenu.large div.sector5 {
+  display: block;
+  left: var(--border-width);
+  top: calc(-1 * var(--menu-radius));
+}
+#easyGesturesPieMenu.large div.sector6 {
+  left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
+  top: calc(-1 * var(--menu-radius) + var(--icon-size) - var(--icon-border));
+  bottom: auto;
+}
+#easyGesturesPieMenu.large div.sector7 {
+  left: var(--cardinal-action-farthest-border-offset);
+  top: auto;
+  bottom: var(--cardinal-action-closest-border-offset);
+}
+#easyGesturesPieMenu.large div.sector8 {
+  left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
+  top: calc(-1 * var(--menu-radius) + var(--icon-size) - var(--icon-border));
+}
+#easyGesturesPieMenu.large div.sector9 {
+  display: block;
+  right: var(--border-width);
+  top: calc(-1 * var(--menu-radius));
+}
 
-#easyGesturesPieMenu.smallIcons div.sector0 { right: 1.25px; top: 28px; }
-#easyGesturesPieMenu.smallIcons div.sector1 { left: 47px; top: 9px; }
-#easyGesturesPieMenu.smallIcons div.sector2 { left: 28px; top: 1.25px; }
-#easyGesturesPieMenu.smallIcons div.sector3 { left: 9px; top: 9px; }
-#easyGesturesPieMenu.smallIcons div.sector4 { left: 1.25px; }
-#easyGesturesPieMenu.smallIcons div.sector5 { left: 9px; top: 47px; }
-#easyGesturesPieMenu.smallIcons div.sector6 { left: 28px; bottom: 1.25px; }
-#easyGesturesPieMenu.smallIcons div.sector7 { left: 47px; top: 47px; }
-
-#easyGesturesPieMenu.large div.sector0 { right: 2.3px; top: 38.5px; }
-#easyGesturesPieMenu.large div.sector1 { left: 85px; top: 11px; }
-#easyGesturesPieMenu.large div.sector2 { left: 54px; top: 4.66px; }
-#easyGesturesPieMenu.large div.sector3 { left: 23px; top: 11px; }
-#easyGesturesPieMenu.large div.sector4 { left: 2.3px; top: 38.5px; }
-#easyGesturesPieMenu.large div.sector5 { display: block; left: 2.3px; top: 69.5px; }
-#easyGesturesPieMenu.large div.sector6 { left: 23px; top: 97px; bottom: auto; }
-#easyGesturesPieMenu.large div.sector7 { left: 54px; top: auto; bottom: 4.66px; }
-#easyGesturesPieMenu.large div.sector8 { left: 85px; top: 97px; }
-#easyGesturesPieMenu.large div.sector9 { display: block; right: 2.3px; top: 69.5px; }
-
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0 { right: 2.3px; top: 54px; }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1 { left: 90px; top: 18px; }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2 { left: 54px; top: 2.3px; }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3 { left: 18px; top: 18px; }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4 { left: 2.3px; top: var(--action-sector4-top); }
-
-#easyGesturesPieMenu.large.smallIcons div.sector0 { right: 1.44px; top: 24px; }
-#easyGesturesPieMenu.large.smallIcons div.sector1 { left: 54px; top: 7px; }
-#easyGesturesPieMenu.large.smallIcons div.sector2 { left: 34px; top: 2.98px; }
-#easyGesturesPieMenu.large.smallIcons div.sector3 { left: 14px; top: 7px; }
-#easyGesturesPieMenu.large.smallIcons div.sector4 { left: 1.44px; top: 24px; }
-#easyGesturesPieMenu.large.smallIcons div.sector5 { display: block; left: 1.44px; top: 44px; }
-#easyGesturesPieMenu.large.smallIcons div.sector6 { left: 14px; top: 61px; }
-#easyGesturesPieMenu.large.smallIcons div.sector7 { left: 34px; bottom: 2.98px; }
-#easyGesturesPieMenu.large.smallIcons div.sector8 { left: 54px; top: 61px; }
-#easyGesturesPieMenu.large.smallIcons div.sector9 { display: block; right: 1.44px; top: 44px; }
-
-#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector0 { right: 1.44px; top: 34px; }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector1 { left: 58px; top: 10px; }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector2 { left: 34px; top: 1.44px; }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector3 { left: 10px; top: 10px; }
-#easyGesturesPieMenu.large.smallIcons .easyGesturesExtraNode div.sector4 { left: 1.44px; top: var(--action-sector4-top); }
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0 {
+  top: var(--cardinal-action-farthest-border-offset);
+}
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1 {
+  left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) + 4px);
+  top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - 4px);
+}
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2 {
+  top: var(--border-width);
+}
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3 {
+  left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - 4px);
+  top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - 4px);
+}
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4 {
+  top: var(--cardinal-action-farthest-border-offset);
+}
 
 /* Tooltips */
 
@@ -343,12 +390,14 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu .easyGesturesTooltipsNode.easyGesturesExtraNode {
   z-index: -3; /* tooltips are displayed below menu level */
   
-  top: calc(var(--extra-menu-y-offset) + var(--action-sector4-top) -
+  top: calc(var(--extra-menu-y-offset) +
+            var(--cardinal-action-farthest-border-offset) -
             2 * var(--icon-size));
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode.easyGesturesExtraNode {
-  top: calc(var(--extra-menu-y-offset) + var(--action-sector4-top) -
+  top: calc(var(--extra-menu-y-offset) +
+            var(--cardinal-action-farthest-border-offset) -
             2 * var(--icon-size) - 4px);
 }
 
