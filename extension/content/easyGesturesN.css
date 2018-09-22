@@ -44,6 +44,9 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --cardinal-action-closest-border-offset:
       calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
   --tooltips-x-offset: -200px;
+  --tooltips-y-offset: calc(-2.5 * var(--icon-size) - 1px);
+  --tooltip-height: calc(var(--icon-size) - 2px);
+  --font-size: calc(var(--tooltip-height) / 2);
   --extra-menu-y-offset: -135px;
 }
 
@@ -64,6 +67,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --menu-section-width: 36.72px;
   --icon-border: 5px;
   --tooltips-x-offset: -220px;
+  --tooltips-y-offset: calc(-3 * var(--icon-size) - 1px);
   --extra-menu-y-offset: -151px;
 }
 
@@ -210,39 +214,15 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   visibility: hidden;
   background-color: hsl(0, 0%, 80%);
   color: hsl(0, 0%, 50%);
+  left: var(--icon-size);
+  top: var(--tooltips-y-offset);
   border: solid 1px hsl(0, 0%, 50%);
   border-radius: 4px 4px;
   padding: 2px;
+  line-height: var(--font-size);
   font-family: sans-serif;
+  font-size: var(--font-size);
   white-space: nowrap;
-}
-
-#easyGesturesPieMenu #easyGesturesContextMenuSign {
-  left: 32px; /* icon size */
-  top: -81px; /* tooltips y-offset */
-  line-height: 14px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.smallIcons #easyGesturesContextMenuSign {
-  left: 20px; /* icon size */
-  top: -51px; /* tooltips y-offset */
-  line-height: 9px;
-  font-size: 9px;
-}
-
-#easyGesturesPieMenu.large #easyGesturesContextMenuSign {
-  left: 32px; /* icon size */
-  top: -97px; /* tooltips y-offset */
-  line-height: 14px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.large.smallIcons #easyGesturesContextMenuSign {
-  left: 20px; /* icon size */
-  top: -61px; /* tooltips y-offset */
-  line-height: 9px;
-  font-size: 9px;
 }
 
 #easyGesturesContextMenuSign.withAltSign {
@@ -379,12 +359,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   z-index: -2; /* tooltips are displayed below menu level */
   
   left: var(--tooltips-x-offset);
-  top: calc(-2.5 * var(--icon-size) - 1px);
+  top: var(--tooltips-y-offset);
   width: calc(-2 * var(--tooltips-x-offset));
-}
-
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode {
-  top: calc(-3 * var(--icon-size) - 1px);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode.easyGesturesExtraNode {
@@ -414,10 +390,9 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   text-overflow: ellipsis;
   white-space: nowrap;
   
-  --tooltip-height: calc(var(--icon-size) - 2px);
   height: var(--tooltip-height);
   line-height: var(--tooltip-height);
-  font-size: calc(var(--tooltip-height) / 2);
+  font-size: var(--font-size);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 {
