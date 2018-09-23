@@ -109,19 +109,12 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu #easyGesturesLinkSign {
-  left: -10px;
-  top: -10px;
-  background-size: 20px 20px;
-  width: 20px;
-  height: 20px;
-}
-
-#easyGesturesPieMenu.smallIcons #easyGesturesLinkSign {
-  left: -7px;
-  top: -7px;
-  background-size: 14px 14px;
-  width: 14px;
-  height: 14px;
+  --link-sign-size: calc(var(--icon-size) * 0.625);
+  left: calc(-1 * var(--link-sign-size) / 2);
+  top: calc(-1 * var(--link-sign-size) / 2);
+  background-size: var(--link-sign-size) var(--link-sign-size);
+  width: var(--link-sign-size);
+  height: var(--link-sign-size);
 }
 
 #easyGesturesMainMenusSign,
