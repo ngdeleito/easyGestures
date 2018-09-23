@@ -48,6 +48,9 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --tooltip-height: calc(var(--icon-size) - 2px);
   --font-size: calc(var(--tooltip-height) / 2);
   --extra-menu-y-offset: -135px;
+  --extra-tooltips-y-offset: calc(var(--extra-menu-y-offset) +
+                             var(--cardinal-action-farthest-border-offset) -
+                             2 * var(--icon-size));
 }
 
 #easyGesturesPieMenu.smallIcons {
@@ -69,6 +72,9 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --tooltips-x-offset: -220px;
   --tooltips-y-offset: calc(-3 * var(--icon-size) - 1px);
   --extra-menu-y-offset: -151px;
+  --extra-tooltips-y-offset: calc(var(--extra-menu-y-offset) +
+                             var(--cardinal-action-farthest-border-offset) -
+                             2 * var(--icon-size) - 4px);
 }
 
 #easyGesturesPieMenu.large.smallIcons {
@@ -118,70 +124,18 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   height: 14px;
 }
 
-#easyGesturesMainMenusSign {
+#easyGesturesMainMenusSign,
+#easyGesturesExtraMenusSign {
   visibility: hidden;
-  width: 3.85em; /* border-width and width for 3 children + space between 2 children */
-}
-
-#easyGesturesPieMenu #easyGesturesMainMenusSign {
-  left: 32px; /* icon size */
-  top: -81px; /* tooltips y-offset */
-  line-height: 32px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.smallIcons #easyGesturesMainMenusSign {
-  left: 20px; /* icon size */
-  top: -51px; /* tooltips y-offset */
-  line-height: 20px;
-  font-size: 10px;
-}
-
-#easyGesturesPieMenu.large #easyGesturesMainMenusSign {
-  left: 32px; /* icon size */
-  top: -97px; /* tooltips y-offset */
-  line-height: 32px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.large.smallIcons #easyGesturesMainMenusSign {
-  left: 20px; /* icon size */
-  top: -61px; /* tooltips y-offset */
-  line-height: 20px;
-  font-size: 10px;
+  left: var(--icon-size);
+  top: var(--tooltips-y-offset);
+  width: 4em; /* border-width and width for 3 children + space between 2 children, rounded up */
+  line-height: var(--icon-size);
+  font-size: var(--font-size);
 }
 
 #easyGesturesExtraMenusSign {
-  visibility: hidden;
-  width: 3.85em;
-}
-
-#easyGesturesPieMenu #easyGesturesExtraMenusSign {
-  left: 32px; /* icon size */
-  top: -154px; /* extra tooltips y-offset */
-  line-height: 32px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.smallIcons #easyGesturesExtraMenusSign {
-  left: 20px; /* icon size */
-  top: -95px; /* extra tooltips y-offset */
-  line-height: 20px;
-  font-size: 10px;
-}
-
-#easyGesturesPieMenu.large #easyGesturesExtraMenusSign {
-  left: 32px; /* icon size */
-  top: -165px; /* extra tooltips y-offset */
-  line-height: 32px;
-  font-size: 14px;
-}
-
-#easyGesturesPieMenu.large.smallIcons #easyGesturesExtraMenusSign {
-  left: 20px; /* icon size */
-  top: -107px; /* extra tooltips y-offset */
-  line-height: 20px;
-  font-size: 10px;
+  top: var(--extra-tooltips-y-offset);
 }
 
 #easyGesturesMainMenusSign span:only-child,
@@ -365,16 +319,7 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode.easyGesturesExtraNode {
   z-index: -3; /* tooltips are displayed below menu level */
-  
-  top: calc(var(--extra-menu-y-offset) +
-            var(--cardinal-action-farthest-border-offset) -
-            2 * var(--icon-size));
-}
-
-#easyGesturesPieMenu.large .easyGesturesTooltipsNode.easyGesturesExtraNode {
-  top: calc(var(--extra-menu-y-offset) +
-            var(--cardinal-action-farthest-border-offset) -
-            2 * var(--icon-size) - 4px);
+  top: var(--extra-tooltips-y-offset);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode div {
