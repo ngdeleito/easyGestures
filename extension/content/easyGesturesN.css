@@ -126,9 +126,9 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   display: inline-block;
   width: 0.75em;
   height: 0.75em;
-  background-color: hsl(0, 0%, 80%);
   border: solid 0.1em hsl(0, 0%, 50%);
   border-radius: 50%;
+  background-color: hsl(0, 0%, 80%);
   font-size: inherit;
 }
 
@@ -144,13 +144,13 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesContextMenuSign {
   visibility: hidden;
-  background-color: hsl(0, 0%, 80%);
-  color: hsl(0, 0%, 50%);
   left: var(--icon-size);
   top: var(--tooltips-y-offset);
   border: solid 1px hsl(0, 0%, 50%);
   border-radius: 4px 4px;
   padding: 2px;
+  background-color: hsl(0, 0%, 80%);
+  color: hsl(0, 0%, 50%);
   line-height: var(--font-size);
   font-family: sans-serif;
   font-size: var(--font-size);
@@ -167,26 +167,26 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu .easyGesturesActionsNode {
   visibility: hidden;
   z-index: -1;
-  background-image: url("menu.svg");
-  background-size: cover;
   left: var(--actions-node-offset);
   top: var(--actions-node-offset);
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
+  background-image: url("menu.svg");
+  background-size: cover;
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode {
   z-index: -2;
-  background-image: url("extraMenu.svg");
   top: var(--extra-menu-y-offset);
   height: var(--extra-menu-height);
+  background-image: url("extraMenu.svg");
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
-  mask-size: calc(var(--icon-size) * 17);
+  z-index: 1;
   width: var(--icon-size);
   height: var(--icon-size);
-  z-index: 1;
+  mask-size: calc(var(--icon-size) * 17);
 }
 
 #easyGesturesPieMenu div.sector0 {
@@ -262,8 +262,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 #easyGesturesPieMenu.large div.sector9 {
   display: block;
-  right: var(--border-width);
   top: calc(-1 * var(--actions-node-offset));
+  right: var(--border-width);
 }
 
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0 {
@@ -289,7 +289,6 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 #easyGesturesPieMenu .easyGesturesTooltipsNode {
   visibility: hidden;
   z-index: -2; /* tooltips are displayed below menu level */
-  
   left: var(--tooltips-x-offset);
   top: var(--tooltips-y-offset);
   width: calc(-2 * var(--tooltips-x-offset));
@@ -302,20 +301,19 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode div {
   z-index: 1;
+  height: var(--tooltip-height);
   border-style: solid;
   border-width: 2px;
   border-color: hsl(60, 40%, 83%) hsl(0, 0%, 60%);
   padding: 0px 6px;
   background-color: hsl(60, 100%, 93%);
   color: black;
+  line-height: var(--tooltip-height);
   font-family: sans-serif;
+  font-size: var(--font-size);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  
-  height: var(--tooltip-height);
-  line-height: var(--tooltip-height);
-  font-size: var(--font-size);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 {
@@ -324,8 +322,8 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
-  top: 0px;
   left: 0px;
+  top: 0px;
   border-top-color: hsl(0, 0%, 60%);
   border-top-left-radius: 5px 5px;
   border-top-right-radius: 5px 5px;
@@ -357,54 +355,54 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
-  padding-right: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
          /* 10px = border-left + border-right + padding-left */
+  padding-right: var(--tooltip-padding);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   top: calc(4 * var(--icon-size));
   right: 0px;
-  padding-left: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-left: var(--tooltip-padding);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
   top: var(--icon-size);
-  padding-right: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
+  padding-right: var(--icon-size);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
   top: var(--icon-size);
   right: 0px;
-  padding-left: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
+  padding-left: var(--icon-size);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
   left: 0px;
   top: calc(3 * var(--icon-size));
-  padding-right: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
+  padding-right: var(--icon-size);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
   top: calc(3 * var(--icon-size));
   right: 0px;
-  padding-left: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
+  padding-left: var(--icon-size);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
   top: calc(2 * var(--icon-size));
-  padding-right: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
+  padding-right: var(--icon-size);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
   top: calc(2 * var(--icon-size));
   right: 0px;
-  padding-left: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
+  padding-left: var(--icon-size);
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip2 {
@@ -414,68 +412,68 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --tooltip-padding: calc(var(--icon-size) + 6px);
   top: calc(5 * var(--icon-size));
   right: 0px;
-  padding-left: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
          /* 10px = border-left + border-right + padding-left */
+  padding-left: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip3 {
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
-  padding-right: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
          /* 10px = border-left + border-right + padding-left */
+  padding-right: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
-  padding-left: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-left: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6 { /* see tooltip3 */
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   left: 0px;
   top: calc(4 * var(--icon-size));
   right: auto; /* resetting default value */
-  padding-left: 6px; /* resetting default value */
-  padding-right: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-left: 6px; /* resetting default value */
+  padding-right: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip8 { /* see tooltip6 */
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   top: calc(4 * var(--icon-size));
   right: 0px;
-  padding-left: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - 0.5 * var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-left: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip4 {
   --tooltip-padding: calc(1.5 * var(--icon-size));
-  padding-right: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
               var(--tooltip-padding) - 10px);
          /* 10px = border-left + border-right + padding-left */
+  padding-right: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
   --tooltip-padding: calc(1.5 * var(--icon-size));
-  padding-left: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-left: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip5 { /* see tooltip4 */
   --tooltip-padding: calc(1.5 * var(--icon-size));
-  padding-right: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-right: var(--tooltip-padding);
 }
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip9 { /* see tooltip5 */
   --tooltip-padding: calc(1.5 * var(--icon-size));
   top: calc(3 * var(--icon-size));
   right: 0px;
-  padding-left: var(--tooltip-padding);
   width: calc(-1 * var(--tooltips-x-offset) - var(--icon-size) -
               var(--tooltip-padding) - 10px);
+  padding-left: var(--tooltip-padding);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .selected {
