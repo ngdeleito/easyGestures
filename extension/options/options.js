@@ -187,7 +187,7 @@ function createHeaderForAction(actionName) {
   let h1 = document.createElement("h1");
   
   let span = document.createElement("span");
-  span.className = "eG_" + actionName;
+  span.className = "actionIcon " + actionName;
   h1.appendChild(span);
   
   span = document.createElement("span");
@@ -908,7 +908,7 @@ function initializeClicksByAction() {
       container.appendChild(div);
       
       let span = document.createElement("span");
-      span.className = "eG_" + currentAction;
+      span.className = "actionIcon " + currentAction;
       div.appendChild(span);
       
       let img = document.createElement("span");

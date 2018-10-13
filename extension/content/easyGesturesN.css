@@ -490,12 +490,12 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .empty,
-[data-action="empty"], .eG_empty {
+[data-action="empty"], .actionIcon.empty {
   --icon-position-x: 2;
   --icon-position-y: 0;
 }
 #easyGesturesPieMenu .showExtraMenu,
-[data-action="showExtraMenu"], .eG_showExtraMenu {
+[data-action="showExtraMenu"], .actionIcon.showExtraMenu {
   --icon-position-x: 0;
   --icon-position-y: 0;
 }
@@ -505,408 +505,407 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --icon-position-y: 0;
 }
 #easyGesturesPieMenu .back,
-[data-action="back"], .eG_back {
+[data-action="back"], .actionIcon.back {
   --icon-position-x: 0;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .backSite,
-[data-action="backSite"], .eG_backSite {
+[data-action="backSite"], .actionIcon.backSite {
   --icon-position-x: 1;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .firstPage,
-[data-action="firstPage"], .eG_firstPage {
+[data-action="firstPage"], .actionIcon.firstPage {
   --icon-position-x: 2;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .forward,
-[data-action="forward"], .eG_forward {
+[data-action="forward"], .actionIcon.forward {
   --icon-position-x: 3;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .forwardSite,
-[data-action="forwardSite"], .eG_forwardSite {
+[data-action="forwardSite"], .actionIcon.forwardSite {
   --icon-position-x: 4;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .lastPage,
-[data-action="lastPage"], .eG_lastPage {
+[data-action="lastPage"], .actionIcon.lastPage {
   --icon-position-x: 5;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .reload,
-[data-action="reload"], .eG_reload {
+[data-action="reload"], .actionIcon.reload {
   --icon-position-x: 6;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .homepage,
-[data-action="homepage"], .eG_homepage {
+[data-action="homepage"], .actionIcon.homepage {
   --icon-position-x: 7;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .pageTop,
-[data-action="pageTop"], .eG_pageTop {
+[data-action="pageTop"], .actionIcon.pageTop {
   --icon-position-x: 8;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .pageBottom,
-[data-action="pageBottom"], .eG_pageBottom {
+[data-action="pageBottom"], .actionIcon.pageBottom {
   --icon-position-x: 9;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .savePageAs,
-[data-action="savePageAs"], .eG_savePageAs {
+[data-action="savePageAs"], .actionIcon.savePageAs {
   --icon-position-x: 10;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .printPage,
-[data-action="printPage"], .eG_printPage {
+[data-action="printPage"], .actionIcon.printPage {
   --icon-position-x: 11;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .showPrintPreview,
-[data-action="showPrintPreview"], .eG_showPrintPreview {
+[data-action="showPrintPreview"], .actionIcon.showPrintPreview {
   --icon-position-x: 12;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .searchWeb,
-[data-action="searchWeb"], .eG_searchWeb {
+[data-action="searchWeb"], .actionIcon.searchWeb {
   --icon-position-x: 13;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .loadPageInNewTab,
-[data-action="loadPageInNewTab"], .eG_loadPageInNewTab {
+[data-action="loadPageInNewTab"], .actionIcon.loadPageInNewTab {
   --icon-position-x: 0;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .loadPageInNewPrivateWindow,
-[data-action="loadPageInNewPrivateWindow"], .eG_loadPageInNewPrivateWindow {
+[data-action="loadPageInNewPrivateWindow"], .actionIcon.loadPageInNewPrivateWindow {
   --icon-position-x: 1;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .moveTabToNewWindow,
-[data-action="moveTabToNewWindow"], .eG_moveTabToNewWindow {
+[data-action="moveTabToNewWindow"], .actionIcon.moveTabToNewWindow {
   --icon-position-x: 2;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .copyPageURL,
-[data-action="copyPageURL"], .eG_copyPageURL {
+[data-action="copyPageURL"], .actionIcon.copyPageURL {
   --icon-position-x: 3;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .copyURLToIdentifier,
-[data-action="copyURLToIdentifier"], .eG_copyURLToIdentifier {
+[data-action="copyURLToIdentifier"], .actionIcon.copyURLToIdentifier {
   --icon-position-x: 4;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomIn,
-[data-action="zoomIn"], .eG_zoomIn {
+[data-action="zoomIn"], .actionIcon.zoomIn {
   --icon-position-x: 5;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomOut,
-[data-action="zoomOut"], .eG_zoomOut {
+[data-action="zoomOut"], .actionIcon.zoomOut {
   --icon-position-x: 6;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomReset,
-[data-action="zoomReset"], .eG_zoomReset {
+[data-action="zoomReset"], .actionIcon.zoomReset {
   --icon-position-x: 7;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .findAndHighlightSelection,
-[data-action="findAndHighlightSelection"], .eG_findAndHighlightSelection {
+[data-action="findAndHighlightSelection"], .actionIcon.findAndHighlightSelection {
   --icon-position-x: 8;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .removeHighlight,
-[data-action="removeHighlight"], .eG_removeHighlight {
+[data-action="removeHighlight"], .actionIcon.removeHighlight {
   --icon-position-x: 9;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .enterReaderMode,
-[data-action="enterReaderMode"], .eG_enterReaderMode {
+[data-action="enterReaderMode"], .actionIcon.enterReaderMode {
   --icon-position-x: 10;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .takeTabScreenshot,
-[data-action="takeTabScreenshot"], .eG_takeTabScreenshot {
+[data-action="takeTabScreenshot"], .actionIcon.takeTabScreenshot {
   --icon-position-x: 11;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .toggleFullscreen,
-[data-action="toggleFullscreen"], .eG_toggleFullscreen {
+[data-action="toggleFullscreen"], .actionIcon.toggleFullscreen {
   --icon-position-x: 12;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .up,
-[data-action="up"], .eG_up {
+[data-action="up"], .actionIcon.up {
   --icon-position-x: 13;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .root,
-[data-action="root"], .eG_root {
+[data-action="root"], .actionIcon.root {
   --icon-position-x: 14;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .showOnlyThisFrame,
-[data-action="showOnlyThisFrame"], .eG_showOnlyThisFrame {
+[data-action="showOnlyThisFrame"], .actionIcon.showOnlyThisFrame {
   --icon-position-x: 15;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .viewPageSource,
-[data-action="viewPageSource"], .eG_viewPageSource {
+[data-action="viewPageSource"], .actionIcon.viewPageSource {
   --icon-position-x: 16;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .newTab,
-[data-action="newTab"], .eG_newTab {
+[data-action="newTab"], .actionIcon.newTab {
   --icon-position-x: 0;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .newBlankTab,
-[data-action="newBlankTab"], .eG_newBlankTab {
+[data-action="newBlankTab"], .actionIcon.newBlankTab {
   --icon-position-x: 1;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .duplicateTab,
-[data-action="duplicateTab"], .eG_duplicateTab {
+[data-action="duplicateTab"], .actionIcon.duplicateTab {
   --icon-position-x: 2;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .closeTab,
-[data-action="closeTab"], .eG_closeTab {
+[data-action="closeTab"], .actionIcon.closeTab {
   --icon-position-x: 3;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .closeOtherTabs,
-[data-action="closeOtherTabs"], .eG_closeOtherTabs {
+[data-action="closeOtherTabs"], .actionIcon.closeOtherTabs {
   --icon-position-x: 4;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .undoCloseTab,
-[data-action="undoCloseTab"], .eG_undoCloseTab {
+[data-action="undoCloseTab"], .actionIcon.undoCloseTab {
   --icon-position-x: 5;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .previousTab,
-[data-action="previousTab"], .eG_previousTab {
+[data-action="previousTab"], .actionIcon.previousTab {
   --icon-position-x: 6;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .nextTab,
-[data-action="nextTab"], .eG_nextTab {
+[data-action="nextTab"], .actionIcon.nextTab {
   --icon-position-x: 7;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .pinUnpinTab,
-[data-action="pinUnpinTab"], .eG_pinUnpinTab {
+[data-action="pinUnpinTab"], .actionIcon.pinUnpinTab {
   --icon-position-x: 8;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .newWindow,
-[data-action="newWindow"], .eG_newWindow {
+[data-action="newWindow"], .actionIcon.newWindow {
   --icon-position-x: 0;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .newBlankWindow,
-[data-action="newBlankWindow"], .eG_newBlankWindow {
+[data-action="newBlankWindow"], .actionIcon.newBlankWindow {
   --icon-position-x: 1;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .newPrivateWindow,
-[data-action="newPrivateWindow"], .eG_newPrivateWindow {
+[data-action="newPrivateWindow"], .actionIcon.newPrivateWindow {
   --icon-position-x: 2;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .duplicateWindow,
-[data-action="duplicateWindow"], .eG_duplicateWindow {
+[data-action="duplicateWindow"], .actionIcon.duplicateWindow {
   --icon-position-x: 3;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .minimizeWindow,
-[data-action="minimizeWindow"], .eG_minimizeWindow {
+[data-action="minimizeWindow"], .actionIcon.minimizeWindow {
   --icon-position-x: 4;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .closeWindow,
-[data-action="closeWindow"], .eG_closeWindow {
+[data-action="closeWindow"], .actionIcon.closeWindow {
   --icon-position-x: 5;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .closeOtherWindows,
-[data-action="closeOtherWindows"], .eG_closeOtherWindows {
+[data-action="closeOtherWindows"], .actionIcon.closeOtherWindows {
   --icon-position-x: 6;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .undoCloseWindow,
-[data-action="undoCloseWindow"], .eG_undoCloseWindow {
+[data-action="undoCloseWindow"], .actionIcon.undoCloseWindow {
   --icon-position-x: 7;
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .openLink,
-[data-action="openLink"], .eG_openLink {
+[data-action="openLink"], .actionIcon.openLink {
   --icon-position-x: 0;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .openLinkInNewWindow,
-[data-action="openLinkInNewWindow"], .eG_openLinkInNewWindow {
+[data-action="openLinkInNewWindow"], .actionIcon.openLinkInNewWindow {
   --icon-position-x: 1;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .openLinkInNewPrivateWindow,
-[data-action="openLinkInNewPrivateWindow"], .eG_openLinkInNewPrivateWindow {
+[data-action="openLinkInNewPrivateWindow"], .actionIcon.openLinkInNewPrivateWindow {
   --icon-position-x: 2;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .copyLink,
-[data-action="copyLink"], .eG_copyLink {
+[data-action="copyLink"], .actionIcon.copyLink {
   --icon-position-x: 3;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .saveLinkAs,
-[data-action="saveLinkAs"], .eG_saveLinkAs {
+[data-action="saveLinkAs"], .actionIcon.saveLinkAs {
   --icon-position-x: 4;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .dailyReadings,
-[data-action="dailyReadings"], .eG_dailyReadings {
+[data-action="dailyReadings"], .actionIcon.dailyReadings {
   --icon-position-x: 0;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisPage,
-[data-action="bookmarkThisPage"], .eG_bookmarkThisPage {
+[data-action="bookmarkThisPage"], .actionIcon.bookmarkThisPage {
   --icon-position-x: 1;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisIdentifier,
-[data-action="bookmarkThisIdentifier"], .eG_bookmarkThisIdentifier {
+[data-action="bookmarkThisIdentifier"], .actionIcon.bookmarkThisIdentifier {
   --icon-position-x: 2;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisLink,
-[data-action="bookmarkThisLink"], .eG_bookmarkThisLink {
+[data-action="bookmarkThisLink"], .actionIcon.bookmarkThisLink {
   --icon-position-x: 3;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkAllTabs,
-[data-action="bookmarkAllTabs"], .eG_bookmarkAllTabs {
+[data-action="bookmarkAllTabs"], .actionIcon.bookmarkAllTabs {
   --icon-position-x: 4;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisPage,
-[data-action="removeBookmarkToThisPage"], .eG_removeBookmarkToThisPage {
+[data-action="removeBookmarkToThisPage"], .actionIcon.removeBookmarkToThisPage {
   --icon-position-x: 5;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisIdentifier,
-[data-action="removeBookmarkToThisIdentifier"],
-.eG_removeBookmarkToThisIdentifier {
+[data-action="removeBookmarkToThisIdentifier"], .actionIcon.removeBookmarkToThisIdentifier {
   --icon-position-x: 6;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisLink,
-[data-action="removeBookmarkToThisLink"], .eG_removeBookmarkToThisLink {
+[data-action="removeBookmarkToThisLink"], .actionIcon.removeBookmarkToThisLink {
   --icon-position-x: 7;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .loadURL1,
-[data-action="loadURL1"], .eG_loadURL1 {
+[data-action="loadURL1"], .actionIcon.loadURL1 {
   --icon-position-x: 0;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL2,
-[data-action="loadURL2"], .eG_loadURL2 {
+[data-action="loadURL2"], .actionIcon.loadURL2 {
   --icon-position-x: 1;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL3,
-[data-action="loadURL3"], .eG_loadURL3 {
+[data-action="loadURL3"], .actionIcon.loadURL3 {
   --icon-position-x: 2;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL4,
-[data-action="loadURL4"], .eG_loadURL4 {
+[data-action="loadURL4"], .actionIcon.loadURL4 {
   --icon-position-x: 3;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL5,
-[data-action="loadURL5"], .eG_loadURL5 {
+[data-action="loadURL5"], .actionIcon.loadURL5 {
   --icon-position-x: 4;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL6,
-[data-action="loadURL6"], .eG_loadURL6 {
+[data-action="loadURL6"], .actionIcon.loadURL6 {
   --icon-position-x: 5;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL7,
-[data-action="loadURL7"], .eG_loadURL7 {
+[data-action="loadURL7"], .actionIcon.loadURL7 {
   --icon-position-x: 6;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL8,
-[data-action="loadURL8"], .eG_loadURL8 {
+[data-action="loadURL8"], .actionIcon.loadURL8 {
   --icon-position-x: 7;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL9,
-[data-action="loadURL9"], .eG_loadURL9 {
+[data-action="loadURL9"], .actionIcon.loadURL9 {
   --icon-position-x: 8;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL10,
-[data-action="loadURL10"], .eG_loadURL10 {
+[data-action="loadURL10"], .actionIcon.loadURL10 {
   --icon-position-x: 9;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .runScript1,
-[data-action="runScript1"], .eG_runScript1 {
+[data-action="runScript1"], .actionIcon.runScript1 {
   --icon-position-x: 0;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript2,
-[data-action="runScript2"], .eG_runScript2 {
+[data-action="runScript2"], .actionIcon.runScript2 {
   --icon-position-x: 1;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript3,
-[data-action="runScript3"], .eG_runScript3 {
+[data-action="runScript3"], .actionIcon.runScript3 {
   --icon-position-x: 2;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript4,
-[data-action="runScript4"], .eG_runScript4 {
+[data-action="runScript4"], .actionIcon.runScript4 {
   --icon-position-x: 3;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript5,
-[data-action="runScript5"], .eG_runScript5 {
+[data-action="runScript5"], .actionIcon.runScript5 {
   --icon-position-x: 4;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript6,
-[data-action="runScript6"], .eG_runScript6 {
+[data-action="runScript6"], .actionIcon.runScript6 {
   --icon-position-x: 5;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript7,
-[data-action="runScript7"], .eG_runScript7 {
+[data-action="runScript7"], .actionIcon.runScript7 {
   --icon-position-x: 6;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript8,
-[data-action="runScript8"], .eG_runScript8 {
+[data-action="runScript8"], .actionIcon.runScript8 {
   --icon-position-x: 7;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript9,
-[data-action="runScript9"], .eG_runScript9 {
+[data-action="runScript9"], .actionIcon.runScript9 {
   --icon-position-x: 8;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript10,
-[data-action="runScript10"], .eG_runScript10 {
+[data-action="runScript10"], .actionIcon.runScript10 {
   --icon-position-x: 9;
   --icon-position-y: 8;
 }
@@ -917,61 +916,47 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   mask-position: calc(var(--mask-size-value) * 0.3) calc(var(--mask-size-value) * 0.3);
 }
 #easyGesturesPieMenu .easyGesturesNPreferences,
-[data-action="easyGesturesNPreferences"], .eG_easyGesturesNPreferences {
+[data-action="easyGesturesNPreferences"], .actionIcon.easyGesturesNPreferences {
   --icon-position-x: 0;
   --icon-position-y: 9;
 }
 #easyGesturesPieMenu .copyImageLocation,
-[data-action="copyImageLocation"], .eG_copyImageLocation {
+[data-action="copyImageLocation"], .actionIcon.copyImageLocation {
   --icon-position-x: 0;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .copyImage,
-[data-action="copyImage"], .eG_copyImage {
+[data-action="copyImage"], .actionIcon.copyImage {
   --icon-position-x: 1;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .saveImageAs,
-[data-action="saveImageAs"], .eG_saveImageAs {
+[data-action="saveImageAs"], .actionIcon.saveImageAs {
   --icon-position-x: 2;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .hideImages,
-[data-action="hideImages"], .eG_hideImages {
+[data-action="hideImages"], .actionIcon.hideImages {
   --icon-position-x: 3;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .cut,
-[data-action="cut"], .eG_cut {
+[data-action="cut"], .actionIcon.cut {
   --icon-position-x: 0;
   --icon-position-y: 11;
 }
 #easyGesturesPieMenu .copy,
-[data-action="copy"], .eG_copy {
+[data-action="copy"], .actionIcon.copy {
   --icon-position-x: 1;
   --icon-position-y: 11;
 }
 #easyGesturesPieMenu .paste,
-[data-action="paste"], .eG_paste {
+[data-action="paste"], .actionIcon.paste {
   --icon-position-x: 2;
   --icon-position-y: 11;
 }
 #easyGesturesPieMenu .selectAll,
-[data-action="selectAll"], .eG_selectAll {
+[data-action="selectAll"], .actionIcon.selectAll {
   --icon-position-x: 3;
   --icon-position-y: 11;
-}
-
-
-/* SMALL ICONS */
-
-span[class^="eG_"] {
-  --icon-size: 32px;
-  display: inline-block;
-  background-color: black;
-  mask-image: url("actions.svg");
-  width: var(--icon-size);
-  height: var(--icon-size);
-  mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
-                 calc(var(--icon-position-y) * -1 * var(--icon-size));
 }

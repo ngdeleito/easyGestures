@@ -311,6 +311,17 @@ input[type="number"] {
   margin-left: auto;
 }
 
+.actionIcon {
+  --icon-size: 32px;
+  display: inline-block;
+  background-color: black;
+  mask-image: url("../content/actions.svg");
+  width: var(--icon-size);
+  height: var(--icon-size);
+  mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
+                 calc(var(--icon-position-y) * -1 * var(--icon-size));
+}
+
 th {
   font-weight: normal;
   text-align: left;
