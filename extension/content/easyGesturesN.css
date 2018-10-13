@@ -29,21 +29,25 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
 
 ***** END LICENSE BLOCK *****/
 
-#easyGesturesPieMenu {
-  all: initial;
-  position: fixed;
-  z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
-  
+#easyGesturesPieMenu,
+#menus .menuIcon {
   --scale-factor: 1;
   --icon-size: calc(32px * var(--scale-factor));
   --actions-node-offset: calc(-61px * var(--scale-factor));
-  --extra-menu-height: calc(82px * var(--scale-factor));
   --border-width: calc(2px * var(--scale-factor));
   --menu-section-width: calc(32px * var(--scale-factor));
   --cardinal-action-farthest-border-offset:
       calc(-1 * var(--actions-node-offset) - var(--icon-size) / 2);
   --cardinal-action-closest-border-offset:
       calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
+}
+
+#easyGesturesPieMenu {
+  all: initial;
+  position: fixed;
+  z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
+  
+  --extra-menu-height: calc(82px * var(--scale-factor));
   --tooltips-x-offset: calc(-200px * var(--scale-factor));
   --tooltips-y-offset: calc(-2.5 * var(--icon-size) - 1px);
   --tooltip-height: calc(var(--icon-size) - var(--border-width));
@@ -58,12 +62,16 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   --scale-factor: 0.625;
 }
 
-#easyGesturesPieMenu.large {
+#easyGesturesPieMenu.large,
+#menus .large .menuIcon {
   --actions-node-offset: calc(-70px * var(--scale-factor));
-  --extra-menu-height: calc(94px * var(--scale-factor));
   --border-width: calc(2.3px * var(--scale-factor));
   --menu-section-width: calc(36.72px * var(--scale-factor));
   --icon-border: calc(5px * var(--scale-factor));
+}
+
+#easyGesturesPieMenu.large {
+  --extra-menu-height: calc(94px * var(--scale-factor));
   --tooltips-x-offset: calc(-230px * var(--scale-factor));
   --tooltips-y-offset: calc(-3 * var(--icon-size) - 1px);
   --extra-menu-y-offset: calc(-155px * var(--scale-factor));
@@ -189,91 +197,114 @@ version of this file under the terms of any one of the MPL, the GPL or the LGPL.
   mask-size: calc(var(--icon-size) * 17);
 }
 
-#easyGesturesPieMenu div.sector0 {
+#easyGesturesPieMenu div.sector0,
+.menuIcon.sector0 {
   top: var(--cardinal-action-farthest-border-offset);
   right: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu div.sector1 {
+#easyGesturesPieMenu div.sector1,
+.menuIcon.sector1 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
 }
-#easyGesturesPieMenu div.sector2 {
+#easyGesturesPieMenu div.sector2,
+.menuIcon.sector2 {
   left: var(--cardinal-action-farthest-border-offset);
   top: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu div.sector3 {
+#easyGesturesPieMenu div.sector3,
+.menuIcon.sector3 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
 }
-#easyGesturesPieMenu div.sector4 {
+#easyGesturesPieMenu div.sector4,
+.menuIcon.sector4 {
   left: var(--cardinal-action-closest-border-offset);
   top: var(--cardinal-action-farthest-border-offset);
 }
-#easyGesturesPieMenu div.sector5 {
+.menuIcon.sector5, .menuIcon.sector9 { display: none; }
+#easyGesturesPieMenu div.sector5,
+.menuIcon.sector6 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
 }
-#easyGesturesPieMenu div.sector6 {
+#easyGesturesPieMenu div.sector6,
+.menuIcon.sector7 {
   left: var(--cardinal-action-farthest-border-offset);
   bottom: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu div.sector7 {
+#easyGesturesPieMenu div.sector7,
+.menuIcon.sector8 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
 }
 
-#easyGesturesPieMenu.large div.sector0 {
+#easyGesturesPieMenu.large div.sector0,
+.menu.large .menuIcon.sector0 {
   top: calc(-1 * var(--actions-node-offset) - var(--icon-size));
   right: var(--border-width);
 }
 #easyGesturesPieMenu.large div.sector1,
-#easyGesturesPieMenu.large div.sector3 {
+#easyGesturesPieMenu.large div.sector3,
+.menu.large .menuIcon.sector1,
+.menu.large .menuIcon.sector3 {
   top: calc(-1 * var(--actions-node-offset) - 2 * var(--icon-size) + var(--icon-border));
 }
-#easyGesturesPieMenu.large div.sector4 {
+#easyGesturesPieMenu.large div.sector4,
+.menu.large .menuIcon.sector4 {
   left: var(--border-width);
   top: calc(-1 * var(--actions-node-offset) - var(--icon-size));
 }
-#easyGesturesPieMenu.large div.sector5 {
+#easyGesturesPieMenu.large div.sector5,
+.menu.large .menuIcon.sector5 {
   display: block;
   left: var(--border-width);
   top: calc(-1 * var(--actions-node-offset));
 }
-#easyGesturesPieMenu.large div.sector6 {
+#easyGesturesPieMenu.large div.sector6,
+.menu.large .menuIcon.sector6 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
   top: calc(-1 * var(--actions-node-offset) + var(--icon-size) - var(--icon-border));
   bottom: auto;
 }
-#easyGesturesPieMenu.large div.sector7 {
+#easyGesturesPieMenu.large div.sector7,
+.menu.large .menuIcon.sector7 {
   left: var(--cardinal-action-farthest-border-offset);
   top: auto;
   bottom: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu.large div.sector8 {
+#easyGesturesPieMenu.large div.sector8,
+.menu.large .menuIcon.sector8 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
   top: calc(-1 * var(--actions-node-offset) + var(--icon-size) - var(--icon-border));
 }
-#easyGesturesPieMenu.large div.sector9 {
+#easyGesturesPieMenu.large div.sector9,
+.menu.large .menuIcon.sector9 {
   display: block;
   top: calc(-1 * var(--actions-node-offset));
   right: var(--border-width);
 }
 
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0 {
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0,
+.menu.extra.large .menuIcon.sector0 {
   top: var(--cardinal-action-farthest-border-offset);
 }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1 {
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1,
+.menu.extra.large .menuIcon.sector1 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) + 4px);
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - 4px);
 }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2 {
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2,
+.menu.extra.large .menuIcon.sector2 {
   top: var(--border-width);
 }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3 {
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3,
+.menu.extra.large .menuIcon.sector3 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - 4px);
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - 4px);
 }
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4 {
+#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4,
+.menu.extra.large .menuIcon.sector4 {
   top: var(--cardinal-action-farthest-border-offset);
 }
 
