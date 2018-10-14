@@ -79,15 +79,6 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   }).then(aMessage => {
     this.hasExtraMenuAction = aMessage.response;
   });
-  
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  //  setting dimensions and positioning
-  ///////////////////////////////////////////////////////////////////////////////////////////////
-  
-  let zoom = menu.settings.smallIcons ? 0.625:1;
-  
-  this.outerR = Math.round((this._isLarge ? 70:61)*zoom); // outer radius of pie
-  this.innerR = Math.round((this._isLarge ? 36:26)*zoom); // inner radius of pie
 }
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
@@ -203,6 +194,10 @@ let eGPieMenu = {
   easyGesturesNode: null,
   
   init: function() {
+    this._scaleFactor = this.settings.smallIcons ? 0.625 : 1;
+    this._outerRadius = Math.round((this.settings.largeMenu ? 70 : 61) * this._scaleFactor);
+    this._innerRadius = Math.round((this.settings.largeMenu ? 36 : 26) * this._scaleFactor);
+    
     this.numberOfMainMenus = 1 +
       ((this.settings.mainAlt1Enabled || this.settings.mainAlt2Enabled) ? 1 : 0) +
       ((this.settings.mainAlt1Enabled && this.settings.mainAlt2Enabled) ? 1 : 0);
@@ -296,7 +291,7 @@ let eGPieMenu = {
     this.easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
     this.easyGesturesNode.id = "easyGesturesPieMenu";
     this.easyGesturesNode.classList.toggle("large", this.settings.largeMenu);
-    this.easyGesturesNode.classList.toggle("smallIcons", this.settings.smallIcons);
+    this.easyGesturesNode.style.setProperty("--scale-factor", this._scaleFactor);
     this.easyGesturesNode.style.opacity = this.settings.menuOpacity;
     
     addEventListener("pagehide", removeMenuEventHandler, true);
@@ -615,12 +610,12 @@ let eGPieMenu = {
     let refX = this.centerX;
     let refY = this.centerY;
     if (this._currentLayout.isExtraMenu) {
-      refY -= this._baseLayout.outerR * 1.2;
+      refY -= this._outerRadius * 1.2;
     }
     let radius = Math.sqrt((positionX - refX) * (positionX - refX) +
                            (positionY - refY) * (positionY - refY));
     
-    if (radius > this._currentLayout.innerR) {
+    if (radius > this._innerRadius) {
       let angle = Math.atan2(refY - positionY, positionX - refX) +
                   this._currentLayout.sectorOffset;
       if (angle < 0) {
@@ -635,7 +630,7 @@ let eGPieMenu = {
     
     // moving menu when shift key is down
     if (!this.settings.moveAuto && shiftKey ||
-        this.settings.moveAuto && radius >= this._currentLayout.outerR &&
+        this.settings.moveAuto && radius >= this._outerRadius &&
           (sector !== EXTRA_MENU_SECTOR || sector === EXTRA_MENU_SECTOR &&
                                            !this._currentLayout.hasExtraMenuAction)) {
       this.centerX += movementX;
@@ -650,13 +645,12 @@ let eGPieMenu = {
     this.sector = sector;
     
     // switching to/from extra menu
-    if (radius > 3 * this._currentLayout.outerR) {
+    if (radius > 3 * this._outerRadius) {
       if (!this.isJustOpenedAndMouseMoved()) {
         this.close();
       }
     }
-    else if (radius > this._currentLayout.outerR &&
-             sector === EXTRA_MENU_SECTOR &&
+    else if (radius > this._outerRadius && sector === EXTRA_MENU_SECTOR &&
              this._currentLayout.hasExtraMenuAction) {
       this._showExtraMenu();
     }

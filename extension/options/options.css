@@ -211,6 +211,7 @@ input[type="number"] {
 }
 
 #menus .menuIcon {
+  --scale-factor: 1;
   position: absolute;
   background-color: hsl(0, 0%, 50%);
   mask-image: url("../content/actions.svg");
