@@ -56,7 +56,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |-- DisabledAction
 
 /* exported eGActions */
-/* global eGPrefs, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
+/* global eGPrefs, console, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
 
 "use strict";
 
