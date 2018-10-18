@@ -42,6 +42,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- DocumentContainsImagesDisableableAction
 //  |-- DisableableAction
 //       ^
+//       |-- SelectionExistsDisableableAction
 //       |-- URLToIdentifierExistsDisableableAction
 //       |-- CanGoUpDisableableAction
 //       |-- OtherTabsExistDisableableAction
@@ -173,6 +174,14 @@ DisableableAction.prototype.getActionStatus = function() {
     status: this._isDisabledAsPromise()
   };
 };
+
+function SelectionExistsDisableableAction(name, action, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, action, function() {
+    return Promise.resolve(eGContext.selection === "");
+  }, startsNewGroup, nextAction);
+}
+SelectionExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
+SelectionExistsDisableableAction.prototype.constructor = SelectionExistsDisableableAction;
 
 function URLToIdentifierExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -454,7 +463,11 @@ let eGActions = {
     browser.tabs.printPreview();
   }, false, "searchWeb"),
   
-  searchWeb: new DisabledAction("searchWeb", false, "loadPageInNewTab"),
+  searchWeb: new SelectionExistsDisableableAction("searchWeb", function() {
+    browser.search.search({
+      query: eGContext.selection
+    });
+  }, false, "loadPageInNewTab"),
   
   loadPageInNewTab: new Action("loadPageInNewTab", function() {
     eGUtils.performOnCurrentTab(function(currentTab) {
@@ -534,12 +547,10 @@ let eGActions = {
     browser.tabs.setZoom(1);
   }, false, "findAndHighlightSelection"),
   
-  findAndHighlightSelection: new DisableableAction("findAndHighlightSelection", function() {
+  findAndHighlightSelection: new SelectionExistsDisableableAction("findAndHighlightSelection", function() {
     browser.find.find(eGContext.selection).then(() => {
       browser.find.highlightResults();
     });
-  }, function() {
-    return Promise.resolve(eGContext.selection === "");
   }, false, "removeHighlight"),
   
   removeHighlight: new Action("removeHighlight", function() {

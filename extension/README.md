@@ -21,6 +21,8 @@ The permissions requested by this extension are used for the following purposes:
   - Exporting preferences
 - `find`: "Read the text of all open tabs"
   - "Find and highlight selection" and "Remove highlight" actions
+- `search`
+  - "Search web" action
 - `sessions`: "Access recently closed tabs"
   - "Undo close tab" and "Undo close window" actions
 - `storage`

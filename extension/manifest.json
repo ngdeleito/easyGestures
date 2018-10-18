@@ -13,14 +13,15 @@
   "applications": {
     "gecko": {
       "id": "easyGesturesN@ngdeleito.eu",
-      "strict_min_version": "58.0"
+      "strict_min_version": "63.0"
     }
   },
   
   "default_locale": "en",
   "permissions": [
     "<all_urls>", "bookmarks", "browserSettings", "clipboardRead",
-    "clipboardWrite", "downloads", "find", "sessions", "storage", "tabs"
+    "clipboardWrite", "downloads", "find", "search", "sessions", "storage",
+    "tabs"
   ],
   "background": {
     "scripts": [
