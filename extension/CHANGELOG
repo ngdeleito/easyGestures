@@ -1,6 +1,13 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.1 (October 27, 2018)
+
+- enabled "Search Web" action
+- improved visual consistency across the different menu types
+- simplified many style declarations and some pieces of code related to the display of the pie menu and the execution of actions
+
+
 Version 6.0 (July 29, 2018)
 
 - new action icons!
