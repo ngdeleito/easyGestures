@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 #easyGesturesPieMenu,
-#menus .menuIcon {
+.menuIcon {
   --icon-size: calc(32px * var(--scale-factor));
   --actions-node-offset: calc(-61px * var(--scale-factor));
   --border-width: calc(2px * var(--scale-factor));
@@ -60,7 +60,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu.large,
-#menus .large .menuIcon {
+.large .menuIcon {
   --actions-node-offset: calc(-70px * var(--scale-factor));
   --border-width: calc(2.3px * var(--scale-factor));
   --menu-section-width: calc(36.72px * var(--scale-factor));
