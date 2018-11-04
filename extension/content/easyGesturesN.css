@@ -41,6 +41,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
       calc(-1 * var(--actions-node-offset) - var(--icon-size) / 2);
   --cardinal-action-closest-border-offset:
       calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
+  
+  --pie-menu-border-color: hsl(0, 0%, 60%);
+  --pie-menu-background-color: hsl(0, 0%, 80%);
+  --active-menu-sign-color: hsl(0, 0%, 65%);
+  --tooltip-inner-border-color: hsl(60, 40%, 83%);
+  --tooltip-background-color: hsl(60, 100%, 93%);
+  --tooltip-extra-action-background-color: hsl(0, 100%, 90%);
+  --enabled-action-color: hsl(0, 0%, 50%);
+  --disabled-action-color: hsl(0, 0%, 70%);
+  --selected-action-color: hsl(0, 0%, 30%);
 }
 
 #easyGesturesPieMenu {
@@ -131,9 +141,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
   display: inline-block;
   width: 0.75em;
   height: 0.75em;
-  border: solid 0.1em hsl(0, 0%, 50%);
+  border: solid 0.1em var(--pie-menu-border-color);
   border-radius: 50%;
-  background-color: hsl(0, 0%, 80%);
+  background-color: var(--pie-menu-background-color);
   font-size: inherit;
 }
 
@@ -144,18 +154,18 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesMainMenusSign span.active,
 #easyGesturesExtraMenusSign span.active {
-  background-color: hsl(0, 0%, 60%);
+  background-color: var(--active-menu-sign-color);
 }
 
 #easyGesturesContextMenuSign {
   visibility: hidden;
   left: var(--icon-size);
   top: var(--tooltips-y-offset);
-  border: solid 1px hsl(0, 0%, 50%);
+  border: solid 1px var(--pie-menu-border-color);
   border-radius: 4px 4px;
   padding: 2px;
-  background-color: hsl(0, 0%, 80%);
-  color: hsl(0, 0%, 50%);
+  background-color: var(--pie-menu-background-color);
+  color: var(--pie-menu-border-color);
   line-height: var(--font-size);
   font-family: sans-serif;
   font-size: var(--font-size);
@@ -163,7 +173,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesContextMenuSign.withAltSign {
-  box-shadow: 1px 1px hsl(0, 0%, 80%), 2px 2px hsl(0, 0%, 50%);
+  box-shadow: 1px 1px var(--pie-menu-background-color),
+              2px 2px var(--pie-menu-border-color);
 }
 
 
@@ -325,9 +336,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
   height: var(--tooltip-height);
   border-style: solid;
   border-width: var(--border-width);
-  border-color: hsl(60, 40%, 83%) hsl(0, 0%, 60%);
+  border-color: var(--tooltip-inner-border-color) var(--pie-menu-border-color);
   padding: 0px 6px;
-  background-color: hsl(60, 100%, 93%);
+  background-color: var(--tooltip-background-color);
   color: black;
   line-height: var(--tooltip-height);
   font-family: sans-serif;
@@ -338,38 +349,38 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 {
-  border-top-color: hsl(0, 0%, 60%);
+  border-top-color: var(--pie-menu-border-color);
   border-top-right-radius: 5px 5px;
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
   left: 0px;
   top: 0px;
-  border-top-color: hsl(0, 0%, 60%);
+  border-top-color: var(--pie-menu-border-color);
   border-top-left-radius: 5px 5px;
   border-top-right-radius: 5px 5px;
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2.extra {
-  background-color: hsl(0, 100%, 90%);
+  background-color: var(--tooltip-extra-action-background-color);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5,
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6,
 #easyGesturesPieMenu .easyGesturesExtraNode .tooltip4 {
-  border-bottom-color: hsl(0, 0%, 60%);
+  border-bottom-color: var(--pie-menu-border-color);
   border-bottom-left-radius: 5px 5px;
 }
 
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip5 {
-  border-bottom-color: hsl(60, 40%, 83%);
+  border-bottom-color: var(--tooltip-inner-border-color);
   border-bottom-left-radius: 0px 0px;
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6,
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7,
 #easyGesturesPieMenu .easyGesturesExtraNode .tooltip0 {
-  border-bottom-color: hsl(0, 0%, 60%);
+  border-bottom-color: var(--pie-menu-border-color);
   border-bottom-left-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
 }
@@ -505,16 +516,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* Icons */
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
-  background-color: hsl(0, 0%, 50%);
+  background-color: var(--enabled-action-color);
   mask-image: url("actions.svg");
   mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
                  calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
 #easyGesturesPieMenu .easyGesturesActionsNode .disabled {
-  background-color: hsl(0, 0%, 70%);
+  background-color: var(--disabled-action-color);
 }
 #easyGesturesPieMenu .easyGesturesActionsNode .selected:not(.disabled) {
-  background-color: hsl(0, 0%, 30%);
+  background-color: var(--selected-action-color);
 }
 
 #easyGesturesPieMenu .empty,

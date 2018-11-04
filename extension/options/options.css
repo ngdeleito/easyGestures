@@ -216,7 +216,7 @@ input[type="number"] {
 
 #menus .menuIcon {
   position: absolute;
-  background-color: hsl(0, 0%, 50%);
+  background-color: var(--enabled-action-color);
   mask-image: url("../content/actions.svg");
   width: var(--icon-size);
   height: var(--icon-size);
