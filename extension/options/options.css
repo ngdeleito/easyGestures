@@ -163,12 +163,13 @@ input[type="number"] {
 }
 
 #menus .menu {
+  --scale-factor: 1;
   position: relative;
   margin-top: 0.75em;
   margin-left: auto;
   margin-right: auto;
-  width: calc(2 * 175px + 122px + 2 * 3px);
-  height: calc(122px + 40px);
+  width: calc(-2 * var(--actions-node-offset) + 2 * 175px + 2 * 3px);
+  height: calc(-2 * var(--actions-node-offset) + 40px);
 }
 
 #menus .menu > div:first-child {
@@ -177,38 +178,22 @@ input[type="number"] {
   position: relative;
   background-image: url("menu-edit.svg");
   background-size: cover;
-  width: 122px;
-  height: 122px;
+  width: calc(-2 * var(--actions-node-offset));
+  height: calc(-2 * var(--actions-node-offset));
 }
 
 #menus .menu.extra {
-  height: calc(82px + 20px);
+  height: calc(var(--extra-menu-height) + 20px);
 }
 
 #menus .menu.extra > div:first-child {
   background-image: url("extraMenu-edit.svg");
-  width: 122px;
-  height: 82px;
+  height: var(--extra-menu-height);
 }
 
-#menus .menu.large {
-  width: calc(2 * 175px + 140px + 2 * 3px);
-  height: calc(140px + 40px);
-}
 
-#menus .menu.large > div:first-child {
-  width: 140px;
-  height: 140px;
-}
 
-#menus .menu.extra.large {
-  height: calc(94px + 20px);
-}
 
-#menus .menu.extra.large > div:first-child {
-  width: 140px;
-  height: 94px;
-}
 
 .menuIcon {
   --scale-factor: 1;

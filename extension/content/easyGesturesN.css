@@ -32,9 +32,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 #easyGesturesPieMenu,
-.menuIcon {
+#menus .menu, .menuIcon {
   --icon-size: calc(32px * var(--scale-factor));
   --actions-node-offset: calc(-61px * var(--scale-factor));
+  --extra-menu-height: calc(82px * var(--scale-factor));
   --border-width: calc(2px * var(--scale-factor));
   --menu-section-width: calc(32px * var(--scale-factor));
   --cardinal-action-farthest-border-offset:
@@ -58,7 +59,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
   position: fixed;
   z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
   
-  --extra-menu-height: calc(82px * var(--scale-factor));
   --tooltips-x-offset: calc(-200px * var(--scale-factor));
   --tooltips-y-offset: calc(-2.5 * var(--icon-size) - 1px);
   --tooltip-height: calc(var(--icon-size) - var(--border-width));
@@ -70,15 +70,15 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu.large,
-.large .menuIcon {
+#menus .menu.large, .large .menuIcon {
   --actions-node-offset: calc(-70px * var(--scale-factor));
+  --extra-menu-height: calc(94px * var(--scale-factor));
   --border-width: calc(2.3px * var(--scale-factor));
   --menu-section-width: calc(36.72px * var(--scale-factor));
   --icon-border: calc(5px * var(--scale-factor));
 }
 
 #easyGesturesPieMenu.large {
-  --extra-menu-height: calc(94px * var(--scale-factor));
   --tooltips-x-offset: calc(-230px * var(--scale-factor));
   --tooltips-y-offset: calc(-3 * var(--icon-size) - 1px);
   --extra-menu-y-offset: calc(-155px * var(--scale-factor));
