@@ -163,7 +163,6 @@ input[type="number"] {
 }
 
 #menus .menu {
-  --scale-factor: 1;
   position: relative;
   margin-top: 0.75em;
   margin-left: auto;
@@ -189,14 +188,6 @@ input[type="number"] {
 #menus .menu.extra > div:first-child {
   background-image: url("extraMenu-edit.svg");
   height: var(--extra-menu-height);
-}
-
-
-
-
-
-.menuIcon {
-  --scale-factor: 1;
 }
 
 #menus .menuIcon {
@@ -361,23 +352,14 @@ th {
 }
 
 #stats_clicksByDirection > div > div:first-child div:nth-child(2) {
-  height: 122px;
-  line-height: 122px;
+  height: calc(-2 * var(--actions-node-offset));
+  line-height: calc(-2 * var(--actions-node-offset));
+
 }
 
 #stats_clicksByDirection > div > div:first-child div:nth-child(3) {
-  height: 82px;
-  line-height: 82px;
-}
-
-#stats_clicksByDirection > div > div:first-child div.large:nth-child(2) {
-  height: 140px;
-  line-height: 140px;
-}
-
-#stats_clicksByDirection > div > div:first-child div.large:nth-child(3) {
-  height: 94px;
-  line-height: 94px;
+  height: var(--extra-menu-height);
+  line-height: var(--extra-menu-height);
 }
 
 #stats_clicksByDirection > div > div > div:first-child {
@@ -393,25 +375,16 @@ th {
   position: relative;
   background-image: url("../content/menu.svg");
   background-size: cover;
-  width: 122px;
-  height: 122px;
+  width: calc(-2 * var(--actions-node-offset));
+  height: calc(-2 * var(--actions-node-offset));
 }
 
 #stats .menu.extra {
   background-image: url("../content/extraMenu.svg");
-  width: 122px;
-  height: 82px;
+  height: var(--extra-menu-height);
 }
 
-#stats .menu.large {
-  width: 140px;
-  height: 140px;
-}
 
-#stats .menu.extra.large {
-  width: 140px;
-  height: 94px;
-}
 
 #stats .menu div {
   position: absolute;
