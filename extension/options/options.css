@@ -388,9 +388,10 @@ th {
 
 #stats .menu div {
   position: absolute;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  line-height: var(--icon-size);
+  font-size: smaller;
   text-align: center;
 }
 
