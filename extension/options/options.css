@@ -213,11 +213,16 @@ input[type="number"] {
   text-overflow: ellipsis;
 }
 
-.menuSelect.sector0 { top: calc(var(--cardinal-action-farthest-border-offset) + 20px); right: 0px; }
-.menuSelect.sector1 { top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) + 20px); right: 0px; }
-.menuSelect.sector2 { left: 16px; top: calc(var(--cardinal-action-farthest-border-offset) - 2 * var(--icon-size) + 20px); }
-.menuSelect.sector3 { left: 0px; top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) + 20px); }
-.menuSelect.sector4 { left: 0px; top: calc(var(--cardinal-action-farthest-border-offset) + 20px); }
+.menuSelect.sector0,
+.menu.extra.large .menuSelect.sector0 { top: calc(var(--cardinal-action-farthest-border-offset) + 20px); right: 0px; }
+.menuSelect.sector1,
+.menu.extra.large .menuSelect.sector1 { top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - var(--icon-border) + 20px); right: 0px; }
+.menuSelect.sector2,
+.menu.extra.large .menuSelect.sector2 { left: 16px; top: calc(var(--cardinal-action-farthest-border-offset) - 2 * var(--icon-size) - 2 * var(--icon-border) + 20px); }
+.menuSelect.sector3,
+.menu.extra.large .menuSelect.sector3 { left: 0px; top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - var(--icon-border) + 20px); }
+.menuSelect.sector4,
+.menu.extra.large .menuSelect.sector4 { left: 0px; top: calc(var(--cardinal-action-farthest-border-offset) + 20px); }
 .menuSelect.sector5 { display: none; }
 .menuSelect.sector6 { left: 0px; top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) + 20px); }
 .menuSelect.sector7 { top: calc(var(--cardinal-action-farthest-border-offset) + 2 * var(--icon-size) + 20px); right: 16px; }
@@ -234,12 +239,6 @@ input[type="number"] {
 .menu.large .menuSelect.sector8 { top: calc(-1 * var(--actions-node-offset) + var(--icon-size) - var(--icon-border) + 20px); }
 .menu.large .menuSelect.sector7 { top: calc(-1 * var(--actions-node-offset) + 2 * var(--icon-size) - var(--icon-border) + 20px); }
 .menu.large .menuSelect.sector9 { display: flex; right: 0px; top: calc(-1 * var(--actions-node-offset) + 20px); }
-
-.menu.extra.large .menuSelect.sector0,
-.menu.extra.large .menuSelect.sector4 { top: calc(var(--cardinal-action-farthest-border-offset) + 20px); }
-.menu.extra.large .menuSelect.sector1,
-.menu.extra.large .menuSelect.sector3 { top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) - var(--icon-border) + 20px); }
-.menu.extra.large .menuSelect.sector2 { top: calc(var(--cardinal-action-farthest-border-offset) - 2 * var(--icon-size) - 2 * var(--icon-border) + 20px); }
 
 .pane .message {
   margin-bottom: 0.75em;
