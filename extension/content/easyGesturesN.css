@@ -50,6 +50,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --active-menu-sign-color: hsl(0, 0%, 65%);
   --tooltip-inner-border-color: hsl(60, 40%, 83%);
   --tooltip-background-color: hsl(60, 100%, 93%);
+  --tooltip-color: black;
   --tooltip-extra-action-background-color: hsl(0, 100%, 90%);
   --enabled-action-color: hsl(0, 0%, 50%);
   --disabled-action-color: hsl(0, 0%, 70%);
@@ -332,7 +333,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
   border-color: var(--tooltip-inner-border-color) var(--pie-menu-border-color);
   padding: 0px 6px;
   background-color: var(--tooltip-background-color);
-  color: black;
+  color: var(--tooltip-color);
   line-height: var(--tooltip-height);
   font-family: sans-serif;
   font-size: var(--font-size);
