@@ -32,6 +32,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 body {
+  --hover-color: hsla(300, 100%, 25%, 0.75);
+  --selected-color: hsl(300, 100%, 25%); /* purple */
+  --menu-select-width: 175px;
   min-width: 896px;
   max-width: 1024px;
   margin-top: 1em;
@@ -66,13 +69,13 @@ nav a {
 }
 
 nav a:hover {
-  background-color: hsla(300, 100%, 25%, 0.75);
+  background-color: var(--hover-color);
   color: white;
   text-decoration: none;
 }
 
 .selectedPaneLabel {
-  background-color: hsl(300, 100%, 25%); /* purple */
+  background-color: var(--selected-color);
   color: white;
 }
 
@@ -91,10 +94,10 @@ nav a:hover {
 
 .tabbox a {
   display: inline-block;
-  border: solid 0.2em hsl(300, 100%, 25%);
+  border: solid 0.2em var(--selected-color);
   border-right: none;
   padding: 0.1em 0.25em;
-  color: hsl(300, 100%, 25%);
+  color: var(--selected-color);
 }
 
 .tabbox a:first-child {
@@ -103,19 +106,19 @@ nav a:hover {
 }
 
 .tabbox a:last-child {
-  border-right: solid 0.2em hsl(300, 100%, 25%);
+  border-right: solid 0.2em var(--selected-color);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
 
 .tabbox a:hover {
-  background-color: hsla(300, 100%, 25%, 0.75);
+  background-color: var(--hover-color);
   color: white;
   text-decoration: none;
 }
 
 .tabbox .selectedTabLabel {
-  background-color: hsl(300, 100%, 25%);
+  background-color: var(--selected-color);
   color: white;
 }
 
@@ -157,15 +160,17 @@ input[type="number"] {
 }
 
 #menus .indented {
-  width: calc(2 * 175px + 41px + 1em);
+  width: calc(2 * var(--menu-select-width) + 41px + 1em);
   margin-left: auto;
   margin-right: auto;
 }
 
 #menus .menu {
   --menu-top-bottom-margin: 25px;
+  --menu-select-menu-preview-spacing: 3px;
   position: relative;
-  width: calc(-2 * var(--actions-node-offset) + 2 * 175px + 2 * 3px);
+  width: calc(-2 * var(--actions-node-offset) + 2 * var(--menu-select-width) +
+              2 * var(--menu-select-menu-preview-spacing));
   height: calc(-2 * var(--actions-node-offset) +
                2 * var(--menu-top-bottom-margin));
   margin-left: auto;
@@ -175,7 +180,7 @@ input[type="number"] {
 
 #menus .menu > div:first-child {
   position: relative;
-  left: calc(175px + 3px);
+  left: calc(var(--menu-select-width) + var(--menu-select-menu-preview-spacing));
   top: var(--menu-top-bottom-margin);
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
@@ -206,7 +211,7 @@ input[type="number"] {
   display: flex;
   align-items: center;
   position: absolute;
-  width: 175px;
+  width: var(--menu-select-width);
   height: var(--icon-size);
   font-size: smaller;
 }
@@ -229,7 +234,7 @@ input[type="number"] {
 }
 .menuSelect.sector2,
 .menu.extra.large .menuSelect.sector2 {
-  left: 16px;
+  left: calc(var(--icon-size) / 2);
   top: calc(var(--cardinal-action-farthest-border-offset) -
             2 * var(--icon-size) - 2 * var(--icon-border) +
             var(--menu-top-bottom-margin));
@@ -257,7 +262,7 @@ input[type="number"] {
 .menuSelect.sector7 {
   top: calc(var(--cardinal-action-farthest-border-offset) +
             2 * var(--icon-size) + var(--menu-top-bottom-margin));
-  right: 16px;
+  right: calc(var(--icon-size) / 2);
 }
 .menuSelect.sector8 {
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) +
