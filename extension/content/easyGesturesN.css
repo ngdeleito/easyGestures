@@ -125,7 +125,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
   visibility: hidden;
   left: var(--icon-size);
   top: var(--tooltips-y-offset);
-  width: 4em; /* border-width and width for 3 children + space between 2 children, rounded up */
+  /* width = border-width and width for 3 children + space between 2 children */
+  width: calc(6 * var(--border-width) + 3 * 0.75em + 2 * 0.5em);
   line-height: var(--icon-size);
   font-size: var(--font-size);
 }
@@ -144,7 +145,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
   display: inline-block;
   width: 0.75em;
   height: 0.75em;
-  border: solid 0.1em var(--pie-menu-border-color);
+  border: solid var(--border-width) var(--pie-menu-border-color);
   border-radius: 50%;
   background-color: var(--pie-menu-background-color);
   font-size: inherit;
@@ -164,9 +165,9 @@ the terms of any one of the MPL, the GPL or the LGPL.
   visibility: hidden;
   left: var(--icon-size);
   top: var(--tooltips-y-offset);
-  border: solid 1px var(--pie-menu-border-color);
+  border: solid var(--border-width) var(--pie-menu-border-color);
   border-radius: 4px 4px;
-  padding: 2px;
+  padding: var(--border-width);
   background-color: var(--pie-menu-background-color);
   color: var(--pie-menu-border-color);
   line-height: var(--font-size);
@@ -176,8 +177,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesContextMenuSign.withAltSign {
-  box-shadow: 1px 1px var(--pie-menu-background-color),
-              2px 2px var(--pie-menu-border-color);
+  box-shadow: calc(0.5 * var(--border-width)) calc(0.5 * var(--border-width))
+              var(--pie-menu-background-color),
+              calc(1.5 * var(--border-width)) calc(1.5 * var(--border-width))
+              var(--pie-menu-border-color);
 }
 
 
