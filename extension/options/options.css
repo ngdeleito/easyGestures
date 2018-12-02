@@ -184,8 +184,20 @@ input[type="number"] {
   top: var(--menu-top-bottom-margin);
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
-  background-image: url("menu-edit.svg");
-  background-size: cover;
+  mask-image: url("../content/menu.svg");
+  mask-size: calc(-2 * var(--actions-node-offset) * 3);
+  background-color: var(--pie-menu-background-color);
+}
+
+#menus .menu > div:first-child::after {
+  display: block;
+  width: calc(-2 * var(--actions-node-offset));
+  height: calc(-2 * var(--actions-node-offset));
+  mask-image: url("../content/menu.svg");
+  mask-position: calc(4 * var(--actions-node-offset)) 0px;
+  mask-size: calc(-2 * var(--actions-node-offset) * 3);
+  background-color: var(--pie-menu-border-color);
+  content: "";
 }
 
 #menus .menu.extra {
@@ -194,7 +206,12 @@ input[type="number"] {
 
 #menus .menu.extra > div:first-child {
   height: var(--extra-menu-height);
-  background-image: url("extraMenu-edit.svg");
+  mask-position: 0px calc(2 * var(--actions-node-offset));
+}
+
+#menus .menu.extra > div:first-child::after {
+  mask-position: calc(4 * var(--actions-node-offset))
+                 calc(2 * var(--actions-node-offset));
 }
 
 #menus .menuIcon {
@@ -441,12 +458,12 @@ th {
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
   background-image: url("../content/menu.svg");
-  background-size: cover;
+  background-size: calc(-2 * var(--actions-node-offset) * 3);
 }
 
 #stats .menu.extra {
   height: var(--extra-menu-height);
-  background-image: url("../content/extraMenu.svg");
+  background-position: 0px calc(2 * var(--actions-node-offset));
 }
 
 #stats .menu div {

@@ -9,12 +9,42 @@
 -->
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
-     version="1.1" width="122" height="122">
+     version="1.1" width="366" height="204" fill="hsl(0, 0%, 80%)"
+     stroke="hsl(0, 0%, 60%)" stroke-width="2">
+  <defs>
+    <g id="pieMenuBorder" fill="transparent">
+      <circle cx="61" cy="61" r="60" />
+      <circle cx="61" cy="61" r="26" />
+    </g>
+    <g id="extraMenu">
+      <path d="M 4.43 81 A 60 60 0 1 1 117.57 81 Z" />
+    </g>
+  </defs>
+  <!-- pie menu -->
   <g>
     <path d="M   1 61 a 60 60 0 0 1  120 0
              m -34  0 a 26 26 0 0 0  -52 0
                       a 26 26 0 0 0   52 0
-             m  34  0 a 60 60 0 0 1 -120 0" fill="hsl(0, 0%, 80%)"
-          stroke="hsl(0, 0%, 60%)" stroke-width="2" />
+             m  34  0 a 60 60 0 0 1 -120 0" />
+  </g>
+  <!-- pie menu border -->
+  <g transform="translate(122, 0)">
+    <use href="#pieMenuBorder" />
+  </g>
+  <!-- pie menu preview border -->
+  <g transform="translate(244, 0)">
+    <use href="#pieMenuBorder" stroke-dasharray="8 8" />
+  </g>
+  <!-- extra menu -->
+  <g transform="translate(0, 122)">
+    <use href="#extraMenu" />
+  </g>
+  <!-- extra menu border -->
+  <g transform="translate(122, 122)">
+    <use href="#extraMenu" fill="transparent" />
+  </g>
+  <!-- extra menu preview border -->
+  <g transform="translate(244, 122)">
+    <use href="#extraMenu" fill="transparent" stroke-dasharray="8 8" />
   </g>
 </svg>

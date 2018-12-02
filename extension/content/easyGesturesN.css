@@ -47,6 +47,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
   
   --pie-menu-border-color: hsl(0, 0%, 60%);
   --pie-menu-background-color: hsl(0, 0%, 80%);
+  --link-sign-color: hsl(0, 0%, 80%);
   --active-menu-sign-color: hsl(0, 0%, 65%);
   --tooltip-inner-border-color: hsl(60, 40%, 83%);
   --tooltip-background-color: hsl(60, 100%, 93%);
@@ -107,17 +108,26 @@ the terms of any one of the MPL, the GPL or the LGPL.
 /* Special nodes */
 
 #easyGesturesLinkSign {
-  visibility: hidden;
-  background-image: url("linkSign.svg");
-}
-
-#easyGesturesPieMenu #easyGesturesLinkSign {
   --link-sign-size: calc(var(--icon-size) * 0.625);
+  visibility: hidden;
   left: calc(-1 * var(--link-sign-size) / 2);
   top: calc(-1 * var(--link-sign-size) / 2);
-  background-size: var(--link-sign-size) var(--link-sign-size);
   width: var(--link-sign-size);
   height: var(--link-sign-size);
+  mask-image: url("linkSign.svg");
+  mask-size: calc(2 * var(--link-sign-size));
+  background-color: var(--link-sign-color);
+}
+
+#easyGesturesLinkSign::after {
+  display: block;
+  width: var(--link-sign-size);
+  height: var(--link-sign-size);
+  mask-image: url("linkSign.svg");
+  mask-position: calc(-1 * var(--link-sign-size)) 0px;
+  mask-size: calc(2 * var(--link-sign-size));
+  background-color: var(--pie-menu-border-color);
+  content: "";
 }
 
 #easyGesturesMainMenusSign,
@@ -193,15 +203,32 @@ the terms of any one of the MPL, the GPL or the LGPL.
   top: var(--actions-node-offset);
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
-  background-image: url("menu.svg");
-  background-size: cover;
+  mask-image: url("menu.svg");
+  mask-size: calc(-2 * var(--actions-node-offset) * 3);
+  background-color: var(--pie-menu-background-color);
+}
+
+#easyGesturesPieMenu .easyGesturesActionsNode::after {
+  display: block;
+  width: calc(-2 * var(--actions-node-offset));
+  height: calc(-2 * var(--actions-node-offset));
+  mask-image: url("menu.svg");
+  mask-position: calc(2 * var(--actions-node-offset)) 0px;
+  mask-size: calc(-2 * var(--actions-node-offset) * 3);
+  background-color: var(--pie-menu-border-color);
+  content: "";
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode {
   z-index: -2;
   top: var(--extra-menu-y-offset);
   height: var(--extra-menu-height);
-  background-image: url("extraMenu.svg");
+  mask-position: 0px calc(2 * var(--actions-node-offset));
+}
+
+#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode::after {
+  mask-position: calc(2 * var(--actions-node-offset))
+                 calc(2 * var(--actions-node-offset));
 }
 
 #easyGesturesPieMenu .easyGesturesActionsNode div {
