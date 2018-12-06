@@ -52,6 +52,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --tooltip-inner-border-color: hsl(60, 40%, 83%);
   --tooltip-background-color: hsl(60, 100%, 93%);
   --tooltip-color: black;
+  --selected-tooltip-color: black;
+  --selected-tooltip-font-weight: bold;
   --disabled-tooltip-color: black;
   --tooltip-extra-action-background-color: hsl(0, 100%, 90%);
   --enabled-action-color: hsl(0, 0%, 50%);
@@ -534,7 +536,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .selected {
-  font-weight: bold;
+  color: var(--selected-tooltip-color);
+  font-weight: var(--selected-tooltip-font-weight);
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .disabled {
   color: var(--disabled-tooltip-color);
