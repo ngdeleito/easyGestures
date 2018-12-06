@@ -423,7 +423,7 @@ let eGPieMenu = {
   
   _ensureMenuTooltipsAreShown: function() {
     if (this._showingTooltips) {
-        this._showMenuTooltips();
+      this._showMenuTooltips();
     }
   },
   
