@@ -553,11 +553,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
   mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
                  calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
+#easyGesturesPieMenu .easyGesturesActionsNode .selected {
+  background-color: var(--selected-action-color);
+}
 #easyGesturesPieMenu .easyGesturesActionsNode .disabled {
   background-color: var(--disabled-action-color);
-}
-#easyGesturesPieMenu .easyGesturesActionsNode .selected:not(.disabled) {
-  background-color: var(--selected-action-color);
 }
 
 #easyGesturesPieMenu .empty,
