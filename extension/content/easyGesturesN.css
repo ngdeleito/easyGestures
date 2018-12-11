@@ -45,21 +45,21 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --cardinal-action-closest-border-offset:
       calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
   
+  --link-sign-color: hsl(0, 0%, 80%);
   --pie-menu-border-color: hsl(0, 0%, 60%);
   --pie-menu-background-color: hsl(0, 0%, 80%);
-  --link-sign-color: hsl(0, 0%, 80%);
   --active-menu-sign-color: hsl(0, 0%, 65%);
   --contextual-menu-color: hsl(0, 0%, 50%);
   --tooltip-inner-border-color: hsl(60, 40%, 83%);
   --tooltip-background-color: hsl(60, 100%, 93%);
   --tooltip-color: black;
+  --tooltip-extra-action-background-color: hsl(0, 100%, 90%);
   --selected-tooltip-color: black;
   --selected-tooltip-font-weight: bold;
   --disabled-tooltip-color: black;
-  --tooltip-extra-action-background-color: hsl(0, 100%, 90%);
   --enabled-action-color: hsl(0, 0%, 50%);
-  --disabled-action-color: hsl(0, 0%, 70%);
   --selected-action-color: hsl(0, 0%, 30%);
+  --disabled-action-color: hsl(0, 0%, 70%);
 }
 
 #easyGesturesPieMenu {
