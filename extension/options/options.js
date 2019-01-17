@@ -55,6 +55,8 @@ let eventListenersArray = [
   ["showButtonInput", "contextmenu", preventDefault],
   ["showAltButtonInput", "mousedown", updateTextInputElement],
   ["showAltButtonInput", "contextmenu", preventDefault],
+  ["classicTheme", "change", setTheme],
+  ["darkTheme", "change", setTheme],
   ["standardMenuType", "change", setMenuType],
   ["largeMenuType", "change", setMenuType],
   ["activateTooltips", "change", setDisabledStatusForTooltipsActivationDelay],
@@ -764,6 +766,14 @@ function addOnchangeListenerToPreferenceControl(control) {
   }
 }
 
+function setTheme(anEvent) {
+  eGPrefs.isDarkThemeOn().then(prefValue => {
+    let themeIsDark = anEvent === undefined ? prefValue :
+                                              JSON.parse(anEvent.target.value);
+    document.body.classList.toggle("darkTheme", themeIsDark);
+  });
+}
+
 function setMenuType(anEvent) {
   eGPrefs.isLargeMenuOn().then(prefValue => {
     let menuTypeIsLarge = anEvent === undefined ?
@@ -872,6 +882,7 @@ function loadPreferences() {
     initializePreferenceControl(prefControls[i]);
     addOnchangeListenerToPreferenceControl(prefControls[i]);
   }
+  setTheme();
   setPreferenceControlsDisabledStatus();
 }
 

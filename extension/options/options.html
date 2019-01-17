@@ -46,10 +46,11 @@
   <script src="options.js"></script>
 </head>
 
-<body>
+<body id="easyGesturesOptions">
   <nav>
     <a id="general_label" href="#general" data-l10n="general"></a>
     <a id="activation_label" href="#activation" data-l10n="activation"></a>
+    <a id="appearance_label" href="#appearance" data-l10n="appearance"></a>
     <a id="behavior_label" href="#behavior" data-l10n="behavior"></a>
     <a id="menus_label" href="#menus" data-l10n="menus"></a>
     <a id="customizations_label" href="#customizations"
@@ -200,6 +201,25 @@
                data-preference-type="checkboxInput" />
         <label for="contextualMenuShowAuto"
                data-l10n="activation.contextualMenu.showAuto"></label>
+      </div>
+    </div>
+    
+    <div id="appearance" class="pane">
+      <h1 data-l10n="appearance.theme">&nbsp;</h1>
+      <div data-preference="appearance.darkTheme"
+           data-preference-type="boolRadiogroup">
+        <div>
+          <input id="classicTheme" type="radio" name="themeRadiogroup"
+                 value="false" />
+          <label for="classicTheme" data-l10n="appearance.theme.classic">
+          </label>
+        </div>
+        <div>
+          <input id="darkTheme" type="radio" name="themeRadiogroup"
+                 value="true" />
+          <label for="darkTheme" data-l10n="appearance.theme.dark">
+          </label>
+        </div>
       </div>
     </div>
     

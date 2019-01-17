@@ -290,6 +290,7 @@ let eGPieMenu = {
   _createEasyGesturesNode: function() {
     this.easyGesturesNode = document.createElementNS(HTML_NAMESPACE, "div");
     this.easyGesturesNode.id = "easyGesturesPieMenu";
+    this.easyGesturesNode.classList.toggle("darkTheme", this.settings.darkTheme);
     this.easyGesturesNode.classList.toggle("large", this.settings.largeMenu);
     this.easyGesturesNode.style.setProperty("--scale-factor", this._scaleFactor);
     this.easyGesturesNode.style.opacity = this.settings.menuOpacity;

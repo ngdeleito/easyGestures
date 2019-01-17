@@ -117,6 +117,7 @@
   
   "general": { "message": "General" },
   "activation": { "message": "Activation" },
+  "appearance": { "message": "Appearance" },
   "behavior": { "message": "Behavior" },
   "menus": { "message": "Menus" },
   "customizations": { "message": "Customizations" },
@@ -149,6 +150,10 @@
   "activation.contextualMenu": { "message": "Activate contextual menu with" },
   "activation.contextualMenu.showAuto": { "message": "Activate it automatically (and use the above key to show the main pie menu)" },
   "activation.duplicateKey": { "message": "This key is already in use. Please choose a different one." },
+  
+  "appearance.theme": { "message": "Theme" },
+  "appearance.theme.classic": { "message": "Classic" },
+  "appearance.theme.dark": { "message": "Dark" },
   
   "behavior.menuType": { "message": "Menu type" },
   "behavior.menuType.standard": { "message": "Standard (8 actions)" },

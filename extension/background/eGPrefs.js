@@ -187,6 +187,8 @@ let eGPrefs = {
     setIntPref(defaultPrefs, "activation.contextKey", 18, [0, 17, 18]); // alt key
     this._setBoolPref(defaultPrefs, "activation.contextShowAuto", false);
     
+    this._setBoolPref(defaultPrefs, "appearance.darkTheme", false);
+    
     this._setBoolPref(defaultPrefs, "behavior.moveAuto", false);
     this._setBoolPref(defaultPrefs, "behavior.largeMenu", false);
     setIntPref(defaultPrefs, "behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
@@ -419,6 +421,10 @@ let eGPrefs = {
     });
   },
   
+  isDarkThemeOn: function() {
+    return this.getPref("appearance.darkTheme");
+  },
+  
   isLargeMenuOn: function() {
     return this.getPref("behavior.largeMenu");
   },
@@ -617,5 +623,11 @@ let eGPrefs = {
     promises.push(this._updateActions(actionsToRemove, actionsToAdd,
                                       actionsToRename));
     return Promise.all(promises);
+  },
+  
+  updateToV6_2: function() {
+    browser.storage.local.set({
+      "appearance.darkTheme": false
+    });
   }
 };

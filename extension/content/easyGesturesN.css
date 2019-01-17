@@ -44,7 +44,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
       calc(-1 * var(--actions-node-offset) - var(--icon-size) / 2);
   --cardinal-action-closest-border-offset:
       calc(var(--border-width) + (var(--menu-section-width) - var(--icon-size)) / 2);
-  
+}
+
+#easyGesturesPieMenu,
+#easyGesturesOptions {
   --link-sign-color: hsl(0, 0%, 80%);
   --pie-menu-border-color: hsl(0, 0%, 60%);
   --pie-menu-background-color: hsl(0, 0%, 80%);
@@ -60,6 +63,31 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --enabled-action-color: hsl(0, 0%, 50%);
   --selected-action-color: hsl(0, 0%, 30%);
   --disabled-action-color: hsl(0, 0%, 70%);
+}
+
+#easyGesturesPieMenu.darkTheme,
+#easyGesturesOptions.darkTheme {
+  --easyGesturesN-border-color: hsl(45, 0%, 0%);
+  --easyGesturesN-background-color: hsl(45, 0%, 20%);
+  --easyGesturesN-accent-color: hsl(45, 100%, 60%);
+  --easyGesturesN-enabled-color: hsl(45, 0%, 80%);
+  --easyGesturesN-disabled-color: hsl(45, 0%, 40%);
+  
+  --link-sign-color: var(--easyGesturesN-accent-color);
+  --pie-menu-border-color: var(--easyGesturesN-border-color);
+  --pie-menu-background-color: var(--easyGesturesN-background-color);
+  --active-menu-sign-color: var(--easyGesturesN-accent-color);
+  --contextual-menu-color: var(--easyGesturesN-accent-color);
+  --tooltip-inner-border-color: var(--easyGesturesN-border-color);
+  --tooltip-background-color: var(--easyGesturesN-background-color);
+  --enabled-tooltip-color: var(--easyGesturesN-enabled-color);
+  --tooltip-extra-action-background-color: var(--easyGesturesN-background-color);
+  --selected-tooltip-color: var(--easyGesturesN-accent-color);
+  --selected-tooltip-font-weight: normal;
+  --disabled-tooltip-color: var(--easyGesturesN-disabled-color);
+  --enabled-action-color: var(--easyGesturesN-enabled-color);
+  --selected-action-color: var(--easyGesturesN-accent-color);
+  --disabled-action-color: var(--easyGesturesN-disabled-color);
 }
 
 #easyGesturesPieMenu {

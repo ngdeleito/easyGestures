@@ -117,6 +117,7 @@
   
   "general": { "message": "Général" },
   "activation": { "message": "Activation" },
+  "appearance": { "message": "Apparence" },
   "behavior": { "message": "Comportement" },
   "menus": { "message": "Menus" },
   "customizations": { "message": "Personnalisations" },
@@ -149,6 +150,10 @@
   "activation.contextualMenu": { "message": "Activer le menu contextuel avec" },
   "activation.contextualMenu.showAuto": { "message": "L'activer automatiquement (et utiliser la touche ci-dessus pour montrer le menu principal)" },
   "activation.duplicateKey": { "message": "Cette touche est déjà utilisée. Choisissez-en une autre." },
+  
+  "appearance.theme": { "message": "Thème" },
+  "appearance.theme.classic": { "message": "Classique" },
+  "appearance.theme.dark": { "message": "Sombre" },
   
   "behavior.menuType": { "message": "Type de menu" },
   "behavior.menuType.standard": { "message": "Standard (8 actions)" },
