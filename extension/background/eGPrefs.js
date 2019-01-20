@@ -188,11 +188,11 @@ let eGPrefs = {
     this._setBoolPref(defaultPrefs, "activation.contextShowAuto", false);
     
     this._setBoolPref(defaultPrefs, "appearance.darkTheme", false);
+    this._setBoolPref(defaultPrefs, "appearance.largeMenu", false);
+    this._setBoolPref(defaultPrefs, "appearance.smallIcons", false);
+    setIntPref(defaultPrefs, "appearance.menuOpacity", 100); // set in % but will be converted when used in style.opacity
     
     this._setBoolPref(defaultPrefs, "behavior.moveAuto", false);
-    this._setBoolPref(defaultPrefs, "behavior.largeMenu", false);
-    setIntPref(defaultPrefs, "behavior.menuOpacity", 100); // set in % but will be converted when used in style.opacity
-    this._setBoolPref(defaultPrefs, "behavior.smallIcons", false);
     this._setBoolPref(defaultPrefs, "behavior.showTooltips", true);
     setIntPref(defaultPrefs, "behavior.tooltipsDelay", 1000);
     this._setBoolPref(defaultPrefs, "behavior.handleLinks", true);
@@ -426,7 +426,7 @@ let eGPrefs = {
   },
   
   isLargeMenuOn: function() {
-    return this.getPref("behavior.largeMenu");
+    return this.getPref("appearance.largeMenu");
   },
   
   areTooltipsOn: function() {
@@ -626,8 +626,21 @@ let eGPrefs = {
   },
   
   updateToV6_2: function() {
-    browser.storage.local.set({
+    let promises = [];
+    let prefsToRename = [
+      "behavior.largeMenu", "behavior.smallIcons", "behavior.menuOpacity"
+    ];
+    promises.push(browser.storage.local.set({
       "appearance.darkTheme": false
-    });
+    }));
+    promises.push(browser.storage.local.get(prefsToRename).then(prefs => {
+      let newPrefs = {};
+      for (let pref in prefs) {
+        newPrefs[pref.replace("behavior", "appearance")] = prefs[pref];
+      }
+      return browser.storage.local.set(newPrefs);
+    }));
+    promises.push(browser.storage.local.remove(prefsToRename));
+    return Promise.all(promises);
   }
 };
