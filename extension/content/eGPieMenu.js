@@ -293,7 +293,7 @@ let eGPieMenu = {
     this.easyGesturesNode.classList.toggle("darkTheme", this.settings.darkTheme);
     this.easyGesturesNode.classList.toggle("large", this.settings.largeMenu);
     this.easyGesturesNode.style.setProperty("--scale-factor", this._scaleFactor);
-    this.easyGesturesNode.style.opacity = this.settings.menuOpacity;
+    this.easyGesturesNode.style.opacity = this.settings.menuOpacity / 100;
     
     addEventListener("pagehide", removeMenuEventHandler, true);
   },

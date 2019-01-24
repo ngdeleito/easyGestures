@@ -103,9 +103,6 @@ function setPieMenuSettings() {
         eGPieMenu.settings.runScriptActionPrefs[prefName] =
           prefs[key].split("\u2022");
       }
-      else if (prefName === "menuOpacity") {
-        eGPieMenu.settings[prefName] = prefs[key] / 100;
-      }
       else {
         eGPieMenu.settings[prefName] = prefs[key];
       }

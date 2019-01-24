@@ -190,7 +190,7 @@ let eGPrefs = {
     this._setBoolPref(defaultPrefs, "appearance.darkTheme", false);
     this._setBoolPref(defaultPrefs, "appearance.largeMenu", false);
     this._setBoolPref(defaultPrefs, "appearance.smallIcons", false);
-    setIntPref(defaultPrefs, "appearance.menuOpacity", 100); // set in % but will be converted when used in style.opacity
+    setIntPref(defaultPrefs, "appearance.menuOpacity", 100);
     
     this._setBoolPref(defaultPrefs, "behavior.showTooltips", true);
     setIntPref(defaultPrefs, "behavior.tooltipsDelay", 1000);
