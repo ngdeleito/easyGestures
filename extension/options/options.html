@@ -103,7 +103,8 @@
           </option>
           <option data-l10n="activation.open.with.button.custom">&nbsp;</option>
         </select>
-        <label data-l10n="activation.open.with.buttoncode"></label>
+        <label for="showButtonInput"
+               data-l10n="activation.open.with.buttoncode"></label>
         <input id="showButtonInput" type="text" size="2" disabled="disabled"
                readonly="readonly" />
       </div>
@@ -142,7 +143,8 @@
           </option>
           <option data-l10n="activation.open.with.button.custom">&nbsp;</option>
         </select>
-        <label data-l10n="activation.open.with.buttoncode"></label>
+        <label for="showAltButtonInput"
+               data-l10n="activation.open.with.buttoncode"></label>
         <input id="showAltButtonInput" type="text" size="2"
                disabled="disabled" />
       </div>
@@ -248,11 +250,11 @@
         </label>
       </div>
       <div>
-        <span data-l10n="appearance.display.opacity"></span>
-        <input type="number" min="0" max="100"
+        <label for="menuOpacity" data-l10n="appearance.display.opacity"></label>
+        <input id="menuOpacity" type="number" min="0" max="100"
                data-preference="appearance.menuOpacity"
                data-preference-type="numberInput" />
-        %
+        <label for="menuOpacity">%</label>
       </div>
     </div>
     
@@ -266,12 +268,14 @@
         </label>
       </div>
       <div>
-        <span id="tooltipsActivationDelayLabel"
-              data-l10n="behavior.tooltips.delay"></span>
+        <label id="tooltipsActivationDelayLabel"
+               for="tooltipsActivationDelayInput"
+               data-l10n="behavior.tooltips.delay"></label>
         <input id="tooltipsActivationDelayInput" type="number" min="0"
                data-preference="behavior.tooltipsDelay"
                data-preference-type="numberInput" />
-        <span id="tooltipsActivationDelayUnit">ms</span>
+        <label id="tooltipsActivationDelayUnit"
+               for="tooltipsActivationDelayInput">ms</span>
       </div>
       
       <h1 data-l10n="behavior.move">&nbsp;</h1>
@@ -300,12 +304,14 @@
                data-l10n="behavior.links.activate"></label>
       </div>
       <div>
-        <span id="openLinksMaximumDelayLabel" data-l10n="behavior.links.delay">
-        </span>
+        <label id="openLinksMaximumDelayLabel" for="openLinksMaximumDelayInput"
+               data-l10n="behavior.links.delay"></label>
         <input id="openLinksMaximumDelayInput" type="number" min="0"
                data-preference="behavior.linksDelay"
                data-preference-type="numberInput" />
-        <span id="openLinksMaximumDelayUnit">ms</span>
+        <label id="openLinksMaximumDelayUnit" for="openLinksMaximumDelayInput">
+          ms
+        </label>
       </div>
       <div id="openLinksThroughPieMenuCenterConfiguration"
            data-preference="behavior.handleLinksAsOpenLink"
