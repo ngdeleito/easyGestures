@@ -159,6 +159,9 @@ async function handleInstallOrUpgrade(details) {
     if (eGUtils.isVersionSmallerOrEqualThan(details.previousVersion, "5.4")) {
       await eGPrefs.updateToV5_4();
     }
+    if (eGUtils.isVersionSmallerOrEqualThan(details.previousVersion, "6.2")) {
+      await eGPrefs.updateToV6_2();
+    }
   }
   await browser.storage.local.remove("installOrUpgradeTriggered");
   startup();
