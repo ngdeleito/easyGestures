@@ -46,7 +46,10 @@ let actionStatusSetters = {
     let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
     let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX + layoutName);
     actionsNode.childNodes[actionSector].classList.toggle("disabled", disabled);
-    tooltipsNode.childNodes[actionSector].classList.toggle("disabled", disabled);
+    if (tooltipsNode !== null) {
+      tooltipsNode.childNodes[actionSector].classList
+                                           .toggle("disabled", disabled);
+    }
   },
   
   nonDisableableAction: function() {},
