@@ -32,7 +32,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, eGPrefs, eGContext, eGActions, console, eGUtils, window */
+/* global browser, eGPrefs, eGContext, eGActions, eGUtils, window */
 
 "use strict";
 
