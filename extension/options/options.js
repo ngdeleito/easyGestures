@@ -82,8 +82,7 @@ function handleStorageChange(changes) {
   for (let change in changes) {
     let prefix = change.split(".")[0];
     if (prefix === "stats") {
-      initializeClicksByAction();
-      initializeClicksByDirection();
+      loadStats();
     }
     else if (prefix !== "general" || change === "general.startupTips") {
       if (!prefChanged) {
