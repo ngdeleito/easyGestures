@@ -21,7 +21,7 @@
   "permissions": [
     "<all_urls>", "bookmarks", "browserSettings", "clipboardRead",
     "clipboardWrite", "downloads", "find", "search", "sessions", "storage",
-    "tabs"
+    "tabs", "webNavigation"
   ],
   "background": {
     "scripts": [

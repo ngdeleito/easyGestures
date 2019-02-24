@@ -43,7 +43,10 @@ function resetPieMenuOnAllTabs() {
     for (let tab of tabs) {
       // we do a catch to avoid having an error message being displayed on the
       // console for tabs on which the content scripts are not loaded
-      browser.tabs.sendMessage(tab.id, {}).catch(() => {});
+      browser.tabs.sendMessage(tab.id, {
+        messageName: "resetPieMenu",
+        parameters: undefined
+      }).catch(() => {});
     }
   });
 }
@@ -58,6 +61,20 @@ function handleStorageChange(changes) {
 }
 
 let eGMessageHandlers = {
+  transferMousedownToUpperFrame: function(aMessage) {
+    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab(aMessage.parameters.innerFrameURL, {
+      messageName: "handleMousedownFromInnerFrame",
+      parameters: aMessage.parameters
+    });
+  },
+  
+  transferMouseupToUpperFrame: function(aMessage) {
+    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab(aMessage.parameters.innerFrameURL, {
+      messageName: "handleMouseupFromInnerFrame",
+      parameters: aMessage.parameters
+    });
+  },
+  
   setContextAndFocusCurrentWindow: function(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];

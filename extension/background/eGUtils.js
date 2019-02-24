@@ -65,6 +65,21 @@ let eGUtils = {
     });
   },
   
+  sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message) {
+    this.performOnCurrentTab(currentTab => {
+      browser.webNavigation.getAllFrames({
+        tabId: currentTab.id
+      }).then(anArray => {
+        let frameData = anArray.find(element => {
+          return element.url === frameURL;
+        });
+        browser.tabs.sendMessage(currentTab.id, message, {
+          frameId: frameData.parentFrameId
+        });
+      });
+    });
+  },
+  
   showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
     browser.tabs.query({}).then(tabs => {
       let tipsTab = tabs.find(tab => {
