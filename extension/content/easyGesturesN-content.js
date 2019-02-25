@@ -111,111 +111,6 @@ function setPieMenuSettings() {
   });
 }
 
-function resetPieMenu() {
-  eGPieMenu.removeEasyGesturesNode();
-  setPieMenuSettings();
-}
-
-function performOnInnerFrameElement(innerFrameURL, aFunction) {
-  let frameElements = document.getElementsByTagName("iframe");
-  let i = 0;
-  let found = false;
-  while (i < frameElements.length && !found) {
-    found = frameElements[i].src === innerFrameURL;
-    ++i;
-  }
-  if (found) {
-    // the element should normally exist, still we leave this condition (and the
-    // first one in the while loop) to be on the safe side
-    aFunction(frameElements[i-1]);
-  }
-}
-
-function updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters) {
-  let innerFrameElementStyle = window.getComputedStyle(innerFrameElement);
-  let innerFrameOffsetX =
-        Number(innerFrameElementStyle.paddingLeft.replace("px", "")) +
-        Number(innerFrameElementStyle.borderLeftWidth.replace("px", ""));
-  let innerFrameOffsetY =
-        Number(innerFrameElementStyle.paddingTop.replace("px", "")) +
-        Number(innerFrameElementStyle.borderTopWidth.replace("px", ""));
-  let innerFrameBoundingRect = innerFrameElement.getBoundingClientRect();
-  parameters.clientX += innerFrameOffsetX + innerFrameBoundingRect.x;
-  parameters.clientY += innerFrameOffsetY + innerFrameBoundingRect.y;
-}
-
-function handleMousedownFromInnerFrameOnTopmostFrame(parameters) {
-  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
-    frameScrollY = parameters.scrollY;
-    frameScrollMaxY = parameters.scrollMaxY;
-    frameURL = parameters.targetFrameURL;
-    // per the call to dispatchEvent, innerFrameElement becomes the target of
-    // the event
-    innerFrameElement.dispatchEvent(new MouseEvent("mousedown", parameters));
-  });
-}
-
-function handleMouseupFromInnerFrameOnTopmostFrame(parameters) {
-  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    innerFrameElement.dispatchEvent(new MouseEvent("mouseup", parameters));
-  });
-}
-
-function handleMessageFromBackgroundScriptOnTopmostFrame(aMessage) {
-  let processMessage = {
-    "resetPieMenu": resetPieMenu,
-    "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameOnTopmostFrame,
-    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameOnTopmostFrame
-  };
-  processMessage[aMessage.messageName](aMessage.parameters);
-}
-
-function setPieMenuSettingsOnInnerFrame() {
-  browser.storage.local.get([
-    "activation.showButton", "activation.showKey", "activation.preventOpenKey",
-    "activation.contextKey"
-  ]).then(prefs => {
-    for (let key in prefs) {
-      let prefName = key.split(".")[1];
-      eGPieMenu.settings[prefName] = prefs[key];
-    }
-  });
-}
-
-function resetPieMenuOnInnerFrame() {
-  setPieMenuSettingsOnInnerFrame();
-}
-
-function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
-  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
-    parameters.innerFrameURL = window.location.toString();
-    browser.runtime.sendMessage({
-      messageName: "transferMousedownToUpperFrame",
-      parameters: parameters
-    });
-  });
-}
-
-function handleMouseupFromInnerFrameWithinInnerFrame(parameters) {
-  parameters.innerFrameURL = window.location.toString();
-  browser.runtime.sendMessage({
-    messageName: "transferMouseupToUpperFrame",
-    parameters: parameters
-  });
-}
-
-function handleMessageFromBackgroundScriptWithinInnerFrame(aMessage) {
-  let processMessage = {
-    "resetPieMenu": resetPieMenuOnInnerFrame,
-    "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinInnerFrame,
-    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinInnerFrame
-  };
-  processMessage[aMessage.messageName](aMessage.parameters);
-}
-
-
 function cleanSelection(selection) {
   let result = selection.trim();
   // replace all linefeed, carriage return and tab characters with a space
@@ -419,6 +314,78 @@ function handleContextmenu(anEvent) {
   }
 }
 
+function resetPieMenu() {
+  eGPieMenu.removeEasyGesturesNode();
+  setPieMenuSettings();
+}
+
+function performOnInnerFrameElement(innerFrameURL, aFunction) {
+  let frameElements = document.getElementsByTagName("iframe");
+  let i = 0;
+  let found = false;
+  while (i < frameElements.length && !found) {
+    found = frameElements[i].src === innerFrameURL;
+    ++i;
+  }
+  if (found) {
+    // the element should normally exist, still we leave this condition (and the
+    // first one in the while loop) to be on the safe side
+    aFunction(frameElements[i-1]);
+  }
+}
+
+function updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters) {
+  let innerFrameElementStyle = window.getComputedStyle(innerFrameElement);
+  let innerFrameOffsetX =
+        Number(innerFrameElementStyle.paddingLeft.replace("px", "")) +
+        Number(innerFrameElementStyle.borderLeftWidth.replace("px", ""));
+  let innerFrameOffsetY =
+        Number(innerFrameElementStyle.paddingTop.replace("px", "")) +
+        Number(innerFrameElementStyle.borderTopWidth.replace("px", ""));
+  let innerFrameBoundingRect = innerFrameElement.getBoundingClientRect();
+  parameters.clientX += innerFrameOffsetX + innerFrameBoundingRect.x;
+  parameters.clientY += innerFrameOffsetY + innerFrameBoundingRect.y;
+}
+
+function handleMousedownFromInnerFrameOnTopmostFrame(parameters) {
+  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
+    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    frameScrollY = parameters.scrollY;
+    frameScrollMaxY = parameters.scrollMaxY;
+    frameURL = parameters.targetFrameURL;
+    // per the call to dispatchEvent, innerFrameElement becomes the target of
+    // the event
+    innerFrameElement.dispatchEvent(new MouseEvent("mousedown", parameters));
+  });
+}
+
+function handleMouseupFromInnerFrameOnTopmostFrame(parameters) {
+  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
+    innerFrameElement.dispatchEvent(new MouseEvent("mouseup", parameters));
+  });
+}
+
+function handleMessageFromBackgroundScriptOnTopmostFrame(aMessage) {
+  let processMessage = {
+    "resetPieMenu": resetPieMenu,
+    "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameOnTopmostFrame,
+    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameOnTopmostFrame
+  };
+  processMessage[aMessage.messageName](aMessage.parameters);
+}
+
+function setPieMenuSettingsOnInnerFrame() {
+  browser.storage.local.get([
+    "activation.showButton", "activation.showKey", "activation.preventOpenKey",
+    "activation.contextKey"
+  ]).then(prefs => {
+    for (let key in prefs) {
+      let prefName = key.split(".")[1];
+      eGPieMenu.settings[prefName] = prefs[key];
+    }
+  });
+}
+
 function handleMousedownOnInnerFrame(anEvent) {
   if (!eGPieMenu.canBeOpened(anEvent.button, anEvent.shiftKey, anEvent.ctrlKey,
                              anEvent.altKey)) {
@@ -456,6 +423,38 @@ function handleMouseupOnInnerFrame(anEvent) {
       button: anEvent.button
     }
   });
+}
+
+function resetPieMenuOnInnerFrame() {
+  setPieMenuSettingsOnInnerFrame();
+}
+
+function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
+  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
+    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    parameters.innerFrameURL = window.location.toString();
+    browser.runtime.sendMessage({
+      messageName: "transferMousedownToUpperFrame",
+      parameters: parameters
+    });
+  });
+}
+
+function handleMouseupFromInnerFrameWithinInnerFrame(parameters) {
+  parameters.innerFrameURL = window.location.toString();
+  browser.runtime.sendMessage({
+    messageName: "transferMouseupToUpperFrame",
+    parameters: parameters
+  });
+}
+
+function handleMessageFromBackgroundScriptWithinInnerFrame(aMessage) {
+  let processMessage = {
+    "resetPieMenu": resetPieMenuOnInnerFrame,
+    "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinInnerFrame,
+    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinInnerFrame
+  };
+  processMessage[aMessage.messageName](aMessage.parameters);
 }
 
 function removeMenuEventHandler() {
