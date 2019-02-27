@@ -44,24 +44,24 @@ let selection, contextualMenus, anchorElement, imageElement, inputElement,
 let frameScrollY, frameScrollMaxY, frameURL;
 
 if (window.self === window.top) {
-  // setting up pie menu on topmost frame
-  setPieMenuSettings();
-  addEventListener("mousedown", handleMousedown, true);
-  addEventListener("mouseup", handleMouseup, true);
+  // setting up pie menu within topmost frame
+  setPieMenuSettingsWithinTopmostFrame();
+  addEventListener("mousedown", handleMousedownWithinTopmostFrame, true);
+  addEventListener("mouseup", handleMouseupWithinTopmostFrame, true);
   addEventListener("keydown", handleKeydown, true);
   addEventListener("contextmenu", handleContextmenu, true);
-  browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptOnTopmostFrame);
+  browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptWithinTopmostFrame);
 }
 else {
   // initializing state for eGPieMenu.canBeOpened()
-  setPieMenuSettingsOnInnerFrame();
-  // capturing necessary events on inner frame
-  addEventListener("mousedown", handleMousedownOnInnerFrame, true);
-  addEventListener("mouseup", handleMouseupOnInnerFrame, true);
+  setPieMenuSettingsWithinInnerFrame();
+  // capturing necessary events within inner frames
+  addEventListener("mousedown", handleMousedownWithinInnerFrame, true);
+  addEventListener("mouseup", handleMouseupWithinInnerFrame, true);
   browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptWithinInnerFrame);
 }
 
-function setPieMenuSettings() {
+function setPieMenuSettingsWithinTopmostFrame() {
   browser.storage.local.get([
     "installOrUpgradeTriggered", "activation.showButton", "activation.showKey",
     "activation.showAltButton", "activation.preventOpenKey",
@@ -189,7 +189,7 @@ function findNearestIDAttribute(anHTMLElement) {
   return currentElement.id;
 }
 
-function handleMousedown(anEvent) {
+function handleMousedownWithinTopmostFrame(anEvent) {
   // check whether pie menu should change layout or hide (later)
   if (eGPieMenu.isShown()) {
     if (eGPieMenu.canLayoutBeSwitched(anEvent.button)) {
@@ -257,7 +257,7 @@ function handleMousedown(anEvent) {
   }
 }
 
-function handleMouseup(anEvent) {
+function handleMouseupWithinTopmostFrame(anEvent) {
   let preventDefaultUponReturn = false;
   
   if (eGPieMenu.isJustOpened()) {
@@ -314,9 +314,9 @@ function handleContextmenu(anEvent) {
   }
 }
 
-function resetPieMenu() {
+function resetPieMenuWithinTopmostFrame() {
   eGPieMenu.removeEasyGesturesNode();
-  setPieMenuSettings();
+  setPieMenuSettingsWithinTopmostFrame();
 }
 
 function performOnInnerFrameElement(innerFrameURL, aFunction) {
@@ -347,7 +347,7 @@ function updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters
   parameters.clientY += innerFrameOffsetY + innerFrameBoundingRect.y;
 }
 
-function handleMousedownFromInnerFrameOnTopmostFrame(parameters) {
+function handleMousedownFromInnerFrameWithinTopmostFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
     updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
     frameScrollY = parameters.scrollY;
@@ -359,22 +359,22 @@ function handleMousedownFromInnerFrameOnTopmostFrame(parameters) {
   });
 }
 
-function handleMouseupFromInnerFrameOnTopmostFrame(parameters) {
+function handleMouseupFromInnerFrameWithinTopmostFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
     innerFrameElement.dispatchEvent(new MouseEvent("mouseup", parameters));
   });
 }
 
-function handleMessageFromBackgroundScriptOnTopmostFrame(aMessage) {
+function handleMessageFromBackgroundScriptWithinTopmostFrame(aMessage) {
   let processMessage = {
-    "resetPieMenu": resetPieMenu,
-    "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameOnTopmostFrame,
-    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameOnTopmostFrame
+    "resetPieMenu": resetPieMenuWithinTopmostFrame,
+    "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinTopmostFrame,
+    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinTopmostFrame
   };
   processMessage[aMessage.messageName](aMessage.parameters);
 }
 
-function setPieMenuSettingsOnInnerFrame() {
+function setPieMenuSettingsWithinInnerFrame() {
   browser.storage.local.get([
     "activation.showButton", "activation.showKey", "activation.preventOpenKey",
     "activation.contextKey"
@@ -386,7 +386,7 @@ function setPieMenuSettingsOnInnerFrame() {
   });
 }
 
-function handleMousedownOnInnerFrame(anEvent) {
+function handleMousedownWithinInnerFrame(anEvent) {
   if (!eGPieMenu.canBeOpened(anEvent.button, anEvent.shiftKey, anEvent.ctrlKey,
                              anEvent.altKey)) {
     return ;
@@ -413,7 +413,7 @@ function handleMousedownOnInnerFrame(anEvent) {
   });
 }
 
-function handleMouseupOnInnerFrame(anEvent) {
+function handleMouseupWithinInnerFrame(anEvent) {
   browser.runtime.sendMessage({
     messageName: "transferMouseupToUpperFrame",
     parameters: {
@@ -425,8 +425,8 @@ function handleMouseupOnInnerFrame(anEvent) {
   });
 }
 
-function resetPieMenuOnInnerFrame() {
-  setPieMenuSettingsOnInnerFrame();
+function resetPieMenuWithinInnerFrame() {
+  setPieMenuSettingsWithinInnerFrame();
 }
 
 function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
@@ -450,7 +450,7 @@ function handleMouseupFromInnerFrameWithinInnerFrame(parameters) {
 
 function handleMessageFromBackgroundScriptWithinInnerFrame(aMessage) {
   let processMessage = {
-    "resetPieMenu": resetPieMenuOnInnerFrame,
+    "resetPieMenu": resetPieMenuWithinInnerFrame,
     "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinInnerFrame,
     "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinInnerFrame
   };
