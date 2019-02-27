@@ -441,8 +441,7 @@ let eGActions = {
   }, function() {
     return Promise.resolve(
              eGContext.frameScrollY === eGContext.frameScrollMaxY &&
-             eGContext.windowScrollY === eGContext.windowScrollMaxY
-    );
+             eGContext.windowScrollY === eGContext.windowScrollMaxY);
   }, false, "savePageAs"),
   
   savePageAs: new Action("savePageAs", function() {
