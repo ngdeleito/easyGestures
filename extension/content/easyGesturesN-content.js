@@ -35,7 +35,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported removeMenuEventHandler, handleMousemove */
-/* global browser, eGPieMenu, addEventListener, window, document, MouseEvent */
+/* global window, addEventListener, browser, eGPieMenu, document, MouseEvent */
 
 "use strict";
 
