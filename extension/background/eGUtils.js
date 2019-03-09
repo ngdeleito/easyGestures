@@ -65,7 +65,7 @@ let eGUtils = {
     });
   },
   
-  sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message) {
+  _sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, includeFrameID) {
     this.performOnCurrentTab(currentTab => {
       browser.webNavigation.getAllFrames({
         tabId: currentTab.id
@@ -73,11 +73,23 @@ let eGUtils = {
         let frameData = anArray.find(element => {
           return element.url === frameURL;
         });
+        if (includeFrameID) {
+          let lastIndex = message.parameters.frameHierarchy.length - 1;
+          message.parameters.frameHierarchy[lastIndex].frameID = frameData.frameId;
+        }
         browser.tabs.sendMessage(currentTab.id, message, {
           frameId: frameData.parentFrameId
         });
       });
     });
+  },
+  
+  transferMousedownToUpperFrame(frameURL, message) {
+    this._sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, true);
+  },
+  
+  sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message) {
+    this._sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, false);
   },
   
   showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {

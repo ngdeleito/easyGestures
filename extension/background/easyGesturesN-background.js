@@ -62,7 +62,7 @@ function handleStorageChange(changes) {
 
 let eGMessageHandlers = {
   transferMousedownToUpperFrame: function(aMessage) {
-    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab(aMessage.parameters.innerFrameURL, {
+    eGUtils.transferMousedownToUpperFrame(aMessage.parameters.innerFrameURL, {
       messageName: "handleMousedownFromInnerFrame",
       parameters: aMessage.parameters
     });

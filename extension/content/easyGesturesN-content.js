@@ -35,13 +35,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 
 /* exported removeMenuEventHandler, handleMousemove */
-/* global window, addEventListener, browser, eGPieMenu, document, MouseEvent */
+/* global window, addEventListener, browser, eGPieMenu, document, MouseEvent,
+          actionRunners */
 
 "use strict";
 
-let selection, contextualMenus, anchorElement, imageElement, inputElement,
-    iframeElement;
-let frameScrollY, frameScrollMaxY, frameURL;
+let selection, contextualMenus, anchorElement, imageElement, inputElement;
+let frameHierarchyArray;
 
 if (window.self === window.top) {
   // setting up pie menu within topmost frame
@@ -214,17 +214,17 @@ function handleMousedownWithinTopmostFrame(anEvent) {
   let elementID = findNearestIDAttribute(anEvent.target);
   eGPieMenu.centerX = anEvent.clientX;
   eGPieMenu.centerY = anEvent.clientY;
-  if (anEvent.target instanceof window.HTMLIFrameElement) {
-    // mousedown was first triggered inside the inner frame; frameScrollY,
-    // frameScrollMaxY and frameURL have already been set
-    iframeElement = anEvent.target;
+  if (!(anEvent.target instanceof window.HTMLIFrameElement)) {
+    // when this condition is not met, mousedown has been first triggered inside
+    // an inner frame and frameHierarchyArray has already been initialized
+    frameHierarchyArray = [];
   }
-  else {
-    iframeElement = undefined;
-    frameScrollY = 0;
-    frameScrollMaxY = 0;
-    frameURL = null;
-  }
+  frameHierarchyArray.push({
+    URL: window.location.toString(),
+    scrollY: window.scrollY,
+    scrollMaxY: window.scrollMaxY,
+    frameID: 0
+  });
   browser.runtime.sendMessage({
     messageName: "setContextAndFocusCurrentWindow",
     context: {
@@ -240,11 +240,7 @@ function handleMousedownWithinTopmostFrame(anEvent) {
       imageElementDoesntExist: imageElement === null,
       imageElementSRC: imageElement !== null ? imageElement.src : null,
       inputElementExists: inputElement !== null,
-      windowScrollY: window.scrollY,
-      windowScrollMaxY: window.scrollMaxY,
-      frameScrollY: frameScrollY,
-      frameScrollMaxY: frameScrollMaxY,
-      frameURL: frameURL
+      frameHierarchy: frameHierarchyArray
     }
   });
   
@@ -350,9 +346,7 @@ function updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters
 function handleMousedownFromInnerFrameWithinTopmostFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
     updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
-    frameScrollY = parameters.scrollY;
-    frameScrollMaxY = parameters.scrollMaxY;
-    frameURL = parameters.targetFrameURL;
+    frameHierarchyArray = parameters.frameHierarchy;
     // per the call to dispatchEvent, innerFrameElement becomes the target of
     // the event
     innerFrameElement.dispatchEvent(new MouseEvent("mousedown", parameters));
@@ -365,11 +359,16 @@ function handleMouseupFromInnerFrameWithinTopmostFrame(parameters) {
   });
 }
 
+function runAction(parameters) {
+  actionRunners[parameters.runActionName]();
+}
+
 function handleMessageFromBackgroundScriptWithinTopmostFrame(aMessage) {
   let processMessage = {
     "resetPieMenu": resetPieMenuWithinTopmostFrame,
     "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinTopmostFrame,
-    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinTopmostFrame
+    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinTopmostFrame,
+    "runAction": runAction
   };
   processMessage[aMessage.messageName](aMessage.parameters);
 }
@@ -396,10 +395,12 @@ function handleMousedownWithinInnerFrame(anEvent) {
   browser.runtime.sendMessage({
     messageName: "transferMousedownToUpperFrame",
     parameters: {
-      targetFrameURL: window.location.toString(),
       innerFrameURL: window.location.toString(),
-      scrollY: window.scrollY,
-      scrollMaxY: window.scrollMaxY,
+      frameHierarchy: [{
+        URL: window.location.toString(),
+        scrollY: window.scrollY,
+        scrollMaxY: window.scrollMaxY
+      }],
       cancelable: anEvent.cancelable,
       screenX: anEvent.screenX,
       screenY: anEvent.screenY,
@@ -418,8 +419,6 @@ function handleMouseupWithinInnerFrame(anEvent) {
     messageName: "transferMouseupToUpperFrame",
     parameters: {
       innerFrameURL: window.location.toString(),
-      screenX: anEvent.screenX,
-      screenY: anEvent.screenY,
       button: anEvent.button
     }
   });
@@ -433,6 +432,11 @@ function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
     updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
     parameters.innerFrameURL = window.location.toString();
+    parameters.frameHierarchy.push({
+        URL: window.location.toString(),
+        scrollY: window.scrollY,
+        scrollMaxY: window.scrollMaxY
+    });
     browser.runtime.sendMessage({
       messageName: "transferMousedownToUpperFrame",
       parameters: parameters
@@ -452,7 +456,8 @@ function handleMessageFromBackgroundScriptWithinInnerFrame(aMessage) {
   let processMessage = {
     "resetPieMenu": resetPieMenuWithinInnerFrame,
     "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinInnerFrame,
-    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinInnerFrame
+    "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinInnerFrame,
+    "runAction": runAction
   };
   processMessage[aMessage.messageName](aMessage.parameters);
 }

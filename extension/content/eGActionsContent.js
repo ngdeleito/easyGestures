@@ -36,8 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported actionStatusSetters, actionRunners */
 /* global document, ACTIONS_NODE_ID_PREFIX, TOOLTIPS_NODE_ID_PREFIX,
-          inputElement, selection, window, frameScrollY, iframeElement,
-          frameScrollMaxY, imageElement, eGPieMenu */
+          inputElement, selection, window, imageElement, eGPieMenu */
 
 "use strict";
 
@@ -86,21 +85,11 @@ let actionRunners = {
   },
   
   pageTop: function() {
-    if (frameScrollY !== 0) {
-      iframeElement.contentWindow.scroll(0, 0);
-    }
-    else {
-      window.scroll(0, 0);
-    }
+    window.scroll(0, 0);
   },
   
   pageBottom: function() {
-    if (frameScrollY !== frameScrollMaxY) {
-      iframeElement.contentWindow.scroll(0, frameScrollMaxY);
-    }
-    else {
-      window.scroll(0, window.scrollMaxY);
-    }
+    window.scroll(0, window.scrollMaxY);
   },
   
   zoomIn: function() {

@@ -119,6 +119,19 @@ Action.prototype = {
     };
   },
   
+  _sendPerformActionMessageToFrameWithIndexWithinCurrentTab: function(frameIndex) {
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.tabs.sendMessage(currentTab.id, {
+        messageName: "runAction",
+        parameters: {
+          runActionName: this._name
+        }
+      }, {
+        frameId: eGContext.frameHierarchy[frameIndex].frameID
+      });
+    });
+  },
+  
   _openURLOn: function(url, on, newTabShouldBeActive) {
     switch (on) {
       case "curTab":
@@ -430,18 +443,25 @@ let eGActions = {
   }, false, "pageTop"),
   
   pageTop: new DisableableAction("pageTop", function() {
-    return this._sendPerformActionMessage();
+    let frameIndex = eGContext.frameHierarchy.findIndex(element => {
+      return element.scrollY !== 0;
+    });
+    this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex);
   }, function() {
-    return Promise.resolve(eGContext.frameScrollY === 0 &&
-                           eGContext.windowScrollY === 0);
+    return Promise.resolve(eGContext.frameHierarchy.every(element => {
+      return element.scrollY === 0;
+    }));
   }, false, "pageBottom"),
   
   pageBottom: new DisableableAction("pageBottom", function() {
-    return this._sendPerformActionMessage();
+    let frameIndex = eGContext.frameHierarchy.findIndex(element => {
+      return element.scrollY !== element.scrollMaxY;
+    });
+    this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex);
   }, function() {
-    return Promise.resolve(
-             eGContext.frameScrollY === eGContext.frameScrollMaxY &&
-             eGContext.windowScrollY === eGContext.windowScrollMaxY);
+    return Promise.resolve(eGContext.frameHierarchy.every(element => {
+      return element.scrollY === element.scrollMaxY;
+    }));
   }, false, "savePageAs"),
   
   savePageAs: new Action("savePageAs", function() {
@@ -628,10 +648,10 @@ let eGActions = {
   
   showOnlyThisFrame: new DisableableAction("showOnlyThisFrame", function() {
     browser.tabs.update({
-      url: eGContext.frameURL
+      url: eGContext.frameHierarchy[0].URL
     });
   }, function() {
-    return Promise.resolve(eGContext.frameURL === null);
+    return Promise.resolve(eGContext.frameHierarchy.length === 1);
   }, false, "viewPageSource"),
   
   viewPageSource: new Action("viewPageSource", function() {

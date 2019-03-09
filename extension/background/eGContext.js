@@ -47,9 +47,5 @@ let eGContext = {
   imageElementDoesntExist: true,
   imageElementSRC: "",
   
-  windowScrollY: null,
-  windowScrollMaxY: null,
-  frameScrollY: null,
-  frameScrollMaxY: null,
-  frameURL: null
+  frameHierarchy: null
 };
