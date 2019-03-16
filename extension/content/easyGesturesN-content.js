@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported removeMenuEventHandler, handleMousemove */
 /* global window, addEventListener, browser, eGPieMenu, document, MouseEvent,
-          actionRunners */
+          KeyboardEvent, actionRunners */
 
 "use strict";
 
@@ -48,8 +48,8 @@ if (window.self === window.top) {
   setPieMenuSettingsWithinTopmostFrame();
   addEventListener("mousedown", handleMousedownWithinTopmostFrame, true);
   addEventListener("mouseup", handleMouseupWithinTopmostFrame, true);
-  addEventListener("keydown", handleKeydown, true);
   addEventListener("contextmenu", handleContextmenu, true);
+  addEventListener("keydown", handleKeydownWithinTopmostFrame, true);
   browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptWithinTopmostFrame);
 }
 else {
@@ -58,6 +58,7 @@ else {
   // capturing necessary events within inner frames
   addEventListener("mousedown", handleMousedownWithinInnerFrame, true);
   addEventListener("mouseup", handleMouseupWithinInnerFrame, true);
+  addEventListener("keydown", handleKeydownWithinInnerFrame, true);
   browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptWithinInnerFrame);
 }
 
@@ -290,7 +291,7 @@ function handleMouseupWithinTopmostFrame(anEvent) {
   }
 }
 
-function handleKeydown(anEvent) {
+function handleKeydownWithinTopmostFrame(anEvent) {
   if (eGPieMenu.isShown()) {
     if (anEvent.key === "Alt") {
       eGPieMenu.switchLayout();
@@ -359,6 +360,10 @@ function handleMouseupFromInnerFrameWithinTopmostFrame(parameters) {
   });
 }
 
+function handleKeydownFromInnerFrameWithinTopmostFrame(parameters) {
+  document.dispatchEvent(new KeyboardEvent("keydown", parameters));
+}
+
 function runAction(parameters) {
   actionRunners[parameters.runActionName]();
 }
@@ -368,6 +373,7 @@ function handleMessageFromBackgroundScriptWithinTopmostFrame(aMessage) {
     "resetPieMenu": resetPieMenuWithinTopmostFrame,
     "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinTopmostFrame,
     "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinTopmostFrame,
+    "handleKeydownFromInnerFrame": handleKeydownFromInnerFrameWithinTopmostFrame,
     "runAction": runAction
   };
   processMessage[aMessage.messageName](aMessage.parameters);
@@ -420,6 +426,16 @@ function handleMouseupWithinInnerFrame(anEvent) {
     parameters: {
       innerFrameURL: window.location.toString(),
       button: anEvent.button
+    }
+  });
+}
+
+function handleKeydownWithinInnerFrame(anEvent) {
+  browser.runtime.sendMessage({
+    messageName: "transferEventToTopmostFrame",
+    eventName: "Keydown",
+    parameters: {
+      key: anEvent.key
     }
   });
 }

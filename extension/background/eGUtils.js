@@ -92,6 +92,14 @@ let eGUtils = {
     this._sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, false);
   },
   
+  sendMessageToTopmostFrameWithinCurrentTab(message) {
+    this.performOnCurrentTab(currentTab => {
+      browser.tabs.sendMessage(currentTab.id, message, {
+        frameId: 0
+      });
+    });
+  },
+  
   showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
     browser.tabs.query({}).then(tabs => {
       let tipsTab = tabs.find(tab => {

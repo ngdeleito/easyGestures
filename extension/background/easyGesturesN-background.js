@@ -75,6 +75,13 @@ let eGMessageHandlers = {
     });
   },
   
+  transferEventToTopmostFrame: function(aMessage) {
+    eGUtils.sendMessageToTopmostFrameWithinCurrentTab({
+      messageName: "handle" + aMessage.eventName + "FromInnerFrame",
+      parameters: aMessage.parameters
+    });
+  },
+  
   setContextAndFocusCurrentWindow: function(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
