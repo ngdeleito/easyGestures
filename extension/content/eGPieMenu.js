@@ -36,9 +36,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 ***** END LICENSE BLOCK *****/
 
 
-/* global browser, document, contextualMenus, addEventListener,
-          removeMenuEventHandler, anchorElement, window, handleMousemove,
-          actionStatusSetters, actionRunners, removeEventListener */
+/* global browser, contextualMenus, document, addEventListener,
+          removeMenuEventHandler, actionStatusSetters, window, handleMousemove,
+          frameHierarchyArray, anchorElement, actionRunners,
+          removeEventListener */
 
 "use strict";
 
@@ -480,6 +481,14 @@ let eGPieMenu = {
     this._setTooltipsTimeout();
     
     addEventListener("mousemove", handleMousemove, true);
+    if (frameHierarchyArray.length > 1) {
+      browser.runtime.sendMessage({
+        messageName: "addMousemoveListenerToFrame",
+        parameters: {
+          frameID: frameHierarchyArray[0].frameID
+        }
+      });
+    }
   },
   
   _showLinkSign: function() {
@@ -690,6 +699,14 @@ let eGPieMenu = {
   
   close: function() {
     removeEventListener("mousemove", handleMousemove, true);
+    if (frameHierarchyArray.length > 1) {
+      browser.runtime.sendMessage({
+        messageName: "removeMousemoveListenerFromFrame",
+        parameters: {
+          frameID: frameHierarchyArray[0].frameID
+        }
+      });
+    }
     
     if (this.settings.showTooltips) {
       window.clearTimeout(this._tooltipsTimeoutID);

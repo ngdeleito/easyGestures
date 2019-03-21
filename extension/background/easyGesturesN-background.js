@@ -82,6 +82,27 @@ let eGMessageHandlers = {
     });
   },
   
+  addMousemoveListenerToFrame: function(aMessage) {
+    eGUtils.sendMessageToFrameWithFrameIDWithinCurrentTab({
+      messageName: "addMousemoveListener",
+      parameters: undefined
+    }, aMessage.parameters.frameID);
+  },
+  
+  transferMousemoveToUpperFrame: function(aMessage) {
+    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab(aMessage.parameters.innerFrameURL, {
+      messageName: "handleMousemoveFromInnerFrame",
+      parameters: aMessage.parameters
+    });
+  },
+  
+  removeMousemoveListenerFromFrame: function(aMessage) {
+    eGUtils.sendMessageToFrameWithFrameIDWithinCurrentTab({
+      messageName: "removeMousemoveListener",
+      parameters: undefined
+    }, aMessage.parameters.frameID);
+  },
+  
   setContextAndFocusCurrentWindow: function(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];

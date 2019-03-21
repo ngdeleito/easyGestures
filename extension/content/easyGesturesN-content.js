@@ -36,7 +36,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported removeMenuEventHandler, handleMousemove */
 /* global window, addEventListener, browser, eGPieMenu, document, MouseEvent,
-          KeyboardEvent, actionRunners */
+          KeyboardEvent, actionRunners, removeEventListener */
 
 "use strict";
 
@@ -364,6 +364,13 @@ function handleKeydownFromInnerFrameWithinTopmostFrame(parameters) {
   document.dispatchEvent(new KeyboardEvent("keydown", parameters));
 }
 
+function handleMousemoveFromInnerFrameWithinTopmostFrame(parameters) {
+  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
+    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    handleMousemove(parameters);
+  });
+}
+
 function runAction(parameters) {
   actionRunners[parameters.runActionName]();
 }
@@ -374,6 +381,7 @@ function handleMessageFromBackgroundScriptWithinTopmostFrame(aMessage) {
     "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinTopmostFrame,
     "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinTopmostFrame,
     "handleKeydownFromInnerFrame": handleKeydownFromInnerFrameWithinTopmostFrame,
+    "handleMousemoveFromInnerFrame": handleMousemoveFromInnerFrameWithinTopmostFrame,
     "runAction": runAction
   };
   processMessage[aMessage.messageName](aMessage.parameters);
@@ -468,11 +476,33 @@ function handleMouseupFromInnerFrameWithinInnerFrame(parameters) {
   });
 }
 
+function addMousemoveListenerWithinInnerFrame() {
+  addEventListener("mousemove", handleMousemoveWithinInnerFrame, true);
+}
+
+function handleMousemoveFromInnerFrameWithinInnerFrame(parameters) {
+  performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
+    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    parameters.innerFrameURL = window.location.toString();
+    browser.runtime.sendMessage({
+      messageName: "transferMousemoveToUpperFrame",
+      parameters: parameters
+    });
+  });
+}
+
+function removeMousemoveListenerWithinInnerFrame() {
+  removeEventListener("mousemove", handleMousemoveWithinInnerFrame, true);
+}
+
 function handleMessageFromBackgroundScriptWithinInnerFrame(aMessage) {
   let processMessage = {
     "resetPieMenu": resetPieMenuWithinInnerFrame,
     "handleMousedownFromInnerFrame": handleMousedownFromInnerFrameWithinInnerFrame,
     "handleMouseupFromInnerFrame": handleMouseupFromInnerFrameWithinInnerFrame,
+    "addMousemoveListener": addMousemoveListenerWithinInnerFrame,
+    "handleMousemoveFromInnerFrame": handleMousemoveFromInnerFrameWithinInnerFrame,
+    "removeMousemoveListener": removeMousemoveListenerWithinInnerFrame,
     "runAction": runAction
   };
   processMessage[aMessage.messageName](aMessage.parameters);
@@ -485,4 +515,18 @@ function removeMenuEventHandler() {
 function handleMousemove(anEvent) {
   eGPieMenu.handleMousemove(anEvent.clientX, anEvent.clientY, anEvent.shiftKey,
                             anEvent.movementX, anEvent.movementY);
+}
+
+function handleMousemoveWithinInnerFrame(anEvent) {
+  browser.runtime.sendMessage({
+    messageName: "transferMousemoveToUpperFrame",
+    parameters: {
+      innerFrameURL: window.location.toString(),
+      clientX: anEvent.clientX,
+      clientY: anEvent.clientY,
+      shiftKey: anEvent.shiftKey,
+      movementX: anEvent.movementX,
+      movementY: anEvent.movementY
+    }
+  });
 }

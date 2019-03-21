@@ -92,12 +92,16 @@ let eGUtils = {
     this._sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, false);
   },
   
-  sendMessageToTopmostFrameWithinCurrentTab(message) {
+  sendMessageToFrameWithFrameIDWithinCurrentTab(message, frameID) {
     this.performOnCurrentTab(currentTab => {
       browser.tabs.sendMessage(currentTab.id, message, {
-        frameId: 0
+        frameId: frameID
       });
     });
+  },
+  
+  sendMessageToTopmostFrameWithinCurrentTab(message) {
+    this.sendMessageToFrameWithFrameIDWithinCurrentTab(message, 0);
   },
   
   showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
