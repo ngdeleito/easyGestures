@@ -69,10 +69,10 @@ let eGMessageHandlers = {
   },
   
   transferMouseupToUpperFrame: function(aMessage) {
-    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab(aMessage.parameters.innerFrameURL, {
+    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab({
       messageName: "handleMouseupFromInnerFrame",
       parameters: aMessage.parameters
-    });
+    }, aMessage.parameters.innerFrameURL);
   },
   
   transferEventToTopmostFrame: function(aMessage) {
@@ -90,10 +90,10 @@ let eGMessageHandlers = {
   },
   
   transferMousemoveToUpperFrame: function(aMessage) {
-    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab(aMessage.parameters.innerFrameURL, {
+    eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab({
       messageName: "handleMousemoveFromInnerFrame",
       parameters: aMessage.parameters
-    });
+    }, aMessage.parameters.innerFrameURL);
   },
   
   removeMousemoveListenerFromFrame: function(aMessage) {

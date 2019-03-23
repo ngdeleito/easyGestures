@@ -65,7 +65,7 @@ let eGUtils = {
     });
   },
   
-  _sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, includeFrameID) {
+  _sendMessageToParentOfFrameWithURLWithinCurrentTab(message, frameURL, includeFrameID) {
     this.performOnCurrentTab(currentTab => {
       browser.webNavigation.getAllFrames({
         tabId: currentTab.id
@@ -85,11 +85,11 @@ let eGUtils = {
   },
   
   transferMousedownToUpperFrame(frameURL, message) {
-    this._sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, true);
+    this._sendMessageToParentOfFrameWithURLWithinCurrentTab(message, frameURL, true);
   },
   
-  sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message) {
-    this._sendMessageToParentOfFrameWithURLWithinCurrentTab(frameURL, message, false);
+  sendMessageToParentOfFrameWithURLWithinCurrentTab(message, frameURL) {
+    this._sendMessageToParentOfFrameWithURLWithinCurrentTab(message, frameURL, false);
   },
   
   sendMessageToFrameWithFrameIDWithinCurrentTab(message, frameID) {
