@@ -331,7 +331,7 @@ function performOnInnerFrameElement(innerFrameURL, aFunction) {
   }
 }
 
-function updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters) {
+function updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters) {
   let innerFrameElementStyle = window.getComputedStyle(innerFrameElement);
   let innerFrameOffsetX =
         Number(innerFrameElementStyle.paddingLeft.replace("px", "")) +
@@ -346,7 +346,7 @@ function updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters
 
 function handleMousedownFromInnerFrameWithinTopmostFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
     frameHierarchyArray = parameters.frameHierarchy;
     // per the call to dispatchEvent, innerFrameElement becomes the target of
     // the event
@@ -366,7 +366,7 @@ function handleKeydownFromInnerFrameWithinTopmostFrame(parameters) {
 
 function handleMousemoveFromInnerFrameWithinTopmostFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
     handleMousemove(parameters);
   });
 }
@@ -454,7 +454,7 @@ function resetPieMenuWithinInnerFrame() {
 
 function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
     parameters.innerFrameURL = window.location.toString();
     parameters.frameHierarchy.push({
         URL: window.location.toString(),
@@ -482,7 +482,7 @@ function addMousemoveListenerWithinInnerFrame() {
 
 function handleMousemoveFromInnerFrameWithinInnerFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
-    updateMousePointerCoordinatesAcrossFrames(innerFrameElement, parameters);
+    updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
     parameters.innerFrameURL = window.location.toString();
     browser.runtime.sendMessage({
       messageName: "transferMousemoveToUpperFrame",
