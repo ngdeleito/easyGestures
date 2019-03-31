@@ -46,6 +46,8 @@ let eGContext = {
   anchorElementText: null,
   imageElementDoesntExist: true,
   imageElementSRC: "",
-  
-  frameHierarchy: null
+  inputElementExists: false,
+  inputElementContainsSelection: false,
+  documentDoesntContainImages: true,
+  frameHierarchyArray: null
 };

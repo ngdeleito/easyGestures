@@ -38,8 +38,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* global browser, contextualMenus, document, addEventListener,
           removeMenuEventHandler, actionStatusSetters, window, handleMousemove,
-          frameHierarchyArray, anchorElement, actionRunners,
-          removeEventListener */
+          context, actionRunners, removeEventListener */
 
 "use strict";
 
@@ -481,11 +480,11 @@ let eGPieMenu = {
     this._setTooltipsTimeout();
     
     addEventListener("mousemove", handleMousemove, true);
-    if (frameHierarchyArray.length > 1) {
+    if (context.frameHierarchyArray.length > 1) {
       browser.runtime.sendMessage({
         messageName: "addMousemoveListenerToFrame",
         parameters: {
-          frameID: frameHierarchyArray[0].frameID
+          frameID: context.frameHierarchyArray[0].frameID
         }
       });
     }
@@ -493,7 +492,7 @@ let eGPieMenu = {
   
   _showLinkSign: function() {
     let linkSignNode = this.specialNodesNode.childNodes[0];
-    if (this.settings.handleLinks && anchorElement !== null &&
+    if (this.settings.handleLinks && context.anchorElementExists &&
         this.isJustOpened()) {
       linkSignNode.style.visibility = "visible";
       window.setTimeout(function() {
@@ -699,11 +698,11 @@ let eGPieMenu = {
   
   close: function() {
     removeEventListener("mousemove", handleMousemove, true);
-    if (frameHierarchyArray.length > 1) {
+    if (context.frameHierarchyArray.length > 1) {
       browser.runtime.sendMessage({
         messageName: "removeMousemoveListenerFromFrame",
         parameters: {
-          frameID: frameHierarchyArray[0].frameID
+          frameID: context.frameHierarchyArray[0].frameID
         }
       });
     }
@@ -792,7 +791,7 @@ let eGPieMenu = {
                                               "loadURLInCurrentTab";
       browser.runtime.sendMessage({
         messageName: messageName,
-        url: anchorElement.href
+        url: context.anchorElementHREF
       });
     }
   }

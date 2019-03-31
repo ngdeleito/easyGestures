@@ -74,8 +74,8 @@ let eGUtils = {
           return element.url === frameURL;
         });
         if (includeFrameID) {
-          let lastIndex = message.parameters.frameHierarchy.length - 1;
-          message.parameters.frameHierarchy[lastIndex].frameID = frameData.frameId;
+          let frameHierarchyArray = message.parameters.context.frameHierarchyArray;
+          frameHierarchyArray[frameHierarchyArray.length - 1].frameID = frameData.frameId;
         }
         browser.tabs.sendMessage(currentTab.id, message, {
           frameId: frameData.parentFrameId

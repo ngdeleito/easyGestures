@@ -112,10 +112,10 @@ Action.prototype = {
   
   // helper functions
   
-  _sendPerformActionMessage: function(options) {
+  _sendPerformActionMessage: function() {
     return {
       runActionName: this._name,
-      runActionOptions: options
+      runActionOptions: undefined
     };
   },
   
@@ -124,12 +124,17 @@ Action.prototype = {
       browser.tabs.sendMessage(currentTab.id, {
         messageName: "runAction",
         parameters: {
-          runActionName: this._name
+          runActionName: this._name,
+          runActionOptions: undefined
         }
       }, {
-        frameId: eGContext.frameHierarchy[frameIndex].frameID
+        frameId: eGContext.frameHierarchyArray[frameIndex].frameID
       });
     });
+  },
+  
+  _sendPerformActionMessageToInnermostFrameWithinCurrentTab: function() {
+    this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(0);
   },
   
   _openURLOn: function(url, on, newTabShouldBeActive) {
@@ -352,9 +357,7 @@ ImageExistsDisableableAction.prototype.constructor = ImageExistsDisableableActio
 
 function DocumentContainsImagesDisableableAction(name, startsNewGroup, nextAction) {
   Action.call(this, name, function() {
-    return {
-      runActionName: "hideImages"
-    };
+    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
   }, startsNewGroup, nextAction);
 }
 DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototype);
@@ -368,12 +371,19 @@ DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
 
 function CommandAction(name, startsNewGroup, nextAction) {
   Action.call(this, name, function() {
-    return {
-      runActionName: "commandAction",
-      runActionOptions: {
-        commandName: name
-      }
-    };
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.tabs.sendMessage(currentTab.id, {
+        messageName: "runAction",
+        parameters: {
+          runActionName: "commandAction",
+          runActionOptions: {
+            commandName: name
+          }
+        }
+      }, {
+        frameId: eGContext.frameHierarchyArray[0].frameID
+      });
+    });
   }, startsNewGroup, nextAction);
 }
 CommandAction.prototype = Object.create(Action.prototype);
@@ -443,23 +453,23 @@ let eGActions = {
   }, false, "pageTop"),
   
   pageTop: new DisableableAction("pageTop", function() {
-    let frameIndex = eGContext.frameHierarchy.findIndex(element => {
+    let frameIndex = eGContext.frameHierarchyArray.findIndex(element => {
       return element.scrollY !== 0;
     });
     this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex);
   }, function() {
-    return Promise.resolve(eGContext.frameHierarchy.every(element => {
+    return Promise.resolve(eGContext.frameHierarchyArray.every(element => {
       return element.scrollY === 0;
     }));
   }, false, "pageBottom"),
   
   pageBottom: new DisableableAction("pageBottom", function() {
-    let frameIndex = eGContext.frameHierarchy.findIndex(element => {
+    let frameIndex = eGContext.frameHierarchyArray.findIndex(element => {
       return element.scrollY !== element.scrollMaxY;
     });
     this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex);
   }, function() {
-    return Promise.resolve(eGContext.frameHierarchy.every(element => {
+    return Promise.resolve(eGContext.frameHierarchyArray.every(element => {
       return element.scrollY === element.scrollMaxY;
     }));
   }, false, "savePageAs"),
@@ -542,7 +552,7 @@ let eGActions = {
       });
     }
     else {
-      return this._sendPerformActionMessage();
+      this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
     }
   }, false, "zoomOut"),
   
@@ -558,7 +568,7 @@ let eGActions = {
       });
     }
     else {
-      return this._sendPerformActionMessage();
+      this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
     }
   }, false, "zoomReset"),
   
@@ -648,10 +658,10 @@ let eGActions = {
   
   showOnlyThisFrame: new DisableableAction("showOnlyThisFrame", function() {
     browser.tabs.update({
-      url: eGContext.frameHierarchy[0].URL
+      url: eGContext.frameHierarchyArray[0].URL
     });
   }, function() {
-    return Promise.resolve(eGContext.frameHierarchy.length === 1);
+    return Promise.resolve(eGContext.frameHierarchyArray.length === 1);
   }, false, "viewPageSource"),
   
   viewPageSource: new Action("viewPageSource", function() {
@@ -1088,12 +1098,12 @@ let eGActions = {
   copy: new CommandAction("copy", false, "paste"),
   
   paste: new DisableableAction("paste", function() {
-    return this._sendPerformActionMessage();
+    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
   }, function() {
     return Promise.resolve(!eGContext.inputElementExists);
   }, false, "selectAll"),
   
   selectAll: new Action("selectAll", function() {
-    return this._sendPerformActionMessage();
+    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
   }, false, null)
 };

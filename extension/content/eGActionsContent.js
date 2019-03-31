@@ -36,11 +36,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported actionStatusSetters, actionRunners */
 /* global document, ACTIONS_NODE_ID_PREFIX, TOOLTIPS_NODE_ID_PREFIX,
-          inputElement, selection, window, imageElement, eGPieMenu */
+          context, window, imageElement, eGPieMenu, inputElement */
 
 "use strict";
 
 let actionStatusSetters = {
+  // these methods run on the topmost frame
+  
   _setActionStatus: function(layoutName, actionSector, disabled) {
     let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
     let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX + layoutName);
@@ -58,24 +60,26 @@ let actionStatusSetters = {
   },
   
   hideImages: function(aMessage, layoutName, actionSector) {
-    let disabled = document.querySelectorAll("img").length === 0;
-    this._setActionStatus(layoutName, actionSector, disabled);
+    this._setActionStatus(layoutName, actionSector,
+                          context.documentDoesntContainImages);
   },
   
   cut: function(aMessage, layoutName, actionSector) {
-    let disabled = inputElement === null ||
-                   inputElement.selectionStart === inputElement.selectionEnd;
+    let disabled = !context.inputElementExists ||
+                   !context.inputElementContainsSelection;
     this._setActionStatus(layoutName, actionSector, disabled);
   },
   
   copy: function(aMessage, layoutName, actionSector) {
-    let enabled = selection !== "" || (inputElement !== null &&
-                    inputElement.selectionEnd > inputElement.selectionStart);
+    let enabled = context.selection !== "" || (context.inputElementExists &&
+                    context.inputElementContainsSelection);
     this._setActionStatus(layoutName, actionSector, !enabled);
   }
 };
 
 let actionRunners = {
+  // these methods run on the innermost frame
+  
   back: function() {
     window.history.back();
   },
@@ -154,7 +158,7 @@ let actionRunners = {
     
     let textareaWithPastedText = document.createElement("textarea");
     textareaWithPastedText.contentEditable = true;
-    eGPieMenu.easyGesturesNode.appendChild(textareaWithPastedText);
+    document.body.appendChild(textareaWithPastedText);
     textareaWithPastedText.focus();
     document.execCommand("paste");
     
@@ -164,7 +168,7 @@ let actionRunners = {
       inputContent.substring(selectionEnd, inputContent.length);
     inputElement.focus();
     
-    eGPieMenu.easyGesturesNode.removeChild(textareaWithPastedText);
+    document.body.removeChild(textareaWithPastedText);
   },
   
   selectAll: function() {

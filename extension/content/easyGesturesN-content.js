@@ -41,7 +41,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 "use strict";
 
 let selection, contextualMenus, anchorElement, imageElement, inputElement;
-let frameHierarchyArray;
+let context;
 
 if (window.self === window.top) {
   // setting up pie menu within topmost frame
@@ -208,32 +208,15 @@ function handleMousedownWithinTopmostFrame(anEvent) {
   
   anEvent.preventDefault();
   
-  selection = cleanSelection(window.getSelection().toString());
-  [selection, contextualMenus, anchorElement, imageElement, inputElement] =
-    setContext(anEvent.target, selection);
-  
-  let elementID = findNearestIDAttribute(anEvent.target);
   eGPieMenu.centerX = anEvent.clientX;
   eGPieMenu.centerY = anEvent.clientY;
   if (!(anEvent.target instanceof window.HTMLIFrameElement)) {
     // when this condition is not met, mousedown has been first triggered inside
-    // an inner frame and frameHierarchyArray has already been initialized
-    frameHierarchyArray = [];
-  }
-  frameHierarchyArray.push({
-    URL: window.location.toString(),
-    scrollY: window.scrollY,
-    scrollMaxY: window.scrollMaxY,
-    frameID: 0
-  });
-  browser.runtime.sendMessage({
-    messageName: "setContextAndFocusCurrentWindow",
-    context: {
-      pageURL: document.documentURI,
-      urlToIdentifier:
-        elementID === "" ? ""
-                         : document.location.origin +
-                           document.location.pathname + "#" + elementID,
+    // an inner frame and context has already been initialized
+    selection = cleanSelection(window.getSelection().toString());
+    [selection, contextualMenus, anchorElement, imageElement, inputElement] =
+      setContext(anEvent.target, selection);
+    context = {
       selection: selection,
       anchorElementExists: anchorElement !== null,
       anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
@@ -241,8 +224,26 @@ function handleMousedownWithinTopmostFrame(anEvent) {
       imageElementDoesntExist: imageElement === null,
       imageElementSRC: imageElement !== null ? imageElement.src : null,
       inputElementExists: inputElement !== null,
-      frameHierarchy: frameHierarchyArray
-    }
+      inputElementContainsSelection: inputElement !== null ? inputElement.selectionEnd > inputElement.selectionStart : false,
+      documentDoesntContainImages: document.querySelectorAll("img").length === 0,
+      frameHierarchyArray: []
+    };
+  }
+  context.pageURL = document.documentURI;
+  let elementID = findNearestIDAttribute(anEvent.target);
+  context.urlToIdentifier = elementID === "" ? ""
+                                             : document.location.origin +
+                                               document.location.pathname +
+                                               "#" + elementID;
+  context.frameHierarchyArray.push({
+    URL: window.location.toString(),
+    scrollY: window.scrollY,
+    scrollMaxY: window.scrollMaxY,
+    frameID: 0
+  });
+  browser.runtime.sendMessage({
+    messageName: "setContextAndFocusCurrentWindow",
+    context: context
   });
   
   if (contextualMenus.length !== 0 &&
@@ -347,7 +348,8 @@ function updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters) {
 function handleMousedownFromInnerFrameWithinTopmostFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
     updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
-    frameHierarchyArray = parameters.frameHierarchy;
+    contextualMenus = parameters.contextualMenus;
+    context = parameters.context;
     // per the call to dispatchEvent, innerFrameElement becomes the target of
     // the event
     innerFrameElement.dispatchEvent(new MouseEvent("mousedown", parameters));
@@ -372,7 +374,7 @@ function handleMousemoveFromInnerFrameWithinTopmostFrame(parameters) {
 }
 
 function runAction(parameters) {
-  actionRunners[parameters.runActionName]();
+  actionRunners[parameters.runActionName](parameters.runActionOptions);
 }
 
 function handleMessageFromBackgroundScriptWithinTopmostFrame(aMessage) {
@@ -406,15 +408,31 @@ function handleMousedownWithinInnerFrame(anEvent) {
   }
   
   anEvent.preventDefault();
+  
+  selection = cleanSelection(window.getSelection().toString());
+  [selection, contextualMenus, anchorElement, imageElement, inputElement] =
+    setContext(anEvent.target, selection);
   browser.runtime.sendMessage({
     messageName: "transferMousedownToUpperFrame",
     parameters: {
       innerFrameURL: window.location.toString(),
-      frameHierarchy: [{
-        URL: window.location.toString(),
-        scrollY: window.scrollY,
-        scrollMaxY: window.scrollMaxY
-      }],
+      contextualMenus: contextualMenus,
+      context: {
+        selection: selection,
+        anchorElementExists: anchorElement !== null,
+        anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
+        anchorElementText: anchorElement !== null ? anchorElement.text : null,
+        imageElementDoesntExist: imageElement === null,
+        imageElementSRC: imageElement !== null ? imageElement.src : null,
+        inputElementExists: inputElement !== null,
+        inputElementContainsSelection: inputElement !== null ? inputElement.selectionEnd > inputElement.selectionStart : false,
+        documentDoesntContainImages: document.querySelectorAll("img").length === 0,
+        frameHierarchyArray: [{
+          URL: window.location.toString(),
+          scrollY: window.scrollY,
+          scrollMaxY: window.scrollMaxY
+        }]
+      },
       cancelable: anEvent.cancelable,
       screenX: anEvent.screenX,
       screenY: anEvent.screenY,
@@ -456,7 +474,7 @@ function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
   performOnInnerFrameElement(parameters.innerFrameURL, innerFrameElement => {
     updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
     parameters.innerFrameURL = window.location.toString();
-    parameters.frameHierarchy.push({
+    parameters.context.frameHierarchyArray.push({
         URL: window.location.toString(),
         scrollY: window.scrollY,
         scrollMaxY: window.scrollMaxY
