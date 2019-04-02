@@ -40,8 +40,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-let selection, contextualMenus, anchorElement, imageElement, inputElement;
-let context;
+let contextualMenus, imageElement, inputElement, context;
 
 if (window.self === window.top) {
   // setting up pie menu within topmost frame
@@ -119,7 +118,7 @@ function cleanSelection(selection) {
   return result;
 }
 
-function setContext(anHTMLElement, currentSelection) {
+function initializeContext(anHTMLElement, currentSelection) {
   // <a> elements cannot be nested
   // <a> elements cannot have <input> and <textarea> elements as descendants
   // <area>, <img> and <input> elements cannot have children
@@ -176,7 +175,19 @@ function setContext(anHTMLElement, currentSelection) {
   if (selection !== "") {
     contextualMenus.push("contextSelection");
   }
-  return [selection, contextualMenus, anchorElement, imageElement, inputElement];
+  return [contextualMenus, imageElement, inputElement, {
+    selection: selection,
+    anchorElementExists: anchorElement !== null,
+    anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
+    anchorElementText: anchorElement !== null ? anchorElement.text : null,
+    imageElementDoesntExist: imageElement === null,
+    imageElementSRC: imageElement !== null ? imageElement.src : null,
+    inputElementExists: inputElement !== null,
+    inputElementContainsSelection: inputElement !== null ?
+       inputElement.selectionEnd > inputElement.selectionStart : false,
+    documentDoesntContainImages: document.querySelectorAll("img").length === 0,
+    frameHierarchyArray: []
+  }];
 }
 
 function findNearestIDAttribute(anHTMLElement) {
@@ -212,22 +223,11 @@ function handleMousedownWithinTopmostFrame(anEvent) {
   eGPieMenu.centerY = anEvent.clientY;
   if (!(anEvent.target instanceof window.HTMLIFrameElement)) {
     // when this condition is not met, mousedown has been first triggered inside
-    // an inner frame and context has already been initialized
-    selection = cleanSelection(window.getSelection().toString());
-    [selection, contextualMenus, anchorElement, imageElement, inputElement] =
-      setContext(anEvent.target, selection);
-    context = {
-      selection: selection,
-      anchorElementExists: anchorElement !== null,
-      anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
-      anchorElementText: anchorElement !== null ? anchorElement.text : null,
-      imageElementDoesntExist: imageElement === null,
-      imageElementSRC: imageElement !== null ? imageElement.src : null,
-      inputElementExists: inputElement !== null,
-      inputElementContainsSelection: inputElement !== null ? inputElement.selectionEnd > inputElement.selectionStart : false,
-      documentDoesntContainImages: document.querySelectorAll("img").length === 0,
-      frameHierarchyArray: []
-    };
+    // an inner frame and contextualMenus and context have already been
+    // initialized
+    [contextualMenus, imageElement, inputElement, context] =
+      initializeContext(anEvent.target,
+                        cleanSelection(window.getSelection().toString()));
   }
   context.pageURL = document.documentURI;
   let elementID = findNearestIDAttribute(anEvent.target);
@@ -409,30 +409,20 @@ function handleMousedownWithinInnerFrame(anEvent) {
   
   anEvent.preventDefault();
   
-  selection = cleanSelection(window.getSelection().toString());
-  [selection, contextualMenus, anchorElement, imageElement, inputElement] =
-    setContext(anEvent.target, selection);
+  [contextualMenus, imageElement, inputElement, context] =
+    initializeContext(anEvent.target,
+                      cleanSelection(window.getSelection().toString()));
+  context.frameHierarchyArray.push({
+    URL: window.location.toString(),
+    scrollY: window.scrollY,
+    scrollMaxY: window.scrollMaxY
+  });
   browser.runtime.sendMessage({
     messageName: "transferMousedownToUpperFrame",
     parameters: {
       innerFrameURL: window.location.toString(),
       contextualMenus: contextualMenus,
-      context: {
-        selection: selection,
-        anchorElementExists: anchorElement !== null,
-        anchorElementHREF: anchorElement !== null ? anchorElement.href : null,
-        anchorElementText: anchorElement !== null ? anchorElement.text : null,
-        imageElementDoesntExist: imageElement === null,
-        imageElementSRC: imageElement !== null ? imageElement.src : null,
-        inputElementExists: inputElement !== null,
-        inputElementContainsSelection: inputElement !== null ? inputElement.selectionEnd > inputElement.selectionStart : false,
-        documentDoesntContainImages: document.querySelectorAll("img").length === 0,
-        frameHierarchyArray: [{
-          URL: window.location.toString(),
-          scrollY: window.scrollY,
-          scrollMaxY: window.scrollMaxY
-        }]
-      },
+      context: context,
       cancelable: anEvent.cancelable,
       screenX: anEvent.screenX,
       screenY: anEvent.screenY,
