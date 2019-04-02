@@ -190,7 +190,7 @@ function initializeContext(anHTMLElement, currentSelection) {
   }];
 }
 
-function findNearestIDAttribute(anHTMLElement) {
+function getURLOfNearestIDAttribute(anHTMLElement) {
   let currentElement = anHTMLElement;
   while (currentElement.parentElement !== null &&
          currentElement.previousElementSibling === null &&
@@ -198,7 +198,9 @@ function findNearestIDAttribute(anHTMLElement) {
          currentElement.id === "") {
     currentElement = currentElement.parentElement;
   }
-  return currentElement.id;
+  return currentElement.id === "" ? "" : document.location.origin +
+                                         document.location.pathname + "#" +
+                                         currentElement.id;
 }
 
 function handleMousedownWithinTopmostFrame(anEvent) {
@@ -230,11 +232,7 @@ function handleMousedownWithinTopmostFrame(anEvent) {
                         cleanSelection(window.getSelection().toString()));
   }
   context.pageURL = document.documentURI;
-  let elementID = findNearestIDAttribute(anEvent.target);
-  context.urlToIdentifier = elementID === "" ? ""
-                                             : document.location.origin +
-                                               document.location.pathname +
-                                               "#" + elementID;
+  context.urlToIdentifier = getURLOfNearestIDAttribute(anEvent.target);
   context.frameHierarchyArray.push({
     URL: window.location.toString(),
     scrollY: window.scrollY,
