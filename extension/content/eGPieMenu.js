@@ -169,6 +169,7 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
 ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
   return {
     incrementMethodName: "incrementNoStats",
+    incrementIndex: undefined,
     updateActionName: this.actions[this._pieMenu.sector]
   };
 };
@@ -782,7 +783,8 @@ let eGPieMenu = {
         messageName: "runAction",
         actionName: "openLink",
         updateStatsInformation: {
-          incrementMethodName: "incrementNoStats"
+          incrementMethodName: "incrementNoStats",
+          incrementIndex: undefined
         }
       });
     }
