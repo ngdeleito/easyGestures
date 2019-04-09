@@ -446,8 +446,7 @@ function handleMouseupWithinInnerFrame(anEvent) {
 
 function handleKeydownWithinInnerFrame(anEvent) {
   browser.runtime.sendMessage({
-    messageName: "transferEventToTopmostFrame",
-    eventName: "Keydown",
+    messageName: "transferKeydownToTopmostFrame",
     parameters: {
       key: anEvent.key
     }

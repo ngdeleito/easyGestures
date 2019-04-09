@@ -75,9 +75,9 @@ let eGMessageHandlers = {
     }, aMessage.parameters.innerFrameURL);
   },
   
-  transferEventToTopmostFrame: function(aMessage) {
+  transferKeydownToTopmostFrame: function(aMessage) {
     eGUtils.sendMessageToTopmostFrameWithinCurrentTab({
-      messageName: "handle" + aMessage.eventName + "FromInnerFrame",
+      messageName: "handleKeydownFromInnerFrame",
       parameters: aMessage.parameters
     });
   },
