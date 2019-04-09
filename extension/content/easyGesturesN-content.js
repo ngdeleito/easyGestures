@@ -47,8 +47,8 @@ if (window.self === window.top) {
   setPieMenuSettingsWithinTopmostFrame();
   addEventListener("mousedown", handleMousedownWithinTopmostFrame, true);
   addEventListener("mouseup", handleMouseupWithinTopmostFrame, true);
-  addEventListener("contextmenu", handleContextmenu, true);
   addEventListener("keydown", handleKeydownWithinTopmostFrame, true);
+  addEventListener("contextmenu", handleContextmenuWithinTopmostFrame, true);
   browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptWithinTopmostFrame);
 }
 else {
@@ -301,7 +301,7 @@ function handleKeydownWithinTopmostFrame(anEvent) {
   }
 }
 
-function handleContextmenu(anEvent) {
+function handleContextmenuWithinTopmostFrame(anEvent) {
   let result = eGPieMenu.canContextmenuBeOpened(anEvent.shiftKey,
                                                 anEvent.ctrlKey,
                                                 anEvent.altKey);
