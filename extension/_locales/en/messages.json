@@ -62,6 +62,7 @@
   "closeWindow": { "message": "Close window" },
   "closeOtherWindows": { "message": "Close other windows" },
   "undoCloseWindow": { "message": "Undo close window" },
+  "toggleFullscreenWindow": { "message": "Toggle fullscreen window" },
   
   "openLink": { "message": "Open link" },
   "openLinkInNewWindow": { "message": "Open link in a new window" },

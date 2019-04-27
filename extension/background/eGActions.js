@@ -369,6 +369,18 @@ DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
   };
 };
 
+function FullscreenAction(name, startsNewGroup, nextAction) {
+  Action.call(this, name, function() {}, startsNewGroup, nextAction);
+}
+FullscreenAction.prototype = Object.create(Action.prototype);
+FullscreenAction.prototype.constructor = FullscreenAction;
+FullscreenAction.prototype.getActionStatus = function() {
+  return {
+    messageName: this._name,
+    status: Promise.resolve(undefined)
+  };
+};
+
 function CommandAction(name, startsNewGroup, nextAction) {
   Action.call(this, name, function() {
     eGUtils.performOnCurrentTab(currentTab => {
@@ -623,14 +635,7 @@ let eGActions = {
     });
   }, false, "toggleFullscreen"),
   
-  toggleFullscreen: new Action("toggleFullscreen", function() {
-    browser.windows.getCurrent().then(aWindow => {
-      let newState = aWindow.state === "fullscreen" ? "normal" : "fullscreen";
-      browser.windows.update(aWindow.id, {
-        state: newState
-      });
-    });
-  }, false, "up"),
+  toggleFullscreen: new FullscreenAction("toggleFullscreen", false, "up"),
   
   up: new CanGoUpDisableableAction("up", function() {
     let url = new URL(eGContext.pageURL);
@@ -858,6 +863,15 @@ let eGActions = {
         return closedItem.window !== undefined;
       });
       return mostRecentlyClosedWindow === undefined;
+    });
+  }, false, "toggleFullscreenWindow"),
+  
+  toggleFullscreenWindow: new Action("toggleFullscreenWindow", function() {
+    browser.windows.getCurrent().then(aWindow => {
+      let newState = aWindow.state === "fullscreen" ? "normal" : "fullscreen";
+      browser.windows.update(aWindow.id, {
+        state: newState
+      });
     });
   }, false, "openLink"),
   

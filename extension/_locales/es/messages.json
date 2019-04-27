@@ -62,6 +62,7 @@
   "closeWindow": { "message": "Cerrar la ventana" },
   "closeOtherWindows": { "message": "Cerrar las otras ventanas" },
   "undoCloseWindow": { "message": "Restaurar la última ventana cerrada" },
+  "toggleFullscreenWindow": { "message": "Activar/desactivar ventana en pantalla completa" },
   
   "openLink": { "message": "Abrir enlace" },
   "openLinkInNewWindow": { "message": "Abrir enlace en una ventana nueva" },

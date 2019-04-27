@@ -844,6 +844,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --icon-position-x: 7;
   --icon-position-y: 4;
 }
+#easyGesturesPieMenu .toggleFullscreenWindow,
+[data-action="toggleFullscreenWindow"], .actionIcon.toggleFullscreenWindow {
+  --icon-position-x: 8;
+  --icon-position-y: 4;
+}
 #easyGesturesPieMenu .openLink,
 [data-action="openLink"], .actionIcon.openLink {
   --icon-position-x: 0;

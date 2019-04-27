@@ -642,5 +642,18 @@ let eGPrefs = {
     }));
     promises.push(browser.storage.local.remove(prefsToRename));
     return Promise.all(promises);
+  },
+  
+  updateToV6_3: function() {
+    let promises = [];
+    promises.push(this.getPref("stats.actions").then(prefValue => {
+      let actionsStats = JSON.parse(prefValue);
+      actionsStats.toggleFullscreenWindow = actionsStats.toggleFullscreen;
+      actionsStats.toggleFullscreen = 0;
+      return browser.storage.local.set({
+        "stats.actions": JSON.stringify(actionsStats)
+      });
+    }));
+    return Promise.all(promises);
   }
 };

@@ -59,6 +59,24 @@ let actionStatusSetters = {
     this._setActionStatus(layoutName, actionSector, aMessage.status);
   },
   
+  toggleFullscreen: function(aMessage, layoutName, actionSector) {
+    this._setActionStatus(layoutName, actionSector, false);
+    // the code for running this action appears here, as requestFullscreen can
+    // only be called within a "short running user-generated event handler"
+    let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
+    actionsNode.childNodes[actionSector].addEventListener("mouseup",
+      function requestFullscreen() {
+        this.removeEventListener("mouseup", requestFullscreen);
+        if (document.fullscreenElement === null) {
+          document.documentElement.requestFullscreen();
+        }
+        else {
+          document.exitFullscreen();
+        }
+      }
+    );
+  },
+  
   hideImages: function(aMessage, layoutName, actionSector) {
     this._setActionStatus(layoutName, actionSector,
                           context.documentDoesntContainImages);

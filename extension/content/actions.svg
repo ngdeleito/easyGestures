@@ -63,6 +63,12 @@
                Q 12 6 14 8 Q 16 9 18 8 Q 20 6 26 8
                Q 25 20 18 14 Q 16 12 14 14 Q 7 20 6 8 Z" fill="black" />
     </g>
+    <g id="smallerArrow">
+      <!-- same characteristics as #arrow, as 8 / 3.2 = 2.5 -->
+      <line x1="0" y1="0" x2="0" y2="8" />
+      <line x1="0" y1="0" x2="3.2" y2="3.2" stroke-linecap="round" />
+      <line x1="0" y1="0" x2="-3.2" y2="3.2" stroke-linecap="round" />
+    </g>
     <g id="slash">
       <line x1="0" y1="11" x2="3" y2="0" />
     </g>
@@ -291,12 +297,7 @@
   <g transform="translate(64, 64)">
     <path d="M 13 16 v -8 a 2 2 0 0 1 2 -2 h 10 a 2 2 0 0 1 2 2 v 8" />
     <line x1="13" y1="8" x2="27" y2="8" />
-    <g transform="translate(15, 13)">
-      <!-- same characteristics as #arrow, as 8 / 3.2 = 2.5 -->
-      <line x1="6" y1="0" x2="6" y2="8" />
-      <line x1="6" y1="0" x2="9.2" y2="3.2" stroke-linecap="round" />
-      <line x1="6" y1="0" x2="2.8" y2="3.2" stroke-linecap="round" />
-    </g>
+    <use href="#smallerArrow" transform="translate(21, 13)" />
     <path d="M 5 26 h 1.5 a 2 2 0 0 0 2 -2 v -3 a 2 2 0 0 1 2 -2 h 4
                           a 2 2 0 0 1 2 2 v 3 a 2 2 0 0 0 2 2 h 1.5" />
   </g>
@@ -490,6 +491,12 @@
     <use href="#windowTopArea" x="6" y="6" />
     <path d="M 13 18 h -5 a 2 2 0 0 1 -2 -2 v -4" />
     <use href="#undoCloseSign" />
+  </g>
+  <!-- toggleFullscreenWindow -->
+  <g transform="translate(256, 128)">
+    <use href="#window" x="5" y="5" />
+    <use href="#smallerArrow" transform="translate(27, 14) rotate(45)" />
+    <use href="#smallerArrow" transform="translate(14, 27) rotate(-135)" />
   </g>
   <!-- openLink -->
   <g transform="translate(0, 160)">
