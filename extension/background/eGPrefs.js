@@ -539,7 +539,7 @@ let eGPrefs = {
   },
   
   _updateActions: function(actionsToRemove, actionsToAdd, actionsToRename) {
-    this.getPref("stats.actions").then(prefValue => {
+    return this.getPref("stats.actions").then(prefValue => {
       let actionsStats = JSON.parse(prefValue);
       actionsToRemove.forEach(actionName => {
         delete actionsStats[actionName];
