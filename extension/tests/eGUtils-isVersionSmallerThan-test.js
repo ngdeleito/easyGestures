@@ -36,15 +36,16 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-QUnit.test("test isVersionSmallerOrEqualThan",
+QUnit.test("test isVersionSmallerThan",
   function(assert) {
-  assert.ok(eGUtils.isVersionSmallerOrEqualThan("5.2", "5.2"));
-  assert.ok(eGUtils.isVersionSmallerOrEqualThan("5.2", "5.2.1"));
-  assert.ok(eGUtils.isVersionSmallerOrEqualThan("5.2.1", "5.2.2"));
-  assert.ok(eGUtils.isVersionSmallerOrEqualThan("5.2", "5.3"));
-  assert.ok(eGUtils.isVersionSmallerOrEqualThan("5.2", "6.0"));
-  assert.notOk(eGUtils.isVersionSmallerOrEqualThan("5.2.1", "5.2"));
-  assert.notOk(eGUtils.isVersionSmallerOrEqualThan("5.2.2", "5.2.1"));
-  assert.notOk(eGUtils.isVersionSmallerOrEqualThan("5.3", "5.2"));
-  assert.notOk(eGUtils.isVersionSmallerOrEqualThan("6.0", "5.2"));
+  assert.ok(eGUtils.isVersionSmallerThan("5.2", "5.2.1"));
+  assert.ok(eGUtils.isVersionSmallerThan("5.2.1", "5.2.2"));
+  assert.ok(eGUtils.isVersionSmallerThan("5.2", "5.3"));
+  assert.ok(eGUtils.isVersionSmallerThan("5.2", "6.0"));
+  assert.notOk(eGUtils.isVersionSmallerThan("5.2", "5.2"));
+  assert.notOk(eGUtils.isVersionSmallerThan("5.2.1", "5.2.1"));
+  assert.notOk(eGUtils.isVersionSmallerThan("5.2.1", "5.2"));
+  assert.notOk(eGUtils.isVersionSmallerThan("5.2.2", "5.2.1"));
+  assert.notOk(eGUtils.isVersionSmallerThan("5.3", "5.2"));
+  assert.notOk(eGUtils.isVersionSmallerThan("6.0", "5.2"));
 });

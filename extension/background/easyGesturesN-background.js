@@ -198,13 +198,13 @@ async function handleInstallOrUpgrade(details) {
     eGPrefs.initializeStats();
   }
   else if (details.reason === "update") {
-    if (eGUtils.isVersionSmallerOrEqualThan(details.previousVersion, "5.3")) {
+    if (eGUtils.isVersionSmallerThan(details.previousVersion, "5.3")) {
       await eGPrefs.updateToV5_3();
     }
-    if (eGUtils.isVersionSmallerOrEqualThan(details.previousVersion, "5.4")) {
+    if (eGUtils.isVersionSmallerThan(details.previousVersion, "5.4")) {
       await eGPrefs.updateToV5_4();
     }
-    if (eGUtils.isVersionSmallerOrEqualThan(details.previousVersion, "6.2")) {
+    if (eGUtils.isVersionSmallerThan(details.previousVersion, "6.2")) {
       await eGPrefs.updateToV6_2();
     }
   }

@@ -38,7 +38,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 "use strict";
 
 let eGUtils = {
-  isVersionSmallerOrEqualThan(oldVersion, newVersion) {
+  isVersionSmallerThan(oldVersion, newVersion) {
     let oldVersionArray = oldVersion.split(".");
     let newVersionArray = newVersion.split(".");
     
@@ -53,7 +53,7 @@ let eGUtils = {
            (oldVersionArray[0] === newVersionArray[0] &&
              oldVersionArray[1] < newVersionArray[1] ||
              (oldVersionArray[1] === newVersionArray[1] &&
-               oldVersionArray[2] <= newVersionArray[2]));
+               oldVersionArray[2] < newVersionArray[2]));
   },
   
   performOnCurrentTab(aFunction) {
