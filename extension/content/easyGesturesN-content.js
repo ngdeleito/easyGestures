@@ -73,17 +73,12 @@ function setPieMenuSettingsWithinTopmostFrame() {
     "menus.mainAlt1", "menus.mainAlt2Enabled", "menus.mainAlt2", "menus.extra",
     "menus.extraAlt1Enabled", "menus.extraAlt1", "menus.extraAlt2Enabled",
     "menus.extraAlt2", "menus.contextLink", "menus.contextImage",
-    "menus.contextSelection", "menus.contextTextbox", "customizations.loadURL1",
-    "customizations.loadURL2", "customizations.loadURL3",
-    "customizations.loadURL4", "customizations.loadURL5",
-    "customizations.loadURL6", "customizations.loadURL7",
-    "customizations.loadURL8", "customizations.loadURL9",
-    "customizations.loadURL10", "customizations.runScript1",
-    "customizations.runScript2", "customizations.runScript3",
-    "customizations.runScript4", "customizations.runScript5",
-    "customizations.runScript6", "customizations.runScript7",
-    "customizations.runScript8", "customizations.runScript9",
-    "customizations.runScript10"
+    "menus.contextSelection", "menus.contextTextbox",
+    "customizations.runScript1", "customizations.runScript2",
+    "customizations.runScript3", "customizations.runScript4",
+    "customizations.runScript5", "customizations.runScript6",
+    "customizations.runScript7", "customizations.runScript8",
+    "customizations.runScript9", "customizations.runScript10"
   ]).then(prefs => {
     if (Object.keys(prefs).length === 0 || prefs.installOrUpgradeTriggered) {
       // an install or upgrade procedure is ongoing, we wait for the background
@@ -91,15 +86,10 @@ function setPieMenuSettingsWithinTopmostFrame() {
       return ;
     }
     
-    eGPieMenu.settings.loadURLActionPrefs = {};
     eGPieMenu.settings.runScriptActionPrefs = {};
     for (let key in prefs) {
       let prefName = key.split(".")[1];
-      if (prefName.startsWith("loadURL")) {
-        eGPieMenu.settings.loadURLActionPrefs[prefName] =
-          prefs[key].split("\u2022");
-      }
-      else if (prefName.startsWith("runScript")) {
+      if (prefName.startsWith("runScript")) {
         eGPieMenu.settings.runScriptActionPrefs[prefName] =
           prefs[key].split("\u2022");
       }

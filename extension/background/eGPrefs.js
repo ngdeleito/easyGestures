@@ -158,9 +158,7 @@ let eGPrefs = {
     
     function checkPossibleLoadURLValues(newPrefValue) {
       let values = newPrefValue.split("\u2022");
-      return values.length === 4 &&
-             typeof JSON.parse(values[2]) === "boolean" &&
-             typeof JSON.parse(values[3]) === "boolean";
+      return values.length === 3 && typeof JSON.parse(values[2]) === "boolean";
     }
     
     function checkPossibleRunScriptValues(newPrefValue) {
@@ -208,8 +206,7 @@ let eGPrefs = {
     
     for (let i=1; i<=10; i++) {
       this._setStringPref(defaultPrefs, "customizations.loadURL" + i,
-                          "\u2022\u2022false\u2022false",
-                          checkPossibleLoadURLValues);
+                          "\u2022\u2022false", checkPossibleLoadURLValues);
       this._setStringPref(defaultPrefs, "customizations.runScript" + i,
                           "\u2022\u2022", checkPossibleRunScriptValues);
     }
@@ -653,6 +650,20 @@ let eGPrefs = {
       return browser.storage.local.set({
         "stats.actions": JSON.stringify(actionsStats)
       });
+    }));
+    promises.push(browser.storage.local.get(["customizations.loadURL1",
+      "customizations.loadURL2", "customizations.loadURL3",
+      "customizations.loadURL4", "customizations.loadURL5",
+      "customizations.loadURL6", "customizations.loadURL7",
+      "customizations.loadURL8", "customizations.loadURL9",
+      "customizations.loadURL10"
+    ]).then(prefs => {
+      for (let key in prefs) {
+        let prefArray = prefs[key].split("\u2022");
+        prefArray.splice(2, 1);
+        prefs[key] = prefArray.join("\u2022");
+      }
+      return browser.storage.local.set(prefs);
     }));
     return Promise.all(promises);
   }

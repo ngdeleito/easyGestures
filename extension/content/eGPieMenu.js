@@ -354,26 +354,6 @@ let eGPieMenu = {
       
       let iconName = action;
       
-      // if (action.startsWith("loadURL")) { // new icon path for loadURL ?
-      //   if (this.settings.loadURLActionPrefs[action][2] === "true" &&
-      //       this.settings.loadURLActionPrefs[action][1] !== "") {
-      //     browser.runtime.sendMessage({
-      //       messageName: "retrieveAndAddFavicon",
-      //       aURL: this.settings.loadURLActionPrefs[action][1]
-      //     }).then(aMessage => {
-      //       let faviconURL = aMessage.aURL;
-      //       if (faviconURL === "" || (document.documentURI.startsWith("https://") &&
-      //                                 faviconURL.startsWith("http://"))) {
-      //         anActionNode.className = action;
-      //       }
-      //       else {
-      //         anActionNode.style.maskImage = "url('" + faviconURL + "')";
-      //         anActionNode.className = "customIcon";
-      //       }
-      //     });
-      //   }
-      // }
-      // else
       if (action.startsWith("runScript")) { // new icon path for runScript?
         let iconPath = this.settings.runScriptActionPrefs[action][2];
         if (iconPath !== "" && !document.documentURI.startsWith("https://")) {

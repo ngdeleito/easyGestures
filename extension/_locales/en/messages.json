@@ -202,7 +202,6 @@
   "customizations.loadURLActions.newWindow": { "message": "In a new window" },
   "customizations.tooltip": { "message": "Tooltip" },
   "customizations.URL": { "message": "URL" },
-  "customizations.useFavicon": { "message": "Use site favicon (when possible)" },
   "customizations.openInPrivateWindow": { "message": "Open in a private window" },
   "customizations.code": { "message": "Code" },
   "customizations.customIconURL": { "message": "Custom icon URL" },

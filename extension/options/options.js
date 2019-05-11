@@ -37,8 +37,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-const DEFAULT_FAVICON_URL = "defaultFavicon.svg";
-
 let prefChanged = false;
 
 window.addEventListener("load", optionsLoadHandler);
@@ -244,28 +242,10 @@ function createLoadURLActions() {
     tr.appendChild(document.createElement("th"));
     td = document.createElement("td");
     input = document.createElement("input");
-    input.id = actionName + "_faviconCheckbox";
-    input.type = "checkbox";
-    td.appendChild(input);
-    let label = document.createElement("label");
-    label.htmlFor = input.id;
-    label.textContent = browser.i18n.getMessage("customizations.useFavicon");
-    td.appendChild(label);
-    let img = document.createElement("img");
-    img.id = actionName + "_favicon";
-    img.src = DEFAULT_FAVICON_URL;
-    td.appendChild(img);
-    tr.appendChild(td);
-    table.appendChild(tr);
-    
-    tr = document.createElement("tr");
-    tr.appendChild(document.createElement("th"));
-    td = document.createElement("td");
-    input = document.createElement("input");
     input.id = actionName + "_openInPrivateWindowCheckbox";
     input.type = "checkbox";
     td.appendChild(input);
-    label = document.createElement("label");
+    let label = document.createElement("label");
     label.htmlFor = input.id;
     label.textContent =
       browser.i18n.getMessage("customizations.openInPrivateWindow");
@@ -374,21 +354,6 @@ function setDisabledStatusForSelectWithTextInputControl(control) {
   aTextInputElement.disabled = shouldBeDisabled;
 }
 
-function addFavicon(url, actionName) {
-  // if (url === "") {
-    document.getElementById(actionName + "_favicon").src = DEFAULT_FAVICON_URL;
-  // }
-  // else {
-  //   browser.runtime.sendMessage({
-  //     messageName: "retrieveAndAddFavicon",
-  //     aURL: url
-  //   }).then(aMessage => {
-  //     document.getElementById(actionName + "_favicon").src =
-  //       aMessage.aURL !== "" ? aMessage.aURL : DEFAULT_FAVICON_URL;
-  //   });
-  // }
-}
-
 function initializePreferenceControl(control) {
   function initializeSelectWithTextInputControl(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
@@ -433,18 +398,8 @@ function initializePreferenceControl(control) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_URL").value = prefValue[1];
-      let isFaviconEnabled = prefValue[2] === "true";
-      document.getElementById(actionName + "_faviconCheckbox").checked =
-        isFaviconEnabled;
-      if (isFaviconEnabled) {
-        addFavicon(prefValue[1], actionName);
-      }
-      else {
-        document.getElementById(actionName + "_favicon").src =
-          DEFAULT_FAVICON_URL;
-      }
       document.getElementById(actionName + "_openInPrivateWindowCheckbox")
-              .checked = prefValue[3] === "true";
+              .checked = prefValue[2] === "true";
     });
   }
   
@@ -535,7 +490,6 @@ function initializePreferenceControl(control) {
 function preparePreferenceValueForLoadURL(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
           document.getElementById(actionName + "_URL").value,
-          document.getElementById(actionName + "_faviconCheckbox").checked,
           document.getElementById(actionName + "_openInPrivateWindowCheckbox")
                   .checked];
 }
@@ -550,25 +504,6 @@ function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {
 
 function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
-    if (document.getElementById(actionName + "_faviconCheckbox").checked) {
-      addFavicon(this.value, actionName);
-    }
-    prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForLoadURL(actionName));
-  }, false);
-}
-
-function addEventListenerToLoadURLFavicon(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
-    if (this.checked) {
-      addFavicon(document.getElementById(actionName + "_URL").value,
-                 actionName);
-    }
-    else {
-      document.getElementById(actionName + "_favicon").src =
-        DEFAULT_FAVICON_URL;
-    }
     prefChanged = true;
     eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
       preparePreferenceValueForLoadURL(actionName));
@@ -688,8 +623,6 @@ function addOnchangeListenerToPreferenceControl(control) {
       document.getElementById(control.id + "_tooltip"), control.id);
     addEventListenerToLoadURLURL(control.dataset.preference,
       document.getElementById(control.id + "_URL"), control.id);
-    addEventListenerToLoadURLFavicon(control.dataset.preference,
-      document.getElementById(control.id + "_faviconCheckbox"), control.id);
     addEventListenerToLoadURLComponent(control.dataset.preference,
       document.getElementById(control.id + "_openInPrivateWindowCheckbox"),
       control.id);
