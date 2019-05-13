@@ -204,7 +204,6 @@
   "customizations.URL": { "message": "URL" },
   "customizations.openInPrivateWindow": { "message": "Ouvrir dans une fenêtre privée" },
   "customizations.code": { "message": "Code" },
-  "customizations.customIconURL": { "message": "URL de l'icône personnalisée" },
   "customizations.openLink": { "message": "Personnaliser l'action 'Ouvrir le lien'" },
   "customizations.openLink.currentTab": { "message": "Ouvrir le lien dans l'onglet courant" },
   "customizations.openLink.newTab": { "message": "Ouvrir le lien dans un nouvel onglet" },

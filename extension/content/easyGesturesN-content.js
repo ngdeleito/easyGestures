@@ -73,12 +73,7 @@ function setPieMenuSettingsWithinTopmostFrame() {
     "menus.mainAlt1", "menus.mainAlt2Enabled", "menus.mainAlt2", "menus.extra",
     "menus.extraAlt1Enabled", "menus.extraAlt1", "menus.extraAlt2Enabled",
     "menus.extraAlt2", "menus.contextLink", "menus.contextImage",
-    "menus.contextSelection", "menus.contextTextbox",
-    "customizations.runScript1", "customizations.runScript2",
-    "customizations.runScript3", "customizations.runScript4",
-    "customizations.runScript5", "customizations.runScript6",
-    "customizations.runScript7", "customizations.runScript8",
-    "customizations.runScript9", "customizations.runScript10"
+    "menus.contextSelection", "menus.contextTextbox"
   ]).then(prefs => {
     if (Object.keys(prefs).length === 0 || prefs.installOrUpgradeTriggered) {
       // an install or upgrade procedure is ongoing, we wait for the background
@@ -86,16 +81,9 @@ function setPieMenuSettingsWithinTopmostFrame() {
       return ;
     }
     
-    eGPieMenu.settings.runScriptActionPrefs = {};
     for (let key in prefs) {
       let prefName = key.split(".")[1];
-      if (prefName.startsWith("runScript")) {
-        eGPieMenu.settings.runScriptActionPrefs[prefName] =
-          prefs[key].split("\u2022");
-      }
-      else {
-        eGPieMenu.settings[prefName] = prefs[key];
-      }
+      eGPieMenu.settings[prefName] = prefs[key];
     }
     eGPieMenu.init();
   });

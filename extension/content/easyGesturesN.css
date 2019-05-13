@@ -1014,12 +1014,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --icon-position-x: 9;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .easyGesturesActionsNode .customIcon {
-  --mask-size-value: calc(var(--icon-size) * 0.625);
-  mask-repeat: no-repeat;
-  mask-size: var(--mask-size-value) var(--mask-size-value) !important;
-  mask-position: calc(var(--mask-size-value) * 0.3) calc(var(--mask-size-value) * 0.3);
-}
 #easyGesturesPieMenu .easyGesturesNPreferences,
 [data-action="easyGesturesNPreferences"], .actionIcon.easyGesturesNPreferences {
   --icon-position-x: 0;

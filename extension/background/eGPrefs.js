@@ -162,7 +162,7 @@ let eGPrefs = {
     }
     
     function checkPossibleRunScriptValues(newPrefValue) {
-      return newPrefValue.split("\u2022").length === 3;
+      return newPrefValue.split("\u2022").length === 2;
     }
     
     let defaultPrefs = new Map();
@@ -208,7 +208,7 @@ let eGPrefs = {
       this._setStringPref(defaultPrefs, "customizations.loadURL" + i,
                           "\u2022\u2022false", checkPossibleLoadURLValues);
       this._setStringPref(defaultPrefs, "customizations.runScript" + i,
-                          "\u2022\u2022", checkPossibleRunScriptValues);
+                          "\u2022", checkPossibleRunScriptValues);
     }
     
     this._setStringPref(defaultPrefs, "customizations.openLink", "newTab",
@@ -656,7 +656,12 @@ let eGPrefs = {
       "customizations.loadURL4", "customizations.loadURL5",
       "customizations.loadURL6", "customizations.loadURL7",
       "customizations.loadURL8", "customizations.loadURL9",
-      "customizations.loadURL10"
+      "customizations.loadURL10", "customizations.runScript1",
+      "customizations.runScript2", "customizations.runScript3",
+      "customizations.runScript4", "customizations.runScript5",
+      "customizations.runScript6", "customizations.runScript7",
+      "customizations.runScript8", "customizations.runScript9",
+      "customizations.runScript10"
     ]).then(prefs => {
       for (let key in prefs) {
         let prefArray = prefs[key].split("\u2022");

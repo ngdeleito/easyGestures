@@ -280,18 +280,6 @@ function createRunScriptActions() {
     tr.appendChild(td);
     table.appendChild(tr);
     
-    tr = document.createElement("tr");
-    th = document.createElement("th");
-    th.textContent = browser.i18n.getMessage("customizations.customIconURL");
-    tr.appendChild(th);
-    td = document.createElement("td");
-    input = document.createElement("input");
-    input.id = actionName + "_customIconURL";
-    input.type = "url";
-    td.appendChild(input);
-    tr.appendChild(td);
-    table.appendChild(tr);
-    
     container.appendChild(table);
   }
 }
@@ -407,8 +395,6 @@ function initializePreferenceControl(control) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_code").value = prefValue[1];
-      document.getElementById(actionName + "_customIconURL").value =
-        prefValue[2];
     });
   }
   
@@ -512,8 +498,7 @@ function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
 
 function preparePreferenceValueForRunScript(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
-          document.getElementById(actionName + "_code").value,
-          document.getElementById(actionName + "_customIconURL").value];
+          document.getElementById(actionName + "_code").value];
 }
 
 function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
@@ -633,8 +618,6 @@ function addOnchangeListenerToPreferenceControl(control) {
       document.getElementById(control.id + "_tooltip"), control.id);
     addEventListenerToRunScriptComponent(control.dataset.preference,
       document.getElementById(control.id + "_code"), control.id);
-    addEventListenerToRunScriptComponent(control.dataset.preference,
-      document.getElementById(control.id + "_customIconURL"), control.id);
   }
   
   function addOnchangeListenerToStringRadiogroupControl(control) {

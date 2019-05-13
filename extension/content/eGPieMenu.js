@@ -347,25 +347,12 @@ let eGPieMenu = {
     anActionsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
                                    this._currentLayout.isExtraMenu);
     
-    // creating actions images
     actions.forEach(function(action, index) {
       let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
       anActionNode.className = "sector" + index;
-      
-      let iconName = action;
-      
-      if (action.startsWith("runScript")) { // new icon path for runScript?
-        let iconPath = this.settings.runScriptActionPrefs[action][2];
-        if (iconPath !== "" && !document.documentURI.startsWith("https://")) {
-          anActionNode.style.maskImage =
-            "url('" + iconPath.replace(/\\/g , "\\\\") + "')";
-          iconName = "customIcon";
-        }
-      }
-      
-      anActionNode.classList.add(iconName);
+      anActionNode.classList.add(action);
       anActionsNode.appendChild(anActionNode);
-    }, this);
+    });
     
     return anActionsNode;
   },
