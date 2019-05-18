@@ -290,7 +290,7 @@ function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) 
       content = content.replace("%s", eGContext.selection);
       content = content.replace("%u", eGContext.pageURL);
       return action.call(this, content,
-                         3 in prefValue ? prefValue[3] : undefined);
+                         2 in prefValue ? prefValue[2] : undefined);
     });
   }, function() {
     return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
