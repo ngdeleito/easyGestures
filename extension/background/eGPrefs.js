@@ -173,7 +173,7 @@ let eGPrefs = {
     
     function checkPossibleLoadURLValues(newPrefValue) {
       return newPrefValue.length === 3 &&
-             typeof JSON.parse(newPrefValue[2]) === "boolean";
+             typeof newPrefValue[2] === "boolean";
     }
     
     function checkPossibleRunScriptValues(newPrefValue) {
@@ -221,7 +221,7 @@ let eGPrefs = {
     
     for (let i=1; i<=10; i++) {
       setArrayPref(defaultPrefs, "customizations.loadURL" + i,
-                   ["", "", "false"], checkPossibleLoadURLValues);
+                   ["", "", false], checkPossibleLoadURLValues);
       setArrayPref(defaultPrefs, "customizations.runScript" + i, ["" , ""],
                    checkPossibleRunScriptValues);
     }
@@ -679,6 +679,9 @@ let eGPrefs = {
       for (let key in prefs) {
         let prefArray = prefs[key].split("\u2022");
         prefArray.splice(2, 1);
+        if (prefArray[2] !== undefined) {
+          prefArray[2] = prefArray[2] === "true";
+        }
         prefs[key] = prefArray;
       }
       return browser.storage.local.set(prefs);

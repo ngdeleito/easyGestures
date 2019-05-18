@@ -387,7 +387,7 @@ function initializePreferenceControl(control) {
       document.getElementById(actionName + "_tooltip").value = prefValue[0];
       document.getElementById(actionName + "_URL").value = prefValue[1];
       document.getElementById(actionName + "_openInPrivateWindowCheckbox")
-              .checked = prefValue[2] === "true";
+              .checked = prefValue[2];
     });
   }
   
@@ -477,7 +477,7 @@ function preparePreferenceValueForLoadURL(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
           document.getElementById(actionName + "_URL").value,
           document.getElementById(actionName + "_openInPrivateWindowCheckbox")
-                  .checked ? "true" : "false"];
+                  .checked];
 }
 
 function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {

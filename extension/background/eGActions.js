@@ -318,7 +318,7 @@ NumberedAction.prototype.getTooltip = function() {
 function LoadURLAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "loadURL", number,
     function(URL, openInPrivateWindow) {
-      if (openInPrivateWindow === "true") {
+      if (openInPrivateWindow) {
         browser.windows.create({
           incognito: true,
           url: URL
