@@ -191,18 +191,18 @@ QUnit.test("test importPrefsFromString with invalid preference values",
               result.prefs === "stats.actions");
     done17();
   });
-  // complex prefs
+  // array prefs
   let done18 = assert.async();
   eGPrefs.importPrefsFromString("[[\"customizations.loadURL1\", " +
-                                "\"a\u2022b\u2022c\"]]").then(result => {
+                                "[\"a\", \"b\", \"c\", \"d\"]]]")
+         .then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "customizations.loadURL1");
     done18();
   });
   let done19 = assert.async();
   eGPrefs.importPrefsFromString("[[\"customizations.loadURL1\", " +
-                                "\"a\u2022b\u2022true\u2022d\"]]")
-         .then(result => {
+                                "[\"a\", \"b\", \"c\"]]]").then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "customizations.loadURL1");
     done19();

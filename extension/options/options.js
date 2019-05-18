@@ -477,7 +477,7 @@ function preparePreferenceValueForLoadURL(actionName) {
   return [document.getElementById(actionName + "_tooltip").value,
           document.getElementById(actionName + "_URL").value,
           document.getElementById(actionName + "_openInPrivateWindowCheckbox")
-                  .checked];
+                  .checked ? "true" : "false"];
 }
 
 function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {

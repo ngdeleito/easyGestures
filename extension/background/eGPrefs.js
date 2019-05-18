@@ -91,6 +91,16 @@ StringPref.prototype.isNewValuePossible = function(newPrefValue) {
   return typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue);
 };
 
+function ArrayPref(name, value, isPossibleValue) {
+  Pref.call(this, name, value);
+  this.isPossibleValue = isPossibleValue;
+}
+ArrayPref.prototype = Object.create(Pref.prototype);
+ArrayPref.prototype.constructor = ArrayPref;
+ArrayPref.prototype.isNewValuePossible = function(newPrefValue) {
+  return Array.isArray(newPrefValue) && this.isPossibleValue(newPrefValue);
+};
+
 let eGPrefs = {
   _setBoolPref: function(aPrefsMap, prefName, prefValue) {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
@@ -156,13 +166,18 @@ let eGPrefs = {
       aPrefsMap.set(prefName, new IntPref(prefName, prefValue, possibleValues));
     }
     
+    function setArrayPref(aPrefsMap, prefName, prefValue, possibleValues) {
+      aPrefsMap.set(prefName,
+                    new ArrayPref(prefName, prefValue, possibleValues));
+    }
+    
     function checkPossibleLoadURLValues(newPrefValue) {
-      let values = newPrefValue.split("\u2022");
-      return values.length === 3 && typeof JSON.parse(values[2]) === "boolean";
+      return newPrefValue.length === 3 &&
+             typeof JSON.parse(newPrefValue[2]) === "boolean";
     }
     
     function checkPossibleRunScriptValues(newPrefValue) {
-      return newPrefValue.split("\u2022").length === 2;
+      return newPrefValue.length === 2;
     }
     
     let defaultPrefs = new Map();
@@ -205,10 +220,10 @@ let eGPrefs = {
     });
     
     for (let i=1; i<=10; i++) {
-      this._setStringPref(defaultPrefs, "customizations.loadURL" + i,
-                          "\u2022\u2022false", checkPossibleLoadURLValues);
-      this._setStringPref(defaultPrefs, "customizations.runScript" + i,
-                          "\u2022", checkPossibleRunScriptValues);
+      setArrayPref(defaultPrefs, "customizations.loadURL" + i,
+                   ["", "", "false"], checkPossibleLoadURLValues);
+      setArrayPref(defaultPrefs, "customizations.runScript" + i, ["" , ""],
+                   checkPossibleRunScriptValues);
     }
     
     this._setStringPref(defaultPrefs, "customizations.openLink", "newTab",
@@ -456,14 +471,12 @@ let eGPrefs = {
   },
   
   getLoadURLOrRunScriptPrefValue: function(aPrefName) {
-    return this.getPref("customizations." + aPrefName).then(prefValue => {
-      return prefValue.split("\u2022");
-    });
+    return this.getPref("customizations." + aPrefName);
   },
   
   setLoadURLOrRunScriptPrefValue: function(aPrefName, aPrefValueAsArray) {
     let prefObject = {};
-    prefObject[aPrefName] = aPrefValueAsArray.join("\u2022");
+    prefObject[aPrefName] = aPrefValueAsArray;
     browser.storage.local.set(prefObject);
   },
   
@@ -666,7 +679,7 @@ let eGPrefs = {
       for (let key in prefs) {
         let prefArray = prefs[key].split("\u2022");
         prefArray.splice(2, 1);
-        prefs[key] = prefArray.join("\u2022");
+        prefs[key] = prefArray;
       }
       return browser.storage.local.set(prefs);
     }));
