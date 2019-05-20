@@ -223,38 +223,38 @@ let eGPieMenu = {
       main: new MenuLayout(this, "main", 0,
                            this.settings.mainAlt1Enabled ? "mainAlt1" :
                              (this.settings.mainAlt2Enabled ? "mainAlt2" : "main"),
-                           this.settings.main.split("/")),
+                           this.settings.main),
       
       mainAlt1: new MenuLayout(this, "mainAlt1", 1,
                                this.settings.mainAlt2Enabled ? "mainAlt2" : "main",
-                               this.settings.mainAlt1.split("/")),
+                               this.settings.mainAlt1),
       
       mainAlt2: new MenuLayout(this, "mainAlt2", 2, "main",
-                               this.settings.mainAlt2.split("/")),
+                               this.settings.mainAlt2),
       
       extra: new ExtraMenuLayout(this, "extra", 0,
                                  this.settings.extraAlt1Enabled ? "extraAlt1" :
                                    (this.settings.extraAlt2Enabled ? "extraAlt2" : "extra"),
-                                 this.settings.extra.split("/")),
+                                 this.settings.extra),
       
       extraAlt1: new ExtraMenuLayout(this, "extraAlt1", 1,
                                      this.settings.extraAlt2Enabled ? "extraAlt2" : "extra",
-                                     this.settings.extraAlt1.split("/")),
+                                     this.settings.extraAlt1),
       
       extraAlt2: new ExtraMenuLayout(this, "extraAlt2", 2, "extra",
-                                     this.settings.extraAlt2.split("/")),
+                                     this.settings.extraAlt2),
       
       contextLink: new ContextualMenuLayout(this, "contextLink",
-                                            this.settings.contextLink.split("/")),
+                                            this.settings.contextLink),
       
       contextImage: new ContextualMenuLayout(this, "contextImage",
-                                             this.settings.contextImage.split("/")),
+                                             this.settings.contextImage),
       
       contextSelection: new ContextualMenuLayout(this, "contextSelection",
-                                                 this.settings.contextSelection.split("/")),
+                                                 this.settings.contextSelection),
       
       contextTextbox: new ContextualMenuLayout(this, "contextTextbox",
-                                               this.settings.contextTextbox.split("/"))
+                                               this.settings.contextTextbox)
     };
     
     this.specialNodesNode = null;

@@ -106,6 +106,11 @@ let eGPrefs = {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
   },
   
+  _setArrayPref: function(aPrefsMap, prefName, prefValue, isPossibleValue) {
+    aPrefsMap.set(prefName,
+                  new ArrayPref(prefName, prefValue, isPossibleValue));
+  },
+  
   _setStringPref: function(aPrefsMap, prefName, prefValue, isPossibleValue) {
     aPrefsMap.set(prefName,
                   new StringPref(prefName, prefValue, isPossibleValue));
@@ -113,15 +118,10 @@ let eGPrefs = {
   
   _addDefaultMenusMap(aPrefsMap) {
     function checkPossibleMenuValues(numberOfActions, newPrefValue) {
-      let actionsArray = newPrefValue.split("/");
-      if (actionsArray.length === numberOfActions) {
-        return actionsArray.every(function(element) {
-          return element in eGActions;
-        });
-      }
-      else {
-        return false;
-      }
+      return newPrefValue.length === numberOfActions &&
+             newPrefValue.every(function(element) {
+               return element in eGActions;
+             });
     }
     
     function checkPossibleNonExtraMenuValues(newPrefValue) {
@@ -133,18 +133,34 @@ let eGPrefs = {
     }
     
     let nonExtraMenus = [
-      ["main",             "nextTab/pageTop/showExtraMenu/newTab/back/empty/closeTab/reload/previousTab/empty"],
-      ["mainAlt1",         "forward/loadPageInNewTab/showExtraMenu/undoCloseTab/bookmarkThisPage/empty/pageBottom/empty/empty/empty"],
-      ["mainAlt2",         "loadURL2/loadURL1/showExtraMenu/loadURL7/loadURL6/runScript2/loadURL5/loadURL4/loadURL3/runScript1"],
-      ["contextLink",      "bookmarkThisLink/saveLinkAs/copyLink/openLink/openLinkInNewPrivateWindow/empty/empty/empty/removeBookmarkToThisLink/empty"],
-      ["contextImage",     "empty/saveImageAs/copyImage/copyImageLocation/hideImages/empty/empty/empty/empty/empty"],
-      ["contextSelection", "findAndHighlightSelection/paste/copy/cut/searchWeb/empty/empty/empty/removeHighlight/empty"],
-      ["contextTextbox",   "selectAll/paste/copy/cut/empty/empty/empty/empty/empty/empty"]
+      ["main", ["nextTab", "pageTop", "showExtraMenu", "newTab", "back",
+                "empty", "closeTab", "reload", "previousTab", "empty"]],
+      ["mainAlt1", ["forward", "loadPageInNewTab", "showExtraMenu",
+                    "undoCloseTab", "bookmarkThisPage", "empty", "pageBottom",
+                    "empty", "empty", "empty"]],
+      ["mainAlt2", ["loadURL2", "loadURL1", "showExtraMenu", "loadURL7",
+                    "loadURL6", "runScript2", "loadURL5", "loadURL4",
+                    "loadURL3", "runScript1"]],
+      ["contextLink", ["bookmarkThisLink", "saveLinkAs", "copyLink", "openLink",
+                       "openLinkInNewPrivateWindow", "empty", "empty", "empty",
+                       "removeBookmarkToThisLink", "empty"]],
+      ["contextImage", ["empty", "saveImageAs", "copyImage",
+                        "copyImageLocation", "hideImages", "empty", "empty",
+                        "empty", "empty", "empty"]],
+      ["contextSelection", ["findAndHighlightSelection", "paste", "copy", "cut",
+                            "searchWeb", "empty", "empty", "empty",
+                            "removeHighlight", "empty"]],
+      ["contextTextbox", ["selectAll", "paste", "copy", "cut", "empty", "empty",
+                          "empty", "empty", "empty", "empty"]]
     ];
     let extraMenus = [
-      ["extra",     "pinUnpinTab/copyURLToIdentifier/copyPageURL/loadPageInNewPrivateWindow/newPrivateWindow"],
-      ["extraAlt1", "toggleFullscreen/takeTabScreenshot/findAndHighlightSelection/removeHighlight/enterReaderMode"],
-      ["extraAlt2", "zoomReset/zoomOut/zoomIn/savePageAs/printPage"]
+      ["extra", ["pinUnpinTab", "copyURLToIdentifier", "copyPageURL",
+                 "loadPageInNewPrivateWindow", "newPrivateWindow"]],
+      ["extraAlt1", ["toggleFullscreen", "takeTabScreenshot",
+                     "findAndHighlightSelection", "removeHighlight",
+                     "enterReaderMode"]],
+      ["extraAlt2", ["zoomReset", "zoomOut", "zoomIn", "savePageAs",
+                     "printPage"]]
     ];
     
     this._setBoolPref(aPrefsMap, "menus.mainAlt1Enabled", true);
@@ -152,23 +168,18 @@ let eGPrefs = {
     this._setBoolPref(aPrefsMap, "menus.extraAlt1Enabled", true);
     this._setBoolPref(aPrefsMap, "menus.extraAlt2Enabled", false);
     nonExtraMenus.forEach(function([menuName, actions]) {
-      this._setStringPref(aPrefsMap, "menus." + menuName, actions,
-                          checkPossibleNonExtraMenuValues);
+      this._setArrayPref(aPrefsMap, "menus." + menuName, actions,
+                         checkPossibleNonExtraMenuValues);
     }, this);
     extraMenus.forEach(function([menuName, actions]) {
-      this._setStringPref(aPrefsMap, "menus." + menuName, actions,
-                          checkPossibleExtraMenuValues);
+      this._setArrayPref(aPrefsMap, "menus." + menuName, actions,
+                         checkPossibleExtraMenuValues);
     }, this);
   },
   
   _getDefaultPrefsMap: function(platformOS) {
     function setIntPref(aPrefsMap, prefName, prefValue, possibleValues) {
       aPrefsMap.set(prefName, new IntPref(prefName, prefValue, possibleValues));
-    }
-    
-    function setArrayPref(aPrefsMap, prefName, prefValue, possibleValues) {
-      aPrefsMap.set(prefName,
-                    new ArrayPref(prefName, prefValue, possibleValues));
     }
     
     function checkPossibleLoadURLValues(newPrefValue) {
@@ -222,10 +233,10 @@ let eGPrefs = {
     });
     
     for (let i=1; i<=10; i++) {
-      setArrayPref(defaultPrefs, "customizations.loadURL" + i,
-                   ["", "", false], checkPossibleLoadURLValues);
-      setArrayPref(defaultPrefs, "customizations.runScript" + i, ["" , ""],
-                   checkPossibleRunScriptValues);
+      this._setArrayPref(defaultPrefs, "customizations.loadURL" + i,
+                         ["", "", false], checkPossibleLoadURLValues);
+      this._setArrayPref(defaultPrefs, "customizations.runScript" + i,
+                         ["" , ""], checkPossibleRunScriptValues);
     }
     
     this._setStringPref(defaultPrefs, "customizations.openLink", "newTab",
@@ -391,7 +402,7 @@ let eGPrefs = {
   
   getMenuPrefAsArray: function(aPrefName) {
     return browser.storage.local.get(aPrefName).then(prefObject => {
-      return prefObject[aPrefName].split("/");
+      return prefObject[aPrefName];
     });
   },
   
@@ -409,7 +420,7 @@ let eGPrefs = {
   
   setMenuPref: function(aPrefName, prefValueAsArray) {
     let prefObject = {};
-    prefObject[aPrefName] = prefValueAsArray.join("/");
+    prefObject[aPrefName] = prefValueAsArray;
     browser.storage.local.set(prefObject);
   },
   
@@ -685,6 +696,16 @@ let eGPrefs = {
           prefArray[2] = prefArray[2] === "true";
         }
         prefs[key] = prefArray;
+      }
+      return browser.storage.local.set(prefs);
+    }));
+    promises.push(browser.storage.local.get(["menus.main", "menus.mainAlt1",
+      "menus.mainAlt2", "menus.extra", "menus.extraAlt1", "menus.extraAlt2",
+      "menus.contextLink", "menus.contextImage", "menus.contextSelection",
+      "menus.contextTextbox"
+    ]).then(prefs => {
+      for (let key in prefs) {
+        prefs[key] = prefs[key].split("/");
       }
       return browser.storage.local.set(prefs);
     }));
