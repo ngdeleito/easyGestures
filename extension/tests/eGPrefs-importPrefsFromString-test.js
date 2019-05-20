@@ -207,4 +207,11 @@ QUnit.test("test importPrefsFromString with invalid preference values",
               result.prefs === "customizations.loadURL1");
     done19();
   });
+  let done20 = assert.async();
+  eGPrefs.importPrefsFromString("[[\"customizations.loadURL1\", " +
+                                "[\"a\", true, true]]]").then(result => {
+    assert.ok(result.code === "nonImportedPrefs" &&
+              result.prefs === "customizations.loadURL1");
+    done20();
+  });
 });

@@ -172,12 +172,14 @@ let eGPrefs = {
     }
     
     function checkPossibleLoadURLValues(newPrefValue) {
-      return newPrefValue.length === 3 &&
+      return newPrefValue.length === 3 && typeof newPrefValue[0] === "string" &&
+             typeof newPrefValue[1] === "string" &&
              typeof newPrefValue[2] === "boolean";
     }
     
     function checkPossibleRunScriptValues(newPrefValue) {
-      return newPrefValue.length === 2;
+      return newPrefValue.length === 2 && typeof newPrefValue[0] === "string" &&
+             typeof newPrefValue[1] === "string";
     }
     
     let defaultPrefs = new Map();
