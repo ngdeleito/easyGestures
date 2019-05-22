@@ -164,14 +164,14 @@ QUnit.test("test importPrefsFromString with invalid preference values",
     done14();
   });
   let done15 = assert.async();
-  eGPrefs.importPrefsFromString("[[\"stats.actions\", \"[]\"]]")
+  eGPrefs.importPrefsFromString("[[\"stats.actions\", []]]")
          .then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "stats.actions");
     done15();
   });
   let done16 = assert.async();
-  eGPrefs.importPrefsFromString("[[\"stats.actions\", \"{}\"]]")
+  eGPrefs.importPrefsFromString("[[\"stats.actions\", {}]]")
          .then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "stats.actions");
@@ -183,7 +183,7 @@ QUnit.test("test importPrefsFromString with invalid preference values",
     statsActions[actionName] = 0;
   }
   statsActions.selectAll = false;
-  let prefToImportArray = [["stats.actions", JSON.stringify(statsActions)]];
+  let prefToImportArray = [["stats.actions", statsActions]];
   eGPrefs.importPrefsFromString(JSON.stringify(prefToImportArray))
          .then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&

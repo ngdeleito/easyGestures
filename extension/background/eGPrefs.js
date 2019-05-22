@@ -101,6 +101,17 @@ ArrayPref.prototype.isNewValuePossible = function(newPrefValue) {
   return Array.isArray(newPrefValue) && this.isPossibleValue(newPrefValue);
 };
 
+function ObjectPref(name, value, isPossibleValue) {
+  Pref.call(this, name, value);
+  this.isPossibleValue = isPossibleValue;
+}
+ObjectPref.prototype = Object.create(Pref.prototype);
+ObjectPref.prototype.constructor = ObjectPref;
+ObjectPref.prototype.isNewValuePossible = function(newPrefValue) {
+  return newPrefValue instanceof Object && !(newPrefValue instanceof Array) &&
+         this.isPossibleValue(newPrefValue);
+};
+
 let eGPrefs = {
   _setBoolPref: function(aPrefsMap, prefName, prefValue) {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
@@ -274,22 +285,20 @@ let eGPrefs = {
     for (let action in eGActions) {
       actionsStats[action] = 0;
     }
-    this._setStringPref(defaultStats, "stats.actions",
-                        JSON.stringify(actionsStats), function(newPrefValue) {
-      let statsActionsObject = JSON.parse(newPrefValue);
-      let result = statsActionsObject instanceof Object &&
-                   !(statsActionsObject instanceof Array);
-      let statsActions = Object.getOwnPropertyNames(statsActionsObject).sort();
+    defaultStats.set("stats.actions",
+                     new ObjectPref("stats.actions", actionsStats,
+                                    function(newPrefValue) {
+      let statsActions = Object.getOwnPropertyNames(newPrefValue).sort();
       let actions = Object.getOwnPropertyNames(eGActions).sort();
       let i = 0;
-      result = result && statsActions.length === actions.length;
+      let result = statsActions.length === actions.length;
       while (result && i < statsActions.length) {
         result = result && statsActions[i] === actions[i] &&
-                 Number.isInteger(statsActionsObject[statsActions[i]]);
+                 Number.isInteger(newPrefValue[statsActions[i]]);
         ++i;
       }
       return result;
-    });
+    }));
     
     return defaultStats;
   },
@@ -536,19 +545,16 @@ let eGPrefs = {
   incrementNoStats: function() {},
   
   updateStatsForAction: function(anActionName) {
-    this.getPref("stats.actions").then(prefValue => {
-      let actionsStats = JSON.parse(prefValue);
+    this.getPref("stats.actions").then(actionsStats => {
       ++actionsStats[anActionName];
       browser.storage.local.set({
-        "stats.actions": JSON.stringify(actionsStats)
+        "stats.actions": actionsStats
       });
     });
   },
   
   getStatsActionsPref: function() {
-    return this.getPref("stats.actions").then(prefValue => {
-      return JSON.parse(prefValue);
-    });
+    return this.getPref("stats.actions");
   },
   
   _updateActions: function(actionsToRemove, actionsToAdd, actionsToRename) {
@@ -664,7 +670,7 @@ let eGPrefs = {
       actionsStats.toggleFullscreenWindow = actionsStats.toggleFullscreen;
       actionsStats.toggleFullscreen = 0;
       return browser.storage.local.set({
-        "stats.actions": JSON.stringify(actionsStats)
+        "stats.actions": actionsStats
       });
     }));
     promises.push(browser.storage.local.get(["customizations.loadURL1",
