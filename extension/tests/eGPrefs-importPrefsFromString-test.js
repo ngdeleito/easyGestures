@@ -144,16 +144,15 @@ QUnit.test("test importPrefsFromString with invalid preference values",
     done11();
   });
   let done12 = assert.async();
-  eGPrefs.importPrefsFromString("[[\"stats.mainMenu\", \"[0]\"]]")
-         .then(result => {
+  eGPrefs.importPrefsFromString("[[\"stats.mainMenu\", [0]]]").then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "stats.mainMenu");
     done12();
   });
   let done13 = assert.async();
   eGPrefs.importPrefsFromString("[[\"stats.mainMenu\", " +
-                                "\"[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0," +
-                                "0,xxx,0,0,0]\"]]").then(result => {
+                                "[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0," +
+                                "0,\"xxx\",0,0,0]]]").then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "stats.mainMenu");
     done13();

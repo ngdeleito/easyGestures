@@ -255,23 +255,17 @@ let eGPrefs = {
                         (new Date()).toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
-    this._setStringPref(defaultStats, "stats.mainMenu",
-                        JSON.stringify(Array(30).fill(0)),
-                        function(newPrefValue) {
-      let statsMainMenuArray = JSON.parse(newPrefValue);
-      return Array.isArray(statsMainMenuArray) &&
-             statsMainMenuArray.length === 30 &&
-             statsMainMenuArray.every(function(element) {
+    this._setArrayPref(defaultStats, "stats.mainMenu", Array(30).fill(0),
+                       function(newPrefValue) {
+      return Array.isArray(newPrefValue) && newPrefValue.length === 30 &&
+             newPrefValue.every(function(element) {
                return Number.isInteger(element);
              });
     });
-    this._setStringPref(defaultStats, "stats.extraMenu",
-                        JSON.stringify(Array(15).fill(0)),
-                        function(newPrefValue) {
-      let statsExtraMenuArray = JSON.parse(newPrefValue);
-      return Array.isArray(statsExtraMenuArray) &&
-             statsExtraMenuArray.length === 15 &&
-             statsExtraMenuArray.every(function(element) {
+    this._setArrayPref(defaultStats, "stats.extraMenu", Array(15).fill(0),
+                       function(newPrefValue) {
+      return Array.isArray(newPrefValue) && newPrefValue.length === 15 &&
+             newPrefValue.every(function(element) {
                return Number.isInteger(element);
              });
     });
@@ -514,31 +508,27 @@ let eGPrefs = {
   },
   
   getStatsMainMenuPref: function() {
-    return this.getPref("stats.mainMenu").then(prefValue => {
-      return JSON.parse(prefValue);
-    });
+    return this.getPref("stats.mainMenu");
   },
   
   incrementStatsMainMenuPref: function(anIndex) {
     this.getStatsMainMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
-        "stats.mainMenu": JSON.stringify(anArray)
+        "stats.mainMenu": anArray
       });
     });
   },
   
   getStatsExtraMenuPref: function() {
-    return this.getPref("stats.extraMenu").then(prefValue => {
-      return JSON.parse(prefValue);
-    });
+    return this.getPref("stats.extraMenu");
   },
   
   incrementStatsExtraMenuPref: function(anIndex) {
     this.getStatsExtraMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
-        "stats.extraMenu": JSON.stringify(anArray)
+        "stats.extraMenu": anArray
       });
     });
   },
@@ -706,6 +696,14 @@ let eGPrefs = {
     ]).then(prefs => {
       for (let key in prefs) {
         prefs[key] = prefs[key].split("/");
+      }
+      return browser.storage.local.set(prefs);
+    }));
+    promises.push(browser.storage.local.get([
+      "stats.mainMenu", "stats.extraMenu"
+    ]).then(prefs => {
+      for (let key in prefs) {
+        prefs[key] = JSON.parse(prefs[key]);
       }
       return browser.storage.local.set(prefs);
     }));
