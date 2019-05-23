@@ -367,7 +367,7 @@ function initializePreferenceControl(control) {
   }
   
   function initializeMenuControl(control) {
-    eGPrefs.getMenuPrefAsArray(control.dataset.preference).then(prefValue => {
+    eGPrefs.getPref(control.dataset.preference).then(prefValue => {
       prefValue.forEach(function(value, index) {
         control.firstElementChild.childNodes[index].dataset.action = value;
         control.lastElementChild.childNodes[index]
@@ -483,16 +483,14 @@ function preparePreferenceValueForLoadURL(actionName) {
 function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForLoadURL(actionName));
+    eGPrefs.setPref(aPrefName, preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
 function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForLoadURL(actionName));
+    eGPrefs.setPref(aPrefName, preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
@@ -504,8 +502,7 @@ function preparePreferenceValueForRunScript(actionName) {
 function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
   element.addEventListener("change", function() {
     prefChanged = true;
-    eGPrefs.setLoadURLOrRunScriptPrefValue(aPrefName,
-      preparePreferenceValueForRunScript(actionName));
+    eGPrefs.setPref(aPrefName, preparePreferenceValueForRunScript(actionName));
   }, false);
 }
 
@@ -592,7 +589,7 @@ function addOnchangeListenerToPreferenceControl(control) {
         prefValueAsArray.push(value);
       }
       prefChanged = true;
-      eGPrefs.setMenuPref(control.dataset.preference, prefValueAsArray);
+      eGPrefs.setPref(control.dataset.preference, prefValueAsArray);
     }
     
     let selectElements = control.lastElementChild;

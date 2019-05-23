@@ -403,12 +403,6 @@ let eGPrefs = {
     });
   },
   
-  getMenuPrefAsArray: function(aPrefName) {
-    return browser.storage.local.get(aPrefName).then(prefObject => {
-      return prefObject[aPrefName];
-    });
-  },
-  
   toggleBoolPref: function(aPrefName) {
     browser.storage.local.get(aPrefName).then(prefObject => {
       this.setPref(aPrefName, !prefObject[aPrefName]);
@@ -418,12 +412,6 @@ let eGPrefs = {
   setPref: function(aPrefName, prefValue) {
     let prefObject = {};
     prefObject[aPrefName] = prefValue;
-    browser.storage.local.set(prefObject);
-  },
-  
-  setMenuPref: function(aPrefName, prefValueAsArray) {
-    let prefObject = {};
-    prefObject[aPrefName] = prefValueAsArray;
     browser.storage.local.set(prefObject);
   },
   
@@ -488,12 +476,6 @@ let eGPrefs = {
   
   getLoadURLOrRunScriptPrefValue: function(aPrefName) {
     return this.getPref("customizations." + aPrefName);
-  },
-  
-  setLoadURLOrRunScriptPrefValue: function(aPrefName, aPrefValueAsArray) {
-    let prefObject = {};
-    prefObject[aPrefName] = aPrefValueAsArray;
-    browser.storage.local.set(prefObject);
   },
   
   getOpenLinkPref: function() {
