@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>easyGestures N - Test canvas for contextual menus</title>
+</head>
+
+<body>
+  <!--
+    - <a> elements cannot be nested
+    - <a> elements cannot have <input> and <textarea> elements as descendants
+    - <area>, <img> and <input> elements cannot have children
+    - <textarea> cannot have other elements as children, only character data
+  -->
+  
+  <h1>Link</h1>
+  <div><a href="#">This is a link</a></div>
+  
+  <h1>Image</h1>
+  <div><img src="../icon48.png" alt="easyGestures N icon" /></div>
+  
+  <h1>Link containing an image</h1>
+  <div><a href="#">The image: <img src="../icon48.png" alt="easyGestures N icon" /></a></div>
+  
+  <h1>Input with type email</h1>
+  <div><input type="email" /></div>
+  
+  <h1>Input with type number</h1>
+  <div><input type="number" /></div>
+  
+  <h1>Input with type password</h1>
+  <div><input type="password" /></div>
+  
+  <h1>Input with type search</h1>
+  <div><input type="search" /></div>
+  
+  <h1>Input with type tel</h1>
+  <div><input type="tel" /></div>
+  
+  <h1>Input with type text</h1>
+  <div><input type="text" /></div>
+  
+  <h1>Input with type url</h1>
+  <div><input type="url" /></div>
+  
+  <h1>Textarea</h1>
+  <div><textarea>Text inside textarea</textarea></div>
+  
+  <h1>Map/area</h1>
+  <div>
+    <map name="map1">
+      <area href="#area1" alt="Top" shape="rect" coords="0,0,61,123" />
+      <area href="#area2" alt="Bottom" shape="rect" coords="62,0,123,123" />
+    </map>
+    <img usemap="#map1" src="../icon124.png" alt="easyGestures N icon" />
+  </div>
+  
+  <h1>Link containing a map/area</h1>
+  <div>
+    <a href="#">The map: <map name="map2">
+      <area href="#area1" alt="Top" shape="rect" coords="0,0,61,123" />
+      <area href="#area2" alt="Bottom" shape="rect" coords="62,0,123,123" />
+    </map></a>
+    <img usemap="#map2" src="../icon124.png" alt="easyGestures N icon" />
+  </div>
+</body>
+</html>
