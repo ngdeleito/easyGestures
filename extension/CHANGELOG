@@ -1,6 +1,15 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.3 (June 16, 2019)
+
+- the "Toggle Fullscreen" action now toggles the content of a web page in full screen (the old behavior of this action is now implemented in the new action "Toggle Fullscreen Window")
+- dropped support for favicons in "Load URL" actions and for custom icons in "Run Script" actions
+- fixed: the pie menu did not work on top of cross-origin frames
+- simplified how the more complex preferences are stored
+- minor fixes and improvements
+
+
 Version 6.2 (February 2, 2019)
 
 - added dark theme
