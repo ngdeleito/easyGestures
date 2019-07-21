@@ -134,12 +134,18 @@ h1 > span:first-child {
   margin-right: 0.25em;
 }
 
-h1 ~ div {
+h1 ~ div, h2 ~ div {
   margin: 0 0 0.75em 1.5em;
 }
 
 h1 ~ div > div {
   margin-bottom: 0.25em;
+}
+
+h2 {
+  margin: 0 0 0.75em 0;
+  padding-top: 0.25em;
+  font-size: medium;
 }
 
 button, select, input[type="text"], input[type="url"] {
@@ -149,6 +155,21 @@ button, select, input[type="text"], input[type="url"] {
 input[type="number"] {
   width: 4em;
   text-align: right;
+}
+
+.message {
+  margin-bottom: 0.75em;
+  border-left: dashed 0.2em hsl(55, 100%, 39%);
+  padding: 0.5em;
+  background-color: hsl(55, 100%, 89%);
+}
+
+.message p {
+  margin: 0;
+}
+
+.message p + p {
+  margin-top: 0.5em;
 }
 
 .disabled, :disabled {
@@ -322,21 +343,6 @@ input[type="number"] {
   display: flex;
   right: 0px;
   top: calc(-1 * var(--actions-node-offset) + var(--menu-top-bottom-margin));
-}
-
-.pane .message {
-  margin-bottom: 0.75em;
-  border-left: dashed 0.2em hsl(55, 100%, 39%);
-  padding: 0.5em;
-  background-color: hsl(55, 100%, 89%);
-}
-
-.pane .message p {
-  margin: 0;
-}
-
-.pane .message p + p {
-  margin-top: 0.5em;
 }
 
 #resetMenusSection {

@@ -68,6 +68,16 @@ let eventListenersArray = [
   ["resetStatsButton", "click", resetStats]
 ];
 
+let optionalPermissions = {
+  "<all_urls>": "origins",
+  "bookmarks": "permissions",
+  "browserSettings": "permissions",
+  "clipboardRead": "permissions",
+  "clipboardWrite": "permissions",
+  "downloads": "permissions",
+  "find": "permissions"
+};
+
 function displayTips() {
   eGUtils.showOrOpenTab("/tips/tips.html", "", true);
 }
@@ -107,6 +117,66 @@ function removeEventListeners() {
   eventListenersArray.forEach(listener => {
     document.getElementById(listener[0])
             .removeEventListener(listener[1], listener[2]);
+  });
+}
+
+function getPermissionsObjectFor(permission) {
+  let permissionsObject = {};
+  permissionsObject[optionalPermissions[permission]] = [permission];
+  return permissionsObject;
+}
+
+function requestPermission(anEvent) {
+  browser.permissions.request(getPermissionsObjectFor(anEvent.target.value))
+                     .then(hasBeenGranted => {
+    anEvent.target.disabled = hasBeenGranted;
+    anEvent.target.nextElementSibling.disabled = !hasBeenGranted;
+  });
+}
+
+function removePermission(anEvent) {
+  browser.permissions.remove(getPermissionsObjectFor(anEvent.target.value))
+                     .then(hasBeenRemoved => {
+    anEvent.target.disabled = hasBeenRemoved;
+    anEvent.target.previousElementSibling.disabled = !hasBeenRemoved;
+  });
+}
+
+function createOptionalPermissionControls() {
+  browser.permissions.getAll().then(aPermissionsObject => {
+    let actualPermissions = aPermissionsObject.origins.concat(aPermissionsObject.permissions);
+    Object.keys(optionalPermissions).forEach(permission => {
+      let isPermissionGranted = actualPermissions.includes(permission);
+      let permissionElement = document.getElementById("optionalPermissions:" + permission);
+      
+      let div = document.createElement("div");
+      permissionElement.appendChild(div);
+      
+      let requestButton = document.createElement("button");
+      requestButton.type = "button";
+      requestButton.disabled = isPermissionGranted;
+      requestButton.value = permission;
+      requestButton.textContent = browser.i18n.getMessage("general.optionalPermissions.request");
+      requestButton.addEventListener("click", requestPermission);
+      div.appendChild(requestButton);
+      
+      let removeButton = document.createElement("button");
+      removeButton.type = "button";
+      removeButton.disabled = !isPermissionGranted;
+      removeButton.value = permission;
+      removeButton.textContent = browser.i18n.getMessage("general.optionalPermissions.remove");
+      removeButton.addEventListener("click", removePermission);
+      div.appendChild(removeButton);
+    });
+  });
+}
+
+function removeOptionalPermissionEventListeners() {
+  Object.keys(optionalPermissions).forEach(permission => {
+    let permissionElement = document.getElementById("optionalPermissions:" + permission);
+    let div = permissionElement.lastElementChild;
+    div.firstElementChild.removeEventListener("click", requestPermission);
+    div.lastElementChild.removeEventListener("click", removePermission);
   });
 }
 
@@ -405,28 +475,31 @@ function initializePreferenceControl(control) {
   }
   
   function initializeDailyReadingsControl(control) {
-    browser.bookmarks.getTree().then(bookmarkItems => {
-      function collectFolders(item) {
-        if (item.url !== undefined) {
-          return [];
-        }
-        else {
-          let result = [item.title];
-          if (item.children !== undefined) {
-            for (let subitem of item.children) {
-              result = result.concat(collectFolders(subitem));
-            }
+    // we first check that the "bookmarks" permission is granted
+    if (browser.bookmarks !== undefined) {
+      browser.bookmarks.getTree().then(bookmarkItems => {
+        function collectFolders(item) {
+          if (item.url !== undefined) {
+            return [];
           }
-          return result;
+          else {
+            let result = [item.title];
+            if (item.children !== undefined) {
+              for (let subitem of item.children) {
+                result = result.concat(collectFolders(subitem));
+              }
+            }
+            return result;
+          }
         }
-      }
-      
-      collectFolders(bookmarkItems[0]).forEach(bookmarkFolder => {
-        let option = document.createElement("option");
-        option.value = bookmarkFolder;
-        document.getElementById("bookmarkFolders").appendChild(option);
+        
+        collectFolders(bookmarkItems[0]).forEach(bookmarkFolder => {
+          let option = document.createElement("option");
+          option.value = bookmarkFolder;
+          document.getElementById("bookmarkFolders").appendChild(option);
+        });
       });
-    });
+    }
     eGPrefs.getDailyReadingsFolderName().then(prefValue => {
       control.value = prefValue;
     });
@@ -950,6 +1023,7 @@ function optionsLoadHandler() {
   eGUtils.setDocumentTitle(document, "preferences");
   eGUtils.setDocumentLocalizedStrings(document);
   
+  createOptionalPermissionControls();
   createRegularMenuControls();
   createExtraMenuControls();
   createLoadURLActions();
@@ -1029,6 +1103,7 @@ function optionsUnloadHandler() {
   window.removeEventListener("hashchange", optionsHashChangeHandler);
   window.removeEventListener("unload", optionsUnloadHandler);
   
+  removeOptionalPermissionEventListeners();
   removeEventListeners();
   browser.storage.onChanged.removeListener(handleStorageChange);
 }

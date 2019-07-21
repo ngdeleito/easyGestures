@@ -6,6 +6,21 @@ This extension is a fork of version 4.3.2 of the easyGestures extension created 
 
 The permissions requested by this extension are used for the following purposes:
 
+- `search`
+  - "Search web" action
+- `sessions`: "Access recently closed tabs"
+  - "Undo close tab" and "Undo close window" actions
+- `storage`
+  - Managing preferences
+- `tabs`: "Access browser tabs"
+  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", "Bookmark all tabs", and "easyGestures N preferences" actions
+  - Displaying tips from the preferences dialog
+  - Displaying preferences from the tips dialog
+- `webNavigation`: "Access browser activity during navigation"
+  - Opening the pie menu on (cross-origin) inner frames
+
+Additionally, users can explicitly grant the following optional permissions in the preferences dialog in order to enable the following features:
+
 - `<all_urls>`: "Access your data for all websites"
   - "Take tab screenshot" action
 - `bookmarks`: "Read and modify bookmarks"
@@ -21,15 +36,3 @@ The permissions requested by this extension are used for the following purposes:
   - Exporting preferences
 - `find`: "Read the text of all open tabs"
   - "Find and highlight selection" and "Remove highlight" actions
-- `search`
-  - "Search web" action
-- `sessions`: "Access recently closed tabs"
-  - "Undo close tab" and "Undo close window" actions
-- `storage`
-  - Managing preferences
-- `tabs`: "Access browser tabs"
-  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", "Bookmark all tabs", and "easyGestures N preferences" actions
-  - Displaying tips from the preferences dialog
-  - Displaying preferences from the tips dialog
-- `webNavigation`: "Access browser activity during navigation"
-  - Opening the pie menu on (cross-origin) inner frames
