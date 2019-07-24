@@ -213,7 +213,6 @@
   "customizations.otherActions": { "message": "Other Actions" },
   "customizations.infoActions": { "message": "You can select these actions in the \"Menus\" pane" },
   "customizations.infoPlaceholders": { "message": "Tokens \"%s\" and \"%u\" are replaced with the current selection and the current URL, respectively" },
-  "customizations.infoCustomIconURLs": { "message": "Custom icons will be used when possible" },
   "customizations.loadURLActions.load": { "message": "Load URLs" },
   "customizations.loadURLActions.currentTab": { "message": "In the current tab" },
   "customizations.loadURLActions.newTab": { "message": "In a new tab" },

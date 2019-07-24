@@ -213,7 +213,6 @@
   "customizations.otherActions": { "message": "Autres actions" },
   "customizations.infoActions": { "message": "Vous pouvez sélectionner ces actions dans le panneau «\u00a0Menus\u00a0»" },
   "customizations.infoPlaceholders": { "message": "Les symboles «\u00a0%s\u00a0» et «\u00a0%u\u00a0» sont remplacés respectivement par la sélection et l'URL courants" },
-  "customizations.infoCustomIconURLs": { "message": "Les icônes personnalisées seront utilisées lorsque cela soit possible" },
   "customizations.loadURLActions.load": { "message": "Charger les URLs" },
   "customizations.loadURLActions.currentTab": { "message": "Dans l'onglet courant" },
   "customizations.loadURLActions.newTab": { "message": "Dans un nouvel onglet" },

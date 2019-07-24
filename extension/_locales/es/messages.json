@@ -213,7 +213,6 @@
   "customizations.otherActions": { "message": "Otras acciones" },
   "customizations.infoActions": { "message": "Puede seleccionar estas acciones en el panel \"Menús\"" },
   "customizations.infoPlaceholders": { "message": "Los símbolos \"%s\" y \"%u\" son sustituidos por la selección y la dirección actuales, respectivamente" },
-  "customizations.infoCustomIconURLs": { "message": "Los iconos personalizados serán utilizados cuando sea posible" },
   "customizations.loadURLActions.load": { "message": "Cargar direcciones" },
   "customizations.loadURLActions.currentTab": { "message": "En la pestaña actual" },
   "customizations.loadURLActions.newTab": { "message": "En una pestaña nueva" },
