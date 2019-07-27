@@ -1073,7 +1073,7 @@ let eGActions = {
   runScript10: new RunScriptAction(10, false, "easyGesturesNPreferences"),
   
   easyGesturesNPreferences: new Action("easyGesturesNPreferences", function() {
-    eGUtils.showOrOpenTab("/options/options.html", "", true);
+    eGUtils.showOrOpenTab("/options/options.html", "");
   }, true, "copyImageLocation"),
   
   copyImageLocation: new ImageExistsDisableableAction("copyImageLocation",

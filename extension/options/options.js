@@ -79,7 +79,7 @@ let optionalPermissions = {
 };
 
 function displayTips() {
-  eGUtils.showOrOpenTab("/tips/tips.html", "", true);
+  eGUtils.showOrOpenTab("/tips/tips.html", "");
 }
 
 function preventDefault(anEvent) {

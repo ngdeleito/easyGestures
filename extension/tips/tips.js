@@ -112,7 +112,7 @@ function goToNextTip() {
 }
 
 function tipLinkClick() {
-  eGUtils.showOrOpenTab("/options/options.html", tips[tipNumber].hash, true);
+  eGUtils.showOrOpenTab("/options/options.html", tips[tipNumber].hash);
 }
 
 function updateShowTipsCheckbox() {

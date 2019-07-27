@@ -104,7 +104,7 @@ let eGUtils = {
     this.sendMessageToFrameWithFrameIDWithinCurrentTab(message, 0);
   },
   
-  showOrOpenTab: function(aURLPathSuffix, aURLHash, giveFocus) {
+  showOrOpenTab: function(aURLPathSuffix, aURLHash) {
     browser.tabs.query({}).then(tabs => {
       let tipsTab = tabs.find(tab => {
         return tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
@@ -113,7 +113,7 @@ let eGUtils = {
       if (tipsTab === undefined) {
         this.performOnCurrentTab(currentTab => {
           browser.tabs.create({
-            active: giveFocus,
+            active: true,
             openerTabId: currentTab.id,
             url: urlToOpen
           });
@@ -121,7 +121,7 @@ let eGUtils = {
       }
       else {
         browser.tabs.update(tipsTab.id, {
-          active: giveFocus,
+          active: true,
           url: urlToOpen
         });
       }
