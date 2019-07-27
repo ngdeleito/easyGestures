@@ -106,11 +106,11 @@ let eGUtils = {
   
   showOrOpenTab: function(aURLPathSuffix, aURLHash) {
     browser.tabs.query({}).then(tabs => {
-      let tipsTab = tabs.find(tab => {
+      let firstTabWithSamePathSuffix = tabs.find(tab => {
         return tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
       });
       let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
-      if (tipsTab === undefined) {
+      if (firstTabWithSamePathSuffix === undefined) {
         this.performOnCurrentTab(currentTab => {
           browser.tabs.create({
             active: true,
@@ -120,7 +120,7 @@ let eGUtils = {
         });
       }
       else {
-        browser.tabs.update(tipsTab.id, {
+        browser.tabs.update(firstTabWithSamePathSuffix.id, {
           active: true,
           url: urlToOpen
         });
