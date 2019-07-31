@@ -155,7 +155,7 @@ function createOptionalPermissionControls() {
       let requestButton = document.createElement("button");
       requestButton.type = "button";
       requestButton.disabled = isPermissionGranted;
-      requestButton.value = permission;
+      requestButton.setAttribute("value", permission);
       requestButton.textContent = browser.i18n.getMessage("general.optionalPermissions.request");
       requestButton.addEventListener("click", requestPermission);
       div.appendChild(requestButton);
@@ -163,7 +163,7 @@ function createOptionalPermissionControls() {
       let removeButton = document.createElement("button");
       removeButton.type = "button";
       removeButton.disabled = !isPermissionGranted;
-      removeButton.value = permission;
+      removeButton.setAttribute("value", permission);
       removeButton.textContent = browser.i18n.getMessage("general.optionalPermissions.remove");
       removeButton.addEventListener("click", removePermission);
       div.appendChild(removeButton);
@@ -195,12 +195,12 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
     }
     
     let option = document.createElement("option");
-    option.value = currentAction;
-    option.label = eGActions[currentAction].getLocalizedActionName();
-    // setting the text attribute is needed since the label attribute is
-    // currently ignored by Firefox
+    option.setAttribute("value", currentAction);
+    option.setAttribute("label", eGActions[currentAction].getLocalizedActionName());
+    // using textContent is needed since the label attribute is currently
+    // ignored by Firefox
     // (https://bugzilla.mozilla.org/show_bug.cgi?id=1205213)
-    option.text = eGActions[currentAction].getLocalizedActionName();
+    option.textContent = eGActions[currentAction].getLocalizedActionName();
     currentOptgroup.appendChild(option);
     
     currentAction = eGActions[currentAction].nextAction;
@@ -898,9 +898,10 @@ function initializeClicksByAction() {
       }
       
       let div = document.createElement("div");
-      div.title = eGActions[currentAction].getLocalizedActionName() + ": " +
-                  clicksForAction + " " +
-                  browser.i18n.getMessage("stats.clicks");
+      div.setAttribute("title",
+                       eGActions[currentAction].getLocalizedActionName() +
+                       ": " + clicksForAction + " " +
+                       browser.i18n.getMessage("stats.clicks"));
       container.appendChild(div);
       
       let span = document.createElement("span");
