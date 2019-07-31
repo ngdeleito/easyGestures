@@ -977,8 +977,8 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
   }
   
   let container = document.getElementById("allMenus" +
-                                         (isExtraMenu ? "Extra" : "Main") +
-                                         "Menu");
+                                          (isExtraMenu ? "Extra" : "Main") +
+                                          "Menu");
   removeChildNodes(container);
   container.className = "menu";
   container.classList.toggle("extra", isExtraMenu);
