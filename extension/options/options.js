@@ -144,9 +144,8 @@ function removePermission(anEvent) {
 
 function createOptionalPermissionControls() {
   browser.permissions.getAll().then(aPermissionsObject => {
-    let actualPermissions = aPermissionsObject.origins.concat(aPermissionsObject.permissions);
-    Object.keys(optionalPermissions).forEach(permission => {
-      let isPermissionGranted = actualPermissions.includes(permission);
+    Object.entries(optionalPermissions).forEach(([permission, type]) => {
+      let isPermissionGranted = aPermissionsObject[type].includes(permission);
       let permissionElement = document.getElementById("optionalPermissions:" + permission);
       
       let div = document.createElement("div");
