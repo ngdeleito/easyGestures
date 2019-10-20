@@ -40,6 +40,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
 //  |-- DocumentContainsImagesDisableableAction
+//  |-- FullscreenAction
+//  |-- CommandAction
 //  |-- DisableableAction
 //       ^
 //       |-- SelectionExistsDisableableAction
@@ -53,7 +55,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //       |    |-- LoadURLAction
 //       |    |-- RunScriptAction
 //       |-- ImageExistsDisableableAction
-//       |-- CommandAction
 //       |-- DisabledAction
 
 /* exported eGActions */
