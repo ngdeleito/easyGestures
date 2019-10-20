@@ -39,7 +39,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 //  ^
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
-//  |-- DocumentContainsImagesDisableableAction
+//  |-- DocumentContainsImagesAction
 //  |-- FullscreenAction
 //  |-- CommandAction
 //  |-- DisableableAction
@@ -353,14 +353,14 @@ function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) 
 ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
 ImageExistsDisableableAction.prototype.constructor = ImageExistsDisableableAction;
 
-function DocumentContainsImagesDisableableAction(name, startsNewGroup, nextAction) {
+function DocumentContainsImagesAction(name, startsNewGroup, nextAction) {
   Action.call(this, name, function() {
     this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
   }, startsNewGroup, nextAction);
 }
-DocumentContainsImagesDisableableAction.prototype = Object.create(Action.prototype);
-DocumentContainsImagesDisableableAction.prototype.constructor = DocumentContainsImagesDisableableAction;
-DocumentContainsImagesDisableableAction.prototype.getActionStatus = function() {
+DocumentContainsImagesAction.prototype = Object.create(Action.prototype);
+DocumentContainsImagesAction.prototype.constructor = DocumentContainsImagesAction;
+DocumentContainsImagesAction.prototype.getActionStatus = function() {
   return {
     messageName: this._name,
     status: Promise.resolve(undefined)
@@ -1103,7 +1103,7 @@ let eGActions = {
     }).catch(() => {});
   }, false, "hideImages"),
   
-  hideImages: new DocumentContainsImagesDisableableAction("hideImages", false, "cut"),
+  hideImages: new DocumentContainsImagesAction("hideImages", false, "cut"),
   
   cut: new CommandAction("cut", true, "copy"),
   
