@@ -336,12 +336,9 @@ LoadURLAction.prototype.constructor = LoadURLAction;
 
 function RunScriptAction(number, startsNewGroup, nextAction) {
   NumberedAction.call(this, "runScript", number, function(script) {
-    return {
-      runActionName: "runScript",
-      runActionOptions: {
-        script: script
-      }
-    };
+    browser.tabs.executeScript({
+      code: script
+    });
   }, startsNewGroup, nextAction);
 }
 RunScriptAction.prototype = Object.create(NumberedAction.prototype);

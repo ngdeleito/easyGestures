@@ -136,7 +136,7 @@
   "general.optionalPermissions": { "message": "Permisos opcionales" },
   "general.optionalPermissions.message": { "message": "easyGestures N utiliza los permisos opcionales siguientes para las funcionalidades enumeradas más abajo. Asegúrese de conceder los permisos que necesite, ya que, en caso contrario, easyGestures N fallará silenciosamente al intentar ejecutar las funcionalidades correspondientes" },
   "general.optionalPermissions.allURLs": { "message": "\"Acceder a tus datos para todos los sitios web\"" },
-  "general.optionalPermissions.allURLs.explanation": { "message": "Este permiso es necesario para la acción \"Hacer un pantallazo de la pestaña\"" },
+  "general.optionalPermissions.allURLs.explanation": { "message": "Este permiso es necesario para las acciones \"Hacer un pantallazo de la pestaña\" y \"Ejecutar script\"" },
   "general.optionalPermissions.bookmarks": { "message": "\"Leer y modificar marcadores\"" },
   "general.optionalPermissions.bookmarks.explanation": { "message": "Este permiso es necesario para las acciones \"Lecturas diarias\", \"Añadir esta página a marcadores\", \"Añadir este identificador a marcadores\", \"Añadir este enlace a marcadores\", \"Añadir pestañas a marcadores\", \"Eliminar esta página de marcadores\", \"Eliminar este identificador de marcadores\" y \"Eliminar este enlace de marcadores\"" },
   "general.optionalPermissions.browserSettings": { "message": "\"Leer y modificar los ajustes del navegador\"" },

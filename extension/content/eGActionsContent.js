@@ -155,10 +155,6 @@ let actionRunners = {
     eGPieMenu.easyGesturesNode.removeChild(node);
   },
   
-  runScript: function(options) {
-    eval(options.script);
-  },
-  
   hideImages: function() {
     let images = document.querySelectorAll("img");
     for (let i=0; i < images.length; ++i) {

@@ -136,7 +136,7 @@
   "general.optionalPermissions": { "message": "Permissions optionnelles" },
   "general.optionalPermissions.message": { "message": "easyGestures N utilise les permissions optionnelles suivantes pour les fonctionnalités reprises ci-dessous. Assurez-vous d'accorder les permissions dont vous avez besoin, autrement easyGestures N échouera silencieusement en essayant d'exécuter les fonctionnalités correspondantes" },
   "general.optionalPermissions.allURLs": { "message": "«\u00a0Accéder à vos données pour tous les sites web\u00a0»" },
-  "general.optionalPermissions.allURLs.explanation": { "message": "Cette permission est nécessaire pour l'action «\u00a0Prendre une capture d'écran de l'onglet\u00a0»" },
+  "general.optionalPermissions.allURLs.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Prendre une capture d'écran de l'onglet\u00a0» et «\u00a0Exécuter script\u00a0»" },
   "general.optionalPermissions.bookmarks": { "message": "«\u00a0Consulter et modifier les marque-pages\u00a0»" },
   "general.optionalPermissions.bookmarks.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Lectures quotidiennes\u00a0», «\u00a0Marquer cette page\u00a0», «\u00a0Marquer cet identificateur\u00a0», «\u00a0Marque-page sur ce lien\u00a0», «\u00a0Marquer tous les onglets\u00a0», «\u00a0Supprimer le marque-page vers cette page\u00a0», «\u00a0Supprimer le marque-page vers cet identificateur\u00a0» et «\u00a0Supprimer le marque-page vers ce lien\u00a0»" },
   "general.optionalPermissions.browserSettings": { "message": "«\u00a0Consulter et modifier les paramètres du navigateur\u00a0»" },

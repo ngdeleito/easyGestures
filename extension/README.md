@@ -22,7 +22,7 @@ The permissions requested by this extension are used for the following purposes:
 Additionally, users can explicitly grant the following optional permissions in the preferences dialog in order to enable the following features:
 
 - `<all_urls>`: "Access your data for all websites"
-  - "Take tab screenshot" action
+  - "Take tab screenshot" and "Run script" actions
 - `bookmarks`: "Read and modify bookmarks"
   - "Daily readings", "Bookmark this page", "Bookmark this identifier", "Bookmark this link", "Bookmark all tabs", "Remove bookmark to this page", "Remove bookmark to this identifier", and "Remove bookmark to this link" actions
 - `browserSettings`: "Read and modify browser settings"

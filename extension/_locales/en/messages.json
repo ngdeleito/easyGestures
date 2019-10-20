@@ -136,7 +136,7 @@
   "general.optionalPermissions": { "message": "Optional permissions" },
   "general.optionalPermissions.message": { "message": "easyGestures N uses the following optional permissions for the features listed below. Make sure to grant the permissions you need, otherwise easyGestures N will silently fail when performing the corresponding features" },
   "general.optionalPermissions.allURLs": { "message": "\"Access your data for all websites\"" },
-  "general.optionalPermissions.allURLs.explanation": { "message": "This permission is needed for the \"Take tab screenshot\" action" },
+  "general.optionalPermissions.allURLs.explanation": { "message": "This permission is needed for the \"Take tab screenshot\" and \"Run script\" actions" },
   "general.optionalPermissions.bookmarks": { "message": "\"Read and modify bookmarks\"" },
   "general.optionalPermissions.bookmarks.explanation": { "message": "This permission is needed for the \"Daily readings\", \"Bookmark this page\", \"Bookmark this identifier\", \"Bookmark this link\", \"Bookmark all tabs\", \"Remove bookmark to this page\", \"Remove bookmark to this identifier\", and \"Remove bookmark to this link\" actions" },
   "general.optionalPermissions.browserSettings": { "message": "\"Read and modify browser settings\"" },
