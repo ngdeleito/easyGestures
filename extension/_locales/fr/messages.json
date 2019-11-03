@@ -117,6 +117,7 @@
   "preferences": { "message": "Préférences" },
   
   "general": { "message": "Général" },
+  "permissions": { "message": "Permissions" },
   "activation": { "message": "Activation" },
   "appearance": { "message": "Apparence" },
   "behavior": { "message": "Comportement" },
