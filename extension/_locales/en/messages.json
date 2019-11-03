@@ -246,6 +246,7 @@
   "tips.dragToAction": { "message": "The fastest way to use the pie menu is to open it while holding down the mouse button, then drag over the action to execute, and finally release the button. You can think of it as a mouse gesture with a GUI." },
   "tips.openAltMenu": { "message": "By default, right clicking while the pie menu is open will successively display up to three alternative menus. You can change the default mouse button in [preferences/activation]. You can also use an \"Alt\" key to switch to the following alternative menu." },
   "tips.menusCustomization": { "message": "You can customize in [preferences/menus] all the different menus with many built-in actions. Usage statistics might help you place these actions at an optimal location on the pie menu." },
+  "tips.optionalPermissions": { "message": "Keep in mind that some actions and features require some permissions in order to be executed. You can grant these permissions in [preferences/permissions]." },
   "tips.openExtraMenu": { "message": "To display the extra menu, just move the mouse pointer over this action's icon." },
   "tips.clickOnLink": { "message": "By default, opening the pie menu on top of a link will open the link and close the pie menu for as long as no activity is detected for a brief amount of time. You can disable this feature, modify this amount of time and control how links should be opened in [preferences/behavior]." },
   "tips.tooltips": { "message": "You can disable the tooltips in [preferences/behavior]." },

@@ -51,6 +51,7 @@ let tips = [
   new tipEntry("tips.dragToAction",              ""),
   new tipEntry("tips.openAltMenu",               "activation"),
   new tipEntry("tips.menusCustomization",        "menus"),
+  new tipEntry("tips.optionalPermissions",       "permissions"),
   new tipEntry("tips.openExtraMenu",             ""),
   new tipEntry("tips.clickOnLink",               "behavior"),
   new tipEntry("tips.tooltips",                  "behavior"),
