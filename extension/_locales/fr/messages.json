@@ -145,7 +145,7 @@
   "general.optionalPermissions.clipboardRead": { "message": "«\u00a0Lire les données du presse-papiers\u00a0»" },
   "general.optionalPermissions.clipboardRead.explanation": { "message": "Cette permission est nécessaire pour l'action «\u00a0Coller\u00a0»" },
   "general.optionalPermissions.clipboardWrite": { "message": "«\u00a0Ajouter des données dans le presse-papiers\u00a0»" },
-  "general.optionalPermissions.clipboardWrite.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Copier l'image\u00a0», «\u00a0Couper\u00a0» et «\u00a0Copier\u00a0»" },
+  "general.optionalPermissions.clipboardWrite.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Copier l'URL de la page\u00a0», «\u00a0Copier l'URL vers l'identificateur\u00a0», «\u00a0Copier l'adresse du lien\u00a0», «\u00a0Copier l'adresse de l'image\u00a0», «\u00a0Copier l'image\u00a0», «\u00a0Couper\u00a0» et «\u00a0Copier\u00a0»" },
   "general.optionalPermissions.downloads": { "message": "«\u00a0Télécharger des fichiers, et consulter et modifier l’historique des téléchargements du navigateur\u00a0»" },
   "general.optionalPermissions.downloads.explanation": { "message": "Cette permission est nécessaire pour exporter les préférences ainsi que pour les actions «\u00a0Enregistrer sous...\u00a0», «\u00a0Prendre une capture d'écran de l'onglet\u00a0», «\u00a0Enregistrer la cible du lien sous...\u00a0» et «\u00a0Enregistrer l'image sous...\u00a0»" },
   "general.optionalPermissions.find": { "message": "«\u00a0Lire le texte de tous les onglets ouverts\u00a0»" },

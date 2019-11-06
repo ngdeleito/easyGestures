@@ -145,7 +145,7 @@
   "general.optionalPermissions.clipboardRead": { "message": "\"Get data from the clipboard\"" },
   "general.optionalPermissions.clipboardRead.explanation": { "message": "This permission is needed for the \"Paste\" action" },
   "general.optionalPermissions.clipboardWrite": { "message": "\"Input data to the clipboard\"" },
-  "general.optionalPermissions.clipboardWrite.explanation": { "message": "This permission is needed for the \"Copy image\", \"Cut\", and \"Copy\" actions" },
+  "general.optionalPermissions.clipboardWrite.explanation": { "message": "This permission is needed for the \"Copy page URL\", \"Copy URL to identifier\", \"Copy link\", \"Copy image location\", \"Copy image\", \"Cut\", and \"Copy\" actions" },
   "general.optionalPermissions.downloads": { "message": "\"Download files and read and modify the browser’s download history\"" },
   "general.optionalPermissions.downloads.explanation": { "message": "This permission is needed for exporting preferences and for the \"Save page as...\", \"Take tab screenshot\", \"Save link as...\", and \"Save image as...\" actions" },
   "general.optionalPermissions.find": { "message": "\"Read the text of all open tabs\"" },

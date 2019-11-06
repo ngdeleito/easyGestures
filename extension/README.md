@@ -30,7 +30,7 @@ Additionally, users can explicitly grant the following optional permissions in t
 - `clipboardRead`: "Get data from the clipboard"
   - "Paste" action
 - `clipboardWrite`: "Input data to the clipboard"
-  - "Copy image", "Cut", and "Copy" actions
+  - "Copy page URL", "Copy URL to identifier", "Copy link", "Copy image location", "Copy image", "Cut", and "Copy" actions
 - `downloads`: "Download files and read and modify the browser’s download history"
   - "Save page as...", "Take tab screenshot", "Save link as...", and "Save image as..." actions
   - Exporting preferences
