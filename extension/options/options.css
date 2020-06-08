@@ -255,6 +255,7 @@ input[type="number"] {
 }
 
 .menuSelect select {
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 
