@@ -430,7 +430,7 @@ let eGPieMenu = {
   _open: function(layoutName) {
     this._setJustOpened();
     
-    let bodyNode = document.body ? document.body : document.documentElement;
+    let bodyNode = document.body;
     if (this.easyGesturesNode === null) {
       this._createEasyGesturesNode();
       bodyNode.insertBefore(this.easyGesturesNode, bodyNode.firstChild);
