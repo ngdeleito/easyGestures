@@ -1,6 +1,15 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.4 (July 9, 2020)
+
+- turned as many permissions as possible optional
+- got rid of eval usage for "Run Script" actions and improved the documentation for those actions
+- fixed: select boxes in the menus pane of the preferences dialog were no longer correctly displayed
+- minor improvements to the existing locales
+- minor code improvements
+
+
 Version 6.3 (June 16, 2019)
 
 - the "Toggle Fullscreen" action now toggles the content of a web page in full screen (the old behavior of this action is now implemented in the new action "Toggle Fullscreen Window")

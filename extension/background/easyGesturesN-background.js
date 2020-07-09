@@ -210,6 +210,9 @@ async function handleInstallOrUpgrade(details) {
     if (eGUtils.isVersionSmallerThan(details.previousVersion, "6.3")) {
       await eGPrefs.updateToV6_3();
     }
+    if (eGUtils.isVersionSmallerThan(details.previousVersion, "6.4")) {
+      eGUtils.showOrOpenTab("/options/options.html", "permissions");
+    }
   }
   await browser.storage.local.remove("installOrUpgradeTriggered");
   startup();
