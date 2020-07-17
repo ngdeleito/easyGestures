@@ -196,10 +196,6 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
     let option = document.createElement("option");
     option.setAttribute("value", currentAction);
     option.setAttribute("label", eGActions[currentAction].getLocalizedActionName());
-    // using textContent is needed since the label attribute is currently
-    // ignored by Firefox
-    // (https://bugzilla.mozilla.org/show_bug.cgi?id=1205213)
-    option.textContent = eGActions[currentAction].getLocalizedActionName();
     currentOptgroup.appendChild(option);
     
     currentAction = eGActions[currentAction].nextAction;
