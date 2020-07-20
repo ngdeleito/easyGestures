@@ -113,10 +113,10 @@ Action.prototype = {
   
   // helper functions
   
-  _sendPerformActionMessage: function() {
+  _sendPerformActionMessage: function(actionName, actionOptions) {
     return {
-      runActionName: this._name,
-      runActionOptions: undefined
+      runActionName: actionName,
+      runActionOptions: actionOptions
     };
   },
   
@@ -533,21 +533,15 @@ let eGActions = {
   }, false, "copyPageURL"),
   
   copyPageURL: new Action("copyPageURL", function() {
-    return {
-      runActionName: "copyInformation",
-      runActionOptions: {
-        information: eGContext.pageURL
-      }
-    };
+    return this._sendPerformActionMessage("copyInformation", {
+      information: eGContext.pageURL
+    });
   }, false, "copyURLToIdentifier"),
   
   copyURLToIdentifier: new URLToIdentifierExistsDisableableAction("copyURLToIdentifier", function() {
-    return {
-      runActionName: "copyInformation",
-      runActionOptions: {
-        information: eGContext.urlToIdentifier
-      }
-    };
+    return this._sendPerformActionMessage("copyInformation", {
+      information: eGContext.urlToIdentifier
+    });
   }, false, "zoomIn"),
   
   zoomIn: new Action("zoomIn", function() {
@@ -893,12 +887,9 @@ let eGActions = {
   }, false, "copyLink"),
   
   copyLink: new LinkExistsDisableableAction("copyLink", function() {
-    return {
-      runActionName: "copyInformation",
-      runActionOptions: {
-        information: eGContext.anchorElementHREF
-      }
-    };
+    return this._sendPerformActionMessage("copyInformation", {
+      information: eGContext.anchorElementHREF
+    });
   }, false, "saveLinkAs"),
   
   saveLinkAs: new LinkExistsDisableableAction("saveLinkAs", function() {
@@ -1076,12 +1067,9 @@ let eGActions = {
   
   copyImageLocation: new ImageExistsDisableableAction("copyImageLocation",
     function() {
-      return {
-        runActionName: "copyInformation",
-        runActionOptions: {
-          information: eGContext.imageElementSRC
-        }
-      };
+      return this._sendPerformActionMessage("copyInformation", {
+        information: eGContext.imageElementSRC
+      });
   }, true, "copyImage"),
   
   copyImage: new ImageExistsDisableableAction("copyImage", function() {
