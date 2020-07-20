@@ -420,7 +420,7 @@ let eGActions = {
   showExtraMenu: new ShowExtraMenuAction(true, "back"),
   
   back: new Action("back", function() {
-    return this._sendPerformActionMessage();
+    browser.tabs.goBack();
   }, true, "backSite"),
   
   backSite: new DisabledAction("backSite", false, "firstPage"),
@@ -428,7 +428,7 @@ let eGActions = {
   firstPage: new DisabledAction("firstPage", false, "forward"),
   
   forward: new Action("forward", function() {
-    return this._sendPerformActionMessage();
+    browser.tabs.goForward();
   }, false, "forwardSite"),
   
   forwardSite: new DisabledAction("forwardSite", false, "lastPage"),

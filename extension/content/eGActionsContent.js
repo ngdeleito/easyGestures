@@ -98,14 +98,6 @@ let actionStatusSetters = {
 let actionRunners = {
   // these methods run on the innermost frame
   
-  back: function() {
-    window.history.back();
-  },
-  
-  forward: function() {
-    window.history.forward();
-  },
-  
   pageTop: function() {
     window.scroll(0, 0);
   },
