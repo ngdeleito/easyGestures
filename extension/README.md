@@ -8,8 +8,6 @@ The permissions requested by this extension are used for the following purposes:
 
 - `search`
   - "Search web" action
-- `sessions`: "Access recently closed tabs"
-  - "Undo close tab" and "Undo close window" actions
 - `storage`
   - Managing preferences
 - `tabs`: "Access browser tabs"
@@ -36,3 +34,5 @@ Additionally, users can explicitly grant the following optional permissions in t
   - Exporting preferences
 - `find`: "Read the text of all open tabs"
   - "Find and highlight selection" and "Remove highlight" actions
+- `sessions`: "Access recently closed tabs"
+  - "Undo close tab" and "Undo close window" actions

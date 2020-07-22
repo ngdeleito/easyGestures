@@ -150,6 +150,8 @@
   "general.optionalPermissions.downloads.explanation": { "message": "Cette permission est nécessaire pour exporter les préférences ainsi que pour les actions «\u00a0Enregistrer sous...\u00a0», «\u00a0Prendre une capture d'écran de l'onglet\u00a0», «\u00a0Enregistrer la cible du lien sous...\u00a0» et «\u00a0Enregistrer l'image sous...\u00a0»" },
   "general.optionalPermissions.find": { "message": "«\u00a0Lire le texte de tous les onglets ouverts\u00a0»" },
   "general.optionalPermissions.find.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Rechercher et surligner la sélection\u00a0» et «\u00a0Supprimer le surlignage\u00a0»" },
+  "general.optionalPermissions.sessions": { "message": "«\u00a0Accéder aux onglets récemment fermés\u00a0»" },
+  "general.optionalPermissions.sessions.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Restaurer le dernier onglet fermé\u00a0» et «\u00a0Restaurer la dernière fenêtre fermée\u00a0»" },
   "general.optionalPermissions.request": { "message": "Demander permission" },
   "general.optionalPermissions.remove": { "message": "Supprimer permission" },
   

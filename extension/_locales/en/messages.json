@@ -150,6 +150,8 @@
   "general.optionalPermissions.downloads.explanation": { "message": "This permission is needed for exporting preferences and for the \"Save page as...\", \"Take tab screenshot\", \"Save link as...\", and \"Save image as...\" actions" },
   "general.optionalPermissions.find": { "message": "\"Read the text of all open tabs\"" },
   "general.optionalPermissions.find.explanation": { "message": "This permission is needed for the \"Find and highlight selection\" and \"Remove highlight\" actions" },
+  "general.optionalPermissions.sessions": { "message": "\"Access recently closed tabs\"" },
+  "general.optionalPermissions.sessions.explanation": { "message": "This permission is needed for the \"Undo close tab\" and \"Undo close window\" actions" },
   "general.optionalPermissions.request": { "message": "Request permission" },
   "general.optionalPermissions.remove": { "message": "Remove permission" },
   
