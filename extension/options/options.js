@@ -128,6 +128,7 @@ function getPermissionsObjectFor(permission) {
 }
 
 function requestPermission(anEvent) {
+  prefChanged = true;
   browser.permissions.request(getPermissionsObjectFor(anEvent.target.value))
                      .then(hasBeenGranted => {
     anEvent.target.disabled = hasBeenGranted;
@@ -136,11 +137,40 @@ function requestPermission(anEvent) {
 }
 
 function removePermission(anEvent) {
+  prefChanged = true;
   browser.permissions.remove(getPermissionsObjectFor(anEvent.target.value))
                      .then(hasBeenRemoved => {
     anEvent.target.disabled = hasBeenRemoved;
     anEvent.target.previousElementSibling.disabled = !hasBeenRemoved;
   });
+}
+
+function handlePermissionChange(aPermissionsObject, isPermissionAdded) {
+  function updatePermission(permission, isPermissionAdded) {
+    let permissionElement = document.getElementById("optionalPermissions:" + permission);
+    let requestButton = permissionElement.lastElementChild.firstElementChild;
+    requestButton.disabled = isPermissionAdded;
+    let removeButton = permissionElement.lastElementChild.lastElementChild;
+    removeButton.disabled = !isPermissionAdded;
+  }
+  
+  if (!prefChanged) {
+    aPermissionsObject.permissions.forEach(permission => {
+      updatePermission(permission, isPermissionAdded);
+    });
+    aPermissionsObject.origins.forEach(permission => {
+      updatePermission(permission, isPermissionAdded);
+    });
+  }
+  prefChanged = false;
+}
+
+function handlePermissionAdded(aPermissionsObject) {
+  handlePermissionChange(aPermissionsObject, true);
+}
+
+function handlePermissionRemoved(aPermissionsObject) {
+  handlePermissionChange(aPermissionsObject, false);
 }
 
 function createOptionalPermissionControls() {
@@ -169,6 +199,8 @@ function createOptionalPermissionControls() {
       div.appendChild(removeButton);
     });
   });
+  browser.permissions.onAdded.addListener(handlePermissionAdded);
+  browser.permissions.onRemoved.addListener(handlePermissionRemoved);
 }
 
 function removeOptionalPermissionEventListeners() {
@@ -178,6 +210,8 @@ function removeOptionalPermissionEventListeners() {
     div.firstElementChild.removeEventListener("click", requestPermission);
     div.lastElementChild.removeEventListener("click", removePermission);
   });
+  browser.permissions.onAdded.removeListener(handlePermissionAdded);
+  browser.permissions.onRemoved.removeListener(handlePermissionRemoved);
 }
 
 function createActionsSelect(sectorNumber, isExtraMenu) {
