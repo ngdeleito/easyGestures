@@ -230,6 +230,11 @@ function OtherTabsExistDisableableAction(name, getTargetTabIndex, startsNewGroup
     return browser.tabs.query({
       currentWindow: true
     }).then(tabs => {
+      if (tabs.length > 1) {
+        this._getTargetTab().then(targetTab => {
+          browser.tabs.warmup(targetTab.id);
+        });
+      }
       return tabs.length <= 1;
     });
   }, startsNewGroup, nextAction);
