@@ -219,17 +219,36 @@ function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
 CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
 CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
-function OtherTabsExistDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
+function OtherTabsExistDisableableAction(name, getTargetTabIndex, startsNewGroup, nextAction) {
+  DisableableAction.call(this, name, function() {
+    this._getTargetTab().then(targetTab => {
+      browser.tabs.update(targetTab.id, {
+        active: true
+      });
+    });
+  }, function() {
     return browser.tabs.query({
       currentWindow: true
     }).then(tabs => {
       return tabs.length <= 1;
     });
   }, startsNewGroup, nextAction);
+  this._getTargetTabIndex = getTargetTabIndex;
 }
 OtherTabsExistDisableableAction.prototype = Object.create(DisableableAction.prototype);
 OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableableAction;
+OtherTabsExistDisableableAction.prototype._getTargetTab = async function() {
+  return eGUtils.performOnCurrentTab(async currentTab => {
+    let tabs = await browser.tabs.query({
+      currentWindow: true
+    });
+    let [targetTab] = await browser.tabs.query({
+      index: this._getTargetTabIndex(currentTab.index, tabs.length),
+      currentWindow: true
+    });
+    return targetTab;
+  });
+};
 
 function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
   DisableableAction.call(this, name, action, function() {
@@ -732,35 +751,15 @@ let eGActions = {
     });
   }, false, "previousTab"),
   
-  previousTab: new OtherTabsExistDisableableAction("previousTab", function() {
-    eGUtils.performOnCurrentTab(async function(currentTab) {
-      let tabs = await browser.tabs.query({
-        currentWindow: true
-      });
-      let [previousTab] = await browser.tabs.query({
-        index: currentTab.index - 1 < 0 ? tabs.length - 1 :
-                                          currentTab.index - 1,
-        currentWindow: true
-      });
-      browser.tabs.update(previousTab.id, {
-        active: true
-      });
-    });
+  previousTab: new OtherTabsExistDisableableAction("previousTab",
+    function(currentTabIndex, numberOfTabs) {
+      return currentTabIndex - 1 < 0 ? numberOfTabs - 1 :
+                                       currentTabIndex - 1;
   }, false, "nextTab"),
   
-  nextTab: new OtherTabsExistDisableableAction("nextTab", function() {
-    eGUtils.performOnCurrentTab(async function(currentTab) {
-      let tabs = await browser.tabs.query({
-        currentWindow: true
-      });
-      let [nextTab] = await browser.tabs.query({
-        index: currentTab.index + 1 < tabs.length ? currentTab.index + 1 : 0,
-        currentWindow: true
-      });
-      browser.tabs.update(nextTab.id, {
-        active: true
-      });
-    });
+  nextTab: new OtherTabsExistDisableableAction("nextTab",
+    function(currentTabIndex, numberOfTabs) {
+      return currentTabIndex + 1 < numberOfTabs ? currentTabIndex + 1 : 0;
   }, false, "pinUnpinTab"),
   
   pinUnpinTab: new Action("pinUnpinTab", function() {
