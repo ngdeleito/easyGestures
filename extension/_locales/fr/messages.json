@@ -123,7 +123,7 @@
   "behavior": { "message": "Comportement" },
   "menus": { "message": "Menus" },
   "customizations": { "message": "Personnalisations" },
-  "stats": { "message": "Statistiques" },
+  "stats": { "message": "Utilisation" },
   
   "general.startupTips": { "message": "Afficher les astuces au démarrage de Firefox" },
   "general.displayTips": { "message": "Afficher les astuces" },
@@ -232,8 +232,8 @@
   "customizations.dailyReadings.folderName": { "message": "Nom du dossier utilisé par cette action\u00a0:" },
   
   "stats.lastReset": { "message": "Dernière réinitialisation\u00a0:" },
-  "stats.reset": { "message": "Réinitialiser les statistiques..." },
-  "stats.reset.confirm": { "message": "Confirmez svp que vous souhaitez réinitialiser les statistiques." },
+  "stats.reset": { "message": "Réinitialiser les données d'utilisation..." },
+  "stats.reset.confirm": { "message": "Confirmez svp que vous souhaitez réinitialiser les données d'utilisation." },
   "stats.actions": { "message": "Clics par action" },
   "stats.clicks": { "message": "clic(s)" },
   "stats.directions": { "message": "Clics par direction" },
