@@ -178,12 +178,12 @@ QUnit.test("test importPrefsFromString with invalid preference values",
     done16();
   });
   let done17 = assert.async();
-  let statsActions = {};
+  let usageActions = {};
   for (let actionName in eGActions) {
-    statsActions[actionName] = 0;
+    usageActions[actionName] = 0;
   }
-  statsActions.selectAll = false;
-  let prefToImportArray = [["stats.actions", statsActions]];
+  usageActions.selectAll = false;
+  let prefToImportArray = [["stats.actions", usageActions]];
   eGPrefs.importPrefsFromString(JSON.stringify(prefToImportArray))
          .then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&

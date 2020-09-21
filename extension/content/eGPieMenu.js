@@ -83,14 +83,14 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
 };
-MenuLayout.prototype.getUpdateStatsInformation = function() {
+MenuLayout.prototype.getUsageInformationUpdate = function() {
   let sector = this._pieMenu.sector;
   let sector8To10 = sector;
   if (!this._isLarge && sector > 4) {
     sector8To10++;
   }
   return {
-    incrementMethodName: "incrementStatsMainMenuPref",
+    incrementMethodName: "incrementUsageMainMenuPref",
     incrementIndex: this.layoutNumber * 10 + sector8To10,
     updateActionName: this.actions[sector]
   };
@@ -135,10 +135,10 @@ function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
 }
 ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
 ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
-ExtraMenuLayout.prototype.getUpdateStatsInformation = function() {
+ExtraMenuLayout.prototype.getUsageInformationUpdate = function() {
   let sector = this._pieMenu.sector;
   return {
-    incrementMethodName: "incrementStatsExtraMenuPref",
+    incrementMethodName: "incrementUsageExtraMenuPref",
     incrementIndex: this.layoutNumber * 5 + sector,
     updateActionName: this.actions[sector]
   };
@@ -166,9 +166,9 @@ ContextualMenuLayout.prototype.getNextLayout = function() {
   return contextualMenus[(contextualMenus.indexOf(this.name) + 1) %
                          contextualMenus.length];
 };
-ContextualMenuLayout.prototype.getUpdateStatsInformation = function() {
+ContextualMenuLayout.prototype.getUsageInformationUpdate = function() {
   return {
-    incrementMethodName: "incrementNoStats",
+    incrementMethodName: "incrementNoUsage",
     incrementIndex: undefined,
     updateActionName: this.actions[this._pieMenu.sector]
   };
@@ -546,7 +546,7 @@ let eGPieMenu = {
     }
     
     browser.runtime.sendMessage({
-      messageName: "incrementShowExtraMenuStats",
+      messageName: "incrementShowExtraMenuUsage",
       incrementIndex: this._baseLayout.layoutNumber * 10 + EXTRA_MENU_SECTOR
     });
   },
@@ -648,7 +648,7 @@ let eGPieMenu = {
       let runActionMessage = {
         messageName: "runAction",
         actionName: this._currentLayout.actions[this.sector],
-        updateStatsInformation: this._currentLayout.getUpdateStatsInformation()
+        usageInformationUpdate: this._currentLayout.getUsageInformationUpdate()
       };
       this.close();
       browser.runtime.sendMessage(runActionMessage).then(aMessage => {
@@ -749,8 +749,8 @@ let eGPieMenu = {
       browser.runtime.sendMessage({
         messageName: "runAction",
         actionName: "openLink",
-        updateStatsInformation: {
-          incrementMethodName: "incrementNoStats",
+        usageInformationUpdate: {
+          incrementMethodName: "incrementNoUsage",
           incrementIndex: undefined
         }
       });

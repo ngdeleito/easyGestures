@@ -64,10 +64,10 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 function Action(name, action, startsNewGroup, nextAction) {
   this._name = name;
-  this.run = function(updateStatsInformation) {
-    eGPrefs[updateStatsInformation.incrementMethodName](updateStatsInformation.incrementIndex);
-    if (updateStatsInformation.updateActionName !== undefined) {
-      eGPrefs.updateStatsForAction(updateStatsInformation.updateActionName);
+  this.run = function(usageInformationUpdate) {
+    eGPrefs[usageInformationUpdate.incrementMethodName](usageInformationUpdate.incrementIndex);
+    if (usageInformationUpdate.updateActionName !== undefined) {
+      eGPrefs.updateUsageForAction(usageInformationUpdate.updateActionName);
     }
     return new Promise((resolve, reject) => {
       try {

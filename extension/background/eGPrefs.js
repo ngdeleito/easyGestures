@@ -260,20 +260,20 @@ let eGPrefs = {
     return defaultPrefs;
   },
   
-  _getDefaultStatsMap: function() {
-    let defaultStats = new Map();
-    this._setStringPref(defaultStats, "stats.lastReset",
+  _getDefaultUsageMap: function() {
+    let defaultUsage = new Map();
+    this._setStringPref(defaultUsage, "stats.lastReset",
                         (new Date()).toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
-    this._setArrayPref(defaultStats, "stats.mainMenu", Array(30).fill(0),
+    this._setArrayPref(defaultUsage, "stats.mainMenu", Array(30).fill(0),
                        function(newPrefValue) {
       return Array.isArray(newPrefValue) && newPrefValue.length === 30 &&
              newPrefValue.every(function(element) {
                return Number.isInteger(element);
              });
     });
-    this._setArrayPref(defaultStats, "stats.extraMenu", Array(15).fill(0),
+    this._setArrayPref(defaultUsage, "stats.extraMenu", Array(15).fill(0),
                        function(newPrefValue) {
       return Array.isArray(newPrefValue) && newPrefValue.length === 15 &&
              newPrefValue.every(function(element) {
@@ -281,26 +281,26 @@ let eGPrefs = {
              });
     });
     
-    let actionsStats = {};
+    let actionsUsage = {};
     for (let action in eGActions) {
-      actionsStats[action] = 0;
+      actionsUsage[action] = 0;
     }
-    defaultStats.set("stats.actions",
-                     new ObjectPref("stats.actions", actionsStats,
+    defaultUsage.set("stats.actions",
+                     new ObjectPref("stats.actions", actionsUsage,
                                     function(newPrefValue) {
-      let statsActions = Object.getOwnPropertyNames(newPrefValue).sort();
+      let usageActions = Object.getOwnPropertyNames(newPrefValue).sort();
       let actions = Object.getOwnPropertyNames(eGActions).sort();
       let i = 0;
-      let result = statsActions.length === actions.length;
-      while (result && i < statsActions.length) {
-        result = result && statsActions[i] === actions[i] &&
-                 Number.isInteger(newPrefValue[statsActions[i]]);
+      let result = usageActions.length === actions.length;
+      while (result && i < usageActions.length) {
+        result = result && usageActions[i] === actions[i] &&
+                 Number.isInteger(newPrefValue[usageActions[i]]);
         ++i;
       }
       return result;
     }));
     
-    return defaultStats;
+    return defaultUsage;
   },
   
   exportPrefsToString: function() {
@@ -331,15 +331,15 @@ let eGPrefs = {
     
     return browser.runtime.getPlatformInfo().then(platformInfo => {
       let prefs = this._getDefaultPrefsMap(platformInfo.os);
-      let stats = this._getDefaultStatsMap();
+      let usage = this._getDefaultUsageMap();
       let notImportedPrefs = [];
       newPrefs.forEach(function([prefName, prefValue]) {
         try {
           if (prefs.has(prefName)) {
             prefs.get(prefName).updateTo(prefValue);
           }
-          else if (stats.has(prefName)) {
-            stats.get(prefName).updateTo(prefValue);
+          else if (usage.has(prefName)) {
+            usage.get(prefName).updateTo(prefValue);
           }
           else {
             notImportedPrefs.push(prefName);
@@ -354,8 +354,8 @@ let eGPrefs = {
       prefs.forEach(function(pref) {
         setPreferencePromises.push(pref.setPreference());
       });
-      stats.forEach(function(stat) {
-        setPreferencePromises.push(stat.setPreference());
+      usage.forEach(function(usageItem) {
+        setPreferencePromises.push(usageItem.setPreference());
       });
       
       return Promise.all(setPreferencePromises).then(() => {
@@ -388,10 +388,10 @@ let eGPrefs = {
     return Promise.all(setPreferencePromises);
   },
   
-  initializeStats: function() {
-    let defaultStatsMap = this._getDefaultStatsMap();
+  initializeUsageData: function() {
+    let defaultUsageMap = this._getDefaultUsageMap();
     let setPreferencePromises = [];
-    defaultStatsMap.forEach(function(pref) {
+    defaultUsageMap.forEach(function(pref) {
       setPreferencePromises.push(pref.setPreference());
     });
     return Promise.all(setPreferencePromises);
@@ -492,18 +492,18 @@ let eGPrefs = {
     });
   },
   
-  getStatsLastResetPref: function() {
+  getUsageLastResetPref: function() {
     return this.getPref("stats.lastReset").then(prefValue => {
       return (new Date(prefValue)).toLocaleString();
     });
   },
   
-  getStatsMainMenuPref: function() {
+  getUsageMainMenuPref: function() {
     return this.getPref("stats.mainMenu");
   },
   
-  incrementStatsMainMenuPref: function(anIndex) {
-    this.getStatsMainMenuPref().then(anArray => {
+  incrementUsageMainMenuPref: function(anIndex) {
+    this.getUsageMainMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
         "stats.mainMenu": anArray
@@ -511,12 +511,12 @@ let eGPrefs = {
     });
   },
   
-  getStatsExtraMenuPref: function() {
+  getUsageExtraMenuPref: function() {
     return this.getPref("stats.extraMenu");
   },
   
-  incrementStatsExtraMenuPref: function(anIndex) {
-    this.getStatsExtraMenuPref().then(anArray => {
+  incrementUsageExtraMenuPref: function(anIndex) {
+    this.getUsageExtraMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
         "stats.extraMenu": anArray
@@ -524,18 +524,18 @@ let eGPrefs = {
     });
   },
   
-  incrementNoStats: function() {},
+  incrementNoUsage: function() {},
   
-  updateStatsForAction: function(anActionName) {
-    this.getPref("stats.actions").then(actionsStats => {
-      ++actionsStats[anActionName];
+  updateUsageForAction: function(anActionName) {
+    this.getPref("stats.actions").then(actionsUsage => {
+      ++actionsUsage[anActionName];
       browser.storage.local.set({
-        "stats.actions": actionsStats
+        "stats.actions": actionsUsage
       });
     });
   },
   
-  getStatsActionsPref: function() {
+  getUsageActionsPref: function() {
     return this.getPref("stats.actions");
   },
   

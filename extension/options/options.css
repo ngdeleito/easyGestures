@@ -383,79 +383,79 @@ th {
   font-size: inherit;
 }
 
-#statsResetSection {
+#usageResetSection {
   display: flex;
   flex-direction: row;
   align-items: center;
   margin-bottom: 0.75em;
 }
 
-#statsResetSection p {
+#usageResetSection p {
   margin: 0;
 }
 
-#statsResetSection button {
+#usageResetSection button {
   margin-left: auto;
 }
 
-#stats_clicksByAction {
+#usage_clicksByAction {
   -moz-column-count: 5;
   column-count: 5;
 }
 
-#stats_clicksByAction div {
+#usage_clicksByAction div {
   height: 32px;
   line-height: 32px;
 }
 
-#stats_clicksByAction span {
+#usage_clicksByAction span {
   display: inline-block;
   vertical-align: middle;
 }
 
-#stats_clicksByAction span + span {
+#usage_clicksByAction span + span {
   margin-left: 5px;
 }
 
-#stats_clicksByAction span:nth-child(2) {
+#usage_clicksByAction span:nth-child(2) {
   max-width: 50px;
   height: 20px;
   background-color: hsl(0, 0%, 60%);
 }
 
-#stats_clicksByDirection > div {
+#usage_clicksByDirection > div {
   display: flex;
   justify-content: space-between;
 }
 
-#stats_clicksByDirection > div > div:first-child {
+#usage_clicksByDirection > div > div:first-child {
   font-weight: bold;
 }
 
-#stats_clicksByDirection > div > div:first-child div:nth-child(1) {
+#usage_clicksByDirection > div > div:first-child div:nth-child(1) {
   height: 1em;
 }
 
-#stats_clicksByDirection > div > div:first-child div:nth-child(2) {
+#usage_clicksByDirection > div > div:first-child div:nth-child(2) {
   height: calc(-2 * var(--actions-node-offset));
   line-height: calc(-2 * var(--actions-node-offset));
 }
 
-#stats_clicksByDirection > div > div:first-child div:nth-child(3) {
+#usage_clicksByDirection > div > div:first-child div:nth-child(3) {
   height: var(--extra-menu-height);
   line-height: var(--extra-menu-height);
 }
 
-#stats_clicksByDirection > div > div > div:first-child {
+#usage_clicksByDirection > div > div > div:first-child {
   text-align: center;
   font-weight: bold;
 }
 
-#stats_clicksByDirection > div > div > div + div {
+#usage_clicksByDirection > div > div > div + div {
   margin-top: 1em;
 }
 
-#stats .menu {
+#usage .menu {
   position: relative;
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
@@ -463,12 +463,12 @@ th {
   background-size: calc(-2 * var(--actions-node-offset) * 3);
 }
 
-#stats .menu.extra {
+#usage .menu.extra {
   height: var(--extra-menu-height);
   background-position: 0px calc(2 * var(--actions-node-offset));
 }
 
-#stats .menu div {
+#usage .menu div {
   position: absolute;
   width: var(--icon-size);
   height: var(--icon-size);
@@ -477,7 +477,7 @@ th {
   font-size: smaller;
 }
 
-#stats .menu div.total {
+#usage .menu div.total {
   left: var(--cardinal-action-farthest-border-offset);
   top: var(--cardinal-action-farthest-border-offset);
   font-weight: bold;

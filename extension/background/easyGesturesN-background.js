@@ -140,12 +140,12 @@ let eGMessageHandlers = {
     });
   },
   
-  incrementShowExtraMenuStats: function(aMessage) {
-    eGPrefs.incrementStatsMainMenuPref(aMessage.incrementIndex);
+  incrementShowExtraMenuUsage: function(aMessage) {
+    eGPrefs.incrementUsageMainMenuPref(aMessage.incrementIndex);
   },
   
   runAction: function(aMessage) {
-    return eGActions[aMessage.actionName].run(aMessage.updateStatsInformation);
+    return eGActions[aMessage.actionName].run(aMessage.usageInformationUpdate);
   },
   
   loadURLInNewNonActiveTab: function(aMessage) {
@@ -195,7 +195,7 @@ async function handleInstallOrUpgrade(details) {
   });
   if (details.reason === "install") {
     await eGPrefs.setDefaultSettings();
-    eGPrefs.initializeStats();
+    eGPrefs.initializeUsageData();
   }
   else if (details.reason === "update") {
     if (eGUtils.isVersionSmallerThan(details.previousVersion, "5.3")) {

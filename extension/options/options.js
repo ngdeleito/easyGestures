@@ -65,7 +65,7 @@ let eventListenersArray = [
   ["enableMainAlt2Menu", "change", setDisabledStatusForMainAlt2Menu],
   ["enableExtraAlt1Menu", "change", setDisabledStatusForExtraAlt1Menu],
   ["enableExtraAlt2Menu", "change", setDisabledStatusForExtraAlt2Menu],
-  ["resetStatsButton", "click", resetStats]
+  ["resetUsageButton", "click", resetUsage]
 ];
 
 let optionalPermissions = {
@@ -91,7 +91,7 @@ function handleStorageChange(changes) {
   for (let change in changes) {
     let prefix = change.split(".")[0];
     if (prefix === "stats") {
-      loadStats();
+      loadUsageData();
     }
     else if (prefix !== "general" || change === "general.startupTips") {
       if (!prefChanged) {
@@ -908,20 +908,20 @@ function removeChildNodes(node) {
 }
 
 function initializeClicksByAction() {
-  eGPrefs.getStatsActionsPref().then(statsActions => {
+  eGPrefs.getUsageActionsPref().then(usageActions => {
     let totalClicks = 0;
-    for (let action in statsActions) {
-      totalClicks += statsActions[action];
+    for (let action in usageActions) {
+      totalClicks += usageActions[action];
     }
-    totalClicks = totalClicks === 0 ? 1 : totalClicks - statsActions.empty;
+    totalClicks = totalClicks === 0 ? 1 : totalClicks - usageActions.empty;
     
-    let container = document.getElementById("stats_clicksByAction");
+    let container = document.getElementById("usage_clicksByAction");
     removeChildNodes(container);
     
     // we start at the action that follows the "showExtraMenu" action
     let currentAction = eGActions.showExtraMenu.nextAction;
     while (currentAction !== null) {
-      let clicksForAction = statsActions[currentAction];
+      let clicksForAction = usageActions[currentAction];
       let count = Math.round(clicksForAction / totalClicks * 1000) / 10;
       if (count > 1) {
         count = Math.round(count);
@@ -952,18 +952,18 @@ function initializeClicksByAction() {
   });
 }
 
-function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
+function initializeClicksByDirectionForMenuLayouts(usageArray, isExtraMenu) {
   let numberOfActions = isExtraMenu ? 5 : 10;
   let usages = [0, 0, 0, 0];
   
   for (let i = 0; i < numberOfActions; ++i) {
-    let usage = statsArray[0 * numberOfActions + i];
+    let usage = usageArray[0 * numberOfActions + i];
     usages[0] += usage;
     usages[3] += usage;
-    usage = statsArray[1 * numberOfActions + i];
+    usage = usageArray[1 * numberOfActions + i];
     usages[1] += usage;
     usages[3] += usage;
-    usage = statsArray[2 * numberOfActions + i];
+    usage = usageArray[2 * numberOfActions + i];
     usages[2] += usage;
     usages[3] += usage;
   }
@@ -979,12 +979,12 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
       container.classList.toggle("large", prefValue);
     });
     for (let i = 0; i < numberOfActions; ++i) {
-      let stat = document.createElement("div");
-      stat.className = "menuIcon sector" + i;
-      let clicks = statsArray[layoutIndex * numberOfActions + i];
+      let usageElement = document.createElement("div");
+      usageElement.className = "menuIcon sector" + i;
+      let clicks = usageArray[layoutIndex * numberOfActions + i];
       let totalUsage = usages[layoutIndex] === 0 ? 1 : usages[layoutIndex];
-      stat.textContent = Math.round(clicks * 100 / totalUsage) + "%";
-      container.appendChild(stat);
+      usageElement.textContent = Math.round(clicks * 100 / totalUsage) + "%";
+      container.appendChild(usageElement);
     }
     
     let total = document.createElement("div");
@@ -995,14 +995,14 @@ function initializeClicksByDirectionForMenuLayouts(statsArray, isExtraMenu) {
   });
 }
 
-function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
+function initializeClicksByDirectionTotals(usageArray, isExtraMenu) {
   let numberOfActions = isExtraMenu ? 5 : 10;
   let usages = [];
   let total = 0;
   for (let i = 0; i < numberOfActions; ++i) {
-    let usage = statsArray[0 * numberOfActions + i] +
-                statsArray[1 * numberOfActions + i] +
-                statsArray[2 * numberOfActions + i];
+    let usage = usageArray[0 * numberOfActions + i] +
+                usageArray[1 * numberOfActions + i] +
+                usageArray[2 * numberOfActions + i];
     usages.push(usage);
     total += usage;
   }
@@ -1017,29 +1017,29 @@ function initializeClicksByDirectionTotals(statsArray, isExtraMenu) {
     container.classList.toggle("large", prefValue);
   });
   for (let i = 0; i < numberOfActions; ++i) {
-   let stat = document.createElement("div");
-   stat.className = "menuIcon sector" + i;
-   stat.textContent = Math.round(usages[i] * 100 / (total === 0 ? 1 : total)) +
-                        "%";
-   container.appendChild(stat);
+   let usageElement = document.createElement("div");
+   usageElement.className = "menuIcon sector" + i;
+   usageElement.textContent = Math.round(usages[i] * 100 /
+                                         (total === 0 ? 1 : total)) + "%";
+   container.appendChild(usageElement);
   }
 }
 
 function initializeClicksByDirection() {
-  eGPrefs.getStatsMainMenuPref().then(statsMainArray => {
-    initializeClicksByDirectionForMenuLayouts(statsMainArray, false);
-    initializeClicksByDirectionTotals(statsMainArray, false);
+  eGPrefs.getUsageMainMenuPref().then(usageMainArray => {
+    initializeClicksByDirectionForMenuLayouts(usageMainArray, false);
+    initializeClicksByDirectionTotals(usageMainArray, false);
   });
   
-  eGPrefs.getStatsExtraMenuPref().then(statsExtraArray => {
-    initializeClicksByDirectionForMenuLayouts(statsExtraArray, true);
-    initializeClicksByDirectionTotals(statsExtraArray, true);
+  eGPrefs.getUsageExtraMenuPref().then(usageExtraArray => {
+    initializeClicksByDirectionForMenuLayouts(usageExtraArray, true);
+    initializeClicksByDirectionTotals(usageExtraArray, true);
   });
 }
 
-function loadStats() {
-  eGPrefs.getStatsLastResetPref().then(prefValue => {
-    document.getElementById("statsLastReset").textContent = prefValue;
+function loadUsageData() {
+  eGPrefs.getUsageLastResetPref().then(prefValue => {
+    document.getElementById("usageLastReset").textContent = prefValue;
   });
   
   initializeClicksByAction();
@@ -1063,7 +1063,7 @@ function optionsLoadHandler() {
   initializePaneAndTabs(document.location.hash);
   loadPreferences();
   
-  loadStats();
+  loadUsageData();
   
   window.setTimeout(function() { window.scrollTo(0, 0); });
   document.body.style.cursor = "auto";
@@ -1202,8 +1202,8 @@ function updateTextInputElement(anEvent) {
   aTextInputElement.dispatchEvent(new window.Event("change"));
 }
 
-function resetStats() {
+function resetUsage() {
   if (confirm(browser.i18n.getMessage("stats.reset.confirm"))) {
-    eGPrefs.initializeStats();
+    eGPrefs.initializeUsageData();
   }
 }
