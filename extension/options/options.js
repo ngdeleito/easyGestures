@@ -931,7 +931,7 @@ function initializeClicksByAction() {
       div.setAttribute("title",
                        eGActions[currentAction].getLocalizedActionName() +
                        ": " + clicksForAction + " " +
-                       browser.i18n.getMessage("stats.clicks"));
+                       browser.i18n.getMessage("usage.clicks"));
       container.appendChild(div);
       
       let span = document.createElement("span");
@@ -1203,7 +1203,7 @@ function updateTextInputElement(anEvent) {
 }
 
 function resetUsage() {
-  if (confirm(browser.i18n.getMessage("stats.reset.confirm"))) {
+  if (confirm(browser.i18n.getMessage("usage.reset.confirm"))) {
     eGPrefs.initializeUsageData();
   }
 }

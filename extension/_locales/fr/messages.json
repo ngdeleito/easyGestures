@@ -123,7 +123,7 @@
   "behavior": { "message": "Comportement" },
   "menus": { "message": "Menus" },
   "customizations": { "message": "Personnalisations" },
-  "stats": { "message": "Utilisation" },
+  "usage": { "message": "Utilisation" },
   
   "general.startupTips": { "message": "Afficher les astuces au démarrage de Firefox" },
   "general.displayTips": { "message": "Afficher les astuces" },
@@ -231,13 +231,13 @@
   "customizations.dailyReadings": { "message": "Personnaliser l'action «\u00a0Lectures quotidiennes\u00a0»" },
   "customizations.dailyReadings.folderName": { "message": "Nom du dossier utilisé par cette action\u00a0:" },
   
-  "stats.lastReset": { "message": "Dernière réinitialisation\u00a0:" },
-  "stats.reset": { "message": "Réinitialiser les données d'utilisation..." },
-  "stats.reset.confirm": { "message": "Confirmez svp que vous souhaitez réinitialiser les données d'utilisation." },
-  "stats.actions": { "message": "Clics par action" },
-  "stats.clicks": { "message": "clic(s)" },
-  "stats.directions": { "message": "Clics par direction" },
-  "stats.allMenus": { "message": "Tous les menus" },
+  "usage.lastReset": { "message": "Dernière réinitialisation\u00a0:" },
+  "usage.reset": { "message": "Réinitialiser les données d'utilisation..." },
+  "usage.reset.confirm": { "message": "Confirmez svp que vous souhaitez réinitialiser les données d'utilisation." },
+  "usage.actions": { "message": "Clics par action" },
+  "usage.clicks": { "message": "clic(s)" },
+  "usage.directions": { "message": "Clics par direction" },
+  "usage.allMenus": { "message": "Tous les menus" },
   
   
   "tips": { "message": "Astuces" },

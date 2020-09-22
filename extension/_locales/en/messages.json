@@ -123,7 +123,7 @@
   "behavior": { "message": "Behavior" },
   "menus": { "message": "Menus" },
   "customizations": { "message": "Customizations" },
-  "stats": { "message": "Usage" },
+  "usage": { "message": "Usage" },
   
   "general.startupTips": { "message": "Show tips at startup" },
   "general.displayTips": { "message": "Display tips" },
@@ -231,13 +231,13 @@
   "customizations.dailyReadings": { "message": "Customize the \"Daily readings\" action" },
   "customizations.dailyReadings.folderName": { "message": "Name of the folder used by this action:" },
   
-  "stats.lastReset": { "message": "Last reset:" },
-  "stats.reset": { "message": "Reset usage data..." },
-  "stats.reset.confirm": { "message": "Please confirm you want to reset usage data." },
-  "stats.actions": { "message": "Clicks by Action" },
-  "stats.clicks": { "message": "click(s)" },
-  "stats.directions": { "message": "Clicks by Direction" },
-  "stats.allMenus": { "message": "All Menus" },
+  "usage.lastReset": { "message": "Last reset:" },
+  "usage.reset": { "message": "Reset usage data..." },
+  "usage.reset.confirm": { "message": "Please confirm you want to reset usage data." },
+  "usage.actions": { "message": "Clicks by Action" },
+  "usage.clicks": { "message": "click(s)" },
+  "usage.directions": { "message": "Clicks by Direction" },
+  "usage.allMenus": { "message": "All Menus" },
   
   
   "tips": { "message": "Tips" },
