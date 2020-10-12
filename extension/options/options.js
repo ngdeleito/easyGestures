@@ -90,7 +90,7 @@ function preventDefault(anEvent) {
 function handleStorageChange(changes) {
   for (let change in changes) {
     let prefix = change.split(".")[0];
-    if (prefix === "stats") {
+    if (prefix === "usage") {
       loadUsageData();
     }
     else if (prefix !== "general" || change === "general.startupTips") {

@@ -262,18 +262,18 @@ let eGPrefs = {
   
   _getDefaultUsageMap: function() {
     let defaultUsage = new Map();
-    this._setStringPref(defaultUsage, "stats.lastReset",
+    this._setStringPref(defaultUsage, "usage.lastReset",
                         (new Date()).toISOString(), function(newPrefValue) {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
-    this._setArrayPref(defaultUsage, "stats.mainMenu", Array(30).fill(0),
+    this._setArrayPref(defaultUsage, "usage.mainMenu", Array(30).fill(0),
                        function(newPrefValue) {
       return Array.isArray(newPrefValue) && newPrefValue.length === 30 &&
              newPrefValue.every(function(element) {
                return Number.isInteger(element);
              });
     });
-    this._setArrayPref(defaultUsage, "stats.extraMenu", Array(15).fill(0),
+    this._setArrayPref(defaultUsage, "usage.extraMenu", Array(15).fill(0),
                        function(newPrefValue) {
       return Array.isArray(newPrefValue) && newPrefValue.length === 15 &&
              newPrefValue.every(function(element) {
@@ -285,8 +285,8 @@ let eGPrefs = {
     for (let action in eGActions) {
       actionsUsage[action] = 0;
     }
-    defaultUsage.set("stats.actions",
-                     new ObjectPref("stats.actions", actionsUsage,
+    defaultUsage.set("usage.actions",
+                     new ObjectPref("usage.actions", actionsUsage,
                                     function(newPrefValue) {
       let usageActions = Object.getOwnPropertyNames(newPrefValue).sort();
       let actions = Object.getOwnPropertyNames(eGActions).sort();
@@ -493,33 +493,33 @@ let eGPrefs = {
   },
   
   getUsageLastResetPref: function() {
-    return this.getPref("stats.lastReset").then(prefValue => {
+    return this.getPref("usage.lastReset").then(prefValue => {
       return (new Date(prefValue)).toLocaleString();
     });
   },
   
   getUsageMainMenuPref: function() {
-    return this.getPref("stats.mainMenu");
+    return this.getPref("usage.mainMenu");
   },
   
   incrementUsageMainMenuPref: function(anIndex) {
     this.getUsageMainMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
-        "stats.mainMenu": anArray
+        "usage.mainMenu": anArray
       });
     });
   },
   
   getUsageExtraMenuPref: function() {
-    return this.getPref("stats.extraMenu");
+    return this.getPref("usage.extraMenu");
   },
   
   incrementUsageExtraMenuPref: function(anIndex) {
     this.getUsageExtraMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
-        "stats.extraMenu": anArray
+        "usage.extraMenu": anArray
       });
     });
   },
@@ -527,16 +527,16 @@ let eGPrefs = {
   incrementNoUsage: function() {},
   
   updateUsageForAction: function(anActionName) {
-    this.getPref("stats.actions").then(actionsUsage => {
+    this.getPref("usage.actions").then(actionsUsage => {
       ++actionsUsage[anActionName];
       browser.storage.local.set({
-        "stats.actions": actionsUsage
+        "usage.actions": actionsUsage
       });
     });
   },
   
   getUsageActionsPref: function() {
-    return this.getPref("stats.actions");
+    return this.getPref("usage.actions");
   },
   
   _updateActions: function(actionsToRemove, actionsToAdd, actionsToRename) {
@@ -695,6 +695,22 @@ let eGPrefs = {
       }
       return browser.storage.local.set(prefs);
     }));
+    return Promise.all(promises);
+  },
+  
+  updateToV6_5: function() {
+    let promises = [];
+    let prefsToRename = [
+      "stats.lastReset", "stats.actions", "stats.mainMenu", "stats.extraMenu"
+    ];
+    promises.push(browser.storage.local.get(prefsToRename).then(prefs => {
+      let newPrefs = {};
+      for (let pref in prefs) {
+        newPrefs[pref.replace("stats", "usage")] = prefs[pref];
+      }
+      return browser.storage.local.set(newPrefs);
+    }));
+    promises.push(browser.storage.local.remove(prefsToRename));
     return Promise.all(promises);
   }
 };

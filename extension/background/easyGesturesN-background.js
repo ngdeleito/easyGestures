@@ -54,7 +54,7 @@ function resetPieMenuOnAllTabs() {
 function handleStorageChange(changes) {
   for (let change in changes) {
     let prefix = change.split(".")[0];
-    if (prefix !== "general" && prefix !== "stats") {
+    if (prefix !== "general" && prefix !== "usage") {
       resetPieMenuOnAllTabs();
     }
   }
