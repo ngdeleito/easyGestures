@@ -488,23 +488,27 @@ let eGActions = {
   
   pageTop: new DisableableAction("pageTop", function() {
     let frameIndex = eGContext.frameHierarchyArray.findIndex(element => {
-      return element.scrollY !== 0;
+      return element.scrollableElementScrollTop !== 0 ||
+             element.windowScrollY !== 0;
     });
     this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex);
   }, function() {
     return Promise.resolve(eGContext.frameHierarchyArray.every(element => {
-      return element.scrollY === 0;
+      return element.scrollableElementScrollTop === 0 &&
+             element.windowScrollY === 0;
     }));
   }, false, "pageBottom"),
   
   pageBottom: new DisableableAction("pageBottom", function() {
     let frameIndex = eGContext.frameHierarchyArray.findIndex(element => {
-      return element.scrollY !== element.scrollMaxY;
+      return !element.scrollableElementIsFullyScrolled ||
+             element.windowScrollY !== element.windowScrollMaxY;
     });
     this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex);
   }, function() {
     return Promise.resolve(eGContext.frameHierarchyArray.every(element => {
-      return element.scrollY === element.scrollMaxY;
+      return element.scrollableElementIsFullyScrolled &&
+             element.windowScrollY === element.windowScrollMaxY;
     }));
   }, false, "savePageAs"),
   

@@ -36,7 +36,8 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 /* exported actionStatusSetters, actionRunners */
 /* global document, ACTIONS_NODE_ID_PREFIX, TOOLTIPS_NODE_ID_PREFIX,
-          context, window, imageElement, eGPieMenu, inputElement */
+          context, scrollableElement, window, isScrollableElementFullyScrolled,
+          imageElement, eGPieMenu, inputElement */
 
 "use strict";
 
@@ -99,11 +100,22 @@ let actionRunners = {
   // these methods run on the innermost frame
   
   pageTop: function() {
-    window.scroll(0, 0);
+    if (scrollableElement.scrollTop > 0) {
+      scrollableElement.scroll(0, 0);
+    }
+    else {
+      window.scroll(0, 0);
+    }
   },
   
   pageBottom: function() {
-    window.scroll(0, window.scrollMaxY);
+    if (isScrollableElementFullyScrolled(scrollableElement)) {
+      window.scroll(0, window.scrollMaxY);
+    }
+    else {
+      scrollableElement.scroll(0, scrollableElement.scrollHeight -
+                                  scrollableElement.clientHeight);
+    }
   },
   
   zoomIn: function() {

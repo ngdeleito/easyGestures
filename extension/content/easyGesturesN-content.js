@@ -40,7 +40,7 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 "use strict";
 
-let contextualMenus, imageElement, inputElement, context;
+let scrollableElement, contextualMenus, imageElement, inputElement, context;
 
 if (window.self === window.top) {
   // setting up pie menu within topmost frame
@@ -87,6 +87,22 @@ function setPieMenuSettingsWithinTopmostFrame() {
     }
     eGPieMenu.init();
   });
+}
+
+function initializeScrollableElement(anHTMLElement) {
+  let aScrollableElement = anHTMLElement;
+  while (aScrollableElement !== document.documentElement &&
+         (aScrollableElement.scrollHeight <= aScrollableElement.clientHeight ||
+          (window.getComputedStyle(aScrollableElement).overflowY !== "scroll" &&
+           window.getComputedStyle(aScrollableElement).overflowY !== "auto"))) {
+    aScrollableElement = aScrollableElement.parentElement;
+  }
+  return aScrollableElement;
+}
+
+function isScrollableElementFullyScrolled(aScrollableElement) {
+  return aScrollableElement.scrollHeight - aScrollableElement.scrollTop ===
+         aScrollableElement.clientHeight;
 }
 
 function cleanSelection(selection) {
@@ -201,6 +217,7 @@ function handleMousedownWithinTopmostFrame(anEvent) {
   
   eGPieMenu.centerX = anEvent.clientX;
   eGPieMenu.centerY = anEvent.clientY;
+  scrollableElement = initializeScrollableElement(anEvent.target);
   if (!(anEvent.target instanceof window.HTMLIFrameElement)) {
     // when this condition is not met, mousedown has been first triggered inside
     // an inner frame and contextualMenus and context have already been
@@ -213,8 +230,11 @@ function handleMousedownWithinTopmostFrame(anEvent) {
   context.urlToIdentifier = getURLOfNearestIDAttribute(anEvent.target);
   context.frameHierarchyArray.push({
     URL: window.location.toString(),
-    scrollY: window.scrollY,
-    scrollMaxY: window.scrollMaxY,
+    scrollableElementScrollTop: scrollableElement.scrollTop,
+    windowScrollY: window.scrollY,
+    scrollableElementIsFullyScrolled:
+      isScrollableElementFullyScrolled(scrollableElement),
+    windowScrollMaxY: window.scrollMaxY,
     frameID: 0
   });
   browser.runtime.sendMessage({
@@ -385,13 +405,17 @@ function handleMousedownWithinInnerFrame(anEvent) {
   
   anEvent.preventDefault();
   
+  scrollableElement = initializeScrollableElement(anEvent.target);
   [contextualMenus, imageElement, inputElement, context] =
     initializeContext(anEvent.target,
                       cleanSelection(window.getSelection().toString()));
   context.frameHierarchyArray.push({
     URL: window.location.toString(),
-    scrollY: window.scrollY,
-    scrollMaxY: window.scrollMaxY
+    scrollableElementScrollTop: scrollableElement.scrollTop,
+    windowScrollY: window.scrollY,
+    scrollableElementIsFullyScrolled:
+      isScrollableElementFullyScrolled(scrollableElement),
+    windowScrollMaxY: window.scrollMaxY
   });
   browser.runtime.sendMessage({
     messageName: "transferMousedownToUpperFrame",
@@ -441,8 +465,8 @@ function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
     parameters.innerFrameURL = window.location.toString();
     parameters.context.frameHierarchyArray.push({
         URL: window.location.toString(),
-        scrollY: window.scrollY,
-        scrollMaxY: window.scrollMaxY
+        windowScrollY: window.scrollY,
+        windowScrollMaxY: window.scrollMaxY
     });
     browser.runtime.sendMessage({
       messageName: "transferMousedownToUpperFrame",
