@@ -484,9 +484,9 @@ let eGActions = {
         });
       }
     });
-  }, false, "pageTop"),
+  }, false, "goToTop"),
   
-  pageTop: new DisableableAction("pageTop", function() {
+  goToTop: new DisableableAction("goToTop", function() {
     let frameIndex = eGContext.frameHierarchyArray.findIndex(element => {
       return element.scrollableElementScrollTop !== 0 ||
              element.windowScrollY !== 0;
@@ -497,9 +497,9 @@ let eGActions = {
       return element.scrollableElementScrollTop === 0 &&
              element.windowScrollY === 0;
     }));
-  }, false, "pageBottom"),
+  }, false, "goToBottom"),
   
-  pageBottom: new DisableableAction("pageBottom", function() {
+  goToBottom: new DisableableAction("goToBottom", function() {
     let frameIndex = eGContext.frameHierarchyArray.findIndex(element => {
       return !element.scrollableElementIsFullyScrolled ||
              element.windowScrollY !== element.windowScrollMaxY;

@@ -242,12 +242,12 @@
               stroke-linejoin="round" />
     <polyline points="14 26, 14 18, 18 18, 18 26" stroke-linejoin="round" />
   </g>
-  <!-- pageTop -->
+  <!-- goToTop -->
   <g transform="translate(256, 32)">
     <use href="#smallArrowWithLimit" transform="translate(11.4, 10)" />
     <use href="#pageWithoutLeftBorder" x="12" y="6" />
   </g>
-  <!-- pageBottom -->
+  <!-- goToBottom -->
   <g transform="translate(288, 32)">
     <use href="#smallArrowWithLimit"
          transform="translate(11.4, 22) rotate(180)" />

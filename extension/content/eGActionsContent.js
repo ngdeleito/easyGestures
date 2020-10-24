@@ -99,7 +99,7 @@ let actionStatusSetters = {
 let actionRunners = {
   // these methods run on the innermost frame
   
-  pageTop: function() {
+  goToTop: function() {
     if (scrollableElement.scrollTop > 0) {
       scrollableElement.scroll(0, 0);
     }
@@ -108,7 +108,7 @@ let actionRunners = {
     }
   },
   
-  pageBottom: function() {
+  goToBottom: function() {
     if (isScrollableElementFullyScrolled(scrollableElement)) {
       window.scroll(0, window.scrollMaxY);
     }

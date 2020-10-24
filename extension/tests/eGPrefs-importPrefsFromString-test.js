@@ -117,7 +117,7 @@ QUnit.test("test importPrefsFromString with invalid preference values",
   });
   let done8 = assert.async();
   eGPrefs.importPrefsFromString("[[\"menus.extra\", " +
-                                "[\"empty\", \"pageTop\", \"newTab\", \"xxx\", \"empty\"]]]")
+                                "[\"empty\", \"goToTop\", \"newTab\", \"xxx\", \"empty\"]]]")
          .then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&
               result.prefs === "menus.extra");

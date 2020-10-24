@@ -644,13 +644,13 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --icon-position-x: 7;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .pageTop,
-[data-action="pageTop"], .actionIcon.pageTop {
+#easyGesturesPieMenu .goToTop,
+[data-action="goToTop"], .actionIcon.goToTop {
   --icon-position-x: 8;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .pageBottom,
-[data-action="pageBottom"], .actionIcon.pageBottom {
+#easyGesturesPieMenu .goToBottom,
+[data-action="goToBottom"], .actionIcon.goToBottom {
   --icon-position-x: 9;
   --icon-position-y: 1;
 }

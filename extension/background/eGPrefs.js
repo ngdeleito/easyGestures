@@ -144,10 +144,10 @@ let eGPrefs = {
     }
     
     let nonExtraMenus = [
-      ["main", ["nextTab", "pageTop", "showExtraMenu", "newTab", "back",
+      ["main", ["nextTab", "goToTop", "showExtraMenu", "newTab", "back",
                 "empty", "closeTab", "reload", "previousTab", "empty"]],
       ["mainAlt1", ["forward", "loadPageInNewTab", "showExtraMenu",
-                    "undoCloseTab", "bookmarkThisPage", "empty", "pageBottom",
+                    "undoCloseTab", "bookmarkThisPage", "empty", "goToBottom",
                     "empty", "empty", "empty"]],
       ["mainAlt2", ["loadURL2", "loadURL1", "showExtraMenu", "loadURL7",
                     "loadURL6", "runScript2", "loadURL5", "loadURL4",
@@ -558,6 +558,36 @@ let eGPrefs = {
     });
   },
   
+  _renameActions: function(actionsToRename) {
+    function newActionNameForAction(actionName) {
+      return actionsToRename[actionName] === undefined ?
+               actionName :
+               actionsToRename[actionName];
+    }
+    
+    let promises = [];
+    promises.push(this.getPref("usage.actions").then(prefValue => {
+      for (let action in actionsToRename) {
+        prefValue[actionsToRename[action]] = prefValue[action];
+        delete prefValue[action];
+      }
+      return browser.storage.local.set({
+        "usage.actions": prefValue
+      });
+    }));
+    promises.push(browser.storage.local.get(["menus.main", "menus.mainAlt1",
+      "menus.mainAlt2", "menus.extra", "menus.extraAlt1", "menus.extraAlt2",
+      "menus.contextLink", "menus.contextImage", "menus.contextSelection",
+      "menus.contextTextbox"
+    ]).then(prefs => {
+      for (let key in prefs) {
+        prefs[key] = prefs[key].map(newActionNameForAction);
+      }
+      return browser.storage.local.set(prefs);
+    }));
+    return promises;
+  },
+  
   updateToV5_3: function() {
     let actionsToRemove = [
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
@@ -698,19 +728,24 @@ let eGPrefs = {
     return Promise.all(promises);
   },
   
-  updateToV6_5: function() {
-    let promises = [];
+  updateToV6_5: async function() {
     let prefsToRename = [
       "stats.lastReset", "stats.actions", "stats.mainMenu", "stats.extraMenu"
     ];
-    promises.push(browser.storage.local.get(prefsToRename).then(prefs => {
+    await browser.storage.local.get(prefsToRename).then(prefs => {
       let newPrefs = {};
       for (let pref in prefs) {
         newPrefs[pref.replace("stats", "usage")] = prefs[pref];
       }
       return browser.storage.local.set(newPrefs);
-    }));
-    promises.push(browser.storage.local.remove(prefsToRename));
+    });
+    await browser.storage.local.remove(prefsToRename);
+    
+    let promises = this._renameActions({
+      "pageTop": "goToTop",
+      "pageBottom": "goToBottom"
+    });
+    
     return Promise.all(promises);
   }
 };
