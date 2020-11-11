@@ -357,34 +357,42 @@ let eGPieMenu = {
     return anActionsNode;
   },
   
-  _createTooltipsNodes: function(layoutName, tooltips, hasExtraMenuAction) {
+  _createTooltipsNode: function(layoutName) {
     let aTooltipsNode = document.createElementNS(HTML_NAMESPACE, "div");
     aTooltipsNode.id = TOOLTIPS_NODE_ID_PREFIX + layoutName;
     aTooltipsNode.className = "easyGesturesTooltipsNode";
     aTooltipsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
                                    this._currentLayout.isExtraMenu);
-    
+    return aTooltipsNode;
+  },
+  
+  _appendTooltips: function(tooltipsNode, tooltips, hasExtraMenuAction) {
     tooltips.forEach(function(tooltip, index) {
       let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
       aTooltipNode.classList.add("tooltip" + index);
-      aTooltipNode.appendChild(document.createTextNode(tooltip));
-      aTooltipsNode.appendChild(aTooltipNode);
+      let aTooltipTextNode = document.createElementNS(HTML_NAMESPACE, "span");
+      aTooltipTextNode.textContent = tooltip;
+      aTooltipNode.appendChild(aTooltipTextNode);
+      tooltipsNode.appendChild(aTooltipNode);
+      // for overflowWidth to be a meaninful value, the above nodes need to be
+      // inserted in the page upfront
+      let overflowWidth = aTooltipTextNode.scrollWidth -
+                          aTooltipTextNode.clientWidth;
+      aTooltipNode.style.setProperty("--overflow-width", overflowWidth);
     });
     if (hasExtraMenuAction) {
-      aTooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("extra");
+      tooltipsNode.childNodes[EXTRA_MENU_SECTOR].classList.add("extra");
     }
-    
-    return aTooltipsNode;
   },
   
   _showMenuTooltips: function() {
     let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX +
                                                this._currentLayout.name);
     if (tooltipsNode === null) {
-      tooltipsNode = this._createTooltipsNodes(this._currentLayout.name,
-                       this._currentLayout.tooltips,
-                       this._currentLayout.hasExtraMenuAction);
+      tooltipsNode = this._createTooltipsNode(this._currentLayout.name);
       this.easyGesturesNode.appendChild(tooltipsNode);
+      this._appendTooltips(tooltipsNode, this._currentLayout.tooltips,
+                           this._currentLayout.hasExtraMenuAction);
     }
     tooltipsNode.style.visibility = "visible";
     this._showingTooltips = true;

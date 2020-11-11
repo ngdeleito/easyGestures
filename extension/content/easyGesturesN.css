@@ -395,6 +395,11 @@ the terms of any one of the MPL, the GPL or the LGPL.
   border-color: var(--tooltip-inner-border-color) var(--pie-menu-border-color);
   padding: 0px 6px;
   background-color: var(--tooltip-background-color);
+}
+
+#easyGesturesPieMenu .easyGesturesTooltipsNode span {
+  display: inline-block;
+  width: 100%;
   color: var(--enabled-tooltip-color);
   line-height: var(--tooltip-height);
   font-family: sans-serif;
@@ -564,11 +569,31 @@ the terms of any one of the MPL, the GPL or the LGPL.
   padding-left: var(--tooltip-padding);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .selected {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .selected span {
   color: var(--selected-tooltip-color);
   font-weight: var(--selected-tooltip-font-weight);
+  text-overflow: clip;
+  animation: tooltip-animation calc(2 * 0.10s * var(--overflow-width)) linear;
+             /* animation speed: 0.10 s/px */
+  /* ideally, there should a pause by a constant amount (e.g. 1s) in the middle
+     of the animation; unfortunately, CSS only accepts a hardcoded percentage in
+     the keyframe below */
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .disabled {
+@keyframes tooltip-animation {
+  from {
+    text-indent: 0;
+  }
+  40% {
+    text-indent: calc(-1px * var(--overflow-width));
+  }
+  60% {
+    text-indent: calc(-1px * var(--overflow-width));
+  }
+  to {
+    text-indent: 0;
+  }
+}
+#easyGesturesPieMenu .easyGesturesTooltipsNode .disabled span {
   color: var(--disabled-tooltip-color);
   font-weight: normal;
 }
