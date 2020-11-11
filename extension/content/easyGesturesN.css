@@ -55,13 +55,12 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --contextual-menu-color: hsl(0, 0%, 50%);
   --tooltip-inner-border-color: hsl(60, 40%, 83%);
   --tooltip-background-color: hsl(60, 100%, 93%);
-  --enabled-tooltip-color: black;
+  --enabled-tooltip-color: hsl(0, 0%, 50%);
   --tooltip-extra-action-background-color: hsl(0, 100%, 90%);
   --selected-tooltip-color: black;
-  --selected-tooltip-font-weight: bold;
-  --disabled-tooltip-color: black;
+  --disabled-tooltip-color: hsl(0, 0%, 70%);
   --enabled-action-color: hsl(0, 0%, 50%);
-  --selected-action-color: hsl(0, 0%, 30%);
+  --selected-action-color: black;
   --disabled-action-color: hsl(0, 0%, 70%);
 }
 
@@ -83,7 +82,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --enabled-tooltip-color: var(--easyGesturesN-enabled-color);
   --tooltip-extra-action-background-color: var(--easyGesturesN-background-color);
   --selected-tooltip-color: var(--easyGesturesN-accent-color);
-  --selected-tooltip-font-weight: normal;
   --disabled-tooltip-color: var(--easyGesturesN-disabled-color);
   --enabled-action-color: var(--easyGesturesN-enabled-color);
   --selected-action-color: var(--easyGesturesN-accent-color);
@@ -571,7 +569,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .selected span {
   color: var(--selected-tooltip-color);
-  font-weight: var(--selected-tooltip-font-weight);
   text-overflow: clip;
   animation: tooltip-animation calc(2 * 0.10s * var(--overflow-width)) linear;
              /* animation speed: 0.10 s/px */
@@ -595,7 +592,6 @@ the terms of any one of the MPL, the GPL or the LGPL.
 }
 #easyGesturesPieMenu .easyGesturesTooltipsNode .disabled span {
   color: var(--disabled-tooltip-color);
-  font-weight: normal;
 }
 
 
