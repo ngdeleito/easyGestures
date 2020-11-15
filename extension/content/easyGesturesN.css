@@ -680,19 +680,24 @@ the terms of any one of the MPL, the GPL or the LGPL.
   --icon-position-x: 10;
   --icon-position-y: 1;
 }
+#easyGesturesPieMenu .savePageAsPDF,
+[data-action="savePageAsPDF"], .actionIcon.savePageAsPDF {
+  --icon-position-x: 11;
+  --icon-position-y: 1;
+}
 #easyGesturesPieMenu .printPage,
 [data-action="printPage"], .actionIcon.printPage {
-  --icon-position-x: 11;
+  --icon-position-x: 12;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .showPrintPreview,
 [data-action="showPrintPreview"], .actionIcon.showPrintPreview {
-  --icon-position-x: 12;
+  --icon-position-x: 13;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .searchWeb,
 [data-action="searchWeb"], .actionIcon.searchWeb {
-  --icon-position-x: 13;
+  --icon-position-x: 14;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .loadPageInNewTab,

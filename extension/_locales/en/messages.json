@@ -22,6 +22,7 @@
   "goToTop": { "message": "Go to top" },
   "goToBottom": { "message": "Go to bottom" },
   "savePageAs": { "message": "Save page as..." },
+  "savePageAsPDF": { "message": "Save page as PDF..." },
   "printPage": { "message": "Print..." },
   "showPrintPreview": { "message": "Show print preview" },
   "searchWeb": { "message": "Search web" },

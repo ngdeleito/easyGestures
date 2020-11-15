@@ -588,6 +588,17 @@ let eGPrefs = {
     return promises;
   },
   
+  _addActions: function(actionsToAdd) {
+    return this.getPref("usage.actions").then(prefValue => {
+      actionsToAdd.forEach(actionName => {
+        prefValue[actionName] = 0;
+      });
+      return browser.storage.local.set({
+        "usage.actions": prefValue
+      });
+    });
+  },
+  
   updateToV5_3: function() {
     let actionsToRemove = [
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
@@ -745,6 +756,8 @@ let eGPrefs = {
       "pageTop": "goToTop",
       "pageBottom": "goToBottom"
     });
+    
+    promises.push(this._addActions(["savePageAsPDF"]));
     
     return Promise.all(promises);
   }

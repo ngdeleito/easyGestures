@@ -22,6 +22,7 @@
   "goToTop": { "message": "Aller en haut" },
   "goToBottom": { "message": "Aller en bas" },
   "savePageAs": { "message": "Enregistrer sous..." },
+  "savePageAsPDF": { "message": "Enregistrer en PDF..." },
   "printPage": { "message": "Imprimer..." },
   "showPrintPreview": { "message": "Montrer la prévisualisation d'impression" },
   "searchWeb": { "message": "Rechercher sur le web" },

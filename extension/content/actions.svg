@@ -254,8 +254,16 @@
     <polyline points="20 6, 20 12, 26 12" />
     <use href="#saveArrow" />
   </g>
-  <!-- printPage -->
+  <!-- savePageAsPDF -->
   <g transform="translate(352, 32)">
+    <polyline points="14 6, 20 6, 26 12, 26 18" />
+    <polyline points="20 6, 20 12, 26 12" />
+    <use href="#saveArrow" transform="translate(-5, -9)" />
+    <text x="16" y="26" text-anchor="middle" font-family="sans-serif"
+          font-size="9" stroke-width="1">PDF</text>
+  </g>
+  <!-- printPage -->
+  <g transform="translate(384, 32)">
     <polyline points="10 16, 10 6, 22 6, 22 16" />
     <line x1="12" y1="9" x2="20" y2="9" />
     <line x1="12" y1="12" x2="20" y2="12" />
@@ -265,14 +273,14 @@
     <polyline points="10 22, 10 26, 22 26, 22 22" />
   </g>
   <!-- showPrintPreview -->
-  <g transform="translate(384, 32)">
+  <g transform="translate(416, 32)">
     <polyline points="10 9.1, 10 6, 20 6, 26 12, 26 26, 10 26, 10 18.9" />
     <polyline points="20 6, 20 12, 26 12" />
     <circle cx="11" cy="14" r="5" />
     <line x1="14.54" y1="17.54" x2="20.28" y2="23.28" />
   </g>
   <!-- searchWeb -->
-  <g transform="translate(416, 32)">
+  <g transform="translate(448, 32)">
     <path d="M 6.5 11 a 3 5 0 0 0 0 10 h 8 a 3 5 0 0 1 0 -10 h -8
              M 12.7 12 h 8 a 3 4 0 0 0 0 8 h -8
              M 18.72 19 h 7 a 2 3 0 0 1 0 -6 h -7

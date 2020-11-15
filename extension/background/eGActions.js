@@ -520,6 +520,14 @@ let eGActions = {
         saveAs: true
       }).catch(() => {});
     });
+  }, false, "savePageAsPDF"),
+  
+  savePageAsPDF: new Action("savePageAsPDF", function() {
+    eGUtils.performOnCurrentTab(function(currentTab) {
+      browser.tabs.saveAsPDF({
+        toFileName: currentTab.title + ".pdf"
+      });
+    });
   }, false, "printPage"),
   
   printPage: new Action("printPage", function() {
