@@ -5,15 +5,27 @@
   <meta charset="utf-8">
   <title>easyGestures N - Test canvas for inner frames</title>
   <style>
-    iframe {
+    .scroll, iframe {
       margin-left: 20%;
       height: 400px;
       width: 80%;
+    }
+    .scroll {
+      border: medium solid gray;
+      overflow-y: scroll;
+    }
+    .content {
+      height: 800px;
     }
   </style>
 </head>
 
 <body>
+  <h1>Scrollable element</h1>
+  <div class="scroll">
+    <div class="content"></div>
+  </div>
+  
   <h1>Inner frame</h1>
   <iframe src="test-canvas-contextualMenus.html"></iframe>
   
