@@ -1,6 +1,19 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.5 (December 14, 2020)
+
+- made the "sessions" permission optional
+- added support for listening to changes in permissions
+- the "Page Top" and "Page Bottom" actions work now also on scrollable elements and have been renamed to "Go To Top" and "Go To Bottom", respectively
+- the previous/next tab is warmed up when opening a pie menu layout including the "Previous Tab"/"Next Tab" action
+- new action: "Save Page As PDF" (on macOS, only for Firefox 81 or higher)
+- long tooltips are now fully displayed through an animation
+- renamed "statistics" to "usage (data)" in the preferences dialog
+- upgraded license for non-graphical assets to MPL v2.0
+- minor code and theme improvements
+
+
 Version 6.4 (July 9, 2020)
 
 - turned as many permissions as possible optional

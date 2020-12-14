@@ -183,6 +183,9 @@ async function handleInstallOrUpgrade(details) {
     if (eGUtils.isVersionSmallerThan(details.previousVersion, "6.4")) {
       eGUtils.showOrOpenTab("/options/options.html", "permissions");
     }
+    if (eGUtils.isVersionSmallerThan(details.previousVersion, "6.5")) {
+      await eGPrefs.updateToV6_5();
+    }
   }
   await browser.storage.local.remove("installOrUpgradeTriggered");
   startup();
