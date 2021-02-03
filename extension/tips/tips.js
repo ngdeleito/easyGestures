@@ -39,9 +39,7 @@ let tips = [
   new tipEntry("tips.openLinkAction",            "customizations_otherActions"),
   new tipEntry("tips.dailyReadingsAction",       "customizations_otherActions")
 ];
-tips.forEach(function(tip) {
-  tip.description = browser.i18n.getMessage(tip.label);
-});
+tips.forEach(tip => tip.description = browser.i18n.getMessage(tip.label));
 
 let tipNumber;
 
@@ -55,9 +53,8 @@ function updateContent(tipNbr) {
   // we resolve the locale strings that constitute the link text
   if (text.length > 1) {
     let linkTextStrings = text[1].split("/");
-    linkText = linkTextStrings.map(function(label) {
-      return browser.i18n.getMessage(label);
-    }).join("/");
+    linkText = linkTextStrings.map(label => browser.i18n.getMessage(label))
+                              .join("/");
   }
   
   document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " +

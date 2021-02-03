@@ -6,36 +6,18 @@
 
 "use strict";
 
-QUnit.test("test importPrefsFromString with invalid file content",
-  function(assert) {
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("A string");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("123");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("{}");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("{'a': 1}");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("[]");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("[1, 2, 3]");
-  });
-  assert.throws(function() {
-    eGPrefs.importPrefsFromString("[[1, 2], 3]");
-  });
+QUnit.test("test importPrefsFromString with invalid file content", assert => {
+  assert.throws(() => eGPrefs.importPrefsFromString(""));
+  assert.throws(() => eGPrefs.importPrefsFromString("A string"));
+  assert.throws(() => eGPrefs.importPrefsFromString("123"));
+  assert.throws(() => eGPrefs.importPrefsFromString("{}"));
+  assert.throws(() => eGPrefs.importPrefsFromString("{'a': 1}"));
+  assert.throws(() => eGPrefs.importPrefsFromString("[]"));
+  assert.throws(() => eGPrefs.importPrefsFromString("[1, 2, 3]"));
+  assert.throws(() => eGPrefs.importPrefsFromString("[[1, 2], 3]"));
 });
 
-QUnit.test("test importPrefsFromString with invalid preference values",
-  function(assert) {
+QUnit.test("test importPrefsFromString with invalid preference values", assert => {
   let done1 = assert.async();
   eGPrefs.importPrefsFromString("[[\"not.existing.pref\", 0]]").then(result => {
     assert.ok(result.code === "nonImportedPrefs" &&

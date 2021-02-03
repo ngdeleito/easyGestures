@@ -11,7 +11,7 @@ function initCanContextualMenuBeOpened(contextShowAuto, contextKey) {
   eGPieMenu.settings.contextKey = contextKey;
 }
 
-QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and no key", function(assert) {
+QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and no key", assert => {
   initCanContextualMenuBeOpened(false, 0);
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(false, false));
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(false, true));
@@ -19,7 +19,7 @@ QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and no key", 
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(true, true));
 });
 
-QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and ctrl key", function(assert) {
+QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and ctrl key", assert => {
   initCanContextualMenuBeOpened(false, 17);
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(false, false));
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(false, true));
@@ -27,7 +27,7 @@ QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and ctrl key"
   assert.ok(eGPieMenu.canContextualMenuBeOpened(true, true));
 });
 
-QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and alt key", function(assert) {
+QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and alt key", assert => {
   initCanContextualMenuBeOpened(false, 18);
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(false, false));
   assert.ok(eGPieMenu.canContextualMenuBeOpened(false, true));
@@ -35,7 +35,7 @@ QUnit.test("test canContextualMenuBeOpened with no contextShowAuto and alt key",
   assert.ok(eGPieMenu.canContextualMenuBeOpened(true, true));
 });
 
-QUnit.test("test canContextualMenuBeOpened with contextShowAuto and no key", function(assert) {
+QUnit.test("test canContextualMenuBeOpened with contextShowAuto and no key", assert => {
   initCanContextualMenuBeOpened(true, 0);
   assert.ok(eGPieMenu.canContextualMenuBeOpened(false, false));
   assert.ok(eGPieMenu.canContextualMenuBeOpened(false, true));
@@ -43,7 +43,7 @@ QUnit.test("test canContextualMenuBeOpened with contextShowAuto and no key", fun
   assert.ok(eGPieMenu.canContextualMenuBeOpened(true, true));
 });
 
-QUnit.test("test canContextualMenuBeOpened with contextShowAuto and ctrl key", function(assert) {
+QUnit.test("test canContextualMenuBeOpened with contextShowAuto and ctrl key", assert => {
   initCanContextualMenuBeOpened(true, 17);
   assert.ok(eGPieMenu.canContextualMenuBeOpened(false, false));
   assert.ok(eGPieMenu.canContextualMenuBeOpened(false, true));
@@ -51,7 +51,7 @@ QUnit.test("test canContextualMenuBeOpened with contextShowAuto and ctrl key", f
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(true, true));
 });
 
-QUnit.test("test canContextualMenuBeOpened with contextShowAuto and alt key", function(assert) {
+QUnit.test("test canContextualMenuBeOpened with contextShowAuto and alt key", assert => {
   initCanContextualMenuBeOpened(true, 18);
   assert.ok(eGPieMenu.canContextualMenuBeOpened(false, false));
   assert.notOk(eGPieMenu.canContextualMenuBeOpened(false, true));

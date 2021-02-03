@@ -241,15 +241,13 @@ function createMenuControl(menuName, isExtraMenu) {
 
 function createRegularMenuControls() {
   ["main", "mainAlt1", "mainAlt2", "contextLink", "contextImage",
-   "contextSelection", "contextTextbox"].forEach(function(menuName) {
-     createMenuControl(menuName, false);
-  });
+   "contextSelection", "contextTextbox"]
+    .forEach(menuName => createMenuControl(menuName, false));
 }
 
 function createExtraMenuControls() {
-  ["extra", "extraAlt1", "extraAlt2"].forEach(function(menuName) {
-    createMenuControl(menuName, true);
-  });
+  ["extra", "extraAlt1", "extraAlt2"]
+    .forEach(menuName => createMenuControl(menuName, true));
 }
 
 function createHeaderForAction(actionName) {
@@ -438,7 +436,7 @@ function initializePreferenceControl(control) {
   
   function initializeMenuControl(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
-      prefValue.forEach(function(value, index) {
+      prefValue.forEach((value, index) => {
         control.firstElementChild.childNodes[index].dataset.action = value;
         control.lastElementChild.childNodes[index]
                .querySelector("[value=" + value + "]").selected = true;
@@ -554,14 +552,14 @@ function preparePreferenceValueForLoadURL(actionName) {
 }
 
 function addEventListenerToLoadURLComponent(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
+  element.addEventListener("change", () => {
     prefChanged = true;
     eGPrefs.setPref(aPrefName, preparePreferenceValueForLoadURL(actionName));
   }, false);
 }
 
 function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
+  element.addEventListener("change", () => {
     prefChanged = true;
     eGPrefs.setPref(aPrefName, preparePreferenceValueForLoadURL(actionName));
   }, false);
@@ -573,7 +571,7 @@ function preparePreferenceValueForRunScript(actionName) {
 }
 
 function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
-  element.addEventListener("change", function() {
+  element.addEventListener("change", () => {
     prefChanged = true;
     eGPrefs.setPref(aPrefName, preparePreferenceValueForRunScript(actionName));
   }, false);
@@ -584,7 +582,7 @@ function addOnchangeListenerToPreferenceControl(control) {
     let aSelectElement = control.firstElementChild;
     let aLabelElement = aSelectElement.nextElementSibling;
     let aTextInputElement = aLabelElement.nextElementSibling;
-    aSelectElement.addEventListener("change", function() {
+    aSelectElement.addEventListener("change", () => {
       setDisabledStatusForSelectWithTextInputControl(control);
       
       if (aSelectElement.selectedIndex < 3) {
@@ -597,7 +595,7 @@ function addOnchangeListenerToPreferenceControl(control) {
         aTextInputElement.focus();
       }
     }, true);
-    aTextInputElement.addEventListener("change", function(anEvent) {
+    aTextInputElement.addEventListener("change", anEvent => {
       let prefValue = Number(anEvent.target.value);
       prefChanged = true;
       eGPrefs.setPref(control.dataset.preference, prefValue);
@@ -704,7 +702,7 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   switch (control.dataset.preferenceType) {
     case "checkboxInput":
-      control.addEventListener("change", function() {
+      control.addEventListener("change", () => {
         prefChanged = true;
         eGPrefs.toggleBoolPref(control.dataset.preference);
       }, true);
@@ -719,7 +717,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       addOnchangeListenerToBoolRadiogroupControl(control);
       break;
     case "numberInput":
-      control.addEventListener("change", function() {
+      control.addEventListener("change", () => {
         prefChanged = true;
         eGPrefs.setPref(control.dataset.preference, Number(control.value));
       }, true);
@@ -728,7 +726,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       addOnchangeListenerToMenuControl(control);
       break;
     case "select":
-      control.addEventListener("change", function() {
+      control.addEventListener("change", () => {
         prefChanged = true;
         eGPrefs.setPref(control.dataset.preference, control.value);
       }, true);
@@ -743,7 +741,7 @@ function addOnchangeListenerToPreferenceControl(control) {
       addOnchangeListenerToStringRadiogroupControl(control);
       break;
     case "dailyReadingsInput":
-      control.addEventListener("change", function() {
+      control.addEventListener("change", () => {
         prefChanged = true;
         eGPrefs.setDailyReadingsFolderName(control.value);
       }, true);
@@ -765,20 +763,21 @@ function setMenuType(anEvent) {
                             prefValue : JSON.parse(anEvent.target.value);
     ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
      "contextLink", "contextImage", "contextSelection", "contextTextbox"]
-      .forEach(function(menuName) {
-      document.getElementById("menuControl_" + menuName).classList
-              .toggle("large", menuTypeIsLarge);
+      .forEach(menuName => {
+        document.getElementById("menuControl_" + menuName).classList
+                .toggle("large", menuTypeIsLarge);
     });
     ["mainMenuLabel", "extraMenuLabel", "primaryMainMenu", "primaryExtraMenu",
      "alt1MainMenu", "alt1ExtraMenu", "alt2MainMenu", "alt2ExtraMenu",
-     "allMenusMainMenu", "allMenusExtraMenu"].forEach(function(id) {
-       document.getElementById(id).classList.toggle("large", menuTypeIsLarge);
-    });
+     "allMenusMainMenu", "allMenusExtraMenu"]
+      .forEach(id => {
+        document.getElementById(id).classList.toggle("large", menuTypeIsLarge);
+     });
   });
 }
 
 function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
-  ids.forEach(function(id) {
+  ids.forEach(id => {
     document.getElementById(id).classList.toggle("disabled", shouldBeDisabled);
   });
   document.getElementById(ids[1]).readOnly = shouldBeDisabled;
@@ -1035,7 +1034,7 @@ function optionsLoadHandler() {
   
   loadUsageData();
   
-  window.setTimeout(function() { window.scrollTo(0, 0); });
+  window.setTimeout(() => window.scrollTo(0, 0));
   document.body.style.cursor = "auto";
 }
 
@@ -1111,7 +1110,7 @@ function optionsUnloadHandler() {
 
 function importPrefs(anEvent) {
   let fileReader = new FileReader();
-  fileReader.onload = function(anEvent) {
+  fileReader.onload = anEvent => {
     try {
       eGPrefs.importPrefsFromString(anEvent.target.result).then(result => {
         if (result !== undefined) {
@@ -1149,9 +1148,7 @@ function exportPrefs() {
           browser.downloads.onChanged.removeListener(downloadListener);
         }
       });
-    }).catch(() => {
-      URL.revokeObjectURL(blobURL);
-    });
+    }).catch(() => URL.revokeObjectURL(blobURL));
   });
 }
 

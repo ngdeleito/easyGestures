@@ -116,7 +116,7 @@ Action.prototype = {
         });
         break;
       case "newTab":
-        eGUtils.performOnCurrentTab(function(currentTab) {
+        eGUtils.performOnCurrentTab(currentTab => {
           browser.tabs.create({
             active: newTabShouldBeActive,
             openerTabId: currentTab.id,
@@ -252,7 +252,7 @@ function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
     
     let currentTabId;
     let rootNode = this.rootNode;
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       currentTabId = currentTab.id;
       traverseSubTree(rootNode);
     });
@@ -443,7 +443,7 @@ let eGActions = {
       });
       if (homepageArray.length > 1) {
         homepageArray.shift();
-        eGUtils.performOnCurrentTab(function(currentTab) {
+        eGUtils.performOnCurrentTab(currentTab => {
           homepageArray.forEach(url => {
             browser.tabs.create({
               active: false,
@@ -483,7 +483,7 @@ let eGActions = {
   }, false, "savePageAs"),
   
   savePageAs: new Action("savePageAs", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.downloads.download({
         url: currentTab.url,
         filename: currentTab.title,
@@ -493,7 +493,7 @@ let eGActions = {
   }, false, "savePageAsPDF"),
   
   savePageAsPDF: new Action("savePageAsPDF", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.saveAsPDF({
         toFileName: currentTab.title + ".pdf"
       });
@@ -515,7 +515,7 @@ let eGActions = {
   }, false, "loadPageInNewTab"),
   
   loadPageInNewTab: new Action("loadPageInNewTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.create({
         openerTabId: currentTab.id,
         url: eGContext.pageURL
@@ -531,7 +531,7 @@ let eGActions = {
   }, false, "moveTabToNewWindow"),
   
   moveTabToNewWindow: new Action("moveTabToNewWindow", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.windows.create({
         tabId: currentTab.id
       });
@@ -599,9 +599,7 @@ let eGActions = {
   enterReaderMode: new DisableableAction("enterReaderMode", function() {
     browser.tabs.toggleReaderMode();
   }, function() {
-    return eGUtils.performOnCurrentTab(function(currentTab) {
-      return !currentTab.isArticle;
-    });
+    return eGUtils.performOnCurrentTab(currentTab => !currentTab.isArticle);
   }, false, "takeTabScreenshot"),
   
   takeTabScreenshot: new Action("takeTabScreenshot", function() {
@@ -626,9 +624,7 @@ let eGActions = {
               browser.downloads.onChanged.removeListener(downloadListener);
             }
           });
-        }).catch(() => {
-          URL.revokeObjectURL(blobURL);
-        });
+        }).catch(() => URL.revokeObjectURL(blobURL));
       });
     });
   }, false, "toggleFullscreen"),
@@ -668,7 +664,7 @@ let eGActions = {
   }, false, "viewPageSource"),
   
   viewPageSource: new Action("viewPageSource", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.create({
         openerTabId: currentTab.id,
         url: "view-source:" + eGContext.pageURL
@@ -687,19 +683,17 @@ let eGActions = {
   }, false, "duplicateTab"),
   
   duplicateTab: new Action("duplicateTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.duplicate(currentTab.id);
     });
   }, false, "closeTab"),
   
   closeTab: new DisableableAction("closeTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.remove(currentTab.id);
     });
   }, function() {
-    return eGUtils.performOnCurrentTab(function(currentTab) {
-      return currentTab.pinned;
-    });
+    return eGUtils.performOnCurrentTab(currentTab => currentTab.pinned);
   }, false, "closeOtherTabs"),
   
   closeOtherTabs: new DisableableAction("closeOtherTabs", function() {
@@ -708,18 +702,14 @@ let eGActions = {
       pinned: false,
       currentWindow: true
     }).then(tabsToClose => {
-      browser.tabs.remove(tabsToClose.map(tab => {
-        return tab.id;
-      }));
+      browser.tabs.remove(tabsToClose.map(tab => tab.id));
     });
   }, function() {
     return browser.tabs.query({
       active: false,
       pinned: false,
       currentWindow: true
-    }).then(tabsToClose => {
-      return tabsToClose.length === 0;
-    });
+    }).then(tabsToClose => tabsToClose.length === 0);
   }, false, "undoCloseTab"),
   
   undoCloseTab: new DisableableAction("undoCloseTab", function() {
@@ -750,7 +740,7 @@ let eGActions = {
   }, false, "pinUnpinTab"),
   
   pinUnpinTab: new Action("pinUnpinTab", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.update({
         pinned: !currentTab.pinned
       });
@@ -795,9 +785,7 @@ let eGActions = {
           });
         });
       });
-    })).then(() => {
-      browser.tabs.remove(newWindow.tabs[0].id);
-    });
+    })).then(() => browser.tabs.remove(newWindow.tabs[0].id));
   }, false, "minimizeWindow"),
   
   minimizeWindow: new Action("minimizeWindow", function() {
@@ -888,7 +876,7 @@ let eGActions = {
   dailyReadings: new DailyReadingsDisableableAction(true, "bookmarkThisPage"),
   
   bookmarkThisPage: new DisableableAction("bookmarkThisPage", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.bookmarks.create({
         title: currentTab.title,
         url: currentTab.url
@@ -898,9 +886,7 @@ let eGActions = {
     try {
       return browser.bookmarks.search({
         url: eGContext.pageURL
-      }).then(foundBookmarks => {
-        return foundBookmarks.length > 0;
-      });
+      }).then(foundBookmarks => foundBookmarks.length > 0);
     }
     catch (exception) {
       return Promise.resolve(true);
@@ -908,7 +894,7 @@ let eGActions = {
   }, false, "bookmarkThisIdentifier"),
   
   bookmarkThisIdentifier: new URLToIdentifierExistsDisableableAction("bookmarkThisIdentifier", function() {
-    eGUtils.performOnCurrentTab(function(currentTab) {
+    eGUtils.performOnCurrentTab(currentTab => {
       browser.bookmarks.create({
         title: currentTab.title,
         url: eGContext.urlToIdentifier
@@ -951,16 +937,12 @@ let eGActions = {
   removeBookmarkToThisPage: new DisableableAction("removeBookmarkToThisPage", function() {
     browser.bookmarks.search({
       url: eGContext.pageURL
-    }).then(foundBookmarks => {
-      browser.bookmarks.remove(foundBookmarks[0].id);
-    });
+    }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
   }, function() {
     try {
       return browser.bookmarks.search({
         url: eGContext.pageURL
-      }).then(foundBookmarks => {
-        return foundBookmarks.length === 0;
-      });
+      }).then(foundBookmarks => foundBookmarks.length === 0);
     }
     catch (exception) {
       return Promise.resolve(true);
@@ -970,9 +952,7 @@ let eGActions = {
   removeBookmarkToThisIdentifier: new DisableableAction("removeBookmarkToThisIdentifier", function() {
     browser.bookmarks.search({
       url: eGContext.urlToIdentifier
-    }).then(foundBookmarks => {
-      browser.bookmarks.remove(foundBookmarks[0].id);
-    });
+    }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
   }, function() {
     try {
       return eGContext.urlToIdentifier === "" ? Promise.resolve(true)
@@ -990,9 +970,7 @@ let eGActions = {
   removeBookmarkToThisLink: new DisableableAction("removeBookmarkToThisLink", function() {
     browser.bookmarks.search({
       url: eGContext.anchorElementHREF
-    }).then(foundBookmarks => {
-      browser.bookmarks.remove(foundBookmarks[0].id);
-    });
+    }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
   }, function() {
     try {
       return eGContext.anchorElementExists ? browser.bookmarks.search({

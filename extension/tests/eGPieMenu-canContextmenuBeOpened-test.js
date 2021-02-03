@@ -40,27 +40,27 @@ function testWithShowAltButton(assert) {
   eGPieMenu.setHidden();
 }
 
-QUnit.test("test canContextmenuBeOpened with left button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with left button", assert => {
   eGPieMenu.settings.showButton = 0;
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
 });
 
-QUnit.test("test canContextmenuBeOpened with left button and alt button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with left button and alt button", assert => {
   eGPieMenu.settings.showButton = 0;
   testWithShowAltButton(assert);
 });
 
-QUnit.test("test canContextmenuBeOpened with middle button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with middle button", assert => {
   eGPieMenu.settings.showButton = 1;
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
 });
 
-QUnit.test("test canContextmenuBeOpened with middle button and alt button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with middle button and alt button", assert => {
   eGPieMenu.settings.showButton = 1;
   testWithShowAltButton(assert);
 });
 
-QUnit.test("test canContextmenuBeOpened with right button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button", assert => {
   initCanContextmenuBeOpened(0, 0);
   assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -72,7 +72,7 @@ QUnit.test("test canContextmenuBeOpened with right button", function(assert) {
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button, context with alt key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button, context with alt key", assert => {
   initCanContextmenuBeOpened(0, 18);
   assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -84,7 +84,7 @@ QUnit.test("test canContextmenuBeOpened with right button, context with alt key"
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button, context with ctrl key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button, context with ctrl key", assert => {
   initCanContextmenuBeOpened(0, 17);
   assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.ok(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -96,7 +96,7 @@ QUnit.test("test canContextmenuBeOpened with right button, context with ctrl key
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button and shift key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button and shift key", assert => {
   initCanContextmenuBeOpened(16, 0);
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -108,7 +108,7 @@ QUnit.test("test canContextmenuBeOpened with right button and shift key", functi
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button and shift key, context with alt key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button and shift key, context with alt key", assert => {
   initCanContextmenuBeOpened(16, 18);
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -120,7 +120,7 @@ QUnit.test("test canContextmenuBeOpened with right button and shift key, context
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button and shift key, context with ctrl key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button and shift key, context with ctrl key", assert => {
   initCanContextmenuBeOpened(16, 17);
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -132,7 +132,7 @@ QUnit.test("test canContextmenuBeOpened with right button and shift key, context
   assert.ok(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button and ctrl key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button and ctrl key", assert => {
   initCanContextmenuBeOpened(17, 0);
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -144,7 +144,7 @@ QUnit.test("test canContextmenuBeOpened with right button and ctrl key", functio
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button and ctrl key, context with alt key", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button and ctrl key, context with alt key", assert => {
   initCanContextmenuBeOpened(17, 18);
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, false));
   assert.notOk(eGPieMenu.canContextmenuBeOpened(false, false, true));
@@ -156,7 +156,7 @@ QUnit.test("test canContextmenuBeOpened with right button and ctrl key, context 
   assert.notOk(eGPieMenu.canContextmenuBeOpened(true, true, true));
 });
 
-QUnit.test("test canContextmenuBeOpened with right button and alt button", function(assert) {
+QUnit.test("test canContextmenuBeOpened with right button and alt button", assert => {
   eGPieMenu.settings.showButton = 2;
   testWithShowAltButton(assert);
 });

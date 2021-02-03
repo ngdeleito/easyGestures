@@ -30,9 +30,7 @@ let eGUtils = {
     return browser.tabs.query({
       active: true,
       currentWindow: true
-    }).then(tabs => {
-      return aFunction(tabs[0]);
-    });
+    }).then(tabs => aFunction(tabs[0]));
   },
   
   _sendMessageToParentOfFrameWithURLWithinCurrentTab(message, frameURL, includeFrameID) {

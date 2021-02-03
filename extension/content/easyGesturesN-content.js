@@ -231,7 +231,7 @@ function handleMouseupWithinTopmostFrame(anEvent) {
   }
   else if (eGPieMenu.isJustOpenedAndMouseMoved()) {
     if (eGPieMenu.sector !== -1) {
-      window.setTimeout(function() { eGPieMenu.runAction(); });
+      window.setTimeout(() => eGPieMenu.runAction());
     }
     else {
       eGPieMenu.setOpen();
@@ -244,7 +244,7 @@ function handleMouseupWithinTopmostFrame(anEvent) {
     }
     else {
       if (eGPieMenu.sector !== -1) {
-        window.setTimeout(function() { eGPieMenu.runAction(); });
+        window.setTimeout(() => eGPieMenu.runAction());
       }
       else {
         eGPieMenu.close();

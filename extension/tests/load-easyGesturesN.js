@@ -10,12 +10,10 @@ let savedPrefs;
 
 eGPieMenu.setHidden();
 
-QUnit.begin(function() {
+QUnit.begin(() => {
   eGPrefs.exportPrefsToString().then(prefsAsString => {
     savedPrefs = prefsAsString;
   });
 });
 
-QUnit.done(function() {
-  eGPrefs.importPrefsFromString(savedPrefs);
-});
+QUnit.done(() => eGPrefs.importPrefsFromString(savedPrefs));

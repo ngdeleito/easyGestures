@@ -100,9 +100,7 @@ let eGPrefs = {
   _addDefaultMenusMap(aPrefsMap) {
     function checkPossibleMenuValues(numberOfActions, newPrefValue) {
       return newPrefValue.length === numberOfActions &&
-             newPrefValue.every(function(element) {
-               return element in eGActions;
-             });
+             newPrefValue.every(element => element in eGActions);
     }
     
     function checkPossibleNonExtraMenuValues(newPrefValue) {
@@ -148,14 +146,14 @@ let eGPrefs = {
     this._setBoolPref(aPrefsMap, "menus.mainAlt2Enabled", false);
     this._setBoolPref(aPrefsMap, "menus.extraAlt1Enabled", true);
     this._setBoolPref(aPrefsMap, "menus.extraAlt2Enabled", false);
-    nonExtraMenus.forEach(function([menuName, actions]) {
+    nonExtraMenus.forEach(([menuName, actions]) => {
       this._setArrayPref(aPrefsMap, "menus." + menuName, actions,
                          checkPossibleNonExtraMenuValues);
-    }, this);
-    extraMenus.forEach(function([menuName, actions]) {
+    });
+    extraMenus.forEach(([menuName, actions]) => {
       this._setArrayPref(aPrefsMap, "menus." + menuName, actions,
                          checkPossibleExtraMenuValues);
-    }, this);
+    });
   },
   
   _getDefaultPrefsMap: function(platformOS) {
@@ -209,7 +207,7 @@ let eGPrefs = {
     this._addDefaultMenusMap(defaultPrefs);
     
     this._setStringPref(defaultPrefs, "customizations.loadURLin", "newTab",
-                        function(newPrefValue) {
+                        newPrefValue => {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
     
@@ -221,11 +219,11 @@ let eGPrefs = {
     }
     
     this._setStringPref(defaultPrefs, "customizations.openLink", "newTab",
-                        function(newPrefValue) {
+                        newPrefValue => {
       return ["curTab", "newTab", "newWindow"].indexOf(newPrefValue) !== -1;
     });
     this._setStringPref(defaultPrefs, "customizations.dailyReadingsFolderName",
-                        "", () => { return true; });
+                        "", () => true);
     
     return defaultPrefs;
   },
@@ -233,22 +231,18 @@ let eGPrefs = {
   _getDefaultUsageMap: function() {
     let defaultUsage = new Map();
     this._setStringPref(defaultUsage, "usage.lastReset",
-                        (new Date()).toISOString(), function(newPrefValue) {
+                        (new Date()).toISOString(), newPrefValue => {
       return !Number.isNaN(Date.parse(newPrefValue));
     });
     this._setArrayPref(defaultUsage, "usage.mainMenu", Array(30).fill(0),
-                       function(newPrefValue) {
+                       newPrefValue => {
       return Array.isArray(newPrefValue) && newPrefValue.length === 30 &&
-             newPrefValue.every(function(element) {
-               return Number.isInteger(element);
-             });
+             newPrefValue.every(element => Number.isInteger(element));
     });
     this._setArrayPref(defaultUsage, "usage.extraMenu", Array(15).fill(0),
-                       function(newPrefValue) {
+                       newPrefValue => {
       return Array.isArray(newPrefValue) && newPrefValue.length === 15 &&
-             newPrefValue.every(function(element) {
-               return Number.isInteger(element);
-             });
+             newPrefValue.every(element => Number.isInteger(element));
     });
     
     let actionsUsage = {};
@@ -257,7 +251,7 @@ let eGPrefs = {
     }
     defaultUsage.set("usage.actions",
                      new ObjectPref("usage.actions", actionsUsage,
-                                    function(newPrefValue) {
+                                    newPrefValue => {
       let usageActions = Object.getOwnPropertyNames(newPrefValue).sort();
       let actions = Object.getOwnPropertyNames(eGActions).sort();
       let i = 0;
@@ -292,7 +286,7 @@ let eGPrefs = {
     if (newPrefs === undefined || !Array.isArray(newPrefs)) {
       throw { code: "invalidFileContent" };
     }
-    let anArrayOfArrays = newPrefs.every(function(element) {
+    let anArrayOfArrays = newPrefs.every(element => {
       return Array.isArray(element) && element.length === 2;
     });
     if (newPrefs.length === 0 || !anArrayOfArrays) {
@@ -303,7 +297,7 @@ let eGPrefs = {
       let prefs = this._getDefaultPrefsMap(platformInfo.os);
       let usage = this._getDefaultUsageMap();
       let notImportedPrefs = [];
-      newPrefs.forEach(function([prefName, prefValue]) {
+      newPrefs.forEach(([prefName, prefValue]) => {
         try {
           if (prefs.has(prefName)) {
             prefs.get(prefName).updateTo(prefValue);
@@ -321,10 +315,8 @@ let eGPrefs = {
       });
       
       let setPreferencePromises = [];
-      prefs.forEach(function(pref) {
-        setPreferencePromises.push(pref.setPreference());
-      });
-      usage.forEach(function(usageItem) {
+      prefs.forEach(pref => setPreferencePromises.push(pref.setPreference()));
+      usage.forEach(usageItem => {
         setPreferencePromises.push(usageItem.setPreference());
       });
       
@@ -341,7 +333,7 @@ let eGPrefs = {
     return browser.runtime.getPlatformInfo().then(platformInfo => {
       let defaultPrefsMap = this._getDefaultPrefsMap(platformInfo.os);
       let setPreferencePromises = [];
-      defaultPrefsMap.forEach(function(pref) {
+      defaultPrefsMap.forEach(pref => {
         setPreferencePromises.push(pref.setPreference());
       });
       return Promise.all(setPreferencePromises);
@@ -352,7 +344,7 @@ let eGPrefs = {
     let defaultMenusPrefsMap = new Map();
     this._addDefaultMenusMap(defaultMenusPrefsMap);
     let setPreferencePromises = [];
-    defaultMenusPrefsMap.forEach(function(pref) {
+    defaultMenusPrefsMap.forEach(pref => {
       setPreferencePromises.push(pref.setPreference());
     });
     return Promise.all(setPreferencePromises);
@@ -361,7 +353,7 @@ let eGPrefs = {
   initializeUsageData: function() {
     let defaultUsageMap = this._getDefaultUsageMap();
     let setPreferencePromises = [];
-    defaultUsageMap.forEach(function(pref) {
+    defaultUsageMap.forEach(pref => {
       setPreferencePromises.push(pref.setPreference());
     });
     return Promise.all(setPreferencePromises);
@@ -560,9 +552,7 @@ let eGPrefs = {
   
   _addActions: function(actionsToAdd) {
     return this.getPref("usage.actions").then(prefValue => {
-      actionsToAdd.forEach(actionName => {
-        prefValue[actionName] = 0;
-      });
+      actionsToAdd.forEach(actionName => prefValue[actionName] = 0);
       return browser.storage.local.set({
         "usage.actions": prefValue
       });

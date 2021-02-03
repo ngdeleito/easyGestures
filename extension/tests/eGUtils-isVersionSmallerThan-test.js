@@ -6,8 +6,7 @@
 
 "use strict";
 
-QUnit.test("test isVersionSmallerThan",
-  function(assert) {
+QUnit.test("test isVersionSmallerThan", assert => {
   assert.ok(eGUtils.isVersionSmallerThan("5.2", "5.2.1"));
   assert.ok(eGUtils.isVersionSmallerThan("5.2.1", "5.2.2"));
   assert.ok(eGUtils.isVersionSmallerThan("5.2", "5.3"));

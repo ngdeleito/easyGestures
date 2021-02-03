@@ -36,9 +36,7 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   browser.runtime.sendMessage({
     messageName: "getTooltips",
     actions: this.actions
-  }).then(tooltips => {
-    this.tooltips = tooltips;
-  });
+  }).then(tooltips => this.tooltips = tooltips);
   
   // half the angle reserved for a sector (in radians)
   this.halfAngleForSector = Math.PI / this.actions.length;
@@ -47,9 +45,7 @@ function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
   browser.runtime.sendMessage({
     messageName: "isExtraMenuAction",
     actionName: this.actions[EXTRA_MENU_SECTOR]
-  }).then(aMessage => {
-    this.hasExtraMenuAction = aMessage.response;
-  });
+  }).then(aMessage => this.hasExtraMenuAction = aMessage.response);
 }
 MenuLayout.prototype.getNextLayout = function() {
   return this._nextMenuLayout;
@@ -318,7 +314,7 @@ let eGPieMenu = {
     anActionsNode.classList.toggle(EXTRA_NODE_CLASS_NAME,
                                    this._currentLayout.isExtraMenu);
     
-    actions.forEach(function(action, index) {
+    actions.forEach((action, index) => {
       let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
       anActionNode.className = "sector" + index;
       anActionNode.classList.add(action);
@@ -338,7 +334,7 @@ let eGPieMenu = {
   },
   
   _appendTooltips: function(tooltipsNode, tooltips, hasExtraMenuAction) {
-    tooltips.forEach(function(tooltip, index) {
+    tooltips.forEach((tooltip, index) => {
       let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
       aTooltipNode.classList.add("tooltip" + index);
       let aTooltipTextNode = document.createElementNS(HTML_NAMESPACE, "span");
@@ -390,7 +386,7 @@ let eGPieMenu = {
       messageName: "getActionsStatus",
       actions: this._currentLayout.actions
     }).then(statusesArray => {
-      statusesArray.forEach(function(response, actionSector) {
+      statusesArray.forEach((response, actionSector) => {
         actionStatusSetters[response.messageName](response, layoutName, actionSector);
       });
     });
@@ -400,7 +396,7 @@ let eGPieMenu = {
   
   _setTooltipsTimeout: function() {
     if (this.settings.showTooltips) {
-      this._tooltipsTimeoutID = window.setTimeout(function() {
+      this._tooltipsTimeoutID = window.setTimeout(() => {
         eGPieMenu._showMenuTooltips();
       }, this.settings.tooltipsDelay);
     }
@@ -442,9 +438,8 @@ let eGPieMenu = {
     if (this.settings.handleLinks && context.anchorElementExists &&
         this.isJustOpened()) {
       linkSignNode.style.visibility = "visible";
-      window.setTimeout(function() {
-        linkSignNode.style.visibility = "hidden";
-      }, this.settings.linksDelay);
+      window.setTimeout(() => linkSignNode.style.visibility = "hidden",
+                        this.settings.linksDelay);
     }
   },
   

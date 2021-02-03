@@ -85,7 +85,7 @@ let eGMessageHandlers = {
   },
   
   getTooltips: function(aMessage) {
-    return Promise.all(aMessage.actions.map(function(actionName) {
+    return Promise.all(aMessage.actions.map(actionName => {
       return eGActions[actionName].getTooltip();
     }));
   },
@@ -97,17 +97,16 @@ let eGMessageHandlers = {
   },
   
   getActionsStatus: function(aMessage) {
-    let actionsStatus = aMessage.actions.map(function(actionName) {
-                            return eGActions[actionName].getActionStatus();
+    let actionsStatus = aMessage.actions.map(actionName => {
+                          return eGActions[actionName].getActionStatus();
                         });
-    return Promise.all(actionsStatus.map(function(status) {
-      return status.status;
-    })).then(statuses => {
-      return actionsStatus.map((actionStatus, index) => {
-        actionStatus.status = statuses[index];
-        return actionStatus;
-      });
-    });
+    return Promise.all(actionsStatus.map(status => status.status))
+                  .then(statuses => {
+                    return actionsStatus.map((actionStatus, index) => {
+                      actionStatus.status = statuses[index];
+                      return actionStatus;
+                    });
+                  });
   },
   
   incrementShowExtraMenuUsage: function(aMessage) {
@@ -195,7 +194,7 @@ async function handleInstallOrUpgrade(details) {
 
 browser.runtime.onInstalled.addListener(handleInstallOrUpgrade);
 
-window.setTimeout(function() {
+window.setTimeout(() => {
   // if no install or upgrade procedure is triggered, then run startup
   if (!installOrUpgradeTriggered) {
     startup();
