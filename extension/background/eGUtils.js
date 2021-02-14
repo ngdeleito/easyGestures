@@ -75,7 +75,11 @@ let eGUtils = {
   showOrOpenTab: function(aURLPathSuffix, aURLHash) {
     browser.tabs.query({}).then(tabs => {
       let firstTabWithSamePathSuffix = tabs.find(tab => {
-        return tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
+        // since extensions get host permissions for their own pages, we
+        // explicitly check that tab.url is not undefined to avoid requesting
+        // the "tabs" permission for opening the preferences and tips pages
+        return tab.url !== undefined &&
+               tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
       });
       let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
       if (firstTabWithSamePathSuffix === undefined) {

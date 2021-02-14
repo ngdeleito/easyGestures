@@ -11,9 +11,7 @@ The permissions requested by this extension are used for the following purposes:
 - `storage`
   - Managing preferences
 - `tabs`: "Access browser tabs"
-  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", "Bookmark all tabs", and "easyGestures N preferences" actions
-  - Displaying tips from the preferences dialog
-  - Displaying preferences from the tips dialog
+  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", and "Bookmark all tabs" actions
 - `webNavigation`: "Access browser activity during navigation"
   - Opening the pie menu on (cross-origin) inner frames
 
