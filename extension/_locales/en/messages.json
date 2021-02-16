@@ -153,6 +153,8 @@
   "general.optionalPermissions.find.explanation": { "message": "This permission is needed for the \"Find and highlight selection\" and \"Remove highlight\" actions" },
   "general.optionalPermissions.sessions": { "message": "\"Access recently closed tabs\"" },
   "general.optionalPermissions.sessions.explanation": { "message": "This permission is needed for the \"Undo close tab\" and \"Undo close window\" actions" },
+  "general.optionalPermissions.tabs": { "message": "\"Access browser tabs\"" },
+  "general.optionalPermissions.tabs.explanation": { "message": "This permission is needed for the \"Save page as...\", \"Take tab screenshot\", \"Bookmark this page\", \"Bookmark this identifier\" and \"Bookmark all tabs\" actions" },
   "general.optionalPermissions.request": { "message": "Request permission" },
   "general.optionalPermissions.remove": { "message": "Remove permission" },
   

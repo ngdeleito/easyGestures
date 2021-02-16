@@ -153,6 +153,8 @@
   "general.optionalPermissions.find.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Rechercher et surligner la sélection\u00a0» et «\u00a0Supprimer le surlignage\u00a0»" },
   "general.optionalPermissions.sessions": { "message": "«\u00a0Accéder aux onglets récemment fermés\u00a0»" },
   "general.optionalPermissions.sessions.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Restaurer le dernier onglet fermé\u00a0» et «\u00a0Restaurer la dernière fenêtre fermée\u00a0»" },
+  "general.optionalPermissions.tabs": { "message": "\"Accéder aux onglets du navigateur\"" },
+  "general.optionalPermissions.tabs.explanation": { "message": "Cette permission est nécessaire pour les actions «\u00a0Enregistrer sous...\u00a0», «\u00a0Prendre une capture d'écran de l'onglet\u00a0», «\u00a0Marquer cette page\u00a0», «\u00a0Marquer cet identificateur\u00a0» et «\u00a0Marquer tous les onglets\u00a0»" },
   "general.optionalPermissions.request": { "message": "Demander permission" },
   "general.optionalPermissions.remove": { "message": "Supprimer permission" },
   

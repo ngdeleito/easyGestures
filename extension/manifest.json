@@ -18,10 +18,10 @@
   },
   
   "default_locale": "en",
-  "permissions": ["search", "storage", "tabs", "webNavigation"],
+  "permissions": ["search", "storage", "webNavigation"],
   "optional_permissions": [
     "<all_urls>", "bookmarks", "browserSettings", "clipboardRead",
-    "clipboardWrite", "downloads", "find", "sessions"
+    "clipboardWrite", "downloads", "find", "sessions", "tabs"
   ],
   "background": {
     "scripts": [

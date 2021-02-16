@@ -153,6 +153,8 @@
   "general.optionalPermissions.find.explanation": { "message": "Este permiso es necesario para las acciones \"Buscar y resaltar la selección\" y \"Eliminar el resaltado\"" },
   "general.optionalPermissions.sessions": { "message": "\"Acceder a las pestañas cerradas recientemente\"" },
   "general.optionalPermissions.sessions.explanation": { "message": "Este permiso es necesario para las acciones \"Restaurar la última pestaña cerrada\" y \"Restaurar la última ventana cerrada\"" },
+  "general.optionalPermissions.tabs": { "message": "\"Acceder a las pestañas del navegador\"" },
+  "general.optionalPermissions.tabs.explanation": { "message": "Este permiso es necesario para las acciones \"Guardar como...\", \"Hacer un pantallazo de la pestaña\", \"Añadir esta página a marcadores\", \"Añadir este identificador a marcadores\" y \"Añadir pestañas a marcadores\"" },
   "general.optionalPermissions.request": { "message": "Pedir permiso" },
   "general.optionalPermissions.remove": { "message": "Suprimir permiso" },
   

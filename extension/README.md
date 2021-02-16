@@ -10,8 +10,6 @@ The permissions requested by this extension are used for the following purposes:
   - "Search web" action
 - `storage`
   - Managing preferences
-- `tabs`: "Access browser tabs"
-  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", and "Bookmark all tabs" actions
 - `webNavigation`: "Access browser activity during navigation"
   - Opening the pie menu on (cross-origin) inner frames
 
@@ -34,3 +32,5 @@ Additionally, users can explicitly grant the following optional permissions in t
   - "Find and highlight selection" and "Remove highlight" actions
 - `sessions`: "Access recently closed tabs"
   - "Undo close tab" and "Undo close window" actions
+- `tabs`: "Access browser tabs"
+  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", and "Bookmark all tabs" actions
