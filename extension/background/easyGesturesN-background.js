@@ -31,49 +31,49 @@ function handleStorageChange(changes) {
 }
 
 let eGMessageHandlers = {
-  transferMousedownToUpperFrame: function(aMessage) {
+  transferMousedownToUpperFrame(aMessage) {
     eGUtils.transferMousedownToUpperFrame(aMessage.parameters.innerFrameURL, {
       messageName: "handleMousedownFromInnerFrame",
       parameters: aMessage.parameters
     });
   },
   
-  transferMouseupToUpperFrame: function(aMessage) {
+  transferMouseupToUpperFrame(aMessage) {
     eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab({
       messageName: "handleMouseupFromInnerFrame",
       parameters: aMessage.parameters
     }, aMessage.parameters.innerFrameURL);
   },
   
-  transferKeydownToTopmostFrame: function(aMessage) {
+  transferKeydownToTopmostFrame(aMessage) {
     eGUtils.sendMessageToTopmostFrameWithinCurrentTab({
       messageName: "handleKeydownFromInnerFrame",
       parameters: aMessage.parameters
     });
   },
   
-  addMousemoveListenerToFrame: function(aMessage) {
+  addMousemoveListenerToFrame(aMessage) {
     eGUtils.sendMessageToFrameWithFrameIDWithinCurrentTab({
       messageName: "addMousemoveListener",
       parameters: undefined
     }, aMessage.parameters.frameID);
   },
   
-  transferMousemoveToUpperFrame: function(aMessage) {
+  transferMousemoveToUpperFrame(aMessage) {
     eGUtils.sendMessageToParentOfFrameWithURLWithinCurrentTab({
       messageName: "handleMousemoveFromInnerFrame",
       parameters: aMessage.parameters
     }, aMessage.parameters.innerFrameURL);
   },
   
-  removeMousemoveListenerFromFrame: function(aMessage) {
+  removeMousemoveListenerFromFrame(aMessage) {
     eGUtils.sendMessageToFrameWithFrameIDWithinCurrentTab({
       messageName: "removeMousemoveListener",
       parameters: undefined
     }, aMessage.parameters.frameID);
   },
   
-  setContextAndFocusCurrentWindow: function(aMessage) {
+  setContextAndFocusCurrentWindow(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
     }
@@ -84,19 +84,19 @@ let eGMessageHandlers = {
     });
   },
   
-  getTooltips: function(aMessage) {
+  getTooltips(aMessage) {
     return Promise.all(aMessage.actions.map(actionName => {
       return eGActions[actionName].getTooltip();
     }));
   },
   
-  isExtraMenuAction: function(aMessage, sendResponse) {
+  isExtraMenuAction(aMessage, sendResponse) {
     sendResponse({
       response: eGActions[aMessage.actionName].isExtraMenuAction
     });
   },
   
-  getActionsStatus: function(aMessage) {
+  getActionsStatus(aMessage) {
     let actionsStatus = aMessage.actions.map(actionName => {
                           return eGActions[actionName].getActionStatus();
                         });
@@ -109,15 +109,15 @@ let eGMessageHandlers = {
                   });
   },
   
-  incrementShowExtraMenuUsage: function(aMessage) {
+  incrementShowExtraMenuUsage(aMessage) {
     eGPrefs.incrementUsageMainMenuPref(aMessage.incrementIndex);
   },
   
-  runAction: function(aMessage) {
+  runAction(aMessage) {
     return eGActions[aMessage.actionName].run(aMessage.usageInformationUpdate);
   },
   
-  loadURLInNewNonActiveTab: function(aMessage) {
+  loadURLInNewNonActiveTab(aMessage) {
     eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.create({
         active: false,
@@ -127,7 +127,7 @@ let eGMessageHandlers = {
     });
   },
   
-  loadURLInCurrentTab: function(aMessage) {
+  loadURLInCurrentTab(aMessage) {
     browser.tabs.update({
       url: aMessage.url
     });

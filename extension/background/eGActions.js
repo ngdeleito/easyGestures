@@ -66,15 +66,15 @@ Action.prototype = {
   decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
                          0.5, 0.3],
   
-  getTooltip: function() {
+  getTooltip() {
     return Promise.resolve(browser.i18n.getMessage(this._name));
   },
   
-  getLocalizedActionName: function() {
+  getLocalizedActionName() {
     return browser.i18n.getMessage(this._name);
   },
   
-  getActionStatus: function() {
+  getActionStatus() {
     return {
       messageName: "nonDisableableAction",
       status: Promise.resolve(false)
@@ -83,14 +83,14 @@ Action.prototype = {
   
   // helper functions
   
-  _sendPerformActionMessage: function(actionName, actionOptions) {
+  _sendPerformActionMessage(actionName, actionOptions) {
     return {
       runActionName: actionName,
       runActionOptions: actionOptions
     };
   },
   
-  _sendPerformActionMessageToFrameWithIndexWithinCurrentTab: function(frameIndex) {
+  _sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex) {
     eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.sendMessage(currentTab.id, {
         messageName: "runAction",
@@ -104,11 +104,11 @@ Action.prototype = {
     });
   },
   
-  _sendPerformActionMessageToInnermostFrameWithinCurrentTab: function() {
+  _sendPerformActionMessageToInnermostFrameWithinCurrentTab() {
     this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(0);
   },
   
-  _openURLOn: function(url, on, newTabShouldBeActive) {
+  _openURLOn(url, on, newTabShouldBeActive) {
     switch (on) {
       case "curTab":
         browser.tabs.update({

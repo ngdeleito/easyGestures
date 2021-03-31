@@ -17,7 +17,7 @@
 let actionStatusSetters = {
   // these methods run on the topmost frame
   
-  _setActionStatus: function(layoutName, actionSector, disabled) {
+  _setActionStatus(layoutName, actionSector, disabled) {
     let actionsNode = document.getElementById(ACTIONS_NODE_ID_PREFIX + layoutName);
     let tooltipsNode = document.getElementById(TOOLTIPS_NODE_ID_PREFIX + layoutName);
     actionsNode.childNodes[actionSector].classList.toggle("disabled", disabled);
@@ -27,13 +27,13 @@ let actionStatusSetters = {
     }
   },
   
-  nonDisableableAction: function() {},
+  nonDisableableAction() {},
   
-  disableableAction: function(aMessage, layoutName, actionSector) {
+  disableableAction(aMessage, layoutName, actionSector) {
     this._setActionStatus(layoutName, actionSector, aMessage.status);
   },
   
-  toggleFullscreen: function(aMessage, layoutName, actionSector) {
+  toggleFullscreen(aMessage, layoutName, actionSector) {
     this._setActionStatus(layoutName, actionSector, false);
     // the code for running this action appears here, as requestFullscreen can
     // only be called within a "short running user-generated event handler"
@@ -51,18 +51,18 @@ let actionStatusSetters = {
     );
   },
   
-  hideImages: function(aMessage, layoutName, actionSector) {
+  hideImages(aMessage, layoutName, actionSector) {
     this._setActionStatus(layoutName, actionSector,
                           context.documentDoesntContainImages);
   },
   
-  cut: function(aMessage, layoutName, actionSector) {
+  cut(aMessage, layoutName, actionSector) {
     let disabled = !context.inputElementExists ||
                    !context.inputElementContainsSelection;
     this._setActionStatus(layoutName, actionSector, disabled);
   },
   
-  copy: function(aMessage, layoutName, actionSector) {
+  copy(aMessage, layoutName, actionSector) {
     let enabled = context.selection !== "" || (context.inputElementExists &&
                     context.inputElementContainsSelection);
     this._setActionStatus(layoutName, actionSector, !enabled);
@@ -72,7 +72,7 @@ let actionStatusSetters = {
 let actionRunners = {
   // these methods run on the innermost frame
   
-  goToTop: function() {
+  goToTop() {
     if (scrollableElement.scrollTop > 0) {
       scrollableElement.scroll(0, 0);
     }
@@ -81,7 +81,7 @@ let actionRunners = {
     }
   },
   
-  goToBottom: function() {
+  goToBottom() {
     if (isScrollableElementFullyScrolled(scrollableElement)) {
       window.scroll(0, window.scrollMaxY);
     }
@@ -91,7 +91,7 @@ let actionRunners = {
     }
   },
   
-  zoomIn: function() {
+  zoomIn() {
     // the original version of the code of this function might be by Jens Tinz,
     // Copyright (C) 2002. All Rights Reserved.
     // double image size only
@@ -107,7 +107,7 @@ let actionRunners = {
     imageElement.style.height = height;
   },
   
-  zoomOut: function() {
+  zoomOut() {
     // the original version of the code of this function might be by Jens Tinz,
     // Copyright (C) 2002. All Rights Reserved.
     // halve image size only
@@ -123,7 +123,7 @@ let actionRunners = {
     imageElement.style.height = height;
   },
   
-  copyInformation: function(options) {
+  copyInformation(options) {
     let selection = window.getSelection();
     selection.removeAllRanges();
     let node = document.createElement("div");
@@ -136,18 +136,18 @@ let actionRunners = {
     eGPieMenu.easyGesturesNode.removeChild(node);
   },
   
-  hideImages: function() {
+  hideImages() {
     let images = document.querySelectorAll("img");
     for (let i=0; i < images.length; ++i) {
       images[i].style.display = "none";
     }
   },
   
-  commandAction: function(options) {
+  commandAction(options) {
     document.execCommand(options.commandName);
   },
   
-  paste: function() {
+  paste() {
     let selectionStart = inputElement.selectionStart;
     let selectionEnd = inputElement.selectionEnd;
     
@@ -166,7 +166,7 @@ let actionRunners = {
     document.body.removeChild(textareaWithPastedText);
   },
   
-  selectAll: function() {
+  selectAll() {
     if (inputElement !== null) {
       inputElement.select();
     }

@@ -14,7 +14,7 @@ function Pref(name, value) {
 Pref.prototype = {
   constructor: Pref,
   
-  updateTo: function(newPrefValue) {
+  updateTo(newPrefValue) {
     if (this.isNewValuePossible(newPrefValue)) {
       this.value = newPrefValue;
     }
@@ -23,7 +23,7 @@ Pref.prototype = {
     }
   },
   
-  setPreference: function() {
+  setPreference() {
     let prefObject = {};
     prefObject[this.name] = this.value;
     return browser.storage.local.set(prefObject);
@@ -83,16 +83,16 @@ ObjectPref.prototype.isNewValuePossible = function(newPrefValue) {
 };
 
 let eGPrefs = {
-  _setBoolPref: function(aPrefsMap, prefName, prefValue) {
+  _setBoolPref(aPrefsMap, prefName, prefValue) {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
   },
   
-  _setArrayPref: function(aPrefsMap, prefName, prefValue, isPossibleValue) {
+  _setArrayPref(aPrefsMap, prefName, prefValue, isPossibleValue) {
     aPrefsMap.set(prefName,
                   new ArrayPref(prefName, prefValue, isPossibleValue));
   },
   
-  _setStringPref: function(aPrefsMap, prefName, prefValue, isPossibleValue) {
+  _setStringPref(aPrefsMap, prefName, prefValue, isPossibleValue) {
     aPrefsMap.set(prefName,
                   new StringPref(prefName, prefValue, isPossibleValue));
   },
@@ -156,7 +156,7 @@ let eGPrefs = {
     });
   },
   
-  _getDefaultPrefsMap: function(platformOS) {
+  _getDefaultPrefsMap(platformOS) {
     function setIntPref(aPrefsMap, prefName, prefValue, possibleValues) {
       aPrefsMap.set(prefName, new IntPref(prefName, prefValue, possibleValues));
     }
@@ -228,7 +228,7 @@ let eGPrefs = {
     return defaultPrefs;
   },
   
-  _getDefaultUsageMap: function() {
+  _getDefaultUsageMap() {
     let defaultUsage = new Map();
     this._setStringPref(defaultUsage, "usage.lastReset",
                         (new Date()).toISOString(), newPrefValue => {
@@ -267,7 +267,7 @@ let eGPrefs = {
     return defaultUsage;
   },
   
-  exportPrefsToString: function() {
+  exportPrefsToString() {
     return browser.storage.local.get().then(prefs => {
       let result = [];
       for (let key in prefs) {
@@ -277,7 +277,7 @@ let eGPrefs = {
     });
   },
   
-  importPrefsFromString: function(aString) {
+  importPrefsFromString(aString) {
     let newPrefs;
     try {
       newPrefs = JSON.parse(aString);
@@ -329,7 +329,7 @@ let eGPrefs = {
     });
   },
   
-  setDefaultSettings: function() {
+  setDefaultSettings() {
     return browser.runtime.getPlatformInfo().then(platformInfo => {
       let defaultPrefsMap = this._getDefaultPrefsMap(platformInfo.os);
       let setPreferencePromises = [];
@@ -340,7 +340,7 @@ let eGPrefs = {
     });
   },
   
-  setDefaultMenus: function() {
+  setDefaultMenus() {
     let defaultMenusPrefsMap = new Map();
     this._addDefaultMenusMap(defaultMenusPrefsMap);
     let setPreferencePromises = [];
@@ -350,7 +350,7 @@ let eGPrefs = {
     return Promise.all(setPreferencePromises);
   },
   
-  initializeUsageData: function() {
+  initializeUsageData() {
     let defaultUsageMap = this._getDefaultUsageMap();
     let setPreferencePromises = [];
     defaultUsageMap.forEach(pref => {
@@ -359,29 +359,29 @@ let eGPrefs = {
     return Promise.all(setPreferencePromises);
   },
   
-  getPref: function(aPrefName) {
+  getPref(aPrefName) {
     return browser.storage.local.get(aPrefName).then(prefObject => {
       return prefObject[aPrefName];
     });
   },
   
-  toggleBoolPref: function(aPrefName) {
+  toggleBoolPref(aPrefName) {
     browser.storage.local.get(aPrefName).then(prefObject => {
       this.setPref(aPrefName, !prefObject[aPrefName]);
     });
   },
   
-  setPref: function(aPrefName, prefValue) {
+  setPref(aPrefName, prefValue) {
     let prefObject = {};
     prefObject[aPrefName] = prefValue;
     browser.storage.local.set(prefObject);
   },
   
-  areStartupTipsOn: function() {
+  areStartupTipsOn() {
     return this.getPref("general.startupTips");
   },
   
-  toggleStartupTips: function() {
+  toggleStartupTips() {
     this.areStartupTipsOn().then(prefValue => {
       browser.storage.local.set({
         "general.startupTips": !prefValue
@@ -389,82 +389,82 @@ let eGPrefs = {
     });
   },
   
-  getTipNumberPref: function() {
+  getTipNumberPref() {
     return this.getPref("general.tipNumber");
   },
   
-  setTipNumberPref: function(anInteger) {
+  setTipNumberPref(anInteger) {
     browser.storage.local.set({
       "general.tipNumber": anInteger
     });
   },
   
-  isDarkThemeOn: function() {
+  isDarkThemeOn() {
     return this.getPref("appearance.darkTheme");
   },
   
-  isLargeMenuOn: function() {
+  isLargeMenuOn() {
     return this.getPref("appearance.largeMenu");
   },
   
-  areTooltipsOn: function() {
+  areTooltipsOn() {
     return this.getPref("behavior.showTooltips");
   },
   
-  isHandleLinksOn: function() {
+  isHandleLinksOn() {
     return this.getPref("behavior.handleLinks");
   },
   
-  isMainAlt1MenuEnabled: function() {
+  isMainAlt1MenuEnabled() {
     return this.getPref("menus.mainAlt1Enabled");
   },
   
-  isMainAlt2MenuEnabled: function() {
+  isMainAlt2MenuEnabled() {
     return this.getPref("menus.mainAlt2Enabled");
   },
   
-  isExtraAlt1MenuEnabled: function() {
+  isExtraAlt1MenuEnabled() {
     return this.getPref("menus.extraAlt1Enabled");
   },
   
-  isExtraAlt2MenuEnabled: function() {
+  isExtraAlt2MenuEnabled() {
     return this.getPref("menus.extraAlt2Enabled");
   },
   
-  getLoadURLInPref: function() {
+  getLoadURLInPref() {
     // execute 'Load URL' action in current tab = 'curTab' or new tab = 'newTab' or new window = 'newWindow'
     return this.getPref("customizations.loadURLin");
   },
   
-  getLoadURLOrRunScriptPrefValue: function(aPrefName) {
+  getLoadURLOrRunScriptPrefValue(aPrefName) {
     return this.getPref("customizations." + aPrefName);
   },
   
-  getOpenLinkPref: function() {
+  getOpenLinkPref() {
     return this.getPref("customizations.openLink");
   },
   
-  getDailyReadingsFolderName: function() {
+  getDailyReadingsFolderName() {
     return this.getPref("customizations.dailyReadingsFolderName");
   },
   
-  setDailyReadingsFolderName: function(prefValue) {
+  setDailyReadingsFolderName(prefValue) {
     browser.storage.local.set({
       "customizations.dailyReadingsFolderName": prefValue
     });
   },
   
-  getUsageLastResetPref: function() {
+  getUsageLastResetPref() {
     return this.getPref("usage.lastReset").then(prefValue => {
       return (new Date(prefValue)).toLocaleString();
     });
   },
   
-  getUsageMainMenuPref: function() {
+  getUsageMainMenuPref() {
     return this.getPref("usage.mainMenu");
   },
   
-  incrementUsageMainMenuPref: function(anIndex) {
+  incrementUsageMainMenuPref(anIndex) {
     this.getUsageMainMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
@@ -473,11 +473,11 @@ let eGPrefs = {
     });
   },
   
-  getUsageExtraMenuPref: function() {
+  getUsageExtraMenuPref() {
     return this.getPref("usage.extraMenu");
   },
   
-  incrementUsageExtraMenuPref: function(anIndex) {
+  incrementUsageExtraMenuPref(anIndex) {
     this.getUsageExtraMenuPref().then(anArray => {
       ++anArray[anIndex];
       browser.storage.local.set({
@@ -486,9 +486,9 @@ let eGPrefs = {
     });
   },
   
-  incrementNoUsage: function() {},
+  incrementNoUsage() {},
   
-  updateUsageForAction: function(anActionName) {
+  updateUsageForAction(anActionName) {
     this.getPref("usage.actions").then(actionsUsage => {
       ++actionsUsage[anActionName];
       browser.storage.local.set({
@@ -497,11 +497,11 @@ let eGPrefs = {
     });
   },
   
-  getUsageActionsPref: function() {
+  getUsageActionsPref() {
     return this.getPref("usage.actions");
   },
   
-  _updateActions: function(actionsToRemove, actionsToAdd, actionsToRename) {
+  _updateActions(actionsToRemove, actionsToAdd, actionsToRename) {
     return this.getPref("stats.actions").then(prefValue => {
       let actionsStats = JSON.parse(prefValue);
       actionsToRemove.forEach(actionName => {
@@ -520,7 +520,7 @@ let eGPrefs = {
     });
   },
   
-  _renameActions: function(actionsToRename) {
+  _renameActions(actionsToRename) {
     function newActionNameForAction(actionName) {
       return actionsToRename[actionName] === undefined ?
                actionName :
@@ -550,7 +550,7 @@ let eGPrefs = {
     return promises;
   },
   
-  _addActions: function(actionsToAdd) {
+  _addActions(actionsToAdd) {
     return this.getPref("usage.actions").then(prefValue => {
       actionsToAdd.forEach(actionName => prefValue[actionName] = 0);
       return browser.storage.local.set({
@@ -559,7 +559,7 @@ let eGPrefs = {
     });
   },
   
-  updateToV5_3: function() {
+  updateToV5_3() {
     let actionsToRemove = [
       "autoscrolling", "viewPageInfo", "focusLocationBar", "quit", "restart",
       "firefoxPreferences", "addOns", "undo", "redo"
@@ -594,7 +594,7 @@ let eGPrefs = {
     return Promise.all(promises);
   },
   
-  updateToV5_4: function() {
+  updateToV5_4() {
     let actionsToRemove = [
       "showBookmarks", "toggleBookmarksSidebar", "toggleBookmarksToolbar",
       "showHistory", "toggleHistorySidebar", "showDownloads"
@@ -627,7 +627,7 @@ let eGPrefs = {
     return Promise.all(promises);
   },
   
-  updateToV6_2: function() {
+  updateToV6_2() {
     let promises = [];
     let prefsToRename = [
       "behavior.largeMenu", "behavior.smallIcons", "behavior.menuOpacity"
@@ -646,7 +646,7 @@ let eGPrefs = {
     return Promise.all(promises);
   },
   
-  updateToV6_3: function() {
+  updateToV6_3() {
     let promises = [];
     promises.push(this.getPref("stats.actions").then(prefValue => {
       let actionsStats = JSON.parse(prefValue);
@@ -699,7 +699,7 @@ let eGPrefs = {
     return Promise.all(promises);
   },
   
-  updateToV6_5: async function() {
+  async updateToV6_5() {
     let prefsToRename = [
       "stats.lastReset", "stats.actions", "stats.mainMenu", "stats.extraMenu"
     ];

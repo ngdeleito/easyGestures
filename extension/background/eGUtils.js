@@ -72,7 +72,7 @@ let eGUtils = {
     this.sendMessageToFrameWithFrameIDWithinCurrentTab(message, 0);
   },
   
-  showOrOpenTab: function(aURLPathSuffix, aURLHash) {
+  showOrOpenTab(aURLPathSuffix, aURLHash) {
     browser.tabs.query({}).then(tabs => {
       let firstTabWithSamePathSuffix = tabs.find(tab => {
         // since extensions get host permissions for their own pages, we
@@ -100,12 +100,12 @@ let eGUtils = {
     });
   },
   
-  setDocumentTitle: function(document, titleStringName) {
+  setDocumentTitle(document, titleStringName) {
     document.title = browser.i18n.getMessage(titleStringName) + " " +
                      document.title;
   },
   
-  setDocumentLocalizedStrings: function(document) {
+  setDocumentLocalizedStrings(document) {
     let elements = document.querySelectorAll("[data-l10n]");
     for (let i=0; i < elements.length; ++i) {
       elements[i].textContent = browser.i18n
