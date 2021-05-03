@@ -9,11 +9,12 @@
 window.addEventListener("load", tipsLoadHandler);
 window.addEventListener("unload", tipsUnloadHandler);
 
-function tipEntry(label, hash) {
-  /* jshint validthis: true */
-  this.label = label;
-  this.imageClass = label.slice("tips.".length);
-  this.hash = hash;
+class tipEntry {
+  constructor(label, hash) {
+    this.label = label;
+    this.imageClass = label.slice("tips.".length);
+    this.hash = hash;
+  }
 }
 
 let tips = [
