@@ -19,143 +19,163 @@ const ACTIONS_NODE_ID_PREFIX = "easyGesturesActionsNode:";
 const EXTRA_NODE_CLASS_NAME = "easyGesturesExtraNode";
 const TOOLTIPS_NODE_ID_PREFIX = "easyGesturesTooltipsNode:";
 
-function MenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
-  this._pieMenu = menu;
-  this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",  "extraAlt2", "contextLink", "contextImage",  "contextSelection", "contextTextbox"
-  this.layoutNumber = number;
-  this._nextMenuLayout = nextMenuLayout;
-  this.isExtraMenu = false;
-  this._isLarge = menu.settings.largeMenu;
-  
-  if (!this._isLarge) {
-    // removing actions intended for large menus
-    actionsPrefs.splice(9, 1);
-    actionsPrefs.splice(5, 1);
+class MenuLayout {
+  constructor(menu, name, number, nextMenuLayout, actionsPrefs) {
+    this._pieMenu = menu;
+    this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",
+      // "extraAlt2", "contextLink", "contextImage",  "contextSelection",
+      // "contextTextbox"
+    this.layoutNumber = number;
+    this._nextMenuLayout = nextMenuLayout;
+    this.isExtraMenu = false;
+    this._isLarge = menu.settings.largeMenu;
+    
+    if (!this._isLarge) {
+      // removing actions intended for large menus
+      actionsPrefs.splice(9, 1);
+      actionsPrefs.splice(5, 1);
+    }
+    this.actions = actionsPrefs;
+    browser.runtime.sendMessage({
+      messageName: "getTooltips",
+      actions: this.actions
+    }).then(tooltips => this.tooltips = tooltips);
+    
+    // half the angle reserved for a sector (in radians)
+    this.halfAngleForSector = Math.PI / this.actions.length;
+    this.sectorOffset = this._isLarge ? 0 : this.halfAngleForSector;
+    
+    browser.runtime.sendMessage({
+      messageName: "isExtraMenuAction",
+      actionName: this.actions[EXTRA_MENU_SECTOR]
+    }).then(aMessage => this.hasExtraMenuAction = aMessage.response);
   }
-  this.actions = actionsPrefs;
-  browser.runtime.sendMessage({
-    messageName: "getTooltips",
-    actions: this.actions
-  }).then(tooltips => this.tooltips = tooltips);
   
-  // half the angle reserved for a sector (in radians)
-  this.halfAngleForSector = Math.PI / this.actions.length;
-  this.sectorOffset = this._isLarge ? 0 : this.halfAngleForSector;
+  getNextLayout() {
+    return this._nextMenuLayout;
+  }
   
-  browser.runtime.sendMessage({
-    messageName: "isExtraMenuAction",
-    actionName: this.actions[EXTRA_MENU_SECTOR]
-  }).then(aMessage => this.hasExtraMenuAction = aMessage.response);
+  getUsageInformationUpdate() {
+    let sector = this._pieMenu.sector;
+    let sector8To10 = sector;
+    if (!this._isLarge && sector > 4) {
+      sector8To10++;
+    }
+    return {
+      incrementMethodName: "incrementUsageMainMenuPref",
+      incrementIndex: this.layoutNumber * 10 + sector8To10,
+      updateActionName: this.actions[sector]
+    };
+  }
+  
+  showMenuSign() {
+    let mainMenusSign = this._pieMenu.specialNodesNode.childNodes[1];
+    mainMenusSign.style.visibility = "visible";
+  }
+  
+  _updateMenuSign(menuSign, numberOfMenus) {
+    let layoutNumber = Math.min(this.layoutNumber, numberOfMenus - 1);
+    let previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
+                                numberOfMenus) % numberOfMenus;
+    previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
+    
+    let menusSignNode = this._pieMenu.specialNodesNode.childNodes[menuSign];
+    
+    menusSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
+    menusSignNode.childNodes[layoutNumber].className = "active";
+  }
+  
+  updateMenuSign() {
+    this._updateMenuSign(1, this._pieMenu.numberOfMainMenus);
+  }
+  
+  _clearMenuSign(menuSignNode) {
+    for (let i=0; i < menuSignNode.childNodes.length; ++i) {
+      menuSignNode.childNodes[i].removeAttribute("class");
+    }
+  }
+  
+  hideMenuSign() {
+    let mainMenusSignNode = this._pieMenu.specialNodesNode.childNodes[1];
+    mainMenusSignNode.style.visibility = "hidden";
+    this._clearMenuSign(mainMenusSignNode);
+  }
 }
-MenuLayout.prototype.getNextLayout = function() {
-  return this._nextMenuLayout;
-};
-MenuLayout.prototype.getUsageInformationUpdate = function() {
-  let sector = this._pieMenu.sector;
-  let sector8To10 = sector;
-  if (!this._isLarge && sector > 4) {
-    sector8To10++;
-  }
-  return {
-    incrementMethodName: "incrementUsageMainMenuPref",
-    incrementIndex: this.layoutNumber * 10 + sector8To10,
-    updateActionName: this.actions[sector]
-  };
-};
-MenuLayout.prototype.showMenuSign = function() {
-  let mainMenusSign = this._pieMenu.specialNodesNode.childNodes[1];
-  mainMenusSign.style.visibility = "visible";
-};
-MenuLayout.prototype._updateMenuSign = function(menuSign, numberOfMenus) {
-  let layoutNumber = Math.min(this.layoutNumber, numberOfMenus - 1);
-  let previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
-                              numberOfMenus) % numberOfMenus;
-  previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
-  
-  let menusSignNode = this._pieMenu.specialNodesNode.childNodes[menuSign];
-  
-  menusSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
-  menusSignNode.childNodes[layoutNumber].className = "active";
-};
-MenuLayout.prototype.updateMenuSign = function() {
-  this._updateMenuSign(1, this._pieMenu.numberOfMainMenus);
-};
-MenuLayout.prototype._clearMenuSign = function(menuSignNode) {
-  for (let i=0; i < menuSignNode.childNodes.length; ++i) {
-    menuSignNode.childNodes[i].removeAttribute("class");
-  }
-};
-MenuLayout.prototype.hideMenuSign = function() {
-  let mainMenusSignNode = this._pieMenu.specialNodesNode.childNodes[1];
-  mainMenusSignNode.style.visibility = "hidden";
-  this._clearMenuSign(mainMenusSignNode);
-};
 
-function ExtraMenuLayout(menu, name, number, nextMenuLayout, actionsPrefs) {
-  MenuLayout.call(this, menu, name, number, nextMenuLayout, actionsPrefs);
-  
-  this.isExtraMenu = true;
-  this._isLarge = false; // extra menus are never large
-  
-  this.halfAngleForSector = Math.PI / 8;
-  this.sectorOffset = this.halfAngleForSector;
-}
-ExtraMenuLayout.prototype = Object.create(MenuLayout.prototype);
-ExtraMenuLayout.prototype.constructor = ExtraMenuLayout;
-ExtraMenuLayout.prototype.getUsageInformationUpdate = function() {
-  let sector = this._pieMenu.sector;
-  return {
-    incrementMethodName: "incrementUsageExtraMenuPref",
-    incrementIndex: this.layoutNumber * 5 + sector,
-    updateActionName: this.actions[sector]
-  };
-};
-ExtraMenuLayout.prototype.showMenuSign = function() {
-  let extraMenusSign = this._pieMenu.specialNodesNode.childNodes[2];
-  extraMenusSign.style.visibility = "visible";
-};
-ExtraMenuLayout.prototype.updateMenuSign = function() {
-  this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
-};
-ExtraMenuLayout.prototype.hideMenuSign = function() {
-  let extraMenusSignNode = this._pieMenu.specialNodesNode.childNodes[2];
-  extraMenusSignNode.style.visibility = "hidden";
-  this._clearMenuSign(extraMenusSignNode);
-};
-
-function ContextualMenuLayout(menu, name, actionsPrefs) {
-  MenuLayout.call(this, menu, name, 0, null, actionsPrefs);
-  this._localizedName = browser.i18n.getMessage(this.name);
-}
-ContextualMenuLayout.prototype = Object.create(MenuLayout.prototype);
-ContextualMenuLayout.prototype.constructor = ContextualMenuLayout;
-ContextualMenuLayout.prototype.getNextLayout = function() {
-  return contextualMenus[(contextualMenus.indexOf(this.name) + 1) %
-                         contextualMenus.length];
-};
-ContextualMenuLayout.prototype.getUsageInformationUpdate = function() {
-  return {
-    incrementMethodName: "incrementNoUsage",
-    incrementIndex: undefined,
-    updateActionName: this.actions[this._pieMenu.sector]
-  };
-};
-ContextualMenuLayout.prototype.showMenuSign = function() {
-  let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
-  contextMenuSignNode.style.visibility = "visible";
-  if (contextualMenus.length > 1) {
-    contextMenuSignNode.className = "withAltSign";
+class ExtraMenuLayout extends MenuLayout {
+  constructor(menu, name, number, nextMenuLayout, actionsPrefs) {
+    super(menu, name, number, nextMenuLayout, actionsPrefs);
+    
+    this.isExtraMenu = true;
+    this._isLarge = false; // extra menus are never large
+    
+    this.halfAngleForSector = Math.PI / 8;
+    this.sectorOffset = this.halfAngleForSector;
   }
-};
-ContextualMenuLayout.prototype.updateMenuSign = function() {
-  let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
-  contextMenuSignNode.textContent = this._localizedName;
-};
-ContextualMenuLayout.prototype.hideMenuSign = function() {
-  let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
-  contextMenuSignNode.style.visibility = "hidden";
-  contextMenuSignNode.removeAttribute("class");
-};
+  
+  getUsageInformationUpdate() {
+    let sector = this._pieMenu.sector;
+    return {
+      incrementMethodName: "incrementUsageExtraMenuPref",
+      incrementIndex: this.layoutNumber * 5 + sector,
+      updateActionName: this.actions[sector]
+    };
+  }
+  
+  showMenuSign() {
+    let extraMenusSign = this._pieMenu.specialNodesNode.childNodes[2];
+    extraMenusSign.style.visibility = "visible";
+  }
+  
+  updateMenuSign() {
+    this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
+  }
+  
+  hideMenuSign() {
+    let extraMenusSignNode = this._pieMenu.specialNodesNode.childNodes[2];
+    extraMenusSignNode.style.visibility = "hidden";
+    this._clearMenuSign(extraMenusSignNode);
+  }
+}
+
+class ContextualMenuLayout extends MenuLayout {
+  constructor(menu, name, actionsPrefs) {
+    super(menu, name, 0, null, actionsPrefs);
+    this._localizedName = browser.i18n.getMessage(this.name);
+  }
+  
+  getNextLayout() {
+    return contextualMenus[(contextualMenus.indexOf(this.name) + 1) %
+                           contextualMenus.length];
+  }
+  
+  getUsageInformationUpdate() {
+    return {
+      incrementMethodName: "incrementNoUsage",
+      incrementIndex: undefined,
+      updateActionName: this.actions[this._pieMenu.sector]
+    };
+  }
+  
+  showMenuSign() {
+    let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
+    contextMenuSignNode.style.visibility = "visible";
+    if (contextualMenus.length > 1) {
+      contextMenuSignNode.className = "withAltSign";
+    }
+  }
+  
+  updateMenuSign() {
+    let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
+    contextMenuSignNode.textContent = this._localizedName;
+  }
+  
+  hideMenuSign() {
+    let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
+    contextMenuSignNode.style.visibility = "hidden";
+    contextMenuSignNode.removeAttribute("class");
+  }
+}
 
 let eGPieMenu = {
   settings: {},
