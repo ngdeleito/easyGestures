@@ -45,6 +45,7 @@ class MenuLayout {
     this.halfAngleForSector = Math.PI / this.actions.length;
     this.sectorOffset = this._isLarge ? 0 : this.halfAngleForSector;
     
+    this._numberOfMenus = this._pieMenu.numberOfMainMenus;
     this._menuSignNodeIndex = 1;
     
     browser.runtime.sendMessage({
@@ -84,20 +85,15 @@ class MenuLayout {
     this._showMenuSign();
   }
   
-  _updateMenuSign(menuSign, numberOfMenus) {
-    let layoutNumber = Math.min(this.layoutNumber, numberOfMenus - 1);
-    let previousLayoutNumber = (((layoutNumber - 1) % numberOfMenus) +
-                                numberOfMenus) % numberOfMenus;
-    previousLayoutNumber = Math.min(previousLayoutNumber, numberOfMenus - 1);
-    
-    let menusSignNode = this._pieMenu.specialNodesNode.childNodes[menuSign];
-    
-    menusSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
-    menusSignNode.childNodes[layoutNumber].className = "active";
-  }
-  
   updateMenuSign() {
-    this._updateMenuSign(1, this._pieMenu.numberOfMainMenus);
+    let layoutNumber = Math.min(this.layoutNumber, this._numberOfMenus - 1);
+    let previousLayoutNumber = (((layoutNumber - 1) % this._numberOfMenus) +
+                                this._numberOfMenus) % this._numberOfMenus;
+    previousLayoutNumber = Math.min(previousLayoutNumber, this._numberOfMenus - 1);
+    
+    let menuSignNode = this._getMenuSignNode();
+    menuSignNode.childNodes[previousLayoutNumber].removeAttribute("class");
+    menuSignNode.childNodes[layoutNumber].className = "active";
   }
   
   _clearMenuSign(menuSignNode) {
@@ -127,6 +123,7 @@ class ExtraMenuLayout extends MenuLayout {
     this.halfAngleForSector = Math.PI / 8;
     this.sectorOffset = this.halfAngleForSector;
     
+    this._numberOfMenus = this._pieMenu.numberOfExtraMenus;
     this._menuSignNodeIndex = 2;
   }
   
@@ -137,10 +134,6 @@ class ExtraMenuLayout extends MenuLayout {
       incrementIndex: this.layoutNumber * 5 + sector,
       updateActionName: this.actions[sector]
     };
-  }
-  
-  updateMenuSign() {
-    this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
   }
 }
 
@@ -173,7 +166,7 @@ class ContextualMenuLayout extends MenuLayout {
   }
   
   updateMenuSign() {
-    let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
+    let contextMenuSignNode = this._getMenuSignNode();
     contextMenuSignNode.textContent = this._localizedName;
   }
   
