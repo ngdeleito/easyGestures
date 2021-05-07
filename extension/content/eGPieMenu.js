@@ -45,6 +45,8 @@ class MenuLayout {
     this.halfAngleForSector = Math.PI / this.actions.length;
     this.sectorOffset = this._isLarge ? 0 : this.halfAngleForSector;
     
+    this._menuSignNodeIndex = 1;
+    
     browser.runtime.sendMessage({
       messageName: "isExtraMenuAction",
       actionName: this.actions[EXTRA_MENU_SECTOR]
@@ -68,9 +70,18 @@ class MenuLayout {
     };
   }
   
+  _getMenuSignNode() {
+    return this._pieMenu.specialNodesNode.childNodes[this._menuSignNodeIndex];
+  }
+  
+  _showMenuSign() {
+    let menuSignNode = this._getMenuSignNode();
+    menuSignNode.style.visibility = "visible";
+    return menuSignNode;
+  }
+  
   showMenuSign() {
-    let mainMenusSign = this._pieMenu.specialNodesNode.childNodes[1];
-    mainMenusSign.style.visibility = "visible";
+    this._showMenuSign();
   }
   
   _updateMenuSign(menuSign, numberOfMenus) {
@@ -111,6 +122,8 @@ class ExtraMenuLayout extends MenuLayout {
     
     this.halfAngleForSector = Math.PI / 8;
     this.sectorOffset = this.halfAngleForSector;
+    
+    this._menuSignNodeIndex = 2;
   }
   
   getUsageInformationUpdate() {
@@ -120,11 +133,6 @@ class ExtraMenuLayout extends MenuLayout {
       incrementIndex: this.layoutNumber * 5 + sector,
       updateActionName: this.actions[sector]
     };
-  }
-  
-  showMenuSign() {
-    let extraMenusSign = this._pieMenu.specialNodesNode.childNodes[2];
-    extraMenusSign.style.visibility = "visible";
   }
   
   updateMenuSign() {
@@ -142,6 +150,8 @@ class ContextualMenuLayout extends MenuLayout {
   constructor(menu, name, actionsPrefs) {
     super(menu, name, 0, null, actionsPrefs);
     this._localizedName = browser.i18n.getMessage(this.name);
+    
+    this._menuSignNodeIndex = 3;
   }
   
   getNextLayout() {
@@ -158,8 +168,7 @@ class ContextualMenuLayout extends MenuLayout {
   }
   
   showMenuSign() {
-    let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
-    contextMenuSignNode.style.visibility = "visible";
+    let contextMenuSignNode = this._showMenuSign();
     if (contextualMenus.length > 1) {
       contextMenuSignNode.className = "withAltSign";
     }
