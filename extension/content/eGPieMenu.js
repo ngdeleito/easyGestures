@@ -106,10 +106,14 @@ class MenuLayout {
     }
   }
   
+  _hideMenuSign() {
+    let menuSignNode = this._getMenuSignNode();
+    menuSignNode.style.visibility = "hidden";
+    return menuSignNode;
+  }
+  
   hideMenuSign() {
-    let mainMenusSignNode = this._pieMenu.specialNodesNode.childNodes[1];
-    mainMenusSignNode.style.visibility = "hidden";
-    this._clearMenuSign(mainMenusSignNode);
+    this._clearMenuSign(this._hideMenuSign());
   }
 }
 
@@ -137,12 +141,6 @@ class ExtraMenuLayout extends MenuLayout {
   
   updateMenuSign() {
     this._updateMenuSign(2, this._pieMenu.numberOfExtraMenus);
-  }
-  
-  hideMenuSign() {
-    let extraMenusSignNode = this._pieMenu.specialNodesNode.childNodes[2];
-    extraMenusSignNode.style.visibility = "hidden";
-    this._clearMenuSign(extraMenusSignNode);
   }
 }
 
@@ -180,8 +178,7 @@ class ContextualMenuLayout extends MenuLayout {
   }
   
   hideMenuSign() {
-    let contextMenuSignNode = this._pieMenu.specialNodesNode.childNodes[3];
-    contextMenuSignNode.style.visibility = "hidden";
+    let contextMenuSignNode = this._hideMenuSign();
     contextMenuSignNode.removeAttribute("class");
   }
 }
