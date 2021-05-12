@@ -7,12 +7,11 @@
 
 "use strict";
 
-function Pref(name, value) {
-  this.name = name;
-  this.value = value;
-}
-Pref.prototype = {
-  constructor: Pref,
+class Pref {
+  constructor(name, value) {
+    this.name = name;
+    this.value = value;
+  }
   
   updateTo(newPrefValue) {
     if (this.isNewValuePossible(newPrefValue)) {
@@ -21,66 +20,59 @@ Pref.prototype = {
     else {
       throw "";
     }
-  },
+  }
   
   setPreference() {
     let prefObject = {};
     prefObject[this.name] = this.value;
     return browser.storage.local.set(prefObject);
   }
-};
-
-function BoolPref(name, value) {
-  Pref.call(this, name, value);
 }
-BoolPref.prototype = Object.create(Pref.prototype);
-BoolPref.prototype.constructor = BoolPref;
-BoolPref.prototype.isNewValuePossible = function(newPrefValue) {
-  return typeof newPrefValue === "boolean";
-};
 
-function IntPref(name, value, possibleValuesArray) {
-  Pref.call(this, name, value);
-  this.possibleValuesArray = possibleValuesArray;
+class BoolPref extends Pref {
+  isNewValuePossible(newPrefValue) {
+    return typeof newPrefValue === "boolean";
+  }
 }
-IntPref.prototype = Object.create(Pref.prototype);
-IntPref.prototype.constructor = IntPref;
-IntPref.prototype.isNewValuePossible = function(newPrefValue) {
-  return Number.isInteger(newPrefValue) &&
-         (this.possibleValuesArray === undefined ||
-          this.possibleValuesArray.indexOf(newPrefValue) !== -1);
-};
 
-function StringPref(name, value, isPossibleValue) {
-  Pref.call(this, name, value);
-  this.isPossibleValue = isPossibleValue;
+class IntPref extends Pref {
+  constructor(name, value, possibleValuesArray) {
+    super(name, value);
+    this.possibleValuesArray = possibleValuesArray;
+  }
+  
+  isNewValuePossible(newPrefValue) {
+    return Number.isInteger(newPrefValue) &&
+           (this.possibleValuesArray === undefined ||
+            this.possibleValuesArray.indexOf(newPrefValue) !== -1);
+  }
 }
-StringPref.prototype = Object.create(Pref.prototype);
-StringPref.prototype.constructor = StringPref;
-StringPref.prototype.isNewValuePossible = function(newPrefValue) {
-  return typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue);
-};
 
-function ArrayPref(name, value, isPossibleValue) {
-  Pref.call(this, name, value);
-  this.isPossibleValue = isPossibleValue;
+class PrefWithValidationFunction extends Pref {
+  constructor(name, value, isPossibleValue) {
+    super(name, value);
+    this.isPossibleValue = isPossibleValue;
+  }
 }
-ArrayPref.prototype = Object.create(Pref.prototype);
-ArrayPref.prototype.constructor = ArrayPref;
-ArrayPref.prototype.isNewValuePossible = function(newPrefValue) {
-  return Array.isArray(newPrefValue) && this.isPossibleValue(newPrefValue);
-};
 
-function ObjectPref(name, value, isPossibleValue) {
-  Pref.call(this, name, value);
-  this.isPossibleValue = isPossibleValue;
+class StringPref extends PrefWithValidationFunction {
+  isNewValuePossible(newPrefValue) {
+    return typeof newPrefValue === "string" && this.isPossibleValue(newPrefValue);
+  }
 }
-ObjectPref.prototype = Object.create(Pref.prototype);
-ObjectPref.prototype.constructor = ObjectPref;
-ObjectPref.prototype.isNewValuePossible = function(newPrefValue) {
-  return newPrefValue instanceof Object && !(newPrefValue instanceof Array) &&
-         this.isPossibleValue(newPrefValue);
-};
+
+class ArrayPref extends PrefWithValidationFunction {
+  isNewValuePossible(newPrefValue) {
+    return Array.isArray(newPrefValue) && this.isPossibleValue(newPrefValue);
+  }
+}
+
+class ObjectPref extends PrefWithValidationFunction {
+  isNewValuePossible(newPrefValue) {
+    return newPrefValue instanceof Object && !(newPrefValue instanceof Array) &&
+           this.isPossibleValue(newPrefValue);
+  }
+}
 
 let eGPrefs = {
   _setBoolPref(aPrefsMap, prefName, prefValue) {
