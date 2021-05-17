@@ -96,12 +96,6 @@ class MenuLayout {
     menuSignNode.childNodes[layoutNumber].className = "active";
   }
   
-  _clearMenuSign(menuSignNode) {
-    for (let i=0; i < menuSignNode.childNodes.length; ++i) {
-      menuSignNode.childNodes[i].removeAttribute("class");
-    }
-  }
-  
   _hideMenuSign() {
     let menuSignNode = this._getMenuSignNode();
     menuSignNode.style.visibility = "hidden";
@@ -109,7 +103,10 @@ class MenuLayout {
   }
   
   hideMenuSign() {
-    this._clearMenuSign(this._hideMenuSign());
+    let menuSignNode = this._hideMenuSign();
+    for (let i=0; i < menuSignNode.childNodes.length; ++i) {
+      menuSignNode.childNodes[i].removeAttribute("class");
+    }
   }
 }
 
