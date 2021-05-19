@@ -61,11 +61,6 @@ function Action(name, action, startsNewGroup, nextAction) {
 Action.prototype = {
   constructor: Action,
   
-  increasingZoomLevels: [0.3, 0.5, 0.67, 0.8, 0.9, 1, 1.1, 1.2, 1.33, 1.5, 1.7,
-                         2, 2.4, 3],
-  decreasingZoomLevels: [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1, 0.9, 0.8, 0.67,
-                         0.5, 0.3],
-  
   getTooltip() {
     return Promise.resolve(browser.i18n.getMessage(this._name));
   },
@@ -553,7 +548,9 @@ let eGActions = {
   zoomIn: new Action("zoomIn", function() {
     if (eGContext.imageElementDoesntExist) {
       browser.tabs.getZoom().then(zoomFactor => {
-        let newZoomFactor = this.increasingZoomLevels.find(element => {
+        const INCREASING_ZOOM_LEVELS = [0.3, 0.5, 0.67, 0.8, 0.9, 1, 1.1, 1.2,
+                                        1.33, 1.5, 1.7, 2, 2.4, 3];
+        let newZoomFactor = INCREASING_ZOOM_LEVELS.find(element => {
           return element > zoomFactor;
         });
         if (newZoomFactor !== undefined) {
@@ -569,7 +566,9 @@ let eGActions = {
   zoomOut: new Action("zoomOut", function() {
     if (eGContext.imageElementDoesntExist) {
       browser.tabs.getZoom().then(zoomFactor => {
-        let newZoomFactor = this.decreasingZoomLevels.find(element => {
+        const DECREASING_ZOOM_LEVELS = [3, 2.4, 2, 1.7, 1.5, 1.33, 1.2, 1.1, 1,
+                                        0.9, 0.8, 0.67, 0.5, 0.3];
+        let newZoomFactor = DECREASING_ZOOM_LEVELS.find(element => {
           return element < zoomFactor;
         });
         if (newZoomFactor !== undefined) {
