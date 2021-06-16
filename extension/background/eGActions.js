@@ -2,88 +2,87 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-// This file provides the following hierarchy of Actions and the eGActions
+// This file provides the following class hierarchy of Actions and the eGActions
 // object, containing the actions available in easyGestures N
 
 // Action
 //  ^
 //  |-- EmptyAction
 //  |-- ShowExtraMenuAction
+//  |-- DisableableAction
+//  |    ^
+//  |    |-- SelectionExistsDisableableAction
+//  |    |-- URLToIdentifierExistsDisableableAction
+//  |    |-- CanGoUpDisableableAction
+//  |    |-- OtherTabsExistDisableableAction
+//  |    |-- LinkExistsDisableableAction
+//  |    |-- DailyReadingsDisableableAction
+//  |    |-- NumberedAction
+//  |    |    ^
+//  |    |    |-- LoadURLAction
+//  |    |    |-- RunScriptAction
+//  |    |-- ImageExistsDisableableAction
+//  |    |-- DisabledAction
 //  |-- DocumentContainsImagesAction
 //  |-- FullscreenAction
 //  |-- CommandAction
-//  |-- DisableableAction
-//       ^
-//       |-- SelectionExistsDisableableAction
-//       |-- URLToIdentifierExistsDisableableAction
-//       |-- CanGoUpDisableableAction
-//       |-- OtherTabsExistDisableableAction
-//       |-- LinkExistsDisableableAction
-//       |-- DailyReadingsDisableableAction
-//       |-- NumberedAction
-//       |    ^
-//       |    |-- LoadURLAction
-//       |    |-- RunScriptAction
-//       |-- ImageExistsDisableableAction
-//       |-- DisabledAction
 
 /* exported eGActions */
 /* global eGPrefs, console, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
 
 "use strict";
 
-function Action(name, action, startsNewGroup, nextAction) {
-  this._name = name;
-  this.run = function(usageInformationUpdate) {
-    eGPrefs[usageInformationUpdate.incrementMethodName](usageInformationUpdate.incrementIndex);
-    if (usageInformationUpdate.updateActionName !== undefined) {
-      eGPrefs.updateUsageForAction(usageInformationUpdate.updateActionName);
-    }
-    return new Promise((resolve, reject) => {
-      try {
-        resolve(action.call(this));
+class Action {
+  constructor(name, action, startsNewGroup, nextAction) {
+    this._name = name;
+    this.run = function(usageInformationUpdate) {
+      eGPrefs[usageInformationUpdate.incrementMethodName](usageInformationUpdate.incrementIndex);
+      if (usageInformationUpdate.updateActionName !== undefined) {
+        eGPrefs.updateUsageForAction(usageInformationUpdate.updateActionName);
       }
-      catch (exception) {
-        console.error("easyGestures N: error when executing \"" + this._name +
-                      "\" action: " + exception);
-        reject();
-      }
-    });
-  };
-  
-  // startsNewGroup and nextAction are used in options.js to display a sorted
-  // list of available actions
-  this.startsNewGroup = startsNewGroup;
-  this.nextAction = nextAction;
-  
-  this.isExtraMenuAction = false;
-}
-Action.prototype = {
-  constructor: Action,
+      return new Promise((resolve, reject) => {
+        try {
+          resolve(action.call(this));
+        }
+        catch (exception) {
+          console.error("easyGestures N: error when executing \"" + this._name +
+                        "\" action: " + exception);
+          reject();
+        }
+      });
+    };
+    
+    // startsNewGroup and nextAction are used in options.js to display a sorted
+    // list of available actions
+    this.startsNewGroup = startsNewGroup;
+    this.nextAction = nextAction;
+    
+    this.isExtraMenuAction = false;
+  }
   
   getTooltip() {
     return Promise.resolve(browser.i18n.getMessage(this._name));
-  },
+  }
   
   getLocalizedActionName() {
     return browser.i18n.getMessage(this._name);
-  },
+  }
   
   getActionStatus() {
     return {
       messageName: "nonDisableableAction",
       status: Promise.resolve(false)
     };
-  },
+  }
   
-  // helper functions
+  // helper methods
   
   _sendPerformActionMessage(actionName, actionOptions) {
     return {
       runActionName: actionName,
       runActionOptions: actionOptions
     };
-  },
+  }
   
   _sendPerformActionMessageToFrameWithIndexWithinCurrentTab(frameIndex) {
     eGUtils.performOnCurrentTab(currentTab => {
@@ -97,11 +96,11 @@ Action.prototype = {
         frameId: eGContext.frameHierarchyArray[frameIndex].frameID
       });
     });
-  },
+  }
   
   _sendPerformActionMessageToInnermostFrameWithinCurrentTab() {
     this._sendPerformActionMessageToFrameWithIndexWithinCurrentTab(0);
-  },
+  }
   
   _openURLOn(url, on, newTabShouldBeActive) {
     switch (on) {
@@ -126,188 +125,190 @@ Action.prototype = {
         break;
     }
   }
-};
-
-function EmptyAction(startsNewGroup, nextAction) {
-  Action.call(this, "empty", function() {}, startsNewGroup, nextAction);
 }
-EmptyAction.prototype = Object.create(Action.prototype);
-EmptyAction.prototype.constructor = EmptyAction;
-EmptyAction.prototype.getLocalizedActionName = function() {
-  return browser.i18n.getMessage("emptyActionName");
-};
 
-function ShowExtraMenuAction(startsNewGroup, nextAction) {
-  Action.call(this, "showExtraMenu", function() {}, startsNewGroup, nextAction);
+class EmptyAction extends Action {
+  constructor(startsNewGroup, nextAction) {
+    super("empty", function() {}, startsNewGroup, nextAction);
+  }
   
-  this.isExtraMenuAction = true;
+  getLocalizedActionName() {
+    return browser.i18n.getMessage("emptyActionName");
+  }
 }
-ShowExtraMenuAction.prototype = Object.create(Action.prototype);
-ShowExtraMenuAction.prototype.constructor = ShowExtraMenuAction;
 
-function DisableableAction(name, action, isDisabledAsPromise, startsNewGroup, nextAction) {
-  Action.call(this, name, action, startsNewGroup, nextAction);
+class ShowExtraMenuAction extends Action {
+  constructor(startsNewGroup, nextAction) {
+    super("showExtraMenu", function() {}, startsNewGroup, nextAction);
+    this.isExtraMenuAction = true;
+  }
+}
+
+class DisableableAction extends Action {
+  constructor(name, action, isDisabledAsPromise, startsNewGroup, nextAction) {
+    super(name, action, startsNewGroup, nextAction);
+    this._isDisabledAsPromise = isDisabledAsPromise;
+  }
   
-  this._isDisabledAsPromise = isDisabledAsPromise;
+  getActionStatus() {
+    return {
+      messageName: "disableableAction",
+      status: this._isDisabledAsPromise()
+    };
+  }
 }
-DisableableAction.prototype = Object.create(Action.prototype);
-DisableableAction.prototype.constructor = DisableableAction;
-DisableableAction.prototype.getActionStatus = function() {
-  return {
-    messageName: "disableableAction",
-    status: this._isDisabledAsPromise()
-  };
-};
 
-function SelectionExistsDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    return Promise.resolve(eGContext.selection === "");
-  }, startsNewGroup, nextAction);
+class SelectionExistsDisableableAction extends DisableableAction {
+  constructor(name, action, startsNewGroup, nextAction) {
+    super(name, action, function() {
+      return Promise.resolve(eGContext.selection === "");
+    }, startsNewGroup, nextAction);
+  }
 }
-SelectionExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
-SelectionExistsDisableableAction.prototype.constructor = SelectionExistsDisableableAction;
 
-function URLToIdentifierExistsDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    return Promise.resolve(eGContext.urlToIdentifier === "");
-  }, startsNewGroup, nextAction);
+class URLToIdentifierExistsDisableableAction extends DisableableAction {
+  constructor(name, action, startsNewGroup, nextAction) {
+    super(name, action, function() {
+      return Promise.resolve(eGContext.urlToIdentifier === "");
+    }, startsNewGroup, nextAction);
+  }
 }
-URLToIdentifierExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
-URLToIdentifierExistsDisableableAction.prototype.constructor = URLToIdentifierExistsDisableableAction;
 
-function CanGoUpDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    let url = new URL(eGContext.pageURL);
-    return Promise.resolve(url.pathname === "/");
-  }, startsNewGroup, nextAction);
+class CanGoUpDisableableAction extends DisableableAction {
+  constructor(name, action, startsNewGroup, nextAction) {
+    super(name, action, function() {
+      let url = new URL(eGContext.pageURL);
+      return Promise.resolve(url.pathname === "/");
+    }, startsNewGroup, nextAction);
+  }
 }
-CanGoUpDisableableAction.prototype = Object.create(DisableableAction.prototype);
-CanGoUpDisableableAction.prototype.constructor = CanGoUpDisableableAction;
 
-function OtherTabsExistDisableableAction(name, getTargetTabIndex, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, function() {
-    this._getTargetTab().then(targetTab => {
-      browser.tabs.update(targetTab.id, {
-        active: true
+class OtherTabsExistDisableableAction extends DisableableAction {
+  constructor(name, getTargetTabIndex, startsNewGroup, nextAction) {
+    super(name, function() {
+      this._getTargetTab().then(targetTab => {
+        browser.tabs.update(targetTab.id, {
+          active: true
+        });
       });
+    }, function() {
+      return browser.tabs.query({
+        currentWindow: true
+      }).then(tabs => {
+        if (tabs.length > 1) {
+          this._getTargetTab().then(targetTab => {
+            browser.tabs.warmup(targetTab.id);
+          });
+        }
+        return tabs.length <= 1;
+      });
+    }, startsNewGroup, nextAction);
+    this._getTargetTabIndex = getTargetTabIndex;
+  }
+  
+  async _getTargetTab() {
+    return eGUtils.performOnCurrentTab(async currentTab => {
+      let tabs = await browser.tabs.query({
+        currentWindow: true
+      });
+      let [targetTab] = await browser.tabs.query({
+        index: this._getTargetTabIndex(currentTab.index, tabs.length),
+        currentWindow: true
+      });
+      return targetTab;
     });
-  }, function() {
-    return browser.tabs.query({
-      currentWindow: true
-    }).then(tabs => {
-      if (tabs.length > 1) {
-        this._getTargetTab().then(targetTab => {
-          browser.tabs.warmup(targetTab.id);
-        });
-      }
-      return tabs.length <= 1;
-    });
-  }, startsNewGroup, nextAction);
-  this._getTargetTabIndex = getTargetTabIndex;
+  }
 }
-OtherTabsExistDisableableAction.prototype = Object.create(DisableableAction.prototype);
-OtherTabsExistDisableableAction.prototype.constructor = OtherTabsExistDisableableAction;
-OtherTabsExistDisableableAction.prototype._getTargetTab = async function() {
-  return eGUtils.performOnCurrentTab(async currentTab => {
-    let tabs = await browser.tabs.query({
-      currentWindow: true
-    });
-    let [targetTab] = await browser.tabs.query({
-      index: this._getTargetTabIndex(currentTab.index, tabs.length),
-      currentWindow: true
-    });
-    return targetTab;
-  });
-};
 
-function LinkExistsDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    return Promise.resolve(!eGContext.anchorElementExists);
-  }, startsNewGroup, nextAction);
+class LinkExistsDisableableAction extends DisableableAction {
+  constructor(name, action, startsNewGroup, nextAction) {
+    super(name, action, function() {
+      return Promise.resolve(!eGContext.anchorElementExists);
+    }, startsNewGroup, nextAction);
+  }
 }
-LinkExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
-LinkExistsDisableableAction.prototype.constructor = LinkExistsDisableableAction;
 
-function DailyReadingsDisableableAction(startsNewGroup, nextAction) {
-  DisableableAction.call(this, "dailyReadings", function() {
-    function traverseSubTree(node) {
-      if (node.children === undefined) {
-        browser.tabs.create({
-          active: false,
-          openerTabId: currentTabId,
-          url: node.url
-        });
-      }
-      else {
-        node.children.forEach(subnode => {
-          traverseSubTree(subnode);
-        });
-      }
-    }
-    
-    let currentTabId;
-    let rootNode = this.rootNode;
-    eGUtils.performOnCurrentTab(currentTab => {
-      currentTabId = currentTab.id;
-      traverseSubTree(rootNode);
-    });
-  }, function() {
-    return eGPrefs.getDailyReadingsFolderName().then(async folderName => {
-      if (folderName === "") {
-        return true;
+class DailyReadingsDisableableAction extends DisableableAction {
+  constructor(startsNewGroup, nextAction) {
+    super("dailyReadings", function() {
+      function traverseSubTree(node) {
+        if (node.children === undefined) {
+          browser.tabs.create({
+            active: false,
+            openerTabId: currentTabId,
+            url: node.url
+          });
+        }
+        else {
+          node.children.forEach(subnode => {
+            traverseSubTree(subnode);
+          });
+        }
       }
       
-      let foundBookmarks = await browser.bookmarks.search({
-        title: folderName
+      let currentTabId;
+      let rootNode = this.rootNode;
+      eGUtils.performOnCurrentTab(currentTab => {
+        currentTabId = currentTab.id;
+        traverseSubTree(rootNode);
       });
-      return foundBookmarks.length === 0 ||
-             browser.bookmarks.getSubTree(foundBookmarks[0].id)
-                              .then(rootNode => {
-               this.rootNode = rootNode[0];
-               return rootNode[0].children === undefined;
-             });
-    });
-  }, startsNewGroup, nextAction);
+    }, function() {
+      return eGPrefs.getDailyReadingsFolderName().then(async folderName => {
+        if (folderName === "") {
+          return true;
+        }
+        
+        let foundBookmarks = await browser.bookmarks.search({
+          title: folderName
+        });
+        return foundBookmarks.length === 0 ||
+               browser.bookmarks.getSubTree(foundBookmarks[0].id)
+                                .then(rootNode => {
+                 this.rootNode = rootNode[0];
+                 return rootNode[0].children === undefined;
+               });
+      });
+    }, startsNewGroup, nextAction);
+  }
 }
-DailyReadingsDisableableAction.prototype = Object.create(DisableableAction.prototype);
-DailyReadingsDisableableAction.prototype.constructor = DailyReadingsDisableableAction;
 
-function NumberedAction(namePrefix, number, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, namePrefix + number, function() {
-    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
-                  .then(prefValue => {
-      let content = prefValue[1];
-      content = content.replace("%s", eGContext.selection);
-      content = content.replace("%u", eGContext.pageURL);
-      return action.call(this, content,
-                         2 in prefValue ? prefValue[2] : undefined);
-    });
-  }, function() {
-    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
-                  .then(prefValue => {
-                    return prefValue[1] === "";
-                  });
-  }, startsNewGroup, nextAction);
+class NumberedAction extends DisableableAction {
+  constructor(namePrefix, number, action, startsNewGroup, nextAction) {
+    super(namePrefix + number, function() {
+      return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
+                    .then(prefValue => {
+        let content = prefValue[1];
+        content = content.replace("%s", eGContext.selection);
+        content = content.replace("%u", eGContext.pageURL);
+        return action.call(this, content,
+                           2 in prefValue ? prefValue[2] : undefined);
+      });
+    }, function() {
+      return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name)
+                    .then(prefValue => {
+                      return prefValue[1] === "";
+                    });
+    }, startsNewGroup, nextAction);
+    
+    this._number = number;
+  }
   
-  this._number = number;
+  getTooltip() {
+    return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name).then(prefValue => {
+      let tooltip = prefValue[0];
+      if (tooltip !== "") {
+        // if this action has already a tooltip given by the user, then use it
+        return tooltip;
+      }
+      // otherwise use the default tooltip
+      return browser.i18n.getMessage(this._name);
+    });
+  }
 }
-NumberedAction.prototype = Object.create(DisableableAction.prototype);
-NumberedAction.prototype.constructor = NumberedAction;
-NumberedAction.prototype.getTooltip = function() {
-  return eGPrefs.getLoadURLOrRunScriptPrefValue(this._name).then(prefValue => {
-    let tooltip = prefValue[0];
-    if (tooltip !== "") {
-      // if this action has already a tooltip given by the user, then use it
-      return tooltip;
-    }
-    // otherwise use the default tooltip
-    return browser.i18n.getMessage(this._name);
-  });
-};
 
-function LoadURLAction(number, startsNewGroup, nextAction) {
-  NumberedAction.call(this, "loadURL", number,
-    function(URL, openInPrivateWindow) {
+class LoadURLAction extends NumberedAction {
+  constructor(number, startsNewGroup, nextAction) {
+    super("loadURL", number, function(URL, openInPrivateWindow) {
       if (openInPrivateWindow) {
         browser.windows.create({
           incognito: true,
@@ -320,87 +321,89 @@ function LoadURLAction(number, startsNewGroup, nextAction) {
         });
       }
     }, startsNewGroup, nextAction);
+  }
 }
-LoadURLAction.prototype = Object.create(NumberedAction.prototype);
-LoadURLAction.prototype.constructor = LoadURLAction;
 
-function RunScriptAction(number, startsNewGroup, nextAction) {
-  NumberedAction.call(this, "runScript", number, function(script) {
-    browser.tabs.executeScript({
-      code: script
-    });
-  }, startsNewGroup, nextAction);
-}
-RunScriptAction.prototype = Object.create(NumberedAction.prototype);
-RunScriptAction.prototype.constructor = RunScriptAction;
-
-function ImageExistsDisableableAction(name, action, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, action, function() {
-    return Promise.resolve(eGContext.imageElementDoesntExist);
-  }, startsNewGroup, nextAction);
-}
-ImageExistsDisableableAction.prototype = Object.create(DisableableAction.prototype);
-ImageExistsDisableableAction.prototype.constructor = ImageExistsDisableableAction;
-
-function DocumentContainsImagesAction(name, startsNewGroup, nextAction) {
-  Action.call(this, name, function() {
-    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
-  }, startsNewGroup, nextAction);
-}
-DocumentContainsImagesAction.prototype = Object.create(Action.prototype);
-DocumentContainsImagesAction.prototype.constructor = DocumentContainsImagesAction;
-DocumentContainsImagesAction.prototype.getActionStatus = function() {
-  return {
-    messageName: this._name,
-    status: Promise.resolve(undefined)
-  };
-};
-
-function FullscreenAction(name, startsNewGroup, nextAction) {
-  Action.call(this, name, function() {}, startsNewGroup, nextAction);
-}
-FullscreenAction.prototype = Object.create(Action.prototype);
-FullscreenAction.prototype.constructor = FullscreenAction;
-FullscreenAction.prototype.getActionStatus = function() {
-  return {
-    messageName: this._name,
-    status: Promise.resolve(undefined)
-  };
-};
-
-function CommandAction(name, startsNewGroup, nextAction) {
-  Action.call(this, name, function() {
-    eGUtils.performOnCurrentTab(currentTab => {
-      browser.tabs.sendMessage(currentTab.id, {
-        messageName: "runAction",
-        parameters: {
-          runActionName: "commandAction",
-          runActionOptions: {
-            commandName: name
-          }
-        }
-      }, {
-        frameId: eGContext.frameHierarchyArray[0].frameID
+class RunScriptAction extends NumberedAction {
+  constructor(number, startsNewGroup, nextAction) {
+    super("runScript", number, function(script) {
+      browser.tabs.executeScript({
+        code: script
       });
-    });
-  }, startsNewGroup, nextAction);
+    }, startsNewGroup, nextAction);
+  }
 }
-CommandAction.prototype = Object.create(Action.prototype);
-CommandAction.prototype.constructor = CommandAction;
-CommandAction.prototype.getActionStatus = function() {
-  return {
-    messageName: this._name,
-    status: Promise.resolve(undefined)
-  };
-};
 
-function DisabledAction(name, startsNewGroup, nextAction) {
-  DisableableAction.call(this, name, function() {}, function() {
-    return Promise.resolve(true);
-  }, startsNewGroup, nextAction);
+class ImageExistsDisableableAction extends DisableableAction {
+  constructor(name, action, startsNewGroup, nextAction) {
+    super(name, action, function() {
+      return Promise.resolve(eGContext.imageElementDoesntExist);
+    }, startsNewGroup, nextAction);
+  }
 }
-DisabledAction.prototype = Object.create(DisableableAction.prototype);
-DisabledAction.prototype.constructor = DisabledAction;
+
+class DocumentContainsImagesAction extends Action {
+  constructor(name, startsNewGroup, nextAction) {
+    super(name, function() {
+      this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+    }, startsNewGroup, nextAction);
+  }
+  
+  getActionStatus() {
+    return {
+      messageName: this._name,
+      status: Promise.resolve(undefined)
+    };
+  }
+}
+
+class FullscreenAction extends Action {
+  constructor(name, startsNewGroup, nextAction) {
+    super(name, function() {}, startsNewGroup, nextAction);
+  }
+  
+  getActionStatus() {
+    return {
+      messageName: this._name,
+      status: Promise.resolve(undefined)
+    };
+  }
+}
+
+class CommandAction extends Action {
+  constructor(name, startsNewGroup, nextAction) {
+    super(name, function() {
+      eGUtils.performOnCurrentTab(currentTab => {
+        browser.tabs.sendMessage(currentTab.id, {
+          messageName: "runAction",
+          parameters: {
+            runActionName: "commandAction",
+            runActionOptions: {
+              commandName: name
+            }
+          }
+        }, {
+          frameId: eGContext.frameHierarchyArray[0].frameID
+        });
+      });
+    }, startsNewGroup, nextAction);
+  }
+  
+  getActionStatus() {
+    return {
+      messageName: this._name,
+      status: Promise.resolve(undefined)
+    };
+  }
+}
+
+class DisabledAction extends DisableableAction {
+  constructor(name, startsNewGroup, nextAction) {
+    super(name, function() {}, function() {
+      return Promise.resolve(true);
+    }, startsNewGroup, nextAction);
+  }
+}
 
 
 let eGActions = {
