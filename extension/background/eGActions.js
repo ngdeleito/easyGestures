@@ -23,9 +23,11 @@
 //  |    |    |-- RunScriptAction
 //  |    |-- ImageExistsDisableableAction
 //  |    |-- DisabledAction
-//  |-- DocumentContainsImagesAction
-//  |-- FullscreenAction
-//  |-- CommandAction
+//  |-- ContentSideStatusAction
+//  |    ^
+//  |    |-- DocumentContainsImagesAction
+//  |    |-- FullscreenAction
+//  |    |-- CommandAction
 
 /* exported eGActions */
 /* global eGPrefs, console, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
@@ -342,35 +344,30 @@ class ImageExistsDisableableAction extends DisableableAction {
   }
 }
 
-class DocumentContainsImagesAction extends Action {
+class ContentSideStatusAction extends Action {
+  getActionStatus() {
+    return {
+      messageName: this._name,
+      status: Promise.resolve(undefined)
+    };
+  }
+}
+
+class DocumentContainsImagesAction extends ContentSideStatusAction {
   constructor(name, startsNewGroup, nextAction) {
     super(name, function() {
       this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
     }, startsNewGroup, nextAction);
   }
-  
-  getActionStatus() {
-    return {
-      messageName: this._name,
-      status: Promise.resolve(undefined)
-    };
-  }
 }
 
-class FullscreenAction extends Action {
+class FullscreenAction extends ContentSideStatusAction {
   constructor(name, startsNewGroup, nextAction) {
     super(name, function() {}, startsNewGroup, nextAction);
   }
-  
-  getActionStatus() {
-    return {
-      messageName: this._name,
-      status: Promise.resolve(undefined)
-    };
-  }
 }
 
-class CommandAction extends Action {
+class CommandAction extends ContentSideStatusAction {
   constructor(name, startsNewGroup, nextAction) {
     super(name, function() {
       eGUtils.performOnCurrentTab(currentTab => {
@@ -387,13 +384,6 @@ class CommandAction extends Action {
         });
       });
     }, startsNewGroup, nextAction);
-  }
-  
-  getActionStatus() {
-    return {
-      messageName: this._name,
-      status: Promise.resolve(undefined)
-    };
   }
 }
 
