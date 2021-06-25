@@ -25,7 +25,6 @@
 //  |    |-- DisabledAction
 //  |-- ContentSideStatusAction
 //  |    ^
-//  |    |-- DocumentContainsImagesAction
 //  |    |-- FullscreenAction
 //  |    |-- CommandAction
 
@@ -350,14 +349,6 @@ class ContentSideStatusAction extends Action {
       messageName: this._name,
       status: Promise.resolve(undefined)
     };
-  }
-}
-
-class DocumentContainsImagesAction extends ContentSideStatusAction {
-  constructor(name, startsNewGroup, nextAction) {
-    super(name, function() {
-      this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
-    }, startsNewGroup, nextAction);
   }
 }
 
@@ -1047,7 +1038,9 @@ let eGActions = {
     }).catch(() => {});
   }, false, "hideImages"),
   
-  hideImages: new DocumentContainsImagesAction("hideImages", false, "cut"),
+  hideImages: new ContentSideStatusAction("hideImages", function() {
+    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+  }, false, "cut"),
   
   cut: new CommandAction("cut", true, "copy"),
   
