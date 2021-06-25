@@ -25,7 +25,6 @@
 //  |    |-- DisabledAction
 //  |-- ContentSideStatusAction
 //  |    ^
-//  |    |-- FullscreenAction
 //  |    |-- CommandAction
 
 /* exported eGActions */
@@ -352,12 +351,6 @@ class ContentSideStatusAction extends Action {
   }
 }
 
-class FullscreenAction extends ContentSideStatusAction {
-  constructor(name, startsNewGroup, nextAction) {
-    super(name, function() {}, startsNewGroup, nextAction);
-  }
-}
-
 class CommandAction extends ContentSideStatusAction {
   constructor(name, startsNewGroup, nextAction) {
     super(name, function() {
@@ -612,7 +605,8 @@ let eGActions = {
     });
   }, false, "toggleFullscreen"),
   
-  toggleFullscreen: new FullscreenAction("toggleFullscreen", false, "up"),
+  toggleFullscreen: new ContentSideStatusAction("toggleFullscreen",
+                                                function() {}, false, "up"),
   
   up: new CanGoUpDisableableAction("up", function() {
     let url = new URL(eGContext.pageURL);
