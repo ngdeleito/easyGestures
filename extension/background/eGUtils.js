@@ -79,7 +79,7 @@ let eGUtils = {
         // explicitly check that tab.url is not undefined to avoid requesting
         // the "tabs" permission for opening the preferences and tips pages
         return tab.url !== undefined &&
-               tab.url.startsWith(browser.extension.getURL(aURLPathSuffix));
+               tab.url.startsWith(browser.runtime.getURL(aURLPathSuffix));
       });
       let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
       if (firstTabWithSamePathSuffix === undefined) {
