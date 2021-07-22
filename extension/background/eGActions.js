@@ -45,8 +45,8 @@ class Action {
           resolve(action.call(this));
         }
         catch (exception) {
-          console.error("easyGestures N: error when executing \"" + this._name +
-                        "\" action: " + exception);
+          console.error(`easyGestures N: error when executing "${this._name}"` +
+                        ` action: ${exception}`);
           reject();
         }
       });
@@ -467,7 +467,7 @@ let eGActions = {
   savePageAsPDF: new Action("savePageAsPDF", function() {
     eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.saveAsPDF({
-        toFileName: currentTab.title + ".pdf"
+        toFileName: `${currentTab.title}.pdf`
       });
     });
   }, false, "printPage"),
@@ -590,7 +590,7 @@ let eGActions = {
         let blobURL = URL.createObjectURL(aBlob);
         browser.downloads.download({
           url: blobURL,
-          filename: currentTab.title + ".png",
+          filename: `${currentTab.title}.png`,
           saveAs: true
         }).then((downloadID) => {
           browser.downloads.onChanged.addListener(function downloadListener(download) {
@@ -616,19 +616,19 @@ let eGActions = {
     let pathnameItems = pathname.split("/");
     pathnameItems.pop();
     browser.tabs.update({
-      url: url.protocol + "//" + url.username +
-           (url.password === "" ? "" : ":" + url.password) +
-           (url.username === "" ? "" : "@") + url.hostname + "/" +
-           pathnameItems.join("/") + (pathnameItems.length === 0 ? "" : "/")
+      url: `${url.protocol}//${url.username}` +
+           `${url.password === "" ? "" : `:${url.password}`}` +
+           `${url.username === "" ? "" : "@"}${url.hostname}/` +
+           `${pathnameItems.join("/")}${pathnameItems.length === 0 ? "" : "/"}`
     });
   }, false, "root"),
   
   root: new CanGoUpDisableableAction("root", function() {
     let url = new URL(eGContext.pageURL);
     browser.tabs.update({
-      url: url.protocol + "//" + url.username +
-           (url.password === "" ? "" : ":" + url.password) +
-           (url.username === "" ? "" : "@") + url.hostname
+      url: `${url.protocol}//${url.username}` +
+           `${url.password === "" ? "" : `:${url.password}`}` +
+           `${url.username === "" ? "" : "@"}${url.hostname}`
     });
   }, false, "showOnlyThisFrame"),
   
@@ -644,7 +644,7 @@ let eGActions = {
     eGUtils.performOnCurrentTab(currentTab => {
       browser.tabs.create({
         openerTabId: currentTab.id,
-        url: "view-source:" + eGContext.pageURL
+        url: `view-source:${eGContext.pageURL}`
       });
     });
   }, false, "newTab"),

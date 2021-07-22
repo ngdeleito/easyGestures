@@ -81,7 +81,7 @@ let eGUtils = {
         return tab.url !== undefined &&
                tab.url.startsWith(browser.runtime.getURL(aURLPathSuffix));
       });
-      let urlToOpen = aURLPathSuffix + (aURLHash === "" ? "" : "#" + aURLHash);
+      let urlToOpen = `${aURLPathSuffix}${aURLHash === "" ? "" : `#${aURLHash}`}`;
       if (firstTabWithSamePathSuffix === undefined) {
         this.performOnCurrentTab(currentTab => {
           browser.tabs.create({
@@ -101,8 +101,8 @@ let eGUtils = {
   },
   
   setDocumentTitle(document, titleStringName) {
-    document.title = browser.i18n.getMessage(titleStringName) + " " +
-                     document.title;
+    document.title = `${browser.i18n.getMessage(titleStringName)} ` +
+                     `${document.title}`;
   },
   
   setDocumentLocalizedStrings(document) {

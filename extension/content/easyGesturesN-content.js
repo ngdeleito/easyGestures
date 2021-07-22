@@ -160,9 +160,9 @@ function getURLOfNearestIDAttribute(anHTMLElement) {
          currentElement.id === "") {
     currentElement = currentElement.parentElement;
   }
-  return currentElement.id === "" ? "" : document.location.origin +
-                                         document.location.pathname + "#" +
-                                         currentElement.id;
+  return currentElement.id === "" ? "" : `${document.location.origin}` +
+                                         `${document.location.pathname}#` +
+                                         `${currentElement.id}`;
 }
 
 function handleMousedownWithinTopmostFrame(anEvent) {

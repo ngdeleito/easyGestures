@@ -96,12 +96,12 @@ let actionRunners = {
     // Copyright (C) 2002. All Rights Reserved.
     // double image size only
     let width = imageElement.style.width === "" ?
-      imageElement.width * 2 + "px" :
-      parseInt(imageElement.style.width, 10) * 2 + "px";
+      `${imageElement.width * 2}px` :
+      `${parseInt(imageElement.style.width, 10) * 2}px`;
     
     let height = imageElement.style.height === "" ?
-      imageElement.height * 2 + "px" :
-      parseInt(imageElement.style.height, 10) * 2 + "px";
+      `${imageElement.height * 2}px` :
+      `${parseInt(imageElement.style.height, 10) * 2}px`;
     
     imageElement.style.width = width;
     imageElement.style.height = height;
@@ -112,12 +112,12 @@ let actionRunners = {
     // Copyright (C) 2002. All Rights Reserved.
     // halve image size only
     let width = imageElement.style.width === "" ?
-      imageElement.width * 0.5 + "px" :
-      parseInt(imageElement.style.width, 10) * 0.5 + "px";
+      `${imageElement.width * 0.5}px` :
+      `${parseInt(imageElement.style.width, 10) * 0.5}px`;
     
     let height = imageElement.style.height === "" ?
-      imageElement.height * 0.5 + "px" :
-      parseInt(imageElement.style.height, 10) * 0.5 + "px";
+      `${imageElement.height * 0.5}px` :
+      `${parseInt(imageElement.style.height, 10) * 0.5}px`;
     
     imageElement.style.width = width;
     imageElement.style.height = height;

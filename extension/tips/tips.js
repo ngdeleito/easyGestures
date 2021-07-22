@@ -58,8 +58,8 @@ function updateContent(tipNbr) {
                               .join("/");
   }
   
-  document.getElementById("tipNumber").textContent = (tipNbr + 1) + " / " +
-                                                     tips.length;
+  document.getElementById("tipNumber").textContent = `${tipNbr + 1} / ` +
+                                                     `${tips.length}`;
   document.getElementById("tipTextBeforeLink").textContent = text[0];
   document.getElementById("tipTextLink").textContent = linkText;
   document.getElementById("tipTextAfterLink").textContent = text[2];

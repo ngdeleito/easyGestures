@@ -283,8 +283,8 @@ let eGPieMenu = {
   },
   
   _updateMenuPosition() {
-    this.easyGesturesNode.style.left = this.centerX + "px";
-    this.easyGesturesNode.style.top = this.centerY + "px";
+    this.easyGesturesNode.style.left = `${this.centerX}px`;
+    this.easyGesturesNode.style.top = `${this.centerY}px`;
   },
   
   _createSpecialNodes(numberOfMainMenus, numberOfExtraMenus) {
@@ -332,7 +332,7 @@ let eGPieMenu = {
     
     actions.forEach((action, index) => {
       let anActionNode = document.createElementNS(HTML_NAMESPACE, "div");
-      anActionNode.className = "sector" + index;
+      anActionNode.className = `sector${index}`;
       anActionNode.classList.add(action);
       anActionsNode.appendChild(anActionNode);
     });
@@ -352,7 +352,7 @@ let eGPieMenu = {
   _appendTooltips(tooltipsNode, tooltips, hasExtraMenuAction) {
     tooltips.forEach((tooltip, index) => {
       let aTooltipNode = document.createElementNS(HTML_NAMESPACE, "div");
-      aTooltipNode.classList.add("tooltip" + index);
+      aTooltipNode.classList.add(`tooltip${index}`);
       let aTooltipTextNode = document.createElementNS(HTML_NAMESPACE, "span");
       aTooltipTextNode.textContent = tooltip;
       aTooltipNode.appendChild(aTooltipTextNode);

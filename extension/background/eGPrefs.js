@@ -139,11 +139,11 @@ let eGPrefs = {
     this._setBoolPref(aPrefsMap, "menus.extraAlt1Enabled", true);
     this._setBoolPref(aPrefsMap, "menus.extraAlt2Enabled", false);
     nonExtraMenus.forEach(([menuName, actions]) => {
-      this._setArrayPref(aPrefsMap, "menus." + menuName, actions,
+      this._setArrayPref(aPrefsMap, `menus.${menuName}`, actions,
                          checkPossibleNonExtraMenuValues);
     });
     extraMenus.forEach(([menuName, actions]) => {
-      this._setArrayPref(aPrefsMap, "menus." + menuName, actions,
+      this._setArrayPref(aPrefsMap, `menus.${menuName}`, actions,
                          checkPossibleExtraMenuValues);
     });
   },
@@ -204,9 +204,9 @@ let eGPrefs = {
     });
     
     for (let i=1; i<=10; i++) {
-      this._setArrayPref(defaultPrefs, "customizations.loadURL" + i,
+      this._setArrayPref(defaultPrefs, `customizations.loadURL${i}`,
                          ["", "", false], checkPossibleLoadURLValues);
-      this._setArrayPref(defaultPrefs, "customizations.runScript" + i,
+      this._setArrayPref(defaultPrefs, `customizations.runScript${i}`,
                          ["" , ""], checkPossibleRunScriptValues);
     }
     
@@ -429,7 +429,7 @@ let eGPrefs = {
   },
   
   getLoadURLOrRunScriptPrefValue(aPrefName) {
-    return this.getPref("customizations." + aPrefName);
+    return this.getPref(`customizations.${aPrefName}`);
   },
   
   getOpenLinkPref() {

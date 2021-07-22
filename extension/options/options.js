@@ -68,8 +68,7 @@ function handleStorageChange(changes) {
       if (!prefChanged) {
         // a preference has been updated in another tab, so we update the
         // corresponding preference control
-        let prefControl = document.querySelector("[data-preference='" + change +
-                                                 "']");
+        let prefControl = document.querySelector(`[data-preference="${change}"]`);
         initializePreferenceControl(prefControl);
         setPreferenceControlsDisabledStatus();
       }
@@ -118,7 +117,7 @@ function removePermission(anEvent) {
 
 function handlePermissionChange(aPermissionsObject, isPermissionAdded) {
   function updatePermission(permission, isPermissionAdded) {
-    let permissionElement = document.getElementById("optionalPermissions:" + permission);
+    let permissionElement = document.getElementById(`optionalPermissions:${permission}`);
     let requestButton = permissionElement.lastElementChild.firstElementChild;
     requestButton.disabled = isPermissionAdded;
     let removeButton = permissionElement.lastElementChild.lastElementChild;
@@ -148,7 +147,7 @@ function createOptionalPermissionControls() {
   browser.permissions.getAll().then(aPermissionsObject => {
     Object.entries(optionalPermissions).forEach(([permission, type]) => {
       let isPermissionGranted = aPermissionsObject[type].includes(permission);
-      let permissionElement = document.getElementById("optionalPermissions:" + permission);
+      let permissionElement = document.getElementById(`optionalPermissions:${permission}`);
       
       let div = document.createElement("div");
       permissionElement.appendChild(div);
@@ -176,7 +175,7 @@ function createOptionalPermissionControls() {
 
 function removeOptionalPermissionEventListeners() {
   Object.keys(optionalPermissions).forEach(permission => {
-    let permissionElement = document.getElementById("optionalPermissions:" + permission);
+    let permissionElement = document.getElementById(`optionalPermissions:${permission}`);
     let div = permissionElement.lastElementChild;
     div.firstElementChild.removeEventListener("click", requestPermission);
     div.lastElementChild.removeEventListener("click", removePermission);
@@ -216,7 +215,7 @@ function createActionsSelect(sectorNumber, isExtraMenu) {
 }
 
 function createMenuControl(menuName, isExtraMenu) {
-  let menuControlElement = document.getElementById("menuControl_" + menuName);
+  let menuControlElement = document.getElementById(`menuControl_${menuName}`);
   menuControlElement.className = "menu";
   menuControlElement.classList.toggle("extra", isExtraMenu);
   eGPrefs.isLargeMenuOn().then(prefValue => {
@@ -231,11 +230,11 @@ function createMenuControl(menuName, isExtraMenu) {
   let numberOfItems = isExtraMenu ? 5 : 10;
   for (let i = 0; i < numberOfItems; ++i) {
     let action = document.createElement("div");
-    action.className = "menuIcon sector" + i;
+    action.className = `menuIcon sector${i}`;
     actionElements.appendChild(action);
     
     let select = createActionsSelect(i, isExtraMenu);
-    select.className = "menuSelect sector" + i;
+    select.className = `menuSelect sector${i}`;
     selectElements.appendChild(select);
   }
 }
@@ -255,7 +254,7 @@ function createHeaderForAction(actionName) {
   let h1 = document.createElement("h1");
   
   let span = document.createElement("span");
-  span.className = "actionIcon " + actionName;
+  span.className = `actionIcon ${actionName}`;
   h1.appendChild(span);
   
   span = document.createElement("span");
@@ -274,7 +273,7 @@ function createTooltipRowForAction(actionName) {
   
   let td = document.createElement("td");
   let input = document.createElement("input");
-  input.id = actionName + "_tooltip";
+  input.id = `${actionName}_tooltip`;
   input.type = "text";
   input.size = 20;
   input.maxLength = 20;
@@ -286,7 +285,7 @@ function createTooltipRowForAction(actionName) {
 
 function createLoadURLActions() {
   for (let i=1; i <= 10; ++i) {
-    let actionName = "loadURL" + i;
+    let actionName = `loadURL${i}`;
     let container = document.getElementById(actionName);
     container.parentElement.insertBefore(createHeaderForAction(actionName),
                                          container);
@@ -300,7 +299,7 @@ function createLoadURLActions() {
     tr.appendChild(th);
     let td = document.createElement("td");
     let input = document.createElement("input");
-    input.id = actionName + "_URL";
+    input.id = `${actionName}_URL`;
     input.type = "url";
     input.size = "50";
     td.appendChild(input);
@@ -311,7 +310,7 @@ function createLoadURLActions() {
     tr.appendChild(document.createElement("th"));
     td = document.createElement("td");
     input = document.createElement("input");
-    input.id = actionName + "_openInPrivateWindowCheckbox";
+    input.id = `${actionName}_openInPrivateWindowCheckbox`;
     input.type = "checkbox";
     td.appendChild(input);
     let label = document.createElement("label");
@@ -328,7 +327,7 @@ function createLoadURLActions() {
 
 function createRunScriptActions() {
   for (let i=1; i <= 10; ++i) {
-    let actionName = "runScript" + i;
+    let actionName = `runScript${i}`;
     let container = document.getElementById(actionName);
     container.parentElement.insertBefore(createHeaderForAction(actionName),
                                          container);
@@ -342,7 +341,7 @@ function createRunScriptActions() {
     tr.appendChild(th);
     let td = document.createElement("td");
     let input = document.createElement("textarea");
-    input.id = actionName + "_code";
+    input.id = `${actionName}_code`;
     input.cols = "50";
     input.rows = "7";
     td.appendChild(input);
@@ -355,7 +354,7 @@ function createRunScriptActions() {
 
 function initializePaneAndTabs(hash) {
   function selectTab(hash) {
-    document.getElementById(hash + "_label").className = "selectedTabLabel";
+    document.getElementById(`${hash}_label`).className = "selectedTabLabel";
     document.getElementById(hash).classList.add("selected");
   }
   
@@ -382,7 +381,7 @@ function initializePaneAndTabs(hash) {
   
   let locationHash = document.location.hash.substr(1);
   let locationHashArray = locationHash.split("_");
-  document.getElementById(locationHashArray[0] + "_label").className =
+  document.getElementById(`${locationHashArray[0]}_label`).className =
     "selectedPaneLabel";
   let selectedPane = document.getElementById(locationHashArray[0]);
   selectedPane.classList.add("selected");
@@ -396,7 +395,7 @@ function initializePaneAndTabs(hash) {
       selectSubtabs(document.getElementById(locationHash));
       break;
     case 3:
-      selectTab(locationHashArray[0] + "_" + locationHashArray[1]);
+      selectTab(`${locationHashArray[0]}_${locationHashArray[1]}`);
       selectTab(locationHash);
       break;
   }
@@ -424,7 +423,7 @@ function initializePreferenceControl(control) {
   
   function initializeIntRadiogroupWithResetOnDuplicatedKeysControl(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
-      control.querySelector("input[value='" + prefValue + "']").checked = true;
+      control.querySelector(`input[value="${prefValue}"]`).checked = true;
     });
   }
   
@@ -440,36 +439,36 @@ function initializePreferenceControl(control) {
       prefValue.forEach((value, index) => {
         control.firstElementChild.childNodes[index].dataset.action = value;
         control.lastElementChild.childNodes[index]
-               .querySelector("[value=" + value + "]").selected = true;
+               .querySelector(`[value=${value}]`).selected = true;
       });
     });
   }
   
   function initializeSelectControl(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
-      control.querySelector("[value=" + prefValue + "]").selected = true;
+      control.querySelector(`[value=${prefValue}]`).selected = true;
     });
   }
   
   function initializeLoadURLPreference(actionName) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
-      document.getElementById(actionName + "_tooltip").value = prefValue[0];
-      document.getElementById(actionName + "_URL").value = prefValue[1];
-      document.getElementById(actionName + "_openInPrivateWindowCheckbox")
+      document.getElementById(`${actionName}_tooltip`).value = prefValue[0];
+      document.getElementById(`${actionName}_URL`).value = prefValue[1];
+      document.getElementById(`${actionName}_openInPrivateWindowCheckbox`)
               .checked = prefValue[2];
     });
   }
   
   function initializeRunScriptPreference(actionName) {
     eGPrefs.getLoadURLOrRunScriptPrefValue(actionName).then(prefValue => {
-      document.getElementById(actionName + "_tooltip").value = prefValue[0];
-      document.getElementById(actionName + "_code").value = prefValue[1];
+      document.getElementById(`${actionName}_tooltip`).value = prefValue[0];
+      document.getElementById(`${actionName}_code`).value = prefValue[1];
     });
   }
   
   function initializeStringRadiogroup(control) {
     eGPrefs.getPref(control.dataset.preference).then(prefValue => {
-      control.querySelector("[value=" + prefValue + "]").checked = true;
+      control.querySelector(`[value=${prefValue}]`).checked = true;
     });
   }
   
@@ -546,9 +545,9 @@ function initializePreferenceControl(control) {
 }
 
 function preparePreferenceValueForLoadURL(actionName) {
-  return [document.getElementById(actionName + "_tooltip").value,
-          document.getElementById(actionName + "_URL").value,
-          document.getElementById(actionName + "_openInPrivateWindowCheckbox")
+  return [document.getElementById(`${actionName}_tooltip`).value,
+          document.getElementById(`${actionName}_URL`).value,
+          document.getElementById(`${actionName}_openInPrivateWindowCheckbox`)
                   .checked];
 }
 
@@ -567,8 +566,8 @@ function addEventListenerToLoadURLURL(aPrefName, element, actionName) {
 }
 
 function preparePreferenceValueForRunScript(actionName) {
-  return [document.getElementById(actionName + "_tooltip").value,
-          document.getElementById(actionName + "_code").value];
+  return [document.getElementById(`${actionName}_tooltip`).value,
+          document.getElementById(`${actionName}_code`).value];
 }
 
 function addEventListenerToRunScriptComponent(aPrefName, element, actionName) {
@@ -621,7 +620,7 @@ function addOnchangeListenerToPreferenceControl(control) {
           (preventOpenKey !== "0" && (preventOpenKey === contextKey))) {
         eGPrefs.getPref(control.dataset.preference).then(currentValue => {
           anEvent.target.parentElement.parentElement
-                 .querySelector("[value='" + currentValue + "']").checked = true;
+                 .querySelector(`[value="${currentValue}"]`).checked = true;
           alert(browser.i18n.getMessage("activation.duplicateKey"));
         });
       }
@@ -674,19 +673,19 @@ function addOnchangeListenerToPreferenceControl(control) {
   
   function addOnchangeListenerToLoadURLControl(control) {
     addEventListenerToLoadURLComponent(control.dataset.preference,
-      document.getElementById(control.id + "_tooltip"), control.id);
+      document.getElementById(`${control.id}_tooltip`), control.id);
     addEventListenerToLoadURLURL(control.dataset.preference,
-      document.getElementById(control.id + "_URL"), control.id);
+      document.getElementById(`${control.id}_URL`), control.id);
     addEventListenerToLoadURLComponent(control.dataset.preference,
-      document.getElementById(control.id + "_openInPrivateWindowCheckbox"),
+      document.getElementById(`${control.id}_openInPrivateWindowCheckbox`),
       control.id);
   }
   
   function addOnchangeListenerToRunScriptControl(control) {
     addEventListenerToRunScriptComponent(control.dataset.preference,
-      document.getElementById(control.id + "_tooltip"), control.id);
+      document.getElementById(`${control.id}_tooltip`), control.id);
     addEventListenerToRunScriptComponent(control.dataset.preference,
-      document.getElementById(control.id + "_code"), control.id);
+      document.getElementById(`${control.id}_code`), control.id);
   }
   
   function addOnchangeListenerToStringRadiogroupControl(control) {
@@ -765,7 +764,7 @@ function setMenuType(anEvent) {
     ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
      "contextLink", "contextImage", "contextSelection", "contextTextbox"]
       .forEach(menuName => {
-        document.getElementById("menuControl_" + menuName).classList
+        document.getElementById(`menuControl_${menuName}`).classList
                 .toggle("large", menuTypeIsLarge);
     });
     ["mainMenuLabel", "extraMenuLabel", "primaryMainMenu", "primaryExtraMenu",
@@ -816,7 +815,7 @@ function resetMenus() {
 }
 
 function setDisabledStatusForMenu(menuName, enabled) {
-  let selectElements = document.getElementById("menuControl_" + menuName)
+  let selectElements = document.getElementById(`menuControl_${menuName}`)
                                .lastElementChild;
   for (let i = 0; i < selectElements.childNodes.length; ++i) {
     selectElements.childNodes[i].firstElementChild.disabled = !enabled;
@@ -899,22 +898,22 @@ function initializeClicksByAction() {
       
       let div = document.createElement("div");
       div.setAttribute("title",
-                       eGActions[currentAction].getLocalizedActionName() +
-                       ": " + clicksForAction + " " +
-                       browser.i18n.getMessage("usage.clicks"));
+                       `${eGActions[currentAction].getLocalizedActionName()}` +
+                       `: ${clicksForAction} ` +
+                       `${browser.i18n.getMessage("usage.clicks")}`);
       container.appendChild(div);
       
       let span = document.createElement("span");
-      span.className = "actionIcon " + currentAction;
+      span.className = `actionIcon ${currentAction}`;
       div.appendChild(span);
       
       let img = document.createElement("span");
-      img.style.width = count / 2 + "px";
+      img.style.width = `${count / 2}px`;
       div.appendChild(img);
       
       span = document.createElement("span");
       span.textContent = clicksForAction > 0 ?
-                           (count > 0.1 ? count + "%" : "<0.1%") : "–";
+                           (count > 0.1 ? `${count}%` : "<0.1%") : "–";
       div.appendChild(span);
       
       currentAction = eGActions[currentAction].nextAction;
@@ -950,17 +949,17 @@ function initializeClicksByDirectionForMenuLayouts(usageArray, isExtraMenu) {
     });
     for (let i = 0; i < numberOfActions; ++i) {
       let usageElement = document.createElement("div");
-      usageElement.className = "menuIcon sector" + i;
+      usageElement.className = `menuIcon sector${i}`;
       let clicks = usageArray[layoutIndex * numberOfActions + i];
       let totalUsage = usages[layoutIndex] === 0 ? 1 : usages[layoutIndex];
-      usageElement.textContent = Math.round(clicks * 100 / totalUsage) + "%";
+      usageElement.textContent = `${Math.round(clicks * 100 / totalUsage)}%`;
       container.appendChild(usageElement);
     }
     
     let total = document.createElement("div");
     total.className = "total";
-    total.textContent = Math.round(usages[layoutIndex] * 100 /
-                                   (usages[3] === 0 ? 1 : usages[3])) + "%";
+    total.textContent = `${Math.round(usages[layoutIndex] * 100 /
+                                      (usages[3] === 0 ? 1 : usages[3]))}%`;
     container.appendChild(total);
   });
 }
@@ -977,9 +976,9 @@ function initializeClicksByDirectionTotals(usageArray, isExtraMenu) {
     total += usage;
   }
   
-  let container = document.getElementById("allMenus" +
-                                          (isExtraMenu ? "Extra" : "Main") +
-                                          "Menu");
+  let container = document.getElementById(`allMenus` +
+                                          `${isExtraMenu ? "Extra" : "Main"}` +
+                                          `Menu`);
   removeChildNodes(container);
   container.className = "menu";
   container.classList.toggle("extra", isExtraMenu);
@@ -988,9 +987,9 @@ function initializeClicksByDirectionTotals(usageArray, isExtraMenu) {
   });
   for (let i = 0; i < numberOfActions; ++i) {
    let usageElement = document.createElement("div");
-   usageElement.className = "menuIcon sector" + i;
-   usageElement.textContent = Math.round(usages[i] * 100 /
-                                         (total === 0 ? 1 : total)) + "%";
+   usageElement.className = `menuIcon sector${i}`;
+   usageElement.textContent = `${Math.round(usages[i] * 100 /
+                                            (total === 0 ? 1 : total))}%`;
    container.appendChild(usageElement);
   }
 }
@@ -1080,12 +1079,12 @@ function unselectCurrentTab(oldHash) {
       break;
     case 2:
       unselectSubTabs(oldHash);
-      unselectTab(document.getElementById(oldHash + "_label"));
+      unselectTab(document.getElementById(`${oldHash}_label`));
       break;
     case 3:
-      unselectSubTabs(oldHashArray[0] + "_" + oldHashArray[1]);
-      unselectTab(document.getElementById(oldHashArray[0] + "_" +
-                  oldHashArray[1] + "_label"));
+      unselectSubTabs(`${oldHashArray[0]}_${oldHashArray[1]}`);
+      unselectTab(document.getElementById(`${oldHashArray[0]}_` +
+                                          `${oldHashArray[1]}_label`));
       break;
   }
 }
@@ -1115,13 +1114,13 @@ function importPrefs(anEvent) {
     try {
       eGPrefs.importPrefsFromString(anEvent.target.result).then(result => {
         if (result !== undefined) {
-          alert(browser.i18n.getMessage("general.prefs.import." + result.code) +
-                " " + result.prefs);
+          alert(browser.i18n.getMessage(`general.prefs.import.${result.code}`) +
+                ` ${result.prefs}`);
         }
       });
     }
     catch (exception) {
-      alert(browser.i18n.getMessage("general.prefs.import." + exception.code));
+      alert(browser.i18n.getMessage(`general.prefs.import.${exception.code}`));
     }
   };
   fileReader.readAsText(anEvent.target.files[0]);
@@ -1138,8 +1137,8 @@ function exportPrefs() {
     let blobURL = URL.createObjectURL(aBlob);
     browser.downloads.download({
       url: blobURL,
-      filename: "easyGesturesNPreferences-" +
-                (new Date()).toISOString().replace(/:/g, "-") + ".json",
+      filename: `easyGesturesNPreferences-` +
+                `${(new Date()).toISOString().replace(/:/g, "-")}.json`,
       saveAs: true
     }).then((downloadID) => {
       browser.downloads.onChanged.addListener(function downloadListener(download) {
