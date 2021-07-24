@@ -146,7 +146,7 @@
   "general.optionalPermissions.clipboardRead": { "message": "\"Obtener datos del portapapeles\"" },
   "general.optionalPermissions.clipboardRead.explanation": { "message": "Este permiso es necesario para la acción \"Pegar\"" },
   "general.optionalPermissions.clipboardWrite": { "message": "\"Introducir datos en el portapapeles\"" },
-  "general.optionalPermissions.clipboardWrite.explanation": { "message": "Este permiso es necesario para las acciones \"Copiar la dirección de la página\", \"Copiar la dirección del identificador\", \"Copiar la ruta del enlace\", \"Copiar la ruta de la imagen\", \"Copiar imagen\", \"Cortar\" y \"Copiar\"" },
+  "general.optionalPermissions.clipboardWrite.explanation": { "message": "Este permiso es necesario para las acciones \"Copiar imagen\", \"Cortar\" y \"Copiar\"" },
   "general.optionalPermissions.downloads": { "message": "\"Descargar archivos y leer y modificar el historial de descargas del navegador\"" },
   "general.optionalPermissions.downloads.explanation": { "message": "Este permiso es necesario para exportar las preferencias y para las acciones \"Guardar como...\", \"Hacer un pantallazo de la pestaña\", \"Guardar enlace como...\" y \"Guardar imagen como...\"" },
   "general.optionalPermissions.find": { "message": "\"Leer el texto de todas las pestañas abiertas\"" },

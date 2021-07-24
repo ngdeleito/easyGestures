@@ -10,7 +10,7 @@
 /* exported actionStatusSetters, actionRunners */
 /* global document, ACTIONS_NODE_ID_PREFIX, TOOLTIPS_NODE_ID_PREFIX,
           context, scrollableElement, window, isScrollableElementFullyScrolled,
-          imageElement, eGPieMenu, inputElement */
+          imageElement, navigator, inputElement */
 
 "use strict";
 
@@ -124,16 +124,7 @@ let actionRunners = {
   },
   
   copyInformation(options) {
-    let selection = window.getSelection();
-    selection.removeAllRanges();
-    let node = document.createElement("div");
-    node.textContent = options.information;
-    eGPieMenu.easyGesturesNode.appendChild(node);
-    let range = document.createRange();
-    range.selectNode(node);
-    selection.addRange(range);
-    document.execCommand("copy");
-    eGPieMenu.easyGesturesNode.removeChild(node);
+    navigator.clipboard.writeText(options.information);
   },
   
   hideImages() {
