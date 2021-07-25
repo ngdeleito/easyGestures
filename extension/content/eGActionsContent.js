@@ -141,20 +141,13 @@ let actionRunners = {
   paste() {
     let selectionStart = inputElement.selectionStart;
     let selectionEnd = inputElement.selectionEnd;
-    
-    let textareaWithPastedText = document.createElement("textarea");
-    textareaWithPastedText.contentEditable = true;
-    document.body.appendChild(textareaWithPastedText);
-    textareaWithPastedText.focus();
-    document.execCommand("paste");
-    
     let inputContent = inputElement.value;
-    inputElement.value = inputContent.substring(0, selectionStart) +
-      textareaWithPastedText.textContent +
-      inputContent.substring(selectionEnd, inputContent.length);
+    navigator.clipboard.readText().then(textToPaste => {
+      inputElement.value = inputContent.substring(0, selectionStart) +
+        textToPaste +
+        inputContent.substring(selectionEnd, inputContent.length);
+    });
     inputElement.focus();
-    
-    document.body.removeChild(textareaWithPastedText);
   },
   
   selectAll() {
