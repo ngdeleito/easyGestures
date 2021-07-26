@@ -146,15 +146,11 @@ let actionRunners = {
   },
   
   paste() {
-    let selectionStart = inputElement.selectionStart;
-    let selectionEnd = inputElement.selectionEnd;
-    let inputContent = inputElement.value;
     navigator.clipboard.readText().then(textToPaste => {
-      inputElement.value = inputContent.substring(0, selectionStart) +
-        textToPaste +
-        inputContent.substring(selectionEnd, inputContent.length);
+      inputElement.setRangeText(textToPaste, inputElement.selectionStart,
+                                inputElement.selectionEnd, "end");
+      inputElement.focus();
     });
-    inputElement.focus();
   },
   
   selectAll() {
