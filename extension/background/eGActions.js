@@ -24,8 +24,6 @@
 //  |    |-- ImageExistsDisableableAction
 //  |    |-- DisabledAction
 //  |-- ContentSideStatusAction
-//  |    ^
-//  |    |-- CommandAction
 
 /* exported eGActions */
 /* global eGPrefs, console, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
@@ -348,26 +346,6 @@ class ContentSideStatusAction extends Action {
       messageName: this._name,
       status: Promise.resolve(undefined)
     };
-  }
-}
-
-class CommandAction extends ContentSideStatusAction {
-  constructor(name, startsNewGroup, nextAction) {
-    super(name, function() {
-      eGUtils.performOnCurrentTab(currentTab => {
-        browser.tabs.sendMessage(currentTab.id, {
-          messageName: "runAction",
-          parameters: {
-            runActionName: "commandAction",
-            runActionOptions: {
-              commandName: name
-            }
-          }
-        }, {
-          frameId: eGContext.frameHierarchyArray[0].frameID
-        });
-      });
-    }, startsNewGroup, nextAction);
   }
 }
 
@@ -1036,9 +1014,13 @@ let eGActions = {
     this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
   }, false, "cut"),
   
-  cut: new CommandAction("cut", true, "copy"),
+  cut: new ContentSideStatusAction("cut", function() {
+    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+  }, true, "copy"),
   
-  copy: new CommandAction("copy", false, "paste"),
+  copy: new ContentSideStatusAction("copy", function() {
+    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+  }, false, "paste"),
   
   paste: new DisableableAction("paste", function() {
     this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();

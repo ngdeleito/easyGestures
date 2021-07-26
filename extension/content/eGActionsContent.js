@@ -134,8 +134,15 @@ let actionRunners = {
     }
   },
   
-  commandAction(options) {
-    document.execCommand(options.commandName);
+  cut() {
+    navigator.clipboard.writeText(context.selection).then(() => {
+      inputElement.setRangeText("", inputElement.selectionStart,
+                                inputElement.selectionEnd, "end");
+    });
+  },
+  
+  copy() {
+    navigator.clipboard.writeText(context.selection);
   },
   
   paste() {
