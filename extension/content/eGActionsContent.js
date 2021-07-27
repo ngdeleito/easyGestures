@@ -158,9 +158,8 @@ let actionRunners = {
       inputElement.select();
     }
     else {
-      document.designMode = "on";
-      document.execCommand("selectAll");
-      document.designMode = "off";
+      let selection = window.getSelection();
+      selection.selectAllChildren(document.body);
     }
   }
 };
