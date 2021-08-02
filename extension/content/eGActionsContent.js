@@ -9,8 +9,8 @@
 
 /* exported actionStatusSetters, actionRunners */
 /* global document, ACTIONS_NODE_ID_PREFIX, TOOLTIPS_NODE_ID_PREFIX,
-          context, scrollableElement, window, isScrollableElementFullyScrolled,
-          imageElement, navigator, inputElement */
+          scrollableElement, window, isScrollableElementFullyScrolled,
+          imageElement, navigator, context, inputElement */
 
 "use strict";
 
@@ -49,23 +49,6 @@ let actionStatusSetters = {
         }
       }
     );
-  },
-  
-  hideImages(aMessage, layoutName, actionSector) {
-    this._setActionStatus(layoutName, actionSector,
-                          context.documentDoesntContainImages);
-  },
-  
-  cut(aMessage, layoutName, actionSector) {
-    let disabled = !context.inputElementExists ||
-                   !context.inputElementContainsSelection;
-    this._setActionStatus(layoutName, actionSector, disabled);
-  },
-  
-  copy(aMessage, layoutName, actionSector) {
-    let enabled = context.selection !== "" || (context.inputElementExists &&
-                    context.inputElementContainsSelection);
-    this._setActionStatus(layoutName, actionSector, !enabled);
   }
 };
 

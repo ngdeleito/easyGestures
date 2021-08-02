@@ -22,6 +22,7 @@
 //  |    |    |-- LoadURLAction
 //  |    |    |-- RunScriptAction
 //  |    |-- ImageExistsDisableableAction
+//  |    |-- DisableableContentSideAction
 //  |    |-- DisabledAction
 //  |-- ContentSideStatusAction
 
@@ -337,6 +338,14 @@ class ImageExistsDisableableAction extends DisableableAction {
     super(name, action, function() {
       return Promise.resolve(eGContext.imageElementDoesntExist);
     }, startsNewGroup, nextAction);
+  }
+}
+
+class DisableableContentSideAction extends DisableableAction {
+  constructor(name, isDisabledAsPromise, startsNewGroup, nextAction) {
+    super(name, function() {
+      this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+    }, isDisabledAsPromise, startsNewGroup, nextAction);
   }
 }
 
@@ -1010,21 +1019,22 @@ let eGActions = {
     }).catch(() => {});
   }, false, "hideImages"),
   
-  hideImages: new ContentSideStatusAction("hideImages", function() {
-    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+  hideImages: new DisableableContentSideAction("hideImages", function() {
+    return Promise.resolve(eGContext.documentDoesntContainImages);
   }, false, "cut"),
   
-  cut: new ContentSideStatusAction("cut", function() {
-    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+  cut: new DisableableContentSideAction("cut", function() {
+    return Promise.resolve(!eGContext.inputElementExists ||
+                           !eGContext.inputElementContainsSelection);
   }, true, "copy"),
   
-  copy: new ContentSideStatusAction("copy", function() {
-    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
+  copy: new DisableableContentSideAction("copy", function() {
+    let enabled = eGContext.selection !== "" || (eGContext.inputElementExists &&
+                    eGContext.inputElementContainsSelection);
+    return Promise.resolve(!enabled);
   }, false, "paste"),
   
-  paste: new DisableableAction("paste", function() {
-    this._sendPerformActionMessageToInnermostFrameWithinCurrentTab();
-  }, function() {
+  paste: new DisableableContentSideAction("paste", function() {
     return Promise.resolve(!eGContext.inputElementExists);
   }, false, "selectAll"),
   
