@@ -73,8 +73,8 @@ function isScrollableElementFullyScrolled(aScrollableElement) {
          aScrollableElement.clientHeight;
 }
 
-function cleanSelection(selection) {
-  let result = selection.trim();
+function getCleanedSelection() {
+  let result = window.getSelection().toString().trim();
   // replace all linefeed, carriage return and tab characters with a space
   result = result.replace(/(\n|\r|\t)+/g, " ");
   return result;
@@ -191,8 +191,7 @@ function handleMousedownWithinTopmostFrame(anEvent) {
     // an inner frame and contextualMenus and context have already been
     // initialized
     [contextualMenus, imageElement, inputElement, context] =
-      initializeContext(anEvent.target,
-                        cleanSelection(window.getSelection().toString()));
+      initializeContext(anEvent.target, getCleanedSelection());
   }
   context.pageURL = document.documentURI;
   context.urlToIdentifier = getURLOfNearestIDAttribute(anEvent.target);
@@ -375,8 +374,7 @@ function handleMousedownWithinInnerFrame(anEvent) {
   
   scrollableElement = initializeScrollableElement(anEvent.target);
   [contextualMenus, imageElement, inputElement, context] =
-    initializeContext(anEvent.target,
-                      cleanSelection(window.getSelection().toString()));
+    initializeContext(anEvent.target, getCleanedSelection());
   context.frameHierarchyArray.push({
     URL: window.location.toString(),
     scrollableElementScrollTop: scrollableElement.scrollTop,
