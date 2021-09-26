@@ -160,6 +160,8 @@ function createOptionalPermissionControls() {
       requestButton.addEventListener("click", requestPermission);
       div.appendChild(requestButton);
       
+      div.appendChild(document.createTextNode("\n"));
+      
       let removeButton = document.createElement("button");
       removeButton.type = "button";
       removeButton.disabled = !isPermissionGranted;
