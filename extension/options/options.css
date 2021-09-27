@@ -4,7 +4,7 @@
 
 body {
   --hover-color: hsla(300, 100%, 25%, 0.75);
-  --selected-color: hsl(300, 100%, 25%); /* purple */
+  --accent-color: hsl(300, 100%, 25%); /* purple */
   --menu-select-width: 175px;
   min-width: 896px;
   max-width: 1024px;
@@ -46,8 +46,8 @@ nav a:hover {
 }
 
 .selectedPaneLabel {
-  background-color: var(--selected-color);
   color: white;
+  background-color: var(--accent-color);
 }
 
 .pane, .tab {
@@ -65,10 +65,10 @@ nav a:hover {
 
 .tabbox a {
   display: inline-block;
-  border: solid 0.2em var(--selected-color);
+  border: solid 0.2em var(--accent-color);
   border-right: none;
   padding: 0.1em 0.25em;
-  color: var(--selected-color);
+  color: var(--accent-color);
 }
 
 .tabbox a:first-child {
@@ -77,7 +77,7 @@ nav a:hover {
 }
 
 .tabbox a:last-child {
-  border-right: solid 0.2em var(--selected-color);
+  border-right: solid 0.2em var(--accent-color);
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
 }
@@ -89,8 +89,8 @@ nav a:hover {
 }
 
 .tabbox .selectedTabLabel {
-  background-color: var(--selected-color);
   color: white;
+  background-color: var(--accent-color);
 }
 
 h1 {
