@@ -7,7 +7,7 @@ This extension is a fork of version 4.3.2 of the easyGestures Firefox extension 
 To install the latest development version:
 
 - Make sure to run version 5.2 or greater (or uninstall any previous version)
-- Click on the button labeled "Clone or download", and then click on "Download ZIP"
+- Click on the button labeled "Code", and then click on "Download ZIP"
 - Once the file downloaded, unzip it
 - Zip the content of the "easyGestures-development/extension" folder (and not the folder itself!)
 - Drop the zipped file into either Firefox Developer Edition or Firefox Nightly (make sure that the "xpinstall.signatures.required" preference in about:config is "false")
