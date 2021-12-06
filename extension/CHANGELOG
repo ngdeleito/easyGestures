@@ -1,6 +1,13 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.6 (December 6, 2021)
+
+- made the "tabs" permission optional
+- reduced the number of actions requiring the "clipboardWrite" (optional) permission by using the Clipboard API
+- code improvements, including stop using deprecated APIs
+
+
 Version 6.5 (December 14, 2020)
 
 - made the "sessions" permission optional
