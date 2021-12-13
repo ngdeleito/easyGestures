@@ -8,6 +8,7 @@ body {
   margin-right: auto;
   margin-top: 1em;
   font-family: sans-serif;
+  accent-color: hsl(300, 100%, 25%); /* purple */
 }
 
 input {

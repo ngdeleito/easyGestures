@@ -18,6 +18,7 @@ body {
   max-width: 1024px;
   margin-top: 1em;
   font-family: sans-serif;
+  accent-color: var(--accent-color);
 }
 
 a {
