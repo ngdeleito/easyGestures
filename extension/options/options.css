@@ -153,6 +153,7 @@ input[type="number"] {
 
 .disabled, :disabled {
   color: var(--disabled-color);
+  cursor: not-allowed;
 }
 
 #openLinksThroughPieMenuCenterConfiguration a {
