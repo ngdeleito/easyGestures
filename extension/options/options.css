@@ -134,7 +134,6 @@ button, select, input[type="text"], input[type="url"] {
 
 input[type="number"] {
   width: 4em;
-  text-align: right;
 }
 
 .message {
