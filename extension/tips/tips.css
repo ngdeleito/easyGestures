@@ -30,9 +30,13 @@ input {
 
 #tipTextLink {
   color: rgb(0, 0, 238);
-  text-decoration: underline;
   cursor: pointer;
 }
+
+#tipTextLink:hover {
+  text-decoration: underline;
+}
+
 
 #tipImage {
   background-image: url("tips.png");
