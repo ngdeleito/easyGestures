@@ -44,20 +44,45 @@ input {
   margin-right: auto;
   margin-bottom: 1em;
 }
+#tipImage.menusCustomization, #tipImage.zoomOnImage, #tipImage.openLinkAction,
+#tipImage.dailyReadingsAction {
+  background-image: none;
+  background-color: black;
+  mask-image: url("../content/actions.svg");
+}
 
 #tipImage.openButton { background-position: 0px -1px; width: 283px; height: 123px; }
 #tipImage.dragToAction { background-position: 0px -125px; width: 454px; height: 123px; }
 #tipImage.openAltMenu { background-position: 0px -249px; width: 687px; height: 138px; }
-#tipImage.menusCustomization { background-position: 0px -388px; width: 434px; height: 306px; }
+#tipImage.menusCustomization {
+  width: 434px;
+  height: 306px;
+  mask-size: 434px 306px;
+}
 #tipImage.openExtraMenu { background-position: 0px -695px; width: 294px; height: 197px;}
 #tipImage.clickOnLink { background-position: 0px -893px; width: 409px; height: 123px; }
 #tipImage.tooltips { background-position: 0px -1017px; width: 402px; height: 163px; }
 #tipImage.loadURLActions { background-position: 0px -1181px; width: 402px; height: 163px; }
 #tipImage.runScriptActions { background-position: 0px -1345px; width: 402px; height: 163px; }
 #tipImage.contextualMenus { background-position: 0px -1509px; width: 689px; height: 143px; }
-#tipImage.zoomOnImage { background-position: 0px -1653px; width: 186px; height: 90px; }
-#tipImage.openLinkAction { background-position: 0px -1744px; width: 90px; height: 91px; }
-#tipImage.dailyReadingsAction { background-position: 0px -1836px; width: 90px; height: 91px; }
+#tipImage.zoomOnImage {
+  width: calc(3 * 64px);
+  height: calc(3 * 32px);
+  mask-position: calc(-3 * 160px) calc(-3 * 64px);
+  mask-size: auto calc(3 * 384px);
+}
+#tipImage.openLinkAction {
+  width: calc(3 * 32px);
+  height: calc(3 * 32px);
+  mask-position: 0 calc(-3 * 160px);
+  mask-size: auto calc(3 * 384px);
+}
+#tipImage.dailyReadingsAction {
+  width: calc(3 * 32px);
+  height: calc(3 * 32px);
+  mask-position: 0 calc(-3 * 192px);
+  mask-size: auto calc(3 * 384px);
+}
 
 #showTipsLabel {
   font-size: smaller;

@@ -9,7 +9,7 @@
 -->
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
-     version="1.1" width="689" height="1927" stroke="hsl(0, 0%, 60%)"
+     version="1.1" width="689" height="1652" stroke="hsl(0, 0%, 60%)"
      stroke-width="2" fill="transparent">
   <defs>
     <g id="mouseOutline">
@@ -75,9 +75,6 @@
     <use href="#mouseWithRightButtonPushed" x="468" y="36" />
     <image href="tip3c.png" width="154" height="137" x="532" y="0" />
   </g>
-  <g transform="translate(1, 388)">
-    <image href="../extension/content/actions.svg" width="433" height="305" />
-  </g>
   <g transform="translate(1, 695)">
     <image href="tip5a.png" width="122" height="122" y="74" />
     <use href="#forwardArrow" x="136" y="135" />
@@ -100,14 +97,5 @@
     <image href="tip13b.png" width="129" height="142" x="175" />
     <image href="tip13c.png" width="163" height="142" x="336" />
     <image href="tip13d.png" width="157" height="142" x="531" />
-  </g>
-  <g transform="translate(1, 1653)">
-    <image href="tip18.png" width="186" height="89" />
-  </g>
-  <g transform="translate(1, 1744)">
-    <image href="tip19.png" width="90" height="90" />
-  </g>
-  <g transform="translate(1, 1836)">
-    <image href="tip20.png" width="90" height="90" />
   </g>
 </svg>
