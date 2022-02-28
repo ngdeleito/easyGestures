@@ -12,7 +12,7 @@ window.addEventListener("unload", tipsUnloadHandler);
 class tipEntry {
   constructor(label, hash) {
     this.label = label;
-    this.imageClass = label.slice("tips.".length);
+    this.imageId = label.slice("tips.".length);
     this.hash = hash;
   }
 }
@@ -44,11 +44,11 @@ tips.forEach(tip => tip.description = browser.i18n.getMessage(tip.label));
 
 let tipNumber;
 
-function updateContent(tipNbr) {
+function updateContent(previousTipNumber, currentTipNumber) {
   // we extract a potential link from the description; links are contained
   // inside square brackets (with no space after the opening bracket and no
   // space before the closing bracket): "text1 [link] text2"
-  let text = tips[tipNbr].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
+  let text = tips[currentTipNumber].description.split(/\[\s{0}(\S.*\S)\s{0}\]/);
   let linkText = "";
   
   // we resolve the locale strings that constitute the link text
@@ -58,18 +58,20 @@ function updateContent(tipNbr) {
                               .join("/");
   }
   
-  document.getElementById("tipNumber").textContent = `${tipNbr + 1} / ` +
+  document.getElementById("tipNumber").textContent = `${currentTipNumber + 1} / ` +
                                                      `${tips.length}`;
   document.getElementById("tipTextBeforeLink").textContent = text[0];
   document.getElementById("tipTextLink").textContent = linkText;
   document.getElementById("tipTextAfterLink").textContent = text[2];
-  document.getElementById("tipImage").className = tips[tipNbr].imageClass;
+  document.getElementById(tips[previousTipNumber].imageId).style.display = "none";
+  document.getElementById(tips[currentTipNumber].imageId).style.display = "block";
 }
 
 function updateTipNbr(step) {
+  let previousTipNumber = tipNumber;
   tipNumber = (((tipNumber + step) % tips.length) + tips.length) % tips.length;
   eGPrefs.setTipNumberPref(tipNumber);
-  updateContent(tipNumber);
+  updateContent(previousTipNumber, tipNumber);
 }
 
 function goToPreviousTip() {

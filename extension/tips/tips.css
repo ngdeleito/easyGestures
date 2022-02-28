@@ -38,46 +38,50 @@ input {
 }
 
 
-#tipImage {
+#tipImages {
+  margin-bottom: 1em;
+}
+#tipImages div {
+  display: none;
   background-image: url("tips.png");
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 1em;
 }
-#tipImage.menusCustomization, #tipImage.zoomOnImage, #tipImage.openLinkAction,
-#tipImage.dailyReadingsAction {
+/* using div in the next rule to match its specificity to the previous rule's */
+div#menusCustomization, div#zoomOnImage, div#openLinkAction,
+div#dailyReadingsAction {
   background-image: none;
   background-color: black;
   mask-image: url("../content/actions.svg");
 }
 
-#tipImage.openButton { background-position: 0px -1px; width: 283px; height: 123px; }
-#tipImage.dragToAction { background-position: 0px -125px; width: 454px; height: 123px; }
-#tipImage.openAltMenu { background-position: 0px -249px; width: 687px; height: 138px; }
-#tipImage.menusCustomization {
+#openButton { background-position: 0px -1px; width: 283px; height: 123px; }
+#dragToAction { background-position: 0px -125px; width: 454px; height: 123px; }
+#openAltMenu { background-position: 0px -249px; width: 687px; height: 138px; }
+#menusCustomization {
   width: 434px;
   height: 306px;
   mask-size: 434px 306px;
 }
-#tipImage.openExtraMenu { background-position: 0px -695px; width: 294px; height: 197px;}
-#tipImage.clickOnLink { background-position: 0px -893px; width: 409px; height: 123px; }
-#tipImage.tooltips { background-position: 0px -1017px; width: 402px; height: 163px; }
-#tipImage.loadURLActions { background-position: 0px -1181px; width: 402px; height: 163px; }
-#tipImage.runScriptActions { background-position: 0px -1345px; width: 402px; height: 163px; }
-#tipImage.contextualMenus { background-position: 0px -1509px; width: 689px; height: 143px; }
-#tipImage.zoomOnImage {
+#openExtraMenu { background-position: 0px -695px; width: 294px; height: 197px;}
+#clickOnLink { background-position: 0px -893px; width: 409px; height: 123px; }
+#tooltips { background-position: 0px -1017px; width: 402px; height: 163px; }
+#loadURLActions { background-position: 0px -1181px; width: 402px; height: 163px; }
+#runScriptActions { background-position: 0px -1345px; width: 402px; height: 163px; }
+#contextualMenus { background-position: 0px -1509px; width: 689px; height: 143px; }
+#zoomOnImage {
   width: calc(3 * 64px);
   height: calc(3 * 32px);
   mask-position: calc(-3 * 160px) calc(-3 * 64px);
   mask-size: auto calc(3 * 384px);
 }
-#tipImage.openLinkAction {
+#openLinkAction {
   width: calc(3 * 32px);
   height: calc(3 * 32px);
   mask-position: 0 calc(-3 * 160px);
   mask-size: auto calc(3 * 384px);
 }
-#tipImage.dailyReadingsAction {
+#dailyReadingsAction {
   width: calc(3 * 32px);
   height: calc(3 * 32px);
   mask-position: 0 calc(-3 * 192px);
