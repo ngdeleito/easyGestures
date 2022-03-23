@@ -3,7 +3,8 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 #easyGesturesPieMenu,
-#menus .menu, .menuIcon, #usage_clicksByDirection, #usage .menu {
+#menus .menu, .menuIcon, #usage_clicksByDirection, #usage .menu,
+.easyGesturesTips {
   --scale-factor: 1;
   --icon-size: calc(32px * var(--scale-factor));
   --actions-node-offset: calc(-61px * var(--scale-factor));
@@ -18,7 +19,8 @@
 }
 
 #easyGesturesPieMenu,
-#easyGesturesOptions {
+#easyGesturesOptions,
+.easyGesturesTips {
   --link-sign-color: hsl(0, 0%, 80%);
   --pie-menu-border-color: hsl(0, 0%, 60%);
   --pie-menu-background-color: hsl(0, 0%, 80%);
@@ -59,7 +61,8 @@
   --disabled-action-color: var(--easyGesturesN-disabled-color);
 }
 
-#easyGesturesPieMenu {
+#easyGesturesPieMenu,
+.easyGesturesTips {
   all: initial;
   position: fixed;
   z-index: 2147483647; /* convention: max-z-index = 2^31 - 1 */
@@ -101,14 +104,16 @@
   position: absolute;
 }
 
-#easyGesturesPieMenu > div > * {
+#easyGesturesPieMenu > div > *,
+.easyGesturesTips > div > * {
   position: absolute;
 }
 
 
 /* Special nodes */
 
-#easyGesturesLinkSign {
+#easyGesturesLinkSign,
+.easyGesturesLinkSign {
   --link-sign-size: calc(var(--icon-size) * 0.625);
   visibility: hidden;
   left: calc(-1 * var(--link-sign-size) / 2);
@@ -120,7 +125,8 @@
   background-color: var(--link-sign-color);
 }
 
-#easyGesturesLinkSign::after {
+#easyGesturesLinkSign::after,
+.easyGesturesLinkSign::after {
   display: block;
   width: var(--link-sign-size);
   height: var(--link-sign-size);
@@ -131,8 +137,8 @@
   content: "";
 }
 
-#easyGesturesMainMenusSign,
-#easyGesturesExtraMenusSign {
+#easyGesturesMainMenusSign, #easyGesturesExtraMenusSign,
+.easyGesturesMainMenusSign {
   visibility: hidden;
   left: var(--icon-size);
   top: var(--tooltips-y-offset);
@@ -151,8 +157,8 @@
   display: none;
 }
 
-#easyGesturesMainMenusSign span,
-#easyGesturesExtraMenusSign span {
+#easyGesturesMainMenusSign span, #easyGesturesExtraMenusSign span,
+.easyGesturesMainMenusSign span {
   display: inline-block;
   width: 0.75em;
   height: 0.75em;
@@ -162,17 +168,18 @@
   font-size: inherit;
 }
 
-#easyGesturesMainMenusSign span + span,
-#easyGesturesExtraMenusSign span + span {
+#easyGesturesMainMenusSign span + span, #easyGesturesExtraMenusSign span + span,
+.easyGesturesMainMenusSign span + span {
   margin-left: 0.5em;
 }
 
-#easyGesturesMainMenusSign span.active,
-#easyGesturesExtraMenusSign span.active {
+#easyGesturesMainMenusSign span.active, #easyGesturesExtraMenusSign span.active,
+.easyGesturesMainMenusSign span.active {
   background-color: var(--active-menu-sign-color);
 }
 
-#easyGesturesContextMenuSign {
+#easyGesturesContextMenuSign,
+.easyGesturesContextMenuSign {
   visibility: hidden;
   left: var(--icon-size);
   top: var(--tooltips-y-offset);
@@ -197,7 +204,8 @@
 
 /* Actions */
 
-#easyGesturesPieMenu .easyGesturesActionsNode {
+#easyGesturesPieMenu .easyGesturesActionsNode,
+.easyGesturesTips .easyGesturesActionsNode {
   visibility: hidden;
   z-index: -1;
   left: var(--actions-node-offset);
@@ -209,7 +217,8 @@
   background-color: var(--pie-menu-background-color);
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode::after {
+#easyGesturesPieMenu .easyGesturesActionsNode::after,
+.easyGesturesTips .easyGesturesActionsNode::after {
   display: block;
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
@@ -220,19 +229,22 @@
   content: "";
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode {
+#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode,
+.easyGesturesTips .easyGesturesActionsNode.easyGesturesExtraNode {
   z-index: -2;
   top: var(--extra-menu-y-offset);
   height: var(--extra-menu-height);
   mask-position: 0px calc(2 * var(--actions-node-offset));
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode::after {
+#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode::after,
+.easyGesturesTips .easyGesturesActionsNode.easyGesturesExtraNode::after {
   mask-position: calc(2 * var(--actions-node-offset))
                  calc(2 * var(--actions-node-offset));
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode div {
+#easyGesturesPieMenu .easyGesturesActionsNode div,
+.easyGesturesTips .easyGesturesActionsNode div {
   z-index: 1;
   width: var(--icon-size);
   height: var(--icon-size);
@@ -242,14 +254,16 @@
 #easyGesturesPieMenu div.sector0,
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0,
 .menuIcon.sector0,
-.menu.extra.large .menuIcon.sector0 {
+.menu.extra.large .menuIcon.sector0,
+.easyGesturesTips div.sector0 {
   top: var(--cardinal-action-farthest-border-offset);
   right: var(--cardinal-action-closest-border-offset);
 }
 #easyGesturesPieMenu div.sector1,
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1,
 .menuIcon.sector1,
-.menu.extra.large .menuIcon.sector1 {
+.menu.extra.large .menuIcon.sector1,
+.easyGesturesTips div.sector1 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) +
              var(--icon-border));
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) -
@@ -258,14 +272,16 @@
 #easyGesturesPieMenu div.sector2,
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2,
 .menuIcon.sector2,
-.menu.extra.large .menuIcon.sector2 {
+.menu.extra.large .menuIcon.sector2,
+.easyGesturesTips div.sector2 {
   left: var(--cardinal-action-farthest-border-offset);
   top: var(--cardinal-action-closest-border-offset);
 }
 #easyGesturesPieMenu div.sector3,
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3,
 .menuIcon.sector3,
-.menu.extra.large .menuIcon.sector3 {
+.menu.extra.large .menuIcon.sector3,
+.easyGesturesTips div.sector3 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) -
              var(--icon-border));
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) -
@@ -274,25 +290,29 @@
 #easyGesturesPieMenu div.sector4,
 #easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4,
 .menuIcon.sector4,
-.menu.extra.large .menuIcon.sector4 {
+.menu.extra.large .menuIcon.sector4,
+.easyGesturesTips div.sector4 {
   left: var(--cardinal-action-closest-border-offset);
   top: var(--cardinal-action-farthest-border-offset);
 }
 .menuIcon.sector5, .menuIcon.sector9 { display: none; }
 #easyGesturesPieMenu div.sector5,
-.menuIcon.sector6 {
+.menuIcon.sector6,
+.easyGesturesTips div.sector5 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
 }
 #easyGesturesPieMenu div.sector6,
 #easyGesturesPieMenu.large div.sector7,
-.menuIcon.sector7 {
+.menuIcon.sector7,
+.easyGesturesTips div.sector6 {
   left: var(--cardinal-action-farthest-border-offset);
   top: auto;
   bottom: var(--cardinal-action-closest-border-offset);
 }
 #easyGesturesPieMenu div.sector7,
-.menuIcon.sector8 {
+.menuIcon.sector8,
+.easyGesturesTips div.sector7 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
 }
@@ -343,7 +363,8 @@
 
 /* Tooltips */
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode {
+#easyGesturesPieMenu .easyGesturesTooltipsNode,
+.easyGesturesTips .easyGesturesTooltipsNode {
   visibility: hidden;
   z-index: -2; /* tooltips are displayed below menu level */
   left: var(--tooltips-x-offset);
@@ -356,7 +377,8 @@
   top: var(--extra-tooltips-y-offset);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode div {
+#easyGesturesPieMenu .easyGesturesTooltipsNode div,
+.easyGesturesTips .easyGesturesTooltipsNode div {
   z-index: 1;
   height: var(--tooltip-height);
   border-style: solid;
@@ -366,7 +388,8 @@
   background-color: var(--tooltip-background-color);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode span {
+#easyGesturesPieMenu .easyGesturesTooltipsNode span,
+.easyGesturesTips .easyGesturesTooltipsNode span {
   display: inline-block;
   width: 100%;
   color: var(--enabled-tooltip-color);
@@ -378,12 +401,14 @@
   white-space: nowrap;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip1 {
   border-top-color: var(--pie-menu-border-color);
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip2 {
   left: 0px;
   top: 0px;
   border-top-color: var(--pie-menu-border-color);
@@ -391,13 +416,15 @@
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2.extra {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2.extra,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip2.extra {
   background-color: var(--tooltip-extra-action-background-color);
 }
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5,
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6,
-#easyGesturesPieMenu .easyGesturesExtraNode .tooltip4 {
+#easyGesturesPieMenu .easyGesturesExtraNode .tooltip4,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip5 {
   border-bottom-color: var(--pie-menu-border-color);
   border-bottom-left-radius: 5px 5px;
 }
@@ -409,20 +436,23 @@
 
 #easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6,
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7,
-#easyGesturesPieMenu .easyGesturesExtraNode .tooltip0 {
+#easyGesturesPieMenu .easyGesturesExtraNode .tooltip0,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip6 {
   border-bottom-color: var(--pie-menu-border-color);
   border-bottom-left-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip2 {
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
               2 * var(--border-width) - var(--tooltip-padding) - 6px);
          /* 6px = padding-left */
   padding-right: var(--tooltip-padding);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   top: calc(4 * var(--icon-size));
   right: 0px;
@@ -430,37 +460,43 @@
               2 * var(--border-width) - var(--tooltip-padding) - 6px);
   padding-left: var(--tooltip-padding);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip3 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip3,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
   top: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-right: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
   top: var(--icon-size);
   right: 0px;
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-left: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
   left: 0px;
   top: calc(3 * var(--icon-size));
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-right: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip7,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
   top: calc(3 * var(--icon-size));
   right: 0px;
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-left: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip4 {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip4,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
   top: calc(2 * var(--icon-size));
   width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
   padding-right: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
+#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip0,
+.easyGesturesTips .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
   top: calc(2 * var(--icon-size));
   right: 0px;
   width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
@@ -568,36 +604,43 @@
 
 /* Icons */
 
-#easyGesturesPieMenu .easyGesturesActionsNode div {
+#easyGesturesPieMenu .easyGesturesActionsNode div,
+.easyGesturesTips .easyGesturesActionsNode div {
   background-color: var(--enabled-action-color);
   mask-image: url("actions.svg");
   mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
                  calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
-#easyGesturesPieMenu .easyGesturesActionsNode .selected {
+#easyGesturesPieMenu .easyGesturesActionsNode .selected,
+.easyGesturesTips .easyGesturesActionsNode .selected {
   background-color: var(--selected-action-color);
 }
-#easyGesturesPieMenu .easyGesturesActionsNode .disabled {
+#easyGesturesPieMenu .easyGesturesActionsNode .disabled,
+.easyGesturesTips .easyGesturesActionsNode .disabled {
   background-color: var(--disabled-action-color);
 }
 
 #easyGesturesPieMenu .empty,
-[data-action="empty"], .actionIcon.empty {
+[data-action="empty"], .actionIcon.empty,
+.easyGesturesTips .empty {
   --icon-position-x: 2;
   --icon-position-y: 0;
 }
 #easyGesturesPieMenu .showExtraMenu,
-[data-action="showExtraMenu"], .actionIcon.showExtraMenu {
+[data-action="showExtraMenu"], .actionIcon.showExtraMenu,
+.easyGesturesTips .showExtraMenu {
   --icon-position-x: 0;
   --icon-position-y: 0;
 }
 #easyGesturesPieMenu .showExtraMenu.selected,
-#easyGesturesPieMenu .showExtraMenu.showingExtraMenu {
+#easyGesturesPieMenu .showExtraMenu.showingExtraMenu,
+.easyGesturesTips .showExtraMenu.selected {
   --icon-position-x: 1;
   --icon-position-y: 0;
 }
 #easyGesturesPieMenu .back,
-[data-action="back"], .actionIcon.back {
+[data-action="back"], .actionIcon.back,
+.easyGesturesTips .back {
   --icon-position-x: 0;
   --icon-position-y: 1;
 }
@@ -612,7 +655,8 @@
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .forward,
-[data-action="forward"], .actionIcon.forward {
+[data-action="forward"], .actionIcon.forward,
+.easyGesturesTips .forward {
   --icon-position-x: 3;
   --icon-position-y: 1;
 }
@@ -627,7 +671,8 @@
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .reload,
-[data-action="reload"], .actionIcon.reload {
+[data-action="reload"], .actionIcon.reload,
+.easyGesturesTips .reload {
   --icon-position-x: 6;
   --icon-position-y: 1;
 }
@@ -637,12 +682,14 @@
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .goToTop,
-[data-action="goToTop"], .actionIcon.goToTop {
+[data-action="goToTop"], .actionIcon.goToTop,
+.easyGesturesTips .goToTop {
   --icon-position-x: 8;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .goToBottom,
-[data-action="goToBottom"], .actionIcon.goToBottom {
+[data-action="goToBottom"], .actionIcon.goToBottom,
+.easyGesturesTips .goToBottom {
   --icon-position-x: 9;
   --icon-position-y: 1;
 }
@@ -667,17 +714,20 @@
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .searchWeb,
-[data-action="searchWeb"], .actionIcon.searchWeb {
+[data-action="searchWeb"], .actionIcon.searchWeb,
+.easyGesturesTips .searchWeb {
   --icon-position-x: 14;
   --icon-position-y: 1;
 }
 #easyGesturesPieMenu .loadPageInNewTab,
-[data-action="loadPageInNewTab"], .actionIcon.loadPageInNewTab {
+[data-action="loadPageInNewTab"], .actionIcon.loadPageInNewTab,
+.easyGesturesTips .loadPageInNewTab {
   --icon-position-x: 0;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .loadPageInNewPrivateWindow,
-[data-action="loadPageInNewPrivateWindow"], .actionIcon.loadPageInNewPrivateWindow {
+[data-action="loadPageInNewPrivateWindow"], .actionIcon.loadPageInNewPrivateWindow,
+.easyGesturesTips .loadPageInNewPrivateWindow {
   --icon-position-x: 1;
   --icon-position-y: 2;
 }
@@ -687,12 +737,14 @@
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .copyPageURL,
-[data-action="copyPageURL"], .actionIcon.copyPageURL {
+[data-action="copyPageURL"], .actionIcon.copyPageURL,
+.easyGesturesTips .copyPageURL {
   --icon-position-x: 3;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .copyURLToIdentifier,
-[data-action="copyURLToIdentifier"], .actionIcon.copyURLToIdentifier {
+[data-action="copyURLToIdentifier"], .actionIcon.copyURLToIdentifier,
+.easyGesturesTips .copyURLToIdentifier {
   --icon-position-x: 4;
   --icon-position-y: 2;
 }
@@ -712,12 +764,14 @@
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .findAndHighlightSelection,
-[data-action="findAndHighlightSelection"], .actionIcon.findAndHighlightSelection {
+[data-action="findAndHighlightSelection"], .actionIcon.findAndHighlightSelection,
+.easyGesturesTips .findAndHighlightSelection {
   --icon-position-x: 8;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .removeHighlight,
-[data-action="removeHighlight"], .actionIcon.removeHighlight {
+[data-action="removeHighlight"], .actionIcon.removeHighlight,
+.easyGesturesTips .removeHighlight {
   --icon-position-x: 9;
   --icon-position-y: 2;
 }
@@ -757,7 +811,8 @@
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .newTab,
-[data-action="newTab"], .actionIcon.newTab {
+[data-action="newTab"], .actionIcon.newTab,
+.easyGesturesTips .newTab {
   --icon-position-x: 0;
   --icon-position-y: 3;
 }
@@ -772,7 +827,8 @@
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .closeTab,
-[data-action="closeTab"], .actionIcon.closeTab {
+[data-action="closeTab"], .actionIcon.closeTab,
+.easyGesturesTips .closeTab {
   --icon-position-x: 3;
   --icon-position-y: 3;
 }
@@ -782,22 +838,26 @@
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .undoCloseTab,
-[data-action="undoCloseTab"], .actionIcon.undoCloseTab {
+[data-action="undoCloseTab"], .actionIcon.undoCloseTab,
+.easyGesturesTips .undoCloseTab {
   --icon-position-x: 5;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .previousTab,
-[data-action="previousTab"], .actionIcon.previousTab {
+[data-action="previousTab"], .actionIcon.previousTab,
+.easyGesturesTips .previousTab {
   --icon-position-x: 6;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .nextTab,
-[data-action="nextTab"], .actionIcon.nextTab {
+[data-action="nextTab"], .actionIcon.nextTab,
+.easyGesturesTips .nextTab {
   --icon-position-x: 7;
   --icon-position-y: 3;
 }
 #easyGesturesPieMenu .pinUnpinTab,
-[data-action="pinUnpinTab"], .actionIcon.pinUnpinTab {
+[data-action="pinUnpinTab"], .actionIcon.pinUnpinTab,
+.easyGesturesTips .pinUnpinTab {
   --icon-position-x: 8;
   --icon-position-y: 3;
 }
@@ -812,7 +872,8 @@
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .newPrivateWindow,
-[data-action="newPrivateWindow"], .actionIcon.newPrivateWindow {
+[data-action="newPrivateWindow"], .actionIcon.newPrivateWindow,
+.easyGesturesTips .newPrivateWindow {
   --icon-position-x: 2;
   --icon-position-y: 4;
 }
@@ -847,7 +908,8 @@
   --icon-position-y: 4;
 }
 #easyGesturesPieMenu .openLink,
-[data-action="openLink"], .actionIcon.openLink {
+[data-action="openLink"], .actionIcon.openLink,
+.easyGesturesTips .openLink {
   --icon-position-x: 0;
   --icon-position-y: 5;
 }
@@ -857,17 +919,20 @@
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .openLinkInNewPrivateWindow,
-[data-action="openLinkInNewPrivateWindow"], .actionIcon.openLinkInNewPrivateWindow {
+[data-action="openLinkInNewPrivateWindow"], .actionIcon.openLinkInNewPrivateWindow,
+.easyGesturesTips .openLinkInNewPrivateWindow {
   --icon-position-x: 2;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .copyLink,
-[data-action="copyLink"], .actionIcon.copyLink {
+[data-action="copyLink"], .actionIcon.copyLink,
+.easyGesturesTips .copyLink {
   --icon-position-x: 3;
   --icon-position-y: 5;
 }
 #easyGesturesPieMenu .saveLinkAs,
-[data-action="saveLinkAs"], .actionIcon.saveLinkAs {
+[data-action="saveLinkAs"], .actionIcon.saveLinkAs,
+.easyGesturesTips .saveLinkAs {
   --icon-position-x: 4;
   --icon-position-y: 5;
 }
@@ -877,7 +942,8 @@
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisPage,
-[data-action="bookmarkThisPage"], .actionIcon.bookmarkThisPage {
+[data-action="bookmarkThisPage"], .actionIcon.bookmarkThisPage,
+.easyGesturesTips .bookmarkThisPage {
   --icon-position-x: 1;
   --icon-position-y: 6;
 }
@@ -887,7 +953,8 @@
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkThisLink,
-[data-action="bookmarkThisLink"], .actionIcon.bookmarkThisLink {
+[data-action="bookmarkThisLink"], .actionIcon.bookmarkThisLink,
+.easyGesturesTips .bookmarkThisLink {
   --icon-position-x: 3;
   --icon-position-y: 6;
 }
@@ -907,42 +974,50 @@
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisLink,
-[data-action="removeBookmarkToThisLink"], .actionIcon.removeBookmarkToThisLink {
+[data-action="removeBookmarkToThisLink"], .actionIcon.removeBookmarkToThisLink,
+.easyGesturesTips .removeBookmarkToThisLink {
   --icon-position-x: 7;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .loadURL1,
-[data-action="loadURL1"], .actionIcon.loadURL1 {
+[data-action="loadURL1"], .actionIcon.loadURL1,
+.easyGesturesTips .loadURL1 {
   --icon-position-x: 0;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL2,
-[data-action="loadURL2"], .actionIcon.loadURL2 {
+[data-action="loadURL2"], .actionIcon.loadURL2,
+.easyGesturesTips .loadURL2 {
   --icon-position-x: 1;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL3,
-[data-action="loadURL3"], .actionIcon.loadURL3 {
+[data-action="loadURL3"], .actionIcon.loadURL3,
+.easyGesturesTips .loadURL3 {
   --icon-position-x: 2;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL4,
-[data-action="loadURL4"], .actionIcon.loadURL4 {
+[data-action="loadURL4"], .actionIcon.loadURL4,
+.easyGesturesTips .loadURL4 {
   --icon-position-x: 3;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL5,
-[data-action="loadURL5"], .actionIcon.loadURL5 {
+[data-action="loadURL5"], .actionIcon.loadURL5,
+.easyGesturesTips .loadURL5 {
   --icon-position-x: 4;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL6,
-[data-action="loadURL6"], .actionIcon.loadURL6 {
+[data-action="loadURL6"], .actionIcon.loadURL6,
+.easyGesturesTips .loadURL6 {
   --icon-position-x: 5;
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .loadURL7,
-[data-action="loadURL7"], .actionIcon.loadURL7 {
+[data-action="loadURL7"], .actionIcon.loadURL7,
+.easyGesturesTips .loadURL7 {
   --icon-position-x: 6;
   --icon-position-y: 7;
 }
@@ -962,37 +1037,44 @@
   --icon-position-y: 7;
 }
 #easyGesturesPieMenu .runScript1,
-[data-action="runScript1"], .actionIcon.runScript1 {
+[data-action="runScript1"], .actionIcon.runScript1,
+.easyGesturesTips .runScript1 {
   --icon-position-x: 0;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript2,
-[data-action="runScript2"], .actionIcon.runScript2 {
+[data-action="runScript2"], .actionIcon.runScript2,
+.easyGesturesTips .runScript2 {
   --icon-position-x: 1;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript3,
-[data-action="runScript3"], .actionIcon.runScript3 {
+[data-action="runScript3"], .actionIcon.runScript3,
+.easyGesturesTips .runScript3 {
   --icon-position-x: 2;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript4,
-[data-action="runScript4"], .actionIcon.runScript4 {
+[data-action="runScript4"], .actionIcon.runScript4,
+.easyGesturesTips .runScript4 {
   --icon-position-x: 3;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript5,
-[data-action="runScript5"], .actionIcon.runScript5 {
+[data-action="runScript5"], .actionIcon.runScript5,
+.easyGesturesTips .runScript5 {
   --icon-position-x: 4;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript6,
-[data-action="runScript6"], .actionIcon.runScript6 {
+[data-action="runScript6"], .actionIcon.runScript6,
+.easyGesturesTips .runScript6 {
   --icon-position-x: 5;
   --icon-position-y: 8;
 }
 #easyGesturesPieMenu .runScript7,
-[data-action="runScript7"], .actionIcon.runScript7 {
+[data-action="runScript7"], .actionIcon.runScript7,
+.easyGesturesTips .runScript7 {
   --icon-position-x: 6;
   --icon-position-y: 8;
 }
@@ -1017,42 +1099,50 @@
   --icon-position-y: 9;
 }
 #easyGesturesPieMenu .copyImageLocation,
-[data-action="copyImageLocation"], .actionIcon.copyImageLocation {
+[data-action="copyImageLocation"], .actionIcon.copyImageLocation,
+.easyGesturesTips .copyImageLocation {
   --icon-position-x: 0;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .copyImage,
-[data-action="copyImage"], .actionIcon.copyImage {
+[data-action="copyImage"], .actionIcon.copyImage,
+.easyGesturesTips .copyImage {
   --icon-position-x: 1;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .saveImageAs,
-[data-action="saveImageAs"], .actionIcon.saveImageAs {
+[data-action="saveImageAs"], .actionIcon.saveImageAs,
+.easyGesturesTips .saveImageAs {
   --icon-position-x: 2;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .hideImages,
-[data-action="hideImages"], .actionIcon.hideImages {
+[data-action="hideImages"], .actionIcon.hideImages,
+.easyGesturesTips .hideImages {
   --icon-position-x: 3;
   --icon-position-y: 10;
 }
 #easyGesturesPieMenu .cut,
-[data-action="cut"], .actionIcon.cut {
+[data-action="cut"], .actionIcon.cut,
+.easyGesturesTips .cut {
   --icon-position-x: 0;
   --icon-position-y: 11;
 }
 #easyGesturesPieMenu .copy,
-[data-action="copy"], .actionIcon.copy {
+[data-action="copy"], .actionIcon.copy,
+.easyGesturesTips .copy {
   --icon-position-x: 1;
   --icon-position-y: 11;
 }
 #easyGesturesPieMenu .paste,
-[data-action="paste"], .actionIcon.paste {
+[data-action="paste"], .actionIcon.paste,
+.easyGesturesTips .paste {
   --icon-position-x: 2;
   --icon-position-y: 11;
 }
 #easyGesturesPieMenu .selectAll,
-[data-action="selectAll"], .actionIcon.selectAll {
+[data-action="selectAll"], .actionIcon.selectAll,
+.easyGesturesTips .selectAll {
   --icon-position-x: 3;
   --icon-position-y: 11;
 }

@@ -9,7 +9,7 @@
 -->
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
-     version="1.1" width="689" height="1652" stroke="hsl(0, 0%, 60%)"
+     version="1.1" width="687" height="590" stroke="hsl(0, 0%, 60%)"
      stroke-width="2" fill="transparent">
   <defs>
     <g id="mouseOutline">
@@ -28,14 +28,25 @@
       <use href="#mouseOutline" />
       <use href="#middleButton" />
     </g>
-    <g id="mouseWithMiddleButtonPushed">
-      <use href="#mouseOutline" />
-      <use href="#middleButton" fill="hsl(0, 0%, 80%)" />
-    </g>
     <g id="forwardArrow" stroke="hsl(0, 0%, 30%)">
       <line x1="0" y1="0" x2="20" y2="0" />
       <line x1="20" y1="0" x2="12" y2="-8" stroke-linecap="round" />
       <line x1="20" y1="0" x2="12" y2="8" stroke-linecap="round" />
+    </g>
+    <g id="mouseWithMiddleButtonPushed">
+      <use href="#mouseOutline" />
+      <use href="#middleButton" fill="hsl(0, 0%, 80%)" />
+    </g>
+    <g id="mousePointerOutline">
+      <path d="M 6 0 l -5 11 l 3.5 -1 v 6 h 3 v -6 l 3.5 1 l -5 -11"
+            stroke-width="1" stroke-linecap="round" />
+    </g>
+    <g id="mousePointer">
+      <g transform="translate(-6) rotate(-22.5)">
+        <use href="#mousePointerOutline" stroke="hsl(0, 0%, 85%)"
+             fill="hsl(0, 0%, 85%)" transform="translate(-0.5 0.5)" />
+        <use href="#mousePointerOutline" stroke="white" fill="black" />
+      </g>
     </g>
     <linearGradient id="pushedButton" x1="0" x2="0" y1="0" y2="1">
       <stop offset="0%" stop-color="hsl(0, 0%, 60%)" />
@@ -55,47 +66,25 @@
     <use href="#mouse" y="21" />
     <use href="#forwardArrow" x="62" y="61" />
     <use href="#mouseWithMiddleButtonPushed" x="96" y="21" />
-    <image href="tip1a.png" width="122" height="122" x="160" y="0" />
   </g>
   <g transform="translate(1, 125)">
     <use href="#mouseWithMiddleButtonPushed" y="21" />
-    <image href="tip2a.png" width="122" height="122" x="64" y="0" />
+    <use href="#mousePointer" x="125" y="61" />
     <use href="#forwardArrow" x="200" y="61" />
-    <image href="tip2b.png" width="122" height="122" x="234" y="0" />
+    <use href="#mousePointer" x="277" y="38" />
     <use href="#forwardArrow" x="370" y="61" />
     <use href="#mouse" x="404" y="21" />
   </g>
   <g transform="translate(1, 249)">
-    <use href="#mouseWithMiddleButtonPushed" y="36" />
-    <image href="tip3a.png" width="154" height="137" x="64" y="0" />
-    <use href="#forwardArrow" x="200" y="76" />
-    <use href="#mouseWithRightButtonPushed" x="234" y="36" />
-    <image href="tip3b.png" width="154" height="137" x="298" y="0" />
-    <use href="#forwardArrow" x="434" y="76" />
-    <use href="#mouseWithRightButtonPushed" x="468" y="36" />
-    <image href="tip3c.png" width="154" height="137" x="532" y="0" />
+    <use href="#mouseWithMiddleButtonPushed" y="41" />
+    <use href="#forwardArrow" x="200" y="81" />
+    <use href="#mouseWithRightButtonPushed" x="234" y="41" />
+    <use href="#forwardArrow" x="434" y="81" />
+    <use href="#mouseWithRightButtonPushed" x="468" y="41" />
   </g>
-  <g transform="translate(1, 695)">
-    <image href="tip5a.png" width="122" height="122" y="74" />
+  <g transform="translate(1, 393)">
+    <use href="#mousePointer" x="61" y="93" />
     <use href="#forwardArrow" x="136" y="135" />
-    <image href="tip5b.png" width="122" height="196" x="170" />
-  </g>
-  <g transform="translate(1, 893)">
-    <image href="tip6.png" width="408" height="122" />
-  </g>
-  <g transform="translate(1, 1017)">
-    <image href="tip7.png" width="400" height="162" />
-  </g>
-  <g transform="translate(1, 1181)">
-    <image href="tip10.png" width="400" height="162" />
-  </g>
-  <g transform="translate(1, 1345)">
-    <image href="tip12.png" width="400" height="162" />
-  </g>
-  <g transform="translate(1, 1509)">
-    <image href="tip13a.png" width="143" height="142" />
-    <image href="tip13b.png" width="129" height="142" x="175" />
-    <image href="tip13c.png" width="163" height="142" x="336" />
-    <image href="tip13d.png" width="157" height="142" x="531" />
+    <use href="#mousePointer" x="231" y="51" />
   </g>
 </svg>

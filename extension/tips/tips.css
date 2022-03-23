@@ -41,11 +41,16 @@ input {
 #tipImages {
   margin-bottom: 1em;
 }
-#tipImages div {
+#tipImages > div {
   display: none;
-  background-image: url("tips.png");
   margin-left: auto;
   margin-right: auto;
+}
+#tipImages > div::after {
+  position: absolute;
+  z-index: 2147483648; /* z-index of pie menu + 1 */
+  background-image: url("tips.svg");
+  content: "";
 }
 /* using div in the next rule to match its specificity to the previous rule's */
 div#menusCustomization, div#zoomOnImage, div#openLinkAction,
@@ -55,20 +60,145 @@ div#dailyReadingsAction {
   mask-image: url("../content/actions.svg");
 }
 
-#openButton { background-position: 0px -1px; width: 283px; height: 123px; }
-#dragToAction { background-position: 0px -125px; width: 454px; height: 123px; }
-#openAltMenu { background-position: 0px -249px; width: 687px; height: 138px; }
+.easyGesturesTips {
+  position: absolute;
+}
+#tipImages .easyGesturesTips > div {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+#tipImages .easyGesturesActionsNode, .easyGesturesMainMenusSign,
+.easyGesturesLinkSign, .easyGesturesTips .easyGesturesTooltipsNode,
+.easyGesturesContextMenuSign {
+  visibility: visible;
+}
+.easyGesturesMainMenusSign, .easyGesturesContextMenuSign {
+  top: 0px;
+}
+.easyGesturesLinkSign {
+  left: calc(-1 * var(--actions-node-offset) - var(--link-sign-size) / 2);
+  top: calc(-1 * var(--actions-node-offset) - var(--link-sign-size) / 2);
+}
+
+#openButton {
+  width: 282px;
+  height: 122px; /* calc(-2 * var(--actions-node-offset)) */
+}
+#openButton .easyGesturesTips {
+  margin-left: 160px;
+}
+#openButton::after {
+  background-position-y: -1px;
+  width: 282px;
+  height: 122px;
+}
+#dragToAction {
+  width: 454px;
+  height: 122px;
+}
+#dragToAction .easyGesturesTips,
+#openAltMenu .easyGesturesTips {
+  margin-left: 64px;
+}
+#dragToAction .easyGesturesActionsNode:nth-child(2) {
+  margin-left: 170px;
+}
+#dragToAction::after {
+  background-position-y: -125px;
+  width: 454px;
+  height: 122px;
+}
+#openAltMenu {
+  width: 686px;
+  height: 142px; /* calc(-1 * var(--tooltips-y-offset) - var(--actions-node-offset)) */
+}
+#openAltMenu .easyGesturesMainMenusSign, .easyGesturesContextMenuSign {
+  left: calc(-1 * var(--actions-node-offset) + var(--icon-size));
+}
+#openAltMenu div.easyGesturesActionsNode,
+#tooltips div.easyGesturesActionsNode,
+#loadURLActions div.easyGesturesActionsNode,
+#runScriptActions div.easyGesturesActionsNode,
+#contextualMenus div.easyGesturesActionsNode {
+  top: calc(-1 * var(--tooltips-y-offset) + var(--actions-node-offset));
+}
+#openAltMenu .easyGesturesMainMenusSign:nth-child(2),
+#openAltMenu .easyGesturesActionsNode:nth-child(3) {
+  margin-left: 234px;
+}
+#openAltMenu .easyGesturesMainMenusSign:nth-child(3),
+#openAltMenu .easyGesturesActionsNode:nth-child(4) {
+  margin-left: 468px;
+}
+#openAltMenu::after {
+  background-position-y: -249px;
+  width: 686px;
+  height: 142px;
+}
 #menusCustomization {
   width: 434px;
   height: 306px;
   mask-size: 434px 306px;
 }
-#openExtraMenu { background-position: 0px -695px; width: 294px; height: 197px;}
-#clickOnLink { background-position: 0px -893px; width: 409px; height: 123px; }
-#tooltips { background-position: 0px -1017px; width: 402px; height: 163px; }
-#loadURLActions { background-position: 0px -1181px; width: 402px; height: 163px; }
-#runScriptActions { background-position: 0px -1345px; width: 402px; height: 163px; }
-#contextualMenus { background-position: 0px -1509px; width: 689px; height: 143px; }
+#openExtraMenu {
+  width: 292px;  /* calc(170px - 2 * var(--actions-node-offset)) */
+  height: 196px; /* calc(-1 * var(--extra-menu-y-offset) - var(--actions-node-offset)) */
+}
+#openExtraMenu div.easyGesturesActionsNode:not(div.easyGesturesExtraNode) {
+  top: calc(-1 * var(--extra-menu-y-offset) + var(--actions-node-offset));
+}
+#openExtraMenu .easyGesturesActionsNode:nth-child(2),
+#openExtraMenu .easyGesturesExtraNode {
+  margin-left: 170px;
+}
+#openExtraMenu::after {
+  background-position-y: -393px;
+  width: 292px;
+  height: 196px;
+}
+#clickOnLink {
+  width: 122px; /* calc(-2 * var(--actions-node-offset)) */
+  height: 122px;
+}
+#clickOnLink a {
+  z-index: -1;
+  position: absolute;
+  left: calc(-250px - var(--actions-node-offset));
+  width: 500px;
+  line-height: 122px;
+  text-align: center;
+  color: rgb(0, 0, 238);
+}
+#tooltips, #loadURLActions, #runScriptActions {
+  width: 400px; /* calc(-2 * var(--tooltips-x-offset)) */
+  height: 162px; /* calc(-2 * var(--tooltips-y-offset)) */
+}
+#tooltips div.easyGesturesActionsNode,
+#loadURLActions div.easyGesturesActionsNode,
+#runScriptActions div.easyGesturesActionsNode {
+  left: calc(-1 * var(--tooltips-x-offset) + var(--actions-node-offset));
+}
+#loadURLActions .easyGesturesMainMenusSign,
+#runScriptActions .easyGesturesMainMenusSign {
+  left: calc(-1 * var(--tooltips-x-offset) + var(--icon-size));
+}
+#contextualMenus {
+  width: 636px;
+  height: 142px;
+}
+.easyGesturesContextMenuSign:nth-child(2),
+#contextualMenus .easyGesturesActionsNode:nth-child(3) {
+  margin-left: 160px;
+}
+.easyGesturesContextMenuSign:nth-child(3),
+#contextualMenus .easyGesturesActionsNode:nth-child(4) {
+  margin-left: calc(2 * 160px);
+}
+.easyGesturesContextMenuSign:nth-child(4),
+#contextualMenus .easyGesturesActionsNode:nth-child(5) {
+  margin-left: calc(3 * 160px);
+}
 #zoomOnImage {
   width: calc(3 * 64px);
   height: calc(3 * 32px);
