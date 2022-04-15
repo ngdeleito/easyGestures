@@ -597,7 +597,8 @@
     text-indent: 0;
   }
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .disabled span {
+#easyGesturesPieMenu .easyGesturesTooltipsNode .disabled span,
+.easyGesturesTips .easyGesturesTooltipsNode .disabled span {
   color: var(--disabled-tooltip-color);
 }
 
