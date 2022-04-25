@@ -42,7 +42,7 @@
             stroke-width="1" stroke-linecap="round" />
     </g>
     <g id="mousePointer">
-      <g transform="translate(-6) rotate(-22.5)">
+      <g transform="translate(-6) rotate(-25)">
         <use href="#mousePointerOutline" stroke="hsl(0, 0%, 85%)"
              fill="hsl(0, 0%, 85%)" transform="translate(-0.5 0.5)" />
         <use href="#mousePointerOutline" stroke="white" fill="black" />
