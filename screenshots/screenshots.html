@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  
+  <!-- This Source Code Form is subject to the terms of the Mozilla Public
+     - License, v. 2.0. If a copy of the MPL was not distributed with this
+     - file, You can obtain one at https://mozilla.org/MPL/2.0/. -->
+  
+  <!-- To generate the "screenshots":
+     - Open this file in Safari; ensure that the Develop menu is enabled and
+       that the "Disable Cross-Origin Restrictions" option is enabled
+     - Open the Web Inspector
+     - Select the node containing the pie menu for which a screenshot needs to
+       be generated, right click and select "Capture Screenshot" -->
+  
+  <title>easyGestures N - Screenshots</title>
+  <link rel="stylesheet" href="../extension/content/easyGesturesN.css">
+  <style>
+    .easyGesturesTips.darkTheme {
+      --easyGesturesN-border-color: hsl(45, 0%, 0%);
+      --easyGesturesN-background-color: hsl(45, 0%, 20%);
+      --easyGesturesN-accent-color: hsl(45, 100%, 60%);
+      --easyGesturesN-enabled-color: hsl(45, 0%, 80%);
+      --easyGesturesN-disabled-color: hsl(45, 0%, 40%);
+      
+      --pie-menu-border-color: var(--easyGesturesN-border-color);
+      --pie-menu-background-color: var(--easyGesturesN-background-color);
+      --tooltip-inner-border-color: var(--easyGesturesN-border-color);
+      --tooltip-background-color: var(--easyGesturesN-background-color);
+      --enabled-tooltip-color: var(--easyGesturesN-enabled-color);
+      --tooltip-extra-action-background-color: var(--easyGesturesN-background-color);
+      --selected-tooltip-color: var(--easyGesturesN-accent-color);
+      --disabled-tooltip-color: var(--easyGesturesN-disabled-color);
+      --enabled-action-color: var(--easyGesturesN-enabled-color);
+      --selected-action-color: var(--easyGesturesN-accent-color);
+      --disabled-action-color: var(--easyGesturesN-disabled-color);
+    }
+    .easyGesturesTips .easyGesturesActionsNode {
+      -webkit-mask-image: url("../extension/content/menu.svg");
+      -webkit-mask-size: calc(-2 * var(--actions-node-offset) * 3);
+    }
+    .easyGesturesTips .easyGesturesActionsNode::after {
+      -webkit-mask-image: url("../extension/content/menu.svg");
+      -webkit-mask-position: calc(2 * var(--actions-node-offset)) 0px;
+      -webkit-mask-size: calc(-2 * var(--actions-node-offset) * 3);
+    }
+    .easyGesturesTips .easyGesturesTooltipsNode .selected span {
+      color: var(--selected-tooltip-color);
+    }
+    .easyGesturesTips .easyGesturesActionsNode div {
+      -webkit-mask-image: url("../extension/content/actions.svg");
+      -webkit-mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
+                             calc(var(--icon-position-y) * -1 * var(--icon-size));
+      -webkit-mask-size: calc(var(--icon-size) * 17);
+    }
+    
+    #tipImages > div,
+    .easyGesturesTips {
+      position: absolute;
+    }
+    #tipImages > div::after {
+      display: block;
+      position: absolute;
+      z-index: 2147483648; /* z-index of pie menu + 1 */
+      background-image: url("mousePointer.svg");
+      content: "";
+    }
+    #tipImages .easyGesturesTips > div {
+      position: absolute;
+      left: 0px;
+      top: 0px;
+    }
+    #tipImages .easyGesturesActionsNode,
+    .easyGesturesTips .easyGesturesTooltipsNode {
+      visibility: visible;
+    }
+    #tipImages div.easyGesturesActionsNode {
+      left: calc(-1 * var(--tooltips-x-offset) + var(--actions-node-offset));
+      top: calc(-1 * var(--tooltips-y-offset) + var(--actions-node-offset));
+    }
+    
+    #mainMenuWithTooltipsAndPointedAction::after,
+    #mainMenuWithTooltipsInDarkModeAndPointedAction::after {
+      left: calc(200px - 19px); /* -1 * var(--tooltips-x-offset) - 19px */
+      top: calc(81px - 24px); /* -1 * var(--tooltips-y-offset) - 24px */
+      width: 15px;
+      height: 22px;
+    }
+    #mainMenuWithTooltipsInDarkModeAndPointedAction {
+      margin-top: calc(162px + 20px);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="tipImages">
+    <div id="mainMenuWithTooltipsAndPointedAction">
+      <div class="easyGesturesTips">
+        <div class="easyGesturesActionsNode">
+          <div class="sector0 nextTab"></div>
+          <div class="sector1 goToTop disabled"></div>
+          <div class="sector2 showExtraMenu"></div>
+          <div class="sector3 newTab selected"></div>
+          <div class="sector4 back"></div>
+          <div class="sector5 closeTab"></div>
+          <div class="sector6 reload"></div>
+          <div class="sector7 previousTab"></div>
+        </div>
+        <div class="easyGesturesTooltipsNode">
+          <div class="tooltip0"><span>Next tab</span></div>
+          <div class="tooltip1 disabled"><span>Go to top</span></div>
+          <div class="tooltip2 extra"><span>Extra menu</span></div>
+          <div class="tooltip3 selected"><span>New tab</span></div>
+          <div class="tooltip4"><span>Back</span></div>
+          <div class="tooltip5"><span>Close tab</span></div>
+          <div class="tooltip6"><span>Reload</span></div>
+          <div class="tooltip7"><span>Previous tab</span></div>
+        </div>
+      </div>
+    </div>
+    <div id="mainMenuWithTooltipsInDarkModeAndPointedAction">
+      <div class="easyGesturesTips darkTheme">
+        <div class="easyGesturesActionsNode">
+          <div class="sector0 nextTab"></div>
+          <div class="sector1 goToTop disabled"></div>
+          <div class="sector2 showExtraMenu"></div>
+          <div class="sector3 newTab selected"></div>
+          <div class="sector4 back"></div>
+          <div class="sector5 closeTab"></div>
+          <div class="sector6 reload"></div>
+          <div class="sector7 previousTab"></div>
+        </div>
+        <div class="easyGesturesTooltipsNode">
+          <div class="tooltip0"><span>Next tab</span></div>
+          <div class="tooltip1 disabled"><span>Go to top</span></div>
+          <div class="tooltip2 extra"><span>Extra menu</span></div>
+          <div class="tooltip3 selected"><span>New tab</span></div>
+          <div class="tooltip4"><span>Back</span></div>
+          <div class="tooltip5"><span>Close tab</span></div>
+          <div class="tooltip6"><span>Reload</span></div>
+          <div class="tooltip7"><span>Previous tab</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

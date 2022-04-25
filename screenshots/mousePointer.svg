@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  This work is licensed under the Creative Commons Attribution-ShareAlike 4.0
+  International License. To view a copy of this license, visit
+  http://creativecommons.org/licenses/by-sa/4.0/.
+  
+  Creator: ngdeleito
+-->
+
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
+     version="1.1" width="15" height="22" stroke="hsl(0, 0%, 60%)"
+     stroke-width="2" fill="transparent">
+  <defs>
+    <g id="mousePointerOutline">
+      <path d="M 6 0 l -5 11 l 3.5 -1 v 6 h 3 v -6 l 3.5 1 l -5 -11"
+            stroke-width="1" stroke-linecap="round" />
+    </g>
+    <g id="mousePointer">
+      <g transform="translate(-6) rotate(-25)">
+        <use href="#mousePointerOutline" stroke="hsl(0, 0%, 85%)"
+             fill="hsl(0, 0%, 85%)" transform="translate(-0.5 0.5)" />
+        <use href="#mousePointerOutline" stroke="white" fill="black" />
+      </g>
+    </g>
+  </defs>
+  
+  <g transform="translate(1, 1)">
+    <use href="#mousePointer" x="1" y="2" />
+  </g>
+</svg>
