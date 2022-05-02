@@ -2,26 +2,78 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-body {
-  --foreground-color: black;
-  --accent-color: hsl(300, 100%, 25%); /* purple */
-  --nav-background-color: hsla(0, 100%, 100%, 0.8);
-  --hover-color: hsla(300, 100%, 25%, 0.75);
-  --accent-text-color: white;
-  --message-border-color: hsl(55, 100%, 39%);
-  --message-background-color: hsl(55, 100%, 89%);
-  --disabled-color: hsl(0, 0%, 80%);
-  --usage-bar-color: hsl(0, 0%, 60%);
+@media (prefers-color-scheme: light) {
+  body {
+    --background-color: white;
+    --foreground-color: black;
+    --accent-color: hsl(300, 100%, 25%); /* purple */
+    --text-link-color: rgb(0, 0, 238);
+    --nav-background-color: hsla(0, 100%, 100%, 0.8);
+    --hover-color: hsla(300, 100%, 25%, 0.75);
+    --accent-text-color: white;
+    --message-border-color: hsl(55, 100%, 39%);
+    --message-background-color: hsl(55, 100%, 89%);
+    --disabled-color: hsl(0, 0%, 80%);
+    --usage-bar-color: hsl(0, 0%, 60%);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --background-color: hsl(0, 0%, 10%);
+    --foreground-color: white;
+    --accent-color: hsl(300, 100%, 25%); /* purple */
+    --text-link-color: hsl(45, 100%, 60%);
+    --nav-background-color: hsla(0, 0%, 10%, 0.8);
+    --hover-color: hsla(300, 100%, 25%, 0.75);
+    --accent-text-color: white;
+    --message-border-color: hsl(55, 100%, 75%);
+    --message-background-color: hsl(55, 100%, 25%);
+    --disabled-color: hsl(0, 0%, 40%);
+    --usage-bar-color: hsl(0, 0%, 60%);
+  }
   
+  input, button, select, textarea {
+    border: solid 2px hsl(0, 0%, 40%);
+    border-radius: 2px 2px;
+    background-color: hsl(0, 0%, 20%);
+    color: white;
+  }
+  
+  button:hover {
+    background-color: hsl(0, 0%, 25%);
+  }
+  
+  button:active {
+    background-color: hsl(0, 0%, 30%);
+  }
+  
+  button:disabled, input[type="text"]:disabled {
+    background-color: hsl(0, 0%, 20%);
+  }
+  
+  #usage .menu div {
+    color: var(--background-color);
+  }
+  
+  #usage .menu:not(.extra) div.total {
+    color: var(--foreground-color);
+  }
+}
+
+body {
   --menu-select-width: 175px;
   min-width: 896px;
   max-width: 1024px;
   margin-top: 1em;
+  background-color: var(--background-color);
+  color: var(--foreground-color);
   font-family: sans-serif;
   accent-color: var(--accent-color);
 }
 
 a {
+  color: var(--text-link-color);
   text-decoration: none;
 }
 

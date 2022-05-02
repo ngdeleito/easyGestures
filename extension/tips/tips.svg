@@ -28,7 +28,7 @@
       <use href="#mouseOutline" />
       <use href="#middleButton" />
     </g>
-    <g id="forwardArrow" stroke="hsl(0, 0%, 30%)">
+    <g id="forwardArrow" stroke="hsl(0, 0%, 60%)">
       <line x1="0" y1="0" x2="20" y2="0" />
       <line x1="20" y1="0" x2="12" y2="-8" stroke-linecap="round" />
       <line x1="20" y1="0" x2="12" y2="8" stroke-linecap="round" />
@@ -48,9 +48,9 @@
         <use href="#mousePointerOutline" stroke="white" fill="black" />
       </g>
     </g>
-    <linearGradient id="pushedButton" x1="0" x2="0" y1="0" y2="1">
-      <stop offset="0%" stop-color="hsl(0, 0%, 60%)" />
-      <stop offset="100%" stop-color="white" />
+    <linearGradient id="pushedButton" x1="0%" x2="0%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="hsl(0, 0%, 60%, 1)" />
+      <stop offset="100%" stop-color="hsl(0, 0%, 60%, 0)" />
     </linearGradient>
     <g id="rightButton">
       <path d="M 24 40 v -16 a 4 4 0 0 0 4 -4 v -8 a 4 4 0 0 0 -4 -4 v -8 h 8
