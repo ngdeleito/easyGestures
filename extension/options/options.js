@@ -1019,7 +1019,7 @@ function loadUsageData() {
 
 function optionsLoadHandler() {
   document.body.style.cursor = "wait";
-  browser.storage.onChanged.addListener(handleStorageChange);
+  browser.storage.local.onChanged.addListener(handleStorageChange);
   addEventListeners();
   
   eGUtils.setDocumentTitle(document, "preferences");
@@ -1107,7 +1107,7 @@ function optionsUnloadHandler() {
   
   removeOptionalPermissionEventListeners();
   removeEventListeners();
-  browser.storage.onChanged.removeListener(handleStorageChange);
+  browser.storage.local.onChanged.removeListener(handleStorageChange);
 }
 
 function importPrefs(anEvent) {

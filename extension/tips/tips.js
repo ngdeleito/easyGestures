@@ -114,7 +114,7 @@ function tipsLoadHandler() {
   document.getElementById("showTipsControl")
           .addEventListener("click", updateShowTipsCheckbox);
   
-  browser.storage.onChanged.addListener(handleStorageChange);
+  browser.storage.local.onChanged.addListener(handleStorageChange);
   
   eGUtils.setDocumentTitle(document, "tips");
   eGUtils.setDocumentLocalizedStrings(document);
@@ -137,5 +137,5 @@ function tipsUnloadHandler() {
   document.getElementById("showTipsControl")
           .removeEventListener("click", updateShowTipsCheckbox);
   
-  browser.storage.onChanged.removeListener(handleStorageChange);
+  browser.storage.local.onChanged.removeListener(handleStorageChange);
 }

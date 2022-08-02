@@ -143,7 +143,7 @@ function handleMessage(aMessage, sender, sendResponse) {
 function startup() {
   // start listening to changes in preferences that could require rebuilding the
   // menus
-  browser.storage.onChanged.addListener(handleStorageChange);
+  browser.storage.local.onChanged.addListener(handleStorageChange);
   // start listening to messages from content scripts
   browser.runtime.onMessage.addListener(handleMessage);
   // displaying tips if requested
