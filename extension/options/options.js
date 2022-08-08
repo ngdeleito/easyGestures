@@ -1130,7 +1130,7 @@ function importPrefs(anEvent) {
 
 function triggerImportPrefsFilePicker() {
   let filePicker = document.getElementById("importPrefsFilePicker");
-  filePicker.click();
+  filePicker.showPicker();
 }
 
 function exportPrefs() {
