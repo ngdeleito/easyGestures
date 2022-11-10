@@ -166,7 +166,7 @@ h1 > span:first-child {
   margin-right: 0.25em;
 }
 
-h1 ~ div, h2 ~ div {
+:is(h1, h2) ~ div {
   margin: 0 0 0.75em 1.5em;
 }
 

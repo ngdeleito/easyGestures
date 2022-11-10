@@ -152,13 +152,12 @@
   top: var(--extra-tooltips-y-offset);
 }
 
-#easyGesturesMainMenusSign span:only-child,
-#easyGesturesExtraMenusSign span:only-child {
+:is(#easyGesturesMainMenusSign, #easyGesturesExtraMenusSign) span:only-child {
   display: none;
 }
 
-#easyGesturesMainMenusSign span, #easyGesturesExtraMenusSign span,
-.easyGesturesMainMenusSign span {
+:is(#easyGesturesMainMenusSign, #easyGesturesExtraMenusSign,
+    .easyGesturesMainMenusSign) span {
   display: inline-block;
   width: 0.75em;
   height: 0.75em;
@@ -168,13 +167,13 @@
   font-size: inherit;
 }
 
-#easyGesturesMainMenusSign span + span, #easyGesturesExtraMenusSign span + span,
-.easyGesturesMainMenusSign span + span {
+:is(#easyGesturesMainMenusSign, #easyGesturesExtraMenusSign,
+    .easyGesturesMainMenusSign) span + span {
   margin-left: 0.5em;
 }
 
-#easyGesturesMainMenusSign span.active, #easyGesturesExtraMenusSign span.active,
-.easyGesturesMainMenusSign span.active {
+:is(#easyGesturesMainMenusSign, #easyGesturesExtraMenusSign,
+    .easyGesturesMainMenusSign) span.active {
   background-color: var(--active-menu-sign-color);
 }
 
@@ -204,8 +203,7 @@
 
 /* Actions */
 
-#easyGesturesPieMenu .easyGesturesActionsNode,
-.easyGesturesTips .easyGesturesActionsNode {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode {
   visibility: hidden;
   z-index: -1;
   left: var(--actions-node-offset);
@@ -217,8 +215,7 @@
   background-color: var(--pie-menu-background-color);
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode::after,
-.easyGesturesTips .easyGesturesActionsNode::after {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode::after {
   display: block;
   width: calc(-2 * var(--actions-node-offset));
   height: calc(-2 * var(--actions-node-offset));
@@ -229,90 +226,79 @@
   content: "";
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode,
-.easyGesturesTips .easyGesturesActionsNode.easyGesturesExtraNode {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode.easyGesturesExtraNode {
   z-index: -2;
   top: var(--extra-menu-y-offset);
   height: var(--extra-menu-height);
   mask-position: 0px calc(2 * var(--actions-node-offset));
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode.easyGesturesExtraNode::after,
-.easyGesturesTips .easyGesturesActionsNode.easyGesturesExtraNode::after {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode.easyGesturesExtraNode::after {
   mask-position: calc(2 * var(--actions-node-offset))
                  calc(2 * var(--actions-node-offset));
 }
 
-#easyGesturesPieMenu .easyGesturesActionsNode div,
-.easyGesturesTips .easyGesturesActionsNode div {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode div {
   z-index: 1;
   width: var(--icon-size);
   height: var(--icon-size);
   mask-size: calc(var(--icon-size) * 17);
 }
 
-#easyGesturesPieMenu div.sector0,
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector0,
+:is(#easyGesturesPieMenu, #easyGesturesPieMenu.large .easyGesturesExtraNode,
+    .easyGesturesTips) div.sector0,
 .menuIcon.sector0,
-.menu.extra.large .menuIcon.sector0,
-.easyGesturesTips div.sector0 {
+.menu.extra.large .menuIcon.sector0 {
   top: var(--cardinal-action-farthest-border-offset);
   right: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu div.sector1,
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector1,
+:is(#easyGesturesPieMenu, #easyGesturesPieMenu.large .easyGesturesExtraNode,
+    .easyGesturesTips) div.sector1,
 .menuIcon.sector1,
-.menu.extra.large .menuIcon.sector1,
-.easyGesturesTips div.sector1 {
+.menu.extra.large .menuIcon.sector1 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size) +
              var(--icon-border));
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) -
             var(--icon-border));
 }
-#easyGesturesPieMenu div.sector2,
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector2,
+:is(#easyGesturesPieMenu, #easyGesturesPieMenu.large .easyGesturesExtraNode,
+    .easyGesturesTips) div.sector2,
 .menuIcon.sector2,
-.menu.extra.large .menuIcon.sector2,
-.easyGesturesTips div.sector2 {
+.menu.extra.large .menuIcon.sector2 {
   left: var(--cardinal-action-farthest-border-offset);
   top: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu div.sector3,
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector3,
+:is(#easyGesturesPieMenu, #easyGesturesPieMenu.large .easyGesturesExtraNode,
+    .easyGesturesTips) div.sector3,
 .menuIcon.sector3,
-.menu.extra.large .menuIcon.sector3,
-.easyGesturesTips div.sector3 {
+.menu.extra.large .menuIcon.sector3 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) -
              var(--icon-border));
   top: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size) -
             var(--icon-border));
 }
-#easyGesturesPieMenu div.sector4,
-#easyGesturesPieMenu.large .easyGesturesExtraNode div.sector4,
+:is(#easyGesturesPieMenu, #easyGesturesPieMenu.large .easyGesturesExtraNode,
+    .easyGesturesTips) div.sector4,
 .menuIcon.sector4,
-.menu.extra.large .menuIcon.sector4,
-.easyGesturesTips div.sector4 {
+.menu.extra.large .menuIcon.sector4 {
   left: var(--cardinal-action-closest-border-offset);
   top: var(--cardinal-action-farthest-border-offset);
 }
 .menuIcon.sector5, .menuIcon.sector9 { display: none; }
-#easyGesturesPieMenu div.sector5,
-.menuIcon.sector6,
-.easyGesturesTips div.sector5 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) div.sector5,
+.menuIcon.sector6 {
   left: calc(var(--cardinal-action-farthest-border-offset) - var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
 }
-#easyGesturesPieMenu div.sector6,
+:is(#easyGesturesPieMenu, .easyGesturesTips) div.sector6,
 #easyGesturesPieMenu.large div.sector7,
-.menuIcon.sector7,
-.easyGesturesTips div.sector6 {
+.menuIcon.sector7 {
   left: var(--cardinal-action-farthest-border-offset);
   top: auto;
   bottom: var(--cardinal-action-closest-border-offset);
 }
-#easyGesturesPieMenu div.sector7,
-.menuIcon.sector8,
-.easyGesturesTips div.sector7 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) div.sector7,
+.menuIcon.sector8 {
   left: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
   top: calc(var(--cardinal-action-farthest-border-offset) + var(--icon-size));
 }
@@ -363,8 +349,7 @@
 
 /* Tooltips */
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode,
-.easyGesturesTips .easyGesturesTooltipsNode {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode {
   visibility: hidden;
   z-index: -2; /* tooltips are displayed below menu level */
   left: var(--tooltips-x-offset);
@@ -377,8 +362,7 @@
   top: var(--extra-tooltips-y-offset);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode div,
-.easyGesturesTips .easyGesturesTooltipsNode div {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode div {
   z-index: 1;
   height: var(--tooltip-height);
   border-style: solid;
@@ -388,8 +372,7 @@
   background-color: var(--tooltip-background-color);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode span,
-.easyGesturesTips .easyGesturesTooltipsNode span {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode span {
   display: inline-block;
   width: 100%;
   color: var(--enabled-tooltip-color);
@@ -401,14 +384,12 @@
   white-space: nowrap;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip1 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip1 {
   border-top-color: var(--pie-menu-border-color);
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip2 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip2 {
   left: 0px;
   top: 0px;
   border-top-color: var(--pie-menu-border-color);
@@ -416,15 +397,13 @@
   border-top-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2.extra,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip2.extra {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip2.extra {
   background-color: var(--tooltip-extra-action-background-color);
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5,
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip5,
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip6,
-#easyGesturesPieMenu .easyGesturesExtraNode .tooltip4,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip5 {
+#easyGesturesPieMenu .easyGesturesExtraNode .tooltip4 {
   border-bottom-color: var(--pie-menu-border-color);
   border-bottom-left-radius: 5px 5px;
 }
@@ -434,25 +413,23 @@
   border-bottom-left-radius: 0px 0px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6,
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip6,
 #easyGesturesPieMenu.large .easyGesturesTooltipsNode .tooltip7,
-#easyGesturesPieMenu .easyGesturesExtraNode .tooltip0,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip6 {
+#easyGesturesPieMenu .easyGesturesExtraNode .tooltip0 {
   border-bottom-color: var(--pie-menu-border-color);
   border-bottom-left-radius: 5px 5px;
   border-bottom-right-radius: 5px 5px;
 }
 
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip2,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip2 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip2 {
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   width: calc(-1 * var(--tooltips-x-offset) + 0.5 * var(--icon-size) -
               2 * var(--border-width) - var(--tooltip-padding) - 6px);
          /* 6px = padding-left */
   padding-right: var(--tooltip-padding);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip6,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
+:is(#easyGesturesPieMenu,
+    .easyGesturesTips) .easyGesturesTooltipsNode .tooltip6 { /* see tooltip2 */
   --tooltip-padding: calc(1.5 * var(--icon-size) + 6px);
   top: calc(4 * var(--icon-size));
   right: 0px;
@@ -460,43 +437,41 @@
               2 * var(--border-width) - var(--tooltip-padding) - 6px);
   padding-left: var(--tooltip-padding);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip3,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip3 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip3 {
   left: 0px;
   top: var(--icon-size);
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-right: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip1,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
+:is(#easyGesturesPieMenu,
+    .easyGesturesTips) .easyGesturesTooltipsNode .tooltip1 { /* see tooltip3 */
   top: var(--icon-size);
   right: 0px;
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-left: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip5,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
+:is(#easyGesturesPieMenu,
+    .easyGesturesTips) .easyGesturesTooltipsNode .tooltip5 { /* see tooltip3 */
   left: 0px;
   top: calc(3 * var(--icon-size));
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-right: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip7,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
+:is(#easyGesturesPieMenu,
+    .easyGesturesTips) .easyGesturesTooltipsNode .tooltip7 { /* see tooltip5 */
   top: calc(3 * var(--icon-size));
   right: 0px;
   width: calc(-1 * var(--tooltips-x-offset) - 2 * var(--icon-size) - 6px);
   padding-left: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip4,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip4 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .tooltip4 {
   left: 0px;
   top: calc(2 * var(--icon-size));
   width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
   padding-right: var(--icon-size);
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .tooltip0,
-.easyGesturesTips .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
+:is(#easyGesturesPieMenu,
+    .easyGesturesTips) .easyGesturesTooltipsNode .tooltip0 { /* see tooltip4 */
   top: calc(2 * var(--icon-size));
   right: 0px;
   width: calc(-1 * var(--tooltips-x-offset) - 2.5 * var(--icon-size));
@@ -597,51 +572,43 @@
     text-indent: 0;
   }
 }
-#easyGesturesPieMenu .easyGesturesTooltipsNode .disabled span,
-.easyGesturesTips .easyGesturesTooltipsNode .disabled span {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesTooltipsNode .disabled span {
   color: var(--disabled-tooltip-color);
 }
 
 
 /* Icons */
 
-#easyGesturesPieMenu .easyGesturesActionsNode div,
-.easyGesturesTips .easyGesturesActionsNode div {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode div {
   background-color: var(--enabled-action-color);
   mask-image: url("actions.svg");
   mask-position: calc(var(--icon-position-x) * -1 * var(--icon-size))
                  calc(var(--icon-position-y) * -1 * var(--icon-size));
 }
-#easyGesturesPieMenu .easyGesturesActionsNode .selected,
-.easyGesturesTips .easyGesturesActionsNode .selected {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode .selected {
   background-color: var(--selected-action-color);
 }
-#easyGesturesPieMenu .easyGesturesActionsNode .disabled,
-.easyGesturesTips .easyGesturesActionsNode .disabled {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .easyGesturesActionsNode .disabled {
   background-color: var(--disabled-action-color);
 }
 
-#easyGesturesPieMenu .empty,
-[data-action="empty"], .actionIcon.empty,
-.easyGesturesTips .empty {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .empty,
+[data-action="empty"], .actionIcon.empty {
   --icon-position-x: 2;
   --icon-position-y: 0;
 }
-#easyGesturesPieMenu .showExtraMenu,
-[data-action="showExtraMenu"], .actionIcon.showExtraMenu,
-.easyGesturesTips .showExtraMenu {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .showExtraMenu,
+[data-action="showExtraMenu"], .actionIcon.showExtraMenu {
   --icon-position-x: 0;
   --icon-position-y: 0;
 }
-#easyGesturesPieMenu .showExtraMenu.selected,
-#easyGesturesPieMenu .showExtraMenu.showingExtraMenu,
-.easyGesturesTips .showExtraMenu.selected {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .showExtraMenu.selected,
+#easyGesturesPieMenu .showExtraMenu.showingExtraMenu {
   --icon-position-x: 1;
   --icon-position-y: 0;
 }
-#easyGesturesPieMenu .back,
-[data-action="back"], .actionIcon.back,
-.easyGesturesTips .back {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .back,
+[data-action="back"], .actionIcon.back {
   --icon-position-x: 0;
   --icon-position-y: 1;
 }
@@ -655,9 +622,8 @@
   --icon-position-x: 2;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .forward,
-[data-action="forward"], .actionIcon.forward,
-.easyGesturesTips .forward {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .forward,
+[data-action="forward"], .actionIcon.forward {
   --icon-position-x: 3;
   --icon-position-y: 1;
 }
@@ -671,9 +637,8 @@
   --icon-position-x: 5;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .reload,
-[data-action="reload"], .actionIcon.reload,
-.easyGesturesTips .reload {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .reload,
+[data-action="reload"], .actionIcon.reload {
   --icon-position-x: 6;
   --icon-position-y: 1;
 }
@@ -682,15 +647,13 @@
   --icon-position-x: 7;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .goToTop,
-[data-action="goToTop"], .actionIcon.goToTop,
-.easyGesturesTips .goToTop {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .goToTop,
+[data-action="goToTop"], .actionIcon.goToTop {
   --icon-position-x: 8;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .goToBottom,
-[data-action="goToBottom"], .actionIcon.goToBottom,
-.easyGesturesTips .goToBottom {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .goToBottom,
+[data-action="goToBottom"], .actionIcon.goToBottom {
   --icon-position-x: 9;
   --icon-position-y: 1;
 }
@@ -714,21 +677,18 @@
   --icon-position-x: 13;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .searchWeb,
-[data-action="searchWeb"], .actionIcon.searchWeb,
-.easyGesturesTips .searchWeb {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .searchWeb,
+[data-action="searchWeb"], .actionIcon.searchWeb {
   --icon-position-x: 14;
   --icon-position-y: 1;
 }
-#easyGesturesPieMenu .loadPageInNewTab,
-[data-action="loadPageInNewTab"], .actionIcon.loadPageInNewTab,
-.easyGesturesTips .loadPageInNewTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadPageInNewTab,
+[data-action="loadPageInNewTab"], .actionIcon.loadPageInNewTab {
   --icon-position-x: 0;
   --icon-position-y: 2;
 }
-#easyGesturesPieMenu .loadPageInNewPrivateWindow,
-[data-action="loadPageInNewPrivateWindow"], .actionIcon.loadPageInNewPrivateWindow,
-.easyGesturesTips .loadPageInNewPrivateWindow {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadPageInNewPrivateWindow,
+[data-action="loadPageInNewPrivateWindow"], .actionIcon.loadPageInNewPrivateWindow {
   --icon-position-x: 1;
   --icon-position-y: 2;
 }
@@ -737,15 +697,13 @@
   --icon-position-x: 2;
   --icon-position-y: 2;
 }
-#easyGesturesPieMenu .copyPageURL,
-[data-action="copyPageURL"], .actionIcon.copyPageURL,
-.easyGesturesTips .copyPageURL {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copyPageURL,
+[data-action="copyPageURL"], .actionIcon.copyPageURL {
   --icon-position-x: 3;
   --icon-position-y: 2;
 }
-#easyGesturesPieMenu .copyURLToIdentifier,
-[data-action="copyURLToIdentifier"], .actionIcon.copyURLToIdentifier,
-.easyGesturesTips .copyURLToIdentifier {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copyURLToIdentifier,
+[data-action="copyURLToIdentifier"], .actionIcon.copyURLToIdentifier {
   --icon-position-x: 4;
   --icon-position-y: 2;
 }
@@ -764,15 +722,13 @@
   --icon-position-x: 7;
   --icon-position-y: 2;
 }
-#easyGesturesPieMenu .findAndHighlightSelection,
-[data-action="findAndHighlightSelection"], .actionIcon.findAndHighlightSelection,
-.easyGesturesTips .findAndHighlightSelection {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .findAndHighlightSelection,
+[data-action="findAndHighlightSelection"], .actionIcon.findAndHighlightSelection {
   --icon-position-x: 8;
   --icon-position-y: 2;
 }
-#easyGesturesPieMenu .removeHighlight,
-[data-action="removeHighlight"], .actionIcon.removeHighlight,
-.easyGesturesTips .removeHighlight {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .removeHighlight,
+[data-action="removeHighlight"], .actionIcon.removeHighlight {
   --icon-position-x: 9;
   --icon-position-y: 2;
 }
@@ -811,9 +767,8 @@
   --icon-position-x: 16;
   --icon-position-y: 2;
 }
-#easyGesturesPieMenu .newTab,
-[data-action="newTab"], .actionIcon.newTab,
-.easyGesturesTips .newTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .newTab,
+[data-action="newTab"], .actionIcon.newTab {
   --icon-position-x: 0;
   --icon-position-y: 3;
 }
@@ -827,9 +782,8 @@
   --icon-position-x: 2;
   --icon-position-y: 3;
 }
-#easyGesturesPieMenu .closeTab,
-[data-action="closeTab"], .actionIcon.closeTab,
-.easyGesturesTips .closeTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .closeTab,
+[data-action="closeTab"], .actionIcon.closeTab {
   --icon-position-x: 3;
   --icon-position-y: 3;
 }
@@ -838,27 +792,23 @@
   --icon-position-x: 4;
   --icon-position-y: 3;
 }
-#easyGesturesPieMenu .undoCloseTab,
-[data-action="undoCloseTab"], .actionIcon.undoCloseTab,
-.easyGesturesTips .undoCloseTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .undoCloseTab,
+[data-action="undoCloseTab"], .actionIcon.undoCloseTab {
   --icon-position-x: 5;
   --icon-position-y: 3;
 }
-#easyGesturesPieMenu .previousTab,
-[data-action="previousTab"], .actionIcon.previousTab,
-.easyGesturesTips .previousTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .previousTab,
+[data-action="previousTab"], .actionIcon.previousTab {
   --icon-position-x: 6;
   --icon-position-y: 3;
 }
-#easyGesturesPieMenu .nextTab,
-[data-action="nextTab"], .actionIcon.nextTab,
-.easyGesturesTips .nextTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .nextTab,
+[data-action="nextTab"], .actionIcon.nextTab {
   --icon-position-x: 7;
   --icon-position-y: 3;
 }
-#easyGesturesPieMenu .pinUnpinTab,
-[data-action="pinUnpinTab"], .actionIcon.pinUnpinTab,
-.easyGesturesTips .pinUnpinTab {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .pinUnpinTab,
+[data-action="pinUnpinTab"], .actionIcon.pinUnpinTab {
   --icon-position-x: 8;
   --icon-position-y: 3;
 }
@@ -872,9 +822,8 @@
   --icon-position-x: 1;
   --icon-position-y: 4;
 }
-#easyGesturesPieMenu .newPrivateWindow,
-[data-action="newPrivateWindow"], .actionIcon.newPrivateWindow,
-.easyGesturesTips .newPrivateWindow {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .newPrivateWindow,
+[data-action="newPrivateWindow"], .actionIcon.newPrivateWindow {
   --icon-position-x: 2;
   --icon-position-y: 4;
 }
@@ -908,9 +857,8 @@
   --icon-position-x: 8;
   --icon-position-y: 4;
 }
-#easyGesturesPieMenu .openLink,
-[data-action="openLink"], .actionIcon.openLink,
-.easyGesturesTips .openLink {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .openLink,
+[data-action="openLink"], .actionIcon.openLink {
   --icon-position-x: 0;
   --icon-position-y: 5;
 }
@@ -919,21 +867,18 @@
   --icon-position-x: 1;
   --icon-position-y: 5;
 }
-#easyGesturesPieMenu .openLinkInNewPrivateWindow,
-[data-action="openLinkInNewPrivateWindow"], .actionIcon.openLinkInNewPrivateWindow,
-.easyGesturesTips .openLinkInNewPrivateWindow {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .openLinkInNewPrivateWindow,
+[data-action="openLinkInNewPrivateWindow"], .actionIcon.openLinkInNewPrivateWindow {
   --icon-position-x: 2;
   --icon-position-y: 5;
 }
-#easyGesturesPieMenu .copyLink,
-[data-action="copyLink"], .actionIcon.copyLink,
-.easyGesturesTips .copyLink {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copyLink,
+[data-action="copyLink"], .actionIcon.copyLink {
   --icon-position-x: 3;
   --icon-position-y: 5;
 }
-#easyGesturesPieMenu .saveLinkAs,
-[data-action="saveLinkAs"], .actionIcon.saveLinkAs,
-.easyGesturesTips .saveLinkAs {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .saveLinkAs,
+[data-action="saveLinkAs"], .actionIcon.saveLinkAs {
   --icon-position-x: 4;
   --icon-position-y: 5;
 }
@@ -942,9 +887,8 @@
   --icon-position-x: 0;
   --icon-position-y: 6;
 }
-#easyGesturesPieMenu .bookmarkThisPage,
-[data-action="bookmarkThisPage"], .actionIcon.bookmarkThisPage,
-.easyGesturesTips .bookmarkThisPage {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .bookmarkThisPage,
+[data-action="bookmarkThisPage"], .actionIcon.bookmarkThisPage {
   --icon-position-x: 1;
   --icon-position-y: 6;
 }
@@ -953,9 +897,8 @@
   --icon-position-x: 2;
   --icon-position-y: 6;
 }
-#easyGesturesPieMenu .bookmarkThisLink,
-[data-action="bookmarkThisLink"], .actionIcon.bookmarkThisLink,
-.easyGesturesTips .bookmarkThisLink {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .bookmarkThisLink,
+[data-action="bookmarkThisLink"], .actionIcon.bookmarkThisLink {
   --icon-position-x: 3;
   --icon-position-y: 6;
 }
@@ -974,51 +917,43 @@
   --icon-position-x: 6;
   --icon-position-y: 6;
 }
-#easyGesturesPieMenu .removeBookmarkToThisLink,
-[data-action="removeBookmarkToThisLink"], .actionIcon.removeBookmarkToThisLink,
-.easyGesturesTips .removeBookmarkToThisLink {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .removeBookmarkToThisLink,
+[data-action="removeBookmarkToThisLink"], .actionIcon.removeBookmarkToThisLink {
   --icon-position-x: 7;
   --icon-position-y: 6;
 }
-#easyGesturesPieMenu .loadURL1,
-[data-action="loadURL1"], .actionIcon.loadURL1,
-.easyGesturesTips .loadURL1 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL1,
+[data-action="loadURL1"], .actionIcon.loadURL1 {
   --icon-position-x: 0;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .loadURL2,
-[data-action="loadURL2"], .actionIcon.loadURL2,
-.easyGesturesTips .loadURL2 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL2,
+[data-action="loadURL2"], .actionIcon.loadURL2 {
   --icon-position-x: 1;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .loadURL3,
-[data-action="loadURL3"], .actionIcon.loadURL3,
-.easyGesturesTips .loadURL3 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL3,
+[data-action="loadURL3"], .actionIcon.loadURL3 {
   --icon-position-x: 2;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .loadURL4,
-[data-action="loadURL4"], .actionIcon.loadURL4,
-.easyGesturesTips .loadURL4 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL4,
+[data-action="loadURL4"], .actionIcon.loadURL4 {
   --icon-position-x: 3;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .loadURL5,
-[data-action="loadURL5"], .actionIcon.loadURL5,
-.easyGesturesTips .loadURL5 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL5,
+[data-action="loadURL5"], .actionIcon.loadURL5 {
   --icon-position-x: 4;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .loadURL6,
-[data-action="loadURL6"], .actionIcon.loadURL6,
-.easyGesturesTips .loadURL6 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL6,
+[data-action="loadURL6"], .actionIcon.loadURL6 {
   --icon-position-x: 5;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .loadURL7,
-[data-action="loadURL7"], .actionIcon.loadURL7,
-.easyGesturesTips .loadURL7 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL7,
+[data-action="loadURL7"], .actionIcon.loadURL7 {
   --icon-position-x: 6;
   --icon-position-y: 7;
 }
@@ -1037,45 +972,38 @@
   --icon-position-x: 9;
   --icon-position-y: 7;
 }
-#easyGesturesPieMenu .runScript1,
-[data-action="runScript1"], .actionIcon.runScript1,
-.easyGesturesTips .runScript1 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript1,
+[data-action="runScript1"], .actionIcon.runScript1 {
   --icon-position-x: 0;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .runScript2,
-[data-action="runScript2"], .actionIcon.runScript2,
-.easyGesturesTips .runScript2 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript2,
+[data-action="runScript2"], .actionIcon.runScript2 {
   --icon-position-x: 1;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .runScript3,
-[data-action="runScript3"], .actionIcon.runScript3,
-.easyGesturesTips .runScript3 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript3,
+[data-action="runScript3"], .actionIcon.runScript3 {
   --icon-position-x: 2;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .runScript4,
-[data-action="runScript4"], .actionIcon.runScript4,
-.easyGesturesTips .runScript4 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript4,
+[data-action="runScript4"], .actionIcon.runScript4 {
   --icon-position-x: 3;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .runScript5,
-[data-action="runScript5"], .actionIcon.runScript5,
-.easyGesturesTips .runScript5 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript5,
+[data-action="runScript5"], .actionIcon.runScript5 {
   --icon-position-x: 4;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .runScript6,
-[data-action="runScript6"], .actionIcon.runScript6,
-.easyGesturesTips .runScript6 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript6,
+[data-action="runScript6"], .actionIcon.runScript6 {
   --icon-position-x: 5;
   --icon-position-y: 8;
 }
-#easyGesturesPieMenu .runScript7,
-[data-action="runScript7"], .actionIcon.runScript7,
-.easyGesturesTips .runScript7 {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .runScript7,
+[data-action="runScript7"], .actionIcon.runScript7 {
   --icon-position-x: 6;
   --icon-position-y: 8;
 }
@@ -1099,51 +1027,43 @@
   --icon-position-x: 0;
   --icon-position-y: 9;
 }
-#easyGesturesPieMenu .copyImageLocation,
-[data-action="copyImageLocation"], .actionIcon.copyImageLocation,
-.easyGesturesTips .copyImageLocation {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copyImageLocation,
+[data-action="copyImageLocation"], .actionIcon.copyImageLocation {
   --icon-position-x: 0;
   --icon-position-y: 10;
 }
-#easyGesturesPieMenu .copyImage,
-[data-action="copyImage"], .actionIcon.copyImage,
-.easyGesturesTips .copyImage {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copyImage,
+[data-action="copyImage"], .actionIcon.copyImage {
   --icon-position-x: 1;
   --icon-position-y: 10;
 }
-#easyGesturesPieMenu .saveImageAs,
-[data-action="saveImageAs"], .actionIcon.saveImageAs,
-.easyGesturesTips .saveImageAs {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .saveImageAs,
+[data-action="saveImageAs"], .actionIcon.saveImageAs {
   --icon-position-x: 2;
   --icon-position-y: 10;
 }
-#easyGesturesPieMenu .hideImages,
-[data-action="hideImages"], .actionIcon.hideImages,
-.easyGesturesTips .hideImages {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .hideImages,
+[data-action="hideImages"], .actionIcon.hideImages {
   --icon-position-x: 3;
   --icon-position-y: 10;
 }
-#easyGesturesPieMenu .cut,
-[data-action="cut"], .actionIcon.cut,
-.easyGesturesTips .cut {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .cut,
+[data-action="cut"], .actionIcon.cut {
   --icon-position-x: 0;
   --icon-position-y: 11;
 }
-#easyGesturesPieMenu .copy,
-[data-action="copy"], .actionIcon.copy,
-.easyGesturesTips .copy {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copy,
+[data-action="copy"], .actionIcon.copy {
   --icon-position-x: 1;
   --icon-position-y: 11;
 }
-#easyGesturesPieMenu .paste,
-[data-action="paste"], .actionIcon.paste,
-.easyGesturesTips .paste {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .paste,
+[data-action="paste"], .actionIcon.paste {
   --icon-position-x: 2;
   --icon-position-y: 11;
 }
-#easyGesturesPieMenu .selectAll,
-[data-action="selectAll"], .actionIcon.selectAll,
-.easyGesturesTips .selectAll {
+:is(#easyGesturesPieMenu, .easyGesturesTips) .selectAll,
+[data-action="selectAll"], .actionIcon.selectAll {
   --icon-position-x: 3;
   --icon-position-y: 11;
 }

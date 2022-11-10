@@ -104,7 +104,7 @@ div#dailyReadingsAction {
   top: 0px;
 }
 #tipImages .easyGesturesActionsNode, .easyGesturesMainMenusSign,
-.easyGesturesLinkSign, .easyGesturesTips .easyGesturesTooltipsNode,
+.easyGesturesLinkSign, #tipImages .easyGesturesTips .easyGesturesTooltipsNode,
 .easyGesturesContextMenuSign {
   visibility: visible;
 }
@@ -132,8 +132,7 @@ div#dailyReadingsAction {
   width: 454px;
   height: 122px;
 }
-#dragToAction .easyGesturesTips,
-#openAltMenu .easyGesturesTips {
+:is(#dragToAction, #openAltMenu) .easyGesturesTips {
   margin-left: 64px;
 }
 #dragToAction .easyGesturesActionsNode:nth-child(2) {
@@ -151,11 +150,8 @@ div#dailyReadingsAction {
 #openAltMenu .easyGesturesMainMenusSign, .easyGesturesContextMenuSign {
   left: calc(-1 * var(--actions-node-offset) + var(--icon-size));
 }
-#openAltMenu div.easyGesturesActionsNode,
-#tooltips div.easyGesturesActionsNode,
-#loadURLActions div.easyGesturesActionsNode,
-#runScriptActions div.easyGesturesActionsNode,
-#contextualMenus div.easyGesturesActionsNode {
+:is(#openAltMenu, #tooltips, #loadURLActions, #runScriptActions,
+    #contextualMenus) div.easyGesturesActionsNode {
   top: calc(-1 * var(--tooltips-y-offset) + var(--actions-node-offset));
 }
 #openAltMenu .easyGesturesMainMenusSign:nth-child(2),
@@ -187,6 +183,9 @@ div#dailyReadingsAction {
 #openExtraMenu .easyGesturesExtraNode {
   margin-left: 170px;
 }
+#openExtraMenu .easyGesturesActionsNode.easyGesturesExtraNode {
+  top: 0px;
+}
 #openExtraMenu::after {
   background-position-y: -393px;
   width: 292px;
@@ -209,13 +208,10 @@ div#dailyReadingsAction {
   width: 400px; /* calc(-2 * var(--tooltips-x-offset)) */
   height: 162px; /* calc(-2 * var(--tooltips-y-offset)) */
 }
-#tooltips div.easyGesturesActionsNode,
-#loadURLActions div.easyGesturesActionsNode,
-#runScriptActions div.easyGesturesActionsNode {
+:is(#tooltips, #loadURLActions, #runScriptActions) div.easyGesturesActionsNode {
   left: calc(-1 * var(--tooltips-x-offset) + var(--actions-node-offset));
 }
-#loadURLActions .easyGesturesMainMenusSign,
-#runScriptActions .easyGesturesMainMenusSign {
+:is(#loadURLActions, #runScriptActions) .easyGesturesMainMenusSign {
   left: calc(-1 * var(--tooltips-x-offset) + var(--icon-size));
 }
 #contextualMenus {
