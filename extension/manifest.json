@@ -10,7 +10,7 @@
     "122": "icon122.png"
   },
   
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "easyGesturesN@ngdeleito.eu",
       "strict_min_version": "101.0"
