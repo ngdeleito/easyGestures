@@ -1,6 +1,13 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.7 (November 28, 2022)
+
+- dark theme for preferences and tips dialogs
+- replaced static PNG images in tips dialog with scalable versions
+- minor improvements, mainly in the preferences and tips dialogs
+
+
 Version 6.6 (December 6, 2021)
 
 - made the "tabs" permission optional
