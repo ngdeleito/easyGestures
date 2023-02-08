@@ -546,7 +546,7 @@ let eGActions = {
   }, false, "zoomReset"),
   
   zoomReset: new Action("zoomReset", function() {
-    browser.tabs.setZoom(1);
+    browser.tabs.setZoom(0);
   }, false, "findAndHighlightSelection"),
   
   findAndHighlightSelection: new SelectionExistsDisableableAction("findAndHighlightSelection", function() {
