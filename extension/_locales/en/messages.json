@@ -126,7 +126,7 @@
   "customizations": { "message": "Customizations" },
   "usage": { "message": "Usage" },
   
-  "general.startupTips": { "message": "Show tips at startup" },
+  "general.startupTips": { "message": "Show tips at startup (only in non-permanent private browsing mode)" },
   "general.displayTips": { "message": "Display tips" },
   "general.prefs.manage": { "message": "Manage preferences" },
   "general.prefs.import": { "message": "Import preferences..." },

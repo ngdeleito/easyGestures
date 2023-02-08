@@ -126,7 +126,7 @@
   "customizations": { "message": "Personnalisations" },
   "usage": { "message": "Utilisation" },
   
-  "general.startupTips": { "message": "Afficher les astuces au démarrage de Firefox" },
+  "general.startupTips": { "message": "Afficher les astuces au démarrage de Firefox (seulement si le mode de navigation privée permanente est désactivé)" },
   "general.displayTips": { "message": "Afficher les astuces" },
   "general.prefs.manage": { "message": "Gérer les préférences" },
   "general.prefs.import": { "message": "Importer les préférences..." },

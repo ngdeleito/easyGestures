@@ -2,11 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global browser, eGPrefs, eGContext, eGActions, eGUtils, window */
+/* global browser, eGPrefs, eGContext, eGActions, eGUtils */
 
 "use strict";
-
-let installOrUpgradeTriggered = false;
 
 function resetPieMenuOnAllTabs() {
   browser.tabs.query({}).then(tabs => {
@@ -140,25 +138,7 @@ function handleMessage(aMessage, sender, sendResponse) {
   }
 }
 
-function startup() {
-  // start listening to changes in preferences that could require rebuilding the
-  // menus
-  browser.storage.local.onChanged.addListener(handleStorageChange);
-  // start listening to messages from content scripts
-  browser.runtime.onMessage.addListener(handleMessage);
-  // displaying tips if requested
-  eGPrefs.areStartupTipsOn().then(prefValue => {
-    if (prefValue) {
-      browser.tabs.create({
-        active: false,
-        url: "/tips/tips.html"
-      });
-    }
-  });
-}
-
 async function handleInstallOrUpgrade(details) {
-  installOrUpgradeTriggered = true;
   await browser.storage.local.set({
     "installOrUpgradeTriggered": true
   });
@@ -187,16 +167,28 @@ async function handleInstallOrUpgrade(details) {
     }
   }
   await browser.storage.local.remove("installOrUpgradeTriggered");
-  startup();
+  browser.runtime.reload();
   // sending a reset to initialize the content scripts
   resetPieMenuOnAllTabs();
 }
 
 browser.runtime.onInstalled.addListener(handleInstallOrUpgrade);
 
-window.setTimeout(() => {
-  // if no install or upgrade procedure is triggered, then run startup
-  if (!installOrUpgradeTriggered) {
-    startup();
-  }
-}, 200);
+// start listening to changes in preferences that could require rebuilding the
+// menus
+browser.storage.local.onChanged.addListener(handleStorageChange);
+
+// start listening to messages from content scripts
+browser.runtime.onMessage.addListener(handleMessage);
+
+browser.runtime.onStartup.addListener(() => {
+  // displaying tips if requested
+  eGPrefs.areStartupTipsOn().then(prefValue => {
+    if (prefValue) {
+      browser.tabs.create({
+        active: false,
+        url: "/tips/tips.html"
+      });
+    }
+  });
+});
