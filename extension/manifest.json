@@ -13,7 +13,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "easyGesturesN@ngdeleito.eu",
-      "strict_min_version": "106.0"
+      "strict_min_version": "112.0"
     }
   },
   
@@ -29,6 +29,7 @@
       "background/eGActions.js", "background/eGPrefs.js",
       "background/easyGesturesN-background.js"
     ],
+    "type": "module",
     "persistent": false
   },
   "content_scripts": [{

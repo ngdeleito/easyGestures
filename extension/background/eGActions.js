@@ -27,9 +27,11 @@
 //  |-- ContentSideStatusAction
 
 /* exported eGActions */
-/* global eGPrefs, console, browser, eGUtils, eGContext, URL, atob, Blob, fetch */
+/* global console, browser, URL, atob, Blob, fetch */
 
-"use strict";
+import { eGPrefs } from "./eGPrefs.js";
+import { eGUtils } from "./eGUtils.js";
+import { eGContext } from "./eGContext.js";
 
 class Action {
   constructor(name, action, startsNewGroup, nextAction) {
@@ -367,7 +369,7 @@ class DisabledAction extends DisableableAction {
 }
 
 
-let eGActions = {
+export let eGActions = {
   empty: new EmptyAction(false, "showExtraMenu"),
   
   showExtraMenu: new ShowExtraMenuAction(true, "back"),

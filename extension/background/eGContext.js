@@ -4,9 +4,7 @@
 
 /* exported eGContext */
 
-"use strict";
-
-let eGContext = {
+export let eGContext = {
   pageURL: "",
   urlToIdentifier: "",
   

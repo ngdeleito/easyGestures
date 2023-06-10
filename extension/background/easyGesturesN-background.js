@@ -2,9 +2,12 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global browser, eGPrefs, eGContext, eGActions, eGUtils */
+/* global browser */
 
-"use strict";
+import { eGPrefs } from "./eGPrefs.js";
+import { eGContext } from "./eGContext.js";
+import { eGActions } from "./eGActions.js";
+import { eGUtils } from "./eGUtils.js";
 
 function resetPieMenuOnAllTabs() {
   browser.tabs.query({}).then(tabs => {

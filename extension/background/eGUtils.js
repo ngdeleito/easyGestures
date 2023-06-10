@@ -5,9 +5,7 @@
 /* exported eGUtils */
 /* global browser */
 
-"use strict";
-
-let eGUtils = {
+export let eGUtils = {
   isVersionSmallerThan(oldVersion, newVersion) {
     let oldVersionArray = oldVersion.split(".");
     let newVersionArray = newVersion.split(".");

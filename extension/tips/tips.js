@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global window, browser, document, eGPrefs, eGUtils */
+/* global window, browser, document */
 
-"use strict";
+import { eGPrefs } from "../background/eGPrefs.js";
+import { eGUtils } from "../background/eGUtils.js";
 
 window.addEventListener("load", tipsLoadHandler);
 window.addEventListener("unload", tipsUnloadHandler);

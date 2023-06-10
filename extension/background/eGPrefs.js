@@ -3,9 +3,9 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
 /* exported eGPrefs */
-/* global browser, eGActions */
+/* global browser */
 
-"use strict";
+import { eGActions } from "./eGActions.js";
 
 class Pref {
   constructor(name, value) {
@@ -74,7 +74,7 @@ class ObjectPref extends PrefWithValidationFunction {
   }
 }
 
-let eGPrefs = {
+export let eGPrefs = {
   _setBoolPref(aPrefsMap, prefName, prefValue) {
     aPrefsMap.set(prefName, new BoolPref(prefName, prefValue));
   },
