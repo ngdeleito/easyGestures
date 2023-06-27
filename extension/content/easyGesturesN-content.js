@@ -146,7 +146,7 @@ function initializeContext(anHTMLElement, currentSelection) {
     imageElementSRC: imageElement !== null ? imageElement.src : null,
     inputElementExists: inputElement !== null,
     inputElementContainsSelection: inputElement !== null ?
-       inputElement.selectionEnd > inputElement.selectionStart : false,
+      inputElement.selectionEnd > inputElement.selectionStart : false,
     documentDoesntContainImages: document.querySelectorAll("img").length === 0,
     frameHierarchyArray: []
   }];
@@ -430,9 +430,9 @@ function handleMousedownFromInnerFrameWithinInnerFrame(parameters) {
     updateClientCoordinatesFromInnerFrame(innerFrameElement, parameters);
     parameters.innerFrameURL = window.location.toString();
     parameters.context.frameHierarchyArray.push({
-        URL: window.location.toString(),
-        windowScrollY: window.scrollY,
-        windowScrollMaxY: window.scrollMaxY
+      URL: window.location.toString(),
+      windowScrollY: window.scrollY,
+      windowScrollMaxY: window.scrollMaxY
     });
     browser.runtime.sendMessage({
       messageName: "transferMousedownToUpperFrame",

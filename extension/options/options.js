@@ -775,7 +775,7 @@ function setMenuType(anEvent) {
      "allMenusMainMenu", "allMenusExtraMenu"]
       .forEach(id => {
         document.getElementById(id).classList.toggle("large", menuTypeIsLarge);
-     });
+    });
   });
 }
 
@@ -989,11 +989,11 @@ function initializeClicksByDirectionTotals(usageArray, isExtraMenu) {
     container.classList.toggle("large", prefValue);
   });
   for (let i = 0; i < numberOfActions; ++i) {
-   let usageElement = document.createElement("div");
-   usageElement.className = `menuIcon sector${i}`;
-   usageElement.textContent = `${Math.round(usages[i] * 100 /
-                                            (total === 0 ? 1 : total))}%`;
-   container.appendChild(usageElement);
+    let usageElement = document.createElement("div");
+    usageElement.className = `menuIcon sector${i}`;
+    usageElement.textContent = `${Math.round(usages[i] * 100 /
+                                             (total === 0 ? 1 : total))}%`;
+    container.appendChild(usageElement);
   }
 }
 
