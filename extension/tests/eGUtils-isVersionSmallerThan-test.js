@@ -2,9 +2,9 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global QUnit, eGUtils */
+/* global QUnit */
 
-"use strict";
+import { eGUtils } from "/background/eGUtils.js";
 
 QUnit.test("test isVersionSmallerThan", assert => {
   assert.ok(eGUtils.isVersionSmallerThan("5.2", "5.2.1"));

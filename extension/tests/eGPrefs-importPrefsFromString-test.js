@@ -2,9 +2,10 @@
  * License, v. 2.0. If a copy of the MPL was not distributed with this
  * file, You can obtain one at https://mozilla.org/MPL/2.0/. */
 
-/* global QUnit, eGPrefs, eGActions */
+/* global QUnit */
 
-"use strict";
+import { eGPrefs } from "/background/eGPrefs.js";
+import { eGActions } from "/background/eGActions.js";
 
 QUnit.test("test importPrefsFromString with invalid file content", assert => {
   assert.throws(() => eGPrefs.importPrefsFromString(""));
