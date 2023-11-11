@@ -1,6 +1,13 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.8 (November 11, 2023)
+
+- fixed: zoomReset action resets the zoom level to the current default zoom factor
+- background scripts are now ES modules and are non-persistent (in preparation for MV3)
+- "Run Script" actions will not be possible in MV3; as a result, they are deprecated and will be removed when transitioning to MV3
+
+
 Version 6.7 (November 28, 2022)
 
 - dark theme for preferences and tips dialogs
