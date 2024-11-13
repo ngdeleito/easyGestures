@@ -9,7 +9,7 @@
 -->
 
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"
-     version="1.1" width="544" height="384" stroke="black" stroke-width="2"
+     version="1.1" width="576" height="384" stroke="black" stroke-width="2"
      fill="transparent">
   <defs>
     <g id="arrow">
@@ -82,6 +82,11 @@
       <line x1="6.87" y1="12" x2="10.14" y2="0" />
       <line x1="1" y1="4" x2="13" y2="4" />
       <line x1="0" y1="8" x2="12" y2="8" />
+    </g>
+    <g id="textCursor">
+      <path d="M 0 0 h 2 a 2 2 0 0 1 2 2 v 8 a 2 2 0 0 1 -2 2 h -2
+               M 4 2 a 2 2 0 0 1 2 -2 h 2
+               M 4 10 a 2 2 0 0 0 2 2 h 2" />
     </g>
     <g id="magnifyingGlass">
       <circle cx="13" cy="13" r="7" />
@@ -162,6 +167,11 @@
                        8.18 26.00, 11.71 24.15, 15.24 26.00, 14.56 22.08,
                        17.42 19.30, 13.47 18.72" stroke-linejoin="round"
                stroke-width="1.5" />
+    </g>
+    <g id="smallTextCursor">
+      <path d="M 0 0 h 1 a 2 2 0 0 1 2 2 v 5 a 2 2 0 0 1 -2 2 h -1
+               M 3 2 a 2 2 0 0 1 2 -2 h 1
+               M 3 7 a 2 2 0 0 0 2 2 h 1" />
     </g>
     <g id="star">
       <polygon points="16.00 5.14, 12.47 12.29, 4.59 13.43, 10.29 18.99,
@@ -315,31 +325,36 @@
     <use href="#hashSign" x="5" y="6" />
     <use href="#hashSign" x="14" y="14" />
   </g>
-  <!-- zoomIn -->
+  <!-- copyURLToTextFragment -->
   <g transform="translate(160, 64)">
+    <use href="#textCursor" x="7" y="7" />
+    <use href="#textCursor" x="17" y="13" />
+  </g>
+  <!-- zoomIn -->
+  <g transform="translate(192, 64)">
     <use href="#magnifyingGlass" />
     <use href="#plusSign" x="9" y="9" />
   </g>
   <!-- zoomOut -->
-  <g transform="translate(192, 64)">
+  <g transform="translate(224, 64)">
     <use href="#magnifyingGlass" />
     <use href="#minusSign" x="9" y="13" />
   </g>
   <!-- zoomReset -->
-  <g transform="translate(224, 64)">
+  <g transform="translate(256, 64)">
     <use href="#magnifyingGlass" />
     <text x="13" y="16" text-anchor="middle" font-family="sans-serif"
           font-size="9" stroke-width="1">1</text>
   </g>
   <!-- findAndHighlightSelection -->
-  <use href="#highlighter" x="256" y="64" />
+  <use href="#highlighter" x="288" y="64" />
   <!-- removeHighlight -->
-  <g transform="translate(288, 64)">
+  <g transform="translate(320, 64)">
     <use href="#highlighter" transform="translate(-5, 0)" />
     <use href="#crossSign" x="20" y="20" />
   </g>
   <!-- enterReaderMode -->
-  <g transform="translate(320, 64)">
+  <g transform="translate(352, 64)">
     <line x1="6" y1="9" x2="6" y2="26" stroke-linecap="round" />
     <line x1="16" y1="9" x2="16" y2="26" stroke-linecap="round" />
     <line x1="26" y1="9" x2="26" y2="26" stroke-linecap="round" />
@@ -353,7 +368,7 @@
     <line x1="18" y1="20" x2="24" y2="20" />
   </g>
   <!-- takeTabScreenshot -->
-  <g transform="translate(352, 64)">
+  <g transform="translate(384, 64)">
     <path d="M 6 10 h 6 l 2 -3 h 4 l 2 3 h 6 v 14 h -20 v -7 M 10 17
              A 6 6 0 1 0 22 17 A 6 6 0 1 0 10 17 M 13.5 17
              A 2.5 2.5 0 1 0 18.5 17 A 2.5 2.5 0 1 0 13.5 17 M 6 17 v -7 Z"
@@ -361,12 +376,12 @@
     <line x1="8" y1="7.5" x2="10" y2="7.5" stroke-linecap="round" />
   </g>
   <!-- toggleFullscreen -->
-  <g transform="translate(384, 64)">
+  <g transform="translate(416, 64)">
     <use href="#smallArrow" transform="translate(26, 6) rotate(45)" />
     <use href="#smallArrow" transform="translate(6, 26) rotate(-135)" />
   </g>
   <!-- up -->
-  <g transform="translate(416, 64)">
+  <g transform="translate(448, 64)">
     <use href="#urlWithPath" />
     <path d="M 26 20 v 6 h -6 v -6" stroke-linejoin="round"
           stroke-width="1.5" />
@@ -374,7 +389,7 @@
           stroke-width="1.5"  />
   </g>
   <!-- root -->
-  <g transform="translate(448, 64)">
+  <g transform="translate(480, 64)">
     <use href="#urlWithPath" />
     <path d="M 26 20 v 6 h -12 v -6" stroke-linejoin="round"
           stroke-width="1.5" />
@@ -382,14 +397,14 @@
           stroke-width="1.5" />
   </g>
   <!-- showOnlyThisFrame -->
-  <g transform="translate(480, 64)">
+  <g transform="translate(512, 64)">
     <polygon points="6 6, 26 6, 26 26, 6 26" />
     <line x1="12" y1="6" x2="12" y2="26" stroke-width="1" />
     <line x1="12" y1="14" x2="26" y2="14" stroke-width="1" />
     <use href="#smallArrow" transform="translate(10, 10) rotate(-45)" />
   </g>
   <!-- viewPageSource -->
-  <g transform="translate(512, 64)">
+  <g transform="translate(544, 64)">
     <polyline points="12 6, 14, 6" />
     <use href="#pageCorner" />
     <polyline points="26 18, 26 26, 12 26" />
@@ -546,14 +561,20 @@
     <use href="#tinyStar" />
     <use href="#plusSign" x="19" y="19" />
   </g>
-  <!-- bookmarkThisLink -->
+  <!-- bookmarkThisTextFragment -->
   <g transform="translate(96, 192)">
+    <use href="#smallTextCursor" x="13.5" y="6" />
+    <use href="#tinyStar" />
+    <use href="#plusSign" x="19" y="19" />
+  </g>
+  <!-- bookmarkThisLink -->
+  <g transform="translate(128, 192)">
     <use href="#linkSign" x="6" y="6" />
     <use href="#tinyStar" />
     <use href="#plusSign" x="19" y="19" />
   </g>
   <!-- bookmarkAllTabs -->
-  <g transform="translate(128, 192)">
+  <g transform="translate(160, 192)">
     <path d="M 6 14 v -6 a 2 2 0 0 1 2 -2 h 4
                     a 2 2 0 0 1 2 2 v 3 a 2 2 0 0 0 2 2 h 11
              M 14 10 a 2 2 0 0 1 2 -2 h 2 a 2 2 0 0 1 2 2 v 3
@@ -562,18 +583,24 @@
     <use href="#plusSign" x="19" y="19" />
   </g>
   <!-- removeBookmarkToThisPage -->
-  <g transform="translate(160, 192)">
+  <g transform="translate(192, 192)">
     <use href="#smallStar" />
     <use href="#crossSign" x="20" y="20" />
   </g>
   <!-- removeBookmarkToThisIdentifier -->
-  <g transform="translate(192, 192)">
+  <g transform="translate(224, 192)">
     <use href="#smallHashSign" x="11" y="5" />
     <use href="#tinyStar" />
     <use href="#crossSign" x="20" y="20" />
   </g>
+  <!-- removeBookmarkToThisTextFragment -->
+  <g transform="translate(256, 192)">
+    <use href="#smallTextCursor" x="13.5" y="6" />
+    <use href="#tinyStar" />
+    <use href="#crossSign" x="20" y="20" />
+  </g>
   <!-- removeBookmarkToThisLink -->
-  <g transform="translate(224, 192)">
+  <g transform="translate(288, 192)">
     <use href="#linkSign" x="6" y="6" />
     <use href="#tinyStar" />
     <use href="#crossSign" x="20" y="20" />

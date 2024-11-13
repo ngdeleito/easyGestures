@@ -242,7 +242,7 @@
   z-index: 1;
   width: var(--icon-size);
   height: var(--icon-size);
-  mask-size: calc(var(--icon-size) * 17);
+  mask-size: calc(var(--icon-size) * 18);
 }
 
 :is(#easyGesturesPieMenu, #easyGesturesPieMenu.large .easyGesturesExtraNode,
@@ -707,64 +707,69 @@
   --icon-position-x: 4;
   --icon-position-y: 2;
 }
+:is(#easyGesturesPieMenu, .easyGesturesTips) .copyURLToTextFragment,
+[data-action="copyURLToTextFragment"], .actionIcon.copyURLToTextFragment {
+  --icon-position-x: 5;
+  --icon-position-y: 2;
+}
 #easyGesturesPieMenu .zoomIn,
 [data-action="zoomIn"], .actionIcon.zoomIn {
-  --icon-position-x: 5;
+  --icon-position-x: 6;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomOut,
 [data-action="zoomOut"], .actionIcon.zoomOut {
-  --icon-position-x: 6;
+  --icon-position-x: 7;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .zoomReset,
 [data-action="zoomReset"], .actionIcon.zoomReset {
-  --icon-position-x: 7;
+  --icon-position-x: 8;
   --icon-position-y: 2;
 }
 :is(#easyGesturesPieMenu, .easyGesturesTips) .findAndHighlightSelection,
 [data-action="findAndHighlightSelection"], .actionIcon.findAndHighlightSelection {
-  --icon-position-x: 8;
+  --icon-position-x: 9;
   --icon-position-y: 2;
 }
 :is(#easyGesturesPieMenu, .easyGesturesTips) .removeHighlight,
 [data-action="removeHighlight"], .actionIcon.removeHighlight {
-  --icon-position-x: 9;
+  --icon-position-x: 10;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .enterReaderMode,
 [data-action="enterReaderMode"], .actionIcon.enterReaderMode {
-  --icon-position-x: 10;
+  --icon-position-x: 11;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .takeTabScreenshot,
 [data-action="takeTabScreenshot"], .actionIcon.takeTabScreenshot {
-  --icon-position-x: 11;
+  --icon-position-x: 12;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .toggleFullscreen,
 [data-action="toggleFullscreen"], .actionIcon.toggleFullscreen {
-  --icon-position-x: 12;
+  --icon-position-x: 13;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .up,
 [data-action="up"], .actionIcon.up {
-  --icon-position-x: 13;
+  --icon-position-x: 14;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .root,
 [data-action="root"], .actionIcon.root {
-  --icon-position-x: 14;
+  --icon-position-x: 15;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .showOnlyThisFrame,
 [data-action="showOnlyThisFrame"], .actionIcon.showOnlyThisFrame {
-  --icon-position-x: 15;
+  --icon-position-x: 16;
   --icon-position-y: 2;
 }
 #easyGesturesPieMenu .viewPageSource,
 [data-action="viewPageSource"], .actionIcon.viewPageSource {
-  --icon-position-x: 16;
+  --icon-position-x: 17;
   --icon-position-y: 2;
 }
 :is(#easyGesturesPieMenu, .easyGesturesTips) .newTab,
@@ -897,29 +902,39 @@
   --icon-position-x: 2;
   --icon-position-y: 6;
 }
+#easyGesturesPieMenu .bookmarkThisTextFragment,
+[data-action="bookmarkThisTextFragment"], .actionIcon.bookmarkThisTextFragment {
+  --icon-position-x: 3;
+  --icon-position-y: 6;
+}
 :is(#easyGesturesPieMenu, .easyGesturesTips) .bookmarkThisLink,
 [data-action="bookmarkThisLink"], .actionIcon.bookmarkThisLink {
-  --icon-position-x: 3;
+  --icon-position-x: 4;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .bookmarkAllTabs,
 [data-action="bookmarkAllTabs"], .actionIcon.bookmarkAllTabs {
-  --icon-position-x: 4;
+  --icon-position-x: 5;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisPage,
 [data-action="removeBookmarkToThisPage"], .actionIcon.removeBookmarkToThisPage {
-  --icon-position-x: 5;
+  --icon-position-x: 6;
   --icon-position-y: 6;
 }
 #easyGesturesPieMenu .removeBookmarkToThisIdentifier,
 [data-action="removeBookmarkToThisIdentifier"], .actionIcon.removeBookmarkToThisIdentifier {
-  --icon-position-x: 6;
+  --icon-position-x: 7;
+  --icon-position-y: 6;
+}
+#easyGesturesPieMenu .removeBookmarkToThisTextFragment,
+[data-action="removeBookmarkToThisTextFragment"], .actionIcon.removeBookmarkToThisTextFragment {
+  --icon-position-x: 8;
   --icon-position-y: 6;
 }
 :is(#easyGesturesPieMenu, .easyGesturesTips) .removeBookmarkToThisLink,
 [data-action="removeBookmarkToThisLink"], .actionIcon.removeBookmarkToThisLink {
-  --icon-position-x: 7;
+  --icon-position-x: 9;
   --icon-position-y: 6;
 }
 :is(#easyGesturesPieMenu, .easyGesturesTips) .loadURL1,

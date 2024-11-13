@@ -233,7 +233,7 @@ div#dailyReadingsAction {
 #zoomOnImage {
   width: calc(3 * 64px);
   height: calc(3 * 32px);
-  mask-position: calc(-3 * 160px) calc(-3 * 64px);
+  mask-position: calc(-3 * 192px) calc(-3 * 64px);
   mask-size: auto calc(3 * 384px);
 }
 #openLinkAction {

@@ -126,6 +126,10 @@ class Action {
         break;
     }
   }
+  
+  _getFragmentForSelection() {
+    return "#:~:text=" + encodeURIComponent(eGContext.selection);
+  }
 }
 
 class EmptyAction extends Action {
@@ -509,6 +513,12 @@ export let eGActions = {
     return this._sendPerformActionMessage("copyInformation", {
       information: eGContext.urlToIdentifier
     });
+  }, false, "copyURLToTextFragment"),
+  
+  copyURLToTextFragment: new SelectionExistsDisableableAction("copyURLToTextFragment", function() {
+    return this._sendPerformActionMessage("copyInformation", {
+      information: eGContext.pageURL + this._getFragmentForSelection()
+    });
   }, false, "zoomIn"),
   
   zoomIn: new Action("zoomIn", function() {
@@ -866,6 +876,15 @@ export let eGActions = {
         url: eGContext.urlToIdentifier
       });
     });
+  }, false, "bookmarkThisTextFragment"),
+  
+  bookmarkThisTextFragment: new SelectionExistsDisableableAction("bookmarkThisTextFragment", function() {
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.bookmarks.create({
+        title: currentTab.title,
+        url: currentTab.url + this._getFragmentForSelection()
+      });
+    });
   }, false, "bookmarkThisLink"),
   
   bookmarkThisLink: new DisableableAction("bookmarkThisLink", function() {
@@ -927,6 +946,24 @@ export let eGActions = {
                                                 }).then(foundBookmarks => {
                                                   return foundBookmarks.length === 0;
                                                 });
+    }
+    catch (exception) {
+      return Promise.resolve(true);
+    }
+  }, false, "removeBookmarkToThisTextFragment"),
+  
+  removeBookmarkToThisTextFragment: new DisableableAction("removeBookmarkToThisTextFragment", function() {
+    browser.bookmarks.search({
+      url: eGContext.pageURL + this._getFragmentForSelection()
+    }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
+  }, function() {
+    try {
+      return eGContext.selection === "" ? Promise.resolve(true)
+                                        : browser.bookmarks.search({
+                                            url: eGContext.pageURL + this._getFragmentForSelection()
+                                          }).then(foundBookmarks => {
+                                            return foundBookmarks.length === 0;
+                                          });
     }
     catch (exception) {
       return Promise.resolve(true);

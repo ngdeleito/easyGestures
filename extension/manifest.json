@@ -13,7 +13,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "easyGesturesN@ngdeleito.eu",
-      "strict_min_version": "112.0"
+      "strict_min_version": "131.0"
     }
   },
   

@@ -712,5 +712,11 @@ export let eGPrefs = {
     promises.push(this._addActions(["savePageAsPDF"]));
     
     return Promise.all(promises);
+  },
+  
+  async updateToV6_9() {
+    return this._addActions(["copyURLToTextFragment",
+                             "bookmarkThisTextFragment",
+                             "removeBookmarkToThisTextFragment"]);
   }
 };
