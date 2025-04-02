@@ -369,10 +369,10 @@ function initializePaneAndTabs(hash) {
       if (tabboxes.length > 0) {
         let tabbox = tabboxes[0];
         if (tabbox.getElementsByClassName("selectedTabLabel").length === 0) {
-          selectTab(tabbox.firstElementChild.hash.substr(1));
+          selectTab(tabbox.firstElementChild.hash.substring(1));
         }
         container =
-          document.getElementById(tabbox.firstElementChild.hash.substr(1));
+          document.getElementById(tabbox.firstElementChild.hash.substring(1));
       }
       else {
         finished = true;
@@ -382,7 +382,7 @@ function initializePaneAndTabs(hash) {
   
   document.location.hash = hash === "" ? "#general" : hash;
   
-  let locationHash = document.location.hash.substr(1);
+  let locationHash = document.location.hash.substring(1);
   let locationHashArray = locationHash.split("_");
   document.getElementById(`${locationHashArray[0]}_label`).className =
     "selectedPaneLabel";
@@ -1046,7 +1046,7 @@ function unselectCurrentPane() {
         document.getElementsByClassName("selectedPaneLabel")[0];
   if (selectedPaneLabelElement !== undefined) {
     selectedPaneLabelElement.removeAttribute("class");
-    document.getElementById(selectedPaneLabelElement.hash.substr(1))
+    document.getElementById(selectedPaneLabelElement.hash.substring(1))
             .classList.remove("selected");
   }
 }
@@ -1054,7 +1054,7 @@ function unselectCurrentPane() {
 function unselectCurrentTab(oldHash) {
   function unselectTab(aTabLabel) {
     aTabLabel.removeAttribute("class");
-    document.getElementById(aTabLabel.hash.substr(1)).classList
+    document.getElementById(aTabLabel.hash.substring(1)).classList
             .remove("selected");
   }
   
@@ -1067,7 +1067,7 @@ function unselectCurrentTab(oldHash) {
         let tabLabel =
               tabboxes[0].getElementsByClassName("selectedTabLabel")[0];
         unselectTab(tabLabel);
-        container = document.getElementById(tabLabel.hash.substr(1));
+        container = document.getElementById(tabLabel.hash.substring(1));
       }
       else {
         finished = true;
