@@ -13,12 +13,12 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "easyGesturesN@ngdeleito.eu",
-      "strict_min_version": "131.0"
+      "strict_min_version": "139.0"
     }
   },
   
   "default_locale": "en",
-  "permissions": ["search", "storage", "webNavigation"],
+  "permissions": ["tabGroups", "search", "storage", "webNavigation"],
   "optional_permissions": [
     "<all_urls>", "bookmarks", "browserSettings", "clipboardRead",
     "clipboardWrite", "downloads", "find", "sessions", "tabs"

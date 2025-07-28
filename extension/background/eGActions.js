@@ -197,15 +197,10 @@ class OtherTabsExistDisableableAction extends DisableableAction {
         });
       });
     }, function() {
-      return browser.tabs.query({
-        currentWindow: true
-      }).then(tabs => {
-        if (tabs.length > 1) {
-          this._getTargetTab().then(targetTab => {
-            browser.tabs.warmup(targetTab.id);
-          });
-        }
-        return tabs.length <= 1;
+      return eGUtils.performOnCurrentTab(async currentTab => {
+        let targetTab = await this._getTargetTab();
+        browser.tabs.warmup(targetTab.id);
+        return currentTab.index === targetTab.index;
       });
     }, startsNewGroup, nextAction);
     this._getTargetTabIndex = getTargetTabIndex;
@@ -216,10 +211,23 @@ class OtherTabsExistDisableableAction extends DisableableAction {
       let tabs = await browser.tabs.query({
         currentWindow: true
       });
-      let [targetTab] = await browser.tabs.query({
-        index: this._getTargetTabIndex(currentTab.index, tabs.length),
-        currentWindow: true
-      });
+      let targetTabFound = false;
+      let targetTab;
+      let currentTabIndex = currentTab.index;
+      while (!targetTabFound) {
+        [targetTab] = await browser.tabs.query({
+          index: this._getTargetTabIndex(currentTabIndex, tabs.length),
+          currentWindow: true
+        });
+        if (targetTab.groupId !== -1) {
+          let tabGroupInfo = await browser.tabGroups.get(targetTab.groupId);
+          targetTabFound = !tabGroupInfo.collapsed;
+          currentTabIndex = targetTab.index;
+        }
+        else {
+          targetTabFound = true;
+        }
+      }
       return targetTab;
     });
   }
