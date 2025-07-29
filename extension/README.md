@@ -6,6 +6,8 @@ This extension is a fork of version 4.3.2 of the easyGestures extension created 
 
 The permissions requested by this extension are used for the following purposes:
 
+- `tabGroups`
+  - "Previous Tab" and "Next Tab" actions
 - `search`
   - "Search web" action
 - `storage`
@@ -18,7 +20,7 @@ Additionally, users can explicitly grant the following optional permissions in t
 - `<all_urls>`: "Access your data for all websites"
   - "Take tab screenshot" and "Run script" actions
 - `bookmarks`: "Read and modify bookmarks"
-  - "Daily readings", "Bookmark this page", "Bookmark this identifier", "Bookmark this link", "Bookmark all tabs", "Remove bookmark to this page", "Remove bookmark to this identifier", and "Remove bookmark to this link" actions
+  - "Daily readings", "Bookmark this page", "Bookmark this identifier", "Bookmark this text fragment", "Bookmark this link", "Bookmark all tabs", "Remove bookmark to this page", "Remove bookmark to this identifier", "Remove bookmark to this text fragment", and "Remove bookmark to this link" actions
 - `browserSettings`: "Read and modify browser settings"
   - "Home page" and "New window" actions
 - `clipboardRead`: "Get data from the clipboard"
