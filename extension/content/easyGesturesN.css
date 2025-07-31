@@ -817,6 +817,11 @@
   --icon-position-x: 8;
   --icon-position-y: 3;
 }
+:is(#easyGesturesPieMenu, .easyGesturesTips) .muteUnmuteTab,
+[data-action="muteUnmuteTab"], .actionIcon.muteUnmuteTab {
+  --icon-position-x: 9;
+  --icon-position-y: 3;
+}
 #easyGesturesPieMenu .newWindow,
 [data-action="newWindow"], .actionIcon.newWindow {
   --icon-position-x: 0;

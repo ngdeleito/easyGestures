@@ -729,6 +729,14 @@ export let eGActions = {
         pinned: !currentTab.pinned
       });
     });
+  }, false, "muteUnmuteTab"),
+  
+  muteUnmuteTab: new Action("muteUnmuteTab", function() {
+    eGUtils.performOnCurrentTab(currentTab => {
+      browser.tabs.update({
+        muted: !currentTab.mutedInfo.muted
+      });
+    });
   }, false, "newWindow"),
   
   newWindow: new Action("newWindow", function() {

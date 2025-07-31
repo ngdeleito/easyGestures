@@ -55,6 +55,7 @@
   "previousTab": { "message": "Previous tab" },
   "nextTab": { "message": "Next tab" },
   "pinUnpinTab": { "message": "Pin/unpin tab" },
+  "muteUnmuteTab": { "message": "Mute/unmute tab" },
   
   "newWindow": { "message": "New window" },
   "newBlankWindow": { "message": "New blank window" },

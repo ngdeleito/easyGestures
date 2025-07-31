@@ -716,6 +716,7 @@ export let eGPrefs = {
   
   async updateToV6_9() {
     return this._addActions(["copyURLToTextFragment",
+                             "muteUnmuteTab",
                              "bookmarkThisTextFragment",
                              "removeBookmarkToThisTextFragment"]);
   }

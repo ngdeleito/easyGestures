@@ -55,6 +55,7 @@
   "previousTab": { "message": "Pestaña anterior" },
   "nextTab": { "message": "Pestaña siguiente" },
   "pinUnpinTab": { "message": "Clavar/desclavar pestaña" },
+  "muteUnmuteTab": { "message": "Silenciar pestaña / Restaurar el sonido" },
   
   "newWindow": { "message": "Nueva ventana" },
   "newBlankWindow": { "message": "Nueva ventana en blanco" },

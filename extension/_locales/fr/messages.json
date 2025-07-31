@@ -55,6 +55,7 @@
   "previousTab": { "message": "Onglet précédent" },
   "nextTab": { "message": "Onglet suivant" },
   "pinUnpinTab": { "message": "Épingler/relâcher cet onglet" },
+  "muteUnmuteTab": { "message": "Couper/réactiver le son de cet onglet" },
   
   "newWindow": { "message": "Nouvelle fenêtre" },
   "newBlankWindow": { "message": "Nouvelle fenêtre en blanc" },
