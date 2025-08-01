@@ -459,7 +459,7 @@ export let eGActions = {
     eGUtils.performOnCurrentTab(currentTab => {
       browser.downloads.download({
         url: currentTab.url,
-        filename: currentTab.title,
+        filename: encodeURIComponent(currentTab.title),
         saveAs: true
       }).catch(() => {});
     });
