@@ -597,7 +597,7 @@ export let eGActions = {
         let blobURL = URL.createObjectURL(aBlob);
         browser.downloads.download({
           url: blobURL,
-          filename: `${currentTab.title}.png`,
+          filename: encodeURIComponent(`${currentTab.title}.png`),
           saveAs: true
         }).then((downloadID) => {
           browser.downloads.onChanged.addListener(function downloadListener(download) {
