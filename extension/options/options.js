@@ -47,8 +47,7 @@ let optionalPermissions = {
   "clipboardWrite": "permissions",
   "downloads": "permissions",
   "find": "permissions",
-  "sessions": "permissions",
-  "tabs": "permissions"
+  "sessions": "permissions"
 };
 
 function displayTips() {

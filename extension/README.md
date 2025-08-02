@@ -34,5 +34,3 @@ Additionally, users can explicitly grant the following optional permissions in t
   - "Find and highlight selection" and "Remove highlight" actions
 - `sessions`: "Access recently closed tabs"
   - "Undo close tab" and "Undo close window" actions
-- `tabs`: "Access browser tabs"
-  - "Save page as...", "Take tab screenshot", "Bookmark this page", "Bookmark this identifier", and "Bookmark all tabs" actions
