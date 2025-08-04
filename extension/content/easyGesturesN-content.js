@@ -12,6 +12,7 @@ let scrollableElement, contextualMenus, imageElement, inputElement, context;
 
 if (window.self === window.top) {
   // setting up pie menu within topmost frame
+  ensureThereIsNoEasygesturesNodePresent();
   setPieMenuSettingsWithinTopmostFrame();
   addEventListener("mousedown", handleMousedownWithinTopmostFrame, true);
   addEventListener("mouseup", handleMouseupWithinTopmostFrame, true);
@@ -27,6 +28,16 @@ else {
   addEventListener("mouseup", handleMouseupWithinInnerFrame, true);
   addEventListener("keydown", handleKeydownWithinInnerFrame, true);
   browser.runtime.onMessage.addListener(handleMessageFromBackgroundScriptWithinInnerFrame);
+}
+
+function ensureThereIsNoEasygesturesNodePresent() {
+  // we remove an old easyGesturesPieMenu node potentially still present (this
+  // occurs when the extension is disabled and then enabled again, as no
+  // clean-up is performed when the extension is disabled)
+  let easyGesturesNode = document.getElementById("easyGesturesPieMenu");
+  if (easyGesturesNode !== null) {
+    easyGesturesNode.parentNode.removeChild(easyGesturesNode);
+  }
 }
 
 function setPieMenuSettingsWithinTopmostFrame() {
