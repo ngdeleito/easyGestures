@@ -189,28 +189,25 @@ function removeOptionalPermissionEventListeners() {
 function createActionsSelect(sectorNumber, isExtraMenu) {
   let div = document.createElement("div");
   let select = document.createElement("select");
-  let currentOptgroup = document.createElement("optgroup");
   div.appendChild(select);
-  select.appendChild(currentOptgroup);
   
   let currentAction = "empty"; // the EmptyAction is the first action
   while (currentAction !== null) {
     if (eGActions[currentAction].startsNewGroup) {
-      currentOptgroup = document.createElement("optgroup");
-      select.appendChild(currentOptgroup);
+      select.appendChild(document.createElement("hr"));
     }
     
     let option = document.createElement("option");
     option.setAttribute("value", currentAction);
     option.setAttribute("label", eGActions[currentAction].getLocalizedActionName());
-    currentOptgroup.appendChild(option);
+    select.appendChild(option);
     
     currentAction = eGActions[currentAction].nextAction;
   }
   
   if (sectorNumber !== 2 || isExtraMenu) {
     // remove showExtraMenu action
-    select.removeChild(select.childNodes[1]);
+    select.removeChild(select.childNodes[2]);
   }
   
   return div;
