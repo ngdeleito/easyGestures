@@ -1,6 +1,17 @@
 Changes since version 4.3.2 of easyGestures by Ons Besbes (see git history for the full details: https://github.com/ngdeleito/easyGestures/commits/development)
 
 
+Version 6.9 (January 3, 2026)
+
+- new actions: "Copy URL to Text Fragment", "Bookmark This Text Fragment", "Remove Bookmark to This Text Fragment", and "Mute/Unmute Tab"
+- fixed: "Next Tab" and "Previous Tab" actions did not ignore collapsed tab groups
+- fixed: "Save Page As" and "Take Tab Screenshot" actions failed to display the file chooser dialog in some cases
+- fixed: some action icons were not displayed at the right position in large menus
+- updated optional permissions
+- minor code improvements
+- deprecated features: "Run Script" actions, large menus and small icons
+
+
 Version 6.8 (November 11, 2023)
 
 - fixed: zoomReset action resets the zoom level to the current default zoom factor
