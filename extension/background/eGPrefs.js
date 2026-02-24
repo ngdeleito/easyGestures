@@ -314,10 +314,12 @@ export let eGPrefs = {
       });
       
       return Promise.all(setPreferencePromises).then(() => {
-        return notImportedPrefs.length === 0 ? undefined : {
-          code: "nonImportedPrefs",
-          prefs: notImportedPrefs.join(", ")
-        };
+        return notImportedPrefs.length === 0
+          ? undefined
+          : {
+              code: "nonImportedPrefs",
+              prefs: notImportedPrefs.join(", ")
+            };
       });
     });
   },
@@ -515,9 +517,9 @@ export let eGPrefs = {
   
   _renameActions(actionsToRename) {
     function newActionNameForAction(actionName) {
-      return actionsToRename[actionName] === undefined ?
-               actionName :
-               actionsToRename[actionName];
+      return actionsToRename[actionName] === undefined
+        ? actionName
+        : actionsToRename[actionName];
     }
     
     let promises = [];

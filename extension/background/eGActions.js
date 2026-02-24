@@ -714,8 +714,9 @@ export let eGActions = {
   
   previousTab: new OtherTabsExistDisableableAction("previousTab",
     function(currentTabIndex, numberOfTabs) {
-      return currentTabIndex - 1 < 0 ? numberOfTabs - 1 :
-                                       currentTabIndex - 1;
+      return currentTabIndex - 1 < 0
+        ? numberOfTabs - 1
+        : currentTabIndex - 1;
   }, false, "nextTab"),
   
   nextTab: new OtherTabsExistDisableableAction("nextTab",
@@ -910,12 +911,13 @@ export let eGActions = {
     });
   }, function() {
     try {
-      return eGContext.anchorElementExists ? browser.bookmarks.search({
-                                               url: eGContext.anchorElementHREF
-                                             }).then(foundBookmarks => {
-                                               return foundBookmarks.length > 0;
-                                             })
-                                           : Promise.resolve(true);
+      return eGContext.anchorElementExists
+        ? browser.bookmarks.search({
+            url: eGContext.anchorElementHREF
+          }).then(foundBookmarks => {
+            return foundBookmarks.length > 0;
+          })
+        : Promise.resolve(true);
     }
     catch (exception) {
       return Promise.resolve(true);
@@ -956,12 +958,13 @@ export let eGActions = {
     }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
   }, function() {
     try {
-      return eGContext.urlToIdentifier === "" ? Promise.resolve(true)
-                                              : browser.bookmarks.search({
-                                                  url: eGContext.urlToIdentifier
-                                                }).then(foundBookmarks => {
-                                                  return foundBookmarks.length === 0;
-                                                });
+      return eGContext.urlToIdentifier === ""
+        ? Promise.resolve(true)
+        : browser.bookmarks.search({
+            url: eGContext.urlToIdentifier
+          }).then(foundBookmarks => {
+            return foundBookmarks.length === 0;
+          });
     }
     catch (exception) {
       return Promise.resolve(true);
@@ -974,12 +977,13 @@ export let eGActions = {
     }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
   }, function() {
     try {
-      return eGContext.selection === "" ? Promise.resolve(true)
-                                        : browser.bookmarks.search({
-                                            url: eGContext.pageURL + this._getFragmentForSelection()
-                                          }).then(foundBookmarks => {
-                                            return foundBookmarks.length === 0;
-                                          });
+      return eGContext.selection === ""
+        ? Promise.resolve(true)
+        : browser.bookmarks.search({
+            url: eGContext.pageURL + this._getFragmentForSelection()
+          }).then(foundBookmarks => {
+            return foundBookmarks.length === 0;
+          });
     }
     catch (exception) {
       return Promise.resolve(true);
@@ -992,12 +996,13 @@ export let eGActions = {
     }).then(foundBookmarks => browser.bookmarks.remove(foundBookmarks[0].id));
   }, function() {
     try {
-      return eGContext.anchorElementExists ? browser.bookmarks.search({
-                                               url: eGContext.anchorElementHREF
-                                             }).then(foundBookmarks => {
-                                               return foundBookmarks.length === 0;
-                                             })
-                                           : Promise.resolve(true);
+      return eGContext.anchorElementExists
+        ? browser.bookmarks.search({
+            url: eGContext.anchorElementHREF
+          }).then(foundBookmarks => {
+            return foundBookmarks.length === 0;
+          })
+        : Promise.resolve(true);
     }
     catch (exception) {
       return Promise.resolve(true);

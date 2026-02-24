@@ -204,8 +204,9 @@ let eGPieMenu = {
     
     this._layouts = {
       main: new MenuLayout(this, "main", 0,
-                           this.settings.mainAlt1Enabled ? "mainAlt1" :
-                             (this.settings.mainAlt2Enabled ? "mainAlt2" : "main"),
+                           this.settings.mainAlt1Enabled
+                             ? "mainAlt1"
+                             : (this.settings.mainAlt2Enabled ? "mainAlt2" : "main"),
                            this.settings.main),
       
       mainAlt1: new MenuLayout(this, "mainAlt1", 1,
@@ -216,12 +217,17 @@ let eGPieMenu = {
                                this.settings.mainAlt2),
       
       extra: new ExtraMenuLayout(this, "extra", 0,
-                                 this.settings.extraAlt1Enabled ? "extraAlt1" :
-                                   (this.settings.extraAlt2Enabled ? "extraAlt2" : "extra"),
+                                 this.settings.extraAlt1Enabled
+                                   ? "extraAlt1"
+                                   : (this.settings.extraAlt2Enabled
+                                       ? "extraAlt2"
+                                       : "extra"),
                                  this.settings.extra),
       
       extraAlt1: new ExtraMenuLayout(this, "extraAlt1", 1,
-                                     this.settings.extraAlt2Enabled ? "extraAlt2" : "extra",
+                                     this.settings.extraAlt2Enabled
+                                       ? "extraAlt2"
+                                       : "extra",
                                      this.settings.extraAlt1),
       
       extraAlt2: new ExtraMenuLayout(this, "extraAlt2", 2, "extra",
@@ -748,8 +754,9 @@ let eGPieMenu = {
       });
     }
     else {
-      let messageName = clickedButton === 1 ? "loadURLInNewNonActiveTab" :
-                                              "loadURLInCurrentTab";
+      let messageName = clickedButton === 1
+        ? "loadURLInNewNonActiveTab"
+        : "loadURLInCurrentTab";
       browser.runtime.sendMessage({
         messageName: messageName,
         url: context.anchorElementHREF

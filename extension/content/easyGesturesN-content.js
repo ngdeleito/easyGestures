@@ -156,8 +156,9 @@ function initializeContext(anHTMLElement, currentSelection) {
     imageElementDoesntExist: imageElement === null,
     imageElementSRC: imageElement !== null ? imageElement.src : null,
     inputElementExists: inputElement !== null,
-    inputElementContainsSelection: inputElement !== null ?
-      inputElement.selectionEnd > inputElement.selectionStart : false,
+    inputElementContainsSelection: inputElement !== null
+      ? inputElement.selectionEnd > inputElement.selectionStart
+      : false,
     documentDoesntContainImages: document.querySelectorAll("img").length === 0,
     frameHierarchyArray: []
   }];
@@ -171,9 +172,10 @@ function getURLOfNearestIDAttribute(anHTMLElement) {
          currentElement.id === "") {
     currentElement = currentElement.parentElement;
   }
-  return currentElement.id === "" ? "" : `${document.location.origin}` +
-                                         `${document.location.pathname}#` +
-                                         `${currentElement.id}`;
+  return currentElement.id === ""
+    ? ""
+    : `${document.location.origin}` + `${document.location.pathname}#` +
+      `${currentElement.id}`;
 }
 
 function handleMousedownWithinTopmostFrame(anEvent) {

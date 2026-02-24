@@ -750,16 +750,18 @@ function addOnchangeListenerToPreferenceControl(control) {
 
 function setTheme(anEvent) {
   eGPrefs.isDarkThemeOn().then(prefValue => {
-    let themeIsDark = anEvent === undefined ? prefValue :
-                                              JSON.parse(anEvent.target.value);
+    let themeIsDark = anEvent === undefined
+      ? prefValue
+      : JSON.parse(anEvent.target.value);
     document.body.classList.toggle("darkTheme", themeIsDark);
   });
 }
 
 function setMenuType(anEvent) {
   eGPrefs.isLargeMenuOn().then(prefValue => {
-    let menuTypeIsLarge = anEvent === undefined ?
-                            prefValue : JSON.parse(anEvent.target.value);
+    let menuTypeIsLarge = anEvent === undefined
+      ? prefValue
+      : JSON.parse(anEvent.target.value);
     ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
      "contextLink", "contextImage", "contextSelection", "contextTextbox"]
       .forEach(menuName => {
@@ -784,8 +786,9 @@ function toggleDisabledStatusOnElementsById(ids, shouldBeDisabled) {
 
 function setDisabledStatusForTooltipsActivationDelay(anEvent) {
   eGPrefs.areTooltipsOn().then(prefValue => {
-    let shouldBeDisabled = anEvent === undefined ? !prefValue :
-                                                   !anEvent.target.checked;
+    let shouldBeDisabled = anEvent === undefined
+      ? !prefValue
+      : !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
       "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"],
       shouldBeDisabled);
@@ -794,8 +797,9 @@ function setDisabledStatusForTooltipsActivationDelay(anEvent) {
 
 function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
   eGPrefs.isHandleLinksOn().then(prefValue => {
-    let shouldBeDisabled = anEvent === undefined ? !prefValue :
-                                                   !anEvent.target.checked;
+    let shouldBeDisabled = anEvent === undefined
+      ? !prefValue
+      : !anEvent.target.checked;
     toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
       "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
       "openLinksThroughPieMenuCenterConfiguration"], shouldBeDisabled);
@@ -911,8 +915,9 @@ function initializeClicksByAction() {
       div.appendChild(img);
       
       span = document.createElement("span");
-      span.textContent = clicksForAction > 0 ?
-                           (count > 0.1 ? `${count}%` : "<0.1%") : "–";
+      span.textContent = clicksForAction > 0
+        ? (count > 0.1 ? `${count}%` : "<0.1%")
+        : "–";
       div.appendChild(span);
       
       currentAction = eGActions[currentAction].nextAction;
