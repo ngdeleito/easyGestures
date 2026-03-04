@@ -99,8 +99,8 @@ let eGMessageHandlers = {
   
   getActionsStatus(aMessage) {
     let actionsStatus = aMessage.actions.map(actionName => {
-                          return eGActions[actionName].getActionStatus();
-                        });
+      return eGActions[actionName].getActionStatus();
+    });
     return Promise.all(actionsStatus.map(status => status.status))
                   .then(statuses => {
                     return actionsStatus.map((actionStatus, index) => {
