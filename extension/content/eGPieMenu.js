@@ -22,9 +22,7 @@ const TOOLTIPS_NODE_ID_PREFIX = "easyGesturesTooltipsNode:";
 class MenuLayout {
   constructor(menu, name, number, nextMenuLayout, actionsPrefs) {
     this._pieMenu = menu;
-    this.name = name; // "main", "mainAlt1", "mainAlt2", "extra".  "extraAlt1",
-      // "extraAlt2", "contextLink", "contextImage",  "contextSelection",
-      // "contextTextbox"
+    this.name = name; // one of the keys of eGPieMenu._layouts (see below)
     this.layoutNumber = number;
     this._nextMenuLayout = nextMenuLayout;
     this.isExtraMenu = false;
