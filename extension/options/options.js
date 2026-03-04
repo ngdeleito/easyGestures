@@ -30,7 +30,7 @@ let eventListenersArray = [
   ["largeMenuType", "change", setMenuType],
   ["activateTooltips", "change", setDisabledStatusForTooltipsActivationDelay],
   ["activateOpenLinksThroughPieMenuCenter", "change",
-    setDisabledStatusForOpenLinksMaximumDelay],
+   setDisabledStatusForOpenLinksMaximumDelay],
   ["resetMenusButton", "click", resetMenus],
   ["enableMainAlt1Menu", "change", setDisabledStatusForMainAlt1Menu],
   ["enableMainAlt2Menu", "change", setDisabledStatusForMainAlt2Menu],
@@ -762,17 +762,19 @@ function setMenuType(anEvent) {
     let menuTypeIsLarge = anEvent === undefined
       ? prefValue
       : JSON.parse(anEvent.target.value);
-    ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1", "extraAlt2",
-     "contextLink", "contextImage", "contextSelection", "contextTextbox"]
-      .forEach(menuName => {
-        document.getElementById(`menuControl_${menuName}`).classList
-                .toggle("large", menuTypeIsLarge);
+    let menuNames = ["main", "mainAlt1", "mainAlt2", "extra", "extraAlt1",
+                     "extraAlt2", "contextLink", "contextImage",
+                     "contextSelection", "contextTextbox"];
+    menuNames.forEach(menuName => {
+      document.getElementById(`menuControl_${menuName}`).classList
+              .toggle("large", menuTypeIsLarge);
     });
-    ["mainMenuLabel", "extraMenuLabel", "primaryMainMenu", "primaryExtraMenu",
-     "alt1MainMenu", "alt1ExtraMenu", "alt2MainMenu", "alt2ExtraMenu",
-     "allMenusMainMenu", "allMenusExtraMenu"]
-      .forEach(id => {
-        document.getElementById(id).classList.toggle("large", menuTypeIsLarge);
+    let menuIDs = ["mainMenuLabel", "extraMenuLabel", "primaryMainMenu",
+                   "primaryExtraMenu", "alt1MainMenu", "alt1ExtraMenu",
+                   "alt2MainMenu", "alt2ExtraMenu", "allMenusMainMenu",
+                   "allMenusExtraMenu"];
+    menuIDs.forEach(id => {
+      document.getElementById(id).classList.toggle("large", menuTypeIsLarge);
     });
   });
 }
@@ -789,9 +791,10 @@ function setDisabledStatusForTooltipsActivationDelay(anEvent) {
     let shouldBeDisabled = anEvent === undefined
       ? !prefValue
       : !anEvent.target.checked;
-    toggleDisabledStatusOnElementsById(["tooltipsActivationDelayLabel",
-      "tooltipsActivationDelayInput", "tooltipsActivationDelayUnit"],
-      shouldBeDisabled);
+    toggleDisabledStatusOnElementsById([
+      "tooltipsActivationDelayLabel", "tooltipsActivationDelayInput",
+      "tooltipsActivationDelayUnit"
+    ], shouldBeDisabled);
   });
 }
 
@@ -800,9 +803,10 @@ function setDisabledStatusForOpenLinksMaximumDelay(anEvent) {
     let shouldBeDisabled = anEvent === undefined
       ? !prefValue
       : !anEvent.target.checked;
-    toggleDisabledStatusOnElementsById(["openLinksMaximumDelayLabel",
-      "openLinksMaximumDelayInput", "openLinksMaximumDelayUnit",
-      "openLinksThroughPieMenuCenterConfiguration"], shouldBeDisabled);
+    toggleDisabledStatusOnElementsById([
+      "openLinksMaximumDelayLabel", "openLinksMaximumDelayInput",
+      "openLinksMaximumDelayUnit", "openLinksThroughPieMenuCenterConfiguration"
+    ], shouldBeDisabled);
     let radioElements =
           document.getElementById("openLinksThroughPieMenuCenterConfiguration")
                   .getElementsByTagName("input");

@@ -532,10 +532,10 @@ export let eGPrefs = {
         "usage.actions": prefValue
       });
     }));
-    promises.push(browser.storage.local.get(["menus.main", "menus.mainAlt1",
-      "menus.mainAlt2", "menus.extra", "menus.extraAlt1", "menus.extraAlt2",
-      "menus.contextLink", "menus.contextImage", "menus.contextSelection",
-      "menus.contextTextbox"
+    promises.push(browser.storage.local.get([
+      "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
+      "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",
+      "menus.contextImage", "menus.contextSelection", "menus.contextTextbox"
     ]).then(prefs => {
       for (let key in prefs) {
         prefs[key] = prefs[key].map(newActionNameForAction);
@@ -651,17 +651,17 @@ export let eGPrefs = {
         "stats.actions": actionsStats
       });
     }));
-    promises.push(browser.storage.local.get(["customizations.loadURL1",
-      "customizations.loadURL2", "customizations.loadURL3",
-      "customizations.loadURL4", "customizations.loadURL5",
-      "customizations.loadURL6", "customizations.loadURL7",
-      "customizations.loadURL8", "customizations.loadURL9",
-      "customizations.loadURL10", "customizations.runScript1",
-      "customizations.runScript2", "customizations.runScript3",
-      "customizations.runScript4", "customizations.runScript5",
-      "customizations.runScript6", "customizations.runScript7",
-      "customizations.runScript8", "customizations.runScript9",
-      "customizations.runScript10"
+    promises.push(browser.storage.local.get([
+      "customizations.loadURL1", "customizations.loadURL2",
+      "customizations.loadURL3", "customizations.loadURL4",
+      "customizations.loadURL5", "customizations.loadURL6",
+      "customizations.loadURL7", "customizations.loadURL8",
+      "customizations.loadURL9", "customizations.loadURL10",
+      "customizations.runScript1", "customizations.runScript2",
+      "customizations.runScript3", "customizations.runScript4",
+      "customizations.runScript5", "customizations.runScript6",
+      "customizations.runScript7", "customizations.runScript8",
+      "customizations.runScript9", "customizations.runScript10"
     ]).then(prefs => {
       for (let key in prefs) {
         let prefArray = prefs[key].split("\u2022");
@@ -673,10 +673,10 @@ export let eGPrefs = {
       }
       return browser.storage.local.set(prefs);
     }));
-    promises.push(browser.storage.local.get(["menus.main", "menus.mainAlt1",
-      "menus.mainAlt2", "menus.extra", "menus.extraAlt1", "menus.extraAlt2",
-      "menus.contextLink", "menus.contextImage", "menus.contextSelection",
-      "menus.contextTextbox"
+    promises.push(browser.storage.local.get([
+      "menus.main", "menus.mainAlt1", "menus.mainAlt2", "menus.extra",
+      "menus.extraAlt1", "menus.extraAlt2", "menus.contextLink",
+      "menus.contextImage", "menus.contextSelection", "menus.contextTextbox"
     ]).then(prefs => {
       for (let key in prefs) {
         prefs[key] = prefs[key].split("/");
