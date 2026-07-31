@@ -34,3 +34,5 @@ Additionally, users can explicitly grant the following optional permissions in t
   - "Find and highlight selection" and "Remove highlight" actions
 - `sessions`: "Access recently closed tabs"
   - "Undo close tab" and "Undo close window" actions
+- "Access local files on your computer" (starting from Firefox 153)
+  - Opening the pie menu on local files (this permission can only be enabled via Firefox's permissions page for the extension)
