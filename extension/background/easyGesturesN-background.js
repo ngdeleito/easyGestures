@@ -78,11 +78,6 @@ let eGMessageHandlers = {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
     }
-    browser.windows.getCurrent().then(currentWindow => {
-      browser.windows.update(currentWindow.id, {
-        focused: true
-      });
-    });
   },
   
   getTooltips(aMessage) {

@@ -217,6 +217,7 @@ function handleMousedownWithinTopmostFrame(anEvent) {
     windowScrollMaxY: window.scrollMaxY,
     frameID: 0
   });
+  window.focus();
   browser.runtime.sendMessage({
     messageName: "setContextAndFocusCurrentWindow",
     context: context
