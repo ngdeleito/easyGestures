@@ -74,7 +74,7 @@ let eGMessageHandlers = {
     }, aMessage.parameters.frameID);
   },
   
-  setContextAndFocusCurrentWindow(aMessage) {
+  setContext(aMessage) {
     for (let key in aMessage.context) {
       eGContext[key] = aMessage.context[key];
     }

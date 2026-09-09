@@ -219,7 +219,7 @@ function handleMousedownWithinTopmostFrame(anEvent) {
   });
   window.focus();
   browser.runtime.sendMessage({
-    messageName: "setContextAndFocusCurrentWindow",
+    messageName: "setContext",
     context: context
   });
   
